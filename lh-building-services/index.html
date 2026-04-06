@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L&H Building Services | Builders in Chelmsford</title>
+<meta name="description" content="Quality builders in Chelmsford. Building work, brick laying, plastering, windows & doors, painting. Renovation, restoration & bespoke jobs. Free quotes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff;
+  --card: #f8fafc;
+  --card-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --border-light: #cbd5e1;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-glow: rgba(37, 99, 235, 0.10);
+  --accent-rgb: 37, 99, 235;
+  --green: #25d366;
+  --heading: 'Plus Jakarta Sans', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: #475569;
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
+h1, h2, h3, h4, h5 { color: #1e293b; }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--heading); font-size: 1.25rem; font-weight: 800;
+  color: #1e293b; text-decoration: none; letter-spacing: -0.03em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500; color: #64748b;
+  text-decoration: none; transition: color 0.2s ease;
+}
+.nav-links a:hover { color: #1e293b; }
+.nav-links a.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #fff !important;
+  font-weight: 700; font-size: 0.85rem; padding: 8px 18px;
+  border-radius: 8px; text-decoration: none; transition: background 0.2s, transform 0.2s;
+}
+.nav-links a.nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+.hero {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 80vh; padding: 140px 24px 0; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-glow), transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  width: 100%; max-width: 800px; position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 50px;
+  padding: 6px 16px 6px 12px; font-size: 0.75rem; font-weight: 600; color: #64748b;
+  letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.3s;
+}
+.hero-badge .dot {
+  width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+.hero h1 {
+  font-family: var(--heading); font-size: 3.5rem; font-weight: 900; color: #1e293b;
+  line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 18px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.5s;
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent), #60a5fa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 1.1rem; color: #64748b; max-width: 560px; margin: 0 auto 28px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.7s;
+}
+.hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.9s;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+  border-radius: 10px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-hover); }
+.btn-wa { background: var(--green); color: #fff; }
+.btn-wa:hover { background: #1db954; }
+
+.trust-bar {
+  width: 100%; max-width: 1200px; display: flex; justify-content: center;
+  gap: 32px; flex-wrap: wrap; padding: 80px 0 0; position: relative; z-index: 1;
+}
+.trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; font-weight: 600; color: #475569; }
+.trust-icon {
+  width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; background: rgba(var(--accent-rgb), 0.08);
+}
+
+.section { padding: 80px 24px; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--heading); font-size: 2.2rem; font-weight: 800;
+  color: #1e293b; letter-spacing: -0.03em; margin-bottom: 40px;
+}
+.section-title .accent { color: var(--accent); }
+
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.service-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px 22px; position: relative; overflow: hidden;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover {
+  border-color: var(--border-light); background: var(--card-hover);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); transform: translateY(-2px);
+}
+.service-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(var(--accent-rgb), 0.08);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.service-icon svg { width: 22px; height: 22px; color: var(--accent); }
+.service-card h3 {
+  font-family: var(--heading); font-size: 1rem; font-weight: 700;
+  color: #1e293b; margin-bottom: 8px; letter-spacing: -0.02em;
+}
+.service-card p { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+
+.cta-band { background: var(--accent); padding: 60px 24px; text-align: center; }
+.cta-band h2 { font-family: var(--heading); font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 10px; }
+.cta-band p { font-size: 1rem; color: rgba(255,255,255,0.85); margin-bottom: 24px; }
+.cta-band-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.cta-band .btn-light { background: #fff; color: var(--accent); }
+.cta-band .btn-light:hover { background: #f1f5f9; }
+
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.why-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px 22px; transition: border-color 0.3s, transform 0.3s;
+}
+.why-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
+.why-card .num { font-family: var(--heading); font-size: 2rem; font-weight: 900; color: var(--accent); margin-bottom: 10px; line-height: 1; }
+.why-card h3 { font-family: var(--heading); font-size: 1.05rem; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+.why-card p { font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+
+.bespoke-section { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.bespoke-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.bespoke-grid p { font-size: 0.95rem; color: #475569; line-height: 1.8; margin-bottom: 16px; }
+.bespoke-grid p:last-child { margin-bottom: 0; }
+
+.areas-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+.area-tag {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 16px; font-size: 0.85rem; font-weight: 500; color: #475569;
+  transition: border-color 0.2s, color 0.2s;
+}
+.area-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact-info h3 { font-family: var(--heading); font-size: 1.3rem; font-weight: 800; color: #1e293b; margin-bottom: 16px; }
+.contact-info p { font-size: 0.95rem; color: #64748b; margin-bottom: 20px; line-height: 1.7; }
+.contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; color: #475569; }
+.contact-detail svg { color: var(--accent); flex-shrink: 0; }
+.contact-detail a { color: #475569; text-decoration: none; transition: color 0.2s; }
+.contact-detail a:hover { color: var(--accent); }
+.hours-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; font-size: 0.8rem; font-weight: 700; color: #1e293b; }
+
+.contact-form-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px; }
+.form-label {
+  display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #64748b; margin-bottom: 6px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px; color: #1e293b; font-family: var(--body); font-size: 0.9rem;
+  margin-bottom: 16px; transition: border-color 0.2s; -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--accent); }
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-select { cursor: pointer; }
+.btn-submit {
+  width: 100%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.95rem;
+  padding: 14px; border: none; border-radius: 10px; cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-submit:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+
+.footer { background: var(--card); border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+.footer-name { font-family: var(--heading); font-size: 1.1rem; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
+.footer p { font-size: 0.8rem; color: #94a3b8; }
+.footer a { color: var(--accent); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+.fab-container {
+  position: fixed; bottom: 16px; right: 16px; display: flex; flex-direction: column;
+  gap: 10px; z-index: 999; opacity: 0; visibility: hidden; transform: translateY(20px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+.fab-container.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.fab {
+  width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+.fab:hover { transform: scale(1.1); animation: none; }
+.fab-call { background: var(--accent); animation: pulse-ring 2s ease-in-out infinite; }
+.fab-wa { background: var(--green); animation: pulse-ring-wa 2s ease-in-out infinite; }
+.fab svg { width: 22px; height: 22px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+@keyframes pulse-ring-wa {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+
+.nav-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 44px; height: 44px; align-items: center; justify-content: center;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: #1e293b; position: relative; }
+.nav-toggle span::before, .nav-toggle span::after {
+  content: ''; position: absolute; left: 0; width: 100%; height: 2px; background: #1e293b; transition: transform 0.2s;
+}
+.nav-toggle span::before { top: -7px; }
+.nav-toggle span::after { top: 7px; }
+
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    padding: 16px 24px; gap: 12px; border-bottom: 1px solid var(--border);
+  }
+  .hero { min-height: auto; padding: 120px 24px 40px; }
+  .hero h1 { font-size: 2.2rem; }
+  .section { padding: 60px 24px; }
+  .section-title { font-size: 1.7rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .bespoke-grid { grid-template-columns: 1fr; }
+  .trust-bar { gap: 20px; padding-top: 40px; }
+  .cta-band h2 { font-size: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">L&H <span>Building Services</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why-us">About</a></li>
+      <li><a href="#bespoke">Bespoke</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:+447939836799" class="nav-cta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> Free Quotes Available</div>
+    <h1>Quality <span class="accent">Builders</span> in Chelmsford</h1>
+    <p class="hero-sub">Skilled craftsmanship with true attention to detail. Renovation, restoration and bespoke building work — no job too big or small.</p>
+    <div class="hero-btns">
+      <a href="tel:+447939836799" class="btn btn-accent"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Us</a>
+      <a href="https://wa.me/447939836799?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="btn btn-wa" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+      Fully Insured
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      Building Regs Compliant
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      Free Quotes
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      Personal Service
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      On Time & On Budget
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services" style="padding-top: 20px;">
+  <div class="reveal">
+    <div class="section-label">Our Services</div>
+    <div class="section-title">All Aspects of <span class="accent">Building Work</span></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h3>Building Work</h3>
+      <p>Complete building services from extensions and conversions to structural alterations and new builds. Quality workmanship on every project.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+      <h3>Brick Laying</h3>
+      <p>Expert bricklaying for walls, extensions, garden features and more. Precise, clean brickwork built to stand the test of time.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <h3>Plastering</h3>
+      <p>Smooth, flawless plastering for walls and ceilings. Skimming, rendering and patching — finished to a high standard every time.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+      <h3>Windows & Doors</h3>
+      <p>Professional fitting of windows and doors. Accurate measurements, secure installation and a clean finish throughout.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+      <h3>Painting & Decorating</h3>
+      <p>Interior and exterior painting to a professional finish. Thorough preparation and quality paints for a result that lasts.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <h3>Bespoke Projects</h3>
+      <p>Custom fencing, joinery and one-off builds tailored to your exact requirements. If you can envision it, we can build it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2 class="reveal">Need a Builder in Chelmsford?</h2>
+  <p class="reveal">Get in touch for a free, no-obligation quote. Focused, professional and with true attention to detail.</p>
+  <div class="cta-band-btns reveal">
+    <a href="tel:+447939836799" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 07939 836 799</a>
+    <a href="https://wa.me/447939836799?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="btn btn-wa" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> WhatsApp</a>
+  </div>
+</div>
+
+<section class="section" id="why-us">
+  <div class="reveal">
+    <div class="section-label">About Us</div>
+    <div class="section-title">Why Choose <span class="accent">L&H Building</span></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="num">01</div>
+      <h3>Skilled Craftsmanship</h3>
+      <p>A hard-earned reputation for quality workmanship and attention to detail. Every project is approached with the same high standards.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="num">02</div>
+      <h3>Professional & Courteous</h3>
+      <p>Approachable, friendly and committed to every job. We treat your property with respect and leave it tidy when we're done.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="num">03</div>
+      <h3>On Time & On Budget</h3>
+      <p>We deliver projects on time and to budget. No nasty surprises — just honest, transparent service from start to finish.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="num">04</div>
+      <h3>Building Regs Compliant</h3>
+      <p>Fully up to date with the latest building regulations, ensuring all projects are completed safely and to the required standards.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="num">05</div>
+      <h3>No Job Too Big or Small</h3>
+      <p>From a quick repair to a full renovation, every project gets the same focused, professional approach and true attention to detail.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="num">06</div>
+      <h3>Free, No-Obligation Quotes</h3>
+      <p>Get in touch for an honest, upfront quote with no pressure. We'll assess your project and give you a fair price.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bespoke-section" id="bespoke">
+  <div class="section" style="padding-top: 80px; padding-bottom: 80px;">
+    <div class="reveal">
+      <div class="section-label">Custom Projects</div>
+      <div class="section-title">Bespoke <span class="accent">Solutions</span></div>
+    </div>
+    <div class="bespoke-grid reveal">
+      <div>
+        <p>Want something a little more off the beaten path? Not only do we offer a complete range of services, we pride ourselves on delivering projects on time and to budget.</p>
+        <p>Our skills mean we can create bespoke fencing and joinery solutions to meet your needs. Whether you're looking to extend, restore, or renovate, we have the vision and experience to find a resolution to suit your budget and timescale.</p>
+      </div>
+      <div>
+        <p>We approach every project with a high level of commitment and professionalism — we're proud of our reputation for skilled workmanship and attention to detail.</p>
+        <p>We're courteous, approachable and fully up to date with the latest building regulations, ensuring all projects are completed safely and to the same high standards each and every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="areas">
+  <div class="reveal">
+    <div class="section-label">Coverage</div>
+    <div class="section-title">Areas We <span class="accent">Serve</span></div>
+  </div>
+  <div class="areas-wrap reveal">
+    <span class="area-tag">Chelmsford</span>
+    <span class="area-tag">Braintree</span>
+    <span class="area-tag">Witham</span>
+    <span class="area-tag">Maldon</span>
+    <span class="area-tag">Brentwood</span>
+    <span class="area-tag">Billericay</span>
+    <span class="area-tag">Ingatestone</span>
+    <span class="area-tag">Danbury</span>
+    <span class="area-tag">Writtle</span>
+    <span class="area-tag">Great Baddow</span>
+    <span class="area-tag">Springfield</span>
+    <span class="area-tag">Galleywood</span>
+    <span class="area-tag">Moulsham</span>
+    <span class="area-tag">Stock</span>
+    <span class="area-tag">Margaretting</span>
+    <span class="area-tag">Hatfield Peverel</span>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="reveal">
+    <div class="section-label">Get In Touch</div>
+    <div class="section-title">Request a Free <span class="accent">Quote</span></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>L&H Building Services</h3>
+      <p>Quality builders in Chelmsford with a reputation for excellence. Get in touch for a free, no-obligation quote on any building work — no job too big or small.</p>
+      <div class="contact-detail">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+447939836799">07939 836 799</a>
+      </div>
+      <div class="contact-detail">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        33 Maltings Road, Chelmsford, CM2 8HQ
+      </div>
+      <div class="hours-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mon – Fri: 8:00am – 5:00pm
+      </div>
+    </div>
+    <div class="contact-form-card reveal">
+      <form action="">
+        <label class="form-label" for="name">Name</label>
+        <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
+        <label class="form-label" for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" class="form-input" required placeholder="Your phone number" pattern="^(\+44\s?|0)\d[\d\s\-]{8,12}$" title="Please enter a valid UK phone number starting with 0 or +44" maxlength="16">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="Your email (optional)">
+        <label class="form-label" for="service">Service Needed</label>
+        <select id="service" name="service" class="form-select">
+          <option value="">Select a service...</option>
+          <option>Building Work</option>
+          <option>Brick Laying</option>
+          <option>Plastering</option>
+          <option>Windows & Doors</option>
+          <option>Painting & Decorating</option>
+          <option>Bespoke Project</option>
+          <option>Other</option>
+        </select>
+        <label class="form-label" for="message">Message</label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your project..."></textarea>
+        <button type="submit" class="btn-submit">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-name">L&H Building Services</div>
+  <p>&copy; 2026 L&H Building Services. All rights reserved.</p>
+  <p style="margin-top:6px;">Site by <a href="https://construction-sites.co.uk" target="_blank">construction-sites.co.uk</a></p>
+</footer>
+
+<div class="fab-container" id="fabContainer">
+  <a href="tel:+447939836799" class="fab fab-call" aria-label="Call us">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447939836799?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="fab fab-wa" target="_blank" aria-label="WhatsApp us">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(function(link) {
+  link.addEventListener('click', function() { navLinks.classList.remove('open'); });
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+var fabContainer = document.getElementById('fabContainer');
+var heroButtons = document.querySelector('.hero-btns');
+window.addEventListener('scroll', function() {
+  if (fabContainer && heroButtons) {
+    if (heroButtons.getBoundingClientRect().bottom < 0) { fabContainer.classList.add('visible'); }
+    else { fabContainer.classList.remove('visible'); }
+  }
+});
+</script>
+
+<script>
+  var phoneField = document.getElementById('phone') || document.querySelector('input[name="phone"]');
+  if (phoneField) {
+    phoneField.addEventListener('input', function() {
+      var v = this.value.replace(/[\s\-()]/g, '');
+      var ok = /^(\+44|0)\d{9,10}$/.test(v);
+      this.setCustomValidity(v.length > 3 && !ok ? 'Please enter a valid UK phone number (starting with 0 or +44)' : '');
+    });
+  }
+</script>
+</body>
+</html>
