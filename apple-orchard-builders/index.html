@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Orchard Builders | Extensions, New Builds & Barn Conversions | Yeovil, Somerset</title>
+<meta name="description" content="The premier building company in Yeovil, Somerset. Extensions, new builds, barn conversions and all aspects of building. Fully licensed and insured. Free quotes. Stage payments available.">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<meta property="og:title" content="Apple Orchard Builders | Yeovil, Somerset">
+<meta property="og:description" content="Extensions, new builds, barn conversions. The premier building company in Yeovil. Free quotes.">
+<meta property="og:image" content="hero-main.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f5;--card:#ffffff;--card-hover:#f5f2ed;--border:rgba(139,90,43,0.1);
+  --accent:#8b5a2b;--accent-light:#a67c52;--accent-dark:#6b4423;--accent-glow:rgba(139,90,43,0.08);
+  --red:#c0392b;--red-light:rgba(192,57,43,0.08);
+  --dark:#1a1108;--cream:#f5f0e8;
+  --text:#4a3f35;--text-muted:#7a6e62;--text-light:#9e917f;
+  --heading:'Playfair Display',serif;--body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text-muted);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--heading);color:var(--dark);letter-spacing:-0.02em;font-weight:600;line-height:1.15}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ============ LOADING SCREEN ============ */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader img{height:80px;margin-bottom:24px;opacity:0;animation:fadeIn .8s ease forwards .1s}
+.loader-line{width:60px;height:1px;background:var(--accent);margin-bottom:32px;transform:scaleX(0);animation:lineGrow 1s ease forwards .2s}
+.loader-text{font-family:var(--heading);font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--dark);letter-spacing:0.1em;text-transform:uppercase;overflow:hidden}
+.loader-text span{display:inline-block;opacity:0;transform:translateY(100%);animation:letterUp .5s ease forwards}
+.loader-sub{font-family:var(--body);font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-top:16px;opacity:0;animation:fadeIn .6s ease forwards 1.4s}
+@keyframes lineGrow{to{transform:scaleX(1)}}
+@keyframes letterUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:80px;display:flex;align-items:center;justify-content:center;transition:all .5s;background:transparent}
+.nav.scrolled{background:rgba(250,248,245,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 2px 20px rgba(0,0,0,0.04)}
+.nav-inner{max-width:1400px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-brand img{height:40px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.8rem;font-weight:500;color:var(--text-muted);letter-spacing:0.05em;transition:color .3s}
+.nav-links a:hover{color:var(--dark)}
+.hero .nav-links a{color:rgba(255,255,255,0.7)}
+.hero .nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff;padding:10px 24px;border:none;border-radius:0;font-weight:600;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;transition:all .3s}
+.nav-cta:hover{background:var(--accent-dark);color:#fff}
+.nav.scrolled .nav-links a{color:var(--text-muted)}
+.nav.scrolled .nav-links a:hover{color:var(--dark)}
+
+/* ============ HERO ============ */
+.hero-section{position:relative;height:100vh;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);animation:heroZoom 20s ease-in-out infinite alternate}
+@keyframes heroZoom{0%{transform:scale(1.1) translate(0,0)}100%{transform:scale(1.15) translate(-1%,-1%)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,17,8,0.2) 0%,rgba(26,17,8,0.05) 30%,rgba(26,17,8,0.4) 70%,rgba(26,17,8,0.85) 100%)}
+.hero-content{position:absolute;bottom:0;left:0;right:0;padding:0 40px 80px;max-width:1400px;margin:0 auto}
+.hero-label{font-family:var(--body);font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-light);margin-bottom:20px;opacity:0;transform:translateY(20px)}
+.hero-section h1{font-size:clamp(2.8rem,6vw,5rem);line-height:1.05;margin-bottom:24px;color:#fff}
+.hero-section h1 .word{display:inline-block;opacity:0;transform:translateY(40px);transition:opacity .6s ease,transform .6s ease}
+.hero-section h1 .word.show{opacity:1;transform:translateY(0)}
+.hero-section h1 em{font-style:italic;color:var(--cream)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.7);max-width:560px;line-height:1.8;margin-bottom:36px;opacity:0;transform:translateY(20px)}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;font-weight:600;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;transition:all .35s;font-family:var(--body)}
+.btn svg{width:16px;height:16px;flex-shrink:0}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,90,43,0.3)}
+.btn-whatsapp{background:#25d366;color:#fff}
+.btn-whatsapp:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,0.3)}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.05)}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s ease forwards 2.5s}
+.scroll-hint span{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-light)}
+.scroll-hint-line{width:1px;height:40px;background:linear-gradient(180deg,var(--accent-light),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ============ INTRO ============ */
+.intro{padding:120px 40px;position:relative;z-index:1}
+.intro-inner{max-width:900px;margin:0 auto;text-align:center}
+.intro .divider{width:60px;height:1px;background:var(--accent);margin:0 auto 32px;opacity:0;transform:scaleX(0);transition:all .8s ease}
+.intro .divider.revealed{opacity:1;transform:scaleX(1)}
+.intro h2{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:24px;font-weight:500}
+.intro h2 em{font-style:italic;color:var(--accent)}
+.intro p{font-size:1.05rem;color:var(--text-muted);line-height:1.9;max-width:700px;margin:0 auto 16px}
+
+/* ============ PORTFOLIO ============ */
+.portfolio{padding:80px 0 120px;position:relative;z-index:1}
+.portfolio-header{text-align:center;padding:0 40px;margin-bottom:60px}
+.portfolio-header .section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 6px}
+.portfolio-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3}
+.portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.portfolio-item:hover img{transform:scale(1.08)}
+.portfolio-item .p-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,17,8,0.85) 100%);opacity:0;transition:opacity .5s ease}
+.portfolio-item:hover .p-overlay{opacity:1}
+.portfolio-item .p-caption{position:absolute;bottom:0;left:0;right:0;padding:24px;transform:translateY(10px);opacity:0;transition:all .5s ease}
+.portfolio-item:hover .p-caption{transform:translateY(0);opacity:1}
+.portfolio-item .p-caption h3{font-family:var(--heading);font-size:1rem;color:#fff;margin-bottom:4px;font-weight:500}
+.portfolio-item .p-caption span{font-size:0.7rem;color:var(--accent-light);letter-spacing:0.1em;text-transform:uppercase}
+.portfolio-item.featured{grid-column:span 2;aspect-ratio:2/1}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:40px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:4px}
+.lightbox-close{position:absolute;top:24px;right:32px;width:48px;height:48px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.lightbox-close:hover{border-color:var(--accent-light);color:var(--accent-light)}
+
+/* ============ SERVICES ============ */
+.services{padding:120px 40px;position:relative;z-index:1;border-top:1px solid var(--border);background:var(--card)}
+.services-inner{max-width:1200px;margin:0 auto}
+.services-header{text-align:center;margin-bottom:72px}
+.services-header .section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.services-header h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500}
+.services-header h2 em{font-style:italic;color:var(--accent)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--bg);border:1px solid var(--border);padding:40px 32px;position:relative;overflow:hidden;transition:all .5s}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .5s;transform-origin:left}
+.service-card:hover::after{transform:scaleX(1)}
+.service-card:hover{background:var(--card-hover);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.06)}
+.service-card .s-num{font-family:var(--heading);font-size:2.5rem;color:rgba(139,90,43,0.12);font-weight:700;margin-bottom:20px;line-height:1}
+.service-card h3{font-family:var(--heading);font-size:1.15rem;font-weight:500;margin-bottom:12px;color:var(--dark)}
+.service-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
+
+/* ============ PROCESS ============ */
+.process{padding:120px 40px;position:relative;z-index:1;border-top:1px solid var(--border)}
+.process-inner{max-width:1200px;margin:0 auto}
+.process-header{text-align:center;margin-bottom:72px}
+.process-header .section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.process-header h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500}
+.process-header h2 em{font-style:italic;color:var(--accent)}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.process-step{text-align:center;position:relative}
+.process-step::after{content:'';position:absolute;top:24px;right:-16px;width:32px;height:1px;background:var(--border)}
+.process-step:last-child::after{display:none}
+.step-num{width:48px;height:48px;border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-size:1rem;color:var(--accent);margin:0 auto 20px;transition:all .3s}
+.process-step:hover .step-num{background:var(--accent);color:#fff}
+.process-step h3{font-family:var(--heading);font-size:1rem;font-weight:500;margin-bottom:8px;color:var(--dark)}
+.process-step p{font-size:0.82rem;color:var(--text-muted);line-height:1.6}
+
+/* ============ REVIEWS ============ */
+.reviews{padding:120px 40px;position:relative;z-index:1;background:var(--card);border-top:1px solid var(--border)}
+.reviews-inner{max-width:1200px;margin:0 auto}
+.reviews-header{text-align:center;margin-bottom:60px}
+.reviews-header .section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.review-card{background:var(--bg);border:1px solid var(--border);padding:36px;transition:all .4s}
+.review-card:hover{background:var(--card-hover);transform:translateY(-4px)}
+.review-stars{color:var(--accent);font-size:0.9rem;letter-spacing:2px;margin-bottom:16px}
+.review-text{font-size:0.9rem;color:var(--text-muted);line-height:1.8;margin-bottom:20px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-size:0.9rem;color:#fff;background:var(--accent);font-weight:600}
+.review-name{font-family:var(--heading);font-size:0.9rem;color:var(--dark)}
+.review-loc{font-size:0.72rem;color:var(--text-light)}
+
+/* ============ CTA BAND ============ */
+.cta-band{position:relative;padding:100px 40px;text-align:center;overflow:hidden;z-index:1}
+.cta-band::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#2a1d0e 0%,#3d2b18 50%,#2a1d0e 100%)}
+.cta-band::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,90,43,0.1) 0%,transparent 70%)}
+.cta-band *{position:relative;z-index:1}
+.cta-band .section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent-light);margin-bottom:16px}
+.cta-band h2{font-family:var(--heading);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500;color:var(--cream);margin-bottom:16px}
+.cta-band h2 em{font-style:italic;color:var(--accent-light)}
+.cta-band p{color:rgba(245,240,232,0.6);margin-bottom:40px;font-size:1rem;max-width:550px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ============ CONTACT ============ */
+.contact{padding:120px 40px;position:relative;z-index:1;border-top:1px solid var(--border)}
+.contact-inner{max-width:1200px;margin:0 auto}
+.contact-header{text-align:center;margin-bottom:60px}
+.contact-header .section-label{font-size:0.65rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.contact-header h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:500}
+.contact-header h2 em{font-style:italic;color:var(--accent)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact-form{background:var(--card);border:1px solid var(--border);padding:40px;box-shadow:0 4px 20px rgba(0,0,0,0.03)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.05em;color:var(--dark);margin-bottom:8px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border);color:var(--dark);font-family:var(--body);font-size:0.9rem;transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-light)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b5a2b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.submit-btn{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;font-weight:600;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-family:var(--body);transition:all .3s}
+.submit-btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.contact-info{display:flex;flex-direction:column;justify-content:center;gap:32px}
+.info-item{display:flex;align-items:flex-start;gap:20px}
+.info-icon{width:48px;height:48px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-icon svg{width:20px;height:20px;stroke:var(--accent)}
+.info-item strong{display:block;font-family:var(--heading);font-size:0.95rem;color:var(--dark);margin-bottom:4px;font-weight:500}
+.info-item span,.info-item a{font-size:0.88rem;color:var(--text-muted)}
+.info-item a:hover{color:var(--accent)}
+
+/* ============ FOOTER ============ */
+.footer{border-top:1px solid var(--border);padding:48px 40px;text-align:center;position:relative;z-index:1;background:var(--card)}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
+.footer-brand img{height:32px}
+.footer-brand-text{font-family:var(--heading);font-size:1rem;color:var(--dark);letter-spacing:0.05em}
+.footer p{font-size:0.72rem;color:var(--text-light)}
+.footer a{color:var(--accent)}.footer a:hover{text-decoration:underline}
+
+/* ============ FABs ============ */
+.fab-stack{position:fixed;bottom:28px;right:28px;z-index:900;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:all .5s ease}
+.fab-stack.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:52px;height:52px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:all .3s;border:none;cursor:pointer}
+.fab:hover{transform:scale(1.1)}
+.fab svg{width:20px;height:20px;fill:#fff}
+.fab-phone{background:var(--accent)}
+.fab-whatsapp{background:#25d366}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+.reveal-scale{opacity:0;transform:scale(0.95);transition:opacity .8s ease,transform .8s ease}
+.reveal-scale.revealed{opacity:1;transform:scale(1)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1024px){
+.portfolio-grid{grid-template-columns:repeat(2,1fr)}
+.portfolio-item.featured{grid-column:span 2}
+.services-grid{grid-template-columns:repeat(2,1fr)}
+.process-steps{grid-template-columns:repeat(2,1fr)}
+.process-step::after{display:none}
+}
+@media(max-width:768px){
+.hero-content{padding:0 24px 60px}
+.hero-section h1{font-size:2.4rem}
+.nav{padding:0 24px;height:68px}
+.nav-links{display:none}
+.intro{padding:80px 24px}
+.services{padding:80px 24px}
+.process{padding:80px 24px}
+.reviews{padding:80px 24px}
+.contact{padding:80px 24px}
+.cta-band{padding:60px 24px}
+.footer{padding:40px 24px}
+.portfolio-grid{grid-template-columns:1fr}
+.portfolio-item.featured{grid-column:span 1;aspect-ratio:4/3}
+.services-grid{grid-template-columns:1fr}
+.reviews-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.process-steps{grid-template-columns:1fr}
+.scroll-hint{display:none}
+.hero-btns{flex-direction:column;max-width:300px}
+.btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loader" id="loader">
+  <img src="logo.jpg" alt="Apple Orchard Builders" height="80">
+  <div class="loader-line"></div>
+  <div class="loader-text" id="loaderText"></div>
+  <div class="loader-sub">Yeovil, Somerset</div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="logo.jpg" alt="Apple Orchard Builders" height="40">
+    </a>
+    <div class="nav-links">
+      <a href="#portfolio">Our Work</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:01935471536" class="nav-cta">Get a Free Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero-section" id="hero">
+  <div class="hero-bg">
+    <img src="hero-main.jpg" alt="Stone country house build by Apple Orchard Builders, Yeovil">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label" id="heroLabel">The Premier Building Company in Yeovil</div>
+    <h1 id="heroHeading">Building <em>Exceptional</em> Homes in Somerset</h1>
+    <p class="hero-sub" id="heroSub">From extensions and new builds to barn conversions and everything in between. Dedicated craftsmen turning your vision into reality across Yeovil, Somerset and surrounding areas.</p>
+    <div class="hero-btns" id="heroBtns">
+      <a href="tel:01935471536" class="btn btn-accent">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Us
+      </a>
+      <a href="tel:07494150146" class="btn btn-whatsapp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Mobile
+      </a>
+      <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="divider reveal"></div>
+    <h2 class="reveal">Passionate About Building <em>Exceptional</em> Homes</h2>
+    <p class="reveal">At Apple Orchard Builders, we are dedicated to turning your vision into a reality. Our team of experienced builders and contractors specialise in extensions, new builds, barn conversions and all aspects of building work across Yeovil, Somerset and the surrounding areas.</p>
+    <p class="reveal">We understand that building a dream home can be expensive &mdash; that's why we offer stage payment options: a deposit, payment midway through the job, and a final payment on completion. Quality workmanship, honest pricing, no surprises.</p>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div class="section-label reveal">Our Work</div>
+    <h2 class="reveal">Recent <em>Projects</em></h2>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-item featured reveal-scale" onclick="openLightbox(this)">
+      <img src="work/work-1.jpg" alt="Stone country house new build" loading="lazy">
+      <div class="p-overlay"></div>
+      <div class="p-caption"><h3>Country House Build</h3><span>New Build &middot; Somerset</span></div>
+    </div>
+    <div class="portfolio-item reveal-scale" onclick="openLightbox(this)">
+      <img src="work/work-2.jpg" alt="Barn conversion with stone and brickwork" loading="lazy">
+      <div class="p-overlay"></div>
+      <div class="p-caption"><h3>Barn Conversion</h3><span>Extension &middot; Conversion</span></div>
+    </div>
+    <div class="portfolio-item reveal-scale" onclick="openLightbox(this)">
+      <img src="work/work-3.jpg" alt="Herringbone tiled bathroom" loading="lazy">
+      <div class="p-overlay"></div>
+      <div class="p-caption"><h3>Bathroom Refurbishment</h3><span>Interior &middot; Renovation</span></div>
+    </div>
+    <div class="portfolio-item reveal-scale" onclick="openLightbox(this)">
+      <img src="hero.jpg" alt="Timber landscaping and steps" loading="lazy">
+      <div class="p-overlay"></div>
+      <div class="p-caption"><h3>Garden Landscaping</h3><span>Timber &middot; Steps &amp; Planters</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label reveal">What We Do</div>
+      <h2 class="reveal">Building <em>Services</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="s-num">01</div>
+        <h3>Extensions</h3>
+        <p>Single and double storey extensions that seamlessly blend with your existing home. From design through to completion, we handle every detail.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">02</div>
+        <h3>New Builds</h3>
+        <p>Complete new-build homes from foundations to finishing touches. Traditional stone builds and contemporary designs, all built to the highest standard.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">03</div>
+        <h3>Barn Conversions</h3>
+        <p>Transforming agricultural buildings into stunning living spaces. Preserving character while creating modern, comfortable homes.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">04</div>
+        <h3>Renovations</h3>
+        <p>Full house renovations, structural alterations, and period property restoration. Breathing new life into existing buildings with care and craftsmanship.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">05</div>
+        <h3>Fencing &amp; Landscaping</h3>
+        <p>Timber fencing, garden walls, steps, raised beds, and hard landscaping. Practical outdoor solutions built to withstand the elements.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="s-num">06</div>
+        <h3>All Aspects of Building</h3>
+        <p>Brickwork, stonework, roofing, plastering, bathrooms, kitchens &mdash; whatever the job, we have the experience and skills to deliver.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <div class="section-label reveal">How We Work</div>
+      <h2 class="reveal">From Vision to <em>Reality</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <h3>Free Quote</h3>
+        <p>Get in touch and we'll visit your property to discuss your project and provide a free, no-obligation quote tailored to your needs and budget.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">2</div>
+        <h3>Plan &amp; Design</h3>
+        <p>We work with you to create a custom plan, handling planning applications and building regulations to get your project moving.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">3</div>
+        <h3>Build</h3>
+        <p>Our experienced team gets to work, keeping you informed at every stage. Quality materials, skilled tradesmen, on schedule.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">4</div>
+        <h3>Completion</h3>
+        <p>We don't finish until you're completely happy. Final walkthrough, snagging, and handover. Quality guaranteed on all our work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="reviews-header">
+      <div class="section-label reveal">Testimonials</div>
+      <h2 class="reveal">What Our <em>Clients</em> Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;They built my new wall over the weekend it had needed replacing for a while there was no fuss or hassle job done as I wanted, they were recommended by several people and I would certainly recommend them.&rdquo;</p>
+        <div class="review-author">
+          <div class="review-avatar">P</div>
+          <div><div class="review-name">Peter Sandall</div><div class="review-loc">Yeovil</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Good communication throughout the build process. Nicely layed stone and brickwork on the project which was promptly commenced after planning.&rdquo;</p>
+        <div class="review-author">
+          <div class="review-avatar">B</div>
+          <div><div class="review-name">Ben Laycock</div><div class="review-loc">Somerset</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">&ldquo;Met with the builder and described our plans, talked through several options and agreed on the layout. Was informed all the way how the job was going. Efficient, hard working and very pleased with the finished projects.&rdquo;</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div><div class="review-name">Susan Stanley</div><div class="review-loc">Yeovil</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<div class="cta-band">
+  <div class="section-label">Ready to Start?</div>
+  <h2>Let's Build Your <em>Dream Home</em></h2>
+  <p>Free, no-obligation quotes. Stage payment options available. Quality guaranteed on all our building services.</p>
+  <div class="cta-btns">
+    <a href="tel:01935471536" class="btn btn-accent">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call 01935 471536
+    </a>
+    <a href="tel:07494150146" class="btn btn-outline" style="border-color:rgba(245,240,232,0.3);color:var(--cream)">
+      Mobile: 07494 150146
+    </a>
+  </div>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-header">
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="reveal">Start Your <em>Project</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <form onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone</label><input type="tel" placeholder="07xxx xxx xxx" required></div>
+            <div class="form-group"><label>Email</label><input type="email" placeholder="john@example.com"></div>
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Extension</option>
+              <option>New Build</option>
+              <option>Barn Conversion</option>
+              <option>Renovation</option>
+              <option>Fencing & Landscaping</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Tell Us About Your Project</label><textarea placeholder="Describe your project, including any plans or ideas you have..." rows="5"></textarea></div>
+          <button type="submit" class="submit-btn">Send Enquiry</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><strong>Phone</strong><a href="tel:01935471536">01935 471 536</a><br><a href="tel:07494150146">07494 150 146</a></div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>Email</strong><a href="mailto:info@appleorchardbuilders.com">info@appleorchardbuilders.com</a></div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Location</strong><span>Yeovil, Somerset &amp; surrounding areas</span></div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div><strong>Hours</strong><span>Monday &ndash; Friday: 8am &ndash; 6pm</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-brand">
+    <img src="logo.jpg" alt="Apple Orchard Builders" height="32">
+    <span class="footer-brand-text">Apple Orchard Builders</span>
+  </div>
+  <p>&copy; 2026 Apple Orchard Builders Ltd. All rights reserved.</p>
+  <p style="margin-top:4px">Extensions &middot; New Builds &middot; Barn Conversions &middot; Yeovil, Somerset</p>
+  <p style="margin-top:12px">Built by <a href="https://construction-sites.co.uk" target="_blank">construction-sites.co.uk</a></p>
+</footer>
+
+<!-- ============ FABs ============ -->
+<div class="fab-stack" id="fabStack">
+  <a href="tel:01935471536" class="fab fab-phone" aria-label="Call">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="#contact" class="fab fab-whatsapp" aria-label="Contact">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loading screen
+var loaderText='APPLE ORCHARD';
+var el=document.getElementById('loaderText');
+loaderText.split('').forEach(function(c,i){
+  var s=document.createElement('span');
+  s.textContent=c==='' ? '\u00A0' : c;
+  s.style.animationDelay=(0.6+i*0.06)+'s';
+  el.appendChild(s);
+});
+setTimeout(function(){document.getElementById('loader').classList.add('done')},2200);
+
+// Nav scroll
+var nav=document.getElementById('nav');
+function checkNav(){nav.classList.toggle('scrolled',window.scrollY>80)}
+window.addEventListener('scroll',checkNav);checkNav();
+
+// Hero animations
+setTimeout(function(){
+  document.getElementById('heroLabel').style.cssText='opacity:1;transform:translateY(0);transition:all .8s ease';
+},2300);
+setTimeout(function(){
+  document.querySelectorAll('#heroHeading .word').forEach(function(w,i){
+    setTimeout(function(){w.classList.add('show')},i*100);
+  });
+},2500);
+setTimeout(function(){
+  document.getElementById('heroSub').style.cssText='opacity:1;transform:translateY(0);transition:all .8s ease';
+},2900);
+setTimeout(function(){
+  document.getElementById('heroBtns').style.cssText='opacity:1;transform:translateY(0);transition:all .8s ease';
+},3100);
+
+// Word spans
+(function(){
+  var h=document.getElementById('heroHeading');
+  var html=h.innerHTML;
+  h.innerHTML=html.replace(/(\S+)/g,'<span class="word">$1</span>');
+})();
+
+// Reveal on scroll
+var reveals=document.querySelectorAll('.reveal,.reveal-scale');
+var revealObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');revealObs.unobserve(e.target)}});
+},{threshold:0.15});
+reveals.forEach(function(el){revealObs.observe(el)});
+
+// FABs
+var fabStack=document.getElementById('fabStack');
+var heroBtns=document.getElementById('heroBtns');
+function checkFabs(){
+  var rect=heroBtns.getBoundingClientRect();
+  fabStack.classList.toggle('visible',rect.bottom<0);
+}
+window.addEventListener('scroll',checkFabs);checkFabs();
+
+// Lightbox
+function openLightbox(el){
+  var src=el.querySelector('img').src;
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(e){
+  if(e.target.classList.contains('lightbox')||e.target.classList.contains('lightbox-close')){
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow='';
+  }
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}});
+</script>
+</body>
+</html>
