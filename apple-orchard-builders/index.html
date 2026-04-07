@@ -38,7 +38,8 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
 .nav-mobile svg{stroke:var(--dark)}
 @media(max-width:768px){
   .nav-links{display:none}.nav-mobile{display:block}
-  .nav-links.open{display:flex;position:fixed;top:68px;left:0;right:0;bottom:0;background:#fff;flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}
+  .nav{background:#fff;backdrop-filter:none}
+  .nav-links.open{display:flex;position:fixed;top:68px;left:0;right:0;bottom:0;background:#fff;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:60px;gap:28px;z-index:200;overflow-y:auto}
   .nav-links.open a{font-size:1.15rem;color:var(--dark)}.nav-links.open .nav-cta{font-size:1rem;padding:14px 32px}
   .nav-logo-text{display:none}
 }
@@ -177,6 +178,12 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
   .gallery-item.wide{grid-column:span 2}
   .why-cards{grid-template-columns:repeat(2,1fr)}.reviews-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}
 }
+/* LOADER */
+.loader{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader img{height:120px;opacity:0;animation:loaderFade 1s ease forwards .2s}
+@keyframes loaderFade{0%{opacity:0;transform:scale(0.92)}100%{opacity:1;transform:scale(1)}}
+
 @media(max-width:640px){
   .hero{padding:90px 0 0}.hero h1{font-size:1.85rem}.section{padding:60px 0}.section-title{font-size:1.7rem}
   .services-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr}
@@ -189,6 +196,11 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
 </style>
 </head>
 <body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img src="logo.jpg" alt="Apple Orchard Builders">
+</div>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -411,6 +423,7 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
 </div>
 
 <script>
+setTimeout(function(){document.getElementById('loader').classList.add('done')},1800);
 document.getElementById('nav-toggle').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open')});
 document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('nav-links').classList.remove('open')})});
 var heroBtns=document.querySelector('.hero-btns'),floatingBtns=document.querySelector('.floating-btns');
