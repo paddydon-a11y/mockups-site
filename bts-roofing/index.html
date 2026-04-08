@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BTS Roofing Contractor Ltd — Roofers in Ruislip, Hillingdon &amp; London</title>
+<meta name="description" content="20+ years experience in all aspects of roofing. Flat roofing, single ply, lead work, slating &amp; tiling, fascias, soffits &amp; guttering across Ruislip, Northwood, Uxbridge &amp; Hillingdon. Call 07952 625635.">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --charcoal: #1a1a1a;
+    --charcoal-light: #242424;
+    --charcoal-mid: #2a2a2a;
+    --red: #dc2626;
+    --red-dark: #b91c1c;
+    --white: #ffffff;
+    --gray-light: #cccccc;
+    --gray-mid: #999999;
+    --dark-footer: #111111;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--white);
+    background: var(--charcoal);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ========== NAV ========== */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(17,17,17,0.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.06)}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:0 40px;height:80px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-size:1.6rem;font-weight:900;letter-spacing:-0.5px;text-transform:uppercase}
+  .nav-logo span{color:var(--red)}
+  .nav-links{display:flex;align-items:center;gap:36px}
+  .nav-links a{font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gray-light);transition:color 0.2s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{background:var(--red) !important;color:var(--white) !important;padding:12px 28px;font-weight:700 !important;letter-spacing:1px;transition:background 0.2s !important}
+  .nav-cta:hover{background:var(--red-dark) !important}
+  .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .nav-mobile svg{stroke:var(--white)}
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    background: url('work-9.jpg') center/cover no-repeat;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.72);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+  .hero h1 .line2 { color: var(--red); }
+  .hero p {
+    font-size: 1.25rem;
+    color: var(--gray-light);
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 16px 36px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-red { background: var(--red); color: var(--white); }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .btn-outline:hover {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* ========== RED DIVIDER ========== */
+  .red-divider { width: 100%; height: 8px; background: var(--red); }
+
+  /* ========== SECTIONS ========== */
+  .section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .section-heading {
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .section-heading span { color: var(--red); }
+  .section-sub {
+    color: var(--gray-mid);
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+    max-width: 560px;
+  }
+
+  /* ========== SERVICES ========== */
+  .services-wrap {
+    background: var(--charcoal-light);
+    padding: 100px 0;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    display: block;
+    background: var(--charcoal);
+    border-bottom: 4px solid var(--red);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); }
+  .service-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .service-card-body { padding: 28px 24px; }
+  .service-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .service-card p {
+    color: var(--gray-mid);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ========== ABOUT ========== */
+  .about-wrap { padding: 100px 0; background: var(--charcoal); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+  }
+  .about-content h2 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  .about-content h2 span { color: var(--red); }
+  .about-content p {
+    color: var(--gray-light);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .about-list { margin-bottom: 36px; }
+  .about-list li {
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .about-list li::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  /* ========== GALLERY ========== */
+  .gallery-wrap {
+    background: var(--charcoal-light);
+    padding: 100px 0;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item::after {
+    content: 'VIEW PROJECT';
+    position: absolute;
+    inset: 0;
+    background: rgba(220, 38, 38, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:40px}
+  .lightbox.active{display:flex}
+  .lightbox img{max-width:90vw;max-height:85vh;object-fit:contain}
+  .lightbox-close{position:absolute;top:20px;right:28px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials-wrap {
+    background: var(--charcoal);
+    padding: 100px 0;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .testimonial-card {
+    background: var(--charcoal-light);
+    padding: 44px 40px;
+    border-left: 4px solid var(--red);
+  }
+  .testimonial-stars {
+    color: var(--red);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+  }
+  .testimonial-card blockquote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray-light);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .testimonial-role {
+    color: var(--gray-mid);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  /* ========== CONTACT FORM ========== */
+  .contact-wrap {
+    background: var(--charcoal-light);
+    padding: 100px 0;
+  }
+  .contact-form { max-width: 640px; margin: 0 auto; }
+  .contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .contact-form .form-group { margin-bottom: 16px; }
+  .contact-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: var(--gray-light);
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--charcoal);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    transition: border-color 0.2s;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--red);
+  }
+  .contact-form textarea { height: 140px; resize: vertical; }
+  .contact-form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .contact-form select option{background:var(--charcoal);color:var(--white)}
+  .contact-form button {
+    width: 100%;
+    font-family: inherit;
+  }
+
+  /* ========== CTA BANNER ========== */
+  .cta-banner {
+    background: var(--red);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .cta-banner h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+  }
+  .cta-banner .phone {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    display: block;
+  }
+  .btn-white {
+    background: var(--white);
+    color: var(--charcoal);
+    padding: 16px 40px;
+  }
+  .btn-white:hover {
+    background: var(--gray-light);
+    transform: translateY(-2px);
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    background: var(--dark-footer);
+    padding: 80px 0 0 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px 60px 40px;
+  }
+  .footer-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-logo span{color:var(--red)}
+  .footer-about {
+    color: var(--gray-mid);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer h4 {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+    color: var(--white);
+  }
+  .footer ul li { margin-bottom: 12px; }
+  .footer ul a {
+    color: var(--gray-mid);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .footer ul a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray-mid);
+    font-size: 0.8rem;
+  }
+
+  /* ========== FLOATING CTA ========== */
+  .floating-btns {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .floating-btns.visible { opacity: 1; pointer-events: auto; }
+  .floating-btns a {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+  .floating-btns a:hover { transform: scale(1.1); }
+  .floating-btns a svg { width: 24px; height: 24px; }
+  .floating-btns .fab-call {
+    background: var(--red);
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+  @keyframes pulse-red {
+    0% { box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 0 rgba(220,38,38,0.4); }
+    70% { box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 12px rgba(220,38,38,0); }
+    100% { box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 0 rgba(220,38,38,0); }
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-img { height: 380px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links{display:none !important}
+    .nav-links.open{display:flex !important;flex-direction:column;position:fixed;top:80px;left:0;right:0;background:#111111;padding:24px;gap:16px;z-index:998;text-align:center}
+    .nav-links.open a{font-size:1.15rem;color:#fff;padding:8px 0}
+    .nav-mobile{display:block}
+    .hero { padding-top: 120px; min-height: auto; }
+    .hero-content { text-align: center; }
+    .hero-buttons { justify-content: center; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .section-heading { font-size: 2rem; }
+    .cta-banner h2 { font-size: 2rem; }
+    .cta-banner .phone { font-size: 1.6rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .contact-form .form-row { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span>BTS</span> Roofing</div>
+    <div class="nav-links" id="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Projects</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="tel:07952625635" class="nav-cta">07952 625 635</a>
+    </div>
+    <button class="nav-mobile" id="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-links').classList.toggle('open')">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>
+      20+ Years of<br>
+      <span class="line2">Precision Roofing</span>
+    </h1>
+    <p>BTS Roofing Contractor Ltd &mdash; covering all aspects of roofing across Ruislip, Northwood, Uxbridge and Hillingdon. The client is priority, safety is paramount, quality is imperative.</p>
+    <div class="hero-buttons">
+      <a href="tel:07952625635" class="btn btn-red">Call 07952 625 635</a>
+      <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- RED DIVIDER -->
+<div class="red-divider"></div>
+
+<!-- SERVICES -->
+<section class="services-wrap" id="services">
+  <div class="section-inner">
+    <div class="section-heading">What We <span>Do</span></div>
+    <p class="section-sub">From flat roofing and single ply to lead work, slating, tiling, fascias, soffits and guttering &mdash; all aspects of roofing covered.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="work-1.jpg" alt="Flat Roofing by BTS Roofing">
+        <div class="service-card-body">
+          <h3>Flat Roofing</h3>
+          <p>Torch-on felt (Langley approved) and EPDM Single Ply installations for domestic extensions, garages and large commercial roofs. 15&ndash;20 year manufacturer guarantees available.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="work-5.jpg" alt="Re-Roofing &amp; Battening">
+        <div class="service-card-body">
+          <h3>Slating &amp; Tiling</h3>
+          <p>Complete strip-and-retile with new battens and breathable membranes. All types of slate and tile — fitted to last decades with quality materials throughout.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="work-7.jpg" alt="Slate Roofing by BTS Roofing">
+        <div class="service-card-body">
+          <h3>Single Ply &amp; Resitrix</h3>
+          <p>Approved Resitrix Single Ply installer with a 20-year manufacturer&rsquo;s guarantee. Superior flat roofing solutions for commercial and domestic projects.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="logo-1.jpg" alt="Lead Work &amp; Welding">
+        <div class="service-card-body">
+          <h3>Lead Work</h3>
+          <p>Expert lead welding — flashings, dormers, box gutters and complete lead bay roofs. Fully insured for all hot work with precision craftsmanship.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="work-3.jpg" alt="Commercial Flat Roofing">
+        <div class="service-card-body">
+          <h3>Commercial Roofing</h3>
+          <p>Large-scale commercial flat roofing projects. From industrial units to retail premises — experienced in working to tight deadlines on major sites.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="work-6.jpg" alt="Fascias, Soffits &amp; Guttering">
+        <div class="service-card-body">
+          <h3>Fascias, Soffits &amp; Guttering</h3>
+          <p>Full replacement of uPVC fascia boards, soffits and guttering. Remove rotten timber and fit maintenance-free roofline products built to last.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-wrap" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <img class="about-img" src="work-9.jpg" alt="BTS Roofing — commercial flat roof in London">
+      <div class="about-content">
+        <h2>Precision Work, <span>Valued Service</span></h2>
+        <p>With over 20 years&rsquo; experience in all aspects of roofing, BTS Roofing Contractor Ltd prides itself on precision work and valued customer service. Our policy is a simple one: the client is priority, safety is paramount and quality of work is imperative.</p>
+        <p>We specialise in a variety of flat roofing installations including small domestic extensions and garages to large commercial roofs, from torch-on felt (Langley approved) to EPDM Single Ply. We also undertake lead welding projects from flashings and small dormers to box gutters and complete lead bay roofs.</p>
+        <p>As an approved Resitrix Single Ply installer, we offer a 20-year manufacturer&rsquo;s guarantee and can also provide a 15-year manufacturer&rsquo;s guarantee with all our felt installations. We are fully insured for all hot work.</p>
+        <ul class="about-list">
+          <li>20+ Years Experience</li>
+          <li>Fully Insured for Hot Work</li>
+          <li>Langley Approved Installer</li>
+          <li>Resitrix Single Ply Approved</li>
+          <li>We Will Beat Any Like-for-Like Quote</li>
+        </ul>
+        <a href="tel:07952625635" class="btn btn-red">Call 07952 625 635</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-wrap" id="gallery">
+  <div class="section-inner">
+    <div class="section-heading">Recent <span>Projects</span></div>
+    <p class="section-sub">A selection of recent roofing work carried out across Ruislip, Hillingdon and London.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-1.jpg" alt="Flat roof with torch-on felt" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-2.jpg" alt="Commercial flat roof installation" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-3.jpg" alt="Large commercial flat roof" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-5.jpg" alt="Battening and breathable membrane" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-7.jpg" alt="Slate roof installation" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-9.jpg" alt="Completed flat roof — London" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-10.jpg" alt="Flat roofing in progress" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-11.jpg" alt="Roofing project aerial view" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="work-12.jpg" alt="Completed roofing project" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-wrap" id="testimonials">
+  <div class="section-inner">
+    <div class="section-heading">What Our <span>Clients</span> Say</div>
+    <p class="section-sub">Don&rsquo;t take our word for it. Here&rsquo;s what property owners across Hillingdon have to say about BTS Roofing.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Had BTS re-roof our flat roof extension in Ruislip. Torch-on felt, all done in two days. The finish is immaculate and they cleaned up after themselves perfectly. Ben was upfront about pricing and the guarantee gives us real peace of mind. Would absolutely recommend.&rdquo;</blockquote>
+        <div class="testimonial-author">James &amp; Claire</div>
+        <div class="testimonial-role">Homeowners, Ruislip</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;BTS handled a large commercial flat roof for our business premises in Uxbridge. Professional from start to finish &mdash; the Resitrix single ply system they installed comes with a 20-year guarantee which was exactly what we needed. Competitive quote and excellent workmanship.&rdquo;</blockquote>
+        <div class="testimonial-author">Robert Henderson</div>
+        <div class="testimonial-role">Property Manager, Uxbridge</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;Needed lead flashing work on our chimney and dormer windows. BTS came out the same week, gave an honest quote and had the job done within a couple of days. No more leaks and the lead work looks really neat. Great to deal with &mdash; no messing about.&rdquo;</blockquote>
+        <div class="testimonial-author">Sarah Mitchell</div>
+        <div class="testimonial-role">Homeowner, Northwood</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;We had the whole roof stripped and re-slated plus new fascias, soffits and guttering all round. BTS were brilliant &mdash; turned up when they said they would, the scaffolding was sorted promptly, and the finished roof looks fantastic. Fair price and top quality work.&rdquo;</blockquote>
+        <div class="testimonial-author">Mark Phillips</div>
+        <div class="testimonial-role">Homeowner, Hillingdon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-wrap" id="contact">
+  <div class="section-inner">
+    <div class="section-heading">Get In <span>Touch</span></div>
+    <p class="section-sub">Send us a message and we&rsquo;ll get back to you as soon as possible with a free, no-obligation quote.</p>
+    <div class="contact-form">
+      <form action="https://construction-sites.co.uk/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="BTS Roofing Contractor Ltd">
+        <input type="hidden" name="source" value="mockup-bts-roofing">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$" title="UK phone number">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="Flat Roofing">Flat Roofing</option>
+              <option value="Single Ply / Resitrix">Single Ply / Resitrix</option>
+              <option value="Slating & Tiling">Slating &amp; Tiling</option>
+              <option value="Lead Work">Lead Work</option>
+              <option value="Commercial Roofing">Commercial Roofing</option>
+              <option value="Fascias Soffits Guttering">Fascias, Soffits &amp; Guttering</option>
+              <option value="Roof Repairs">Roof Repairs</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your roofing project..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-red">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Need a Roofer in Ruislip?</h2>
+  <a href="tel:07952625635" class="phone">07952 625 635</a>
+  <a href="tel:07952625635" class="btn btn-white">Call Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><span>BTS</span> Roofing</div>
+      <p class="footer-about">Over 20 years&rsquo; experience in all aspects of roofing. Flat roofing, single ply, lead work, slating &amp; tiling, fascias, soffits &amp; guttering. Covering Ruislip, Northwood, Uxbridge &amp; Hillingdon.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Flat Roofing</a></li>
+        <li><a href="#services">Single Ply / Resitrix</a></li>
+        <li><a href="#services">Lead Work</a></li>
+        <li><a href="#services">Slating &amp; Tiling</a></li>
+        <li><a href="#services">Fascias &amp; Soffits</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:07952625635">07952 625 635</a></li>
+        <li style="color:var(--gray-mid);line-height:1.5;margin-top:4px">Ruislip, Northwood, Uxbridge<br>Hillingdon, London</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 BTS Roofing Contractor Ltd. All rights reserved.</span>
+    <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener" style="color:var(--red)">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CALL -->
+<div class="floating-btns" id="floatingBtns">
+  <a class="fab-call" href="tel:07952625635" aria-label="Call BTS Roofing">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+</div>
+
+<script>
+// Timestamp
+document.getElementById('formTimestamp').value = Date.now();
+
+// Floating CTA
+(function() {
+  var hero = document.querySelector('.hero');
+  var fab = document.getElementById('floatingBtns');
+  if (!hero || !fab) return;
+  function check() {
+    fab.classList.toggle('visible', window.scrollY > hero.offsetHeight);
+  }
+  window.addEventListener('scroll', check);
+  check();
+})();
+
+// Close mobile nav
+document.querySelectorAll('#nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('nav-links').classList.remove('open');
+  });
+});
+
+// Lightbox
+function openLightbox(el) {
+  var img = el.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-img').alt = img.alt;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close') || e.target.parentElement.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href.startsWith('#') && href.length > 1) {
+      e.preventDefault();
+      document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Phone validation
+var phoneInput = document.getElementById('phone');
+if (phoneInput) {
+  phoneInput.addEventListener('input', function() {
+    var v = this.value.replace(/[^0-9+]/g, '');
+    if (v && !v.match(/^(0|\+44)/)) this.setCustomValidity('Please enter a UK phone number starting with 0 or +44');
+    else this.setCustomValidity('');
+  });
+}
+</script>
+</body>
+</html>
