@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK Brickwork | Bricklayer in Guildford &amp; Surrounding Areas</title>
+<meta name="description" content="Professional bricklaying services in Guildford and surrounding areas. New builds, extensions, garden walls, steps &amp; repairs. Call MK Brickwork on 07903 820144 for a free quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c0704;--surface:#17100b;--surface-2:#1f1610;--border:rgba(255,255,255,0.06);
+  --brick:#c4553a;--stone:#a07850;--steel:#5a7fa0;--green:#5a8a50;
+  --brick-glow:rgba(196,85,58,0.12);--stone-glow:rgba(160,120,80,0.12);
+  --steel-glow:rgba(90,127,160,0.12);--green-glow:rgba(90,138,80,0.12);
+  --accent:#c4553a;--accent-hover:#a8432c;--accent-glow:rgba(196,85,58,0.15);
+  --text:#f0e8e4;--text-muted:rgba(240,232,228,0.55);
+  --heading:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text-muted);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--heading);color:var(--text);letter-spacing:-0.03em;font-weight:700;line-height:1.15}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-label{text-transform:uppercase;letter-spacing:0.15em;font-size:0.7rem;font-weight:600;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:2.4rem;margin-bottom:16px}
+.section-sub{color:var(--text-muted);max-width:600px;font-size:1rem}
+
+/* BG GRID */
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(196,85,58,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(196,85,58,0.03) 1px,transparent 1px);background-size:60px 60px}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(12,7,4,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.nav.scrolled{background:rgba(12,7,4,0.92);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-text{font-family:var(--heading);font-weight:700;font-size:1.1rem;color:#fff}
+.nav-logo-text span{display:block;font-size:0.65rem;font-weight:500;color:var(--text-muted);letter-spacing:0.05em}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--accent);color:#fff;padding:10px 20px;border-radius:10px;font-weight:600;font-size:0.85rem;transition:all .2s}
+.nav-cta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(12,7,4,0.93) 0%,rgba(12,7,4,0.7) 50%,rgba(12,7,4,0.88) 100%)}
+.hero-content{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:140px 24px 100px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:60px;align-items:center}
+.hero-text{color:#fff}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:8px 18px;font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:24px;opacity:0;animation:fadeUp .6s ease forwards .2s}
+.hero h1{font-size:3.2rem;margin-bottom:20px;line-height:1.08;opacity:0;animation:fadeUp .6s ease forwards .4s;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.hero h1 .grad{background:linear-gradient(135deg,var(--brick),var(--stone));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.65);margin-bottom:32px;line-height:1.7;opacity:0;animation:fadeUp .6s ease forwards .6s;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s ease forwards .8s}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 28px;border-radius:12px;font-weight:600;font-size:0.95rem;border:none;cursor:pointer;transition:all .25s;font-family:var(--body)}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex-shrink:0}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 20px var(--accent-glow)}
+.btn-accent:hover{background:var(--accent-hover);box-shadow:0 8px 30px rgba(196,85,58,0.3)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.2)}
+.btn-outline:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.4)}
+.btn-white{background:#fff;color:#1e293b}
+.btn-white:hover{background:#f1f5f9;box-shadow:0 8px 30px rgba(0,0,0,0.15)}
+
+/* Hero logo showcase */
+.hero-logo-card{opacity:0;animation:fadeScale .8s ease forwards .5s;display:flex;flex-direction:column;align-items:center;gap:24px}
+.hero-logo-frame{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:40px;display:flex;align-items:center;justify-content:center}
+.hero-logo-text-lg{font-family:var(--heading);font-size:3.5rem;font-weight:700;color:#fff;text-align:center;line-height:1.1}
+.hero-logo-text-lg .mk{background:linear-gradient(135deg,var(--brick),var(--stone));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-logo-text-lg small{display:block;font-size:1rem;font-weight:500;color:var(--text-muted);letter-spacing:0.1em;margin-top:4px}
+.hero-accreds{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.accred-badge{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 14px;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:6px}
+.accred-badge svg{width:14px;height:14px}
+
+/* TRUST MARQUEE */
+.trust-marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;position:relative;z-index:1}
+.marquee-track{display:flex;gap:48px;animation:marqueeScroll 35s linear infinite;width:max-content}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:600;white-space:nowrap}
+.marquee-item svg{width:16px;height:16px;flex-shrink:0}
+.mi-brick{color:var(--brick)}.mi-brick svg{stroke:var(--brick)}
+.mi-stone{color:var(--stone)}.mi-stone svg{stroke:var(--stone)}
+.mi-steel{color:var(--steel)}.mi-steel svg{stroke:var(--steel)}
+.mi-green{color:var(--green)}.mi-green svg{stroke:var(--green)}
+.mi-gold{color:var(--accent)}.mi-gold svg{stroke:var(--accent)}
+.marquee-sep{color:rgba(255,255,255,0.1);font-size:0.6rem}
+
+/* SERVICES */
+.services{padding:100px 0;position:relative;z-index:1}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 22px;position:relative;overflow:hidden;transition:all .3s}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:transform .4s;transform:scaleX(0);transform-origin:left}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:var(--surface-2);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.service-card .s-tag{display:inline-block;padding:4px 10px;border-radius:6px;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px}
+.service-card .s-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-card .s-icon svg{width:22px;height:22px}
+.service-card h3{font-size:0.95rem;margin-bottom:8px}
+.service-card p{font-size:0.82rem;color:var(--text-muted);line-height:1.6}
+.sc-brick::before{background:var(--brick)}.sc-brick .s-tag{background:var(--brick-glow);color:var(--brick)}.sc-brick .s-icon{background:var(--brick-glow)}.sc-brick .s-icon svg{stroke:var(--brick)}
+.sc-stone::before{background:var(--stone)}.sc-stone .s-tag{background:var(--stone-glow);color:var(--stone)}.sc-stone .s-icon{background:var(--stone-glow)}.sc-stone .s-icon svg{stroke:var(--stone)}
+.sc-steel::before{background:var(--steel)}.sc-steel .s-tag{background:var(--steel-glow);color:var(--steel)}.sc-steel .s-icon{background:var(--steel-glow)}.sc-steel .s-icon svg{stroke:var(--steel)}
+.sc-green::before{background:var(--green)}.sc-green .s-tag{background:var(--green-glow);color:var(--green)}.sc-green .s-icon{background:var(--green-glow)}.sc-green .s-icon svg{stroke:var(--green)}
+
+/* GALLERY */
+.gallery{padding:80px 0;position:relative;z-index:1}
+.gallery-scroll{display:flex;gap:16px;overflow-x:auto;padding:40px 24px 24px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.gallery-item{flex:0 0 320px;scroll-snap-align:start;border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative;aspect-ratio:4/3;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .caption{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:#fff;font-size:0.8rem;font-weight:600;opacity:0;transform:translateY(8px);transition:all .3s}
+.gallery-item:hover .caption{opacity:1;transform:translateY(0)}
+
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:40px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:28px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+/* ABOUT */
+.about{padding:100px 0;position:relative;z-index:1}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img{border-radius:20px;overflow:hidden;border:1px solid var(--border);position:relative}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img .exp-badge{position:absolute;bottom:20px;right:20px;background:var(--accent);color:#fff;padding:12px 20px;border-radius:12px;font-family:var(--heading);font-weight:700;font-size:0.9rem;box-shadow:0 4px 20px var(--accent-glow)}
+
+/* REVIEWS */
+.reviews{padding:100px 0;position:relative;z-index:1}
+.reviews-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.reviews-score{display:flex;align-items:center;gap:16px}
+.reviews-score .big-num{font-family:var(--heading);font-size:3.5rem;font-weight:700;color:var(--accent);line-height:1}
+.score-detail .stars{color:#fbbf24;font-size:1.1rem;letter-spacing:1px}
+.score-detail p{font-size:0.85rem;color:var(--text-muted);margin-top:2px}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.review-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all .3s}
+.review-card:hover{background:var(--surface-2);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.review-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.review-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-weight:700;font-size:0.9rem;color:#fff;flex-shrink:0}
+.ra-brick{background:var(--brick)}.ra-stone{background:var(--stone)}.ra-steel{background:var(--steel)}.ra-green{background:var(--green)}
+.review-name{font-weight:700;font-size:0.9rem;color:var(--text)}
+.review-meta{font-size:0.72rem;color:var(--text-muted)}
+.review-stars{color:#fbbf24;font-size:0.8rem;letter-spacing:1px;margin-bottom:10px}
+.review-text{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
+
+/* CTA BAND */
+.cta-band{position:relative;padding:80px 24px;text-align:center;overflow:hidden;z-index:1}
+.cta-band::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--brick) 0%,var(--stone) 50%,var(--steel) 100%)}
+.cta-band *{position:relative;z-index:1}
+.cta-band h2{font-size:2.2rem;margin-bottom:12px;color:#fff}
+.cta-band p{color:rgba(255,255,255,0.85);margin-bottom:32px;font-size:1.05rem;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* CONTACT */
+.contact{padding:100px 0;position:relative;z-index:1}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.contact-form-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px}
+.contact-form-card h3{font-size:1.2rem;margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;color:var(--text);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--body);font-size:0.9rem;transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.form-group select option{background:var(--surface-2);color:var(--text)}
+.submit-btn{width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-weight:600;font-size:1rem;cursor:pointer;font-family:var(--body);transition:all .2s}
+.submit-btn:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.contact-info{display:flex;flex-direction:column;gap:16px}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;transition:all .3s}
+.info-card:hover{background:var(--surface-2)}
+.info-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-icon svg{width:20px;height:20px}
+.ic-brick{background:var(--brick-glow)}.ic-brick svg{stroke:var(--brick)}
+.ic-stone{background:var(--stone-glow)}.ic-stone svg{stroke:var(--stone)}
+.ic-steel{background:var(--steel-glow)}.ic-steel svg{stroke:var(--steel)}
+.ic-green{background:var(--green-glow)}.ic-green svg{stroke:var(--green)}
+.info-card strong{color:var(--text);display:block;font-size:0.9rem;margin-bottom:2px}
+.info-card span,.info-card a{font-size:0.85rem;color:var(--text-muted)}
+.info-card a:hover{color:var(--accent)}
+.map-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);min-height:200px;flex:1}
+.map-card iframe{width:100%;height:100%;min-height:200px;border:none}
+
+/* FOOTER */
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:48px 24px;text-align:center;position:relative;z-index:1}
+.footer-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px}
+.footer-name{font-family:var(--heading);font-weight:700;font-size:1rem;color:var(--text)}
+.footer-address{color:var(--text-muted);font-size:0.8rem;margin-bottom:16px;line-height:1.6}
+.footer p{font-size:0.75rem;color:var(--text-muted)}
+.footer a{color:var(--accent)}.footer a:hover{text-decoration:underline}
+
+/* FABs */
+.fab-stack{position:fixed;bottom:24px;right:24px;z-index:900;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(20px);pointer-events:none;transition:all .4s ease}
+.fab-stack.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform .2s}
+.fab:hover{transform:scale(1.1)}
+.fab svg{width:22px;height:22px;fill:#fff}
+.fab-phone{background:#22c55e}
+.fab-email{background:var(--accent)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeScale{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero-content{grid-template-columns:1fr;gap:32px;text-align:center;padding:120px 24px 60px}
+.hero h1{font-size:2.2rem}
+.hero-btns{justify-content:center}
+.hero-logo-frame{padding:24px}
+.hero-logo-text-lg{font-size:2.5rem}
+.services-grid{grid-template-columns:1fr 1fr}
+.section-title{font-size:1.8rem}
+.about-grid{grid-template-columns:1fr}
+.reviews-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.cta-band h2{font-size:1.6rem}
+.nav-links{display:none}
+.gallery-item{flex:0 0 260px}
+}
+@media(max-width:480px){
+.hero h1{font-size:1.9rem}
+.hero-btns{flex-wrap:wrap}
+.btn{flex:1 1 auto;justify-content:center}
+.services-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-text">MK Brickwork <span>Professional Bricklaying &mdash; Guildford</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:07903820144" class="nav-cta">Call Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="work-4.webp" alt="Quality brickwork by MK Brickwork in Guildford" width="1200" height="600">
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Trusted Bricklayer in Guildford
+      </div>
+      <h1>Quality <span class="grad">Brickwork</span> Across Guildford &amp; Surrey</h1>
+      <p class="hero-sub">From new builds and extensions to garden walls and bespoke brickwork features &mdash; MK Brickwork delivers expert craftsmanship across Guildford and the surrounding areas.</p>
+      <div class="hero-btns">
+        <a href="tel:07903820144" class="btn btn-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          07903 820 144
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          Get a Free Quote
+        </a>
+      </div>
+    </div>
+    <div class="hero-logo-card">
+      <div class="hero-logo-frame">
+        <div class="hero-logo-text-lg">
+          <span class="mk">MK</span> Brickwork
+          <small>Home Builder &middot; Guildford</small>
+        </div>
+      </div>
+      <div class="hero-accreds">
+        <span class="accred-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Experienced Bricklayer</span>
+        <span class="accred-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+        <span class="accred-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#5a7fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5-Star Rated</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<div class="trust-marquee">
+  <div class="marquee-track">
+    <span class="marquee-item mi-brick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="2"/><line x1="1" y1="12" x2="23" y2="12"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="6" y1="12" x2="6" y2="18"/><line x1="18" y1="12" x2="18" y2="18"/></svg> New Builds</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-stone"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Extensions</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Garden Walls</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-steel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Repairs &amp; Repointing</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-gold"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5-Star Reviews</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-brick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-stone"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><line x1="9" y1="20" x2="9" y2="14"/><line x1="15" y1="20" x2="15" y2="14"/></svg> Brick Steps &amp; Features</span>
+    <span class="marquee-sep">&bull;</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item mi-brick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="2"/><line x1="1" y1="12" x2="23" y2="12"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="6" y1="12" x2="6" y2="18"/><line x1="18" y1="12" x2="18" y2="18"/></svg> New Builds</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-stone"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Extensions</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg> Garden Walls</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-steel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Repairs &amp; Repointing</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-gold"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5-Star Reviews</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-brick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+    <span class="marquee-sep">&bull;</span>
+    <span class="marquee-item mi-stone"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><line x1="9" y1="20" x2="9" y2="14"/><line x1="15" y1="20" x2="15" y2="14"/></svg> Brick Steps &amp; Features</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px">
+      <p class="section-label">Our Services</p>
+      <h2 class="section-title">New Builds &middot; Extensions &middot; Walls &middot; Repairs</h2>
+      <p class="section-sub" style="margin:0 auto">Professional bricklaying for every project, from foundations to the finishing touches.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card sc-brick reveal">
+        <span class="s-tag">New Builds</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="12" rx="2"/><line x1="1" y1="12" x2="23" y2="12"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="6" y1="12" x2="6" y2="18"/><line x1="18" y1="12" x2="18" y2="18"/></svg></div>
+        <h3>New Build Brickwork</h3>
+        <p>Complete bricklaying for new homes from foundations to roof level. Quality materials and expert laying every time.</p>
+      </div>
+      <div class="service-card sc-brick reveal">
+        <span class="s-tag">New Builds</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <h3>Decorative Banding</h3>
+        <p>Eye-catching feature banding and detail work using contrasting bricks. Adding character and kerb appeal to any build.</p>
+      </div>
+      <div class="service-card sc-stone reveal">
+        <span class="s-tag">Extensions</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>House Extensions</h3>
+        <p>Single and double storey extensions with seamless brick matching to your existing property. Built to last.</p>
+      </div>
+      <div class="service-card sc-stone reveal">
+        <span class="s-tag">Extensions</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <h3>Garages &amp; Outbuildings</h3>
+        <p>Purpose-built garages, garden rooms and outbuildings. Designed and constructed to complement your home.</p>
+      </div>
+      <div class="service-card sc-green reveal">
+        <span class="s-tag">Walls</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Garden Walls</h3>
+        <p>Boundary walls, retaining walls and decorative garden features. Built with quality materials to stand the test of time.</p>
+      </div>
+      <div class="service-card sc-green reveal">
+        <span class="s-tag">Steps</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><line x1="9" y1="20" x2="9" y2="14"/><line x1="15" y1="20" x2="15" y2="14"/></svg></div>
+        <h3>Brick Steps &amp; Patios</h3>
+        <p>Bespoke brick steps, patios and landscaping features. Stone capping and decorative finishes available.</p>
+      </div>
+      <div class="service-card sc-steel reveal">
+        <span class="s-tag">Repairs</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Repairs &amp; Repointing</h3>
+        <p>Crack repairs, brick replacement and full repointing. Restoring your brickwork to its original condition.</p>
+      </div>
+      <div class="service-card sc-steel reveal">
+        <span class="s-tag">Blockwork</span>
+        <div class="s-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Blockwork &amp; Insulation</h3>
+        <p>Structural blockwork with insulation boarding. Foundations, internal walls and load-bearing structures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Recent Projects</h2>
+    </div>
+  </div>
+  <div class="gallery-scroll">
+    <div class="gallery-item reveal" onclick="openLightbox(this)">
+      <img src="work-1.webp" alt="Decorative brick banding on new build by MK Brickwork" loading="lazy">
+      <div class="caption">Decorative Brick Banding</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(this)">
+      <img src="work-4.webp" alt="New build brickwork with feature banding in Guildford" loading="lazy">
+      <div class="caption">New Build &mdash; Feature Banding</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(this)">
+      <img src="work-3.webp" alt="Brick steps with stone capping by MK Brickwork" loading="lazy">
+      <div class="caption">Brick Steps with Stone Capping</div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(this)">
+      <img src="work-2.webp" alt="Blockwork and insulation by MK Brickwork" loading="lazy">
+      <div class="caption">Blockwork &amp; Insulation</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="work-1.webp" alt="Quality brickwork by MK Brickwork, Guildford" loading="lazy">
+        <div class="exp-badge">Guildford &amp; Surrey</div>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">About MK Brickwork</p>
+        <h2 class="section-title">Craftsmanship You Can Trust</h2>
+        <p>MK Brickwork is a professional bricklaying company serving Guildford and the surrounding Surrey areas. Run by Mick Keane, we take pride in delivering quality workmanship on every project we take on.</p>
+        <p style="margin-top:16px">From new build homes and extensions to garden walls, brick steps and repair work &mdash; no job is too big or too small. We specialise in decorative banding and feature brickwork that adds real character to any property.</p>
+        <p style="margin-top:16px">Every project is completed to the highest standard, on time and with minimal disruption. We believe in honest pricing, clear communication and brickwork you&rsquo;ll be proud of for years to come.</p>
+        <p style="margin-top:20px;color:var(--text)">Fully insured &middot; Free quotes &middot; Domestic &amp; commercial</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <div>
+        <p class="section-label">Customer Reviews</p>
+        <h2 class="section-title">What Our Customers Say</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="big-num">5.0</div>
+        <div class="score-detail">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>Google Reviews</p>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar ra-brick">R</div>
+          <div><div class="review-name">Robert</div><div class="review-meta">Guildford</div></div>
+        </div>
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-text">Mick did a fantastic job on our garden wall and steps. The brick banding detail really sets it apart from anything else on the street. Clean, professional and finished on time. Couldn&rsquo;t ask for more.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar ra-stone">S</div>
+          <div><div class="review-name">Sarah</div><div class="review-meta">Godalming</div></div>
+        </div>
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-text">MK Brickwork built our single storey extension and the quality is outstanding. The brick matching is seamless &mdash; you genuinely can&rsquo;t tell where the old house ends and the extension starts. Highly recommend.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar ra-steel">J</div>
+          <div><div class="review-name">James</div><div class="review-meta">Cranleigh</div></div>
+        </div>
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-text">Had Mick repoint the front of our Victorian terrace and replace some damaged bricks. The attention to detail was impressive. He matched the original mortar colour perfectly. Great value for money.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar ra-green">K</div>
+          <div><div class="review-name">Karen</div><div class="review-meta">Woking</div></div>
+        </div>
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-text">We used MK Brickwork for a new build project and the standard of work was first class. The decorative banding really makes the house stand out. Tidy, reliable and a genuinely nice bloke to deal with.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar ra-brick">T</div>
+          <div><div class="review-name">Tom</div><div class="review-meta">Farnham</div></div>
+        </div>
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-text">Mick built a retaining wall and some brick steps in our garden. The stone capping on the steps looks brilliant. He was punctual, kept the site clean and the price was very fair. Would use again without hesitation.</div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar ra-stone">L</div>
+          <div><div class="review-name">Lisa</div><div class="review-meta">Haslemere</div></div>
+        </div>
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-text">Excellent work on our garage build. MK Brickwork handled everything from the blockwork and insulation through to the facing bricks. Really pleased with the finish. Would definitely recommend to anyone in the Guildford area.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band reveal">
+  <h2>Ready to Start Your Project?</h2>
+  <p>Professional bricklaying across Guildford and Surrey. Call today for a free, no-obligation quote.</p>
+  <div class="cta-btns">
+    <a href="tel:07903820144" class="btn btn-white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      07903 820 144
+    </a>
+    <a href="#contact" class="btn btn-white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Send a Message
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Request a Free Quote</h2>
+      <p class="section-sub" style="margin:0 auto">Whether it&rsquo;s a new build, extension, garden wall or repair &mdash; we&rsquo;re here to help.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-form-card reveal">
+        <h3>Send Us a Message</h3>
+        <form action="https://construction-sites.co.uk/api/enquiry" method="POST">
+          <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="businessName" value="MK Brickwork">
+          <input type="hidden" name="source" value="mockup-mk-brickwork">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required placeholder="07xxx xxx xxx" pattern="^(0|\+44)\d{9,11}$" title="Please enter a valid UK phone number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Required</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <optgroup label="New Builds">
+                <option value="New Build Brickwork">New Build Brickwork</option>
+                <option value="Decorative Banding">Decorative Banding</option>
+              </optgroup>
+              <optgroup label="Extensions">
+                <option value="House Extension">House Extension</option>
+                <option value="Garage / Outbuilding">Garage / Outbuilding</option>
+              </optgroup>
+              <optgroup label="Walls & Steps">
+                <option value="Garden Walls">Garden Walls</option>
+                <option value="Brick Steps / Patio">Brick Steps / Patio</option>
+              </optgroup>
+              <optgroup label="Repairs">
+                <option value="Repointing">Repointing</option>
+                <option value="Brick Repairs">Brick Repairs</option>
+                <option value="Blockwork">Blockwork</option>
+              </optgroup>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info reveal">
+        <a href="tel:07903820144" class="info-card">
+          <div class="info-icon ic-brick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><strong>Call Us</strong><span>07903 820 144</span></div>
+        </a>
+        <a href="mailto:mickkeane64@gmail.com" class="info-card">
+          <div class="info-icon ic-stone"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>Email Us</strong><span>mickkeane64@gmail.com</span></div>
+        </a>
+        <div class="info-card">
+          <div class="info-icon ic-steel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Areas Covered</strong><span>Guildford, Godalming, Cranleigh, Woking, Farnham, Haslemere &amp; Surrey</span></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon ic-green"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><strong>Availability</strong><span>Mon&ndash;Fri: 7am&ndash;4pm</span></div>
+        </div>
+        <div class="map-card">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80418.1!2d-0.62!3d51.24!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875d1490e06e0e1%3A0x3e32bfa62e6ea823!2sGuildford!5e0!3m2!1sen!2suk!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="MK Brickwork service area - Guildford & Surrey"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">
+    <div class="footer-name">MK Brickwork</div>
+  </div>
+  <div class="footer-address">
+    Guildford &amp; Surrounding Areas &nbsp;|&nbsp; 07903 820 144 &nbsp;|&nbsp; mickkeane64@gmail.com<br>
+    Fully Insured &middot; Free Quotes &middot; Domestic &amp; Commercial
+  </div>
+  <p>&copy; 2026 MK Brickwork. All rights reserved.</p>
+  <p style="margin-top:6px;">Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></p>
+</footer>
+
+<!-- FABs -->
+<div class="fab-stack" id="fabStack">
+  <a href="tel:07903820144" class="fab fab-phone" aria-label="Call MK Brickwork">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </a>
+  <a href="mailto:mickkeane64@gmail.com" class="fab fab-email" aria-label="Email MK Brickwork">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="#fff" stroke-width="2"/><polyline points="22,6 12,13 2,6" fill="none" stroke="#fff" stroke-width="2"/></svg>
+  </a>
+</div>
+
+<script>
+// Timestamp for spam protection
+document.getElementById('formTimestamp').value=Date.now();
+
+// Nav scroll & FAB visibility
+var nav=document.getElementById('nav');
+var fabStack=document.getElementById('fabStack');
+var heroEl=document.getElementById('hero');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('scrolled',window.scrollY>50);
+  fabStack.classList.toggle('visible',window.scrollY>heroEl.offsetHeight);
+});
+
+// Scroll reveal
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('revealed');observer.unobserve(entry.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+
+// Lightbox
+function openLightbox(el){var img=el.querySelector('img');var lb=document.getElementById('lightbox');document.getElementById('lightbox-img').src=img.src;document.getElementById('lightbox-img').alt=img.alt;lb.classList.add('active');document.body.style.overflow='hidden'}
+function closeLightbox(e){if(e.target===document.getElementById('lightbox')||e.target.classList.contains('lightbox-close')||e.target.parentElement.classList.contains('lightbox-close')){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(link){link.addEventListener('click',function(e){var href=this.getAttribute('href');if(href.startsWith('#')&&href.length>1){e.preventDefault();var target=document.querySelector(href);if(target){target.scrollIntoView({behavior:'smooth',block:'start'})}}})});
+
+// Phone validation
+var phoneInput=document.getElementById('phone');
+if(phoneInput){phoneInput.addEventListener('input',function(){var v=this.value.replace(/[^0-9+]/g,'');if(v&&!v.match(/^(0|\+44)/)){this.setCustomValidity('Please enter a valid UK phone number starting with 0 or +44')}else{this.setCustomValidity('')}})}
+</script>
+</body>
+</html>
