@@ -48,6 +48,7 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-logo { display: flex; align-items: center; gap: 14px; }
 .nav-logo img { height: 38px; width: auto; filter: brightness(10); }
+@media (max-width: 768px) { .nav-logo img { display: none; } }
 .nav-logo-text {
   font-weight: 800; font-size: 0.9rem; letter-spacing: 1.5px;
   text-transform: uppercase; color: var(--white);
@@ -161,6 +162,14 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-img:hover .hero-img-label { opacity: 1; transform: translateY(0); }
 
+/* Hero mobile logo */
+.hero-mobile-logo {
+  display: none; width: 160px; height: auto; margin-bottom: 28px;
+  filter: brightness(10);
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+@media (max-width: 768px) { .hero-mobile-logo { display: block; } }
+
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ── TRUST BAR ── */
@@ -174,14 +183,19 @@ a { text-decoration: none; color: inherit; }
   display: grid; grid-template-columns: repeat(5, 1fr);
 }
 .trust-item {
-  padding: 28px 16px; text-align: center;
+  padding: 24px 16px; text-align: center;
   border-right: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
 }
 .trust-item:last-child { border-right: none; }
-.trust-icon { font-size: 1.2rem; margin-bottom: 8px; }
+.trust-icon {
+  width: 8px; height: 8px; background: var(--amber);
+  flex-shrink: 0;
+}
 .trust-label {
-  font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--gray-400);
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gray-200);
+  white-space: nowrap;
 }
 
 /* ── SERVICES ── */
@@ -410,7 +424,6 @@ a { text-decoration: none; color: inherit; }
   .project-side .project-card img { height: 240px; }
   .about { grid-template-columns: 1fr; gap: 48px; }
   .trust-inner { grid-template-columns: repeat(3, 1fr); }
-  .trust-item:nth-child(n+4) { display: none; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
@@ -425,7 +438,13 @@ a { text-decoration: none; color: inherit; }
   .projects { padding: 80px 24px; }
   .project-side { flex-direction: column; }
   .about-capabilities { grid-template-columns: 1fr; }
-  .trust-inner { grid-template-columns: repeat(2, 1fr); }
+  .trust-inner {
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .trust-inner::-webkit-scrollbar { display: none; }
+  .trust-item { min-width: 140px; }
   .footer-inner { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
   .cta-buttons { flex-direction: column; align-items: center; }
@@ -482,6 +501,7 @@ a { text-decoration: none; color: inherit; }
       <div class="hero-cert">BMTrada Certified</div>
       <span class="hero-location">Manchester &amp; Greater Manchester</span>
     </div>
+    <img src="logo.png" alt="Starmore Construction" class="hero-mobile-logo">
     <h1>Building to a<br>higher <span class="accent">standard.</span></h1>
     <p class="hero-desc">Bespoke joinery, fire stopping, BMTrada door installations and full multi-trade construction services. From concept to completion — built to last.</p>
     <div class="hero-actions">
@@ -515,11 +535,11 @@ a { text-decoration: none; color: inherit; }
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-inner">
-    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">BMTrada Certified</div></div>
-    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">Fully Insured</div></div>
-    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">Fire Stopping Expert</div></div>
-    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">Multi-Trade</div></div>
-    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">All Work Guaranteed</div></div>
+    <div class="trust-item reveal"><div class="trust-icon"></div><div class="trust-label">BMTrada Certified</div></div>
+    <div class="trust-item reveal"><div class="trust-icon"></div><div class="trust-label">Fully Insured</div></div>
+    <div class="trust-item reveal"><div class="trust-icon"></div><div class="trust-label">Fire Stopping Expert</div></div>
+    <div class="trust-item reveal"><div class="trust-icon"></div><div class="trust-label">Multi-Trade Team</div></div>
+    <div class="trust-item reveal"><div class="trust-icon"></div><div class="trust-label">All Work Guaranteed</div></div>
   </div>
 </div>
 
