@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayo Rendering &amp; Plastering — Venetian Plaster, Rendering &amp; Skimming in Radlett</title>
+<meta name="description" content="Premium rendering, Venetian plaster and skimming specialists in Radlett & Hertfordshire. 10+ years experience, bespoke finishes, free quotes. Call 07464 183754.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #f5f0e8;
+  --cream-dark: #e8e0d0;
+  --sand: #d4c5a9;
+  --charcoal: #1c1c1c;
+  --charcoal-soft: #2a2a28;
+  --warm-black: #0f0f0e;
+  --gold: #c9a84c;
+  --gold-light: #dfc06a;
+  --gold-muted: rgba(201,168,76,0.15);
+  --text-light: #f5f0e8;
+  --text-muted: #9a9590;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-light);
+  background: var(--warm-black);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── LOADING SCREEN ── */
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--warm-black);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-line {
+  width: 120px; height: 2px; background: rgba(201,168,76,0.15);
+  position: relative; overflow: hidden; border-radius: 2px;
+}
+.loader-line::after {
+  content: ''; position: absolute; left: -40%; top: 0; bottom: 0; width: 40%;
+  background: var(--gold);
+  animation: loaderSlide 1s ease-in-out infinite;
+}
+@keyframes loaderSlide { to { left: 100%; } }
+.loader-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(15,15,14,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  transition: background 0.3s;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 40px;
+  height: 80px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--cream);
+}
+.nav-brand em {
+  font-style: normal; color: var(--gold); font-weight: 400;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--text-muted);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: transparent !important; color: var(--gold) !important;
+  border: 1px solid var(--gold); padding: 10px 24px;
+  font-size: 0.75rem !important; font-weight: 700 !important;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--warm-black) !important; }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile svg { stroke: var(--cream); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh; display: flex;
+  align-items: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://cdn.durable.co/getty/21kkJZx8SVW5Om7lCAnmrHBFDIOOyclOJQD9JS6bcncUuY4qkGDY5YdXxgYSQL1w.jpeg') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(15,15,14,0.92) 0%, rgba(15,15,14,0.7) 50%, rgba(15,15,14,0.5) 100%);
+}
+.hero-texture {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content {
+  position: relative; z-index: 2; max-width: 1280px;
+  margin: 0 auto; padding: 120px 40px 80px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold-muted); border: 1px solid rgba(201,168,76,0.25);
+  padding: 8px 20px; margin-bottom: 32px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px; background: var(--gold);
+  border-radius: 50%; animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 700;
+  line-height: 1.05; color: var(--cream);
+  max-width: 800px; margin-bottom: 24px;
+  animation: fadeUp 0.8s ease 0.7s both;
+}
+.hero h1 span {
+  display: block; color: var(--gold);
+  font-style: italic; font-weight: 400;
+}
+.hero-sub {
+  font-size: 1.1rem; color: var(--text-muted);
+  max-width: 520px; line-height: 1.7; margin-bottom: 48px;
+  animation: fadeUp 0.8s ease 0.9s both;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 1.1s both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold); color: var(--warm-black);
+  padding: 16px 36px; font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer; transition: all 0.3s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--cream);
+  padding: 16px 36px; font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  border: 1px solid rgba(245,240,232,0.2);
+  cursor: pointer; transition: all 0.3s;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--text-muted); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  animation: fadeUp 0.8s ease 1.4s both;
+}
+.scroll-line { width: 1px; height: 40px; background: var(--gold); animation: scrollPulse 2s ease infinite; }
+@keyframes scrollPulse { 0%, 100% { scaleY: 1; opacity: 1; } 50% { scaleY: 0.5; opacity: 0.3; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── STATS STRIP ── */
+.stats {
+  background: var(--charcoal-soft); border-top: 1px solid rgba(201,168,76,0.08);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+.stats-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 40px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat {
+  padding: 40px 20px; text-align: center;
+  border-right: 1px solid rgba(201,168,76,0.06);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 8px;
+}
+
+/* ── SECTION COMMON ── */
+.section-tag {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+  color: var(--cream); line-height: 1.15; margin-bottom: 20px;
+}
+
+/* ── SERVICES ── */
+.services { padding: 120px 40px; max-width: 1280px; margin: 0 auto; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-top: 60px;
+}
+.service-card {
+  position: relative; overflow: hidden; aspect-ratio: 4/5;
+  cursor: pointer; background: var(--charcoal);
+}
+.service-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s ease, filter 0.8s ease;
+  filter: brightness(0.5) saturate(0.8);
+}
+.service-card:hover img { transform: scale(1.08); filter: brightness(0.35) saturate(0.6); }
+.service-info {
+  position: absolute; inset: 0; display: flex;
+  flex-direction: column; justify-content: flex-end;
+  padding: 40px; z-index: 2;
+}
+.service-num {
+  position: absolute; top: 28px; left: 32px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem; color: var(--gold); letter-spacing: 2px;
+  opacity: 0.6;
+}
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--cream);
+  margin-bottom: 8px;
+}
+.service-desc {
+  font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;
+  max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+}
+.service-card:hover .service-desc { max-height: 100px; }
+.service-line {
+  width: 30px; height: 1px; background: var(--gold);
+  margin-bottom: 16px; transition: width 0.5s ease;
+}
+.service-card:hover .service-line { width: 60px; }
+
+/* ── ABOUT ── */
+.about {
+  padding: 120px 40px; max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-images {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  position: relative;
+}
+.about-img {
+  overflow: hidden; height: 280px;
+}
+.about-img:first-child { grid-column: 1 / -1; height: 320px; }
+.about-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.about-img:hover img { transform: scale(1.04); }
+.about-accent {
+  position: absolute; top: -20px; left: -20px;
+  width: 80px; height: 80px; border: 1px solid var(--gold);
+  opacity: 0.2; z-index: -1;
+}
+.about-text p {
+  font-size: 1rem; color: var(--text-muted); line-height: 1.8;
+  margin-bottom: 20px;
+}
+.about-text p:first-of-type {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; color: var(--cream); line-height: 1.6;
+  font-style: italic;
+}
+.about-sig {
+  margin-top: 32px; padding-top: 24px;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+.about-sig-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; color: var(--cream); font-weight: 600;
+}
+.about-sig-role {
+  font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-top: 4px;
+}
+
+/* ── GALLERY ── */
+.gallery {
+  padding: 120px 0; background: var(--charcoal-soft);
+  border-top: 1px solid rgba(201,168,76,0.06);
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+}
+.gallery-header { max-width: 1280px; margin: 0 auto; padding: 0 40px 60px; }
+.gallery-scroll {
+  display: flex; gap: 16px; overflow-x: auto; padding: 0 40px 20px;
+  scrollbar-width: none; -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+}
+.gallery-scroll::-webkit-scrollbar { display: none; }
+.gallery-item {
+  flex: 0 0 380px; height: 480px; overflow: hidden;
+  position: relative; scroll-snap-align: start;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s ease;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  border: 1px solid rgba(201,168,76,0);
+  transition: border-color 0.4s ease;
+}
+.gallery-item:hover::after { border-color: rgba(201,168,76,0.3); }
+
+/* ── TESTIMONIALS ── */
+.testimonials { padding: 120px 40px; max-width: 1280px; margin: 0 auto; }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  margin-top: 60px;
+}
+.testimonial {
+  padding: 48px 36px; background: var(--charcoal-soft);
+  border: 1px solid rgba(201,168,76,0.06);
+  position: relative; transition: border-color 0.4s;
+}
+.testimonial:hover { border-color: rgba(201,168,76,0.2); }
+.testimonial-quote {
+  position: absolute; top: 20px; right: 28px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; color: var(--gold); opacity: 0.1;
+  line-height: 1;
+}
+.testimonial p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; font-style: italic; color: var(--cream);
+  line-height: 1.7; margin-bottom: 28px;
+}
+.testimonial-author {
+  font-size: 0.8rem; font-weight: 700; color: var(--gold);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.testimonial-stars {
+  color: var(--gold); font-size: 0.75rem; margin-top: 8px;
+  letter-spacing: 2px;
+}
+
+/* ── CTA ── */
+.cta-section {
+  position: relative; padding: 120px 40px; text-align: center;
+  overflow: hidden;
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background: url('https://cdn.durable.co/getty/30F9zJD1LYEiP7DkOGc5oR90bcmuUC777XRDg8qCXG9hEC3L7Qj8tlSPo1zpMeMx.jpeg') center/cover no-repeat;
+}
+.cta-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(15,15,14,0.88);
+}
+.cta-content {
+  position: relative; z-index: 2; max-width: 700px; margin: 0 auto;
+}
+.cta-content .section-title { margin-bottom: 16px; }
+.cta-sub {
+  font-size: 1rem; color: var(--text-muted); margin-bottom: 40px;
+  line-height: 1.7;
+}
+.cta-phone {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; color: var(--gold); font-weight: 700;
+  margin-bottom: 32px; display: block;
+  transition: color 0.3s;
+}
+.cta-phone:hover { color: var(--gold-light); }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--warm-black);
+  border-top: 1px solid rgba(201,168,76,0.08);
+  padding: 60px 40px 30px;
+}
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--cream); margin-bottom: 16px;
+}
+.footer-brand em { font-style: normal; color: var(--gold); }
+.footer-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; max-width: 360px; }
+.footer-heading {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+}
+.footer-links a {
+  display: block; font-size: 0.85rem; color: var(--text-muted);
+  padding: 6px 0; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-bottom {
+  max-width: 1280px; margin: 40px auto 0; padding-top: 24px;
+  border-top: 1px solid rgba(201,168,76,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+.footer-copy a { color: var(--gold); }
+
+/* ── MOBILE NAV ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(15,15,14,0.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; color: var(--cream); font-weight: 600;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute; top: 24px; right: 28px;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-close svg { stroke: var(--cream); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .about { grid-template-columns: 1fr; gap: 48px; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .hero-content { padding: 140px 24px 80px; }
+  .services { padding: 80px 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-item { flex: 0 0 300px; height: 380px; }
+  .testimonials { padding: 80px 24px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat { border-bottom: 1px solid rgba(201,168,76,0.06); }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .cta-phone { font-size: 1.8rem; }
+}
+@media (max-width: 480px) {
+  .stats-inner { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <span class="loader-text">Kayo</span>
+  <div class="loader-line"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Kayo <em>R&P</em></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Portfolio</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('open')">Portfolio</a>
+  <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Rendering &amp; Plastering Specialists</div>
+    <h1>Surfaces crafted <span>to perfection.</span></h1>
+    <p class="hero-sub">Premium rendering, Venetian plaster and skimming across Radlett &amp; Hertfordshire. Over a decade of precision craftsmanship and bespoke finishes.</p>
+    <div class="hero-actions">
+      <a href="tel:07464183754" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        07464 183754
+      </a>
+      <a href="#gallery" class="btn-secondary">
+        View Our Work
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat reveal"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat reveal"><div class="stat-num">500+</div><div class="stat-label">Projects Completed</div></div>
+    <div class="stat reveal"><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+    <div class="stat reveal"><div class="stat-num">Free</div><div class="stat-label">Quotes &amp; Advice</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-tag reveal">What We Do</div>
+  <h2 class="section-title reveal">Expert finishes for <br>every surface.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <img src="https://cdn.durable.co/getty/1fil4rXdIzvZ7ZdqAhRiwQNyMlbuEim47XDiCV3waeeJcNzOT5ed4WeMqpQfHKMN.jpeg" alt="Premium Rendering" loading="lazy">
+      <div class="service-info">
+        <span class="service-num">01</span>
+        <div class="service-line"></div>
+        <h3 class="service-name">Premium Rendering</h3>
+        <p class="service-desc">Silicone, monocouche and traditional renders applied with precision for a flawless, weather-resistant finish.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://cdn.durable.co/getty/21aspsFYukPxNdjIfHkgvb4bGl2fNocaxNlTtk3eumwjOzOcO7PSwd4t2sbilf5L.jpeg" alt="Venetian Plaster" loading="lazy">
+      <div class="service-info">
+        <span class="service-num">02</span>
+        <div class="service-line"></div>
+        <h3 class="service-name">Venetian Plaster</h3>
+        <p class="service-desc">Luxurious polished plaster finishes that bring depth, texture and elegance to any interior wall.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <img src="https://cdn.durable.co/getty/29lg0jAdPRCCWM7E1t3hJFwF7AGj37CatneuxJ5ThzflO0cuY4YpxirWDqmVtj4x.jpeg" alt="Plastering & Skimming" loading="lazy">
+      <div class="service-info">
+        <span class="service-num">03</span>
+        <div class="service-line"></div>
+        <h3 class="service-name">Plastering &amp; Skimming</h3>
+        <p class="service-desc">Smooth, level skim coats and full re-plasters for ceilings and walls — ready for paint or paper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-images reveal">
+    <div class="about-accent"></div>
+    <div class="about-img">
+      <img src="https://cdn.durable.co/getty/3lSlEQZaXZEOMe0SWrV4hGONvOICWPUT9kB6eLeDJN8NyTPzrKMw7SlptSziBXcH.jpeg" alt="Kayo Rendering work" loading="lazy">
+    </div>
+    <div class="about-img">
+      <img src="https://cdn.durable.co/getty/1e7dtLTjNiHSo2RfIPpTecW3Imq27LCbk2jOtO6dwhZc0pzRJSdafIMz7UG47Xxg.jpeg" alt="Plastering detail" loading="lazy">
+    </div>
+    <div class="about-img">
+      <img src="https://cdn.durable.co/getty/3D7NH8oTNKrSb1aBPx6TmnXqZBznUDt3szBrvqKuZu0OIBdxjcltYLxSTmVPGrlX.jpeg" alt="Venetian plaster finish" loading="lazy">
+    </div>
+  </div>
+  <div class="about-text reveal">
+    <div class="section-tag">About Kayo</div>
+    <h2 class="section-title">Passion meets <br>precision.</h2>
+    <p>"We believe every wall tells a story — and our job is to make sure it's a beautiful one."</p>
+    <p>With over a decade of hands-on experience across rendering, Venetian plaster and traditional plastering, Kayo Rendering &amp; Plastering delivers bespoke solutions tailored to each project. Based in Radlett, Hertfordshire, we combine old-world craftsmanship with modern materials and techniques.</p>
+    <p>From exterior renders that protect and transform, to interior Venetian finishes that captivate — we're perfectionists who take pride in every square metre.</p>
+    <div class="about-sig">
+      <div class="about-sig-name">Mario</div>
+      <div class="about-sig-role">Founder, Kayo Rendering &amp; Plastering</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div class="section-tag reveal">Portfolio</div>
+    <h2 class="section-title reveal">Our recent work.</h2>
+  </div>
+  <div class="gallery-scroll">
+    <div class="gallery-item">
+      <img src="https://cdn.durable.co/getty/1evCfvNQ7mihv886cAtuplo5ntbhKjNJXGeX6PSxyMfDWCzvJTlpMAd32TOyC2H3.jpeg" alt="Rendering project 1" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://cdn.durable.co/getty/1e2MlNxgR4Imlqry4kncMmXjxUD1gYJzyDhPaPlGe7fK7rxf3HwhcO9Ntw0ujetL.jpeg" alt="Venetian plaster project" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://cdn.durable.co/getty/1fFoWNaTO2m19u1OogbGxwtXtmFvSIowU6r7QeTcWYt2t2sTj5cJe012w6gosxLM.jpeg" alt="Rendering project 2" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://cdn.durable.co/getty/21kkJZx8SVW5Om7lCAnmrHBFDIOOyclOJQD9JS6bcncUuY4qkGDY5YdXxgYSQL1w.jpeg" alt="Exterior rendering" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://cdn.durable.co/getty/1fil4rXdIzvZ7ZdqAhRiwQNyMlbuEim47XDiCV3waeeJcNzOT5ed4WeMqpQfHKMN.jpeg" alt="Plastering project" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://cdn.durable.co/getty/30F9zJD1LYEiP7DkOGc5oR90bcmuUC777XRDg8qCXG9hEC3L7Qj8tlSPo1zpMeMx.jpeg" alt="Skimming project" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-tag reveal">Client Reviews</div>
+  <h2 class="section-title reveal">Words from those <br>we've worked with.</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal">
+      <span class="testimonial-quote">&ldquo;</span>
+      <p>Their attention to detail and craftsmanship are unmatched. The Venetian plaster finish in our hallway is absolutely stunning — we get compliments from everyone who visits.</p>
+      <div class="testimonial-author">Emily Carter</div>
+      <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+    </div>
+    <div class="testimonial reveal">
+      <span class="testimonial-quote">&ldquo;</span>
+      <p>Mario and his team were great. Excellent finish inside and they cleared up well after. Would highly recommend for any plastering or rendering work.</p>
+      <div class="testimonial-author">Alex Folwell</div>
+      <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+    </div>
+    <div class="testimonial reveal">
+      <span class="testimonial-quote">&ldquo;</span>
+      <p>Very hard working, great job, on time. Overall highly recommend. The external render completely transformed the look of our property.</p>
+      <div class="testimonial-author">Ivo Karamanski</div>
+      <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-content reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Ready to transform <br>your property?</h2>
+    <p class="cta-sub">Get a free, no-obligation quote. We cover Radlett, St Albans, Watford, Barnet and all surrounding areas across Hertfordshire and North London.</p>
+    <a href="tel:07464183754" class="cta-phone">07464 183754</a>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:07464183754" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="mailto:kmplasteringrendering@gmail.com" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Kayo <em>R&P</em></div>
+      <p class="footer-desc">Premium rendering, Venetian plaster and skimming specialists serving Radlett, Hertfordshire and surrounding areas. Over 10 years of expert craftsmanship.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Premium Rendering</a>
+        <a href="#services">Venetian Plaster</a>
+        <a href="#services">Plastering &amp; Skimming</a>
+        <a href="#services">External Wall Insulation</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="tel:07464183754">07464 183754</a>
+        <a href="mailto:kmplasteringrendering@gmail.com">kmplasteringrendering@gmail.com</a>
+        <a>Radlett, Hertfordshire</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Kayo Rendering &amp; Plastering. All rights reserved.</span>
+    <span class="footer-copy">Website by <a href="#">4A Trades</a></span>
+  </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+
+// Gallery drag scroll
+const gallery = document.querySelector('.gallery-scroll');
+let isDown = false, startX, scrollLeft;
+gallery.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - gallery.offsetLeft; scrollLeft = gallery.scrollLeft; gallery.style.cursor = 'grabbing'; });
+gallery.addEventListener('mouseleave', () => { isDown = false; gallery.style.cursor = ''; });
+gallery.addEventListener('mouseup', () => { isDown = false; gallery.style.cursor = ''; });
+gallery.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); gallery.scrollLeft = scrollLeft - (e.pageX - gallery.offsetLeft - startX) * 1.5; });
+</script>
+</body>
+</html>
