@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starmore Construction — Bespoke Joinery, Fire Stopping &amp; Multi-Trade Construction | Manchester</title>
+<meta name="description" content="Professional construction company in Manchester. BMTrada certified door installations, fire stopping, bespoke joinery, plumbing, electrics & full project management. Call for a free consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0c0c0c;
+  --dark: #141414;
+  --dark-card: #1a1a1a;
+  --dark-border: #222222;
+  --gray-500: #737373;
+  --gray-400: #a3a3a3;
+  --gray-200: #e5e5e5;
+  --white: #fafafa;
+  --amber: #d97706;
+  --amber-light: #f59e0b;
+  --amber-soft: rgba(217,119,6,0.08);
+  --amber-border: rgba(217,119,6,0.2);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--gray-400); background: var(--black);
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(12,12,12,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 40px;
+  height: 76px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 38px; width: auto; filter: brightness(10); }
+.nav-logo-text {
+  font-weight: 800; font-size: 0.9rem; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--white);
+}
+.nav-logo-text span {
+  display: block; font-weight: 500; font-size: 0.6rem;
+  letter-spacing: 2.5px; color: var(--gray-500); margin-top: 1px;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-size: 0.8rem; font-weight: 600; color: var(--gray-500);
+  letter-spacing: 0.5px; transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta-btn {
+  background: var(--amber) !important; color: var(--white) !important;
+  padding: 10px 24px; font-weight: 700 !important;
+  font-size: 0.78rem !important; letter-spacing: 0.5px;
+  transition: all 0.3s !important;
+}
+.nav-cta-btn:hover { background: var(--amber-light) !important; }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile svg { stroke: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  background: var(--black);
+}
+.hero-bg-grid {
+  position: absolute; inset: 0; opacity: 0.025;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-gradient {
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(217,119,6,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1240px; margin: 0 auto; padding: 160px 40px 100px;
+  width: 100%; position: relative; z-index: 2;
+}
+.hero-top {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.hero-cert {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--amber-soft); border: 1px solid var(--amber-border);
+  padding: 6px 16px; font-size: 0.7rem; font-weight: 700;
+  color: var(--amber); letter-spacing: 1px; text-transform: uppercase;
+}
+.hero-location {
+  font-size: 0.75rem; font-weight: 500; color: var(--gray-500);
+  letter-spacing: 1px;
+}
+.hero h1 {
+  font-size: clamp(3rem, 6.5vw, 5.5rem); font-weight: 800;
+  line-height: 1.02; color: var(--white); letter-spacing: -2px;
+  max-width: 900px; margin-bottom: 28px;
+  animation: fadeUp 0.6s ease 0.35s both;
+}
+.hero h1 .accent { color: var(--amber); }
+.hero-desc {
+  font-size: 1.1rem; font-weight: 300; color: var(--gray-500);
+  max-width: 580px; line-height: 1.8; margin-bottom: 48px;
+  animation: fadeUp 0.6s ease 0.5s both;
+}
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 60px;
+  animation: fadeUp 0.6s ease 0.65s both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px; background: var(--amber); color: var(--white);
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px;
+  border: none; cursor: pointer; transition: all 0.3s;
+}
+.btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 36px; background: transparent; color: var(--white);
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px;
+  border: 1px solid var(--dark-border); cursor: pointer; transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--gray-500); }
+
+/* Hero image band */
+.hero-images {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+  animation: fadeUp 0.6s ease 0.8s both;
+}
+.hero-img {
+  overflow: hidden; height: 240px; position: relative;
+}
+.hero-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.7); transition: all 0.5s;
+}
+.hero-img:hover img { filter: brightness(0.9); transform: scale(1.04); }
+.hero-img-label {
+  position: absolute; bottom: 16px; left: 16px;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--white);
+  opacity: 0; transform: translateY(6px); transition: all 0.3s;
+}
+.hero-img:hover .hero-img-label { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: var(--dark);
+}
+.trust-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 40px;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+}
+.trust-item {
+  padding: 28px 16px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+.trust-item:last-child { border-right: none; }
+.trust-icon { font-size: 1.2rem; margin-bottom: 8px; }
+.trust-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gray-400);
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 100px 40px; max-width: 1240px; margin: 0 auto;
+}
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 16px;
+}
+.section-eyebrow::before {
+  content: ''; width: 32px; height: 2px; background: var(--amber);
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+  color: var(--white); letter-spacing: -1px; line-height: 1.1;
+  margin-bottom: 56px;
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.service-card {
+  padding: 44px 32px; background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.03);
+  position: relative; overflow: hidden;
+  transition: all 0.4s;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 0; height: 3px; background: var(--amber);
+  transition: width 0.4s;
+}
+.service-card:hover::before { width: 100%; }
+.service-card:hover { background: #1f1f1f; }
+.service-card-num {
+  font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,0.03);
+  line-height: 1; margin-bottom: 20px;
+}
+.service-card h3 {
+  font-size: 1.15rem; font-weight: 700; color: var(--white);
+  margin-bottom: 12px;
+}
+.service-card p {
+  font-size: 0.85rem; color: var(--gray-500); line-height: 1.7;
+  font-weight: 300;
+}
+.service-badge {
+  display: inline-block; margin-top: 16px; padding: 4px 12px;
+  background: var(--amber-soft); border: 1px solid var(--amber-border);
+  font-size: 0.6rem; font-weight: 700; color: var(--amber);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* ── PROJECTS ── */
+.projects {
+  padding: 100px 40px; max-width: 1240px; margin: 0 auto;
+}
+.projects-grid {
+  display: grid; grid-template-columns: 7fr 5fr; gap: 4px;
+  margin-top: 56px;
+}
+.project-card {
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.project-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s ease; filter: brightness(0.75);
+}
+.project-card:hover img { transform: scale(1.05); filter: brightness(0.9); }
+.project-card-main img { height: 520px; }
+.project-side { display: flex; flex-direction: column; gap: 4px; }
+.project-side .project-card img { height: 258px; }
+.project-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 28px; z-index: 2;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.project-card:hover .project-overlay { opacity: 1; }
+.project-type {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 6px;
+}
+.project-name {
+  font-size: 1.1rem; font-weight: 700; color: var(--white);
+}
+
+/* ── ABOUT ── */
+.about {
+  padding: 100px 40px; max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: center;
+}
+.about-content p {
+  font-size: 0.95rem; font-weight: 300; color: var(--gray-400);
+  line-height: 1.85; margin-bottom: 16px;
+}
+.about-content p strong { color: var(--white); font-weight: 600; }
+.about-capabilities {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  margin-top: 36px;
+}
+.capability {
+  padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: center; gap: 12px;
+}
+.capability-dot {
+  width: 6px; height: 6px; background: var(--amber);
+  flex-shrink: 0;
+}
+.capability span {
+  font-size: 0.82rem; font-weight: 600; color: var(--gray-200);
+}
+.about-visual { position: relative; }
+.about-img-wrap {
+  overflow: hidden; border: 1px solid rgba(255,255,255,0.04);
+}
+.about-img-wrap img { width: 100%; height: 500px; object-fit: cover; }
+.about-stat-card {
+  position: absolute; bottom: -20px; left: -20px;
+  background: var(--amber); padding: 28px 32px;
+}
+.about-stat-card .stat-big {
+  font-size: 2.2rem; font-weight: 800; color: var(--white); line-height: 1;
+}
+.about-stat-card .stat-label {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.75); margin-top: 4px;
+}
+
+/* ── CTA ── */
+.cta {
+  padding: 100px 40px; text-align: center;
+  background: var(--dark); border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  position: relative; overflow: hidden;
+}
+.cta-gradient {
+  position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(circle, rgba(217,119,6,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 2; }
+.cta-inner .section-title { margin-bottom: 16px; }
+.cta-sub {
+  font-size: 1rem; font-weight: 300; color: var(--gray-500);
+  line-height: 1.8; margin-bottom: 40px;
+}
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+.footer {
+  padding: 56px 40px 24px; background: var(--black);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-inner {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.footer-brand img { height: 32px; filter: brightness(10); }
+.footer-brand-text {
+  font-weight: 800; font-size: 0.85rem; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--white);
+}
+.footer-desc { font-size: 0.82rem; color: var(--gray-500); line-height: 1.7; font-weight: 300; max-width: 320px; }
+.footer-heading {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 16px;
+}
+.footer-links a {
+  display: block; font-size: 0.82rem; color: var(--gray-500);
+  padding: 5px 0; transition: color 0.2s; font-weight: 400;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1240px; margin: 32px auto 0; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 0.72rem; color: var(--gray-500); font-weight: 300; }
+.footer-copy a { color: var(--amber); }
+
+/* ── FLOATING CTAs ── */
+.floating-ctas {
+  position: fixed; bottom: 28px; right: 28px; z-index: 800;
+  display: flex; flex-direction: column; gap: 12px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+  pointer-events: none;
+}
+.floating-ctas.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.float-btn {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer; transition: transform 0.3s;
+}
+.float-btn:hover { transform: scale(1.12); }
+.float-btn-call { background: var(--amber); box-shadow: 0 4px 18px rgba(217,119,6,0.3); }
+.float-btn-call svg { stroke: white; fill: none; }
+.float-btn-whatsapp { background: #25D366; box-shadow: 0 4px 18px rgba(37,211,102,0.3); }
+.float-btn-whatsapp svg { fill: white; }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(12,12,12,0.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1.4rem; font-weight: 700; color: var(--white); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--amber); }
+.mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; cursor: pointer; }
+.mobile-close svg { stroke: var(--white); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-images { grid-template-columns: repeat(2, 1fr); }
+  .hero-img:nth-child(n+3) { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card-main img { height: 360px; }
+  .project-side { flex-direction: row; }
+  .project-side .project-card img { height: 240px; }
+  .about { grid-template-columns: 1fr; gap: 48px; }
+  .trust-inner { grid-template-columns: repeat(3, 1fr); }
+  .trust-item:nth-child(n+4) { display: none; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .hero-inner { padding: 140px 24px 80px; }
+  .hero-images { grid-template-columns: 1fr; }
+  .hero-img:nth-child(n+2) { display: none; }
+  .hero-img { height: 200px; }
+  .services { padding: 80px 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .projects { padding: 80px 24px; }
+  .project-side { flex-direction: column; }
+  .about-capabilities { grid-template-columns: 1fr; }
+  .trust-inner { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .hero-top { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Starmore Construction">
+      <div class="nav-logo-text">Starmore <span>Construction</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta-btn">Get a Quote</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#projects" onclick="document.getElementById('mobileMenu').classList.remove('open')">Projects</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="hero-cert">BMTrada Certified</div>
+      <span class="hero-location">Manchester &amp; Greater Manchester</span>
+    </div>
+    <h1>Building to a<br>higher <span class="accent">standard.</span></h1>
+    <p class="hero-desc">Bespoke joinery, fire stopping, BMTrada door installations and full multi-trade construction services. From concept to completion — built to last.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Request a Consultation
+      </a>
+      <a href="#projects" class="btn-ghost">View Projects</a>
+    </div>
+    <div class="hero-images">
+      <div class="hero-img">
+        <img src="work-1.png" alt="Bespoke oak and glass staircase">
+        <span class="hero-img-label">Bespoke Joinery</span>
+      </div>
+      <div class="hero-img">
+        <img src="work-4.png" alt="BMTrada door installations">
+        <span class="hero-img-label">BMTrada Doors</span>
+      </div>
+      <div class="hero-img">
+        <img src="work-3.png" alt="Modern bathroom installation">
+        <span class="hero-img-label">Bathroom Refit</span>
+      </div>
+      <div class="hero-img">
+        <img src="work-2.png" alt="Commercial fitout">
+        <span class="hero-img-label">Commercial</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">BMTrada Certified</div></div>
+    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">Fully Insured</div></div>
+    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">Fire Stopping Expert</div></div>
+    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">Multi-Trade</div></div>
+    <div class="trust-item reveal"><div class="trust-icon">&#9899;</div><div class="trust-label">All Work Guaranteed</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-eyebrow reveal">Our Capabilities</div>
+  <h2 class="section-title reveal">Full-service construction,<br>single point of contact.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-card-num">01</div>
+      <h3>Bespoke Joinery &amp; Carpentry</h3>
+      <p>Custom staircases, fitted furniture, architectural timber work and precision carpentry. Designed and built to your exact specifications.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-card-num">02</div>
+      <h3>BMTrada Door Installation</h3>
+      <p>Certified BMTrada fire door installations for commercial and residential properties. Fully compliant, third-party accredited.</p>
+      <span class="service-badge">Certified</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-card-num">03</div>
+      <h3>Fire Stopping</h3>
+      <p>Professional passive fire protection. Fire barriers, cavity barriers, penetration sealing and compartmentation to meet all regulatory standards.</p>
+      <span class="service-badge">Specialist</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-card-num">04</div>
+      <h3>Plumbing &amp; Bathrooms</h3>
+      <p>Full bathroom design and installation, boiler work, pipework and general plumbing. Modern finishes, reliable systems.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-card-num">05</div>
+      <h3>Electrical Services</h3>
+      <p>Qualified electricians for domestic and commercial work. Rewires, consumer units, lighting design and certification.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-card-num">06</div>
+      <h3>Full Project Management</h3>
+      <p>Plastering, painting, groundworks and everything in between. One company, all trades, delivered on time and on budget.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-eyebrow reveal">Recent Work</div>
+  <h2 class="section-title reveal">Built with precision.</h2>
+  <div class="projects-grid">
+    <div class="project-card project-card-main reveal">
+      <img src="work-1.png" alt="Bespoke staircase with glass balustrade" loading="lazy">
+      <div class="project-overlay">
+        <div class="project-type">Bespoke Joinery</div>
+        <div class="project-name">Oak &amp; Glass Staircase Build</div>
+      </div>
+    </div>
+    <div class="project-side">
+      <div class="project-card reveal">
+        <img src="work-4.png" alt="BMTrada doors fitted" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-type">BMTrada Doors</div>
+          <div class="project-name">Residential Door Installation</div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="work-3.png" alt="Modern shower room" loading="lazy">
+        <div class="project-overlay">
+          <div class="project-type">Bathroom</div>
+          <div class="project-name">Contemporary Shower Room</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:4px;">
+    <div class="project-card reveal" style="height:280px;overflow:hidden;">
+      <img src="work-2.png" alt="Commercial fitout" loading="lazy" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.7);transition:all 0.5s;">
+      <div class="project-overlay">
+        <div class="project-type">Commercial</div>
+        <div class="project-name">Interior Fitout &amp; Signage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-content reveal">
+    <div class="section-eyebrow">About Starmore</div>
+    <h2 class="section-title">One company.<br>Every trade.</h2>
+    <p><strong>Starmore Construction</strong> is a Manchester-based construction company delivering bespoke joinery, certified fire door installations, fire stopping and full multi-trade project management across the North West.</p>
+    <p>With qualified electricians, plumbers, plasterers, painters and groundworkers all under one roof, we offer a genuine single point of contact for projects of any scale — from residential refurbishments to commercial fitouts.</p>
+    <p>As a certified BMTrada door installer and fire stopping specialist, we bring a level of compliance and quality assurance that sets us apart.</p>
+    <div class="about-capabilities">
+      <div class="capability"><div class="capability-dot"></div><span>Joinery &amp; Carpentry</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>BMTrada Doors</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>Fire Stopping</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>Plumbing</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>Electrics</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>Plastering</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>Painting &amp; Decorating</span></div>
+      <div class="capability"><div class="capability-dot"></div><span>Groundworks</span></div>
+    </div>
+  </div>
+  <div class="about-visual reveal">
+    <div class="about-img-wrap">
+      <img src="work-1.png" alt="Starmore Construction craftsmanship" loading="lazy">
+    </div>
+    <div class="about-stat-card">
+      <div class="stat-big">100%</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-gradient"></div>
+  <div class="cta-inner">
+    <div class="section-eyebrow reveal">Start a Project</div>
+    <h2 class="section-title reveal">Let's build<br>something right.</h2>
+    <p class="cta-sub reveal">Whether it's a bespoke staircase, a certified fire door installation, or a full multi-trade project — get in touch for a free consultation and quote.</p>
+    <div class="cta-buttons reveal">
+      <a href="tel:07513838716" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="mailto:info@starmoreconstruction.co.uk" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="logo.png" alt="Starmore">
+        <span class="footer-brand-text">Starmore Construction</span>
+      </div>
+      <p class="footer-desc">BMTrada certified construction company based in Manchester. Bespoke joinery, fire stopping, and full multi-trade services across the North West.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Bespoke Joinery</a>
+        <a href="#services">BMTrada Doors</a>
+        <a href="#services">Fire Stopping</a>
+        <a href="#services">Plumbing</a>
+        <a href="#services">Electrics</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <div class="footer-links">
+        <a href="#about">About Us</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="tel:07513838716">07513 838716</a>
+        <a>Manchester, UK</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Starmore Construction. All rights reserved.</span>
+    <span class="footer-copy">Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="tel:07513838716" class="float-btn float-btn-call" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447513838716?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project" target="_blank" rel="noopener" class="float-btn float-btn-whatsapp" aria-label="WhatsApp">
+    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 50);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Floating CTAs
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.getElementById('hero');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    floatingCtas.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.1 });
+heroObs.observe(hero);
+</script>
+</body>
+</html>
