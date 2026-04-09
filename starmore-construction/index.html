@@ -141,34 +141,18 @@ a { text-decoration: none; color: inherit; }
 }
 .btn-ghost:hover { border-color: var(--gray-500); }
 
-/* Hero image band */
-.hero-images {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+/* Hero logo display */
+.hero-logo-display {
+  display: flex; justify-content: center;
   animation: fadeUp 0.6s ease 0.8s both;
 }
-.hero-img {
-  overflow: hidden; height: 240px; position: relative;
+.hero-logo-display img {
+  width: 220px; height: auto; filter: brightness(10);
+  opacity: 0.7;
 }
-.hero-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  filter: brightness(0.7); transition: all 0.5s;
+@media (max-width: 768px) {
+  .hero-logo-display img { width: 160px; }
 }
-.hero-img:hover img { filter: brightness(0.9); transform: scale(1.04); }
-.hero-img-label {
-  position: absolute; bottom: 16px; left: 16px;
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--white);
-  opacity: 0; transform: translateY(6px); transition: all 0.3s;
-}
-.hero-img:hover .hero-img-label { opacity: 1; transform: translateY(0); }
-
-/* Hero mobile logo */
-.hero-mobile-logo {
-  display: none; width: 160px; height: auto; margin-bottom: 28px;
-  filter: brightness(10);
-  animation: fadeUp 0.6s ease 0.3s both;
-}
-@media (max-width: 768px) { .hero-mobile-logo { display: block; } }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -415,8 +399,6 @@ a { text-decoration: none; color: inherit; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .hero-images { grid-template-columns: repeat(2, 1fr); }
-  .hero-img:nth-child(n+3) { display: none; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: 1fr; }
   .project-card-main img { height: 360px; }
@@ -430,9 +412,6 @@ a { text-decoration: none; color: inherit; }
   .nav-links { display: none; }
   .nav-mobile { display: block; }
   .hero-inner { padding: 140px 24px 80px; }
-  .hero-images { grid-template-columns: 1fr; }
-  .hero-img:nth-child(n+2) { display: none; }
-  .hero-img { height: 200px; }
   .services { padding: 80px 24px; }
   .services-grid { grid-template-columns: 1fr; }
   .projects { padding: 80px 24px; }
@@ -501,7 +480,6 @@ a { text-decoration: none; color: inherit; }
       <div class="hero-cert">BMTrada Certified</div>
       <span class="hero-location">Manchester &amp; Greater Manchester</span>
     </div>
-    <img src="logo.png" alt="Starmore Construction" class="hero-mobile-logo">
     <h1>Building to a<br>higher <span class="accent">standard.</span></h1>
     <p class="hero-desc">Bespoke joinery, fire stopping, BMTrada door installations and full multi-trade construction services. From concept to completion — built to last.</p>
     <div class="hero-actions">
@@ -511,23 +489,8 @@ a { text-decoration: none; color: inherit; }
       </a>
       <a href="#projects" class="btn-ghost">View Projects</a>
     </div>
-    <div class="hero-images">
-      <div class="hero-img">
-        <img src="work-1.png" alt="Bespoke oak and glass staircase">
-        <span class="hero-img-label">Bespoke Joinery</span>
-      </div>
-      <div class="hero-img">
-        <img src="work-4.png" alt="BMTrada door installations">
-        <span class="hero-img-label">BMTrada Doors</span>
-      </div>
-      <div class="hero-img">
-        <img src="work-3.png" alt="Modern bathroom installation">
-        <span class="hero-img-label">Bathroom Refit</span>
-      </div>
-      <div class="hero-img">
-        <img src="work-2.png" alt="Commercial fitout">
-        <span class="hero-img-label">Commercial</span>
-      </div>
+    <div class="hero-logo-display">
+      <img src="logo.png" alt="Starmore Construction">
     </div>
   </div>
 </section>
