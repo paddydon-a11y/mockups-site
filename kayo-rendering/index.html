@@ -78,7 +78,7 @@ ul { list-style: none; }
 }
 .nav-brand {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem; font-weight: 700; letter-spacing: 2px;
+  font-size: 1.2rem; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase; color: var(--cream);
 }
 .nav-brand em {
@@ -109,7 +109,7 @@ ul { list-style: none; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('https://cdn.durable.co/getty/21kkJZx8SVW5Om7lCAnmrHBFDIOOyclOJQD9JS6bcncUuY4qkGDY5YdXxgYSQL1w.jpeg') center/cover no-repeat;
+  background: url('work-4.png') center/cover no-repeat;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -431,6 +431,43 @@ ul { list-style: none; }
 .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
 .footer-copy a { color: var(--gold); }
 
+/* ── FLOATING CTAs ── */
+.floating-ctas {
+  position: fixed; bottom: 28px; right: 28px; z-index: 800;
+  display: flex; flex-direction: column; gap: 14px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.floating-ctas.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.float-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none; cursor: pointer;
+}
+.float-btn:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(0,0,0,0.5); }
+.float-btn-call { background: var(--gold); }
+.float-btn-call svg { stroke: var(--warm-black); }
+.float-btn-whatsapp { background: #25D366; }
+.float-btn-whatsapp svg { fill: #fff; }
+.float-btn-label {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--charcoal-soft); color: var(--cream);
+  padding: 6px 14px; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  white-space: nowrap; border-radius: 4px;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+.float-btn:hover .float-btn-label { opacity: 1; }
+@media (max-width: 768px) {
+  .floating-ctas { bottom: 20px; right: 20px; }
+  .float-btn { width: 50px; height: 50px; }
+  .float-btn-label { display: none; }
+}
+
 /* ── MOBILE NAV ── */
 .mobile-menu {
   display: none; position: fixed; inset: 0; z-index: 999;
@@ -497,7 +534,7 @@ ul { list-style: none; }
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-brand">Kayo <em>R&P</em></a>
+    <a href="#" class="nav-brand">Kayo <em>Rendering &amp; Plastering</em></a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#about">About</a>
@@ -564,7 +601,7 @@ ul { list-style: none; }
   <h2 class="section-title reveal">Expert finishes for <br>every surface.</h2>
   <div class="services-grid">
     <div class="service-card reveal">
-      <img src="https://cdn.durable.co/getty/1fil4rXdIzvZ7ZdqAhRiwQNyMlbuEim47XDiCV3waeeJcNzOT5ed4WeMqpQfHKMN.jpeg" alt="Premium Rendering" loading="lazy">
+      <img src="work-2.webp" alt="Premium Rendering" loading="lazy">
       <div class="service-info">
         <span class="service-num">01</span>
         <div class="service-line"></div>
@@ -573,7 +610,7 @@ ul { list-style: none; }
       </div>
     </div>
     <div class="service-card reveal">
-      <img src="https://cdn.durable.co/getty/21aspsFYukPxNdjIfHkgvb4bGl2fNocaxNlTtk3eumwjOzOcO7PSwd4t2sbilf5L.jpeg" alt="Venetian Plaster" loading="lazy">
+      <img src="https://cdn.durable.co/getty/29lg0jAdPRCCWM7E1t3hJFwF7AGj37CatneuxJ5ThzflO0cuY4YpxirWDqmVtj4x.jpeg" alt="Venetian Plaster" loading="lazy">
       <div class="service-info">
         <span class="service-num">02</span>
         <div class="service-line"></div>
@@ -582,7 +619,7 @@ ul { list-style: none; }
       </div>
     </div>
     <div class="service-card reveal">
-      <img src="https://cdn.durable.co/getty/29lg0jAdPRCCWM7E1t3hJFwF7AGj37CatneuxJ5ThzflO0cuY4YpxirWDqmVtj4x.jpeg" alt="Plastering & Skimming" loading="lazy">
+      <img src="work-1.webp" alt="Plastering & Skimming" loading="lazy">
       <div class="service-info">
         <span class="service-num">03</span>
         <div class="service-line"></div>
@@ -598,13 +635,13 @@ ul { list-style: none; }
   <div class="about-images reveal">
     <div class="about-accent"></div>
     <div class="about-img">
-      <img src="https://cdn.durable.co/getty/3lSlEQZaXZEOMe0SWrV4hGONvOICWPUT9kB6eLeDJN8NyTPzrKMw7SlptSziBXcH.jpeg" alt="Kayo Rendering work" loading="lazy">
+      <img src="work-4.png" alt="Kayo Rendering work" loading="lazy">
     </div>
     <div class="about-img">
-      <img src="https://cdn.durable.co/getty/1e7dtLTjNiHSo2RfIPpTecW3Imq27LCbk2jOtO6dwhZc0pzRJSdafIMz7UG47Xxg.jpeg" alt="Plastering detail" loading="lazy">
+      <img src="work-1.webp" alt="Textured render close-up" loading="lazy">
     </div>
     <div class="about-img">
-      <img src="https://cdn.durable.co/getty/3D7NH8oTNKrSb1aBPx6TmnXqZBznUDt3szBrvqKuZu0OIBdxjcltYLxSTmVPGrlX.jpeg" alt="Venetian plaster finish" loading="lazy">
+      <img src="work-3.png" alt="Rendered outbuilding" loading="lazy">
     </div>
   </div>
   <div class="about-text reveal">
@@ -628,22 +665,22 @@ ul { list-style: none; }
   </div>
   <div class="gallery-scroll">
     <div class="gallery-item">
-      <img src="https://cdn.durable.co/getty/1evCfvNQ7mihv886cAtuplo5ntbhKjNJXGeX6PSxyMfDWCzvJTlpMAd32TOyC2H3.jpeg" alt="Rendering project 1" loading="lazy">
+      <img src="work-4.png" alt="Full house render" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="https://cdn.durable.co/getty/1e2MlNxgR4Imlqry4kncMmXjxUD1gYJzyDhPaPlGe7fK7rxf3HwhcO9Ntw0ujetL.jpeg" alt="Venetian plaster project" loading="lazy">
+      <img src="work-2.webp" alt="Smooth white gable render" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="https://cdn.durable.co/getty/1fFoWNaTO2m19u1OogbGxwtXtmFvSIowU6r7QeTcWYt2t2sTj5cJe012w6gosxLM.jpeg" alt="Rendering project 2" loading="lazy">
+      <img src="work-1.webp" alt="Textured render close-up" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="https://cdn.durable.co/getty/21kkJZx8SVW5Om7lCAnmrHBFDIOOyclOJQD9JS6bcncUuY4qkGDY5YdXxgYSQL1w.jpeg" alt="Exterior rendering" loading="lazy">
+      <img src="work-3.png" alt="Rendered outbuilding" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="https://cdn.durable.co/getty/1fil4rXdIzvZ7ZdqAhRiwQNyMlbuEim47XDiCV3waeeJcNzOT5ed4WeMqpQfHKMN.jpeg" alt="Plastering project" loading="lazy">
+      <img src="https://cdn.durable.co/getty/29lg0jAdPRCCWM7E1t3hJFwF7AGj37CatneuxJ5ThzflO0cuY4YpxirWDqmVtj4x.jpeg" alt="Venetian plaster texture" loading="lazy">
     </div>
     <div class="gallery-item">
-      <img src="https://cdn.durable.co/getty/30F9zJD1LYEiP7DkOGc5oR90bcmuUC777XRDg8qCXG9hEC3L7Qj8tlSPo1zpMeMx.jpeg" alt="Skimming project" loading="lazy">
+      <img src="https://cdn.durable.co/getty/30F9zJD1LYEiP7DkOGc5oR90bcmuUC777XRDg8qCXG9hEC3L7Qj8tlSPo1zpMeMx.jpeg" alt="External wall insulation" loading="lazy">
     </div>
   </div>
 </section>
@@ -699,7 +736,7 @@ ul { list-style: none; }
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">Kayo <em>R&P</em></div>
+      <div class="footer-brand">Kayo <em>Rendering &amp; Plastering</em></div>
       <p class="footer-desc">Premium rendering, Venetian plaster and skimming specialists serving Radlett, Hertfordshire and surrounding areas. Over 10 years of expert craftsmanship.</p>
     </div>
     <div>
@@ -726,6 +763,18 @@ ul { list-style: none; }
   </div>
 </footer>
 
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="tel:07464183754" class="float-btn float-btn-call" aria-label="Call us">
+    <span class="float-btn-label">Call Now</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447464183754?text=Hi%2C%20I%27d%20like%20a%20free%20quote%20please" target="_blank" rel="noopener" class="float-btn float-btn-whatsapp" aria-label="WhatsApp us">
+    <span class="float-btn-label">WhatsApp</span>
+    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
 <script>
 // Loader
 window.addEventListener('load', () => {
@@ -743,6 +792,20 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 reveals.forEach(el => observer.observe(el));
+
+// Floating CTAs — show after scrolling past hero
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.querySelector('.hero');
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      floatingCtas.classList.add('visible');
+    } else {
+      floatingCtas.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.1 });
+heroObserver.observe(hero);
 
 // Gallery drag scroll
 const gallery = document.querySelector('.gallery-scroll');
