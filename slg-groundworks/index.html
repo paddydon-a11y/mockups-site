@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLG Groundworks — Groundworks, Driveways, Landscaping & Property Maintenance | Hastings & St Leonards</title>
+<meta name="description" content="Professional groundworks, driveways, patios, landscaping & property maintenance in Hastings & St Leonards. Reliable, high-quality work at competitive prices. Free quotes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --orange:#ea580c;
+  --orange-bright:#f97316;
+  --orange-hot:#c2410c;
+  --orange-pale:#fff7ed;
+  --orange-glow:rgba(249,115,22,0.08);
+  --orange-border:rgba(249,115,22,0.15);
+  --charcoal:#1c1917;
+  --dark:#292524;
+  --stone:#44403c;
+  --gray-500:#78716c;
+  --gray-400:#a8a29e;
+  --gray-200:#e7e5e4;
+  --gray-100:#f5f5f4;
+  --cream:#fafaf9;
+  --white:#ffffff;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;color:var(--stone);background:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* ── LOADER ── */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--white);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity 0.5s,visibility 0.5s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader img{height:60px}
+.loader-bar{width:80px;height:3px;background:var(--gray-200);border-radius:3px;overflow:hidden;position:relative}
+.loader-bar::after{content:'';position:absolute;left:-40%;top:0;bottom:0;width:40%;background:var(--orange);border-radius:3px;animation:loaderSlide 0.8s ease-in-out infinite}
+@keyframes loaderSlide{to{left:100%}}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-200);transition:box-shadow 0.3s}
+.nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.06)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo img{height:50px;width:auto}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:0.82rem;font-weight:600;color:var(--gray-500);transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:10px 24px;border-radius:50px;font-weight:700!important;font-size:0.82rem!important;transition:all 0.3s!important;box-shadow:0 3px 12px rgba(234,88,12,0.25)}
+.nav-cta:hover{background:var(--orange-hot)!important;transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile svg{stroke:var(--charcoal)}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--charcoal)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
+/* Diagonal orange accent */
+.hero-diagonal{position:absolute;bottom:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,transparent 30%,rgba(249,115,22,0.08) 100%);pointer-events:none;z-index:1}
+/* Animated construction stripes */
+.hero-stripes{position:absolute;bottom:0;left:0;right:0;height:8px;z-index:3;background:repeating-linear-gradient(135deg,var(--orange),var(--orange) 16px,var(--charcoal) 16px,var(--charcoal) 32px);animation:stripesMove 2s linear infinite}
+@keyframes stripesMove{to{background-position:64px 0}}
+
+.hero-content{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:160px 24px 100px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);padding:8px 18px;border-radius:50px;font-size:0.7rem;font-weight:700;color:var(--orange-bright);letter-spacing:0.5px;margin-bottom:24px;animation:fadeUp 0.5s ease 0.3s both}
+.hero-tag .pin{font-size:0.9rem}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4rem);font-weight:900;line-height:1.06;color:var(--white);margin-bottom:18px;animation:fadeUp 0.5s ease 0.45s both}
+.hero h1 .orange{color:var(--orange-bright)}
+.hero h1 .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.5);max-width:480px;line-height:1.75;margin-bottom:32px;animation:fadeUp 0.5s ease 0.6s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 0.5s ease 0.75s both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.25s}
+.btn svg{width:18px;height:18px}
+.btn-orange{background:var(--orange);color:var(--white);box-shadow:0 4px 18px rgba(234,88,12,0.35)}
+.btn-orange:hover{background:var(--orange-hot);transform:translateY(-2px);box-shadow:0 6px 24px rgba(234,88,12,0.45)}
+.btn-ghost{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.15)}
+.btn-ghost:hover{border-color:var(--orange-bright);color:var(--orange-bright)}
+
+/* Hero photo card */
+.hero-photo-card{position:relative;animation:fadeUp 0.6s ease 0.5s both}
+.hero-photo-main{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.4);border:3px solid rgba(249,115,22,0.2)}
+.hero-photo-main img{width:100%;height:420px;object-fit:cover}
+/* Orange corner accents */
+.hero-corner{position:absolute;width:40px;height:40px;border:3px solid var(--orange-bright);pointer-events:none;opacity:0.4}
+.hc-tl{top:-8px;left:-8px;border-right:none;border-bottom:none;border-radius:8px 0 0 0}
+.hc-br{bottom:-8px;right:-8px;border-left:none;border-top:none;border-radius:0 0 8px 0}
+/* Floating badge */
+.hero-badge{position:absolute;bottom:-20px;left:-16px;background:var(--orange);color:var(--white);border-radius:14px;padding:16px 20px;box-shadow:0 6px 20px rgba(234,88,12,0.4);display:flex;align-items:center;gap:10px;animation:floatBob 4s ease-in-out infinite}
+.hero-badge-icon{font-size:1.4rem}
+.hero-badge-text{font-weight:800;font-size:0.85rem;line-height:1.2}
+.hero-badge-text span{display:block;font-size:0.58rem;font-weight:600;opacity:0.7;text-transform:uppercase;letter-spacing:1px}
+@keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── STATS ── */
+.stats{background:var(--orange);position:relative;overflow:hidden}
+.stats::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 30px,rgba(0,0,0,0.03) 30px,rgba(0,0,0,0.03) 60px)}
+.stats-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:2}
+.stat{padding:24px 16px;text-align:center;border-right:1px solid rgba(255,255,255,0.15)}
+.stat:last-child{border-right:none}
+.stat-num{font-size:1.6rem;font-weight:900;color:var(--white);line-height:1}
+.stat-label{font-size:0.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-top:4px}
+
+/* ── SERVICES ── */
+.services{padding:80px 24px;max-width:1140px;margin:0 auto}
+.section-label{font-size:0.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.section-title{font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:900;color:var(--charcoal);line-height:1.12;margin-bottom:12px}
+.section-desc{font-size:0.9rem;color:var(--gray-500);max-width:500px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.svc{background:var(--cream);border:2px solid transparent;border-radius:16px;padding:28px 22px;transition:all 0.3s;cursor:default;position:relative;overflow:hidden}
+/* Orange bar reveal on hover */
+.svc::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-bright));border-radius:16px 16px 0 0;transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.svc:hover::after{transform:scaleX(1)}
+.svc:hover{border-color:var(--orange);transform:translateY(-4px);box-shadow:0 12px 28px rgba(234,88,12,0.06)}
+.svc-icon{width:44px;height:44px;border-radius:10px;background:var(--orange-glow);border:1px solid var(--orange-border);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.2rem}
+.svc h3{font-size:0.95rem;font-weight:800;color:var(--charcoal);margin-bottom:6px}
+.svc p{font-size:0.8rem;color:var(--gray-500);line-height:1.65}
+
+/* ── GALLERY ── */
+.gallery{padding:80px 24px;background:var(--charcoal);position:relative;overflow:hidden}
+/* Animated stripes at top */
+.gallery::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:repeating-linear-gradient(135deg,var(--orange),var(--orange) 12px,transparent 12px,transparent 24px)}
+.gallery-inner{max-width:1140px;margin:0 auto;position:relative;z-index:2}
+.gallery .section-label{color:var(--orange-bright)}
+.gallery .section-title{color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:10px;margin-top:40px}
+.g-card{border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
+.g-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.5s;filter:brightness(0.8)}
+.g-card:hover img{transform:scale(1.06);filter:brightness(1)}
+.g-card::after{content:'';position:absolute;inset:0;border:2px solid transparent;border-radius:12px;transition:border-color 0.3s}
+.g-card:hover::after{border-color:var(--orange-bright)}
+.g-card:nth-child(1){grid-column:span 2;grid-row:span 2}
+
+/* ── ABOUT ── */
+.about{padding:80px 24px;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-visual{position:relative}
+.about-img{border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+.about-img img{width:100%;height:400px;object-fit:cover}
+/* Orange frame accent */
+.about-frame{position:absolute;inset:-12px;border:2px solid var(--orange-bright);border-radius:24px;opacity:0.12;pointer-events:none}
+.about-badge{position:absolute;bottom:-18px;right:-18px;background:var(--orange);color:var(--white);border-radius:14px;padding:18px 22px;box-shadow:0 6px 20px rgba(234,88,12,0.35);text-align:center}
+.about-badge-text{font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:0.7}
+.about-badge-num{font-size:1.6rem;font-weight:900;line-height:1}
+.about-content p{font-size:0.9rem;color:var(--gray-500);line-height:1.8;margin-bottom:14px}
+.about-content p strong{color:var(--charcoal);font-weight:700}
+.about-vals{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.val{text-align:center;padding:20px 12px;background:var(--cream);border-radius:12px;border:1px solid var(--gray-200);transition:all 0.3s}
+.val:hover{border-color:var(--orange);transform:translateY(-2px)}
+.val-icon{font-size:1.5rem;margin-bottom:6px;display:block}
+.val h4{font-size:0.78rem;font-weight:800;color:var(--charcoal)}
+
+/* ── CTA ── */
+.cta{padding:80px 24px;background:linear-gradient(135deg,var(--orange) 0%,var(--orange-hot) 100%);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 40px,rgba(0,0,0,0.03) 40px,rgba(0,0,0,0.03) 80px)}
+/* Floating hammer decorations */
+.cta-hammer{position:absolute;font-size:4rem;opacity:0.06;pointer-events:none}
+.cta-h1{top:20%;left:8%;transform:rotate(-25deg);animation:hammerDrift 8s ease-in-out infinite}
+.cta-h2{bottom:15%;right:10%;transform:rotate(15deg);animation:hammerDrift 10s ease-in-out infinite 2s}
+@keyframes hammerDrift{0%,100%{transform:rotate(-25deg) translate(0,0)}50%{transform:rotate(-20deg) translate(8px,-8px)}}
+
+.cta-inner{max-width:580px;margin:0 auto;position:relative;z-index:2}
+.cta .section-label{color:rgba(255,255,255,0.5)}
+.cta .section-title{color:var(--white);margin-bottom:10px}
+.cta-sub{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:32px}
+.cta-phone{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;color:var(--white);display:block;margin-bottom:24px;transition:opacity 0.3s}
+.cta-phone:hover{opacity:0.85}
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;background:var(--white);color:var(--orange);font-weight:700;font-size:0.88rem;transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.1)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;background:#25D366;color:var(--white);font-weight:700;font-size:0.88rem;transition:all 0.3s;box-shadow:0 4px 14px rgba(37,211,102,0.3)}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+.footer{background:var(--charcoal);padding:48px 24px 20px}
+.footer-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer-brand img{height:48px;margin-bottom:12px}
+.footer-desc{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.7;max-width:300px}
+.footer-heading{font-size:0.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange-bright);margin-bottom:14px}
+.footer-links a{display:block;font-size:0.8rem;color:rgba(255,255,255,0.35);padding:4px 0;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{max-width:1140px;margin:28px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.68rem;color:rgba(255,255,255,0.25)}
+.footer-copy a{color:var(--orange-bright)}
+
+/* ── FLOATING ── */
+.floating-ctas{position:fixed;bottom:20px;right:20px;z-index:800;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(20px);transition:opacity 0.5s,transform 0.5s;pointer-events:none}
+.floating-ctas.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);box-shadow:0 4px 16px rgba(0,0,0,0.2);transition:transform 0.2s;border:none;cursor:pointer}
+.fab:hover{transform:scale(1.12)}
+.fab-call{background:var(--orange)}
+.fab-call svg{stroke:var(--white);fill:none;width:22px;height:22px;stroke-width:2.5}
+.fab-wa{background:#25D366}
+.fab-wa svg{fill:var(--white);width:24px;height:24px}
+
+/* ── MOBILE ── */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.3rem;font-weight:800;color:var(--charcoal);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--orange)}
+.mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;cursor:pointer}
+.mobile-close svg{stroke:var(--charcoal)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-photo-card{max-width:440px;margin:0 auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .gallery .g-card:nth-child(1){grid-column:span 2}
+  .about{grid-template-columns:1fr;gap:40px}
+  .about-vals{grid-template-columns:repeat(3,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid rgba(255,255,255,0.15)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mobile{display:block}
+  .services-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  .gallery .g-card:nth-child(1){grid-column:span 1}
+  .about-vals{grid-template-columns:1fr 1fr 1fr}
+  .stats-inner{grid-template-columns:1fr}
+  .stat{border-right:none}
+  .footer-inner{grid-template-columns:1fr;gap:24px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn{width:100%;justify-content:center}
+  .about-vals{grid-template-columns:1fr}
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img src="logo.png" alt="SLG">
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logo.png" alt="SLG Groundworks"></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Get a Free Quote</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Work</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--orange)">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"><img src="work-3.jpg" alt="LED lit patio steps by SLG Groundworks"></div>
+  <div class="hero-diagonal"></div>
+  <div class="hero-stripes"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag"><span class="pin">&#128205;</span> Hastings, St Leonards &amp; Surrounding Areas</div>
+      <h1>Groundworks done <span class="orange"><span class="italic">properly.</span></span><br>Built on trust.</h1>
+      <p class="hero-sub">Foundations, drainage, driveways, patios, landscaping and property maintenance. From site prep to the finishing touches — we handle every stage with precision and care.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Get a Free Quote
+        </a>
+        <a href="#gallery" class="btn btn-ghost">See Our Work</a>
+      </div>
+    </div>
+    <div class="hero-photo-card">
+      <div class="hero-corner hc-tl"></div>
+      <div class="hero-corner hc-br"></div>
+      <div class="hero-photo-main">
+        <img src="work-4.jpg" alt="Indian stone patio by SLG">
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-icon">&#128170;</span>
+        <div class="hero-badge-text">Free Quotes<span>No obligation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">Residential</div><div class="stat-label">&amp; Commercial</div></div>
+    <div class="stat"><div class="stat-num">Quality</div><div class="stat-label">Guaranteed Work</div></div>
+    <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Quotes &amp; Advice</div></div>
+    <div class="stat"><div class="stat-num">Local</div><div class="stat-label">Hastings Based</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label reveal">What We Do</div>
+  <h2 class="section-title reveal">From foundations to<br>finishing touches.</h2>
+  <p class="section-desc reveal">A full range of groundwork, surfacing, landscaping and property maintenance services across Hastings, St Leonards and surrounding areas.</p>
+  <div class="services-grid">
+    <div class="svc reveal">
+      <div class="svc-icon">&#129518;</div>
+      <h3>Groundworks</h3>
+      <p>Site prep, excavation, foundations, footings, drainage, concreting and site clearance. Whether it's a new build or development — we lay the groundwork right.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-icon">&#128739;</div>
+      <h3>Driveways &amp; Patios</h3>
+      <p>Block paving, natural stone, concrete and slab finishes. Designed and installed to boost both the look and value of your property.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-icon">&#128663;</div>
+      <h3>Roadworks &amp; Surfacing</h3>
+      <p>Tarmac and asphalt surfacing for driveways, access roads and private developments. Durable, long-lasting finishes for residential and commercial use.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-icon">&#127793;</div>
+      <h3>Gardens &amp; Landscaping</h3>
+      <p>Full garden transformations, turfing, levelling, paving and creating outdoor spaces tailored to how you actually want to use them.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-icon">&#129521;</div>
+      <h3>Brick &amp; Slab Repointing</h3>
+      <p>Expert repointing to restore brickwork and paving. Protects against weather damage and brings tired walls and paths back to life.</p>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-icon">&#128296;</div>
+      <h3>Property Maintenance</h3>
+      <p>General repairs, upkeep and getting properties into shape. From minor fixes to ongoing maintenance — no job too big or small.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-label reveal">Our Work</div>
+    <h2 class="section-title reveal" style="color:var(--white)">We let the work<br>speak for itself.</h2>
+    <div class="gallery-grid">
+      <div class="g-card reveal"><img src="work-3.jpg" alt="LED lit patio steps" loading="lazy"></div>
+      <div class="g-card reveal"><img src="work-4.jpg" alt="Indian stone patio" loading="lazy"></div>
+      <div class="g-card reveal"><img src="work-1.jpg" alt="Drainage installation" loading="lazy"></div>
+      <div class="g-card reveal"><img src="work-2.jpg" alt="Drainage pipework" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-frame"></div>
+    <div class="about-img">
+      <img src="work-3.jpg" alt="SLG Groundworks — patio with LED lighting">
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-num">&#9733;</div>
+      <div class="about-badge-text">Built on trust</div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-label">About SLG</div>
+    <h2 class="section-title">Hard work, precision &amp;<br>a reputation for getting<br>it right first time.</h2>
+    <p><strong>SLG Groundworks</strong> provides reliable, high-quality groundwork and civil engineering services for residential and commercial projects across Hastings, St Leonards and surrounding areas.</p>
+    <p>Our team brings hands-on experience across every aspect of groundworks — foundations, drainage systems, excavation, concreting, surfacing and site clearance. We take real pride in delivering work that meets the highest industry standards while staying on schedule and within budget.</p>
+    <p>We work closely with clients, contractors and developers to make sure every project runs smoothly. No matter the size or complexity, every job gets the same level of dedication and attention to detail.</p>
+    <div class="about-vals">
+      <div class="val"><span class="val-icon">&#128170;</span><h4>Reliable</h4></div>
+      <div class="val"><span class="val-icon">&#127919;</span><h4>Precise</h4></div>
+      <div class="val"><span class="val-icon">&#128176;</span><h4>Competitive</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-hammer cta-h1">&#128296;</div>
+  <div class="cta-hammer cta-h2">&#128296;</div>
+  <div class="cta-inner">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal" style="color:var(--white)">Got a project?<br>Let's get it sorted.</h2>
+    <p class="cta-sub reveal">Free quotes, honest advice and quality work you can count on. Covering Hastings, St Leonards, Bexhill, Eastbourne &amp; all surrounding areas.</p>
+    <a href="#contact" class="cta-phone reveal">Contact SLG Groundworks</a>
+    <div class="cta-buttons reveal">
+      <a href="#contact" class="btn-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="https://wa.me/44?text=Hi%2C%20I%27d%20like%20a%20free%20quote%20please" target="_blank" rel="noopener" class="btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand"><img src="logo.png" alt="SLG Groundworks"></div>
+      <p class="footer-desc">Professional groundworks, driveways, landscaping &amp; property maintenance across Hastings, St Leonards &amp; surrounding areas. Quality work at competitive prices.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Groundworks</a>
+        <a href="#services">Driveways &amp; Patios</a>
+        <a href="#services">Roadworks &amp; Surfacing</a>
+        <a href="#services">Gardens &amp; Landscaping</a>
+        <a href="#services">Repointing</a>
+        <a href="#services">Property Maintenance</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a>Hastings &amp; St Leonards</a>
+        <a>&amp; surrounding areas</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 SLG Groundworks &amp; Property Maintenance. All rights reserved.</span>
+    <span class="footer-copy">Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="#contact" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/44?text=Hi%2C%20I%27d%20like%20a%20free%20quote%20please" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 500);
+});
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 50);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Floating CTAs
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.getElementById('hero');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    floatingCtas.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.1 });
+heroObs.observe(hero);
+</script>
+</body>
+</html>
