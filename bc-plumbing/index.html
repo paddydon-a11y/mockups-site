@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BC Plumbing — Reliable Plumber in Bath, Trowbridge & Wiltshire</title>
+<meta name="description" content="Professional plumbing services across Bath, Trowbridge & Wiltshire. 15+ years experience, no call-out fees, 10/10 reviews. Bathrooms, leaks, emergencies. Call Ben today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --blue:#0369a1;
+  --blue-bright:#0ea5e9;
+  --blue-dark:#075985;
+  --blue-pale:#f0f9ff;
+  --blue-glow:rgba(14,165,233,0.08);
+  --blue-border:rgba(14,165,233,0.15);
+  --navy:#0c1a2e;
+  --charcoal:#1e293b;
+  --slate:#475569;
+  --gray-500:#64748b;
+  --gray-400:#94a3b8;
+  --gray-200:#e2e8f0;
+  --gray-100:#f1f5f9;
+  --cream:#f8fafc;
+  --white:#ffffff;
+  --gold:#f59e0b;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--slate);background:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* ── WATER RIPPLE KEYFRAMES ── */
+@keyframes ripple{0%{transform:scale(0.8);opacity:0.6}100%{transform:scale(2.5);opacity:0}}
+@keyframes drip{0%{height:0;opacity:0.5}60%{height:80px;opacity:0.3}100%{height:120px;opacity:0}}
+@keyframes dropBounce{0%{transform:translateY(-20px) scale(1);opacity:0}50%{transform:translateY(0) scale(1.2);opacity:1}70%{transform:translateY(-6px) scale(0.95)}100%{transform:translateY(0) scale(1);opacity:1}}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-200);transition:box-shadow 0.3s}
+.nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.06)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-brand-drop{width:32px;height:32px;background:var(--blue);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
+.nav-brand-drop span{transform:rotate(45deg);color:var(--white);font-weight:800;font-size:0.7rem}
+.nav-brand-text{font-weight:800;font-size:1rem;color:var(--charcoal)}
+.nav-brand-text span{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:0.82rem;font-weight:600;color:var(--gray-500);transition:color 0.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{background:var(--blue)!important;color:var(--white)!important;padding:10px 24px;border-radius:50px;font-weight:700!important;font-size:0.82rem!important;transition:all 0.3s!important;box-shadow:0 3px 12px rgba(3,105,161,0.2)}
+.nav-cta:hover{background:var(--blue-dark)!important;transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile svg{stroke:var(--charcoal)}
+
+/* ── HERO ── */
+.hero{padding:130px 24px 80px;position:relative;overflow:hidden;background:linear-gradient(170deg,var(--blue-pale) 0%,var(--white) 40%,var(--cream) 100%)}
+/* Water droplets decoration */
+.hero-drops{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-drop{position:absolute;width:8px;height:12px;background:var(--blue-bright);border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;opacity:0.06}
+.hd1{top:15%;left:10%;animation:dropBounce 3s ease infinite}
+.hd2{top:30%;right:15%;animation:dropBounce 4s ease infinite 1s;width:6px;height:9px}
+.hd3{bottom:25%;left:20%;animation:dropBounce 3.5s ease infinite 0.5s;width:10px;height:15px}
+.hd4{top:50%;right:8%;animation:dropBounce 5s ease infinite 2s;width:5px;height:8px}
+/* Ripple circles */
+.hero-ripple{position:absolute;border-radius:50%;border:1px solid var(--blue-bright);opacity:0;pointer-events:none}
+.hr1{width:200px;height:200px;bottom:10%;right:5%;animation:ripple 4s ease-out infinite}
+.hr2{width:150px;height:150px;top:20%;left:5%;animation:ripple 5s ease-out infinite 1.5s}
+
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-glow);border:1px solid var(--blue-border);padding:7px 16px;border-radius:50px;font-size:0.7rem;font-weight:700;color:var(--blue);margin-bottom:20px;animation:fadeUp 0.5s ease 0.2s both}
+.hero-tag .drop-icon{font-size:0.85rem}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.4rem,5vw,3.4rem);font-weight:800;line-height:1.08;color:var(--charcoal);margin-bottom:16px;animation:fadeUp 0.5s ease 0.35s both}
+.hero h1 .blue{color:var(--blue)}
+.hero-sub{font-size:0.95rem;color:var(--gray-500);max-width:440px;line-height:1.75;margin-bottom:28px;animation:fadeUp 0.5s ease 0.5s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 0.5s ease 0.65s both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.25s}
+.btn svg{width:18px;height:18px}
+.btn-blue{background:var(--blue);color:var(--white);box-shadow:0 4px 16px rgba(3,105,161,0.25)}
+.btn-blue:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(3,105,161,0.35)}
+.btn-outline{background:var(--white);color:var(--charcoal);border:2px solid var(--gray-200);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.hero-no-callout{display:flex;align-items:center;gap:8px;margin-top:20px;font-size:0.78rem;font-weight:700;color:var(--blue);animation:fadeUp 0.5s ease 0.8s both}
+.hero-no-callout svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:2.5}
+
+/* Hero photo stack */
+.hero-photos{position:relative;animation:fadeUp 0.6s ease 0.4s both}
+.hero-photo-main{border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.1)}
+.hero-photo-main img{width:100%;height:400px;object-fit:cover}
+.hero-photo-float{position:absolute;bottom:-24px;left:-20px;width:160px;height:160px;border-radius:14px;overflow:hidden;border:4px solid var(--white);box-shadow:0 10px 28px rgba(0,0,0,0.12);transform:rotate(-3deg);animation:floatBob 4s ease-in-out infinite}
+.hero-photo-float img{width:100%;height:100%;object-fit:cover}
+@keyframes floatBob{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-8px)}}
+/* Rating badge */
+.hero-rating{position:absolute;top:-12px;right:-8px;background:var(--white);border-radius:14px;padding:14px 18px;box-shadow:0 4px 16px rgba(0,0,0,0.08);border:1px solid var(--gray-200);text-align:center;z-index:3}
+.hero-rating-stars{color:var(--gold);font-size:0.9rem;letter-spacing:1px}
+.hero-rating-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:800;color:var(--charcoal);line-height:1}
+.hero-rating-text{font-size:0.55rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400);margin-top:2px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SERVICES ── */
+.services{padding:80px 24px;max-width:1100px;margin:0 auto}
+.section-label{font-size:0.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:800;color:var(--charcoal);line-height:1.12;margin-bottom:12px}
+.section-desc{font-size:0.9rem;color:var(--gray-500);max-width:480px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.svc{background:var(--cream);border:2px solid transparent;border-radius:16px;padding:28px 22px;transition:all 0.3s;cursor:default}
+.svc:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 24px rgba(3,105,161,0.06)}
+.svc-icon{font-size:1.8rem;margin-bottom:14px;display:block}
+.svc h3{font-size:0.95rem;font-weight:800;color:var(--charcoal);margin-bottom:6px}
+.svc p{font-size:0.8rem;color:var(--gray-500);line-height:1.65}
+
+/* ── GALLERY ── */
+.gallery{padding:80px 24px;background:var(--navy);position:relative;overflow:hidden}
+/* Water wave top border */
+.gallery::before{content:'';position:absolute;top:-1px;left:0;right:0;height:30px;background:var(--white);clip-path:ellipse(55% 100% at 50% 0%)}
+.gallery-inner{max-width:1100px;margin:0 auto;padding-top:20px}
+.gallery .section-label{color:var(--blue-bright)}
+.gallery .section-title{color:var(--white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:40px}
+.g-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer}
+.g-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.g-card:hover img{transform:scale(1.05)}
+.g-card::after{content:'';position:absolute;inset:0;border:2px solid transparent;border-radius:14px;transition:border-color 0.3s}
+.g-card:hover::after{border-color:var(--blue-bright)}
+.g-card:nth-child(1){grid-column:span 2;grid-row:span 2}
+.g-card:not(:first-child){height:180px}
+
+/* ── REVIEWS ── */
+.reviews{padding:80px 24px;background:var(--cream)}
+.reviews-inner{max-width:1100px;margin:0 auto}
+.reviews-scroll{display:flex;gap:16px;overflow-x:auto;padding:40px 0 16px;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
+.reviews-scroll::-webkit-scrollbar{display:none}
+.review{flex:0 0 340px;background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:28px 24px;scroll-snap-align:start;transition:all 0.3s}
+.review:hover{border-color:var(--blue);box-shadow:0 8px 20px rgba(3,105,161,0.05);transform:translateY(-3px)}
+.review-stars{color:var(--gold);font-size:0.9rem;letter-spacing:1px;margin-bottom:4px}
+.review-score{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:800;color:var(--charcoal);margin-bottom:12px}
+.review-text{font-size:0.84rem;color:var(--gray-500);font-style:italic;line-height:1.7;margin-bottom:16px}
+.review-author{font-size:0.78rem;font-weight:700;color:var(--charcoal)}
+.review-loc{font-size:0.65rem;color:var(--gray-400);margin-top:2px}
+
+/* ── ABOUT ── */
+.about{padding:80px 24px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-visual{position:relative}
+.about-img{border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+.about-img img{width:100%;height:380px;object-fit:cover}
+.about-badge{position:absolute;bottom:-16px;right:-16px;background:var(--blue);color:var(--white);border-radius:14px;padding:18px 22px;box-shadow:0 6px 20px rgba(3,105,161,0.3);text-align:center}
+.about-badge-num{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:800;line-height:1}
+.about-badge-text{font-size:0.58rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:0.7;margin-top:2px}
+.about-content p{font-size:0.9rem;color:var(--gray-500);line-height:1.8;margin-bottom:14px}
+.about-content p strong{color:var(--charcoal);font-weight:700}
+.about-checks{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ck{display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:700;color:var(--charcoal)}
+.ck-dot{width:20px;height:20px;border-radius:50%;background:var(--blue-glow);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue);font-size:0.55rem;font-weight:900}
+
+/* ── CTA ── */
+.cta{padding:80px 24px;background:var(--blue);text-align:center;position:relative;overflow:hidden}
+/* Water bubbles */
+.cta-bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none}
+.cb1{width:200px;height:200px;top:-40px;right:10%;animation:ripple 6s ease-out infinite}
+.cb2{width:140px;height:140px;bottom:-30px;left:15%;animation:ripple 8s ease-out infinite 2s}
+.cb3{width:100px;height:100px;top:30%;left:5%;animation:ripple 5s ease-out infinite 1s}
+.cta-inner{max-width:560px;margin:0 auto;position:relative;z-index:2}
+.cta .section-label{color:rgba(255,255,255,0.5)}
+.cta .section-title{color:var(--white);margin-bottom:10px}
+.cta-sub{font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:8px}
+.cta-no-callout{font-size:0.75rem;font-weight:700;color:var(--gold);margin-bottom:28px}
+.cta-phone{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;color:var(--white);display:block;margin-bottom:24px;transition:opacity 0.3s}
+.cta-phone:hover{opacity:0.85}
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-white{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;background:var(--white);color:var(--blue);font-weight:700;font-size:0.88rem;transition:all 0.3s;box-shadow:0 4px 14px rgba(0,0,0,0.1)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.15)}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;background:#25D366;color:var(--white);font-weight:700;font-size:0.88rem;transition:all 0.3s;box-shadow:0 4px 14px rgba(37,211,102,0.3)}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);padding:48px 24px 20px}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer-brand-drop{width:28px;height:28px;background:var(--blue-bright);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center}
+.footer-brand-drop span{transform:rotate(45deg);color:var(--white);font-weight:800;font-size:0.55rem}
+.footer-brand-name{font-weight:800;font-size:0.95rem;color:var(--white)}
+.footer-brand-name span{color:var(--blue-bright)}
+.footer-desc{font-size:0.8rem;color:rgba(255,255,255,0.35);line-height:1.7;max-width:300px}
+.footer-heading{font-size:0.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-bright);margin-bottom:14px}
+.footer-links a{display:block;font-size:0.8rem;color:rgba(255,255,255,0.35);padding:4px 0;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{max-width:1100px;margin:28px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.68rem;color:rgba(255,255,255,0.25)}
+.footer-copy a{color:var(--blue-bright)}
+
+/* ── FLOATING ── */
+.floating-ctas{position:fixed;bottom:20px;right:20px;z-index:800;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(20px);transition:opacity 0.5s,transform 0.5s;pointer-events:none}
+.floating-ctas.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform 0.2s;border:none;cursor:pointer}
+.fab:hover{transform:scale(1.12)}
+.fab-call{background:var(--blue)}
+.fab-call svg{stroke:var(--white);fill:none;width:22px;height:22px;stroke-width:2.5}
+.fab-wa{background:#25D366}
+.fab-wa svg{fill:var(--white);width:24px;height:24px}
+
+/* ── MOBILE ── */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:800;color:var(--charcoal);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--blue)}
+.mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;cursor:pointer}
+.mobile-close svg{stroke:var(--charcoal)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-btns{justify-content:center}
+  .hero-no-callout{justify-content:center}
+  .hero-photos{max-width:440px;margin:0 auto}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .g-card:nth-child(1){grid-column:span 2}
+  .about{grid-template-columns:1fr;gap:40px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mobile{display:block}
+  .services-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .g-card:nth-child(1){grid-column:span 1}
+  .g-card:not(:first-child){height:220px}
+  .about-checks{grid-template-columns:1fr}
+  .review{flex:0 0 290px}
+  .footer-inner{grid-template-columns:1fr;gap:24px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn{width:100%;justify-content:center}
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-drop"><span>BC</span></div>
+      <div class="nav-brand-text">BC <span>Plumbing</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#about">About</a>
+      <a href="tel:07885377001" class="nav-cta">Call Ben</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Work</a>
+  <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="tel:07885377001" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--blue)">Call Ben</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-drops">
+    <div class="hero-drop hd1"></div>
+    <div class="hero-drop hd2"></div>
+    <div class="hero-drop hd3"></div>
+    <div class="hero-drop hd4"></div>
+  </div>
+  <div class="hero-ripple hr1"></div>
+  <div class="hero-ripple hr2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag"><span class="drop-icon">&#128167;</span> Bath, Trowbridge &amp; Wiltshire</div>
+      <h1>The plumber people actually <span class="blue">recommend.</span></h1>
+      <p class="hero-sub">15+ years of fixing leaks, fitting bathrooms and sorting emergencies across Bath, Trowbridge and Wiltshire. Honest, friendly, and rated 10/10 by pretty much everyone who's used us.</p>
+      <div class="hero-btns">
+        <a href="tel:07885377001" class="btn btn-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Ben
+        </a>
+        <a href="#gallery" class="btn btn-outline">See Our Bathrooms</a>
+      </div>
+      <div class="hero-no-callout">
+        <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        No call-out fees. Ever.
+      </div>
+    </div>
+    <div class="hero-photos">
+      <div class="hero-rating">
+        <div class="hero-rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="hero-rating-num">10/10</div>
+        <div class="hero-rating-text">Average Rating</div>
+      </div>
+      <div class="hero-photo-main">
+        <img src="work-1.webp" alt="Teal tiled bathroom by BC Plumbing">
+      </div>
+      <div class="hero-photo-float">
+        <img src="work-2.webp" alt="Marble shower enclosure">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label reveal">What We Do</div>
+  <h2 class="section-title reveal">From a dripping tap to<br>a dream bathroom.</h2>
+  <p class="section-desc reveal">No job too small, no emergency too late. We cover everything plumbing — and we don't charge just to show up.</p>
+  <div class="services-grid">
+    <div class="svc reveal">
+      <span class="svc-icon">&#128703;</span>
+      <h3>Bathroom Installations</h3>
+      <p>Full bathroom design and installation — baths, showers, tiling, fixtures. We turn tired bathrooms into something you'll actually want to show off.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-icon">&#128167;</span>
+      <h3>Leak Detection &amp; Repairs</h3>
+      <p>Dripping taps, burst pipes, hidden leaks — we find it, fix it, and make sure it doesn't come back. Fast response, no fuss.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-icon">&#9888;&#65039;</span>
+      <h3>Emergency Callouts</h3>
+      <p>Late night, weekend, Christmas Eve — yes, we've done that. When you've got water where it shouldn't be, we'll be there.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-icon">&#128704;</span>
+      <h3>Taps, Toilets &amp; Showers</h3>
+      <p>Replacements, repairs and upgrades. From a new shower head to a full suite swap — all fitted properly and tested.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-icon">&#128295;</span>
+      <h3>Pipework &amp; Maintenance</h3>
+      <p>Pipe repairs, replacements, rerouting and general plumbing maintenance. We go above and beyond — just ask about our pipe fittings.</p>
+    </div>
+    <div class="svc reveal">
+      <span class="svc-icon">&#127859;</span>
+      <h3>Kitchen Plumbing</h3>
+      <p>Dishwasher connections, sink installs, waste disposal units and appliance hookups. Everything under the kitchen sink, sorted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-label reveal">Our Bathrooms</div>
+    <h2 class="section-title reveal" style="color:var(--white)">Bathrooms that make<br>you stop and stare.</h2>
+    <div class="gallery-grid">
+      <div class="g-card reveal"><img src="work-1.webp" alt="Teal tiled bath with checkerboard floor" loading="lazy"></div>
+      <div class="g-card reveal"><img src="work-2.webp" alt="Marble shower enclosure" loading="lazy"></div>
+      <div class="g-card reveal"><img src="work-3.webp" alt="Patterned bathroom with corner shower" loading="lazy"></div>
+      <div class="g-card reveal"><img src="work-4.webp" alt="Moody cloakroom with botanical wallpaper" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="section-label reveal">What People Say</div>
+    <h2 class="section-title reveal">Salt of the earth plumber.<br>Their words, not ours.</h2>
+    <div class="reviews-scroll">
+      <div class="review reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-score">10/10</div>
+        <p class="review-text">"Fantastic salt of the earth plumber. Endlessly cheerful, lovely guy with a wealth of knowledge and experience. No fuss. No callout charge. Fixed our water leak in 20 minutes. 100% recommended."</p>
+        <div class="review-author">Verified Reviewer</div>
+        <div class="review-loc">BA14</div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-score">10/10</div>
+        <p class="review-text">"Ben and Paul visited us today to start our bath installation. I am SO impressed. Prompt, adorable personalities, really knowledgeable. Ben helped us make cost effective decisions. They've started a beautiful job."</p>
+        <div class="review-author">Jeffrey Y</div>
+        <div class="review-loc">SN13</div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-score">10/10</div>
+        <p class="review-text">"Ben came very promptly, found the main source of the leak very quickly. He and his colleague were very polite and pleasant, and Ben also very helpfully fixed another small but irritating problem with a dodgy tap."</p>
+        <div class="review-author">Claire H</div>
+        <div class="review-loc">BA1</div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-score">10/10</div>
+        <p class="review-text">"Ben and Paul are professional and friendly. Got everything done in half an hour. Ben went above and beyond, replacing my old pipe fittings below the faulty section as well. 10/10."</p>
+        <div class="review-author">Jeffrey Y</div>
+        <div class="review-loc">BA2</div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-score">10/10</div>
+        <p class="review-text">"Really great work, quick to come out and even on Xmas Eve!! Came the day after posting the issue. Friendly and really helpful on short notice."</p>
+        <div class="review-author">Keiron M</div>
+        <div class="review-loc">BA14</div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="review-score">10/10</div>
+        <p class="review-text">"Completed job efficiently and was exceptionally pleasant and helpful. BC Plumbing responded very quickly and turned up the next day as promised. Extremely friendly and carried out the tasks with a minimum of fuss."</p>
+        <div class="review-author">Ian D &amp; Kevy B</div>
+        <div class="review-loc">BA13 &amp; BA14</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-img">
+      <img src="work-3.webp" alt="Bathroom installation by BC Plumbing">
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-num">15+</div>
+      <div class="about-badge-text">Years Experience</div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-label">About BC Plumbing</div>
+    <h2 class="section-title">Honest, friendly &amp; gets<br>the job done right.</h2>
+    <p><strong>BC Plumbing</strong> is run by Ben — a plumber with over 15 years in the trade and a reputation that speaks for itself. With support from Paul, they cover everything from emergency leaks to full bathroom installations across Bath, Trowbridge and Wiltshire.</p>
+    <p>The approach is simple: turn up when you say you will, do the job properly, charge a fair price, and leave the place cleaner than you found it. No call-out fees, no hard sell, no inflated quotes — just honest plumbing from someone who genuinely cares about doing good work.</p>
+    <p>Rated 10/10 by customer after customer. The reviews say it better than we ever could.</p>
+    <div class="about-checks">
+      <div class="ck"><span class="ck-dot">&#10003;</span> 15+ Years Experience</div>
+      <div class="ck"><span class="ck-dot">&#10003;</span> No Call-Out Fees</div>
+      <div class="ck"><span class="ck-dot">&#10003;</span> Fully Insured</div>
+      <div class="ck"><span class="ck-dot">&#10003;</span> Emergency Callouts</div>
+      <div class="ck"><span class="ck-dot">&#10003;</span> 10/10 Reviews</div>
+      <div class="ck"><span class="ck-dot">&#10003;</span> Clean &amp; Tidy</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-bubble cb1"></div>
+  <div class="cta-bubble cb2"></div>
+  <div class="cta-bubble cb3"></div>
+  <div class="cta-inner">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal" style="color:var(--white)">Need a plumber?<br>Give Ben a ring.</h2>
+    <p class="cta-sub reveal">From a dripping tap to a full bathroom refit — we'll give you honest advice and a fair price. Covering Bath, Trowbridge, Chippenham, Melksham, Frome &amp; all of Wiltshire.</p>
+    <div class="cta-no-callout reveal">&#9889; No call-out fees. Ever.</div>
+    <a href="tel:07885377001" class="cta-phone reveal">07885 377001</a>
+    <div class="cta-buttons reveal">
+      <a href="tel:07885377001" class="btn-white">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="https://wa.me/447885377001?text=Hi%20Ben%2C%20I%20need%20a%20plumber%20please" target="_blank" rel="noopener" class="btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+        WhatsApp Ben
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-brand-drop"><span>BC</span></div>
+        <div class="footer-brand-name">BC <span>Plumbing</span></div>
+      </div>
+      <p class="footer-desc">Professional plumber covering Bath, Trowbridge &amp; Wiltshire. 15+ years experience, no call-out fees, 10/10 reviews. Bathrooms, leaks, emergencies &amp; more.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Bathroom Installations</a>
+        <a href="#services">Leak Detection</a>
+        <a href="#services">Emergency Callouts</a>
+        <a href="#services">Taps &amp; Showers</a>
+        <a href="#services">Kitchen Plumbing</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="tel:07885377001">07885 377001</a>
+        <a>Bath, Trowbridge &amp; Wiltshire</a>
+        <a>No call-out fees</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 BC Plumbing. All rights reserved.</span>
+    <span class="footer-copy">Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="tel:07885377001" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447885377001?text=Hi%20Ben%2C%20I%20need%20a%20plumber%20please" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 50);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Floating CTAs
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.getElementById('hero');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    floatingCtas.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.1 });
+heroObs.observe(hero);
+
+// Reviews drag scroll
+const r = document.querySelector('.reviews-scroll');
+let isDown=false,startX,scrollL;
+r.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-r.offsetLeft;scrollL=r.scrollLeft;r.style.cursor='grabbing'});
+r.addEventListener('mouseleave',()=>{isDown=false;r.style.cursor=''});
+r.addEventListener('mouseup',()=>{isDown=false;r.style.cursor=''});
+r.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();r.scrollLeft=scrollL-(e.pageX-r.offsetLeft-startX)*1.5});
+</script>
+</body>
+</html>
