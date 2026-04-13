@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PKB Mobile Vehicle Technician — Diagnostics & Health Checks from £10 | Birmingham & Coventry</title>
+<meta name="description" content="Mobile vehicle diagnostics & health checks from just £10. All makes & models — cars, vans & bikes. 24/7 availability across Birmingham, Coventry & the West Midlands. Call 07754 633439.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --red:#dc2626;
+  --red-dark:#b91c1c;
+  --red-bright:#ef4444;
+  --red-glow:rgba(220,38,38,0.08);
+  --red-hot:rgba(220,38,38,0.15);
+  --black:#0a0a0a;
+  --black-soft:#141414;
+  --black-card:#1a1a1a;
+  --black-border:rgba(255,255,255,0.06);
+  --white:#f8f8f8;
+  --white-pure:#ffffff;
+  --gray-400:#9ca3af;
+  --gray-500:#6b7280;
+  --gray-200:#e5e7eb;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--white);background:var(--black);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── LOADING ── */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--black);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity 0.6s,visibility 0.6s}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-ring{width:50px;height:50px;border:3px solid rgba(220,38,38,0.15);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{font-family:'Rajdhani',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(10,10,10,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--black-border);transition:all 0.3s}
+.nav.scrolled{background:rgba(10,10,10,0.95)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-brand-logo{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white-pure);letter-spacing:2px}
+.nav-brand-logo span{color:var(--red)}
+.nav-brand-sub{font-size:0.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray-400);margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:0.78rem;font-weight:600;color:var(--gray-400);transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--red)!important;color:var(--white-pure)!important;padding:10px 24px;border-radius:6px;font-weight:700!important;font-size:0.78rem!important;transition:all 0.3s!important;box-shadow:0 2px 12px rgba(220,38,38,0.3)}
+.nav-cta:hover{background:var(--red-dark)!important;transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile svg{stroke:var(--white)}
+
+/* ── HERO with VIDEO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-video{position:absolute;inset:0;z-index:0}
+.hero-video video{width:100%;height:100%;object-fit:cover}
+.hero-video::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,0.92) 0%,rgba(10,10,10,0.7) 40%,rgba(10,10,10,0.85) 100%)}
+/* Scan line effect */
+.hero-scanlines{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.03;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.05) 2px,rgba(255,255,255,0.05) 4px)}
+/* Red glow pulse */
+.hero-glow{position:absolute;top:50%;left:50%;width:600px;height:600px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(220,38,38,0.06),transparent 70%);animation:glowPulse 4s ease infinite;pointer-events:none;z-index:1}
+@keyframes glowPulse{0%,100%{opacity:0.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+
+.hero-content{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:160px 24px 100px;width:100%;text-align:center}
+/* Flashing price badge */
+.hero-price{display:inline-flex;align-items:center;gap:10px;background:var(--red);padding:10px 28px;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;color:var(--white-pure);letter-spacing:1px;margin-bottom:28px;animation:fadeUp 0.5s ease 0.3s both;box-shadow:0 0 30px rgba(220,38,38,0.4),0 0 60px rgba(220,38,38,0.15);position:relative;overflow:hidden}
+.hero-price::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);animation:shimmer 3s ease infinite}
+@keyframes shimmer{0%{left:-100%}100%{left:200%}}
+.hero h1{font-family:'Rajdhani',sans-serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:700;line-height:1.02;color:var(--white-pure);letter-spacing:-1px;margin-bottom:20px;text-transform:uppercase;animation:fadeUp 0.5s ease 0.45s both}
+.hero h1 .red{color:var(--red)}
+.hero-sub{font-size:1rem;color:var(--gray-400);max-width:560px;margin:0 auto 36px;line-height:1.75;animation:fadeUp 0.5s ease 0.6s both}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.5s ease 0.75s both}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:6px;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;transition:all 0.25s;letter-spacing:0.3px}
+.btn svg{width:18px;height:18px}
+.btn-red{background:var(--red);color:var(--white-pure);box-shadow:0 4px 20px rgba(220,38,38,0.35)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(220,38,38,0.45)}
+.btn-wa{background:#25D366;color:var(--white-pure);box-shadow:0 4px 16px rgba(37,211,102,0.3)}
+.btn-wa:hover{background:#20bd5a;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.15)}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+/* Features row under hero */
+.hero-features{display:flex;gap:32px;justify-content:center;margin-top:48px;animation:fadeUp 0.5s ease 0.9s both}
+.hero-feat{display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:600;color:var(--gray-400)}
+.hero-feat-icon{width:28px;height:28px;border-radius:6px;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.15);display:flex;align-items:center;justify-content:center;font-size:0.8rem}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RED STRIP ── */
+.red-strip{background:var(--red);padding:0;overflow:hidden}
+.strip-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.strip-item{padding:20px 16px;text-align:center;border-right:1px solid rgba(255,255,255,0.12);font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--white-pure)}
+.strip-item:last-child{border-right:none}
+.strip-item strong{display:block;font-family:'Rajdhani',sans-serif;font-size:1.4rem;line-height:1;margin-bottom:2px}
+
+/* ── WARNING SECTION ── */
+.warning{padding:80px 24px;max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.warning-left{position:relative}
+/* Animated warning triangle */
+.warning-icon{width:120px;height:120px;margin-bottom:24px;position:relative}
+.warning-triangle{width:0;height:0;border-left:60px solid transparent;border-right:60px solid transparent;border-bottom:104px solid var(--red);animation:warningFlash 2s ease infinite}
+.warning-triangle-inner{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-family:'Rajdhani',sans-serif;font-size:2.5rem;font-weight:700;color:var(--white-pure);line-height:1}
+@keyframes warningFlash{0%,100%{opacity:1}50%{opacity:0.6}}
+.warning h2{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;text-transform:uppercase;letter-spacing:-0.5px;color:var(--white-pure);line-height:1.1;margin-bottom:16px}
+.warning h2 .red{color:var(--red)}
+.warning p{font-size:0.9rem;color:var(--gray-400);line-height:1.8}
+.warning-right{display:flex;flex-direction:column;gap:14px}
+.warn-card{background:var(--black-card);border:1px solid var(--black-border);border-radius:10px;padding:20px;display:flex;align-items:flex-start;gap:14px;transition:all 0.3s}
+.warn-card:hover{border-color:var(--red);transform:translateX(4px)}
+.warn-card-icon{width:36px;height:36px;border-radius:8px;background:var(--red-glow);border:1px solid rgba(220,38,38,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+.warn-card h4{font-size:0.88rem;font-weight:800;color:var(--white-pure);margin-bottom:4px}
+.warn-card p{font-size:0.78rem;color:var(--gray-400);line-height:1.6}
+
+/* ── SERVICES ── */
+.services{padding:80px 24px;background:var(--black-soft);border-top:1px solid var(--black-border);border-bottom:1px solid var(--black-border)}
+.services-inner{max-width:1140px;margin:0 auto}
+.section-label{font-size:0.65rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.section-title{font-family:'Rajdhani',sans-serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:700;text-transform:uppercase;color:var(--white-pure);letter-spacing:-0.5px;line-height:1.1;margin-bottom:12px}
+.section-desc{font-size:0.88rem;color:var(--gray-400);max-width:480px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
+.svc{background:var(--black-card);border:1px solid var(--black-border);padding:32px 24px;transition:all 0.3s;position:relative;overflow:hidden}
+.svc::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--red);transition:width 0.4s}
+.svc:hover::before{width:100%}
+.svc:hover{background:#1f1f1f}
+.svc-icon{font-size:1.6rem;margin-bottom:12px;display:block}
+.svc h3{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;color:var(--white-pure);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.svc p{font-size:0.78rem;color:var(--gray-500);line-height:1.65}
+
+/* ── WHY US ── */
+.why{padding:80px 24px;max-width:1140px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.why-card{text-align:center;padding:28px 16px;border:1px solid var(--black-border);border-radius:10px;transition:all 0.3s}
+.why-card:hover{border-color:var(--red);transform:translateY(-3px)}
+.why-icon{font-size:1.8rem;margin-bottom:10px;display:block}
+.why-card h4{font-family:'Rajdhani',sans-serif;font-size:0.95rem;font-weight:700;color:var(--white-pure);text-transform:uppercase;margin-bottom:6px}
+.why-card p{font-size:0.75rem;color:var(--gray-500);line-height:1.6}
+
+/* ── OFFER BANNER ── */
+.offer{padding:60px 24px;background:var(--red);text-align:center;position:relative;overflow:hidden}
+.offer::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 20px,rgba(0,0,0,0.03) 20px,rgba(0,0,0,0.03) 40px)}
+.offer-inner{max-width:700px;margin:0 auto;position:relative;z-index:2}
+.offer h2{font-family:'Rajdhani',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;color:var(--white-pure);text-transform:uppercase;margin-bottom:8px}
+.offer p{font-size:0.95rem;color:rgba(255,255,255,0.75);margin-bottom:24px}
+.offer .btn-white{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:6px;background:var(--white-pure);color:var(--red);font-weight:700;font-size:0.88rem;transition:all 0.3s}
+.offer .btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+
+/* ── CTA ── */
+.cta{padding:80px 24px;text-align:center}
+.cta-inner{max-width:600px;margin:0 auto}
+.cta .section-title{margin-bottom:10px}
+.cta-sub{font-size:0.9rem;color:var(--gray-400);margin-bottom:32px;line-height:1.7}
+.cta-phone{font-family:'Rajdhani',sans-serif;font-size:clamp(2rem,6vw,3.2rem);font-weight:700;color:var(--white-pure);display:block;margin-bottom:8px;transition:color 0.3s}
+.cta-phone:hover{color:var(--red)}
+.cta-avail{font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:28px}
+.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+.footer{background:var(--black-soft);border-top:1px solid var(--black-border);padding:40px 24px 20px;text-align:center}
+.footer-brand{font-family:'Rajdhani',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white-pure);letter-spacing:2px;margin-bottom:8px}
+.footer-brand span{color:var(--red)}
+.footer-desc{font-size:0.78rem;color:var(--gray-500);max-width:400px;margin:0 auto 16px;line-height:1.7}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:16px}
+.footer-links a{font-size:0.78rem;color:var(--gray-500);transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:0.65rem;color:var(--gray-500);padding-top:16px;border-top:1px solid var(--black-border)}
+.footer-copy a{color:var(--red)}
+
+/* ── FLOATING CTAs ── */
+.floating-ctas{position:fixed;bottom:20px;right:20px;z-index:800;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(20px);transition:opacity 0.5s,transform 0.5s;pointer-events:none}
+.floating-ctas.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.fab{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--white-pure);box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:transform 0.2s;border:none;cursor:pointer}
+.fab:hover{transform:scale(1.1)}
+.fab-call{background:var(--red)}
+.fab-call svg{stroke:var(--white-pure);fill:none;width:22px;height:22px;stroke-width:2.5}
+.fab-wa{background:#25D366}
+.fab-wa svg{fill:var(--white-pure);width:24px;height:24px}
+
+/* ── MOBILE ── */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(10,10,10,0.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;transition:color 0.2s}
+.mobile-menu a:hover{color:var(--red)}
+.mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;cursor:pointer}
+.mobile-close svg{stroke:var(--white)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .warning{grid-template-columns:1fr;gap:40px}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .strip-inner{grid-template-columns:repeat(2,1fr)}
+  .strip-item{border-bottom:1px solid rgba(255,255,255,0.12)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mobile{display:block}
+  .services-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .hero-features{flex-wrap:wrap;gap:16px}
+  .strip-inner{grid-template-columns:1fr}
+  .strip-item{border-right:none}
+  .cta-buttons{flex-direction:column;align-items:center}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn{width:100%;max-width:320px;justify-content:center}
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">PKB Diagnostics</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div>
+        <div class="nav-brand-logo"><span>PKB</span> MOBILE</div>
+        <div class="nav-brand-sub">Vehicle Technician</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:07754633439" class="nav-cta">Book Now</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#why" onclick="document.getElementById('mobileMenu').classList.remove('open')">Why Us</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+  <a href="tel:07754633439" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--red)">07754 633439</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scanlines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-price">&#128663; FULL DIAGNOSTIC &amp; HEALTH CHECK FROM JUST £10</div>
+    <h1>Your car's trying to<br>tell you <span class="red">something.</span></h1>
+    <p class="hero-sub">Warning lights, strange noises, loss of power? Don't wait for a breakdown. We come to you — anywhere in Birmingham, Coventry &amp; the West Midlands. All makes &amp; models. Cars, vans &amp; bikes.</p>
+    <div class="hero-btns">
+      <a href="tel:07754633439" class="btn btn-red">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        07754 633439
+      </a>
+      <a href="https://wa.me/447754633439?text=Hi%2C%20I%27d%20like%20to%20book%20a%20diagnostic%20check%20please" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="#services" class="btn btn-ghost">What We Check</a>
+    </div>
+    <div class="hero-features">
+      <div class="hero-feat"><div class="hero-feat-icon">&#128663;</div> All Makes &amp; Models</div>
+      <div class="hero-feat"><div class="hero-feat-icon">&#128339;</div> Available 24/7</div>
+      <div class="hero-feat"><div class="hero-feat-icon">&#128205;</div> We Come To You</div>
+      <div class="hero-feat"><div class="hero-feat-icon">&#128176;</div> From Just £10</div>
+    </div>
+  </div>
+</section>
+
+<!-- RED STRIP -->
+<div class="red-strip">
+  <div class="strip-inner">
+    <div class="strip-item"><strong>£10</strong>Diagnostic From</div>
+    <div class="strip-item"><strong>24/7</strong>Availability</div>
+    <div class="strip-item"><strong>Mobile</strong>We Come To You</div>
+    <div class="strip-item"><strong>All</strong>Makes &amp; Models</div>
+  </div>
+</div>
+
+<!-- WARNING SECTION -->
+<section class="warning">
+  <div class="warning-left reveal">
+    <div class="warning-icon">
+      <div class="warning-triangle"></div>
+      <div class="warning-triangle-inner">!</div>
+    </div>
+    <h2>Don't ignore that <span class="red">warning light.</span></h2>
+    <p>Warning lights, strange noises, or a drop in performance aren't just annoying — they're your car asking for help. Small issues left unchecked turn into costly repairs, MOT failures, or worse, a breakdown on the side of the road. We catch problems early so you don't pay later.</p>
+  </div>
+  <div class="warning-right reveal">
+    <div class="warn-card">
+      <div class="warn-card-icon">&#9888;&#65039;</div>
+      <div><h4>Engine Warning Light</h4><p>Could be anything from a loose sensor to a serious engine fault. We'll scan it and tell you exactly what's going on.</p></div>
+    </div>
+    <div class="warn-card">
+      <div class="warn-card-icon">&#128264;</div>
+      <div><h4>Strange Noises</h4><p>Knocking, grinding, squealing — none of these are normal. We'll diagnose the source before it gets worse.</p></div>
+    </div>
+    <div class="warn-card">
+      <div class="warn-card-icon">&#128168;</div>
+      <div><h4>Loss of Performance</h4><p>Sluggish acceleration, rough idle, poor fuel economy? Our diagnostic scan pinpoints the exact cause.</p></div>
+    </div>
+    <div class="warn-card">
+      <div class="warn-card-icon">&#128683;</div>
+      <div><h4>Pre-MOT Check</h4><p>Avoid costly failures. We'll run a full health check before your MOT so there are no surprises.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-label reveal">What We Check</div>
+    <h2 class="section-title reveal">Full diagnostic. Full health check.<br>No stone left unturned.</h2>
+    <p class="section-desc reveal">Using the latest diagnostic equipment, we scan every system in your vehicle and give you a clear, honest report on the spot.</p>
+    <div class="services-grid">
+      <div class="svc reveal">
+        <span class="svc-icon">&#128187;</span>
+        <h3>Engine Diagnostic Scan</h3>
+        <p>Full OBD scan across all ECUs — engine, transmission, ABS, airbag, and more. Every stored fault code read and explained.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">&#128267;</span>
+        <h3>Vehicle Health Check</h3>
+        <p>Brakes, tyres, suspension, lights, fluids, battery — a thorough bumper-to-bumper inspection of your vehicle's condition.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">&#9889;</span>
+        <h3>Fault Detection</h3>
+        <p>Fast, accurate pinpointing of electrical and mechanical faults using professional-grade diagnostic equipment.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">&#128196;</span>
+        <h3>On-Site Report</h3>
+        <p>You'll get a clear, detailed breakdown of everything we've found — no jargon, no hidden agenda, just the facts.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">&#128663;</span>
+        <h3>Cars, Vans &amp; Bikes</h3>
+        <p>All makes and models covered. Petrol, diesel, hybrid — if it's got an engine, we can diagnose it.</p>
+      </div>
+      <div class="svc reveal">
+        <span class="svc-icon">&#128666;</span>
+        <h3>Same-Day Mobile Service</h3>
+        <p>We come to your home, your workplace, or wherever your vehicle is. No need to drive to a garage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-label reveal">Why PKB</div>
+  <h2 class="section-title reveal">Affordable. Honest. On your doorstep.</h2>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <span class="why-icon">&#128176;</span>
+      <h4>Transparent Pricing</h4>
+      <p>From just £10. No hidden fees, no upselling. You know the price before we start.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon">&#128116;</span>
+      <h4>Qualified Technicians</h4>
+      <p>Friendly, experienced professionals who explain things in plain English.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon">&#127919;</span>
+      <h4>Accurate Diagnostics</h4>
+      <p>Latest equipment for precise fault detection. No guesswork, no unnecessary repairs.</p>
+    </div>
+    <div class="why-card reveal">
+      <span class="why-icon">&#128523;</span>
+      <h4>Peace of Mind</h4>
+      <p>Know exactly what's going on with your car. No-obligation quotes on any work needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER BANNER -->
+<section class="offer reveal">
+  <div class="offer-inner">
+    <h2>&#127881; Free diagnostic check with every service this month!</h2>
+    <p>Don't wait for a breakdown — book your check now and stay one step ahead.</p>
+    <a href="tel:07754633439" class="btn-white">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Book Now — 07754 633439
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="section-label reveal">Book Your Diagnostic</div>
+    <h2 class="section-title reveal">Appointments available today.<br>We come to you.</h2>
+    <p class="cta-sub reveal">Message us on WhatsApp, Telegram or give us a ring. Available 24/7 across Birmingham, Coventry &amp; the West Midlands.</p>
+    <a href="tel:07754633439" class="cta-phone reveal">07754 633439</a>
+    <div class="cta-avail reveal">&#128339; Available 24/7</div>
+    <div class="cta-buttons reveal">
+      <a href="tel:07754633439" class="btn btn-red">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="https://wa.me/447754633439?text=Hi%2C%20I%27d%20like%20to%20book%20a%20diagnostic%20check%20please" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://t.me/+oMJvVwHqaApkYTA0" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand"><span>PKB</span> MOBILE VEHICLE TECHNICIAN</div>
+  <p class="footer-desc">Mobile vehicle diagnostics &amp; health checks from just £10. All makes &amp; models across Birmingham, Coventry &amp; the West Midlands. Available 24/7.</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="tel:07754633439">07754 633439</a>
+    <a href="https://wa.me/447754633439">WhatsApp</a>
+    <a href="https://t.me/+oMJvVwHqaApkYTA0">Telegram</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 PKB Mobile Vehicle Technician. All rights reserved. &middot; Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="tel:07754633439" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447754633439?text=Hi%2C%20I%27d%20like%20to%20book%20a%20diagnostic%20check%20please" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 600);
+});
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 50);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Floating CTAs
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.getElementById('hero');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    floatingCtas.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.1 });
+heroObs.observe(hero);
+</script>
+</body>
+</html>
