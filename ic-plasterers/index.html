@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IC Plasterers — Plasterers &amp; Renderers in Edinburgh, Lothians, Fife &amp; Borders | 30+ Years</title>
+<meta name="description" content="IC Plasterers — family-run plastering &amp; rendering specialists with 30+ years experience. Skimming, rendering, dry lining, Artex removal, damp proofing, fireplaces. Edinburgh, Lothians, Fife &amp; Scottish Borders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --plaster:#ece3d1;
+  --plaster-warm:#e0d4bc;
+  --plaster-deep:#c9bb9f;
+  --ink:#1b1916;
+  --ink-soft:#2a2724;
+  --ink-mid:#3a362f;
+  --cream:#f7f1e3;
+  --terracotta:#b6532a;
+  --terracotta-deep:#8f3e1d;
+  --terracotta-bright:#d4663a;
+  --muted:#6b6459;
+  --muted-light:#9a9082;
+  --line:rgba(27,25,22,0.1);
+  --line-soft:rgba(27,25,22,0.06);
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--plaster);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+.serif{font-family:'Fraunces',Georgia,serif;font-weight:900;letter-spacing:-0.02em}
+
+/* Textured plaster background — subtle noise */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(201,187,159,0.18) 0, transparent 30%),
+    radial-gradient(circle at 82% 76%, rgba(201,187,159,0.15) 0, transparent 28%),
+    radial-gradient(circle at 50% 50%, rgba(247,241,227,0.18) 0, transparent 60%);
+  mix-blend-mode:multiply;opacity:0.8
+}
+
+/* ======================================================
+   LOADER — trowel skims plaster across a dark wall,
+   revealing the wordmark as if just laid on.
+   ====================================================== */
+.loader{position:fixed;inset:0;z-index:9999;background:#16140f;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,visibility 0.8s ease;overflow:hidden;padding:40px 24px}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
+.loader-wall{
+  position:relative;width:min(720px,92vw);height:clamp(180px,26vh,240px);
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 7px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg,#1d1a14 0%,#16130e 100%);
+  border:1px solid rgba(236,227,209,0.08);
+  overflow:hidden;
+  border-radius:2px;
+}
+.loader-wall::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 18% 40%, rgba(0,0,0,0.5) 0, transparent 28%),
+    radial-gradient(circle at 72% 60%, rgba(0,0,0,0.55) 0, transparent 32%),
+    radial-gradient(circle at 45% 80%, rgba(0,0,0,0.35) 0, transparent 25%);
+  pointer-events:none
+}
+
+/* The freshly-skimmed plaster — clipped so it reveals left-to-right */
+.skim{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 30% 40%, #f6ecd4 0%, #e7d9b7 55%, #d6c49c 100%);
+  clip-path:inset(0 100% 0 0);
+  animation:skimReveal 2.8s cubic-bezier(0.55,0.08,0.35,1) 0.25s forwards;
+}
+.skim::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 22% 45%, rgba(255,255,255,0.4) 0, transparent 12%),
+    radial-gradient(circle at 65% 28%, rgba(255,255,255,0.25) 0, transparent 10%),
+    radial-gradient(circle at 80% 72%, rgba(0,0,0,0.06) 0, transparent 14%),
+    repeating-linear-gradient(115deg, rgba(0,0,0,0.02) 0 3px, transparent 3px 12px);
+  mix-blend-mode:overlay;pointer-events:none
+}
+@keyframes skimReveal{
+  0%{clip-path:inset(0 100% 0 0)}
+  100%{clip-path:inset(0 0 0 0)}
+}
+
+/* The wordmark — emerges once plaster has reached it */
+.loader-name{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-weight:900;letter-spacing:-0.03em;
+  color:var(--ink);
+  text-align:center;line-height:0.95;
+  mix-blend-mode:multiply;
+  opacity:0;animation:nameIn 0.6s ease 1s forwards;
+}
+.loader-name .lg{font-size:clamp(2.4rem,6vw,4.2rem)}
+.loader-name .lg em{color:var(--terracotta-deep);font-style:normal}
+.loader-name .sm{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(0.65rem,1.4vw,0.8rem);letter-spacing:0.42em;text-transform:uppercase;margin-top:14px;color:var(--ink-mid)}
+
+@keyframes nameIn{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:blur(0)}}
+
+/* The trowel — rides along the leading edge of the skim */
+.trowel{
+  position:absolute;top:50%;left:-60px;
+  width:130px;height:70px;
+  transform-origin:center;
+  animation:trowelRun 2.8s cubic-bezier(0.55,0.08,0.35,1) 0.25s forwards;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,0.6));
+  z-index:4;
+}
+.trowel svg{width:100%;height:100%;overflow:visible}
+@keyframes trowelRun{
+  0%{left:-60px;transform:translateY(-50%) rotate(-2deg)}
+  20%{transform:translateY(-53%) rotate(-2.4deg)}
+  45%{transform:translateY(-48%) rotate(-1.4deg)}
+  72%{transform:translateY(-51%) rotate(-2.1deg)}
+  100%{left:calc(100% - 70px);transform:translateY(-50%) rotate(-1.6deg)}
+}
+
+/* Progress + status */
+.loader-bar{width:min(720px,92vw);height:1px;background:rgba(236,227,209,0.1);margin-top:22px;overflow:hidden;position:relative}
+.loader-bar::after{content:'';position:absolute;inset:0;background:var(--terracotta-bright);transform:scaleX(0);transform-origin:left;animation:prog 2.8s cubic-bezier(0.55,0.08,0.35,1) 0.25s forwards}
+@keyframes prog{to{transform:scaleX(1)}}
+.loader-status{margin-top:14px;font-family:'Inter',sans-serif;text-transform:uppercase;letter-spacing:0.38em;font-size:0.72rem;font-weight:700;color:var(--plaster-deep)}
+.loader-pct{color:var(--terracotta-bright);display:inline-block;min-width:52px;text-align:right;margin-left:10px}
+
+/* ========== NAV ========== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(236,227,209,0.86);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line-soft);transition:background 0.3s}
+.nav.scrolled{background:rgba(236,227,209,0.97);box-shadow:0 1px 0 var(--line)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:14px;line-height:1}
+.nav-mark{width:44px;height:44px;background:var(--ink);display:flex;align-items:center;justify-content:center;border-radius:2px;position:relative}
+.nav-mark::after{content:'';position:absolute;inset:-1px;border:1px solid var(--terracotta);transform:translate(5px,5px);z-index:-1}
+.nav-mark svg{width:26px;height:26px}
+.nav-logo-text{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.02em;text-transform:uppercase;color:var(--ink)}
+.nav-logo-text em{color:var(--terracotta);font-style:normal}
+.nav-logo-sub{font-size:0.6rem;letter-spacing:0.32em;color:var(--muted);font-weight:700;text-transform:uppercase;display:block;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:0.84rem;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;color:var(--ink-mid);transition:color 0.2s;position:relative}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-cta{background:var(--ink)!important;color:var(--cream)!important;padding:15px 26px;font-weight:800!important;letter-spacing:0.12em;display:inline-flex;align-items:center;gap:8px;line-height:1;transition:all 0.2s}
+.nav-cta:hover{background:var(--terracotta)!important;color:var(--cream)!important;transform:translateY(-1px)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--ink)}
+
+/* ========== HERO ========== */
+.hero{position:relative;width:100%;min-height:100vh;display:flex;align-items:center;padding:140px 40px 80px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1;background:var(--ink);}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5}
+.hero-bg::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(27,25,22,0.92) 0%,rgba(27,25,22,0.78) 45%,rgba(27,25,22,0.35) 100%),
+  radial-gradient(circle at 80% 20%, rgba(182,83,42,0.22) 0, transparent 45%);
+}
+.hero-inner{position:relative;z-index:2;max-width:1320px;margin:0 auto;width:100%;color:var(--cream)}
+.hero-tag{display:inline-flex;align-items:center;gap:12px;background:rgba(236,227,209,0.08);border:1px solid rgba(236,227,209,0.25);padding:9px 20px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--plaster);margin-bottom:36px;backdrop-filter:blur(6px)}
+.hero-tag-dot{width:7px;height:7px;border-radius:50%;background:var(--terracotta-bright);box-shadow:0 0 12px var(--terracotta-bright);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(2.8rem,7.4vw,6.4rem);font-weight:900;line-height:0.95;letter-spacing:-0.035em;margin-bottom:32px;max-width:1040px}
+.hero h1 em{color:var(--terracotta-bright);font-style:italic;font-weight:700}
+.hero h1 .break{display:block}
+.hero-sub{font-size:1.18rem;color:rgba(247,241,227,0.82);max-width:640px;margin-bottom:44px;font-weight:400;line-height:1.72}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:72px}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:18px 34px;font-size:0.84rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;transition:all 0.25s;cursor:pointer;border:none;line-height:1;font-family:inherit;border-radius:2px}
+.btn svg{width:18px;height:18px}
+.btn-solid{background:var(--terracotta);color:var(--cream)}
+.btn-solid:hover{background:var(--terracotta-deep);transform:translateY(-2px);box-shadow:0 14px 30px rgba(143,62,29,0.4)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(247,241,227,0.3)}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(247,241,227,0.06)}
+.btn-dark{background:var(--ink);color:var(--cream)}
+.btn-dark:hover{background:var(--ink-soft);transform:translateY(-2px)}
+
+.hero-meta{display:grid;grid-template-columns:repeat(4,auto);gap:52px;padding-top:36px;border-top:1px solid rgba(247,241,227,0.18);max-width:860px}
+.hmeta-num{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:900;color:var(--terracotta-bright);line-height:1;letter-spacing:-0.02em}
+.hmeta-num em{font-style:italic;font-weight:700}
+.hmeta-label{font-size:0.68rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(247,241,227,0.68);margin-top:8px}
+
+/* MARQUEE */
+.marquee{background:var(--ink);color:var(--cream);padding:22px 0;overflow:hidden;border-top:6px solid var(--terracotta);position:relative}
+.marquee-track{display:flex;gap:56px;animation:slide 38s linear infinite;white-space:nowrap}
+.marquee-item{font-family:'Fraunces',serif;font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;font-size:1.3rem;display:flex;align-items:center;gap:56px}
+.marquee-item::after{content:'';width:8px;height:8px;background:var(--terracotta-bright);border-radius:50%;margin-left:56px}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ======= SECTIONS ======= */
+.container{max-width:1320px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+
+.section-label{font-size:0.72rem;font-weight:800;color:var(--terracotta);letter-spacing:0.34em;text-transform:uppercase;margin-bottom:18px;display:inline-flex;align-items:center;gap:14px}
+.section-label::before{content:'';width:44px;height:2px;background:var(--terracotta)}
+.section-heading{font-family:'Fraunces',serif;font-size:clamp(2.4rem,5vw,4.2rem);font-weight:900;letter-spacing:-0.028em;margin-bottom:22px;line-height:1;color:var(--ink)}
+.section-heading em{color:var(--terracotta);font-style:italic;font-weight:700}
+.section-sub{color:var(--muted);font-size:1.08rem;margin-bottom:64px;max-width:660px;line-height:1.75}
+
+/* SERVICES */
+.services-wrap{padding:130px 0;position:relative;background:var(--plaster)}
+.services-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:280px;background:linear-gradient(180deg,var(--plaster-warm) 0%, transparent 100%);z-index:0}
+
+.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.svc{background:var(--cream);border:1px solid var(--line-soft);padding:36px 30px 34px;display:flex;flex-direction:column;position:relative;transition:all 0.35s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.svc-1{grid-column:span 3;min-height:340px}
+.svc-2{grid-column:span 3;min-height:340px}
+.svc-3,.svc-4,.svc-5,.svc-6,.svc-7,.svc-8{grid-column:span 2;min-height:260px}
+.svc:hover{border-color:var(--terracotta);transform:translateY(-6px);box-shadow:0 22px 44px -20px rgba(27,25,22,0.25)}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--terracotta);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.svc:hover::before{transform:scaleX(1)}
+.svc-num{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:700;color:var(--muted-light);letter-spacing:0.1em;margin-bottom:18px;font-style:italic}
+.svc h3{font-family:'Fraunces',serif;font-size:1.65rem;font-weight:900;letter-spacing:-0.015em;line-height:1.06;margin-bottom:14px;color:var(--ink)}
+.svc-1 h3, .svc-2 h3{font-size:2.1rem}
+.svc p{color:var(--muted);font-size:0.96rem;line-height:1.7;flex:1}
+.svc-arrow{margin-top:20px;color:var(--terracotta);font-family:'Inter',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;font-size:0.74rem;display:inline-flex;align-items:center;gap:8px;transition:gap 0.2s}
+.svc:hover .svc-arrow{gap:14px}
+.svc-mark{position:absolute;top:24px;right:26px;width:34px;height:34px;color:var(--plaster-deep);opacity:0.6;transition:all 0.3s}
+.svc:hover .svc-mark{color:var(--terracotta);opacity:1;transform:rotate(-8deg)}
+
+/* SPECIALIST STRIP */
+.specialist-wrap{background:var(--ink);color:var(--cream);padding:100px 0;position:relative;overflow:hidden}
+.specialist-wrap::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle at 20% 30%, rgba(182,83,42,0.15) 0, transparent 45%),
+  radial-gradient(circle at 85% 75%, rgba(182,83,42,0.1) 0, transparent 40%);pointer-events:none}
+.specialist-top{max-width:900px;margin:0 auto 60px;text-align:center}
+.specialist-top .section-label{justify-content:center;color:var(--terracotta-bright)}
+.specialist-top .section-label::before{background:var(--terracotta-bright)}
+.specialist-top .section-heading{color:var(--cream)}
+.specialist-top .section-heading em{color:var(--terracotta-bright)}
+.specialist-top .section-sub{color:rgba(247,241,227,0.72);margin:0 auto}
+.specialist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:2}
+.spec{padding:44px 34px;background:rgba(247,241,227,0.04);border:1px solid rgba(247,241,227,0.1);text-align:left;transition:all 0.3s;position:relative;overflow:hidden}
+.spec:hover{background:rgba(247,241,227,0.07);border-color:var(--terracotta-bright);transform:translateY(-4px)}
+.spec-icon{width:52px;height:52px;background:var(--terracotta);display:flex;align-items:center;justify-content:center;margin-bottom:24px;border-radius:2px;color:var(--cream)}
+.spec-icon svg{width:26px;height:26px}
+.spec h3{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:900;letter-spacing:-0.015em;margin-bottom:10px}
+.spec p{color:rgba(247,241,227,0.7);font-size:0.95rem;line-height:1.7}
+
+/* ABOUT */
+.about-wrap{background:var(--plaster);padding:130px 0}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:84px;align-items:center}
+.about-visual{position:relative}
+.about-visual img{width:100%;height:620px;object-fit:cover;display:block;border-radius:2px}
+.about-frame{position:absolute;inset:28px -28px -28px 28px;border:2px solid var(--terracotta);z-index:-1;border-radius:2px}
+.about-stamp{position:absolute;bottom:-30px;left:-30px;background:var(--ink);color:var(--cream);padding:26px 34px;z-index:3;text-align:left;box-shadow:0 22px 50px rgba(27,25,22,0.3)}
+.about-stamp-num{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:900;line-height:0.9;letter-spacing:-0.03em;color:var(--terracotta-bright)}
+.about-stamp-num em{font-style:italic;font-weight:700}
+.about-stamp-text{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.24em;margin-top:6px;color:rgba(247,241,227,0.85)}
+
+.about-content > p{color:var(--ink-mid);font-size:1.08rem;line-height:1.8;margin-bottom:22px}
+.about-content > p strong{color:var(--ink);font-weight:700}
+.about-sig{display:flex;align-items:center;gap:22px;padding:26px 0;margin:28px 0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-sig-name{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;letter-spacing:-0.01em;line-height:1}
+.about-sig-name em{color:var(--terracotta);font-style:italic;font-weight:700}
+.about-sig-role{font-size:0.76rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:6px}
+.about-sig-mark{width:54px;height:54px;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;border-radius:2px;position:relative}
+.about-sig-mark::after{content:'';position:absolute;inset:-1px;border:1px solid var(--terracotta);transform:translate(4px,4px);z-index:-1}
+
+.about-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;margin-bottom:36px}
+.about-list li{padding:6px 0;font-size:0.98rem;font-weight:600;color:var(--ink-mid);display:flex;align-items:center;gap:12px}
+.about-list li::before{content:'';width:14px;height:14px;background:var(--terracotta);flex-shrink:0;transform:rotate(45deg)}
+
+/* GALLERY */
+.gallery-wrap{background:var(--plaster-warm);padding:130px 0;position:relative;overflow:hidden}
+.gallery-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:60px;flex-wrap:wrap}
+.gallery-top-text{max-width:600px}
+.gallery-top-text .section-sub{margin-bottom:0}
+.gallery-count{font-family:'Fraunces',serif;font-size:0.95rem;font-style:italic;color:var(--muted);border-left:2px solid var(--terracotta);padding-left:16px;line-height:1.3;font-weight:500}
+.gallery-count strong{display:block;font-size:2rem;font-weight:900;font-style:normal;color:var(--ink);letter-spacing:-0.02em}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:140px;gap:14px}
+.g{position:relative;overflow:hidden;cursor:pointer;background:var(--ink)}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(.2,.8,.2,1)}
+.g:hover img{transform:scale(1.07)}
+.g::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,25,22,0.8),transparent 55%);opacity:0;transition:opacity 0.3s}
+.g:hover::after{opacity:1}
+.g-label{position:absolute;left:20px;bottom:16px;z-index:2;font-family:'Fraunces',serif;font-weight:900;letter-spacing:-0.01em;font-size:1.05rem;color:var(--cream);opacity:0;transform:translateY(10px);transition:all 0.4s}
+.g:hover .g-label{opacity:1;transform:translateY(0)}
+.g-tag{position:absolute;top:14px;left:16px;z-index:2;background:var(--terracotta);color:var(--cream);padding:5px 10px;font-size:0.7rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase}
+
+.g-1{grid-column:span 5;grid-row:span 3}
+.g-2{grid-column:span 4;grid-row:span 2}
+.g-3{grid-column:span 3;grid-row:span 2}
+.g-4{grid-column:span 4;grid-row:span 2}
+.g-5{grid-column:span 3;grid-row:span 2}
+.g-6{grid-column:span 4;grid-row:span 2}
+.g-7{grid-column:span 8;grid-row:span 2}
+
+/* TESTIMONIALS */
+.testimonials-wrap{background:var(--plaster);padding:130px 0}
+.testimonials-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;flex-wrap:wrap}
+.ts-score{display:flex;align-items:center;gap:22px;padding:20px 28px;background:var(--cream);border:1px solid var(--line-soft)}
+.ts-big{font-family:'Fraunces',serif;font-weight:900;font-size:3.4rem;color:var(--terracotta);line-height:1;letter-spacing:-0.03em}
+.ts-stars-wrap .ts-stars{color:var(--terracotta);letter-spacing:0.18em;font-size:1.1rem;display:block}
+.ts-sub{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:6px;display:block}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.t-card{background:var(--cream);padding:46px 38px;border-left:3px solid var(--terracotta);transition:all 0.3s;position:relative}
+.t-card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -20px rgba(27,25,22,0.18)}
+.t-quote-mark{position:absolute;top:18px;right:26px;font-family:'Fraunces',serif;font-size:6rem;font-weight:900;color:var(--plaster-deep);line-height:0.8;opacity:0.5;font-style:italic}
+.t-stars{color:var(--terracotta);font-size:1rem;letter-spacing:0.15em;margin-bottom:22px}
+.t-card blockquote{font-family:'Fraunces',serif;font-size:1.1rem;line-height:1.6;color:var(--ink);margin-bottom:28px;font-style:italic;font-weight:500;position:relative;z-index:1}
+.t-meta{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--line-soft)}
+.t-author{font-weight:800;font-size:0.98rem;color:var(--ink);letter-spacing:-0.01em}
+.t-job{color:var(--muted);font-size:0.78rem;margin-top:3px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+.t-date{margin-left:auto;font-size:0.74rem;color:var(--muted-light);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+
+/* AREAS */
+.areas-wrap{background:var(--ink);color:var(--cream);padding:100px 0;position:relative}
+.areas-grid{display:grid;grid-template-columns:1.2fr 2fr;gap:70px;align-items:center}
+.areas-left .section-heading{color:var(--cream)}
+.areas-left .section-heading em{color:var(--terracotta-bright)}
+.areas-left p{color:rgba(247,241,227,0.72);font-size:1rem;line-height:1.75;margin-bottom:28px}
+.areas-pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{padding:11px 18px;border:1px solid rgba(247,241,227,0.2);font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--plaster);transition:all 0.2s}
+.pill:hover{border-color:var(--terracotta-bright);background:rgba(182,83,42,0.15);color:var(--cream)}
+.pill-hero{background:var(--terracotta);border-color:var(--terracotta);color:var(--cream)}
+
+/* CTA BANNER */
+.cta-banner{background:var(--terracotta);padding:100px 40px;text-align:center;position:relative;overflow:hidden;color:var(--cream)}
+.cta-banner::before{content:'';position:absolute;inset:0;background:
+  repeating-linear-gradient(115deg, rgba(0,0,0,0.03) 0 2px, transparent 2px 16px),
+  radial-gradient(circle at 20% 30%, rgba(0,0,0,0.08) 0, transparent 50%);pointer-events:none}
+.cta-inner{position:relative;z-index:2;max-width:880px;margin:0 auto}
+.cta-eyebrow{font-size:0.74rem;font-weight:800;letter-spacing:0.38em;text-transform:uppercase;color:rgba(247,241,227,0.9);margin-bottom:22px;display:inline-flex;align-items:center;gap:14px;justify-content:center}
+.cta-eyebrow::before,.cta-eyebrow::after{content:'';width:44px;height:1.5px;background:rgba(247,241,227,0.55)}
+.cta-banner h2{font-family:'Fraunces',serif;font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:900;letter-spacing:-0.028em;margin-bottom:24px;line-height:1}
+.cta-banner h2 em{font-style:italic;font-weight:700}
+.cta-phone{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-0.02em;margin:6px 0 14px;display:inline-block;transition:color 0.2s}
+.cta-phone:hover{color:var(--ink)}
+.cta-email{font-size:1rem;font-weight:600;color:rgba(247,241,227,0.9);display:block;margin-bottom:36px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.cta-email:hover{color:var(--cream)}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-wa{background:#128c47;color:var(--cream)}
+.btn-wa:hover{background:#0f7a3d;transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{background:#121008;color:var(--plaster);padding:80px 0 28px;border-top:1px solid rgba(247,241,227,0.05)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px}
+.footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.footer-logo .nav-mark{background:var(--terracotta)}
+.footer-logo .nav-mark::after{border-color:var(--plaster);opacity:0.4}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;letter-spacing:-0.02em;text-transform:uppercase;color:var(--cream)}
+.footer-logo-text em{color:var(--terracotta-bright);font-style:normal}
+.footer-about{color:rgba(247,241,227,0.55);font-size:0.94rem;line-height:1.8;max-width:380px}
+.footer-head{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:900;text-transform:uppercase;letter-spacing:0.2em;color:var(--terracotta-bright);margin-bottom:22px}
+.footer-links a{display:block;font-size:0.92rem;color:rgba(247,241,227,0.55);padding:6px 0;transition:color 0.2s}
+.footer-links a:hover{color:var(--cream)}
+.footer-bottom{margin-top:60px;padding:26px 0 0;border-top:1px solid rgba(247,241,227,0.08);display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:rgba(247,241,227,0.4);flex-wrap:wrap;gap:12px}
+.footer-bottom a{color:var(--terracotta-bright)}
+
+/* FLOATING */
+.floating{position:fixed;bottom:26px;right:26px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);transition:all 0.4s;pointer-events:none}
+.floating.vis{opacity:1;transform:translateY(0);pointer-events:all}
+.fab{width:58px;height:58px;display:flex;align-items:center;justify-content:center;color:var(--cream);box-shadow:0 12px 28px rgba(0,0,0,0.3);transition:transform 0.2s;border:none;cursor:pointer;border-radius:50%}
+.fab:hover{transform:scale(1.1)}
+.fab-call{background:var(--terracotta)}
+.fab-call svg{stroke:currentColor;fill:none;width:22px;height:22px;stroke-width:2.5}
+.fab-wa{background:#128c47}
+.fab-wa svg{fill:currentColor;width:26px;height:26px}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(27,25,22,0.98);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:30px;color:var(--cream)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;letter-spacing:-0.02em;color:var(--cream)}
+.mobile-menu a:hover{color:var(--terracotta-bright)}
+.mobile-close{position:absolute;top:22px;right:24px;background:none;border:none;cursor:pointer;color:var(--cream)}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .services-grid{grid-template-columns:repeat(4,1fr)}
+  .svc-1, .svc-2{grid-column:span 2}
+  .svc-3,.svc-4,.svc-5,.svc-6,.svc-7,.svc-8{grid-column:span 2}
+  .specialist-grid{grid-template-columns:repeat(1,1fr)}
+  .about-grid{grid-template-columns:1fr;gap:70px}
+  .about-visual img{height:460px}
+  .testimonials-grid{grid-template-columns:1fr;gap:18px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .hero-meta{grid-template-columns:repeat(2,1fr);gap:32px}
+  .areas-grid{grid-template-columns:1fr;gap:40px}
+  .gallery-grid{grid-auto-rows:120px}
+  .g-1,.g-2,.g-3,.g-4,.g-5,.g-6,.g-7{grid-column:span 6}
+  .g-1{grid-row:span 3}
+}
+@media(max-width:680px){
+  .nav-links > a:not(.nav-cta){display:none}
+  .nav-mobile{display:block}
+  .nav-cta{padding:0!important;width:44px;height:44px;justify-content:center;font-size:0!important}
+  .nav-cta svg{width:18px;height:18px}
+  .nav-inner{padding:0 22px;height:70px}
+  .nav-logo-text{font-size:1.15rem}
+  .nav-mark{width:38px;height:38px}
+  .nav-mark svg{width:22px;height:22px}
+  .nav-logo-sub{display:none}
+  .hero{padding:120px 22px 70px;min-height:94vh}
+  .services-wrap,.about-wrap,.gallery-wrap,.testimonials-wrap,.specialist-wrap,.areas-wrap{padding:80px 0}
+  .container{padding:0 22px}
+  .services-grid{grid-template-columns:1fr;gap:14px}
+  .svc-1, .svc-2, .svc-3,.svc-4,.svc-5,.svc-6,.svc-7,.svc-8{grid-column:span 1}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  .g-1,.g-2,.g-3,.g-4,.g-5,.g-6,.g-7{grid-column:span 1;grid-row:span 1}
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .about-stamp{left:-12px;padding:22px 24px}
+  .about-stamp-num{font-size:2.4rem}
+  .about-list{grid-template-columns:1fr}
+  .hero-meta{grid-template-columns:1fr 1fr;gap:22px}
+  .cta-banner{padding:75px 22px}
+  .testimonials-top{flex-direction:column;align-items:flex-start}
+  .ts-score{width:100%;justify-content:flex-start}
+  .gallery-top{flex-direction:column;align-items:flex-start}
+  .marquee-track{animation-duration:22s}
+  .marquee-item{font-size:1rem;gap:36px}
+  .marquee-item::after{margin-left:36px}
+}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-wall">
+    <div class="skim"></div>
+    <div class="loader-name">
+      <div class="lg">IC <em>Plasterers</em></div>
+      <div class="sm">Edinburgh &middot; Lothians &middot; Fife &middot; Borders</div>
+    </div>
+    <div class="trowel">
+      <svg viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
+        <!-- shadow blade underneath -->
+        <path d="M10 60 L200 40 L220 60 L200 80 L10 72 Z" fill="rgba(0,0,0,0.35)" transform="translate(3,6)"/>
+        <!-- Blade (steel) -->
+        <defs>
+          <linearGradient id="blade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8e8ea"/>
+            <stop offset="45%" stop-color="#b5b5b9"/>
+            <stop offset="100%" stop-color="#6e6e74"/>
+          </linearGradient>
+          <linearGradient id="handle" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#7a4a22"/>
+            <stop offset="45%" stop-color="#a26735"/>
+            <stop offset="100%" stop-color="#6a3c18"/>
+          </linearGradient>
+        </defs>
+        <path d="M10 60 L200 40 L220 60 L200 80 L10 72 Z" fill="url(#blade)" stroke="#2a2a2e" stroke-width="1.2"/>
+        <!-- blade highlight -->
+        <path d="M14 64 L196 46 L214 60 L196 74 L14 68 Z" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+        <!-- shank -->
+        <rect x="200" y="54" width="16" height="12" fill="#3a3a3f" rx="1"/>
+        <!-- ferrule -->
+        <rect x="215" y="48" width="10" height="24" fill="#545459" rx="1"/>
+        <rect x="215" y="49" width="10" height="4" fill="#8a8a90"/>
+        <!-- Handle -->
+        <path d="M225 44 Q252 52 252 60 Q252 68 225 76 Q226 60 225 44 Z" fill="url(#handle)" stroke="#3b1f0a" stroke-width="1"/>
+        <ellipse cx="238" cy="60" rx="6" ry="10" fill="rgba(255,255,255,0.1)"/>
+      </svg>
+    </div>
+  </div>
+  <div class="loader-bar"></div>
+  <div class="loader-status">Skimming <span class="loader-pct" id="loaderPct">0%</span></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-mark">
+        <!-- trowel mark icon -->
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M3 16 L22 10 L25 16 L22 22 L3 20 Z" fill="#ece3d1" stroke="#ece3d1" stroke-width="0.5"/>
+          <rect x="22" y="13" width="3" height="6" fill="#b6532a"/>
+          <rect x="25" y="11" width="4" height="10" fill="#b6532a" rx="1"/>
+        </svg>
+      </span>
+      <div>
+        <div class="nav-logo-text">IC <em>Plasterers</em></div>
+        <span class="nav-logo-sub">Est. Family Run &middot; 30+ Yrs</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#specialist">Specialist</a>
+      <a href="#about">About John</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Free Quote
+      </a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#specialist" onclick="document.getElementById('mobileMenu').classList.remove('open')">Specialist</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Work</a>
+  <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--terracotta-bright)">Free Quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"><img src="work-5.jpg" alt="" loading="eager"></div>
+  <div class="hero-inner">
+    <div class="hero-tag"><span class="hero-tag-dot"></span> Edinburgh &middot; Lothians &middot; Fife &middot; Scottish Borders</div>
+    <h1>
+      <span class="break">Walls laid smooth.</span>
+      <span class="break">Jobs done <em>properly.</em></span>
+    </h1>
+    <p class="hero-sub">IC Plasterers is a family-run plastering &amp; rendering outfit with <strong style="color:var(--cream)">30+ years on the trowel</strong> — skimming, rendering, dry lining, Artex removal, damp proofing and fireplaces. No job too small. No job too big.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-solid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Get a Free Quote
+      </a>
+      <a href="#gallery" class="btn btn-ghost">See Our Work &rarr;</a>
+    </div>
+
+    <div class="hero-meta">
+      <div><div class="hmeta-num">30<em>+</em></div><div class="hmeta-label">Years on the Trowel</div></div>
+      <div><div class="hmeta-num">5.0</div><div class="hmeta-label">Verified Star Rating</div></div>
+      <div><div class="hmeta-num">4</div><div class="hmeta-label">Regions Covered</div></div>
+      <div><div class="hmeta-num">Free</div><div class="hmeta-label">No-Obligation Quotes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Plaster Skimming</span>
+    <span class="marquee-item">External Rendering</span>
+    <span class="marquee-item">Pebble Dashing</span>
+    <span class="marquee-item">Dry Lining</span>
+    <span class="marquee-item">Artex Removal</span>
+    <span class="marquee-item">Damp Proofing</span>
+    <span class="marquee-item">Fireplaces</span>
+    <span class="marquee-item">Polished Plaster</span>
+    <span class="marquee-item">Plaster Skimming</span>
+    <span class="marquee-item">External Rendering</span>
+    <span class="marquee-item">Pebble Dashing</span>
+    <span class="marquee-item">Dry Lining</span>
+    <span class="marquee-item">Artex Removal</span>
+    <span class="marquee-item">Damp Proofing</span>
+    <span class="marquee-item">Fireplaces</span>
+    <span class="marquee-item">Polished Plaster</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-wrap" id="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Full Service</div>
+      <h2 class="section-heading">Every <em>plaster &amp; render</em><br>job, under one roof.</h2>
+      <p class="section-sub">From a single patched ceiling to a full re-render of a gable end — we cover the lot. Domestic and light commercial, interior and exterior, old plaster or new build.</p>
+    </div>
+
+    <div class="services-grid">
+      <a href="#contact" class="svc svc-1 reveal">
+        <span class="svc-num">01 &mdash; Most Booked</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 26 L14 8 L22 18 L28 10"/><path d="M4 26 L28 26" stroke-dasharray="2 2"/></svg>
+        <h3>Plaster Skimming</h3>
+        <p>Tired, patchy or cracked walls and ceilings brought back flawlessly flat. Mist-coat ready, properly trowelled — the finish most customers first hire us for.</p>
+        <span class="svc-arrow">Request a quote &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-2 reveal">
+        <span class="svc-num">02 &mdash; Exterior Specialist</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="20" height="20"/><path d="M6 12 L26 12 M6 18 L26 18 M6 24 L26 24 M12 6 L12 26 M18 6 L18 26"/></svg>
+        <h3>External Rendering &amp; Pebble Dash</h3>
+        <p>Silicone render, K-Rend, traditional sand-and-cement, monocouche and pebble dashing. Weather-tight, crack-resistant and finished to the edge.</p>
+        <span class="svc-arrow">Request a quote &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-3 reveal">
+        <span class="svc-num">03</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="10" height="24"/><rect x="18" y="4" width="10" height="24"/></svg>
+        <h3>Dry Lining &amp; Plasterboard</h3>
+        <p>Install, repair, partitions and overboarding — taped, jointed or skimmed.</p>
+        <span class="svc-arrow">Enquire &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-4 reveal">
+        <span class="svc-num">04</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 26 L6 18 Q6 6 16 6 Q26 6 26 18 L26 26"/><path d="M10 26 L10 20 M22 26 L22 20 M16 26 L16 16"/></svg>
+        <h3>External Wall Insulation</h3>
+        <p>Fully-rendered EWI systems to warm the house and cut bills.</p>
+        <span class="svc-arrow">Enquire &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-5 reveal">
+        <span class="svc-num">05</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 28 L28 28 M4 20 L28 20 M4 12 L28 12 M4 4 L28 4"/></svg>
+        <h3>Screeding</h3>
+        <p>Sand &amp; cement, liquid and traditional screeds — laid flat, laid level.</p>
+        <span class="svc-arrow">Enquire &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-6 reveal">
+        <span class="svc-num">06</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="16" r="10"/><path d="M10 16 Q16 10 22 16 Q16 22 10 16"/></svg>
+        <h3>Polished Plaster</h3>
+        <p>Venetian, marmorino and micro-cement finishes. Seamless, stone-like, striking.</p>
+        <span class="svc-arrow">Enquire &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-7 reveal">
+        <span class="svc-num">07</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10 Q8 6 12 10 Q16 14 20 10 Q24 6 28 10 L28 14 L4 14 Z"/><path d="M4 14 L4 26 L28 26 L28 14"/></svg>
+        <h3>Decorative Cornicing &amp; Coving</h3>
+        <p>Run-in-situ cornice, standard coving and restoration on period rooms.</p>
+        <span class="svc-arrow">Enquire &rarr;</span>
+      </a>
+
+      <a href="#contact" class="svc svc-8 reveal">
+        <span class="svc-num">08</span>
+        <svg class="svc-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="24" height="24"/><path d="M10 4 L10 28 M16 4 L16 28 M22 4 L22 28 M4 10 L28 10 M4 16 L28 16 M4 22 L28 22"/></svg>
+        <h3>Internal Rendering</h3>
+        <p>Scratch-coat, float and set — solid walls brought back to true.</p>
+        <span class="svc-arrow">Enquire &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALIST STRIP -->
+<section class="specialist-wrap" id="specialist">
+  <div class="container">
+    <div class="specialist-top reveal">
+      <div class="section-label">Specialist Work</div>
+      <h2 class="section-heading">The jobs other trades<br><em>quietly turn down.</em></h2>
+      <p class="section-sub">Three areas we've been called in for, again and again, for 30 years. If another plasterer has told you it's "too messy" or "not worth the hassle" — give us a ring.</p>
+    </div>
+
+    <div class="specialist-grid">
+      <div class="spec reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 Q6 8 9 12 Q12 16 15 12 Q18 8 21 12"/><path d="M3 6 Q6 2 9 6 Q12 10 15 6 Q18 2 21 6"/><path d="M3 18 Q6 14 9 18 Q12 22 15 18 Q18 14 21 18"/></svg>
+        </div>
+        <h3>Artex Removal</h3>
+        <p>Those old textured ceilings scraped off, encapsulated where needed, and re-skimmed dead flat. Proper dust sheets, zero drama.</p>
+      </div>
+
+      <div class="spec reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 Q7 9 7 14 Q7 19 12 21 Q17 19 17 14 Q17 9 12 3 Z"/><path d="M12 21 L12 14" opacity="0.5"/></svg>
+        </div>
+        <h3>Damp Proofing</h3>
+        <p>Penetrating damp, rising damp and salt-bloom — cause diagnosed, treated, and re-plastered with a proper salt-retardant system.</p>
+      </div>
+
+      <div class="spec reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20 L4 8 L20 8 L20 20 Z"/><path d="M8 8 L8 4 L16 4 L16 8"/><path d="M10 20 Q10 15 12 14 Q14 15 14 20"/></svg>
+        </div>
+        <h3>Fireplaces</h3>
+        <p>Old fireplace openings exposed, made-good, lime-plastered or rendered around solid-fuel installs. Hearths in, chimneys breasted cleanly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-wrap" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-frame"></div>
+        <img src="work-4.avif" alt="IC Plasterers job in progress">
+        <div class="about-stamp">
+          <div class="about-stamp-num">30<em>+</em></div>
+          <div class="about-stamp-text">Years &middot; Family Run</div>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="section-label">About Us</div>
+        <h2 class="section-heading">A family on the<br><em>trowel,</em> since 1994.</h2>
+        <p>IC Plasterers is a <strong>family-run plastering and building company</strong> covering Edinburgh, the Lothians, Fife and the Scottish Borders. John's been skimming walls and rendering gable ends for more than <strong>30 years</strong> — and these days David's out on the jobs too, with all trades backed up behind them.</p>
+        <p>Our aim is customer satisfaction on every single job — from a patched-up ceiling to a full house strip-and-render. We quote fair, we turn up when we say we will, and we leave the site tidy.</p>
+
+        <div class="about-sig">
+          <div class="about-sig-mark">J</div>
+          <div>
+            <div class="about-sig-name">John <em>&amp;</em> David</div>
+            <div class="about-sig-role">Founder &middot; Plasterer &middot; Renderer</div>
+          </div>
+        </div>
+
+        <ul class="about-list">
+          <li>30+ Years Experience</li>
+          <li>Family Run Business</li>
+          <li>Artex Removal Specialist</li>
+          <li>Damp Proofing Expertise</li>
+          <li>Fireplace Specialist</li>
+          <li>All Trades Backed Up</li>
+          <li>No Job Too Small or Big</li>
+          <li>Free No-Obligation Quotes</li>
+        </ul>
+
+        <a href="#contact" class="btn btn-dark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Talk to John
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-wrap" id="gallery">
+  <div class="container">
+    <div class="gallery-top">
+      <div class="gallery-top-text reveal">
+        <div class="section-label">Recent Work</div>
+        <h2 class="section-heading">Smoothed, rendered, <em>finished.</em></h2>
+        <p class="section-sub">Selected jobs from across the Lothians, Fife and the Borders. Every photo is ours.</p>
+      </div>
+      <div class="gallery-count reveal">
+        <strong>200+</strong>
+        jobs completed<br>across central Scotland
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="g g-1 reveal">
+        <span class="g-tag">Skim</span>
+        <img src="work-5.jpg" alt="Full room skim" loading="lazy">
+        <span class="g-label">Full room re-skim &middot; Fife</span>
+      </div>
+      <div class="g g-2 reveal">
+        <span class="g-tag">Render</span>
+        <img src="work-1.avif" alt="External render" loading="lazy">
+        <span class="g-label">External silicone render</span>
+      </div>
+      <div class="g g-3 reveal">
+        <span class="g-tag">Dash</span>
+        <img src="work-2.avif" alt="Pebble dash" loading="lazy">
+        <span class="g-label">Pebble dash &middot; Lothians</span>
+      </div>
+      <div class="g g-4 reveal">
+        <span class="g-tag">Dry Line</span>
+        <img src="work-6.jpg" alt="Dry lining" loading="lazy">
+        <span class="g-label">Dry lining &middot; partition wall</span>
+      </div>
+      <div class="g g-5 reveal">
+        <span class="g-tag">Damp</span>
+        <img src="work-3.avif" alt="Damp proofing" loading="lazy">
+        <span class="g-label">Damp-proof re-plaster</span>
+      </div>
+      <div class="g g-6 reveal">
+        <span class="g-tag">Fireplace</span>
+        <img src="work-7.jpg" alt="Fireplace" loading="lazy">
+        <span class="g-label">Fireplace &middot; lime plastered</span>
+      </div>
+      <div class="g g-7 reveal">
+        <span class="g-tag">Render</span>
+        <img src="work-4.avif" alt="Exterior render" loading="lazy">
+        <span class="g-label">Full gable re-render &middot; Borders</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-wrap" id="reviews">
+  <div class="container">
+    <div class="testimonials-top">
+      <div class="reveal">
+        <div class="section-label">Verified Reviews</div>
+        <h2 class="section-heading">What locals <em>say.</em></h2>
+      </div>
+      <div class="ts-score reveal">
+        <div class="ts-big">5.0</div>
+        <div class="ts-stars-wrap">
+          <span class="ts-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <span class="ts-sub">24+ Verified Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="t-card reveal">
+        <span class="t-quote-mark">&ldquo;</span>
+        <div class="t-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>Thank you to John and his team who did an excellent job of skimming walls and ceilings. John was quick to quote and I was very happy with the price. Kept me up to date throughout. A genuinely nice guy and nothing was too much trouble.</blockquote>
+        <div class="t-meta">
+          <div>
+            <div class="t-author">Mike</div>
+            <div class="t-job">Plaster Skimming &middot; FK2</div>
+          </div>
+          <div class="t-date">19 Feb 2025</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <span class="t-quote-mark">&ldquo;</span>
+        <div class="t-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>Genuine, honest, hardworking professional who knows his stuff. Gave great advice, fantastic job at a very reasonable price. Would highly recommend.</blockquote>
+        <div class="t-meta">
+          <div>
+            <div class="t-author">Fiona</div>
+            <div class="t-job">External Rendering &middot; EH16</div>
+          </div>
+          <div class="t-date">7 Mar 2025</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <span class="t-quote-mark">&ldquo;</span>
+        <div class="t-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>John and David were so professional. Very pleased with their work. Knowledgeable, confident and easy going. Nothing was too much and they left my garden tidy. I would highly recommend them.</blockquote>
+        <div class="t-meta">
+          <div>
+            <div class="t-author">Alex</div>
+            <div class="t-job">Stonework Repair &middot; EH12</div>
+          </div>
+          <div class="t-date">25 Jun 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas-wrap">
+  <div class="container">
+    <div class="areas-grid">
+      <div class="areas-left reveal">
+        <div class="section-label">Coverage</div>
+        <h2 class="section-heading">Central Scotland, <em>covered.</em></h2>
+        <p>Based in Fife, working across Edinburgh, the Lothians, Fife and the Scottish Borders. If you're within a sensible drive, we'll come and quote — free, no obligation.</p>
+      </div>
+      <div class="areas-pills reveal">
+        <span class="pill pill-hero">Edinburgh EH</span>
+        <span class="pill">Midlothian</span>
+        <span class="pill">East Lothian</span>
+        <span class="pill">West Lothian</span>
+        <span class="pill">Kirkcaldy KY1</span>
+        <span class="pill">Glenrothes KY6</span>
+        <span class="pill">Dunfermline KY11</span>
+        <span class="pill">St Andrews KY16</span>
+        <span class="pill">Livingston EH54</span>
+        <span class="pill">Musselburgh EH21</span>
+        <span class="pill">Dalkeith EH22</span>
+        <span class="pill">Falkirk FK1</span>
+        <span class="pill">Stirling FK8</span>
+        <span class="pill">Borders TD</span>
+        <span class="pill">Peebles EH45</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner" id="contact">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Get a Free Quote</div>
+    <h2>Need a plasterer<br>who <em>turns up?</em></h2>
+    <a href="tel:01234567890" class="cta-phone">01234 567 890</a>
+    <a href="mailto:john@icplasterers.co.uk" class="cta-email">john@icplasterers.co.uk</a>
+    <div class="cta-btns">
+      <a href="tel:01234567890" class="btn btn-dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call John
+      </a>
+      <a href="https://wa.me/441234567890?text=Hi%20John%2C%20I%27d%20like%20a%20plastering%20quote%20please" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="nav-mark">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M3 16 L22 10 L25 16 L22 22 L3 20 Z" fill="#ece3d1"/><rect x="22" y="13" width="3" height="6" fill="#1b1916"/><rect x="25" y="11" width="4" height="10" fill="#1b1916" rx="1"/></svg>
+          </span>
+          <div class="footer-logo-text">IC <em>Plasterers</em></div>
+        </div>
+        <p class="footer-about">Family-run plastering, rendering and building across Edinburgh, the Lothians, Fife and the Scottish Borders. 30+ years experience. No job too small or too big.</p>
+      </div>
+      <div>
+        <div class="footer-head">Services</div>
+        <div class="footer-links">
+          <a href="#services">Plaster Skimming</a>
+          <a href="#services">External Rendering</a>
+          <a href="#services">Pebble Dashing</a>
+          <a href="#services">Dry Lining</a>
+          <a href="#services">Polished Plaster</a>
+          <a href="#services">Screeding</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-head">Specialist</div>
+        <div class="footer-links">
+          <a href="#specialist">Artex Removal</a>
+          <a href="#specialist">Damp Proofing</a>
+          <a href="#specialist">Fireplaces</a>
+          <a href="#specialist">EWI Systems</a>
+          <a href="#specialist">Coving &amp; Cornice</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-head">Contact</div>
+        <div class="footer-links">
+          <a href="tel:01234567890">01234 567 890</a>
+          <a href="mailto:john@icplasterers.co.uk">john@icplasterers.co.uk</a>
+          <a>Edinburgh &middot; Lothians</a>
+          <a>Fife &middot; Scottish Borders</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2026 IC Plasterers. All rights reserved.</span>
+        <span>Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING -->
+<div class="floating" id="floating">
+  <a href="tel:01234567890" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/441234567890?text=Hi%20John%2C%20I%27d%20like%20a%20plastering%20quote%20please" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loader progress % ticker
+(function(){
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  document.body.style.overflow = 'hidden';
+  const pct = document.getElementById('loaderPct');
+  const duration = 3050;
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min((now - start) / duration, 1);
+    pct.textContent = Math.round(p * 100) + '%';
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  setTimeout(() => {
+    loader.classList.add('hidden');
+    document.body.style.overflow = '';
+    setTimeout(() => { loader.style.display = 'none'; }, 900);
+  }, 3250);
+})();
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 24);
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 55);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => revealObserver.observe(el));
+
+const floating = document.getElementById('floating');
+const heroEl = document.getElementById('home');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { floating.classList.toggle('vis', !entry.isIntersecting); });
+}, { threshold: 0.1 });
+heroObs.observe(heroEl);
+</script>
+</body>
+</html>
