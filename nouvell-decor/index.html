@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nouvell Decor — Painters, Decorators &amp; Heritage Building Experts | Essex &amp; London</title>
+<meta name="description" content="Nouvell Decor Ltd — high-end painting, decorating and period property specialists covering Buckhurst Hill, Romford, Waltham Abbey and the surrounding Essex &amp; London areas. Trusted on Trustatrader. Call 0208 559 2005.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --paper:#f5f0e8;
+  --paper-warm:#ede6d9;
+  --cream:#faf6ee;
+  --ink:#0f1821;
+  --navy:#14243a;
+  --navy-deep:#0a1525;
+  --navy-mid:#1d3557;
+  --sage:#8a9b7f;
+  --clay:#b6755e;
+  --chalk:#cfd4cc;
+  --taupe:#9a8f7d;
+  --charcoal:#2a2f35;
+  --muted:#7a7268;
+  --rule:#d5cdbe;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--paper);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:400}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+.serif{font-family:'Cormorant Garamond',serif;font-weight:500}
+.display{font-family:'Italiana',serif;font-weight:400;letter-spacing:0.04em}
+.mono-num{font-family:'Inter',sans-serif;font-feature-settings:'tnum';letter-spacing:0.02em}
+
+/* ============= PAINT LOADING SCREEN ============= */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--paper);display:flex;align-items:center;justify-content:center;transition:opacity 0.9s ease,visibility 0.9s ease;overflow:hidden}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
+.loader-stage{position:relative;width:min(560px,85vw);aspect-ratio:16/10}
+
+/* paper texture (subtle) */
+.loader-stage::before{content:'';position:absolute;inset:-40px;background:
+  radial-gradient(ellipse at top left,rgba(0,0,0,0.04),transparent 60%),
+  radial-gradient(ellipse at bottom right,rgba(0,0,0,0.05),transparent 60%);
+  pointer-events:none}
+
+/* paint stroke swatch — appears as the roller sweeps */
+.loader-swatch{position:absolute;left:0;right:0;top:36%;height:38%;background:var(--navy);transform:scaleX(0);transform-origin:left center;animation:sweep 1.6s cubic-bezier(0.7,0,0.2,1) 0.4s forwards;border-radius:2px;box-shadow:0 24px 60px rgba(20,36,58,0.18),inset 0 1px 0 rgba(255,255,255,0.05)}
+@keyframes sweep{to{transform:scaleX(1)}}
+
+/* brush texture on right edge of swatch while being painted */
+.loader-swatch::after{content:'';position:absolute;right:-4px;top:0;bottom:0;width:14px;background:linear-gradient(to right,var(--navy) 0%,rgba(20,36,58,0.6) 40%,rgba(20,36,58,0.2) 70%,transparent 100%);filter:blur(1px);opacity:1;animation:fadeEdge 0.3s ease 1.95s forwards}
+@keyframes fadeEdge{to{opacity:0}}
+
+/* roller visual — rides the leading edge */
+.loader-roller{position:absolute;left:0;top:36%;height:38%;width:46px;transform:translateX(-24px);animation:rollerMove 1.6s cubic-bezier(0.7,0,0.2,1) 0.4s forwards}
+.loader-roller svg{width:100%;height:100%;display:block}
+@keyframes rollerMove{to{transform:translateX(calc(100% - 22px))}}
+
+/* brand mark appears on the painted swatch */
+.loader-brand{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0;animation:fadeIn 0.7s ease 2.1s forwards;z-index:3}
+.loader-brand-mark{font-family:'Italiana',serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--cream);letter-spacing:0.28em;line-height:1;margin-bottom:8px}
+.loader-brand-sub{font-family:'Inter',sans-serif;font-size:0.7rem;color:rgba(250,246,238,0.6);letter-spacing:0.5em;text-transform:uppercase;font-weight:400}
+
+/* palette chips drop in beneath */
+.loader-palette{position:absolute;left:0;right:0;top:calc(36% + 38% + 28px);display:flex;justify-content:center;gap:14px}
+.chip{width:44px;height:44px;border-radius:50%;transform:translateY(-12px);opacity:0;box-shadow:0 8px 22px rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.4)}
+.chip:nth-child(1){background:#c3b9a4;animation:chipDrop 0.6s cubic-bezier(.3,.9,.4,1.2) 2.3s forwards}
+.chip:nth-child(2){background:#7d8c83;animation:chipDrop 0.6s cubic-bezier(.3,.9,.4,1.2) 2.4s forwards}
+.chip:nth-child(3){background:#14243a;animation:chipDrop 0.6s cubic-bezier(.3,.9,.4,1.2) 2.5s forwards}
+.chip:nth-child(4){background:#b6755e;animation:chipDrop 0.6s cubic-bezier(.3,.9,.4,1.2) 2.6s forwards}
+.chip:nth-child(5){background:#e7dfcf;animation:chipDrop 0.6s cubic-bezier(.3,.9,.4,1.2) 2.7s forwards}
+@keyframes chipDrop{to{transform:translateY(0);opacity:1}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* tagline above */
+.loader-top{position:absolute;top:-44px;left:50%;transform:translateX(-50%);font-size:0.65rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);font-weight:500;opacity:0;animation:fadeIn 0.7s ease 0.1s forwards}
+
+/* progress line at bottom */
+.loader-progress{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:260px;height:1px;background:rgba(20,36,58,0.12);overflow:hidden}
+.loader-progress::after{content:'';display:block;width:100%;height:100%;background:var(--navy);transform:scaleX(0);transform-origin:left;animation:prog 2.6s cubic-bezier(0.5,0,0.3,1) 0.3s forwards}
+@keyframes prog{to{transform:scaleX(1)}}
+
+/* ============= NAV ============= */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(245,240,232,0.82);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:all 0.3s}
+.nav.scrolled{background:rgba(245,240,232,0.97);border-bottom-color:var(--rule)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:82px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.nav-brand{display:flex;align-items:center;gap:14px}
+.nav-brand-mark{font-family:'Italiana',serif;font-size:1.25rem;color:var(--navy);letter-spacing:0.2em;line-height:1}
+.nav-brand-sub{font-family:'Inter',sans-serif;font-size:0.56rem;color:var(--muted);letter-spacing:0.34em;text-transform:uppercase;margin-top:3px;font-weight:500}
+.nav-brand-logo{width:38px;height:38px;background:var(--navy);border-radius:3px;padding:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.nav-brand-logo img{width:100%;height:100%;object-fit:contain}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links > a{font-size:0.78rem;font-weight:500;color:var(--charcoal);letter-spacing:0.04em;transition:color 0.2s;position:relative;padding:8px 0}
+.nav-links > a::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease}
+.nav-links > a:hover{color:var(--navy)}
+.nav-links > a:hover::after{transform:scaleX(1)}
+.nav-cta{font-family:'Inter',sans-serif;background:var(--navy);color:var(--cream)!important;padding:13px 26px;border-radius:2px;font-weight:500!important;font-size:0.78rem!important;letter-spacing:0.06em;transition:all 0.25s;border:1px solid var(--navy);display:inline-flex;align-items:center;gap:8px}
+.nav-cta:hover{background:transparent;color:var(--navy)!important}
+.nav-cta::after{display:none!important}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--navy)}
+
+/* ============= HERO ============= */
+.hero{position:relative;min-height:100vh;padding:140px 32px 80px;overflow:hidden;background:var(--paper)}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.hero-lead{position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:0.68rem;font-weight:500;color:var(--muted);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:40px;opacity:0;animation:rise 0.9s ease 0.2s forwards}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--navy)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(3rem,7vw,6rem);line-height:0.96;color:var(--navy);letter-spacing:-0.015em;margin-bottom:36px;opacity:0;animation:rise 0.9s ease 0.35s forwards}
+.hero h1 em{font-style:italic;color:var(--clay);font-weight:400}
+.hero h1 .small-caps{display:block;font-family:'Italiana',serif;font-size:0.32em;letter-spacing:0.4em;color:var(--navy);margin-top:18px;line-height:1}
+.hero-sub{font-size:1.08rem;color:var(--charcoal);max-width:500px;line-height:1.75;margin-bottom:48px;opacity:0;animation:rise 0.9s ease 0.5s forwards}
+.hero-btns{display:flex;gap:20px;align-items:center;flex-wrap:wrap;opacity:0;animation:rise 0.9s ease 0.65s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:18px 34px;border-radius:2px;font-weight:500;font-size:0.82rem;border:1px solid transparent;cursor:pointer;transition:all 0.25s;letter-spacing:0.08em;text-transform:uppercase;font-family:'Inter',sans-serif}
+.btn svg{width:16px;height:16px}
+.btn-navy{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.btn-navy:hover{background:transparent;color:var(--navy);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:var(--cream)}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:500;color:var(--navy);letter-spacing:0.04em;border-bottom:1px solid var(--navy);padding-bottom:3px;transition:gap 0.3s}
+.link-arrow:hover{gap:14px}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* hero visual */
+.hero-visual{position:relative;aspect-ratio:4/5;opacity:0;animation:rise 1.1s ease 0.45s forwards}
+.hero-photo{position:relative;width:100%;height:100%;overflow:hidden;border-radius:2px;box-shadow:0 30px 80px rgba(20,36,58,0.18)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);animation:heroZoom 6s ease-out forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-photo-caption{position:absolute;left:-18px;bottom:48px;background:var(--paper);padding:22px 26px;max-width:260px;box-shadow:0 16px 40px rgba(20,36,58,0.12);border-left:2px solid var(--clay);opacity:0;animation:rise 0.8s ease 1.2s forwards}
+.hero-photo-caption-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--clay);font-style:italic;font-weight:500;line-height:1;margin-bottom:8px}
+.hero-photo-caption-text{font-size:0.82rem;color:var(--charcoal);line-height:1.5;font-weight:400}
+.hero-sidenote{position:absolute;right:0;top:20px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+/* hero meta strip — trust marks */
+.hero-meta{margin-top:60px;max-width:1280px;margin-left:auto;margin-right:auto;padding:28px 32px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(4,1fr);gap:30px;opacity:0;animation:rise 0.9s ease 0.85s forwards}
+.hmeta{display:flex;flex-direction:column;gap:6px}
+.hmeta-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--navy);line-height:1;font-weight:500}
+.hmeta-label{font-size:0.66rem;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--muted)}
+
+/* decorative flourish */
+.hero-orn{position:absolute;top:120px;left:-60px;z-index:0;opacity:0.08;pointer-events:none}
+.hero-orn svg{width:320px;height:320px}
+
+/* ============= MARQUEE ============= */
+.marquee{background:var(--navy);color:var(--cream);padding:22px 0;overflow:hidden;position:relative;z-index:3}
+.marquee-track{display:flex;gap:60px;animation:slide 38s linear infinite;white-space:nowrap}
+.marquee-item{font-family:'Italiana',serif;font-size:1.05rem;letter-spacing:0.22em;text-transform:uppercase;display:flex;align-items:center;gap:60px}
+.marquee-item::after{content:'◆';color:var(--clay);font-size:0.6rem;margin-left:60px}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:768px){.marquee-track{animation-duration:22s}.marquee-item{font-size:0.9rem;letter-spacing:0.18em}}
+
+/* ============= SECTION CHROME ============= */
+section{position:relative}
+.sec-head{max-width:1280px;margin:0 auto;padding:0 32px}
+.sec-index{display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.2rem;color:var(--clay);margin-bottom:12px;letter-spacing:0.02em}
+.sec-eyebrow{font-size:0.66rem;font-weight:500;color:var(--muted);letter-spacing:0.32em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.sec-eyebrow::before{content:'';width:32px;height:1px;background:var(--navy)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.4rem,5vw,4.2rem);color:var(--navy);line-height:1.02;letter-spacing:-0.015em;margin-bottom:22px;max-width:820px}
+.sec-title em{font-style:italic;color:var(--clay);font-weight:400}
+.sec-desc{font-size:1rem;color:var(--charcoal);max-width:560px;line-height:1.8}
+
+/* ============= PALETTE / INTRO ============= */
+.intro{padding:140px 0 120px;background:var(--paper);border-top:1px solid var(--rule)}
+.intro-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1.2fr;gap:100px;align-items:start}
+.intro-left{position:sticky;top:110px}
+.intro-right{font-size:1.08rem;line-height:1.85;color:var(--charcoal);font-weight:400}
+.intro-right .lede{font-family:'Cormorant Garamond',serif;font-size:1.9rem;line-height:1.4;color:var(--navy);margin-bottom:34px;font-weight:500;letter-spacing:-0.005em}
+.intro-right .lede::first-letter{font-family:'Italiana',serif;font-size:3.6rem;float:left;line-height:0.9;margin:4px 14px 0 0;color:var(--clay)}
+.intro-right p{margin-bottom:22px;max-width:560px}
+.intro-right p strong{color:var(--navy);font-weight:600}
+.palette-title{font-size:0.66rem;font-weight:500;color:var(--muted);letter-spacing:0.32em;text-transform:uppercase;margin-bottom:20px}
+.palette-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:320px}
+.swatch{aspect-ratio:1;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.4s cubic-bezier(.2,.8,.2,1);cursor:default}
+.swatch:hover{transform:scale(1.04);z-index:2;box-shadow:0 20px 40px rgba(0,0,0,0.12)}
+.swatch-name{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:0.95rem;letter-spacing:0.02em}
+.swatch-code{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.65}
+.sw-1{background:#c3b9a4;color:#3a3024}
+.sw-2{background:#7d8c83;color:#1c2824}
+.sw-3{background:#14243a;color:#e3dac9}
+.sw-4{background:#b6755e;color:#2c130a}
+
+/* ============= SERVICES ============= */
+.services{padding:140px 0;background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative}
+.svc-grid{max-width:1280px;margin:80px auto 0;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr)}
+.svc{padding:48px 42px 54px;border-left:1px solid var(--rule);position:relative;transition:background 0.4s}
+.svc:first-child{border-left:none}
+.svc:hover{background:rgba(20,36,58,0.03)}
+.svc-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--clay);letter-spacing:0.04em;margin-bottom:30px;display:block}
+.svc h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.75rem;color:var(--navy);line-height:1.1;margin-bottom:18px}
+.svc p{font-size:0.94rem;color:var(--charcoal);line-height:1.75;margin-bottom:24px}
+.svc-tags{display:flex;flex-wrap:wrap;gap:6px}
+.svc-tag{font-size:0.64rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;padding:6px 12px;background:var(--paper);border:1px solid var(--rule);color:var(--muted);border-radius:1px}
+.svc-row-2{border-top:1px solid var(--rule)}
+
+/* ============= SHOWCASE SPLIT ============= */
+.showcase{padding:140px 0;background:var(--paper)}
+.showcase-inner{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.showcase-visual{position:relative;aspect-ratio:5/6}
+.showcase-visual img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2}
+.showcase-frame{position:absolute;inset:24px -24px -24px 24px;border:1px solid var(--navy);z-index:1}
+.showcase-stamp{position:absolute;right:-30px;top:-30px;z-index:3;width:130px;height:130px;background:var(--clay);color:var(--cream);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 14px 36px rgba(182,117,94,0.35);transform:rotate(8deg)}
+.showcase-stamp-top{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;font-weight:500;opacity:0.85}
+.showcase-stamp-mid{font-family:'Italiana',serif;font-size:2.3rem;line-height:1;margin:4px 0}
+.showcase-stamp-btm{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;font-weight:500;opacity:0.85}
+.showcase-content h2{margin-bottom:30px}
+.showcase-content p{margin-bottom:20px;font-size:1.04rem;line-height:1.85;color:var(--charcoal)}
+.showcase-list{margin-top:36px;list-style:none}
+.showcase-list li{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--rule);font-size:0.95rem;color:var(--charcoal);align-items:center}
+.showcase-list li:last-child{border-bottom:none}
+.showcase-list-no{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--clay);width:32px;flex-shrink:0;font-weight:500}
+
+/* ============= GALLERY (only 2 photos, so treated like editorial spreads) ============= */
+.gallery{padding:140px 0;background:var(--cream);border-top:1px solid var(--rule)}
+.gallery-lead{max-width:1280px;margin:0 auto 70px;padding:0 32px}
+.gallery-stack{max-width:1400px;margin:0 auto;padding:0 32px;display:grid;gap:8px}
+
+.spread{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;background:var(--paper);border:1px solid var(--rule);border-radius:2px;overflow:hidden;min-height:520px}
+.spread-img{position:relative;overflow:hidden;background:var(--navy)}
+.spread-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(.2,.8,.2,1)}
+.spread:hover .spread-img img{transform:scale(1.05)}
+.spread-img-no{position:absolute;top:22px;left:26px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--cream);letter-spacing:0.04em;z-index:2;padding:8px 14px;background:rgba(20,36,58,0.6);backdrop-filter:blur(10px);border-radius:1px}
+.spread-text{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.spread-label{font-size:0.66rem;font-weight:500;color:var(--clay);letter-spacing:0.32em;text-transform:uppercase}
+.spread-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2.4rem;line-height:1.05;color:var(--navy);letter-spacing:-0.01em}
+.spread-title em{font-style:italic;color:var(--clay)}
+.spread-body{font-size:1rem;color:var(--charcoal);line-height:1.8;margin-top:6px}
+.spread-meta{margin-top:20px;display:flex;gap:28px;flex-wrap:wrap}
+.spread-meta span{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.spread-meta strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--navy);margin-top:2px;letter-spacing:0;text-transform:none;font-weight:500}
+.spread-reverse{direction:rtl}
+.spread-reverse > *{direction:ltr}
+
+/* ============= REVIEWS ============= */
+.reviews{padding:140px 0;background:var(--paper)}
+.rev-top{max-width:1280px;margin:0 auto 70px;padding:0 32px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.rev-score{text-align:right}
+.rev-score-num{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:4.5rem;color:var(--navy);line-height:1}
+.rev-score-stars{color:var(--clay);font-size:1.2rem;letter-spacing:0.2em;margin-top:6px}
+.rev-score-sub{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-top:10px;font-weight:500}
+.rev-grid{max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.rev-card{background:var(--cream);padding:44px 38px;border-left:2px solid var(--clay);transition:transform 0.3s,box-shadow 0.3s}
+.rev-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(20,36,58,0.08)}
+.rev-stars{color:var(--clay);font-size:0.95rem;letter-spacing:0.16em;margin-bottom:22px}
+.rev-quote{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.2rem;color:var(--navy);line-height:1.5;margin-bottom:24px;font-style:italic}
+.rev-author{font-weight:600;font-size:0.85rem;color:var(--navy);letter-spacing:0.02em}
+.rev-role{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:4px;font-weight:500}
+
+/* ============= CONTACT / CTA ============= */
+.cta{padding:160px 32px;background:var(--navy);color:var(--cream);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse at top right,rgba(182,117,94,0.18),transparent 55%),
+  radial-gradient(ellipse at bottom left,rgba(138,155,127,0.12),transparent 55%);
+  pointer-events:none}
+.cta-orn{position:absolute;top:40px;left:50%;transform:translateX(-50%);font-family:'Italiana',serif;font-size:0.66rem;letter-spacing:0.5em;color:rgba(250,246,238,0.35);text-transform:uppercase}
+.cta-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.cta-eye{font-size:0.68rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--clay);font-weight:500;margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:18px}
+.cta-eye::before,.cta-eye::after{content:'';width:36px;height:1px;background:var(--clay)}
+.cta h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2.6rem,6vw,5.2rem);line-height:1.05;letter-spacing:-0.015em;color:var(--cream);margin-bottom:24px}
+.cta h2 em{font-style:italic;color:var(--clay)}
+.cta-sub{font-size:1.05rem;color:rgba(250,246,238,0.72);max-width:600px;margin:0 auto 50px;line-height:1.8}
+.cta-numbers{display:flex;justify-content:center;gap:50px;margin-bottom:44px;flex-wrap:wrap}
+.cta-num{text-align:center}
+.cta-num-label{font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(250,246,238,0.5);margin-bottom:8px;font-weight:500}
+.cta-num-val{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--cream);letter-spacing:0.02em;transition:color 0.2s}
+.cta-num-val:hover{color:var(--clay)}
+.cta-email{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:rgba(250,246,238,0.8);display:inline-block;padding-bottom:3px;border-bottom:1px solid rgba(250,246,238,0.3);margin-bottom:40px;transition:color 0.2s}
+.cta-email:hover{color:var(--clay);border-color:var(--clay)}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-cream{background:var(--cream);color:var(--navy);padding:18px 34px;border-radius:2px;font-weight:500;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:all 0.25s;border:1px solid var(--cream);font-family:'Inter',sans-serif}
+.btn-cream:hover{background:transparent;color:var(--cream);transform:translateY(-2px)}
+.btn-clay{background:var(--clay);color:var(--cream);padding:18px 34px;border-radius:2px;font-weight:500;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:all 0.25s;border:1px solid var(--clay);font-family:'Inter',sans-serif}
+.btn-clay:hover{background:transparent;color:var(--clay);transform:translateY(-2px)}
+
+/* ============= FOOTER ============= */
+.footer{background:var(--navy-deep);color:rgba(250,246,238,0.6);padding:80px 32px 28px;border-top:1px solid rgba(250,246,238,0.06)}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px}
+.f-brand{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.f-brand-logo{width:40px;height:40px;background:var(--navy);border:1px solid rgba(250,246,238,0.1);border-radius:3px;padding:4px;display:flex;align-items:center;justify-content:center}
+.f-brand-logo img{width:100%;height:100%;object-fit:contain}
+.f-brand-name{font-family:'Italiana',serif;font-size:1.15rem;color:var(--cream);letter-spacing:0.2em;line-height:1}
+.f-brand-sub{font-size:0.56rem;color:rgba(250,246,238,0.5);letter-spacing:0.34em;text-transform:uppercase;margin-top:3px;font-weight:500}
+.f-desc{font-size:0.9rem;line-height:1.75;max-width:360px;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(250,246,238,0.7);font-style:italic}
+.f-head{font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--clay);margin-bottom:20px;font-weight:500}
+.f-links a{display:block;font-size:0.88rem;color:rgba(250,246,238,0.55);padding:6px 0;transition:color 0.2s}
+.f-links a:hover{color:var(--cream)}
+.f-bottom{max-width:1280px;margin:60px auto 0;padding-top:26px;border-top:1px solid rgba(250,246,238,0.08);display:flex;justify-content:space-between;font-size:0.7rem;color:rgba(250,246,238,0.45);flex-wrap:wrap;gap:16px;font-style:italic;font-family:'Cormorant Garamond',serif}
+.f-bottom a{color:var(--clay)}
+
+/* ============= FLOATING ============= */
+.floating{position:fixed;bottom:26px;right:26px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);transition:all 0.4s;pointer-events:none}
+.floating.vis{opacity:1;transform:translateY(0);pointer-events:all}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(20,36,58,0.28);transition:transform 0.2s;cursor:pointer;border:none}
+.fab:hover{transform:scale(1.08)}
+.fab-call{background:var(--navy);color:var(--cream)}
+.fab-call svg{stroke:currentColor;fill:none;width:22px;height:22px;stroke-width:2}
+.fab-wa{background:#1a8c4f;color:var(--cream)}
+.fab-wa svg{fill:currentColor;width:24px;height:24px}
+
+/* ============= MOBILE MENU ============= */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:999;background:var(--paper);flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2rem;color:var(--navy)}
+.mobile-menu a em{font-style:italic;color:var(--clay)}
+.mobile-close{position:absolute;top:26px;right:28px;background:none;border:none;cursor:pointer;color:var(--navy)}
+
+/* ============= RESPONSIVE ============= */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:50px}
+  .hero-meta{grid-template-columns:repeat(2,1fr);gap:24px}
+  .intro-inner{grid-template-columns:1fr;gap:60px}
+  .intro-left{position:static}
+  .palette-grid{max-width:100%}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc:nth-child(3){border-left:none}
+  .showcase-inner{grid-template-columns:1fr;gap:60px}
+  .rev-grid{grid-template-columns:1fr;gap:20px}
+  .spread{grid-template-columns:1fr}
+  .spread-reverse{direction:ltr}
+  .spread-text{padding:48px 36px}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:40px}
+  .cta-numbers{gap:30px}
+}
+@media(max-width:680px){
+  .nav-links > a:not(.nav-cta){display:none}
+  .nav-mobile{display:block}
+  .nav-cta{padding:0!important;width:42px;height:42px;justify-content:center;gap:0;font-size:0!important;border-radius:50%}
+  .nav-cta svg{width:18px;height:18px}
+  .nav-inner{padding:0 22px;height:70px}
+  .nav-brand-mark{font-size:1.05rem;letter-spacing:0.15em}
+  .nav-brand-sub{font-size:0.52rem}
+  .hero{padding:120px 22px 60px}
+  .hero-meta{padding:24px 22px 0;grid-template-columns:1fr 1fr;gap:20px}
+  .hero-photo-caption{left:0;bottom:20px;max-width:220px}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{border-left:none;border-top:1px solid var(--rule);padding:38px 28px}
+  .svc:first-child{border-top:none}
+  .showcase-stamp{width:100px;height:100px;right:-10px;top:-18px}
+  .showcase-stamp-mid{font-size:1.8rem}
+  .gallery-stack{padding:0 22px}
+  .spread-text{padding:40px 28px}
+  .spread-title{font-size:1.8rem}
+  .footer-inner{grid-template-columns:1fr}
+  .f-bottom{flex-direction:column;text-align:center}
+  .rev-top{flex-direction:column;align-items:flex-start}
+  .rev-score{text-align:left}
+  .cta{padding:110px 22px}
+  .cta-numbers{flex-direction:column;gap:24px}
+  .intro{padding:90px 0}
+  .services,.gallery,.reviews,.showcase{padding:90px 0}
+  .loader-palette{gap:10px}
+  .chip{width:32px;height:32px}
+  .loader-brand-mark{font-size:1.4rem;letter-spacing:0.22em}
+  .loader-brand-sub{font-size:0.56rem;letter-spacing:0.4em}
+}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ============= LOADING SCREEN ============= -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-stage">
+    <div class="loader-top">Nouvell Decor &middot; Est. Essex &amp; London</div>
+    <div class="loader-swatch"></div>
+    <div class="loader-roller">
+      <svg viewBox="0 0 46 80" preserveAspectRatio="none">
+        <!-- handle -->
+        <rect x="22" y="2" width="2" height="14" fill="#2a2f35"/>
+        <rect x="18" y="14" width="10" height="4" rx="1" fill="#2a2f35"/>
+        <!-- frame -->
+        <rect x="16" y="18" width="14" height="4" fill="#4a4f57"/>
+        <!-- roller head -->
+        <rect x="2" y="22" width="42" height="36" rx="3" fill="#4a4f57"/>
+        <rect x="4" y="24" width="38" height="32" rx="2" fill="#14243a"/>
+        <!-- paint drips -->
+        <rect x="8" y="56" width="3" height="14" rx="1.5" fill="#14243a" opacity="0.75"/>
+        <rect x="22" y="56" width="3" height="20" rx="1.5" fill="#14243a" opacity="0.85"/>
+        <rect x="34" y="56" width="3" height="12" rx="1.5" fill="#14243a" opacity="0.7"/>
+      </svg>
+    </div>
+    <div class="loader-brand">
+      <div class="loader-brand-mark">NOUVELL DECOR</div>
+      <div class="loader-brand-sub">Building Design Experts</div>
+    </div>
+    <div class="loader-palette">
+      <span class="chip"></span>
+      <span class="chip"></span>
+      <span class="chip"></span>
+      <span class="chip"></span>
+      <span class="chip"></span>
+    </div>
+    <div class="loader-progress"></div>
+  </div>
+</div>
+
+<!-- ============= NAV ============= -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-logo"><img src="logo.png" alt=""></div>
+      <div>
+        <div class="nav-brand-mark">NOUVELL DECOR</div>
+        <div class="nav-brand-sub">Building Design Experts</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        0208 559 2005
+      </a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="14" x2="21" y2="14"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')"><em>I.</em> About</a>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')"><em>II.</em> Services</a>
+  <a href="#work" onclick="document.getElementById('mobileMenu').classList.remove('open')"><em>III.</em> Our Work</a>
+  <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')"><em>IV.</em> Reviews</a>
+  <a href="tel:02085592005" onclick="document.getElementById('mobileMenu').classList.remove('open')"><em>V.</em> Contact</a>
+</div>
+
+<!-- ============= HERO ============= -->
+<section class="hero" id="home">
+  <div class="hero-orn" aria-hidden="true">
+    <svg viewBox="0 0 320 320"><circle cx="160" cy="160" r="158" fill="none" stroke="#14243a" stroke-width="1"/><circle cx="160" cy="160" r="128" fill="none" stroke="#14243a" stroke-width="0.6"/><circle cx="160" cy="160" r="98" fill="none" stroke="#14243a" stroke-width="0.4"/></svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-lead">
+      <div class="hero-eyebrow">Est. Essex &amp; East London</div>
+      <h1>
+        Interiors<br>
+        <em>painted</em> with<br>
+        intention.
+        <span class="small-caps">Painters · Decorators · Builders</span>
+      </h1>
+      <p class="hero-sub">Nouvell Decor is a small, careful studio of painters, decorators and builders working across Buckhurst Hill, Waltham Abbey, Romford and the heritage streets of East &amp; North London. Quiet craftsmanship, proper preparation, and a finish that's worthy of the house you love.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-navy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Request a Quotation
+        </a>
+        <a href="#work" class="link-arrow">View our work &nbsp;&rarr;</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-sidenote">Plate I &mdash; Hallway · Buckhurst Hill</div>
+      <div class="hero-photo">
+        <img src="work-1.jpg" alt="Panelled hallway decorated in soft duck-egg with herringbone parquet">
+      </div>
+      <div class="hero-photo-caption">
+        <div class="hero-photo-caption-num">&ldquo;&nbsp;&nbsp;&rdquo;</div>
+        <div class="hero-photo-caption-text">The panelling alone took us four days to prep. It's the kind of patience this work rewards.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div class="hmeta">
+      <div class="hmeta-num">5.0</div>
+      <div class="hmeta-label">Trustatrader</div>
+    </div>
+    <div class="hmeta">
+      <div class="hmeta-num">15+</div>
+      <div class="hmeta-label">Years In Trade</div>
+    </div>
+    <div class="hmeta">
+      <div class="hmeta-num">Domestic</div>
+      <div class="hmeta-label">Business &amp; Corporate</div>
+    </div>
+    <div class="hmeta">
+      <div class="hmeta-num">Free</div>
+      <div class="hmeta-label">No-Obligation Quotes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= MARQUEE ============= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Heritage Decorating</span>
+    <span class="marquee-item">Period Restoration</span>
+    <span class="marquee-item">Wallpaper &amp; Finishes</span>
+    <span class="marquee-item">Interior &amp; Exterior</span>
+    <span class="marquee-item">Colour Consultancy</span>
+    <span class="marquee-item">Heritage Decorating</span>
+    <span class="marquee-item">Period Restoration</span>
+    <span class="marquee-item">Wallpaper &amp; Finishes</span>
+    <span class="marquee-item">Interior &amp; Exterior</span>
+    <span class="marquee-item">Colour Consultancy</span>
+  </div>
+</div>
+
+<!-- ============= ABOUT / INTRO ============= -->
+<section class="intro" id="about">
+  <div class="intro-inner">
+    <div class="intro-left reveal">
+      <div class="sec-index">I.</div>
+      <div class="sec-eyebrow">The Studio</div>
+      <h2 class="sec-title">A quiet kind of <em>craft.</em></h2>
+      <div class="palette-title">Current Palette</div>
+      <div class="palette-grid">
+        <div class="swatch sw-1"><span class="swatch-name">Oat Linen</span><span class="swatch-code">Pal · 01</span></div>
+        <div class="swatch sw-2"><span class="swatch-name">Sage Stone</span><span class="swatch-code">Pal · 02</span></div>
+        <div class="swatch sw-3"><span class="swatch-name">Nouvell Navy</span><span class="swatch-code">Pal · 03</span></div>
+        <div class="swatch sw-4"><span class="swatch-name">Burnt Terracotta</span><span class="swatch-code">Pal · 04</span></div>
+      </div>
+    </div>
+
+    <div class="intro-right reveal">
+      <p class="lede">Nouvell Decor is a professional building and decorating company trusted by homeowners, landlords and commercial clients across Essex and London &mdash; with a reputation built on attention to detail, fair pricing, and finishes that age gracefully.</p>
+      <p>We work in the houses where the cornice deserves a second coat, where the skirting was probably installed in 1904, and where speed is never a reason to skip the preparation. That's where we're at our best.</p>
+      <p>Every project begins with a walkthrough and a conversation. We agree the scope, the colours, the programme &mdash; and then we stick to it. <strong>Fixed prices. No surprises.</strong> Friendly team on hand, proper aftercare, and a signed-off job at the end.</p>
+      <p>Whether it's a single room, a full townhouse, or an office refurbishment &mdash; we'd love to quote for it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SERVICES ============= -->
+<section class="services" id="services">
+  <div class="sec-head reveal">
+    <div class="sec-index">II.</div>
+    <div class="sec-eyebrow">Services</div>
+    <h2 class="sec-title">Every brush, every <em>finish.</em></h2>
+    <p class="sec-desc">Interior, exterior, domestic, commercial &mdash; a full decorating and building service delivered by the same careful team, start to finish.</p>
+  </div>
+
+  <div class="svc-grid">
+    <div class="svc reveal">
+      <span class="svc-num">i.</span>
+      <h3>Interior Decorating</h3>
+      <p>Walls, ceilings, panelling, doors, trim. Proper sanding, priming and two full coats &mdash; the way it was meant to be done.</p>
+      <div class="svc-tags"><span class="svc-tag">Walls &amp; Ceilings</span><span class="svc-tag">Woodwork</span><span class="svc-tag">Panelling</span></div>
+    </div>
+
+    <div class="svc reveal">
+      <span class="svc-num">ii.</span>
+      <h3>Exterior &amp; Masonry</h3>
+      <p>Render, sash windows, front doors, brickwork, fascias and soffits. Weather-resistant coatings and a finish that holds up through a British winter.</p>
+      <div class="svc-tags"><span class="svc-tag">Masonry Paint</span><span class="svc-tag">Sash Windows</span><span class="svc-tag">Render</span></div>
+    </div>
+
+    <div class="svc reveal">
+      <span class="svc-num">iii.</span>
+      <h3>Heritage &amp; Period</h3>
+      <p>Cornice, ceiling roses, panelling and lime-plaster walls in the older homes of East London and Essex. Gentle products, patient hands.</p>
+      <div class="svc-tags"><span class="svc-tag">Lime Paint</span><span class="svc-tag">Cornicing</span><span class="svc-tag">Restoration</span></div>
+    </div>
+
+    <div class="svc reveal svc-row-2">
+      <span class="svc-num">iv.</span>
+      <h3>Wallpaper &amp; Finishes</h3>
+      <p>Hand-hung wallpaper, bespoke panel mouldings, specialist finishes &mdash; limewash, stucco, and soft distemper effects.</p>
+      <div class="svc-tags"><span class="svc-tag">Hand-Hung</span><span class="svc-tag">Limewash</span><span class="svc-tag">Murals</span></div>
+    </div>
+
+    <div class="svc reveal svc-row-2">
+      <span class="svc-num">v.</span>
+      <h3>Commercial &amp; Office</h3>
+      <p>Offices, retail, serviced apartments and HMOs. Out-of-hours scheduling, tidy work, proper dust control &mdash; in and out quickly.</p>
+      <div class="svc-tags"><span class="svc-tag">Offices</span><span class="svc-tag">Retail</span><span class="svc-tag">HMO</span></div>
+    </div>
+
+    <div class="svc reveal svc-row-2">
+      <span class="svc-num">vi.</span>
+      <h3>Full Refurbishments</h3>
+      <p>Building works alongside the decoration &mdash; plastering, carpentry, flooring and tiling. One team, one point of contact, one invoice.</p>
+      <div class="svc-tags"><span class="svc-tag">Plastering</span><span class="svc-tag">Joinery</span><span class="svc-tag">Tiling</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SHOWCASE SPLIT ============= -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <div class="showcase-visual reveal">
+      <div class="showcase-frame"></div>
+      <img src="work-2.jpg" alt="Period bathroom with roll-top bath, panelling painted in sage stone">
+      <div class="showcase-stamp">
+        <span class="showcase-stamp-top">Est.</span>
+        <span class="showcase-stamp-mid">2009</span>
+        <span class="showcase-stamp-btm">Family Run</span>
+      </div>
+    </div>
+
+    <div class="showcase-content reveal">
+      <div class="sec-index">III.</div>
+      <div class="sec-eyebrow">Our Approach</div>
+      <h2 class="sec-title">Prepared well.<br><em>Painted properly.</em><br>Signed off.</h2>
+      <p>Our work is grounded in a simple belief: the thing that separates a good finish from a great one is almost always what happened <em>before</em> the paint went on.</p>
+      <p>We fill, we sand, we prime. We protect your floors and furniture. We tidy every night. And when it's time to hand the keys back, it's handed back better than we found it.</p>
+      <ul class="showcase-list">
+        <li><span class="showcase-list-no">i.</span> Walkthrough &amp; fixed quotation</li>
+        <li><span class="showcase-list-no">ii.</span> Colour consultation &amp; sampling</li>
+        <li><span class="showcase-list-no">iii.</span> Full preparation &amp; protection</li>
+        <li><span class="showcase-list-no">iv.</span> Careful application, two coats</li>
+        <li><span class="showcase-list-no">v.</span> Final snag &amp; aftercare</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============= GALLERY SPREADS ============= -->
+<section class="gallery" id="work">
+  <div class="gallery-lead reveal">
+    <div class="sec-index">IV.</div>
+    <div class="sec-eyebrow">Selected Work</div>
+    <h2 class="sec-title">Two recent <em>projects.</em></h2>
+    <p class="sec-desc">A glimpse of the sort of work that fills our diary &mdash; quiet, considered, properly finished.</p>
+  </div>
+
+  <div class="gallery-stack">
+    <article class="spread reveal">
+      <div class="spread-img">
+        <span class="spread-img-no">&mdash; 01 &mdash;</span>
+        <img src="work-1.jpg" alt="Hallway and reception room redecoration">
+      </div>
+      <div class="spread-text">
+        <span class="spread-label">Domestic &middot; Buckhurst Hill</span>
+        <h3 class="spread-title">A panelled <em>reception hall,</em> reset for a new decade.</h3>
+        <p class="spread-body">Full strip-back, fresh priming, and two careful coats in a custom-mixed duck-egg. Parquet re-sanded and sealed. The chandelier stayed &mdash; everything else was lovingly redone.</p>
+        <div class="spread-meta">
+          <span>Scope<strong>Full redecoration</strong></span>
+          <span>Palette<strong>Duck-Egg &amp; Cream</strong></span>
+          <span>Duration<strong>2 weeks</strong></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="spread spread-reverse reveal">
+      <div class="spread-img">
+        <span class="spread-img-no">&mdash; 02 &mdash;</span>
+        <img src="work-2.jpg" alt="Period bathroom renovation">
+      </div>
+      <div class="spread-text">
+        <span class="spread-label">Heritage &middot; North London</span>
+        <h3 class="spread-title">A <em>period bathroom,</em> restored to its era.</h3>
+        <p class="spread-body">Tongue-and-groove panelling stripped, filled and repainted in a warm sage. Encaustic floor resealed, metro tiles re-grouted, roll-top re-enamelled. Quiet, confident, honest work.</p>
+        <div class="spread-meta">
+          <span>Scope<strong>Full restoration</strong></span>
+          <span>Palette<strong>Sage &amp; Chalk</strong></span>
+          <span>Duration<strong>10 days</strong></span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============= REVIEWS ============= -->
+<section class="reviews" id="reviews">
+  <div class="rev-top">
+    <div class="reveal">
+      <div class="sec-index">V.</div>
+      <div class="sec-eyebrow">Client Words</div>
+      <h2 class="sec-title">Built on <em>recommendation.</em></h2>
+    </div>
+    <div class="rev-score reveal">
+      <div class="rev-score-num">5.0</div>
+      <div class="rev-score-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      <div class="rev-score-sub">Trustatrader &middot; Verified</div>
+    </div>
+  </div>
+
+  <div class="rev-grid">
+    <div class="rev-card reveal">
+      <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      <p class="rev-quote">&ldquo;Careful, polite and meticulous. The finish on our panelled hallway is honestly the best we've seen. Wouldn't think twice about using them again.&rdquo;</p>
+      <div class="rev-author">&mdash; Emma &amp; David</div>
+      <div class="rev-role">Buckhurst Hill</div>
+    </div>
+    <div class="rev-card reveal">
+      <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      <p class="rev-quote">&ldquo;Price was honest, paperwork spotless, and the lads treated the house like their own. You can see every edge is cut cleanly. Quality work.&rdquo;</p>
+      <div class="rev-author">&mdash; Richard T.</div>
+      <div class="rev-role">Commercial Client · North London</div>
+    </div>
+    <div class="rev-card reveal">
+      <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      <p class="rev-quote">&ldquo;Nouvell handled the full refurb of our 1920s semi. Plastering, painting, the lot. Lovely finish, lovely people, and ahead of schedule.&rdquo;</p>
+      <div class="rev-author">&mdash; Marcus J.</div>
+      <div class="rev-role">Romford</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CTA / CONTACT ============= -->
+<section class="cta" id="contact">
+  <div class="cta-orn">&mdash; &nbsp; Nouvell Decor Ltd &nbsp; &mdash;</div>
+  <div class="cta-inner">
+    <div class="cta-eye">Begin a Project</div>
+    <h2>Tell us about your<br><em>space.</em></h2>
+    <p class="cta-sub">We'd love to hear about the room, the house, or the office you have in mind. A quick call is usually all we need to put a proper quote together &mdash; and we'll always come to you.</p>
+
+    <div class="cta-numbers">
+      <div class="cta-num">
+        <div class="cta-num-label">Landline</div>
+        <a href="tel:02085592005" class="cta-num-val">0208 559 2005</a>
+      </div>
+      <div class="cta-num">
+        <div class="cta-num-label">Mobile</div>
+        <a href="tel:07967594797" class="cta-num-val">07967 594 797</a>
+      </div>
+    </div>
+
+    <a href="mailto:nouvell.decorltd@googlemail.com" class="cta-email">nouvell.decorltd@googlemail.com</a>
+
+    <div class="cta-btns">
+      <a href="tel:02085592005" class="btn-cream">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call the Studio
+      </a>
+      <a href="https://wa.me/447967594797?text=Hi%20Nouvell%20Decor%2C%20I%27d%20like%20a%20quote%20please" target="_blank" rel="noopener" class="btn-clay">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="f-brand">
+        <div class="f-brand-logo"><img src="logo.png" alt=""></div>
+        <div>
+          <div class="f-brand-name">NOUVELL DECOR</div>
+          <div class="f-brand-sub">Building Design Experts</div>
+        </div>
+      </div>
+      <p class="f-desc">A small, careful studio of painters, decorators and builders working across Essex, East &amp; North London. Domestic, business and heritage properties welcome.</p>
+    </div>
+    <div>
+      <div class="f-head">Services</div>
+      <div class="f-links">
+        <a href="#services">Interior Decorating</a>
+        <a href="#services">Exterior &amp; Masonry</a>
+        <a href="#services">Heritage Work</a>
+        <a href="#services">Wallpaper</a>
+        <a href="#services">Refurbishments</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-head">Areas</div>
+      <div class="f-links">
+        <a>Buckhurst Hill</a>
+        <a>Waltham Abbey</a>
+        <a>Stapleford Abbotts</a>
+        <a>Romford</a>
+        <a>East &amp; North London</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-head">Studio</div>
+      <div class="f-links">
+        <a href="tel:02085592005">0208 559 2005</a>
+        <a href="tel:07967594797">07967 594 797</a>
+        <a href="mailto:nouvell.decorltd@googlemail.com">Email the studio</a>
+      </div>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span>&copy; 2026 Nouvell Decor Ltd. All rights reserved.</span>
+    <span>Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING -->
+<div class="floating" id="floating">
+  <a href="tel:02085592005" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447967594797?text=Hi%20Nouvell%20Decor%2C%20I%27d%20like%20a%20quote%20please" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loader dismiss — all devices (desktop + mobile)
+(function(){
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    loader.classList.add('hidden');
+    document.body.style.overflow = '';
+    setTimeout(() => { loader.style.display = 'none'; }, 900);
+  }, 3400);
+})();
+
+// Nav scroll state
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => revealObserver.observe(el));
+
+// Floating CTAs after hero
+const floating = document.getElementById('floating');
+const heroEl = document.getElementById('home');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { floating.classList.toggle('vis', !entry.isIntersecting); });
+}, { threshold: 0.1 });
+heroObs.observe(heroEl);
+</script>
+</body>
+</html>
