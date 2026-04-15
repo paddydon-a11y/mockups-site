@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PS Drone Cleaning — Industrial Aerial Cleaning, Nationwide</title>
+<meta name="description" content="Drone-based exterior cleaning for high-rises, wind turbines, solar farms, roofs, bridges and industrial plant. Zero scaffolding. Nationwide UK." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @property --sweep { syntax: '<percentage>'; initial-value: 0%; inherits: true; }
+  @property --tilt  { syntax: '<angle>';      initial-value: 0deg; inherits: true; }
+
+  :root {
+    --bg: #0a0c0f;
+    --bg-2: #0f1317;
+    --ink: #eef1f2;
+    --ink-dim: #8a9097;
+    --line: #1b2128;
+    --acid: #c9ff3d;          /* hi-vis industrial */
+    --water: #7de3ff;         /* clean water spray */
+    --grime: #3a2e20;         /* dirty brown */
+    --grime-2: #1f1a13;
+    --serif: 'Bricolage Grotesque', 'Times New Roman', serif;
+    --sans: 'Manrope', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  ::selection { background: var(--acid); color: #000; }
+
+  /* ───────────────────────── PRELOADER ───────────────────────── */
+
+  .preloader {
+    position: fixed; inset: 0; z-index: 1000;
+    background: #0a0c0f;
+    display: grid; place-items: center;
+    overflow: hidden;
+    --sweep: 0%;
+    animation: sweepAnim 5.2s cubic-bezier(.7,.05,.3,1) forwards,
+               fadeOut 0.9s ease 5.2s forwards;
+  }
+  @keyframes sweepAnim { to { --sweep: 108%; } }
+  @keyframes fadeOut   { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+
+  /* dirty layer sits ON TOP of the logo; a moving mask wipes it away */
+  .dirt {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(1200px 800px at 20% 30%, #4a3a28 0%, transparent 60%),
+      radial-gradient(900px 700px at 75% 70%, #2b2116 0%, transparent 55%),
+      radial-gradient(600px 500px at 55% 20%, #5a4530 0%, transparent 50%),
+      linear-gradient(180deg, #1b1610, #120e08);
+    mask-image: linear-gradient(90deg,
+      black 0%,
+      black calc(var(--sweep) - 6%),
+      rgba(0,0,0,.5) calc(var(--sweep) - 3%),
+      transparent var(--sweep));
+    -webkit-mask-image: linear-gradient(90deg,
+      black 0%,
+      black calc(var(--sweep) - 6%),
+      rgba(0,0,0,.5) calc(var(--sweep) - 3%),
+      transparent var(--sweep));
+  }
+  .dirt::before, .dirt::after {
+    content: ''; position: absolute; inset: 0;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .dirt::before {
+    background:
+      radial-gradient(3px 3px at 14% 22%, #6b5436 40%, transparent 41%),
+      radial-gradient(2px 2px at 38% 60%, #4a3a28 40%, transparent 41%),
+      radial-gradient(4px 4px at 68% 40%, #7a5f3e 40%, transparent 41%),
+      radial-gradient(2px 2px at 82% 72%, #3a2e20 40%, transparent 41%),
+      radial-gradient(5px 5px at 25% 80%, #5a4530 40%, transparent 41%),
+      radial-gradient(3px 3px at 90% 18%, #6b5436 40%, transparent 41%),
+      radial-gradient(2px 2px at 8% 55%, #4a3a28 40%, transparent 41%),
+      radial-gradient(3px 3px at 48% 28%, #7a5f3e 40%, transparent 41%),
+      radial-gradient(2px 2px at 60% 85%, #3a2e20 40%, transparent 41%);
+    opacity: .85;
+  }
+  .dirt::after {
+    /* streaky grime using SVG turbulence */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25 0 0 0 0 0.18 0 0 0 0 0.1 0 0 0 .9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+    background-size: 600px 600px;
+    opacity: .45;
+  }
+
+  /* reveal — the clean content under the dirt */
+  .reveal {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .reveal .ident {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--acid);
+    opacity: 0; animation: fadeIn .5s ease 3.4s forwards;
+  }
+  .reveal .logo {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(54px, 11vw, 168px);
+    line-height: .88;
+    letter-spacing: -0.04em;
+    margin-top: 18px;
+  }
+  .reveal .logo .ps {
+    color: var(--acid);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .reveal .tag {
+    font-family: var(--mono);
+    font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 24px;
+    opacity: 0; animation: fadeIn .6s ease 4.1s forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  /* the drone — flies across tied to the same --sweep variable */
+  .drone-wrap {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .drone {
+    position: absolute;
+    top: -60px;
+    left: calc(var(--sweep) - 6%);
+    width: 140px;
+    transform: translateX(-50%) rotate(var(--tilt));
+    animation: droneBob 1.4s ease-in-out infinite alternate, droneTilt 5.2s ease-in-out;
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.55));
+  }
+  @keyframes droneBob  { from { transform: translate(-50%, -4px) rotate(var(--tilt)); } to { transform: translate(-50%, 4px) rotate(var(--tilt)); } }
+  @keyframes droneTilt { 0% { --tilt: -8deg; } 50% { --tilt: 0deg; } 100% { --tilt: 6deg; } }
+
+  .spray {
+    position: absolute;
+    top: calc(50% + 6px);
+    left: calc(var(--sweep) - 6%);
+    transform: translateX(-70%);
+    width: 180px; height: 90px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: .9;
+  }
+  .spray span {
+    position: absolute;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--water);
+    box-shadow: 0 0 8px var(--water);
+    animation: droplet 1s linear infinite;
+  }
+  .spray span:nth-child(1){ top: 10%; left: 90%; animation-delay: 0s; }
+  .spray span:nth-child(2){ top: 30%; left: 70%; animation-delay: .12s; width:3px; height:3px;}
+  .spray span:nth-child(3){ top: 55%; left: 60%; animation-delay: .24s; }
+  .spray span:nth-child(4){ top: 72%; left: 45%; animation-delay: .06s; width:5px; height:5px;}
+  .spray span:nth-child(5){ top: 22%; left: 40%; animation-delay: .3s; }
+  .spray span:nth-child(6){ top: 48%; left: 20%; animation-delay: .18s; width:3px; height:3px;}
+  .spray span:nth-child(7){ top: 65%; left: 8%;  animation-delay: .4s; }
+  .spray span:nth-child(8){ top: 38%; left: 84%; animation-delay: .5s; }
+  @keyframes droplet {
+    0%   { transform: translate(20px,-8px) scale(1);   opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: translate(-80px, 24px) scale(.3); opacity: 0; }
+  }
+
+  /* propeller blur rings */
+  .prop { transform-origin: center; animation: spin .08s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* preloader hud */
+  .hud {
+    position: absolute;
+    inset: 24px;
+    pointer-events: none;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+    color: #5b6a74;
+    z-index: 3;
+  }
+  .hud .tl { position: absolute; top: 0; left: 0; }
+  .hud .tr { position: absolute; top: 0; right: 0; text-align: right; }
+  .hud .bl { position: absolute; bottom: 0; left: 0; }
+  .hud .br { position: absolute; bottom: 0; right: 0; text-align: right; color: var(--acid); }
+  .hud b { color: var(--ink); font-weight: 500; }
+
+  /* ───────────────────────── LAYOUT ───────────────────────── */
+
+  .container { width: min(1360px, 92vw); margin: 0 auto; }
+
+  /* top nav */
+  header.nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 18px 0;
+    backdrop-filter: blur(14px);
+    background: rgba(10,12,15,.55);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .brand {
+    font-family: var(--serif);
+    font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--acid); box-shadow: 0 0 12px var(--acid); }
+  .brand em { font-style: italic; font-weight: 500; color: var(--acid); }
+  .nav-links {
+    display: flex; gap: 28px; font-family: var(--mono);
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  }
+  .nav-links a { color: var(--ink-dim); transition: color .25s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    padding: 11px 18px; border: 1px solid var(--acid); color: var(--acid);
+    border-radius: 2px;
+    transition: background .25s, color .25s;
+  }
+  .nav-cta:hover { background: var(--acid); color: #000; }
+  @media (max-width: 820px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 200px 0 120px;
+    background:
+      radial-gradient(1200px 700px at 80% -10%, rgba(201,255,61,.1), transparent 60%),
+      radial-gradient(900px 900px at 10% 60%, rgba(125,227,255,.05), transparent 60%),
+      linear-gradient(180deg, #0a0c0f 0%, #0d1014 100%);
+    overflow: hidden;
+  }
+  .hero .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 70%);
+    pointer-events: none;
+  }
+  .hero .scanlines {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(180deg, transparent 0 3px, rgba(255,255,255,.012) 3px 4px);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 64px;
+    align-items: end;
+  }
+  @media (max-width: 960px) { .hero-inner { grid-template-columns: 1fr; gap: 48px; } }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--acid);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before {
+    content: ''; width: 28px; height: 1px; background: var(--acid);
+  }
+
+  h1.hero-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(54px, 8.6vw, 148px);
+    line-height: .92;
+    letter-spacing: -0.045em;
+    margin-top: 22px;
+  }
+  h1.hero-title i {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--acid);
+  }
+  h1.hero-title span.out {
+    -webkit-text-stroke: 1px var(--ink-dim);
+    color: transparent;
+  }
+  .hero-sub {
+    font-size: 17px; line-height: 1.55;
+    color: var(--ink-dim);
+    max-width: 440px;
+    margin-top: 28px;
+  }
+  .hero-sub strong { color: var(--ink); font-weight: 500; }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    padding: 16px 22px;
+    border-radius: 2px;
+    transition: transform .25s, background .25s, color .25s, border-color .25s;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .btn.primary { background: var(--acid); color: #000; }
+  .btn.primary:hover { transform: translateY(-2px); }
+  .btn.ghost { border: 1px solid rgba(255,255,255,.22); color: var(--ink); }
+  .btn.ghost:hover { border-color: var(--acid); color: var(--acid); }
+  .btn .arrow { transition: transform .3s; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  .hero-right {
+    position: relative;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-dim);
+  }
+  .hero-right .panel {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    padding: 22px;
+    border-radius: 3px;
+    position: relative;
+  }
+  .hero-right .panel::before {
+    content: '';
+    position: absolute; top: -1px; left: -1px;
+    width: 14px; height: 14px;
+    border-top: 1px solid var(--acid);
+    border-left: 1px solid var(--acid);
+  }
+  .hero-right .panel::after {
+    content: '';
+    position: absolute; bottom: -1px; right: -1px;
+    width: 14px; height: 14px;
+    border-bottom: 1px solid var(--acid);
+    border-right: 1px solid var(--acid);
+  }
+  .hero-right .row {
+    display: flex; justify-content: space-between; padding: 10px 0;
+    border-bottom: 1px dashed rgba(255,255,255,.07);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .hero-right .row:last-child { border-bottom: 0; }
+  .hero-right .row b { color: var(--ink); font-weight: 500; letter-spacing: .18em; }
+  .hero-right .row b.acid { color: var(--acid); }
+  .hero-right .panel-title {
+    font-size: 10px; letter-spacing: .32em; color: var(--acid);
+    margin-bottom: 8px;
+  }
+
+  .live-indicator {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .live-indicator .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--acid);
+    box-shadow: 0 0 0 0 var(--acid);
+    animation: pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(201,255,61,.7); }
+    100% { box-shadow: 0 0 0 14px rgba(201,255,61,0); }
+  }
+
+  /* MARQUEE */
+  .marquee {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    padding: 28px 0;
+    background: #0b0e12;
+  }
+  .marquee-track {
+    display: flex; gap: 64px;
+    animation: scroll 38s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  .marquee span {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.2vw, 44px);
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    display: inline-flex; align-items: center; gap: 64px;
+  }
+  .marquee span i { color: var(--acid); font-style: italic; font-weight: 400; }
+  .marquee span::after {
+    content: '✦';
+    color: var(--acid);
+    font-size: .7em;
+  }
+
+  /* SECTION TITLE PATTERN */
+  .section { padding: 140px 0; position: relative; }
+  .section-head {
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 48px;
+    margin-bottom: 72px;
+    align-items: end;
+  }
+  @media (max-width: 900px) { .section-head { grid-template-columns: 1fr; gap: 24px; } }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(42px, 5.6vw, 88px);
+    line-height: .94;
+    letter-spacing: -0.035em;
+    max-width: 780px;
+  }
+  .section-head h2 i { font-style: italic; color: var(--acid); font-weight: 400; }
+  .section-head .meta {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .section-head .meta b { color: var(--ink); font-weight: 500; display: block; margin-top: 8px; }
+
+  /* SERVICES grid */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .svc {
+    position: relative;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 40px 28px 36px;
+    min-height: 340px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: background .35s;
+    overflow: hidden;
+  }
+  .svc:hover { background: #0e1318; }
+  .svc:hover .svc-icon { color: var(--acid); transform: translateY(-4px); }
+  .svc .num {
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .3em;
+    color: var(--ink-dim);
+  }
+  .svc h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-top: 18px;
+  }
+  .svc p {
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    margin-top: 12px;
+  }
+  .svc-icon {
+    color: var(--ink-dim);
+    transition: color .4s, transform .4s;
+    margin-top: 28px;
+    align-self: flex-end;
+  }
+  .svc.feature {
+    grid-column: span 2;
+    background: linear-gradient(160deg, #0f1419 0%, #0b0e11 100%);
+  }
+  .svc.feature h3 { font-size: 34px; }
+  @media (max-width: 1100px) { .services { grid-template-columns: repeat(3, 1fr); } .svc.feature { grid-column: span 3; } }
+  @media (max-width: 640px)  { .services { grid-template-columns: 1fr; } .svc.feature { grid-column: span 1; } }
+
+  /* PROCESS */
+  .process-wrap {
+    background: linear-gradient(180deg, #0b0e12 0%, #0a0c0f 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .step {
+    padding: 56px 32px 64px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .step:last-child { border-right: 0; }
+  .step .n {
+    font-family: var(--serif);
+    font-size: 92px;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--acid);
+    letter-spacing: -0.04em;
+    font-weight: 600;
+  }
+  .step h4 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 22px;
+    letter-spacing: -0.02em;
+  }
+  .step p {
+    font-size: 14px; color: var(--ink-dim);
+    margin-top: 12px;
+  }
+  .step .tag {
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--acid);
+    margin-top: 24px;
+    display: inline-block;
+  }
+  @media (max-width: 900px) { .process { grid-template-columns: repeat(2, 1fr); } .step { border-right: 0; border-bottom: 1px solid var(--line); } .step:nth-child(odd) { border-right: 1px solid var(--line); } }
+  @media (max-width: 520px) { .process { grid-template-columns: 1fr; } .step { border-right: 0; } }
+
+  /* STATS + MAP */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 960px) { .stats-row { grid-template-columns: 1fr; } }
+
+  .stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .stat { background: var(--bg); padding: 32px 28px; }
+  .stat .k {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(48px, 5.2vw, 76px);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .stat .k i { font-style: italic; color: var(--acid); font-weight: 400; }
+  .stat .l {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--ink-dim);
+    margin-top: 14px;
+  }
+
+  .uk-map {
+    position: relative;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background:
+      radial-gradient(400px 300px at 50% 40%, rgba(201,255,61,.05), transparent 70%),
+      #0b0e12;
+  }
+  .uk-map svg { width: 100%; height: auto; }
+  .uk-map .pin {
+    animation: pinPulse 2.4s ease-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  .uk-map .pin:nth-child(2) { animation-delay: .4s; }
+  .uk-map .pin:nth-child(3) { animation-delay: .8s; }
+  .uk-map .pin:nth-child(4) { animation-delay: 1.2s; }
+  .uk-map .pin:nth-child(5) { animation-delay: 1.6s; }
+  .uk-map .pin:nth-child(6) { animation-delay: 2.0s; }
+  @keyframes pinPulse {
+    0%, 100% { opacity: .45; transform: scale(1); }
+    50%      { opacity: 1;  transform: scale(1.4); }
+  }
+  .uk-map .label {
+    position: absolute; top: 18px; right: 18px;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--acid);
+  }
+  .uk-map .label::before { content: '●'; margin-right: 8px; font-size: 14px; }
+
+  /* PROJECTS */
+  .projects {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 28px;
+  }
+  @media (max-width: 960px) { .projects { grid-template-columns: 1fr; } }
+  .project {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    min-height: 440px;
+    padding: 32px;
+    color: var(--ink);
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .project:hover { transform: translateY(-6px); }
+  .project::before {
+    content: ''; position: absolute; inset: 0; z-index: 0;
+  }
+  .project::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.65) 100%);
+  }
+  .project > * { position: relative; z-index: 2; }
+  .project.p1::before {
+    background:
+      radial-gradient(400px 600px at 70% 20%, #1a2f42 0%, transparent 60%),
+      linear-gradient(160deg, #0d1922 0%, #030709 100%);
+  }
+  .project.p2::before {
+    background:
+      radial-gradient(400px 300px at 30% 80%, #2a3818 0%, transparent 60%),
+      linear-gradient(160deg, #151a0b 0%, #060705 100%);
+  }
+  .project.p3::before {
+    background:
+      radial-gradient(500px 300px at 50% 100%, #3a2a18 0%, transparent 60%),
+      linear-gradient(160deg, #241a0e 0%, #0a0804 100%);
+  }
+
+  .project .meta {
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    display: flex; justify-content: space-between;
+    color: var(--ink-dim);
+  }
+  .project .meta b { color: var(--acid); font-weight: 500; }
+  .project h5 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .project .desc {
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    max-width: 320px;
+  }
+  .project-illus {
+    position: absolute;
+    bottom: 0; right: 0;
+    opacity: .35;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* CONTACT */
+  .contact {
+    border-top: 1px solid var(--line);
+    padding: 160px 0 120px;
+    background:
+      radial-gradient(700px 500px at 80% 0%, rgba(201,255,61,.08), transparent 70%),
+      linear-gradient(180deg, #0a0c0f 0%, #070809 100%);
+  }
+  .cta {
+    text-align: center;
+    max-width: 980px; margin: 0 auto;
+  }
+  .cta h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(48px, 7.5vw, 120px);
+    letter-spacing: -0.04em;
+    line-height: .94;
+  }
+  .cta h2 i { font-style: italic; color: var(--acid); font-weight: 400; }
+  .cta p {
+    font-size: 17px; color: var(--ink-dim);
+    max-width: 560px; margin: 28px auto 0;
+  }
+  .cta-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    margin-top: 64px;
+    text-align: left;
+  }
+  @media (max-width: 720px) { .cta-grid { grid-template-columns: 1fr; } }
+  .cta-card {
+    border: 1px solid var(--line);
+    padding: 28px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0));
+    position: relative;
+    transition: border-color .3s, transform .3s;
+  }
+  .cta-card:hover { border-color: var(--acid); transform: translateY(-4px); }
+  .cta-card .k {
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--acid);
+  }
+  .cta-card .v {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    margin-top: 14px;
+  }
+  .cta-card .v a { border-bottom: 1px dashed rgba(255,255,255,.2); }
+  .cta-card .x {
+    font-size: 13px; color: var(--ink-dim); margin-top: 10px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 42px 0 36px;
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .foot-row {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .foot-row a:hover { color: var(--acid); }
+
+  /* SECTION DIVIDER RULES */
+  .rule {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono);
+    font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+    color: var(--ink-dim);
+    padding-top: 32px;
+  }
+  .rule::before, .rule::after {
+    content: ''; flex: 1; height: 1px; background: var(--line);
+  }
+
+  /* accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    .preloader { animation: fadeOut .3s ease .2s forwards; }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ──────────── PRELOADER ──────────── -->
+  <div class="preloader" aria-hidden="true">
+
+    <div class="hud">
+      <div class="tl">PS-DC // <b>SYSTEM BOOT</b></div>
+      <div class="tr">UNIT 07 <b>ARMED</b><br/>ROTORS NOMINAL</div>
+      <div class="bl">LAT 53.8008  LON -1.5491</div>
+      <div class="br">WASHING // ACTIVE</div>
+    </div>
+
+    <div class="reveal">
+      <div class="ident">// Cleared for flight</div>
+      <div class="logo"><span class="ps">PS</span> Drone<br/>Cleaning.</div>
+      <div class="tag">Nationwide · Industrial · Aerial</div>
+    </div>
+
+    <div class="dirt"></div>
+
+    <!-- drone + spray follow --sweep -->
+    <div class="drone-wrap">
+      <svg class="drone" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- arms -->
+        <line x1="40" y1="45" x2="160" y2="45" stroke="#1c242c" stroke-width="4"/>
+        <line x1="40" y1="55" x2="160" y2="55" stroke="#1c242c" stroke-width="4"/>
+        <!-- body -->
+        <rect x="70" y="38" width="60" height="26" rx="6" fill="#0e1318" stroke="#c9ff3d" stroke-width="1.2"/>
+        <rect x="78" y="44" width="44" height="6" rx="2" fill="#c9ff3d"/>
+        <circle cx="78" cy="58" r="2" fill="#7de3ff"/>
+        <circle cx="122" cy="58" r="2" fill="#c9ff3d"/>
+        <!-- nozzle -->
+        <rect x="60" y="48" width="14" height="6" rx="1" fill="#c9ff3d"/>
+        <rect x="54" y="49" width="6" height="4" fill="#7de3ff"/>
+        <!-- landing skids -->
+        <line x1="80" y1="64" x2="80" y2="74" stroke="#1c242c" stroke-width="2"/>
+        <line x1="120" y1="64" x2="120" y2="74" stroke="#1c242c" stroke-width="2"/>
+        <line x1="72" y1="74" x2="128" y2="74" stroke="#1c242c" stroke-width="2"/>
+        <!-- props -->
+        <g class="prop" style="transform-origin: 32px 45px">
+          <ellipse cx="32" cy="45" rx="24" ry="2.4" fill="#7de3ff" opacity=".6"/>
+          <ellipse cx="32" cy="45" rx="24" ry="2.4" fill="#7de3ff" opacity=".3" transform="rotate(60 32 45)"/>
+          <circle cx="32" cy="45" r="3" fill="#0e1318" stroke="#c9ff3d" stroke-width="1"/>
+        </g>
+        <g class="prop" style="transform-origin: 168px 45px">
+          <ellipse cx="168" cy="45" rx="24" ry="2.4" fill="#7de3ff" opacity=".6"/>
+          <ellipse cx="168" cy="45" rx="24" ry="2.4" fill="#7de3ff" opacity=".3" transform="rotate(60 168 45)"/>
+          <circle cx="168" cy="45" r="3" fill="#0e1318" stroke="#c9ff3d" stroke-width="1"/>
+        </g>
+        <g class="prop" style="transform-origin: 32px 55px">
+          <ellipse cx="32" cy="55" rx="24" ry="2.4" fill="#7de3ff" opacity=".5"/>
+          <circle cx="32" cy="55" r="3" fill="#0e1318" stroke="#c9ff3d" stroke-width="1"/>
+        </g>
+        <g class="prop" style="transform-origin: 168px 55px">
+          <ellipse cx="168" cy="55" rx="24" ry="2.4" fill="#7de3ff" opacity=".5"/>
+          <circle cx="168" cy="55" r="3" fill="#0e1318" stroke="#c9ff3d" stroke-width="1"/>
+        </g>
+      </svg>
+      <div class="spray">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────── NAV ──────────── -->
+  <header class="nav">
+    <div class="container nav-row">
+      <a href="#" class="brand">
+        <span class="dot"></span>
+        <em>PS</em> Drone Cleaning
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-cta">Request Survey →</a>
+    </div>
+  </header>
+
+  <!-- ──────────── HERO ──────────── -->
+  <section class="hero">
+    <div class="grid-bg"></div>
+    <div class="scanlines"></div>
+    <div class="container hero-inner">
+      <div>
+        <div class="live-indicator"><span class="pulse"></span> Unit 07 in flight · Leeds</div>
+        <div class="eyebrow">Industrial Aerial Cleaning · Est. 2019</div>
+        <h1 class="hero-title">
+          Clean<br/>
+          <i>where</i><br/>
+          no <span class="out">ladder</span> reaches.
+        </h1>
+        <p class="hero-sub">
+          <strong>PS Drone Cleaning</strong> delivers precision exterior cleaning for high-rises,
+          wind turbines, solar farms, roofs, bridges and industrial plant — without
+          scaffolding, cherry pickers or rope access. Operating nationwide across
+          the UK, 200 metres up.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Book a site survey <span class="arrow">→</span></a>
+          <a class="btn ghost" href="#services">What we clean</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="panel">
+          <div class="panel-title">// TELEMETRY · LIVE</div>
+          <div class="row"><span>Unit ID</span><b>PS-07 / PERSEUS</b></div>
+          <div class="row"><span>Altitude</span><b class="acid">148 m</b></div>
+          <div class="row"><span>Surface</span><b>Curtain wall · glass</b></div>
+          <div class="row"><span>Water temp</span><b>14.2 °C · deionised</b></div>
+          <div class="row"><span>Wind</span><b>9 kt · NNW</b></div>
+          <div class="row"><span>Pressure</span><b class="acid">110 bar</b></div>
+          <div class="row"><span>Operator</span><b>P. Smith · CAA A2 CofC</b></div>
+          <div class="row"><span>Status</span><b class="acid">◉ WASHING</b></div>
+        </div>
+        <div class="rule"><span>CAA · A2 CofC · GVC · £10m PL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── MARQUEE ──────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>High-Rise Facades</span><span><i>Wind Turbines</i></span><span>Solar Arrays</span><span>Industrial Plant</span><span><i>Roofs &amp; Gutters</i></span><span>Bridges &amp; Viaducts</span><span>Stadia</span><span><i>Cladding Surveys</i></span>
+      <span>High-Rise Facades</span><span><i>Wind Turbines</i></span><span>Solar Arrays</span><span>Industrial Plant</span><span><i>Roofs &amp; Gutters</i></span><span>Bridges &amp; Viaducts</span><span>Stadia</span><span><i>Cladding Surveys</i></span>
+    </div>
+  </div>
+
+  <!-- ──────────── SERVICES ──────────── -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          / 01 — Capability Matrix
+          <b>Six core disciplines</b>
+        </div>
+        <h2>Every surface, <i>every elevation.</i> No scaffolding, no rope teams, no two-week set-up.</h2>
+      </div>
+
+      <div class="services">
+
+        <div class="svc feature">
+          <div>
+            <div class="num">[ 01 ]</div>
+            <h3>High-Rise<br/>Facade Cleaning</h3>
+            <p>Curtain wall, cladding, render and stone up to 200m. Pure-water soft-wash, no streaking, no chemical runoff.</p>
+          </div>
+          <svg class="svc-icon" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="24" y="8" width="32" height="64" />
+            <line x1="24" y1="20" x2="56" y2="20"/><line x1="24" y1="32" x2="56" y2="32"/>
+            <line x1="24" y1="44" x2="56" y2="44"/><line x1="24" y1="56" x2="56" y2="56"/>
+            <line x1="40" y1="8" x2="40" y2="72"/>
+            <circle cx="64" cy="24" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <div class="svc">
+          <div>
+            <div class="num">[ 02 ]</div>
+            <h3>Wind Turbine<br/>Blade Cleaning</h3>
+            <p>Leading-edge debris removal. Restore AEP by up to 3%.</p>
+          </div>
+          <svg class="svc-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+            <line x1="32" y1="32" x2="32" y2="60"/>
+            <path d="M32 32 L52 18 L48 30 Z"/>
+            <path d="M32 32 L12 20 L18 32 Z"/>
+            <path d="M32 32 L34 8 L28 16 Z"/>
+            <circle cx="32" cy="32" r="3"/>
+          </svg>
+        </div>
+
+        <div class="svc">
+          <div>
+            <div class="num">[ 03 ]</div>
+            <h3>Solar Array<br/>Cleaning</h3>
+            <p>Ground-mount &amp; rooftop PV. Generation uplift, same-day reports.</p>
+          </div>
+          <svg class="svc-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="10" y="18" width="44" height="28"/>
+            <line x1="24" y1="18" x2="24" y2="46"/><line x1="40" y1="18" x2="40" y2="46"/>
+            <line x1="10" y1="32" x2="54" y2="32"/>
+            <path d="M24 54 L40 54"/>
+          </svg>
+        </div>
+
+        <div class="svc">
+          <div>
+            <div class="num">[ 04 ]</div>
+            <h3>Roofs &amp;<br/>Gutters</h3>
+            <p>Moss, lichen, blocked valleys. No-one on the roof.</p>
+          </div>
+          <svg class="svc-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M8 40 L32 18 L56 40"/>
+            <line x1="8" y1="46" x2="56" y2="46"/>
+            <line x1="20" y1="36" x2="44" y2="36"/>
+            <line x1="14" y1="46" x2="14" y2="56"/>
+            <line x1="50" y1="46" x2="50" y2="56"/>
+          </svg>
+        </div>
+
+        <div class="svc">
+          <div>
+            <div class="num">[ 05 ]</div>
+            <h3>Industrial<br/>Plant &amp; Stacks</h3>
+            <p>Refineries, chimneys, silos, COMAH sites.</p>
+          </div>
+          <svg class="svc-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="14" y="28" width="14" height="28"/>
+            <rect x="36" y="18" width="14" height="38"/>
+            <path d="M26 14 C26 10, 30 10, 30 14 C30 18, 34 18, 34 14"/>
+            <line x1="14" y1="36" x2="50" y2="36"/>
+          </svg>
+        </div>
+
+        <div class="svc">
+          <div>
+            <div class="num">[ 06 ]</div>
+            <h3>Bridges &amp;<br/>Structural</h3>
+            <p>Viaducts, under-decks, bearings. Closure-free inspection wash.</p>
+          </div>
+          <svg class="svc-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M4 44 C20 20, 44 20, 60 44"/>
+            <line x1="4" y1="44" x2="60" y2="44"/>
+            <line x1="16" y1="44" x2="16" y2="54"/>
+            <line x1="32" y1="38" x2="32" y2="54"/>
+            <line x1="48" y1="44" x2="48" y2="54"/>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PROCESS ──────────── -->
+  <div class="process-wrap" id="process">
+    <div class="container">
+      <div class="section" style="padding: 120px 0 120px;">
+        <div class="section-head">
+          <div class="meta">
+            / 02 — Deployment
+            <b>From enquiry to clean in &lt; 14 days</b>
+          </div>
+          <h2>A methodical, <i>measured</i> process. No guesswork.</h2>
+        </div>
+        <div class="process">
+          <div class="step">
+            <div class="n">01</div>
+            <div class="tag">SCAN</div>
+            <h4>Aerial site survey</h4>
+            <p>Thermal + visual drone pass. RAMS drafted from real data, not guesses. 48-hour turnaround.</p>
+          </div>
+          <div class="step">
+            <div class="n">02</div>
+            <div class="tag">PLAN</div>
+            <h4>Pilot briefing &amp; NOTAM</h4>
+            <p>CAA clearances where needed, airspace check, method statement signed with site.</p>
+          </div>
+          <div class="step">
+            <div class="n">03</div>
+            <div class="tag">DEPLOY</div>
+            <h4>Clean in a single shift</h4>
+            <p>Twin-pilot team. 110 bar pure-water soft-wash. Zero operatives at height.</p>
+          </div>
+          <div class="step">
+            <div class="n">04</div>
+            <div class="tag">REPORT</div>
+            <h4>4K before &amp; after</h4>
+            <p>Geo-tagged imagery, 4K video, defect log delivered within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────── COVERAGE + STATS ──────────── -->
+  <section class="section" id="coverage">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          / 03 — Coverage
+          <b>Nationwide UK · mobile fleet</b>
+        </div>
+        <h2>Four mobile units. <i>One flying overhead</i> right now.</h2>
+      </div>
+
+      <div class="stats-row">
+        <div class="stats">
+          <div class="stat"><div class="k"><i>200</i>m</div><div class="l">Max operating height</div></div>
+          <div class="stat"><div class="k"><i>110</i>bar</div><div class="l">Pure-water pressure</div></div>
+          <div class="stat"><div class="k"><i>24</i>h</div><div class="l">Survey-to-quote</div></div>
+          <div class="stat"><div class="k"><i>0</i></div><div class="l">Persons at height</div></div>
+          <div class="stat"><div class="k"><i>£10</i>m</div><div class="l">Public liability</div></div>
+          <div class="stat"><div class="k"><i>100</i>%</div><div class="l">UK coverage</div></div>
+        </div>
+
+        <div class="uk-map">
+          <div class="label">Live · Fleet Status</div>
+          <svg viewBox="0 0 320 440" fill="none">
+            <!-- stylised UK silhouette (simplified) -->
+            <path d="M165 22 L185 40 L205 38 L215 58 L210 80 L225 96 L238 118 L232 138 L248 152 L256 172 L252 198 L268 212 L262 234 L252 254 L258 276 L246 292 L254 310 L240 322 L248 342 L232 356 L244 372 L226 390 L216 410 L198 420 L178 416 L164 400 L158 380 L146 382 L132 396 L120 384 L132 368 L126 352 L110 344 L98 326 L106 308 L92 296 L98 274 L82 262 L88 242 L76 226 L86 208 L72 194 L80 170 L68 156 L82 138 L74 118 L92 104 L88 86 L104 72 L118 80 L134 66 L130 48 L150 38 Z"
+              stroke="#2a3540" stroke-width="1" fill="#0e141a"/>
+            <!-- inner glow lat lines -->
+            <g stroke="#1a222b" stroke-width="0.5">
+              <line x1="60" y1="100" x2="260" y2="100"/>
+              <line x1="60" y1="180" x2="260" y2="180"/>
+              <line x1="60" y1="260" x2="260" y2="260"/>
+              <line x1="60" y1="340" x2="260" y2="340"/>
+            </g>
+            <!-- live pins -->
+            <g>
+              <circle class="pin" cx="170" cy="360" r="5" fill="#c9ff3d"/>  <!-- london -->
+              <circle class="pin" cx="172" cy="268" r="5" fill="#c9ff3d"/>  <!-- leeds -->
+              <circle class="pin" cx="150" cy="300" r="5" fill="#c9ff3d"/>  <!-- birmingham -->
+              <circle class="pin" cx="130" cy="234" r="5" fill="#c9ff3d"/>  <!-- manchester -->
+              <circle class="pin" cx="152" cy="170" r="5" fill="#c9ff3d"/>  <!-- edinburgh -->
+              <circle class="pin" cx="108" cy="338" r="5" fill="#c9ff3d"/>  <!-- cardiff -->
+            </g>
+            <text x="180" y="362" fill="#8a9097" font-family="JetBrains Mono" font-size="8" letter-spacing="1">LONDON</text>
+            <text x="182" y="270" fill="#8a9097" font-family="JetBrains Mono" font-size="8" letter-spacing="1">LEEDS — HQ</text>
+            <text x="160" y="302" fill="#8a9097" font-family="JetBrains Mono" font-size="8" letter-spacing="1">B'HAM</text>
+            <text x="76" y="232" fill="#8a9097" font-family="JetBrains Mono" font-size="8" letter-spacing="1">MCR</text>
+            <text x="162" y="172" fill="#8a9097" font-family="JetBrains Mono" font-size="8" letter-spacing="1">EDB</text>
+            <text x="58" y="340" fill="#8a9097" font-family="JetBrains Mono" font-size="8" letter-spacing="1">CDF</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── PROJECTS ──────────── -->
+  <section class="section" id="projects" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          / 04 — Recent Deployments
+          <b>Selected Q1 jobs</b>
+        </div>
+        <h2>Proof, <i>not promises.</i></h2>
+      </div>
+
+      <div class="projects">
+        <div class="project p1">
+          <div class="meta"><span>LONDON · EC2</span><b>◉ COMPLETE</b></div>
+          <div>
+            <h5>32-storey<br/>curtain wall.</h5>
+            <p class="desc">4,800m² of glass &amp; aluminium cladding washed in a single weekend. Zero tenant disruption.</p>
+          </div>
+          <svg class="project-illus" width="220" height="220" viewBox="0 0 220 220" fill="none" stroke="#c9ff3d" stroke-width="1">
+            <rect x="60" y="20" width="100" height="200"/>
+            <g stroke="#7de3ff" stroke-width=".6">
+              <line x1="60" y1="40"  x2="160" y2="40"/>
+              <line x1="60" y1="60"  x2="160" y2="60"/>
+              <line x1="60" y1="80"  x2="160" y2="80"/>
+              <line x1="60" y1="100" x2="160" y2="100"/>
+              <line x1="60" y1="120" x2="160" y2="120"/>
+              <line x1="60" y1="140" x2="160" y2="140"/>
+              <line x1="60" y1="160" x2="160" y2="160"/>
+              <line x1="60" y1="180" x2="160" y2="180"/>
+              <line x1="60" y1="200" x2="160" y2="200"/>
+              <line x1="90" y1="20" x2="90" y2="220"/>
+              <line x1="110" y1="20" x2="110" y2="220"/>
+              <line x1="130" y1="20" x2="130" y2="220"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="project p2">
+          <div class="meta"><span>N. SEA · ARRAY-C</span><b>◉ COMPLETE</b></div>
+          <div>
+            <h5>Offshore<br/>turbine farm.</h5>
+            <p class="desc">36 blades de-fouled across 12 turbines. AEP recovered: +2.7%.</p>
+          </div>
+          <svg class="project-illus" width="180" height="180" viewBox="0 0 180 180" fill="none" stroke="#c9ff3d" stroke-width="1">
+            <line x1="90" y1="70" x2="90" y2="170"/>
+            <path d="M90 70 L150 40 L138 68 Z" fill="#1a1f0d"/>
+            <path d="M90 70 L30 44 L42 68 Z" fill="#1a1f0d"/>
+            <path d="M90 70 L94 10 L86 26 Z" fill="#1a1f0d"/>
+            <circle cx="90" cy="70" r="4" fill="#c9ff3d"/>
+          </svg>
+        </div>
+
+        <div class="project p3">
+          <div class="meta"><span>M6 · STAFFS</span><b>◉ COMPLETE</b></div>
+          <div>
+            <h5>Viaduct<br/>deck wash.</h5>
+            <p class="desc">1.2km carriage undercarriage cleaned overnight. No lane closure required.</p>
+          </div>
+          <svg class="project-illus" width="240" height="180" viewBox="0 0 240 180" fill="none" stroke="#c9ff3d" stroke-width="1">
+            <path d="M0 120 C60 60, 180 60, 240 120"/>
+            <line x1="0" y1="120" x2="240" y2="120"/>
+            <g stroke="#7de3ff">
+              <line x1="40" y1="120" x2="40" y2="170"/>
+              <line x1="120" y1="96" x2="120" y2="170"/>
+              <line x1="200" y1="120" x2="200" y2="170"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── CONTACT ──────────── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="cta">
+        <div class="eyebrow" style="justify-content:center;">/ 05 — Request A Survey</div>
+        <h2>Got something <i>unreachable?</i><br/>We've probably already cleaned one.</h2>
+        <p>Tell us the site, the surface, and the access headache. We'll have a drawn-up quote, RAMS, and a flight plan back with you inside 48 hours.</p>
+
+        <div class="cta-grid">
+          <div class="cta-card">
+            <div class="k">// Call the pilot direct</div>
+            <div class="v"><a href="tel:07961766912">07961 766 912</a></div>
+            <div class="x">Mon–Sat, 7am–7pm. Ask for Paul.</div>
+          </div>
+          <div class="cta-card">
+            <div class="k">// Email a brief</div>
+            <div class="v"><a href="mailto:fly@psdronecleaning.co.uk">fly@psdronecleaning.co.uk</a></div>
+            <div class="x">Drop in site address, surface type, any photos. 48-hour reply.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:56px;">
+          <a class="btn primary" href="tel:07961766912">Start a job <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────── FOOTER ──────────── -->
+  <footer>
+    <div class="container foot-row">
+      <div>© PS Drone Cleaning · Mockup preview</div>
+      <div>CAA · A2 CofC · GVC · £10m PL · ISO 9001</div>
+      <div><a href="#">↑ Top</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // let users skip preloader by clicking
+    document.querySelector('.preloader').addEventListener('click', (e) => {
+      e.currentTarget.style.animation = 'fadeOut .3s ease forwards';
+    });
+    // ensure preloader hides on older browsers w/o @property
+    setTimeout(() => {
+      const p = document.querySelector('.preloader');
+      if (p) { p.style.opacity = 0; p.style.pointerEvents = 'none'; setTimeout(()=>p.remove(), 700); }
+    }, 6400);
+  </script>
+</body>
+</html>
