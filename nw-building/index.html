@@ -328,6 +328,44 @@
   @media (max-width: 960px) { .services { grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
 
+  /* RECENT WORK */
+  .recent {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    border-top: 2px solid var(--ink);
+    padding-top: 24px;
+  }
+  .rec {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--ink);
+    background: var(--ink);
+    aspect-ratio: 4/5;
+  }
+  .rec img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(.5) contrast(1.05);
+    transition: transform .6s, filter .5s;
+  }
+  .rec:hover img { transform: scale(1.05); filter: grayscale(0) contrast(1); }
+  .rec figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 14px 16px;
+    background: linear-gradient(180deg, transparent, rgba(22,20,15,.9));
+    color: var(--concrete);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .rec figcaption span {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .22em;
+    color: var(--hi-2); text-transform: uppercase; font-weight: 600;
+  }
+  .rec figcaption b {
+    font-family: var(--condensed); font-weight: 700;
+    font-size: 20px; letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 860px) { .recent { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .recent { grid-template-columns: 1fr; } .rec { aspect-ratio: 4/3; } }
+
   /* BIG TYPE BAND */
   .bigtype {
     padding: 120px 0 110px;
@@ -816,6 +854,34 @@
           <div class="more">NVQ level 2/3 →</div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT WORK STRIP -->
+  <section class="section" id="recent" style="padding: 0 0 40px;">
+    <div class="container">
+      <div class="section-head" style="margin-bottom: 36px;">
+        <div class="kicker">From the site</div>
+        <h2 style="font-size: clamp(36px, 5vw, 68px);">Recent <i>jobs on the books.</i></h2>
+      </div>
+      <div class="recent">
+        <figure class="rec">
+          <img src="work-1.jpg" alt="Chimney repointing and cowl fit" />
+          <figcaption><span>04 / Roofing</span><b>Chimney repoint &amp; cowl</b></figcaption>
+        </figure>
+        <figure class="rec">
+          <img src="work-3.jpg" alt="Block paving pathway at front door" />
+          <figcaption><span>09 / Blockwork</span><b>Front path &amp; step</b></figcaption>
+        </figure>
+        <figure class="rec">
+          <img src="work-4.jpg" alt="Fireplace with reclaimed oak lintel" />
+          <figcaption><span>02 / Carpentry</span><b>Fireplace &amp; oak lintel</b></figcaption>
+        </figure>
+        <figure class="rec">
+          <img src="work-2.jpg" alt="Wrought iron side gate hung" />
+          <figcaption><span>09 / Blockwork</span><b>Side gate &amp; render</b></figcaption>
+        </figure>
       </div>
     </div>
   </section>
