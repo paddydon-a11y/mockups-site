@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LPD Liver Paint &amp; Decorate | Carl the Decorator | Liverpool Since 1992</title>
+<meta name="description" content="LPD Liver Paint &amp; Decorate. Carl is a Liverpool-based painter and decorator covering interiors, doors, masonry and full flat refits. 10/10 on Checkatrade from 28 reviews. Call 07455 725 058.">
+<meta name="theme-color" content="#8bc53f">
+<meta property="og:title" content="LPD Liver Paint &amp; Decorate | Carl the Decorator | Liverpool">
+<meta property="og:description" content="Liverpool painter/decorator. 10/10 on Checkatrade. Since 1992.">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HousePainter",
+  "name": "LPD Liver Paint & Decorate",
+  "founder": {"@type": "Person", "name": "Carl"},
+  "foundingDate": "1992",
+  "telephone": "+447455725058",
+  "description": "Liverpool-based painter and decorator specialising in interior refits, glossing, exterior masonry and full property transformations. 10/10 on Checkatrade.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "53 Braidwood Road",
+    "addressLocality": "Netherton, Liverpool",
+    "addressRegion": "Merseyside",
+    "postalCode": "L30",
+    "addressCountry": "GB"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Liverpool"},
+    {"@type": "Place", "name": "Netherton"},
+    {"@type": "Place", "name": "Crosby"},
+    {"@type": "Place", "name": "Bootle"},
+    {"@type": "Place", "name": "Aintree"},
+    {"@type": "Place", "name": "Maghull"}
+  ],
+  "priceRange": "££",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "10",
+    "bestRating": "10",
+    "reviewCount": "28"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0a0b0a;
+  --ink-2:#141614;
+  --char:#24272a;
+  --slate:#4b5157;
+  --mute:#7a808a;
+  --line:#e7e2d4;
+  --cream:#faf6ea;
+  --cream-2:#f0ead8;
+  --paper:#fffdf5;
+  --green:#8bc53f;
+  --green-2:#7fb82e;
+  --green-3:#9bd14c;
+  --green-dark:#63912a;
+  --green-glow:rgba(139,197,63,0.22);
+  --splash:#8bc53f;
+  --yellow:#ffd447;
+  --display:'Archivo Black', ui-sans-serif, system-ui, sans-serif;
+  --body:'Inter', ui-sans-serif, system-ui, sans-serif;
+  --script:'Caveat', cursive;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--cream);color:var(--char);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);letter-spacing:-0.02em;line-height:1.02;font-weight:400;text-transform:uppercase}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit}
+.container{max-width:1240px;margin:0 auto;padding:0 26px}
+
+/* Splat decoration */
+.splat{position:absolute;pointer-events:none;z-index:0}
+.splat svg{width:100%;height:100%}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 26px;height:80px;display:flex;align-items:center;transition:all .35s;background:rgba(10,11,10,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff}
+.nav-inner{max-width:1300px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav.scrolled{background:rgba(255,253,245,0.95);color:var(--ink);box-shadow:0 2px 0 var(--green),0 8px 30px rgba(0,0,0,0.06);height:72px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-logo{width:58px;height:58px;border-radius:50%;background:#fff;padding:3px;box-shadow:0 2px 16px rgba(0,0,0,0.18);transition:all .35s;border:2px solid var(--green)}
+.brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.nav.scrolled .brand-logo{box-shadow:0 2px 16px rgba(0,0,0,0.1)}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:var(--display);font-size:1.1rem;letter-spacing:-0.01em;color:inherit;text-transform:uppercase}
+.brand-sub{font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--green);margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-family:var(--body);font-size:.82rem;font-weight:600;color:inherit;opacity:0.8;transition:all .2s;text-transform:uppercase;letter-spacing:0.04em;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-links a:hover{opacity:1}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--green) !important;color:var(--ink) !important;padding:12px 22px;font-family:var(--display);font-size:.8rem;letter-spacing:0.04em;text-transform:uppercase;border-radius:100px;opacity:1 !important;transition:all .25s;transform:rotate(-1deg)}
+.nav-cta:hover{background:var(--ink) !important;color:var(--green) !important;transform:rotate(-1deg) translateY(-2px) scale(1.04);box-shadow:0 12px 30px rgba(139,197,63,0.4)}
+.nav-cta::after{display:none !important}
+.nav-cta svg{width:14px;height:14px}
+.nav-mob{display:none;width:40px;height:40px;align-items:center;justify-content:center;color:inherit}
+.nav-mob svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--ink);overflow:hidden;padding:120px 0 80px}
+.hero-bg-photo{position:absolute;inset:0;opacity:0.18}
+.hero-bg-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.hero::before{content:'';position:absolute;top:-10%;right:-10%;width:70%;height:90%;background:radial-gradient(circle at 60% 40%,var(--green-glow) 0%,transparent 55%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-10%;left:-10%;width:60%;height:70%;background:radial-gradient(circle at 30% 60%,rgba(139,197,63,0.12) 0%,transparent 55%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:1300px;width:100%;margin:0 auto;padding:0 26px;display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:center;color:#fff}
+.hero-left{position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;background:rgba(139,197,63,0.18);border:2px solid var(--green);border-radius:100px;font-family:var(--display);font-size:.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:28px;opacity:0;animation:up 0.7s ease 0.3s forwards;transform:rotate(-1deg)}
+.hero-eyebrow svg{width:14px;height:14px;fill:var(--green)}
+.hero h1{font-family:var(--display);font-size:clamp(2.8rem,6.8vw,5.8rem);color:#fff;line-height:0.95;letter-spacing:-0.03em;margin-bottom:30px;text-transform:uppercase}
+.hero h1 .word{display:inline-block;opacity:0;transform:translateY(50%) rotate(-2deg);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.hero h1 .word.show{opacity:1;transform:translateY(0) rotate(0deg)}
+.hero h1 em{font-style:normal;color:var(--green);font-weight:400;position:relative;display:inline-block}
+.hero h1 em::after{content:'';position:absolute;left:-4%;right:-4%;bottom:4%;height:18%;background:var(--green);opacity:0;transform:scaleX(0);transform-origin:left;z-index:-1;transition:all .6s cubic-bezier(.2,.7,.2,1) 1.4s;border-radius:4px;filter:blur(0.5px)}
+.hero h1 em.show::after{opacity:0.3;transform:scaleX(1)}
+.hero-sub{font-size:1.12rem;color:rgba(255,255,255,0.85);max-width:540px;line-height:1.7;margin-bottom:36px;opacity:0;animation:up 0.8s ease 1.4s forwards;font-weight:400}
+.hero-sub strong{color:var(--green);font-weight:700}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:up 0.8s ease 1.6s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:17px 30px;font-family:var(--display);font-size:.84rem;letter-spacing:0.06em;text-transform:uppercase;transition:all .3s cubic-bezier(.2,.7,.2,1);cursor:pointer;border:none;border-radius:100px;position:relative}
+.btn svg{width:16px;height:16px}
+.btn-green{background:var(--green);color:var(--ink)}
+.btn-green:hover{background:var(--green-3);transform:translateY(-3px) rotate(-1deg);box-shadow:0 14px 34px rgba(139,197,63,0.45)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.3)}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff;transform:translateY(-3px)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:hover{background:#1fb855;transform:translateY(-3px);box-shadow:0 14px 34px rgba(37,211,102,0.35)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--green);color:var(--ink);transform:translateY(-3px)}
+
+.hero-stats{margin-top:52px;display:flex;gap:40px;flex-wrap:wrap;opacity:0;animation:up 0.8s ease 1.8s forwards}
+.hstat{display:flex;align-items:center;gap:14px}
+.hstat-num{font-family:var(--display);font-size:2.4rem;color:var(--green);line-height:1;letter-spacing:-0.02em}
+.hstat-lbl{font-family:var(--body);font-size:.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);line-height:1.3}
+
+/* Hero right: logo + scoring card */
+.hero-right{position:relative;opacity:0;animation:upScale 1s cubic-bezier(.2,.7,.2,1) 1.2s forwards}
+.hero-logo-card{background:var(--paper);border-radius:28px;padding:44px 36px 36px;text-align:center;position:relative;transform:rotate(2deg);box-shadow:0 28px 70px rgba(0,0,0,0.35),0 0 0 1px rgba(139,197,63,0.3)}
+.hero-logo-card::before{content:'';position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border-radius:32px;background:linear-gradient(135deg,var(--green),var(--green-3),var(--yellow));z-index:-1;opacity:0.45;filter:blur(8px)}
+.hero-logo-card img{width:100%;max-width:340px;margin:0 auto;display:block;border-radius:18px}
+.hero-score{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:28px;padding-top:24px;border-top:2px dashed var(--cream-2)}
+.hero-score-num{font-family:var(--display);font-size:3.4rem;color:var(--ink);line-height:1;letter-spacing:-0.03em}
+.hero-score-num em{font-style:normal;color:var(--green);font-weight:400}
+.hero-score-meta{text-align:left;display:flex;flex-direction:column;gap:4px}
+.hero-score-stars{color:var(--yellow);font-size:1.05rem;letter-spacing:2px;line-height:1}
+.hero-score-txt{font-family:var(--body);font-size:.76rem;font-weight:700;color:var(--ink);letter-spacing:0.02em}
+.hero-score-sub{font-family:var(--body);font-size:.7rem;color:var(--slate);letter-spacing:0.04em}
+.hero-sticker{position:absolute;top:-22px;right:-18px;width:96px;height:96px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(14deg);box-shadow:0 12px 30px rgba(255,212,71,0.45);animation:wobble 4s ease-in-out infinite}
+.hero-sticker-txt{font-family:var(--display);font-size:.72rem;color:var(--ink);line-height:1;text-align:center;letter-spacing:0.05em;text-transform:uppercase;padding:0 6px}
+.hero-sticker-txt em{display:block;font-style:normal;font-size:1.5rem;margin-top:2px;color:var(--ink)}
+@keyframes wobble{0%,100%{transform:rotate(14deg)}50%{transform:rotate(-4deg) scale(1.05)}}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes upScale{from{opacity:0;transform:translateY(30px) rotate(2deg) scale(0.92)}to{opacity:1;transform:translateY(0) rotate(2deg) scale(1)}}
+
+/* ===== TICKER ===== */
+.ticker{background:var(--green);color:var(--ink);padding:22px 0;overflow:hidden;position:relative;z-index:2;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);transform:rotate(-0.6deg);margin:-28px 0 0;box-shadow:0 8px 0 var(--ink)}
+.ticker-track{display:flex;gap:48px;animation:tickerScroll 32s linear infinite;white-space:nowrap;font-family:var(--display);font-size:1.3rem;letter-spacing:0.02em;text-transform:uppercase}
+.ticker-track span{display:inline-flex;align-items:center;gap:48px}
+.ticker-track span::after{content:'';width:14px;height:14px;border-radius:50%;background:var(--ink);flex-shrink:0}
+@keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== INTRO ===== */
+.intro{padding:120px 26px 100px;background:var(--cream);position:relative;overflow:hidden}
+.intro::before{content:'';position:absolute;top:-80px;right:-60px;width:420px;height:420px;background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%238bc53f' opacity='0.13' d='M100 20c10 20 30 15 40 30s-5 35 5 50 35 10 40 30-20 30-30 45-5 35-25 40-30-20-50-20-30 25-50 15 0-40-5-55-30-15-30-35 20-20 25-40-10-35 5-50 25 0 40 0 25-10 35-10z'/%3E%3C/svg%3E") no-repeat center/contain;transform:rotate(-20deg);pointer-events:none}
+.intro::after{content:'';position:absolute;bottom:-50px;left:-40px;width:280px;height:280px;background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%238bc53f' opacity='0.09' d='M50 30c20 0 40 10 50 30s30 20 40 40-20 50-40 55-40-30-55-40-30 10-40-15 25-45 45-70z'/%3E%3C/svg%3E") no-repeat center/contain;transform:rotate(40deg);pointer-events:none}
+.intro-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.intro-lbl{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;background:var(--ink);color:var(--green);font-family:var(--display);font-size:.7rem;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;margin-bottom:20px}
+.intro-lbl::before{content:'✺';color:var(--green)}
+.intro h2{font-size:clamp(2.2rem,4.8vw,3.8rem);letter-spacing:-0.025em;line-height:0.98;margin-bottom:26px;color:var(--ink)}
+.intro h2 em{font-style:normal;color:var(--green);font-weight:400;position:relative;display:inline-block}
+.intro h2 em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:-4%;height:8px;background:var(--green);opacity:0.5;transform:scaleX(0);transform-origin:left;animation:underline 0.8s cubic-bezier(.2,.7,.2,1) forwards}
+.intro h2 .reveal-em.show::after{transform:scaleX(1)}
+@keyframes underline{to{transform:scaleX(1)}}
+.intro-body p{font-size:1.06rem;color:var(--char);line-height:1.85;margin-bottom:18px}
+.intro-sig{margin-top:32px;padding-top:24px;border-top:3px dotted var(--cream-2);display:flex;align-items:center;gap:18px}
+.intro-sig-scribble{font-family:var(--script);font-size:2.4rem;color:var(--green-dark);line-height:1;transform:rotate(-4deg)}
+.intro-sig-name{font-family:var(--display);font-size:.95rem;color:var(--ink);letter-spacing:0.02em}
+.intro-sig-role{font-family:var(--body);font-size:.8rem;color:var(--slate);margin-top:4px;letter-spacing:0.02em}
+
+.intro-visual{position:relative;aspect-ratio:4/5}
+.intro-visual img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+.intro-visual::before{content:'';position:absolute;top:16px;right:-18px;bottom:16px;width:120px;background:var(--green);z-index:-1;border-radius:18px;transform:rotate(2deg)}
+.intro-badge{position:absolute;bottom:-24px;left:-24px;background:#fff;padding:16px 22px;border-radius:18px;box-shadow:0 16px 40px rgba(0,0,0,0.18);display:flex;align-items:center;gap:14px;transform:rotate(-3deg);border:2px solid var(--ink)}
+.intro-badge-num{font-family:var(--display);font-size:2.2rem;color:var(--green);line-height:1;letter-spacing:-0.02em}
+.intro-badge-txt{font-family:var(--body);font-size:.76rem;font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:0.04em;text-transform:uppercase;max-width:110px}
+
+/* ===== SERVICES ===== */
+.services{padding:120px 26px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.services::before{content:'';position:absolute;top:20%;left:-80px;width:300px;height:300px;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}
+.services::after{content:'';position:absolute;bottom:10%;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(139,197,63,0.15) 0%,transparent 70%);pointer-events:none}
+.services-inner{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.section-head{margin-bottom:60px;max-width:820px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-lbl{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;background:var(--green);color:var(--ink);font-family:var(--display);font-size:.7rem;letter-spacing:0.12em;text-transform:uppercase;border-radius:100px;margin-bottom:22px;transform:rotate(-1deg)}
+.section-lbl::before{content:'✺'}
+.section-head h2{font-size:clamp(2.2rem,4.8vw,3.8rem);line-height:0.98;margin-bottom:20px;color:var(--ink);letter-spacing:-0.025em}
+.section-head h2 em{font-style:normal;color:var(--green-dark);font-weight:400}
+.services .section-head h2{color:#fff}
+.services .section-head h2 em{color:var(--green)}
+.section-head p{font-size:1.06rem;color:rgba(255,255,255,0.7);line-height:1.75;max-width:680px}
+.section-head.center p{margin-left:auto;margin-right:auto}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{background:var(--ink-2);border:2px solid rgba(255,255,255,0.08);border-radius:22px;padding:36px 32px;position:relative;transition:all .4s cubic-bezier(.2,.7,.2,1);overflow:hidden;cursor:default}
+.svc::before{content:'';position:absolute;top:-50px;right:-50px;width:120px;height:120px;background:var(--green);border-radius:50%;opacity:0;transition:all .5s cubic-bezier(.2,.7,.2,1)}
+.svc:hover::before{opacity:0.18;transform:scale(1.6)}
+.svc:hover{background:#1a1d1a;border-color:var(--green);transform:translateY(-6px) rotate(-0.5deg);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+.svc-icon{width:56px;height:56px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:all .35s}
+.svc:hover .svc-icon{transform:rotate(-8deg) scale(1.08)}
+.svc-icon svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-family:var(--display);font-size:1.35rem;color:#fff;margin-bottom:14px;letter-spacing:-0.01em;text-transform:uppercase}
+.svc p{font-size:.92rem;color:rgba(255,255,255,0.68);line-height:1.7}
+.svc-price{margin-top:20px;padding-top:18px;border-top:1px dashed rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:center;font-family:var(--body)}
+.svc-price-lbl{font-size:.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.svc-price-val{font-family:var(--display);font-size:1rem;color:var(--green);letter-spacing:0.02em}
+
+/* ===== BEFORE/AFTER ===== */
+.ba-section{padding:120px 26px;background:var(--cream);position:relative;overflow:hidden}
+.ba-section::before{content:'';position:absolute;top:-60px;right:10%;width:160px;height:160px;background:var(--green);opacity:0.1;border-radius:50%;pointer-events:none}
+.ba-inner{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:50px}
+.ba-slider{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:ew-resize;user-select:none;touch-action:none;background:var(--ink);border-radius:22px;box-shadow:0 30px 70px rgba(0,0,0,0.18);transform:rotate(-1.5deg);border:4px solid var(--ink)}
+.ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{z-index:1}
+.ba-before{z-index:2;clip-path:inset(0 50% 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--green);transform:translateX(-50%);z-index:5;pointer-events:none;box-shadow:0 0 0 2px rgba(0,0,0,0.3)}
+.ba-handle::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;background:var(--green);border-radius:50%;box-shadow:0 6px 24px rgba(0,0,0,0.35),0 0 0 4px rgba(255,255,255,0.95)}
+.ba-handle::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141614' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M8 4l-6 8 6 8'/%3E%3Cpath d='M16 4l6 8-6 8'/%3E%3C/svg%3E") no-repeat center/contain;z-index:6;pointer-events:none}
+.ba-lbl{position:absolute;top:18px;padding:7px 14px;font-family:var(--display);font-size:.7rem;letter-spacing:0.12em;text-transform:uppercase;z-index:6;pointer-events:none;border-radius:100px}
+.ba-lbl-before{left:18px;background:var(--ink);color:#fff}
+.ba-lbl-after{right:18px;background:var(--green);color:var(--ink)}
+.ba-body .section-lbl{margin-bottom:18px}
+.ba-body h3{font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-0.025em;line-height:1;margin-bottom:22px;color:var(--ink);text-transform:uppercase}
+.ba-body h3 em{font-style:normal;color:var(--green);font-weight:400}
+.ba-body p{font-size:1rem;color:var(--char);line-height:1.8;margin-bottom:14px}
+.ba-quote{margin-top:26px;padding:20px 24px;background:var(--ink);color:#fff;border-radius:16px;position:relative;transform:rotate(0.8deg)}
+.ba-quote::before{content:'"';position:absolute;top:4px;left:16px;font-family:var(--display);font-size:3.4rem;color:var(--green);line-height:0.6;opacity:0.8}
+.ba-quote-txt{font-family:var(--body);font-size:.95rem;line-height:1.6;font-style:italic;padding-left:26px}
+.ba-quote-author{font-family:var(--display);font-size:.76rem;color:var(--green);margin-top:10px;padding-left:26px;letter-spacing:0.06em;text-transform:uppercase}
+
+/* ===== GALLERY ===== */
+.gallery{padding:120px 26px;background:var(--paper);border-top:3px solid var(--green);border-bottom:3px solid var(--green);position:relative}
+.gallery-inner{max-width:1300px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;margin-top:50px}
+.g-item{position:relative;overflow:hidden;cursor:pointer;border-radius:14px;background:var(--ink)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.g-item:hover img{transform:scale(1.06)}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,11,10,0.9) 100%);opacity:0;transition:opacity .4s}
+.g-item:hover .g-overlay{opacity:1}
+.g-cap{position:absolute;bottom:0;left:0;right:0;padding:22px;transform:translateY(10px);opacity:0;transition:all .4s .05s}
+.g-item:hover .g-cap{transform:translateY(0);opacity:1}
+.g-cap span{display:block;font-family:var(--display);font-size:.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
+.g-cap h3{font-family:var(--display);font-size:1.05rem;color:#fff;text-transform:uppercase;letter-spacing:-0.005em}
+.g-tag{position:absolute;top:14px;left:14px;padding:5px 12px;background:var(--green);color:var(--ink);font-family:var(--display);font-size:.6rem;letter-spacing:0.14em;text-transform:uppercase;border-radius:100px;z-index:2;transform:rotate(-2deg)}
+.g-1{grid-column:span 6;aspect-ratio:4/3}
+.g-2{grid-column:span 6;aspect-ratio:4/3}
+.g-3{grid-column:span 4;aspect-ratio:3/4}
+.g-4{grid-column:span 4;aspect-ratio:3/4}
+.g-5{grid-column:span 4;aspect-ratio:3/4}
+
+/* ===== STATS BANNER ===== */
+.stats-banner{padding:80px 26px;background:var(--green);color:var(--ink);position:relative;overflow:hidden;border-bottom:4px solid var(--ink)}
+.stats-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 10% 20%,rgba(255,255,255,0.15) 0%,transparent 35%),radial-gradient(circle at 90% 80%,rgba(255,255,255,0.12) 0%,transparent 35%);pointer-events:none}
+.stats-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;z-index:1}
+.stat-item{text-align:center;position:relative}
+.stat-item:not(:last-child)::after{content:'';position:absolute;top:10%;bottom:10%;right:-20px;width:2px;background:rgba(10,11,10,0.2)}
+.stat-num{font-family:var(--display);font-size:clamp(3rem,6vw,4.8rem);color:var(--ink);line-height:1;letter-spacing:-0.03em}
+.stat-num em{font-style:normal;font-weight:400}
+.stat-lbl{font-family:var(--body);font-size:.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);margin-top:12px}
+
+/* ===== REVIEWS ===== */
+.reviews{padding:120px 26px;background:var(--cream);position:relative;overflow:hidden}
+.reviews::before{content:'';position:absolute;top:10%;right:-5%;width:280px;height:280px;background:var(--green);opacity:0.07;border-radius:50%;pointer-events:none}
+.reviews-inner{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.review{background:var(--paper);border:2px solid var(--cream-2);padding:32px 30px;border-radius:20px;position:relative;transition:all .35s cubic-bezier(.2,.7,.2,1)}
+.review:nth-child(1){transform:rotate(-1deg)}
+.review:nth-child(2){transform:rotate(0.6deg)}
+.review:nth-child(3){transform:rotate(-0.4deg)}
+.review:nth-child(4){transform:rotate(0.8deg)}
+.review:nth-child(5){transform:rotate(-0.5deg)}
+.review:nth-child(6){transform:rotate(0.3deg)}
+.review:hover{border-color:var(--green);transform:translateY(-4px) rotate(0deg) !important;box-shadow:0 20px 50px rgba(0,0,0,0.1)}
+.review-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.review-stars{color:var(--yellow);font-size:.95rem;letter-spacing:2px}
+.review-badge{font-family:var(--display);font-size:.64rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;background:var(--green);color:var(--ink);border-radius:100px}
+.review-title{font-family:var(--display);font-size:1.1rem;color:var(--ink);margin-bottom:10px;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.1}
+.review-quote{font-family:var(--body);font-size:.92rem;line-height:1.7;color:var(--char);margin-bottom:20px}
+.review-meta{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:2px dashed var(--cream-2)}
+.review-av{width:38px;height:38px;background:var(--ink);color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:.82rem;border-radius:50%}
+.review-author{font-family:var(--display);font-size:.82rem;color:var(--ink);letter-spacing:-0.005em}
+.review-loc{font-family:var(--body);font-size:.74rem;color:var(--slate);margin-top:2px;letter-spacing:0.02em}
+
+.review-response{margin-top:16px;padding:14px 18px;background:var(--cream-2);border-radius:12px;border-left:3px solid var(--green)}
+.review-response-lbl{font-family:var(--display);font-size:.62rem;color:var(--green-dark);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:6px}
+.review-response p{font-family:var(--script);font-size:1.08rem;line-height:1.35;color:var(--char);font-weight:500}
+
+/* ===== PROCESS ===== */
+.process{padding:120px 26px;background:var(--paper);position:relative;overflow:hidden}
+.process-inner{max-width:1240px;margin:0 auto;position:relative}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:60px;position:relative}
+.step{position:relative;text-align:center;padding:28px 20px}
+.step:nth-child(odd){transform:rotate(-0.8deg)}
+.step:nth-child(even){transform:rotate(0.8deg)}
+.step-num{width:64px;height:64px;background:var(--green);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.4rem;border-radius:50%;margin:0 auto 22px;transition:all .35s cubic-bezier(.2,.7,.2,1);border:3px solid var(--ink)}
+.step:hover .step-num{transform:rotate(-12deg) scale(1.1);background:var(--ink);color:var(--green)}
+.step h3{font-family:var(--display);font-size:1.05rem;margin-bottom:12px;color:var(--ink);text-transform:uppercase;letter-spacing:-0.005em}
+.step p{font-size:.9rem;color:var(--slate);line-height:1.7}
+
+/* ===== CTA ===== */
+.cta-section{padding:120px 26px;background:var(--ink);color:#fff;position:relative;overflow:hidden;border-top:4px solid var(--green)}
+.cta-section::before{content:'';position:absolute;top:-20%;left:-5%;width:60%;height:90%;background:radial-gradient(circle at 50% 50%,var(--green-glow) 0%,transparent 60%);pointer-events:none}
+.cta-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.cta-inner h2{font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:0.98;margin-bottom:24px;color:#fff}
+.cta-inner h2 em{font-style:normal;color:var(--green);font-weight:400}
+.cta-inner p{font-size:1.1rem;color:rgba(255,255,255,0.82);max-width:640px;margin:0 auto 40px;line-height:1.7}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.cta-footer-note{margin-top:32px;font-family:var(--script);font-size:1.5rem;color:var(--green);transform:rotate(-2deg);display:inline-block}
+
+/* ===== CONTACT ===== */
+.contact{padding:120px 26px;background:var(--cream);position:relative;overflow:hidden}
+.contact-inner{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.contact-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;margin-top:56px}
+.contact-form{background:var(--paper);padding:44px 40px;border-radius:22px;border:2px solid var(--ink);position:relative}
+.contact-form::before{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;background:var(--green);border-radius:26px;z-index:-1;opacity:0.3}
+.contact-form h3{font-family:var(--display);font-size:1.5rem;margin-bottom:8px;text-transform:uppercase;color:var(--ink)}
+.contact-form h3 em{font-style:normal;color:var(--green);font-weight:400}
+.form-sub{font-size:.94rem;color:var(--slate);margin-bottom:28px;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-family:var(--display);font-size:.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 14px;background:var(--cream);border:2px solid var(--cream-2);color:var(--ink);font-family:var(--body);font-size:.95rem;transition:all .25s;border-radius:12px;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);background:#fff}
+.form-group textarea{resize:vertical;min-height:110px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238bc53f' stroke-width='3'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.submit{width:100%;padding:16px;background:var(--ink);color:#fff;font-family:var(--display);font-size:.86rem;letter-spacing:0.08em;text-transform:uppercase;border-radius:100px;transition:all .3s cubic-bezier(.2,.7,.2,1);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:10px;border:none;cursor:pointer}
+.submit:hover{background:var(--green);color:var(--ink);transform:translateY(-2px)}
+.submit svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+
+.contact-side{display:flex;flex-direction:column;gap:24px}
+.contact-side h3{font-family:var(--display);font-size:1.5rem;margin-bottom:10px;text-transform:uppercase;color:var(--ink)}
+.contact-side h3 em{font-style:normal;color:var(--green);font-weight:400}
+.contact-side-intro{font-size:.98rem;color:var(--char);line-height:1.75;margin-bottom:6px}
+
+.ci-item{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;background:var(--paper);border:2px solid var(--cream-2);border-radius:16px;transition:all .3s;cursor:pointer}
+.ci-item:hover{border-color:var(--green);transform:translateY(-2px) rotate(-0.5deg);box-shadow:0 12px 30px rgba(0,0,0,0.08)}
+.ci-icon{width:46px;height:46px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;transition:all .3s}
+.ci-item:hover .ci-icon{transform:rotate(-10deg) scale(1.06)}
+.ci-icon svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:2}
+.ci-item strong{display:block;font-family:var(--display);font-size:.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+.ci-item span,.ci-item a{display:block;font-family:var(--display);font-size:1.15rem;color:var(--ink);letter-spacing:-0.005em}
+.ci-item-sub{font-family:var(--body) !important;font-size:.82rem !important;color:var(--slate) !important;margin-top:3px;letter-spacing:0.02em !important;text-transform:none !important}
+
+.areas{padding:24px 26px;background:var(--ink);color:#fff;border-radius:16px;border:2px solid var(--ink)}
+.areas strong{display:block;font-family:var(--display);font-size:.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.area-chips{display:flex;flex-wrap:wrap;gap:6px}
+.area-chip{padding:5px 11px;background:rgba(139,197,63,0.16);border:1px solid rgba(139,197,63,0.35);font-family:var(--body);font-size:.78rem;color:var(--green);border-radius:100px;font-weight:600}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--ink);color:rgba(255,255,255,0.68);padding:70px 26px 30px;border-top:4px dashed var(--green)}
+.footer-inner{max-width:1240px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:50px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-col h4{font-family:var(--display);color:var(--green);font-size:.72rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px}
+.footer-col a,.footer-col p{font-family:var(--body);font-size:.88rem;line-height:1.95;color:rgba(255,255,255,0.58);display:block;transition:color .2s}
+.footer-col a:hover{color:var(--green)}
+.footer-brand .brand-logo{width:62px;height:62px}
+.footer-brand .brand-name{color:#fff;font-size:1.2rem}
+.footer-brand .brand-sub{color:var(--green);opacity:0.9}
+.footer-brand-desc{font-size:.9rem;line-height:1.8;margin-top:20px;max-width:360px;color:rgba(255,255,255,0.55)}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:16px}
+.footer-bot p{font-family:var(--body);font-size:.76rem;color:rgba(255,255,255,0.42)}
+.footer-bot a{color:var(--green);font-size:.76rem}
+
+/* ===== FAB ===== */
+.fab-stack{position:fixed;bottom:24px;right:24px;z-index:900;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(16px);pointer-events:none;transition:all .55s}
+.fab-stack.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:58px;height:58px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.22);transition:all .3s;border-radius:50%;border:3px solid var(--ink)}
+.fab:hover{transform:scale(1.08) rotate(-6deg)}
+.fab svg{width:24px;height:24px;fill:currentColor}
+.fab-phone{background:var(--green);color:var(--ink);animation:pulse-g 2.4s infinite}
+.fab-wa{background:#25d366;color:#fff;animation:pulse-w 2.4s infinite}
+@keyframes pulse-g{0%,100%{box-shadow:0 10px 30px rgba(139,197,63,0.4)}50%{box-shadow:0 10px 36px rgba(139,197,63,0.7)}}
+@keyframes pulse-w{0%,100%{box-shadow:0 10px 30px rgba(37,211,102,0.4)}50%{box-shadow:0 10px 36px rgba(37,211,102,0.7)}}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.on{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .hero-content,.intro-inner,.ba-wrap,.contact-grid{grid-template-columns:1fr;gap:60px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:40px}
+  .stat-item:nth-child(2)::after{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .gallery-grid{grid-template-columns:repeat(6,1fr)}
+  .g-1,.g-2{grid-column:span 6}
+  .g-3,.g-4,.g-5{grid-column:span 2}
+  .hero-logo-card{max-width:420px;margin:0 auto}
+  .intro-visual{max-width:500px;margin:0 auto;aspect-ratio:5/4}
+}
+@media(max-width:640px){
+  .nav{padding:0 18px;height:70px}
+  .nav-links{display:none}
+  .nav-mob{display:inline-flex}
+  .brand-logo{width:50px;height:50px}
+  .brand-name{font-size:1rem}
+  .hero{padding:100px 0 60px;min-height:auto}
+  .hero-content{padding:0 18px;gap:50px}
+  .hero h1{font-size:2.6rem}
+  .hero-stats{gap:24px}
+  .hstat-num{font-size:2rem}
+  .btn{padding:15px 22px;font-size:.76rem}
+  .intro,.services,.ba-section,.gallery,.reviews,.process,.contact,.cta-section{padding:80px 18px}
+  .stats-banner{padding:60px 18px}
+  .svc-grid,.reviews-grid,.steps,.stats-inner{grid-template-columns:1fr;gap:22px}
+  .stat-item::after{display:none !important}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer{padding:50px 18px 24px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .g-1,.g-2,.g-3,.g-4,.g-5{grid-column:span 2;aspect-ratio:4/3}
+  .contact-form{padding:32px 24px}
+  .form-row{grid-template-columns:1fr}
+  .ticker-track{font-size:1rem;gap:32px}
+  .ticker-track span{gap:32px}
+  .hero-sticker{width:82px;height:82px;top:-16px;right:-6px}
+  .fab-stack{bottom:16px;right:16px}
+  .fab{width:52px;height:52px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-logo"><img src="logo.jpg" alt="LPD Liver Paint & Decorate logo"></span>
+      <span class="brand-text">
+        <span class="brand-name">LPD Liverpool</span>
+        <span class="brand-sub">Paint &amp; Decorate</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About Carl</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta js-phone" data-p="MDc0NTU3MjUwNTg=" data-d="MDc0NTUgNzI1IDA1OA==">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>Get a Quote</span>
+      </a>
+    </div>
+    <button class="nav-mob" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-photo"><img src="hero.jpg" alt="Recently painted Liverpool hallway by LPD"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>
+        <span>Liverpool · Since 1992</span>
+      </div>
+      <h1 id="heroH1">A cracking <em>paint job</em>, from your man <em>Carl</em>.</h1>
+      <p class="hero-sub">Liverpool-born painter and decorator. Interiors, exteriors, glossing, prep, the lot. <strong>10/10 on Checkatrade</strong> from every single review, and a handful of very happy landlords.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-green js-phone" data-p="MDc0NTU3MjUwNTg=" data-d="MDc0NTUgNzI1IDA1OA==">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>Call Carl Now</span>
+        </a>
+        <a href="https://wa.me/447455725058?text=Hi%20Carl%2C%20I%20found%20LPD%20online%20and%20would%20love%20a%20quote%20please" class="btn btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.6-.5-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.2 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.2-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-num">10<span style="color:rgba(255,255,255,0.4)">/10</span></div><div class="hstat-lbl">Checkatrade<br>Rating</div></div>
+        <div class="hstat"><div class="hstat-num">28</div><div class="hstat-lbl">Verified<br>Reviews</div></div>
+        <div class="hstat"><div class="hstat-num">30<span style="font-size:1.5rem">+</span></div><div class="hstat-lbl">Years On<br>the Brush</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-logo-card">
+        <img src="logo.jpg" alt="LPD Liver Paint & Decorate official logo">
+        <div class="hero-score">
+          <div class="hero-score-num">10<em>/10</em></div>
+          <div class="hero-score-meta">
+            <div class="hero-score-stars">★★★★★</div>
+            <div class="hero-score-txt">Checkatrade Score</div>
+            <div class="hero-score-sub">From 28 verified reviews</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-sticker">
+        <div class="hero-sticker-txt">Since<em>1992</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Interiors &amp; Exteriors</span>
+    <span>Doors · Frames · Masonry</span>
+    <span>Full Flat Refits</span>
+    <span>Prep · Gloss · Emulsion</span>
+    <span>Scouse, Skilled &amp; Sound</span>
+    <span>Interiors &amp; Exteriors</span>
+    <span>Doors · Frames · Masonry</span>
+    <span>Full Flat Refits</span>
+    <span>Prep · Gloss · Emulsion</span>
+    <span>Scouse, Skilled &amp; Sound</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro" id="about">
+  <div class="intro-inner">
+    <div class="reveal">
+      <div class="intro-lbl">Hello from Carl</div>
+      <h2>Liverpool-born, paint-<em>obsessed</em>, and proud of every door I gloss.</h2>
+      <div class="intro-body">
+        <p>I'm Carl. I run LPD Liver Paint &amp; Decorate out of Netherton, and I've been on the brush since 1992. No apprentices, no call centre, no middlemen. You get me, every day, start to finish.</p>
+        <p>Most of my work these days is full flat refits for landlords, front-door transformations for homeowners, and the occasional full house that another decorator bailed on. I do the prep properly, the paint goes on clean, and I don't leave until you're buzzing about it.</p>
+      </div>
+      <div class="intro-sig">
+        <div class="intro-sig-scribble">Carl</div>
+        <div>
+          <div class="intro-sig-name">Carl</div>
+          <div class="intro-sig-role">Owner · LPD Liver Paint &amp; Decorate · L30</div>
+        </div>
+      </div>
+    </div>
+    <div class="intro-visual reveal">
+      <img src="work-3.jpg" alt="Freshly painted Liverpool living room with teal walls and white coving">
+      <div class="intro-badge">
+        <div class="intro-badge-num">£1k</div>
+        <div class="intro-badge-txt">Checkatrade Guarantee · T&amp;Cs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-head center reveal">
+      <div class="section-lbl">What I Do</div>
+      <h2>From a tired <em>front door</em> to a full <em>flat refit</em>.</h2>
+      <p>Every job done properly. Prep, fill, sand, cut in, roll, gloss. No shortcuts, no "it'll do". Paint only sticks when the prep is sound.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="8" rx="1"/><path d="M12 10v4"/><rect x="8" y="14" width="8" height="8" rx="1"/></svg></div>
+        <h3>Interior Painting</h3>
+        <p>Walls, ceilings, coving, radiators, skirting. Full rooms or full houses. Clean lines, no paint on the carpet, no streaks on the ceiling.</p>
+        <div class="svc-price"><span class="svc-price-lbl">From</span><span class="svc-price-val">£200 / Room</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><circle cx="16" cy="12" r="0.5" fill="currentColor"/></svg></div>
+        <h3>Doors &amp; Frames</h3>
+        <p>Gloss, satin, eggshell. Internal doors stripped back and finished, front doors glossed up like they've never been. They'll look new when I leave.</p>
+        <div class="svc-price"><span class="svc-price-lbl">Front Door</span><span class="svc-price-val">£180+</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M7 21v-6"/></svg></div>
+        <h3>Exterior &amp; Masonry</h3>
+        <p>Barge boards, window frames, soffits, fascias and full masonry. Weather-proofed finish that stands up to the Mersey drizzle.</p>
+        <div class="svc-price"><span class="svc-price-lbl">Quoted</span><span class="svc-price-val">Per Job</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M9 9h6v6H9z"/></svg></div>
+        <h3>Full Flat Refits</h3>
+        <p>Landlord special. Full rip-through, filler work, paint, gloss and tidy up. Ready for tenants, ready for the agent, ready for photos.</p>
+        <div class="svc-price"><span class="svc-price-lbl">2-Bed From</span><span class="svc-price-val">£1,400</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4.5L6 21l1.5-7.5L2 9h7z"/></svg></div>
+        <h3>Prep Done Right</h3>
+        <p>Every dent, gouge and hairline crack filled, sanded and sealed before a drop of colour goes near it. The reason my jobs stay looking new.</p>
+        <div class="svc-price"><span class="svc-price-lbl">Included</span><span class="svc-price-val">In Every Job</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v10l-7 4-7-4V7z"/><path d="M12 3v18M19 7l-7 4-7-4"/></svg></div>
+        <h3>The Extras</h3>
+        <p>Tiling splashbacks, hanging curtain poles, fitting blinds. If it needs doing while I'm there and it helps you, I'll sort it, or I'll tell you who can.</p>
+        <div class="svc-price"><span class="svc-price-lbl">On Request</span><span class="svc-price-val">Ask Carl</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BANNER -->
+<div class="stats-banner">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10<em>/10</em></div>
+      <div class="stat-lbl">Quality of Work</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<em>/10</em></div>
+      <div class="stat-lbl">Reliability</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<em>/10</em></div>
+      <div class="stat-lbl">Communication</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">28</div>
+      <div class="stat-lbl">Verified Reviews</div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-head reveal">
+      <div class="section-lbl">Recent Jobs</div>
+      <h2>Straight from the <em>dust sheet</em>.</h2>
+      <p>Actual jobs done across Liverpool, snapped on the Galaxy when the paint was still wet.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item g-1 reveal">
+        <span class="g-tag">Living Room</span>
+        <img src="work-3.jpg" alt="Teal blue painted living room with coving">
+        <div class="g-overlay"></div>
+        <div class="g-cap"><span>Full Refit · L1</span><h3>Teal Living Room</h3></div>
+      </div>
+      <div class="g-item g-2 reveal">
+        <span class="g-tag">Hallway</span>
+        <img src="work-2.jpg" alt="Hallway with sage dado wall and Victorian tiles">
+        <div class="g-overlay"></div>
+        <div class="g-cap"><span>Victorian Terrace</span><h3>Sage Dado &amp; White</h3></div>
+      </div>
+      <div class="g-item g-3 reveal">
+        <span class="g-tag">Door Gloss</span>
+        <img src="work-4.jpg" alt="French door mid-prep with masking tape">
+        <div class="g-overlay"></div>
+        <div class="g-cap"><span>Prep Work</span><h3>Masked &amp; Primed</h3></div>
+      </div>
+      <div class="g-item g-4 reveal">
+        <span class="g-tag">Internal</span>
+        <img src="work-5.jpg" alt="Freshly glossed white panel door">
+        <div class="g-overlay"></div>
+        <div class="g-cap"><span>Finished</span><h3>Panel Door Gloss</h3></div>
+      </div>
+      <div class="g-item g-5 reveal">
+        <span class="g-tag">Lounge</span>
+        <img src="work-6.jpg" alt="Sage green lounge with white coving">
+        <div class="g-overlay"></div>
+        <div class="g-cap"><span>Full Room · L14</span><h3>Sage &amp; Cream</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="section-head center reveal">
+      <div class="section-lbl">Real Reviews</div>
+      <h2>Every single one is a <em>10/10</em>. Every. Single. One.</h2>
+      <p>Actual Checkatrade reviews, copied straight from the site. Nothing re-worded. Names kept as the customers wrote them.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-badge">10/10</div></div>
+        <h3 class="review-title">Fantastic Work from Carl</h3>
+        <p class="review-quote">"Carl transformed my previously un-rentable flat into a modern, high-quality space I'm genuinely proud to rent out. He quickly understood what was needed, communicated clearly throughout, and delivered an excellent finish in every room. His prep work, attention to detail, reliability, and pride in his work really stood out. The flat is now rented out!"</p>
+        <div class="review-meta"><div class="review-av">V</div><div><div class="review-author">Verified Reviewer</div><div class="review-loc">Painter / Decorator · L6 · Dec 2025</div></div></div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-badge">10/10</div></div>
+        <h3 class="review-title">So Very Happy.</h3>
+        <p class="review-quote">"I am so very, very happy with Carl's work. He is a real perfectionist and takes such care. He made good all the dents, gouges, and marks making it look as good as new. My doors are unrecognisable now they've been glossed, they look amazing. Carl is friendly, clear and explains what he's doing. He went over and above doing little extra things. I can't recommend him enough."</p>
+        <div class="review-meta"><div class="review-av">V</div><div><div class="review-author">Verified Reviewer</div><div class="review-loc">Painting / Decorating · L18 · Oct 2025</div></div></div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-badge">10/10</div></div>
+        <h3 class="review-title">Transformation</h3>
+        <p class="review-quote">"Where do I start. I was looking for my entire apartment to be painted and decorated throughout. It had been a rental for years and had not been looked after. He absolutely transformed my new home. Got the paint, advised the colours and did a top quality job throughout. He also put up new curtains &amp; poles, tiled the splash back and even recommended great tradesman. He treats your home like he's decorating his own."</p>
+        <div class="review-meta"><div class="review-av">V</div><div><div class="review-author">Verified Reviewer</div><div class="review-loc">Painter / Decorator · L1 · Sep 2025</div></div></div>
+        <div class="review-response">
+          <div class="review-response-lbl">Reply from Carl</div>
+          <p>customers are more than customers to me, they become my friend very quickly. I put 100% into everything I do x</p>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-badge">10/10</div></div>
+        <h3 class="review-title">Redecorating Superman</h3>
+        <p class="review-quote">"I am refurbing a whole property. It was practically falling down. Carl came in last minute after the last painter and decorator turned up and decided they couldn't do it, but he took on the challenge. He has helped out tremendously with taking in deliveries and helping me problem solve a lot of issues. The house itself is literally like a different place. He has even been nice enough to say he will come back to finish off the last bits! 100% recommend!"</p>
+        <div class="review-meta"><div class="review-av">K</div><div><div class="review-author">Katie S.</div><div class="review-loc">Painting / Decorating · L14 · Jul 2025</div></div></div>
+        <div class="review-response">
+          <div class="review-response-lbl">Reply from Carl</div>
+          <p>Thank you so much, Kate. It means the world to me. 100% satisfaction is imperative for me.</p>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-badge">10/10</div></div>
+        <h3 class="review-title">Painting Front Door</h3>
+        <p class="review-quote">"We were delighted with the work done by Carl to our front door. It's never looked so good! Carl was very thorough and professional. He came around promptly and quoted for the job and within a couple of days he came out and did the job. Excellent service was provided and we would definitely use Carl again!"</p>
+        <div class="review-meta"><div class="review-av">V</div><div><div class="review-author">Verified Reviewer</div><div class="review-loc">Painting / Decorating · L39 · Jun 2025</div></div></div>
+        <div class="review-response">
+          <div class="review-response-lbl">Reply from Carl</div>
+          <p>Another fantastic review. Means so much to know my work and effort is appreciated. Thank you xx</p>
+        </div>
+      </div>
+
+      <div class="review reveal">
+        <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-badge">10/10</div></div>
+        <h3 class="review-title">Exterior Painting</h3>
+        <p class="review-quote">"Good experience. Plenty of communication and discussion around the job and our requirements. Personable and friendly. Polite and hard working. External painting of barge boards, window frames, doors and door frames and masonry."</p>
+        <div class="review-meta"><div class="review-av">C</div><div><div class="review-author">Chris</div><div class="review-loc">Exterior Painting · L39 · May 2025</div></div></div>
+        <div class="review-response">
+          <div class="review-response-lbl">Reply from Carl</div>
+          <p>Thanks Chris x</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="section-head center reveal">
+      <div class="section-lbl">How It Works</div>
+      <h2>Four steps from the <em>first text</em> to the <em>last brush</em>.</h2>
+      <p>No paperwork nightmares, no salesy follow-up, no surprise invoice at the end. Just a proper painter doing a proper job.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><h3>Give Us a Bell</h3><p>Phone, WhatsApp, or drop a message on the form. Usually back to you the same day.</p></div>
+      <div class="step reveal"><div class="step-num">2</div><h3>Quick Look</h3><p>Carl comes round, has a look, has a brew, and writes you a clear no-nonsense quote.</p></div>
+      <div class="step reveal"><div class="step-num">3</div><h3>Paint On</h3><p>Dust sheets down, furniture moved, prep done properly, then the colour goes on. Tidy every day.</p></div>
+      <div class="step reveal"><div class="step-num">4</div><h3>Have a Brew</h3><p>Walk the job together at the end. If anything's not perfect, it gets fixed before I leave.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-lbl reveal" style="background:var(--green);color:var(--ink)">Get Carl In</div>
+    <h2 class="reveal">Got a <em>tired room</em> or a <em>knackered door</em>?</h2>
+    <p class="reveal">Free quotes, no pushy sales, no big price jumps at the end. Pick up the phone and we'll sort it.</p>
+    <div class="cta-btns reveal">
+      <a href="#contact" class="btn btn-green js-phone" data-p="MDc0NTU3MjUwNTg=" data-d="MDc0NTUgNzI1IDA1OA==">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>Call 07455 725 058</span>
+      </a>
+      <a href="https://wa.me/447455725058?text=Hi%20Carl%2C%20I%20found%20LPD%20online%20and%20would%20love%20a%20quote%20please" class="btn btn-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.6-.5-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.2 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.2-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        <span>WhatsApp Carl</span>
+      </a>
+    </div>
+    <div class="cta-footer-note">proper job, every time.</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-head center reveal">
+      <div class="section-lbl">Contact</div>
+      <h2>Want a <em>quote</em>? Send Carl a <em>shout</em>.</h2>
+      <p>Quickest way is a phone call or WhatsApp with a couple of pics of the job. Otherwise the form below lands straight in the inbox.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form reveal" onsubmit="event.preventDefault();alert('Thanks, this is a preview. The live form will text Carl directly.');">
+        <h3>Get a <em>quote</em></h3>
+        <p class="form-sub">Takes a minute. No spam. Carl handles every enquiry personally.</p>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Jane" required></div>
+          <div class="form-group"><label>Phone</label><input type="tel" placeholder="07xxx xxx xxx" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Job Type</label>
+            <select>
+              <option>Interior Painting</option>
+              <option>Doors &amp; Frames</option>
+              <option>Exterior / Masonry</option>
+              <option>Front Door Gloss</option>
+              <option>Full Flat / Landlord Refit</option>
+              <option>Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Postcode</label><input type="text" placeholder="L30 / L6 / L18"></div>
+        </div>
+        <div class="form-group"><label>Tell Carl About It</label><textarea placeholder="How many rooms, how big, any prep needed, timeline..."></textarea></div>
+        <button type="submit" class="submit">
+          <span>Send to Carl</span>
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+
+      <div class="contact-side reveal">
+        <h3>Or just give Carl a <em>bell</em>.</h3>
+        <p class="contact-side-intro">Straight through to the man with the roller. No office, no answering service, no gatekeeper.</p>
+
+        <a href="#" class="ci-item js-phone" data-p="MDc0NTU3MjUwNTg=" data-d="MDc0NTUgNzI1IDA1OA==">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><strong>Phone</strong><span>07455 725 058</span><span class="ci-item-sub">7 days, whenever Carl's not up a ladder</span></div>
+        </a>
+        <a href="https://wa.me/447455725058?text=Hi%20Carl%2C%20I%20found%20LPD%20online%20and%20would%20love%20a%20quote%20please" class="ci-item" target="_blank" rel="noopener">
+          <div class="ci-icon"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.5 14.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.6-.5-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.2 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.2-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></div>
+          <div><strong>WhatsApp</strong><span>Message Carl</span><span class="ci-item-sub">Send a couple of pics, get a rough price</span></div>
+        </a>
+        <div class="ci-item" style="cursor:default">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Based</strong><span>53 Braidwood Road</span><span class="ci-item-sub">Netherton, Liverpool L30</span></div>
+        </div>
+        <div class="ci-item" style="cursor:default">
+          <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><strong>Checkatrade</strong><span>Member Since March 2024</span><span class="ci-item-sub">28 reviews · 10/10 average · £1k guarantee</span></div>
+        </div>
+
+        <div class="areas">
+          <strong>Postcodes I Cover</strong>
+          <div class="area-chips">
+            <span class="area-chip">L1</span>
+            <span class="area-chip">L6</span>
+            <span class="area-chip">L14</span>
+            <span class="area-chip">L18</span>
+            <span class="area-chip">L30</span>
+            <span class="area-chip">L39</span>
+            <span class="area-chip">Crosby</span>
+            <span class="area-chip">Bootle</span>
+            <span class="area-chip">Aintree</span>
+            <span class="area-chip">Maghull</span>
+            <span class="area-chip">Most of Merseyside</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="brand">
+          <span class="brand-logo"><img src="logo.jpg" alt="LPD logo"></span>
+          <span class="brand-text">
+            <span class="brand-name">LPD Liverpool</span>
+            <span class="brand-sub">Paint &amp; Decorate</span>
+          </span>
+        </div>
+        <p class="footer-brand-desc">Liverpool-based painter and decorator. Interiors, exteriors, flat refits, front doors. 10/10 on Checkatrade from every review. Since 1992.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Interior Painting</a>
+        <a href="#services">Doors &amp; Frames</a>
+        <a href="#services">Exterior &amp; Masonry</a>
+        <a href="#services">Full Flat Refits</a>
+        <a href="#services">Prep Work</a>
+      </div>
+      <div class="footer-col">
+        <h4>Coverage</h4>
+        <a href="#contact">Liverpool City</a>
+        <a href="#contact">Crosby &amp; Bootle</a>
+        <a href="#contact">Netherton &amp; Aintree</a>
+        <a href="#contact">Maghull &amp; Merseyside</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#" class="js-phone" data-p="MDc0NTU3MjUwNTg=" data-d="MDc0NTUgNzI1IDA1OA==">07455 725 058</a>
+        <a href="https://wa.me/447455725058" target="_blank" rel="noopener">WhatsApp Carl</a>
+        <p style="margin-top:6px">53 Braidwood Road<br>Netherton, L30</p>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <p>&copy; 2026 LPD Liver Paint &amp; Decorate. On the brush since 1992.</p>
+      <p>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<div class="fab-stack" id="fabStack">
+  <a class="fab fab-phone js-phone" data-p="MDc0NTU3MjUwNTg=" data-d="MDc0NTUgNzI1IDA1OA==" aria-label="Call Carl">
+    <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6h-.3c-.3 0-.5.1-.7.3l-2.2 2.2c-2.8-1.5-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1C8.7 6.5 8.5 5.2 8.5 4c0-.6-.5-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.5-.4-1-1-1z"/></svg>
+  </a>
+  <a class="fab fab-wa" href="https://wa.me/447455725058?text=Hi%20Carl%2C%20I%20found%20LPD%20online%20and%20would%20love%20a%20quote%20please" target="_blank" rel="noopener" aria-label="WhatsApp Carl">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.6-.5-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.2 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.2-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  </a>
+</div>
+
+<noscript>
+  <div style="position:fixed;bottom:0;left:0;right:0;background:#0a0b0a;color:#fff;padding:12px;text-align:center;font-size:.85rem;z-index:9999">
+    Call Carl at LPD: oh-seven-four-five-five, seven-two-five, oh-five-eight.
+  </div>
+</noscript>
+
+<script>
+// HERO WORD ANIMATION
+(function(){
+  var h1 = document.getElementById('heroH1');
+  var html = h1.innerHTML;
+  var tokens = html.split(/(<em[^>]*>.*?<\/em>|\s+)/).filter(function(t){return t && t !== ' '});
+  h1.innerHTML = tokens.map(function(t){
+    if (/^<em/.test(t)) return '<span class="word">' + t + '</span>';
+    if (/^\s+$/.test(t)) return t;
+    return '<span class="word">' + t + '</span>';
+  }).join(' ');
+  var words = h1.querySelectorAll('.word');
+  words.forEach(function(w,i){
+    setTimeout(function(){
+      w.classList.add('show');
+      var em = w.querySelector('em');
+      if (em) em.classList.add('show');
+    }, 400 + i * 75);
+  });
+})();
+
+// NAV + FAB
+var nav = document.getElementById('nav');
+var fab = document.getElementById('fabStack');
+window.addEventListener('scroll', function(){
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  if (window.scrollY > 500) fab.classList.add('visible');
+  else fab.classList.remove('visible');
+});
+
+// REVEAL
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// BEFORE/AFTER
+document.querySelectorAll('.ba-slider').forEach(function(slider){
+  var before = slider.querySelector('.ba-before');
+  var handle = slider.querySelector('.ba-handle');
+  var dragging = false;
+  function setSplit(pct){
+    pct = Math.max(0, Math.min(100, pct));
+    before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    handle.style.left = pct + '%';
+  }
+  function moveTo(clientX){
+    var rect = slider.getBoundingClientRect();
+    var pct = ((clientX - rect.left) / rect.width) * 100;
+    setSplit(pct);
+  }
+  slider.addEventListener('mousedown', function(e){ dragging = true; moveTo(e.clientX); });
+  window.addEventListener('mousemove', function(e){ if (dragging) moveTo(e.clientX); });
+  window.addEventListener('mouseup', function(){ dragging = false; });
+  slider.addEventListener('touchstart', function(e){ dragging = true; moveTo(e.touches[0].clientX); }, {passive:true});
+  slider.addEventListener('touchmove', function(e){ if (dragging) moveTo(e.touches[0].clientX); }, {passive:true});
+  slider.addEventListener('touchend', function(){ dragging = false; });
+  setSplit(50);
+});
+
+// CONTACT OBFUSCATION
+document.querySelectorAll('.js-phone').forEach(function(el){
+  try {
+    var p = atob(el.dataset.p);
+    var d = atob(el.dataset.d);
+    el.href = 'tel:' + p;
+    var span = el.querySelector('span');
+    if (span && !span.textContent.trim()) span.textContent = d;
+  } catch (e) {}
+});
+</script>
+</body>
+</html>
