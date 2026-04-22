@@ -546,8 +546,22 @@ section{padding:110px 0;position:relative}
 .cta-band .btn-outline:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
 
 /* ─── CONTACT ─── */
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
-@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:56px}}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  grid-template-areas:"info form" "kv form";
+  gap:32px 72px;align-items:start;
+}
+.contact-info{grid-area:info}
+.contact-form{grid-area:form}
+.contact-kv{grid-area:kv}
+@media(max-width:900px){
+  .contact-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:"info" "form" "kv";
+    gap:36px;
+  }
+}
 .contact-info h2{
   font-family:var(--display);font-weight:700;
   font-size:clamp(2rem,3.8vw,2.8rem);
@@ -557,7 +571,7 @@ section{padding:110px 0;position:relative}
 .contact-info h2 em{font-style:normal;color:var(--accent)}
 .contact-info .lead{
   font-size:1.02rem;color:var(--muted);line-height:1.7;
-  margin-bottom:40px;max-width:460px;
+  margin-bottom:0;max-width:460px;
 }
 .contact-kv{
   display:flex;flex-direction:column;gap:18px;
@@ -940,12 +954,12 @@ section{padding:110px 0;position:relative}
       <div class="contact-info reveal">
         <h2 style="border:none;margin-bottom:0;padding:0;font-size:clamp(1.6rem,3vw,2.2rem)">Tell us about <em>your project.</em></h2>
         <p class="lead">Send us a few details and we will come back with a clear next step. Initial consultations are free, and we will always tell you honestly whether we are the right fit.</p>
-        <div class="contact-kv">
-          <div class="row"><div class="lbl">Email</div><a href="mailto:info@villarenovations.co.uk" class="val">info@villarenovations.co.uk</a></div>
-          <div class="row"><div class="lbl">Areas</div><div class="val">Newcastle · Durham · Sunderland</div></div>
-          <div class="row"><div class="lbl">Hours</div><div class="val">Mon to Fri, 8am to 6pm</div></div>
-          <div class="row"><div class="lbl">Response</div><div class="val">Same working day</div></div>
-        </div>
+      </div>
+      <div class="contact-kv reveal">
+        <div class="row"><div class="lbl">Email</div><a href="mailto:info@villarenovations.co.uk" class="val">info@villarenovations.co.uk</a></div>
+        <div class="row"><div class="lbl">Areas</div><div class="val">Newcastle · Durham · Sunderland</div></div>
+        <div class="row"><div class="lbl">Hours</div><div class="val">Mon to Fri, 8am to 6pm</div></div>
+        <div class="row"><div class="lbl">Response</div><div class="val">Same working day</div></div>
       </div>
       <form class="contact-form reveal" method="POST" action="/api/enquiry">
         <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
