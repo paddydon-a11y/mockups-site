@@ -18,8 +18,8 @@
     --ink-faint:#8a8279;
     --line:#e7ddce;
     --line-soft:#efe7d8;
-    --plaster:#c9735b;
-    --plaster-deep:#a55a44;
+    --plaster:#22a9e6;
+    --plaster-deep:#0f7bb4;
     --sage:#6a7e5f;
     --cream-hi:#fff9ef;
     --serif:'Instrument Serif', Georgia, serif;
@@ -149,7 +149,7 @@
   .hero::before{
     content:'';position:absolute;top:-200px;right:-150px;
     width:600px;height:600px;border-radius:50%;
-    background:radial-gradient(closest-side, rgba(201,115,91,0.09), transparent 70%);
+    background:radial-gradient(closest-side, rgba(34,169,230,0.12), transparent 70%);
     pointer-events:none;
   }
   .hero-grid{
@@ -234,6 +234,34 @@
   .hero-caption .quote{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);line-height:1.35}
   .hero-caption .author{margin-top:10px;font-size:12px;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;font-weight:700}
 
+  /* Van polaroid */
+  .van-polaroid{
+    position:absolute;left:-28px;bottom:-36px;z-index:3;
+    width:170px;
+    background:var(--paper);
+    padding:10px 10px 18px;
+    border:1px solid var(--line);
+    box-shadow:0 18px 40px -18px rgba(28,25,23,0.35), 0 4px 14px -8px rgba(28,25,23,0.18);
+    transform:rotate(-4deg);
+    transition:transform .35s ease;
+  }
+  .van-polaroid:hover{transform:rotate(-1deg) translateY(-2px)}
+  .van-polaroid img{
+    width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+    background:#0a0a0a;
+  }
+  .van-polaroid .vcap{
+    font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--plaster-deep);
+    margin-top:10px;text-align:center;
+  }
+  @media(max-width:980px){
+    .van-polaroid{left:auto;right:-14px;bottom:auto;top:14px;width:140px;transform:rotate(3deg)}
+  }
+  @media(max-width:520px){
+    .van-polaroid{width:120px;right:-6px;top:6px}
+  }
+
   /* TRUST STRIP */
   .trust{
     border-top:1px solid var(--line);
@@ -251,65 +279,6 @@
   .trust-item svg{width:18px;height:18px;stroke:var(--plaster-deep);fill:none;stroke-width:2}
   @media(max-width:720px){.trust-inner{justify-content:center}}
 
-  /* VAN STRIP */
-  .van-strip{padding:110px 0 90px}
-  .van-grid{
-    display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;
-  }
-  .van-copy h2{
-    font-size:clamp(36px,5vw,64px);
-    margin-top:14px;line-height:1.05;
-  }
-  .van-copy h2 em{font-style:italic;color:var(--plaster-deep);font-weight:400}
-  .van-copy p{margin-top:22px;max-width:480px;font-size:16.5px;line-height:1.7;color:var(--ink-soft)}
-  .van-facts{
-    display:grid;grid-template-columns:repeat(3,auto);gap:28px;
-    margin-top:36px;padding-top:24px;border-top:1px solid var(--line);
-  }
-  .van-facts strong{
-    display:block;font-family:var(--serif);font-size:24px;color:var(--ink);
-    letter-spacing:-0.02em;line-height:1;
-  }
-  .van-facts span{
-    display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--ink-faint);margin-top:6px;font-weight:600;
-  }
-  .van-photo{position:relative}
-  .van-photo img{
-    width:100%;aspect-ratio:4/3;object-fit:cover;
-    border-radius:6px;display:block;position:relative;z-index:1;
-    box-shadow:0 20px 40px rgba(28,25,23,0.14);
-  }
-  .van-frame{
-    position:absolute;inset:18px -18px -18px 18px;
-    border:1px solid var(--plaster);border-radius:6px;
-    z-index:0;
-  }
-  .van-badge{
-    position:absolute;left:14px;bottom:14px;z-index:2;
-    background:#0a0a0a;color:#fff;
-    font-family:var(--sans);font-size:12px;font-weight:600;
-    letter-spacing:.08em;
-    padding:9px 14px;border-radius:100px;
-    border:1px solid rgba(34,169,230,0.4);
-    box-shadow:0 4px 12px rgba(0,0,0,0.2);
-  }
-  .van-badge::before{
-    content:'';display:inline-block;width:6px;height:6px;border-radius:50%;
-    background:#22a9e6;margin-right:8px;vertical-align:middle;
-    box-shadow:0 0 8px #22a9e6;
-  }
-  @media(max-width:900px){
-    .van-strip{padding:80px 0}
-    .van-grid{grid-template-columns:1fr;gap:40px}
-    .van-facts{grid-template-columns:1fr 1fr 1fr;gap:20px}
-    .van-frame{inset:12px -12px -12px 12px}
-  }
-  @media(max-width:520px){
-    .van-facts{grid-template-columns:1fr 1fr;gap:18px}
-    .van-facts>div:nth-child(3){grid-column:span 2}
-    .van-facts strong{font-size:20px}
-  }
 
   /* SECTION HEAD */
   .section{padding:120px 0;position:relative}
@@ -545,7 +514,7 @@
   .cta::before{
     content:'';position:absolute;top:-40%;left:-20%;
     width:700px;height:700px;border-radius:50%;
-    background:radial-gradient(closest-side, rgba(201,115,91,.18), transparent 70%);
+    background:radial-gradient(closest-side, rgba(34,169,230,.22), transparent 70%);
     pointer-events:none;
   }
   .cta-inner{
@@ -567,7 +536,7 @@
     border-radius:3px;
     transition:all .25s;
   }
-  .cta-action:hover{background:rgba(255,249,239,.07);border-color:rgba(201,115,91,.4);transform:translateX(4px)}
+  .cta-action:hover{background:rgba(255,249,239,.07);border-color:rgba(34,169,230,.4);transform:translateX(4px)}
   .cta-action .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,249,239,.55);font-weight:700}
   .cta-action .v{font-family:var(--serif);font-size:24px;color:var(--cream-hi);margin-top:6px;line-height:1;letter-spacing:-0.01em;word-break:break-word}
   .cta-action .arrow{color:var(--plaster);font-size:18px;flex-shrink:0}
@@ -714,6 +683,10 @@
         <span class="hero-badge"><span class="dot"></span>Free quotes · Call today</span>
         <img src="work-1.jpg" alt="Modern white-rendered single-storey extension with black aluminium sliders and grey porcelain patio finished by JE Plastering" />
       </div>
+      <div class="van-polaroid" aria-hidden="false">
+        <img src="van.jpg" alt="JE Plastering signwritten Ford Transit van">
+        <div class="vcap">On the Road</div>
+      </div>
       <div class="hero-caption">
         <p class="quote">"Clean, tidy and a finish you could ice a cake on."</p>
         <p class="author">Private Client · Wilmslow</p>
@@ -730,27 +703,6 @@
     <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Same-Week Availability</div>
     <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 17 5 22 7 14 2 9 9 9 12 2"/></svg>5-Star Rated</div>
     <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Cheshire · Merseyside · N Wales</div>
-  </div>
-</section>
-
-<!-- VAN STRIP -->
-<section class="section van-strip" id="on-the-road">
-  <div class="container van-grid">
-    <div class="van-copy reveal">
-      <span class="kicker">On the Road</span>
-      <h2>That's us, <em>pulled up outside.</em></h2>
-      <p>Fully signwritten Ford Transit, fully insured, fully loaded. Based in Cheshire, working every day across Merseyside and North Wales. When we arrive, you'll know it's us.</p>
-      <div class="van-facts">
-        <div><strong>Cheshire</strong><span>Home base</span></div>
-        <div><strong>50 mi</strong><span>Working radius</span></div>
-        <div><strong>Same day</strong><span>Quote turnaround</span></div>
-      </div>
-    </div>
-    <div class="van-photo reveal">
-      <div class="van-frame"></div>
-      <img src="van.jpg" alt="JE Plastering Contractors signwritten Ford Transit van">
-      <span class="van-badge">JE Plastering &middot; 07738 352 114</span>
-    </div>
   </div>
 </section>
 
