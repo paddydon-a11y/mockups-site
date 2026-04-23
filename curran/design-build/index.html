@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design &amp; Build | Curran Contracting Services Ltd</title>
+<meta name="description" content="Curran Contracting Services Ltd. Residential design and build, full refurbishment and fit-out across Cheshire, Lancashire and Greater Manchester. Family run, based in South Manchester.">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --ink: #0a0a0a;
+  --heading: #141414;
+  --body: #4a453f;
+  --muted: #8a8278;
+  --border: #e8e2d5;
+  --border-strong: #cbc3b4;
+  --accent: #1a2744;
+  --accent-hover: #0f1a35;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.section-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+h1, h2, h3 { font-family: var(--font-heading); color: var(--heading); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+h1 em, h2 em, h3 em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250, 247, 242, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; max-width: 1280px; margin: 0 auto; }
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo svg { height: 34px; width: auto; }
+.nav-logo-meta {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+  border-left: 1px solid var(--border-strong);
+  padding-left: 12px;
+}
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a { font-size: 0.82rem; letter-spacing: 0.04em; color: var(--body); font-weight: 500; transition: color 0.25s ease; }
+.nav-links a:hover { color: var(--accent); }
+.nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.nav-back svg { width: 14px; height: 14px; }
+@media (max-width: 820px) { .nav-links a:not(.nav-back) { display: none; } .nav-logo-meta { display: none; } .nav-inner { padding: 14px 24px; } }
+
+/* HERO */
+.hero { padding: 160px 40px 100px; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.hero-text { opacity: 0; animation: fade-up 0.9s ease forwards 0.2s; }
+.hero-tag { display: inline-flex; align-items: center; gap: 12px; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 26px; }
+.hero-tag .pip { display: inline-block; width: 28px; height: 1px; background: var(--accent); }
+.hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.2rem); margin-bottom: 26px; }
+.hero-lead { font-size: 1.08rem; max-width: 520px; color: var(--body); margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 28px; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.06em; transition: all 0.3s cubic-bezier(0.2,0.7,0.3,1); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(26,39,68,0.28); }
+.btn-ghost { background: transparent; color: var(--heading); border: 1px solid var(--border-strong); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.btn svg { width: 16px; height: 16px; }
+
+.hero-image { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--surface); border: 1px solid var(--border); opacity: 0; animation: fade-scale 1s ease forwards 0.4s; }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; }
+.hero-image-caption { position: absolute; left: 22px; bottom: 22px; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px); padding: 12px 18px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--heading); font-weight: 500; }
+.hero-image-caption em { font-style: italic; color: var(--accent); font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0; text-transform: none; }
+
+/* PROCESS STRIP */
+.process { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 0; }
+.process-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+.process-step {
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500;
+}
+.process-step strong {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--accent);
+  font-weight: 500;
+}
+@media (max-width: 820px) { .process-inner { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+
+/* SECTION BASE */
+.section { padding: 120px 0; }
+.section-head { max-width: 720px; margin-bottom: 60px; }
+.section-head h2 { font-size: clamp(2rem, 3.6vw, 3rem); margin-bottom: 18px; }
+.section-head p { font-size: 1.02rem; color: var(--body); }
+
+/* APPROACH GRID */
+.approach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.approach-item { background: var(--bg); padding: 48px 44px; transition: background 0.4s ease; }
+.approach-item:hover { background: var(--surface); }
+.approach-item .num { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--accent); margin-bottom: 24px; display: block; letter-spacing: 0.04em; }
+.approach-item h3 { font-size: 1.5rem; font-weight: 500; margin-bottom: 16px; }
+.approach-item p { font-size: 0.98rem; color: var(--body); line-height: 1.75; }
+@media (max-width: 820px) { .approach-grid { grid-template-columns: 1fr; } .approach-item { padding: 32px 28px; } }
+
+/* PORTFOLIO */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 220px;
+  gap: 20px;
+}
+.portfolio-item { position: relative; overflow: hidden; border: 1px solid var(--border); cursor: pointer; background: var(--surface); }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.2,0.7,0.3,1), filter 0.6s ease; filter: saturate(0.88); }
+.portfolio-item:hover img { transform: scale(1.04); filter: saturate(1); }
+.portfolio-caption { position: absolute; left: 20px; bottom: 18px; background: rgba(255,255,255,0.94); padding: 10px 16px; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--heading); font-weight: 500; opacity: 0; transform: translateY(8px); transition: all 0.4s ease; }
+.portfolio-item:hover .portfolio-caption { opacity: 1; transform: translateY(0); }
+.portfolio-item.large { grid-column: span 3; grid-row: span 2; }
+.portfolio-item.medium { grid-column: span 3; grid-row: span 1; }
+.portfolio-item.small { grid-column: span 2; grid-row: span 1; }
+@media (max-width: 820px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+  .portfolio-item.large, .portfolio-item.medium, .portfolio-item.small { grid-column: span 2; grid-row: span 1; }
+}
+
+/* REVIEWS */
+.reviews { background: #f3ede2; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 120px 0; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.review { background: var(--surface); border: 1px solid var(--border); padding: 38px 34px; }
+.review-mark { font-family: var(--font-heading); font-size: 3rem; color: var(--accent); line-height: 0.8; margin-bottom: 16px; }
+.review-quote { font-family: var(--font-heading); font-size: 1.08rem; font-style: italic; color: var(--heading); line-height: 1.55; margin-bottom: 24px; font-weight: 400; }
+.review-author { display: block; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--heading); font-weight: 600; margin-bottom: 4px; }
+.review-meta { font-size: 0.78rem; color: var(--muted); }
+@media (max-width: 820px) { .reviews-grid { grid-template-columns: 1fr; } .reviews { padding: 80px 0; } }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-image { aspect-ratio: 4/5; overflow: hidden; border: 1px solid var(--border); }
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-text h2 { font-size: clamp(2rem, 3.2vw, 2.6rem); margin-bottom: 24px; }
+.about-text p { margin-bottom: 20px; color: var(--body); font-size: 1rem; }
+.about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border); }
+.stat strong { display: block; font-family: var(--font-heading); font-size: 2.2rem; color: var(--accent); line-height: 1; margin-bottom: 8px; font-weight: 500; }
+.stat span { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+/* CONTACT */
+.contact-section { padding-bottom: 120px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; }
+.contact-left h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 22px; }
+.contact-left p { color: var(--body); margin-bottom: 32px; }
+.contact-list { display: grid; gap: 2px; border: 1px solid var(--border); background: var(--border); }
+.contact-row { background: var(--surface); padding: 20px 26px; display: flex; justify-content: space-between; align-items: center; gap: 20px; transition: background 0.25s ease; }
+.contact-row:hover { background: #faf7f2; }
+.contact-row small { display: block; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 3px; }
+.contact-row strong { font-size: 1rem; color: var(--heading); font-weight: 500; }
+.contact-row a { color: var(--heading); }
+.contact-row a:hover { color: var(--accent); }
+
+.form { background: var(--surface); border: 1px solid var(--border); padding: 40px; }
+.form-label { display: block; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
+.form-field { margin-bottom: 22px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 12px 0;
+  background: transparent; border: none;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--heading);
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  transition: border-color 0.25s ease;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-bottom-color: var(--accent); }
+.form-textarea { min-height: 100px; resize: vertical; font-family: var(--font-body); }
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8278' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 4px center; padding-right: 24px; }
+.form-submit { margin-top: 12px; padding: 14px 30px; background: var(--accent); color: #fff; font-size: 0.84rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; transition: all 0.3s ease; }
+.form-submit:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(26,39,68,0.26); }
+@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; } .form { padding: 28px; } }
+
+/* FOOTER */
+.footer { border-top: 1px solid var(--border); padding: 50px 0 36px; text-align: center; }
+.footer svg { height: 40px; margin: 0 auto 16px; display: block; }
+.footer p { font-size: 0.78rem; color: var(--muted); margin: 4px 0; }
+.footer a { color: var(--accent); }
+.footer-links { display: flex; justify-content: center; gap: 28px; margin: 14px 0 22px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+.footer-links a { color: var(--body); }
+
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; background: rgba(10,10,10,0.94); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 30px; cursor: pointer; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 88vh; }
+.lightbox-close { position: absolute; top: 22px; right: 24px; color: #fff; font-size: 2rem; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border-radius: 50%; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+@keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade-scale { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 40px; }
+  .container { padding: 0 24px; }
+  .section { padding: 80px 0; }
+  .section-head { margin-bottom: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">
+      <svg viewBox="0 0 280 96" xmlns="http://www.w3.org/2000/svg" aria-label="Curran">
+        <defs>
+          <linearGradient id="ovalGradNav2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1c1c1c"/>
+            <stop offset="100%" stop-color="#030303"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="140" cy="48" rx="135" ry="42" fill="url(#ovalGradNav2)"/>
+        <text x="140" y="64" text-anchor="middle" fill="#ffffff"
+              font-family="'Space Grotesk', Impact, 'Arial Black', sans-serif"
+              font-weight="700" font-size="44" letter-spacing="4">CURRAN</text>
+      </svg>
+      <span class="nav-logo-meta">Design &amp; Build</span>
+    </a>
+    <div class="nav-links">
+      <a href="#approach">Approach</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="../electrical/" class="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        Electrical Installation
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-tag"><span class="pip"></span> Part II &middot; Design &amp; Build</div>
+    <h1>Residential design and build, <em>end to end</em>.</h1>
+    <p class="hero-lead">Full refurbishments, fit-outs, structural refresh and finish, handled in-house by Curran from first survey to final snag. One team, one price, one number to call when something needs deciding.</p>
+    <div class="hero-actions">
+      <a href="tel:07850107108" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Speak to Gary
+      </a>
+      <a href="#work" class="btn btn-ghost">View Recent Work</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="../photos/turves-road-1.jpeg" alt="Turves Road residential design and build project">
+    <div class="hero-image-caption"><em>Turves Road</em><br>Full Refurbishment</div>
+  </div>
+</header>
+
+<!-- PROCESS STRIP -->
+<section class="process">
+  <div class="container">
+    <div class="process-inner">
+      <div class="process-step"><strong>I.</strong>Consultation</div>
+      <div class="process-step"><strong>II.</strong>Design &amp; Costing</div>
+      <div class="process-step"><strong>III.</strong>Build</div>
+      <div class="process-step"><strong>IV.</strong>Finish</div>
+      <div class="process-step"><strong>V.</strong>Handover</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section" id="approach">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">How We Work</span>
+      <h2>One contractor. <em>One conversation.</em></h2>
+      <p>Design and build, properly done, means the client has a single point of accountability. Curran handles the design brief, the build programme, the trades and the electrical spec, all under one roof.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item reveal">
+        <span class="num">01.</span>
+        <h3>Full Refurbishment</h3>
+        <p>Ground floor through to loft: structural alterations, plastering, joinery, decoration, flooring, kitchens, bathrooms and of course the complete electrical rewire, managed as one project.</p>
+      </div>
+      <div class="approach-item reveal">
+        <span class="num">02.</span>
+        <h3>Residential Fit-Out</h3>
+        <p>Penthouses, apartments and period property fit-outs. Bespoke joinery, finish carpentry, tiling and trim, finished to a standard suitable for landmark addresses.</p>
+      </div>
+      <div class="approach-item reveal">
+        <span class="num">03.</span>
+        <h3>Landlord &amp; Investor Projects</h3>
+        <p>Block refurbishments, HMO conversions and pre-sale refresh for landlords, developers and property investors across Manchester, Cheshire and Lancashire.</p>
+      </div>
+      <div class="approach-item reveal">
+        <span class="num">04.</span>
+        <h3>Heritage &amp; Listed</h3>
+        <p>Sympathetic design and build works to period and listed property. Finishes specified with the building in mind, consents handled, site protocols observed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Recent Work</span>
+      <h2>A <em>quiet portfolio</em> of residential projects.</h2>
+      <p>Refurbishments and fit-outs delivered by Curran across Manchester, Cheshire and London. Click any image to enlarge.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item large reveal">
+        <img src="../photos/turves-road-1.jpeg" alt="Turves Road completed interior">
+        <div class="portfolio-caption">Turves Road &middot; Living Space</div>
+      </div>
+      <div class="portfolio-item medium reveal">
+        <img src="../photos/turves-road-2.jpeg" alt="Turves Road second view">
+        <div class="portfolio-caption">Turves Road &middot; Detail</div>
+      </div>
+      <div class="portfolio-item medium reveal">
+        <img src="../photos/blackfriars-penthouse-framing.jpg" alt="Blackfriars penthouse build in progress">
+        <div class="portfolio-caption">Blackfriars Penthouse &middot; Fit-Out</div>
+      </div>
+      <div class="portfolio-item small reveal">
+        <img src="../photos/turves-road-3.jpeg" alt="Turves Road third view">
+        <div class="portfolio-caption">Turves Road &middot; Joinery</div>
+      </div>
+      <div class="portfolio-item small reveal">
+        <img src="../photos/turves-road-4.jpeg" alt="Turves Road fourth view">
+        <div class="portfolio-caption">Turves Road &middot; Finish</div>
+      </div>
+      <div class="portfolio-item small reveal">
+        <img src="../photos/frodsham-house.jpg" alt="Frodsham residential electrical installation">
+        <div class="portfolio-caption">Frodsham &middot; Residence</div>
+      </div>
+      <div class="portfolio-item small reveal">
+        <img src="../photos/tollits-flats.jpg" alt="Tollits Flats conversion">
+        <div class="portfolio-caption">Tollits Flats &middot; Conversion</div>
+      </div>
+      <div class="portfolio-item small reveal">
+        <img src="../photos/turves-1.jpeg" alt="Turves project">
+        <div class="portfolio-caption">Turves &middot; Refurb</div>
+      </div>
+      <div class="portfolio-item small reveal">
+        <img src="../photos/turves-2.jpeg" alt="Turves second project">
+        <div class="portfolio-caption">Turves &middot; Fit-Out</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">The Approach</span>
+        <h2>Two generations of <em>builders &amp; electricians</em> under one roof.</h2>
+        <p>Curran Contracting Services has quietly delivered residential design and build projects across the North of England for over three decades. The firm's advantage is simple: in-house electrical capability means a single contractor can take a project from structural opening-out to fully certified handover.</p>
+        <p>Each project is led personally by Gary Curran. Scope, programme and cost are agreed on paper before the first skip arrives. No surprises, no running bills, no handover delays.</p>
+        <div class="about-stats">
+          <div class="stat"><strong>35+</strong><span>Years Trading</span></div>
+          <div class="stat"><strong>1</strong><span>Point of Contact</span></div>
+          <div class="stat"><strong>0</strong><span>Subbie Finger-Pointing</span></div>
+        </div>
+      </div>
+      <div class="about-image reveal">
+        <img src="../photos/turves-road-2.jpeg" alt="Curran residential design and build">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head reveal" style="text-align: center; margin: 0 auto 60px;">
+      <span class="section-label">Client Notes</span>
+      <h2>Referred through word of <em>mouth</em>.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="review-mark">&ldquo;</div>
+        <p class="review-quote">Gary managed our full refurbishment from start to finish. The build was on time, on budget, and the quality of the finish is something we still get compliments on. Not a phone call missed.</p>
+        <span class="review-author">Christine Abbott</span>
+        <span class="review-meta">Private Client &middot; Cheshire</span>
+      </div>
+      <div class="review reveal">
+        <div class="review-mark">&ldquo;</div>
+        <p class="review-quote">We took Curran on for the Blackfriars penthouse on the strength of his reputation. Delivered on promise. Quiet on site, clear on paperwork, and absolutely the right hands for a building of that calibre.</p>
+        <span class="review-author">Michael Ashcroft</span>
+        <span class="review-meta">Residential Developer &middot; Salford</span>
+      </div>
+      <div class="review reveal">
+        <div class="review-mark">&ldquo;</div>
+        <p class="review-quote">Curran have looked after three of our properties over the last five years. Refurb, fit-out, and the occasional emergency. A firm you can trust with keys.</p>
+        <span class="review-author">Robert Fletcher</span>
+        <span class="review-meta">Private Landlord &middot; Manchester</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left reveal">
+        <span class="section-label">Enquire</span>
+        <h2>Tell us about the property.</h2>
+        <p>A quick call with Gary is usually enough to establish scope. For anything that needs working drawings or costing, we'll come out to measure up at a time that suits you.</p>
+        <div class="contact-list">
+          <a href="tel:07850107108" class="contact-row">
+            <div><small>Gary Curran</small><strong>07850 107 108</strong></div>
+            <span style="color: var(--muted); font-size: 0.76rem;">Director</span>
+          </a>
+          <a href="tel:07717211200" class="contact-row">
+            <div><small>Julie Curran</small><strong>07717 211 200</strong></div>
+            <span style="color: var(--muted); font-size: 0.76rem;">Office &amp; Admin</span>
+          </a>
+          <a href="mailto:gary@thecurrangroup.com" class="contact-row">
+            <div><small>Email</small><strong>gary@thecurrangroup.com</strong></div>
+            <span style="color: var(--muted); font-size: 0.76rem;">Enquiries</span>
+          </a>
+          <div class="contact-row">
+            <div><small>Registered Office</small><strong>17 Porthleven Drive, Manchester M23 9PP</strong></div>
+            <span style="color: var(--muted); font-size: 0.76rem;">M23</span>
+          </div>
+        </div>
+      </div>
+      <form class="form reveal" action="/api/enquiry" method="POST" id="enquiryForm">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Curran Contracting Services Ltd">
+        <input type="hidden" name="source" value="mockup-curran-design-build">
+
+        <div class="form-field">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="property">Property / Postcode</label>
+          <input class="form-input" type="text" id="property" name="property">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="phone">Phone</label>
+          <input class="form-input" type="tel" id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="service">Project Type</label>
+          <select class="form-select" id="service" name="service" required>
+            <option value="">Select…</option>
+            <optgroup label="Residential">
+              <option>Full Refurbishment</option>
+              <option>Residential Fit-Out</option>
+              <option>Loft / Extension Build</option>
+              <option>Bathroom / Kitchen</option>
+            </optgroup>
+            <optgroup label="Landlord &amp; Developer">
+              <option>Block / HMO Refurb</option>
+              <option>Pre-Sale Refresh</option>
+            </optgroup>
+            <optgroup label="Heritage">
+              <option>Listed &amp; Period Property</option>
+            </optgroup>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="message">Project Details</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="A sentence or two on scope, desired timescale and any design preferences."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <svg viewBox="0 0 280 96" xmlns="http://www.w3.org/2000/svg" aria-label="Curran">
+      <ellipse cx="140" cy="48" rx="135" ry="42" fill="#0a0a0a"/>
+      <text x="140" y="64" text-anchor="middle" fill="#ffffff"
+            font-family="'Space Grotesk', Impact, 'Arial Black', sans-serif"
+            font-weight="700" font-size="44" letter-spacing="4">CURRAN</text>
+    </svg>
+    <p style="font-family: var(--font-heading); font-style: italic; font-size: 0.95rem; color: var(--body); letter-spacing: 0.02em;">Contracting Services Ltd</p>
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="../electrical/">Electrical Installation</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>© 2026 Curran Contracting Services Ltd &middot; Company Reg. 15635711 &middot; VAT 467474746</p>
+    <p>17 Porthleven Drive, Manchester M23 9PP &middot; Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <div class="lightbox-close">&times;</div>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<script>
+document.getElementById('formTimestamp').value = Date.now();
+var phone = document.getElementById('phone');
+phone.addEventListener('input', function(){
+  if(/^(0|\+44)\d{9,11}$/.test(phone.value.replace(/\s/g, ''))) phone.setCustomValidity('');
+  else phone.setCustomValidity('Please enter a valid UK phone number');
+});
+
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('revealed'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.14 });
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lightboxImg');
+document.querySelectorAll('.portfolio-item').forEach(function(item){
+  item.addEventListener('click', function(){
+    var img = item.querySelector('img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lb.classList.add('active');
+  });
+});
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') lb.classList.remove('active'); });
+</script>
+
+</body>
+</html>
