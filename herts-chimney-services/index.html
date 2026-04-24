@@ -396,30 +396,74 @@ footer{
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:980px){
-  .nav{padding:16px 22px}
-  .nav.scrolled{padding:12px 22px}
+  .nav{padding:14px 20px}
+  .nav.scrolled{padding:11px 20px}
   .nav-right .link{display:none}
-  .hero{padding:120px 22px 80px;min-height:88vh}
-  .hero-meta{position:static;margin-top:30px;flex-wrap:wrap;gap:14px;color:rgba(255,255,255,0.75)}
-  section{padding:70px 22px}
-  .intro{padding:80px 22px}
-  .sec-head{flex-direction:column;align-items:flex-start;gap:10px}
-  .services-grid{grid-template-columns:1fr 1fr;gap:14px}
-  .stats-inner{grid-template-columns:1fr 1fr;gap:28px}
-  .stats{padding:44px 22px}
-  .gallery-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .nav-right{gap:0}
+  .wordmark{font-size:1.08rem;max-width:62%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .nav-call{font-size:0.78rem;padding:8px 14px}
+
+  /* Hero: stack properly, tighten type, drop redundant bits */
+  .hero{
+    flex-direction:column;align-items:flex-start;
+    padding:100px 22px 60px;min-height:auto;
+  }
+  .hero-content{max-width:100%}
+  .hero h1{font-size:clamp(2rem,8vw,2.6rem);line-height:1.02}
+  .hero-eyebrow{font-size:0.68rem;margin-bottom:16px;letter-spacing:0.18em}
+  .hero-sub{font-size:0.97rem;margin-bottom:28px}
+  .hero-actions{width:100%}
+  .hero-actions .btn{flex:1;justify-content:center;padding:14px 20px;font-size:0.82rem}
+  .btn-ghost{display:none} /* phone already in nav + FAB — redundant on mobile */
+  .hero-meta{display:none} /* county list shown later in Areas — redundant */
+
+  section{padding:60px 22px}
+  .intro{padding:60px 22px}
+  .intro h2{font-size:1.45rem;line-height:1.2}
+  .intro p{font-size:1.01rem}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:36px}
+  .sec-head .muted{font-size:0.7rem}
+
+  .services-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .svc-body{padding:18px 18px 22px}
+  .svc-body h4{font-size:1.2rem}
+  .svc-body p{font-size:0.88rem}
+  .svc-tag{font-size:0.64rem;margin-top:12px;padding-top:10px}
+
+  .stats{padding:40px 22px}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:22px 16px}
+  .stat .n{font-size:2rem}
+  .stat .l{font-size:0.68rem}
+  .stat.hide-mobile{display:none} /* drop 1.1k+ Facebook stat */
+
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:8px}
   .g,.g-wide,.g-tall,.g-square,.g-full{grid-column:auto;grid-row:auto;aspect-ratio:4/5}
-  .g-full{grid-column:span 2;aspect-ratio:16/9}
-  .areas-inner{grid-template-columns:1fr;gap:32px}
-  .areas-cols{grid-template-columns:1fr 1fr;gap:30px}
-  .contact-inner{grid-template-columns:1fr}
-  .c-left,.c-right{padding:38px 28px}
+  .g-full{grid-column:span 2;aspect-ratio:16/10}
+  .g.hide-mobile{display:none} /* trim two gallery tiles on mobile */
+  .g-cap{font-size:0.62rem;padding:4px 8px}
+
+  .areas-sec{padding:60px 22px}
+  .areas-inner{grid-template-columns:1fr;gap:28px}
+  .areas-cols{grid-template-columns:1fr 1fr;gap:22px 24px}
+  .area-col li{font-size:0.95rem;padding:6px 0}
+
+  .contact-sec{padding:60px 22px}
+  .contact-inner{grid-template-columns:1fr;border-radius:3px}
+  .c-left,.c-right{padding:36px 26px}
+  .c-left h3,.c-right h4{font-size:1.4rem}
+  .c-line{grid-template-columns:78px 1fr;gap:14px;font-size:0.92rem}
+
+  footer{padding:34px 22px 24px}
 }
 @media(max-width:560px){
   .services-grid{grid-template-columns:1fr}
   .areas-cols{grid-template-columns:1fr}
   .fg-row{grid-template-columns:1fr}
-  .foot-inner{flex-direction:column;text-align:center}
+  .foot-inner{flex-direction:column;text-align:center;gap:10px}
+  .foot-meta{flex-wrap:wrap;justify-content:center;gap:8px 16px}
+  .hero-actions .btn{flex:unset;width:100%}
+  .gallery-grid{grid-template-columns:1fr;gap:10px}
+  .g-full{grid-column:span 1}
 }
 </style>
 </head>
@@ -538,7 +582,7 @@ footer{
       <span class="n">100<em>%</em></span>
       <span class="l">In-house work</span>
     </div>
-    <div class="stat reveal">
+    <div class="stat reveal hide-mobile">
       <span class="n">1.1k<em>+</em></span>
       <span class="l">Facebook following</span>
     </div>
@@ -555,11 +599,11 @@ footer{
     <div class="gallery-grid">
       <div class="g g-wide reveal"><img src="plate-6.jpg" alt="Twin-door stove with oak beam, Welwyn"><span class="g-cap">Welwyn Garden City</span></div>
       <div class="g g-tall reveal"><img src="plate-2.jpg" alt="Arched brick inglenook, Ware"><span class="g-cap">Ware</span></div>
-      <div class="g g-square reveal"><img src="plate-3.jpg" alt="Period mantelpiece restoration"><span class="g-cap">St Albans</span></div>
+      <div class="g g-square reveal hide-mobile"><img src="plate-3.jpg" alt="Period mantelpiece restoration"><span class="g-cap">St Albans</span></div>
       <div class="g g-square reveal"><img src="plate-5.jpg" alt="Contemporary cylindrical stove, Cambridge"><span class="g-cap">Cambridge</span></div>
       <div class="g g-full reveal"><img src="plate-chimney.jpg" alt="Complete chimney stack rebuild, Stansted Abbotts"><span class="g-cap">Stansted Abbotts — full stack rebuild</span></div>
       <div class="g g-wide reveal"><img src="plate-7.jpg" alt="Public house stove, Bishop's Stortford"><span class="g-cap">Bishop's Stortford</span></div>
-      <div class="g g-square reveal"><img src="plate-4.jpg" alt="Inglenook stove, Hertford Heath"><span class="g-cap">Hertford Heath</span></div>
+      <div class="g g-square reveal hide-mobile"><img src="plate-4.jpg" alt="Inglenook stove, Hertford Heath"><span class="g-cap">Hertford Heath</span></div>
     </div>
   </div>
 </section>
