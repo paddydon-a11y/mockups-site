@@ -1,1681 +1,739 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-GB">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Homes By Dominique | Kitchens, Bathrooms &amp; Home Refurbishments · Monifieth, Angus</title>
-<meta name="description" content="A family-run Angus design &amp; build studio since 1993. Bespoke kitchens, bathrooms, extensions and full refurbishments, from drawing board to handover." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="logo.png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Homes by Dominique | Design · Supply · Install | Dundee &amp; Angus</title>
+<meta name="description" content="Homes by Dominique. A family-run design and build studio in Monifieth. Kitchens, bathrooms, wetrooms, extensions and commercial projects across Dundee &amp; Angus. Putting the heart into your home since 1993.">
+<meta name="theme-color" content="#1E4F65">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --oat: #f3ecdf;
-    --oat-2: #eae0cc;
-    --stone: #d8cdb4;
-    --ink: #1a2028;
-    --ink-soft: #555a66;
-    --ink-mute: #868a95;
-    --line: #e1d6ba;
-    --bronze: #b3713e;
-    --bronze-deep: #8b5629;
-    --cream: #f8f4ea;
-    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
-    --sans: 'Inter', system-ui, sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
-  }
+:root{
+  --ink:#1E4F65;
+  --ink-deep:#143949;
+  --cream:#F3EEE5;
+  --cream-2:#EAE2D2;
+  --sand:#D7C9A8;
+  --sand-soft:#E5DAC3;
+  --heart:#D91F5B;
+  --heart-soft:#F7DEE6;
+  --charcoal:#2A2A2A;
+  --mute:#6E6861;
+  --hairline:rgba(30,79,101,0.14);
+  --script:'Allura', cursive;
+  --display:'Playfair Display', 'Times New Roman', serif;
+  --body:'Spectral', Georgia, serif;
+  --label:'Inter', sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--cream);color:var(--charcoal);line-height:1.72;font-size:17px;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit}
+::selection{background:var(--heart);color:#fff}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--oat); color: var(--ink); }
-  body {
-    font-family: var(--sans);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  img { display: block; max-width: 100%; }
-  a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--bronze); color: var(--cream); }
-  .container { width: 100%; max-width: 1380px; margin: 0 auto; padding: 0 28px; }
-  @media (max-width: 540px) { .container { padding: 0 22px; } }
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);font-weight:500;line-height:1.08;letter-spacing:-0.01em}
+.script{font-family:var(--script);color:var(--ink);font-weight:400;line-height:0.95}
+.label{font-family:var(--label);font-weight:500;font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--mute)}
+.label.teal{color:var(--ink)}
+.label.heart{color:var(--heart)}
 
-  /* ══════════ LOADING SCREEN ══════════ */
-  .loader {
-    position: fixed; inset: 0;
-    background: var(--oat);
-    z-index: 1000;
-    display: grid; place-items: center;
-    transition: opacity .9s cubic-bezier(.4,0,.2,1), visibility .9s;
-  }
-  .loader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
-  .loader-inner { text-align: center; padding: 30px; }
-  .loader img {
-    width: 340px; max-width: 68vw;
-    opacity: 0;
-    animation: loaderLogo 1.3s cubic-bezier(.3,.7,.3,1) forwards .3s;
-  }
-  .loader-line {
-    width: 0; height: 1.5px;
-    background: var(--bronze);
-    margin: 38px auto 0;
-    animation: loaderLine 1.5s cubic-bezier(.7,0,.3,1) forwards .9s;
-  }
-  .loader-tag {
-    margin-top: 24px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: .38em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    opacity: 0;
-    animation: loaderFade 1s ease forwards 1.5s;
-  }
-  @keyframes loaderLogo {
-    from { opacity: 0; transform: translateY(14px) scale(.98); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes loaderLine { to { width: 220px; } }
-  @keyframes loaderFade { to { opacity: 1; } }
+.container{max-width:1280px;margin:0 auto;padding:0 40px}
+.container-narrow{max-width:960px;margin:0 auto;padding:0 40px}
+.container-wide{max-width:1480px;margin:0 auto;padding:0 40px}
+@media(max-width:720px){.container,.container-narrow,.container-wide{padding:0 22px}}
 
-  /* ══════════ NAV ══════════ */
-  header.nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 50;
-    padding: 26px 0;
-    transition: background .45s ease, border-color .45s ease, padding .35s ease;
-    border-bottom: 1px solid transparent;
-  }
-  header.nav.scrolled {
-    background: rgba(243,236,223,.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    padding: 14px 0;
-  }
-  .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-  .brand {
-    display: flex; align-items: center; gap: 12px;
-    color: var(--ink);
-    transition: color .35s;
-  }
-  .brand-wordmark {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 22px;
-    letter-spacing: -0.01em;
-    line-height: 1;
-  }
-  .brand-wordmark em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--bronze-deep);
-  }
-  .brand-mark {
-    width: 38px; height: 38px;
-    background: var(--ink);
-    color: var(--cream);
-    display: grid; place-items: center;
-    font-family: var(--serif); font-style: italic; font-weight: 500;
-    font-size: 22px;
-    transition: background .3s;
-  }
-  .nav.pre-scroll .brand { color: var(--cream); }
-  .nav.pre-scroll .brand-wordmark em { color: var(--bronze); }
-  .nav.pre-scroll .brand-mark { background: var(--cream); color: var(--ink); }
+.scribble-heart{width:34px;height:30px;color:var(--heart);display:inline-block;vertical-align:middle}
 
-  .nav-links { display: flex; gap: 34px; font-size: 13px; font-weight: 500; letter-spacing: .04em; }
-  .nav-links a { color: var(--ink); transition: color .2s; }
-  .nav.pre-scroll .nav-links a { color: rgba(248,244,234,.88); }
-  .nav.pre-scroll .nav-links a:hover { color: var(--bronze); }
-  .nav-links a:hover { color: var(--bronze-deep); }
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(243,238,229,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--hairline)}
+.topbar-inner{max-width:1480px;margin:0 auto;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark img{height:52px;width:auto;display:block}
+.nav{display:flex;align-items:center;gap:36px}
+.nav a{font-family:var(--label);font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);font-weight:500;transition:color .2s}
+.nav a:hover{color:var(--heart)}
+.nav .cta{border:1px solid var(--ink);padding:10px 22px;transition:all .2s}
+.nav .cta:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.topbar-toggle{display:none;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:5px;margin-left:auto}
+.topbar-toggle span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+.topbar-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.topbar-toggle.open span:nth-child(2){opacity:0}
+.topbar-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:920px){
+  .topbar-inner{padding:12px 22px}
+  .brand-mark img{height:44px}
+  .topbar-toggle{display:flex}
+  .nav{display:none;position:fixed;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;padding:18px 22px 28px;gap:0;background:rgba(243,238,229,0.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--hairline);box-shadow:0 18px 40px rgba(30,79,101,0.08)}
+  .nav.open{display:flex}
+  .nav a{padding:16px 0;border-bottom:1px solid var(--hairline);font-size:0.9rem}
+  .nav a:last-child{border-bottom:0}
+  .nav .cta{border:0;padding:16px 0;margin-top:6px;color:var(--heart)}
+}
 
-  .nav-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 12px 22px;
-    border: 1.5px solid var(--ink);
-    font-size: 13px; font-weight: 500; letter-spacing: .04em;
-    color: var(--ink);
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: background .25s, color .25s, border-color .25s;
-  }
-  @media (max-width: 540px) {
-    .nav-cta { padding: 11px 14px; gap: 0; }
-    .nav-cta span { display: none; }
-    .brand-wordmark { font-size: 18px; }
-    .brand-mark { width: 34px; height: 34px; font-size: 18px; }
-  }
-  .nav.pre-scroll .nav-cta {
-    border-color: rgba(248,244,234,.55);
-    color: var(--cream);
-  }
-  .nav.pre-scroll .nav-cta:hover { background: var(--bronze); border-color: var(--bronze); color: var(--cream); }
-  .nav-cta:hover { background: var(--ink); color: var(--cream); }
-  .nav-cta svg { width: 14px; height: 14px; }
-  @media (max-width: 920px) { .nav-links { display: none; } }
+.hero{padding:168px 0 110px;position:relative;overflow:hidden;background:var(--cream)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 10% 30%,rgba(215,201,168,0.35),transparent 65%),radial-gradient(ellipse 50% 40% at 95% 80%,rgba(217,31,91,0.05),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center;position:relative}
+.hero-word{position:relative}
+.hero-word .brand-name{display:block;font-family:var(--label);font-size:1.1rem;letter-spacing:0.38em;color:var(--ink);font-weight:400;text-transform:uppercase;margin-bottom:-16px}
+.hero-word .brand-script{display:block;font-family:var(--script);color:var(--ink);font-size:clamp(5.5rem,12vw,10rem);line-height:0.88;letter-spacing:-0.01em;margin-left:-6px}
+.hero-word .brand-ltd{display:block;font-family:var(--label);font-size:0.78rem;letter-spacing:0.34em;color:var(--mute);text-transform:uppercase;margin-top:-10px;margin-left:8px}
+.hero-tag{margin-top:36px;font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);color:var(--ink);max-width:520px;line-height:1.25}
+.hero-tag em{font-style:italic;color:var(--heart);font-weight:500;position:relative}
+.hero-sub{margin-top:28px;color:var(--mute);font-size:1.02rem;max-width:480px;line-height:1.75}
+.hero-ctas{margin-top:36px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--label);font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;padding:18px 30px;transition:all .25s ease}
+.btn-solid{background:var(--ink);color:var(--cream)}
+.btn-solid:hover{background:var(--heart);transform:translateY(-2px);box-shadow:0 12px 30px rgba(217,31,91,0.28)}
+.btn-ghost{color:var(--ink);border-bottom:1px solid var(--ink);padding:12px 0;letter-spacing:0.2em}
+.btn-ghost:hover{color:var(--heart);border-color:var(--heart)}
+.btn-arrow{transition:transform .25s ease}
+.btn:hover .btn-arrow{transform:translateX(4px)}
 
-  /* ══════════ HERO ══════════ */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    background: var(--ink);
-    color: var(--cream);
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    padding: 140px 0 50px;
-  }
-  .hero-photo {
-    position: absolute; inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .hero-photo img {
-    width: 100%; height: 100%; object-fit: cover;
-    transform: scale(1.06);
-    animation: heroZoom 26s ease-in-out infinite alternate;
-  }
-  @keyframes heroZoom {
-    0%   { transform: scale(1.02) translate(0, 0); }
-    100% { transform: scale(1.14) translate(-1.8%, -1.2%); }
-  }
-  .hero-photo::after {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, rgba(26,32,40,.55) 0%, rgba(26,32,40,.20) 35%, rgba(26,32,40,.78) 100%),
-      linear-gradient(90deg, rgba(26,32,40,.68) 0%, rgba(26,32,40,.12) 55%, rgba(26,32,40,.35) 100%);
-  }
+.hero-img{position:relative}
+.hero-img img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.hero-img .heart-overlay{position:absolute;top:-24px;right:-24px;width:140px;height:130px;color:var(--heart);opacity:0.75}
+.hero-img::after{content:'';position:absolute;left:-18px;bottom:-18px;width:55%;height:60%;background:var(--sand);z-index:-1}
+@media(max-width:920px){
+  .hero{padding:128px 0 72px}
+  .hero-grid{grid-template-columns:1fr;gap:54px}
+  .hero-img img{aspect-ratio:3/4}
+  .hero-img .heart-overlay{width:96px;height:88px;top:-18px;right:-10px}
+}
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 50px;
-    align-items: flex-end;
-    position: relative;
-    z-index: 2;
-    width: 100%;
-  }
-  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; align-items: flex-end; } }
+.detail-line{background:var(--ink);color:var(--cream);padding:22px 0;overflow:hidden}
+.detail-line-inner{display:flex;gap:56px;align-items:center;justify-content:center;flex-wrap:wrap;font-family:var(--label);font-size:0.75rem;letter-spacing:0.28em;text-transform:uppercase;font-weight:400;padding:0 40px}
+.detail-line span{display:inline-flex;align-items:center;gap:12px}
+.detail-line .dot{width:6px;height:6px;background:var(--heart);display:inline-block;border-radius:50%}
 
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 14px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .32em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 30px;
-    opacity: 0;
-    animation: heroUp 1s cubic-bezier(.2,.7,.3,1) forwards 2.4s;
-  }
-  .hero-eyebrow::before { content: ''; width: 38px; height: 1px; background: var(--bronze); }
+.story{padding:130px 0;background:var(--cream)}
+.story-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:88px;align-items:center}
+.story-image{position:relative}
+.story-image img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.story-image .heart-stamp{position:absolute;top:-30px;left:-30px;width:180px;height:165px;color:var(--sand);z-index:-1}
+.story-image .caption{position:absolute;bottom:-28px;right:-28px;background:var(--cream);padding:18px 24px;max-width:260px;border:1px solid var(--hairline)}
+.story-image .caption .label{display:block;margin-bottom:4px;color:var(--heart)}
+.story-image .caption strong{font-family:var(--display);color:var(--ink);font-weight:500;font-size:1.1rem;display:block;line-height:1.15}
+.story-image .caption span{font-family:var(--body);color:var(--mute);font-size:0.88rem;font-style:italic}
+.story-text .label{margin-bottom:18px;display:block}
+.story-text h2{font-size:clamp(2.1rem,4.2vw,3.4rem);margin-bottom:10px;font-weight:500;line-height:1.05}
+.story-text h2 em{font-style:italic;font-family:var(--script);color:var(--heart);font-size:1.25em;font-weight:400;line-height:0.9}
+.story-text .lede{font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--ink);line-height:1.5;max-width:560px;margin:22px 0 30px}
+.story-text p{color:var(--charcoal);margin-bottom:18px;font-size:1.02rem;line-height:1.75;max-width:560px}
+.story-text .signature{margin-top:32px;font-family:var(--script);font-size:2.5rem;color:var(--ink);line-height:1}
+.story-text .role{display:block;font-family:var(--label);font-size:0.7rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+@media(max-width:920px){
+  .story{padding:80px 0}
+  .story-grid{grid-template-columns:1fr;gap:60px}
+  .story-image .caption{position:static;max-width:none;margin:20px 0 0;display:flex;flex-direction:column;gap:4px}
+  .story-image .heart-stamp{width:130px;height:120px;top:-16px;left:-16px}
+}
 
-  h1.hero-h1 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(56px, 8.6vw, 138px);
-    line-height: .95;
-    letter-spacing: -0.025em;
-    color: var(--cream);
-    max-width: 880px;
-  }
-  h1.hero-h1 em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--bronze);
-  }
-  h1.hero-h1 .line {
-    display: block;
-    opacity: 0; transform: translateY(40px);
-    animation: heroUp 1.1s cubic-bezier(.2,.7,.3,1) forwards;
-  }
-  h1.hero-h1 .line:nth-child(1) { animation-delay: 2.55s; }
-  h1.hero-h1 .line:nth-child(2) { animation-delay: 2.72s; }
-  h1.hero-h1 .line:nth-child(3) { animation-delay: 2.88s; }
-  @keyframes heroUp { to { opacity: 1; transform: translateY(0); } }
+.timeline{padding:80px 0 100px;background:var(--cream-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.timeline-head{text-align:center;margin-bottom:60px}
+.timeline-head .label{display:block;margin-bottom:14px}
+.timeline-head h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:500}
+.timeline-head h2 em{font-style:italic;font-family:var(--script);color:var(--heart);font-weight:400;font-size:1.25em}
+.timeline-row{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;max-width:960px;margin:0 auto}
+.timeline-row::before{content:'';position:absolute;top:14px;left:14px;right:14px;height:1px;background:var(--sand);z-index:0}
+.timeline-step{position:relative;z-index:1;flex:1;text-align:center;padding:0 10px}
+.timeline-step .node{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink);background:var(--cream-2);margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+.timeline-step.latest .node{background:var(--heart);border-color:var(--heart);box-shadow:0 0 0 6px rgba(217,31,91,0.12)}
+.timeline-step .year{font-family:var(--display);font-size:1.6rem;color:var(--ink);font-weight:600;line-height:1;margin-bottom:6px}
+.timeline-step.latest .year{color:var(--heart)}
+.timeline-step .name{font-family:var(--label);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);line-height:1.4}
+@media(max-width:720px){
+  .timeline-row{flex-direction:column;gap:32px}
+  .timeline-row::before{left:14px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .timeline-step{text-align:left;display:flex;gap:18px;align-items:flex-start;padding:0}
+  .timeline-step .node{margin:4px 0 0}
+  .timeline-step-text{flex:1}
+  .timeline-step .year{font-size:1.3rem;margin-bottom:2px}
+}
 
-  .hero-sub {
-    margin-top: 34px;
-    max-width: 520px;
-    font-size: 17px;
-    line-height: 1.7;
-    color: rgba(248,244,234,.8);
-    opacity: 0;
-    animation: heroUp 1s ease forwards 3.15s;
-  }
-  .hero-sub b { color: var(--cream); font-weight: 600; }
+.services{padding:130px 0;background:var(--cream)}
+.services-head{text-align:center;max-width:720px;margin:0 auto 96px}
+.services-head .label{display:block;margin-bottom:16px}
+.services-head h2{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:500;margin-bottom:20px}
+.services-head h2 em{font-style:italic;font-family:var(--script);color:var(--heart);font-weight:400;font-size:1.2em}
+.services-head .lede{font-family:var(--display);font-style:italic;font-size:1.2rem;color:var(--ink);line-height:1.5;margin-top:18px}
 
-  .hero-ctas {
-    margin-top: 42px;
-    display: flex; gap: 14px; flex-wrap: wrap;
-    opacity: 0;
-    animation: heroUp 1s ease forwards 3.3s;
-  }
-  .btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 17px 28px;
-    font-size: 14px; font-weight: 500; letter-spacing: .05em;
-    border: 1.5px solid;
-    transition: background .25s, color .25s, border-color .25s, transform .2s;
-    cursor: pointer;
-  }
-  .btn svg { width: 16px; height: 16px; transition: transform .25s; }
-  .btn:hover svg { transform: translateX(4px); }
-  .btn.primary {
-    background: var(--bronze); border-color: var(--bronze); color: var(--cream);
-  }
-  .btn.primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
-  .btn.ghost-light {
-    background: transparent; border-color: rgba(248,244,234,.35); color: var(--cream);
-  }
-  .btn.ghost-light:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
-  .btn.ink { background: var(--ink); border-color: var(--ink); color: var(--cream); }
-  .btn.ink:hover { background: var(--bronze); border-color: var(--bronze); }
-  .btn.ink-ghost { background: transparent; border-color: var(--ink); color: var(--ink); }
-  .btn.ink-ghost:hover { background: var(--ink); color: var(--cream); }
+.service{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:120px}
+.service:nth-child(even) .service-image{order:2}
+.service:nth-child(even) .service-text{order:1}
+.service-image{position:relative}
+.service-image img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.service-image .tag{position:absolute;bottom:20px;left:20px;background:var(--cream);padding:10px 18px;font-family:var(--label);font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink);font-weight:500}
+.service-text .num{font-family:var(--script);font-size:3.8rem;color:var(--heart);line-height:1;margin-bottom:-14px;display:block;letter-spacing:-0.02em}
+.service-text h3{font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:500;margin-bottom:18px;line-height:1.05}
+.service-text h3 em{font-family:var(--script);color:var(--heart);font-weight:400;font-style:italic;font-size:1.1em}
+.service-text p{font-size:1.04rem;color:var(--charcoal);line-height:1.75;margin-bottom:18px;max-width:520px}
+.service-text .meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:22px;margin-bottom:24px}
+.service-text .meta span{font-family:var(--label);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);font-weight:500;padding-right:18px;border-right:1px solid var(--hairline);line-height:1}
+.service-text .meta span:last-child{border-right:0}
+.service-text .scribbled-link{display:inline-flex;align-items:center;gap:12px;font-family:var(--label);font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);font-weight:500;padding-bottom:4px;border-bottom:2px solid var(--sand);transition:all .25s}
+.service-text .scribbled-link:hover{color:var(--heart);border-color:var(--heart)}
+@media(max-width:920px){
+  .services{padding:80px 0}
+  .services-head{margin-bottom:60px}
+  .service{grid-template-columns:1fr;gap:42px;margin-bottom:72px}
+  .service:nth-child(even) .service-image{order:1}
+  .service:nth-child(even) .service-text{order:2}
+}
 
-  /* featured meta card bottom right */
-  .hero-feature {
-    opacity: 0;
-    animation: heroUp 1s ease forwards 3.6s;
-  }
-  .feature-card {
-    padding: 24px 26px;
-    background: rgba(26,32,40,.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(248,244,234,.16);
-    max-width: 380px;
-    margin-left: auto;
-  }
-  .feature-card .lbl {
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 14px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .feature-card .lbl::before { content: ''; width: 24px; height: 1px; background: var(--bronze); }
-  .feature-card .title {
-    font-family: var(--serif); font-weight: 400;
-    font-size: 26px; line-height: 1.14; letter-spacing: -0.01em;
-    color: var(--cream);
-  }
-  .feature-card .title em { font-style: italic; color: var(--bronze); font-weight: 300; }
-  .feature-card .details {
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(248,244,234,.15);
-    display: flex; justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
-    color: rgba(248,244,234,.68);
-  }
+.journey{padding:110px 0;background:var(--ink);color:var(--cream);text-align:center}
+.journey .label{color:var(--sand);display:block;margin-bottom:18px}
+.journey h2{color:var(--cream);font-size:clamp(2rem,4vw,3rem);font-weight:500;margin-bottom:18px}
+.journey h2 em{font-style:italic;font-family:var(--script);color:var(--heart);font-size:1.25em;font-weight:400}
+.journey-sub{font-family:var(--display);font-style:italic;color:var(--sand);font-size:1.15rem;max-width:560px;margin:0 auto 72px;line-height:1.5}
+.journey-row{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:960px;margin:0 auto;position:relative}
+.journey-step{padding:32px 24px;text-align:center;position:relative}
+.journey-step svg.icon{width:48px;height:48px;color:var(--heart);margin:0 auto 24px;display:block}
+.journey-step h4{font-family:var(--display);font-size:1.6rem;color:var(--cream);font-weight:500;margin-bottom:10px;font-style:italic}
+.journey-step p{font-size:0.96rem;color:rgba(243,238,229,0.76);line-height:1.7;max-width:260px;margin:0 auto}
+.journey-connector{position:absolute;top:42px;width:40px;height:18px;color:var(--sand);opacity:0.55}
+.journey-connector.one{left:33%;transform:translateX(-50%)}
+.journey-connector.two{left:66%;transform:translateX(-50%)}
+@media(max-width:780px){
+  .journey-row{grid-template-columns:1fr;gap:18px}
+  .journey-connector{display:none}
+}
 
-  .hero-footer {
-    position: absolute; bottom: 30px; left: 0; right: 0;
-    z-index: 3;
-    display: flex; justify-content: space-between; align-items: center; gap: 40px;
-    padding: 0 28px;
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase;
-    color: rgba(248,244,234,.55);
-    opacity: 0;
-    animation: heroUp 1s ease forwards 3.8s;
-  }
-  .hero-footer .est b { color: var(--cream); font-weight: 600; }
-  .hero-footer .scroll {
-    display: flex; align-items: center; gap: 12px;
-  }
-  .hero-footer .scroll::before {
-    content: ''; width: 36px; height: 1px; background: rgba(248,244,234,.35);
-    animation: scrollLine 2s ease-in-out infinite;
-  }
-  @keyframes scrollLine {
-    0%,100% { transform: scaleX(.4); transform-origin: right; opacity: .3; }
-    50%     { transform: scaleX(1); opacity: .8; }
-  }
-  @media (max-width: 720px) { .hero-footer { display: none; } .hero { padding-bottom: 80px; } }
+.portfolio{padding:130px 0;background:var(--cream)}
+.portfolio-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:60px}
+.portfolio-head .label{display:block;margin-bottom:14px}
+.portfolio-head h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:500;line-height:1.05}
+.portfolio-head h2 em{font-family:var(--script);color:var(--heart);font-style:italic;font-weight:400;font-size:1.2em}
+.portfolio-head .meta{font-family:var(--label);font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mute);text-align:right;max-width:260px}
 
-  /* ══════════ HERITAGE BAND ══════════ */
-  .heritage {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 80px 0 82px;
-    position: relative;
-    border-top: 1px solid rgba(248,244,234,.08);
-  }
-  .heritage-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-  @media (max-width: 900px) { .heritage-grid { grid-template-columns: repeat(2,1fr); } }
-  @media (max-width: 540px) { .heritage-grid { grid-template-columns: 1fr; } }
-  .heritage-cell {
-    padding: 6px 28px;
-    border-left: 1px solid rgba(248,244,234,.12);
-  }
-  .heritage-cell:first-child { border-left: none; padding-left: 0; }
-  .heritage-cell .k {
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--bronze);
-  }
-  .heritage-cell .v {
-    margin-top: 18px;
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(40px, 3.6vw, 52px);
-    line-height: .95; letter-spacing: -0.02em;
-    color: var(--cream);
-  }
-  .heritage-cell .v em { font-style: italic; font-weight: 300; color: var(--bronze); }
-  .heritage-cell .d {
-    margin-top: 12px; font-size: 13.5px;
-    color: rgba(248,244,234,.66); line-height: 1.55;
-  }
+.portfolio-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:6vw;gap:14px}
+.pf{position:relative;overflow:hidden;cursor:pointer;background:var(--ink);transition:transform .5s ease}
+.pf img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+.pf:hover img{transform:scale(1.04)}
+.pf-cap{position:absolute;bottom:18px;left:20px;right:20px;color:var(--cream);opacity:0;transform:translateY(8px);transition:all .35s ease;z-index:1}
+.pf:hover .pf-cap{opacity:1;transform:translateY(0)}
+.pf::after{content:'';position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to top,rgba(0,0,0,0.72),transparent);opacity:0;transition:opacity .35s}
+.pf:hover::after{opacity:1}
+.pf-cap .name{font-family:var(--display);font-style:italic;font-size:1.3rem;line-height:1.15;margin-bottom:4px}
+.pf-cap .loc{font-family:var(--label);font-size:0.7rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--sand)}
 
-  /* ══════════ SECTIONS ══════════ */
-  section.chapter { padding: 140px 0; position: relative; }
-  .chap-head {
-    display: flex; justify-content: space-between; align-items: flex-end; gap: 50px;
-    margin-bottom: 72px;
-  }
-  @media (max-width: 820px) { .chap-head { flex-direction: column; align-items: flex-start; margin-bottom: 52px; } }
-  .chap-num {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
-    color: var(--bronze-deep);
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 20px;
-  }
-  .chap-num::before { content: ''; width: 36px; height: 1px; background: var(--bronze); }
-  .chap-head h2 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(40px, 5.4vw, 88px);
-    line-height: .98;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    max-width: 820px;
-  }
-  .chap-head h2 em { font-style: italic; font-weight: 300; color: var(--bronze-deep); }
-  .chap-head .chap-note {
-    font-size: 15.5px; color: var(--ink-soft);
-    max-width: 340px; line-height: 1.7;
-    padding-top: 6px;
-  }
+.pf.a{grid-column:span 6;grid-row:span 8}
+.pf.b{grid-column:span 3;grid-row:span 5}
+.pf.c{grid-column:span 3;grid-row:span 5}
+.pf.d{grid-column:span 3;grid-row:span 6}
+.pf.e{grid-column:span 6;grid-row:span 5}
+.pf.f{grid-column:span 3;grid-row:span 6}
+.pf.g{grid-column:span 4;grid-row:span 6}
+.pf.h{grid-column:span 4;grid-row:span 5}
+.pf.i{grid-column:span 4;grid-row:span 6}
 
-  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 1s ease, transform 1s ease; }
-  .reveal.in { opacity: 1; transform: translateY(0); }
+@media(max-width:920px){
+  .portfolio{padding:80px 0}
+  .portfolio-head{grid-template-columns:1fr}
+  .portfolio-head .meta{text-align:left}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:40vw;gap:10px}
+  .pf.a,.pf.b,.pf.c,.pf.d,.pf.e,.pf.f,.pf.g,.pf.h,.pf.i{grid-column:span 1;grid-row:span 1}
+  .pf.a,.pf.e{grid-column:span 2}
+  .pf-cap{opacity:1;transform:none}
+  .pf::after{opacity:1}
+}
 
-  /* ══════════ INTRO ══════════ */
-  .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; gap: 48px; } }
-  .intro-left h2 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(36px, 4.8vw, 68px);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-  }
-  .intro-left h2 em { font-style: italic; color: var(--bronze-deep); font-weight: 300; }
-  .intro-left p {
-    margin-top: 28px; font-size: 17px; line-height: 1.75; color: var(--ink-soft);
-    max-width: 520px;
-  }
-  .intro-left p + p { margin-top: 18px; }
-  .intro-left p b { color: var(--ink); font-weight: 600; }
-  .intro-photo {
-    aspect-ratio: 4/5;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    position: relative;
-  }
-  .intro-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s cubic-bezier(.2,.7,.3,1); }
-  .intro-photo:hover img { transform: scale(1.04); }
-  .intro-photo .stamp {
-    position: absolute; bottom: 16px; left: 16px;
-    padding: 10px 14px;
-    background: rgba(26,32,40,.82);
-    backdrop-filter: blur(8px);
-    color: var(--cream);
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .24em; text-transform: uppercase;
-  }
+.assisted{padding:120px 0;background:var(--sand)}
+.assisted-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center}
+.assisted-image{position:relative}
+.assisted-image img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.assisted-image .heart-behind{position:absolute;top:-32px;right:-32px;width:180px;height:165px;color:var(--heart);opacity:0.2;z-index:0}
+.assisted-text .label{display:block;margin-bottom:16px;color:var(--heart)}
+.assisted-text h3{font-size:clamp(2rem,4vw,3rem);font-weight:500;margin-bottom:22px;line-height:1.08}
+.assisted-text h3 em{font-family:var(--script);color:var(--heart);font-style:italic;font-weight:400;font-size:1.1em}
+.assisted-text p{font-size:1.04rem;color:var(--charcoal);line-height:1.8;margin-bottom:18px;max-width:540px}
+.assisted-text .ft{display:grid;gap:18px;margin:28px 0 32px;padding:22px 0;border-top:1px solid rgba(30,79,101,0.18);border-bottom:1px solid rgba(30,79,101,0.18)}
+.assisted-text .ft-item{display:flex;gap:16px;align-items:flex-start}
+.assisted-text .ft-item svg{width:22px;height:22px;color:var(--heart);flex-shrink:0;margin-top:3px}
+.assisted-text .ft-item div{font-family:var(--body);font-size:0.98rem;color:var(--charcoal)}
+.assisted-text .ft-item strong{font-weight:500;color:var(--ink);font-family:var(--display);font-size:1.04rem;display:block;margin-bottom:2px}
+@media(max-width:920px){
+  .assisted{padding:80px 0}
+  .assisted-grid{grid-template-columns:1fr;gap:48px}
+}
 
-  /* ══════════ TEAM ══════════ */
-  .team-wrap {
-    background: var(--oat-2);
-    padding: 140px 0;
-  }
-  .team {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
-  }
-  @media (max-width: 820px) { .team { grid-template-columns: 1fr; } }
-  .team-member {
-    padding: 48px 36px 44px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--oat-2);
-    transition: background .4s;
-    position: relative;
-  }
-  .team-member:hover { background: var(--oat); }
-  .team-member .avatar {
-    width: 70px; height: 70px;
-    background: var(--ink);
-    color: var(--cream);
-    display: grid; place-items: center;
-    font-family: var(--serif); font-weight: 400; font-style: italic;
-    font-size: 30px;
-    margin-bottom: 30px;
-  }
-  .team-member .role {
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--bronze-deep);
-  }
-  .team-member h4 {
-    margin-top: 16px;
-    font-family: var(--serif); font-weight: 400;
-    font-size: 34px; line-height: 1.05; letter-spacing: -0.015em;
-    color: var(--ink);
-  }
-  .team-member h4 em { font-style: italic; color: var(--bronze-deep); font-weight: 300; }
-  .team-member p {
-    margin-top: 16px; font-size: 15px; line-height: 1.65;
-    color: var(--ink-soft);
-  }
+.voices{padding:130px 0;background:var(--cream);position:relative;overflow:hidden}
+.voices::before{content:'';position:absolute;top:-90px;right:-60px;width:360px;height:330px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'><path fill='rgba(217,31,91,0.06)' d='M50 78 Q 15 55 15 30 Q 15 10 30 10 Q 45 10 50 28 Q 55 10 70 10 Q 85 10 85 30 Q 85 55 50 78 Z'/></svg>");background-repeat:no-repeat;background-size:contain;z-index:0}
+.voices-head{text-align:center;max-width:720px;margin:0 auto 72px;position:relative}
+.voices-head .label{display:block;margin-bottom:14px}
+.voices-head h2{font-size:clamp(2rem,4vw,3rem);font-weight:500;line-height:1.05}
+.voices-head h2 em{font-family:var(--script);color:var(--heart);font-style:italic;font-weight:400;font-size:1.25em}
+.voice-hero{max-width:900px;margin:0 auto 68px;text-align:center;position:relative;padding:0 20px}
+.voice-hero .mark{font-family:var(--script);font-size:6rem;color:var(--heart);opacity:0.4;line-height:1;margin-bottom:-10px}
+.voice-hero blockquote{font-family:var(--display);font-style:italic;font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--ink);line-height:1.45;margin-bottom:28px}
+.voice-hero cite{font-style:normal;font-family:var(--label);font-size:0.82rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.voice-hero cite strong{color:var(--ink);font-weight:600;margin-right:10px}
+.voices-row{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1200px;margin:0 auto;position:relative}
+.voice{padding:36px 32px;background:var(--cream);border-top:1px solid var(--hairline)}
+.voice blockquote{font-family:var(--body);font-size:1rem;color:var(--charcoal);font-style:italic;line-height:1.75;margin-bottom:20px}
+.voice cite{font-style:normal;font-family:var(--label);font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.voice cite strong{color:var(--ink);display:block;margin-bottom:2px;font-weight:600}
+@media(max-width:920px){
+  .voices{padding:80px 0}
+  .voices-row{grid-template-columns:1fr;gap:20px}
+}
 
-  /* ══════════ SERVICES ══════════ */
-  .services-wrap {
-    background: var(--oat);
-    padding: 140px 0;
-  }
-  .services {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
-  }
-  @media (max-width: 820px) { .services { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 540px) { .services { grid-template-columns: 1fr; } }
-  .svc {
-    padding: 42px 32px 38px;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--oat);
-    transition: background .35s;
-    position: relative;
-    min-height: 340px;
-    display: flex; flex-direction: column;
-  }
-  .svc:hover { background: var(--cream); }
-  .svc::before {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 0; height: 2px; background: var(--bronze);
-    transition: width .5s cubic-bezier(.2,.7,.3,1);
-  }
-  .svc:hover::before { width: 100%; }
-  .svc .num {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
-    color: var(--bronze-deep);
-  }
-  .svc h3 {
-    margin-top: 36px;
-    font-family: var(--serif); font-weight: 400;
-    font-size: 30px; line-height: 1.1; letter-spacing: -0.02em;
-    color: var(--ink);
-  }
-  .svc h3 em { font-style: italic; color: var(--bronze-deep); font-weight: 300; }
-  .svc p {
-    margin-top: 16px;
-    font-size: 14.5px; line-height: 1.7;
-    color: var(--ink-soft);
-    flex: 1;
-  }
-  .svc .arrow {
-    margin-top: 30px;
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: var(--ink);
-  }
-  .svc .arrow svg { width: 14px; height: 14px; transition: transform .25s, color .25s; }
-  .svc:hover .arrow { color: var(--bronze-deep); }
-  .svc:hover .arrow svg { transform: translateX(5px); }
+.contact{padding:140px 0 100px;background:var(--cream-2);position:relative;overflow:hidden}
+.contact::before{content:'';position:absolute;bottom:-120px;left:-60px;width:400px;height:380px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'><path fill='rgba(215,201,168,0.5)' d='M50 78 Q 15 55 15 30 Q 15 10 30 10 Q 45 10 50 28 Q 55 10 70 10 Q 85 10 85 30 Q 85 55 50 78 Z'/></svg>");background-repeat:no-repeat;background-size:contain}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;position:relative}
+.contact-left .label{display:block;margin-bottom:16px}
+.contact-left h2{font-size:clamp(2.2rem,4.2vw,3.4rem);font-weight:500;line-height:1.05;margin-bottom:22px}
+.contact-left h2 em{font-family:var(--script);color:var(--heart);font-style:italic;font-weight:400;font-size:1.2em;display:block;line-height:0.95;margin-top:8px}
+.contact-left .lede{font-family:var(--display);font-style:italic;font-size:1.2rem;color:var(--ink);line-height:1.5;max-width:480px;margin-bottom:38px}
+.contact-kv{display:grid;gap:0}
+.contact-kv .row{display:grid;grid-template-columns:110px 1fr;align-items:start;gap:22px;padding:18px 0;border-top:1px solid var(--hairline)}
+.contact-kv .row:first-child{border-top:0}
+.contact-kv .row .lbl{font-family:var(--label);font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mute);font-weight:500;padding-top:4px}
+.contact-kv .row .val{font-family:var(--display);font-size:1.15rem;color:var(--ink);line-height:1.4}
+.contact-kv .row .val.script-val{font-family:var(--script);font-size:1.8rem}
+.contact-kv .row a:hover{color:var(--heart)}
 
-  /* ══════════ PARTNERS BAND ══════════ */
-  .partners {
-    background: var(--cream);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 50px 0;
-  }
-  .partners-inner {
-    display: flex; align-items: center; justify-content: space-between; gap: 40px;
-    flex-wrap: wrap;
-  }
-  .partners-lbl {
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase;
-    color: var(--bronze-deep);
-    display: flex; align-items: center; gap: 14px;
-    flex-shrink: 0;
-  }
-  .partners-lbl::after { content: ''; width: 36px; height: 1px; background: var(--bronze); }
-  .partners-names {
-    display: flex; gap: clamp(24px, 4vw, 54px); align-items: center;
-    flex-wrap: wrap;
-  }
-  .partners-names span {
-    font-family: var(--serif); font-weight: 400; font-style: italic;
-    font-size: clamp(22px, 2.6vw, 34px);
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-  .partners-names span small {
-    display: block;
-    font-family: var(--mono); font-style: normal;
-    font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--ink-mute);
-    margin-top: 4px;
-  }
+.contact-form{background:var(--cream);padding:40px;border:1px solid var(--hairline)}
+.contact-form .ft-head{margin-bottom:24px}
+.contact-form .ft-head .label{display:block;margin-bottom:6px;color:var(--heart)}
+.contact-form .ft-head h3{font-family:var(--display);font-style:italic;font-size:1.5rem;color:var(--ink);font-weight:500}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0}
+.form-field{margin-bottom:18px}
+.form-field label{display:block;font-family:var(--label);font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--mute);font-weight:500;margin-bottom:8px}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:14px 16px;background:var(--cream-2);border:1px solid transparent;border-bottom:1px solid var(--hairline);color:var(--charcoal);font-family:var(--body);font-size:0.98rem;transition:all .25s}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--ink);background:var(--cream)}
+.form-field textarea{min-height:100px;resize:vertical;font-family:var(--body)}
+.form-submit{width:100%;padding:18px 24px;background:var(--ink);color:var(--cream);font-family:var(--label);font-size:0.8rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:500;margin-top:10px;transition:all .25s}
+.form-submit:hover{background:var(--heart);transform:translateY(-2px)}
+@media(max-width:920px){
+  .contact{padding:80px 0}
+  .contact-inner{grid-template-columns:1fr;gap:48px}
+  .form-row{grid-template-columns:1fr}
+  .contact-kv .row{grid-template-columns:90px 1fr}
+}
 
-  /* ══════════ PORTFOLIO ══════════ */
-  .portfolio {
-    padding: 150px 0;
-    background: var(--oat);
-  }
-  .port-tabs {
-    display: flex; gap: 28px; margin-bottom: 40px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 4px;
-  }
-  .port-tab {
-    padding: 12px 4px;
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--ink-mute);
-    background: transparent; border: none; cursor: pointer;
-    position: relative;
-    transition: color .2s;
-  }
-  .port-tab.active { color: var(--ink); }
-  .port-tab.active::after {
-    content: '';
-    position: absolute; bottom: -5px; left: 0; right: 0;
-    height: 2px; background: var(--bronze);
-  }
-  .port-tab:hover { color: var(--ink); }
+.footer{background:var(--ink);color:rgba(243,238,229,0.7);padding:80px 0 32px}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:56px}
+.footer-brand .brand-mark img{height:64px;margin-bottom:18px;filter:brightness(0) invert(1)}
+.footer-brand p{font-size:0.95rem;color:rgba(243,238,229,0.6);max-width:340px;line-height:1.7;margin-bottom:20px}
+.footer-brand .tag{font-family:var(--script);color:var(--sand);font-size:1.6rem;line-height:1}
+.footer-col h4{font-family:var(--label);font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--sand);font-weight:500;margin-bottom:18px}
+.footer-col a,.footer-col div{display:block;color:var(--cream);font-family:var(--display);font-size:0.98rem;margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:var(--heart)}
+.footer-bar{padding-top:32px;border-top:1px solid rgba(243,238,229,0.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--label);font-size:0.7rem;letter-spacing:0.16em;color:rgba(243,238,229,0.5)}
+.footer-bar a{color:var(--sand)}
+@media(max-width:720px){.footer-inner{grid-template-columns:1fr;gap:40px}}
 
-  .port-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-  }
-  @media (max-width: 900px) { .port-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 540px) { .port-grid { grid-template-columns: 1fr; } }
-
-  .port-item {
-    display: block;
-    overflow: hidden;
-    position: relative;
-    background: var(--oat-2);
-    cursor: pointer;
-  }
-  .port-item.wide { grid-column: span 2; }
-  @media (max-width: 900px) { .port-item.wide { grid-column: span 2; } }
-  @media (max-width: 540px) { .port-item.wide { grid-column: span 1; } }
-  .port-item .img {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-  }
-  .port-item.wide .img { aspect-ratio: 16/10; }
-  .port-item img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 1.4s cubic-bezier(.2,.7,.3,1);
-  }
-  .port-item:hover img { transform: scale(1.06); }
-  .port-item .meta {
-    padding: 20px 4px 4px;
-    display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;
-  }
-  .port-item .meta .head {
-    font-family: var(--serif); font-weight: 400;
-    font-size: 22px; line-height: 1.14; letter-spacing: -0.015em;
-    color: var(--ink);
-  }
-  .port-item .meta .head em { font-style: italic; color: var(--bronze-deep); font-weight: 300; }
-  .port-item .meta .loc {
-    font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: var(--ink-mute); margin-top: 6px;
-  }
-  .port-item .meta .tag {
-    font-family: var(--mono); font-size: 10px;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: var(--bronze-deep);
-    padding: 6px 12px; border: 1px solid var(--bronze);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .port-set[data-set]:not(.show) { display: none; }
-
-  /* ══════════ PROCESS ══════════ */
-  .process-wrap {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 150px 0;
-  }
-  .process-wrap .chap-head h2 { color: var(--cream); }
-  .process-wrap .chap-head h2 em { color: var(--bronze); }
-  .process-wrap .chap-num { color: var(--bronze); }
-  .process-wrap .chap-num::before { background: var(--bronze); }
-  .process-wrap .chap-note { color: rgba(248,244,234,.72); }
-  .process {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    border-top: 1px solid rgba(248,244,234,.14);
-    padding-top: 48px;
-  }
-  @media (max-width: 900px) { .process { grid-template-columns: repeat(2, 1fr); gap: 36px; } }
-  @media (max-width: 540px) { .process { grid-template-columns: 1fr; } }
-  .step { position: relative; }
-  .step .n {
-    font-family: var(--serif); font-weight: 400; font-style: italic;
-    font-size: 80px; line-height: .9; color: var(--bronze);
-  }
-  .step h4 {
-    margin-top: 22px;
-    font-family: var(--serif); font-weight: 400;
-    font-size: 26px; letter-spacing: -0.015em;
-    color: var(--cream);
-  }
-  .step p {
-    margin-top: 14px;
-    font-size: 14.5px; line-height: 1.7;
-    color: rgba(248,244,234,.68);
-  }
-
-  /* ══════════ QUOTES ══════════ */
-  .quotes {
-    background: var(--oat-2);
-    padding: 150px 0;
-  }
-  .q-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-  }
-  @media (max-width: 960px) { .q-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) { .q-grid { grid-template-columns: 1fr; } }
-  .q-card {
-    padding: 44px 36px;
-    background: var(--cream);
-    border: 1px solid var(--line);
-    display: flex; flex-direction: column;
-    transition: transform .3s, box-shadow .3s;
-  }
-  .q-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(26,32,40,.08); }
-  .q-stars {
-    font-size: 13px; letter-spacing: 4px;
-    color: var(--bronze);
-    margin-bottom: 20px;
-  }
-  .q-card blockquote {
-    font-family: var(--serif); font-weight: 400;
-    font-size: 21px; line-height: 1.38; letter-spacing: -0.01em;
-    color: var(--ink);
-    flex: 1;
-  }
-  .q-card blockquote::before {
-    content: '"';
-    color: var(--bronze);
-    font-family: var(--serif); font-style: italic;
-    font-size: 2.4em; line-height: 0;
-    margin-right: 4px;
-    vertical-align: -0.38em;
-  }
-  .q-cite {
-    margin-top: 26px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-    display: flex; align-items: center; gap: 14px;
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: .2em; text-transform: uppercase;
-  }
-  .q-cite .avatar {
-    width: 34px; height: 34px;
-    background: var(--ink); color: var(--cream);
-    display: grid; place-items: center;
-    font-family: var(--sans); font-weight: 600; font-size: 12px;
-    letter-spacing: 0;
-  }
-  .q-cite b { color: var(--ink); font-weight: 600; }
-  .q-cite span { color: var(--ink-mute); display: block; margin-top: 3px; font-size: 10px; }
-
-  /* ══════════ CTA BAND ══════════ */
-  .cta-band {
-    background: var(--bronze);
-    color: var(--cream);
-    padding: 120px 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-band::before {
-    content: '';
-    position: absolute; top: -30%; right: -10%;
-    width: 80vw; height: 80vw; max-width: 900px; max-height: 900px;
-    background: radial-gradient(circle, rgba(248,244,234,.12) 0%, transparent 55%);
-    filter: blur(30px);
-  }
-  .cta-inner {
-    position: relative;
-    text-align: center;
-  }
-  .cta-inner .kicker {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .32em; text-transform: uppercase;
-    color: rgba(248,244,234,.82);
-  }
-  .cta-inner h3 {
-    margin-top: 18px;
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(42px, 5.8vw, 84px);
-    line-height: 1.02; letter-spacing: -0.02em;
-    color: var(--cream);
-  }
-  .cta-inner h3 em { font-style: italic; font-weight: 300; color: var(--ink); }
-  .cta-btns {
-    margin-top: 40px;
-    display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;
-  }
-  .btn.bronze-dark { background: var(--ink); border-color: var(--ink); color: var(--cream); }
-  .btn.bronze-dark:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
-  .btn.bronze-ghost { background: transparent; border-color: rgba(248,244,234,.55); color: var(--cream); }
-  .btn.bronze-ghost:hover { background: var(--cream); border-color: var(--cream); color: var(--bronze-deep); }
-
-  /* ══════════ CONTACT ══════════ */
-  .contact {
-    padding: 150px 0 100px;
-    background: var(--oat);
-  }
-  .contact-grid {
-    display: grid; grid-template-columns: 1.1fr 1fr;
-    gap: 72px;
-    align-items: start;
-  }
-  @media (max-width: 960px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
-  .contact h2 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(48px, 6.6vw, 96px);
-    line-height: 1; letter-spacing: -0.028em;
-    color: var(--ink);
-  }
-  .contact h2 em { font-style: italic; font-weight: 300; color: var(--bronze-deep); }
-  .contact .intro-p {
-    margin-top: 28px; font-size: 17px; line-height: 1.7;
-    color: var(--ink-soft); max-width: 460px;
-  }
-  .contact-details {
-    margin-top: 40px;
-    border-top: 1px solid var(--line);
-  }
-  .cd-row {
-    display: grid; grid-template-columns: 150px 1fr;
-    gap: 24px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line);
-    align-items: baseline;
-  }
-  .cd-row .k {
-    font-family: var(--mono); font-size: 10.5px;
-    letter-spacing: .28em; text-transform: uppercase;
-    color: var(--bronze-deep);
-  }
-  .cd-row .v {
-    font-family: var(--serif); font-weight: 400;
-    font-size: 22px; letter-spacing: -0.015em;
-    color: var(--ink);
-  }
-  .cd-row .v.small {
-    font-family: var(--sans); font-weight: 400;
-    font-size: 15.5px; letter-spacing: 0;
-    color: var(--ink-soft); line-height: 1.6;
-  }
-  .cd-row a { transition: color .2s; }
-  .cd-row a:hover { color: var(--bronze-deep); }
-
-  .form-card {
-    padding: 48px 42px;
-    background: var(--ink);
-    color: var(--cream);
-    position: relative;
-    overflow: hidden;
-  }
-  .form-card::before {
-    content: '';
-    position: absolute; top: -50%; right: -30%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(179,113,62,.16) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .form-card .kicker {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 22px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .form-card .kicker::before { content: ''; width: 28px; height: 1px; background: var(--bronze); }
-  .form-card h3 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: 34px; line-height: 1.08; letter-spacing: -0.02em;
-    color: var(--cream);
-  }
-  .form-card h3 em { font-style: italic; color: var(--bronze); font-weight: 300; }
-  .form-card form {
-    margin-top: 30px;
-    display: flex; flex-direction: column; gap: 14px;
-    position: relative; z-index: 2;
-  }
-  .form-card input, .form-card select, .form-card textarea {
-    width: 100%;
-    padding: 14px 16px;
-    background: transparent;
-    border: 1px solid rgba(248,244,234,.2);
-    color: var(--cream);
-    font-family: var(--sans); font-size: 14.5px;
-    transition: border-color .2s;
-  }
-  .form-card input::placeholder, .form-card textarea::placeholder { color: rgba(248,244,234,.45); }
-  .form-card input:focus, .form-card select:focus, .form-card textarea:focus { outline: none; border-color: var(--bronze); }
-  .form-card select { color: rgba(248,244,234,.45); appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f8f4ea' stroke-width='1.5' stroke-opacity='0.5'><path d='M6 9l6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; padding-right: 42px; }
-  .form-card select.filled { color: var(--cream); }
-  .form-card textarea { min-height: 110px; resize: vertical; }
-  .form-card button {
-    margin-top: 10px; width: 100%;
-    padding: 16px 20px;
-    background: var(--bronze); color: var(--cream);
-    border: none;
-    font-family: var(--sans); font-size: 14px; font-weight: 600;
-    letter-spacing: .06em; text-transform: uppercase;
-    cursor: pointer;
-    transition: background .25s;
-  }
-  .form-card button:hover { background: var(--cream); color: var(--ink); }
-
-  /* ══════════ FOOTER ══════════ */
-  footer {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 100px 0 36px;
-  }
-  .foot-top {
-    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(248,244,234,.1);
-  }
-  @media (max-width: 900px) { .foot-top { grid-template-columns: 1fr 1fr; gap: 40px; } }
-  @media (max-width: 500px) { .foot-top { grid-template-columns: 1fr; } }
-  .foot-brand .foot-wordmark {
-    font-family: var(--serif); font-weight: 400;
-    font-size: 36px; line-height: 1; letter-spacing: -0.01em;
-    color: var(--cream);
-    margin-bottom: 18px;
-  }
-  .foot-brand .foot-wordmark em { font-style: italic; color: var(--bronze); }
-  .foot-brand .foot-tag {
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 24px;
-  }
-  .foot-brand p { font-size: 14px; color: rgba(248,244,234,.68); line-height: 1.65; max-width: 340px; }
-  .foot-col h5 {
-    font-family: var(--mono);
-    font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase;
-    color: var(--bronze);
-    margin-bottom: 18px;
-  }
-  .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .foot-col a, .foot-col li { font-size: 14px; color: rgba(248,244,234,.78); transition: color .2s; }
-  .foot-col a:hover { color: var(--bronze); }
-  .foot-bot {
-    padding-top: 28px;
-    display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
-    font-size: 11.5px; color: rgba(248,244,234,.45);
-    font-family: var(--mono);
-    letter-spacing: .16em;
-    text-transform: uppercase;
-  }
-  .foot-bot a:hover { color: var(--bronze); }
-
-  /* ══════════ RESPONSIVE ══════════ */
-  @media (max-width: 640px) {
-    section.chapter, .team-wrap, .services-wrap, .portfolio, .process-wrap, .quotes, .contact, .cta-band, .heritage { padding: 90px 0; }
-    .hero { min-height: 92vh; padding: 130px 0 60px; }
-    .hero-grid { gap: 28px; }
-    .feature-card { max-width: 100%; }
-    .q-card { padding: 32px 26px; }
-    .form-card { padding: 36px 28px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  }
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-  <!-- ═══ LOADER ═══ -->
-  <div class="loader" id="loader">
-    <div class="loader-inner">
-      <img src="logo.png" alt="Homes By Dominique" />
-      <div class="loader-line"></div>
-      <div class="loader-tag">Est. 1993 · Monifieth · Angus</div>
-    </div>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="brand">
+      <span class="brand-mark"><img src="logo.png" alt="Homes by Dominique"></span>
+    </a>
+    <button class="topbar-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="mainNav">
+      <a href="#story">Our Story</a>
+      <a href="#services">What We Do</a>
+      <a href="#portfolio">Homes</a>
+      <a href="#voices">Voices</a>
+      <a href="#contact" class="cta">Book a consultation</a>
+    </nav>
   </div>
+</header>
 
-  <!-- ═══ NAV ═══ -->
-  <header class="nav pre-scroll" id="nav">
-    <div class="container nav-row">
-      <a class="brand" href="#">
-        <div class="brand-mark">D</div>
-        <div class="brand-wordmark">Homes <em>by Dominique</em></div>
-      </a>
-      <nav class="nav-links">
-        <a href="#about">Studio</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="#contact" class="nav-cta">
-        <span>Start a project</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M5 12h14M13 6l6 6-6 6"/>
-        </svg>
-      </a>
-    </div>
-  </header>
+<section class="hero">
+  <div class="container-wide">
+    <div class="hero-grid">
+      <div class="hero-word">
+        <span class="brand-name">Homes by</span>
+        <span class="brand-script">Dominique</span>
+        <span class="brand-ltd">McIntosh · Ltd · Est. 1993</span>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <div class="hero-photo">
-      <img src="kitchen-1.jpg" alt="Navy shaker kitchen with exposed brick backsplash by Homes By Dominique" />
-    </div>
-
-    <div class="container hero-grid">
-      <div>
-        <div class="hero-eyebrow">Est. 1993 · Monifieth · Angus</div>
-        <h1 class="hero-h1">
-          <span class="line">Homes,</span>
-          <span class="line">carefully <em>considered.</em></span>
-          <span class="line">Built to <em>last.</em></span>
-        </h1>
-        <p class="hero-sub">
-          A <b>family-run design &amp; build studio</b> in Angus. Bespoke kitchens, bathrooms, extensions and full refurbishments taken from drawing board to handover. Three decades of careful, considered homes.
+        <p class="hero-tag">Putting the <em>heart</em>
+          <svg class="scribble-heart" viewBox="0 0 34 30" fill="currentColor" aria-hidden="true"><path d="M17 28.5C6 21 2 15 2 9.5 2 4.5 5 2 8.5 2c3 0 5.5 1.8 8 5.2-.3-.5-.3-1 0-1.5C19 2.5 22 2 24.5 2c4 0 6.5 2.2 6.5 6.5 0 6-4 12-14 20Z"/></svg>
+          into<br>
+          <em>your</em> home.
         </p>
+
+        <p class="hero-sub">A family-run design-and-build studio in Monifieth. Three decades of craft, one architectural consultant at the helm, and every kitchen, bathroom, wetroom and extension finished by trades we actually employ.</p>
+
         <div class="hero-ctas">
-          <a href="#contact" class="btn primary">
-            <span>Start a project</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="#work" class="btn ghost-light">
-            <span>See our work</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
+          <a href="#contact" class="btn btn-solid">Book a free consultation <span class="btn-arrow">→</span></a>
+          <a href="#portfolio" class="btn btn-ghost">See our homes</a>
         </div>
       </div>
 
-      <div class="hero-feature">
-        <div class="feature-card">
-          <div class="lbl">Featured · Kitchen</div>
-          <div class="title">Shaker in <em>Deep Navy</em>. A quiet, grown-up kitchen.</div>
-          <div class="details">
-            <span>Broughty Ferry</span>
-            <span>Kuhlmann · Quartz</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-footer">
-      <div class="est">Est. <b>1993</b> · Three decades of Scottish homes</div>
-      <div class="scroll">Scroll to explore</div>
-    </div>
-  </section>
-
-  <!-- ═══ HERITAGE BAND ═══ -->
-  <section class="heritage">
-    <div class="container">
-      <div class="heritage-grid">
-        <div class="heritage-cell">
-          <div class="k">Since</div>
-          <div class="v"><em>1993</em></div>
-          <div class="d">Three generations of homes across Angus, Dundee &amp; the Tay.</div>
-        </div>
-        <div class="heritage-cell">
-          <div class="k">Approach</div>
-          <div class="v">Family-run</div>
-          <div class="d">One family, one contract, one point of accountability.</div>
-        </div>
-        <div class="heritage-cell">
-          <div class="k">Partner of</div>
-          <div class="v">Kuhlmann</div>
-          <div class="d">Sole Kuhlmann agents for Dundee &amp; Angus · Sheraton kitchens.</div>
-        </div>
-        <div class="heritage-cell">
-          <div class="k">Based</div>
-          <div class="v">Monifieth</div>
-          <div class="d">18 High Street, DD5 4AE. Serving Angus &amp; Tayside.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ INTRO / STUDIO ═══ -->
-  <section class="chapter" id="about">
-    <div class="container">
-      <div class="chap-num reveal">Chapter 01 · The Studio</div>
-      <div class="intro-grid">
-        <div class="intro-left reveal">
-          <h2>A family of <em>architects, builders &amp; fitters</em> working under one roof.</h2>
-          <p>
-            Homes By Dominique is an <b>all-trades home development contractor</b> based in Monifieth, Angus. Since 1993 we've been building, extending and refurbishing homes across Tayside, with the architect, the designer and the tradesmen all on the same team.
-          </p>
-          <p>
-            From a small bathroom rework to a full ground-up extension, you get <b>one brief, one price, one point of contact</b>. We draw it, cost it, build it, finish it. And we're still there twelve months later when you ring with a question about the boiler.
-          </p>
-        </div>
-        <div class="intro-photo reveal">
-          <img src="kitchen-2.jpg" alt="Bright white shaker kitchen with bay window by Homes By Dominique" />
-          <div class="stamp">Shaker · Natural Light · Angus</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SERVICES ═══ -->
-  <section class="services-wrap chapter" id="services">
-    <div class="container">
-      <div class="chap-head reveal">
-        <div>
-          <div class="chap-num">Chapter 02 · Services</div>
-          <h2>One studio. <em>Every trade.</em></h2>
-        </div>
-        <p class="chap-note">
-          Kitchens, bathrooms, extensions, conversions, refurbishments. Plus the plumbing and heating to make any of it actually work.
-        </p>
-      </div>
-
-      <div class="services reveal">
-
-        <article class="svc">
-          <div class="num">01 · Extensions</div>
-          <h3>House &amp; Kitchen <em>Extensions.</em></h3>
-          <p>Open up your home with a properly-planned extension: a utility, an open-plan kitchen/dining space, or a full rear wraparound. From planning to plaster.</p>
-          <div class="arrow"><span>Explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </article>
-
-        <article class="svc">
-          <div class="num">02 · Kitchens</div>
-          <h3>Bespoke Kitchen <em>Design.</em></h3>
-          <p>Sole Kuhlmann agents for Dundee &amp; Angus, plus Sheraton &amp; Omega. Tailor-made kitchens designed around how you cook, eat and live. Installed by the same team.</p>
-          <div class="arrow"><span>Explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </article>
-
-        <article class="svc">
-          <div class="num">03 · Bathrooms</div>
-          <h3>Bathroom Design <em>&amp; Installation.</em></h3>
-          <p>Family bathrooms, en-suites, wetrooms. Space-planned first, tiled beautifully, plumbed properly. Nothing cheap hidden behind the finishes.</p>
-          <div class="arrow"><span>Explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </article>
-
-        <article class="svc">
-          <div class="num">04 · Conversions</div>
-          <h3>Loft &amp; Garage <em>Conversions.</em></h3>
-          <p>Turn the square footage you already own into a proper extra room: bedroom, studio, guest suite or home office. Insulated, signed off, built to last.</p>
-          <div class="arrow"><span>Explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </article>
-
-        <article class="svc">
-          <div class="num">05 · Refurbishments</div>
-          <h3>Full House <em>Refurbishments.</em></h3>
-          <p>Whole-home refurbs and Deco Right cabinet spraying. Take a tired home back to the studs and return it better than new. One contract, one team, one finish date.</p>
-          <div class="arrow"><span>Explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </article>
-
-        <article class="svc">
-          <div class="num">06 · Plumbing</div>
-          <h3>Plumbing, Boilers <em>&amp; Heating.</em></h3>
-          <p>The trades that make the rest of it work. New boilers, central heating upgrades, unvented cylinders, leak repair and routine servicing, all by the same team.</p>
-          <div class="arrow"><span>Explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PARTNERS BAND ═══ -->
-  <div class="partners">
-    <div class="container">
-      <div class="partners-inner">
-        <div class="partners-lbl">Kitchen Partners</div>
-        <div class="partners-names">
-          <span>Kuhlmann<small>German engineering · sole agents</small></span>
-          <span>Sheraton<small>British kitchens</small></span>
-          <span>Omega<small>Design &amp; build partner</small></span>
-          <span>Deco Right<small>Cabinet respraying</small></span>
-        </div>
+      <div class="hero-img">
+        <img src="kitchen-navy-gold.jpg" alt="Dark navy shaker kitchen with brass handles and marble worktop">
+        <svg class="heart-overlay" viewBox="0 0 34 30" fill="currentColor" aria-hidden="true"><path d="M17 28.5C6 21 2 15 2 9.5 2 4.5 5 2 8.5 2c3 0 5.5 1.8 8 5.2-.3-.5-.3-1 0-1.5C19 2.5 22 2 24.5 2c4 0 6.5 2.2 6.5 6.5 0 6-4 12-14 20Z"/></svg>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══ PORTFOLIO ═══ -->
-  <section class="portfolio chapter" id="work">
-    <div class="container">
-      <div class="chap-head reveal">
-        <div>
-          <div class="chap-num">Chapter 03 · Selected Work</div>
-          <h2>A handful of recent <em>Angus homes.</em></h2>
+<div class="detail-line">
+  <div class="detail-line-inner">
+    <span>Design</span><span class="dot"></span>
+    <span>Supply</span><span class="dot"></span>
+    <span>Install</span><span class="dot"></span>
+    <span>Dundee &amp; Angus</span><span class="dot"></span>
+    <span>Family run since 1993</span>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-image reveal">
+        <svg class="heart-stamp" viewBox="0 0 34 30" fill="currentColor" aria-hidden="true"><path d="M17 28.5C6 21 2 15 2 9.5 2 4.5 5 2 8.5 2c3 0 5.5 1.8 8 5.2-.3-.5-.3-1 0-1.5C19 2.5 22 2 24.5 2c4 0 6.5 2.2 6.5 6.5 0 6-4 12-14 20Z"/></svg>
+        <img src="kitchen-marble-classic.jpg" alt="Classic marble kitchen with bronze fittings">
+        <div class="caption">
+          <span class="label">A recent home</span>
+          <strong>Shaker kitchen</strong>
+          <span>Broughty Ferry, 2025</span>
         </div>
-        <p class="chap-note">
-          A selection of kitchens and bathrooms completed in the last two years. Every one taken from drawing board to handover by our team.
+      </div>
+
+      <div class="story-text reveal">
+        <span class="label heart">Our story</span>
+        <h2>Dublin-born, Dundee-made,<br><em>Home</em>-obsessed.</h2>
+        <p class="lede">Dominique McIntosh is the heart and soul of Homes by Dominique. A qualified architectural consultant, a mother of three, and the third iteration of a family business that's been fitting Scottish homes since 1993.</p>
+        <p>We're not just designers. We're a full design-and-build studio, which is the difference between a Pinterest board and a kitchen you can actually cook in. Our joiners, tilers, plumbers and electricians work under one roof, to one plan, for one price.</p>
+        <p>We draw it, we source it, we build it, and we clean up behind ourselves. When we hand you the keys, every drawer closes properly, every grout line is straight, and every switch works the first time.</p>
+        <p class="signature">Dominique
+          <span class="role">Owner &amp; Architectural Consultant</span>
         </p>
-      </div>
-
-      <div class="port-tabs reveal" role="tablist">
-        <button class="port-tab active" data-target="kitchens" role="tab" aria-selected="true">01 · Kitchens</button>
-        <button class="port-tab" data-target="bathrooms" role="tab" aria-selected="false">02 · Bathrooms</button>
-      </div>
-
-      <div class="port-set show reveal" data-set="kitchens">
-        <div class="port-grid">
-          <a class="port-item wide" href="#contact">
-            <div class="img"><img src="kitchen-1.jpg" alt="Navy shaker kitchen with brick backsplash" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Shaker in <em>Deep Navy.</em></div>
-                <div class="loc">Broughty Ferry · Kuhlmann · 2024</div>
-              </div>
-              <div class="tag">Featured</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="kitchen-5.jpg" alt="Grey shaker kitchen" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Grey Shaker <em>&amp; Oak.</em></div>
-                <div class="loc">Monifieth · Sheraton · 2023</div>
-              </div>
-              <div class="tag">Kitchen</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="kitchen-2.jpg" alt="White shaker kitchen with bay window" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Bay-Window <em>Shaker.</em></div>
-                <div class="loc">Carnoustie · Omega · 2024</div>
-              </div>
-              <div class="tag">Kitchen</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="kitchen-3.jpg" alt="High gloss white kitchen" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Gloss Cashmere, <em>Clean Lines.</em></div>
-                <div class="loc">Dundee · Kuhlmann · 2023</div>
-              </div>
-              <div class="tag">Kitchen</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="kitchen-7.jpg" alt="Oak wood-effect kitchen" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Warm Oak <em>&amp; Stone.</em></div>
-                <div class="loc">Arbroath · Sheraton · 2023</div>
-              </div>
-              <div class="tag">Kitchen</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="kitchen-6.jpg" alt="Kitchen with wood backsplash detail" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Muted Stone <em>Minimal.</em></div>
-                <div class="loc">Tayside · Omega · 2023</div>
-              </div>
-              <div class="tag">Kitchen</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="kitchen-4.jpg" alt="Handleless modern kitchen" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Handleless <em>Modern.</em></div>
-                <div class="loc">Dundee · Kuhlmann · 2022</div>
-              </div>
-              <div class="tag">Kitchen</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="port-set reveal" data-set="bathrooms">
-        <div class="port-grid">
-          <a class="port-item wide" href="#contact">
-            <div class="img"><img src="bathroom-2.jpg" alt="Blue vanity bathroom with round mirror and patterned tile floor" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Heritage Blue <em>Vanity &amp; Tile.</em></div>
-                <div class="loc">Arbroath · Character Home · 2024</div>
-              </div>
-              <div class="tag">Featured</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="bathroom-5.jpg" alt="Teal accent wall bathroom with walnut vanity" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Teal, Walnut <em>&amp; Slate.</em></div>
-                <div class="loc">Monifieth · Family Bath · 2024</div>
-              </div>
-              <div class="tag">Bathroom</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="bathroom-3.jpg" alt="Bathroom with modern finishes" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Soft Stone <em>&amp; Chrome.</em></div>
-                <div class="loc">Dundee · En-Suite · 2023</div>
-              </div>
-              <div class="tag">Bathroom</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="bathroom-6.jpg" alt="Clean neutral bathroom" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Wet-Room <em>Minimal.</em></div>
-                <div class="loc">Carnoustie · Wet-Room · 2023</div>
-              </div>
-              <div class="tag">Bathroom</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="bathroom-4.jpg" alt="Clean line bathroom" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Warm-White <em>Suite.</em></div>
-                <div class="loc">Broughty Ferry · Main Bath · 2023</div>
-              </div>
-              <div class="tag">Bathroom</div>
-            </div>
-          </a>
-          <a class="port-item" href="#contact">
-            <div class="img"><img src="bathroom-1.jpg" alt="Stone-tiled walk-in shower" /></div>
-            <div class="meta">
-              <div>
-                <div class="head">Stone-Tile <em>Walk-In.</em></div>
-                <div class="loc">Tayside · Accessible En-Suite · 2023</div>
-              </div>
-              <div class="tag">Bathroom</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PROCESS ═══ -->
-  <section class="process-wrap chapter" id="process">
-    <div class="container">
-      <div class="chap-head reveal">
-        <div>
-          <div class="chap-num">Chapter 04 · How We Work</div>
-          <h2>Four chapters. <em>One studio.</em></h2>
-        </div>
-        <p class="chap-note">
-          From the first call to the twelve-month check-in, the rhythm is the same. Transparent, measured, written down.
-        </p>
-      </div>
-      <div class="process reveal">
-        <div class="step">
-          <div class="n">01.</div>
-          <h4>Meet &amp; measure.</h4>
-          <p>A free studio visit or on-site meeting. We listen to what the home needs to do, now and ten years from now.</p>
-        </div>
-        <div class="step">
-          <div class="n">02.</div>
-          <h4>Design &amp; cost.</h4>
-          <p>Concept, technical drawings, material choices and a clear fixed quote. You see the whole picture before anything moves.</p>
-        </div>
-        <div class="step">
-          <div class="n">03.</div>
-          <h4>Build &amp; finish.</h4>
-          <p>One team on site. Weekly updates, tidy boundaries, finishes protected. We do the small bits right, not just the big bits.</p>
-        </div>
-        <div class="step">
-          <div class="n">04.</div>
-          <h4>Handover &amp; stay.</h4>
-          <p>Snag walk, keys, warranty pack. A year later we ring you. We're still here in Monifieth. The relationship doesn't end on the invoice.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ QUOTES ═══ -->
-  <section class="quotes chapter">
-    <div class="container">
-      <div class="chap-head reveal">
-        <div>
-          <div class="chap-num">Chapter 05 · In Their Words</div>
-          <h2>What people <em>actually say.</em></h2>
-        </div>
-        <p class="chap-note">
-          Five real reviews from Facebook. Pulled verbatim. We've not pretty-ified them, we've just let them speak.
-        </p>
-      </div>
-      <div class="q-grid reveal">
-        <div class="q-card">
-          <div class="q-stars">★ ★ ★ ★ ★</div>
-          <blockquote>Everything was completed to a high standard and to agreed timescales.</blockquote>
-          <div class="q-cite">
-            <div class="avatar">HG</div>
-            <div><b>Hazel Grattan</b><span>Facebook review</span></div>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-stars">★ ★ ★ ★ ★</div>
-          <blockquote>Very high attention to detail and kept me up to date on all developments.</blockquote>
-          <div class="q-cite">
-            <div class="avatar">KP</div>
-            <div><b>Kate Palmer</b><span>Facebook review</span></div>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-stars">★ ★ ★ ★ ★</div>
-          <blockquote>Carefully managed to ensure minimum disruption to the house.</blockquote>
-          <div class="q-cite">
-            <div class="avatar">RL</div>
-            <div><b>Ruth Lamb</b><span>Facebook review</span></div>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-stars">★ ★ ★ ★ ★</div>
-          <blockquote>Very professional service from a great team from start to finish.</blockquote>
-          <div class="q-cite">
-            <div class="avatar">JG</div>
-            <div><b>Julie Ganson</b><span>Facebook review</span></div>
-          </div>
-        </div>
-        <div class="q-card">
-          <div class="q-stars">★ ★ ★ ★ ★</div>
-          <blockquote>Measured up when they said, installed when promised, friendly and neat.</blockquote>
-          <div class="q-cite">
-            <div class="avatar">PJ</div>
-            <div><b>Paul Johnston</b><span>Facebook review</span></div>
-          </div>
-        </div>
-        <div class="q-card" style="background: var(--ink); color: var(--cream); border: none;">
-          <div class="q-stars" style="color: var(--bronze);">★ ★ ★ ★ ★</div>
-          <blockquote style="color: var(--cream);">A handful of the many. Three decades of the same standard.</blockquote>
-          <div class="q-cite" style="border-color: rgba(248,244,234,.15);">
-            <div class="avatar" style="background: var(--bronze); color: var(--cream);">HBD</div>
-            <div><b style="color: var(--cream);">Homes By Dominique</b><span style="color: rgba(248,244,234,.55);">Est. 1993</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TEAM ═══ -->
-  <section class="team-wrap chapter">
-    <div class="container">
-      <div class="chap-head reveal">
-        <div>
-          <div class="chap-num">Chapter 06 · The Team</div>
-          <h2>Three people. <em>Every project.</em></h2>
-        </div>
-        <p class="chap-note">
-          You'll know us by name within ten minutes of the first call, because it's the same three people on the drawing, on site, and on the end of the phone.
-        </p>
-      </div>
-
-      <div class="team reveal">
-        <div class="team-member">
-          <div class="avatar">D</div>
-          <div class="role">Owner · Architect · MD</div>
-          <h4>Dominique <em>McIntosh</em></h4>
-          <p>Leads design and strategy for every project. Trained as an architect, runs the studio. If you've met "HBD" at a brief, you've met Dominique.</p>
-        </div>
-        <div class="team-member">
-          <div class="avatar">D</div>
-          <div class="role">Owner · Operations Director</div>
-          <h4>Duncan <em>McIntosh</em></h4>
-          <p>Runs the build side. Programmes, trades, site management and sign-off. If it's on site, it's Duncan's problem. And it won't be for long.</p>
-        </div>
-        <div class="team-member">
-          <div class="avatar">A</div>
-          <div class="role">Architect · Designer</div>
-          <h4>Annika <em>Grundy</em></h4>
-          <p>Technical drawings, planning applications, the spatial thinking. Turns the concept sketches into buildable, liveable plans.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CTA BAND ═══ -->
-  <div class="cta-band">
-    <div class="container">
-      <div class="cta-inner">
-        <div class="kicker">Start a project · Est. 1993</div>
-        <h3>Got a home you're <em>ready to begin</em> on?</h3>
-        <div class="cta-btns">
-          <a href="tel:01382532965" class="btn bronze-dark">
-            <span>Call 01382 532 965</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>
-          </a>
-          <a href="#contact" class="btn bronze-ghost">
-            <span>Email the studio</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══ CONTACT ═══ -->
-  <section class="contact chapter" id="contact">
-    <div class="container">
-      <div class="chap-num reveal">Chapter 07 · Start a Project</div>
-      <div class="contact-grid">
-        <div class="reveal">
-          <h2>Let's <em>draw it.</em></h2>
-          <p class="intro-p">
-            Send us a photograph and a few lines about the space. We'll come back with initial thoughts and a free on-site visit within a few days.
-          </p>
+<section class="timeline">
+  <div class="container">
+    <div class="timeline-head">
+      <span class="label">Our brand evolution</span>
+      <h2>Three decades. <em>One family.</em></h2>
+    </div>
+    <div class="timeline-row">
+      <div class="timeline-step"><div class="node"></div><div class="timeline-step-text"><span class="year">1993</span><span class="name">Batherama</span></div></div>
+      <div class="timeline-step"><div class="node"></div><div class="timeline-step-text"><span class="year">2012</span><span class="name">Batherama Design</span></div></div>
+      <div class="timeline-step"><div class="node"></div><div class="timeline-step-text"><span class="year">2016</span><span class="name">McIntosh Interiors</span></div></div>
+      <div class="timeline-step"><div class="node"></div><div class="timeline-step-text"><span class="year">2022</span><span class="name">McIntosh Homes &amp; Interiors</span></div></div>
+      <div class="timeline-step latest"><div class="node"></div><div class="timeline-step-text"><span class="year">2025</span><span class="name">Homes by Dominique</span></div></div>
+    </div>
+  </div>
+</section>
 
-          <div class="contact-details">
-            <div class="cd-row">
-              <div class="k">Studio</div>
-              <div class="v small">18 High Street,<br/>Monifieth, Angus, DD5 4AE</div>
-            </div>
-            <div class="cd-row">
-              <div class="k">Telephone</div>
-              <div class="v"><a href="tel:01382532965">01382 532 965</a></div>
-            </div>
-            <div class="cd-row">
-              <div class="k">Email</div>
-              <div class="v"><a href="mailto:info@hbd.scot">info@hbd.scot</a></div>
-            </div>
-            <div class="cd-row">
-              <div class="k">Hours</div>
-              <div class="v small">Mon to Fri · By appointment<br/>Weekends · Site visits by arrangement</div>
-            </div>
-            <div class="cd-row">
-              <div class="k">Serving</div>
-              <div class="v small">Angus · Dundee · Tayside · North Fife</div>
-            </div>
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-head">
+      <span class="label">What we do</span>
+      <h2>Kitchens, bathrooms, full home builds <em>&amp; everything between.</em></h2>
+      <p class="lede">Design-and-build isn't a slogan. It's our structure. Every trade is ours. Every tile is sourced by us. Every invoice is one invoice.</p>
+    </div>
+
+    <div class="service reveal">
+      <div class="service-image"><img src="kitchen-open-plan.jpg" alt="Open plan kitchen with pendant lights"><span class="tag">Service · 01</span></div>
+      <div class="service-text">
+        <span class="num">Kitchens</span>
+        <h3>The room that makes it <em>a home.</em></h3>
+        <p>Approved installers of British kitchens (Omega by Sheraton) and sole Dundee agents for German Kuhlmann. Full design-and-fit from first survey to the morning you crack open a bottle and christen it.</p>
+        <div class="meta"><span>Shaker</span><span>In-frame</span><span>Handleless</span><span>Kuhlmann</span><span>Stone worktops</span></div>
+        <a href="#contact" class="scribbled-link">Start a kitchen brief <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="service reveal">
+      <div class="service-image"><img src="bathroom-green-tile.jpg" alt="Green tiled bathroom"><span class="tag">Service · 02</span></div>
+      <div class="service-text">
+        <span class="num">Bathrooms</span>
+        <h3>A room you want to <em>spend time in.</em></h3>
+        <p>Family bathrooms, en-suites, wetrooms. Full strip-out, first-fix, tiling, and second-fix by our plumbers, tilers and electricians. Over 30 years of bathroom fitting sits behind every room we deliver.</p>
+        <div class="meta"><span>Family bath</span><span>En-suites</span><span>Wetrooms</span><span>Heritage suites</span></div>
+        <a href="#contact" class="scribbled-link">Design a bathroom <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="service reveal">
+      <div class="service-image"><img src="bathroom-freestanding.jpg" alt="Freestanding bath in ensuite"><span class="tag">Service · 03</span></div>
+      <div class="service-text">
+        <span class="num">Bedrooms</span>
+        <h3>Somewhere to <em>land.</em></h3>
+        <p>Bespoke fitted wardrobes, dressing rooms, and the kind of en-suite-bedroom combination that makes a guest think twice before going home. Joinery in-house. Lighting plans worked into the drawing, not plastered over afterwards.</p>
+        <div class="meta"><span>Fitted wardrobes</span><span>Walk-in closets</span><span>Master suites</span></div>
+        <a href="#contact" class="scribbled-link">Talk bedrooms <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="service reveal">
+      <div class="service-image"><img src="bathroom-wet-room.jpg" alt="Fully tanked wetroom"><span class="tag">Service · 04</span></div>
+      <div class="service-text">
+        <span class="num">Wetrooms</span>
+        <h3>Fully tanked. <em>Built to last.</em></h3>
+        <p>Proper wet rooms, not showers pretending. Tanked from the joists up with a membrane you never see, tiled gradient floors, linear drains, and finishes that look like a hotel spa. Built to outlast the owner.</p>
+        <div class="meta"><span>Tanked</span><span>Linear drain</span><span>Underfloor heat</span><span>Level access</span></div>
+        <a href="#contact" class="scribbled-link">Plan a wetroom <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="service reveal">
+      <div class="service-image"><img src="kitchen-cream-shaker.jpg" alt="Cream shaker kitchen"><span class="tag">Service · 05</span></div>
+      <div class="service-text">
+        <span class="num">Extensions</span>
+        <h3>Don't move. <em>Grow.</em></h3>
+        <p>House extensions, kitchen extensions, loft conversions and garage conversions, all with architectural drawings, building control sign-off, and finished interiors by the same team that drew them. Don't go out, go up. Don't move, extend.</p>
+        <div class="meta"><span>House ext.</span><span>Kitchen ext.</span><span>Loft</span><span>Garage</span><span>Full reno</span></div>
+        <a href="#contact" class="scribbled-link">Scope an extension <span>→</span></a>
+      </div>
+    </div>
+
+    <div class="service reveal">
+      <div class="service-image"><img src="kitchen-bar-pendant.jpg" alt="Commercial bar with pendant lighting"><span class="tag">Service · 06</span></div>
+      <div class="service-text">
+        <span class="num">Commercial</span>
+        <h3>The same care, <em>a bigger brief.</em></h3>
+        <p>Hotels, care homes, golf clubs, AirBnBs, buy-to-let portfolios. Our commercial clients value the full-suite service (design, supply, install) because it means one programme, one contractor, one invoice chain. We've done the lot.</p>
+        <div class="meta"><span>Hotels</span><span>Care homes</span><span>Golf clubs</span><span>AirBnB</span><span>BTL</span></div>
+        <a href="#contact" class="scribbled-link">Discuss a commercial brief <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey">
+  <div class="container">
+    <span class="label">The HbD Journey</span>
+    <h2>Three steps. <em>One team.</em></h2>
+    <p class="journey-sub">The strength of design-and-build is that you don't hand off between contractors. The drawing, the materials and the install are all us, in that order.</p>
+    <div class="journey-row">
+      <div class="journey-step">
+        <svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 52l8-32 32 8"/><path d="M20 20l20 20"/><path d="M44 44l6 6"/><circle cx="44" cy="16" r="4"/></svg>
+        <h4>Design</h4>
+        <p>A home visit, a full survey, and an architectural drawing set that accounts for the plumbing runs before the tiles go down.</p>
+      </div>
+      <svg class="journey-connector one" viewBox="0 0 40 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 9 Q 20 -2, 38 9" stroke-dasharray="3 4"/></svg>
+      <div class="journey-step">
+        <svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="18" width="38" height="26" rx="2"/><path d="M46 24h6l4 6v14h-10"/><circle cx="20" cy="48" r="4"/><circle cx="48" cy="48" r="4"/></svg>
+        <h4>Supply</h4>
+        <p>Trade accounts across the best British and German brands. You get the quality, we pass on the price. No markup games.</p>
+      </div>
+      <svg class="journey-connector two" viewBox="0 0 40 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 9 Q 20 20, 38 9" stroke-dasharray="3 4"/></svg>
+      <div class="journey-step">
+        <svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 22l16-14 30 28"/><path d="M14 26v24h36V26"/><path d="M28 50v-12h8v12"/></svg>
+        <h4>Install</h4>
+        <p>Our own joiners, tilers, plumbers, electricians and decorators. One programme, one site manager, one person accountable from first day to handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container-wide">
+    <div class="portfolio-head">
+      <div><span class="label">Recent homes</span><h2>A few we're <em>proud of.</em></h2></div>
+      <div class="meta">Broughty Ferry · Monifieth · Dundee · Carnoustie · Angus · 2023 to 2025</div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="pf a reveal"><img src="kitchen-open-plan.jpg" alt="Open plan kitchen dining"><div class="pf-cap"><div class="name">Open-plan kitchen</div><div class="loc">Monifieth · Kuhlmann</div></div></div>
+      <div class="pf b reveal"><img src="bathroom-green-tile.jpg" alt="Green tile bathroom"><div class="pf-cap"><div class="name">Emerald bathroom</div><div class="loc">Broughty Ferry</div></div></div>
+      <div class="pf c reveal"><img src="kitchen-navy-gold.jpg" alt="Navy and gold kitchen"><div class="pf-cap"><div class="name">Navy &amp; brass</div><div class="loc">Carnoustie</div></div></div>
+      <div class="pf d reveal"><img src="bathroom-marble-spa.jpg" alt="Marble spa bathroom"><div class="pf-cap"><div class="name">Spa wetroom</div><div class="loc">Dundee West</div></div></div>
+      <div class="pf e reveal"><img src="kitchen-modern-island.jpg" alt="Modern kitchen with island"><div class="pf-cap"><div class="name">Modern island</div><div class="loc">Arbroath</div></div></div>
+      <div class="pf f reveal"><img src="bathroom-ensuite-black.jpg" alt="Dark ensuite bathroom"><div class="pf-cap"><div class="name">Dark ensuite</div><div class="loc">Monifieth</div></div></div>
+      <div class="pf g reveal"><img src="kitchen-shaker-grey.jpg" alt="Shaker kitchen in grey"><div class="pf-cap"><div class="name">Coastal shaker</div><div class="loc">Broughty Ferry</div></div></div>
+      <div class="pf h reveal"><img src="bathroom-monochrome.jpg" alt="Monochrome bathroom"><div class="pf-cap"><div class="name">Monochrome family bath</div><div class="loc">Dundee</div></div></div>
+      <div class="pf i reveal"><img src="kitchen-cream-shaker.jpg" alt="Cream shaker kitchen"><div class="pf-cap"><div class="name">Cream shaker</div><div class="loc">Angus countryside</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="assisted">
+  <div class="container">
+    <div class="assisted-grid">
+      <div class="assisted-image reveal">
+        <svg class="heart-behind" viewBox="0 0 34 30" fill="currentColor" aria-hidden="true"><path d="M17 28.5C6 21 2 15 2 9.5 2 4.5 5 2 8.5 2c3 0 5.5 1.8 8 5.2-.3-.5-.3-1 0-1.5C19 2.5 22 2 24.5 2c4 0 6.5 2.2 6.5 6.5 0 6-4 12-14 20Z"/></svg>
+        <img src="bathroom-bold-feature.jpg" alt="Bold feature bathroom renovation">
+      </div>
+      <div class="assisted-text reveal">
+        <span class="label">Something different</span>
+        <h3>Inherited a property you <em>can't sell?</em></h3>
+        <p>Homes by Dominique offers a win-win assisted sales service. We renovate properties that won't shift on the market, help you sell them on, and you pay nothing up front.</p>
+        <p>It's uncommon. It works. If you've got a property that's been sitting too long, let's have a conversation.</p>
+        <div class="ft">
+          <div class="ft-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><strong>No upfront cost</strong>We carry the renovation spend until sale.</div></div>
+          <div class="ft-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><strong>Full project management</strong>Design, supply, install, marketing. We handle the lot.</div></div>
+          <div class="ft-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div><strong>A fair share on sale</strong>Transparent terms. You come out ahead.</div></div>
+        </div>
+        <a href="#contact" class="btn btn-solid">Talk to us about your property <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voices" id="voices">
+  <div class="container">
+    <div class="voices-head">
+      <span class="label heart">Voices</span>
+      <h2>What clients <em>tell us.</em></h2>
+    </div>
+    <div class="voice-hero reveal">
+      <div class="mark">&ldquo;</div>
+      <blockquote>Thank you for turning our spare bedroom into a beautiful spacious ensuite which is a joy to use! A major project and it was carefully managed to ensure minimum disruption to the rest of the house. We are fussy on detail and you were right, your tilers are good!</blockquote>
+      <cite><strong>Ruth Lamb</strong> Ensuite conversion · via Facebook</cite>
+    </div>
+    <div class="voices-row">
+      <div class="voice reveal"><blockquote>"Homes by Dominique installed our (stunning!) quartz worktops. They measured up when they said they would, installed when they said they would, were friendly and polite, did a very neat job and left the place spotless. Thoroughly recommended!"</blockquote><cite><strong>Paul Johnston</strong>Quartz worktops · via Facebook</cite></div>
+      <div class="voice reveal"><blockquote>"A family-run business that treats your home like theirs. The detail in the tiling and joinery in our new bathroom is beyond what we'd dared hope for. Would use again in a heartbeat."</blockquote><cite><strong>Hazel Grattan</strong>Family bathroom · via Facebook</cite></div>
+      <div class="voice reveal"><blockquote>"Dominique and her team took our kitchen from dated to stunning, and they stuck to the timeline and the price quoted. Rare in this industry. Genuinely good people."</blockquote><cite><strong>Julie Ganson</strong>Kitchen renovation · via Facebook</cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="label heart">Let's begin</span>
+        <h2>Let's put the <em>heart</em> into your home.</h2>
+        <p class="lede">Book a free consultation at our Monifieth showroom, or have us come to yours. We'll take the brief, walk the space, and come back with honest options.</p>
+        <div class="contact-kv">
+          <div class="row">
+            <div class="lbl">Telephone</div>
+            <div class="val"><a href="tel:01382532965">01382 532965</a><br><a href="tel:07808829882" style="font-size:0.95rem;color:var(--mute)">Mobile · 07808 829882</a></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Email</div>
+            <div class="val"><a href="mailto:info@hbd.scot">info@hbd.scot</a></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Showroom</div>
+            <div class="val">18 High Street<br>Monifieth, Angus<br>DD5 4AE</div>
+          </div>
+          <div class="row">
+            <div class="lbl">Hours</div>
+            <div class="val">Mon to Fri · 9am to 5pm<br><span style="font-family:var(--body);font-style:italic;font-size:0.95rem;color:var(--mute)">Saturdays by appointment</span></div>
+          </div>
+          <div class="row">
+            <div class="lbl">Follow</div>
+            <div class="val script-val"><a href="#" target="_blank" rel="noopener">Facebook</a> · <a href="#" target="_blank" rel="noopener">Instagram</a></div>
           </div>
         </div>
+      </div>
 
-        <div class="form-card reveal">
-          <div class="kicker">Tell us about the home</div>
-          <h3>Studio enquiries, <em>answered within a day.</em></h3>
-          <form onsubmit="event.preventDefault(); alert('Mockup preview. Please call 01382 532 965 or email info@hbd.scot.');">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="tel" name="phone" placeholder="Phone number" required />
-            <input type="email" name="email" placeholder="Email address" required />
-            <select name="service" required onchange="this.classList.add('filled');">
-              <option value="" disabled selected>Type of project</option>
-              <option>House Extension</option>
-              <option>Kitchen Extension</option>
-              <option>Bespoke Kitchen</option>
-              <option>Bathroom</option>
-              <option>Loft Conversion</option>
-              <option>Garage Conversion</option>
-              <option>Full Refurbishment</option>
-              <option>Deco Right Spraying</option>
-              <option>Plumbing &amp; Heating</option>
-              <option>Other</option>
-            </select>
-            <textarea name="message" placeholder="A few lines about the space and timeline" required></textarea>
-            <button type="submit">Send enquiry →</button>
-          </form>
+      <form class="contact-form" action="/api/enquiry" method="POST">
+        <div class="ft-head">
+          <span class="label">Send a note</span>
+          <h3>Tell us about your home.</h3>
         </div>
+        <div class="form-row">
+          <div class="form-field"><label for="fn">First name</label><input type="text" id="fn" name="first_name" required></div>
+          <div class="form-field"><label for="ln">Last name</label><input type="text" id="ln" name="last_name" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label for="ph">Phone</label><input type="tel" id="ph" name="phone" pattern="^(0|\+44)[0-9\s]{9,13}$" required></div>
+          <div class="form-field"><label for="em">Email</label><input type="email" id="em" name="email"></div>
+        </div>
+        <div class="form-field">
+          <label for="svc">Your project</label>
+          <select id="svc" name="service" required>
+            <option value="">Select one...</option>
+            <option>Kitchen</option>
+            <option>Bathroom</option>
+            <option>Wetroom</option>
+            <option>Bedroom / Dressing room</option>
+            <option>Extension</option>
+            <option>Loft / Garage conversion</option>
+            <option>Full refurbishment</option>
+            <option>Commercial</option>
+            <option>Assisted Sales</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-field"><label for="msg">Tell us about your home</label><textarea id="msg" name="message" placeholder="A few details, a rough timeline, anything you already have in mind..."></textarea></div>
+        <button type="submit" class="form-submit">Send to Dominique</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark"><img src="logo.png" alt="Homes by Dominique"></span>
+        <p>A family-run design-and-build studio in Monifieth, Angus. Kitchens, bathrooms, wetrooms, extensions and commercial projects. One team, one programme, one price.</p>
+        <span class="tag">Putting the heart into your home.</span>
+      </div>
+      <div class="footer-col">
+        <h4>What we do</h4>
+        <a href="#services">Kitchens</a>
+        <a href="#services">Bathrooms</a>
+        <a href="#services">Bedrooms</a>
+        <a href="#services">Wetrooms</a>
+        <a href="#services">Extensions</a>
+        <a href="#services">Commercial</a>
+        <a href="#services">Assisted Sales</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="tel:01382532965">01382 532965</a>
+        <a href="tel:07808829882">07808 829882</a>
+        <a href="mailto:info@hbd.scot">info@hbd.scot</a>
+        <div>18 High Street<br>Monifieth, Angus<br>DD5 4AE</div>
       </div>
     </div>
-  </section>
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer>
-    <div class="container">
-      <div class="foot-top">
-        <div class="foot-brand">
-          <div class="foot-wordmark">Homes <em>by Dominique</em></div>
-          <div class="foot-tag">Est. 1993 · Monifieth</div>
-          <p>A family-run design &amp; build studio in Angus. Three decades of kitchens, bathrooms, extensions and full home refurbishments.</p>
-        </div>
-        <div class="foot-col">
-          <h5>Studio</h5>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#process">How we work</a></li>
-            <li><a href="#work">Selected work</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="foot-col">
-          <h5>Services</h5>
-          <ul>
-            <li><a href="#services">House extensions</a></li>
-            <li><a href="#services">Bespoke kitchens</a></li>
-            <li><a href="#services">Bathrooms</a></li>
-            <li><a href="#services">Loft &amp; garage conversions</a></li>
-            <li><a href="#services">Plumbing &amp; heating</a></li>
-          </ul>
-        </div>
-        <div class="foot-col">
-          <h5>Visit</h5>
-          <ul>
-            <li>18 High Street</li>
-            <li>Monifieth, DD5 4AE</li>
-            <li><a href="tel:01382532965">01382 532 965</a></li>
-            <li><a href="mailto:info@hbd.scot">info@hbd.scot</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="foot-bot">
-        <div>© Homes By Dominique · Est. 1993 · Mockup Preview</div>
-        <div>Kitchens · Bathrooms · Extensions · Tayside</div>
-        <div><a href="#">↑ Back to top</a></div>
-      </div>
+    <div class="footer-bar">
+      <div>&copy; 2026 Homes by Dominique Ltd · Family run since 1993</div>
+      <div>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    // Loader dismiss
-    window.addEventListener('load', function(){
-      setTimeout(function(){
-        var l = document.getElementById('loader');
-        if (l) l.classList.add('gone');
-      }, 2400);
+<script>
+(function(){
+  var t=document.querySelector('.topbar-toggle');
+  var n=document.getElementById('mainNav');
+  if(!t||!n)return;
+  t.addEventListener('click',function(){
+    var o=n.classList.toggle('open');
+    t.classList.toggle('open',o);
+    t.setAttribute('aria-expanded',o?'true':'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      n.classList.remove('open');
+      t.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
     });
+  });
+})();
 
-    // Nav scroll state
-    var nav = document.getElementById('nav');
-    function onScroll() {
-      if (window.scrollY > 80) {
-        nav.classList.add('scrolled');
-        nav.classList.remove('pre-scroll');
-      } else {
-        nav.classList.remove('scrolled');
-        nav.classList.add('pre-scroll');
-      }
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+var ph=document.getElementById('ph');
+if(ph){
+  ph.addEventListener('input',function(){
+    var v=this.value;
+    this.setCustomValidity(v&&!/^(0|\+44)[0-9\s]{9,13}$/.test(v)?'Please enter a valid UK phone number':'');
+  });
+}
 
-    // Intersection reveal
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-    } else {
-      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
-    }
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
 
-    // Portfolio tabs
-    document.querySelectorAll('.port-tab').forEach(function(tab){
-      tab.addEventListener('click', function(){
-        var target = tab.getAttribute('data-target');
-        document.querySelectorAll('.port-tab').forEach(function(t){
-          t.classList.toggle('active', t === tab);
-          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-        });
-        document.querySelectorAll('.port-set').forEach(function(s){
-          s.classList.toggle('show', s.getAttribute('data-set') === target);
-        });
-      });
-    });
-  </script>
 </body>
 </html>
