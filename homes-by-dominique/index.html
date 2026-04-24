@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Homes by Dominique | Architectural design & build studio | Monifieth, Angus</title>
-<meta name="description" content="Homes by Dominique. A Monifieth-based architectural design and build studio. Kitchens, bathrooms, extensions and full renovations across Dundee, Broughty Ferry, Carnoustie and Angus. Established 1993.">
+<title>Homes by Dominique | Design & build contractor | Monifieth, Angus</title>
+<meta name="description" content="Homes by Dominique. A Monifieth-based design and build contractor. Kitchens, bathrooms, extensions and full renovations across Dundee, Broughty Ferry, Carnoustie and Angus. Established 1993.">
 <meta name="theme-color" content="#1a1a1a">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,13 +43,18 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 .narrow{max-width:980px;margin:0 auto;padding:0 48px}
 @media(max-width:720px){.container,.narrow{padding:0 20px}}
 
+/* =============== LOADER =============== */
+.loader{position:fixed;inset:0;z-index:2000;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:40px;transition:opacity .7s ease .2s,visibility .7s ease .2s}
+.loader img{max-width:min(420px,68vw);max-height:40vh;width:auto;height:auto;opacity:0;transform:translateY(10px);animation:loaderFade 1.1s ease forwards .1s}
+@keyframes loaderFade{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+
 /* =============== NAV =============== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(246,243,238,0.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(20,20,20,0.06)}
-.nav-inner{max-width:1480px;margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.wordmark{display:flex;flex-direction:column;line-height:1}
-.wordmark .small{font-family:var(--body);font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--mute);margin-bottom:2px}
-.wordmark .big{font-family:var(--display);font-size:1.35rem;color:var(--ink);font-weight:500;letter-spacing:0.01em}
-.wordmark .big em{font-style:italic;font-weight:400}
+.nav-inner{max-width:1480px;margin:0 auto;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.wordmark{display:flex;align-items:center}
+.wordmark img{height:58px;width:auto;display:block}
+@media(max-width:960px){.wordmark img{height:44px}}
 .nav-links{display:flex;align-items:center;gap:40px}
 .nav-links a{font-family:var(--body);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-2);font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--brass)}
@@ -69,7 +74,6 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
   .nav-links a{padding:18px 0;border-bottom:1px solid var(--rule);font-size:0.8rem}
   .nav-links a:last-child{border-bottom:0}
   .nav-links .cta{border:0;padding:18px 0;color:var(--brass)}
-  .wordmark .big{font-size:1.15rem}
 }
 
 /* =============== HERO =============== */
@@ -99,8 +103,7 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 .hero-strip .l{font-family:var(--body);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);font-weight:500;line-height:1.5}
 @media(max-width:960px){
   .hero{padding:100px 0 0}
-  .hero-grid{grid-template-columns:1fr;gap:52px;padding-bottom:56px}
-  .hero-image{order:-1}
+  .hero-grid{grid-template-columns:1fr;gap:40px;padding-bottom:56px}
   .hero-image img{aspect-ratio:5/6}
   .hero-strip{grid-template-columns:repeat(2,1fr);gap:28px;padding:40px 0}
   .hero-strip .k{font-size:2rem}
@@ -254,9 +257,8 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 /* =============== FOOTER =============== */
 .footer{background:var(--ink);color:rgba(246,243,238,0.72);padding:96px 0 28px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:72px}
-.footer-brand .wordmark .small{color:rgba(246,243,238,0.52)}
-.footer-brand .wordmark .big{color:var(--paper);font-size:1.6rem}
-.footer-brand p{font-size:0.92rem;color:rgba(246,243,238,0.58);max-width:320px;line-height:1.75;margin-top:20px}
+.footer-brand .wordmark img{height:80px;filter:invert(1) brightness(1.1);margin-bottom:18px}
+.footer-brand p{font-size:0.92rem;color:rgba(246,243,238,0.58);max-width:320px;line-height:1.75;margin-top:4px}
 .footer-col h4{font-family:var(--body);font-size:0.64rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:20px}
 .footer-col a,.footer-col div{display:block;color:var(--paper);font-family:var(--display);font-size:1rem;font-weight:300;margin-bottom:8px;transition:color .2s}
 .footer-col a:hover{color:var(--brass)}
@@ -284,11 +286,14 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 </head>
 <body>
 
+<div class="loader" id="loader" aria-hidden="true">
+  <img src="logo.png" alt="Homes by Dominique">
+</div>
+
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="wordmark">
-      <span class="small">Est. 1993 · Monifieth</span>
-      <span class="big">Homes <em>by</em> Dominique</span>
+    <a href="#" class="wordmark" aria-label="Homes by Dominique, home">
+      <img src="logo.png" alt="Homes by Dominique">
     </a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     <div class="nav-links" id="navLinks">
@@ -307,10 +312,10 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
       <div class="hero-text">
         <div class="hero-meta">
           <span class="line"></span>
-          <span class="micro mute">Architectural design &amp; build · Est. 1993</span>
+          <span class="micro mute">Design &amp; build contractor · Est. 1993</span>
         </div>
-        <h1>A studio for <em>considered</em> homes.</h1>
-        <p class="hero-lede">Homes by Dominique is a family-run architectural design and build practice on the Angus coast. We draw, source and deliver kitchens, bathrooms, extensions and complete renovations under a single hand.</p>
+        <h1>Builders of <em>considered</em> homes.</h1>
+        <p class="hero-lede">Homes by Dominique is a family-run design-and-build contractor on the Angus coast. We draw, source and deliver kitchens, bathrooms, extensions and complete renovations under a single hand.</p>
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-ink">Begin a project <span class="arrow">→</span></a>
           <a href="#editorial" class="btn-ghost">View our work</a>
@@ -329,7 +334,7 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
       <div><div class="k">32</div><div class="l">Years of practice<br>on the Angus coast</div></div>
       <div><div class="k">400+</div><div class="l">Homes drawn,<br>built &amp; delivered</div></div>
       <div><div class="k">One</div><div class="l">Programme, team<br>and invoice</div></div>
-      <div><div class="k">DD5</div><div class="l">Monifieth showroom<br>by appointment</div></div>
+      <div><div class="k">DD5</div><div class="l">Monifieth showroom<br>&amp; workshop</div></div>
     </div>
   </div>
 </section>
@@ -339,18 +344,18 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
   <div class="container">
     <div class="practice-grid">
       <div class="practice-left">
-        <span class="micro brass">The Practice</span>
-        <h2>A single practice<br>drawing, supplying<br>&amp; <em>building</em>.</h2>
+        <span class="micro brass">The Firm</span>
+        <h2>One contractor,<br>drawing, supplying<br>&amp; <em>building</em>.</h2>
         <div class="rule"></div>
         <p class="micro mute">Monifieth · Dundee · Angus</p>
       </div>
       <div class="practice-right reveal">
-        <p>Homes by Dominique is the current chapter of a design and build practice that has been working Angus homes since 1993. Three generations, one architectural eye, and a trades team kept within the studio. We draw what we build, we build what we draw, and we answer for both.</p>
+        <p>Homes by Dominique is the current chapter of a design-and-build firm that has been working Angus homes since 1993. Three generations, one architectural eye, and a trades team kept in-house. We draw what we build, we build what we draw, and we answer for both.</p>
         <p>Our remit is residential: considered kitchens, disciplined bathrooms, sensitive extensions and complete renovations. Occasionally, we take a commercial brief &mdash; a hotel, a care home, a <strong>portfolio of lettings</strong> &mdash; when the work warrants the same care as a private house.</p>
         <p>The house always sets the brief. We listen first, draw second, and commit once.</p>
         <div class="by">
           Dominique McIntosh
-          <span>Architectural Consultant &amp; Principal</span>
+          <span>Director &amp; Design Lead</span>
         </div>
       </div>
     </div>
@@ -362,10 +367,10 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
   <div class="container">
     <div class="disc-head">
       <div>
-        <span class="micro brass">Disciplines</span>
+        <span class="micro brass">What we build</span>
         <h2>Residential<br>&amp; <em>commercial</em>.</h2>
       </div>
-      <p>Six disciplines, one practice. Every trade is ours: joinery, tiling, plumbing, electrical, plastering, decoration. One programme, one site manager, one invoice.</p>
+      <p>Six disciplines, one contractor. Every trade is ours: joinery, tiling, plumbing, electrical, plastering, decoration. One programme, one site manager, one invoice.</p>
     </div>
     <div class="disc-list">
       <div class="disc">
@@ -560,7 +565,7 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
       <div class="contact-left">
         <span class="micro brass">Begin a project</span>
         <h2>Start with a <em>conversation.</em></h2>
-        <p class="lede">A consultation at our Monifieth studio, or a visit to yours. We'll take the brief, walk the space, and come back with honest options and a written scope.</p>
+        <p class="lede">A consultation at our Monifieth showroom, or a visit to yours. We'll take the brief, walk the space, and come back with honest options and a written scope.</p>
         <div class="contact-kv">
           <div class="row">
             <div class="l">Telephone</div>
@@ -571,7 +576,7 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
             <div class="v"><a href="mailto:info@hbd.scot">info@hbd.scot</a></div>
           </div>
           <div class="row">
-            <div class="l">Studio</div>
+            <div class="l">Showroom</div>
             <div class="v">18 High Street<br>Monifieth, Angus<br>DD5 4AE</div>
           </div>
           <div class="row">
@@ -626,11 +631,10 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="wordmark">
-          <span class="small">Est. 1993 · Monifieth</span>
-          <span class="big">Homes <em>by</em> Dominique</span>
+        <a href="#" class="wordmark" aria-label="Homes by Dominique, home">
+          <img src="logo.png" alt="Homes by Dominique">
         </a>
-        <p>A family-run architectural design and build practice on the Angus coast. Kitchens, bathrooms, wetrooms, extensions and complete renovations. One team, one programme, one price.</p>
+        <p>A family-run design-and-build contractor on the Angus coast. Kitchens, bathrooms, wetrooms, extensions and complete renovations. One team, one programme, one price.</p>
       </div>
       <div class="footer-col">
         <h4>Disciplines</h4>
@@ -642,7 +646,7 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
         <a href="#disciplines">Commercial</a>
       </div>
       <div class="footer-col">
-        <h4>Studio</h4>
+        <h4>Showroom</h4>
         <div>18 High Street</div>
         <div>Monifieth, Angus</div>
         <div>DD5 4AE</div>
@@ -662,6 +666,17 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 </footer>
 
 <script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var l=document.getElementById('loader');
+    if(l)l.classList.add('done');
+  },900);
+});
+setTimeout(function(){
+  var l=document.getElementById('loader');
+  if(l)l.classList.add('done');
+},2600);
+
 (function(){
   var b=document.getElementById('burger');
   var n=document.getElementById('navLinks');
