@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Painting & Decorating · Anis Bara · North West London</title>
+<meta name="description" content="Painting and decorating, interior and exterior. Run by Anis Bara, working across North West London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#0f1730;
+    --navy:#1c2a52;
+    --navy-2:#2a3a66;
+    --gold:#a87a3d;
+    --gold-2:#c69552;
+    --paper:#fbf9f5;
+    --paper-2:#f3eee5;
+    --rule:#e7e0d2;
+    --muted:#6b6c7a;
+  }
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body.loading{overflow:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+
+  /* Loader */
+  #loader{position:fixed;inset:0;background:var(--paper);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .7s ease}
+  #loader.gone{opacity:0;pointer-events:none}
+  .loader-logo{width:170px;height:170px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 80px -30px rgba(28,42,82,.15);overflow:hidden;animation:logoIn .9s ease both}
+  .loader-logo img{width:140px;height:140px;object-fit:contain}
+  .loader-stroke{width:240px;height:14px;margin-top:32px;position:relative;overflow:hidden}
+  .loader-stroke svg{position:absolute;inset:0;width:100%;height:100%;stroke-dasharray:600;stroke-dashoffset:600;animation:stroke 1.6s .3s ease-out forwards}
+  .loader-cap{margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.32em;color:var(--navy);opacity:0;animation:fadeIn .7s 1.1s ease forwards}
+  @keyframes logoIn{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes stroke{to{stroke-dashoffset:0}}
+  @keyframes fadeIn{to{opacity:1}}
+
+  /* Topline */
+  .topline{background:var(--navy);color:#e8e3d2;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;padding:9px 0}
+  .topline .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .topline a{color:var(--gold-2);transition:color .2s}
+  .topline a:hover{color:#fff}
+  .topline span.dot{display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;margin:0 10px;transform:translateY(-1px)}
+
+  /* Header */
+  header.site{background:var(--paper);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:50}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand .mark{width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .brand .mark img{width:38px;height:38px;object-fit:contain}
+  .brand .text{display:flex;flex-direction:column;line-height:1.05}
+  .brand .text .name{font-family:'EB Garamond',serif;font-size:22px;font-weight:600;color:var(--navy);letter-spacing:.01em}
+  .brand .text .name em{font-style:italic;color:var(--gold);font-weight:500}
+  .brand .text .sub{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.28em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+  nav.menu{display:flex;align-items:center;gap:30px;font-size:14px;color:var(--navy)}
+  nav.menu a{font-weight:500;position:relative}
+  nav.menu a:hover{color:var(--gold)}
+  nav.menu .cta{padding:11px 20px;background:var(--navy);color:#fff;border-radius:2px;letter-spacing:.04em;transition:background .2s}
+  nav.menu .cta:hover{background:var(--ink)}
+  @media (max-width:780px){nav.menu a:not(.cta){display:none}}
+
+  /* HERO */
+  .hero{padding:90px 0 110px;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-180px;top:80px;width:600px;height:600px;background:radial-gradient(circle,rgba(168,122,61,.06),transparent 60%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+  .hero .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+  .hero .eyebrow::before{content:"";display:inline-block;width:32px;height:1px;background:var(--gold)}
+  .hero h1{font-family:'EB Garamond',serif;font-weight:500;font-size:74px;line-height:1.04;letter-spacing:-.015em;color:var(--navy);margin-bottom:28px}
+  .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+  .hero .lead{font-size:17.5px;color:#43485a;max-width:480px;margin-bottom:38px}
+  .hero .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:2px;font-size:14px;font-weight:500;letter-spacing:.04em;transition:all .2s}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--ink)}
+  .btn-ghost{border:1px solid var(--navy);color:var(--navy)}
+  .btn-ghost:hover{background:var(--navy);color:#fff}
+  .btn .arrow{transition:transform .2s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  .hero-meta{display:flex;gap:34px;margin-top:54px;padding-top:30px;border-top:1px solid var(--rule);max-width:520px}
+  .hero-meta div span{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+  .hero-meta div strong{font-family:'EB Garamond',serif;font-size:21px;font-weight:500;color:var(--navy);letter-spacing:0}
+
+  /* Hero photo */
+  .hero-photo{position:relative;aspect-ratio:4/5}
+  .hero-photo .ph-main{position:absolute;inset:0;border-radius:2px;overflow:hidden;background:var(--paper-2)}
+  .hero-photo .ph-main img{width:100%;height:100%;object-fit:cover}
+  .hero-photo .ph-card{position:absolute;background:#fff;padding:20px;border:1px solid var(--rule);box-shadow:0 30px 60px -30px rgba(28,42,82,.18);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--navy);text-transform:uppercase}
+  .hero-photo .ph-card.tl{top:24px;left:-26px}
+  .hero-photo .ph-card.br{bottom:30px;right:-32px;display:flex;align-items:center;gap:14px;padding:16px 20px}
+  .hero-photo .ph-card .swatch{width:28px;height:28px;border:1px solid rgba(0,0,0,.08)}
+  .hero-photo .ph-card strong{display:block;font-family:'EB Garamond',serif;font-size:15px;text-transform:none;letter-spacing:0;color:var(--navy);font-weight:500;margin-bottom:2px}
+
+  /* Service strip — paint chips */
+  .chips{padding:60px 0 0;border-bottom:1px solid var(--rule)}
+  .chips-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:32px}
+  .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .section-eyebrow::before{content:"";width:24px;height:1px;background:var(--gold)}
+  .section-title{font-family:'EB Garamond',serif;font-weight:500;font-size:46px;line-height:1.08;color:var(--navy);letter-spacing:-.01em;max-width:680px}
+  .section-title em{font-style:italic;color:var(--gold);font-weight:500}
+  .chips-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+  .chip{padding:32px 24px 28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .25s}
+  .chip:hover{background:var(--paper-2)}
+  .chip .swatch{height:78px;margin-bottom:18px;border:1px solid rgba(0,0,0,.05)}
+  .chip .ref{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+  .chip .name{font-family:'EB Garamond',serif;font-size:19px;font-weight:500;color:var(--navy);margin-bottom:6px}
+  .chip .desc{font-size:12.5px;color:#5d6273;line-height:1.5}
+
+  /* Services list */
+  .services{padding:110px 0;border-bottom:1px solid var(--rule)}
+  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:64px}
+  .svc-card{display:grid;grid-template-columns:auto 1fr;gap:24px;padding:28px 0;border-top:1px solid var(--rule);align-items:start}
+  .svc-card:nth-child(odd){border-right:none}
+  .svc-card .num{font-family:'EB Garamond',serif;font-size:22px;font-style:italic;color:var(--gold);font-weight:500;line-height:1}
+  .svc-card h3{font-family:'EB Garamond',serif;font-size:26px;font-weight:500;color:var(--navy);margin-bottom:8px}
+  .svc-card p{font-size:14.5px;color:#54596a;line-height:1.6}
+  .svc-card .meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-top:14px}
+
+  /* Work gallery — editorial */
+  .work{padding:110px 0;background:var(--paper-2);border-bottom:1px solid var(--rule);position:relative}
+  .work-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;gap:32px}
+  .work-head .right{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;line-height:1.8;text-align:right}
+  .work-head .right b{color:var(--navy);font-weight:500}
+  .work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+  .photo{overflow:hidden;background:#fff;position:relative}
+  .photo img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .photo:hover img{transform:scale(1.04)}
+  .photo .tag{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);padding:7px 11px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:var(--navy);text-transform:uppercase}
+  .photo.p1{grid-column:span 7;aspect-ratio:5/4}
+  .photo.p2{grid-column:span 5;aspect-ratio:4/5}
+  .photo.p3{grid-column:span 4;aspect-ratio:1/1}
+  .photo.p4{grid-column:span 4;aspect-ratio:1/1}
+  .photo.p5{grid-column:span 4;aspect-ratio:1/1}
+  .photo.p6{grid-column:span 5;aspect-ratio:4/5}
+  .photo.p7{grid-column:span 7;aspect-ratio:5/4}
+  .photo.p8{grid-column:span 6;aspect-ratio:6/5}
+  .photo.p9{grid-column:span 6;aspect-ratio:6/5}
+
+  /* About */
+  .about{padding:120px 0;border-bottom:1px solid var(--rule)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+  .about-text h2{font-family:'EB Garamond',serif;font-weight:500;font-size:52px;line-height:1.1;color:var(--navy);letter-spacing:-.01em;margin-bottom:30px}
+  .about-text h2 em{font-style:italic;color:var(--gold);font-weight:500}
+  .about-text p{font-size:16px;color:#43485a;margin-bottom:20px;line-height:1.7;max-width:520px}
+  .about-text p strong{color:var(--navy);font-weight:500}
+  .about-stats{display:flex;gap:40px;margin-top:36px;padding-top:30px;border-top:1px solid var(--rule);max-width:520px}
+  .about-stats div span{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+  .about-stats div strong{font-family:'EB Garamond',serif;font-size:32px;font-weight:500;color:var(--gold);font-style:italic;line-height:1}
+  .about-photo{position:relative;aspect-ratio:5/6}
+  .about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .about-photo .frame{position:absolute;inset:14px;border:1px solid rgba(255,255,255,.4);pointer-events:none}
+  .about-photo .stamp{position:absolute;bottom:-26px;right:-26px;background:var(--navy);color:#fff;padding:24px;width:170px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;line-height:1.7}
+  .about-photo .stamp b{color:var(--gold-2);font-weight:500}
+
+  /* Process */
+  .process{padding:110px 0;background:var(--navy);color:#e8e3d2;border-bottom:1px solid var(--ink)}
+  .process .section-eyebrow{color:var(--gold-2)}
+  .process .section-eyebrow::before{background:var(--gold-2)}
+  .process .section-title{color:#fff}
+  .process .section-title em{color:var(--gold-2)}
+  .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid rgba(255,255,255,.12)}
+  .proc{padding:36px 28px 36px 0;border-right:1px solid rgba(255,255,255,.12);position:relative}
+  .proc:last-child{border-right:none}
+  .proc .step{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.28em;color:var(--gold-2);text-transform:uppercase;margin-bottom:18px}
+  .proc h4{font-family:'EB Garamond',serif;font-size:24px;font-weight:500;color:#fff;margin-bottom:10px}
+  .proc p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65}
+
+  /* Testimonials */
+  .testi{padding:110px 0;border-bottom:1px solid var(--rule)}
+  .testi-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:60px}
+  .quote{padding:36px 32px;background:var(--paper-2);border-top:2px solid var(--gold)}
+  .quote .stars{color:var(--gold);font-size:14px;letter-spacing:3px;margin-bottom:18px}
+  .quote p{font-family:'EB Garamond',serif;font-size:19px;line-height:1.5;color:var(--navy);margin-bottom:24px;font-style:italic}
+  .quote .who{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+  .quote .who b{color:var(--navy);font-weight:500}
+
+  /* Contact */
+  .contact{padding:120px 0;background:var(--paper)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+  .contact-left h2{font-family:'EB Garamond',serif;font-weight:500;font-size:54px;line-height:1.08;color:var(--navy);letter-spacing:-.01em;margin-bottom:24px}
+  .contact-left h2 em{font-style:italic;color:var(--gold);font-weight:500}
+  .contact-left .sub{font-size:16px;color:#54596a;margin-bottom:40px;max-width:430px}
+  .contact-blocks div{padding:22px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:130px 1fr;gap:20px;align-items:center}
+  .contact-blocks div:last-child{border-bottom:1px solid var(--rule)}
+  .contact-blocks span{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase}
+  .contact-blocks a, .contact-blocks p{font-family:'EB Garamond',serif;font-size:22px;color:var(--navy);font-weight:500}
+  .contact-blocks a:hover{color:var(--gold)}
+  form{background:#fff;padding:40px;border:1px solid var(--rule)}
+  form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  form label{display:block;margin-bottom:18px}
+  form .full{grid-column:1/-1}
+  form .lab{display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.26em;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+  form input, form select, form textarea{width:100%;padding:13px 14px;border:1px solid var(--rule);background:var(--paper);font-family:'Inter',sans-serif;font-size:14.5px;color:var(--navy);border-radius:0;transition:border-color .2s}
+  form input:focus, form select:focus, form textarea:focus{outline:none;border-color:var(--navy)}
+  form textarea{min-height:130px;resize:vertical}
+  form button{width:100%;padding:16px;background:var(--navy);color:#fff;border:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:background .2s}
+  form button:hover{background:var(--ink)}
+  form .gotcha{position:absolute;left:-9999px}
+
+  /* Footer */
+  footer{background:var(--navy);color:#a8aec3;padding:60px 0 30px;font-size:13px}
+  footer .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+  footer .col h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--gold-2);text-transform:uppercase;margin-bottom:18px}
+  footer .col a, footer .col p{display:block;color:#c8cfe2;margin-bottom:8px;line-height:1.55}
+  footer .col a:hover{color:var(--gold-2)}
+  footer .lockup{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  footer .lockup .lm{width:48px;height:48px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  footer .lockup .lm img{width:38px;height:38px;object-fit:contain}
+  footer .lockup .lt{font-family:'EB Garamond',serif;font-size:22px;color:#fff;font-weight:500}
+  footer .lockup .lt em{color:var(--gold-2);font-style:italic;font-weight:500}
+  footer .col.about p{font-size:13.5px;color:#9aa1b8;max-width:280px}
+  footer .bot{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#7a839c}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.3,1)}
+  .reveal.r{opacity:1;transform:none}
+
+  /* Mobile */
+  @media (max-width:900px){
+    .wrap{padding:0 22px}
+    .hero{padding:60px 0 70px}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero h1{font-size:46px}
+    .hero-meta{gap:22px;margin-top:36px}
+    .hero-meta div strong{font-size:17px}
+    .hero-photo{aspect-ratio:5/6}
+    .hero-photo .ph-card.tl{left:14px;top:14px}
+    .hero-photo .ph-card.br{right:14px;bottom:14px}
+    .chips-grid{grid-template-columns:repeat(2,1fr)}
+    .services{padding:70px 0}
+    .svc-grid{grid-template-columns:1fr;gap:0;margin-top:40px}
+    .section-title{font-size:34px}
+    .work{padding:70px 0}
+    .work-head{flex-direction:column;align-items:flex-start;gap:18px}
+    .work-head .right{text-align:left}
+    .work-grid{grid-template-columns:1fr;gap:14px}
+    .photo.p1,.photo.p2,.photo.p3,.photo.p4,.photo.p5,.photo.p6,.photo.p7,.photo.p8,.photo.p9{grid-column:span 1;aspect-ratio:4/3}
+    .about{padding:70px 0}
+    .about-grid{grid-template-columns:1fr;gap:48px}
+    .about-text h2{font-size:36px}
+    .about-photo .stamp{position:relative;bottom:auto;right:auto;width:auto;margin-top:14px}
+    .process{padding:70px 0}
+    .proc-grid{grid-template-columns:1fr;border-top:none}
+    .proc{border-right:none;border-top:1px solid rgba(255,255,255,.12);padding:28px 0}
+    .testi{padding:70px 0}
+    .testi-grid{grid-template-columns:1fr;gap:18px}
+    .contact{padding:70px 0}
+    .contact-grid{grid-template-columns:1fr;gap:48px}
+    .contact-left h2{font-size:38px}
+    form{padding:28px}
+    form .row{grid-template-columns:1fr}
+    footer .top{grid-template-columns:1fr;gap:36px}
+    .topline .wrap{flex-wrap:wrap;justify-content:center;text-align:center;font-size:10px;gap:8px}
+  }
+</style>
+</head>
+<body class="loading">
+
+<!-- Loader -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-logo"><img src="logo.jpg" alt=""></div>
+  <div class="loader-stroke">
+    <svg viewBox="0 0 240 14" preserveAspectRatio="none" fill="none">
+      <path d="M2 9 C 50 1, 100 13, 130 7 S 220 1, 238 8" stroke="#1c2a52" stroke-width="2" stroke-linecap="round"/>
+      <path d="M2 11 C 50 3, 100 15, 130 9 S 220 3, 238 10" stroke="#a87a3d" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+    </svg>
+  </div>
+  <div class="loader-cap">AB · PAINTING & DECORATING · NW LONDON</div>
+</div>
+
+<!-- Topline -->
+<div class="topline">
+  <div class="wrap">
+    <div>NORTH WEST LONDON · NW1 — NW11 · HA · W</div>
+    <div>FREE QUOTES <span class="dot"></span> FULLY INSURED <span class="dot"></span> <a href="tel:07863988657">07863 988657</a></div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site">
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <span class="mark"><img src="logo.jpg" alt=""></span>
+      <span class="text">
+        <span class="name">AB <em>Painting</em> & Decorating</span>
+        <span class="sub">Anis Bara · Est. North West London</span>
+      </span>
+    </a>
+    <nav class="menu">
+      <a href="#work">Recent Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Free Quote</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Painting &amp; Decorating · Interior &amp; Exterior</div>
+      <h1>A measured coat,<br>applied with <em>care</em>.</h1>
+      <p class="lead">Run by Anis Bara out of North West London. Clean lines, properly prepped walls, and a finish that doesn't show the brush marks come morning. Domestic and commercial.</p>
+      <div class="actions">
+        <a href="#contact" class="btn btn-primary">Request a quote <span class="arrow">→</span></a>
+        <a href="tel:07863988657" class="btn btn-ghost">07863 988657</a>
+      </div>
+      <div class="hero-meta">
+        <div><span>Coverage</span><strong>NW &amp; W London</strong></div>
+        <div><span>Lead time</span><strong>1–2 weeks</strong></div>
+        <div><span>Insurance</span><strong>£2m public</strong></div>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <div class="ph-main"><img src="work-2.jpg" alt="Painted interior in North West London"></div>
+      <div class="ph-card tl">PROJECT 014<br><strong>Hampstead, NW3</strong></div>
+      <div class="ph-card br">
+        <span class="swatch" style="background:#dcd6c4"></span>
+        <div><strong>Slaked Lime</strong>Estate Eggshell · 2 coats</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paint chips -->
+<section class="chips">
+  <div class="wrap">
+    <div class="chips-head">
+      <div>
+        <div class="section-eyebrow">Specification · 2026 Palette</div>
+        <h2 class="section-title">Finishes pulled from <em>recent jobs</em>.</h2>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="chips-grid">
+      <div class="chip"><div class="swatch" style="background:#efeadc;border:1px solid rgba(0,0,0,.08)"></div><div class="ref">REF · NW-001</div><div class="name">Soft Chalk</div><div class="desc">Hallway walls, matt emulsion. Two coats over primer.</div></div>
+      <div class="chip"><div class="swatch" style="background:#dcd6c4"></div><div class="ref">REF · NW-014</div><div class="name">Slaked Lime</div><div class="desc">Reception room, estate eggshell on plaster.</div></div>
+      <div class="chip"><div class="swatch" style="background:#1c2a52"></div><div class="ref">REF · NW-022</div><div class="name">Inkwell Navy</div><div class="desc">Door panels &amp; spindles. Oil-based satinwood.</div></div>
+      <div class="chip"><div class="swatch" style="background:#a87a3d"></div><div class="ref">REF · NW-031</div><div class="name">Antique Brass</div><div class="desc">Trim accent, hand-cut lines, gloss finish.</div></div>
+      <div class="chip"><div class="swatch" style="background:#3a4f3e"></div><div class="ref">REF · NW-047</div><div class="name">Bottle Sage</div><div class="desc">Kitchen cabinetry, sprayed satin throughout.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-eyebrow">Services</div>
+    <h2 class="section-title">Full decorating across the patch — <em>start to snag</em>.</h2>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <span class="num">i.</span>
+        <div>
+          <h3>Interior Painting</h3>
+          <p>Walls, ceilings, woodwork, panel doors. Proper prep, sanding, filling and primer before any topcoat goes on. We tidy down each evening.</p>
+          <div class="meta">Walls · Trim · Doors · Ceilings</div>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <span class="num">ii.</span>
+        <div>
+          <h3>Exterior &amp; Render</h3>
+          <p>Sash windows, fascias, render and front doors. Masonry paint where it belongs, primers and undercoat where it counts.</p>
+          <div class="meta">Render · Sash · Fascias · Front doors</div>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <span class="num">iii.</span>
+        <div>
+          <h3>Wallpapering</h3>
+          <p>Lining paper through to grasscloth and high-end commercial. Patterns matched, seams clean, no air pockets.</p>
+          <div class="meta">Lining · Vinyl · Grasscloth · Murals</div>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <span class="num">iv.</span>
+        <div>
+          <h3>Spraying &amp; Cabinetry</h3>
+          <p>HVLP spray for kitchens, doors and built-ins. Booth bagged off properly, factory-grade finish on site.</p>
+          <div class="meta">Kitchens · Wardrobes · Banisters</div>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <span class="num">v.</span>
+        <div>
+          <h3>Plaster Repairs</h3>
+          <p>Filling, patching, skim coats over hairline cracks. Ready for paint without phantom shadows under the light.</p>
+          <div class="meta">Skim · Crack repair · Filling</div>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <span class="num">vi.</span>
+        <div>
+          <h3>Commercial</h3>
+          <p>Offices, shopfronts and rentals turned around fast. Out of hours where the lease asks for it.</p>
+          <div class="meta">Offices · Retail · Rentals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <div>
+        <div class="section-eyebrow">Recent Work · NW London</div>
+        <h2 class="section-title">A short selection from <em>this season</em>.</h2>
+      </div>
+      <div class="right">
+        <b>09 Jobs</b><br>
+        Hampstead · Camden · Maida Vale<br>
+        Kensal Rise · Kilburn · Queen's Park<br>
+        Documented · 2025–26
+      </div>
+    </div>
+    <div class="work-grid">
+      <div class="photo p1 reveal"><img src="work-2.jpg" alt=""><div class="tag">N° 01 · Hallway · Hampstead</div></div>
+      <div class="photo p2 reveal"><img src="work-1.jpg" alt=""><div class="tag">N° 02 · Joinery · NW3</div></div>
+      <div class="photo p3 reveal"><img src="work-3.jpg" alt=""><div class="tag">N° 03 · Cupboards</div></div>
+      <div class="photo p4 reveal"><img src="work-5.jpg" alt=""><div class="tag">N° 04 · Bathroom</div></div>
+      <div class="photo p5 reveal"><img src="work-7.jpg" alt=""><div class="tag">N° 05 · Banister</div></div>
+      <div class="photo p6 reveal"><img src="work-6.jpg" alt=""><div class="tag">N° 06 · Reception</div></div>
+      <div class="photo p7 reveal"><img src="work-4.jpg" alt=""><div class="tag">N° 07 · Skirting · NW6</div></div>
+      <div class="photo p8 reveal"><img src="work-8.jpg" alt=""><div class="tag">N° 08 · Wallpaper</div></div>
+      <div class="photo p9 reveal"><img src="work-9.jpg" alt=""><div class="tag">N° 09 · Front door</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text reveal">
+      <div class="section-eyebrow">About</div>
+      <h2>Run by <em>Anis Bara</em>, painting NW London properly.</h2>
+      <p>Started on the brushes young, learned the trade through bigger London outfits, and went out on his own when the demand stopped fitting in evenings and weekends.</p>
+      <p>The way Anis sees it, anyone can put paint on a wall. The job is in the prep — sanded, filled, dust pulled, edges crisp, and lines that hold up under a south-facing window in summer.</p>
+      <p><strong>Domestic and commercial across NW1 through NW11, plus W and HA postcodes.</strong> Fully insured, free quotes, references available on request.</p>
+      <div class="about-stats">
+        <div><span>Trading since</span><strong>2018</strong></div>
+        <div><span>Jobs done</span><strong>200+</strong></div>
+        <div><span>Repeat clients</span><strong>68%</strong></div>
+      </div>
+    </div>
+    <div class="about-photo reveal">
+      <img src="work-1.jpg" alt="Joinery painted by Anis Bara">
+      <div class="frame"></div>
+      <div class="stamp">Anis Bara<br><b>Founder · Decorator</b><br>NW London · 2018</div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">Four steps from first call to <em>final coat</em>.</h2>
+    <div class="proc-grid">
+      <div class="proc reveal">
+        <div class="step">Step · 01</div>
+        <h4>Have a chat</h4>
+        <p>Phone, WhatsApp or the form. Tell us the rooms, the timing, the kind of finish you're after.</p>
+      </div>
+      <div class="proc reveal">
+        <div class="step">Step · 02</div>
+        <h4>Quote on site</h4>
+        <p>Anis comes round, takes proper measurements, checks the surfaces, and writes you a fixed price. No vague estimates.</p>
+      </div>
+      <div class="proc reveal">
+        <div class="step">Step · 03</div>
+        <h4>Start work</h4>
+        <p>Floors and furniture covered, dust extraction where needed, prep done before a single drop of paint goes anywhere.</p>
+      </div>
+      <div class="proc reveal">
+        <div class="step">Step · 04</div>
+        <h4>Walk through</h4>
+        <p>We finish, snag, and walk every room with you. If anything's off, we put it right before we leave.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testi">
+  <div class="wrap">
+    <div class="section-eyebrow">Said about us</div>
+    <h2 class="section-title">A few of the kinder <em>letters</em>.</h2>
+    <div class="testi-grid">
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Anis painted the whole ground floor and re-did the sash windows. Spotless throughout, no mess on the floors, and the lines on the trim are a thing of beauty."</p>
+        <div class="who"><b>Hannah W.</b> · Hampstead, NW3</div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Used Anis for our Maida Vale flat and then the office in Camden. Showed up when he said he would, finished early, came back to touch up a scuff three weeks later. Rare."</p>
+        <div class="who"><b>Tom &amp; Priya R.</b> · Maida Vale, W9</div>
+      </div>
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Sprayed our kitchen cabinets and they look factory-fresh. He bagged off the room properly so the rest of the house was untouched. Already booked him for the bedrooms."</p>
+        <div class="who"><b>James K.</b> · Queen's Park, NW6</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-left reveal">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2>Send the rooms, the timing, and a <em>photo or two</em>.</h2>
+      <p class="sub">Quotes are free and usually back the same day. If it's urgent, ring or WhatsApp Anis directly — he picks up between jobs.</p>
+      <div class="contact-blocks">
+        <div><span>Phone</span><a href="tel:07863988657">07863 988657</a></div>
+        <div><span>WhatsApp</span><a href="https://wa.me/447863988657" target="_blank" rel="noopener">Message Anis</a></div>
+        <div><span>Email</span><a href="mailto:hello@abpainting.london">hello@abpainting.london</a></div>
+        <div><span>Coverage</span><p>NW · W · HA postcodes</p></div>
+        <div><span>Hours</span><p>Mon–Sat · 7am–7pm</p></div>
+      </div>
+    </div>
+    <form class="reveal" onsubmit="event.preventDefault(); alert('Demo form — quote request would be sent.')">
+      <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" value="">
+      <input type="hidden" name="businessName" value="AB Painting & Decorating">
+      <input type="hidden" name="source" value="mockup">
+      <div class="row">
+        <label><span class="lab">First name</span><input type="text" name="firstName" required></label>
+        <label><span class="lab">Last name</span><input type="text" name="lastName" required></label>
+      </div>
+      <div class="row">
+        <label><span class="lab">Phone</span><input type="tel" name="phone" required></label>
+        <label><span class="lab">Postcode</span><input type="text" name="postcode" placeholder="NW3" required></label>
+      </div>
+      <label class="full"><span class="lab">Email</span><input type="email" name="email" required></label>
+      <label class="full"><span class="lab">Type of work</span>
+        <select name="type">
+          <option>Interior painting</option>
+          <option>Exterior &amp; render</option>
+          <option>Wallpapering</option>
+          <option>Spraying / cabinetry</option>
+          <option>Plaster repairs</option>
+          <option>Commercial</option>
+          <option>Not sure yet, want a chat</option>
+        </select>
+      </label>
+      <label class="full"><span class="lab">Tell Anis about the job</span><textarea name="message" placeholder="Rooms, finish, timing, anything else..."></textarea></label>
+      <button type="submit">Request a free quote</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="col about">
+        <div class="lockup">
+          <span class="lm"><img src="logo.jpg" alt=""></span>
+          <span class="lt">AB <em>Painting</em></span>
+        </div>
+        <p>Painting and decorating across North West London. Run hands-on by Anis Bara since 2018.</p>
+      </div>
+      <div class="col">
+        <h5>Services</h5>
+        <a href="#services">Interior painting</a>
+        <a href="#services">Exterior &amp; render</a>
+        <a href="#services">Wallpapering</a>
+        <a href="#services">Spraying</a>
+        <a href="#services">Commercial</a>
+      </div>
+      <div class="col">
+        <h5>Coverage</h5>
+        <p>Hampstead · Camden</p>
+        <p>Maida Vale · Kilburn</p>
+        <p>Queen's Park · St John's Wood</p>
+        <p>Kensal Rise · Primrose Hill</p>
+      </div>
+      <div class="col">
+        <h5>Contact</h5>
+        <a href="tel:07863988657">07863 988657</a>
+        <a href="mailto:hello@abpainting.london">hello@abpainting.london</a>
+        <a href="https://wa.me/447863988657">WhatsApp Anis</a>
+      </div>
+    </div>
+    <div class="bot">
+      <div>© 2026 AB Painting &amp; Decorating · Anis Bara</div>
+      <div>NW London · Insured · Site demo</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Loader dismiss
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('gone');
+      document.body.classList.remove('loading');
+    }, 1700);
+  });
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('r'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Timestamp
+  document.querySelectorAll('input[name="_timestamp"]').forEach(i => i.value = Date.now().toString());
+</script>
+
+</body>
+</html>
