@@ -69,6 +69,9 @@ a{color:inherit; text-decoration:none}
   object-fit: contain;
   background: #000;
 }
+@media (max-width: 700px){
+  .loader video{ transform: scale(1.4); transform-origin: center; }
+}
 .loader-skip{
   position: absolute; bottom: 26px; right: 26px;
   font-family: var(--mono);
@@ -1610,9 +1613,11 @@ body.loading{ overflow: hidden; }
     setTimeout(function(){ loader.style.display = 'none'; }, 900);
   }
   if (vid){
+    vid.playbackRate = 1.5;
+    vid.addEventListener('loadedmetadata', function(){ vid.playbackRate = 1.5; });
     vid.addEventListener('ended', dismiss);
-    // safety: dismiss after 9s no matter what
-    setTimeout(dismiss, 9500);
+    // safety: dismiss after ~6s (8s video at 1.5x = ~5.3s)
+    setTimeout(dismiss, 6500);
     // if autoplay is blocked, dismiss right away
     var p = vid.play();
     if (p && p.catch) p.catch(dismiss);
