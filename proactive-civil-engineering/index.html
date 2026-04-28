@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proactive Civil Engineering — Drainage &amp; Civils, Peterborough to London</title>
+<meta name="description" content="Proactive Civil Engineering Ltd. Drainage remediation, civil engineering, excavation and plumbing reinstatement. Operating from Peterborough through to central London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d0d10;
+  --bg-2: #131318;
+  --bg-3: #1c1c22;
+  --ink: #f4f4f0;
+  --ink-soft: #b8b8b3;
+  --ink-mute: #6e6e6a;
+  --line: rgba(244,244,240,0.08);
+  --line-2: rgba(244,244,240,0.14);
+  --accent: #ffd400;
+  --accent-glow: rgba(255,212,0,0.4);
+  --accent-deep: #e8c000;
+}
+
+html { background: var(--bg); scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+
+.display { font-family: 'Archivo Black', sans-serif; letter-spacing: -0.01em; line-height: 0.92; }
+.mono { font-family: 'Inter', sans-serif; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.74rem; }
+
+/* CURSOR SPOTLIGHT */
+.spotlight {
+  position: fixed; pointer-events: none; z-index: 1;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,212,0,0.05) 0%, transparent 60%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+@media (hover: hover) { .spotlight { opacity: 1; } }
+
+/* GRAIN OVERLAY */
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 20px 32px;
+  transition: background 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(13,13,16,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom-color: var(--line);
+  padding: 14px 32px;
+}
+.nav-inner {
+  max-width: 1480px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 14px;
+}
+.brand-mark {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--bg);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1rem; line-height: 1;
+  position: relative; overflow: hidden;
+}
+.brand-mark::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--bg); transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+.brand-mark::after {
+  content: 'P'; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); transform: translateX(100%);
+  transition: transform 0.3s ease;
+  font-family: 'Archivo Black', sans-serif;
+}
+.brand:hover .brand-mark::before { transform: translateX(0); }
+.brand:hover .brand-mark::after { transform: translateX(0); }
+.brand-text {
+  display: flex; flex-direction: column; line-height: 1.05;
+}
+.brand-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.95rem; letter-spacing: 0.02em;
+}
+.brand-sub {
+  font-family: 'Inter', sans-serif; font-weight: 500;
+  font-size: 0.62rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--ink-mute);
+  margin-top: 3px;
+}
+
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-link {
+  font-size: 0.8rem; font-weight: 500;
+  color: var(--ink-soft); position: relative;
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+.nav-link::before {
+  content: '·'; color: var(--accent); margin-right: 8px;
+  opacity: 0; transform: translateX(-6px);
+  transition: all 0.25s;
+}
+.nav-link:hover { color: var(--ink); }
+.nav-link:hover::before { opacity: 1; transform: translateX(0); }
+
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--bg);
+  padding: 12px 22px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative; overflow: hidden;
+  transition: transform 0.25s ease;
+}
+.nav-cta:hover { transform: translateY(-2px); }
+.nav-cta::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink); transform: translateY(100%);
+  transition: transform 0.3s ease; z-index: -1;
+}
+.nav-cta:hover::after { transform: translateY(0); }
+.nav-cta:hover { color: var(--bg); }
+.nav-cta-arrow { transition: transform 0.25s ease; }
+.nav-cta:hover .nav-cta-arrow { transform: translateX(3px); }
+
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile svg { stroke: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 32px 60px;
+  overflow: hidden;
+}
+.hero-bg-num {
+  position: absolute; bottom: -60px; right: -30px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(14rem, 32vw, 28rem);
+  color: var(--bg-2);
+  line-height: 0.9; pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+  opacity: 0.5;
+}
+
+.hero-inner {
+  max-width: 1480px; margin: 0 auto; width: 100%;
+  position: relative; z-index: 5;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 44px;
+}
+.hero-meta-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink-soft);
+  animation: fadeIn 0.8s ease 0.1s both;
+}
+.hero-meta-tag::before {
+  content: ''; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255,212,0,0.18);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255,212,0,0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(255,212,0,0); }
+}
+.hero-meta-divider {
+  width: 1px; height: 16px; background: var(--line-2);
+}
+
+.hero h1 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(3.5rem, 11vw, 11rem);
+  line-height: 0.88; letter-spacing: -0.025em;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+.hero h1 .word {
+  display: inline-block; overflow: hidden;
+  vertical-align: bottom; padding-bottom: 0.06em;
+  margin-right: 0.18em;
+}
+.hero h1 .word > span {
+  display: inline-block;
+  transform: translateY(120%);
+  animation: lineRise 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.hero h1 .word.w2 > span { animation-delay: 0.1s; }
+.hero h1 .word.w3 > span { animation-delay: 0.2s; }
+.hero h1 .word.w4 > span { animation-delay: 0.3s; }
+.hero h1 .word.w5 > span { animation-delay: 0.4s; }
+.hero h1 em {
+  font-style: normal; color: var(--accent);
+  font-family: 'Archivo Black', sans-serif;
+  position: relative;
+}
+
+@keyframes lineRise { to { transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero-foot {
+  display: grid; grid-template-columns: 1.4fr auto auto;
+  gap: 50px; align-items: end;
+  padding-top: 44px;
+  border-top: 1px solid var(--line);
+  animation: fadeIn 0.9s ease 0.7s both;
+}
+.hero-lede {
+  font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft);
+  max-width: 560px;
+}
+.hero-actions {
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 28px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.82rem; letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer; border: none;
+  position: relative; overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-primary { background: var(--accent); color: var(--bg); }
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink); transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.7, 0, 0.3, 1);
+  z-index: 0;
+}
+.btn-primary:hover::before { transform: translateY(0); }
+.btn-primary:hover { color: var(--bg); }
+.btn-primary > * { position: relative; z-index: 1; }
+
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--line-2);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-stats {
+  display: flex; gap: 36px; align-items: flex-start;
+}
+.hero-stat-item {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.hero-stat-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 2.6rem; line-height: 1; color: var(--ink);
+}
+.hero-stat-num em { font-style: normal; color: var(--accent); }
+.hero-stat-text {
+  font-size: 0.74rem; color: var(--ink-mute);
+  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+}
+
+/* ── MARQUEE ── */
+.marquee {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  overflow: hidden;
+  padding: 22px 0;
+}
+.marquee-track {
+  display: flex; gap: 60px; align-items: center;
+  white-space: nowrap;
+  animation: scroll 32s linear infinite;
+  width: max-content;
+}
+.marquee-item {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.6rem; letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.marquee-item.muted {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ink-mute);
+}
+.marquee-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+@keyframes scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* ── SECTIONS ── */
+.section { padding: 140px 32px; position: relative; }
+.section-inner { max-width: 1480px; margin: 0 auto; position: relative; }
+.section-head {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 80px; align-items: end;
+  margin-bottom: 80px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.section-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.9rem; color: var(--accent);
+  letter-spacing: 0.16em;
+}
+.section-head h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.4rem, 5.6vw, 5.2rem);
+  line-height: 0.92; letter-spacing: -0.02em;
+  text-transform: uppercase;
+  max-width: 1100px;
+}
+.section-head h2 em {
+  font-style: normal; color: var(--accent);
+}
+
+/* ── SERVICES ── */
+.services-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+.service {
+  padding: 56px 40px;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: background 0.4s ease;
+  min-height: 380px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  gap: 40px;
+}
+.service:nth-child(2n) { border-right: none; }
+.service::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.service:hover::before { transform: scaleX(1); }
+.service:hover { background: var(--bg-2); }
+.service-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.service-num {
+  font-family: 'Archivo Black', sans-serif;
+  color: var(--ink-mute); font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+.service:hover .service-num { color: var(--accent); }
+.service-arrow {
+  width: 50px; height: 50px;
+  border: 1px solid var(--line-2);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  transition: all 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.service:hover .service-arrow {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  transform: rotate(-45deg);
+}
+.service-arrow svg { transition: transform 0.3s; }
+.service-body h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1; letter-spacing: -0.01em;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.service-body p {
+  color: var(--ink-soft); line-height: 1.7;
+  font-size: 0.98rem; max-width: 540px;
+}
+.service-tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 24px;
+}
+.service-tag {
+  font-size: 0.7rem; padding: 6px 12px;
+  border: 1px solid var(--line-2); border-radius: 50px;
+  color: var(--ink-soft);
+  font-weight: 500; letter-spacing: 0.04em;
+}
+
+/* ── COVERAGE ── */
+.coverage {
+  background: var(--bg-2);
+  position: relative;
+}
+.coverage-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.coverage-content h2 { margin-bottom: 30px; }
+.coverage-content p {
+  color: var(--ink-soft); font-size: 1.05rem;
+  line-height: 1.7; margin-bottom: 26px; max-width: 480px;
+}
+.coverage-meta {
+  display: flex; gap: 36px; padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.coverage-meta-item {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.coverage-meta-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.8rem; color: var(--accent);
+  line-height: 1;
+}
+.coverage-meta-text {
+  font-size: 0.74rem; color: var(--ink-mute);
+  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+}
+
+.route {
+  position: relative;
+  height: 540px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+.route::before {
+  content: ''; position: absolute;
+  left: 50%; top: 50px; bottom: 50px;
+  width: 2px; background: var(--line-2);
+  transform: translateX(-50%);
+}
+.route-line {
+  position: absolute;
+  left: 50%; top: 50px;
+  width: 2px;
+  background: var(--accent);
+  transform: translateX(-50%);
+  transform-origin: top;
+  height: calc(100% - 100px);
+  transform: translateX(-50%) scaleY(0);
+  transition: transform 1.6s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.route.in .route-line { transform: translateX(-50%) scaleY(1); }
+.route-stop {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 18px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.route.in .route-stop { opacity: 1; transform: translateY(0); }
+.route.in .route-stop:nth-child(2) { transition-delay: 0.4s; }
+.route.in .route-stop:nth-child(3) { transition-delay: 0.7s; }
+.route.in .route-stop:nth-child(4) { transition-delay: 1s; }
+.route.in .route-stop:nth-child(5) { transition-delay: 1.3s; }
+.route.in .route-stop:nth-child(6) { transition-delay: 1.6s; }
+.route-stop:nth-child(odd) { justify-content: flex-end; flex-direction: row-reverse; }
+.route-stop:nth-child(odd) .route-stop-text { text-align: right; }
+.route-dot {
+  width: 16px; height: 16px;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  z-index: 3;
+}
+.route-dot.major {
+  width: 22px; height: 22px;
+  background: var(--accent);
+}
+.route-dot.major::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%; background: var(--accent);
+  animation: ping 2.4s infinite;
+}
+@keyframes ping {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+.route-stop-text {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.route-stop-name {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.05rem; line-height: 1;
+  text-transform: uppercase; letter-spacing: 0.02em;
+}
+.route-stop-meta {
+  font-size: 0.72rem; color: var(--ink-mute);
+  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+  margin-top: 6px;
+}
+
+/* ── PROCESS ── */
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+}
+.process-item {
+  padding: 56px 32px 64px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background 0.3s ease;
+}
+.process-item:last-child { border-right: none; }
+.process-item:hover { background: var(--bg-2); }
+.process-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 5.5rem; line-height: 1;
+  color: var(--bg-3);
+  margin-bottom: 36px;
+  transition: color 0.4s ease;
+}
+.process-item:hover .process-num { color: var(--accent); }
+.process-item h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.4rem; text-transform: uppercase;
+  letter-spacing: 0.02em; margin-bottom: 14px;
+}
+.process-item p {
+  color: var(--ink-soft); font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* ── CAPABILITIES ── */
+.cap-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+}
+.cap {
+  padding: 36px 28px;
+  background: var(--bg);
+  display: flex; flex-direction: column; gap: 16px;
+  transition: background 0.3s ease;
+}
+.cap:hover { background: var(--bg-2); }
+.cap-icon {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+}
+.cap h4 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.05rem; line-height: 1.15;
+  text-transform: uppercase; letter-spacing: 0.02em;
+}
+.cap p { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.6; }
+
+/* ── BIG CTA ── */
+.bigcta {
+  padding: 160px 32px;
+  position: relative; overflow: hidden;
+  text-align: center;
+  background: var(--bg);
+}
+.bigcta-ghost {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(8rem, 22vw, 22rem);
+  color: var(--bg-2);
+  line-height: 0.9; pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 1;
+}
+.bigcta-content {
+  position: relative; z-index: 2;
+  max-width: 880px; margin: 0 auto;
+}
+.bigcta h2 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 0.95; letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.bigcta h2 em { font-style: normal; color: var(--accent); }
+.bigcta p {
+  color: var(--ink-soft); font-size: 1.1rem;
+  line-height: 1.7; max-width: 560px;
+  margin: 0 auto 40px;
+}
+.bigcta-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 80px 32px 32px;
+  background: var(--bg);
+}
+.footer-inner {
+  max-width: 1480px; margin: 0 auto;
+  display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+.footer-desc {
+  color: var(--ink-soft); font-size: 0.95rem;
+  line-height: 1.7; max-width: 380px;
+  margin-top: 24px;
+}
+.footer-h {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 22px;
+}
+.footer-list a, .footer-list span {
+  display: block; padding: 5px 0;
+  font-size: 0.92rem; color: var(--ink-soft);
+  transition: color 0.2s;
+}
+.footer-list a:hover { color: var(--accent); }
+.footer-bottom {
+  max-width: 1480px; margin: 0 auto;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: var(--ink-mute);
+}
+.footer-bottom a { color: var(--accent); }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: var(--bg);
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.6rem; text-transform: uppercase;
+}
+.mobile-menu a:hover { color: var(--accent); }
+.mobile-close {
+  position: absolute; top: 22px; right: 22px;
+  background: none; border: none; cursor: pointer;
+}
+.mobile-close svg { stroke: var(--ink); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .nav-links { gap: 24px; }
+  .hero-foot { grid-template-columns: 1fr; gap: 30px; }
+  .hero-stats { justify-content: flex-start; }
+  .services-row { grid-template-columns: 1fr; }
+  .service { border-right: none; }
+  .coverage-inner { grid-template-columns: 1fr; gap: 60px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-item:nth-child(2) { border-right: none; }
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .section-head { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 700px) {
+  .nav { padding: 14px 18px; }
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .hero { padding: 130px 18px 40px; }
+  .hero-meta { flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
+  .hero-meta-divider { display: none; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 2rem; }
+  .marquee-item { font-size: 1.1rem; }
+  .section { padding: 90px 18px; }
+  .section-head { margin-bottom: 50px; }
+  .service { padding: 40px 22px; min-height: auto; }
+  .process-grid { grid-template-columns: 1fr; }
+  .process-item { border-right: none; border-bottom: 1px solid var(--line); }
+  .process-item:last-child { border-bottom: none; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
+  .footer { padding: 60px 18px 24px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .bigcta { padding: 100px 18px; }
+  .route { height: 480px; padding: 16px 0; }
+  .route-stop-text { margin-left: 36px; margin-right: 36px; }
+  .route-stop-name { font-size: 0.92rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="spotlight" id="spotlight"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark">P</div>
+      <div class="brand-text">
+        <span class="brand-name">PROACTIVE</span>
+        <span class="brand-sub">Civil Engineering Ltd</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#coverage" class="nav-link">Coverage</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#capability" class="nav-link">Capability</a>
+      <a href="#contact" class="nav-cta">
+        Request a quote
+        <svg class="nav-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#coverage" onclick="document.getElementById('mobileMenu').classList.remove('open')">Coverage</a>
+  <a href="#process" onclick="document.getElementById('mobileMenu').classList.remove('open')">Process</a>
+  <a href="#capability" onclick="document.getElementById('mobileMenu').classList.remove('open')">Capability</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--accent)">Request a quote</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-num">01</div>
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="hero-meta-tag mono">Available now &middot; Operating across the south-east</span>
+      <span class="hero-meta-divider"></span>
+      <span class="mono" style="color:var(--ink-mute)">Established civils contractor</span>
+    </div>
+    <h1>
+      <span class="word w1"><span>Drainage.</span></span>
+      <span class="word w2"><span>Civils.</span></span>
+      <span class="word w3"><span>Done</span></span>
+      <span class="word w4"><span><em>properly.</em></span></span>
+    </h1>
+    <div class="hero-foot">
+      <p class="hero-lede">
+        Proactive Civil Engineering Ltd handles drainage remediation, civil engineering works, drainage excavation and plumbing reinstatement from Peterborough through to central London. One contractor, one programme, one number.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          <span>Request a quote</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost">
+          What we do
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><em>04</em></div>
+          <div class="hero-stat-text">Core disciplines</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num"><em>120</em>mi</div>
+          <div class="hero-stat-text">Coverage corridor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Drainage Remediation</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item muted">Civil Engineering</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item">Drainage Excavation</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item muted">Plumbing Reinstatement</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item">Peterborough &rarr; London</span>
+    <span class="marquee-dot"></span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Drainage Remediation</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item muted">Civil Engineering</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item">Drainage Excavation</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item muted">Plumbing Reinstatement</span>
+    <span class="marquee-dot"></span>
+    <span class="marquee-item">Peterborough &rarr; London</span>
+    <span class="marquee-dot"></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-num mono">02 &middot; Disciplines</div>
+      <h2>Four trades. <em>One contractor.</em> No hand-offs.</h2>
+    </div>
+
+    <div class="services-row">
+      <div class="service reveal">
+        <div class="service-head">
+          <div class="service-num">001</div>
+          <div class="service-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Drainage<br>Remediation</h3>
+          <p>Patch repair, lining, root cutting, full re-lay where the original is past saving. Cured-in-place liners, descaling, junction repair, blockage clearance. We arrive with the right kit on the first visit.</p>
+          <div class="service-tags">
+            <span class="service-tag">CIPP lining</span>
+            <span class="service-tag">Patch repair</span>
+            <span class="service-tag">Root cutting</span>
+            <span class="service-tag">Descaling</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-head">
+          <div class="service-num">002</div>
+          <div class="service-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Civil<br>Engineering</h3>
+          <p>Section 50, 104, 106 and 278 works alongside private civils. Manhole construction, attenuation tanks, soakaways, headwalls, road crossings and reinstatement to LA spec.</p>
+          <div class="service-tags">
+            <span class="service-tag">Section 50</span>
+            <span class="service-tag">Manholes</span>
+            <span class="service-tag">Attenuation</span>
+            <span class="service-tag">Adoption-ready</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-head">
+          <div class="service-num">003</div>
+          <div class="service-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Drainage<br>Excavation</h3>
+          <p>Full open-cut and trenchless excavation for new runs, re-runs and connections. Service tracing, shoring, dewatering and backfill. CCTV survey before and after, every job.</p>
+          <div class="service-tags">
+            <span class="service-tag">Open-cut</span>
+            <span class="service-tag">Trenchless</span>
+            <span class="service-tag">CCTV survey</span>
+            <span class="service-tag">Connections</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service reveal">
+        <div class="service-head">
+          <div class="service-num">004</div>
+          <div class="service-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3>Plumbing<br>Reinstatement</h3>
+          <p>First and second-fix reinstatement after the civils are signed off. Soil stacks, internal runs, gullies, traps and final connections back to live services. We hand it back ready for occupation.</p>
+          <div class="service-tags">
+            <span class="service-tag">First fix</span>
+            <span class="service-tag">Second fix</span>
+            <span class="service-tag">Soil &amp; vent</span>
+            <span class="service-tag">Final connect</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="section coverage" id="coverage">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-num mono">03 &middot; Coverage</div>
+      <h2>Peterborough to <em>central London</em>. And the corridor between.</h2>
+    </div>
+
+    <div class="coverage-inner">
+      <div class="coverage-content reveal">
+        <p>Our base sits at the top of the corridor. From there, the M11, A1 and East Coast main line put every job from Cambridgeshire down through Hertfordshire, Essex and into central London inside a working hour's drive.</p>
+        <p>Most of our domestic and commercial work falls inside this strip. East of the line we travel further on planned civils packages.</p>
+        <div class="coverage-meta">
+          <div class="coverage-meta-item">
+            <div class="coverage-meta-num">~100mi</div>
+            <div class="coverage-meta-text">Corridor length</div>
+          </div>
+          <div class="coverage-meta-item">
+            <div class="coverage-meta-num">7</div>
+            <div class="coverage-meta-text">Counties served</div>
+          </div>
+          <div class="coverage-meta-item">
+            <div class="coverage-meta-num">&lt;90min</div>
+            <div class="coverage-meta-text">To most jobs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="route reveal" id="route">
+        <div class="route-line"></div>
+
+        <div class="route-stop">
+          <div class="route-dot major"></div>
+          <div class="route-stop-text">
+            <div class="route-stop-name">Peterborough</div>
+            <div class="route-stop-meta">Base &middot; Cambridgeshire</div>
+          </div>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-dot"></div>
+          <div class="route-stop-text">
+            <div class="route-stop-name">Cambridge</div>
+            <div class="route-stop-meta">Cambridgeshire</div>
+          </div>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-dot"></div>
+          <div class="route-stop-text">
+            <div class="route-stop-name">Stevenage</div>
+            <div class="route-stop-meta">Hertfordshire</div>
+          </div>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-dot"></div>
+          <div class="route-stop-text">
+            <div class="route-stop-name">Welwyn / Hatfield</div>
+            <div class="route-stop-meta">Hertfordshire</div>
+          </div>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-dot"></div>
+          <div class="route-stop-text">
+            <div class="route-stop-name">North London</div>
+            <div class="route-stop-meta">Greater London</div>
+          </div>
+        </div>
+
+        <div class="route-stop">
+          <div class="route-dot major"></div>
+          <div class="route-stop-text">
+            <div class="route-stop-name">Central London</div>
+            <div class="route-stop-meta">Zones 1 &amp; 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-num mono">04 &middot; Process</div>
+      <h2>Quoted, dug, lined, signed off.</h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-item reveal">
+        <div class="process-num">01</div>
+        <h3>Survey</h3>
+        <p>Walk the job, run a CCTV survey if drainage is in question, scope the works. We come back with a written quote within the working week.</p>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">02</div>
+        <h3>Permits</h3>
+        <p>If the work needs road closures, Section consents or LA notifications, we file them. You don't talk to the council, we do.</p>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">03</div>
+        <h3>Site</h3>
+        <p>One foreman, one team, one programme. Start on the day we said, finish on the day we said, communicate every day in between.</p>
+      </div>
+      <div class="process-item reveal">
+        <div class="process-num">04</div>
+        <h3>Sign-off</h3>
+        <p>Post-works CCTV, as-built drawings if required, snag walk, hand back ready for adoption or occupation. Final invoice after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section" id="capability" style="background:var(--bg-2);">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-num mono">05 &middot; Capability</div>
+      <h2>Plant, kit and the people who know how to use it.</h2>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M5 18l3-7h8l3 7M9 11l1-3h4l1 3"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/></svg>
+        </div>
+        <h4>Mini, midi &amp; full excavators</h4>
+        <p>0.8t through to 13t with operator. Reduced-tail-swing units for tight access works.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg>
+        </div>
+        <h4>CCTV survey rigs</h4>
+        <p>Push-rod and crawler units with sonde tracing for every condition survey we deliver.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h16M6 14V8a6 6 0 0112 0v6M9 8h6M12 14v8"/></svg>
+        </div>
+        <h4>CIPP &amp; UV lining</h4>
+        <p>In-house no-dig lining capability for repairs without breaking ground. Fast turnaround on emergency calls.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8M12 22v-8M5 7l4 4M19 7l-4 4M5 17l4-4M19 17l-4-4"/></svg>
+        </div>
+        <h4>High-pressure jetting</h4>
+        <p>4000-PSI jet vacs and recyclers on the road. Blockages cleared, lines descaled, drains run clear.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+        </div>
+        <h4>Section &amp; adoption work</h4>
+        <p>Section 50, 104, 106 and 278 packages. Documentation tied off so highways and water authority adopt cleanly.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3"/><path d="M12 12v9M8 21h8M5 9h2M17 9h2"/></svg>
+        </div>
+        <h4>Trained operatives</h4>
+        <p>CSCS, NRSWA, confined space and SHEA certified. Insurance and method statements current and on file.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 12h6v8h8v-8h6L12 2z"/></svg>
+        </div>
+        <h4>Out-of-hours response</h4>
+        <p>Emergency drainage callouts taken outside normal hours for commercial clients on retainer.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cap-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M7 10h10M7 14h6"/></svg>
+        </div>
+        <h4>As-built records</h4>
+        <p>Drawings, depths, falls and CCTV reports issued at completion. Everything traceable for adoption or audit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<section class="bigcta" id="contact">
+  <div class="bigcta-ghost">PROACTIVE</div>
+  <div class="bigcta-content">
+    <h2>Got a job on the corridor?<br><em>Let's talk.</em></h2>
+    <p>Drop us the postcode and a couple of lines on what's needed. We'll come back the same working day with next steps.</p>
+    <div class="bigcta-actions">
+      <a href="mailto:enquiries@proactivecivilengineering.co.uk" class="btn btn-primary">
+        <span>Email enquiries</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#services" class="btn btn-ghost">View services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div class="brand-text">
+          <span class="brand-name">PROACTIVE</span>
+          <span class="brand-sub">Civil Engineering Ltd</span>
+        </div>
+      </div>
+      <p class="footer-desc">Drainage remediation, civil engineering, drainage excavation and plumbing reinstatement. Operating from Peterborough through to central London.</p>
+    </div>
+    <div>
+      <div class="footer-h">Services</div>
+      <div class="footer-list">
+        <a href="#services">Drainage remediation</a>
+        <a href="#services">Civil engineering</a>
+        <a href="#services">Drainage excavation</a>
+        <a href="#services">Plumbing reinstatement</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">Coverage</div>
+      <div class="footer-list">
+        <span>Peterborough</span>
+        <span>Cambridge</span>
+        <span>Stevenage / Welwyn</span>
+        <span>North London</span>
+        <span>Central London</span>
+      </div>
+    </div>
+    <div>
+      <div class="footer-h">Contact</div>
+      <div class="footer-list">
+        <a href="mailto:enquiries@proactivecivilengineering.co.uk">enquiries@<br>proactivecivilengineering.co.uk</a>
+        <span>Mon to Fri, working hours</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Proactive Civil Engineering Ltd</span>
+    <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Cursor spotlight
+const spot = document.getElementById('spotlight');
+window.addEventListener('mousemove', (e) => {
+  spot.style.left = e.clientX + 'px';
+  spot.style.top = e.clientY + 'px';
+});
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
