@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D.M. Plumbing &amp; Heating — Plumber in Prescot, Merseyside</title>
+<meta name="description" content="Plumbing &amp; heating engineer in Prescot, Merseyside. Boiler installs, leaks, cylinders, bathrooms and 24hr emergency call out. Fast, reliable service from David Mountford. Call 07526 431 404.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --teal-deep: #0e4d3d;
+  --teal: #157561;
+  --teal-bright: #22a37c;
+  --teal-light: #4ec59f;
+  --copper: #c97f3a;
+  --copper-hot: #e08a3a;
+  --copper-soft: #e6a866;
+  --white: #ffffff;
+  --off-white: #f5f8f6;
+  --gray-50: #eef3f0;
+  --gray-100: #dde6e1;
+  --gray-400: #8aa097;
+  --gray-600: #4f655c;
+  --gray-800: #1f2e29;
+  --gray-900: #0e1813;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--gray-800);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gray-100);
+  transition: box-shadow 0.3s;
+}
+.nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 32px;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo img { height: 44px; width: auto; }
+.nav-logo-text {
+  font-weight: 800; font-size: 1.05rem; color: var(--teal-deep);
+  line-height: 1.15;
+}
+.nav-logo-text span { color: var(--copper); font-size: 0.7rem; font-weight: 600; display: block; letter-spacing: 1px; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--gray-600); transition: color 0.2s; }
+.nav-links a:hover { color: var(--teal-deep); }
+.nav-cta-btn {
+  background: var(--copper) !important; color: var(--white) !important;
+  padding: 10px 22px; border-radius: 50px;
+  font-weight: 700 !important; font-size: 0.85rem !important;
+  transition: all 0.3s !important; box-shadow: 0 2px 12px rgba(201,127,58,0.3);
+}
+.nav-cta-btn:hover { background: var(--copper-hot) !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,127,58,0.4); }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile svg { stroke: var(--teal-deep); }
+
+/* ── HERO ── */
+.hero {
+  padding: 140px 32px 80px;
+  background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 60%, #0a3a30 100%);
+  position: relative; overflow: hidden;
+}
+.hero-blobs {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.hero-blob {
+  position: absolute; border-radius: 50%; opacity: 0.10;
+  background: var(--copper);
+}
+.hero-blob:nth-child(1) { width: 500px; height: 500px; top: -150px; right: -100px; animation: blobFloat 8s ease-in-out infinite; }
+.hero-blob:nth-child(2) { width: 300px; height: 300px; bottom: -80px; left: -60px; animation: blobFloat 10s ease-in-out infinite reverse; }
+.hero-blob:nth-child(3) { width: 200px; height: 200px; top: 40%; left: 30%; animation: blobFloat 12s ease-in-out infinite 2s; background: var(--teal-light); opacity: 0.06; }
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 18px; border-radius: 50px; margin-bottom: 24px;
+  font-size: 0.78rem; font-weight: 600; color: var(--copper-soft);
+  animation: fadeUp 0.6s ease both;
+}
+.hero-badge .pulse-dot {
+  width: 8px; height: 8px; background: var(--teal-light); border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(78,197,159,0.4); } 50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(78,197,159,0); } }
+.hero h1 {
+  font-size: clamp(2.4rem, 5.2vw, 3.8rem); font-weight: 900;
+  line-height: 1.08; color: var(--white); margin-bottom: 18px;
+  animation: fadeUp 0.6s ease 0.15s both;
+}
+.hero h1 .highlight {
+  color: var(--copper-soft); position: relative; display: inline-block;
+}
+.hero h1 .highlight::after {
+  content: ''; position: absolute; bottom: 2px; left: 0; right: 0;
+  height: 6px; background: var(--copper); opacity: 0.30; border-radius: 3px;
+}
+.hero-tag {
+  font-family: 'Caveat', cursive; font-size: 1.45rem; color: var(--teal-light);
+  margin-bottom: 12px; animation: fadeUp 0.6s ease 0.05s both;
+}
+.hero-sub {
+  font-size: 1.05rem; color: rgba(255,255,255,0.72); line-height: 1.7;
+  margin-bottom: 32px; max-width: 480px;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.45s both;
+}
+.btn-hero {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px; border-radius: 50px;
+  font-weight: 700; font-size: 0.9rem;
+  border: none; cursor: pointer; transition: all 0.3s;
+}
+.btn-call {
+  background: var(--copper); color: var(--white);
+  box-shadow: 0 4px 20px rgba(201,127,58,0.35);
+}
+.btn-call:hover { background: var(--copper-hot); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(201,127,58,0.45); }
+.btn-work {
+  background: rgba(255,255,255,0.1); color: var(--white);
+  border: 2px solid rgba(255,255,255,0.25);
+}
+.btn-work:hover { border-color: var(--teal-light); color: var(--teal-light); }
+.hero-trust {
+  display: flex; align-items: center; gap: 18px; margin-top: 32px; flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.6s both;
+}
+.trust-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 14px; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.85);
+}
+.trust-pill svg { stroke: var(--teal-light); }
+.hero-images {
+  position: relative; animation: fadeUp 0.6s ease 0.3s both;
+}
+.hero-img-main {
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  transform: rotate(2deg);
+  transition: transform 0.4s ease;
+}
+.hero-img-main:hover { transform: rotate(0deg); }
+.hero-img-main img { width: 100%; height: 460px; object-fit: cover; }
+.hero-img-float {
+  position: absolute; bottom: -30px; left: -30px;
+  width: 180px; height: 180px; border-radius: 12px;
+  overflow: hidden; border: 4px solid var(--white);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  transform: rotate(-4deg);
+  animation: floatBounce 4s ease-in-out infinite;
+}
+.hero-img-float img { width: 100%; height: 100%; object-fit: cover; }
+@keyframes floatBounce { 0%, 100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(-4deg) translateY(-8px); } }
+
+.hero-emergency {
+  position: absolute; top: -15px; right: -10px; z-index: 3;
+  background: var(--copper); color: white; padding: 10px 20px;
+  border-radius: 50px; font-weight: 800; font-size: 0.75rem;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(201,127,58,0.5);
+  animation: wiggle 3s ease-in-out infinite;
+}
+@keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── SERVICES ── */
+.services { padding: 100px 32px; max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-family: 'Caveat', cursive; font-size: 1.3rem;
+  color: var(--copper); margin-bottom: 8px;
+}
+.section-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900;
+  color: var(--gray-900); line-height: 1.15; margin-bottom: 48px;
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.service-card {
+  padding: 36px 28px; background: var(--gray-50);
+  border-radius: 16px; border: 2px solid transparent;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.service-card:hover { border-color: var(--teal-bright); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(14,77,61,0.10); }
+.service-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; color: white; font-size: 1.4rem;
+}
+.service-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--gray-900); margin-bottom: 10px; }
+.service-card p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.65; }
+.service-card .service-tag {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--copper); color: white; font-size: 0.6rem;
+  font-weight: 800; padding: 4px 10px; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+
+/* ── GALLERY ── */
+.gallery {
+  padding: 100px 32px;
+  background: var(--gray-900);
+  position: relative;
+}
+.gallery::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 6px; background: linear-gradient(90deg, var(--teal-bright), var(--copper), var(--teal-bright));
+}
+.gallery-inner { max-width: 1200px; margin: 0 auto; }
+.gallery .section-label { color: var(--teal-light); }
+.gallery .section-heading { color: var(--white); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+.gallery-card {
+  border-radius: 12px; overflow: hidden; position: relative;
+  cursor: pointer;
+}
+.gallery-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.gallery-card:hover img { transform: scale(1.08); }
+.gallery-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(14,24,19,0.55) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.gallery-card:hover::after { opacity: 1; }
+.gallery-card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-card:nth-child(1) img { height: 100%; min-height: 420px; }
+.gallery-card:not(:first-child) img { height: 200px; }
+
+/* ── ABOUT ── */
+.about {
+  padding: 100px 32px; max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-visual { position: relative; }
+.about-img-wrap {
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(14,77,61,0.15);
+}
+.about-img-wrap img { width: 100%; height: 460px; object-fit: cover; }
+.about-card {
+  position: absolute; bottom: -24px; right: -24px;
+  background: var(--white); border-radius: 16px; padding: 20px 24px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  display: flex; align-items: center; gap: 14px;
+}
+.about-card-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--copper), var(--copper-hot));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 1.3rem;
+}
+.about-card-text { font-weight: 800; font-size: 1.5rem; color: var(--gray-900); line-height: 1; }
+.about-card-text span { display: block; font-size: 0.7rem; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.about-content .section-label { margin-bottom: 8px; }
+.about-content .section-heading { margin-bottom: 20px; }
+.about-content p { font-size: 1rem; color: var(--gray-600); line-height: 1.8; margin-bottom: 16px; }
+.about-list { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.about-list-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.88rem; font-weight: 600; color: var(--gray-800);
+}
+.about-list-item .check {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(34,163,124,0.12); color: var(--teal-bright);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; flex-shrink: 0;
+}
+
+/* ── CTA ── */
+.cta {
+  padding: 80px 32px;
+  background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal) 100%);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-blobs { position: absolute; inset: 0; pointer-events: none; }
+.cta-blobs .hero-blob { background: var(--copper); opacity: 0.10; }
+.cta-blobs .hero-blob:nth-child(1) { width: 300px; height: 300px; top: -100px; left: -50px; }
+.cta-blobs .hero-blob:nth-child(2) { width: 250px; height: 250px; bottom: -80px; right: -40px; }
+.cta-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.cta .section-label { color: var(--teal-light); }
+.cta .section-heading { color: var(--white); margin-bottom: 12px; }
+.cta-sub { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 28px; line-height: 1.7; }
+.cta-numbers {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 28px;
+}
+.cta-phone {
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem); font-weight: 900; color: var(--copper-soft);
+  display: block; transition: color 0.3s; line-height: 1.1;
+}
+.cta-phone:hover { color: var(--white); }
+.cta-phone-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-cta-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px; border-radius: 50px;
+  background: var(--copper); color: var(--white);
+  font-weight: 700; font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(201,127,58,0.35);
+  transition: all 0.3s;
+}
+.btn-cta-primary:hover { background: var(--copper-hot); transform: translateY(-2px); }
+.btn-cta-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px; border-radius: 50px;
+  background: #25D366; color: var(--white);
+  font-weight: 700; font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  transition: all 0.3s;
+}
+.btn-cta-whatsapp:hover { background: #20bd5a; transform: translateY(-2px); }
+
+/* ── FOOTER ── */
+.footer { background: var(--gray-900); padding: 60px 32px 28px; }
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+}
+.footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.footer-brand img { height: 40px; width: auto; border-radius: 6px; }
+.footer-brand-name { font-weight: 800; font-size: 1.05rem; color: var(--white); }
+.footer-desc { font-size: 0.85rem; color: var(--gray-400); line-height: 1.7; max-width: 340px; }
+.footer-heading { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--copper-soft); margin-bottom: 18px; }
+.footer-links a { display: block; font-size: 0.85rem; color: var(--gray-400); padding: 5px 0; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1200px; margin: 36px auto 0; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 0.75rem; color: var(--gray-400); }
+.footer-copy a { color: var(--copper-soft); }
+
+/* ── FLOATING CTAs ── */
+.floating-ctas {
+  position: fixed; bottom: 24px; right: 24px; z-index: 800;
+  display: flex; flex-direction: column; gap: 12px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.floating-ctas.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.float-btn {
+  width: 54px; height: 54px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: none; cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.float-btn:hover { transform: scale(1.15); }
+.float-btn-call {
+  background: var(--copper);
+  box-shadow: 0 4px 18px rgba(201,127,58,0.4);
+}
+.float-btn-call svg { stroke: white; fill: none; }
+.float-btn-whatsapp {
+  background: #25D366;
+  box-shadow: 0 4px 18px rgba(37,211,102,0.4);
+}
+.float-btn-whatsapp svg { fill: white; }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1.5rem; font-weight: 800; color: var(--teal-deep); transition: color 0.2s; }
+.mobile-menu a:hover { color: var(--copper); }
+.mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; cursor: pointer; }
+.mobile-close svg { stroke: var(--gray-800); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-images { display: none; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .about { grid-template-columns: 1fr; gap: 48px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-card:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-card:nth-child(1) img { min-height: 260px; }
+  .gallery-card:not(:first-child) img { height: 180px; }
+  .about-list { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-trust { flex-direction: column; gap: 10px; }
+  .btn-hero { width: 100%; justify-content: center; }
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.svg" alt="D.M. Plumbing &amp; Heating logo">
+      <div class="nav-logo-text">D.M. Plumbing <span>&amp; Heating</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Our Work</a>
+      <a href="#about">About</a>
+      <a href="tel:07526431404" class="nav-cta-btn">07526 431 404</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('open')">Our Work</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="tel:07526431404" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--copper)">07526 431 404</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-blobs">
+    <div class="hero-blob"></div>
+    <div class="hero-blob"></div>
+    <div class="hero-blob"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        Open now &mdash; 24hr emergency call out
+      </div>
+      <p class="hero-tag">Got a leak? I&rsquo;ll take a peek.</p>
+      <h1>Your local <span class="highlight">plumber</span> in Prescot &amp; Merseyside.</h1>
+      <p class="hero-sub">Boilers, leaks, cylinders, bathrooms and emergency call outs. Fast, reliable service from David Mountford &mdash; same number for years, same lad turning up every time.</p>
+      <div class="hero-actions">
+        <a href="tel:07526431404" class="btn-hero btn-call">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call 07526 431 404
+        </a>
+        <a href="#gallery" class="btn-hero btn-work">View Recent Jobs</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Free quotations
+        </span>
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Fast &amp; reliable
+        </span>
+        <span class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          24hr cover
+        </span>
+      </div>
+    </div>
+    <div class="hero-images">
+      <div class="hero-emergency">24hr Call Out</div>
+      <div class="hero-img-main">
+        <img src="work-1.jpg" alt="Copper pipework by D.M. Plumbing &amp; Heating">
+      </div>
+      <div class="hero-img-float">
+        <img src="work-3.jpg" alt="Boiler install">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label reveal">What David does</div>
+  <h2 class="section-heading reveal">Plumbing, heating<br>&amp; everything in between.</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">&#128293;</div>
+      <h3>Boiler installs &amp; repairs</h3>
+      <p>New boilers fitted neatly, old ones swapped over, breakdowns sorted same-day where I can. Combi, system or regular &mdash; all the major brands.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#128167;</div>
+      <h3>Leaks &amp; emergency repairs</h3>
+      <p>Burst pipe, dripping tap, flood through the ceiling? Got a leak, I&rsquo;ll take a peek &mdash; and stop it before it causes more damage.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#127777;&#65039;</div>
+      <h3>Cylinders &amp; hot water</h3>
+      <p>Unvented cylinder installs, vented swaps, immersion repairs and pressure issues. Hot water back on, properly fitted, properly insulated.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-tag">Popular</span>
+      <div class="service-icon">&#128703;</div>
+      <h3>Bathrooms &amp; showers</h3>
+      <p>Full bathroom rip-outs, shower fits, taps, toilets, basins. From the rough-in to the silicone bead, all done by one pair of hands.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">&#9832;</div>
+      <h3>Radiators &amp; heating</h3>
+      <p>Rad swaps, new circuits, balancing, power flushes and that one cold radiator nobody can fix. Heating that actually heats.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-tag">24Hr</span>
+      <div class="service-icon">&#9888;&#65039;</div>
+      <h3>24hr call out</h3>
+      <p>Out-of-hours emergencies across Prescot, Huyton, St Helens and surrounding Merseyside. Pick up the phone, I&rsquo;ll pick up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-label reveal">Recent jobs</div>
+    <h2 class="section-heading reveal">Pipework, boilers<br>and the proof in copper.</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card reveal"><img src="work-1.jpg" alt="Detailed copper pipework on a hot water cylinder" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-2.jpg" alt="Boiler install with vertical copper run" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-3.jpg" alt="MAIN combi boiler installed in cupboard" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-4.jpg" alt="Tempest unvented cylinder install" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-5.jpg" alt="Boiler with neat vertical copper feeds" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-6.jpg" alt="Two outdoor brass garden taps" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-7.jpg" alt="Boiler in basement with white pipework" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-img-wrap">
+      <img src="work-2.jpg" alt="David Mountford&rsquo;s pipework on a recent install">
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">&#128170;</div>
+      <div class="about-card-text">15+<span>Years on the tools</span></div>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-label">About D.M.</div>
+    <h2 class="section-heading">One lad, one number,<br>job done properly.</h2>
+    <p>D.M. Plumbing &amp; Heating is run by David Mountford &mdash; a Prescot-based plumber covering Merseyside and the surrounding areas. Boilers, leaks, cylinders, bathrooms, radiators, the lot. No salesman, no big quote, no excuses &mdash; just the same lad turning up every time.</p>
+    <p>Free quotes, fair prices, and a 24hr line for emergencies because leaks don&rsquo;t wait for nine in the morning. If something needs doing, give me a ring &mdash; I&rsquo;ll come and have a look.</p>
+    <div class="about-list">
+      <div class="about-list-item"><span class="check">&#10003;</span> Free quotations</div>
+      <div class="about-list-item"><span class="check">&#10003;</span> Fast, reliable service</div>
+      <div class="about-list-item"><span class="check">&#10003;</span> 24hr emergency cover</div>
+      <div class="about-list-item"><span class="check">&#10003;</span> Tidy work, tidy site</div>
+      <div class="about-list-item"><span class="check">&#10003;</span> Mobile &amp; landline</div>
+      <div class="about-list-item"><span class="check">&#10003;</span> No call-out fee on quotes</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-blobs">
+    <div class="hero-blob"></div>
+    <div class="hero-blob"></div>
+  </div>
+  <div class="cta-content">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-heading">Got a leak?<br>I&rsquo;ll take a peek.</h2>
+    <p class="cta-sub">Free quotes, fast turn-around, and the same number you&rsquo;ll keep saved for years. Covering Prescot, Huyton, St Helens, Whiston, Knowsley and surrounding Merseyside.</p>
+    <div class="cta-numbers">
+      <a href="tel:07526431404" class="cta-phone">07526 431 404</a>
+      <span class="cta-phone-label">Mobile</span>
+      <a href="tel:01514939528" class="cta-phone" style="font-size: clamp(1.4rem, 3.2vw, 2rem);">0151 493 9528</a>
+      <span class="cta-phone-label">Landline</span>
+    </div>
+    <div class="cta-buttons">
+      <a href="tel:07526431404" class="btn-cta-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call David
+      </a>
+      <a href="https://wa.me/447526431404?text=Hi%20David%2C%20I%20need%20a%20plumber%20please" target="_blank" rel="noopener" class="btn-cta-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+        WhatsApp David
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="logo.svg" alt="D.M. logo">
+        <span class="footer-brand-name">D.M. Plumbing &amp; Heating</span>
+      </div>
+      <p class="footer-desc">Plumbing &amp; heating engineer covering Prescot, Huyton, St Helens, Knowsley, Whiston and the rest of Merseyside. Got a leak, I&rsquo;ll take a peek.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Boiler installs</a>
+        <a href="#services">Leaks &amp; emergencies</a>
+        <a href="#services">Cylinders &amp; hot water</a>
+        <a href="#services">Bathrooms &amp; showers</a>
+        <a href="#services">Radiators &amp; heating</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="tel:07526431404">Mobile &mdash; 07526 431 404</a>
+        <a href="tel:01514939528">Landline &mdash; 0151 493 9528</a>
+        <a href="mailto:dmountford46@yahoo.co.uk">dmountford46@yahoo.co.uk</a>
+        <a>Prescot, Merseyside</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 D.M. Plumbing &amp; Heating. All rights reserved.</span>
+    <span class="footer-copy">Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="tel:07526431404" class="float-btn float-btn-call" aria-label="Call">
+    <svg width="22" height="22" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447526431404?text=Hi%20David%2C%20I%20need%20a%20plumber%20please" target="_blank" rel="noopener" class="float-btn float-btn-whatsapp" aria-label="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+// Floating CTAs
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.getElementById('hero');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    floatingCtas.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.1 });
+heroObs.observe(hero);
+</script>
+</body>
+</html>
