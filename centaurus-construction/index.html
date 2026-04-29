@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centaurus Construction — Painters &amp; Decorators</title>
+<meta name="description" content="Centaurus Construction — painters &amp; decorators specialising in Venetian plaster, wallpaper, lime wash, texture paint and exterior rendering. Expert craftsmanship in every stroke. Call 07566 249 532.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #1a1f2e;
+  --ink-soft: #2a3142;
+  --parchment: #f3ece0;
+  --parchment-warm: #ebe1d0;
+  --cream: #f8f3e9;
+  --gold: #b89154;
+  --gold-bright: #d4a865;
+  --gold-deep: #8c6b3a;
+  --taupe: #9c8d7a;
+  --taupe-deep: #5b5044;
+  --line: rgba(26,31,46,0.12);
+  --line-light: rgba(26,31,46,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+
+.serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: rgba(248,243,233,0.86);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-light);
+  transition: all 0.3s ease;
+}
+.nav.scrolled { background: rgba(248,243,233,0.96); box-shadow: 0 1px 24px rgba(26,31,46,0.06); }
+.nav-inner {
+  max-width: 1320px; margin: 0 auto; padding: 0 40px;
+  height: 84px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 46px; width: auto; }
+.nav-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 1.35rem; color: var(--ink);
+  line-height: 1; letter-spacing: 0.02em;
+}
+.nav-logo-text span {
+  display: block; margin-top: 4px;
+  font-family: 'Inter', sans-serif;
+  color: var(--gold-deep); font-size: 0.62rem;
+  font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+}
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a {
+  font-size: 0.84rem; font-weight: 500; color: var(--ink-soft);
+  letter-spacing: 0.03em; transition: color 0.2s; position: relative;
+}
+.nav-links a:hover { color: var(--gold-deep); }
+.nav-cta-btn {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 500;
+  color: var(--ink) !important; font-size: 1.05rem !important;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  letter-spacing: 0;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-cta-btn:hover { color: var(--gold-deep) !important; border-color: var(--gold-deep); }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+.nav-mobile svg { stroke: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 40px 100px;
+  background: var(--cream);
+  position: relative;
+}
+.hero-grid {
+  max-width: 1320px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px;
+  align-items: center;
+}
+.hero-eyebrow { margin-bottom: 28px; display: inline-flex; align-items: center; gap: 14px; }
+.hero-eyebrow::before {
+  content: ''; width: 36px; height: 1px; background: var(--gold);
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(2.8rem, 5.4vw, 4.8rem);
+  line-height: 1.04;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 400;
+}
+.hero-sub {
+  font-size: 1.05rem; color: var(--taupe-deep); line-height: 1.75;
+  max-width: 520px; margin-bottom: 40px;
+}
+.hero-actions { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 30px;
+  background: var(--ink); color: var(--cream);
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: 1px solid var(--ink);
+}
+.btn-primary:hover { background: var(--gold-deep); border-color: var(--gold-deep); }
+.btn-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1.15rem;
+  color: var(--ink); border-bottom: 1px solid var(--gold);
+  padding-bottom: 4px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-link:hover { color: var(--gold-deep); border-color: var(--gold-deep); }
+.btn-link svg { color: var(--gold); transition: transform 0.3s; }
+.btn-link:hover svg { transform: translateX(4px); }
+
+.hero-meta {
+  margin-top: 56px;
+  display: flex; gap: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.hero-meta-item {
+  flex: 1;
+}
+.hero-meta-label {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--taupe);
+  margin-bottom: 8px;
+}
+.hero-meta-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 500;
+  color: var(--ink);
+}
+.hero-meta-value.italic { font-style: italic; }
+
+/* Hero visual */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  max-height: 720px;
+}
+.hero-visual::before {
+  content: ''; position: absolute;
+  top: -20px; right: -20px; bottom: 30px; left: 30px;
+  border: 1px solid var(--gold);
+  z-index: 0;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  background: var(--ink);
+  overflow: hidden;
+  z-index: 1;
+}
+.hero-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.hero-stamp {
+  position: absolute; bottom: -32px; left: -32px; z-index: 2;
+  width: 140px; height: 140px;
+  background: var(--cream);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  animation: spinSlow 60s linear infinite;
+  font-family: 'Cormorant Garamond', serif;
+}
+.hero-stamp .stamp-num {
+  font-size: 2.6rem; font-weight: 500;
+  color: var(--gold-deep); line-height: 1;
+}
+.hero-stamp .stamp-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.55rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--taupe-deep);
+  margin-top: 6px;
+}
+@keyframes spinSlow { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+/* ── MARQUEE ── */
+.marquee {
+  background: var(--ink); color: var(--cream);
+  padding: 24px 0; overflow: hidden;
+  border-top: 1px solid var(--gold-deep);
+  border-bottom: 1px solid var(--gold-deep);
+}
+.marquee-track {
+  display: flex; gap: 72px;
+  animation: scroll 36s linear infinite;
+  white-space: nowrap;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--cream);
+  align-items: center;
+}
+.marquee-track span {
+  display: inline-flex; align-items: center; gap: 72px;
+}
+.marquee-track .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold-bright);
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 140px 40px;
+  background: var(--cream);
+}
+.services-inner { max-width: 1320px; margin: 0 auto; }
+.section-head {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 80px; align-items: end;
+  margin-bottom: 80px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.section-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+.section-head h2 em {
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 400;
+}
+.section-head .head-eyebrow { margin-bottom: 16px; }
+.section-head-text {
+  font-size: 0.98rem; color: var(--taupe-deep);
+  line-height: 1.85;
+}
+
+.svc-row {
+  display: grid; grid-template-columns: 100px 1fr 1.3fr 80px;
+  gap: 40px; align-items: start;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.3s ease;
+  cursor: default;
+}
+.svc-row:last-child { border-bottom: none; }
+.svc-row:hover { padding-left: 16px; }
+.svc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--gold-deep);
+  letter-spacing: 0.05em;
+}
+.svc-title h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.95rem;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.svc-title h3 em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+.svc-title-tag {
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--taupe);
+}
+.svc-body {
+  font-size: 0.96rem; color: var(--taupe-deep); line-height: 1.85;
+}
+.svc-body ul {
+  list-style: none; margin-top: 14px;
+  display: flex; flex-wrap: wrap; gap: 8px 14px;
+}
+.svc-body ul li {
+  font-size: 0.78rem; color: var(--ink);
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  background: rgba(255,255,255,0.4);
+}
+.svc-arrow {
+  align-self: center;
+  display: flex; justify-content: flex-end;
+}
+.svc-arrow svg {
+  color: var(--gold);
+  transition: transform 0.3s;
+}
+.svc-row:hover .svc-arrow svg { transform: translateX(8px); color: var(--gold-deep); }
+
+/* ── PORTFOLIO ── */
+.portfolio {
+  padding: 140px 0 0;
+  background: var(--ink);
+  color: var(--cream);
+  position: relative;
+}
+.portfolio .section-head {
+  max-width: 1320px; margin: 0 auto 80px; padding: 0 40px 40px;
+  border-bottom: 1px solid rgba(184,145,84,0.25);
+}
+.portfolio .section-head h2 { color: var(--cream); }
+.portfolio .section-head h2 em { color: var(--gold-bright); }
+.portfolio .section-head-text { color: rgba(243,236,224,0.7); }
+.portfolio .head-eyebrow { color: var(--gold-bright); }
+
+.portfolio-grid {
+  max-width: 1320px; margin: 0 auto; padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+.pf-card {
+  position: relative; overflow: hidden;
+  background: var(--ink-soft);
+  cursor: pointer;
+}
+.pf-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pf-card:hover img { transform: scale(1.06); }
+.pf-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,31,46,0.78) 0%, rgba(26,31,46,0) 50%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.pf-card:hover::after { opacity: 1; }
+.pf-meta {
+  position: absolute; bottom: 24px; left: 24px; right: 24px;
+  z-index: 2; opacity: 0; transform: translateY(12px);
+  transition: opacity 0.4s 0.05s, transform 0.4s;
+}
+.pf-card:hover .pf-meta { opacity: 1; transform: translateY(0); }
+.pf-meta .pf-label {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--gold-bright); margin-bottom: 4px;
+}
+.pf-meta .pf-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1.4rem; color: var(--cream);
+  font-weight: 500;
+}
+
+/* Layout: editorial irregular grid */
+.pf-card:nth-child(1) { grid-column: span 7; aspect-ratio: 4/3; }
+.pf-card:nth-child(2) { grid-column: span 5; aspect-ratio: 4/5; }
+.pf-card:nth-child(3) { grid-column: span 5; aspect-ratio: 5/6; }
+.pf-card:nth-child(4) { grid-column: span 4; aspect-ratio: 5/6; }
+.pf-card:nth-child(5) { grid-column: span 3; aspect-ratio: 5/6; }
+.pf-card:nth-child(6) { grid-column: span 4; aspect-ratio: 4/5; }
+.pf-card:nth-child(7) { grid-column: span 4; aspect-ratio: 4/5; }
+.pf-card:nth-child(8) { grid-column: span 4; aspect-ratio: 4/5; }
+
+.portfolio-foot {
+  max-width: 1320px; margin: 80px auto 0; padding: 60px 40px 140px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 24px;
+  border-top: 1px solid rgba(184,145,84,0.25);
+}
+.portfolio-foot p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 1.5rem;
+  color: var(--cream);
+  max-width: 600px;
+}
+.btn-light {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 30px;
+  background: transparent; color: var(--cream);
+  border: 1px solid var(--gold);
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn-light:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+/* ── CRAFT (about / values) ── */
+.craft {
+  padding: 140px 40px;
+  background: var(--parchment);
+}
+.craft-inner {
+  max-width: 1320px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 100px; align-items: center;
+}
+.craft-visual { position: relative; }
+.craft-img-main {
+  aspect-ratio: 4/5;
+  background: var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+.craft-img-main img { width: 100%; height: 100%; object-fit: cover; }
+.craft-img-float {
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 50%;
+  aspect-ratio: 1/1;
+  border: 8px solid var(--parchment);
+  background: var(--ink);
+  overflow: hidden;
+  z-index: 2;
+}
+.craft-img-float img { width: 100%; height: 100%; object-fit: cover; }
+
+.craft-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.06;
+  color: var(--ink);
+  margin-bottom: 28px;
+  letter-spacing: -0.015em;
+}
+.craft-content h2 em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+.craft-content .eyebrow { margin-bottom: 18px; display: inline-flex; align-items: center; gap: 14px; }
+.craft-content .eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+.craft-content p {
+  font-size: 1.02rem; color: var(--taupe-deep); line-height: 1.85;
+  margin-bottom: 18px;
+}
+.craft-pillars {
+  margin-top: 44px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+.pillar-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 2.6rem; color: var(--gold-deep);
+  line-height: 1;
+}
+.pillar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 1.15rem;
+  color: var(--ink); margin-top: 6px; margin-bottom: 6px;
+}
+.pillar-text {
+  font-size: 0.86rem; color: var(--taupe-deep); line-height: 1.7;
+}
+
+/* ── QUOTE ── */
+.quote {
+  padding: 130px 40px;
+  background: var(--cream);
+  text-align: center;
+}
+.quote-inner { max-width: 900px; margin: 0 auto; }
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem; line-height: 0.4;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 24px;
+}
+.quote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1.3;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 32px;
+  letter-spacing: -0.005em;
+}
+.quote cite {
+  font-style: normal;
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--taupe-deep);
+}
+
+/* ── CTA ── */
+.cta {
+  padding: 140px 40px;
+  background: var(--ink);
+  color: var(--cream);
+  position: relative; overflow: hidden;
+}
+.cta::before {
+  content: ''; position: absolute;
+  top: -200px; right: -200px;
+  width: 500px; height: 500px;
+  border: 1px solid rgba(184,145,84,0.2);
+  border-radius: 50%;
+}
+.cta::after {
+  content: ''; position: absolute;
+  top: -100px; right: -100px;
+  width: 300px; height: 300px;
+  border: 1px solid rgba(184,145,84,0.3);
+  border-radius: 50%;
+}
+.cta-inner {
+  max-width: 1100px; margin: 0 auto;
+  text-align: center; position: relative; z-index: 2;
+}
+.cta .eyebrow { color: var(--gold-bright); display: inline-flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.cta .eyebrow::before, .cta .eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--gold); }
+.cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.cta h2 em { font-style: italic; color: var(--gold-bright); }
+.cta-sub {
+  font-size: 1.05rem; color: rgba(243,236,224,0.7);
+  max-width: 600px; margin: 0 auto 56px;
+  line-height: 1.85;
+}
+.cta-phone {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  color: var(--gold-bright);
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.cta-phone:hover { color: var(--cream); }
+.cta-phone-label {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(243,236,224,0.55);
+  margin-bottom: 50px; display: block;
+}
+.cta-divider {
+  width: 1px; height: 40px;
+  background: rgba(184,145,84,0.4);
+  margin: 0 auto 30px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 80px 40px 32px;
+  border-top: 1px solid rgba(184,145,84,0.25);
+}
+.footer-inner {
+  max-width: 1320px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+.footer-brand .nav-logo-text { color: var(--cream); }
+.footer-brand .nav-logo-text span { color: var(--gold-bright); }
+.footer-desc {
+  font-size: 0.88rem; color: rgba(243,236,224,0.6);
+  line-height: 1.85; margin-top: 24px; max-width: 360px;
+}
+.footer-heading {
+  font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 20px;
+}
+.footer-links a {
+  display: block;
+  font-size: 0.9rem; color: rgba(243,236,224,0.7);
+  padding: 5px 0;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-bright); }
+.footer-bottom {
+  max-width: 1320px; margin: 56px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(184,145,84,0.15);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.74rem; color: rgba(243,236,224,0.45);
+}
+.footer-bottom a { color: var(--gold-bright); }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: var(--cream);
+  flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 2rem; color: var(--ink);
+}
+.mobile-close { position: absolute; top: 24px; right: 28px; background: none; border: none; cursor: pointer; }
+.mobile-close svg { stroke: var(--ink); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-visual { max-width: 540px; }
+  .section-head { grid-template-columns: 1fr; gap: 24px; }
+  .craft-inner { grid-template-columns: 1fr; gap: 80px; }
+  .craft-img-float { right: -20px; bottom: -40px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .pf-card:nth-child(1) { grid-column: span 12; }
+  .pf-card:nth-child(2),
+  .pf-card:nth-child(3) { grid-column: span 6; }
+  .pf-card:nth-child(4),
+  .pf-card:nth-child(5),
+  .pf-card:nth-child(6),
+  .pf-card:nth-child(7),
+  .pf-card:nth-child(8) { grid-column: span 6; }
+}
+@media (max-width: 768px) {
+  .nav-inner { padding: 0 24px; height: 72px; }
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .hero { padding: 130px 24px 80px; }
+  .services { padding: 100px 24px; }
+  .craft { padding: 100px 24px; }
+  .quote { padding: 90px 24px; }
+  .cta { padding: 100px 24px; }
+  .portfolio { padding: 100px 0 0; }
+  .portfolio .section-head, .portfolio-grid, .portfolio-foot { padding-left: 24px; padding-right: 24px; }
+  .footer { padding: 60px 24px 28px; }
+  .svc-row {
+    grid-template-columns: 1fr;
+    gap: 14px; padding: 36px 0;
+  }
+  .svc-arrow { justify-content: flex-start; }
+  .craft-pillars { grid-template-columns: 1fr; gap: 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .hero-meta { gap: 28px; flex-wrap: wrap; }
+  .hero-meta-item { min-width: 45%; }
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.svg" alt="Centaurus Construction logo">
+      <div class="nav-logo-text">Centaurus<span>Painters &amp; Decorators</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#craft">The Craft</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:07566249532" class="nav-cta-btn">07566 249 532</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#portfolio" onclick="document.getElementById('mobileMenu').classList.remove('open')">Portfolio</a>
+  <a href="#craft" onclick="document.getElementById('mobileMenu').classList.remove('open')">The Craft</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+  <a href="tel:07566249532" onclick="document.getElementById('mobileMenu').classList.remove('open')">07566 249 532</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow hero-eyebrow">Painters &amp; Decorators</span>
+      <h1>Expert craftsmanship in <em>every stroke.</em></h1>
+      <p class="hero-sub">Centaurus Construction is a small painting and decorating outfit working on heritage homes, period bathrooms and considered interiors. Venetian plaster, lime wash, wallpaper and exterior rendering &mdash; all hand-finished, all done properly.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn-link">
+          Request a quote
+          <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 5h14M11 1l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Speciality</div>
+          <div class="hero-meta-value italic">Venetian plaster</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Approach</div>
+          <div class="hero-meta-value italic">Hand-finished</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Quotes</div>
+          <div class="hero-meta-value italic">Always free</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img"><img src="work-1.jpg" alt="Hand-finished pink Venetian plaster bathroom by Centaurus" loading="eager"></div>
+      <div class="hero-stamp">
+        <span class="stamp-num">CC</span>
+        <span class="stamp-label">Est. Craftsmanship</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>
+      Venetian Plaster <span class="dot"></span>
+      Lime Wash <span class="dot"></span>
+      Wallpaper <span class="dot"></span>
+      Texture Paint <span class="dot"></span>
+      Wood Finishes <span class="dot"></span>
+      Silicone Render <span class="dot"></span>
+      Acrylic Render <span class="dot"></span>
+      Lime Render <span class="dot"></span>
+      Heritage Restoration <span class="dot"></span>
+    </span>
+    <span>
+      Venetian Plaster <span class="dot"></span>
+      Lime Wash <span class="dot"></span>
+      Wallpaper <span class="dot"></span>
+      Texture Paint <span class="dot"></span>
+      Wood Finishes <span class="dot"></span>
+      Silicone Render <span class="dot"></span>
+      Acrylic Render <span class="dot"></span>
+      Lime Render <span class="dot"></span>
+      Heritage Restoration <span class="dot"></span>
+    </span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow head-eyebrow">What we do</span>
+        <h2>Three specialisms,<br>one set of <em>hands.</em></h2>
+      </div>
+      <p class="section-head-text">From a single feature wall to a full re-render, the workflow is the same: prep properly, finish patiently, and leave the place tidier than we found it. No subcontractors, no rushed seconds &mdash; just the hand that started the job seeing it through to the last brushstroke.</p>
+    </div>
+
+    <div class="svc-row reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-title">
+        <h3>Wallpaper &amp; <em>Venetian plaster</em></h3>
+        <span class="svc-title-tag">Decorative finishes</span>
+      </div>
+      <div class="svc-body">
+        Polished Venetian plaster, micro-cement, hand-applied wallpaper and statement feature walls. Every layer trowelled, burnished and sealed in a single set of hands &mdash; the result is the kind of surface you want to keep touching.
+        <ul>
+          <li>Marmorino</li><li>Stucco</li><li>Tadelakt</li><li>Hand-hung wallpaper</li><li>Gold leaf</li>
+        </ul>
+      </div>
+      <div class="svc-arrow"><svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 7h30M24 1l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="svc-row reveal">
+      <div class="svc-num">02</div>
+      <div class="svc-title">
+        <h3>Interior <em>painting</em></h3>
+        <span class="svc-title-tag">Lime wash, texture, wood</span>
+      </div>
+      <div class="svc-body">
+        Full-room repaints, feature walls, woodwork and trim. We carry lime wash for chalky, breathable heritage walls; texture paint for tactile depth; and a careful hand on stained or painted wood. Quiet prep work is half the job.
+        <ul>
+          <li>Lime wash</li><li>Texture paint</li><li>Wood paint &amp; stain</li><li>Heritage colour matching</li>
+        </ul>
+      </div>
+      <div class="svc-arrow"><svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 7h30M24 1l6 6-6 6"/></svg></div>
+    </div>
+
+    <div class="svc-row reveal">
+      <div class="svc-num">03</div>
+      <div class="svc-title">
+        <h3>Exterior painting<br>&amp; <em>rendering</em></h3>
+        <span class="svc-title-tag">Silicone, acrylic, lime</span>
+      </div>
+      <div class="svc-body">
+        Masonry paint, weatherboards, windows and doors &mdash; plus full silicone, acrylic and lime render systems. We pick the system to match the substrate (and the listing if there is one), then leave a finish that endures the British weather.
+        <ul>
+          <li>Silicone render</li><li>Acrylic render</li><li>Lime render</li><li>Masonry paint</li><li>Window finishing</li>
+        </ul>
+      </div>
+      <div class="svc-arrow"><svg width="32" height="14" viewBox="0 0 32 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 7h30M24 1l6 6-6 6"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="section-head reveal">
+    <div>
+      <span class="eyebrow head-eyebrow">Selected work</span>
+      <h2>The proof, in <em>finishes.</em></h2>
+    </div>
+    <p class="section-head-text">A sample of recent jobs &mdash; bathrooms with hand-laid hex tile and brass-trim arches, plaster-and-beam restorations, herringbone-floored rooms taken from bare brick to brushed and tidy. Each one a different brief, the same standard.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="pf-card reveal">
+      <img src="work-9.jpg" alt="Pink hex tile arch shower with brass detailing" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Bath / Plaster</div>
+        <div class="pf-title">Pink hex &amp; brushed brass</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-2.jpg" alt="Slipper bath bathroom with star tile floor" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Bath / Decoration</div>
+        <div class="pf-title">Subway &amp; star tile</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-4.jpg" alt="Green hex tile arch shower with mosaic floor" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Bath / Tile</div>
+        <div class="pf-title">Forest hex arch</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-7.jpg" alt="Restored exposed beams over hand-finished plaster" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Heritage</div>
+        <div class="pf-title">Beams &amp; lime plaster</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-3.jpg" alt="Slipper bath under shower hoop" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Bath</div>
+        <div class="pf-title">Subway-tiled shower bath</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-8.jpg" alt="Beam ceiling with fresh white walls" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Heritage</div>
+        <div class="pf-title">Beamed ceiling restore</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-10.jpg" alt="Newly painted room with herringbone floor" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Interior</div>
+        <div class="pf-title">Snowy room repaint</div>
+      </div>
+    </div>
+    <div class="pf-card reveal">
+      <img src="work-11.jpg" alt="Newly painted room with parquet" loading="lazy">
+      <div class="pf-meta">
+        <div class="pf-label">Interior</div>
+        <div class="pf-title">Bright box room</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-foot">
+    <p>Always quietly proud of the rooms we leave behind.</p>
+    <a href="#contact" class="btn-light">Discuss your project</a>
+  </div>
+</section>
+
+<!-- CRAFT -->
+<section class="craft" id="craft">
+  <div class="craft-inner">
+    <div class="craft-visual reveal">
+      <div class="craft-img-main"><img src="work-6.jpg" alt="Herringbone parquet under fresh white walls"></div>
+      <div class="craft-img-float"><img src="work-5.jpg" alt="Detail of bathroom finishing"></div>
+    </div>
+    <div class="craft-content reveal">
+      <span class="eyebrow">The Craft</span>
+      <h2>Loyalty, punctuality<br>&amp; the <em>long view.</em></h2>
+      <p>Centaurus Construction is built on years on the tools across heritage and contemporary projects. The detail comes first &mdash; we tailor what we use and how we use it to each room, each substrate, each client.</p>
+      <p>We turn up when we said we would, work tidily, and finish what we started. Most of the work comes from people who&rsquo;ve had us before, or someone they trust. That is the standard we hold ourselves to.</p>
+      <div class="craft-pillars">
+        <div>
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Loyalty</div>
+          <div class="pillar-text">Same hand on the brush from the prep stage to the last coat &mdash; no parachuted-in subcontractors.</div>
+        </div>
+        <div>
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Punctuality</div>
+          <div class="pillar-text">Honest start dates, honest finish dates, and a phone we actually answer through the project.</div>
+        </div>
+        <div>
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">Detail</div>
+          <div class="pillar-text">Edge lines true, masking lifted clean, dust-sheeted floors and a hoover before we leave.</div>
+        </div>
+        <div>
+          <div class="pillar-num">04</div>
+          <div class="pillar-title">Materials</div>
+          <div class="pillar-text">Quality silicone, acrylic and lime systems &mdash; chosen for the substrate, not the invoice.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="quote-inner">
+    <span class="quote-mark">&ldquo;</span>
+    <blockquote>Tailored to your needs. Loyalty, punctuality and a finish that exceeds expectations &mdash; that is the cornerstone of how we work.</blockquote>
+    <cite>— Centaurus Construction</cite>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <span class="eyebrow">Get in touch</span>
+    <h2>Bring your <em>vision</em><br>to life.</h2>
+    <p class="cta-sub">For free quotations, bookings or a chat about a project &mdash; pick up the phone or send a WhatsApp. We&rsquo;ll come and see the room before we say a price.</p>
+    <a href="tel:07566249532" class="cta-phone">07566 249 532</a>
+    <span class="cta-phone-label">Call or WhatsApp</span>
+    <div class="cta-divider"></div>
+    <a href="#contact" class="btn-light" onclick="window.location='https://wa.me/447566249532?text=Hi%20Centaurus%2C%20I%27d%20like%20a%20quote%20please';return false;" style="border-color: var(--gold-bright); color: var(--gold-bright);">WhatsApp Centaurus</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <img src="logo.svg" alt="Centaurus logo" style="height: 44px;">
+        <div class="nav-logo-text">Centaurus<span>Painters &amp; Decorators</span></div>
+      </a>
+      <p class="footer-desc">A small painting and decorating outfit specialising in Venetian plaster, lime wash, wallpaper and exterior rendering. Heritage homes a speciality.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Venetian plaster</a>
+        <a href="#services">Wallpaper</a>
+        <a href="#services">Lime wash</a>
+        <a href="#services">Texture paint</a>
+        <a href="#services">Render &amp; masonry</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Studio</div>
+      <div class="footer-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#craft">The Craft</a>
+        <a href="#contact">Quotations</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="tel:07566249532">07566 249 532</a>
+        <a href="https://wa.me/447566249532" target="_blank" rel="noopener">WhatsApp</a>
+        <a>By appointment</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Centaurus Construction. Painters &amp; decorators.</span>
+    <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
