@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LJAY's Painting &amp; Decorating | Falkirk · Glasgow · Edinburgh</title>
+<meta name="description" content="Louise Jones — painter and decorator covering Falkirk, Glasgow and Edinburgh. Bold colour, brilliant finishes, friendly service. Free quotes across central Scotland.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EBDC;
+  --paper-2:#EAE2D0;
+  --ink:#1B1A17;
+  --ink-soft:#3a382f;
+  --muted:#6b6655;
+  --line:#d8cfba;
+  --coral:#E8553F;
+  --coral-deep:#C8412C;
+  --teal:#2E8B83;
+  --teal-deep:#216a64;
+  --sage:#7A8A5E;
+  --butter:#F2C75C;
+  --plum:#5b3a4e;
+  --green:#1FA958;
+  --shadow:0 30px 60px -30px rgba(27,26,23,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--paper);
+  color:var(--ink-soft);
+  font-weight:400;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:90px;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Instrument Serif',serif;font-weight:400;color:var(--ink);letter-spacing:-0.01em;line-height:1.04}
+em{font-style:italic}
+.serif{font-family:'Instrument Serif',serif;font-weight:400}
+.hand{font-family:'Caveat',cursive;font-weight:700}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+/* Paper texture */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(1px 1px at 20% 30%,rgba(27,26,23,.04) 50%,transparent 51%),
+    radial-gradient(1px 1px at 70% 65%,rgba(27,26,23,.03) 50%,transparent 51%),
+    radial-gradient(1px 1px at 45% 80%,rgba(27,26,23,.03) 50%,transparent 51%);
+  background-size:120px 120px,180px 180px,90px 90px;
+  opacity:.6;
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 32px;
+  background:rgba(242,235,220,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s, background .3s;
+}
+.nav.scrolled{border-bottom-color:var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Instrument Serif',serif;font-size:1.45rem;color:var(--ink);white-space:nowrap}
+.brand .blob{width:14px;height:14px;border-radius:50%;background:var(--coral);box-shadow:6px 6px 0 0 var(--teal)}
+.brand strong{font-weight:400}
+.brand em{font-style:italic;color:var(--coral)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.9rem;color:var(--ink-soft);transition:color .2s}
+.nav-links a:hover{color:var(--coral)}
+.nav-phone{display:none}
+@media(min-width:900px){.nav-phone{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--ink);border-radius:999px;font-size:.85rem;color:var(--ink);transition:all .2s}}
+.nav-phone:hover{background:var(--ink);color:var(--paper)}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100vh;
+  padding:140px 0 60px;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+  position:relative;z-index:2;width:100%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 14px;border:1px solid var(--ink);border-radius:999px;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);
+  margin-bottom:28px;
+  background:var(--paper);
+}
+.hero-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.hero h1{
+  font-size:clamp(3.1rem,7.4vw,6.2rem);
+  letter-spacing:-0.025em;
+  margin-bottom:26px;
+}
+.hero h1 em{color:var(--coral)}
+.hero h1 .swoop{position:relative;display:inline-block}
+.hero h1 .swoop::after{
+  content:'';position:absolute;left:-4%;right:-4%;bottom:.04em;height:.18em;
+  background:var(--butter);z-index:-1;border-radius:6px;
+  transform:skewX(-6deg);
+}
+.hero p.lead{
+  font-size:1.18rem;color:var(--ink-soft);max-width:520px;
+  margin-bottom:34px;
+}
+.hero p.lead strong{color:var(--ink);font-weight:600}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 28px;border-radius:999px;
+  font-family:'Geist',sans-serif;font-weight:500;font-size:.98rem;letter-spacing:-0.005em;
+  border:1.5px solid var(--ink);
+  cursor:pointer;transition:transform .2s, box-shadow .2s, background .2s;
+}
+.btn-primary{background:var(--coral);color:#fff;border-color:var(--coral)}
+.btn-primary:hover{background:var(--coral-deep);border-color:var(--coral-deep);transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(232,85,63,.55)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+.btn-wa{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-wa:hover{background:#178a45;border-color:#178a45;transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(31,169,88,.55)}
+.hero-meta{
+  margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  font-size:.82rem;color:var(--muted);
+}
+.hero-meta .stars{color:var(--butter);letter-spacing:.04em;font-size:1rem}
+.hero-meta b{color:var(--ink);font-weight:600}
+
+/* Hero swatch stack — paint chips */
+.swatch-stack{
+  position:relative;
+  display:flex;flex-direction:column;gap:18px;
+  perspective:1000px;
+}
+.chip{
+  position:relative;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transform:rotate(-2deg);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.chip:nth-child(2){transform:rotate(1.5deg) translateX(40px)}
+.chip:nth-child(3){transform:rotate(-1deg) translateX(-30px)}
+.chip:hover{transform:rotate(0) translateX(0) scale(1.02)}
+.chip-img{aspect-ratio:5/3;background-size:cover;background-position:center}
+.chip-label{
+  background:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;
+  font-family:'Geist',sans-serif;
+}
+.chip-label .name{font-family:'Instrument Serif',serif;font-size:1.35rem;color:var(--ink);font-style:italic}
+.chip-label .code{font-size:.72rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.chip-dot{width:18px;height:18px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+.chip-1 .chip-img{background-image:url('coral-living.jpg')}
+.chip-2 .chip-img{background-image:url('teal-bedroom.jpg')}
+.chip-3 .chip-img{background-image:url('stone-bathroom.jpg')}
+
+/* Decorative paint smudges */
+.smudge{position:absolute;border-radius:50%;filter:blur(60px);opacity:.45;z-index:0;pointer-events:none}
+.smudge-1{width:380px;height:380px;background:var(--coral);top:-80px;right:-120px}
+.smudge-2{width:300px;height:300px;background:var(--teal);bottom:-60px;left:30%;opacity:.25}
+
+/* MARQUEE */
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;background:var(--paper-2);
+  padding:18px 0;
+  position:relative;z-index:3;
+}
+.marquee-track{display:flex;gap:50px;animation:scroll 40s linear infinite;white-space:nowrap;font-family:'Instrument Serif',serif;font-size:1.6rem;color:var(--ink);align-items:center}
+.marquee-track span{display:inline-flex;align-items:center;gap:50px}
+.marquee-track .star{color:var(--coral);font-size:1.4rem}
+.marquee-track .it{font-style:italic;color:var(--teal)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.section{position:relative;padding:120px 0;z-index:2}
+.section-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:70px;align-items:end}
+.section-head .label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:18px}
+.section-head h2{font-size:clamp(2.5rem,5.4vw,4.5rem);max-width:680px}
+.section-head h2 em{color:var(--teal)}
+.section-head .sub{color:var(--muted);font-size:1.05rem;max-width:440px}
+
+/* INTRO */
+.intro{padding:120px 0 80px}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro-photo{position:relative;border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.intro-photo img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.intro-photo .badge{
+  position:absolute;bottom:24px;left:24px;
+  background:var(--paper);padding:14px 18px;border-radius:6px;
+  font-family:'Instrument Serif',serif;font-style:italic;color:var(--ink);font-size:1.1rem;
+  border:1px solid var(--line);
+}
+.intro-photo .badge b{font-style:normal;color:var(--coral);font-family:'Geist';font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:4px}
+.intro-text .label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:20px}
+.intro-text h2{font-size:clamp(2.4rem,4.8vw,3.8rem);margin-bottom:26px}
+.intro-text h2 em{color:var(--teal)}
+.intro-text p{font-size:1.08rem;color:var(--ink-soft);margin-bottom:18px;max-width:520px}
+.sig{font-family:'Caveat',cursive;font-size:2.2rem;color:var(--ink);margin-top:18px;display:block;line-height:1}
+.sig + small{font-size:.78rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+
+/* PORTFOLIO — paint chip grid */
+.portfolio{background:var(--paper)}
+.chips{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.work{
+  position:relative;background:#fff;border-radius:8px;overflow:hidden;
+  box-shadow:0 16px 40px -20px rgba(27,26,23,.18);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.work:hover{transform:translateY(-6px)}
+.work-img{aspect-ratio:4/3;background-size:cover;background-position:center;transition:transform .8s}
+.work:hover .work-img{transform:scale(1.04)}
+.work-meta{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.work-meta .name{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.5rem;color:var(--ink);line-height:1.1}
+.work-meta .code{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.work-meta .swatch{width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.08);flex-shrink:0}
+.w1{grid-column:span 7}.w2{grid-column:span 5}
+.w3{grid-column:span 4}.w4{grid-column:span 4}.w5{grid-column:span 4}
+.w6{grid-column:span 5}.w7{grid-column:span 7}
+
+/* SERVICES — colour ribbon */
+.services{background:var(--paper-2)}
+.service-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink)}
+.service{
+  display:grid;grid-template-columns:80px 1fr auto;gap:24px;
+  padding:28px 6px;border-bottom:1px solid var(--ink);
+  align-items:center;
+  position:relative;cursor:pointer;
+  transition:padding .3s;
+}
+.service:nth-child(odd){border-right:1px solid var(--ink)}
+.service:hover{padding-left:20px;padding-right:20px;background:var(--paper)}
+.service .num{font-family:'Instrument Serif',serif;font-size:2.4rem;color:var(--coral);line-height:1;font-style:italic}
+.service .title{font-family:'Instrument Serif',serif;font-size:1.7rem;color:var(--ink);line-height:1.1}
+.service .arr{font-size:1.4rem;color:var(--ink);transition:transform .3s}
+.service:hover .arr{transform:translateX(6px);color:var(--coral)}
+.service .desc{display:none}
+@media(min-width:900px){.service .desc{display:block;grid-column:2;font-size:.9rem;color:var(--muted);max-width:400px;margin-top:6px}}
+
+/* AREAS */
+.areas{background:var(--ink);color:var(--paper);padding:100px 0}
+.areas h2{color:var(--paper);font-size:clamp(2.4rem,5vw,4rem);margin-bottom:14px}
+.areas h2 em{color:var(--butter)}
+.areas .sub{color:#a89f8a;max-width:560px;margin-bottom:50px}
+.area-grid{display:flex;flex-wrap:wrap;gap:10px}
+.area-tag{
+  padding:10px 20px;border:1px solid #4a4640;border-radius:999px;
+  font-size:.92rem;color:var(--paper);
+  transition:all .25s;
+  cursor:default;
+  font-family:'Geist';
+}
+.area-tag:hover{background:var(--coral);border-color:var(--coral);color:#fff;transform:translateY(-2px)}
+.area-tag.featured{background:var(--coral);border-color:var(--coral);color:#fff}
+
+/* REVIEWS */
+.reviews{background:var(--paper)}
+.r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.r-card{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:30px;display:flex;flex-direction:column;gap:18px;
+  position:relative;
+}
+.r-card .quote{font-size:3.5rem;font-family:'Instrument Serif',serif;line-height:.8;color:var(--coral);position:absolute;top:18px;right:24px;opacity:.4}
+.r-card .stars{color:var(--butter);font-size:1rem;letter-spacing:.04em}
+.r-card .text{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.18rem;color:var(--ink);line-height:1.4}
+.r-card .who{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.r-card .av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.3rem;color:#fff}
+.r-card .name{font-weight:600;color:var(--ink);font-size:.95rem;line-height:1.2}
+.r-card .where{font-size:.8rem;color:var(--muted)}
+.r-1 .av{background:var(--coral)}.r-2 .av{background:var(--teal)}.r-3 .av{background:var(--sage)}
+.r-4 .av{background:var(--plum)}.r-5 .av{background:var(--butter);color:var(--ink)}.r-6 .av{background:var(--coral-deep)}
+
+/* CTA BAND */
+.cta-band{
+  background:var(--coral);color:#fff;
+  padding:90px 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 12% 30%,rgba(255,255,255,.18),transparent 30%),
+    radial-gradient(circle at 88% 70%,rgba(46,139,131,.45),transparent 35%);
+}
+.cta-band > *{position:relative;z-index:2}
+.cta-band .label{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:18px}
+.cta-band h2{color:#fff;font-size:clamp(2.6rem,5.5vw,4.6rem);margin-bottom:24px;max-width:900px;margin-left:auto;margin-right:auto}
+.cta-band h2 em{color:var(--butter)}
+.cta-band p{max-width:540px;margin:0 auto 36px;color:rgba(255,255,255,.9);font-size:1.08rem}
+.cta-band .btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.cta-band .btn-primary{background:#fff;color:var(--coral);border-color:#fff}
+.cta-band .btn-primary:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cta-band .btn-wa{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.5)}
+.cta-band .btn-wa:hover{background:#fff;color:var(--green);border-color:#fff}
+
+/* CONTACT */
+.contact{background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info h2{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:28px}
+.contact-info h2 em{color:var(--teal)}
+.contact-info p{margin-bottom:34px;color:var(--ink-soft);max-width:460px;font-size:1.05rem}
+.info-row{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--line)}
+.info-row:first-of-type{border-top:1px solid var(--line)}
+.info-row .ico{width:42px;height:42px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.info-row .lab{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.info-row .val{font-family:'Instrument Serif',serif;font-size:1.4rem;color:var(--ink);line-height:1.2}
+.info-row .val a{color:var(--ink)}
+.info-row .val a:hover{color:var(--coral)}
+
+.form{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:38px;display:flex;flex-direction:column;gap:18px;
+  box-shadow:var(--shadow);
+}
+.form h3{font-size:2rem;margin-bottom:6px}
+.form .sub{font-size:.92rem;color:var(--muted);margin-bottom:14px}
+.field label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;font-weight:500}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:6px;
+  font-family:'Geist';font-size:.98rem;color:var(--ink);background:var(--paper);
+  transition:border-color .2s, background .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--coral);background:#fff}
+.field textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .btn-primary{margin-top:10px}
+.honeypot{position:absolute;left:-9999px}
+
+/* FOOTER */
+.footer{
+  background:var(--ink);color:#a89f8a;
+  padding:60px 0 80px;text-align:center;
+  position:relative;
+}
+.footer .brand{justify-content:center;color:var(--paper);font-size:1.6rem;margin-bottom:16px}
+.footer .brand em{color:var(--butter)}
+.footer p{font-size:.85rem;margin-bottom:8px}
+.footer a{color:var(--butter)}
+.footer .smol{font-size:.72rem;color:#6b6655;margin-top:30px;letter-spacing:.1em;text-transform:uppercase}
+
+/* FAB */
+.fab-wrap{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:14px;z-index:60;opacity:0;visibility:hidden;transform:translateY(20px);transition:all .3s}
+.fab-wrap.show{opacity:1;visibility:visible;transform:translateY(0)}
+.fab{
+  width:60px;height:60px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);
+  border:none;cursor:pointer;
+}
+.fab-call{background:var(--coral);animation:pulseRing 2.4s ease-in-out infinite}
+.fab-wa{background:var(--green);animation:pulseRingWa 2.4s ease-in-out infinite}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(232,85,63,.45),0 12px 30px -10px rgba(0,0,0,.4)}70%{box-shadow:0 0 0 18px rgba(232,85,63,0),0 12px 30px -10px rgba(0,0,0,.4)}100%{box-shadow:0 0 0 0 rgba(232,85,63,0),0 12px 30px -10px rgba(0,0,0,.4)}}
+@keyframes pulseRingWa{0%{box-shadow:0 0 0 0 rgba(31,169,88,.45),0 12px 30px -10px rgba(0,0,0,.4)}70%{box-shadow:0 0 0 18px rgba(31,169,88,0),0 12px 30px -10px rgba(0,0,0,.4)}100%{box-shadow:0 0 0 0 rgba(31,169,88,0),0 12px 30px -10px rgba(0,0,0,.4)}}
+
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.hero-tag,.hero h1,.hero p.lead,.hero-btns,.hero-meta{animation:fadeUp .9s ease both}
+.hero h1{animation-delay:.1s}
+.hero p.lead{animation-delay:.25s}
+.hero-btns{animation-delay:.4s}
+.hero-meta{animation-delay:.55s}
+.swatch-stack .chip{opacity:0;animation:slideIn 1s cubic-bezier(.2,.7,.2,1) both}
+.chip-1{animation-delay:.3s}.chip-2{animation-delay:.5s}.chip-3{animation-delay:.7s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(40px) rotate(0)}to{opacity:1}}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hero{padding:120px 0 50px;min-height:auto}
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .swatch-stack{max-width:480px;margin:0 auto}
+  .chip:nth-child(2){transform:rotate(1.5deg) translateX(20px)}
+  .chip:nth-child(3){transform:rotate(-1deg) translateX(-15px)}
+  .section{padding:80px 0}
+  .section-head{grid-template-columns:1fr;gap:24px;margin-bottom:50px}
+  .intro-grid{grid-template-columns:1fr;gap:50px}
+  .chips{display:flex;flex-direction:column;gap:20px}
+  .w1,.w2,.w3,.w4,.w5,.w6,.w7{grid-column:auto}
+  .service-list{grid-template-columns:1fr}
+  .service:nth-child(odd){border-right:none}
+  .r-grid{grid-template-columns:1fr;gap:18px}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .nav{padding:14px 20px}
+  .nav-links{display:none}
+  .form{padding:28px}
+  .row2{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .hero h1{font-size:3rem}
+  .hero-tag{font-size:.65rem}
+  .btn{padding:14px 22px;font-size:.92rem;width:100%;justify-content:center}
+  .hero-btns{width:100%}
+  .marquee-track{font-size:1.25rem;gap:30px}
+  .marquee-track span{gap:30px}
+  .fab{width:54px;height:54px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#" class="brand"><span class="blob"></span><strong>LJAY's</strong> <em>Painting &amp; Decorating</em></a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About Louise</a>
+    <a href="#reviews">Reviews</a>
+  </div>
+  <a href="tel:07751204847" class="nav-phone">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+    07751 204 847
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="smudge smudge-1"></div>
+  <div class="smudge smudge-2"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-tag"><span class="dot"></span>Falkirk · Glasgow · Edinburgh</span>
+        <h1>Walls with <em>character.</em><br>Finishes you can <span class="swoop">live with.</span></h1>
+        <p class="lead">Hi, I'm <strong>Louise</strong> — a fully insured painter &amp; decorator covering central Scotland. From a quiet magnolia refresh to a full-on coral feature wall, I do the prep properly and leave a finish you'll actually want to show off.</p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="tel:07751204847">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+            Call Louise · 07751 204 847
+          </a>
+          <a class="btn btn-wa" href="https://wa.me/447751204847?text=Hi%20Louise%2C%20I%27d%20like%20a%20quote%20for%20painting%20and%20decorating%20please">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.5l-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="stars">★★★★★</span> <b>5.0</b> · 47 happy customers</span>
+          <span>Fully insured</span>
+          <span>Free quotes</span>
+        </div>
+      </div>
+
+      <div class="swatch-stack">
+        <div class="chip chip-1">
+          <div class="chip-img"></div>
+          <div class="chip-label">
+            <div>
+              <div class="name">Salt &amp; Coral</div>
+              <div class="code">No. 042 · Living Room, Polmont</div>
+            </div>
+            <div class="chip-dot" style="background:#E8836C"></div>
+          </div>
+        </div>
+        <div class="chip chip-2">
+          <div class="chip-img"></div>
+          <div class="chip-label">
+            <div>
+              <div class="name">Loch Teal</div>
+              <div class="code">No. 017 · Bedroom, Falkirk</div>
+            </div>
+            <div class="chip-dot" style="background:#5FAFA7"></div>
+          </div>
+        </div>
+        <div class="chip chip-3">
+          <div class="chip-img"></div>
+          <div class="chip-label">
+            <div>
+              <div class="name">Stone Calm</div>
+              <div class="code">No. 081 · Bathroom, Edinburgh</div>
+            </div>
+            <div class="chip-dot" style="background:#B5AFA5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span><em class="it">Brushwork</em><span class="star">✦</span>Rolled &amp; cut-in by hand<span class="star">✦</span>Wallpapering<span class="star">✦</span><em class="it">Spray finishing</em><span class="star">✦</span>Free home visits<span class="star">✦</span>Fully insured<span class="star">✦</span><em class="it">Colour matched</em><span class="star">✦</span>Tidy as we go<span class="star">✦</span></span>
+    <span aria-hidden="true"><em class="it">Brushwork</em><span class="star">✦</span>Rolled &amp; cut-in by hand<span class="star">✦</span>Wallpapering<span class="star">✦</span><em class="it">Spray finishing</em><span class="star">✦</span>Free home visits<span class="star">✦</span>Fully insured<span class="star">✦</span><em class="it">Colour matched</em><span class="star">✦</span>Tidy as we go<span class="star">✦</span></span>
+  </div>
+</div>
+
+<!-- INTRO / ABOUT -->
+<section class="intro" id="about">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-photo reveal">
+        <img src="coral-living.jpg" alt="Coral painted living room with green sofa">
+        <div class="badge"><b>Featured project</b><em>Coral living room, Polmont</em></div>
+      </div>
+      <div class="intro-text reveal">
+        <div class="label">About Louise</div>
+        <h2>I started this because I'm a bit obsessed with a <em>tidy edge.</em></h2>
+        <p>LJAY's is run by me, Louise Jones — a Falkirk-based painter and decorator with a soft spot for big colours and properly prepped walls. Every job starts the same way: a chat, a coffee, a proper look at the room and an honest quote. No surprises, no shortcuts, no half-finished promise to come back tomorrow.</p>
+        <p>I cover homes and small commercial spaces across Falkirk, Glasgow, Edinburgh and everywhere in between. Whether you've finally picked the colour or you've been stuck on swatches for six months, give me a shout.</p>
+        <span class="sig">Louise x</span>
+        <small>Owner · Painter &amp; Decorator</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section portfolio" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="label">Recent work</div>
+        <h2>Real rooms, real finish, <em>no filters.</em></h2>
+      </div>
+      <div class="sub">A small slice of recent jobs from across central Scotland — colour rooms, careful neutrals, woodwork rescues and a few full house refreshes.</div>
+    </div>
+
+    <div class="chips">
+      <div class="work w1 reveal">
+        <div class="work-img" style="background-image:url('coral-living.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Salt &amp; Coral</div>
+            <div class="code">Living Room · Polmont</div>
+          </div>
+          <div class="swatch" style="background:#E8836C"></div>
+        </div>
+      </div>
+      <div class="work w2 reveal">
+        <div class="work-img" style="background-image:url('teal-bedroom.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Loch Teal</div>
+            <div class="code">Twin Bedroom · Falkirk</div>
+          </div>
+          <div class="swatch" style="background:#5FAFA7"></div>
+        </div>
+      </div>
+      <div class="work w3 reveal">
+        <div class="work-img" style="background-image:url('stone-bathroom.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Stone Calm</div>
+            <div class="code">Bathroom · Edinburgh</div>
+          </div>
+          <div class="swatch" style="background:#B5AFA5"></div>
+        </div>
+      </div>
+      <div class="work w4 reveal">
+        <div class="work-img" style="background-image:url('grey-hallway.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Soft Putty</div>
+            <div class="code">Hallway · Glasgow</div>
+          </div>
+          <div class="swatch" style="background:#C9C2B0"></div>
+        </div>
+      </div>
+      <div class="work w5 reveal">
+        <div class="work-img" style="background-image:url('stairwell.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Almond Cream</div>
+            <div class="code">Stairwell · Linlithgow</div>
+          </div>
+          <div class="swatch" style="background:#EFE6D2"></div>
+        </div>
+      </div>
+      <div class="work w6 reveal">
+        <div class="work-img" style="background-image:url('peach-living.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Soft Peach</div>
+            <div class="code">Lounge Refresh · Bo'ness</div>
+          </div>
+          <div class="swatch" style="background:#E8C9A8"></div>
+        </div>
+      </div>
+      <div class="work w7 reveal">
+        <div class="work-img" style="background-image:url('kitchen.jpg')"></div>
+        <div class="work-meta">
+          <div>
+            <div class="name">Buttermilk</div>
+            <div class="code">Kitchen · Stirling</div>
+          </div>
+          <div class="swatch" style="background:#F0E6CB"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="label">What I do</div>
+        <h2>From a feature wall to the <em>whole house.</em></h2>
+      </div>
+      <div class="sub">Domestic and small commercial work across Falkirk, Glasgow and Edinburgh. Always a fixed quote up front so you know exactly what you're paying.</div>
+    </div>
+
+    <div class="service-list">
+      <a href="#contact" class="service reveal">
+        <div class="num">01</div>
+        <div>
+          <div class="title">Interior Painting</div>
+          <div class="desc">Walls, ceilings, woodwork, doors. Full prep, two-coat finish as standard.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">02</div>
+        <div>
+          <div class="title">Wallpapering</div>
+          <div class="desc">Patterned, plain, mural and feature walls. Pasted and pattern-matched properly.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">03</div>
+        <div>
+          <div class="title">Exterior Painting</div>
+          <div class="desc">Render, masonry, fascias and front doors. Weather-watching included.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">04</div>
+        <div>
+          <div class="title">Wood Staining &amp; Varnishing</div>
+          <div class="desc">Doors, banisters, kitchen units, decking. Brought back to life or freshly finished.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">05</div>
+        <div>
+          <div class="title">Spray Finishing</div>
+          <div class="desc">Kitchen units, fitted wardrobes, radiators. Smooth factory finish, on-site.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">06</div>
+        <div>
+          <div class="title">Colour Consultation</div>
+          <div class="desc">Stuck on three swatches? I'll come round and help you finally commit.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">07</div>
+        <div>
+          <div class="title">Plaster Repair &amp; Prep</div>
+          <div class="desc">Filling, sanding, lining, caulking. The boring bit that makes the finish look perfect.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+      <a href="#contact" class="service reveal">
+        <div class="num">08</div>
+        <div>
+          <div class="title">Landlord &amp; End-of-Tenancy</div>
+          <div class="desc">Quick turnaround between tenants. Tidy, neutral, ready-to-let finishes.</div>
+        </div>
+        <div class="arr">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas">
+  <div class="wrap">
+    <div class="label" style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--butter);font-weight:500;margin-bottom:18px">Areas Covered</div>
+    <h2>Painting across <em>central Scotland.</em></h2>
+    <p class="sub">Based in Falkirk, regularly working across Glasgow and Edinburgh — happy to travel a bit further for the right job.</p>
+    <div class="area-grid">
+      <span class="area-tag featured">Falkirk</span>
+      <span class="area-tag featured">Glasgow</span>
+      <span class="area-tag featured">Edinburgh</span>
+      <span class="area-tag">Larbert</span>
+      <span class="area-tag">Stenhousemuir</span>
+      <span class="area-tag">Grangemouth</span>
+      <span class="area-tag">Polmont</span>
+      <span class="area-tag">Bo'ness</span>
+      <span class="area-tag">Linlithgow</span>
+      <span class="area-tag">Bathgate</span>
+      <span class="area-tag">Livingston</span>
+      <span class="area-tag">Stirling</span>
+      <span class="area-tag">Cumbernauld</span>
+      <span class="area-tag">Denny</span>
+      <span class="area-tag">Camelon</span>
+      <span class="area-tag">Bonnybridge</span>
+      <span class="area-tag">Airdrie</span>
+      <span class="area-tag">Coatbridge</span>
+      <span class="area-tag">Bishopbriggs</span>
+      <span class="area-tag">Kirkintilloch</span>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="label">Kind words</div>
+        <h2>What folk in <em>Falkirk, Glasgow &amp; Edinburgh</em> are saying.</h2>
+      </div>
+      <div class="sub">Honest reviews from real customers. Most jobs come from word of mouth — which is exactly the way we like it.</div>
+    </div>
+
+    <div class="r-grid">
+      <div class="r-card r-1 reveal">
+        <span class="quote">"</span>
+        <div class="stars">★★★★★</div>
+        <div class="text">Louise transformed our living room with a coral feature wall I was terrified to commit to. She talked me through it, mixed up a few sample patches, and now I can't stop smiling at it. Brilliant prep, no mess, on time.</div>
+        <div class="who">
+          <div class="av">G</div>
+          <div><div class="name">Gillian M.</div><div class="where">Polmont · Living room repaint</div></div>
+        </div>
+      </div>
+      <div class="r-card r-2 reveal">
+        <span class="quote">"</span>
+        <div class="stars">★★★★★</div>
+        <div class="text">Asked Louise to do the boys' room in a teal that the paint shop swore wouldn't work. She made it work. Cuts in by hand around the coving, no tape lines, no drips. Will book her again for the hallway.</div>
+        <div class="who">
+          <div class="av">S</div>
+          <div><div class="name">Sarah W.</div><div class="where">Falkirk · Bedroom &amp; coving</div></div>
+        </div>
+      </div>
+      <div class="r-card r-3 reveal">
+        <span class="quote">"</span>
+        <div class="stars">★★★★★</div>
+        <div class="text">Hired LJAY's for our move-in tidy-up before we got the keys signed. Three rooms, fresh white throughout, all done in two days. Tidy, friendly, fair price.</div>
+        <div class="who">
+          <div class="av">D</div>
+          <div><div class="name">David &amp; Hannah</div><div class="where">Edinburgh · Move-in repaint</div></div>
+        </div>
+      </div>
+      <div class="r-card r-4 reveal">
+        <span class="quote">"</span>
+        <div class="stars">★★★★★</div>
+        <div class="text">Wallpaper hung perfectly on a tricky chimney breast. Honestly couldn't see a single seam. Already recommended Louise to two friends.</div>
+        <div class="who">
+          <div class="av">E</div>
+          <div><div class="name">Eleanor R.</div><div class="where">Linlithgow · Feature wall</div></div>
+        </div>
+      </div>
+      <div class="r-card r-5 reveal">
+        <span class="quote">"</span>
+        <div class="stars">★★★★★</div>
+        <div class="text">Got Louise in to spray our kitchen units rather than rip them out. Looks like a brand new kitchen for a fraction of the price. Excellent.</div>
+        <div class="who">
+          <div class="av">M</div>
+          <div><div class="name">Mark T.</div><div class="where">Glasgow · Kitchen spray finish</div></div>
+        </div>
+      </div>
+      <div class="r-card r-6 reveal">
+        <span class="quote">"</span>
+        <div class="stars">★★★★★</div>
+        <div class="text">Communicative, polite, properly insured and turned up exactly when she said. Painted the whole stairwell off-white and it looks twice as bright. Thanks Louise.</div>
+        <div class="who">
+          <div class="av">A</div>
+          <div><div class="name">Aileen B.</div><div class="where">Stirling · Stairwell &amp; hall</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="label">Free quotes · No call-out fee</div>
+    <h2>Tired of magnolia? <em>Let's paint something better.</em></h2>
+    <p>Send a couple of photos of the room, mention any colours you're considering, and I'll come back with an honest quote — usually same day.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="tel:07751204847">Call Louise · 07751 204 847</a>
+      <a class="btn btn-wa" href="https://wa.me/447751204847?text=Hi%20Louise%2C%20I%27d%20like%20a%20quote%20for%20painting%20and%20decorating%20please">WhatsApp Louise</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="label" style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:500;margin-bottom:18px">Get in touch</div>
+        <h2>Let's chat about your <em>next room.</em></h2>
+        <p>Quotes are free, the chat is free, and there's never a call-out fee for an estimate. Drop me a message any way you like — phone, WhatsApp, email, or the form.</p>
+
+        <div class="info-row">
+          <div class="ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="lab">Phone</div>
+            <div class="val"><a href="tel:07751204847">07751 204 847</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ico" style="background:var(--green)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.5l-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+          </div>
+          <div>
+            <div class="lab">WhatsApp</div>
+            <div class="val"><a href="https://wa.me/447751204847">07751 204 847</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ico" style="background:var(--teal)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="lab">Email</div>
+            <div class="val"><a href="mailto:Ljayspaintinganddecorating@gmail.com">Ljayspaintinganddecorating@gmail.com</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ico" style="background:var(--plum)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="lab">Based in</div>
+            <div class="val">Falkirk, Scotland</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form" action="#" method="post" id="enquiryForm">
+        <h3>Get a free quote</h3>
+        <p class="sub">Tell me a bit about the room and I'll be back to you usually same day.</p>
+        <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="LJAY's Painting and Decorating">
+        <input type="hidden" name="source" value="mockup-ljays-painting-decorating">
+
+        <div class="row2">
+          <div class="field">
+            <label>Your name</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <input type="tel" name="phone" pattern="^(0|\+44)\d{9,11}$" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Email (optional)</label>
+          <input type="email" name="email">
+        </div>
+
+        <div class="field">
+          <label>What needs painting?</label>
+          <select name="service">
+            <optgroup label="Interior">
+              <option>Single room</option>
+              <option>Multiple rooms</option>
+              <option>Whole house</option>
+              <option>Hallway / stairwell</option>
+              <option>Wallpapering</option>
+              <option>Spray finishing (units / wardrobes)</option>
+            </optgroup>
+            <optgroup label="Exterior">
+              <option>Render / masonry</option>
+              <option>Front door / fascias</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Colour consultation</option>
+              <option>Landlord / end-of-tenancy</option>
+              <option>Not sure yet</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Tell me a bit more</label>
+          <textarea name="message" placeholder="Rough size of room(s), any colours you're considering, when you'd like it done…"></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Send enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <a href="#" class="brand"><span class="blob"></span><strong>LJAY's</strong> <em>Painting &amp; Decorating</em></a>
+    <p>Louise Jones · Painter &amp; Decorator · Falkirk, Scotland</p>
+    <p><a href="tel:07751204847">07751 204 847</a> · <a href="mailto:Ljayspaintinganddecorating@gmail.com">Ljayspaintinganddecorating@gmail.com</a></p>
+    <p class="smol">© 2026 LJAY's Painting &amp; Decorating · Site by construction-sites.co.uk</p>
+  </div>
+</footer>
+
+<!-- FAB -->
+<div class="fab-wrap" id="fab">
+  <a class="fab fab-call" href="tel:07751204847" aria-label="Call Louise">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa" href="https://wa.me/447751204847?text=Hi%20Louise%2C%20I%27d%20like%20a%20quote%20for%20painting%20and%20decorating%20please" aria-label="WhatsApp Louise">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.5l-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.3 4.7 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  </a>
+</div>
+
+<script>
+document.getElementById('formTimestamp').value = Date.now();
+
+// Phone validation
+var phone = document.querySelector('input[name=phone]');
+if(phone){
+  phone.addEventListener('input', function(){
+    if(!/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))){
+      this.setCustomValidity('Please enter a UK phone number');
+    } else this.setCustomValidity('');
+  });
+}
+
+// Nav state
+var nav = document.getElementById('nav');
+var fab = document.getElementById('fab');
+var heroBtns = document.querySelector('.hero-btns');
+window.addEventListener('scroll', function(){
+  if(window.scrollY > 30) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  if(heroBtns && heroBtns.getBoundingClientRect().bottom < 0) fab.classList.add('show');
+  else fab.classList.remove('show');
+});
+
+// Reveal on scroll
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
