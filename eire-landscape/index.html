@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Éire Landscape · Ste McManus · Patios, Decks & Garden Builds</title>
-<meta name="description" content="Ste McManus and Éire Landscape build proper gardens. Patios, decking, summerhouses, fencing and full garden makeovers, finished tidy across Beds, Herts and Cambs." />
+<meta name="description" content="Ste McManus and Éire Landscape build gardens that last. Patios, decking, summerhouses, fencing and full garden makeovers, finished tidy across Beds, Herts and Cambs." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@ body{
   font-size:16.5px;
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -76,12 +76,14 @@ header.nav{
   flex-shrink:0;
 }
 .brand-mark svg{width:24px;height:24px}
+.brand-stack{display:flex;flex-direction:column;line-height:1}
 .brand-text{
-  font-family:var(--display);font-size:24px;letter-spacing:-0.01em;line-height:1;
+  font-family:var(--display);font-size:24px;letter-spacing:-0.01em;line-height:1;display:block;
 }
 .brand-text .accent{color:var(--emerald)}
 .brand-tag{
-  font-family:var(--hand);font-size:14.5px;color:var(--ink-soft);margin-top:2px;line-height:1;
+  font-family:var(--hand);font-size:14.5px;color:var(--ink-soft);
+  margin-top:4px;line-height:1;display:block;
 }
 .nav-links{display:flex;gap:26px;font-size:14.5px;font-weight:600}
 .nav-links a:hover{color:var(--orange)}
@@ -109,7 +111,7 @@ header.nav{
 }
 
 /* ======= HERO ======= */
-.hero{position:relative;padding:60px 0 90px;overflow:hidden}
+.hero{position:relative;padding:60px 0 90px}
 .hero-grid{
   display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
 }
@@ -227,15 +229,29 @@ header.nav{
   .hero-art{min-height:520px;max-width:420px;margin:0 auto}
   .hero-arrow{display:none}
 }
-@media (max-width:520px){
-  .hero-art{min-height:470px}
-  .poly-1{width:240px;height:300px;left:0}
-  .poly-1 img{height:236px}
-  .poly-2{width:160px;height:220px;right:0}
-  .poly-2 img{height:166px}
-  .poly-3{width:170px;height:230px;right:6px;bottom:0}
-  .poly-3 img{height:172px}
-  .sticker-free{width:100px;height:100px;font-size:14px}
+@media (max-width:640px){
+  .hero-art{
+    min-height:0;max-width:none;
+    display:flex;flex-direction:column;align-items:center;gap:32px;
+    padding-top:60px;
+  }
+  .hero-art .polaroid{
+    position:relative;top:auto;left:auto;right:auto;bottom:auto;
+    width:78%;max-width:300px;height:auto;
+  }
+  .hero-art .polaroid img{height:auto;aspect-ratio:4/5}
+  .poly-1{transform:rotate(-3deg);align-self:flex-start;margin-left:6%}
+  .poly-2{transform:rotate(3deg);align-self:flex-end;margin-right:6%;width:68%}
+  .poly-3{transform:rotate(-2deg);align-self:flex-start;margin-left:10%;width:72%}
+  .sticker-free{
+    top:0;left:auto;right:8%;transform:rotate(-8deg);
+    width:100px;height:100px;font-size:14px;
+  }
+  .sticker-shamrock{
+    bottom:auto;top:340px;left:auto;right:6%;
+    width:74px;height:74px;
+  }
+  .sticker-shamrock svg{width:42px;height:42px}
 }
 
 /* ======= TICKER ======= */
@@ -293,8 +309,11 @@ header.nav{
 .svc h3{font-family:var(--display);font-size:26px;letter-spacing:-0.01em;margin-bottom:10px;line-height:1}
 .svc p{color:var(--ink-soft);font-size:14.5px}
 .svc .tag{
-  position:absolute;top:18px;right:18px;
-  font-family:var(--hand);font-size:18px;color:var(--orange);transform:rotate(8deg);
+  position:absolute;top:14px;right:18px;
+  font-family:var(--hand);font-size:18px;color:var(--orange);
+  transform:rotate(6deg);
+  background:var(--bone);padding:2px 10px;border-radius:999px;
+  border:1.5px dashed var(--orange);line-height:1;white-space:nowrap;
 }
 @media (max-width:880px){.svc-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.svc-grid{grid-template-columns:1fr}}
@@ -455,11 +474,14 @@ header.nav{
 .contact-card{
   background:var(--lime);
   border:2.5px solid var(--ink);border-radius:14px;
-  padding:60px 56px;position:relative;overflow:hidden;
+  padding:60px 56px;position:relative;
   box-shadow:10px 10px 0 var(--ink);
   display:grid;grid-template-columns:1.2fr 1fr;gap:48px;
 }
-.contact-card::before{
+.contact-card-clip{
+  position:absolute;inset:0;border-radius:14px;overflow:hidden;pointer-events:none;
+}
+.contact-card-clip::before{
   content:"";position:absolute;bottom:-90px;right:-90px;width:300px;height:300px;
   background:var(--gold);border-radius:50%;border:2.5px solid var(--ink);opacity:.55;
 }
@@ -509,13 +531,18 @@ header.nav{
 }
 .contact-form button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
 .sticker-quote{
-  position:absolute;top:-26px;right:32px;
+  position:absolute;top:-22px;right:32px;
   background:var(--orange);color:var(--ink);
   border:2.5px solid var(--ink);border-radius:999px;
-  padding:8px 20px;font-family:var(--hand);font-size:24px;
+  padding:8px 20px;font-family:var(--hand);font-size:22px;line-height:1;white-space:nowrap;
   transform:rotate(4deg);
   box-shadow:4px 4px 0 var(--ink);
   z-index:5;
+}
+@media (max-width:640px){
+  .sticker-quote{
+    top:-18px;right:14px;font-size:18px;padding:6px 16px;
+  }
 }
 @media (max-width:880px){
   .contact-card{grid-template-columns:1fr;padding:42px 28px;gap:36px}
@@ -558,9 +585,9 @@ footer{
           <path d="M6 26 C 8 14, 16 6, 26 6 C 26 16, 18 24, 6 26 Z M 12 22 L 22 12" stroke="#F4EFE0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </span>
-      <span>
+      <span class="brand-stack">
         <span class="brand-text">Éire <span class="accent">Landscape</span></span>
-        <span class="brand-tag">· proper gardens, properly built</span>
+        <span class="brand-tag">gardens, built to last</span>
       </span>
     </a>
     <nav class="nav-links">
@@ -592,7 +619,7 @@ footer{
       <p class="hero-sub">
         I'm <strong>Ste McManus</strong>. I lay patios, build decks, throw up summerhouses
         and turn knackered back gardens into the bit of the house everyone actually wants
-        to sit in. Free site visits. Tidy work. Proper price up front.
+        to sit in. Free site visits. Tidy work. Honest price up front.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Get a free quote <span class="arr">→</span></a>
@@ -676,7 +703,7 @@ footer{
     <div class="section-head">
       <div>
         <span style="font-family:var(--hand);font-size:26px;color:var(--orange);display:block;margin-bottom:6px">// what we do</span>
-        <h2>Six things,<br>done properly.</h2>
+        <h2>Six things,<br>done right.</h2>
       </div>
       <p class="lead">
         I keep the menu small on purpose. Six jobs I've been doing long enough to do
@@ -689,7 +716,7 @@ footer{
         <span class="tag">most popular</span>
         <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="#0F1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="10" height="10"/><rect x="18" y="6" width="10" height="10"/><rect x="4" y="20" width="10" height="6"/><rect x="18" y="20" width="10" height="6"/></svg></div>
         <h3>Patios</h3>
-        <p>Indian sandstone, slate, porcelain, riven flag. Dug out properly, sub-base on grade, joints pointed by hand.</p>
+        <p>Indian sandstone, slate, porcelain, riven flag. Dug out deep, sub-base on grade, joints pointed by hand.</p>
       </div>
       <div class="svc svc-2">
         <div class="ico"><svg viewBox="0 0 32 32" fill="none" stroke="#0F1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="10" x2="28" y2="10"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="4" y1="22" x2="28" y2="22"/><line x1="8" y1="6" x2="8" y2="26"/><line x1="24" y1="6" x2="24" y2="26"/></svg></div>
@@ -859,6 +886,7 @@ footer{
 <section class="contact r" id="contact">
   <div class="wrap">
     <div class="contact-card">
+      <span class="contact-card-clip" aria-hidden="true"></span>
       <span class="sticker-quote">free quote, no waffle</span>
       <div class="contact-info">
         <h2>Right then,<br>let's talk gardens.</h2>
