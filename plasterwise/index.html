@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plasterwise | Damp Proofing & General Builders in Bristol</title>
+<meta name="description" content="Plasterwise — damp proofing, plastering, painting & decorating, extensions and external finishes across Bristol. Run by Ian Peters with over 40 years on the tools. Free no-obligation quotes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff;
+  --card: #fdf6f6;
+  --card-hover: #fae9ea;
+  --border: #f1d5d7;
+  --border-light: #e6b9bc;
+  --accent: #d62828;
+  --accent-hover: #a81d1d;
+  --accent-glow: rgba(214, 40, 40, 0.10);
+  --accent-rgb: 214, 40, 40;
+  --green: #25d366;
+  --ink: #1a1a1a;
+  --ink-soft: #3d3d3d;
+  --muted: #6b6b6b;
+  --heading: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--body);
+  background: var(--bg);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
+h1, h2, h3, h4, h5 { color: var(--ink); }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #f1f1f1;
+  padding: 0 24px;
+}
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--heading); font-size: 1.35rem; font-weight: 700;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.nav-logo .dot {
+  width: 10px; height: 10px; background: var(--accent);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* HERO */
+.hero {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 90vh; padding: 130px 24px 40px; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 80% 10%, var(--accent-glow), transparent 70%),
+              radial-gradient(ellipse 50% 50% at 10% 90%, var(--accent-glow), transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center;
+  width: 100%; max-width: 1200px; position: relative; z-index: 1;
+}
+.hero-text { position: relative; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; border: 1px solid var(--border); border-radius: 999px;
+  padding: 6px 14px 6px 10px; font-size: 0.72rem; font-weight: 600; color: var(--ink-soft);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 22px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.3s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.hero-badge .dot {
+  width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+.hero h1 {
+  font-family: var(--heading); font-size: 3.6rem; font-weight: 700; color: var(--ink);
+  line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.5s;
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent), #ff5252);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 1.08rem; color: var(--muted); max-width: 560px; margin-bottom: 30px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.7s;
+}
+.hero-sub b { color: var(--ink); font-weight: 600; }
+.hero-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.9s;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px;
+  border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s; border: none; cursor: pointer;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-hover); }
+.btn-wa { background: var(--green); color: #fff; }
+.btn-wa:hover { background: #1db954; }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-outline:hover { background: var(--ink); color: #fff; }
+
+/* HERO VISUAL — photo + logo card */
+.hero-visual {
+  position: relative;
+  opacity: 0; animation: fadeScale 0.8s ease forwards 0.6s;
+}
+.hero-photo {
+  position: relative; aspect-ratio: 4/5; overflow: hidden;
+  border-radius: 4px 4px 4px 60px;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 60px -20px rgba(214, 40, 40, 0.18);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-photo::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.25) 100%);
+}
+.hero-logo-card {
+  position: absolute; bottom: -28px; left: -28px;
+  background: #fff; padding: 16px 22px;
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 18px 40px -10px rgba(0,0,0,0.18);
+  display: flex; align-items: center; gap: 14px;
+  max-width: 240px;
+}
+.hero-logo-card .hex {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--accent);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-logo-card .hex svg { width: 22px; height: 22px; color: #fff; }
+.hero-logo-card .meta-name { font-family: var(--heading); font-weight: 700; color: var(--ink); font-size: 1rem; line-height: 1; margin-bottom: 4px; }
+.hero-logo-card .meta-line { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.04em; }
+.hero-stat-card {
+  position: absolute; top: 24px; right: -24px;
+  background: var(--accent); color: #fff;
+  padding: 14px 18px; border-radius: 12px;
+  box-shadow: 0 14px 30px -8px rgba(214, 40, 40, 0.5);
+  text-align: center;
+}
+.hero-stat-card .num { font-family: var(--heading); font-size: 1.7rem; font-weight: 700; line-height: 1; }
+.hero-stat-card .lbl { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9; margin-top: 4px; }
+
+/* TRUST MARQUEE */
+.trust-marquee {
+  margin-top: 70px; width: 100%; overflow: hidden; position: relative;
+  border-top: 1px solid #f1f1f1; border-bottom: 1px solid #f1f1f1;
+  background: #fafafa;
+}
+.trust-marquee::before, .trust-marquee::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2;
+}
+.trust-marquee::before { left: 0; background: linear-gradient(90deg, #fafafa, transparent); }
+.trust-marquee::after { right: 0; background: linear-gradient(-90deg, #fafafa, transparent); }
+.trust-track {
+  display: flex; gap: 56px; padding: 18px 0;
+  animation: marqueeScroll 36s linear infinite;
+  white-space: nowrap;
+}
+.trust-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.85rem; font-weight: 600; color: var(--ink-soft);
+}
+.trust-item svg { color: var(--accent); flex-shrink: 0; }
+
+/* SECTIONS */
+.section { padding: 90px 24px; max-width: 1200px; margin: 0 auto; }
+.section-head { max-width: 720px; margin-bottom: 48px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; width: 28px; height: 1.5px; background: var(--accent);
+}
+.section-title {
+  font-family: var(--heading); font-size: 2.5rem; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.035em; margin-bottom: 16px; line-height: 1.1;
+}
+.section-title em { font-style: italic; color: var(--accent); font-family: 'Inter', sans-serif; font-weight: 500; }
+.section-lead { font-size: 1.05rem; color: var(--muted); }
+
+/* SERVICES */
+.services-section { background: #fafafa; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.service-card {
+  background: #fff; border: 1px solid #ececec; border-radius: 14px;
+  padding: 30px 26px; position: relative; overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); transform: scaleX(0); transition: transform 0.3s;
+  transform-origin: left;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover {
+  border-color: var(--border-light);
+  box-shadow: 0 14px 30px -10px rgba(214, 40, 40, 0.15);
+  transform: translateY(-3px);
+}
+.service-icon {
+  width: 52px; height: 52px;
+  background: var(--accent);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.service-icon svg { width: 24px; height: 24px; color: #fff; }
+.service-num {
+  position: absolute; top: 22px; right: 26px;
+  font-family: var(--heading); font-size: 0.78rem; font-weight: 600;
+  color: var(--accent); letter-spacing: 0.1em;
+}
+.service-card h3 {
+  font-family: var(--heading); font-size: 1.15rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em;
+}
+.service-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
+
+/* GALLERY */
+.gallery-wrap { position: relative; }
+.gallery {
+  display: flex; gap: 18px; overflow-x: auto; padding: 4px 24px 24px;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
+  max-width: 1248px; margin: 0 auto;
+}
+.gallery::-webkit-scrollbar { display: none; }
+.gallery-item {
+  flex: 0 0 360px; aspect-ratio: 4/3; position: relative; overflow: hidden;
+  border-radius: 14px; scroll-snap-align: start;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85), transparent);
+  padding: 30px 18px 16px; color: #fff;
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.gallery-item:hover .gallery-cap { opacity: 1; }
+.gallery-cap .tag {
+  display: inline-block; font-size: 0.65rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #ffb3b3; margin-bottom: 4px;
+}
+.gallery-cap .title { font-family: var(--heading); font-weight: 600; font-size: 0.95rem; }
+
+/* ABOUT */
+.about-section { background: var(--card); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-photo { position: relative; }
+.about-photo img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.about-photo::before {
+  content: ''; position: absolute;
+  inset: -16px -16px 16px 16px;
+  border: 2px solid var(--accent);
+  border-radius: 4px; z-index: -1;
+}
+.about-badge {
+  position: absolute; bottom: -22px; right: -16px;
+  background: #fff; border-radius: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 30px -8px rgba(0,0,0,0.12);
+  font-family: var(--heading);
+}
+.about-badge .num { font-size: 1.7rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.about-badge .lbl { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+.about-text p { font-size: 1rem; color: var(--ink-soft); margin-bottom: 16px; line-height: 1.8; }
+.about-text p:first-of-type::first-letter {
+  font-family: var(--heading); font-size: 3rem; font-weight: 700;
+  color: var(--accent); float: left; padding: 4px 12px 0 0; line-height: 1;
+}
+.about-sign {
+  display: flex; align-items: center; gap: 12px; margin-top: 24px;
+  padding-top: 24px; border-top: 1px solid var(--border);
+}
+.about-sign .signature {
+  font-family: 'Space Grotesk', cursive; font-size: 1.15rem; font-weight: 600;
+  color: var(--ink); font-style: italic;
+}
+.about-sign .role { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+/* REVIEWS */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.review-card {
+  background: #fff; border: 1px solid #ececec; border-radius: 14px;
+  padding: 28px 24px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.review-card:hover { border-color: var(--border-light); box-shadow: 0 14px 30px -10px rgba(0,0,0,0.08); }
+.review-stars { display: flex; gap: 2px; margin-bottom: 14px; color: #f59e0b; }
+.review-text { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 18px; font-style: italic; line-height: 1.65; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 38px; height: 38px;
+  background: var(--accent);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--heading); font-weight: 700; color: #fff; font-size: 0.95rem;
+}
+.review-meta .name { font-weight: 700; color: var(--ink); font-size: 0.88rem; }
+.review-meta .source { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.04em; }
+
+/* CTA BAND */
+.cta-band {
+  background: var(--accent); padding: 70px 24px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-band::before, .cta-band::after {
+  content: ''; position: absolute; width: 280px; height: 280px;
+  background: rgba(255,255,255,0.06);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.cta-band::before { top: -100px; left: -100px; }
+.cta-band::after { bottom: -120px; right: -100px; }
+.cta-band > * { position: relative; z-index: 1; }
+.cta-band h2 {
+  font-family: var(--heading); font-size: 2.2rem; font-weight: 700; color: #fff;
+  letter-spacing: -0.03em; margin-bottom: 12px;
+}
+.cta-band p { font-size: 1.05rem; color: rgba(255,255,255,0.92); margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.cta-band-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.cta-band .btn-light { background: #fff; color: var(--accent); }
+.cta-band .btn-light:hover { background: #fef0f0; }
+.cta-band .btn-light-outline { background: transparent; color: #fff; border: 1.5px solid #fff; }
+.cta-band .btn-light-outline:hover { background: #fff; color: var(--accent); }
+
+/* AREAS */
+.areas-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+.area-tag {
+  background: #fff; border: 1px solid var(--border); border-radius: 999px;
+  padding: 9px 18px; font-size: 0.85rem; font-weight: 500; color: var(--ink-soft);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.area-tag:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+/* CONTACT */
+.contact-section { background: var(--card); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
+.contact-info h3 { font-family: var(--heading); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.02em; }
+.contact-info p { font-size: 0.98rem; color: var(--muted); margin-bottom: 24px; line-height: 1.75; }
+.contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.contact-detail .ico {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--accent);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-detail .ico svg { color: #fff; }
+.contact-detail .lbl { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; }
+.contact-detail .val { font-size: 0.98rem; color: var(--ink); font-weight: 600; }
+.contact-detail a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+.contact-detail a:hover { color: var(--accent); }
+.contact-form-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 36px;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.06);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-label {
+  display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%; background: #fff; border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 14px; color: var(--ink); font-family: var(--body); font-size: 0.93rem;
+  margin-bottom: 16px; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(214, 40, 40, 0.08);
+}
+.form-textarea { resize: vertical; min-height: 110px; }
+.form-select { cursor: pointer; }
+.btn-submit {
+  width: 100%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.98rem;
+  padding: 15px; border: none; border-radius: 10px; cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.02em;
+}
+.btn-submit:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(214, 40, 40, 0.25); }
+
+/* FOOTER */
+.footer { background: var(--ink); padding: 50px 24px 30px; text-align: center; color: #c4c4c4; }
+.footer-name {
+  font-family: var(--heading); font-size: 1.4rem; font-weight: 700; color: #fff;
+  margin-bottom: 8px; letter-spacing: -0.02em;
+  display: inline-flex; align-items: center; gap: 10px; justify-content: center;
+}
+.footer-name .hex {
+  width: 14px; height: 14px; background: var(--accent);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.footer p { font-size: 0.82rem; color: #888; }
+.footer a { color: #ffb3b3; text-decoration: none; }
+.footer a:hover { color: #fff; text-decoration: underline; }
+
+/* FAB */
+.fab-container {
+  position: fixed; bottom: 16px; right: 16px; display: flex; flex-direction: column;
+  gap: 10px; z-index: 999; opacity: 0; visibility: hidden; transform: translateY(20px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+.fab-container.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.fab {
+  width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform 0.2s;
+}
+.fab:hover { transform: scale(1.1); animation: none; }
+.fab-call { background: var(--accent); animation: pulse-ring 2s ease-in-out infinite; }
+.fab-wa { background: var(--green); animation: pulse-ring-wa 2s ease-in-out infinite; }
+.fab svg { width: 22px; height: 22px; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(214,40,40,0.45); }
+  70% { box-shadow: 0 0 0 12px rgba(214,40,40,0); }
+  100% { box-shadow: 0 0 0 0 rgba(214,40,40,0); }
+}
+@keyframes pulse-ring-wa {
+  0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.service-card.reveal:nth-child(1) { transition-delay: 0s; }
+.service-card.reveal:nth-child(2) { transition-delay: 0.08s; }
+.service-card.reveal:nth-child(3) { transition-delay: 0.16s; }
+.service-card.reveal:nth-child(4) { transition-delay: 0.24s; }
+.service-card.reveal:nth-child(5) { transition-delay: 0.32s; }
+.service-card.reveal:nth-child(6) { transition-delay: 0.40s; }
+.review-card.reveal:nth-child(1) { transition-delay: 0s; }
+.review-card.reveal:nth-child(2) { transition-delay: 0.1s; }
+.review-card.reveal:nth-child(3) { transition-delay: 0.2s; }
+
+/* NAV TOGGLE */
+.nav-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 44px; height: 44px; align-items: center; justify-content: center;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); position: relative; }
+.nav-toggle span::before, .nav-toggle span::after {
+  content: ''; position: absolute; left: 0; width: 100%; height: 2px; background: var(--ink);
+}
+.nav-toggle span::before { top: -7px; }
+.nav-toggle span::after { top: 7px; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .services-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero-visual { max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+    padding: 16px 24px; gap: 12px; border-bottom: 1px solid #f1f1f1;
+  }
+  .hero { min-height: auto; padding: 110px 24px 30px; }
+  .hero h1 { font-size: 2.1rem; }
+  .hero-sub { font-size: 1rem; }
+  .section { padding: 64px 20px; }
+  .section-title { font-size: 1.8rem; }
+  .services-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .gallery-item { flex: 0 0 280px; }
+  .cta-band h2 { font-size: 1.6rem; }
+  .hero-stat-card { right: 0; top: 16px; padding: 10px 14px; }
+  .hero-stat-card .num { font-size: 1.3rem; }
+  .hero-logo-card { left: 0; bottom: -20px; padding: 12px 16px; max-width: 220px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.85rem; }
+  .section-title { font-size: 1.55rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span class="dot"></span> Plasterwise</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span> 40+ Years On The Tools</div>
+      <h1>Damp proofing &amp; <span class="accent">general building</span> done properly.</h1>
+      <p class="hero-sub">Plasterwise is run by <b>Ian Peters</b> — over four decades fixing wet walls, skimming ceilings, building extensions and finishing rendered fronts across <b>Bristol</b>. One tradesman, no excuses, free no-obligation quotes.</p>
+      <div class="hero-btns">
+        <a href="tel:+447989359471" class="btn btn-accent">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Ian
+        </a>
+        <a href="https://wa.me/447989359471?text=Hi%20Ian%2C%20I%20found%20Plasterwise%20online%20and%20would%20like%20a%20quote%20please" target="_blank" class="btn btn-wa">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo"><img src="hero.jpg" alt="Finished living space painted and decorated by Plasterwise in Bristol"></div>
+      <div class="hero-stat-card">
+        <div class="num">40+</div>
+        <div class="lbl">Years</div>
+      </div>
+      <div class="hero-logo-card">
+        <div class="hex">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"/></svg>
+        </div>
+        <div>
+          <div class="meta-name">Ian Peters</div>
+          <div class="meta-line">Master tradesman · Bristol</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-marquee">
+    <div class="trust-track">
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Damp Proofing Specialist</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Free No-Obligation Quotes</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Plastering &amp; Rendering</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> One Tradesman, One Standard</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-3-3.87"/><path d="M4 21v-2a4 4 0 0 1 3-3.87"/><circle cx="12" cy="7" r="4"/></svg> Bristol &amp; 20-Mile Radius</span>
+      <!-- duplicate for seamless loop -->
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Damp Proofing Specialist</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Free No-Obligation Quotes</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Plastering &amp; Rendering</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> One Tradesman, One Standard</span>
+      <span class="trust-item"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-3-3.87"/><path d="M4 21v-2a4 4 0 0 1 3-3.87"/><circle cx="12" cy="7" r="4"/></svg> Bristol &amp; 20-Mile Radius</span>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="section">
+    <div class="section-head reveal">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">A proper trade offering, <em>start to finish.</em></h2>
+      <p class="section-lead">Damp is my specialism, but Plasterwise covers the full ticket — plastering, painting, building work and external finishes. One number to call, one tradesman accountable.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <h3>Damp Proofing</h3>
+        <p>Honest diagnosis first — rising, penetrating or condensation. Tanking, chemical DPCs, render systems and cavity drainage where the wall actually needs it.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Plastering &amp; Skimming</h3>
+        <p>Flat, polished finishes ready for paint. Full re-skim, patching, ceiling repairs and fresh-board sets. Forty years of trowel time on every wall.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>General Building</h3>
+        <p>Brickwork, blockwork, openings and structural alterations. Clean job, tidy site, building regs sorted where they're needed.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.5-4.5L17 4l3.5 3.5L8 20l-4.5 1.5z"/><path d="M14 7l3 3"/></svg>
+        </div>
+        <h3>Painting &amp; Decorating</h3>
+        <p>Interior and exterior. Proper prep, two-coat finishes, neat lines on cornices and architraves. Paint that actually lasts a few winters.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>
+        </div>
+        <h3>Extensions</h3>
+        <p>Rear, side and wrap-around extensions taken from foundations through to handover. Coordinated trades, one point of contact.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3>External Finishes</h3>
+        <p>Render, K-rend, pebbledash refresh, and external paint systems. Fronts that look right and shed water properly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery" style="padding-bottom: 30px;">
+  <div class="section-head reveal">
+    <div class="section-label">Recent Work</div>
+    <h2 class="section-title">A few jobs from <em>around Bristol.</em></h2>
+  </div>
+</section>
+<div class="gallery-wrap">
+  <div class="gallery">
+    <div class="gallery-item reveal">
+      <img src="hero.jpg" alt="Finished room interior with downlights and feature wall in Bristol">
+      <div class="gallery-cap">
+        <span class="tag">Painting &amp; Decorating</span>
+        <div class="title">Two-tone interior with downlights — completed</div>
+      </div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="work-1.jpg" alt="Damp proofing tanking applied to wall in Bristol">
+      <div class="gallery-cap">
+        <span class="tag">Damp Proofing</span>
+        <div class="title">Tanking slurry applied to a damp-affected wall</div>
+      </div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="work-2.jpg" alt="Suspended ceiling install with downlight cut-outs">
+      <div class="gallery-cap">
+        <span class="tag">Building</span>
+        <div class="title">Dropped ceiling first-fix with downlight cut-outs</div>
+      </div>
+    </div>
+    <div class="gallery-item reveal">
+      <img src="work-3.jpg" alt="Drylining and ceiling work in commercial unit">
+      <div class="gallery-cap">
+        <span class="tag">Drylining</span>
+        <div class="title">Commercial drylining and ceiling work mid-fit</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="about-section" id="about">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="hero.jpg" alt="Finished interior project completed by Plasterwise">
+        <div class="about-badge">
+          <div class="num">40+</div>
+          <div class="lbl">Years on the tools</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">About Ian</div>
+        <h2 class="section-title">One tradesman, <em>four decades.</em></h2>
+        <p>Plasterwise is run by Ian Peters. Forty years of tanking damp walls, skimming ceilings, building extensions and finishing fronts across Bristol and the surrounding villages. Same number, same hands, same standard every time.</p>
+        <p>The work spans damp proofing, plastering, general building, painting and external finishes — the full domestic ticket. No salesman, no subcontractor confusion. Get me on the phone, I'll come and look at the job, and you'll get a fair quote with no obligation to take it.</p>
+        <div class="about-sign">
+          <div class="hex" style="width:40px;height:40px;background:var(--accent);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center;">
+            <span style="color:#fff;font-family:var(--heading);font-weight:700;">IP</span>
+          </div>
+          <div>
+            <div class="signature">Ian Peters</div>
+            <div class="role">Owner — Plasterwise, Bristol</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2 class="reveal">Got a damp wall or a job for the diary?</h2>
+  <p class="reveal">Pick up the phone or drop a WhatsApp. I'll come and have a look, give you an honest read on it, and write a fair quote. No obligation either way.</p>
+  <div class="cta-band-btns reveal">
+    <a href="tel:+447989359471" class="btn btn-light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      07989 359 471
+    </a>
+    <a href="https://wa.me/447989359471?text=Hi%20Ian%2C%20I%20found%20Plasterwise%20online%20and%20would%20like%20a%20quote%20please" target="_blank" class="btn btn-light-outline">
+      WhatsApp Ian
+    </a>
+  </div>
+</div>
+
+<section class="section" id="reviews">
+  <div class="section-head reveal">
+    <div class="section-label">What People Say</div>
+    <h2 class="section-title">Word of mouth from <em>Bristol homes.</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Had a damp patch in the lounge of our terrace in Bedminster that two other firms wanted to chemical-inject. Ian had a look, traced it back to a leaking gutter. Saved us a fortune. Then came back and re-skimmed the wall when it had dried out."</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div class="review-meta">
+          <div class="name">Matt &amp; Lisa Greenfield</div>
+          <div class="source">Bedminster</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Ian skimmed the entire ground floor and re-rendered the front of our place in Redland. Showed up when he said he would, finished when he said he would, cleaned up after himself. Walls are flat as a board. Honestly that's the bar these days."</p>
+      <div class="review-author">
+        <div class="review-avatar">D</div>
+        <div class="review-meta">
+          <div class="name">Daniel O'Connor</div>
+          <div class="source">Redland</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"We had Ian out for a single-storey rear extension in Bishopston. Forty years of experience really shows when something unexpected comes up — he just gets on and sorts it. Quote was line-by-line, no surprise extras at the end."</p>
+      <div class="review-author">
+        <div class="review-avatar">R</div>
+        <div class="review-meta">
+          <div class="name">Rachel Hawthorne</div>
+          <div class="source">Bishopston</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Painted the whole inside of our flat in Clifton between tenants. Quick turnaround, neat cuts, and even spotted a small leak above the bathroom that I'd missed. Already booked him for next year."</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div class="review-meta">
+          <div class="name">Sam Whitcombe</div>
+          <div class="source">Clifton</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Ian re-rendered the front of our 1930s semi in Henleaze. Old pebbledash was failing, sections falling off. He stripped it back, re-rendered and painted. House looks ten years younger. Couldn't be happier."</p>
+      <div class="review-author">
+        <div class="review-avatar">P</div>
+        <div class="review-meta">
+          <div class="name">Paul &amp; Andrea Sutton</div>
+          <div class="source">Henleaze</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="review-text">"Cellar in our Southville place was permanently damp. Ian tanked it properly, plastered over, and three years later it's still bone dry. Knows his stuff and won't sell you something you don't need."</p>
+      <div class="review-author">
+        <div class="review-avatar">K</div>
+        <div class="review-meta">
+          <div class="name">Kieran Mitchell</div>
+          <div class="source">Southville</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="areas" style="padding-top: 30px;">
+  <div class="section-head reveal">
+    <div class="section-label">Coverage</div>
+    <h2 class="section-title">Bristol &amp; <em>20 miles around.</em></h2>
+    <p class="section-lead">Working across Bristol city, the suburbs, and the wider BS postcode area. If you're not sure I cover where you are, just ask.</p>
+  </div>
+  <div class="areas-wrap reveal">
+    <span class="area-tag">Bristol City</span>
+    <span class="area-tag">Clifton</span>
+    <span class="area-tag">Redland</span>
+    <span class="area-tag">Cotham</span>
+    <span class="area-tag">Bedminster</span>
+    <span class="area-tag">Southville</span>
+    <span class="area-tag">Bishopston</span>
+    <span class="area-tag">Henleaze</span>
+    <span class="area-tag">Westbury-on-Trym</span>
+    <span class="area-tag">Stoke Bishop</span>
+    <span class="area-tag">Horfield</span>
+    <span class="area-tag">Filton</span>
+    <span class="area-tag">Easton</span>
+    <span class="area-tag">St George</span>
+    <span class="area-tag">Brislington</span>
+    <span class="area-tag">Knowle</span>
+    <span class="area-tag">Whitchurch</span>
+    <span class="area-tag">Hanham</span>
+    <span class="area-tag">Kingswood</span>
+    <span class="area-tag">Fishponds</span>
+    <span class="area-tag">Patchway</span>
+    <span class="area-tag">Long Ashton</span>
+    <span class="area-tag">Portishead</span>
+    <span class="area-tag">Keynsham</span>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-label">Get In Touch</div>
+        <h3>Free quotes — no salesman.</h3>
+        <p>Drop me a call or a WhatsApp. I'll come and have a look at the job, give you an honest read on what it needs, and write you a quote with everything broken down. No pressure, no obligation.</p>
+        <div class="contact-detail">
+          <div class="ico"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="lbl">Phone</div>
+            <a href="tel:+447989359471" class="val">07989 359 471</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="ico"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="lbl">Email</div>
+            <a href="mailto:Ianpeters65@outlook.com" class="val">Ianpeters65@outlook.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="ico"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="lbl">Based</div>
+            <div class="val">Bristol &amp; surrounding area</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="ico"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <div class="lbl">Hours</div>
+            <div class="val">Mon — Sat, 7:30am – 6:00pm</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card reveal">
+        <form action="#" method="POST">
+          <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="businessName" value="Plasterwise">
+          <input type="hidden" name="source" value="mockup-plasterwise">
+          <div class="form-row">
+            <div>
+              <label class="form-label" for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
+            </div>
+            <div>
+              <label class="form-label" for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" class="form-input" required placeholder="07..." pattern="^(\+44\s?|0)\d[\d\s\-]{8,12}$" title="Please enter a valid UK phone number" maxlength="16">
+            </div>
+          </div>
+          <label class="form-label" for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="Optional">
+          <label class="form-label" for="service">What's the job?</label>
+          <select id="service" name="service" class="form-select">
+            <option value="">Select a service…</option>
+            <optgroup label="Damp & Plastering">
+              <option>Damp investigation</option>
+              <option>Damp proofing / tanking</option>
+              <option>Plastering &amp; skimming</option>
+              <option>Ceiling repair</option>
+            </optgroup>
+            <optgroup label="Building & Finishes">
+              <option>General building</option>
+              <option>Extension</option>
+              <option>Render / external finish</option>
+              <option>Painting &amp; decorating</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+          <label class="form-label" for="message">Tell me about the property &amp; the job</label>
+          <textarea id="message" name="message" class="form-textarea" placeholder="e.g. Edwardian terrace in Redland, damp patch in lounge wall behind the chimney breast…"></textarea>
+          <button type="submit" class="btn-submit">Send Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-name"><span class="hex"></span> Plasterwise</div>
+  <p>Damp proofing &amp; general building in Bristol — run by Ian Peters.</p>
+  <p style="margin-top:14px;">&copy; 2026 Plasterwise. Site by <a href="https://construction-sites.co.uk" target="_blank">construction-sites.co.uk</a></p>
+</footer>
+
+<div class="fab-container" id="fabContainer">
+  <a href="tel:+447989359471" class="fab fab-call" aria-label="Call Ian">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447989359471?text=Hi%20Ian%2C%20I%20found%20Plasterwise%20online%20and%20would%20like%20a%20quote%20please" target="_blank" class="fab fab-wa" aria-label="WhatsApp Ian">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(function(link) {
+  link.addEventListener('click', function() { navLinks.classList.remove('open'); });
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+var fabContainer = document.getElementById('fabContainer');
+var heroButtons = document.querySelector('.hero-btns');
+window.addEventListener('scroll', function() {
+  if (fabContainer && heroButtons) {
+    if (heroButtons.getBoundingClientRect().bottom < 0) { fabContainer.classList.add('visible'); }
+    else { fabContainer.classList.remove('visible'); }
+  }
+});
+
+var ts = document.getElementById('formTimestamp');
+if (ts) ts.value = Date.now();
+
+var phoneField = document.getElementById('phone');
+if (phoneField) {
+  phoneField.addEventListener('input', function() {
+    var v = this.value.replace(/[\s\-()]/g, '');
+    var ok = /^(\+44|0)\d{9,10}$/.test(v);
+    this.setCustomValidity(v.length > 3 && !ok ? 'Please enter a valid UK phone number (starting with 0 or +44)' : '');
+  });
+}
+</script>
+
+</body>
+</html>
