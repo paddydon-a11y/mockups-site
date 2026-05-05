@@ -31,24 +31,9 @@
   .display { font-family:'Bebas Neue',sans-serif; letter-spacing:0.01em; line-height:.95; }
   .container { max-width:1240px; margin:0 auto; padding:0 24px; }
 
-  /* ===== Top alert bar ===== */
-  .alert-bar {
-    background: linear-gradient(90deg, var(--yellow) 0%, var(--yellow-bright) 100%);
-    color:#0a0a0b;
-    font-weight:700;
-    font-size:13px;
-    padding:8px 0;
-    position:sticky; top:0; z-index:60;
-    border-bottom:2px solid #000;
-  }
-  .alert-bar .row { display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; }
-  .alert-bar .dot { width:10px; height:10px; background:#0a0a0b; border-radius:50%; animation:dot 1.6s infinite; box-shadow:0 0 0 0 rgba(0,0,0,0.6); }
-  @keyframes dot { 0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(0,0,0,.45)} 50%{transform:scale(.85);box-shadow:0 0 0 8px rgba(0,0,0,0)} }
-  .alert-bar a { text-decoration:underline; }
-
   /* ===== Nav ===== */
   .nav {
-    position:sticky; top:32px; z-index:55;
+    position:sticky; top:0; z-index:55;
     background:rgba(10,10,11,.85);
     backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
@@ -267,7 +252,13 @@
   footer img { height:54px; margin-bottom:18px; }
 
   /* ===== FAB ===== */
-  .fab-wrap { position:fixed; right:18px; bottom:18px; z-index:80; display:flex; flex-direction:column; gap:12px; }
+  .fab-wrap {
+    position:fixed; right:18px; bottom:18px; z-index:80;
+    display:flex; flex-direction:column; gap:12px;
+    opacity:0; visibility:hidden; transform:translateY(20px);
+    transition: opacity .3s ease, visibility .3s ease, transform .3s ease;
+  }
+  .fab-wrap.visible { opacity:1; visibility:visible; transform:none; }
   .fab { width:56px; height:56px; border-radius:50%; display:grid; place-items:center; box-shadow:0 12px 30px -8px rgba(0,0,0,.6); }
   .fab.call { background:var(--yellow); color:#0a0a0b; animation:pring 2s infinite; }
   .fab.wa { background:#25d366; color:#fff; animation:pringg 2s infinite; }
@@ -289,7 +280,9 @@
     .secondary .container { grid-template-columns:1fr; }
     .secondary-grid { grid-template-columns:1fr 1fr; }
     .investor-inner { grid-template-columns:1fr; }
-    .why-grid { grid-template-columns:1fr 1fr; }
+    .why-grid { grid-template-columns:1fr; gap:12px; }
+    .why-card { padding:24px 22px; }
+    .why-card h4 { font-size:24px; }
     .review-row { grid-template-columns:1fr; }
     .contact-grid { grid-template-columns:1fr; }
     .foot-grid { grid-template-columns:1fr 1fr; gap:32px; }
@@ -300,14 +293,6 @@
 </style>
 </head>
 <body>
-
-<!-- ALERT BAR -->
-<div class="alert-bar">
-  <div class="container row">
-    <span style="display:inline-flex;align-items:center;gap:10px;"><span class="dot"></span> 24/7 ON CALL · NIGHT OR DAY WE'RE ON OUR WAY</span>
-    <a href="tel:+447598540289">07598 540289</a>
-  </div>
-</div>
 
 <!-- NAV -->
 <header class="nav">
@@ -750,6 +735,18 @@
   document.getElementById('formTimestamp').value = Date.now();
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }}), { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAB visibility — show once hero CTAs scroll off
+  const fabWrap = document.querySelector('.fab-wrap');
+  const heroCtas = document.querySelector('.hero-ctas');
+  function updateFab() {
+    if (!fabWrap || !heroCtas) return;
+    const r = heroCtas.getBoundingClientRect();
+    if (r.bottom < 0) fabWrap.classList.add('visible');
+    else fabWrap.classList.remove('visible');
+  }
+  window.addEventListener('scroll', updateFab, { passive: true });
+  updateFab();
 </script>
 
 </body>
