@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DG Brickwork & Building | Masonry Contractor, Canterbury, Kent</title>
+<meta name="description" content="Brickwork, blockwork, extensions, repointing, heritage work and structural masonry across Canterbury and Kent. By DG Brickwork & Building.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0d;
+    --bg-2: #131315;
+    --panel: #18181b;
+    --line: #2a2a2d;
+    --line-bright: #3a3a3e;
+    --ink: #f4f1ec;
+    --ink-mute: #b8b3a9;
+    --mute: #807a70;
+    --terracotta: #c25a39;
+    --terracotta-bright: #d96b46;
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.6; }
+  a { color:inherit; text-decoration:none; }
+  img { display:block; max-width:100%; }
+  .container { max-width:1280px; margin:0 auto; padding:0 32px; }
+  .display { font-family:'Anton',sans-serif; font-weight:400; letter-spacing:-0.01em; line-height:.92; text-transform:uppercase; }
+  .mono { font-family:'JetBrains Mono',monospace; font-weight:500; }
+  .label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--terracotta); }
+
+  /* ===== LOADING SCREEN ===== */
+  #loader {
+    position:fixed; inset:0; background:var(--bg); z-index:200;
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:24px;
+    transition: opacity .8s ease, visibility .8s ease;
+  }
+  #loader.gone { opacity:0; visibility:hidden; }
+  #loader img { height:80px; opacity:0; animation:loadFade 1.2s ease forwards; filter:invert(1); }
+  #loader .bar { width:0; height:1px; background:var(--terracotta); animation:loadBar 1.6s .4s ease forwards; }
+  @keyframes loadFade { to { opacity:1; } }
+  @keyframes loadBar { to { width:120px; } }
+
+  /* ===== NAV ===== */
+  .nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 0; transition:.3s; }
+  .nav.scrolled { background:rgba(12,12,13,.88); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); padding:14px 0; }
+  .nav-inner { display:flex; justify-content:space-between; align-items:center; }
+  .nav-logo { display:flex; align-items:center; gap:14px; }
+  .nav-logo img { height:42px; width:auto; filter:invert(1) brightness(1.05); }
+  .nav-links { display:flex; align-items:center; gap:36px; }
+  .nav-links a { font-size:13px; font-weight:500; letter-spacing:.04em; color:var(--ink-mute); transition:color .2s; }
+  .nav-links a:hover { color:var(--terracotta); }
+  .nav-cta {
+    border:1px solid var(--ink); padding:10px 18px; font-size:12px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--ink) !important;
+    transition:.2s;
+  }
+  .nav-cta:hover { background:var(--ink); color:var(--bg) !important; }
+  .menu-btn { display:none; background:none; border:1px solid var(--line-bright); color:var(--ink); padding:9px; cursor:pointer; }
+
+  /* ===== HERO ===== */
+  .hero { position:relative; height:100vh; min-height:680px; overflow:hidden; }
+  .hero-img { position:absolute; inset:0; background:url('hero.jpg') center/cover no-repeat; animation:heroZoom 24s ease-in-out infinite alternate; }
+  @keyframes heroZoom { from { transform:scale(1.04); } to { transform:scale(1.12); } }
+  .hero::after {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(12,12,13,.55) 0%, rgba(12,12,13,.25) 35%, rgba(12,12,13,.85) 95%);
+  }
+  .hero-content { position:absolute; inset:0; display:flex; align-items:flex-end; padding:0 0 90px; z-index:2; }
+  .hero-meta { position:absolute; top:140px; left:32px; right:32px; display:flex; justify-content:space-between; z-index:3; align-items:flex-start; }
+  .hero-meta .left, .hero-meta .right { display:flex; flex-direction:column; gap:4px; }
+  .hero-meta .right { text-align:right; }
+  .hero-meta .label { color:rgba(244,241,236,.7); }
+  .hero-meta .val { font-size:13px; color:var(--ink); font-weight:500; }
+  .hero-title { font-size:clamp(72px, 13vw, 220px); }
+  .hero-title em { font-style:normal; color:var(--terracotta); }
+  .hero-sub { font-size:18px; color:var(--ink-mute); max-width:480px; margin:24px 0 36px; line-height:1.55; }
+  .hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn {
+    display:inline-flex; align-items:center; gap:10px; padding:16px 28px; font-size:13px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; transition:.25s; border:1px solid transparent;
+  }
+  .btn-primary { background:var(--terracotta); color:var(--ink); border-color:var(--terracotta); }
+  .btn-primary:hover { background:var(--terracotta-bright); border-color:var(--terracotta-bright); transform:translateY(-2px); }
+  .btn-ghost { color:var(--ink); border-color:var(--ink); }
+  .btn-ghost:hover { background:var(--ink); color:var(--bg); }
+  .scroll-ind { position:absolute; bottom:32px; left:50%; transform:translateX(-50%); z-index:3; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .scroll-ind .line { width:1px; height:60px; background:linear-gradient(180deg, transparent, var(--terracotta)); animation:scrollAnim 2s ease-in-out infinite; }
+  @keyframes scrollAnim { 0%,100% { transform:scaleY(1); transform-origin:top; opacity:1; } 50% { transform:scaleY(.4); opacity:.5; } }
+
+  /* ===== SECTIONS ===== */
+  section { padding:130px 0; position:relative; }
+  .section-head { display:grid; grid-template-columns:1fr 2fr; gap:60px; margin-bottom:80px; align-items:end; }
+  .section-head h2 { font-size:clamp(50px, 7vw, 110px); margin:14px 0 0; }
+  .section-head p { color:var(--ink-mute); font-size:17px; max-width:520px; line-height:1.7; }
+
+  /* ===== INTRO ===== */
+  .intro { padding:120px 0 110px; border-bottom:1px solid var(--line); }
+  .intro-grid { display:grid; grid-template-columns:1fr 1.5fr; gap:80px; align-items:start; }
+  .intro h2 { font-size:clamp(44px, 5.5vw, 80px); line-height:.95; margin:18px 0 0; }
+  .intro h2 em { font-style:normal; color:var(--terracotta); }
+  .intro-body { color:var(--ink-mute); font-size:17px; line-height:1.8; }
+  .intro-body p + p { margin-top:18px; }
+  .intro-body strong { color:var(--ink); font-weight:500; }
+  .intro-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:48px; padding-top:32px; border-top:1px solid var(--line); }
+  .intro-stats .num { font-family:'Anton'; font-size:60px; line-height:1; color:var(--terracotta); }
+  .intro-stats .lbl { font-size:11px; color:var(--mute); letter-spacing:.18em; text-transform:uppercase; margin-top:6px; }
+
+  /* ===== PORTFOLIO ===== */
+  .portfolio-grid {
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 180px;
+    gap:14px;
+  }
+  .pf-item { position:relative; overflow:hidden; cursor:pointer; }
+  .pf-item img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .pf-item:hover img { transform:scale(1.07); }
+  .pf-item::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(12,12,13,.85)); opacity:0; transition:opacity .3s; z-index:1; }
+  .pf-item:hover::before { opacity:1; }
+  .pf-item .cap {
+    position:absolute; bottom:0; left:0; right:0; padding:24px; z-index:2;
+    transform:translateY(15px); opacity:0; transition:.4s;
+  }
+  .pf-item:hover .cap { transform:none; opacity:1; }
+  .pf-item .cap .label { color:var(--terracotta-bright); margin-bottom:6px; }
+  .pf-item .cap .ttl { font-family:'Anton'; font-size:22px; line-height:1.05; }
+  .pf-1 { grid-column: span 4; grid-row: span 2; }
+  .pf-2 { grid-column: span 2; grid-row: span 2; }
+  .pf-3 { grid-column: span 2; grid-row: span 2; }
+  .pf-4 { grid-column: span 2; grid-row: span 2; }
+  .pf-5 { grid-column: span 2; grid-row: span 2; }
+  .pf-6 { grid-column: span 3; grid-row: span 2; }
+  .pf-7 { grid-column: span 3; grid-row: span 2; }
+
+  /* ===== SERVICES (editorial list) ===== */
+  .services { background:var(--bg-2); }
+  .svc-list { display:flex; flex-direction:column; }
+  .svc-item {
+    display:grid; grid-template-columns:80px 1fr 1.6fr 60px;
+    gap:40px; align-items:start;
+    padding:36px 0;
+    border-top:1px solid var(--line);
+    transition:.3s;
+    cursor:default;
+  }
+  .svc-item:last-child { border-bottom:1px solid var(--line); }
+  .svc-item:hover { border-top-color:var(--terracotta); }
+  .svc-item:hover .svc-arrow { transform:translateX(8px); color:var(--terracotta); }
+  .svc-num { font-family:'JetBrains Mono'; font-size:13px; color:var(--terracotta); padding-top:6px; }
+  .svc-title { font-family:'Anton'; font-size:clamp(32px, 4vw, 50px); line-height:.95; }
+  .svc-desc { color:var(--ink-mute); font-size:16px; line-height:1.7; padding-top:6px; }
+  .svc-arrow { color:var(--mute); transition:.3s; padding-top:6px; }
+
+  /* ===== HERITAGE BLOCK ===== */
+  .heritage-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:stretch; }
+  .heritage-img { position:relative; min-height:540px; background:url('work-1.jpg') center/cover no-repeat; }
+  .heritage-text { background:var(--panel); padding:80px 64px; display:flex; flex-direction:column; justify-content:center; }
+  .heritage-text h2 { font-size:clamp(40px, 5vw, 72px); line-height:.95; margin:18px 0 24px; }
+  .heritage-text h2 em { color:var(--terracotta); font-style:normal; }
+  .heritage-text p { color:var(--ink-mute); line-height:1.8; margin:0 0 16px; font-size:16px; }
+  .heritage-text ul { list-style:none; padding:0; margin:24px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
+  .heritage-text li { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--ink); }
+  .heritage-text li::before { content:'+'; color:var(--terracotta); font-family:'Anton'; font-size:22px; line-height:1; }
+
+  /* ===== PROCESS ===== */
+  .process { border-top:1px solid var(--line); }
+  .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:80px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .step { padding:48px 32px; border-right:1px solid var(--line); position:relative; transition:.3s; }
+  .step:last-child { border-right:none; }
+  .step:hover { background:var(--bg-2); }
+  .step .n { font-family:'Anton'; font-size:64px; color:var(--terracotta); line-height:1; }
+  .step h4 { font-family:'Anton'; font-size:24px; margin:18px 0 8px; }
+  .step p { color:var(--ink-mute); font-size:14px; line-height:1.7; margin:0; }
+
+  /* ===== REVIEWS ===== */
+  .reviews { background:var(--bg-2); }
+  .review-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:80px; }
+  .review { background:var(--bg); border:1px solid var(--line); padding:36px 32px; transition:.3s; }
+  .review:hover { border-color:var(--terracotta); }
+  .review .quote-mark { font-family:'Anton'; font-size:64px; color:var(--terracotta); line-height:.5; height:32px; }
+  .review p { font-size:16px; line-height:1.7; color:var(--ink); margin:14px 0 28px; }
+  .review .who { display:flex; align-items:center; gap:14px; padding-top:22px; border-top:1px solid var(--line); }
+  .review .who .av { width:40px; height:40px; background:var(--terracotta); display:grid; place-items:center; font-family:'Anton'; font-size:20px; color:var(--ink); }
+  .review .who strong { display:block; font-size:14px; }
+  .review .who span { display:block; font-size:11px; color:var(--mute); letter-spacing:.12em; text-transform:uppercase; margin-top:2px; }
+
+  /* ===== CTA BAND ===== */
+  .cta-band { padding:90px 0; background:var(--terracotta); position:relative; overflow:hidden; }
+  .cta-band::before { content:''; position:absolute; inset:0; background-image:url('work-4.jpg'); background-size:cover; background-position:center; opacity:.12; mix-blend-mode:multiply; }
+  .cta-inner { position:relative; display:grid; grid-template-columns:1.6fr 1fr; gap:48px; align-items:center; }
+  .cta-inner h2 { font-family:'Anton'; font-size:clamp(40px, 5vw, 80px); line-height:.95; margin:0; color:var(--ink); }
+  .cta-inner p { color:rgba(244,241,236,.85); margin-top:14px; font-size:17px; max-width:480px; line-height:1.7; }
+  .cta-inner .btn-primary { background:var(--bg); color:var(--ink); border-color:var(--bg); }
+  .cta-inner .btn-primary:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+
+  /* ===== CONTACT ===== */
+  .contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:80px; margin-top:60px; }
+  .contact-info h3 { font-family:'Anton'; font-size:42px; line-height:1; margin:18px 0 24px; }
+  .contact-info p { color:var(--ink-mute); font-size:16px; line-height:1.7; margin:0 0 32px; }
+  .contact-info ul { list-style:none; padding:0; margin:0; }
+  .contact-info li { padding:18px 0; border-top:1px solid var(--line); display:grid; grid-template-columns:140px 1fr; gap:20px; align-items:center; }
+  .contact-info li:last-child { border-bottom:1px solid var(--line); }
+  .contact-info li strong { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--mute); font-weight:500; }
+  .contact-info li a, .contact-info li span { font-size:16px; color:var(--ink); }
+  .contact-info li a:hover { color:var(--terracotta); }
+  form { background:var(--bg-2); padding:44px; border:1px solid var(--line); }
+  form h4 { font-family:'Anton'; font-size:28px; margin:0 0 24px; line-height:1; }
+  form label { display:block; font-family:'JetBrains Mono'; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--mute); margin-bottom:8px; }
+  form input, form select, form textarea {
+    width:100%; background:var(--bg); border:1px solid var(--line-bright); color:var(--ink);
+    padding:14px 16px; font-family:inherit; font-size:15px; outline:none; transition:border .2s;
+  }
+  form input:focus, form select:focus, form textarea:focus { border-color:var(--terracotta); }
+  form .field { margin-bottom:18px; }
+  form .row2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  form button { width:100%; background:var(--terracotta); color:var(--ink); padding:16px; font-weight:700; font-size:13px; letter-spacing:.18em; text-transform:uppercase; border:none; cursor:pointer; transition:.2s; }
+  form button:hover { background:var(--terracotta-bright); }
+
+  /* ===== FOOTER ===== */
+  footer { padding:80px 0 40px; border-top:1px solid var(--line); }
+  .foot-top { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:48px; margin-bottom:60px; }
+  .foot-top img { height:64px; filter:invert(1); margin-bottom:18px; }
+  .foot-top p { color:var(--ink-mute); font-size:14px; line-height:1.7; max-width:340px; }
+  .foot-top h5 { font-family:'Anton'; font-size:18px; letter-spacing:.04em; margin:0 0 18px; color:var(--ink); }
+  .foot-top a { display:block; padding:5px 0; color:var(--ink-mute); font-size:14px; }
+  .foot-top a:hover { color:var(--terracotta); }
+  .foot-bottom { padding-top:30px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:12px; color:var(--mute); letter-spacing:.04em; }
+
+  /* ===== FAB ===== */
+  .fab-wrap {
+    position:fixed; bottom:18px; right:18px; z-index:90; display:flex; flex-direction:column; gap:12px;
+    opacity:0; visibility:hidden; transform:translateY(20px);
+    transition: opacity .3s, visibility .3s, transform .3s;
+  }
+  .fab-wrap.visible { opacity:1; visibility:visible; transform:none; }
+  .fab { width:54px; height:54px; display:grid; place-items:center; box-shadow:0 12px 28px -8px rgba(0,0,0,.6); transition:.2s; }
+  .fab:hover { transform:translateY(-3px); }
+  .fab.ig { background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf); color:#fff; }
+  .fab.email { background:var(--terracotta); color:var(--ink); }
+
+  /* ===== Reveal ===== */
+  .reveal { opacity:0; transform:translateY(40px); transition: opacity 1s ease, transform 1s ease; }
+  .reveal.in { opacity:1; transform:none; }
+  .reveal-stagger > * { opacity:0; transform:translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal-stagger.in > * { opacity:1; transform:none; }
+  .reveal-stagger.in > *:nth-child(2) { transition-delay:.1s; }
+  .reveal-stagger.in > *:nth-child(3) { transition-delay:.2s; }
+  .reveal-stagger.in > *:nth-child(4) { transition-delay:.3s; }
+  .reveal-stagger.in > *:nth-child(5) { transition-delay:.4s; }
+  .reveal-stagger.in > *:nth-child(6) { transition-delay:.5s; }
+  .reveal-stagger.in > *:nth-child(7) { transition-delay:.6s; }
+  .reveal-stagger.in > *:nth-child(8) { transition-delay:.7s; }
+
+  /* ===== Mobile ===== */
+  @media (max-width: 980px) {
+    .nav-links { display:none; }
+    .menu-btn { display:block; }
+    #mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:var(--bg); z-index:99; padding:120px 32px 32px; flex-direction:column; gap:20px; }
+    #mobile-menu.open { display:flex; }
+    #mobile-menu a { font-family:'Anton'; font-size:32px; color:var(--ink); }
+    .container { padding:0 24px; }
+    .hero { min-height:560px; }
+    .hero-content { padding-bottom:60px; }
+    .hero-meta { top:96px; left:24px; right:24px; }
+    .section-head { grid-template-columns:1fr; gap:24px; margin-bottom:48px; }
+    .intro { padding:80px 0 70px; }
+    .intro-grid { grid-template-columns:1fr; gap:40px; }
+    .intro-stats { grid-template-columns:1fr 1fr 1fr; gap:18px; }
+    .intro-stats .num { font-size:42px; }
+    section { padding:80px 0; }
+    .portfolio-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows:180px; gap:10px; }
+    .pf-1 { grid-column: span 2; grid-row: span 2; }
+    .pf-2,.pf-3,.pf-4,.pf-5,.pf-6,.pf-7 { grid-column: span 1; grid-row: span 1; }
+    .svc-item { grid-template-columns: 50px 1fr; gap:14px; padding:28px 0; }
+    .svc-item .svc-desc, .svc-item .svc-arrow { grid-column:1 / -1; padding-left:50px; padding-top:0; margin-top:6px; }
+    .heritage-grid { grid-template-columns:1fr; }
+    .heritage-img { min-height:280px; }
+    .heritage-text { padding:48px 24px; }
+    .heritage-text ul { grid-template-columns:1fr; }
+    .process-grid { grid-template-columns:1fr; }
+    .step { border-right:none; border-bottom:1px solid var(--line); }
+    .step:last-child { border-bottom:none; }
+    .review-grid { grid-template-columns:1fr; gap:14px; margin-top:48px; }
+    .cta-inner { grid-template-columns:1fr; gap:24px; }
+    .contact-grid { grid-template-columns:1fr; gap:36px; }
+    .contact-info li { grid-template-columns:1fr; gap:6px; padding:14px 0; }
+    .foot-top { grid-template-columns:1fr 1fr; gap:32px; }
+    form { padding:28px; }
+    .hero-title { font-size:clamp(56px, 18vw, 120px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="logo.jpg" alt="DG Brickwork & Building">
+  <div class="bar"></div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="nav-logo"><img src="logo.jpg" alt="DG Brickwork & Building"></a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#heritage">Heritage</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Enquire</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+<div id="mobile-menu">
+  <a href="#work">Work</a>
+  <a href="#services">Services</a>
+  <a href="#heritage">Heritage</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-img"></div>
+  <div class="hero-meta">
+    <div class="left">
+      <span class="label" style="color:rgba(244,241,236,.65);">/ Est. masonry contractor</span>
+      <span class="val">Canterbury · Kent</span>
+    </div>
+    <div class="right">
+      <span class="label" style="color:rgba(244,241,236,.65);">/ Specialism</span>
+      <span class="val">Brickwork &amp; building</span>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="container">
+      <span class="label">/ DG Brickwork &amp; Building</span>
+      <h1 class="display hero-title">Brick<br>by <em>Brick</em>.</h1>
+      <p class="hero-sub">Masonry, blockwork, extensions, structural steels and heritage repointing across Canterbury and Kent. Built to outlast the people who order it.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View the work</a>
+        <a href="#contact" class="btn btn-ghost">Start a project</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <span class="label">/ Scroll</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="reveal">
+        <span class="label">/ About</span>
+        <h2 class="display">A trade <em>worth</em> doing properly.</h2>
+      </div>
+      <div class="intro-body reveal">
+        <p><strong>DG Brickwork &amp; Building</strong> is a Canterbury-based masonry outfit covering all aspects of brickwork and general building across Kent.</p>
+        <p>From a traditional repointed boundary wall to a full new-build shell, the standard is the same: clean lines, the right brick, the right mortar, and joints you'd be happy to live with for the next sixty years.</p>
+        <p>We work direct for homeowners on extensions and alterations, alongside builders and architects on structural steels and heritage projects, and on our own restoration work where the brief is to put a building back the way it was meant to look.</p>
+        <div class="intro-stats">
+          <div><div class="num">100%</div><div class="lbl">Time-served</div></div>
+          <div><div class="num">All</div><div class="lbl">Brick types</div></div>
+          <div><div class="num">CT</div><div class="lbl">Canterbury &amp; Kent</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="label">/ Selected work</span>
+        <h2 class="display">Recent <em>builds</em>.</h2>
+      </div>
+      <p>A working portfolio across new builds, extensions, retaining walls, repointing, heritage restoration and chimney rebuilds. Most jobs across Canterbury, Kent and the surrounding villages.</p>
+    </div>
+
+    <div class="portfolio-grid reveal-stagger">
+      <div class="pf-item pf-1"><img src="hero.jpg" alt="Brick extension with bifold doors and zinc apex roof">
+        <div class="cap"><div class="label">Extension</div><div class="ttl">Brick &amp; bifold extension</div></div>
+      </div>
+      <div class="pf-item pf-2"><img src="work-1.jpg" alt="Rebuilt yellow stock brick chimney with roll cap detail">
+        <div class="cap"><div class="label">Heritage / Chimney</div><div class="ttl">Chimney rebuild</div></div>
+      </div>
+      <div class="pf-item pf-3"><img src="work-2.jpg" alt="Heritage red brick driveway boundary wall with stone coping">
+        <div class="cap"><div class="label">Heritage / Boundary</div><div class="ttl">Driveway wall</div></div>
+      </div>
+      <div class="pf-item pf-4"><img src="work-3.jpg" alt="Curved red brick boundary wall with stone coping">
+        <div class="cap"><div class="label">Boundary</div><div class="ttl">Curved boundary</div></div>
+      </div>
+      <div class="pf-item pf-5"><img src="work-5.jpg" alt="Red brick rear extension forming a back room with a stone step">
+        <div class="cap"><div class="label">New build / Extension</div><div class="ttl">Rear addition</div></div>
+      </div>
+      <div class="pf-item pf-6"><img src="work-4.jpg" alt="Curved retaining wall with raised garden beds">
+        <div class="cap"><div class="label">Retaining wall</div><div class="ttl">Garden retaining build</div></div>
+      </div>
+      <div class="pf-item pf-7"><img src="work-6.jpg" alt="Restored heritage outbuilding in stock brick with painted door">
+        <div class="cap"><div class="label">Restoration</div><div class="ttl">Outbuilding restoration</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="label">/ Services</span>
+        <h2 class="display">What we <em>build</em>.</h2>
+      </div>
+      <p>Everything from a single course of repointing to the full masonry shell of a new-build house. Direct for homeowners, or working alongside main contractors and architects.</p>
+    </div>
+
+    <div class="svc-list">
+      <div class="svc-item">
+        <span class="svc-num">01 / 08</span>
+        <h3 class="svc-title">Brickwork &amp; blockwork</h3>
+        <p class="svc-desc">All standard masonry, internal blockwork, external skin work, garden walls, piers and feature brickwork. Whatever the brick spec on the drawing, we'll match it.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">02 / 08</span>
+        <h3 class="svc-title">New builds</h3>
+        <p class="svc-desc">Full masonry shells for new-build homes, working from architect's drawings or a main contractor's package. Foundations to wallplate.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">03 / 08</span>
+        <h3 class="svc-title">Extensions</h3>
+        <p class="svc-desc">Single and double-storey rear, side, and wrap-around extensions. We'll match into the existing house, including the awkward bricks and unusual bonds.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">04 / 08</span>
+        <h3 class="svc-title">Alterations</h3>
+        <p class="svc-desc">Knock-throughs, opening-ups, internal walls removed and made good. Always tied in properly with the original structure.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">05 / 08</span>
+        <h3 class="svc-title">Repointing</h3>
+        <p class="svc-desc">Lime and cement repointing, period-correct mortar mixes, weathered struck or flush joints. Done so it doesn't look new for the sake of it.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">06 / 08</span>
+        <h3 class="svc-title">Heritage work</h3>
+        <p class="svc-desc">Sensitive restoration on listed and period properties. Reclaimed bricks, traditional bonds, lime mortar and consideration for the building's age.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">07 / 08</span>
+        <h3 class="svc-title">Retaining &amp; boundary walls</h3>
+        <p class="svc-desc">Engineered retaining walls, garden walls, piers and gateposts, copings and engineering bricks where the loads demand it.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+      <div class="svc-item">
+        <span class="svc-num">08 / 08</span>
+        <h3 class="svc-title">Structural work &amp; steels</h3>
+        <p class="svc-desc">Padstones, RSJ installation, structural openings, lintels and load-bearing tie-ins. Working to engineer's drawings throughout.</p>
+        <span class="svc-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section style="padding:0;" id="heritage">
+  <div class="heritage-grid">
+    <div class="heritage-img reveal"></div>
+    <div class="heritage-text reveal">
+      <span class="label">/ Heritage &amp; restoration</span>
+      <h2 class="display">Old buildings, <em>built right</em>.</h2>
+      <p>Period brickwork doesn't forgive shortcuts. The wrong mortar mix can hold moisture in soft Victorian brick and crumble it from the inside. The wrong bond on a repair sticks out for the next century.</p>
+      <p>We do heritage work the way it was originally done: lime mortars where the building needs to breathe, period-correct joints, reclaimed bricks where matches matter, and a slower pace where the job demands it.</p>
+      <ul>
+        <li>Lime mortar repointing</li>
+        <li>Reclaimed brick matching</li>
+        <li>Listed building work</li>
+        <li>Chimney rebuilds</li>
+        <li>Tudor-revival &amp; Edwardian</li>
+        <li>Boundary &amp; estate walls</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="label">/ How we work</span>
+        <h2 class="display">Four <em>steps</em>.</h2>
+      </div>
+      <p>From the first message to the last brick. No surprises, no hidden costs, no disappearing for three weeks.</p>
+    </div>
+    <div class="process-grid reveal-stagger">
+      <div class="step">
+        <div class="n">01</div>
+        <h4>Site visit</h4>
+        <p>I'll come and look at the job, run through what's involved, and listen to what you actually want from it.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h4>Written quote</h4>
+        <p>A clear, itemised quote inside a few days. Materials, labour, schedule, payment terms. No verbal-only handshakes.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h4>Build</h4>
+        <p>Site set up properly, materials on time, photos of progress where it makes sense, and you'll know who's on site each day.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h4>Sign-off</h4>
+        <p>Walked through together at the end. Snags fixed, site cleaned, and a guarantee that lasts longer than a season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <span class="label">/ Client words</span>
+        <h2 class="display">In their <em>words</em>.</h2>
+      </div>
+      <p>A small selection of feedback from homeowners and builders we've worked with around Kent.</p>
+    </div>
+    <div class="review-grid reveal-stagger">
+      <div class="review">
+        <div class="quote-mark">"</div>
+        <p>The brickwork on our extension is genuinely the best thing about it. Clean joints, perfect alignment with the original house. Multiple people have stopped to ask who did it.</p>
+        <div class="who"><div class="av">H</div><div><strong>Helen &amp; James</strong><span>Extension · Canterbury</span></div></div>
+      </div>
+      <div class="review">
+        <div class="quote-mark">"</div>
+        <p>Used DG for repointing on a Grade II property. Took the time to match the lime mortar and the joint profile, didn't try to talk me into anything modern. Looks completely original now.</p>
+        <div class="who"><div class="av">R</div><div><strong>Robert M.</strong><span>Heritage · Wingham</span></div></div>
+      </div>
+      <div class="review">
+        <div class="quote-mark">"</div>
+        <p>I'm a builder and I sub the brickwork to DG whenever I can. Turns up, gets on with it, and the standard is well above what most lads will do these days.</p>
+        <div class="who"><div class="av">T</div><div><strong>Tom S.</strong><span>Main contractor · Faversham</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container cta-inner reveal">
+    <div>
+      <h2>Got a project in mind?</h2>
+      <p>Quote requests, drawings to look over, a tricky repair, or a quick site visit. Drop a message and I'll come back the same day.</p>
+    </div>
+    <div style="display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap;">
+      <a href="#contact" class="btn btn-primary">Start a project</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal" style="margin-bottom:0;">
+      <div>
+        <span class="label">/ Contact</span>
+        <h2 class="display">Send a <em>message</em>.</h2>
+      </div>
+      <p>Email is fine for project enquiries and drawings. Instagram for fast replies. We work across Canterbury and the surrounding Kent area.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>DG Brickwork &amp; Building</h3>
+        <p>Canterbury-based masonry contractor working on brickwork, blockwork, extensions, structural steels, repointing and heritage restoration across Kent.</p>
+        <ul>
+          <li><strong>Location</strong><span>Canterbury, Kent</span></li>
+          <li><strong>Coverage</strong><span>Kent &amp; surrounding</span></li>
+          <li><strong>Email</strong><a href="mailto:hello@dgbrickwork.co.uk">hello@dgbrickwork.co.uk</a></li>
+          <li><strong>Instagram</strong><a href="https://instagram.com/dgbrickwork" target="_blank" rel="noopener">@dgbrickwork</a></li>
+          <li><strong>Hours</strong><span>Mon–Sat · 7:00 – 18:00</span></li>
+        </ul>
+      </div>
+      <form class="reveal" action="#" method="POST">
+        <h4>Project enquiry</h4>
+        <div class="field">
+          <label>Name</label>
+          <input required name="name" type="text">
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label>Email</label>
+            <input required name="email" type="email">
+          </div>
+          <div class="field">
+            <label>Phone (optional)</label>
+            <input name="phone" type="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label>Project type</label>
+          <select name="service">
+            <option>Extension</option>
+            <option>New build</option>
+            <option>Repointing</option>
+            <option>Heritage / restoration</option>
+            <option>Retaining / boundary wall</option>
+            <option>Structural / steels</option>
+            <option>Chimney rebuild</option>
+            <option>Other / not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tell us about the project</label>
+          <textarea name="message" rows="5" placeholder="Address or rough location, timeframe, drawings if you have them..."></textarea>
+        </div>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="DG Brickwork & Building">
+        <button type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <img src="logo.jpg" alt="DG Brickwork & Building">
+        <p>Masonry contractor based in Canterbury, working across Kent on brickwork, blockwork, extensions, repointing, heritage restoration and structural masonry.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#services">Brickwork &amp; blockwork</a>
+        <a href="#services">Extensions</a>
+        <a href="#services">New builds</a>
+        <a href="#services">Repointing</a>
+        <a href="#services">Heritage work</a>
+        <a href="#services">Structural &amp; steels</a>
+      </div>
+      <div>
+        <h5>Areas</h5>
+        <a href="#contact">Canterbury</a>
+        <a href="#contact">Faversham</a>
+        <a href="#contact">Whitstable</a>
+        <a href="#contact">Herne Bay</a>
+        <a href="#contact">Sandwich</a>
+        <a href="#contact">Kent &amp; surrounding</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:hello@dgbrickwork.co.uk">hello@dgbrickwork.co.uk</a>
+        <a href="https://instagram.com/dgbrickwork" target="_blank" rel="noopener">@dgbrickwork</a>
+        <a href="#contact">Project enquiry</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 DG Brickwork &amp; Building. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" style="text-decoration:underline;">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<div class="fab-wrap" id="fabWrap">
+  <a href="https://instagram.com/dgbrickwork" target="_blank" rel="noopener" class="fab ig" aria-label="Instagram">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38C1.34 2.68.93 3.35.63 4.14c-.3.76-.5 1.64-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38.67-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13C21.32 1.34 20.65.93 19.86.63 19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88"/></svg>
+  </a>
+  <a href="mailto:hello@dgbrickwork.co.uk" class="fab email" aria-label="Email">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Loader
+  setTimeout(() => document.getElementById('loader').classList.add('gone'), 1700);
+
+  // Nav scrolled state
+  const nav = document.getElementById('nav');
+  const fabWrap = document.getElementById('fabWrap');
+  const heroEl = document.querySelector('.hero');
+  function onScroll() {
+    if (window.scrollY > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    if (heroBottom < 0) fabWrap.classList.add('visible'); else fabWrap.classList.remove('visible');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // Form timestamp
+  document.getElementById('formTimestamp').value = Date.now();
+
+  // Reveal observer
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }}), { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
