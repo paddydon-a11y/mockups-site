@@ -85,13 +85,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1280px; margin: 0 auto; }
-.nav-logo { display: flex; align-items: center; gap: 12px; }
-.nav-logo img { height: 44px; width: auto; display: block; }
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1280px; margin: 0 auto; gap: 16px; }
+.nav-logo { font-family: var(--heading); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; }
+.nav-logo .accent { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .nav-links a { color: var(--body); font-size: 0.92rem; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--accent); }
-@media (max-width: 820px) { .nav-links { display: none; } .nav-logo img { height: 38px; } }
+@media (max-width: 600px) {
+  .nav-inner { flex-direction: column; padding: 12px 18px; gap: 8px; }
+  .nav-logo { font-size: 0.95rem; }
+  .nav-links { gap: 16px; font-size: 0.85rem; }
+  .nav-links a { font-size: 0.85rem; }
+}
 
 /* --- HERO --- */
 .hero {
@@ -561,9 +566,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <img src="logo.jpg" alt="DG Brickwork & Building">
-    </a>
+    <a href="#" class="nav-logo"><span class="accent">DG</span> Brickwork &amp; Building</a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#gallery">Work</a>
