@@ -63,7 +63,7 @@
     -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 0}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 0; position:relative}
   .brand{display:flex; align-items:center; gap:14px; font-family:'Prata',serif; color:var(--ink); font-size:1.55rem; letter-spacing:.02em; white-space:nowrap}
   .brand-mono{font-family:'Prata',serif; font-size:1.35rem; line-height:1; letter-spacing:.04em}
   .brand-tag{display:none; font-family:'Inter'; font-weight:500; color:var(--muted); font-size:.7rem; letter-spacing:.22em; text-transform:uppercase}
@@ -80,6 +80,13 @@
   }
   .nav-cta:hover{background:var(--accent-deep)}
   .nav-cta svg{width:13px; height:13px}
+  .nav-toggle{
+    display:none; width:42px; height:42px; place-items:center;
+    background:transparent; border:1px solid var(--line); border-radius:0;
+    color:var(--ink); cursor:pointer;
+  }
+  .nav-toggle:hover{border-color:var(--accent-deep); color:var(--accent-deep)}
+  .nav-toggle svg{width:20px; height:20px}
 
   /* hero */
   .hero{padding:90px 0 80px; position:relative}
@@ -433,10 +440,28 @@
     .svc-row{grid-template-columns:70px 1fr 1.6fr; gap:28px}
   }
   @media (max-width:880px){
-    .nav-links a:not(.nav-cta){display:none}
-    .nav-cta .cta-label{display:none}
-    .nav-cta{padding:10px 12px}
-    .nav-cta svg{width:14px; height:14px}
+    .nav-toggle{display:grid}
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0; align-items:stretch;
+      background:var(--bg); border-bottom:1px solid var(--line);
+      padding:8px 28px 18px;
+      transform:scaleY(0); transform-origin:top; opacity:0;
+      transition:transform .22s ease, opacity .22s ease;
+      box-shadow:0 24px 40px -24px rgba(26,22,18,.18);
+    }
+    .nav-links.is-open{transform:scaleY(1); opacity:1}
+    .nav-links a{
+      width:100%; padding:14px 0;
+      border-bottom:1px solid var(--line-soft);
+      font-size:1rem;
+    }
+    .nav-links a:last-child{border-bottom:none}
+    .nav-cta{
+      margin-top:14px; justify-content:center; width:100%;
+      padding:13px 18px;
+    }
+    .nav-cta .cta-label{display:inline}
     .hero{padding:56px 0 60px}
     .hero-grid{grid-template-columns:1fr; gap:48px}
     .hero-photo .frame{aspect-ratio:4/3}
@@ -496,7 +521,7 @@
       <span class="brand-mono">MAM</span>
       <span class="brand-tag">London Design &amp; Build</span>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#work">Selected Work</a>
@@ -507,6 +532,9 @@
         <span class="cta-label">Call Mariusz</span>
       </a>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </header>
 
@@ -885,6 +913,22 @@
   }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+
+  // mobile nav hamburger
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // strip section hashes on internal anchor clicks so a copied URL stays clean
   document.addEventListener('click', function(e){

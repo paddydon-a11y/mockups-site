@@ -67,7 +67,7 @@
     -webkit-backdrop-filter:blur(14px) saturate(140%);
     border-bottom:1px solid var(--line);
   }
-  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:18px}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 0; gap:18px; position:relative}
   .brand{display:flex; align-items:center; gap:12px; color:var(--ink); white-space:nowrap}
   .brand-mark{
     width:42px; height:42px; display:grid; place-items:center;
@@ -95,6 +95,13 @@
   }
   .nav-cta:hover{background:#e2a464; transform:translateY(-1px)}
   .nav-cta svg{width:14px; height:14px; stroke:var(--bg); fill:none}
+  .nav-toggle{
+    display:none; width:42px; height:42px; place-items:center;
+    background:transparent; border:1px solid var(--line); border-radius:8px;
+    color:var(--ink); cursor:pointer;
+  }
+  .nav-toggle:hover{border-color:var(--accent); color:var(--accent)}
+  .nav-toggle svg{width:20px; height:20px}
 
   /* hero */
   .hero{padding:80px 0 90px; position:relative; overflow:hidden}
@@ -510,10 +517,28 @@
     .hero-vert{display:none}
   }
   @media (max-width:880px){
-    .nav-links a:not(.nav-cta){display:none}
-    .nav-cta .cta-label{display:none}
-    .nav-cta{padding:10px 12px}
-    .nav-cta svg{width:16px; height:16px}
+    .nav-toggle{display:grid}
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:var(--bg); border-bottom:1px solid var(--line);
+      padding:8px 24px 18px;
+      transform:scaleY(0); transform-origin:top; opacity:0;
+      transition:transform .22s ease, opacity .22s ease;
+      box-shadow:0 24px 40px -22px rgba(0,0,0,.7);
+    }
+    .nav-links.is-open{transform:scaleY(1); opacity:1}
+    .nav-links a{
+      width:100%; padding:14px 0;
+      border-bottom:1px solid var(--line-soft);
+      font-size:1rem;
+    }
+    .nav-links a:last-child{border-bottom:none}
+    .nav-cta{
+      margin-top:14px; justify-content:center; width:100%;
+      padding:13px 18px;
+    }
+    .nav-cta .cta-label{display:inline}
     .hero{padding:54px 0 60px}
     .hero-grid{grid-template-columns:1fr; gap:48px}
     .hero-photo{max-width:540px; margin:0 auto; width:100%}
@@ -565,7 +590,7 @@
         <small>Windows · Doors · Glasgow</small>
       </span>
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#work">Recent Work</a>
       <a href="#areas">Areas</a>
@@ -575,6 +600,9 @@
         <span class="cta-label">Free Quote</span>
       </a>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </header>
 
@@ -1026,6 +1054,22 @@
   }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+
+  // mobile nav hamburger
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // strip section hashes from URL on internal anchor clicks
   document.addEventListener('click', function(e){

@@ -83,7 +83,7 @@
     -webkit-backdrop-filter:blur(10px);
     border-bottom:3px solid var(--ink);
   }
-  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:18px}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:18px; position:relative}
   .brand{display:flex; align-items:center; gap:14px}
   .brand img{height:54px; width:auto; display:block}
   .nav-links{display:flex; gap:32px; align-items:center}
@@ -110,6 +110,14 @@
   }
   .nav-cta:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink)}
   .nav-cta svg{width:14px; height:14px}
+  .nav-toggle{
+    display:none; width:46px; height:46px; place-items:center;
+    background:var(--paper); border:3px solid var(--ink); border-radius:0;
+    color:var(--ink); cursor:pointer; box-shadow:4px 4px 0 var(--ink);
+    transition:transform .12s, box-shadow .12s;
+  }
+  .nav-toggle:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink)}
+  .nav-toggle svg{width:22px; height:22px}
 
   /* hero */
   .hero{padding:80px 0 90px; position:relative; overflow:hidden}
@@ -573,10 +581,29 @@
     .svc-grid{grid-template-columns:repeat(2,1fr); gap:18px}
   }
   @media (max-width:880px){
-    .nav-links a:not(.nav-cta){display:none}
-    .nav-cta .cta-label{display:none}
-    .nav-cta{padding:10px 12px}
-    .nav-cta svg{width:16px; height:16px}
+    .nav-toggle{display:grid}
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0; align-items:stretch;
+      background:var(--bg); border-bottom:3px solid var(--ink);
+      padding:8px 24px 18px;
+      transform:scaleY(0); transform-origin:top; opacity:0;
+      transition:transform .22s ease, opacity .22s ease;
+      box-shadow:0 6px 0 var(--ink);
+    }
+    .nav-links.is-open{transform:scaleY(1); opacity:1}
+    .nav-links a{
+      width:100%; padding:14px 0;
+      border-bottom:2px solid var(--line, #ebe2cf);
+      font-size:1.05rem;
+    }
+    .nav-links a:not(.nav-cta)::after{display:none}
+    .nav-links a:last-child{border-bottom:none}
+    .nav-cta{
+      margin-top:14px; justify-content:center; width:100%;
+      padding:13px 18px;
+    }
+    .nav-cta .cta-label{display:inline}
     .strip-track{font-size:.8rem; gap:34px}
     .strip-track span{gap:34px}
     .hero{padding:48px 0 64px}
@@ -625,7 +652,7 @@
     <a href="#" class="brand">
       <img src="logo.png" alt="One Love Brush logo">
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#work">Recent Work</a>
@@ -636,6 +663,9 @@
         <span class="cta-label">Call us</span>
       </a>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </div>
 </header>
 
@@ -1021,6 +1051,22 @@
   }
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
+
+  // mobile nav hamburger
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // strip section hashes from URL on internal anchor clicks
   document.addEventListener('click', function(e){
