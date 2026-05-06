@@ -65,6 +65,18 @@ img{max-width:100%;display:block}
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px var(--accent-soft)}50%{box-shadow:0 0 0 9px transparent}}
 
+/* LOADING SCREEN */
+.loader{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;transition:opacity .55s ease,visibility .55s ease}
+.loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,var(--accent-soft),transparent 65%);pointer-events:none}
+.loader img{height:148px;width:auto;border-radius:14px;position:relative;animation:loaderPulse 1.8s ease-in-out infinite;box-shadow:0 0 60px var(--accent-glow)}
+.loader-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);position:relative}
+.loader-bar{width:140px;height:2px;background:var(--border);overflow:hidden;border-radius:2px;position:relative}
+.loader-bar::after{content:'';position:absolute;top:0;bottom:0;width:35%;background:var(--accent);box-shadow:0 0 8px var(--accent-glow);animation:loaderSweep 1.3s ease-in-out infinite}
+@keyframes loaderPulse{0%,100%{opacity:.88;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes loaderSweep{0%{left:-35%}100%{left:100%}}
+@media(prefers-reduced-motion:reduce){.loader img,.loader-bar::after{animation:none}}
+
 /* NAV - solid bg per memory rule */
 .nav{position:sticky;top:0;z-index:80;background:var(--bg);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between}
@@ -276,6 +288,13 @@ footer{background:#06080a;border-top:1px solid var(--border);padding:60px 0 28px
 </style>
 </head>
 <body>
+
+<!-- LOADING -->
+<div class="loader" id="loader">
+  <img src="logo.jpg" alt="MCJ Home Developments">
+  <div class="loader-bar"></div>
+  <span class="loader-meta">MCJ &middot; Plumbing &amp; Joinery</span>
+</div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -639,6 +658,10 @@ footer{background:#06080a;border-top:1px solid var(--border);padding:60px 0 28px
 </div>
 
 <script>
+// Loading screen
+window.addEventListener('load',function(){setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('hidden')},450)});
+setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('hidden')},3500);
+
 // Phone & email reveal - base64 obfuscated
 (function(){
   var Praw=atob('MDc3MDA5MDAxMDA=');           // 07700900100
