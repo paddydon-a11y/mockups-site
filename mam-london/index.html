@@ -20,15 +20,15 @@
 <style>
   *,*::before,*::after{box-sizing:border-box}
   :root{
-    --bg:#f4eee2;
+    --bg:#ffffff;
     --paper:#ffffff;
-    --card:#faf5e8;
+    --card:#faf6ec;
     --ink:#1a1612;
     --ink-soft:#3d3528;
     --body:#5a4d3d;
-    --muted:#8f8270;
-    --line:#dccfb8;
-    --line-soft:#ebe1cc;
+    --muted:#9b8f7c;
+    --line:#e8e1d0;
+    --line-soft:#f1ead8;
     --accent:#a07644;
     --accent-deep:#7a5a35;
     --accent-glow:rgba(160,118,68,.14);
@@ -53,27 +53,12 @@
   }
   .wrap{max-width:1240px; margin:0 auto; padding:0 36px}
 
-  /* utility / masthead bar */
-  .masthead{
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    background:var(--bg);
-    font-family:'Inter'; font-size:11.5px; font-weight:600;
-    letter-spacing:.24em; text-transform:uppercase; color:var(--ink);
-  }
-  .masthead-row{
-    display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
-    padding:11px 0; gap:24px;
-  }
-  .masthead-row .left{justify-self:start}
-  .masthead-row .center{justify-self:center; color:var(--muted); letter-spacing:.32em; font-weight:500}
-  .masthead-row .right{justify-self:end; display:inline-flex; align-items:center; gap:10px}
-  .masthead-row .dot{width:6px;height:6px;border-radius:50%; background:var(--accent); animation:dot 2s ease-in-out infinite}
   @keyframes dot{0%,100%{box-shadow:0 0 0 0 rgba(160,118,68,.6)}50%{box-shadow:0 0 0 7px rgba(160,118,68,0)}}
 
   /* nav */
   .nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(244,238,226,.93);
+    background:rgba(255,255,255,.94);
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
@@ -449,8 +434,6 @@
   }
   @media (max-width:880px){
     .nav-links a:not(.nav-cta){display:none}
-    .masthead-row{grid-template-columns:1fr 1fr; gap:14px; padding:10px 0}
-    .masthead-row .center{display:none}
     .hero{padding:56px 0 60px}
     .hero-grid{grid-template-columns:1fr; gap:48px}
     .hero-photo .frame{aspect-ratio:4/3}
@@ -503,15 +486,6 @@
 </head>
 <body>
 
-<!-- masthead bar -->
-<section class="masthead">
-  <div class="wrap masthead-row">
-    <span class="left">MAM London Design &amp; Build</span>
-    <span class="center">Est. 1999 · Vol. XXVI</span>
-    <span class="right"><span class="dot"></span>Booking 2026 work</span>
-  </div>
-</section>
-
 <!-- nav -->
 <header class="nav">
   <div class="wrap nav-row">
@@ -537,29 +511,20 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-text reveal">
-      <div class="hero-eyebrow">A Family-Run Practice · Since 1999</div>
-      <h1>Quietly delivered, <em class="it">high-end</em> homes for clients who value the work over the noise.</h1>
-      <p class="lede">MAM London is a small, established practice specialising in residential refurbishments, bespoke kitchens, joinery and loft conversions. Twenty-five years of repeat clients and recommendations. Now taking on selected projects along the M40 corridor and the Thames, from Henley to Oxford.</p>
+      <div class="hero-eyebrow">Family-run since 1999</div>
+      <h1><em class="it">High-end</em> residential refurbishments, quietly delivered.</h1>
+      <p class="lede">A small London practice. Twenty-five years of repeat clients. Now taking on selected work along the M40 corridor and the Thames.</p>
       <div class="hero-actions">
         <a id="heroCall" class="btn btn-primary" href="#">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
           <span>Speak with Mariusz</span>
         </a>
-        <a class="btn btn-ghost" href="#contact">Request a quiet visit</a>
-      </div>
-      <div class="hero-meta">
-        <div class="item"><span class="num">1999</span><span class="lbl">Established</span></div>
-        <div class="item"><span class="num">Mariusz M.</span><span class="lbl">Owner &amp; project lead</span></div>
-        <div class="item"><span class="num">By recommendation</span><span class="lbl">How most clients find us</span></div>
+        <a class="btn btn-ghost" href="#work">See selected work</a>
       </div>
     </div>
     <div class="hero-photo reveal">
       <div class="frame"><img src="looking-over-lake-1.jpg" alt="Period riverside property under careful refurbishment by MAM London, viewed across the water"></div>
       <span class="hero-caption">Riverside refurbishment · Thames Valley</span>
-      <div class="hero-stamp">
-        <div class="stamp-eye">A note from Mariusz</div>
-        <p class="stamp-body">Most of our work is for clients who prefer their homes are not part of a portfolio. The pieces shown here are the few we are free to share.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -579,21 +544,17 @@
 <section id="about" class="intro">
   <div class="wrap intro-grid">
     <div class="intro-text reveal">
-      <div class="section-eyebrow">About the practice</div>
-      <h2>Twenty-five years building <em class="it">private homes</em>, mostly for the same families twice.</h2>
-      <p>MAM London was founded in 1999 by Mariusz Moniuszko. Since then the practice has specialised in high-standard residential projects, primarily working on private homes and bespoke refurbishments across the capital.</p>
-      <p>Most of what we do is delivered in confidence. Many of our long-term clients value privacy and prefer that their homes and lifestyles are not put on display. As a result, only a small selection of our work is shown publicly.</p>
-      <p>The company has grown through repeat instructions and recommendations rather than marketing. It still does. We are now looking to build the same kind of long-term relationships with private clients, surveyors, designers and property professionals along the M40 corridor and around Oxford and the Thames.</p>
+      <div class="section-eyebrow">About</div>
+      <h2>Twenty-five years building <em class="it">private homes</em>.</h2>
+      <p>Founded in 1999 by Mariusz Moniuszko. Most of our work is delivered in confidence, for clients who value privacy. The company has grown through repeat instructions and recommendations.</p>
     </div>
     <aside class="intro-aside reveal">
-      <h3>A note on how we work.</h3>
-      <p class="quote">Workmanship, communication and attention to detail are the three things our clients return for. Everything else, we keep simple.</p>
-      <p style="font-family:'Inter';font-size:.96rem;color:var(--body);line-height:1.7">A single point of contact for the duration of the project. Properly costed quotes. A site that is left tidy at the end of every day. Photographs only published with permission, not as a default.</p>
+      <p class="quote">Workmanship, communication and attention to detail. Everything else, we keep simple.</p>
       <div class="signature">
         <div class="signature-mark">MM</div>
         <div>
           <div class="signature-name">Mariusz Moniuszko</div>
-          <div class="signature-role">Founder &amp; Project Lead</div>
+          <div class="signature-role">Founder</div>
         </div>
       </div>
     </aside>
@@ -604,45 +565,39 @@
 <section id="services" class="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-eyebrow">What we undertake</div>
+      <div class="section-eyebrow">What we do</div>
       <h2>Comprehensive refurbishments and smaller, <em class="it">bespoke</em> pieces.</h2>
-      <p>From whole-home rebuilds to a single staircase, the same hands and the same standards. We take on a small number of projects each year so each one gets the attention the client paid for.</p>
     </div>
     <div class="svc-list stagger">
       <div class="svc-row">
         <div class="svc-num">01</div>
-        <h3 class="svc-title">Whole-home <em>turnkey</em> refurbishments</h3>
-        <p class="svc-desc">Top-to-bottom residential renovations managed start to finish. Strip-out, structure, services, plaster, second fix and decoration. One contract, one team, one finish date that the client can plan their move around.</p>
+        <h3 class="svc-title">Turnkey refurbishments</h3>
+        <p class="svc-desc">Whole-home renovations managed start to finish.</p>
       </div>
       <div class="svc-row">
         <div class="svc-num">02</div>
-        <h3 class="svc-title">Loft conversions &amp; rear extensions</h3>
-        <p class="svc-desc">Adding usable square footage to family homes without losing the character that made them worth keeping. Structural calcs, party wall, building control and finishing all handled in-house or by long-standing partners.</p>
+        <h3 class="svc-title">Loft conversions &amp; extensions</h3>
+        <p class="svc-desc">Adding space without losing the character of the house.</p>
       </div>
       <div class="svc-row">
         <div class="svc-num">03</div>
-        <h3 class="svc-title">Bespoke kitchens &amp; built-in joinery</h3>
-        <p class="svc-desc">Tailored kitchens, wardrobes, panelling and pantries made for the specific room they live in. Drawn properly, costed properly, fitted by joiners who care that the cabinet meets the cornice.</p>
+        <h3 class="svc-title">Bespoke kitchens &amp; joinery</h3>
+        <p class="svc-desc">Made for the room they live in. Drawn, costed, fitted in-house.</p>
       </div>
       <div class="svc-row">
         <div class="svc-num">04</div>
-        <h3 class="svc-title">Custom staircases, doors &amp; trims</h3>
-        <p class="svc-desc">Hand-set stairs with curved hardwood handrails, internal doors made to match original mouldings, skirtings and architraves restored or replicated in keeping with the period of the property.</p>
+        <h3 class="svc-title">Staircases, doors &amp; trims</h3>
+        <p class="svc-desc">Hand-set stairs and period mouldings, restored or replicated.</p>
       </div>
       <div class="svc-row">
         <div class="svc-num">05</div>
         <h3 class="svc-title">Bespoke windows &amp; doors</h3>
-        <p class="svc-desc">Made-to-measure timber sash, casement and pivot windows, plus front doors, garden rooms and verandas. Ironmongery sourced to suit the build, not the catalogue.</p>
+        <p class="svc-desc">Made-to-measure timber sash, casement and front doors.</p>
       </div>
       <div class="svc-row">
         <div class="svc-num">06</div>
-        <h3 class="svc-title">Period &amp; heritage refurbishments</h3>
-        <p class="svc-desc">Sensitive work on listed and pre-war properties. Lime plasters, lead detail, conservation-grade glazing, coordinated with conservation officers and chosen designers.</p>
-      </div>
-      <div class="svc-row">
-        <div class="svc-num">07</div>
-        <h3 class="svc-title">Smaller, considered pieces</h3>
-        <p class="svc-desc">A new kitchen island. A redrawn bathroom. A library wall. Long-standing clients sometimes need a single room properly done. We take those on too, between larger jobs.</p>
+        <h3 class="svc-title">Period &amp; heritage work</h3>
+        <p class="svc-desc">Sensitive work on listed and pre-war properties.</p>
       </div>
     </div>
   </div>
@@ -654,7 +609,7 @@
     <div class="section-head reveal">
       <div class="section-eyebrow">Selected work</div>
       <h2>A few projects we are <em class="it">free to share</em>.</h2>
-      <p>The rest sit in private albums. The houses below are either fully consented for publication, or work-in-progress shots taken outside on public ways.</p>
+      <p>The rest sit in private albums.</p>
     </div>
     <div class="gallery stagger">
       <div class="g-item feat">
@@ -722,9 +677,8 @@
   <div class="wrap areas-grid">
     <div class="reveal">
       <div class="section-eyebrow">Where we work</div>
-      <h2>London, the <em class="it">M40 corridor</em>, and along the Thames.</h2>
-      <p style="margin-top:18px;font-size:1.02rem;color:var(--body);line-height:1.75">For twenty-five years the practice has been based in London. We are now actively looking to build the same long-standing relationships with clients, designers and surveyors based outside the centre, particularly through the Chilterns and around Oxford.</p>
-      <p style="font-family:'Cormorant Garamond';font-style:italic;font-size:1.1rem;color:var(--accent-deep);line-height:1.5;margin-top:22px">Not on the list? It is worth asking. Many of our jobs come from one client recommending us to a neighbour.</p>
+      <h2>London, the <em class="it">M40 corridor</em>, and the Thames.</h2>
+      <p style="font-family:'Cormorant Garamond';font-style:italic;font-size:1.1rem;color:var(--accent-deep);line-height:1.5;margin-top:22px">Not on the list? Worth asking.</p>
     </div>
     <div class="areas-list stagger">
       <div class="area-cell home"><span>London</span><span class="meta">Home</span></div>
@@ -748,8 +702,8 @@
   <div class="wrap ctaband-grid">
     <div class="reveal">
       <div class="section-eyebrow" style="color:#d6b58a">Quiet enquiries welcome</div>
-      <h2>If you have a project in mind, we would rather <em>start with a conversation</em> than a quote.</h2>
-      <p>Call Mariusz directly, or send a short note describing the property and what you are thinking. No high-pressure follow-up. We will tell you honestly if it is the kind of work we are right for.</p>
+      <h2>Start with a <em>conversation</em>, not a quote.</h2>
+      <p>Call Mariusz, or send a short note about the property.</p>
     </div>
     <div class="ctaband-actions reveal">
       <a id="bandCall" class="btn btn-primary" href="#" style="width:100%;justify-content:center">
@@ -772,44 +726,31 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="section-eyebrow">Get in touch</div>
-      <h2>Tell us a little about <em class="it">the property</em>.</h2>
-      <p>We read every enquiry personally. The more you can share at the start (rough address, what is there now, what you are hoping for), the more useful our first reply.</p>
+      <h2>Tell us about <em class="it">the property</em>.</h2>
     </div>
     <div class="contact-grid">
       <div class="contact-info reveal">
         <div class="info-row">
           <h4>Telephone</h4>
-          <div>
-            <div class="val" id="contactPhone">…</div>
-            <div class="sub">Mariusz answers personally. Mon to Fri.</div>
-          </div>
+          <div class="val" id="contactPhone">…</div>
         </div>
         <div class="info-row">
           <h4>Email</h4>
-          <div>
-            <div class="val" id="contactEmail">…</div>
-            <div class="sub">Most enquiries are answered the same day.</div>
-          </div>
+          <div class="val" id="contactEmail">…</div>
         </div>
         <div class="info-row">
-          <h4>Studio</h4>
-          <div>
-            <div class="val">London W postcodes</div>
-            <div class="sub">Travelling weekly along the M40 and Thames.</div>
-          </div>
+          <h4>Based in</h4>
+          <div class="val">London</div>
         </div>
         <div class="info-row">
           <h4>Discretion</h4>
-          <div>
-            <div class="val">Photographs by consent only</div>
-            <div class="sub">If you prefer not to be referenced, you will not be.</div>
-          </div>
+          <div class="val">Photographs by consent only</div>
         </div>
       </div>
 
       <div class="form-card reveal">
         <h3>Request a conversation</h3>
-        <p class="sub">No pressure. No marketing follow-up. A real reply from Mariusz.</p>
+        <p class="sub">A reply from Mariusz, usually same day.</p>
         <form action="/api/enquiry" method="POST">
           <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
           <input type="hidden" name="_timestamp" id="formTimestamp">
@@ -847,8 +788,7 @@
             <label>Tell us about the property</label>
             <textarea name="message" placeholder="Postcode, what is there now, what you are hoping for, any timing constraints…"></textarea>
           </div>
-          <button class="submit" type="submit">Send the brief</button>
-          <p class="form-note">By sending this you agree we may keep your details on file to reply. We do not pass them on, and we do not market to you.</p>
+          <button class="submit" type="submit">Send</button>
         </form>
       </div>
     </div>
@@ -861,7 +801,7 @@
     <div class="foot-row">
       <div class="foot-brand">
         <span class="brand-mono">MAM London</span>
-        <p>A small, family-run design and build practice. Established 1999. Specialists in high-standard residential refurbishments, bespoke kitchens, joinery and loft conversions across London, the M40 corridor and the Thames Valley.</p>
+        <p>Family-run design &amp; build. Established 1999. London, the M40 corridor and the Thames Valley.</p>
       </div>
       <div>
         <h5>Practice</h5>
