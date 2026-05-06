@@ -139,8 +139,18 @@
 
   /* trust strip */
   .trust{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-  .trust-row{display:flex; justify-content:space-between; align-items:center; padding:22px 0; gap:24px; flex-wrap:wrap}
-  .trust-item{display:flex; align-items:center; gap:10px; color:var(--ink); font-weight:600; font-size:.92rem}
+  .trust-row{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+    padding:0;
+  }
+  .trust-item{
+    display:flex; align-items:center; justify-content:center;
+    gap:10px; color:var(--ink); font-weight:600; font-size:.9rem;
+    padding:22px 14px;
+    border-right:1px solid var(--line-soft);
+    text-align:center;
+  }
+  .trust-item:last-child{border-right:none}
   .trust-item svg{width:18px; height:18px; color:var(--sun-deep); flex-shrink:0}
 
   /* section structure */
@@ -151,29 +161,30 @@
   .section-head h2 em{font-family:'Fraunces',serif; font-style:italic; font-weight:500; color:var(--sun-deep)}
   .section-head p{font-size:1.05rem; color:var(--ink-soft); margin:0}
 
-  /* services bento */
+  /* services bento — mobile-first */
   .services{background:var(--bg)}
-  .bento{display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:minmax(200px,auto); gap:14px}
+  .bento{display:grid; grid-template-columns:1fr; gap:12px}
   .tile{
     background:var(--paper); border:1px solid var(--line); border-radius:14px;
-    padding:28px; display:flex; flex-direction:column; justify-content:space-between;
+    padding:24px; display:flex; flex-direction:column; gap:12px;
     transition:transform .25s, border-color .25s, box-shadow .25s;
     position:relative; overflow:hidden;
   }
   .tile:hover{transform:translateY(-3px); border-color:var(--sun); box-shadow:0 20px 40px -20px rgba(12,18,38,.18)}
   .tile .num{
-    font-family:'Manrope'; font-weight:700; font-size:.78rem;
+    font-family:'Manrope'; font-weight:700; font-size:.72rem;
     color:var(--sun-deep); letter-spacing:.18em;
   }
-  .tile h3{font-size:1.35rem; margin:14px 0 10px; color:var(--ink)}
-  .tile p{font-size:.94rem; color:var(--muted); margin:0; line-height:1.6}
+  .tile h3{font-size:1.2rem; color:var(--ink); margin:0}
+  .tile p{font-size:.94rem; color:var(--muted); margin:0; line-height:1.55}
   .tile .ic{
-    width:46px; height:46px; border-radius:10px; display:grid; place-items:center;
-    background:var(--cream); color:var(--ink); margin-top:auto;
+    width:42px; height:42px; border-radius:10px; display:grid; place-items:center;
+    background:var(--cream); color:var(--ink);
+    position:absolute; top:22px; right:22px;
   }
-  .tile .ic svg{width:22px; height:22px}
+  .tile .ic svg{width:20px; height:20px}
+  .tile h3{padding-right:54px}
   .tile.feature{
-    grid-column:span 3;
     background:linear-gradient(135deg, var(--ink) 0%, #1a223e 100%);
     color:#fff; border-color:var(--ink);
   }
@@ -181,8 +192,18 @@
   .tile.feature p{color:#cdd2e0}
   .tile.feature .num{color:var(--sun)}
   .tile.feature .ic{background:rgba(245,181,10,.15); color:var(--sun)}
-  .tile.wide{grid-column:span 3}
-  .tile.std{grid-column:span 2}
+  @media (min-width:640px){
+    .bento{grid-template-columns:repeat(2,1fr); gap:14px}
+  }
+  @media (min-width:980px){
+    .bento{grid-template-columns:repeat(6,1fr); grid-auto-rows:minmax(220px,auto)}
+    .tile{justify-content:space-between; padding:28px}
+    .tile .ic{position:static; margin-top:8px}
+    .tile h3{font-size:1.35rem; padding-right:0}
+    .tile.feature{grid-column:span 3}
+    .tile.wide{grid-column:span 3}
+    .tile.std{grid-column:span 2}
+  }
 
   /* gallery — irregular masonry */
   .work{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
@@ -201,12 +222,14 @@
     transform:translateY(20px); opacity:0; transition:.3s;
   }
   .g-item:hover .cap{transform:translateY(0); opacity:1}
-  .g-item.a{grid-column:span 5; grid-row:span 2}
-  .g-item.b{grid-column:span 4; grid-row:span 2}
+  .g-item.a{grid-column:span 6; grid-row:span 2}
+  .g-item.b{grid-column:span 3; grid-row:span 2}
   .g-item.c{grid-column:span 3; grid-row:span 2}
   .g-item.d{grid-column:span 4; grid-row:span 2}
   .g-item.e{grid-column:span 4; grid-row:span 2}
   .g-item.f{grid-column:span 4; grid-row:span 2}
+  .g-item.g{grid-column:span 6; grid-row:span 2}
+  .g-item.h{grid-column:span 6; grid-row:span 2}
 
   /* before/after */
   .ba{background:var(--bg)}
@@ -355,6 +378,9 @@
   /* responsive */
   @media (max-width:960px){
     .nav-links a:not(.nav-cta){display:none}
+    .trust-row{grid-template-columns:1fr}
+    .trust-item{border-right:none; border-bottom:1px solid var(--line-soft); justify-content:flex-start; padding:14px 4px}
+    .trust-item:last-child{border-bottom:none}
     .hero-grid{grid-template-columns:1fr; gap:32px}
     .hero-photo{max-width:520px; margin:0 auto; width:100%}
     .hero-photo .frame{aspect-ratio:16/11}
@@ -415,18 +441,6 @@
 </head>
 <body>
 
-<!-- utility strip -->
-<div class="util">
-  <div class="wrap util-row">
-    <div class="pill"><span class="dot"></span><span>Booking jobs across South East London this week</span></div>
-    <div class="pill hide-m">
-      <span>Call <a id="utilPhone">…</a></span>
-      <span style="opacity:.4">·</span>
-      <span><a id="utilEmail">…</a></span>
-    </div>
-  </div>
-</div>
-
 <!-- nav -->
 <header class="nav">
   <div class="wrap nav-row">
@@ -442,9 +456,8 @@
       <a href="#work">Recent Work</a>
       <a href="#areas">Areas</a>
       <a href="#reviews">Reviews</a>
-      <a class="nav-cta" id="navCall" href="#">
+      <a class="nav-cta" id="navCall" href="#" aria-label="Call TSR">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-        Call us
       </a>
     </nav>
   </div>
@@ -577,43 +590,12 @@
     <div class="gallery stagger">
       <div class="g-item a"><img src="exterior-curved.jpg" alt="Restored mock-Tudor with curved tile detail"><span class="cap">Mock-Tudor restoration · Croydon</span></div>
       <div class="g-item b"><img src="roof-lead-valley.jpg" alt="Lead valley roof repair"><span class="cap">New lead valley · Beckenham</span></div>
-      <div class="g-item c"><img src="exterior-cottage.jpg" alt="White-painted Victorian cottage front"><span class="cap">Cottage repaint · Dulwich</span></div>
-      <div class="g-item d"><img src="roof-chimney.jpg" alt="Chimney lead flashing"><span class="cap">Chimney lead work · Bromley</span></div>
-      <div class="g-item e"><img src="gutter-vacuum.jpg" alt="Gutter vacuum cleaning"><span class="cap">Vacuum gutter clean · Wallington</span></div>
-      <div class="g-item f"><img src="roof-flat.jpg" alt="Flat roof completed"><span class="cap">Flat roof renewal · Crystal Palace</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- before / after -->
-<section class="ba">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="section-eyebrow">Before &amp; After</div>
-      <h2>You'd be surprised what <em>a clean and a coat</em> can do.</h2>
-      <p>Two recent jobs, photographed start and finish. No filters, no editing.</p>
-    </div>
-
-    <div class="reveal">
-      <div class="ba-pair">
-        <div class="ba-card before"><img src="paint-before.jpg" alt="Tudor-style house with cracked, tired exterior paint"><span class="tag">Before</span></div>
-        <div class="ba-card after"><img src="paint-after.jpg" alt="Same Tudor house freshly repainted black and white"><span class="tag">After</span></div>
-      </div>
-      <div class="ba-meta">
-        <h4>Mock-Tudor exterior repaint</h4>
-        <span class="place">Sutton · 4-day job</span>
-      </div>
-    </div>
-
-    <div class="reveal">
-      <div class="ba-pair">
-        <div class="ba-card before"><img src="gutter-before-after.jpg" alt="Blocked gutter packed with moss and silt next to cleaned section"><span class="tag">Before / After</span></div>
-        <div class="ba-card after"><img src="exterior-cream.jpg" alt="Cream-painted gable end with clean white fascia and gutter"><span class="tag">Result</span></div>
-      </div>
-      <div class="ba-meta">
-        <h4>Vacuum gutter clean &amp; render touch-up</h4>
-        <span class="place">Welling · same-day job</span>
-      </div>
+      <div class="g-item c"><img src="paint-after.jpg" alt="Tudor house freshly repainted"><span class="cap">Mock-Tudor repaint · Sutton</span></div>
+      <div class="g-item d"><img src="exterior-cottage.jpg" alt="White-painted Victorian cottage front"><span class="cap">Cottage repaint · Dulwich</span></div>
+      <div class="g-item e"><img src="roof-chimney.jpg" alt="Chimney lead flashing"><span class="cap">Chimney lead work · Bromley</span></div>
+      <div class="g-item f"><img src="gutter-vacuum.jpg" alt="Gutter vacuum cleaning"><span class="cap">Vacuum gutter clean · Wallington</span></div>
+      <div class="g-item g"><img src="roof-flat.jpg" alt="Flat roof completed"><span class="cap">Flat roof renewal · Crystal Palace</span></div>
+      <div class="g-item h"><img src="exterior-cream.jpg" alt="Cream-painted gable end with clean fascia"><span class="cap">Render &amp; sash repaint · Welling</span></div>
     </div>
   </div>
 </section>
@@ -810,11 +792,6 @@
   var P = atob('MDc5NTYwNTgwNzk=');
   var Pf = atob('MDc5NTYgMDU4IDA3OQ==');
   var E = atob('RW5xdWlyaWVzQHRzcmJ1aWxkaW5nLmNvLnVr');
-  function setPhone(el, fmt){ if(!el) return; el.textContent = fmt ? Pf : P; if(el.tagName==='A'||el.closest('a')){ var a = el.tagName==='A' ? el : el.closest('a'); a.href = 'tel:'+P; } }
-  document.getElementById('utilPhone').textContent = Pf;
-  document.getElementById('utilPhone').href = 'tel:'+P;
-  document.getElementById('utilEmail').textContent = E;
-  document.getElementById('utilEmail').href = 'mailto:'+E;
   document.getElementById('navCall').href = 'tel:'+P;
   document.getElementById('heroCall').href = 'tel:'+P;
   document.getElementById('heroCallNum').textContent = Pf;
