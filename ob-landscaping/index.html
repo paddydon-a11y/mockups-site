@@ -43,50 +43,54 @@
     -webkit-font-smoothing:antialiased;
     padding-bottom:80px;
   }
-  body.loading{overflow:hidden}
+  body.loading{overflow:hidden; height:100vh}
 
   /* loader */
   .loader{
-    position:fixed; inset:0; z-index:9999;
-    background:var(--paper);
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    width:100%; height:100%;
+    min-height:100vh;
+    z-index:9999;
+    background:#f6f2e8;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:42px;
-    transition:opacity .6s ease, visibility .6s ease;
+    margin:0; padding:0;
+    transition:opacity .55s ease, visibility .55s ease;
   }
-  .loader.gone{opacity:0; visibility:hidden}
+  .loader.gone{opacity:0; visibility:hidden; pointer-events:none}
+  .loader-inner{
+    display:flex; flex-direction:column; align-items:center;
+    width:100%; max-width:280px; padding:0 20px;
+  }
   .loader-mark{
-    width:200px; max-width:62vw;
+    width:200px; max-width:55vw; margin-bottom:38px;
     opacity:0; transform:scale(.94);
-    animation:loader-in .8s cubic-bezier(.2,.7,.2,1) forwards .15s;
+    animation:loader-in .8s cubic-bezier(.2,.7,.2,1) forwards .12s;
   }
   .loader-mark img{width:100%; height:auto; display:block}
   .loader-bar{
-    width:200px; max-width:62vw; height:1px;
-    background:var(--line);
+    width:200px; max-width:55vw; height:1px;
+    background:#dfd7c3;
     position:relative; overflow:hidden;
     opacity:0;
-    animation:loader-fade .5s ease forwards .65s;
+    animation:loader-fade .4s ease forwards .55s;
   }
   .loader-bar::before{
     content:""; position:absolute; left:0; top:0; bottom:0; width:0;
-    background:var(--moss);
-    animation:loader-sweep 1.55s cubic-bezier(.4,0,.2,1) forwards .75s;
+    background:#2a6b3a;
+    animation:loader-sweep 1.4s cubic-bezier(.4,0,.2,1) forwards .65s;
   }
   .loader-cap{
-    font-family:var(--mono); font-size:.6rem; letter-spacing:.32em; text-transform:uppercase;
-    color:var(--muted);
+    margin-top:22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.6rem; letter-spacing:.32em; text-transform:uppercase;
+    color:#8d9088;
     opacity:0;
-    animation:loader-fade .5s ease forwards .55s;
+    animation:loader-fade .4s ease forwards .5s;
   }
-  @keyframes loader-in{
-    to{opacity:1; transform:scale(1)}
-  }
-  @keyframes loader-fade{
-    to{opacity:1}
-  }
-  @keyframes loader-sweep{
-    to{width:100%}
-  }
+  @keyframes loader-in{ to{opacity:1; transform:scale(1)} }
+  @keyframes loader-fade{ to{opacity:1} }
+  @keyframes loader-sweep{ to{width:100%} }
   @media (prefers-reduced-motion:reduce){
     .loader-mark,.loader-bar,.loader-cap,.loader-bar::before{animation-duration:.01s; animation-delay:0s}
   }
@@ -528,9 +532,11 @@
 
 <!-- loader -->
 <div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-mark"><img src="logo.jpg" alt="OB Landscaping"></div>
-  <div class="loader-bar"></div>
-  <div class="loader-cap">Bradford · West Yorkshire</div>
+  <div class="loader-inner">
+    <div class="loader-mark"><img src="logo.jpg" alt="OB Landscaping"></div>
+    <div class="loader-bar"></div>
+    <div class="loader-cap">Bradford · West Yorkshire</div>
+  </div>
 </div>
 
 <!-- nav -->
