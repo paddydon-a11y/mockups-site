@@ -25,19 +25,19 @@
 
 <style>
 :root{
-  --bg:#15171c;
-  --bg-deep:#0f1115;
-  --card:#1d2027;
-  --card-hover:#242832;
-  --border:#2a2e38;
-  --border-light:#3a3f4a;
-  --accent:#d99a2b;
-  --accent-hover:#c08623;
-  --accent-bright:#f0b342;
-  --accent-glow:rgba(217,154,43,.18);
+  --bg:#23272f;
+  --bg-deep:#1c2027;
+  --card:#2c313b;
+  --card-hover:#363c48;
+  --border:#3a4050;
+  --border-light:#4d5466;
+  --accent:#e9a83d;
+  --accent-hover:#cf9128;
+  --accent-bright:#f5be57;
+  --accent-glow:rgba(233,168,61,.22);
   --text-h:#ffffff;
-  --text-body:#cfd2d8;
-  --text-muted:#8b909a;
+  --text-body:#d6dae2;
+  --text-muted:#9ba1ad;
   --display:'Plus Jakarta Sans',sans-serif;
   --body:'Inter',sans-serif;
   --mono:'JetBrains Mono',monospace;
@@ -65,9 +65,103 @@ body::before{
   inset:0;
   pointer-events:none;
   z-index:1000;
-  opacity:.045;
+  opacity:.04;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' seed='4'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   mix-blend-mode:overlay;
+}
+
+/* ============== LOADER ============== */
+.loader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:var(--bg-deep);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:32px;
+  transition:transform .8s cubic-bezier(.7,0,.2,1), opacity .6s .2s ease;
+}
+.loader.done{
+  transform:translateY(-100%);
+  opacity:0;
+  pointer-events:none;
+}
+.loader-mark{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(2.6rem, 7vw, 4.4rem);
+  letter-spacing:-.04em;
+  color:var(--text-h);
+  opacity:0;
+  animation:loaderFadeIn .5s .15s ease-out forwards;
+}
+.loader-mark .amp{
+  color:var(--accent);
+  font-style:italic;
+}
+.loader-tag{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  opacity:0;
+  animation:loaderFadeIn .5s .35s ease-out forwards;
+}
+.loader-brush{
+  width:min(380px, 72vw);
+  height:60px;
+  position:relative;
+  margin-top:6px;
+  opacity:0;
+  animation:loaderFadeIn .35s .55s ease-out forwards;
+}
+.loader-brush svg{
+  width:100%;height:100%;
+  overflow:visible;
+}
+.loader-brush svg .stroke-bg{
+  stroke:rgba(255,255,255,.08);
+  stroke-width:6;
+  stroke-linecap:round;
+  fill:none;
+}
+.loader-brush svg .stroke-paint{
+  stroke:var(--accent);
+  stroke-width:14;
+  stroke-linecap:round;
+  fill:none;
+  filter:url(#paintRough);
+  stroke-dasharray:540;
+  stroke-dashoffset:540;
+  animation:loaderPaint 1.4s .65s cubic-bezier(.55,.05,.25,1) forwards;
+}
+.loader-brush .bristle{
+  position:absolute;
+  top:50%;
+  left:0;
+  width:46px;height:46px;
+  margin-top:-23px;
+  margin-left:-32px;
+  opacity:0;
+  animation:loaderBristleShow .25s .65s ease-out forwards, loaderBristleMove 1.4s .65s cubic-bezier(.55,.05,.25,1) forwards;
+}
+.loader-brush .bristle svg{transform:rotate(8deg)}
+@keyframes loaderFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes loaderPaint{
+  0%{stroke-dashoffset:540}
+  100%{stroke-dashoffset:0}
+}
+@keyframes loaderBristleShow{from{opacity:0}to{opacity:1}}
+@keyframes loaderBristleMove{
+  0%{left:0%;transform:rotate(-3deg) scale(.95)}
+  50%{transform:rotate(2deg) scale(1)}
+  100%{left:100%;transform:rotate(-1deg) scale(.97)}
+}
+@media (prefers-reduced-motion: reduce){
+  .loader{transition:opacity .3s ease}
+  .loader.done{transform:none}
+  .loader-brush svg .stroke-paint{animation:none;stroke-dashoffset:0}
+  .loader-brush .bristle{display:none}
 }
 
 /* ============== NAV ============== */
@@ -217,7 +311,7 @@ body::before{
   width:100%;height:100%;
   object-fit:cover;
   object-position:center 35%;
-  filter:saturate(.85) contrast(1.03);
+  filter:saturate(.92) contrast(1.04);
   animation:kenBurns 22s ease-in-out infinite alternate;
 }
 @keyframes kenBurns{from{transform:scale(1)}to{transform:scale(1.07)}}
@@ -226,8 +320,8 @@ body::before{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(180deg, rgba(15,17,21,.42) 0%, rgba(15,17,21,.55) 35%, rgba(15,17,21,.85) 80%, var(--bg) 100%),
-    linear-gradient(95deg, rgba(15,17,21,.55) 0%, rgba(15,17,21,.05) 60%);
+    linear-gradient(180deg, rgba(28,32,39,.32) 0%, rgba(28,32,39,.5) 40%, rgba(28,32,39,.85) 82%, var(--bg) 100%),
+    linear-gradient(95deg, rgba(28,32,39,.5) 0%, rgba(28,32,39,.05) 55%);
 }
 .hero-eyebrow{
   font-family:var(--mono);
@@ -239,7 +333,7 @@ body::before{
   display:inline-flex;align-items:center;gap:12px;
   font-weight:500;
   opacity:0;
-  animation:fadeUp .8s .15s ease-out forwards;
+  animation:fadeUp .8s 2.7s ease-out forwards;
 }
 .hero-eyebrow .pulse{
   width:8px;height:8px;border-radius:50%;
@@ -261,7 +355,7 @@ body::before{
   max-width:18ch;
   margin-bottom:22px;
   opacity:0;
-  animation:fadeUp .9s .3s ease-out forwards;
+  animation:fadeUp .9s 2.85s ease-out forwards;
 }
 .hero h1 .accent-paint{
   position:relative;
@@ -287,7 +381,7 @@ body::before{
   filter:url(#paintRough);
   stroke-dasharray:520;
   stroke-dashoffset:520;
-  animation:paintStroke 1.4s 1.05s cubic-bezier(.65,0,.35,1) forwards;
+  animation:paintStroke 1.4s 3.6s cubic-bezier(.65,0,.35,1) forwards;
   opacity:.92;
 }
 @keyframes paintStroke{
@@ -303,12 +397,12 @@ body::before{
   max-width:62ch;
   margin-bottom:36px;
   opacity:0;
-  animation:fadeUp .8s .55s ease-out forwards;
+  animation:fadeUp .8s 3.1s ease-out forwards;
 }
 .hero-actions{
   display:flex;flex-wrap:wrap;gap:14px;
   opacity:0;
-  animation:fadeUp .8s .7s ease-out forwards;
+  animation:fadeUp .8s 3.25s ease-out forwards;
 }
 .btn{
   display:inline-flex;align-items:center;gap:10px;
@@ -357,7 +451,7 @@ body::before{
   color:var(--text-muted);
   z-index:3;
   opacity:0;
-  animation:fadeUp .8s 1.4s ease-out forwards;
+  animation:fadeUp .8s 3.95s ease-out forwards;
 }
 .hero-cue::after{
   content:'';
@@ -885,6 +979,33 @@ section{padding:110px 28px}
   </defs>
 </svg>
 
+<!-- ============== LOADER ============== -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-mark">H<span class="amp">&amp;</span>H Decorators</div>
+  <div class="loader-tag">Brushed · Rolled · Sprayed</div>
+  <div class="loader-brush">
+    <svg viewBox="0 0 540 60" preserveAspectRatio="none">
+      <path class="stroke-bg" d="M6,30 L534,30"/>
+      <path class="stroke-paint" d="M6,32 C 90,18 200,42 280,28 C 360,16 460,40 534,26"/>
+    </svg>
+    <div class="bristle">
+      <svg viewBox="0 0 60 60">
+        <!-- handle -->
+        <rect x="2" y="24" width="22" height="12" rx="3" fill="#3a2a14"/>
+        <rect x="2" y="24" width="22" height="3" fill="#5b4322"/>
+        <!-- ferrule -->
+        <rect x="22" y="20" width="10" height="20" fill="#9aa0aa"/>
+        <rect x="22" y="20" width="10" height="3" fill="#c8ced9"/>
+        <!-- bristles -->
+        <path d="M32,18 L52,12 L56,30 L52,48 L32,42 Z" fill="#d6dae2"/>
+        <!-- paint loaded on tip -->
+        <path d="M52,12 L56,30 L52,48 L48,46 L46,28 L48,14 Z" fill="#e9a83d"/>
+        <path d="M56,30 C 58,30 58,32 56,32 Z" fill="#e9a83d"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
 <!-- ============== NAV ============== -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -919,7 +1040,7 @@ section{padding:110px 28px}
 <!-- ============== HERO ============== -->
 <header class="hero">
   <div class="hero-photo">
-    <img src="work-10.jpg" alt="H&H decorator on a Genie cherry picker working on a commercial structural paint job">
+    <img src="work-1.jpg" alt="Commercial corridor and lift bank, freshly decorated by H&H Decorators" id="heroPhoto">
   </div>
   <div class="hero-inner">
     <div class="hero-eyebrow">
@@ -1359,6 +1480,21 @@ section{padding:110px 28px}
 </a>
 
 <script>
+// dismiss loader after the paint sweep finishes painting in (~2.05s total)
+function dismissLoader(){
+  var l = document.getElementById('loader');
+  if(!l || l.classList.contains('done')) return;
+  l.classList.add('done');
+  setTimeout(function(){ if(l && l.parentNode) l.parentNode.removeChild(l); }, 1100);
+}
+if(document.readyState === 'complete'){
+  setTimeout(dismissLoader, 2050);
+} else {
+  window.addEventListener('load', function(){ setTimeout(dismissLoader, 2050); });
+}
+// safety: never let loader linger > 4s even if load event misfires
+setTimeout(dismissLoader, 4000);
+
 // base64 obfuscation
 var P  = atob('MDE1MzU2MDkxNTQ=');           // 01535609154
 var Pf = atob('MDE1MzUgNjA5IDE1NA==');       // 01535 609 154
