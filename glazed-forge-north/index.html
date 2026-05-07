@@ -199,6 +199,127 @@ a{color:inherit;text-decoration:none}
 .trust-item-num{color:var(--forge);font-size:.72rem;display:block;margin-bottom:6px}
 .trust-item-lbl{color:var(--bone);font-size:.86rem;font-weight:500;letter-spacing:.04em}
 
+/* van/heritage band */
+.heritage-band{
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  background:var(--ink);
+}
+.heritage-band img{
+  width:100%;height:auto;display:block;
+  aspect-ratio:21/9;object-fit:cover;
+  filter:brightness(.9);
+}
+.heritage-cap{
+  position:absolute;left:32px;bottom:24px;right:32px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--bone);
+  pointer-events:none;
+}
+.heritage-cap strong{color:var(--forge);font-weight:500;display:block;font-size:.7rem;margin-bottom:2px}
+.heritage-cap > div{
+  background:rgba(14,14,15,.65);backdrop-filter:blur(4px);padding:8px 12px;
+}
+
+/* feature band */
+.feature-band{
+  position:relative;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  background:var(--ink);
+  overflow:hidden;
+}
+.feature-img{
+  width:100%;height:auto;display:block;
+  aspect-ratio:16/7;object-fit:cover;
+}
+.feature-cap{
+  position:absolute;left:32px;bottom:24px;right:32px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--bone);
+  pointer-events:none;
+}
+.feature-cap-left{
+  background:rgba(14,14,15,.65);backdrop-filter:blur(4px);
+  padding:8px 12px;
+}
+.feature-cap-left strong{color:var(--forge);font-weight:500;display:block;font-size:.7rem;margin-bottom:2px}
+.feature-cap-right{
+  background:rgba(14,14,15,.65);backdrop-filter:blur(4px);
+  padding:8px 12px;
+}
+
+/* gallery — asymmetric photo grid */
+.gallery-section{padding:120px 32px;max-width:1280px;margin:0 auto}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:140px;
+  gap:14px;
+  border-top:1px solid var(--rule);
+  padding-top:40px;
+}
+.g-item{
+  position:relative;overflow:hidden;
+  border:1px solid var(--rule);
+  background:var(--bone-soft);
+}
+.g-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .8s ease;
+}
+.g-item:hover img{transform:scale(1.04)}
+.g-item-cap{
+  position:absolute;left:14px;bottom:14px;
+  background:rgba(14,14,15,.85);color:var(--bone);
+  padding:5px 10px;font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .25s, transform .25s;
+}
+.g-item:hover .g-item-cap{opacity:1;transform:translateY(0)}
+.g-1{grid-column:span 4;grid-row:span 4}
+.g-2{grid-column:span 2;grid-row:span 2}
+.g-3{grid-column:span 2;grid-row:span 2}
+.g-4{grid-column:span 3;grid-row:span 3}
+.g-5{grid-column:span 3;grid-row:span 3}
+.g-6{grid-column:span 6;grid-row:span 3}
+
+/* finishes strip */
+.finishes{
+  background:var(--bone-soft);
+  padding:100px 32px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.finishes-inner{max-width:1280px;margin:0 auto}
+.finish-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:50px;
+}
+.finish-tile{
+  position:relative;background:var(--bone);
+  border:1px solid var(--rule);
+  aspect-ratio:1/1;overflow:hidden;
+}
+.finish-tile img{
+  width:100%;height:100%;object-fit:cover;
+  filter:contrast(1.04);
+}
+.finish-tile-cap{
+  position:absolute;left:0;right:0;bottom:0;
+  background:var(--ink);color:var(--bone);
+  padding:14px 16px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.finish-tile-cap strong{font-weight:500;color:var(--bone)}
+.finish-tile-cap em{font-style:normal;color:var(--forge);font-size:.66rem}
+
 /* what-we-make — services S2 with mono spec callouts */
 .make{
   padding:120px 32px;max-width:1280px;margin:0 auto;
@@ -615,6 +736,23 @@ a{color:inherit;text-decoration:none}
   .make-item{padding:36px 24px 30px}
   .make-num{margin-bottom:16px}
 
+  .feature-img{aspect-ratio:4/5}
+  .feature-cap{left:14px;right:14px;bottom:14px;font-size:.62rem;flex-direction:column;align-items:flex-start;gap:8px}
+
+  .heritage-band img{aspect-ratio:4/5}
+  .heritage-cap{left:14px;right:14px;bottom:14px;font-size:.62rem;flex-direction:column;align-items:flex-start;gap:8px}
+
+  .gallery-section{padding:70px 22px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px;gap:10px}
+  .g-1{grid-column:span 2;grid-row:span 4}
+  .g-2,.g-3{grid-column:span 1;grid-row:span 2}
+  .g-4,.g-5{grid-column:span 1;grid-row:span 3}
+  .g-6{grid-column:span 2;grid-row:span 3}
+  .g-item-cap{opacity:1;transform:translateY(0);font-size:.6rem}
+
+  .finishes{padding:70px 22px}
+  .finish-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+
   .drafting-grid{grid-template-columns:1fr}
   .draft-tile{padding:36px 24px;border-right:0!important}
   .draft-svg{height:130px}
@@ -699,6 +837,18 @@ a{color:inherit;text-decoration:none}
     <div class="trust-item"><span class="trust-item-num">03</span><span class="trust-item-lbl">Powder coat finish</span></div>
     <div class="trust-item"><span class="trust-item-num">04</span><span class="trust-item-lbl">Site survey free</span></div>
     <div class="trust-item"><span class="trust-item-num">05</span><span class="trust-item-lbl">10 yr workmanship</span></div>
+  </div>
+</section>
+
+<!-- Feature band -->
+<section class="feature-band">
+  <img src="feature.jpg" alt="Wide six-bay steel-framed studio screen partition with herringbone parquet, fitted by Glazed Forge North" class="feature-img" />
+  <div class="feature-cap">
+    <div class="feature-cap-left">
+      <strong>Project · 042</strong>
+      <span>6-bay studio screen / E. Yorkshire</span>
+    </div>
+    <div class="feature-cap-right">W20 mild-steel · 4.80 × 2.70 m</div>
   </div>
 </section>
 
@@ -870,51 +1020,52 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- Projects -->
-<section class="projects" id="projects">
+<!-- Gallery -->
+<section class="gallery-section" id="projects">
   <div class="section-head">
     <div>
-      <div class="section-label">Project register</div>
-      <h2>Recent <span class="accent">work.</span></h2>
+      <div class="section-label">Selected work</div>
+      <h2>From workshop <span class="accent">to room.</span></h2>
     </div>
-    <div class="meta">Selected · 2018–2026</div>
+    <div class="meta">2024 – 2026</div>
   </div>
-  <div class="proj-list">
-    <div class="proj-row">
-      <div class="proj-num">2026 · 042</div>
-      <div class="proj-name">Yarn &amp; Anchor / Beverley</div>
-      <div class="proj-desc">Bar-back fit-out, three pivot screens between brewhouse and dining room, oak-and-steel servery counter run.</div>
-      <div class="proj-meta">Hospitality / E.Yorks</div>
+  <div class="gallery-grid">
+    <a class="g-item g-1"><img src="work-1.jpg" alt="Tall steel-framed glazed door to garden, domestic install"><span class="g-item-cap">Domestic · East Yorkshire</span></a>
+    <a class="g-item g-2"><img src="work-2.jpg" alt="Bi-fold steel doors open to plant-filled kitchen"><span class="g-item-cap">Kitchen bi-fold · Leeds</span></a>
+    <a class="g-item g-3"><img src="work-3.jpg" alt="Tall double-height steel and glass enclosure mid-install under a cornice ceiling"><span class="g-item-cap">Cornice install · York</span></a>
+    <a class="g-item g-4"><img src="work-4.jpg" alt="Arched steel doorway under the Architecture Atelier sign at workshop entry"><span class="g-item-cap">Atelier door · Driffield</span></a>
+    <a class="g-item g-5"><img src="work-5.jpg" alt="Black bi-fold steel-framed doors raised on sawhorses outside the workshop"><span class="g-item-cap">Pre-delivery · Workshop</span></a>
+    <a class="g-item g-6"><img src="work-6.jpg" alt="Powder-coated steel double doors with side glazing under construction in the workshop"><span class="g-item-cap">Workshop interior · Building 99</span></a>
+  </div>
+</section>
+
+<!-- Finishes strip -->
+<section class="finishes">
+  <div class="finishes-inner">
+    <div class="section-head" style="margin-bottom:30px">
+      <div>
+        <div class="section-label">Finishes &amp; details</div>
+        <h2>The <span class="accent">close-ups.</span></h2>
+      </div>
+      <div class="meta">Powder coat · glass · weld · joinery</div>
     </div>
-    <div class="proj-row">
-      <div class="proj-num">2026 · 038</div>
-      <div class="proj-name">Private House / Pocklington</div>
-      <div class="proj-desc">Double-leaf French steel doors to garden, paired with a 4-bay studio screen between kitchen and living room.</div>
-      <div class="proj-meta">Domestic / E.Yorks</div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-num">2025 · 031</div>
-      <div class="proj-name">Gant Rugger / NYC</div>
-      <div class="proj-desc">Retail fit-out commission, steel display rails, oak banquette, bespoke shopfront-style internal partitions.</div>
-      <div class="proj-meta">Retail / Export</div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-num">2025 · 027</div>
-      <div class="proj-name">We Are Social / London</div>
-      <div class="proj-desc">Office refurbishment with Homepolish, factory-frame meeting room enclosures and a long oak-and-steel hot-desk run.</div>
-      <div class="proj-meta">Office / London</div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-num">2024 · 019</div>
-      <div class="proj-name">Urban Roof Farm / Hull</div>
-      <div class="proj-desc">Steel pergola structure, planter beds, glazed working potting room and tool store on a city-centre roof.</div>
-      <div class="proj-meta">Specials / Hull</div>
-    </div>
-    <div class="proj-row">
-      <div class="proj-num">2024 · 014</div>
-      <div class="proj-name">Theatre Royal / York</div>
-      <div class="proj-desc">Set fabrication for a six-week run, oversized industrial-style steel framework that struck and re-rigged on a tight schedule.</div>
-      <div class="proj-meta">Theatre / York</div>
+    <div class="finish-grid">
+      <div class="finish-tile">
+        <img src="finish-1.jpg" alt="Six powder-coat finish swatches laid out on parquet floor for client selection">
+        <div class="finish-tile-cap"><strong>Powder coat library</strong><em>FIN 01</em></div>
+      </div>
+      <div class="finish-tile">
+        <img src="finish-2.jpg" alt="Reeded fluted glass close-up, factory-fitted to a steel frame">
+        <div class="finish-tile-cap"><strong>Reeded glazing</strong><em>FIN 02</em></div>
+      </div>
+      <div class="finish-tile">
+        <img src="finish-3.jpg" alt="Corner detail of black powder-coated steel meeting an oak hardwood top">
+        <div class="finish-tile-cap"><strong>Steel · oak corner</strong><em>FIN 03</em></div>
+      </div>
+      <div class="finish-tile">
+        <img src="finish-4.jpg" alt="Raw mild-steel weld detail on a bespoke door frame">
+        <div class="finish-tile-cap"><strong>MIG weld · raw</strong><em>FIN 04</em></div>
+      </div>
     </div>
   </div>
 </section>
@@ -980,6 +1131,15 @@ a{color:inherit;text-decoration:none}
         <div class="about-stat-lbl">Public liability</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Heritage band -->
+<section class="heritage-band">
+  <img src="van.jpg" alt="The McLoughlin van with hand-painted gold-leaf signage at sunset">
+  <div class="heritage-cap">
+    <div><strong>Est. 2014 / Driffield</strong><span>Hand-painted lettering by a local sign-writer</span></div>
+    <div>The same hands on every job</div>
   </div>
 </section>
 
