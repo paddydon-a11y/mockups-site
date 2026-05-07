@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Glazed Forge North · Volume One · Twelve Years at the Bench</title>
+<meta name="description" content="A photo journal from the workshop of Billy McLoughlin / Glazed Forge North. Steel-framed glazing, bespoke metalwork and joinery, drawn in CAD and finished by hand in Driffield, East Yorkshire." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,400;0,500;1,400;1,500&family=Caveat:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-17958918628');
+gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --paper:#f3ede0;
+  --paper-deep:#ebe2cf;
+  --ink:#1a1612;
+  --ink-soft:#544c41;
+  --grey:#857a6c;
+  --rust:#b54a2c;
+  --rust-soft:#c87553;
+  --rule:#d4c9b3;
+  --black:#0d0a06;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Spectral',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.65;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  cursor:default;
+}
+.serif-italic{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.005em}
+.hand{font-family:'Caveat',cursive;font-weight:400}
+.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* paper grain */
+body::before{
+  content:"";position:fixed;inset:0;
+  pointer-events:none;z-index:200;
+  opacity:.06;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .65 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* custom cursor */
+.cursor-ring{
+  position:fixed;top:0;left:0;width:14px;height:14px;
+  border:1px solid var(--ink);border-radius:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;z-index:300;
+  transition:width .25s ease,height .25s ease,background-color .25s ease,border-color .25s ease,opacity .2s;
+  mix-blend-mode:difference;
+  opacity:.65;
+}
+.cursor-ring.hover{
+  width:64px;height:64px;
+  background:rgba(181,74,44,.15);
+  border-color:var(--rust);
+}
+
+/* page mark / nav */
+.page-mark{
+  position:fixed;top:24px;left:32px;z-index:90;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink);
+  display:flex;align-items:center;gap:10px;
+}
+.page-mark::before{
+  content:"";width:18px;height:1px;background:var(--rust);
+}
+.menu-mark{
+  position:fixed;top:24px;right:32px;z-index:90;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink);background:transparent;border:0;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+}
+.menu-mark::after{
+  content:"";width:14px;height:1px;background:var(--ink);
+}
+.menu-overlay{
+  position:fixed;inset:0;background:var(--paper);
+  z-index:120;padding:120px 60px 60px;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.menu-overlay.open{opacity:1;pointer-events:auto}
+.menu-overlay nav{
+  display:flex;flex-direction:column;gap:20px;
+}
+.menu-overlay nav a{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:clamp(2rem,6vw,4.6rem);line-height:1;letter-spacing:-.025em;
+  color:var(--ink);transition:color .25s,padding-left .35s ease;
+  display:flex;align-items:baseline;gap:18px;
+}
+.menu-overlay nav a:hover{color:var(--rust);padding-left:18px}
+.menu-overlay nav a span{
+  font-family:'JetBrains Mono',monospace;font-style:normal;
+  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--grey);
+}
+.menu-foot{
+  display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--grey);
+}
+.menu-close{
+  position:absolute;top:24px;right:32px;
+  background:transparent;border:0;cursor:pointer;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink);
+}
+
+/* COVER */
+.cover{
+  height:100vh;min-height:680px;
+  position:relative;overflow:hidden;
+  background:var(--black);
+}
+.cover-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+  filter:contrast(1.04) saturate(.92);
+  transform:scale(1);
+  animation:slowZoom 30s ease-in-out infinite alternate;
+}
+@keyframes slowZoom{
+  from{transform:scale(1)}
+  to{transform:scale(1.06)}
+}
+.cover::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(13,10,6,.35) 0%,transparent 28%,transparent 60%,rgba(13,10,6,.55) 100%);
+  pointer-events:none;
+}
+.cover-title{
+  position:absolute;left:60px;bottom:80px;right:40px;z-index:5;
+  color:var(--paper);
+}
+.cover-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:18px;display:flex;align-items:center;gap:14px;
+}
+.cover-eyebrow::before{content:"";width:32px;height:1px;background:var(--rust)}
+.cover h1{
+  font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(3rem,8vw,7rem);line-height:.95;letter-spacing:-.025em;
+  max-width:14ch;
+}
+.cover h1 em{font-style:italic;color:var(--rust-soft)}
+.cover-byline{
+  margin-top:22px;font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  display:flex;flex-wrap:wrap;gap:24px;
+}
+.cover-byline span::before{content:"·";margin-right:14px;color:var(--rust)}
+.cover-byline span:first-child::before{display:none}
+.cover-index{
+  position:absolute;top:24px;right:80px;z-index:5;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--paper);
+}
+.cover-scroll{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--paper);
+  z-index:5;display:flex;align-items:center;gap:10px;opacity:.85;
+}
+.cover-scroll::after{content:"↓";font-size:.9rem;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* spread / chapter */
+.spread{
+  position:relative;
+  padding:100px 60px;
+  max-width:1280px;margin:0 auto;
+}
+.chapter-mark{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rust);
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:32px;
+}
+.chapter-mark::before{content:"";width:24px;height:1px;background:var(--rust)}
+
+/* 01 — EDITOR'S NOTE */
+.editor{
+  display:grid;grid-template-columns:1.05fr 1.4fr;gap:80px;align-items:start;
+  position:relative;
+}
+.editor-pull{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(2.4rem,4.6vw,4.4rem);line-height:1.02;letter-spacing:-.022em;
+  color:var(--ink);
+}
+.editor-pull em{font-style:normal;color:var(--rust)}
+.editor-pull::before{
+  content:"\201C";
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:1.4em;line-height:.4;color:var(--rust);
+  display:block;margin-bottom:8px;
+}
+.editor-body{font-family:'Spectral',serif;font-size:1.06rem;line-height:1.78;color:var(--ink-soft)}
+.editor-body p{margin-bottom:18px}
+.editor-body p:first-child::first-letter{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:4.4rem;line-height:.85;float:left;
+  color:var(--ink);padding:8px 12px 0 0;font-weight:400;
+}
+.editor-body p:first-child{font-size:1.1rem}
+.editor-margin{
+  position:absolute;
+  font-family:'Caveat',cursive;font-size:1.5rem;color:var(--rust);
+  transform:rotate(-4deg);line-height:1.05;
+  pointer-events:none;
+}
+.editor-margin-1{top:8px;left:48%;width:200px}
+.editor-margin-1::after{
+  content:"";position:absolute;top:-8px;right:-12px;
+  width:80px;height:30px;
+  border:1.5px solid var(--rust);border-radius:50%;
+  transform:rotate(8deg);
+}
+
+/* PLATE I — full-bleed photo with caption + circle */
+.plate{
+  position:relative;background:var(--paper-deep);
+  margin-top:80px;
+}
+.plate-img-wrap{
+  position:relative;overflow:hidden;
+  aspect-ratio:21/11;
+}
+.plate-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  filter:contrast(1.03);
+}
+.plate-circle{
+  position:absolute;width:120px;height:60px;
+  border:2px solid var(--rust);border-radius:50%;
+  pointer-events:none;
+  transform:rotate(-12deg);
+}
+.plate-circle::after{
+  content:"the bit Billy lingers on";
+  position:absolute;top:115%;right:0;
+  font-family:'Caveat',cursive;font-size:1.3rem;
+  color:var(--rust);white-space:nowrap;
+  transform:rotate(2deg);
+}
+.plate-caption{
+  position:absolute;left:60px;bottom:40px;right:40px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--paper);
+  pointer-events:none;
+}
+.plate-caption-l{background:rgba(13,10,6,.6);backdrop-filter:blur(4px);padding:10px 14px}
+.plate-caption-l strong{color:var(--rust-soft);font-weight:500;display:block;margin-bottom:3px;font-size:.66rem}
+.plate-caption-l em{font-style:italic;font-family:'Instrument Serif',serif;font-size:1rem;letter-spacing:0;text-transform:none;color:var(--paper)}
+.plate-caption-r{background:rgba(13,10,6,.6);backdrop-filter:blur(4px);padding:10px 14px}
+
+/* PLATE II — split spread */
+.split-spread{
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;
+  margin-top:120px;align-items:start;
+}
+.split-img{
+  aspect-ratio:3/4;overflow:hidden;
+  position:relative;
+}
+.split-img img{width:100%;height:100%;object-fit:cover}
+.split-img figcaption{
+  margin-top:12px;font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:1.05rem;color:var(--ink-soft);
+  display:flex;justify-content:space-between;
+}
+.split-img figcaption span{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:.7rem;letter-spacing:.1em;color:var(--grey);text-transform:uppercase;align-self:flex-end}
+
+/* 03 — NOTES FROM THE BENCH (journal) */
+.notes-section{
+  background:var(--paper-deep);
+  padding:120px 60px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  margin-top:120px;
+}
+.notes-inner{max-width:1180px;margin:0 auto}
+.notes-head{
+  display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:end;
+  margin-bottom:60px;
+}
+.notes-head h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(2.6rem,5.4vw,5rem);line-height:.96;letter-spacing:-.025em;
+  color:var(--ink);
+}
+.notes-head h2 em{font-style:normal;color:var(--rust)}
+.notes-head p{
+  font-family:'Spectral',serif;font-size:1.1rem;line-height:1.65;
+  color:var(--ink-soft);max-width:42ch;
+}
+
+.note-row{
+  display:grid;grid-template-columns:160px 1fr 1.4fr;gap:40px;
+  padding:36px 0;border-top:1px solid var(--rule);
+  align-items:start;
+}
+.note-row:last-child{border-bottom:1px solid var(--rule)}
+.note-date{
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--rust);
+  line-height:1.6;
+}
+.note-date strong{display:block;color:var(--ink);font-size:1.4rem;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;margin-bottom:4px;text-transform:none}
+.note-img{aspect-ratio:4/5;overflow:hidden}
+.note-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.03)}
+.note-text{
+  font-family:'Spectral',serif;font-size:1.04rem;line-height:1.72;
+  color:var(--ink-soft);
+}
+.note-text strong{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:1.5rem;color:var(--ink);display:block;margin-bottom:12px;letter-spacing:-.012em;
+}
+
+/* PLATE III — magazine asymmetric */
+.plate-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:130px;gap:14px;
+  margin-top:80px;
+}
+.plate-tile{position:relative;overflow:hidden;background:var(--paper-deep)}
+.plate-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease;filter:contrast(1.04)}
+.plate-tile:hover img{transform:scale(1.04)}
+.plate-tile-cap{
+  position:absolute;left:14px;bottom:14px;
+  background:rgba(243,237,224,.92);color:var(--ink);
+  padding:8px 12px;
+  font-family:'Instrument Serif',serif;font-style:italic;font-size:.95rem;
+  border-left:2px solid var(--rust);
+  max-width:75%;
+}
+.pt-1{grid-column:span 4;grid-row:span 4}
+.pt-2{grid-column:span 2;grid-row:span 2}
+.pt-3{grid-column:span 2;grid-row:span 2}
+.pt-4{grid-column:span 3;grid-row:span 3}
+.pt-5{grid-column:span 3;grid-row:span 3}
+
+/* FINISHES still life */
+.stilllife{
+  margin-top:140px;padding:100px 60px;
+  background:var(--paper);
+  border-top:1px solid var(--rule);
+}
+.stilllife-inner{max-width:1280px;margin:0 auto}
+.stilllife-head{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:end;margin-bottom:60px}
+.stilllife-head h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(2.4rem,5vw,4.4rem);line-height:.96;letter-spacing:-.022em;
+}
+.stilllife-head h2 em{font-style:normal;color:var(--rust)}
+.stilllife-head p{font-family:'Spectral',serif;font-size:1.04rem;color:var(--ink-soft);line-height:1.65}
+.stilllife-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.sl-tile{position:relative;background:var(--paper-deep);aspect-ratio:1/1;overflow:hidden}
+.sl-tile img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+.sl-tile figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:rgba(243,237,224,.95);
+  padding:14px 16px;display:flex;justify-content:space-between;align-items:baseline;
+}
+.sl-tile figcaption strong{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.1rem;color:var(--ink)}
+.sl-tile figcaption em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.12em;color:var(--rust);text-transform:uppercase}
+
+/* PROFILE — Billy */
+.profile{
+  display:grid;grid-template-columns:1fr 1.05fr;gap:0;
+  background:var(--ink);color:var(--paper);
+  margin-top:140px;
+}
+.profile-img{
+  position:relative;overflow:hidden;
+  min-height:540px;
+}
+.profile-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:brightness(.86) contrast(1.05);
+}
+.profile-img-cap{
+  position:absolute;left:24px;bottom:18px;
+  font-family:'Caveat',cursive;font-size:1.35rem;color:var(--paper);
+  transform:rotate(-2deg);line-height:1.05;
+  text-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+.profile-text{
+  padding:90px 70px;
+}
+.profile-mark{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--rust-soft);
+  margin-bottom:30px;
+  display:flex;align-items:center;gap:14px;
+}
+.profile-mark::before{content:"";width:24px;height:1px;background:var(--rust)}
+.profile-text h3{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(2.4rem,5vw,4.2rem);line-height:.95;letter-spacing:-.022em;
+  margin-bottom:32px;color:var(--paper);
+}
+.profile-text h3 em{font-style:normal;color:var(--rust-soft)}
+.profile-text p{
+  font-family:'Spectral',serif;font-size:1.05rem;line-height:1.75;
+  color:rgba(243,237,224,.82);margin-bottom:18px;
+}
+.signature{
+  margin-top:36px;padding-top:24px;
+  border-top:1px solid rgba(243,237,224,.18);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+}
+.signature-name{
+  font-family:'Caveat',cursive;font-weight:600;font-size:2.4rem;
+  color:var(--paper);line-height:.9;
+}
+.signature-meta{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--rust-soft);
+  text-align:right;
+}
+.signature-meta strong{color:var(--paper);font-weight:500;display:block;margin-bottom:4px;font-size:.78rem}
+
+/* CONTACT — letter style */
+.letter{
+  padding:120px 60px;
+  max-width:920px;margin:0 auto;
+}
+.letter-stamp{
+  display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:60px;
+  padding-bottom:24px;border-bottom:1px solid var(--rule);
+}
+.letter-stamp-l{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);line-height:1.65}
+.letter-stamp-l strong{color:var(--ink);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:1.3rem;display:block;margin-bottom:6px;letter-spacing:-.01em;text-transform:none}
+.letter-stamp-r{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-align:right;color:var(--grey);
+  border:1px solid var(--rust);padding:8px 12px;
+}
+.letter-stamp-r strong{color:var(--rust);display:block;font-size:.86rem;letter-spacing:.18em}
+.letter h2{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(2.6rem,5.6vw,5rem);line-height:.96;letter-spacing:-.025em;
+  margin-bottom:30px;
+}
+.letter h2 em{font-style:normal;color:var(--rust)}
+.letter p.intro{
+  font-family:'Spectral',serif;font-size:1.15rem;line-height:1.65;color:var(--ink-soft);
+  max-width:54ch;margin-bottom:50px;
+}
+.letter form{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.letter-fld{display:flex;flex-direction:column;gap:8px}
+.letter-fld.full{grid-column:1 / -1}
+.letter-fld label{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--rust);
+}
+.letter-fld input,.letter-fld select,.letter-fld textarea{
+  padding:14px 0 12px;background:transparent;border:0;border-bottom:1px solid var(--ink);
+  font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;color:var(--ink);
+  letter-spacing:-.01em;
+}
+.letter-fld input:focus,.letter-fld select:focus,.letter-fld textarea:focus{outline:0;border-bottom-color:var(--rust)}
+.letter-fld textarea{min-height:90px;resize:vertical;font-family:'Spectral',serif;font-style:normal;font-size:1.06rem;line-height:1.6;padding:8px 0}
+.letter-submit{
+  grid-column:1 / -1;justify-self:flex-start;
+  background:var(--ink);color:var(--paper);border:0;cursor:pointer;
+  padding:18px 30px;font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  transition:background .2s,transform .2s;
+}
+.letter-submit:hover{background:var(--rust);transform:translate(2px,-2px)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.letter-signoff{
+  margin-top:50px;padding-top:30px;border-top:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;
+}
+.letter-signoff-l{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.2rem;color:var(--ink-soft)}
+.letter-signoff-l strong{
+  font-family:'Caveat',cursive;font-weight:600;font-size:2.4rem;
+  display:block;color:var(--ink);font-style:normal;line-height:1;
+}
+.letter-signoff-r{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);text-align:right;line-height:1.7}
+.letter-signoff-r a{color:var(--rust)}
+
+/* footer */
+.colophon{
+  background:var(--ink);color:rgba(243,237,224,.72);
+  padding:80px 60px 40px;
+}
+.colophon-inner{max-width:1280px;margin:0 auto}
+.colophon-mark{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(3rem,8vw,6.5rem);line-height:.92;letter-spacing:-.03em;
+  margin-bottom:50px;color:var(--paper);
+}
+.colophon-mark em{font-style:normal;color:var(--rust-soft)}
+.colophon-grid{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:50px;
+  border-top:1px solid rgba(243,237,224,.18);padding-top:36px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.colophon h5{
+  color:var(--paper);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:1.05rem;letter-spacing:-.005em;margin-bottom:14px;text-transform:none;
+}
+.colophon p{margin-bottom:8px;line-height:1.7}
+.colophon ul{list-style:none}
+.colophon li{padding:5px 0}
+.colophon a:hover{color:var(--rust-soft)}
+.colophon-bottom{
+  margin-top:60px;padding-top:22px;border-top:1px solid rgba(243,237,224,.18);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(243,237,224,.55);
+}
+.colophon-bottom a{color:var(--rust-soft)}
+
+/* float CTA */
+.float-cta{display:none}
+@media (max-width:780px){
+  .cursor-ring{display:none}
+  body{cursor:auto}
+  .float-cta{
+    display:flex;position:fixed;bottom:18px;left:18px;right:18px;z-index:60;
+    gap:10px;
+    opacity:0;transform:translateY(20px);pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .float-cta.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+  .float-cta a{
+    flex:1;text-align:center;padding:14px;
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;
+    font-weight:500;text-transform:uppercase;letter-spacing:.12em;
+    box-shadow:0 12px 28px -8px rgba(0,0,0,.45);
+  }
+  .float-call{background:var(--ink);color:var(--paper)}
+  .float-wa{background:var(--rust);color:var(--paper)}
+}
+
+/* responsive */
+@media (max-width:1080px){
+  .editor{grid-template-columns:1fr;gap:40px}
+  .editor-margin{display:none}
+  .split-spread{grid-template-columns:1fr;gap:40px}
+  .notes-head{grid-template-columns:1fr;gap:24px}
+  .stilllife-head{grid-template-columns:1fr;gap:24px}
+  .stilllife-grid{grid-template-columns:repeat(2,1fr)}
+  .profile{grid-template-columns:1fr}
+  .profile-img{min-height:380px}
+  .profile-text{padding:60px 40px}
+  .colophon-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .plate-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:120px}
+  .pt-1{grid-column:span 4;grid-row:span 4}
+  .pt-2,.pt-3{grid-column:span 2;grid-row:span 2}
+  .pt-4,.pt-5{grid-column:span 2;grid-row:span 3}
+}
+@media (max-width:780px){
+  .page-mark{top:18px;left:22px;font-size:.66rem;letter-spacing:.14em}
+  .menu-mark{top:18px;right:22px;font-size:.66rem;letter-spacing:.14em}
+  .menu-overlay{padding:90px 30px 40px}
+  .cover-title{left:24px;right:24px;bottom:80px}
+  .cover-index{display:none}
+  .cover-byline{font-size:.62rem;gap:14px}
+  .cover-byline span::before{display:none}
+  .spread{padding:60px 22px}
+  .editor-pull{font-size:1.9rem}
+  .editor-body p:first-child::first-letter{font-size:3.4rem}
+  .plate-circle{width:80px;height:40px}
+  .plate-circle::after{font-size:1rem}
+  .plate-caption{left:16px;right:16px;bottom:16px;flex-direction:column;align-items:flex-start;gap:6px}
+  .split-spread{margin-top:60px}
+  .split-img{aspect-ratio:4/5}
+  .notes-section{padding:70px 22px;margin-top:80px}
+  .note-row{grid-template-columns:1fr;gap:18px;padding:28px 0}
+  .note-img{aspect-ratio:4/3}
+  .plate-grid{grid-template-columns:1fr;grid-auto-rows:auto;gap:10px}
+  .plate-tile{aspect-ratio:4/3}
+  .pt-1,.pt-2,.pt-3,.pt-4,.pt-5{grid-column:span 1;grid-row:auto}
+  .stilllife{margin-top:80px;padding:60px 22px}
+  .stilllife-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .profile{margin-top:80px}
+  .profile-img{min-height:280px}
+  .profile-text{padding:50px 24px}
+  .letter{padding:70px 22px;padding-bottom:120px}
+  .letter form{grid-template-columns:1fr}
+  .letter-fld input,.letter-fld select{font-size:1.1rem}
+  .colophon{padding:60px 22px 30px;padding-bottom:90px}
+  .colophon-grid{grid-template-columns:1fr;gap:30px}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-ring" id="cursorRing"></div>
+
+<a href="#" class="page-mark mono">GFN · Vol. I</a>
+<button class="menu-mark" id="menuMark">Index</button>
+
+<div class="menu-overlay" id="menuOverlay">
+  <button class="menu-close" id="menuClose">Close</button>
+  <nav>
+    <a href="#editor"><span>01</span>Editor's note</a>
+    <a href="#plate-1"><span>02</span><em class="serif-italic">Plate I · The frames</em></a>
+    <a href="#notes"><span>03</span>Notes from the bench</a>
+    <a href="#plate-2"><span>04</span><em class="serif-italic">Plate II · In the room</em></a>
+    <a href="#finishes"><span>05</span>The finishes</a>
+    <a href="#profile"><span>06</span>Profile · Billy</a>
+    <a href="#letter"><span>07</span>Send a brief</a>
+  </nav>
+  <div class="menu-foot">
+    <span>Building 99 · Driffield · YO25 9DJ</span>
+    <span>Volume One · Spring 2026</span>
+  </div>
+</div>
+
+<!-- COVER -->
+<section class="cover">
+  <img src="work-3.jpg" alt="Tall double-height steel-framed glazed enclosure mid-install in a Yorkshire townhouse" class="cover-img" />
+  <div class="cover-index mono">Volume I · No. 01 · Spring 2026</div>
+  <div class="cover-title">
+    <div class="cover-eyebrow">Glazed Forge North · A photo journal</div>
+    <h1>Twelve years <em>at the bench.</em></h1>
+    <div class="cover-byline mono">
+      <span>Words &amp; pictures · Billy McLoughlin</span>
+      <span>Driffield · East Yorkshire</span>
+      <span>Steel · Glass · Oak</span>
+    </div>
+  </div>
+  <div class="cover-scroll mono">Begin</div>
+</section>
+
+<!-- 01 — EDITOR'S NOTE -->
+<section class="spread" id="editor">
+  <div class="chapter-mark mono">№ 01 · Editor's note</div>
+  <div class="editor">
+    <p class="editor-pull">If a frame can outlive me and the room it's hung in, that's the only <em>brief</em> I really care about.</p>
+    <div class="editor-body">
+      <p>This isn't a brochure. It's a quiet little volume I put together because in twelve years of fitting steel and glass across Yorkshire, nobody's ever asked me about the bit I love most. The drawings. The dust. The hour after the last weld when you put the kettle on and stand back.</p>
+      <p>Glazed Forge North is one workshop on Kelleythorpe Industrial Estate. Two of us most days, three when we're hanging a big screen. Every frame on these pages was drawn in CAD on the bench, cut and welded on that bench, and hung by the same hands that drew it. There's no middleman, no subbie, no white-label fabricator quietly making the hard bits while we paint our name on the easy ones.</p>
+      <p>I wrote the notes here for myself as much as for you. If you want to put one of these in a room, a bar, a stage set, an office, I'd love that. If you just want to flip through and see how a frame becomes a door, you're more welcome here than a paying client.</p>
+    </div>
+    <div class="editor-margin editor-margin-1 hand">put the kettle on</div>
+  </div>
+</section>
+
+<!-- 02 — PLATE I -->
+<section class="plate" id="plate-1">
+  <div class="plate-img-wrap">
+    <img src="feature.jpg" alt="A wide six-bay steel-framed studio screen partition in a Yorkshire family home, fitted by Glazed Forge North" />
+    <div class="plate-circle" style="top:42%;left:46%"></div>
+    <div class="plate-caption">
+      <div class="plate-caption-l">
+        <strong>Plate I</strong>
+        <em>Six-bay studio screen, family kitchen, East Yorkshire</em>
+      </div>
+      <div class="plate-caption-r">W20 · 4.80 × 2.70 m · Fitted Spring 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 cont — split spread -->
+<section class="spread">
+  <div class="split-spread">
+    <figure class="split-img">
+      <img src="work-1.jpg" alt="Tall steel-framed glazed door looking out to a garden, blue velvet sofa visible inside" />
+      <figcaption><em>The light it lets in. <strong style="color:var(--ink)">Drawn for the</strong> opening, not from a catalogue.</em><span>Plate I.b</span></figcaption>
+    </figure>
+    <figure class="split-img">
+      <img src="work-2.jpg" alt="Bi-fold steel-framed doors swung open into a plant-filled kitchen with exposed brick" />
+      <figcaption><em><strong style="color:var(--ink)">A bi-fold</strong> that, with luck, opens up a Sunday morning.</em><span>Plate I.c</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 03 — NOTES FROM THE BENCH -->
+<section class="notes-section" id="notes">
+  <div class="notes-inner">
+    <div class="chapter-mark mono">№ 03 · Notes from the bench</div>
+    <div class="notes-head">
+      <h2>Four entries from the <em>diary.</em></h2>
+      <p>I keep a notebook on the bench for measurements, sketches and the occasional thought. These are pages I've torn out for the journal, written between welds, mostly cold-coffee in hand.</p>
+    </div>
+
+    <div class="note-row">
+      <div class="note-date mono"><strong>Mar / 2026</strong>Tue · 11.20 a.m.</div>
+      <div class="note-img"><img src="raw-1.jpg" alt="Tall raw mild-steel mullioned frame standing on saw-horses in the workshop yard, pre-paint"></div>
+      <div class="note-text">
+        <strong>The frame goes in raw.</strong>
+        Mild-steel sections come in by the ton from a yard outside Hull. We chop them on a cold saw, square them off, tack them at the corners and check, recheck, then weld through. The frame on the right was hung the following Friday in a Beverley new-build. I always like a frame more before it's painted. There's an honesty to raw steel you lose under powder.
+      </div>
+    </div>
+
+    <div class="note-row">
+      <div class="note-date mono"><strong>Apr / 2026</strong>Thu · 4.30 p.m.</div>
+      <div class="note-img"><img src="finish-1.jpg" alt="Six powder-coat finish swatches laid out on a parquet floor for client selection"></div>
+      <div class="note-text">
+        <strong>The day the swatches arrive.</strong>
+        We send a small library of finishes home with every client before we cut. Bronze, gold-leaf, anthracite, satin black, primed-and-waxed. There's a moment where someone's stood with six little sticks of metal on their hallway floor at 4 in the afternoon and the whole job lives or dies in that ten minutes. Choose well. We can't unfinish steel.
+      </div>
+    </div>
+
+    <div class="note-row">
+      <div class="note-date mono"><strong>Apr / 2026</strong>Wed · 8.05 a.m.</div>
+      <div class="note-img"><img src="workshop-3.jpg" alt="Powder-coated steel bi-fold door swung open in the workshop with red toolbox and step ladder beside"></div>
+      <div class="note-text">
+        <strong>Hang the leaf, walk away.</strong>
+        After the powder coat goes on, we test-hang every leaf in the workshop before it leaves. Bi-folds especially. A good bi-fold is silent and a half-bad one is the worst noise in a kitchen. So we walk it through, fold to fold, until it folds the way the maker would want it to. Then we wrap it in cling and ply and put it on the van.
+      </div>
+    </div>
+
+    <div class="note-row">
+      <div class="note-date mono"><strong>May / 2026</strong>Fri · 2.10 p.m.</div>
+      <div class="note-img"><img src="finish-4.jpg" alt="Macro photograph of a raw mild-steel weld bead on a bespoke door frame"></div>
+      <div class="note-text">
+        <strong>This bead is from a Tuesday.</strong>
+        I welded this one with a TIG on a low-current day. Sometimes I can tell when I made a join just by looking at the bead. They've got rhythms, like handwriting. This one was steady, no worry, a good cup of tea on the side. I'll keep welding for as long as my hand still holds it.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 04 — PLATE II -->
+<section class="spread" id="plate-2">
+  <div class="chapter-mark mono">№ 04 · Plate II · In the room</div>
+  <div class="plate-grid">
+    <div class="plate-tile pt-1">
+      <img src="work-3.jpg" alt="Tall double-height glazed enclosure mid-install under a Victorian cornice ceiling">
+      <div class="plate-tile-cap">Townhouse / Cornice install / York</div>
+    </div>
+    <div class="plate-tile pt-2">
+      <img src="work-4.jpg" alt="Arched steel doorway under the Architecture Atelier sign at the workshop entry">
+      <div class="plate-tile-cap">Atelier door / Driffield</div>
+    </div>
+    <div class="plate-tile pt-3">
+      <img src="raw-2.jpg" alt="Tall raw arch-top steel frame standing in the workshop entrance">
+      <div class="plate-tile-cap">Arch-top / Pre-paint</div>
+    </div>
+    <div class="plate-tile pt-4">
+      <img src="work-5.jpg" alt="Black powder-coated bi-fold steel door raised on saw-horses outside the workshop">
+      <div class="plate-tile-cap">Bi-fold / Pre-delivery</div>
+    </div>
+    <div class="plate-tile pt-5">
+      <img src="work-6.jpg" alt="Steel double doors with side glazing under construction in the workshop, yellow truck visible">
+      <div class="plate-tile-cap">Workshop / Building 99</div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — FINISHES STILL LIFE -->
+<section class="stilllife" id="finishes">
+  <div class="stilllife-inner">
+    <div class="chapter-mark mono">№ 05 · The finishes</div>
+    <div class="stilllife-head">
+      <h2>Where you want to <em>linger.</em></h2>
+      <p>Four close-ups I keep coming back to when I'm photographing a job. The bits a passing eye won't see and the ten-year owner will every morning.</p>
+    </div>
+    <div class="stilllife-grid">
+      <figure class="sl-tile"><img src="finish-1.jpg" alt="Six powder-coat sticks for client selection"><figcaption><strong>Powder coat library</strong><em>Fin · 01</em></figcaption></figure>
+      <figure class="sl-tile"><img src="finish-2.jpg" alt="Reeded fluted glass close-up"><figcaption><strong>Reeded glazing</strong><em>Fin · 02</em></figcaption></figure>
+      <figure class="sl-tile"><img src="finish-3.jpg" alt="Steel meeting oak hardwood corner detail"><figcaption><strong>Steel · oak corner</strong><em>Fin · 03</em></figcaption></figure>
+      <figure class="sl-tile"><img src="finish-4.jpg" alt="Raw mild-steel weld bead detail"><figcaption><strong>MIG weld · raw</strong><em>Fin · 04</em></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — PROFILE -->
+<section class="profile" id="profile">
+  <div class="profile-img">
+    <img src="van.jpg" alt="The McLoughlin van with hand-painted gold-leaf signage at sunset" />
+    <div class="profile-img-cap hand">"the lettering was Dad's friend"</div>
+  </div>
+  <div class="profile-text">
+    <div class="profile-mark mono">№ 06 · Profile</div>
+    <h3>The maker, <em>Billy.</em></h3>
+    <p>I'm a fabricator. I weld, I draw, I fit. I'm thirty-eight, my van's older than half my customers, and the workshop's named after the village it's in. I started Glazed Forge North in 2014 with a MIG welder my dad gave me when I came back to Yorkshire from a few years on London building sites.</p>
+    <p>The first job was a single steel-framed door for a friend's kitchen extension. He paid me in beer and a recommendation. Twelve years on, the recommendations are still how every job lands.</p>
+    <p>If we work together, you'll have my number, you'll meet me at the workshop if you fancy a look, and you'll get a frame that I'd put my name on (and have, on the side of every van since the first one). Affordable when I can be, honest always, and properly excited every time someone says the word <em class="serif-italic">bespoke</em>.</p>
+    <div class="signature">
+      <div class="signature-name">Billy McLoughlin.</div>
+      <div class="signature-meta">
+        <strong>Founder · Fabricator</strong>
+        <span>Building 99 · Driffield · 2014–</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — LETTER -->
+<section class="letter" id="letter">
+  <div class="letter-stamp">
+    <div class="letter-stamp-l">
+      <strong>Send me a brief.</strong>
+      Billy McLoughlin · Glazed Forge North<br/>
+      Building 99, Kelleythorpe Industrial Estate<br/>
+      Driffield, East Yorkshire YO25 9DJ
+    </div>
+    <div class="letter-stamp-r">
+      <strong>RFP · 01</strong>
+      Replies same day
+    </div>
+  </div>
+  <div class="chapter-mark mono">№ 07 · Send a brief</div>
+  <h2>Tell me about the <em>opening.</em></h2>
+  <p class="intro">A few lines is plenty. Sizes if you've got them, otherwise just a phone-snap of the wall. I'll come back the same day with rough numbers and we'll take it from there.</p>
+  <form action="https://formspree.io/f/xqalqbwo" method="POST">
+    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" />
+    <input type="hidden" name="_timestamp" id="ts" />
+    <input type="hidden" name="businessName" value="Glazed Forge North" />
+    <input type="hidden" name="source" value="glazed-forge-north-v2-mockup" />
+    <div class="letter-fld">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" required placeholder="Sarah, James…" />
+    </div>
+    <div class="letter-fld">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" required placeholder="07…" />
+    </div>
+    <div class="letter-fld full">
+      <label for="job">What you're after</label>
+      <select id="job" name="job" required>
+        <option value="">Pick a starting point</option>
+        <optgroup label="Steel &amp; glass">
+          <option>Factory frames / glazed doors</option>
+          <option>Internal partitions / studio screens</option>
+          <option>Pitched rooflight or roof glaze</option>
+        </optgroup>
+        <optgroup label="Bespoke fabrication">
+          <option>Heirloom furniture</option>
+          <option>Set fabrication (film/theatre/retail)</option>
+          <option>Property refurbishment</option>
+          <option>One-off commission</option>
+        </optgroup>
+        <option>Honestly not sure yet</option>
+      </select>
+    </div>
+    <div class="letter-fld full">
+      <label for="message">A few lines about the opening</label>
+      <textarea id="message" name="message" rows="3" placeholder="Rough size, materials in mind, deadline, link to a Pinterest board…" required></textarea>
+    </div>
+    <button type="submit" class="letter-submit">Post the brief →</button>
+  </form>
+  <div class="letter-signoff">
+    <div class="letter-signoff-l">
+      Yours,
+      <strong>Billy.</strong>
+    </div>
+    <div class="letter-signoff-r">
+      <a href="tel:07476927551">07476 927 551</a><br/>
+      <a href="https://instagram.com/w_macmet">@w_macmet</a>
+    </div>
+  </div>
+</section>
+
+<!-- COLOPHON -->
+<footer class="colophon">
+  <div class="colophon-inner">
+    <div class="colophon-mark">Glazed <em>Forge</em> North.</div>
+    <div class="colophon-grid">
+      <div>
+        <h5>Workshop</h5>
+        <p>Building 99, Kelleythorpe Industrial Estate, Driffield, East Yorkshire YO25 9DJ</p>
+        <p>Mon–Fri 7 a.m. — 6 p.m.<br/>Saturday by appointment</p>
+      </div>
+      <div>
+        <h5>The journal</h5>
+        <ul>
+          <li><a href="#editor">Editor's note</a></li>
+          <li><a href="#notes">Notes from the bench</a></li>
+          <li><a href="#finishes">The finishes</a></li>
+          <li><a href="#profile">Profile · Billy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Make contact</h5>
+        <ul>
+          <li><a href="tel:07476927551">07476 927 551</a></li>
+          <li><a href="#" id="emailLink" data-email="YmlsbHlAd2lsbGlhbW1jbG91Z2hsaW4ubmV0">click to reveal</a></li>
+          <li><a href="https://instagram.com/w_macmet" target="_blank" rel="noopener">Instagram · @w_macmet</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Colophon</h5>
+        <p>Set in Instrument Serif &amp; Spectral.<br/>Marginalia in Caveat.<br/>Stamped in JetBrains Mono.</p>
+        <p>Photographed at Building 99.</p>
+      </div>
+    </div>
+    <div class="colophon-bottom">
+      <span>© 2026 Glazed Forge North · William McLoughlin · All rights reserved · Volume I, No. 01 · Spring 2026</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating CTA mobile -->
+<div class="float-cta" id="floatCta">
+  <a href="tel:07476927551" class="float-call">Call Billy</a>
+  <a href="https://wa.me/447476927551" class="float-wa">WhatsApp</a>
+</div>
+
+<script>
+// custom cursor
+(function(){
+  const r=document.getElementById('cursorRing');
+  if(!r) return;
+  let mx=window.innerWidth/2,my=window.innerHeight/2;
+  let cx=mx,cy=my;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  function tick(){
+    cx+=(mx-cx)*.18;cy+=(my-cy)*.18;
+    r.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
+    requestAnimationFrame(tick);
+  }
+  tick();
+  document.querySelectorAll('img,a,button,input,select,textarea,.plate-tile,.split-img,.sl-tile').forEach(el=>{
+    el.addEventListener('mouseenter',()=>r.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>r.classList.remove('hover'));
+  });
+})();
+
+// menu overlay
+const mm=document.getElementById('menuMark');
+const mc=document.getElementById('menuClose');
+const mo=document.getElementById('menuOverlay');
+mm.addEventListener('click',()=>mo.classList.add('open'));
+mc.addEventListener('click',()=>mo.classList.remove('open'));
+mo.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>mo.classList.remove('open')));
+
+// timestamp
+document.getElementById('ts').value = Date.now();
+
+// email reveal
+const el=document.getElementById('emailLink');
+const dec=atob(el.dataset.email);
+el.textContent=dec;
+el.href='mailto:'+dec;
+
+// float CTAs after cover
+(function(){
+  const cover=document.querySelector('.cover');
+  const fc=document.getElementById('floatCta');
+  if(!cover||!fc) return;
+  const io=new IntersectionObserver(([e])=>{
+    fc.classList.toggle('visible',!e.isIntersecting);
+  },{rootMargin:'-40px 0px 0px 0px',threshold:0});
+  io.observe(cover);
+})();
+</script>
+
+</body>
+</html>
