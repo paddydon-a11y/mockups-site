@@ -257,7 +257,8 @@
   .foot .credit a:hover{text-decoration:underline}
 
   /* ============ FLOATING CALL BUTTON (mobile) ============ */
-  .float-call{display:none;position:fixed;bottom:18px;right:18px;z-index:30;background:var(--green);color:#fff;padding:14px 22px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:15px;box-shadow:0 12px 32px rgba(0,0,0,.5),0 0 0 4px rgba(63,138,100,.18);align-items:center;gap:10px}
+  .float-call{display:none;position:fixed;bottom:18px;right:18px;z-index:30;background:var(--green);color:#fff;padding:14px 22px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:15px;box-shadow:0 12px 32px rgba(0,0,0,.5),0 0 0 4px rgba(63,138,100,.18);align-items:center;gap:10px;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+  .float-call.visible{opacity:1;transform:translateY(0);pointer-events:auto}
   @media (max-width:880px){ .float-call{display:inline-flex} }
 </style>
 </head>
@@ -721,6 +722,18 @@
     var disp = el.querySelector('.email-display');
     if(disp) disp.textContent = em;
   });
+
+  // Show floating call button only after hero scrolls away
+  var hero = document.getElementById('top');
+  var fc = document.querySelector('.float-call');
+  if(hero && fc && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) fc.classList.remove('visible');
+        else fc.classList.add('visible');
+      });
+    },{rootMargin:'-20% 0px 0px 0px'}).observe(hero);
+  }
 
   // Form
   document.getElementById('ts').value = String(Date.now());
