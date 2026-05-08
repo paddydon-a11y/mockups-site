@@ -55,13 +55,22 @@ p{margin:0}
 
 .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
+/* pre-loader */
+.preloader{position:fixed;inset:0;z-index:9999;background:var(--bg-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;transition:opacity 0.55s ease 0.3s, visibility 0s linear 0.85s}
+.preloader.done{opacity:0;visibility:hidden}
+.preloader .pl-logo{width:min(320px,68vw);opacity:0;transform:translateY(8px);animation:plFadeIn 0.55s ease 0.05s forwards}
+.preloader .pl-logo img{width:100%;height:auto;display:block}
+.preloader .pl-bar{width:min(260px,52vw);height:3px;background:rgba(245,197,24,0.16);position:relative;overflow:hidden}
+.preloader .pl-bar::before{content:"";position:absolute;left:0;top:0;width:0;height:100%;background:var(--accent);animation:plSweep 1.0s cubic-bezier(.4,0,.2,1) 0.25s forwards}
+.preloader .pl-cap{font-family:var(--display);font-weight:900;font-size:0.78rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);opacity:0;animation:plFadeIn 0.5s ease 0.5s forwards}
+@keyframes plSweep{to{width:100%}}
+@keyframes plFadeIn{to{opacity:1;transform:translateY(0)}}
+
 /* nav */
 .nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;padding:0 28px;max-width:var(--maxw);margin:0 auto}
-.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
-.nav-logo .mark{width:42px;height:42px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:1.35rem;letter-spacing:-0.04em;flex:none;clip-path:polygon(0 0,100% 0,100% 80%,80% 100%,0 100%)}
-.nav-logo .name{font-family:var(--display);font-weight:900;font-size:1.25rem;color:var(--text);text-transform:uppercase;line-height:0.95;letter-spacing:0.005em}
-.nav-logo .sub{font-size:0.7rem;color:var(--muted);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-top:3px}
+.nav-logo{display:flex;align-items:center;gap:0;white-space:nowrap;height:48px}
+.nav-logo img{height:48px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{font-size:0.92rem;color:var(--body);font-weight:600;transition:color 0.2s}
 .nav-links a:hover{color:var(--text)}
@@ -105,6 +114,12 @@ p{margin:0}
 .trust-item{display:flex;align-items:center;gap:11px;color:var(--text);font-weight:600;font-size:0.92rem;letter-spacing:-0.003em}
 .trust-item .tic{width:28px;height:28px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none;clip-path:polygon(0 0,100% 0,100% 80%,80% 100%,0 100%)}
 .trust-item .tic svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:880px){
+  .trust{padding:8px 0}
+  .trust-row{display:block}
+  .trust-item{padding:14px 0;border-bottom:1px solid var(--line);width:100%;font-size:0.92rem}
+  .trust-item:last-child{border-bottom:0}
+}
 
 /* sections */
 section{padding:104px 0}
@@ -301,15 +316,18 @@ section{padding:104px 0}
 </head>
 <body>
 
+<!-- preloader -->
+<div class="preloader" id="pl">
+  <div class="pl-logo"><img src="logo.jpg" alt="AD Plant &amp; Construction"></div>
+  <div class="pl-bar"></div>
+  <div class="pl-cap">Witheridge · est. 2005</div>
+</div>
+
 <!-- nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-logo">
-      <span class="mark">AD</span>
-      <div>
-        <div class="name">AD Plant</div>
-        <div class="sub">&amp; Construction · Witheridge</div>
-      </div>
+    <a href="#top" class="nav-logo" aria-label="AD Plant &amp; Construction">
+      <img src="logo.jpg" alt="AD Plant &amp; Construction logo">
     </a>
     <div class="nav-links" id="navLinks">
       <a href="#services">Services</a>
@@ -840,6 +858,10 @@ document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
 var fab = document.getElementById('fabWrap');
 window.addEventListener('scroll', function(){
   if(window.scrollY > 640) fab.classList.add('on'); else fab.classList.remove('on');
+});
+
+window.addEventListener('load', function(){
+  setTimeout(function(){ document.getElementById('pl').classList.add('done'); }, 1300);
 });
 
 var lb = document.getElementById('lb');
