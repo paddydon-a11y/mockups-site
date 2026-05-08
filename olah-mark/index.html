@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Olah Mark | Painter & Decorator in North London</title>
+<meta name="description" content="Mark Olah is a north London painter and decorator. Exteriors, garden rooms, kitchens, sash windows. Honest quotes, tidy work, lasting finish. Free colour consultation.">
+<meta name="theme-color" content="#f0ebde">
+
+<meta property="og:title" content="Olah Mark | North London Painter & Decorator">
+<meta property="og:description" content="Honest quotes, tidy work, lasting finish. Garden rooms, exteriors and interiors across north London.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --bg:           #f0ebde;
+  --bg-deep:      #ebe5d4;
+  --card:         #e8e0cd;
+  --card-hover:   #ddd3bc;
+  --line:         #d4cab2;
+  --line-strong:  #b8ac8f;
+
+  --ink:          #1c1d1a;
+  --ink-soft:     #52524b;
+  --muted:        #8a8678;
+
+  --accent:       #c46a3c;
+  --accent-deep:  #9c5128;
+  --accent-glow:  rgba(196,106,60,.16);
+
+  --sage:         #92a8a4;
+  --sage-deep:    #6e8884;
+  --charcoal:     #2d2e2c;
+  --cream-trim:   #e7dfc3;
+  --rose-clay:    #b87560;
+
+  --display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink-soft);
+  font-family:var(--body);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* Subtle paper grain on body */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.11  0 0 0 0 0.10  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;color:var(--ink);letter-spacing:-0.01em;line-height:1.04}
+h1 em, h2 em, h3 em{font-style:italic;font-weight:400}
+
+.label{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+}
+.label::before{
+  content:"";
+  width:18px;height:1px;
+  background:var(--accent);
+  display:inline-block;
+}
+
+.container{max-width:1240px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+@media (max-width:640px){.container{padding:0 22px}}
+
+/* ───── NAV ───── */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1240px;margin:0 auto;
+  padding:18px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;
+}
+.nav-logo{
+  font-family:var(--display);
+  font-size:1.5rem;
+  font-weight:400;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+  white-space:nowrap;
+  display:flex;align-items:baseline;gap:.55rem;
+}
+.nav-logo .dot{
+  width:9px;height:9px;
+  background:var(--accent);
+  border-radius:50%;
+  display:inline-block;
+  align-self:center;
+}
+.nav-logo em{font-style:italic;color:var(--accent-deep)}
+
+.nav-links{display:flex;gap:38px;align-items:center}
+.nav-links a{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  font-weight:500;
+  transition:color .2s;
+  position:relative;
+}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-6px;
+  height:1px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+.nav-call{
+  font-family:var(--body);
+  font-size:.85rem;font-weight:600;
+  color:var(--ink);
+  padding:11px 18px;
+  border:1px solid var(--ink);
+  border-radius:999px;
+  letter-spacing:0;text-transform:none;
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:all .2s;
+}
+.nav-call:hover{background:var(--ink);color:var(--bg)}
+.nav-call::after{display:none}
+
+.hamburger{
+  display:none;
+  width:44px;height:44px;
+  background:transparent;border:1px solid var(--line-strong);
+  border-radius:50%;
+  align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.hamburger span{
+  display:block;width:18px;height:1.5px;background:var(--ink);
+  position:relative;transition:.25s;
+}
+.hamburger span::before,.hamburger span::after{
+  content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink);transition:.25s;
+}
+.hamburger span::before{top:-6px}
+.hamburger span::after{top:6px}
+.hamburger.open span{background:transparent}
+.hamburger.open span::before{top:0;transform:rotate(45deg)}
+.hamburger.open span::after{top:0;transform:rotate(-45deg)}
+
+.mobile-panel{
+  display:none;
+  position:fixed;top:65px;left:0;right:0;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  padding:24px 28px 32px;
+  z-index:55;
+  transform:translateY(-12px);opacity:0;pointer-events:none;
+  transition:transform .3s ease, opacity .3s ease;
+}
+.mobile-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-panel a{
+  display:block;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);
+  font-weight:500;
+}
+.mobile-panel a:last-child{border-bottom:0}
+.mobile-panel .panel-cta{
+  display:flex;align-items:center;justify-content:center;gap:.55rem;
+  margin-top:18px;padding:14px 18px;
+  background:var(--ink);color:var(--bg);
+  border-radius:999px;letter-spacing:0;text-transform:none;
+  font-family:var(--body);font-size:.95rem;font-weight:600;
+  border-bottom:0;
+}
+
+@media (max-width:880px){
+  .nav-links,.nav-call{display:none}
+  .hamburger{display:inline-flex}
+  .mobile-panel{display:block}
+}
+
+/* ───── HERO (H2 split) ───── */
+.hero{
+  padding:60px 0 80px;
+  position:relative;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap:64px;
+  align-items:center;
+}
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:42px}
+  .hero{padding:40px 0 50px}
+}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;
+  display:inline-flex;align-items:center;gap:.65rem;
+  margin-bottom:28px;
+}
+.eyebrow .pulse{
+  position:relative;width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+}
+.eyebrow .pulse::after{
+  content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid var(--accent);
+  animation:pulse 2s ease-out infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(.6);opacity:.9}
+  100%{transform:scale(1.6);opacity:0}
+}
+
+.hero h1{
+  font-size:clamp(2.6rem, 6.2vw, 5rem);
+  letter-spacing:-0.025em;
+  line-height:.98;
+  color:var(--ink);
+  margin-bottom:28px;
+}
+.hero h1 .stroke{position:relative;display:inline-block}
+.hero h1 .stroke::after{
+  content:"";
+  position:absolute;left:-2%;right:-2%;bottom:.06em;height:.18em;
+  background:var(--accent);
+  opacity:.32;
+  z-index:-1;
+  transform:skewY(-1.3deg);
+}
+
+.hero-lede{
+  font-size:1.1rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:520px;
+  margin-bottom:38px;
+}
+
+.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:42px}
+.btn{
+  display:inline-flex;align-items:center;gap:.65rem;
+  padding:16px 26px;
+  font-family:var(--body);font-size:.95rem;font-weight:600;
+  border-radius:999px;
+  border:1px solid transparent;
+  transition:all .25s;
+  letter-spacing:0;
+}
+.btn-primary{
+  background:var(--ink);
+  color:var(--bg);
+}
+.btn-primary:hover{
+  background:var(--accent-deep);
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+.btn-wa{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--ink);
+}
+.btn-wa:hover{
+  background:#25d366;
+  border-color:#25d366;
+  color:#fff;
+}
+.btn svg{width:16px;height:16px}
+
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:28px 32px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+}
+.hero-meta .meta{
+  display:flex;flex-direction:column;gap:4px;
+}
+.hero-meta .meta-num{
+  font-family:var(--display);
+  font-size:1.7rem;
+  color:var(--ink);
+  line-height:1;
+}
+.hero-meta .meta-num em{color:var(--accent-deep)}
+.hero-meta .meta-label{
+  font-family:var(--mono);
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* Hero photo */
+.hero-photo{
+  position:relative;
+  border-radius:6px;
+  overflow:hidden;
+  aspect-ratio: 4/5;
+  background:var(--card);
+  border:1px solid var(--line);
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;
+  animation:slowzoom 22s ease-in-out infinite alternate;
+}
+@keyframes slowzoom{
+  0%{transform:scale(1)}
+  100%{transform:scale(1.07)}
+}
+
+.swatch-card{
+  position:absolute;
+  bottom:18px;left:18px;
+  background:var(--bg);
+  border:1px solid var(--line-strong);
+  padding:10px 14px 12px;
+  display:flex;align-items:center;gap:14px;
+  border-radius:4px;
+  box-shadow:0 14px 38px rgba(0,0,0,.14);
+}
+.swatch-chip{
+  width:46px;height:54px;
+  background:var(--sage);
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:2px;
+  flex-shrink:0;
+}
+.swatch-card .meta{display:flex;flex-direction:column;gap:2px}
+.swatch-card .swatch-name{
+  font-family:var(--display);font-style:italic;
+  font-size:1.05rem;color:var(--ink);
+  line-height:1;
+}
+.swatch-card .swatch-hex{
+  font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.16em;color:var(--muted);
+  text-transform:uppercase;
+}
+
+.hero-photo .corner-tag{
+  position:absolute;top:18px;right:18px;
+  background:var(--ink);color:var(--bg);
+  font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  padding:7px 12px;border-radius:2px;
+  font-weight:500;
+}
+
+@media (max-width:540px){
+  .hero-photo{aspect-ratio: 4/4.4}
+  .hero h1{font-size:clamp(2.4rem, 9vw, 3rem)}
+}
+
+/* ───── BRUSHSTROKE DIVIDER ───── */
+.brush-divider{
+  display:flex;align-items:center;justify-content:center;
+  gap:14px;
+  padding:14px 0;
+}
+.brush-divider .stroke{
+  height:14px;width:64px;border-radius:2px;
+  transform:skewX(-8deg);
+  position:relative;
+  filter:contrast(.94);
+}
+.brush-divider .stroke::before{
+  content:"";position:absolute;inset:0;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='14'><filter id='r'><feTurbulence baseFrequency='1.4' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0'/></filter><rect width='80' height='14' filter='url(%23r)'/></svg>");
+  mix-blend-mode:overlay;
+  opacity:.6;
+}
+.brush-divider .stroke.s1{background:var(--sage)}
+.brush-divider .stroke.s2{background:var(--accent);width:46px}
+.brush-divider .stroke.s3{background:var(--charcoal);width:78px}
+
+/* ───── TRUST STRIP (T1) ───── */
+.trust{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--bg-deep);
+}
+.trust-row{
+  display:flex;align-items:stretch;justify-content:space-between;
+}
+.trust-row .item{
+  flex:1;
+  display:flex;align-items:center;gap:14px;
+  padding:24px 22px;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+.trust-row .item:last-child{border-right:0}
+.trust-row .icon{
+  width:34px;height:34px;
+  border-radius:50%;
+  border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  color:var(--accent-deep);
+}
+.trust-row .item strong{
+  display:block;
+  font-family:var(--display);
+  font-size:1.05rem;font-weight:400;color:var(--ink);
+  line-height:1.1;
+}
+.trust-row .item span{
+  font-family:var(--mono);
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+@media (max-width:880px){
+  .trust-row{flex-direction:column}
+  .trust-row .item{
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:18px 4px;
+  }
+  .trust-row .item:last-child{border-bottom:0}
+}
+
+/* ───── SECTION HEAD ───── */
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;
+  margin-bottom:60px;
+}
+.section-head h2{
+  font-size:clamp(2rem, 4.5vw, 3.4rem);
+  letter-spacing:-0.025em;
+  line-height:1;
+  max-width:720px;
+}
+.section-head .label{margin-bottom:18px;display:flex}
+.section-head .head-meta{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+section{padding:96px 0;position:relative}
+@media (max-width:768px){section{padding:64px 0}.section-head{margin-bottom:40px}}
+
+/* ───── SERVICES (S3 numbered editorial) ───── */
+.services{
+  background:var(--bg);
+  position:relative;
+}
+.svc-list{
+  display:flex;flex-direction:column;
+  border-top:1px solid var(--line);
+}
+.svc-row{
+  display:grid;
+  grid-template-columns: 110px 1.2fr 2fr auto;
+  align-items:center;
+  gap:32px;
+  padding:30px 8px;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  transition:background .25s;
+  cursor:default;
+}
+.svc-row:hover{background:var(--bg-deep)}
+.svc-row::before{
+  content:"";
+  position:absolute;left:0;bottom:-1px;height:1px;
+  background:var(--accent);
+  width:0;transition:width .35s ease;
+}
+.svc-row:hover::before{width:100%}
+
+.svc-num{
+  font-family:var(--display);
+  font-size:2.6rem;
+  color:var(--ink);
+  line-height:.9;
+  letter-spacing:-0.02em;
+}
+.svc-num em{color:var(--accent-deep)}
+.svc-name{
+  font-family:var(--display);
+  font-size:1.85rem;
+  font-style:italic;
+  color:var(--ink);
+  line-height:1.05;
+}
+.svc-desc{
+  font-size:.95rem;color:var(--ink-soft);
+  max-width:560px;
+  line-height:1.55;
+}
+.svc-tag{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;
+  padding:6px 11px;border-radius:2px;
+  background:var(--card);color:var(--ink-soft);
+  border:1px solid var(--line);
+  white-space:nowrap;
+}
+
+@media (max-width:880px){
+  .svc-row{
+    grid-template-columns:auto 1fr;
+    gap:18px 22px;
+    padding:24px 4px;
+  }
+  .svc-num{font-size:2rem;grid-row:span 2}
+  .svc-name{font-size:1.4rem}
+  .svc-desc{grid-column:1 / -1;font-size:.9rem;margin-top:-2px}
+  .svc-tag{display:none}
+}
+
+/* ───── GALLERY (G4 editorial photo plate + paint chips) ───── */
+.gallery{
+  background:var(--bg-deep);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.plate{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:32px;
+}
+
+.plate .item{position:relative}
+.plate .photo{
+  position:relative;
+  border-radius:4px;
+  overflow:hidden;
+  background:var(--card);
+  border:1px solid var(--line-strong);
+  aspect-ratio:4/5;
+}
+.plate .photo img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .8s ease;
+}
+.plate .item:hover .photo img{transform:scale(1.04)}
+
+.plate .item.a{grid-column:1 / 7}
+.plate .item.b{grid-column:7 / 13;margin-top:60px}
+.plate .item.c{grid-column:3 / 10;margin-top:30px}
+
+.plate .item.a .photo{aspect-ratio:1/1.15}
+.plate .item.b .photo{aspect-ratio:1/.95}
+.plate .item.c .photo{aspect-ratio:1.5/1}
+
+/* paint chip card under photo */
+.chip-meta{
+  display:flex;align-items:flex-start;gap:14px;
+  margin-top:18px;
+  padding:0 4px;
+}
+.chip-meta .chip{
+  width:54px;height:64px;
+  border:1px solid var(--line-strong);
+  border-radius:2px;
+  flex-shrink:0;
+  position:relative;
+}
+.chip-meta .chip::after{
+  content:attr(data-code);
+  position:absolute;bottom:-13px;left:0;
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.18em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.chip-meta .chip.split{display:flex;flex-direction:column}
+.chip-meta .chip.split .top{flex:1;border-bottom:1px solid rgba(0,0,0,.1)}
+.chip-meta .chip.split .bot{flex:1}
+
+.chip-meta .chip-text{flex:1;min-width:0}
+.chip-meta .caption{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:6px;
+}
+.chip-meta .swatch-name{
+  font-family:var(--display);
+  font-size:1.4rem;
+  font-style:italic;
+  color:var(--ink);
+  line-height:1.1;
+  margin-bottom:4px;
+}
+.chip-meta .swatch-name em{color:var(--accent-deep);font-style:normal}
+.chip-meta .swatch-note{
+  font-size:.85rem;color:var(--ink-soft);line-height:1.45;
+  max-width:340px;
+}
+
+@media (max-width:880px){
+  .plate{gap:42px;display:flex;flex-direction:column}
+  .plate .item.a,.plate .item.b,.plate .item.c{
+    grid-column:auto;margin-top:0;
+  }
+  .plate .item .photo{aspect-ratio:4/3 !important}
+}
+
+/* ───── ABOUT (slim, after gallery) ───── */
+.about{
+  background:var(--bg);
+  position:relative;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap:80px;
+  align-items:start;
+}
+@media (max-width:880px){
+  .about-grid{grid-template-columns:1fr;gap:36px}
+}
+.about-aside{position:sticky;top:120px}
+.about-aside .label{margin-bottom:18px}
+.about-aside h2{
+  font-size:clamp(1.9rem,3.6vw,2.6rem);
+  letter-spacing:-0.02em;
+  margin-bottom:22px;
+}
+.about-body p{
+  font-size:1.08rem;line-height:1.75;
+  color:var(--ink-soft);
+  margin-bottom:18px;
+}
+.about-body p:first-of-type::first-letter{
+  font-family:var(--display);
+  font-size:3.6rem;
+  float:left;
+  line-height:.85;
+  margin:.05em .12em -.05em 0;
+  color:var(--ink);
+}
+.signature{
+  display:flex;align-items:center;gap:18px;
+  padding-top:26px;
+  margin-top:28px;
+  border-top:1px solid var(--line);
+}
+.sig-mark{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--card);
+  border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:1.4rem;color:var(--ink);
+  font-style:italic;
+}
+.sig-meta{display:flex;flex-direction:column;gap:2px}
+.sig-meta .name{
+  font-family:var(--display);font-size:1.2rem;color:var(--ink);
+}
+.sig-meta .role{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* Vertical type accent */
+.vrt-type{
+  position:absolute;
+  right:-4px;top:140px;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-family:var(--mono);
+  font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--muted);
+  display:flex;gap:18px;align-items:center;
+}
+.vrt-type::before{
+  content:"";display:inline-block;width:1px;height:48px;background:var(--line-strong);
+}
+@media (max-width:1080px){.vrt-type{display:none}}
+
+/* ───── REVIEWS (R2 pull quotes) ───── */
+.reviews{
+  background:var(--bg-deep);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.reviews .section-head h2 em{color:var(--accent-deep)}
+.quotes{
+  display:flex;flex-direction:column;
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.quote{
+  display:grid;
+  grid-template-columns: 92px 1fr 240px;
+  gap:32px;
+  padding:42px 8px;
+  align-items:start;
+  border-bottom:1px solid var(--line);
+}
+.quote .stars{
+  font-family:var(--display);
+  color:var(--accent);
+  font-size:1.4rem;
+  letter-spacing:-2px;
+  line-height:1;
+  padding-top:.1em;
+}
+.quote-body{
+  font-family:var(--display);
+  font-size:clamp(1.25rem, 2.2vw, 1.7rem);
+  line-height:1.4;
+  color:var(--ink);
+  font-style:italic;
+}
+.quote-body span.lift{font-style:normal;color:var(--accent-deep);font-weight:400}
+.quote-attr{
+  display:flex;flex-direction:column;gap:4px;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+  padding-top:.3em;
+}
+.quote-attr .who{
+  font-family:var(--display);font-style:italic;
+  font-size:1.15rem;letter-spacing:0;text-transform:none;
+  color:var(--ink);
+}
+@media (max-width:880px){
+  .quote{
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:32px 4px;
+  }
+  .quote-body{font-size:1.15rem}
+}
+
+/* ───── AREAS ───── */
+.areas{background:var(--bg)}
+.areas-grid{
+  display:grid;
+  grid-template-columns:1.1fr 2fr;
+  gap:60px;
+  align-items:start;
+}
+.areas h2{
+  font-size:clamp(1.8rem,3.4vw,2.6rem);
+  margin-bottom:18px;
+}
+.areas-body p{
+  font-size:1rem;line-height:1.7;color:var(--ink-soft);
+}
+.area-list{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+}
+.area-list a{
+  background:var(--bg);
+  padding:18px 16px;
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-soft);
+  display:flex;align-items:center;gap:10px;
+  transition:.2s;
+}
+.area-list a::before{
+  content:"";width:6px;height:6px;background:var(--accent);
+  display:block;flex-shrink:0;border-radius:50%;
+}
+.area-list a:hover{background:var(--bg-deep);color:var(--ink)}
+@media (max-width:880px){
+  .areas-grid{grid-template-columns:1fr;gap:30px}
+  .area-list{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ───── CTA BAND + CONTACT (C2) ───── */
+.cta-band{
+  background:var(--ink);
+  color:var(--bg);
+  padding:80px 0;
+  position:relative;
+  overflow:hidden;
+}
+.cta-band::before{
+  content:"";position:absolute;
+  top:-40%;right:-10%;
+  width:60%;height:160%;
+  background:radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+  pointer-events:none;
+}
+.cta-inner{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+.cta-band h2{
+  color:var(--bg);
+  font-size:clamp(2rem,4.4vw,3.2rem);
+  letter-spacing:-0.02em;
+  line-height:1;
+}
+.cta-band h2 em{color:var(--accent)}
+.cta-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.cta-actions .btn-primary{
+  background:var(--accent);
+  color:var(--ink);
+}
+.cta-actions .btn-primary:hover{background:var(--bg);color:var(--ink)}
+.cta-actions .btn-wa{
+  border-color:var(--bg);color:var(--bg);
+}
+.cta-actions .btn-wa:hover{background:#25d366;border-color:#25d366;color:#fff}
+.cta-actions .small{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+  margin-top:8px;
+}
+@media (max-width:880px){
+  .cta-inner{grid-template-columns:1fr;gap:24px}
+}
+
+.contact{background:var(--bg);padding:96px 0}
+.contact-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+}
+.contact-info{display:flex;flex-direction:column;gap:22px}
+.info-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:24px 26px;
+}
+.info-card .label{margin-bottom:8px}
+.info-card .v{
+  font-family:var(--display);
+  font-size:1.5rem;color:var(--ink);
+  letter-spacing:-0.01em;
+  word-break:break-word;
+}
+.info-card .v em{font-style:italic;color:var(--accent-deep)}
+.info-card .v.tel{font-family:var(--display);font-size:1.7rem}
+.info-card .desc{
+  font-size:.9rem;color:var(--ink-soft);margin-top:6px;
+}
+
+.form-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:32px 32px 36px;
+}
+.form-card h3{
+  font-size:1.6rem;margin-bottom:6px;color:var(--ink);
+}
+.form-card .sub{
+  font-size:.92rem;color:var(--ink-soft);margin-bottom:22px;
+}
+.form-card .row{margin-bottom:14px}
+.form-card label{
+  display:block;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:6px;
+}
+.form-card input,
+.form-card select,
+.form-card textarea{
+  width:100%;
+  font-family:var(--body);font-size:.96rem;color:var(--ink);
+  background:var(--bg);
+  border:1px solid var(--line-strong);
+  border-radius:3px;
+  padding:13px 14px;
+  transition:border-color .2s;
+}
+.form-card textarea{min-height:120px;resize:vertical}
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px var(--accent-glow);
+}
+.form-card .submit{
+  width:100%;
+  padding:16px 20px;
+  background:var(--ink);color:var(--bg);
+  border:none;border-radius:999px;
+  font-family:var(--body);font-size:.95rem;font-weight:600;
+  margin-top:12px;
+  transition:.2s;
+}
+.form-card .submit:hover{background:var(--accent-deep)}
+@media (max-width:880px){
+  .contact-inner{grid-template-columns:1fr;gap:32px}
+}
+
+/* ───── FOOTER ───── */
+footer{
+  background:var(--ink);
+  color:var(--bg);
+  padding:54px 0 28px;
+}
+.footer-inner{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:36px;
+  padding-bottom:36px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.footer-brand .nm{
+  font-family:var(--display);
+  font-size:1.7rem;color:var(--bg);
+  margin-bottom:8px;
+}
+.footer-brand .nm em{color:var(--accent);font-style:italic}
+.footer-brand .tag{
+  font-size:.92rem;color:rgba(240,235,222,.65);max-width:380px;line-height:1.6;
+}
+.footer-col h4{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:16px;font-weight:500;
+}
+.footer-col a{
+  display:block;
+  font-size:.92rem;color:rgba(240,235,222,.7);
+  padding:5px 0;
+  transition:color .2s;
+}
+.footer-col a:hover{color:var(--bg)}
+
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:24px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(240,235,222,.5);
+  flex-wrap:wrap;gap:14px;
+}
+.footer-bottom a{color:var(--accent)}
+@media (max-width:880px){
+  .footer-inner{grid-template-columns:1fr;gap:28px}
+}
+
+/* ───── FLOATING CTAs ───── */
+.fabs{
+  position:fixed;
+  bottom:24px;right:24px;
+  display:flex;flex-direction:column;gap:14px;
+  z-index:100;
+  opacity:0;pointer-events:none;
+  transform:translateY(20px);
+  transition:opacity .3s ease, transform .3s ease;
+}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab{
+  width:54px;height:54px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 36px rgba(0,0,0,.18);
+  transition:transform .25s;
+  position:relative;
+}
+.fab:hover{transform:translateY(-3px) scale(1.05)}
+.fab.call{background:var(--accent);color:var(--bg)}
+.fab.wa{background:#25d366;color:#fff}
+.fab svg{width:24px;height:24px}
+.fab::before{
+  content:"";
+  position:absolute;inset:-4px;
+  border-radius:50%;
+  border:1.5px solid currentColor;
+  opacity:.5;
+  animation:fabpulse 2s ease-out infinite;
+}
+@keyframes fabpulse{
+  0%{transform:scale(.8);opacity:.6}
+  100%{transform:scale(1.4);opacity:0}
+}
+.fab:hover::before{animation-play-state:paused}
+
+/* ───── Reveal animations ───── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+
+/* ───── Hero fade-up cascade ───── */
+.fadeup{opacity:0;animation:fadeUp .9s ease forwards}
+.fadeup.d1{animation-delay:.1s}
+.fadeup.d2{animation-delay:.25s}
+.fadeup.d3{animation-delay:.4s}
+.fadeup.d4{animation-delay:.55s}
+.fadeup.d5{animation-delay:.7s}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="dot"></span>
+      Olah<em>Mark</em>
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a id="navCall" class="nav-call" href="#contact">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span id="navCallText">Call Mark</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a id="panelCall" class="panel-cta" href="#contact">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span id="panelCallText">Call Mark</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow fadeup d1">
+          <span class="pulse"></span>
+          Est. North London · Painter & Decorator
+        </div>
+        <h1 class="fadeup d2">
+          Painted <em>properly</em>,<br>
+          <span class="stroke">in north London.</span>
+        </h1>
+        <p class="hero-lede fadeup d3">
+          Mark has been giving homes, garden rooms and shopfronts across north London a finish that lasts. Honest quotes, tidy work, polite team. No surprises on the invoice.
+        </p>
+        <div class="hero-cta-row fadeup d4">
+          <a id="heroCall" class="btn btn-primary" href="#contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span id="heroCallText">Call Mark</span>
+          </a>
+          <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 5.1 15.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 5.55-13.56zm-5.55 12.21a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.24-3.5 6.6 6.6 0 0 1-6.65 6.59zm3.62-4.94c-.2-.1-1.18-.58-1.36-.65s-.31-.1-.45.1-.51.65-.63.78-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 5.97 5.97 0 0 1-1.1-1.37c-.12-.2 0-.31.09-.4l.3-.36c.1-.12.13-.2.2-.33s.04-.25 0-.36-.45-1.09-.62-1.49c-.16-.4-.33-.34-.45-.34h-.39a.74.74 0 0 0-.54.25 2.26 2.26 0 0 0-.7 1.67 3.92 3.92 0 0 0 .82 2.08c.1.13 1.4 2.13 3.39 2.99a11.4 11.4 0 0 0 1.13.42 2.72 2.72 0 0 0 1.25.08 2.05 2.05 0 0 0 1.34-.95 1.66 1.66 0 0 0 .12-.94c-.05-.09-.18-.14-.38-.24z"/></svg>
+            <span id="heroWaText">WhatsApp Mark</span>
+          </a>
+        </div>
+        <div class="hero-meta fadeup d5">
+          <div class="meta">
+            <span class="meta-num">12<em>+</em></span>
+            <span class="meta-label">Years on the brush</span>
+          </div>
+          <div class="meta">
+            <span class="meta-num">£0</span>
+            <span class="meta-label">Free colour consult</span>
+          </div>
+          <div class="meta">
+            <span class="meta-num">N1<em>–</em>N22</span>
+            <span class="meta-label">North London local</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-photo fadeup d3">
+        <img src="hero.jpg" alt="Pale duck-egg blue garden room repainted by Olah Mark in north London">
+        <span class="corner-tag">Garden Room · Highgate</span>
+        <div class="swatch-card">
+          <div class="swatch-chip" style="background:#92a8a4"></div>
+          <div class="meta">
+            <div class="swatch-name">Eaton Lake</div>
+            <div class="swatch-hex">#92A8A4 · Eggshell</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Brushstroke divider -->
+<div class="brush-divider" aria-hidden="true">
+  <div class="stroke s1"></div>
+  <div class="stroke s2"></div>
+  <div class="stroke s3"></div>
+</div>
+
+<!-- ───── TRUST ───── -->
+<section class="trust" style="padding:0">
+  <div class="container">
+    <div class="trust-row">
+      <div class="item">
+        <div class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div><strong>Fully Insured</strong><span>£2m liability</span></div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+        </div>
+        <div><strong>12+ Years</strong><span>Experience</span></div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div><strong>Free Quote</strong><span>Same-week visits</span></div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M14 12h5"/><path d="M5 12h4"/><path d="M12 14v5"/><path d="M12 5v4"/></svg>
+        </div>
+        <div><strong>Colour Consult</strong><span>Sample on the wall</span></div>
+      </div>
+      <div class="item">
+        <div class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 6 6 9 6 13a6 6 0 0 0 12 0c0-4-2-7-6-11z"/></svg>
+        </div>
+        <div><strong>Trade Paints</strong><span>Dulux · F&amp;B · Little Greene</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── SERVICES (S3 numbered editorial) ───── -->
+<section class="services reveal" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">What I Paint</span>
+        <h2>Eight things, done <em>well</em>.</h2>
+      </div>
+      <span class="head-meta">№ 01 / 08</span>
+    </div>
+
+    <div class="svc-list">
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>1</em></div>
+        <div class="svc-name">Exterior &amp; render</div>
+        <div class="svc-desc">Front elevations, cladding, render, soffits and downpipes. Prepped, primed, two coats of trade-grade masonry paint.</div>
+        <div class="svc-tag">Outdoor</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>2</em></div>
+        <div class="svc-name">Garden rooms &amp; cabins</div>
+        <div class="svc-desc">Timber garden rooms, sheds, fences and decking treated with breathable coatings that hold up through London winters.</div>
+        <div class="svc-tag">Specialism</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>3</em></div>
+        <div class="svc-name">Interior decoration</div>
+        <div class="svc-desc">Full house repaints, single rooms, ceilings and woodwork. Dust sheets down, plug sockets off, finish lines kept sharp.</div>
+        <div class="svc-tag">Indoor</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>4</em></div>
+        <div class="svc-name">Sash windows</div>
+        <div class="svc-desc">Period sash restoration, easing sticky frames, burning-off old layers, repainting in heritage colours by hand.</div>
+        <div class="svc-tag">Heritage</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>5</em></div>
+        <div class="svc-name">Kitchen cabinet refinishing</div>
+        <div class="svc-desc">Spray and brush kitchen cabinet repaints. Sanded, primed and sealed for a hard-wearing factory-grade finish.</div>
+        <div class="svc-tag">Refresh</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>6</em></div>
+        <div class="svc-name">Wallpaper hanging</div>
+        <div class="svc-desc">Lining paper, wide-width prints and feature walls. Pattern matched, edges square, paste cleaned up properly.</div>
+        <div class="svc-tag">Indoor</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>7</em></div>
+        <div class="svc-name">Plaster repair &amp; make-good</div>
+        <div class="svc-desc">Cracks, holes, water damage and patch plastering filled, sanded and made paintable before the topcoat goes on.</div>
+        <div class="svc-tag">Prep</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-num">0<em>8</em></div>
+        <div class="svc-name">Free colour consultation</div>
+        <div class="svc-desc">Bring a few samples round, paint them up on the wall, and take a proper look in daylight before you commit.</div>
+        <div class="svc-tag">Included</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── GALLERY (G4 with paint chips) ───── -->
+<section class="gallery reveal" id="work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">Recent Work</span>
+        <h2>Three garden rooms,<br>three <em>different</em> colours.</h2>
+      </div>
+      <span class="head-meta">Spring · 2026</span>
+    </div>
+
+    <div class="plate">
+
+      <div class="item a">
+        <div class="photo">
+          <img src="work-1.jpg" alt="Before and after: garden room repainted from raw timber to soft duck-egg blue with cream wall, north London">
+        </div>
+        <div class="chip-meta">
+          <div class="chip" style="background:#92a8a4" data-code="#92A8A4"></div>
+          <div class="chip-text">
+            <div class="caption">Highgate · N6 · Garden Room</div>
+            <div class="swatch-name">Eaton <em>Lake</em></div>
+            <div class="swatch-note">Soft duck-egg blue on a south-facing timber cabin. Two coats breathable wood paint, with a brushed cream finish on the rear wall to bounce light through the lilac.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item b">
+        <div class="photo">
+          <img src="work-2.jpg" alt="Before and after: timber garden cabin restored with charcoal door and cedar oil treatment, north London">
+        </div>
+        <div class="chip-meta">
+          <div class="chip split" data-code="#2D2E2C / #8A5E3E">
+            <div class="top" style="background:#2d2e2c"></div>
+            <div class="bot" style="background:#8a5e3e"></div>
+          </div>
+          <div class="chip-text">
+            <div class="caption">Crouch End · N8 · Timber Cabin</div>
+            <div class="swatch-name">Inkwell &amp; <em>Cedar</em></div>
+            <div class="swatch-note">Charcoal joinery on the door and frame, balanced by a clear cedar oil on the cladding. Three days, weathered to a calm matte over the first month.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item c">
+        <div class="photo">
+          <img src="work-3.jpg" alt="Finished pale duck-egg blue garden room with cream side wall, set against tall trees and lilac, north London">
+        </div>
+        <div class="chip-meta">
+          <div class="chip" style="background:#e7dfc3" data-code="#E7DFC3"></div>
+          <div class="chip-text">
+            <div class="caption">Same Job · Daylight Reveal</div>
+            <div class="swatch-name">Oxford <em>Cream</em></div>
+            <div class="swatch-note">The trim and adjoining render in a warm Oxford cream. Hand-cut to the brick line, no tape lift, no overspray on the slabs below.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── ABOUT (slim, after gallery) ───── -->
+<section class="about reveal">
+  <div class="container">
+    <div class="vrt-type">№ OM · North London · Since 2014</div>
+    <div class="about-grid">
+      <aside class="about-aside">
+        <span class="label">About</span>
+        <h2>Mark Olah,<br>painter &amp; <em>decorator</em>.</h2>
+      </aside>
+      <div class="about-body">
+        <p>Twelve years on the brush, the last eight running my own outfit out of north London. Most of my work comes from word-of-mouth in N1 through N22, plus a quiet Instagram and the occasional referral from a local builder.</p>
+        <p>I&rsquo;ll come round, take a proper look, send you a fair quote in writing the same week. No upselling, no &lsquo;and-while-we&rsquo;re-here&rsquo;. If a wall needs lining paper, I&rsquo;ll say so. If it doesn&rsquo;t, I won&rsquo;t.</p>
+        <div class="signature">
+          <div class="sig-mark">M</div>
+          <div class="sig-meta">
+            <div class="name">Mark Olah</div>
+            <div class="role">Painter &amp; Decorator · N London</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── REVIEWS ───── -->
+<section class="reviews reveal" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">What people say</span>
+        <h2>Quiet, tidy, <em>fair</em>.</h2>
+      </div>
+      <span class="head-meta">5.0 · Verified Local</span>
+    </div>
+
+    <div class="quotes">
+
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="quote-body">
+          &ldquo;<span class="lift">Mark repainted our garden room</span> from raw cedar to a soft duck-egg blue, kept the place spotless, and turned up exactly when he said he would. Three months in and it still looks freshly painted.&rdquo;
+        </div>
+        <div class="quote-attr">
+          <span class="who">Sarah W.</span>
+          <span>Crouch End · Garden Room</span>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="quote-body">
+          &ldquo;Had Mark in for a full house exterior in N16. <span class="lift">Quoted fair, finished early</span>, and patched up two bits of crumbling render he found without bumping the price. Will use again.&rdquo;
+        </div>
+        <div class="quote-attr">
+          <span class="who">James P.</span>
+          <span>Stoke Newington · Exterior</span>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="quote-body">
+          &ldquo;A painter who actually shows up with samples and lets you see them on the wall before committing. Mark redid our kitchen cabinets and <span class="lift">the finish is hard to fault</span>.&rdquo;
+        </div>
+        <div class="quote-attr">
+          <span class="who">Anya R.</span>
+          <span>Highgate · Kitchen Refinish</span>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="quote-body">
+          &ldquo;Got Mark to repaint the front of a Victorian end-terrace including the sash windows. Tidy, polite, and the prep work was done properly. <span class="lift">Money well spent.</span>&rdquo;
+        </div>
+        <div class="quote-attr">
+          <span class="who">Tomás L.</span>
+          <span>Camden · Sash Restoration</span>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <div class="quote-body">
+          &ldquo;Wallpapered our hallway and repainted the stairwell. Mark sorted the tricky lining paper himself, didn&rsquo;t cut corners, and <span class="lift">left the place tidier than he found it</span>.&rdquo;
+        </div>
+        <div class="quote-attr">
+          <span class="who">Daniel K.</span>
+          <span>Muswell Hill · Hallway &amp; Stairs</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── AREAS ───── -->
+<section class="areas reveal">
+  <div class="container">
+    <div class="areas-grid">
+      <div class="areas-body">
+        <span class="label">Areas Covered</span>
+        <h2>North London,<br>postcode by <em>postcode</em>.</h2>
+        <p>Most jobs sit inside a 30-minute drive of N6. Same-week site visits across the postcodes below; further afield by arrangement.</p>
+      </div>
+      <div class="area-list">
+        <a href="#contact">Highgate</a>
+        <a href="#contact">Crouch End</a>
+        <a href="#contact">Muswell Hill</a>
+        <a href="#contact">Hampstead</a>
+        <a href="#contact">Camden</a>
+        <a href="#contact">Islington</a>
+        <a href="#contact">Stoke Newington</a>
+        <a href="#contact">Hackney</a>
+        <a href="#contact">Finsbury Park</a>
+        <a href="#contact">Tufnell Park</a>
+        <a href="#contact">Tottenham</a>
+        <a href="#contact">Enfield</a>
+        <a href="#contact">Barnet</a>
+        <a href="#contact">Haringey</a>
+        <a href="#contact">Wood Green</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── CTA BAND ───── -->
+<section class="cta-band reveal">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <span class="label" style="color:var(--accent)">Ready when you are</span>
+        <h2 style="margin-top:14px">Get a quote in <em>writing</em>,<br>same week.</h2>
+      </div>
+      <div class="cta-actions">
+        <a id="ctaCall" class="btn btn-primary" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="ctaCallText">Call Mark</span>
+        </a>
+        <a id="ctaWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 5.1 15.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 5.55-13.56zm-5.55 12.21a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.24-3.5 6.6 6.6 0 0 1-6.65 6.59z"/></svg>
+          WhatsApp Mark
+        </a>
+        <span class="small">Or scroll down, there&rsquo;s a form.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── CONTACT ───── -->
+<section class="contact reveal" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">Get in touch</span>
+        <h2>Tell me what needs<br>a fresh <em>coat</em>.</h2>
+      </div>
+      <span class="head-meta">Reply within 24 hrs</span>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="label">Phone</div>
+          <a class="v tel" id="contactPhone" href="#">…</a>
+          <div class="desc">Mon–Sat, 7.30am to 6pm. Voicemail in the evening, I&rsquo;ll ring back next morning.</div>
+        </div>
+        <div class="info-card">
+          <div class="label">Email</div>
+          <a class="v" id="contactEmail" href="#">…</a>
+          <div class="desc">Photos welcome. The more I can see, the tighter the quote.</div>
+        </div>
+        <div class="info-card">
+          <div class="label">Studio</div>
+          <div class="v">North London <em>· N6</em></div>
+          <div class="desc">Covering N1 through N22 plus Enfield and Barnet borders.</div>
+        </div>
+        <div class="info-card">
+          <div class="label">WhatsApp</div>
+          <a class="v" id="contactWa" href="#" target="_blank" rel="noopener">Message Mark</a>
+          <div class="desc">Quick questions or a few photos? WhatsApp is fastest.</div>
+        </div>
+      </div>
+
+      <form class="form-card" action="/api/enquiry" method="POST" id="enquiryForm">
+        <h3>Free quote &amp; colour visit</h3>
+        <p class="sub">Fill it in below and I&rsquo;ll come round, take a proper look, send a quote in writing.</p>
+
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Olah Mark Painter & Decorator">
+        <input type="hidden" name="source" value="mockup-olah-mark">
+
+        <div class="row">
+          <label for="fName">Your name</label>
+          <input type="text" name="name" id="fName" required>
+        </div>
+        <div class="row">
+          <label for="fPhone">Phone</label>
+          <input type="tel" name="phone" id="fPhone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07…">
+        </div>
+        <div class="row">
+          <label for="fEmail">Email (optional)</label>
+          <input type="email" name="email" id="fEmail">
+        </div>
+        <div class="row">
+          <label for="fService">What needs painting?</label>
+          <select name="service" id="fService">
+            <optgroup label="Exterior">
+              <option>Exterior &amp; render</option>
+              <option>Garden rooms &amp; cabins</option>
+              <option>Sash windows</option>
+              <option>Fences &amp; decking</option>
+            </optgroup>
+            <optgroup label="Interior">
+              <option>Full house repaint</option>
+              <option>Single room</option>
+              <option>Kitchen cabinet refinishing</option>
+              <option>Wallpaper hanging</option>
+              <option>Plaster repair &amp; make-good</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Free colour consultation</option>
+              <option>Not sure yet</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="row">
+          <label for="fMsg">Tell me about the job</label>
+          <textarea name="message" id="fMsg" placeholder="Property type, rooms or rough size, timescale, any colours in mind…"></textarea>
+        </div>
+        <button class="submit" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nm">Olah <em>Mark</em></div>
+        <p class="tag">Painter &amp; decorator working out of north London. Honest quotes, tidy work, lasting finish, across N1 through N22 since 2014.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Exterior &amp; render</a>
+        <a href="#services">Garden rooms</a>
+        <a href="#services">Interior decoration</a>
+        <a href="#services">Sash windows</a>
+        <a href="#services">Wallpaper hanging</a>
+      </div>
+      <div class="footer-col">
+        <h4>Areas</h4>
+        <a href="#contact">Highgate · N6</a>
+        <a href="#contact">Crouch End · N8</a>
+        <a href="#contact">Muswell Hill · N10</a>
+        <a href="#contact">Camden · NW1</a>
+        <a href="#contact">Stoke Newington · N16</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Olah Mark · Painter &amp; Decorator · North London</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ───── FLOATING CTAs ───── -->
+<div class="fabs" id="fabs">
+  <a class="fab call" id="fabCall" href="#" aria-label="Call Mark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Mark">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 5.1 15.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 5.55-13.56zm-5.55 12.21a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.24-3.5 6.6 6.6 0 0 1-6.65 6.59z"/></svg>
+  </a>
+</div>
+
+<script>
+// ──── Decode contact info from base64 ────
+var P = atob('MDc1OTk2NDgxMDI=');           // 07599648102
+var Pf = atob('MDc1OTkgNjQ4MTAy');          // 07599 648102
+var W = atob('NDQ3NTk5NjQ4MTAy');           // 447599648102
+var E = atob('bWFya0BvbGFobWFyay5jby51aw=='); // mark@olahmark.co.uk
+
+var waMsg = encodeURIComponent('Hi Mark, I found you online and would like a quote please.');
+var waUrl = 'https://wa.me/' + W + '?text=' + waMsg;
+
+['navCall','panelCall','heroCall','ctaCall'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href = 'tel:' + P;
+});
+['fabCall'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href = 'tel:' + P;
+});
+
+['heroWa','ctaWa','fabWa','contactWa'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href = waUrl;
+});
+
+var cp = document.getElementById('contactPhone');
+if(cp){ cp.href = 'tel:' + P; cp.textContent = Pf; }
+
+var ce = document.getElementById('contactEmail');
+if(ce){ ce.href = 'mailto:' + E; ce.textContent = E; }
+
+// JS sets the formatted phone on the CTA labels at runtime
+var ht = document.getElementById('heroCallText');
+if(ht) ht.textContent = 'Call Mark · ' + Pf;
+var ct = document.getElementById('ctaCallText');
+if(ct) ct.textContent = 'Call Mark · ' + Pf;
+
+// timestamp for honeypot timing check
+var ts = document.getElementById('formTimestamp');
+if(ts) ts.value = Date.now();
+
+// phone validation message
+var fp = document.getElementById('fPhone');
+if(fp){
+  fp.addEventListener('invalid', function(){
+    fp.setCustomValidity('Please enter a UK phone number starting 0 or +44.');
+  });
+  fp.addEventListener('input', function(){ fp.setCustomValidity(''); });
+}
+
+// hamburger
+var hb = document.getElementById('hamburger');
+var mp = document.getElementById('mobilePanel');
+if(hb && mp){
+  hb.addEventListener('click', function(){
+    hb.classList.toggle('open');
+    mp.classList.toggle('open');
+  });
+  mp.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      hb.classList.remove('open');
+      mp.classList.remove('open');
+    });
+  });
+}
+
+// floating CTAs after hero scrolls past
+var fabs = document.getElementById('fabs');
+var heroEl = document.querySelector('.hero');
+if(fabs && heroEl){
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    var heroBottom = heroEl.offsetTop + heroEl.offsetHeight - 100;
+    if(y > heroBottom) fabs.classList.add('show');
+    else fabs.classList.remove('show');
+  });
+}
+
+// reveal on scroll
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
