@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Everstone — Granite, Quartz &amp; Worktops · North West</title>
+<meta name="description" content="Everstone. Granite, quartz and stone worktops template, fabricated and installed across the North West. Bespoke kitchens by specialist stone masons.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy-deep:#0c1626;
+    --navy:#13223b;
+    --navy-2:#1a2c4a;
+    --navy-3:#22365a;
+    --line:#2a3d5e;
+    --line-2:#3a4f74;
+    --white:#ffffff;
+    --stone:#dde3ee;
+    --body:#9eaac4;
+    --body-dim:#6f7c97;
+    --accent:#c5cfe0;
+    --accent-glow:#7da3d6;
+    --champagne:#cbb88a;
+    --display:'Big Shoulders Display',ui-sans-serif,system-ui,sans-serif;
+    --copy:'Inter',ui-sans-serif,system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--navy-deep);color:var(--body);font-family:var(--copy);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  body{
+    background:
+      radial-gradient(900px 600px at 80% -10%, rgba(125,163,214,.10), transparent 60%),
+      radial-gradient(900px 700px at 0% 80%, rgba(203,184,138,.06), transparent 60%),
+      var(--navy-deep);
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:transparent;color:inherit}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+  @media (max-width:640px){ .wrap{padding:0 18px} }
+
+  /* ============ NAV ============ */
+  .nav{position:sticky;top:0;z-index:50;background:var(--navy-deep);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1320px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-mark{width:44px;height:44px;border:1px solid var(--line-2);border-radius:6px;display:grid;place-items:center;background:linear-gradient(180deg,var(--navy-2),var(--navy));position:relative;overflow:hidden}
+  .brand-mark::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%, rgba(203,184,138,.3), transparent 60%);}
+  .brand-mark svg{width:24px;height:24px;position:relative;z-index:1}
+  .brand-mark svg path{stroke:var(--white);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .brand-mark svg circle{fill:var(--champagne);stroke:none}
+  .brand-text{display:flex;flex-direction:column;line-height:1}
+  .brand-text .name{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:.05em;color:var(--white)}
+  .brand-text .sub{font-family:var(--mono);font-size:9px;letter-spacing:.32em;color:var(--accent);margin-top:5px}
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:13px;color:var(--stone);font-weight:500;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+  .nav-links a{position:relative;padding:6px 0;transition:color .25s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--champagne);transition:width .35s ease}
+  .nav-links a:hover::after{width:100%}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid var(--line-2);border-radius:999px;color:var(--white);font-family:var(--mono);font-size:11px;letter-spacing:.14em;font-weight:500;text-transform:uppercase;transition:all .3s ease;position:relative;overflow:hidden}
+  .nav-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(203,184,138,.18),transparent);transform:translateX(-100%);transition:transform .6s ease}
+  .nav-cta:hover::before{transform:translateX(100%)}
+  .nav-cta:hover{border-color:var(--champagne);color:var(--champagne)}
+  .hamburger{display:none;width:44px;height:44px;border:1px solid var(--line-2);border-radius:6px;background:var(--navy);align-items:center;justify-content:center}
+  .hamburger span{display:block;width:18px;height:2px;background:var(--white);position:relative}
+  .hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--white)}
+  .hamburger span::before{top:-6px}.hamburger span::after{top:6px}
+  @media (max-width:920px){
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+    .brand-text .sub{display:none}
+  }
+  .mobile-menu{display:none;position:fixed;inset:0;z-index:60;background:var(--navy-deep);padding:80px 28px 40px}
+  .mobile-menu.open{display:block}
+  .mobile-menu .close{position:absolute;top:18px;right:18px;width:42px;height:42px;border:1px solid var(--line-2);border-radius:6px;font-size:22px;color:var(--white);background:var(--navy)}
+  .mobile-menu a{display:block;padding:20px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:30px;color:var(--white);font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:flex-end}
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 20s ease-out infinite alternate;will-change:transform}
+  @keyframes kenburns{
+    from{transform:scale(1.05) translateX(-2%)}
+    to{transform:scale(1.18) translateX(2%)}
+  }
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,38,.55) 0%,rgba(12,22,38,.35) 40%,rgba(12,22,38,.85) 90%,var(--navy-deep) 100%)}
+  .hero-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%, transparent 0%, rgba(12,22,38,.5) 80%);z-index:1}
+
+  .hero-grid{position:relative;z-index:2;padding:60px 0 100px;width:100%;display:grid;grid-template-columns:1fr;gap:0;max-width:1320px;margin:0 auto;padding-left:32px;padding-right:32px}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:36px;opacity:0;animation:fadeUp 1.1s .1s ease-out forwards}
+  .hero-eyebrow .line{width:48px;height:1px;background:var(--champagne)}
+
+  .hero h1{font-family:var(--display);font-size:clamp(60px,11vw,168px);font-weight:800;line-height:.88;letter-spacing:.005em;color:var(--white);margin:0 0 36px;text-transform:uppercase;max-width:14ch}
+  .hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+  .hero h1 .word span{display:inline-block;transform:translateY(110%);animation:slideUp 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+  .hero h1 .w1 span{animation-delay:.25s}
+  .hero h1 .w2 span{animation-delay:.4s}
+  .hero h1 .w3 span{animation-delay:.55s}
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--champagne);font-family:var(--display)}
+  @keyframes slideUp{from{transform:translateY(110%)}to{transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+  .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;opacity:0;animation:fadeUp 1.2s .9s ease-out forwards}
+  .hero-tag{font-size:18px;color:var(--stone);max-width:480px;line-height:1.5}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--white);color:var(--navy-deep);padding:18px 32px;border-radius:0;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;position:relative;overflow:hidden;transition:all .35s ease}
+  .btn-primary::after{content:"";position:absolute;inset:0;background:var(--champagne);transform:translateX(-101%);transition:transform .45s cubic-bezier(.7,0,.3,1);z-index:0}
+  .btn-primary span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:12px;transition:color .35s ease}
+  .btn-primary:hover::after{transform:translateX(0)}
+  .btn-primary:hover span{color:var(--navy-deep)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:12px;background:transparent;border:1px solid rgba(255,255,255,.3);color:var(--white);padding:17px 28px;border-radius:0;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;transition:all .3s ease}
+  .btn-secondary:hover{border-color:var(--champagne);color:var(--champagne)}
+
+  .hero-meta{position:absolute;left:32px;bottom:36px;display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;z-index:3;opacity:0;animation:fadeUp 1.2s 1.4s ease-out forwards}
+  .hero-meta .num{font-family:var(--display);font-size:14px;color:var(--white);letter-spacing:.06em;font-weight:600}
+  .scroll-cue{position:absolute;right:32px;bottom:36px;display:flex;flex-direction:column;align-items:center;gap:18px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;z-index:3;writing-mode:vertical-rl;opacity:0;animation:fadeUp 1.2s 1.5s ease-out forwards}
+  .scroll-cue::after{content:"";display:block;width:1px;height:60px;background:linear-gradient(180deg,var(--champagne),transparent);animation:scrollPulse 2.2s ease-in-out infinite;writing-mode:horizontal-tb}
+  @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+  @media (max-width:920px){
+    .hero-meta,.scroll-cue{display:none}
+    .hero{min-height:90vh}
+    .hero-grid{padding-bottom:60px}
+    .hero-foot{flex-direction:column;align-items:flex-start;gap:20px}
+  }
+
+  /* ============ MARQUEE ============ */
+  .marquee{padding:24px 0;border-bottom:1px solid var(--line);background:var(--navy-deep);overflow:hidden;white-space:nowrap;font-family:var(--display);font-size:18px;letter-spacing:.04em;color:var(--white);text-transform:uppercase;font-weight:600}
+  .marquee .row{display:inline-flex;animation:scroll 38s linear infinite;align-items:center}
+  .marquee span{padding:0 30px}
+  .marquee .pip{color:var(--champagne);font-size:24px;line-height:1}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ GALLERY ============ */
+  .gallery-sec{padding:120px 0 0}
+  .gallery-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:72px}
+  .gallery-head .left{max-width:680px}
+  .gallery-head .lab{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:24px}
+  .gallery-head .lab .line{width:40px;height:1px;background:var(--champagne)}
+  .gallery-head h2{font-family:var(--display);font-size:clamp(48px,7vw,108px);font-weight:800;line-height:.92;letter-spacing:.005em;color:var(--white);margin:0;text-transform:uppercase}
+  .gallery-head h2 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .gallery-head .right{flex-shrink:0;max-width:340px;font-size:15px;color:var(--body);line-height:1.6}
+  @media (max-width:920px){
+    .gallery-sec{padding:72px 0 0}
+    .gallery-head{flex-direction:column;align-items:flex-start;gap:20px;margin-bottom:36px}
+  }
+
+  .g-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .g{position:relative;overflow:hidden;background:var(--navy)}
+  .g .img-wrap{position:relative;overflow:hidden;background:var(--navy)}
+  .g .img-wrap::after{content:"";position:absolute;inset:0;background:var(--navy-deep);transform:translateX(0);transition:transform 1.2s cubic-bezier(.7,0,.2,1);z-index:2}
+  .g.in-view .img-wrap::after{transform:translateX(101%)}
+  .g img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.4s cubic-bezier(.2,.8,.2,1),filter .8s ease}
+  .g.in-view img{transform:scale(1)}
+  .g:hover img{transform:scale(1.05)}
+  .g .cap{padding:20px 4px 4px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+  .g .cap-l .num{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--champagne);text-transform:uppercase;margin-bottom:6px}
+  .g .cap-l h3{font-family:var(--display);font-size:21px;font-weight:700;color:var(--white);margin:0;letter-spacing:.01em;text-transform:uppercase;line-height:1.05}
+  .g .cap-r{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--body-dim);text-transform:uppercase;text-align:right;flex-shrink:0;line-height:1.5}
+
+  .g1{grid-column:span 7}
+  .g2{grid-column:span 5}
+  .g3{grid-column:span 5}
+  .g4{grid-column:span 7}
+  .g5{grid-column:span 4}
+  .g6{grid-column:span 8}
+  .g .img-wrap{aspect-ratio:4/3}
+  .g1 .img-wrap{aspect-ratio:16/11}
+  .g2 .img-wrap{aspect-ratio:5/6}
+  .g4 .img-wrap{aspect-ratio:16/10}
+  .g5 .img-wrap{aspect-ratio:4/5}
+  .g6 .img-wrap{aspect-ratio:16/9}
+  @media (max-width:920px){
+    .g-grid{grid-template-columns:1fr;gap:18px}
+    .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 1}
+    .g .img-wrap{aspect-ratio:4/3 !important}
+  }
+
+  /* ============ INTRO ============ */
+  .intro{padding:140px 0;border-top:1px solid var(--line);margin-top:120px;position:relative}
+  .intro::before{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:80px;height:1px;background:var(--champagne)}
+  .intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:90px;align-items:start}
+  .intro .lab{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:28px}
+  .intro .lab .line{width:40px;height:1px;background:var(--champagne)}
+  .intro h2{font-family:var(--display);font-size:clamp(40px,4.6vw,68px);font-weight:700;line-height:1;letter-spacing:.01em;color:var(--white);margin:0;text-transform:uppercase}
+  .intro h2 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .intro p{font-size:18px;color:var(--stone);margin:0 0 22px;line-height:1.65}
+  .intro p:first-of-type::first-letter{font-family:var(--display);font-size:64px;font-weight:800;float:left;line-height:.85;padding:6px 14px 0 0;color:var(--champagne)}
+  .intro .areas{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px}
+  .intro .areas span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--accent);padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;text-transform:uppercase}
+  @media (max-width:920px){
+    .intro{padding:80px 0;margin-top:80px}
+    .intro-grid{grid-template-columns:1fr;gap:36px}
+  }
+
+  /* ============ STATS ============ */
+  .stats{padding:80px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--navy-deep),var(--navy))}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1320px;margin:0 auto;padding:0 32px;gap:0}
+  .stat{padding:0 36px;border-right:1px solid var(--line);text-align:left}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:0;padding-right:0}
+  .stat .num{font-family:var(--display);font-size:clamp(48px,5vw,84px);font-weight:800;color:var(--white);line-height:1;letter-spacing:.005em}
+  .stat .num em{font-style:normal;color:var(--champagne);font-weight:500}
+  .stat .label{margin-top:10px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--body);text-transform:uppercase}
+  @media (max-width:920px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:30px;padding:0 18px}
+    .stat{padding:0;border-right:0;border-bottom:1px solid var(--line);padding-bottom:24px}
+    .stat:nth-last-child(-n+2){border-bottom:0}
+  }
+
+  /* ============ MATERIALS ============ */
+  .materials{padding:140px 0}
+  .mat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:72px}
+  .mat-head .left{max-width:640px}
+  .mat-head .lab{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:24px}
+  .mat-head .lab .line{width:40px;height:1px;background:var(--champagne)}
+  .mat-head h2{font-family:var(--display);font-size:clamp(44px,5.6vw,84px);font-weight:800;line-height:.94;letter-spacing:.005em;color:var(--white);margin:0;text-transform:uppercase}
+  .mat-head h2 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .mat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .mat{padding:38px 28px 32px;border:1px solid var(--line);background:var(--navy);border-radius:2px;position:relative;transition:all .4s ease;overflow:hidden}
+  .mat::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--champagne),transparent);transform:translateX(-100%);transition:transform .8s ease}
+  .mat:hover::before{transform:translateX(100%)}
+  .mat:hover{border-color:var(--line-2);background:var(--navy-2);transform:translateY(-4px)}
+  .mat .nm{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--champagne);text-transform:uppercase;margin-bottom:24px;font-weight:500}
+  .mat h4{font-family:var(--display);font-size:32px;font-weight:700;color:var(--white);margin:0 0 14px;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+  .mat p{font-size:14.5px;color:var(--body);margin:0 0 20px;line-height:1.55}
+  .mat .swatch{height:64px;border-radius:2px;border:1px solid var(--line-2)}
+  .mat-1 .swatch{background:linear-gradient(135deg,#1a1a1d 0%,#2a2a30 35%,#1a1a1d 70%,#3a3a42 100%)}
+  .mat-2 .swatch{background:linear-gradient(120deg,#f4f1e8 0%,#e8e3d3 30%,#fff 50%,#dcd5c0 80%,#f0ebd9 100%)}
+  .mat-3 .swatch{background:linear-gradient(135deg,#d8d4c5 0%,#fff 25%,#c9b88a 55%,#fff 75%,#beb19a 100%)}
+  .mat-4 .swatch{background:linear-gradient(135deg,#3a4150 0%,#5a6275 30%,#2a313e 60%,#4a5263 100%)}
+  @media (max-width:920px){ .mat-grid{grid-template-columns:1fr 1fr;gap:14px} .materials{padding:80px 0} .mat-head{flex-direction:column;align-items:flex-start;gap:18px;margin-bottom:36px} }
+  @media (max-width:560px){ .mat-grid{grid-template-columns:1fr} }
+
+  /* ============ PROCESS ============ */
+  .process{padding:140px 0;border-top:1px solid var(--line);background:var(--navy-deep);position:relative;overflow:hidden}
+  .process::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);z-index:0}
+  .proc-head{margin-bottom:80px}
+  .proc-head .lab{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:24px}
+  .proc-head .lab .line{width:40px;height:1px;background:var(--champagne)}
+  .proc-head h2{font-family:var(--display);font-size:clamp(44px,5.6vw,84px);font-weight:800;line-height:.94;letter-spacing:.005em;color:var(--white);margin:0;text-transform:uppercase;max-width:14ch}
+  .proc-head h2 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:1}
+  .step{padding:48px 36px;border:1px solid var(--line);background:var(--navy);border-radius:2px;position:relative;transition:all .4s ease}
+  .step:hover{background:var(--navy-2);border-color:var(--line-2);transform:translateY(-4px)}
+  .step .step-num{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .step .step-num .digit{font-family:var(--display);font-size:64px;font-weight:800;color:var(--champagne);line-height:.85;letter-spacing:.005em}
+  .step .step-num .lab{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--body);text-transform:uppercase;line-height:1.6}
+  .step h6{font-family:var(--display);font-size:30px;font-weight:700;color:var(--white);margin:0 0 16px;text-transform:uppercase;letter-spacing:.01em;line-height:1.05}
+  .step p{font-size:15px;color:var(--body);margin:0;line-height:1.6}
+  @media (max-width:920px){ .proc-grid{grid-template-columns:1fr;gap:14px} .process{padding:80px 0} .proc-head{margin-bottom:36px} .step{padding:32px 28px} }
+
+  /* ============ REVIEWS ============ */
+  .reviews{padding:140px 0;border-top:1px solid var(--line)}
+  .rev-head{margin-bottom:72px;text-align:center}
+  .rev-head .lab{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:24px}
+  .rev-head .lab .line{width:40px;height:1px;background:var(--champagne)}
+  .rev-head h2{font-family:var(--display);font-size:clamp(40px,5.2vw,76px);font-weight:800;line-height:.94;letter-spacing:.005em;color:var(--white);margin:0 auto;text-transform:uppercase;max-width:18ch}
+  .rev-head h2 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rev{padding:38px 32px;border:1px solid var(--line);background:var(--navy);border-radius:2px;display:flex;flex-direction:column;gap:22px;position:relative;transition:all .4s ease}
+  .rev::before{content:'"';position:absolute;top:14px;right:24px;font-family:var(--display);font-size:120px;color:var(--navy-3);line-height:.5;opacity:.6}
+  .rev:hover{background:var(--navy-2);border-color:var(--line-2)}
+  .rev .stars{color:var(--champagne);font-size:14px;letter-spacing:3px}
+  .rev .quote{font-family:var(--display);font-size:21px;line-height:1.3;color:var(--white);font-weight:500;letter-spacing:.005em;margin:0;flex:1;position:relative;z-index:1}
+  .rev .who{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+  .rev .who .av{width:42px;height:42px;border-radius:999px;background:linear-gradient(135deg,var(--navy-3),var(--navy-2));color:var(--champagne);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:16px;border:1px solid var(--line-2)}
+  .rev .who div{display:flex;flex-direction:column}
+  .rev .who strong{font-size:15px;color:var(--white);font-weight:600;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em}
+  .rev .who span{font-size:11px;color:var(--body-dim);font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+  @media (max-width:920px){ .rev-grid{grid-template-columns:1fr;gap:14px} .reviews{padding:80px 0} .rev-head{margin-bottom:36px} }
+
+  /* ============ CONTACT ============ */
+  .contact{padding:140px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,var(--navy-deep),var(--navy))}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .contact-info .lab{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--champagne);text-transform:uppercase;font-weight:500;margin-bottom:24px}
+  .contact-info .lab .line{width:40px;height:1px;background:var(--champagne)}
+  .contact-info h2{font-family:var(--display);font-size:clamp(48px,5.8vw,88px);font-weight:800;line-height:.94;letter-spacing:.005em;color:var(--white);margin:0 0 24px;text-transform:uppercase}
+  .contact-info h2 em{font-style:italic;font-weight:500;color:var(--champagne)}
+  .contact-info p{font-size:17px;color:var(--stone);margin:0 0 40px;max-width:440px;line-height:1.6}
+  .contact-list{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
+  .contact-list a, .contact-list .row{display:flex;align-items:center;gap:20px;padding:22px 24px;border:1px solid var(--line);background:var(--navy);border-radius:2px;transition:all .35s ease;position:relative;overflow:hidden}
+  .contact-list a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--champagne);transform:scaleY(0);transform-origin:bottom;transition:transform .35s ease}
+  .contact-list a:hover::before{transform:scaleY(1)}
+  .contact-list a:hover{background:var(--navy-2);border-color:var(--line-2)}
+  .contact-list .ic{width:44px;height:44px;border-radius:2px;background:var(--navy-deep);border:1px solid var(--line-2);display:grid;place-items:center;flex-shrink:0}
+  .contact-list .ic svg{width:18px;height:18px;stroke:var(--champagne);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .contact-list .lab2{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--body-dim);text-transform:uppercase;display:block;margin-bottom:4px}
+  .contact-list .val{font-family:var(--display);font-size:22px;font-weight:700;color:var(--white);letter-spacing:.02em;text-transform:uppercase}
+
+  .contact-form{background:var(--navy);border:1px solid var(--line);border-radius:2px;padding:42px;position:relative;overflow:hidden}
+  .contact-form::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--champagne) 0%,transparent 100%)}
+  .contact-form h3{font-family:var(--display);font-size:32px;font-weight:700;letter-spacing:.01em;color:var(--white);margin:0 0 8px;text-transform:uppercase}
+  .contact-form .sub{font-size:14px;color:var(--body);margin:0 0 30px}
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+  .field label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;font-weight:500}
+  .field input,.field textarea,.field select{background:var(--navy-deep);border:1px solid var(--line);border-radius:2px;padding:15px 16px;color:var(--white);font-family:var(--copy);font-size:15px;outline:0;transition:border-color .25s ease}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--champagne)}
+  .field textarea{resize:vertical;min-height:110px;font-family:var(--copy)}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-submit{width:100%;background:var(--white);color:var(--navy-deep);padding:20px;border-radius:2px;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:8px;transition:all .35s ease;position:relative;overflow:hidden}
+  .form-submit::before{content:"";position:absolute;inset:0;background:var(--champagne);transform:translateX(-101%);transition:transform .45s cubic-bezier(.7,0,.3,1)}
+  .form-submit span{position:relative;z-index:1}
+  .form-submit:hover::before{transform:translateX(0)}
+  .gotcha{position:absolute;left:-9999px;visibility:hidden}
+  @media (max-width:920px){ .contact-grid{grid-template-columns:1fr;gap:48px} .contact{padding:80px 0} .contact-form{padding:28px 22px} .field-row{grid-template-columns:1fr} }
+
+  /* ============ FOOTER ============ */
+  .foot{padding:60px 0 40px;border-top:1px solid var(--line);background:var(--navy-deep)}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .foot-brand{font-family:var(--display);font-size:48px;font-weight:800;color:var(--white);letter-spacing:.04em;text-transform:uppercase;margin:0 0 8px;line-height:.9}
+  .foot-brand em{color:var(--champagne);font-style:italic;font-weight:500}
+  .foot-tag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+  .foot .copy{font-family:var(--mono);font-size:11px;color:var(--body-dim);letter-spacing:.06em;line-height:1.7}
+  .foot .copy a{color:var(--champagne)}
+  .foot .copy a:hover{text-decoration:underline}
+
+  /* ============ FLOAT CTA ============ */
+  .float-call{display:none;position:fixed;bottom:20px;right:20px;z-index:30;background:var(--white);color:var(--navy-deep);padding:14px 22px;border-radius:999px;font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 14px 38px rgba(0,0,0,.55),0 0 0 4px rgba(203,184,138,.18);align-items:center;gap:10px;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+  .float-call.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+  @media (max-width:920px){ .float-call{display:inline-flex} }
+
+  /* ============ REVEAL ============ */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+  .reveal-d1{transition-delay:.08s}
+  .reveal-d2{transition-delay:.16s}
+  .reveal-d3{transition-delay:.24s}
+  .reveal-d4{transition-delay:.32s}
+  .reveal-d5{transition-delay:.4s}
+
+  /* spotlight follow on body */
+  .spotlight{position:fixed;width:520px;height:520px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle, rgba(203,184,138,.10) 0%, rgba(203,184,138,0) 65%);transform:translate(-50%,-50%);transition:opacity .4s ease;mix-blend-mode:screen;will-change:transform}
+  @media (max-width:920px){ .spotlight{display:none} }
+</style>
+</head>
+<body>
+
+<div class="spotlight" id="spotlight"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24"><circle cx="17" cy="6" r="2"/><path d="M2 19 L8 9 L13 14 L17 8 L22 19 Z"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="name">Everstone</span>
+        <span class="sub">Granite · Quartz · Worktops</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#materials">Materials</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a href="#" class="nav-cta" data-phone="MDc5NDYgMzAyNDk3">Call Now</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('m').classList.add('open')"><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="m">
+  <button class="close" aria-label="Close" onclick="document.getElementById('m').classList.remove('open')">&times;</button>
+  <a href="#work" onclick="document.getElementById('m').classList.remove('open')">Work</a>
+  <a href="#materials" onclick="document.getElementById('m').classList.remove('open')">Materials</a>
+  <a href="#process" onclick="document.getElementById('m').classList.remove('open')">Process</a>
+  <a href="#reviews" onclick="document.getElementById('m').classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="document.getElementById('m').classList.remove('open')">Get a quote</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="hero.jpg" alt="Dark luxury kitchen with white quartz island"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="line"></span>Granite · Quartz · Marble · North West</div>
+      <h1>
+        <span class="word w1"><span>Stone</span></span><br>
+        <span class="word w2"><span>made <em>permanent.</em></span></span>
+      </h1>
+      <div class="hero-foot">
+        <p class="hero-tag">Bespoke worktops, islands and splashbacks. Templated, fabricated and installed by specialist stone masons working across Manchester, Liverpool and the wider North West.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn-primary" data-phone="MDc5NDYgMzAyNDk3"><span>Call Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12 L19 12 M13 6 L19 12 L13 18"/></svg></span></a>
+          <a href="#contact" class="btn-secondary">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-meta">
+    <span>EST. WORKTOPS</span>
+    <span class="num">EVERSTONE</span>
+    <span>NORTH WEST · UK</span>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="row">
+    <span>Calacatta</span><span class="pip">◆</span>
+    <span>Dekton</span><span class="pip">◆</span>
+    <span>Silestone</span><span class="pip">◆</span>
+    <span>Caesarstone</span><span class="pip">◆</span>
+    <span>Marble</span><span class="pip">◆</span>
+    <span>Granite</span><span class="pip">◆</span>
+    <span>Sintered Stone</span><span class="pip">◆</span>
+    <span>Quartzite</span><span class="pip">◆</span>
+    <span>Calacatta</span><span class="pip">◆</span>
+    <span>Dekton</span><span class="pip">◆</span>
+    <span>Silestone</span><span class="pip">◆</span>
+    <span>Caesarstone</span><span class="pip">◆</span>
+    <span>Marble</span><span class="pip">◆</span>
+    <span>Granite</span><span class="pip">◆</span>
+    <span>Sintered Stone</span><span class="pip">◆</span>
+    <span>Quartzite</span><span class="pip">◆</span>
+  </div>
+</div>
+
+<!-- ============ GALLERY (FIRST) ============ -->
+<section class="gallery-sec" id="work">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div class="left">
+        <div class="lab reveal"><span class="line"></span>Recent Installations</div>
+        <h2 class="reveal reveal-d1">The <em>Work.</em></h2>
+      </div>
+      <div class="right reveal reveal-d2">
+        Every slab templated by hand, fabricated to the millimetre, installed on the day. A look at what we've finished recently in homes across the North West.
+      </div>
+    </div>
+
+    <div class="g-grid">
+      <div class="g g1 reveal">
+        <div class="img-wrap"><img src="work-1.jpg" alt="Calacatta-style quartz island in dark wood kitchen"></div>
+        <div class="cap"><div class="cap-l"><div class="num">01 / Island</div><h3>Calacatta on dark wood</h3></div><div class="cap-r">Quartz<br>Bolton</div></div>
+      </div>
+      <div class="g g2 reveal reveal-d1">
+        <div class="img-wrap"><img src="work-2.jpg" alt="Calacatta gold quartz worktop and splashback"></div>
+        <div class="cap"><div class="cap-l"><div class="num">02 / Splashback</div><h3>Calacatta gold</h3></div><div class="cap-r">Quartz<br>Manchester</div></div>
+      </div>
+      <div class="g g3 reveal">
+        <div class="img-wrap"><img src="work-3.jpg" alt="Marble-effect quartz worktops in dark kitchen"></div>
+        <div class="cap"><div class="cap-l"><div class="num">03 / Worktops</div><h3>Full kitchen install</h3></div><div class="cap-r">Quartz<br>Cheshire</div></div>
+      </div>
+      <div class="g g4 reveal reveal-d1">
+        <div class="img-wrap"><img src="work-4.jpg" alt="Bright white quartz with dramatic veining"></div>
+        <div class="cap"><div class="cap-l"><div class="num">04 / Veining</div><h3>Statement quartz</h3></div><div class="cap-r">Quartz<br>Liverpool</div></div>
+      </div>
+      <div class="g g5 reveal">
+        <div class="img-wrap"><img src="work-5.jpg" alt="Quartzite island with dramatic natural veining"></div>
+        <div class="cap"><div class="cap-l"><div class="num">05 / Quartzite</div><h3>Natural stone island</h3></div><div class="cap-r">Quartzite<br>Wilmslow</div></div>
+      </div>
+      <div class="g g6 reveal reveal-d1">
+        <div class="img-wrap"><img src="work-6.jpg" alt="Pale quartz worktops with dark grey cabinets"></div>
+        <div class="cap"><div class="cap-l"><div class="num">06 / Workspace</div><h3>Pale quartz on charcoal</h3></div><div class="cap-r">Quartz<br>Stockport</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div>
+        <div class="lab reveal"><span class="line"></span>About Everstone</div>
+        <h2 class="reveal reveal-d1">Cut. Polished. <em>Permanent.</em></h2>
+      </div>
+      <div class="reveal reveal-d2">
+        <p>Everstone is a small, specialist outfit of stone masons fabricating granite, quartz and marble worktops for kitchens across the North West. We template, cut and install ourselves so the slab you see in the workshop is the slab that ends up in your kitchen.</p>
+        <p>We work direct with homeowners, kitchen fitters and developers. No call centres, no salesmen, no rushed timelines. Most jobs go from final template to finished install in two weeks.</p>
+        <div class="areas">
+          <span>Manchester</span><span>Liverpool</span><span>Cheshire</span>
+          <span>Lancashire</span><span>Wirral</span><span>Bolton</span>
+          <span>Stockport</span><span>Warrington</span><span>Wilmslow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal"><div class="num" data-count="500">0</div><div class="label">Kitchens fitted</div></div>
+    <div class="stat reveal reveal-d1"><div class="num" data-count="14">0<em>day</em></div><div class="label">Avg. lead time</div></div>
+    <div class="stat reveal reveal-d2"><div class="num"><em>0%</em></div><div class="label">Deposit asked</div></div>
+    <div class="stat reveal reveal-d3"><div class="num">5<em>★</em></div><div class="label">Workmanship rating</div></div>
+  </div>
+</section>
+
+<!-- ============ MATERIALS ============ -->
+<section class="materials" id="materials">
+  <div class="wrap">
+    <div class="mat-head">
+      <div class="left">
+        <div class="lab reveal"><span class="line"></span>What We Cut</div>
+        <h2 class="reveal reveal-d1">Materials <em>matter.</em></h2>
+      </div>
+    </div>
+    <div class="mat-grid">
+      <div class="mat mat-1 reveal">
+        <div class="nm">01 / Granite</div>
+        <h4>Granite</h4>
+        <p>Hard-wearing natural stone. Heat, scratch and stain resistant. Each slab is unique, no two kitchens look the same.</p>
+        <div class="swatch"></div>
+      </div>
+      <div class="mat mat-2 reveal reveal-d1">
+        <div class="nm">02 / Quartz</div>
+        <h4>Quartz</h4>
+        <p>Engineered stone in hundreds of finishes. Non-porous, easy maintenance, consistent pattern. Calacatta, Caesarstone, Silestone.</p>
+        <div class="swatch"></div>
+      </div>
+      <div class="mat mat-3 reveal reveal-d2">
+        <div class="nm">03 / Marble</div>
+        <h4>Marble</h4>
+        <p>Classic luxury for the right kitchen. Soft natural veining, warm tone, statement pieces. Sealed properly on install.</p>
+        <div class="swatch"></div>
+      </div>
+      <div class="mat mat-4 reveal reveal-d3">
+        <div class="nm">04 / Sintered</div>
+        <h4>Dekton &amp; sintered</h4>
+        <p>Ultra-thin, ultra-strong porcelain composites. UV stable, suitable for outdoor kitchens and feature walls.</p>
+        <div class="swatch"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="proc-head">
+      <div class="lab reveal"><span class="line"></span>How We Work</div>
+      <h2 class="reveal reveal-d1">Three steps, <em>two weeks.</em></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="step reveal">
+        <div class="step-num"><div class="digit">01</div><div class="lab">Template<br>&amp; quote</div></div>
+        <h6>On-site template</h6>
+        <p>We come out, take laser measurements, walk through stone options with you and put a fixed price in writing. No deposit asked at this stage.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="step-num"><div class="digit">02</div><div class="lab">Workshop<br>fabricate</div></div>
+        <h6>CNC fabrication</h6>
+        <p>Slab cut, polished and edge-finished in our workshop. You're welcome to come and inspect the slab before it goes anywhere near your kitchen.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num"><div class="digit">03</div><div class="lab">Install<br>&amp; sign-off</div></div>
+        <h6>One-day install</h6>
+        <p>Most kitchens fitted in a single day. We seal, joint, fit splashbacks and clean up before we leave. Sign-off paperwork and care guide handed over.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <div class="lab reveal"><span class="line"></span>What Customers Say</div>
+      <h2 class="reveal reveal-d1">Word of <em>mouth.</em></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Templated on the Tuesday, fitted on the Friday two weeks later. The Calacatta island looks even better than the showroom slab. Tidy lads, no mess."</p>
+        <div class="who"><div class="av">L</div><div><strong>Lauren</strong><span>Calacatta island · Wilmslow</span></div></div>
+      </div>
+      <div class="rev reveal reveal-d1">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Got three quotes. Everstone weren't the cheapest but were the only ones who showed me the actual slab in their workshop before cutting. Worth every penny."</p>
+        <div class="who"><div class="av">M</div><div><strong>Mark &amp; Nicola</strong><span>Quartz worktops · Manchester</span></div></div>
+      </div>
+      <div class="rev reveal reveal-d2">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Did our extension worktops and splashback. The mitred edges are flawless. Already using them for the utility room next month. Properly skilled stone masons."</p>
+        <div class="who"><div class="av">D</div><div><strong>David</strong><span>Mitred quartz · Cheshire</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="lab reveal"><span class="line"></span>Get In Touch</div>
+        <h2 class="reveal reveal-d1">Quote <em>your kitchen.</em></h2>
+        <p class="reveal reveal-d2">Send through the kitchen plan or rough dimensions and we'll come back with a fixed price. Most quotes turn around within 48 hours. DM or call.</p>
+
+        <div class="contact-list">
+          <a href="#" data-phone="MDc5NDYgMzAyNDk3" class="phone-link reveal reveal-d3">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+            <div><span class="lab2">Direct line</span><span class="val phone-display">Tap to reveal</span></div>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="reveal reveal-d4" onclick="alert('Instagram link goes here'); return false;">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></span>
+            <div><span class="lab2">DM us</span><span class="val">@everstone_uk</span></div>
+          </a>
+          <div class="row reveal reveal-d5">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11 L21 11 M3 11 L12 4 L21 11 M5 11 L5 20 L19 20 L19 11"/></svg></span>
+            <div><span class="lab2">Coverage</span><span class="val">North West, UK</span></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal reveal-d2" id="quoteForm" onsubmit="return submitForm(event)">
+        <h3>Quote Request</h3>
+        <p class="sub">We'll respond within one working day.</p>
+        <input type="text" name="_gotcha" class="gotcha" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="ts">
+        <input type="hidden" name="businessName" value="Everstone">
+        <input type="hidden" name="source" value="everstone-mockup">
+
+        <div class="field-row">
+          <div class="field"><label>First name</label><input type="text" name="firstName" required></div>
+          <div class="field"><label>Last name</label><input type="text" name="lastName" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Phone</label><input type="tel" name="phone" required></div>
+          <div class="field"><label>Postcode</label><input type="text" name="postcode"></div>
+        </div>
+        <div class="field">
+          <label>Material preference</label>
+          <select name="material">
+            <option>Quartz</option>
+            <option>Granite</option>
+            <option>Marble</option>
+            <option>Dekton / sintered</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tell us about the kitchen</label>
+          <textarea name="message" placeholder="Rough dimensions, design, photos of the kitchen if you've got them…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit"><span>Send Quote Request →</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Ever<em>stone</em></div>
+        <div class="foot-tag">Granite · Quartz · Marble · North West</div>
+      </div>
+      <div class="copy">
+        © 2026 Everstone. All rights reserved.<br>
+        Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="float-call" data-phone="MDc5NDYgMzAyNDk3">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+  Call Now
+</a>
+
+<script>
+  // Decode obfuscated phone
+  document.querySelectorAll('[data-phone]').forEach(el=>{
+    var num = atob(el.getAttribute('data-phone'));
+    el.setAttribute('href','tel:'+num.replace(/\s/g,''));
+    var disp = el.querySelector('.phone-display');
+    if(disp) disp.textContent = num;
+  });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal, .g').forEach(el=>io.observe(el));
+
+  // Counter animation
+  var counted = new WeakSet();
+  var io2 = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !counted.has(e.target)){
+        counted.add(e.target);
+        var target = parseInt(e.target.getAttribute('data-count'),10);
+        var dur = 1600, start = performance.now();
+        function tick(now){
+          var p = Math.min(1,(now-start)/dur);
+          var eased = 1 - Math.pow(1-p,3);
+          e.target.firstChild.textContent = String(Math.floor(eased*target));
+          if(p<1) requestAnimationFrame(tick);
+          else e.target.firstChild.textContent = String(target);
+        }
+        requestAnimationFrame(tick);
+      }
+    });
+  },{threshold:.4});
+  document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
+
+  // Spotlight follow
+  var sp = document.getElementById('spotlight');
+  var rafId = null, mx = -1000, my = -1000, cx = -1000, cy = -1000;
+  document.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    if(!rafId) rafId = requestAnimationFrame(loop);
+  });
+  function loop(){
+    cx += (mx-cx)*0.12; cy += (my-cy)*0.12;
+    sp.style.transform = 'translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
+    if(Math.abs(mx-cx)>0.4 || Math.abs(my-cy)>0.4){
+      rafId = requestAnimationFrame(loop);
+    } else { rafId = null; }
+  }
+
+  // Float CTA visibility
+  var hero = document.getElementById('top');
+  var fc = document.querySelector('.float-call');
+  if(hero && fc && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) fc.classList.remove('visible');
+        else fc.classList.add('visible');
+      });
+    },{rootMargin:'-20% 0px 0px 0px'}).observe(hero);
+  }
+
+  // Form
+  document.getElementById('ts').value = String(Date.now());
+  function submitForm(e){
+    e.preventDefault();
+    alert('Thanks. We\'ll be in touch within one working day.');
+    return false;
+  }
+</script>
+
+</body>
+</html>
