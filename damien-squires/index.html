@@ -243,61 +243,36 @@ h1,h2,h3,h4{
   .mobile-panel{display:block}
 }
 
-/* ───── HERO ───── */
+/* ───── HERO (compact split, no full-bleed photo) ───── */
 .hero{
   position:relative;
-  min-height:88vh;
-  overflow:hidden;
-  background:var(--bg-deep);
-  display:flex;align-items:flex-end;
-}
-.hero-img{
-  position:absolute;inset:0;
-  background-image:url('hero.jpg');
-  background-size:cover;
-  background-position:center 30%;
-  animation:slowzoom 28s ease-in-out infinite alternate;
-}
-@keyframes slowzoom{
-  from{transform:scale(1)}
-  to{transform:scale(1.06)}
-}
-.hero::after{
-  content:"";
-  position:absolute;inset:0;
-  background:
-    linear-gradient(to top, var(--bg) 0%, rgba(20,22,24,.55) 35%, rgba(20,22,24,.15) 60%, rgba(20,22,24,.4) 100%),
-    linear-gradient(to right, rgba(20,22,24,.55) 0%, transparent 60%);
-  pointer-events:none;
-}
-.hero-inner{
-  position:relative;z-index:2;
-  width:100%;
-  padding:120px 0 60px;
+  background:var(--bg);
+  padding:48px 0 64px;
+  border-bottom:1px solid var(--line);
 }
 .hero-grid{
   display:grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap:60px;
-  align-items:end;
+  grid-template-columns: 1.05fr 1fr;
+  gap:56px;
+  align-items:center;
 }
-@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero{padding:36px 0 48px}}
 
 .hero-eyebrow{
-  display:inline-flex;align-items:center;gap:14px;
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--accent);font-weight:500;
-  margin-bottom:36px;
-  padding:8px 14px;
-  border:1px solid var(--accent);
-  border-radius:999px;
-  background:rgba(20,22,24,.5);
-  backdrop-filter:blur(6px);
+  margin-bottom:30px;
+  padding:7px 12px 6px;
+  border:1px solid var(--line-strong);
+  border-radius:2px;
+  background:var(--card);
+  white-space:nowrap;
 }
 .hero-eyebrow .verified{color:var(--heading)}
 .hero-eyebrow .pulse{
-  position:relative;width:7px;height:7px;border-radius:50%;
-  background:var(--accent-soft);
+  position:relative;width:6px;height:6px;border-radius:50%;
+  background:var(--accent-soft);flex-shrink:0;
 }
 .hero-eyebrow .pulse::after{
   content:"";position:absolute;inset:-3px;border-radius:50%;
@@ -307,74 +282,75 @@ h1,h2,h3,h4{
 @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.8);opacity:0}}
 
 .hero h1{
-  font-size:clamp(2.8rem, 6.5vw, 5.6rem);
+  font-size:clamp(2.6rem, 5.6vw, 4.8rem);
   letter-spacing:-0.035em;
-  line-height:.96;
+  line-height:.98;
   color:var(--heading);
   font-weight:600;
-  margin-bottom:30px;
+  margin-bottom:24px;
 }
-.hero h1 .accent{
-  color:var(--accent);
-  font-weight:600;
-}
-.hero h1 .light{color:rgba(240,237,228,.65);font-weight:400}
+.hero h1 .accent{color:var(--accent);font-weight:600}
 
 .hero-lede{
-  font-size:1.1rem;line-height:1.6;
-  color:rgba(240,237,228,.8);
-  max-width:540px;
-  margin-bottom:36px;
-  font-weight:400;
+  font-size:1.05rem;line-height:1.65;
+  color:var(--body);
+  max-width:520px;
+  margin-bottom:32px;
 }
 
-.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:30px}
 
-.hero-side{
-  display:flex;flex-direction:column;gap:14px;
-  background:rgba(14,16,18,.7);
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(240,237,228,.12);
-  padding:26px 28px;
-  border-radius:4px;
+.hero-stats{
+  display:flex;gap:36px;flex-wrap:wrap;
+  padding-top:26px;
+  border-top:1px solid var(--line);
 }
-.hero-side .label{margin-bottom:4px}
-.hero-side h3{
-  font-size:1.1rem;color:var(--heading);font-weight:500;
-  letter-spacing:-0.01em;
-}
-.hero-side .stat-row{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-top:8px;
-}
-.hero-side .stat .v{
-  font-family:var(--display);font-weight:600;font-size:1.7rem;
+.hero-stats .stat .v{
+  font-family:var(--display);font-weight:600;font-size:1.6rem;
   color:var(--heading);letter-spacing:-0.02em;line-height:1;
 }
-.hero-side .stat .l{
-  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--muted);
-  margin-top:6px;
-}
-.hero-side .quote{
-  font-size:.95rem;line-height:1.55;
-  color:rgba(240,237,228,.85);
-  font-style:italic;
-  padding-top:14px;
-  border-top:1px solid rgba(240,237,228,.12);
-  margin-top:6px;
-}
-.hero-side .quote-by{
+.hero-stats .stat .v .accent{color:var(--accent)}
+.hero-stats .stat .l{
   font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted);
-  margin-top:8px;
+  margin-top:6px;
+}
+
+/* Hero photo card */
+.hero-photo{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+  aspect-ratio: 4/4.6;
+  background:var(--bg-deep);
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;
+  animation:slowzoom 22s ease-in-out infinite alternate;
+}
+@keyframes slowzoom{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hero-photo::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 65%, rgba(14,16,18,.55) 100%);
+  pointer-events:none;
+}
+.hero-photo .photo-tag{
+  position:absolute;
+  bottom:18px;left:18px;
+  z-index:2;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;
+  background:var(--accent);color:var(--bg);
+  padding:6px 11px;border-radius:2px;
+  font-weight:500;
 }
 
 @media (max-width:540px){
-  .hero{min-height:80vh}
-  .hero h1{font-size:clamp(2.4rem, 9vw, 3.2rem)}
-  .hero-eyebrow{font-size:.6rem;padding:7px 12px;letter-spacing:.22em}
+  .hero h1{font-size:clamp(2.3rem, 9vw, 3rem)}
+  .hero-eyebrow{font-size:.58rem;padding:6px 10px;letter-spacing:.22em}
+  .hero-stats{gap:24px}
 }
 
 /* ───── TRUST ───── */
@@ -446,119 +422,99 @@ section{padding:110px 0;position:relative}
 }
 @media (max-width:768px){.section-head{margin-bottom:42px}}
 
-/* ───── SERVICES (S2) ───── */
-.services{background:var(--bg)}
-.svc-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-}
-.svc-card{
+/* ───── TRADES (combined photo + service plates) ───── */
+.trades{
   background:var(--bg);
-  padding:38px 32px 36px;
-  position:relative;
-  transition:background .3s ease;
-}
-.svc-card::before{
-  content:"";
-  position:absolute;left:0;top:0;height:2px;width:100%;
-  background:var(--accent);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .35s ease;
-}
-.svc-card:hover{background:var(--card)}
-.svc-card:hover::before{transform:scaleX(1)}
-
-.svc-num{
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;
-  color:var(--muted);
-  margin-bottom:22px;text-transform:uppercase;font-weight:500;
-}
-.svc-card h3{
-  font-size:1.55rem;letter-spacing:-0.02em;
-  margin-bottom:12px;
-  font-weight:600;
-}
-.svc-card p{
-  font-size:.96rem;line-height:1.55;
-  color:var(--body);
-  font-weight:400;
-}
-
-@media (max-width:880px){.svc-grid{grid-template-columns:1fr}}
-@media (min-width:881px) and (max-width:1100px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-
-/* ───── GALLERY (G2 asymmetric) ───── */
-.work{
-  background:var(--bg-deep);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
-.masonry{
+.trade-grid{
   display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-auto-rows:120px;
-  gap:18px;
+  grid-template-columns:repeat(6,1fr);
+  gap:24px;
 }
-.tile{
+.plate{
   position:relative;
-  border-radius:2px;
-  overflow:hidden;
   background:var(--card);
   border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:.25s ease;
 }
-.tile img{
+.plate:hover{
+  border-color:var(--line-strong);
+  transform:translateY(-2px);
+}
+.plate .img{
+  position:relative;
+  overflow:hidden;
+  background:var(--bg-deep);
+  aspect-ratio:4/3;
+}
+.plate .img img{
   width:100%;height:100%;
   object-fit:cover;
-  transition:transform 1s ease;
+  transition:transform .8s ease;
 }
-.tile:hover img{transform:scale(1.05)}
-.tile::after{
+.plate:hover .img img{transform:scale(1.05)}
+.plate .img::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(180deg, transparent 50%, rgba(14,16,18,.85));
-  opacity:0;transition:opacity .3s ease;
+  background:linear-gradient(180deg, transparent 50%, rgba(14,16,18,.5));
   pointer-events:none;
 }
-.tile:hover::after{opacity:1}
+.plate .num{
+  position:absolute;top:14px;left:14px;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;
+  text-transform:uppercase;
+  background:rgba(14,16,18,.65);
+  backdrop-filter:blur(6px);
+  color:var(--accent-soft);
+  padding:5px 9px;border-radius:2px;
+  font-weight:500;
+}
+.plate .body{
+  padding:22px 24px 26px;
+  flex:1;
+  display:flex;flex-direction:column;
+  border-top:1px solid var(--line);
+  position:relative;
+}
+.plate .body::before{
+  content:"";
+  position:absolute;left:0;top:-1px;height:1px;width:0;
+  background:var(--accent);
+  transition:width .35s ease;
+}
+.plate:hover .body::before{width:100%}
+.plate h3{
+  font-size:1.3rem;letter-spacing:-0.02em;
+  margin-bottom:8px;
+  font-weight:600;
+  color:var(--heading);
+}
+.plate p{
+  font-size:.92rem;line-height:1.55;
+  color:var(--body);
+}
 
-.tile .cap{
-  position:absolute;
-  bottom:18px;left:20px;right:20px;
-  z-index:2;
-  opacity:0;transform:translateY(8px);
-  transition:opacity .3s ease, transform .3s ease;
-}
-.tile:hover .cap{opacity:1;transform:translateY(0)}
-.tile .cap .t{
-  font-family:var(--display);font-weight:600;font-size:1.05rem;
-  color:var(--heading);letter-spacing:-0.01em;
-  margin-bottom:3px;
-}
-.tile .cap .l{
-  font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--accent-soft);
-}
+/* asymmetric: feature tile spans wider on desktop */
+.plate.feature{grid-column:span 4}
+.plate.feature .img{aspect-ratio:16/9}
+.plate.feature h3{font-size:1.55rem}
+.plate:not(.feature){grid-column:span 2}
 
-.tile.t1{grid-column:span 7;grid-row:span 4}
-.tile.t2{grid-column:span 5;grid-row:span 4}
-.tile.t3{grid-column:span 4;grid-row:span 3}
-.tile.t4{grid-column:span 4;grid-row:span 3}
-.tile.t5{grid-column:span 4;grid-row:span 3}
-.tile.t6{grid-column:span 12;grid-row:span 4}
-
-@media (max-width:980px){
-  .masonry{grid-template-columns:repeat(6,1fr);grid-auto-rows:90px;gap:14px}
-  .tile.t1{grid-column:span 6;grid-row:span 4}
-  .tile.t2{grid-column:span 6;grid-row:span 4}
-  .tile.t3,.tile.t4,.tile.t5{grid-column:span 3;grid-row:span 3}
-  .tile.t6{grid-column:span 6;grid-row:span 4}
+@media (max-width:1000px){
+  .trade-grid{grid-template-columns:repeat(4,1fr);gap:18px}
+  .plate.feature{grid-column:span 4}
+  .plate.feature .img{aspect-ratio:16/8}
+  .plate:not(.feature){grid-column:span 2}
 }
-@media (max-width:560px){
-  .masonry{grid-template-columns:1fr;grid-auto-rows:auto}
-  .tile{grid-column:span 1 !important;grid-row:auto !important;aspect-ratio:4/3}
+@media (max-width:680px){
+  .trade-grid{grid-template-columns:1fr;gap:16px}
+  .plate.feature, .plate:not(.feature){grid-column:span 1}
+  .plate.feature .img{aspect-ratio:4/3}
 }
 
 /* ───── ABOUT ───── */
@@ -983,46 +939,124 @@ footer{
 
 <!-- ───── HERO ───── -->
 <section class="hero">
-  <div class="hero-img" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <span class="hero-eyebrow fadeup d1">
-            <span class="pulse"></span>
-            <span class="verified">Verified</span> · MyBuilder · Preston, Lancashire
-          </span>
-          <h1 class="fadeup d2">
-            Stone work,<br>
-            <span class="accent">set to last.</span>
-          </h1>
-          <p class="hero-lede fadeup d3">
-            Hand-laid dry stone walls, garden walls, sandstone flagging, cobblestone and full house elevations across Lancashire. Built properly, the way they always were.
-          </p>
-          <div class="hero-cta-row fadeup d4">
-            <a id="heroCall" class="btn btn-primary" href="#contact">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span id="heroCallText">Get a quote</span>
-            </a>
-            <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 5.1 15.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 5.55-13.56zm-5.55 12.21a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.24-3.5 6.6 6.6 0 0 1-6.65 6.59z"/></svg>
-              WhatsApp
-            </a>
-          </div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-eyebrow fadeup d1">
+          <span class="pulse"></span>
+          <span class="verified">MyBuilder</span> · 5.0 Verified
+        </span>
+        <h1 class="fadeup d2">
+          Stone work,<br>
+          <span class="accent">set to last.</span>
+        </h1>
+        <p class="hero-lede fadeup d3">
+          Hand-laid dry stone walls, garden walls, sandstone flagging, cobblestone and full house elevations across Lancashire. Built properly, the way they always were.
+        </p>
+        <div class="hero-cta-row fadeup d4">
+          <a id="heroCall" class="btn btn-primary" href="#contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span id="heroCallText">Get a quote</span>
+          </a>
+          <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 5.1 15.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85.98h.01a7.94 7.94 0 0 0 5.55-13.56zm-5.55 12.21a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 1 1 12.24-3.5 6.6 6.6 0 0 1-6.65 6.59z"/></svg>
+            WhatsApp
+          </a>
         </div>
-
-        <aside class="hero-side fadeup d4">
-          <span class="label">Profile</span>
-          <h3>Independent stone mason, working across Lancashire.</h3>
-          <div class="stat-row">
-            <div class="stat"><div class="v">5.0</div><div class="l">MyBuilder rating</div></div>
-            <div class="stat"><div class="v">All ★</div><div class="l">Hand-laid</div></div>
-          </div>
-          <p class="quote">&ldquo;Damien builds dry stone walls, garden walls, full elevations, flagging, cobble. Anything in stone, properly done.&rdquo;</p>
-          <span class="quote-by">From the workshop</span>
-        </aside>
-
+        <div class="hero-stats fadeup d5">
+          <div class="stat"><div class="v">20<span class="accent">+</span></div><div class="l">Years on the trowel</div></div>
+          <div class="stat"><div class="v">5.0</div><div class="l">MyBuilder rating</div></div>
+          <div class="stat"><div class="v">PR · BB</div><div class="l">Lancashire local</div></div>
+        </div>
       </div>
+
+      <div class="hero-photo fadeup d3">
+        <img src="hero.jpg" alt="Sandstone gable elevation hand-laid by Damien Squires in the Ribble Valley, Lancashire">
+        <span class="photo-tag">Ribble Valley · Full elevation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── TRADES (combined gallery + services, photos lead) ───── -->
+<section class="trades reveal" id="work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="label">Recent work · all trades</span>
+        <h2>Everything in <span class="accent">stone</span>,<br>shown by the work.</h2>
+      </div>
+      <span class="head-meta">Lancashire · 2024 / 25</span>
+    </div>
+
+    <div class="trade-grid">
+
+      <article class="plate feature">
+        <div class="img">
+          <span class="num">01 / Stone extensions</span>
+          <img src="work-1.jpg" alt="Modern stone extension with contemporary lines, hand-laid by Damien Squires in Preston">
+        </div>
+        <div class="body">
+          <h3>Stone extensions &amp; full elevations</h3>
+          <p>Complete stone walls from foundations up. Reclaimed or new sandstone, lime or hybrid mortars, traditional coursing matched to the original property.</p>
+        </div>
+      </article>
+
+      <article class="plate">
+        <div class="img">
+          <span class="num">02 / Garden walls</span>
+          <img src="work-3.jpg" alt="Honey-coloured stone garden wall with cobble driveway in a Lancashire village">
+        </div>
+        <div class="body">
+          <h3>Garden &amp; boundary walls</h3>
+          <p>Coursed, random rubble or feature stonework with hand-cut coping. Built to match the local vernacular.</p>
+        </div>
+      </article>
+
+      <article class="plate">
+        <div class="img">
+          <span class="num">03 / Dry stone</span>
+          <img src="work-4.jpg" alt="Red sandstone dry stone wall in rural Lancashire, freshly built without mortar">
+        </div>
+        <div class="body">
+          <h3>Dry stone walling</h3>
+          <p>Field walls, retaining walls and garden boundaries. Lifted, dressed, locked together by hand. No mortar, just craft.</p>
+        </div>
+      </article>
+
+      <article class="plate">
+        <div class="img">
+          <span class="num">04 / Flagging</span>
+          <img src="work-2.jpg" alt="Sandstone flagging steps and patio leading to a stone house, Lancashire">
+        </div>
+        <div class="body">
+          <h3>Sandstone flagging &amp; steps</h3>
+          <p>Yorkstone and reclaimed flag patios, paths, courtyards and steps. Laid level, pointed neatly, jointed properly.</p>
+        </div>
+      </article>
+
+      <article class="plate">
+        <div class="img">
+          <span class="num">05 / Cobblestone</span>
+          <img src="work-5.jpg" alt="Squared rubble stone wall with cobble apron in front, Lancashire">
+        </div>
+        <div class="body">
+          <h3>Cobblestone &amp; setts</h3>
+          <p>Granite and beach cobble drives, aprons and decorative bands. Bedded properly so they stay put for decades.</p>
+        </div>
+      </article>
+
+      <article class="plate">
+        <div class="img">
+          <span class="num">06 / Restoration</span>
+          <img src="work-6.jpg" alt="Long honey-coloured stone boundary wall freshly built or restored, Lancashire">
+        </div>
+        <div class="body">
+          <h3>Restoration &amp; repointing</h3>
+          <p>Repointing, rebuilds after damage, period property make-good. Matching original mortars and stone where it matters.</p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1060,110 +1094,6 @@ footer{
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
         <div><strong>Lancashire</strong><span>Preston &amp; the Ribble</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── SERVICES ───── -->
-<section class="services reveal" id="services">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="label">What we build</span>
-        <h2>Anything in <span class="accent">stone</span>.</h2>
-      </div>
-      <span class="head-meta">Six core trades</span>
-    </div>
-
-    <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-num">01 / Dry stone</div>
-        <h3>Dry stone walling</h3>
-        <p>Field walls, retaining walls, drystone garden boundaries. Lifted, dressed, and locked together by hand. No mortar, just craft.</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">02 / Garden</div>
-        <h3>Garden &amp; boundary walls</h3>
-        <p>Coursed, random rubble or feature stonework. Coping stones cut and bedded to match the local vernacular.</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">03 / Full builds</div>
-        <h3>Full house &amp; extension</h3>
-        <p>Complete stone elevations from foundations up. Reclaimed or new sandstone, lime mortar, traditional pointing.</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">04 / Flagging</div>
-        <h3>Sandstone flagging</h3>
-        <p>Yorkstone and reclaimed flag patios, paths, courtyards. Laid level, pointed neatly, jointed with sand or lime.</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">05 / Cobble</div>
-        <h3>Cobblestone &amp; setts</h3>
-        <p>Granite and beach cobble drives, aprons and decorative bands. Bedded properly so they stay put.</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-num">06 / Restoration</div>
-        <h3>Restoration &amp; repair</h3>
-        <p>Repointing, rebuilds after damage, period property make-good. Matching original mortars and stone where it matters.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───── WORK / GALLERY ───── -->
-<section class="work reveal" id="work">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="label">Recent Work</span>
-        <h2>A few jobs from <span class="light">around Lancashire.</span></h2>
-      </div>
-      <span class="head-meta">Stone speaks for itself</span>
-    </div>
-
-    <div class="masonry">
-      <div class="tile t1">
-        <img src="hero.jpg" alt="Stone gable end of a Lancashire house with chimney, hand-laid sandstone elevation by Damien Squires">
-        <div class="cap">
-          <div class="t">Sandstone gable, full elevation</div>
-          <div class="l">Ribble Valley · 2025</div>
-        </div>
-      </div>
-      <div class="tile t2">
-        <img src="work-1.jpg" alt="Modern stone extension with contemporary lines, hand-laid by Damien Squires">
-        <div class="cap">
-          <div class="t">Modern stone extension</div>
-          <div class="l">Preston · 2025</div>
-        </div>
-      </div>
-      <div class="tile t3">
-        <img src="work-3.jpg" alt="Honey-coloured stone garden wall in front of a cottage with cobblestone driveway, Lancashire village">
-        <div class="cap">
-          <div class="t">Coursed garden wall &amp; cobble drive</div>
-          <div class="l">Whalley · 2024</div>
-        </div>
-      </div>
-      <div class="tile t4">
-        <img src="work-4.jpg" alt="Red sandstone dry stone wall in rural Lancashire, freshly built">
-        <div class="cap">
-          <div class="t">Red sandstone dry stone wall</div>
-          <div class="l">Ribble Valley · 2024</div>
-        </div>
-      </div>
-      <div class="tile t5">
-        <img src="work-5.jpg" alt="Squared rubble stone wall with cobble apron in front, Lancashire">
-        <div class="cap">
-          <div class="t">Squared rubble &amp; cobble apron</div>
-          <div class="l">Goosnargh · 2024</div>
-        </div>
-      </div>
-      <div class="tile t6">
-        <img src="work-2.jpg" alt="Sandstone flagging steps and patio leading to a stone house, Lancashire">
-        <div class="cap">
-          <div class="t">Sandstone steps, flagging &amp; cheek walls</div>
-          <div class="l">Longridge · 2025</div>
-        </div>
       </div>
     </div>
   </div>
