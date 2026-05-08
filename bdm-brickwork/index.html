@@ -152,39 +152,29 @@ h1 .green { color: var(--secondary); }
   align-items: center;
   gap: 12px;
   white-space: nowrap;
+  height: 48px;
 }
-.nav-logo .badge {
-  width: 42px; height: 42px;
-  background: linear-gradient(135deg, var(--accent), #8a181d);
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-  font-family: 'Big Shoulders Display';
-  font-weight: 900;
-  color: #fff;
-  font-size: 1.1rem;
-  letter-spacing: -0.02em;
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+.nav-logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+  border-radius: 4px;
+  background: #fff;
+  padding: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-.nav-logo .badge i { font-style: normal; color: var(--secondary); }
 .nav-logo .name {
   font-family: 'Big Shoulders Display';
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--text);
   letter-spacing: 0.01em;
+  line-height: 1;
 }
 .nav-logo .name span { color: var(--secondary); font-weight: 700; }
-.nav-logo .name small {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-top: 2px;
+@media (max-width: 520px) {
+  .nav-logo .name { display: none; }
+  .nav-logo img { height: 42px; }
 }
 
 .nav-links {
@@ -309,6 +299,7 @@ h1 .green { color: var(--secondary); }
 }
 .hero-photo img {
   width: 100%; height: 100%; object-fit: cover;
+  object-position: center 22%;
   animation: kenburns 22s ease-in-out infinite alternate;
 }
 @keyframes kenburns {
@@ -511,31 +502,6 @@ section.spaced { padding: 120px 0; }
 }
 .gtile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .gtile:hover img { transform: scale(1.06); }
-.gtile::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(7,9,10,0.78) 100%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.gtile:hover::after { opacity: 1; }
-.gcap {
-  position: absolute;
-  bottom: 14px; left: 16px; right: 16px;
-  z-index: 2;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  color: var(--text);
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.3s ease;
-}
-.gtile:hover .gcap { opacity: 1; transform: translateY(0); }
-.gcap .accent { color: var(--accent); }
-.gcap .green { color: var(--secondary); }
 
 .g-feature { grid-column: span 3; grid-row: span 3; }
 .g-tall   { grid-column: span 2; grid-row: span 2; }
@@ -868,6 +834,60 @@ section.spaced { padding: 120px 0; }
 .fab:hover { animation: none; }
 .fab svg { width: 24px; height: 24px; stroke: #fff; }
 
+/* ─── Loader ───────────────────────────────────────────────────── */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-deeper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  transition: opacity 0.55s ease, visibility 0s linear 0.55s;
+}
+.loader.gone { opacity: 0; visibility: hidden; }
+.loader-logo {
+  width: min(300px, 72vw);
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  animation: loaderRise 0.7s ease;
+}
+.loader-bar {
+  width: min(280px, 64vw);
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  transform: translateX(-100%);
+  animation: loaderSweep 1.4s ease-in-out infinite;
+}
+.loader-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+@keyframes loaderSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes loaderRise {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 /* ─── Reveal ───────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
@@ -916,9 +936,14 @@ section.spaced { padding: 120px 0; }
 @media (max-width: 720px) {
   .container { padding: 0 20px; }
   .nav-inner { padding: 14px 20px; }
-  .trust-inner { gap: 0; }
-  .trust-item { flex: 0 0 100%; padding: 12px 0; border-right: none !important; border-bottom: 1px solid var(--border); }
-  .trust-item:last-child { border-bottom: none; }
+  .trust { padding: 18px 0; }
+  .trust-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+  .trust-item { flex: none; padding: 10px 0; border-right: none !important; gap: 10px; }
+  .trust-item:nth-child(odd) { border-right: 1px solid var(--border) !important; padding-right: 14px; }
+  .trust-item:last-child { grid-column: 1 / -1; justify-content: center; border-right: none !important; padding-right: 0; padding-top: 12px; border-top: 1px solid var(--border); }
+  .trust-item .icon { width: 18px; height: 18px; }
+  .trust-item .label { font-size: 0.78rem; }
+  .trust-item .label small { font-size: 0.66rem; }
   .services-grid { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
   .g-feature { grid-column: span 2; grid-row: span 2; }
@@ -939,15 +964,19 @@ section.spaced { padding: 120px 0; }
 </head>
 <body>
 
+<!-- ─── LOADING SCREEN ──────────────────────────────────────────── -->
+<div class="loader" id="loader">
+  <img class="loader-logo" src="logo.jpg" alt="BDM Brickwork & Landscaping">
+  <div class="loader-bar"></div>
+  <div class="loader-tag">Bricklayers · Landscapers</div>
+</div>
+
 <!-- ─── NAV ─────────────────────────────────────────────────────── -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
-      <div class="badge">B<i>D</i>M</div>
-      <div class="name">
-        BDM <span>Brickwork & Landscaping</span>
-        <small>Bricklayers · Landscapers</small>
-      </div>
+      <img src="logo.jpg" alt="BDM Brickwork & Landscaping logo">
+      <div class="name">BDM <span>Brickwork & Landscaping</span></div>
     </a>
 
     <div class="nav-links">
@@ -984,7 +1013,7 @@ section.spaced { padding: 120px 0; }
   <div class="container hero-inner">
     <div class="hero-text">
       <div class="eyebrow"><span class="dot"></span>Bricklayers · Landscapers · Free quotes</div>
-      <h1>Walls built right.<br><span class="stripe">Gardens</span> done <span class="green">proper.</span></h1>
+      <h1>Walls built right.<br><span class="stripe">Gardens</span> finished <span class="green">sharp.</span></h1>
       <p class="hero-lede">BDM Brickwork & Landscaping. We lay brick, build walls, drop patios, finish driveways and turn rough gardens into something the neighbours notice. Big jobs, small jobs, and everything in between.</p>
       <div class="hero-ctas">
         <a id="heroCall" href="#" class="btn btn-primary">
@@ -1067,13 +1096,13 @@ section.spaced { padding: 120px 0; }
       <div class="svc-card reveal">
         <div class="num">03 / PAVING</div>
         <h3>Patios &amp; Paving</h3>
-        <p>Porcelain, sandstone, granite. Levelled, jointed, laid properly first time.</p>
+        <p>Porcelain, sandstone, granite. Levelled, jointed, laid right first time.</p>
         <div class="svc-row"><span>Indian · Porcelain · Setts</span><span class="arrow">→</span></div>
       </div>
       <div class="svc-card green reveal">
         <div class="num">04 / DRIVES</div>
         <h3>Driveways</h3>
-        <p>Block paving, resin, gravel and tarmac. Proper sub-base, edge restraints, gone for good.</p>
+        <p>Block paving, resin, gravel and tarmac. Solid sub-base, edge restraints, gone for good.</p>
         <div class="svc-row"><span>Block · Resin · Gravel</span><span class="arrow">→</span></div>
       </div>
       <div class="svc-card reveal">
@@ -1107,54 +1136,18 @@ section.spaced { padding: 120px 0; }
     </div>
 
     <div class="gallery">
-      <div class="gtile g-feature reveal">
-        <img src="hero.jpg" alt="Brick pillar with stone cap">
-        <div class="gcap">Brick pillar &amp; <span class="accent">stone cap</span> · front entrance</div>
-      </div>
-      <div class="gtile g-tall reveal">
-        <img src="work-1.jpg" alt="Patio paving with brickwork">
-        <div class="gcap">Front step <span class="accent">paving</span></div>
-      </div>
-      <div class="gtile g-mini reveal">
-        <img src="work-3.jpg" alt="Grey paving slabs">
-        <div class="gcap">Sandstone <span class="green">patio</span></div>
-      </div>
-      <div class="gtile g-wide reveal">
-        <img src="work-5.jpg" alt="Gravel driveway">
-        <div class="gcap">Gravel <span class="accent">driveway</span> · cottage</div>
-      </div>
-      <div class="gtile g-tall reveal">
-        <img src="work-7.jpg" alt="Indian sandstone path">
-        <div class="gcap">Indian <span class="green">sandstone</span> path</div>
-      </div>
-      <div class="gtile g-mini reveal">
-        <img src="work-9.jpg" alt="Lawn and patio">
-        <div class="gcap">Turf &amp; <span class="accent">patio</span></div>
-      </div>
-      <div class="gtile g-wide reveal">
-        <img src="work-6.jpg" alt="Extension brickwork">
-        <div class="gcap">Extension <span class="green">footings</span> &amp; brick skin</div>
-      </div>
-      <div class="gtile g-tall reveal">
-        <img src="work-2.jpg" alt="New turf laid in garden">
-        <div class="gcap">New <span class="green">turf</span> laid</div>
-      </div>
-      <div class="gtile g-mini reveal">
-        <img src="work-8.jpg" alt="Brick steps with stone capping">
-        <div class="gcap">Front <span class="accent">steps</span></div>
-      </div>
-      <div class="gtile g-mini reveal">
-        <img src="work-4.jpg" alt="Front garden brick wall">
-        <div class="gcap">Front <span class="accent">wall</span></div>
-      </div>
-      <div class="gtile g-mini reveal">
-        <img src="work-10.jpg" alt="Mixed slate, brick and decking detail">
-        <div class="gcap">Mixed <span class="green">borders</span></div>
-      </div>
-      <div class="gtile g-mini reveal">
-        <img src="work-11.jpg" alt="Sandstone wall detail">
-        <div class="gcap">Sandstone <span class="accent">wall</span></div>
-      </div>
+      <div class="gtile g-feature reveal"><img src="hero.jpg" alt="Brick pillar with stone cap"></div>
+      <div class="gtile g-tall reveal"><img src="work-1.jpg" alt="Patio paving with brickwork"></div>
+      <div class="gtile g-mini reveal"><img src="work-3.jpg" alt="Grey paving slabs"></div>
+      <div class="gtile g-wide reveal"><img src="work-5.jpg" alt="Gravel driveway"></div>
+      <div class="gtile g-tall reveal"><img src="work-7.jpg" alt="Indian sandstone path"></div>
+      <div class="gtile g-mini reveal"><img src="work-9.jpg" alt="Lawn and patio"></div>
+      <div class="gtile g-wide reveal"><img src="work-6.jpg" alt="Extension brickwork"></div>
+      <div class="gtile g-tall reveal"><img src="work-2.jpg" alt="New turf laid in garden"></div>
+      <div class="gtile g-mini reveal"><img src="work-8.jpg" alt="Brick steps with stone capping"></div>
+      <div class="gtile g-mini reveal"><img src="work-4.jpg" alt="Front garden brick wall"></div>
+      <div class="gtile g-mini reveal"><img src="work-10.jpg" alt="Mixed slate, brick and decking detail"></div>
+      <div class="gtile g-mini reveal"><img src="work-11.jpg" alt="Sandstone wall detail"></div>
     </div>
   </div>
 </section>
@@ -1164,7 +1157,7 @@ section.spaced { padding: 120px 0; }
   <div class="container about-inner">
     <div class="about-left reveal">
       <div class="eyebrow"><span class="dot"></span>Behind BDM</div>
-      <h2>A small outfit.<br>Built for <span style="color:var(--secondary)">proper work</span>.</h2>
+      <h2>A small outfit.<br>Built for <span style="color:var(--secondary)">serious work</span>.</h2>
       <p>BDM is run by working bricklayers and landscapers. The tools never leave our hands. We turn up when we say we will, do the work to a standard you'd want at your own house, and clean up after ourselves.</p>
       <p>If it's a single garden wall or a full back garden rebuild, we quote it the same way: walk the site, write it down, give you a price you can hold us to.</p>
       <div class="about-stats">
@@ -1241,7 +1234,7 @@ section.spaced { padding: 120px 0; }
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="rev-quote">"BDM block paved the driveway. Took the old tarmac up, sub-base done properly, no sinking, no weeds three years on. They explained every step. Easy to deal with, will use again for the back."</p>
+        <p class="rev-quote">"BDM block paved the driveway. Took the old tarmac up, sub-base done right, no sinking, no weeds three years on. They explained every step. Easy to deal with, will use again for the back."</p>
         <div class="rev-attr">
           <div class="rev-avatar">S</div>
           <div>
@@ -1277,7 +1270,7 @@ section.spaced { padding: 120px 0; }
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="rev-quote">"Old lawn was half moss, half mud. BDM stripped it, levelled, laid fresh turf and edged with brick. Looks like a proper garden now. Reasonable, polite, on the dot."</p>
+        <p class="rev-quote">"Old lawn was half moss, half mud. BDM stripped it, levelled, laid fresh turf and edged with brick. Looks like a real garden now. Reasonable, polite, on the dot."</p>
         <div class="rev-attr">
           <div class="rev-avatar">L</div>
           <div>
@@ -1529,6 +1522,14 @@ section.spaced { padding: 120px 0; }
 </div>
 
 <script>
+// ── Loader fade-out ──────────────────────────────────────────────
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var l = document.getElementById('loader');
+    if (l) l.classList.add('gone');
+  }, 450);
+});
+
 // ── Phone & email obfuscation ────────────────────────────────────
 var P  = atob('MDc3MDA5MDAxMjM=');           // 07700900123
 var Pf = atob('MDc3MDAgOTAwIDEyMw==');       // 07700 900 123
