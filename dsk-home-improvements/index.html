@@ -208,9 +208,18 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 800; letter-spacing: 
   border-top: 1px solid var(--line);
   padding: 22px 28px 28px;
 }
-.mobile-panel a { display: block; padding: 10px 0; color: var(--text-muted); font-weight: 500; font-size: 1rem; border-bottom: 1px solid var(--line); }
+.mobile-panel a { display: block; padding: 12px 0; color: var(--text-muted); font-weight: 500; font-size: 1rem; border-bottom: 1px solid var(--line); }
 .mobile-panel a:last-of-type { border-bottom: 0; }
-.mobile-panel .btn { margin-top: 16px; width: 100%; }
+.mobile-panel .btn.btn-primary {
+  margin-top: 18px;
+  width: 100%;
+  padding: 20px 28px;
+  font-size: 1.02rem;
+  color: #000 !important;
+  border-bottom: 0;
+  gap: 12px;
+}
+.mobile-panel .btn.btn-primary svg { stroke: #000; }
 
 @media (max-width: 880px) {
   .nav-links, .nav-cta { display: none; }
@@ -255,6 +264,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 800; letter-spacing: 
 .hero-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-muted); font-family: var(--mono); }
 .hero-meta-item strong { color: #fff; font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; }
 
+.hero-photo-wrap { display: flex; flex-direction: column; gap: 14px; }
 .hero-photo-frame {
   position: relative;
   border-radius: 18px;
@@ -265,25 +275,18 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 800; letter-spacing: 
 }
 .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform 8s ease; }
 .hero-photo-frame:hover img { transform: scale(1.08); }
-.hero-photo-frame::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(20,23,26,0.65) 100%);
-  pointer-events: none;
-}
-.hero-badge {
-  position: absolute; bottom: 22px; left: 22px;
-  background: rgba(20,23,26,0.92);
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 12px 18px;
+.hero-caption {
   display: flex; align-items: center; gap: 14px;
-  z-index: 3;
-  backdrop-filter: blur(8px);
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  flex-wrap: wrap;
 }
-.hero-badge-stars { color: var(--accent); font-size: 1rem; letter-spacing: 1px; }
-.hero-badge-text { font-size: 0.78rem; color: var(--text-muted); font-family: var(--mono); letter-spacing: 0.05em; }
-.hero-badge-text strong { color: #fff; display: block; font-family: var(--display); font-size: 0.95rem; letter-spacing: 0; margin-bottom: 2px; }
+.hero-caption-stars { color: var(--accent); font-size: 0.95rem; letter-spacing: 1px; }
+.hero-caption-label { font-family: var(--display); font-weight: 700; color: #fff; font-size: 0.95rem; }
+.hero-caption-area { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-left: auto; }
+@media (max-width: 480px) { .hero-caption-area { margin-left: 0; width: 100%; } }
 
 .hero-tape {
   position: absolute; top: 22px; right: 22px;
@@ -768,15 +771,15 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 800; letter-spacing: 
       </div>
     </div>
 
-    <div class="hero-photo-frame reveal">
-      <span class="hero-tape">Recent · Twickenham</span>
-      <img src="hero.jpg" alt="Gable-end glazed extension at dusk, fitted by DSK Home Improvements">
-      <div class="hero-badge">
-        <span class="hero-badge-stars">★★★★★</span>
-        <div class="hero-badge-text">
-          <strong>Local & rated</strong>
-          Hounslow · West London
-        </div>
+    <div class="hero-photo-wrap reveal">
+      <div class="hero-photo-frame">
+        <span class="hero-tape">Recent · Twickenham</span>
+        <img src="hero.jpg" alt="Gable-end glazed extension at dusk, fitted by DSK Home Improvements">
+      </div>
+      <div class="hero-caption">
+        <span class="hero-caption-stars">★★★★★</span>
+        <span class="hero-caption-label">Local &amp; rated</span>
+        <span class="hero-caption-area">Hounslow · West London</span>
       </div>
     </div>
   </div>
