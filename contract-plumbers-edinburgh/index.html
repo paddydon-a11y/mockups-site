@@ -494,6 +494,29 @@ footer{background:#080a0e;color:var(--muted);padding:48px 0 28px;border-top:1px 
 /* REVEAL */
 .r{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
 .r.in{opacity:1;transform:none}
+
+/* SMALL SCREEN FIXES: allow long unbreakable strings (email, brand name) to wrap
+   and ensure flex/grid items can shrink below their content's intrinsic width. */
+.ci-row a,.ci-row strong,.ci-row small,
+.contact-info h3,.contact-info > p,
+.cta-row,.cta-row span,.cta-row .lbl,
+.about-stamp .big,.about-stamp .sml,
+.review p,.review .who small,
+.area-pill,
+.brand .word,.brand .word .sub{
+  overflow-wrap:anywhere;word-break:break-word;
+}
+.cta-row > span:not(.ic){min-width:0;flex:1 1 auto}
+.ci-row > div{min-width:0;flex:1 1 auto}
+
+@media (max-width:420px){
+  .container{padding:0 18px}
+  .contact-grid{padding:28px 18px;gap:28px}
+  .cta-band-inner{padding:0 18px}
+  .cta-row{padding:16px 16px;gap:12px;font-size:14px}
+  .cta-row .ic{width:36px;height:36px}
+  .contact-info h3{font-size:21px}
+}
 </style>
 </head>
 <body>
