@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lime Property Group — Builders & Property Developers, Preston</title>
+<meta name="description" content="Lime Property Group Ltd. New build housing, extensions and full-service property development across Lancashire. Design, planning and construction from one trusted team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lime:#A6CE39;
+    --lime-deep:#8FB42E;
+    --ink:#111316;
+    --ink-2:#1d2024;
+    --line:#e6e7e2;
+    --paper:#ffffff;
+    --soft:#f5f6f0;
+    --muted:#5a5f55;
+    --shadow:0 24px 60px -28px rgba(17,19,22,.25);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Manrope',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  /* ===== NAV ===== */
+  .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1320px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand img{height:46px;width:auto;border-radius:10px}
+  .brand-text{display:flex;flex-direction:column;line-height:1.1}
+  .brand-text strong{font-family:'Quicksand',sans-serif;font-size:18px;color:var(--ink);font-weight:700}
+  .brand-text span{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-size:15px;font-weight:500;color:var(--ink);transition:color .15s}
+  .nav-links a:hover{color:var(--lime-deep)}
+  .nav-cta{background:var(--ink);color:#fff;padding:11px 22px;border-radius:999px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background .15s}
+  .nav-cta:hover{background:#000}
+  .nav-cta .dot{width:7px;height:7px;border-radius:50%;background:var(--lime)}
+  .hamburger{display:none;border:0;background:transparent;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer}
+  .hamburger span{width:22px;height:2px;background:var(--ink);position:relative;display:block}
+  .hamburger span::before,.hamburger span::after{content:'';position:absolute;left:0;width:22px;height:2px;background:var(--ink)}
+  .hamburger span::before{top:-7px}
+  .hamburger span::after{top:7px}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:0;align-items:stretch;min-height:640px}
+  .hero-copy{padding:88px 60px 88px 28px;display:flex;flex-direction:column;justify-content:center;max-width:680px;margin-left:auto}
+  .hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--lime);font-weight:600;margin-bottom:26px}
+  .hero-tag .line{width:36px;height:1px;background:var(--lime)}
+  .hero h1{font-size:clamp(40px,5.2vw,72px);line-height:1.02;font-weight:800;letter-spacing:-1.5px;margin-bottom:28px}
+  .hero h1 em{font-style:normal;color:var(--lime);font-weight:800;position:relative;display:inline-block}
+  .hero h1 em::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--lime);opacity:.4}
+  .hero p.lede{font-size:19px;color:#cbd0c5;max-width:520px;margin-bottom:36px;line-height:1.55}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .15s,background .15s}
+  .btn-primary{background:var(--lime);color:var(--ink)}
+  .btn-primary:hover{background:#b9dd4d;transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid #44494e}
+  .btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;padding-top:36px;border-top:1px solid #2a2e33;max-width:560px}
+  .stat-num{font-family:'Quicksand',sans-serif;font-size:38px;font-weight:700;color:#fff;line-height:1}
+  .stat-num .plus{color:var(--lime)}
+  .stat-lbl{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:#9aa098;margin-top:8px}
+  .hero-img{position:relative;background:url('work-1.jpg') center/cover no-repeat;min-height:520px}
+  .hero-img::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,19,22,.6) 0%,rgba(17,19,22,0) 30%);pointer-events:none}
+  .hero-badge{position:absolute;bottom:36px;right:36px;background:#fff;color:var(--ink);padding:22px 28px;border-radius:18px;box-shadow:var(--shadow);max-width:280px}
+  .hero-badge strong{display:block;font-size:32px;font-family:'Quicksand',sans-serif;font-weight:700;line-height:1;margin-bottom:6px}
+  .hero-badge span{font-size:13px;color:var(--muted);letter-spacing:.5px}
+  .hero-badge .green{color:var(--lime-deep);font-weight:700}
+
+  /* ===== TRUST BAR ===== */
+  .trust{background:#fff;border-bottom:1px solid var(--line);padding:28px 0}
+  .trust-row{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+  .trust-item{display:flex;align-items:center;gap:12px;color:var(--ink);font-size:14px;font-weight:500}
+  .trust-item svg{width:22px;height:22px;flex-shrink:0;color:var(--lime-deep)}
+
+  /* ===== SECTION HEAD ===== */
+  .section{padding:120px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:60px;margin-bottom:64px;flex-wrap:wrap}
+  .section-head .left{max-width:620px}
+  .section-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;color:var(--lime-deep);margin-bottom:18px}
+  .section-eyebrow .square{width:8px;height:8px;background:var(--lime);border-radius:2px}
+  .section-title{font-size:clamp(34px,3.6vw,52px);font-weight:800;line-height:1.05;letter-spacing:-1px}
+  .section-title em{font-style:normal;color:var(--lime-deep)}
+  .section-head p{color:var(--muted);font-size:17px;max-width:420px;line-height:1.55}
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--paper)}
+  .svc-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+  .svc{grid-column:span 4;background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+  .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--lime)}
+  .svc.feature{grid-column:span 8;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+  .svc.feature .svc-num{color:var(--lime)}
+  .svc.feature h3{color:#fff}
+  .svc.feature p{color:#bcc1b8}
+  .svc.feature::before{content:'';position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:var(--lime);opacity:.18;filter:blur(20px)}
+  .svc-num{font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;color:var(--lime-deep);letter-spacing:1.5px;margin-bottom:16px}
+  .svc-icon{width:54px;height:54px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:24px;color:var(--lime-deep)}
+  .svc.feature .svc-icon{background:rgba(166,206,57,.18);color:var(--lime)}
+  .svc-icon svg{width:26px;height:26px}
+  .svc h3{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:12px}
+  .svc p{color:var(--muted);font-size:15px;line-height:1.6}
+  .svc ul{list-style:none;margin-top:18px;display:grid;gap:8px}
+  .svc ul li{font-size:14px;color:var(--ink);padding-left:18px;position:relative}
+  .svc ul li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;background:var(--lime);border-radius:2px}
+  .svc.feature ul li{color:#dde2d6}
+
+  /* ===== PROCESS ===== */
+  .process{background:var(--soft)}
+  .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:20px}
+  .proc-step{position:relative}
+  .proc-step .num{font-family:'Quicksand',sans-serif;font-size:64px;font-weight:700;color:var(--lime);line-height:1;letter-spacing:-2px;margin-bottom:12px}
+  .proc-step h4{font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.2px}
+  .proc-step p{color:var(--muted);font-size:15px;line-height:1.55}
+
+  /* ===== GALLERY ===== */
+  .gallery{background:#fff}
+  .gal-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:240px;gap:16px}
+  .gal-grid figure{overflow:hidden;border-radius:18px;position:relative;cursor:pointer}
+  .gal-grid figure img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .gal-grid figure:hover img{transform:scale(1.04)}
+  .gal-grid figure figcaption{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.95);color:var(--ink);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;letter-spacing:.2px;opacity:0;transform:translateY(8px);transition:all .25s}
+  .gal-grid figure:hover figcaption{opacity:1;transform:translateY(0)}
+  .gal-1{grid-column:span 8;grid-row:span 2}
+  .gal-2{grid-column:span 4;grid-row:span 1}
+  .gal-3{grid-column:span 4;grid-row:span 1}
+  .gal-4{grid-column:span 4;grid-row:span 1}
+  .gal-5{grid-column:span 4;grid-row:span 1}
+  .gal-6{grid-column:span 4;grid-row:span 1}
+  .gal-7{grid-column:span 6;grid-row:span 1}
+  .gal-8{grid-column:span 6;grid-row:span 1}
+
+  /* ===== ABOUT ===== */
+  .about{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .about::before{content:'';position:absolute;top:-200px;left:-200px;width:500px;height:500px;border-radius:50%;background:var(--lime);opacity:.05;filter:blur(40px)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+  .about-copy h2{font-size:clamp(36px,3.6vw,52px);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:26px}
+  .about-copy h2 em{font-style:normal;color:var(--lime)}
+  .about-copy p{color:#bcc1b8;font-size:17px;line-height:1.7;margin-bottom:20px}
+  .about-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px;padding-top:36px;border-top:1px solid #2a2e33}
+  .about-meta div strong{display:block;color:var(--lime);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+  .about-meta div span{font-size:15px;color:#fff}
+  .about-img{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5}
+  .about-img img{width:100%;height:100%;object-fit:cover}
+  .about-img .tag{position:absolute;left:24px;bottom:24px;background:var(--lime);color:var(--ink);padding:14px 20px;border-radius:14px;font-weight:700;font-size:14px;letter-spacing:.3px}
+
+  /* ===== AREAS ===== */
+  .areas{background:var(--paper);padding:100px 0}
+  .areas-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
+  .areas-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .area-pill{padding:18px 22px;background:var(--soft);border-radius:12px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px;transition:background .15s,color .15s}
+  .area-pill::before{content:'';width:8px;height:8px;background:var(--lime);border-radius:50%}
+  .area-pill:hover{background:var(--ink);color:#fff}
+
+  /* ===== REVIEWS ===== */
+  .reviews{background:var(--soft)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rev{background:#fff;padding:34px;border-radius:18px;border:1px solid var(--line);display:flex;flex-direction:column}
+  .rev .stars{color:var(--lime);font-size:18px;letter-spacing:2px;margin-bottom:18px}
+  .rev blockquote{font-size:16px;line-height:1.6;color:var(--ink);margin-bottom:auto;font-weight:500}
+  .rev .who{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px}
+  .rev .avatar{width:46px;height:46px;border-radius:50%;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Quicksand',sans-serif;font-size:18px}
+  .rev .who strong{display:block;font-size:14px;font-weight:600}
+  .rev .who span{font-size:12px;color:var(--muted)}
+
+  /* ===== CTA STRIP ===== */
+  .cta-strip{background:var(--lime);color:var(--ink);padding:80px 0}
+  .cta-strip .inner{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center}
+  .cta-strip h2{font-size:clamp(32px,3.4vw,48px);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:14px}
+  .cta-strip p{font-size:17px;color:#2a3318;max-width:520px}
+  .cta-strip .actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+  .cta-strip .phone{font-family:'Quicksand',sans-serif;font-size:34px;font-weight:700;color:var(--ink);letter-spacing:-1px;line-height:1;display:flex;align-items:center;gap:14px}
+  .cta-strip .phone svg{width:30px;height:30px}
+  .cta-strip .actions a.btn{background:var(--ink);color:#fff;font-size:15px}
+  .cta-strip .actions a.btn:hover{background:#000}
+
+  /* ===== CONTACT ===== */
+  .contact{background:#fff;padding:120px 0}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px}
+  .contact-info h2{font-size:clamp(32px,3.2vw,46px);font-weight:800;letter-spacing:-1px;line-height:1.05;margin-bottom:22px}
+  .contact-info h2 em{font-style:normal;color:var(--lime-deep)}
+  .contact-info p.lead{color:var(--muted);font-size:17px;line-height:1.6;margin-bottom:36px}
+  .info-rows{display:grid;gap:22px}
+  .info-row{display:flex;gap:18px;align-items:flex-start}
+  .info-row .ic{width:46px;height:46px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;color:var(--lime-deep);flex-shrink:0}
+  .info-row .ic svg{width:22px;height:22px}
+  .info-row strong{display:block;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:600}
+  .info-row span,.info-row a{font-size:18px;font-weight:600;color:var(--ink)}
+  .form{background:var(--soft);padding:44px;border-radius:24px}
+  .form h3{font-size:24px;font-weight:700;margin-bottom:6px}
+  .form p{color:var(--muted);font-size:14px;margin-bottom:24px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .form input,.form textarea,.form select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:inherit;font-size:15px;color:var(--ink);outline:none;transition:border-color .15s}
+  .form input:focus,.form textarea:focus,.form select:focus{border-color:var(--lime)}
+  .form textarea{resize:vertical;min-height:110px;margin-bottom:18px}
+  .form button{width:100%;padding:16px;background:var(--ink);color:#fff;border:0;border-radius:10px;font-weight:600;font-size:15px;cursor:pointer;font-family:inherit;transition:background .15s}
+  .form button:hover{background:#000}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink-2);color:#a8ad9f;padding:70px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+  .foot-grid .brand img{height:60px;border-radius:10px;margin-bottom:18px}
+  .foot-grid p{font-size:14px;line-height:1.6;max-width:280px}
+  .foot-grid h5{color:#fff;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  .foot-grid ul{list-style:none;display:grid;gap:10px}
+  .foot-grid ul li a{font-size:14px;transition:color .15s}
+  .foot-grid ul li a:hover{color:var(--lime)}
+  .foot-bottom{border-top:1px solid #2a2e33;padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:14px}
+  .foot-bottom a{color:#a8ad9f}
+  .foot-bottom a:hover{color:var(--lime)}
+
+  /* ===== FLOATING CTA (mobile only) ===== */
+  .float-cta{display:none;position:fixed;bottom:18px;left:18px;right:18px;background:var(--ink);color:#fff;padding:14px 18px;border-radius:14px;z-index:60;box-shadow:0 20px 40px rgba(0,0,0,.3);justify-content:space-between;align-items:center}
+  .float-cta strong{font-family:'Quicksand',sans-serif;font-size:20px}
+  .float-cta a.cb{background:var(--lime);color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;font-size:13px}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-copy{padding:64px 28px;max-width:none}
+    .hero-img{min-height:380px}
+    .about-grid,.contact-grid,.cta-strip .inner,.areas-grid{grid-template-columns:1fr;gap:48px}
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .svc,.svc.feature{grid-column:span 1}
+    .proc-grid{grid-template-columns:repeat(2,1fr)}
+    .gal-grid{grid-auto-rows:200px}
+    .rev-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+  }
+  @media (max-width:720px){
+    .section{padding:80px 0}
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+    .hero-copy{padding:48px 24px}
+    .hero-stats{grid-template-columns:repeat(3,1fr);gap:16px}
+    .stat-num{font-size:26px}
+    .stat-lbl{font-size:10px}
+    .hero-badge{right:18px;bottom:18px;padding:16px 20px}
+    .hero-badge strong{font-size:24px}
+    .trust-row{justify-content:flex-start}
+    .section-head{flex-direction:column;align-items:flex-start;gap:18px}
+    .svc-grid,.proc-grid,.areas-list,.form-row{grid-template-columns:1fr}
+    .svc{padding:28px}
+    .gal-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:160px}
+    .gal-1{grid-column:span 6;grid-row:span 2}
+    .gal-2,.gal-3,.gal-4,.gal-5,.gal-6{grid-column:span 3;grid-row:span 1}
+    .gal-7,.gal-8{grid-column:span 6;grid-row:span 1}
+    .about-img{aspect-ratio:1/1}
+    .foot-grid{grid-template-columns:1fr}
+    .float-cta{display:flex}
+    body{padding-bottom:70px}
+    .cta-strip .phone{font-size:26px}
+    .form{padding:28px}
+    .wrap{padding:0 22px}
+    .nav-inner{padding:14px 22px}
+    .brand img{height:42px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <img src="logo.svg" alt="Lime Property Group">
+      <span class="brand-text">
+        <strong>Lime Property Group</strong>
+        <span>Builders &amp; Developers · Preston</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#process">Process</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:01772915152" class="nav-cta"><span class="dot"></span>01772 915152</a>
+    <button class="hamburger" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="hero-tag"><span class="line"></span>Building across Lancashire since 2011</span>
+      <h1>From green field to <em>handed over</em>.</h1>
+      <p class="lede">Lime Property Group designs, plans and builds homes in Preston and across the North West. New build housing, extensions, and full property development &mdash; delivered by one trusted team you don&rsquo;t have to chase.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Start your project →</a>
+        <a href="#projects" class="btn btn-ghost">See our work</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">120<span class="plus">+</span></div>
+          <div class="stat-lbl">Homes built</div>
+        </div>
+        <div>
+          <div class="stat-num">14<span class="plus">yr</span></div>
+          <div class="stat-lbl">Years trading</div>
+        </div>
+        <div>
+          <div class="stat-num">£18m<span class="plus">+</span></div>
+          <div class="stat-lbl">Value delivered</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img" role="img" aria-label="Recently completed Lime Property Group new build in Preston">
+      <div class="hero-badge">
+        <strong>NHBC <span class="green">Registered</span></strong>
+        <span>10-year structural warranty on every new build</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>NHBC Registered Builder</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>CHAS Accredited</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>Full Public Liability Cover</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>Trading since 2011</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in Longton, Preston</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="section-eyebrow"><span class="square"></span>What we do</span>
+        <h2 class="section-title">Design, planning, construction. <em>One team, one number.</em></h2>
+      </div>
+      <p>From a single-storey rear extension to a six-plot development, we run projects end-to-end with a select group of consultants and subcontractors we've worked with for years.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc feature">
+        <div>
+          <div class="svc-num">01 / Flagship service</div>
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg></div>
+          <h3>New build housing &mdash; green field to hand over</h3>
+          <p>Land appraisal, planning, build, sales-ready finish. Single homes through to small estates, delivered under one roof with NHBC backing.</p>
+        </div>
+        <ul>
+          <li>Site appraisal &amp; viability</li>
+          <li>Planning &amp; building regs</li>
+          <li>Full construction phase</li>
+          <li>NHBC 10-year warranty</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/><path d="M7 3v18M17 3v18"/></svg></div>
+        <h3>Extensions &amp; alterations</h3>
+        <p>Single &amp; double-storey rear, side return, wrap-around. Structural alterations, internal remodelling and full refits.</p>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg></div>
+        <h3>Property development</h3>
+        <p>Conversions, refurbishments and new-builds for our own portfolio and developer partners. Funded through completion.</p>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 9l10 6 10-6-10-6z"/><path d="M2 17l10 6 10-6M2 13l10 6 10-6"/></svg></div>
+        <h3>Design &amp; planning</h3>
+        <p>Architectural design, planning applications, cost planning and full tender packs delivered by our long-standing consultants.</p>
+      </div>
+
+      <div class="svc">
+        <div class="svc-num">05</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Project management</h3>
+        <p>Programme, budget, sub-trades and quality &mdash; managed from groundworks to snag list. You get one point of contact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="section-eyebrow"><span class="square"></span>How we work</span>
+        <h2 class="section-title">A clear process, <em>start to finish.</em></h2>
+      </div>
+      <p>Every project we run, no matter how small, follows the same four stages. You always know where you are in the build.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-step"><div class="num">01</div><h4>Initial chat</h4><p>Site visit or call. We talk about what you want to achieve, your budget bracket, and whether it's likely to need planning.</p></div>
+      <div class="proc-step"><div class="num">02</div><h4>Design &amp; pricing</h4><p>Drawings, planning where needed, cost plan and a full written quote. No grey areas, no hidden extras.</p></div>
+      <div class="proc-step"><div class="num">03</div><h4>Build</h4><p>One project manager, our long-standing trades and weekly progress updates. We work clean and keep neighbours sweet.</p></div>
+      <div class="proc-step"><div class="num">04</div><h4>Hand over</h4><p>Full snag walk, all certificates, NHBC sign-off on new builds, and we're at the end of the phone long after you've moved in.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="section-eyebrow"><span class="square"></span>Recent projects</span>
+        <h2 class="section-title">Homes we&rsquo;ve built. <em>Extensions we&rsquo;ve added.</em></h2>
+      </div>
+      <p>A small selection of recent work across Preston, Chorley and Fylde. Every photo is from a Lime build &mdash; no stock imagery.</p>
+    </div>
+    <div class="gal-grid">
+      <figure class="gal-1"><img src="work-2.jpg" alt="Floating oak and glass staircase with under-tread LED lighting"><figcaption>Floating staircase · Longton new build</figcaption></figure>
+      <figure class="gal-2"><img src="work-3.jpg" alt="4-bed brick new build with full-height bifold doors"><figcaption>4-bed detached · Hutton</figcaption></figure>
+      <figure class="gal-3"><img src="work-4.jpg" alt="Rear extension with bifolds and grey porcelain patio"><figcaption>Wrap-around extension · Lostock Hall</figcaption></figure>
+      <figure class="gal-4"><img src="work-6.jpg" alt="Detached brick garage with apex roof and modern black door"><figcaption>Detached garage · Walmer Bridge</figcaption></figure>
+      <figure class="gal-5"><img src="work-7.jpg" alt="Family bathroom with grey marble tiling and freestanding bath"><figcaption>Family bathroom · Fulwood</figcaption></figure>
+      <figure class="gal-6"><img src="work-8.jpg" alt="Walk-in wet room with full-height marble effect tiling"><figcaption>Walk-in wet room · Penwortham</figcaption></figure>
+      <figure class="gal-7"><img src="work-5.jpg" alt="Landscaped rear garden with striped lawn, fencing and patio"><figcaption>Garden &amp; landscaping · Longton</figcaption></figure>
+      <figure class="gal-8"><img src="work-1.jpg" alt="3-bed detached new build with blue sky and finished landscaping"><figcaption>3-bed new build · Bamber Bridge</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy">
+        <span class="section-eyebrow" style="color:var(--lime)"><span class="square"></span>About Lime</span>
+        <h2>A small office in Longton. <em>Big builds across the North West.</em></h2>
+        <p>Lime Property Group has been building homes across Lancashire for over a decade. We&rsquo;re based at our office on Chapel Lane in Longton &mdash; small enough that the same people answer the phone, run the site and sign off the work.</p>
+        <p>Our setup is deliberate. A select group of architects, structural engineers, planners and subcontractors we&rsquo;ve worked with for years. Same faces, every project. That&rsquo;s why our finish is consistent and our programmes hold.</p>
+        <div class="about-meta">
+          <div><strong>Founded</strong><span>2011 · Longton, Preston</span></div>
+          <div><strong>Director</strong><span>John Lee</span></div>
+          <div><strong>HQ</strong><span>10 Chapel Lane, PR4 5FB</span></div>
+          <div><strong>Coverage</strong><span>30-mile radius of Preston</span></div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="office.jpg" alt="Lime Property Group office on Chapel Lane, Longton">
+        <div class="tag">10 Chapel Lane · Longton</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="wrap areas-grid">
+    <div>
+      <span class="section-eyebrow"><span class="square"></span>Where we work</span>
+      <h2 class="section-title">Lancashire <em>&amp; the North West</em></h2>
+      <p style="color:var(--muted);font-size:17px;margin-top:18px;line-height:1.6;max-width:380px">From our Longton base we cover the whole of Lancashire plus parts of Sefton and Greater Manchester. If your project sits outside this area, get in touch &mdash; we travel for the right job.</p>
+    </div>
+    <div class="areas-list">
+      <a href="#" class="area-pill">Preston</a>
+      <a href="#" class="area-pill">South Ribble</a>
+      <a href="#" class="area-pill">Chorley</a>
+      <a href="#" class="area-pill">Fylde</a>
+      <a href="#" class="area-pill">Blackburn</a>
+      <a href="#" class="area-pill">Blackpool</a>
+      <a href="#" class="area-pill">Burnley</a>
+      <a href="#" class="area-pill">Lancaster</a>
+      <a href="#" class="area-pill">Sefton</a>
+      <a href="#" class="area-pill">Bolton</a>
+      <a href="#" class="area-pill">Longton</a>
+      <a href="#" class="area-pill">Leyland</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <span class="section-eyebrow"><span class="square"></span>What clients say</span>
+        <h2 class="section-title">Five-star feedback, <em>repeated.</em></h2>
+      </div>
+      <p>From single-storey rear extensions to four-plot new builds &mdash; the same things come up in every review: communication, finish, and they finished when they said they would.</p>
+    </div>
+    <div class="rev-grid">
+      <article class="rev">
+        <div class="stars">★★★★★</div>
+        <blockquote>&ldquo;John and the Lime team built our new family home from scratch. The communication was unreal &mdash; weekly walk-rounds, no surprises, and they delivered two days ahead of programme. Genuinely the easiest big job we&rsquo;ve ever done.&rdquo;</blockquote>
+        <div class="who"><div class="avatar">SH</div><div><strong>Sarah &amp; Mark Holden</strong><span>New build · Hutton</span></div></div>
+      </article>
+      <article class="rev">
+        <div class="stars">★★★★★</div>
+        <blockquote>&ldquo;Used Lime for a rear extension and full kitchen knock-through. Quote was sharp, drawings were sorted in two weeks and the build was spotless. Tradesmen all knew each other &mdash; you can tell they&rsquo;ve worked together for years.&rdquo;</blockquote>
+        <div class="who"><div class="avatar">RC</div><div><strong>Rachael Carter</strong><span>Extension · Penwortham</span></div></div>
+      </article>
+      <article class="rev">
+        <div class="stars">★★★★★</div>
+        <blockquote>&ldquo;Have used Lime on three developer projects now. Costings come back tight, the build is good and the snag list at the end is short. That&rsquo;s really all I need from a builder.&rdquo;</blockquote>
+        <div class="who"><div class="avatar">DT</div><div><strong>Daniel Thornley</strong><span>Property developer · Chorley</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="wrap inner">
+    <div>
+      <h2>Thinking of extending, altering or building?</h2>
+      <p>Get a free, no-obligation chat with John. Site visits across Preston, South Ribble and Chorley booked within a week.</p>
+    </div>
+    <div class="actions">
+      <a href="tel:01772915152" class="phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        01772 915152
+      </a>
+      <a href="#contact" class="btn">Send us a message</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="section-eyebrow"><span class="square"></span>Get in touch</span>
+      <h2>Let&rsquo;s talk about your <em>project.</em></h2>
+      <p class="lead">Drop us a line or pop into the office. We&rsquo;ll come out, walk the site or the room, and give you honest advice on what&rsquo;s realistic.</p>
+      <div class="info-rows">
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><strong>Phone</strong><a href="tel:01772915152">01772 915152</a></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div><strong>Email</strong><a href="mailto:info@limepropertygroup.co.uk">info@limepropertygroup.co.uk</a></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Office</strong><span>10 Chapel Lane, Longton, Preston, PR4 5FB</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><strong>Office hours</strong><span>Mon&ndash;Fri 8am&ndash;5pm · Sat by appointment</span></div>
+        </div>
+      </div>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Thanks &mdash; we\\'ll be in touch within 24 hours';">
+      <h3>Tell us about your project</h3>
+      <p>We aim to come back within 24 working hours.</p>
+      <div class="form-row">
+        <input type="text" placeholder="Full name" required>
+        <input type="tel" placeholder="Phone number" required>
+      </div>
+      <div class="form-row">
+        <input type="email" placeholder="Email address" required>
+        <select required>
+          <option value="">Project type</option>
+          <option>New build</option>
+          <option>Extension or alteration</option>
+          <option>Full refurbishment</option>
+          <option>Development / multi-plot</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Postcode" style="margin-bottom:14px">
+      <textarea placeholder="Tell us a bit about the project &mdash; rough size, timing, anything we should know."></textarea>
+      <button type="submit">Send enquiry →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand">
+        <img src="logo.svg" alt="Lime Property Group">
+        <p>Builders and property developers based in Longton, Preston. New build housing, extensions and full property development across Lancashire and the North West.</p>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">New build housing</a></li>
+          <li><a href="#services">Extensions</a></li>
+          <li><a href="#services">Property development</a></li>
+          <li><a href="#services">Design &amp; planning</a></li>
+          <li><a href="#services">Project management</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Areas</h5>
+        <ul>
+          <li><a href="#areas">Preston</a></li>
+          <li><a href="#areas">South Ribble</a></li>
+          <li><a href="#areas">Chorley</a></li>
+          <li><a href="#areas">Fylde</a></li>
+          <li><a href="#areas">Blackburn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:01772915152">01772 915152</a></li>
+          <li><a href="mailto:info@limepropertygroup.co.uk">info@limepropertygroup.co.uk</a></li>
+          <li>10 Chapel Lane, Longton</li>
+          <li>Preston, PR4 5FB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Lime Property Group Ltd 2026 &middot; Company registered in England &amp; Wales</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA (mobile only) -->
+<a class="float-cta" href="tel:01772915152">
+  <span><strong>01772 915152</strong><br><small style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#a8ad9f">Speak to John</small></span>
+  <span class="cb">Call now</span>
+</a>
+
+</body>
+</html>
