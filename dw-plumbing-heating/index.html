@@ -92,6 +92,63 @@
   .uc-display { font-family: 'Montserrat', sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; }
   .underline-green { box-shadow: inset 0 -0.18em 0 0 rgba(168,200,85,0.25); }
 
+  /* ---------- LOADER ---------- */
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity .55s ease, visibility .55s ease;
+  }
+  .loader.gone {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .loader-logo {
+    width: min(440px, 70vw);
+    opacity: 0;
+    transform: translateY(8px);
+    animation: loaderLogoIn .6s cubic-bezier(.2,.7,.2,1) .08s forwards;
+  }
+  .loader-bar-wrap {
+    width: min(440px, 70vw);
+    height: 2px;
+    background: var(--line);
+    margin-top: 28px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 999px;
+  }
+  .loader-bar {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, var(--green) 30%, var(--green-2) 70%, transparent);
+    transform: translateX(-100%);
+    animation: loaderSweep 1.4s cubic-bezier(.65,.05,.36,1) .15s infinite;
+  }
+  .loader-meta {
+    margin-top: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: loaderLogoIn .5s ease .35s forwards;
+  }
+  @keyframes loaderLogoIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes loaderSweep {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
   /* ---------- NAV ---------- */
   .nav {
     position: sticky;
@@ -110,65 +167,14 @@
     gap: 24px;
   }
   .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    white-space: nowrap;
-  }
-  .brand-mark {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.55rem;
-    color: var(--ink);
-    text-transform: lowercase;
-    font-style: italic;
-    letter-spacing: -0.04em;
-    position: relative;
+    white-space: nowrap;
   }
-  .brand-mark .dw {
-    -webkit-text-stroke: 1.2px var(--green);
-    paint-order: stroke fill;
-  }
-  .brand-flame {
-    width: 14px;
-    height: 22px;
-    position: relative;
-    margin-left: 2px;
-  }
-  .brand-flame::before, .brand-flame::after {
-    content:'';
-    position: absolute;
-    bottom: 0;
-    width: 8px;
-    height: 18px;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    transform: rotate(-6deg);
-  }
-  .brand-flame::before { left: 0; background: var(--red); }
-  .brand-flame::after { right: 0; background: var(--blue); transform: rotate(6deg); }
-  .nav-brand-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
-  .nav-brand-text strong {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    color: var(--ink);
-    font-size: 0.92rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
-  .nav-brand-text span {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    color: var(--green);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-top: 2px;
+  .nav-brand img {
+    height: 48px;
+    width: auto;
+    display: block;
   }
   .nav-links {
     display: flex;
@@ -1207,7 +1213,7 @@
     .nav-inner { padding: 12px 20px; }
     .nav-links { display: none; }
     .nav-toggle { display: inline-flex; }
-    .nav-brand-text { display: none; }
+    .nav-brand img { height: 36px; max-width: 180px; }
     .hero { padding: 36px 0 0; }
     .hero-inner { padding: 0 20px; gap: 36px; }
     .hero-cta { flex-direction: column; align-items: stretch; }
@@ -1241,15 +1247,18 @@
 </head>
 <body>
 
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <img class="loader-logo" src="logo-transparent.png" alt="DW Plumbing &amp; Heating Yorkshire Ltd">
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-meta">Barnsley · All of Yorkshire</div>
+</div>
+
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand">
-      <span class="brand-mark"><span class="dw">dw</span><span class="brand-flame"></span></span>
-      <div class="nav-brand-text">
-        <strong>Plumbing &amp; Heating</strong>
-        <span>Yorkshire Ltd</span>
-      </div>
+    <a href="#top" class="nav-brand" aria-label="DW Plumbing &amp; Heating Yorkshire Ltd">
+      <img src="logo-nav.png" alt="DW Plumbing &amp; Heating Yorkshire Ltd">
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -1917,6 +1926,22 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
   var ts = document.getElementById('formTimestamp');
   if (ts) ts.value = Date.now();
+
+  // Hide loader after fonts/images settle, minimum 900ms so the sweep can play once
+  (function(){
+    var loader = document.getElementById('loader');
+    if (!loader) return;
+    var start = Date.now();
+    function hide() {
+      var elapsed = Date.now() - start;
+      var wait = Math.max(0, 900 - elapsed);
+      setTimeout(function(){ loader.classList.add('gone'); }, wait);
+    }
+    if (document.readyState === 'complete') hide();
+    else window.addEventListener('load', hide);
+    // Hard fallback so it never sticks
+    setTimeout(function(){ loader.classList.add('gone'); }, 3500);
+  })();
 
   // Phone validation
   var phoneField = document.getElementById('f-phone');
