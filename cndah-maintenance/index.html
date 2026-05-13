@@ -276,6 +276,7 @@
   .btn-secondary:hover { transform: translateY(-2px); background: #1eaf52; }
   .btn svg { width: 18px; height: 18px; }
 
+  .hero-photo-wrap { position: relative; }
   .hero-photo {
     position: relative;
     border-radius: var(--radius);
@@ -313,9 +314,10 @@
     gap: 12px;
     z-index: 2;
   }
-  .hero-badge strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
-  .hero-badge small { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .hero-badge strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: block; }
+  .hero-badge small { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; display: block; }
   .hero-badge .star { color: #fbbf24; font-size: 0.85rem; letter-spacing: 0; }
+  .hero-badge-divider { border-left: 1px solid var(--line-strong); padding-left: 12px; }
 
   /* ========= TRUST STRIP ========= */
   .trust {
@@ -809,6 +811,17 @@
     .nav.open + .mobile-panel { display: block; }
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
     .hero-photo { aspect-ratio: 16 / 11; }
+    .hero-badge {
+      position: static;
+      margin-top: 14px;
+      bottom: auto; left: auto;
+      width: 100%;
+      backdrop-filter: none;
+      background: var(--card);
+      justify-content: flex-start;
+      gap: 18px;
+    }
+    .hero-badge-divider { padding-left: 18px; }
     .trust-inner { grid-template-columns: 1fr; gap: 14px; }
     .trust-item { padding: 4px 0; border-bottom: 1px solid var(--line); }
     .trust-item:last-child { border-bottom: 0; }
@@ -885,14 +898,16 @@
         </a>
       </div>
     </div>
-    <div class="hero-photo reveal">
-      <img src="hero.jpg" alt="Slatted timber feature wall and TV mount installed by C. Ndah Maintenance">
+    <div class="hero-photo-wrap reveal">
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Slatted timber feature wall and TV mount installed by C. Ndah Maintenance">
+      </div>
       <div class="hero-badge">
         <div>
           <div class="star">★ ★ ★ ★ ★</div>
           <small>10+ Years On The Tools</small>
         </div>
-        <div style="border-left: 1px solid var(--line-strong); padding-left: 12px;">
+        <div class="hero-badge-divider">
           <strong>Certified</strong>
           <small>Part P · 18th Ed</small>
         </div>
