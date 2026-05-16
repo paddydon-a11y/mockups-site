@@ -61,7 +61,7 @@ img{max-width:100%;display:block}
 .accent{color:var(--accent)}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding-top:max(env(safe-area-inset-top),0px)}
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding-top:max(env(safe-area-inset-top),0px);overflow:hidden}
 .nav-row{display:flex;align-items:center;justify-content:space-between;padding:18px 0;position:relative;gap:24px}
 .brand{display:flex;align-items:center;gap:14px;font-family:'Bricolage Grotesque',sans-serif;font-weight:900;color:var(--ink);font-size:1.05rem;letter-spacing:-.02em;white-space:nowrap}
 .brand-mark{
@@ -257,7 +257,7 @@ img{max-width:100%;display:block}
 section.block{padding:110px 0;position:relative}
 section.block.paper{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .section-head{display:grid;grid-template-columns:1fr 1.6fr;gap:50px;align-items:end;margin-bottom:64px}
-.section-head h2{max-width:680px}
+.section-head h2{max-width:680px;margin-bottom:22px}
 .section-head .label{margin-bottom:14px}
 .section-head p{color:var(--ink-soft);font-size:1.02rem;max-width:520px;margin:0}
 .eyebrow-num{font-family:'JetBrains Mono';font-size:.7rem;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
@@ -615,11 +615,13 @@ footer ul a:hover{color:var(--accent)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
+@media (max-width:1300px){
+  .spine{display:none}
+}
 @media (max-width:1040px){
   .hero-grid{grid-template-columns:1fr;gap:50px}
   .hero-photo{max-width:540px;width:100%;margin:0 auto}
   .hero-photo .frame{aspect-ratio:16/11}
-  .spine{display:none}
   .section-head{grid-template-columns:1fr;gap:18px}
   .about-grid{grid-template-columns:1fr;gap:40px}
   .about-photo{max-width:460px;aspect-ratio:5/4}
@@ -639,8 +641,8 @@ footer ul a:hover{color:var(--accent)}
   .nav-toggle{display:grid}
 }
 @media (max-width:680px){
-  .wrap{padding:0 22px}
-  .nav-row{padding:16px 0 18px}
+  .wrap{padding:0 24px}
+  .nav-row{padding:18px 4px 20px}
   .trust-row{grid-template-columns:1fr;border-bottom:none}
   .trust-item{border-right:none;border-bottom:1px solid var(--line-soft);padding:18px 22px}
   .trust-item:last-child{border-bottom:none}
