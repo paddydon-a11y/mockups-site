@@ -124,11 +124,7 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;
 }
 .section-head .em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
   color: var(--accent);
-  font-weight: 400;
-  letter-spacing: -0.005em;
 }
 
 section { padding: 130px 0; position: relative; }
@@ -169,9 +165,6 @@ section { padding: 130px 0; position: relative; }
 }
 .loader-mark .em {
   color: var(--accent);
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  font-weight: 400;
 }
 .loader-bar {
   width: min(380px, 60vw);
@@ -349,11 +342,7 @@ section { padding: 130px 0; position: relative; }
   margin-bottom: 24px;
 }
 .hero h1 .em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
   color: var(--accent);
-  font-weight: 400;
-  letter-spacing: -0.01em;
 }
 .hero-lede {
   font-size: 1.1rem;
@@ -373,6 +362,11 @@ section { padding: 130px 0; position: relative; }
 .hero-meta .pip { display: inline-flex; align-items: center; gap: 8px; }
 .hero-meta strong { color: var(--bone); font-weight: 600; }
 .hero-meta .star { color: var(--accent); }
+
+/* Mobile: kill the hero-meta noise (accreds strip below already covers it) */
+@media (max-width: 760px) {
+  .hero-meta { display: none; }
+}
 
 /* mobile: subdue vertical wordmark */
 @media (max-width: 900px) {
@@ -442,11 +436,26 @@ section { padding: 130px 0; position: relative; }
 }
 
 @media (max-width: 880px) {
-  .accreds-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .accred { height: 70px; padding: 12px 14px; }
-}
-@media (max-width: 420px) {
-  .accreds-row { grid-template-columns: 1fr 1fr; }
+  /* horizontal-scroll the accreds on mobile so all 5 stay together, no awkward orphan row */
+  .accreds-row {
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin: 0 -28px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+  .accreds-row::-webkit-scrollbar { display: none; }
+  .accred {
+    flex: 0 0 160px;
+    height: 80px;
+    padding: 12px 14px;
+    scroll-snap-align: start;
+  }
 }
 
 /* ========= INTRO STATS ========= */
@@ -469,10 +478,7 @@ section { padding: 130px 0; position: relative; }
   margin-bottom: 24px;
 }
 .intro h2 .em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
   color: var(--accent);
-  font-weight: 400;
 }
 .intro-text p {
   font-size: 1.05rem;
@@ -520,78 +526,104 @@ section { padding: 130px 0; position: relative; }
   .intro-stats { grid-template-columns: 1fr; gap: 14px; }
 }
 
-/* ========= SERVICES (BENTO S4) ========= */
+/* ========= SERVICES (photo cards + supporting list) ========= */
 .services { background: var(--bg-2); padding: 130px 0; }
-.services-grid {
+.svc-feature-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 46px;
 }
-.svc {
+.svc-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 28px 26px;
-  position: relative; overflow: hidden;
-  transition: transform .25s ease, border-color .25s ease, background .25s ease;
-  display: flex; flex-direction: column; gap: 14px;
-  min-height: 220px;
+  overflow: hidden;
+  position: relative;
+  display: flex; flex-direction: column;
+  transition: transform .25s ease, border-color .25s ease;
 }
-.svc::before {
+.svc-card::before {
   content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
   background: var(--accent); transform: scaleX(0); transform-origin: left;
-  transition: transform .35s ease;
+  transition: transform .35s ease; z-index: 3;
 }
-.svc:hover { transform: translateY(-4px); border-color: var(--surface-2); background: var(--surface-2); }
-.svc:hover::before { transform: scaleX(1); }
-
-.svc-feature { grid-column: span 3; min-height: 320px; background: linear-gradient(150deg, var(--surface), #1f2128 70%); }
-.svc-wide    { grid-column: span 3; }
-.svc-half    { grid-column: span 2; }
-.svc-third   { grid-column: span 2; }
-
+.svc-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-card-photo {
+  display: block; height: 230px; overflow: hidden;
+  background: var(--bg-2);
+}
+.svc-card-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s ease;
+}
+.svc-card:hover .svc-card-photo img { transform: scale(1.06); }
+.svc-card-body { padding: 28px 30px 32px; display: flex; flex-direction: column; gap: 12px; }
 .svc-num {
+  display: block;
   font-family: 'Archivo Black', sans-serif;
-  font-size: .8rem;
+  font-size: .76rem;
   color: var(--accent);
-  letter-spacing: .12em;
+  letter-spacing: .14em;
 }
-.svc h3 {
+.svc-card-body h3 {
   font-family: 'Archivo Black', sans-serif;
   font-weight: 400;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   color: var(--bone);
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
-.svc-feature h3 { font-size: 2.1rem; }
-.svc p {
-  font-size: .94rem;
+.svc-card-body p {
   color: var(--bone-soft);
-  line-height: 1.55;
-  margin-top: auto;
+  font-size: .94rem;
+  line-height: 1.6;
 }
-.svc-icon {
-  width: 44px; height: 44px;
-  border-radius: 11px;
-  background: rgba(245, 148, 72, .14);
-  border: 1px solid rgba(245,148,72,.28);
-  color: var(--accent);
-  display: grid; place-items: center;
-}
-.svc-icon svg { width: 22px; height: 22px; }
 
-@media (max-width: 1080px) {
-  .services-grid { grid-template-columns: repeat(4, 1fr); }
-  .svc-feature, .svc-wide { grid-column: span 4; }
-  .svc-half, .svc-third { grid-column: span 2; }
+.svc-list-label {
+  display: block;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
 }
-@media (max-width: 640px) {
-  .services-grid { grid-template-columns: 1fr; }
-  .svc-feature, .svc-wide, .svc-half, .svc-third { grid-column: span 1; }
-  .svc { min-height: 180px; }
-  .svc-feature { min-height: 240px; }
+.svc-list-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.svc-tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--bone);
+  transition: border-color .2s, transform .2s, background .2s;
+  display: flex; align-items: center; gap: 10px;
+}
+.svc-tile::before {
+  content: '+';
+  color: var(--accent);
+  font-weight: 700;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: .95rem;
+}
+.svc-tile:hover { border-color: var(--accent); transform: translateY(-2px); background: var(--surface-2); }
+
+@media (max-width: 980px) {
+  .svc-feature-grid { grid-template-columns: 1fr; gap: 16px; }
+  .svc-card-photo { height: 210px; }
+}
+@media (max-width: 700px) {
+  .svc-list-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+  .svc-list-grid { grid-template-columns: 1fr; }
 }
 
 /* ========= GALLERY G2 ========= */
@@ -663,8 +695,7 @@ section { padding: 130px 0; position: relative; }
   letter-spacing: -0.025em;
 }
 .about-text h2 .em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic; color: var(--accent); font-weight: 400;
+  color: var(--accent);
 }
 .about-text p {
   font-size: 1.02rem; color: var(--bone-soft);
@@ -829,10 +860,7 @@ section { padding: 130px 0; position: relative; }
   line-height: 1.05;
 }
 .cta-band h2 .em {
-  font-family: 'Instrument Serif', serif;
-  font-style: italic;
-  color: var(--bg);
-  font-weight: 400;
+  color: rgba(8,9,12,.55);
 }
 .cta-band p { color: rgba(8,9,12,.75); margin-top: 10px; max-width: 540px; font-weight: 500; }
 .cta-band .btn-primary { background: var(--bg); color: var(--bone); }
@@ -1132,78 +1160,13 @@ section { padding: 130px 0; position: relative; }
   </div>
 </section>
 
-<!-- SERVICES BENTO -->
-<section class="services">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>What we do</span>
-      <h2>Three divisions.<br>One <span class="em">principal contractor.</span></h2>
-    </div>
-    <div class="services-grid">
-      <div class="svc svc-feature reveal">
-        <span class="svc-num">01 / Commercial Construction</span>
-        <h3>Commercial &amp; industrial builds, brief to completion.</h3>
-        <p>Steel-frame industrial, commercial fit-outs, modular structures and turnkey schemes for councils, developers and contractors. We carry the build so you only carry the brief.</p>
-      </div>
-      <div class="svc svc-wide reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M4 21V10l8-7 8 7v11M9 21v-6h6v6"/></svg></div>
-        <span class="svc-num">02 / Domestic Construction</span>
-        <h3>Premium residential, top to bottom.</h3>
-        <p>New builds, extensions, full renovations, heritage stonework and kitchen refurbs. Family-oriented service from quote to handover.</p>
-      </div>
-      <div class="svc svc-half reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-6h6v6m-3-13L4 9h16zM4 9v12h16V9"/></svg></div>
-        <span class="svc-num">03 / Planning Services</span>
-        <h3>Planning &amp; consultancy.</h3>
-        <p>Pre-application advice, planning and building-control packages, structural design coordination.</p>
-      </div>
-      <div class="svc svc-half reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></div>
-        <span class="svc-num">04</span>
-        <h3>Premium New Builds</h3>
-        <p>High-spec residential schemes, foundations to handover.</p>
-      </div>
-      <div class="svc svc-half reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v6H4zM4 14h7v6H4zM13 14h7v6h-7z"/></svg></div>
-        <span class="svc-num">05</span>
-        <h3>Extensions &amp; Renovations</h3>
-        <p>Single, double and wrap-around extensions. Full strip-out refurbs.</p>
-      </div>
-      <div class="svc svc-half reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10"/></svg></div>
-        <span class="svc-num">06</span>
-        <h3>Heritage Stonework</h3>
-        <p>Stone-clad extensions and listed property refurb, matched coursing.</p>
-      </div>
-      <div class="svc svc-third reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4m1 0H4l1 9h14l1-9zM9 17v2m6-2v2"/></svg></div>
-        <span class="svc-num">07</span>
-        <h3>Kitchen Refurbs</h3>
-        <p>Bespoke kitchens, islands, tiling and second-fix.</p>
-      </div>
-      <div class="svc svc-third reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9-4 9 4-9 4-9-4zM3 17l9 4 9-4M3 12l9 4 9-4"/></svg></div>
-        <span class="svc-num">08</span>
-        <h3>Modular Buildings</h3>
-        <p>Off-site fabrication, on-site install in days, not weeks.</p>
-      </div>
-      <div class="svc svc-third reveal">
-        <div class="svc-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg></div>
-        <span class="svc-num">09</span>
-        <h3>Specialist Civils</h3>
-        <p>Garden rooms, raised decks, adventure structures.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY G2 -->
+<!-- GALLERY G2 (moved up) -->
 <section class="gallery" id="work">
   <div class="container">
     <div class="gallery-head">
       <div class="section-head reveal" style="margin-bottom:0;">
         <span class="eyebrow"><span class="dot"></span>Selected work</span>
-        <h2>From <span class="em">Pennine stone</span> to steel-frame sheds.</h2>
+        <h2>From Pennine stone<br>to <span class="em">steel-frame sheds.</span></h2>
       </div>
       <a class="gallery-cta reveal" href="https://www.facebook.com/honeymandevelopments" target="_blank" rel="noopener">See more on socials
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -1218,6 +1181,53 @@ section { padding: 130px 0; position: relative; }
       <a class="gtile reveal" href="work-6.jpg" target="_blank" rel="noopener"><img src="work-6.jpg" alt="Elevated timber adventure deck under construction in beech woodland"></a>
       <a class="gtile reveal" href="work-7.jpg" target="_blank" rel="noopener"><img src="work-7.jpg" alt="Modular site office under construction inside fabrication warehouse"></a>
       <a class="gtile wide reveal" href="work-8.jpg" target="_blank" rel="noopener"><img src="work-8.jpg" alt="Premium new build at dusk with anthracite bi-folds and recessed up/down lights"></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (rebuilt v3: photo feature cards + supporting list) -->
+<section class="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>What we do</span>
+      <h2>Three divisions.<br>One <span class="em">principal contractor.</span></h2>
+    </div>
+    <div class="svc-feature-grid">
+      <article class="svc-card reveal">
+        <a class="svc-card-photo" href="work-2.jpg" target="_blank" rel="noopener"><img src="work-2.jpg" alt="Commercial steel-frame industrial build"></a>
+        <div class="svc-card-body">
+          <span class="svc-num">01 / Commercial</span>
+          <h3>Commercial &amp; industrial builds, brief to completion.</h3>
+          <p>Steel-frame industrial, commercial fit-outs, modular structures and turnkey schemes for councils, developers and contractors. We carry the build so you carry the brief.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <a class="svc-card-photo" href="work-8.jpg" target="_blank" rel="noopener"><img src="work-8.jpg" alt="Premium residential new build at dusk"></a>
+        <div class="svc-card-body">
+          <span class="svc-num">02 / Domestic</span>
+          <h3>Premium residential, top to bottom.</h3>
+          <p>New builds, extensions, full renovations and kitchen refurbs. Family-oriented service from quote to handover, finished to the same standard whether it's a single room or a whole house.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <a class="svc-card-photo" href="work-3.jpg" target="_blank" rel="noopener"><img src="work-3.jpg" alt="Heritage stone rear extension under construction, aerial view"></a>
+        <div class="svc-card-body">
+          <span class="svc-num">03 / Planning</span>
+          <h3>Planning, consultancy &amp; heritage.</h3>
+          <p>Pre-application advice, planning &amp; building-control packages, structural design coordination, and listed-property stonework with matched coursing.</p>
+        </div>
+      </article>
+    </div>
+    <span class="svc-list-label reveal">Plus, delivered across all three divisions</span>
+    <div class="svc-list-grid">
+      <span class="svc-tile reveal">New Builds</span>
+      <span class="svc-tile reveal">Extensions</span>
+      <span class="svc-tile reveal">Full Renovations</span>
+      <span class="svc-tile reveal">Heritage Stonework</span>
+      <span class="svc-tile reveal">Kitchen Refurbs</span>
+      <span class="svc-tile reveal">Modular Buildings</span>
+      <span class="svc-tile reveal">Garden Rooms</span>
+      <span class="svc-tile reveal">Specialist Civils</span>
     </div>
   </div>
 </section>
