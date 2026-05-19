@@ -247,9 +247,20 @@
   .foot-bottom a:hover{color:#fff}
 
   /* ============ FLOATING CTA ============ */
-  .floater{position:fixed;bottom:18px;right:18px;background:var(--red);color:#fff;padding:14px 18px;border-radius:60px;font-weight:600;font-size:13.5px;display:none;align-items:center;gap:10px;box-shadow:0 12px 30px rgba(229,51,42,.35);z-index:40}
+  .floater{position:fixed;bottom:18px;right:18px;background:var(--red);color:#fff;padding:14px 18px;border-radius:60px;font-weight:600;font-size:13.5px;display:none;align-items:center;gap:10px;box-shadow:0 12px 30px rgba(229,51,42,.35);z-index:40;opacity:0;transform:translateY(20px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+  .floater.show{opacity:1;transform:none;pointer-events:auto}
   .floater svg{width:15px;height:15px}
   @media(max-width:900px){.floater{display:inline-flex}}
+
+  /* ============ LOADER ============ */
+  .loader{position:fixed;inset:0;background:#0a0a0b;z-index:1000;display:grid;place-items:center;transition:opacity .55s ease,visibility .55s ease}
+  .loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .loader-logo{width:240px;max-width:55vw;animation:loadPulse 1.6s ease-in-out infinite}
+  .loader-logo img{width:100%;height:auto;display:block}
+  .loader-label{position:absolute;bottom:42px;left:0;right:0;text-align:center;font-family:var(--body);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+  .loader-label::before{content:'';display:inline-block;width:6px;height:6px;background:var(--red);border-radius:50%;margin-right:10px;vertical-align:middle;animation:loadDot 1s ease-in-out infinite}
+  @keyframes loadPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.65;transform:scale(.96)}}
+  @keyframes loadDot{0%,100%{opacity:.3}50%{opacity:1}}
 
   /* Reveal */
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
@@ -257,6 +268,11 @@
 </style>
 </head>
 <body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-logo"><img src="logo.jpg" alt="Rotar Interior Ltd"></div>
+  <div class="loader-label">Loading</div>
+</div>
 
 <header class="nav">
   <div class="wrap nav-inner">
@@ -652,6 +668,29 @@
     entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
   },{threshold:.15});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Floater appears only once hero has scrolled out
+  var floater = document.querySelector('.floater');
+  var hero = document.querySelector('.hero');
+  if(floater && hero){
+    var heroIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting) floater.classList.remove('show');
+        else floater.classList.add('show');
+      });
+    },{threshold:0,rootMargin:'-60px 0px 0px 0px'});
+    heroIO.observe(hero);
+  }
+
+  // Loader fade-out
+  function hideLoader(){
+    var l = document.getElementById('loader');
+    if(l) l.classList.add('gone');
+  }
+  if(document.readyState === 'complete'){ setTimeout(hideLoader,650); }
+  else window.addEventListener('load', function(){ setTimeout(hideLoader,650); });
+  // Safety net: never let loader stick longer than 3.5s
+  setTimeout(hideLoader, 3500);
 </script>
 
 </body>
