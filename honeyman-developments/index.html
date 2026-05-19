@@ -397,13 +397,14 @@ section { padding: 130px 0; position: relative; }
 }
 @media (max-width: 700px) { .scroll-cue { display: none; } }
 
-/* ========= ACCREDITATION STRIP ========= */
+/* ========= ACCREDITATION MARQUEE ========= */
 .accreds {
   background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
   padding: 38px 0;
   overflow: hidden;
+  position: relative;
 }
 .accreds-label {
   text-align: center;
@@ -414,18 +415,29 @@ section { padding: 130px 0; position: relative; }
   color: var(--muted);
   margin-bottom: 22px;
 }
-.accreds-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+.accreds-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+.accreds-track {
+  display: flex;
   gap: 18px;
-  align-items: center;
+  width: max-content;
+  animation: accredMarquee 32s linear infinite;
+}
+.accreds:hover .accreds-track { animation-play-state: paused; }
+@keyframes accredMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 .accred {
   background: #fff;
   border-radius: 12px;
-  padding: 16px 18px;
+  padding: 14px 22px;
   display: flex; align-items: center; justify-content: center;
-  height: 76px;
+  flex: 0 0 200px;
+  height: 84px;
   transition: transform .25s ease;
 }
 .accred:hover { transform: translateY(-2px); }
@@ -435,27 +447,10 @@ section { padding: 130px 0; position: relative; }
   object-fit: contain;
 }
 
-@media (max-width: 880px) {
-  /* horizontal-scroll the accreds on mobile so all 5 stay together, no awkward orphan row */
-  .accreds-row {
-    display: flex;
-    grid-template-columns: none;
-    gap: 12px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
-    margin: 0 -28px;
-    padding-left: 28px;
-    padding-right: 28px;
-  }
-  .accreds-row::-webkit-scrollbar { display: none; }
-  .accred {
-    flex: 0 0 160px;
-    height: 80px;
-    padding: 12px 14px;
-    scroll-snap-align: start;
-  }
+@media (max-width: 700px) {
+  .accreds { padding: 30px 0; }
+  .accred { flex: 0 0 160px; height: 76px; padding: 12px 18px; }
+  .accreds-track { animation-duration: 26s; gap: 14px; }
 }
 
 /* ========= INTRO STATS ========= */
@@ -1075,7 +1070,7 @@ section { padding: 130px 0; position: relative; }
     <div class="nav-links">
       <a href="#what-we-do">What we do</a>
       <a href="#work">Recent Work</a>
-      <a href="#about">About</a>
+      <a href="#about-us">About</a>
       <a href="#reviews">Reviews</a>
       <a href="#areas">Areas</a>
       <a href="#contact" class="nav-cta">
@@ -1087,7 +1082,7 @@ section { padding: 130px 0; position: relative; }
     <div class="nav-drawer">
       <a href="#what-we-do">What we do</a>
       <a href="#work">Recent Work</a>
-      <a href="#about">About</a>
+      <a href="#about-us">About</a>
       <a href="#reviews">Reviews</a>
       <a href="#areas">Areas</a>
       <a href="#contact">Contact</a>
@@ -1128,65 +1123,30 @@ section { padding: 130px 0; position: relative; }
   <div class="scroll-cue">Scroll</div>
 </header>
 
-<!-- ACCREDITATION STRIP -->
+<!-- ACCREDITATION MARQUEE -->
 <div class="accreds">
   <div class="container">
     <div class="accreds-label">Approved · Registered · Audited</div>
-    <div class="accreds-row">
+  </div>
+  <div class="accreds-marquee">
+    <div class="accreds-track">
       <div class="accred"><img src="cert-constructionline.png" alt="Constructionline approved contractor"></div>
       <div class="accred"><img src="cert-smas.png" alt="SMAS Worksafe registered"></div>
       <div class="accred"><img src="cert-ssip.png" alt="SSIP Safety Schemes in Procurement member"></div>
       <div class="accred"><img src="cert-citb.png" alt="CITB registered"></div>
       <div class="accred"><img src="cert-iso.png" alt="Citation ISO 9001 Quality Management registered"></div>
+      <!-- duplicate row for seamless infinite scroll -->
+      <div class="accred" aria-hidden="true"><img src="cert-constructionline.png" alt=""></div>
+      <div class="accred" aria-hidden="true"><img src="cert-smas.png" alt=""></div>
+      <div class="accred" aria-hidden="true"><img src="cert-ssip.png" alt=""></div>
+      <div class="accred" aria-hidden="true"><img src="cert-citb.png" alt=""></div>
+      <div class="accred" aria-hidden="true"><img src="cert-iso.png" alt=""></div>
     </div>
   </div>
 </div>
 
-<!-- INTRO -->
-<section class="intro" id="what-we-do">
-  <div class="container intro-grid">
-    <div class="intro-text reveal">
-      <span class="eyebrow"><span class="dot"></span>About us</span>
-      <h2 style="margin-top:18px;">Driven by expertise.<br><span class="em">Dedicated to delivery.</span></h2>
-      <p>Honeyman Developments is driven by expertise and dedication. Our goal: simplify the process, save you time, and deliver top-quality results every step of the way.</p>
-      <p>As a family-oriented company, we take on comprehensive construction for homes and businesses across the North West. Each project reflects our precision, attention to detail, and commitment to excellence. Top-tier materials, advanced techniques, and a reputation our clients return to time and again.</p>
-    </div>
-    <div class="intro-stats reveal">
-      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Specialist divisions<br>Domestic · Commercial · Planning</div></div>
-      <div class="stat"><div class="stat-num">5.0★</div><div class="stat-lbl">Google rating<br>across all reviews</div></div>
-      <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">On-time<br>handover record</div></div>
-      <div class="stat"><div class="stat-num">5</div><div class="stat-lbl">Industry accreditations<br>incl. ISO 9001 &amp; SSIP</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY G2 (moved up) -->
-<section class="gallery" id="work">
-  <div class="container">
-    <div class="gallery-head">
-      <div class="section-head reveal" style="margin-bottom:0;">
-        <span class="eyebrow"><span class="dot"></span>Selected work</span>
-        <h2>From Pennine stone<br>to <span class="em">steel-frame sheds.</span></h2>
-      </div>
-      <a class="gallery-cta reveal" href="https://www.facebook.com/honeymandevelopments" target="_blank" rel="noopener">See more on socials
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
-    </div>
-    <div class="gallery-grid">
-      <a class="gtile hero-pin reveal" href="work-1.jpg" target="_blank" rel="noopener"><img src="work-1.jpg" alt="Bespoke garden room at dusk with brick walls and up/down lights, slate patio"></a>
-      <a class="gtile tall reveal" href="work-2.jpg" target="_blank" rel="noopener"><img src="work-2.jpg" alt="Commercial steel-frame industrial unit under construction with branded Honeyman pickup"></a>
-      <a class="gtile reveal" href="work-3.jpg" target="_blank" rel="noopener"><img src="work-3.jpg" alt="Aerial view of stone cottage rear extension under construction with scaffolding"></a>
-      <a class="gtile reveal" href="work-4.jpg" target="_blank" rel="noopener"><img src="work-4.jpg" alt="Premium interior with flat-glass skylight and anthracite vertical radiator"></a>
-      <a class="gtile wide reveal" href="work-5.jpg" target="_blank" rel="noopener"><img src="work-5.jpg" alt="Two-storey rear extension with grey-clad dormer and anthracite bi-fold doors"></a>
-      <a class="gtile reveal" href="work-6.jpg" target="_blank" rel="noopener"><img src="work-6.jpg" alt="Elevated timber adventure deck under construction in beech woodland"></a>
-      <a class="gtile reveal" href="work-7.jpg" target="_blank" rel="noopener"><img src="work-7.jpg" alt="Modular site office under construction inside fabrication warehouse"></a>
-      <a class="gtile wide reveal" href="work-8.jpg" target="_blank" rel="noopener"><img src="work-8.jpg" alt="Premium new build at dusk with anthracite bi-folds and recessed up/down lights"></a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES (rebuilt v3: photo feature cards + supporting list) -->
-<section class="services">
+<!-- SERVICES (v4: moved up to right after certs) -->
+<section class="services" id="what-we-do">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>What we do</span>
@@ -1232,14 +1192,56 @@ section { padding: 130px 0; position: relative; }
   </div>
 </section>
 
-<!-- ABOUT slim -->
+<!-- GALLERY G2 -->
+<section class="gallery" id="work">
+  <div class="container">
+    <div class="gallery-head">
+      <div class="section-head reveal" style="margin-bottom:0;">
+        <span class="eyebrow"><span class="dot"></span>Selected work</span>
+        <h2>From Pennine stone<br>to <span class="em">steel-frame sheds.</span></h2>
+      </div>
+      <a class="gallery-cta reveal" href="https://www.facebook.com/honeymandevelopments" target="_blank" rel="noopener">See more on socials
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+    <div class="gallery-grid">
+      <a class="gtile hero-pin reveal" href="work-1.jpg" target="_blank" rel="noopener"><img src="work-1.jpg" alt="Bespoke garden room at dusk with brick walls and up/down lights, slate patio"></a>
+      <a class="gtile tall reveal" href="work-2.jpg" target="_blank" rel="noopener"><img src="work-2.jpg" alt="Commercial steel-frame industrial unit under construction with branded Honeyman pickup"></a>
+      <a class="gtile reveal" href="work-3.jpg" target="_blank" rel="noopener"><img src="work-3.jpg" alt="Aerial view of stone cottage rear extension under construction with scaffolding"></a>
+      <a class="gtile reveal" href="work-4.jpg" target="_blank" rel="noopener"><img src="work-4.jpg" alt="Premium interior with flat-glass skylight and anthracite vertical radiator"></a>
+      <a class="gtile wide reveal" href="work-5.jpg" target="_blank" rel="noopener"><img src="work-5.jpg" alt="Two-storey rear extension with grey-clad dormer and anthracite bi-fold doors"></a>
+      <a class="gtile reveal" href="work-6.jpg" target="_blank" rel="noopener"><img src="work-6.jpg" alt="Elevated timber adventure deck under construction in beech woodland"></a>
+      <a class="gtile reveal" href="work-7.jpg" target="_blank" rel="noopener"><img src="work-7.jpg" alt="Modular site office under construction inside fabrication warehouse"></a>
+      <a class="gtile wide reveal" href="work-8.jpg" target="_blank" rel="noopener"><img src="work-8.jpg" alt="Premium new build at dusk with anthracite bi-folds and recessed up/down lights"></a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO (demoted to below gallery) -->
+<section class="intro" id="about-us">
+  <div class="container intro-grid">
+    <div class="intro-text reveal">
+      <span class="eyebrow"><span class="dot"></span>About us</span>
+      <h2 style="margin-top:18px;">Driven by expertise.<br><span class="em">Dedicated to delivery.</span></h2>
+      <p>Honeyman Developments is driven by expertise and dedication. Our goal: simplify the process, save you time, and deliver top-quality results every step of the way.</p>
+      <p>As a family-oriented company, we take on comprehensive construction for homes and businesses across the North West. Each project reflects our precision, attention to detail, and commitment to excellence. Top-tier materials, advanced techniques, and a reputation our clients return to time and again.</p>
+    </div>
+    <div class="intro-stats reveal">
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Specialist divisions<br>Domestic · Commercial · Planning</div></div>
+      <div class="stat"><div class="stat-num">5.0★</div><div class="stat-lbl">Google rating<br>across all reviews</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">On-time<br>handover record</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-lbl">Industry accreditations<br>incl. ISO 9001 &amp; SSIP</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER (slim) -->
 <section class="about" id="about">
   <div class="container about-grid">
     <div class="about-text reveal">
-      <span class="eyebrow"><span class="dot"></span>About</span>
-      <h2 style="margin-top:18px;">Ambitious builds, run by <span class="em">a builder.</span></h2>
-      <p>Honeyman Developments was set up by Ashley Honeyman to take the principal contractor role on schemes that other builders pass on: steel-frame commercial, listed-property stonework, specialist civils, premium residential. Same person quoting, same person on site, same person at handover.</p>
-      <p>Fully insured, Constructionline approved, SSIP and SMAS Worksafe certified, with ISO 9001, 14001 and 45001 management systems through Citation. The full paper trail you need for any commercial brief.</p>
+      <span class="eyebrow"><span class="dot"></span>Run by</span>
+      <h2 style="margin-top:18px;">Ashley Honeyman.<br><span class="em">Hands on. Every job.</span></h2>
+      <p>Same person quoting, same person on site, same person at handover. Honeyman Developments was set up by Ashley to take the principal contractor role on schemes that other builders pass on: steel-frame commercial, listed-property stonework, specialist civils, premium residential.</p>
     </div>
     <div class="about-card reveal">
       <div class="who">
