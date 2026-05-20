@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1115">
+<title>Reniera Design &amp; Build · North London builders, Arnos Grove</title>
+<meta name="description" content="Reniera Design &amp; Build. Extensions, bathrooms, decking, render and full renovations across Arnos Grove, Southgate and North London. Built by Klodjan Rrokaj and team.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --bg:#0e1115;
+  --bg-2:#11151a;
+  --card:#181c22;
+  --card-hi:#21262e;
+  --border:#262b34;
+  --border-light:#363c47;
+  --accent:#d97757;
+  --accent-2:#e89472;
+  --accent-hover:#c25e3e;
+  --accent-glow: rgba(217,119,87,.18);
+  --text:#f4f1ec;
+  --text-b:#c2bdb5;
+  --mute:#7e7a73;
+  --green:#25d366;
+
+  --rail-w: 240px;
+  --maxw: 1320px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',-apple-system,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text-b);
+  font-size:16px;
+  line-height:1.65;
+  letter-spacing:-0.005em;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- background texture (subtle film grain via SVG noise) ---------- */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0 0.88 0 0 0 0.035 0'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");
+  opacity:.6;mix-blend-mode:overlay;
+}
+
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+h1,h2,h3,h4{
+  font-family:'Bricolage Grotesque','Inter',sans-serif;
+  font-weight:700;
+  color:var(--text);
+  letter-spacing:-0.035em;
+  line-height:1.02;
+  font-variation-settings:"opsz" 32;
+}
+h1{font-size:clamp(2.6rem,6.4vw,5.4rem); font-weight:800; line-height:0.95;}
+h2{font-size:clamp(1.9rem,3.6vw,3rem); font-weight:700;}
+h3{font-size:1.2rem;font-weight:600;letter-spacing:-0.02em;color:var(--text)}
+
+.italic{font-style:italic;font-weight:600}
+.accent{color:var(--accent)}
+
+/* mono utility */
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:0;font-weight:500}
+
+/* eyebrow */
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.74rem;font-weight:500;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 0 var(--accent-glow);
+  animation:pulse 2.2s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 var(--accent-glow)}
+  70%{box-shadow:0 0 0 12px transparent}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+
+/* ---------- layout: sticky left rail (desktop) ---------- */
+.shell{
+  display:grid;
+  grid-template-columns: var(--rail-w) 1fr;
+  min-height:100vh;
+  position:relative;
+  z-index:2;
+}
+
+.rail{
+  position:sticky;top:0;align-self:start;
+  height:100vh;
+  padding:34px 28px 28px;
+  background:var(--bg-2);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  z-index:50;
+}
+.rail-brand{display:flex;align-items:center;gap:12px;margin-bottom:38px}
+.rail-mark{
+  width:42px;height:42px;border-radius:11px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-hover));
+  display:grid;place-items:center;
+  font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:1.5rem;
+  color:#fff;letter-spacing:-0.05em;
+  box-shadow:0 8px 24px -8px var(--accent-glow);
+}
+.rail-word{line-height:1.05}
+.rail-word b{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700;color:var(--text);font-size:1.05rem;letter-spacing:-0.02em;
+  font-variation-settings:"opsz" 14;
+}
+.rail-word span{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-top:3px}
+
+.rail-nav{display:flex;flex-direction:column;gap:2px;margin-bottom:auto}
+.rail-nav a{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text-b);
+  padding:11px 0;
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  transition:color .25s,padding .25s;
+}
+.rail-nav a::after{content:attr(data-n);color:var(--mute);font-size:.66rem}
+.rail-nav a:hover{color:var(--accent);padding-left:6px}
+.rail-nav a:hover::after{color:var(--accent)}
+
+.rail-cta{margin-top:24px}
+.rail-cta .num{
+  display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  color:var(--text);font-size:1.18rem;letter-spacing:-0.02em;
+}
+.rail-cta .lbl{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.rail-foot{margin-top:18px;font-size:.7rem;color:var(--mute);line-height:1.6}
+.rail-foot .vert{
+  position:absolute;left:-2px;top:50%;transform:rotate(-90deg) translateX(50%);
+  transform-origin:left center;
+  font-family:'JetBrains Mono',monospace;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--border-light);font-size:.62rem;
+  white-space:nowrap;pointer-events:none;
+}
+
+/* ---------- mobile nav ---------- */
+.mob-nav{
+  display:none;
+  position:sticky;top:0;z-index:60;
+  padding:14px 18px;
+  background:var(--bg-2);
+  border-bottom:1px solid var(--border);
+  align-items:center;justify-content:space-between;
+}
+.mob-brand{display:flex;align-items:center;gap:10px}
+.mob-mark{
+  width:36px;height:36px;border-radius:9px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-hover));
+  display:grid;place-items:center;
+  color:#fff;font-family:'Bricolage Grotesque',serif;font-weight:800;font-size:1.2rem;
+}
+.mob-word b{
+  font-family:'Bricolage Grotesque',sans-serif;color:var(--text);
+  font-weight:700;font-size:.98rem;letter-spacing:-0.02em;display:block;line-height:1;
+}
+.mob-word span{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-top:3px}
+.burger{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--card);border:1px solid var(--border);
+  display:grid;place-items:center;
+}
+.burger span{display:block;width:18px;height:2px;background:var(--text);position:relative;transition:transform .3s,opacity .3s}
+.burger span::before,.burger span::after{
+  content:"";position:absolute;left:0;width:18px;height:2px;background:var(--text);transition:transform .3s,top .3s
+}
+.burger span::before{top:-6px}
+.burger span::after{top:6px}
+.burger.open span{background:transparent}
+.burger.open span::before{top:0;transform:rotate(45deg)}
+.burger.open span::after{top:0;transform:rotate(-45deg)}
+
+.mob-panel{
+  position:fixed;inset:64px 0 0 0;z-index:55;
+  background:var(--bg-2);
+  border-bottom:1px solid var(--border);
+  padding:24px 22px 30px;
+  display:none;flex-direction:column;gap:4px;
+}
+.mob-panel.open{display:flex}
+.mob-panel a{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--text-b);
+  padding:14px 0;border-bottom:1px solid var(--border);
+}
+.mob-panel .mob-call{
+  margin-top:18px;background:var(--accent);color:#0e1115;
+  padding:16px 18px;border-radius:12px;text-align:center;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:700;letter-spacing:-0.01em;
+  font-size:1rem;text-transform:none;
+}
+
+/* ---------- main ---------- */
+main{padding:0;position:relative;z-index:2}
+section{padding:120px 64px;position:relative;border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:0}
+.inner{max-width:1180px;margin:0 auto;width:100%}
+
+/* section heading */
+.s-head{display:flex;align-items:flex-end;justify-content:space-between;gap:36px;margin-bottom:56px;flex-wrap:wrap}
+.s-head .lhs{max-width:780px}
+.s-head .lhs .eyebrow{margin-bottom:18px}
+.s-head .rhs{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mute);text-align:right;line-height:1.7;
+}
+.s-head h2 .accent{color:var(--accent);font-style:italic}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:80px 64px 110px;
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns: 1.05fr 0.95fr; gap:64px;align-items:center;
+}
+.hero-text .eyebrow{margin-bottom:22px}
+.hero h1{margin-bottom:22px}
+.hero h1 em{font-style:italic;font-weight:600;color:var(--accent);font-family:'Bricolage Grotesque',serif}
+.hero-lede{font-size:1.1rem;line-height:1.65;color:var(--text-b);max-width:520px;margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 22px;border-radius:12px;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:700;letter-spacing:-0.01em;font-size:.98rem;
+  transition:transform .25s,box-shadow .25s,background .25s;
+  border:1px solid transparent;
+  font-variation-settings:"opsz" 14;
+}
+.btn-p{background:var(--accent);color:#0e1115;box-shadow:0 14px 32px -14px var(--accent-glow)}
+.btn-p:hover{transform:translateY(-2px);background:var(--accent-2)}
+.btn-w{background:transparent;color:var(--text);border:1px solid var(--border-light)}
+.btn-w:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px}
+
+.hero-photo-wrap{position:relative}
+.hero-photo{
+  position:relative;border-radius:18px;overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.6);
+  aspect-ratio: 4/3;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform 18s linear}
+.hero-photo:hover img{transform:scale(1.1)}
+.hero-photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 40%, rgba(14,17,21,.55) 100%);
+}
+
+/* PROJECT № stamp — recurring motif */
+.proj-stamp{
+  position:absolute;top:18px;right:18px;
+  background:rgba(14,17,21,.78);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;
+  padding:10px 14px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text);
+  z-index:3;
+  display:flex;align-items:center;gap:10px;
+}
+.proj-stamp b{color:var(--accent);font-weight:600}
+.proj-stamp .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* hero corner index — bottom-left of photo */
+.hero-meta{
+  position:absolute;left:18px;bottom:18px;z-index:3;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text);
+}
+.hero-meta div{margin-bottom:2px}
+.hero-meta .l{color:var(--mute);font-size:.62rem;margin-right:6px}
+
+/* ---------- trust strip ---------- */
+.trust{
+  padding:38px 64px;
+  border-bottom:1px solid var(--border);
+  background:var(--bg-2);
+}
+.trust-inner{
+  max-width:1180px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+}
+.trust-item{display:flex;align-items:center;gap:10px;color:var(--text-b)}
+.trust-item svg{width:18px;height:18px;color:var(--accent);flex:none}
+
+/* ---------- services (S3 numbered list) ---------- */
+.svc-list{display:flex;flex-direction:column}
+.svc-row{
+  display:grid;grid-template-columns: 90px 1.3fr 1fr 60px;gap:32px;align-items:center;
+  padding:30px 4px;border-top:1px solid var(--border);
+  transition:padding .35s ease, background .35s;
+  position:relative;
+  cursor:default;
+}
+.svc-row:last-child{border-bottom:1px solid var(--border)}
+.svc-row .n{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.18em;color:var(--mute);
+}
+.svc-row .name{
+  font-family:'Bricolage Grotesque',sans-serif;font-size:1.85rem;font-weight:700;color:var(--text);
+  letter-spacing:-0.025em;line-height:1.05;
+  font-variation-settings:"opsz" 24;
+}
+.svc-row .name em{font-style:italic;font-weight:500;color:var(--accent)}
+.svc-row .desc{font-size:.95rem;color:var(--text-b);line-height:1.55;max-width:380px}
+.svc-row .arr{
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--border-light);
+  display:grid;place-items:center;color:var(--text-b);
+  transition:all .35s;justify-self:end;
+}
+.svc-row:hover{padding-left:18px;background:linear-gradient(90deg,var(--card) 0%,transparent 90%)}
+.svc-row:hover .arr{background:var(--accent);color:#0e1115;border-color:var(--accent);transform:rotate(-45deg)}
+.svc-row:hover .name{color:var(--accent)}
+
+/* ---------- gallery G4 editorial plate ---------- */
+.gal{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:22px;
+}
+.tile{
+  position:relative;
+  display:flex;flex-direction:column;
+}
+.tile-img{
+  position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--border);
+  background:var(--card);
+}
+.tile-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.tile:hover .tile-img img{transform:scale(1.05)}
+.tile-cap{
+  display:flex;justify-content:space-between;gap:14px;margin-top:14px;
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-b);
+}
+.tile-cap b{color:var(--accent);font-weight:500}
+.tile-cap .right{color:var(--mute);text-align:right;line-height:1.6}
+
+/* gallery layout (12-col grid, intentionally irregular) */
+.t-a{grid-column:span 7}
+.t-b{grid-column:span 5}
+.t-c{grid-column:span 4}
+.t-d{grid-column:span 4}
+.t-e{grid-column:span 4}
+.t-f{grid-column:span 6}
+.t-g{grid-column:span 6}
+.t-h{grid-column:span 5}
+.t-i{grid-column:span 7}
+
+.t-a .tile-img{aspect-ratio:5/3.4}
+.t-b .tile-img{aspect-ratio:4/4.3}
+.t-c .tile-img,.t-d .tile-img,.t-e .tile-img{aspect-ratio:3/3.6}
+.t-f .tile-img,.t-g .tile-img{aspect-ratio:5/3.2}
+.t-h .tile-img{aspect-ratio:3/3.6}
+.t-i .tile-img{aspect-ratio:5/3.2}
+
+/* ---------- process timeline (vertical) ---------- */
+.proc{
+  position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:32px;
+}
+.proc::before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--border);
+}
+.proc-step{
+  display:flex;gap:24px;padding:42px 0;position:relative;align-items:flex-start;
+}
+.proc-step:nth-child(odd){grid-column:1;justify-content:flex-end;text-align:right;padding-right:60px}
+.proc-step:nth-child(even){grid-column:2;justify-content:flex-start;padding-left:60px}
+.proc-step .body{max-width:380px}
+.proc-step:nth-child(odd) .body{order:1}
+.proc-step:nth-child(odd) .num{order:2}
+.proc-step .num{
+  flex:none;width:54px;height:54px;border-radius:50%;
+  background:var(--bg-2);border:1px solid var(--border-light);
+  display:grid;place-items:center;
+  font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.92rem;color:var(--accent);
+  position:relative;
+  z-index:2;
+}
+.proc-step:nth-child(odd) .num{margin-right:-87px}
+.proc-step:nth-child(even) .num{margin-left:-87px}
+.proc-step h3{margin-bottom:10px;font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem}
+.proc-step h3 em{font-style:italic;font-weight:500;color:var(--accent)}
+.proc-step p{font-size:.95rem;line-height:1.6;color:var(--text-b)}
+
+/* ---------- reviews (R3 2x2) ---------- */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:30px 30px 26px;
+  position:relative;
+  transition:transform .3s, border-color .3s;
+}
+.rev:hover{transform:translateY(-3px);border-color:var(--border-light)}
+.rev .stars{color:var(--accent);font-size:.95rem;letter-spacing:2px;margin-bottom:14px}
+.rev-quote{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.08rem;line-height:1.55;color:var(--text);font-weight:500;
+  font-style:italic;letter-spacing:-0.01em;margin-bottom:20px;
+  font-variation-settings:"opsz" 16;
+}
+.rev-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--border);padding-top:16px;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+}
+.rev-foot b{color:var(--text);font-weight:500}
+.rev-foot span{color:var(--mute)}
+
+/* ---------- areas ---------- */
+.areas{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0;
+  border-top:1px solid var(--border);border-left:1px solid var(--border);
+}
+.areas a{
+  padding:22px 18px;
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:var(--text);
+  font-size:1.02rem;letter-spacing:-0.015em;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transition:background .3s, color .3s;
+  font-variation-settings:"opsz" 14;
+}
+.areas a:hover{background:var(--card);color:var(--accent)}
+.areas a span{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--mute)}
+.areas a:hover span{color:var(--accent)}
+
+/* ---------- contact C1 ---------- */
+.cgrid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px}
+.cinfo{display:flex;flex-direction:column;gap:18px}
+.cinfo .card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:24px 26px;display:flex;gap:18px;align-items:flex-start;
+  transition:border-color .3s,transform .3s;
+}
+.cinfo .card:hover{border-color:var(--border-light);transform:translateY(-2px)}
+.cinfo .ico{
+  flex:none;width:42px;height:42px;border-radius:11px;background:var(--accent-glow);
+  color:var(--accent);display:grid;place-items:center;
+}
+.cinfo .ico svg{width:20px;height:20px}
+.cinfo .lbl{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.cinfo .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:var(--text);font-size:1.06rem;letter-spacing:-0.015em;line-height:1.4}
+
+.cform{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;padding:34px;
+}
+.cform h3{font-family:'Bricolage Grotesque',sans-serif;font-size:1.45rem;color:var(--text);margin-bottom:6px}
+.cform .sub{font-size:.92rem;color:var(--mute);margin-bottom:26px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:8px;
+}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;
+  background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-family:'Inter',sans-serif;font-size:.98rem;
+  transition:border-color .3s, background .3s;
+}
+.field textarea{resize:vertical;min-height:120px;font-family:'Inter',sans-serif}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--accent);background:var(--bg-2)}
+.cform .btn{width:100%;justify-content:center;margin-top:8px}
+
+/* ---------- footer ---------- */
+footer{
+  padding:48px 64px;background:var(--bg-2);
+  border-top:1px solid var(--border);
+  position:relative;z-index:2;
+}
+.foot-inner{
+  max-width:1180px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+}
+.foot-brand{display:flex;align-items:center;gap:14px}
+.foot-brand .rail-mark{width:38px;height:38px;font-size:1.3rem}
+.foot-brand b{font-family:'Bricolage Grotesque',sans-serif;color:var(--text);font-size:1rem;letter-spacing:-0.02em;display:block;line-height:1.1}
+.foot-brand span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);display:block;margin-top:2px}
+.foot-meta{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);line-height:1.7;text-align:right}
+.foot-meta a{color:var(--accent)}
+.foot-meta a:hover{color:var(--accent-2)}
+
+/* monogram watermark */
+.wm{
+  position:absolute;
+  font-family:'Bricolage Grotesque',serif;
+  font-weight:800;font-size:24rem;
+  line-height:0.8;letter-spacing:-0.08em;
+  color:var(--card);
+  z-index:0;pointer-events:none;user-select:none;
+  font-variation-settings:"opsz" 96;
+}
+section .inner{position:relative;z-index:2}
+
+/* ---------- floating CTAs ---------- */
+.fab-wrap{
+  position:fixed;right:18px;bottom:18px;z-index:90;
+  display:none;flex-direction:column;gap:12px;
+}
+.fab-wrap.show{display:flex}
+.fab{
+  width:54px;height:54px;border-radius:50%;
+  display:grid;place-items:center;
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.55);
+  color:#fff;
+}
+.fab.call{background:var(--accent)}
+.fab.wa{background:var(--green)}
+.fab svg{width:22px;height:22px}
+.fab.call{animation:fpulse 2.4s ease-in-out infinite}
+.fab.wa{animation:fpulseG 2.4s ease-in-out infinite .4s}
+@keyframes fpulse{0%,100%{box-shadow:0 14px 30px -10px rgba(0,0,0,.55), 0 0 0 0 rgba(217,119,87,.45)} 50%{box-shadow:0 14px 30px -10px rgba(0,0,0,.55), 0 0 0 14px rgba(217,119,87,0)}}
+@keyframes fpulseG{0%,100%{box-shadow:0 14px 30px -10px rgba(0,0,0,.55), 0 0 0 0 rgba(37,211,102,.45)} 50%{box-shadow:0 14px 30px -10px rgba(0,0,0,.55), 0 0 0 14px rgba(37,211,102,0)}}
+.fab:hover{animation:none;transform:scale(1.05)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* hero fade cascade */
+.hero .eyebrow,.hero h1,.hero-lede,.hero-cta,.hero-photo-wrap{opacity:0;transform:translateY(20px);animation:fadeUp .9s ease forwards}
+.hero h1{animation-delay:.12s}
+.hero-lede{animation-delay:.24s}
+.hero-cta{animation-delay:.36s}
+.hero-photo-wrap{animation-delay:.18s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1100px){
+  .shell{grid-template-columns:1fr}
+  .rail{display:none}
+  .mob-nav{display:flex}
+  section{padding:80px 28px}
+  .hero{padding:46px 28px 80px}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero h1{font-size:clamp(2.2rem,8vw,3.4rem)}
+  .hero-photo{aspect-ratio:16/11}
+  .hero-photo-wrap{order:2}
+  .hero-text{order:1}
+  /* lift the project stamp out of the photo on mobile */
+  .proj-stamp{display:none}
+  .hero-meta{display:none}
+  .mob-stamp{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:14px;padding:10px 14px;
+    border:1px solid var(--border);border-radius:10px;
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--text-b);
+  }
+  .mob-stamp b{color:var(--accent);font-weight:500}
+  .trust{padding:24px 28px}
+  .s-head{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:36px}
+  .s-head .rhs{text-align:left}
+
+  .svc-row{grid-template-columns:64px 1fr;gap:14px;padding:22px 4px}
+  .svc-row .desc{grid-column:2;max-width:100%;font-size:.92rem}
+  .svc-row .arr{display:none}
+  .svc-row .name{font-size:1.45rem}
+  .svc-row:hover{padding-left:0}
+
+  .gal{grid-template-columns:1fr;gap:20px}
+  .t-a,.t-b,.t-c,.t-d,.t-e,.t-f,.t-g,.t-h,.t-i{grid-column:1}
+  .t-a .tile-img,.t-b .tile-img,.t-c .tile-img,.t-d .tile-img,.t-e .tile-img,.t-f .tile-img,.t-g .tile-img,.t-h .tile-img,.t-i .tile-img{aspect-ratio:16/11}
+
+  .proc{grid-template-columns:1fr;gap:0}
+  .proc::before{left:27px}
+  .proc-step:nth-child(odd),.proc-step:nth-child(even){
+    grid-column:1;flex-direction:row;text-align:left;
+    justify-content:flex-start;padding:30px 0 30px 64px;
+  }
+  .proc-step:nth-child(odd) .num,.proc-step:nth-child(even) .num{
+    margin:0;position:absolute;left:0;top:30px;
+  }
+  .proc-step:nth-child(odd) .body{order:0}
+
+  .rev-grid{grid-template-columns:1fr}
+
+  .areas{grid-template-columns:repeat(2,1fr)}
+  .areas a{padding:18px 14px;font-size:.95rem}
+
+  .cgrid{grid-template-columns:1fr;gap:24px}
+  .cform{padding:24px}
+  .row2{grid-template-columns:1fr}
+
+  footer{padding:36px 28px}
+  .foot-inner{flex-direction:column;align-items:flex-start;gap:18px}
+  .foot-meta{text-align:left}
+
+  .wm{font-size:14rem}
+}
+@media (min-width:1101px){
+  .mob-stamp{display:none}
+}
+@media (max-width:520px){
+  .hero h1{font-size:2.1rem}
+  .svc-row .name{font-size:1.25rem}
+  .rev{padding:24px}
+  .rev-quote{font-size:1rem}
+}
+
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- LEFT RAIL (desktop) -->
+  <aside class="rail" aria-label="Primary navigation">
+    <div class="rail-brand">
+      <div class="rail-mark">R</div>
+      <div class="rail-word">
+        <b>Reniera</b>
+        <span>Design &amp; build</span>
+      </div>
+    </div>
+
+    <nav class="rail-nav" aria-label="Sections">
+      <a href="#work"     data-n="01">Recent builds</a>
+      <a href="#trades"   data-n="02">Trades</a>
+      <a href="#process"  data-n="03">Process</a>
+      <a href="#reviews"  data-n="04">Reviews</a>
+      <a href="#areas"    data-n="05">Areas</a>
+      <a href="#contact"  data-n="06">Contact</a>
+    </nav>
+
+    <div class="rail-cta">
+      <span class="lbl">Call Klodjan</span>
+      <a id="railCall" href="#" class="num"></a>
+    </div>
+    <div class="rail-foot">
+      Arnos Grove · N11<br>
+      Mon–Sat · 7:30am – 7pm
+    </div>
+    <span class="vert" aria-hidden="true">North London · est 2018</span>
+  </aside>
+
+  <!-- MOBILE NAV -->
+  <nav class="mob-nav" aria-label="Primary">
+    <a href="#top" class="mob-brand" aria-label="Reniera home">
+      <div class="mob-mark">R</div>
+      <div class="mob-word">
+        <b>Reniera</b><span>Design &amp; build</span>
+      </div>
+    </a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </nav>
+  <div class="mob-panel" id="mobPanel" role="dialog" aria-label="Menu">
+    <a href="#work">01 · Recent builds</a>
+    <a href="#trades">02 · Trades</a>
+    <a href="#process">03 · Process</a>
+    <a href="#reviews">04 · Reviews</a>
+    <a href="#areas">05 · Areas</a>
+    <a href="#contact">06 · Contact</a>
+    <a id="panelCall" href="#" class="mob-call">Call Klodjan</a>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="eyebrow">Arnos Grove · N11 · Family run since 2018</span>
+          <h1>North London builders<br>with a <em>finisher's</em> eye.</h1>
+          <p class="hero-lede">
+            Reniera is Klodjan Rrokaj and a small team. We design and build extensions, bathrooms, decks, gardens and full renovations across N11, N14 and N22. Honest quotes, tidy sites, no shortcuts on the bits you can't see.
+          </p>
+          <div class="hero-cta">
+            <a id="heroCall" href="#" class="btn btn-p">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+              <span id="heroCallTxt">Call Klodjan</span>
+            </a>
+            <a id="heroWa" href="#" target="_blank" rel="noopener" class="btn btn-w">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <!-- mobile-only stamp -->
+          <div class="mob-stamp">
+            <span><b>Project №061</b> · Garden Transformation</span>
+            <span>Arnos Grove · N11</span>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+          <div class="hero-photo">
+            <img src="hero.jpg" alt="Reniera-built split-level garden in Arnos Grove with white render, slate paving and composite decking">
+            <div class="proj-stamp"><span class="dot"></span><span>Project</span><b>№061</b></div>
+            <div class="hero-meta">
+              <div><span class="l">Build</span> Garden + Render + Slate</div>
+              <div><span class="l">Loc</span> Arnos Grove · N11</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust" aria-label="Credentials">
+      <div class="trust-inner">
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Fully Insured</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Free Quotes</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> No Deposit Until Day One</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> 12-Month Workmanship Guarantee</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> CSCS Carded</div>
+      </div>
+    </section>
+
+    <!-- TRADES (services) -->
+    <section id="trades" aria-labelledby="trades-h">
+      <span class="wm" aria-hidden="true" style="top:-20px;right:-30px">02</span>
+      <div class="inner reveal">
+        <div class="s-head">
+          <div class="lhs">
+            <span class="eyebrow">02 · Trades we do</span>
+            <h2 id="trades-h">Eight trades, <span class="accent">one number</span> to call.</h2>
+          </div>
+          <div class="rhs">
+            One team start-to-finish.<br>
+            No sub-let, no surprises.
+          </div>
+        </div>
+
+        <div class="svc-list">
+          <div class="svc-row">
+            <div class="n">01</div>
+            <div class="name">Extensions &amp; <em>loft conversions</em></div>
+            <div class="desc">Side returns, wraps, rear and dormer lofts. Drawings, building control, build.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">02</div>
+            <div class="name">Bathroom <em>renovations</em></div>
+            <div class="desc">Strip, replumb, tile, finish. Marble, micro-cement, mosaic, wet-rooms.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">03</div>
+            <div class="name">Decking &amp; <em>composite patios</em></div>
+            <div class="desc">Levelled bases, hidden fixings, drainage that works ten years in.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">04</div>
+            <div class="name">Garden <em>landscaping</em></div>
+            <div class="desc">Sleepers, render walls, turf, slate, gravel. Whole-garden rebuilds a specialty.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">05</div>
+            <div class="name">External <em>render &amp; brick</em></div>
+            <div class="desc">Silicone render, painted brick, repointing, stack &amp; sill repairs on Victorian terraces.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">06</div>
+            <div class="name">Tiling &amp; <em>stonework</em></div>
+            <div class="desc">Large format, herringbone, pattern, natural stone. Levelled, jointed, sealed.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">07</div>
+            <div class="name">Driveways &amp; <em>paving</em></div>
+            <div class="desc">Block-paved, resin-bound, slate. Crossovers and drainage included.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+          <div class="svc-row">
+            <div class="n">08</div>
+            <div class="name">Full <em>renovations</em></div>
+            <div class="desc">Whole-house projects from strip-out to second fix. One PM, one number to call.</div>
+            <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / GALLERY -->
+    <section id="work" aria-labelledby="work-h">
+      <span class="wm" aria-hidden="true" style="top:-30px;left:-40px">01</span>
+      <div class="inner reveal">
+        <div class="s-head">
+          <div class="lhs">
+            <span class="eyebrow">01 · Recent builds</span>
+            <h2 id="work-h">A short ledger of <span class="accent">finished work</span>.</h2>
+          </div>
+          <div class="rhs">
+            61 projects logged<br>
+            North London · 2018–today
+          </div>
+        </div>
+
+        <div class="gal">
+          <figure class="tile t-a"><div class="tile-img"><img src="work-1.jpg" alt="Composite deck with slate inset in a North London back garden"></div>
+            <figcaption class="tile-cap"><b>№061 · Garden transformation</b><span class="right">Arnos Grove · N11<br>Deck · Slate · Render</span></figcaption></figure>
+
+          <figure class="tile t-b"><div class="tile-img"><img src="work-2.jpg" alt="Wet slate paving and decking with rendered stair box"></div>
+            <figcaption class="tile-cap"><b>№059 · Split-level patio</b><span class="right">New Southgate · N11<br>Slate · Decking</span></figcaption></figure>
+
+          <figure class="tile t-c"><div class="tile-img"><img src="work-4.jpg" alt="Painted blue-grey Victorian terrace front, North London"></div>
+            <figcaption class="tile-cap"><b>№057 · Repaint &amp; sash repair</b><span class="right">Palmers Green · N13<br>Brick &amp; brushwork</span></figcaption></figure>
+
+          <figure class="tile t-d"><div class="tile-img"><img src="work-5.jpg" alt="Marble shower with rain head, niche and traditional fittings"></div>
+            <figcaption class="tile-cap"><b>№054 · Marble bathroom</b><span class="right">Southgate · N14<br>Strip · Plumb · Tile</span></figcaption></figure>
+
+          <figure class="tile t-e"><div class="tile-img"><img src="work-6.jpg" alt="Dark green vertical tile shower"></div>
+            <figcaption class="tile-cap"><b>№051 · Green-tile en-suite</b><span class="right">Bounds Green · N11<br>Wet-room · Tile</span></figcaption></figure>
+
+          <figure class="tile t-f"><div class="tile-img"><img src="work-7.jpg" alt="Garden with raised timber sleeper planters and slate paving"></div>
+            <figcaption class="tile-cap"><b>№048 · Sleeper garden</b><span class="right">Wood Green · N22<br>Sleepers · Slate · Turf</span></figcaption></figure>
+
+          <figure class="tile t-g"><div class="tile-img"><img src="work-3.jpg" alt="Rendered stair platform overlooking finished slate platform garden"></div>
+            <figcaption class="tile-cap"><b>№046 · Render &amp; platform</b><span class="right">Friern Barnet · N11<br>Render · Decking</span></figcaption></figure>
+
+          <figure class="tile t-h"><div class="tile-img"><img src="work-8.jpg" alt="Patterned blue tile feature wall in a small bathroom"></div>
+            <figcaption class="tile-cap"><b>№044 · Pattern bath</b><span class="right">Whetstone · N20<br>Tile · Fittings</span></figcaption></figure>
+
+          <figure class="tile t-i"><div class="tile-img"><img src="work-9.jpg" alt="Long back garden mid-landscape with weed membrane and topsoil"></div>
+            <figcaption class="tile-cap"><b>№040 · Long-garden rebuild</b><span class="right">Enfield · EN2<br>Strip · Level · Turf</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" aria-labelledby="proc-h">
+      <span class="wm" aria-hidden="true" style="bottom:-30px;right:-30px">03</span>
+      <div class="inner reveal">
+        <div class="s-head">
+          <div class="lhs">
+            <span class="eyebrow">03 · How a job runs</span>
+            <h2 id="proc-h">From WhatsApp to <span class="accent">handover</span>, five stages.</h2>
+          </div>
+          <div class="rhs">
+            Most jobs start within 14 days.<br>
+            We won't begin until the quote is signed.
+          </div>
+        </div>
+
+        <div class="proc">
+          <div class="proc-step">
+            <div class="body">
+              <h3>Site visit &amp; <em>chat</em></h3>
+              <p>Klodjan visits, measures, and listens. No salesman. We sketch ideas there and then so you know what you're getting before you commit.</p>
+            </div>
+            <div class="num">01</div>
+          </div>
+          <div class="proc-step">
+            <div class="num">02</div>
+            <div class="body">
+              <h3>Written <em>quote</em></h3>
+              <p>Itemised by trade, materials specified by brand, dates committed in writing. No "extras" mid-build for things you assumed were included.</p>
+            </div>
+          </div>
+          <div class="proc-step">
+            <div class="body">
+              <h3>Setup &amp; <em>protection</em></h3>
+              <p>Floors covered, walls sheeted, skip and welfare arranged. Neighbours notified. The site is the team's responsibility, not yours.</p>
+            </div>
+            <div class="num">03</div>
+          </div>
+          <div class="proc-step">
+            <div class="num">04</div>
+            <div class="body">
+              <h3>Build &amp; <em>weekly check-in</em></h3>
+              <p>One WhatsApp group with daily photos. Friday catch-up call so you always know what's next week. Changes priced before they happen.</p>
+            </div>
+          </div>
+          <div class="proc-step">
+            <div class="body">
+              <h3>Snag &amp; <em>handover</em></h3>
+              <p>We walk the site with you, write the snags, fix them, walk it again. Twelve-month workmanship guarantee starts the day you're happy.</p>
+            </div>
+            <div class="num">05</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" aria-labelledby="rev-h">
+      <span class="wm" aria-hidden="true" style="top:-20px;right:-20px">04</span>
+      <div class="inner reveal">
+        <div class="s-head">
+          <div class="lhs">
+            <span class="eyebrow">04 · Word from neighbours</span>
+            <h2 id="rev-h">What North Londoners <span class="accent">say after</span>.</h2>
+          </div>
+          <div class="rhs">
+            Names &amp; postcodes shown<br>
+            with permission.
+          </div>
+        </div>
+
+        <div class="rev-grid">
+          <div class="rev">
+            <div class="stars">★★★★★</div>
+            <p class="rev-quote">"Klodjan and the lads turned a mess of a garden into the bit of the house we actually live in. Slate, decking, render, all done in three weeks and no mess left behind."</p>
+            <div class="rev-foot"><b>Hannah W.</b><span>Arnos Grove · Garden rebuild</span></div>
+          </div>
+          <div class="rev">
+            <div class="stars">★★★★★</div>
+            <p class="rev-quote">"Family bathroom from strip-out to tiled and tested in nine working days. Tidy, polite, and the price they quoted was the price we paid. Would absolutely use again."</p>
+            <div class="rev-foot"><b>Daniel B.</b><span>Southgate · Bathroom</span></div>
+          </div>
+          <div class="rev">
+            <div class="stars">★★★★★</div>
+            <p class="rev-quote">"Three other builders ghosted us. Reniera turned up when they said, quoted in writing, and finished the side return on time. Daily WhatsApp photos kept us sane."</p>
+            <div class="rev-foot"><b>Aisha &amp; Tom</b><span>Palmers Green · Side return</span></div>
+          </div>
+          <div class="rev">
+            <div class="stars">★★★★★</div>
+            <p class="rev-quote">"Did our front render and a new path. Honest about what was patch versus full job, fair on price, and tidied up at the end of every single day. Neighbours hired them after."</p>
+            <div class="rev-foot"><b>Marek S.</b><span>Bounds Green · Render &amp; path</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AREAS -->
+    <section id="areas" aria-labelledby="areas-h">
+      <div class="inner reveal">
+        <div class="s-head">
+          <div class="lhs">
+            <span class="eyebrow">05 · Areas we cover</span>
+            <h2 id="areas-h">Based in <span class="accent">N11</span>, working across N &amp; NW London.</h2>
+          </div>
+          <div class="rhs">
+            Free site visits within 6 miles.<br>
+            Further on request.
+          </div>
+        </div>
+
+        <div class="areas">
+          <a href="#contact">Arnos Grove <span>N11</span></a>
+          <a href="#contact">Southgate <span>N14</span></a>
+          <a href="#contact">Palmers Green <span>N13</span></a>
+          <a href="#contact">Bounds Green <span>N11</span></a>
+          <a href="#contact">New Southgate <span>N11</span></a>
+          <a href="#contact">Wood Green <span>N22</span></a>
+          <a href="#contact">Friern Barnet <span>N11</span></a>
+          <a href="#contact">Whetstone <span>N20</span></a>
+          <a href="#contact">North Finchley <span>N12</span></a>
+          <a href="#contact">Enfield <span>EN1–2</span></a>
+          <a href="#contact">Winchmore Hill <span>N21</span></a>
+          <a href="#contact">Muswell Hill <span>N10</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="ct-h">
+      <span class="wm" aria-hidden="true" style="top:-30px;left:-30px">06</span>
+      <div class="inner reveal">
+        <div class="s-head">
+          <div class="lhs">
+            <span class="eyebrow">06 · Get a quote</span>
+            <h2 id="ct-h">Tell us about the <span class="accent">job</span>. We'll get back today.</h2>
+          </div>
+          <div class="rhs">
+            Reply usually within 2 hours<br>
+            Mon–Sat · 7:30am – 7pm
+          </div>
+        </div>
+
+        <div class="cgrid">
+          <div class="cinfo">
+            <a id="cardCall" href="#" class="card">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+              <div><div class="lbl">Phone · Klodjan</div><div class="val" id="cardCallTxt"></div></div>
+            </a>
+            <a id="cardWa" href="#" target="_blank" rel="noopener" class="card">
+              <div class="ico" style="color:#25d366;background:rgba(37,211,102,.12)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></div>
+              <div><div class="lbl">WhatsApp · fastest</div><div class="val">Send a photo &amp; postcode</div></div>
+            </a>
+            <a id="cardEmail" href="#" class="card">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+              <div><div class="lbl">Email</div><div class="val" id="cardEmailTxt"></div></div>
+            </a>
+            <div class="card">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><div class="lbl">Patch</div><div class="val">Arnos Grove · North London</div></div>
+            </div>
+          </div>
+
+          <form class="cform" action="/api/enquiry" method="POST" novalidate>
+            <h3>Send us the brief</h3>
+            <div class="sub">Rough scope, postcode, and a photo or two if you have them.</div>
+
+            <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_timestamp" id="formTimestamp">
+            <input type="hidden" name="businessName" value="Reniera Design and Build">
+            <input type="hidden" name="source" value="mockup-reniera">
+
+            <div class="row2">
+              <div class="field">
+                <label for="fName">Your name</label>
+                <input id="fName" name="name" type="text" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="fPhone">Phone</label>
+                <input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="fEmail">Email (optional)</label>
+              <input id="fEmail" name="email" type="email" autocomplete="email">
+            </div>
+
+            <div class="field">
+              <label for="fSvc">Job type</label>
+              <select id="fSvc" name="service" required>
+                <option value="">pick one</option>
+                <optgroup label="Build">
+                  <option>Extension / loft conversion</option>
+                  <option>Full renovation</option>
+                  <option>External render / brick</option>
+                </optgroup>
+                <optgroup label="Inside">
+                  <option>Bathroom renovation</option>
+                  <option>Tiling / stonework</option>
+                </optgroup>
+                <optgroup label="Outside">
+                  <option>Decking / patio</option>
+                  <option>Garden landscaping</option>
+                  <option>Driveway / paving</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option>Something else</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="fMsg">Brief</label>
+              <textarea id="fMsg" name="message" placeholder="Roughly what's the job, where (postcode helps), and when you'd ideally start."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-p">Send to Klodjan
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-inner">
+        <div class="foot-brand">
+          <div class="rail-mark">R</div>
+          <div>
+            <b>Reniera Design &amp; Build</b>
+            <span>Arnos Grove · North London</span>
+          </div>
+        </div>
+        <div class="foot-meta">
+          © <span id="yr"></span> Reniera Design and Build · All rights reserved<br>
+          Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<div class="fab-wrap" id="fabs" aria-hidden="true">
+  <a id="fabCall" href="#" class="fab call" aria-label="Call Klodjan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+  </a>
+  <a id="fabWa" href="#" target="_blank" rel="noopener" class="fab wa" aria-label="WhatsApp Klodjan">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  // ----- obfuscated contact details
+  var P  = atob('MDc0MjMxMjE0MzE=');
+  var Pf = atob('MDc0MjMgMTIxIDQzMQ==');
+  var E  = atob('cmVuaWVyYWRlc2lnbkBnbWFpbC5jb20=');
+  var WA = '447423121431';
+  var waLink = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi Klodjan, I found Reniera online and would like a quote please.');
+
+  function setTel(id){var el=document.getElementById(id);if(el){el.href='tel:'+P;}}
+  function setTxt(id,t){var el=document.getElementById(id);if(el){el.textContent=t;}}
+  function setHref(id,h){var el=document.getElementById(id);if(el){el.href=h;}}
+
+  setTel('railCall');     setTxt('railCall', Pf);
+  setTel('heroCall');     setTxt('heroCallTxt','Call '+ Pf);
+  setTel('panelCall');
+  setTel('fabCall');
+  setTel('cardCall');     setTxt('cardCallTxt', Pf);
+  setHref('cardEmail','mailto:'+E); setTxt('cardEmailTxt', E);
+  setHref('heroWa', waLink);
+  setHref('fabWa',  waLink);
+  setHref('cardWa', waLink);
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // form timestamp + phone validity
+  var ts = document.getElementById('formTimestamp'); if(ts) ts.value = Date.now();
+  var fp = document.getElementById('fPhone');
+  if(fp){
+    fp.addEventListener('input', function(){
+      if(!fp.validity.valid){ fp.setCustomValidity('Please enter a UK phone number starting 0 or +44'); }
+      else { fp.setCustomValidity(''); }
+    });
+  }
+
+  // burger
+  var b = document.getElementById('burger'), p = document.getElementById('mobPanel');
+  if(b){
+    b.addEventListener('click', function(){
+      var open = b.classList.toggle('open');
+      p.classList.toggle('open', open);
+      b.setAttribute('aria-expanded', open?'true':'false');
+    });
+    p.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+      b.classList.remove('open');p.classList.remove('open');b.setAttribute('aria-expanded','false');
+    });});
+  }
+
+  // floating CTA on scroll past hero
+  var fabs = document.getElementById('fabs');
+  var hero = document.querySelector('.hero');
+  function fabCheck(){
+    if(!hero||!fabs) return;
+    var below = (window.scrollY > hero.offsetHeight + hero.offsetTop - 80);
+    fabs.classList.toggle('show', below);
+    fabs.setAttribute('aria-hidden', below?'false':'true');
+  }
+  window.addEventListener('scroll', fabCheck, {passive:true});
+  fabCheck();
+
+  // scroll reveals
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
