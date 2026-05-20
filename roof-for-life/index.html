@@ -290,19 +290,17 @@
   .more-services {
     background: var(--red);
     border-bottom: 4px solid #5d0510;
-    padding: 28px 24px;
-    display: flex; flex-direction: column;
+    padding: 36px 36px 34px;
     color: var(--white);
-    grid-column: span 2;
+    grid-column: 1 / -1;
   }
   .more-services h3 {
-    font-size: 1.1rem; font-weight: 800;
+    font-size: 1.15rem; font-weight: 800;
     text-transform: uppercase; letter-spacing: 0.5px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
   .more-services ul {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px;
-    margin-top: auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px 24px;
   }
   .more-services li {
     font-size: 0.94rem; font-weight: 600;
@@ -633,7 +631,8 @@
   /* ========== RESPONSIVE ========== */
   @media (max-width: 1024px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .more-services { grid-column: span 2; }
+    .more-services { grid-column: 1 / -1; }
+    .more-services ul { grid-template-columns: repeat(2, 1fr); }
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .about-img { height: 380px; }
     .areas-grid { grid-template-columns: repeat(3, 1fr); }
@@ -656,11 +655,21 @@
     .section-inner { padding: 0 22px; }
     .services-wrap, .about-wrap, .gallery-wrap, .areas-wrap, .testimonials-wrap, .contact-wrap { padding: 70px 0; }
     .services-grid { grid-template-columns: 1fr; }
-    .more-services { grid-column: span 1; }
-    .more-services ul { grid-template-columns: 1fr; }
+    .more-services { grid-column: 1 / -1; padding: 28px 22px 26px; }
+    .more-services ul { grid-template-columns: 1fr 1fr; gap: 10px 18px; }
+    .more-services li { font-size: 0.88rem; }
     .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
     .gallery-item::after { font-size: 0.7rem; letter-spacing: 1.2px; }
     .areas-grid { grid-template-columns: repeat(2, 1fr); }
+    .areas-grid a {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 16px 14px;
+      font-size: 0.9rem;
+      letter-spacing: 0.6px;
+    }
+    .areas-grid a span { font-size: 0.66rem; letter-spacing: 1.2px; }
     .testimonials-grid { grid-template-columns: 1fr; }
     .testimonial-card { padding: 30px 26px; }
     .section-heading { font-size: 1.9rem; }
@@ -708,13 +717,13 @@
       <span class="hero-eyebrow">Canterbury · East Kent Roofers</span>
       <h1>
         Roofing Done<br>
-        <span class="line2">For Life.</span>
+        <span class="line2">Right.</span>
       </h1>
-      <p class="hero-lede">Flat roofs, pitched roofs, repairs, fascias and guttering, cladding, repointing, lofts, chimneys and moss cleaning. Covering Canterbury, Margate, Dover, Deal, Sandwich, Ramsgate, Folkestone and out to Faversham. Guarantee on every new roof.</p>
+      <p class="hero-lede">Family-run roofers covering Canterbury through to Margate, Dover and Folkestone. Guarantee on every new roof.</p>
       <div class="hero-buttons">
         <a id="heroCall" href="#" class="btn btn-red">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          <span id="heroCallTxt">Call Freddy</span>
+          <span id="heroCallTxt">Call</span>
         </a>
         <a id="heroWa" href="#" target="_blank" rel="noopener" class="btn btn-wa">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607z"/></svg>
@@ -797,7 +806,7 @@
         </div>
       </a>
 
-      <!-- Rest of services in a single red block -->
+      <!-- Rest of services in a single red block spanning full width -->
       <div class="more-services">
         <h3>Plus everything else for the roofline</h3>
         <ul>
@@ -811,21 +820,6 @@
           <li>Storm Damage</li>
         </ul>
       </div>
-
-      <a class="service-card" href="#contact">
-        <div class="pic"><img src="work-2.jpg" alt="Fascias, soffits and guttering across East Kent"></div>
-        <div class="service-card-body">
-          <h3>Fascias &amp; Guttering</h3>
-          <p>uPVC fascias, soffits and gutter replacements. We take the rotten timber off first, no boxing-over.</p>
-        </div>
-      </a>
-      <a class="service-card" href="#contact">
-        <div class="pic"><img src="work-3.jpg" alt="Cladding, repointing and outbuilding roofing"></div>
-        <div class="service-card-body">
-          <h3>Cladding &amp; Repointing</h3>
-          <p>Timber and uPVC cladding, lime and sand-and-cement repointing, sheds, garages and outbuildings put back to weathertight.</p>
-        </div>
-      </a>
     </div>
   </div>
 </section>
@@ -846,7 +840,7 @@
           <li>Tidy on site, tidy on the bill</li>
           <li>Canterbury to Faversham, all of East Kent</li>
         </ul>
-        <a id="aboutCall" href="#" class="btn btn-red">Call Freddy</a>
+        <a id="aboutCall" href="#" class="btn btn-red"><span id="aboutCallTxt">Call</span></a>
       </div>
     </div>
   </div>
@@ -858,12 +852,12 @@
     <div class="section-heading">Recent <span>Projects</span></div>
     <p class="section-sub">A handful of the roofs we've put down or pulled apart across East Kent. Photos straight off the job, no stock images.</p>
     <div class="gallery-grid">
-      <div class="gallery-item" data-cap="Valley repair · Faversham"><img src="work-1.jpg" alt="Lead valley repair between two tiled roofs, finished"></div>
+      <div class="gallery-item" data-cap="Sika valley · Faversham"><img src="work-1.jpg" alt="Sika liquid valley system between two tiled roofs"></div>
       <div class="gallery-item" data-cap="Flat felt roof · Herne Bay"><img src="work-2.jpg" alt="Finished flat felt roof on a dormer overlooking terraced houses"></div>
       <div class="gallery-item" data-cap="Summerhouse re-felt · Canterbury"><img src="work-3.jpg" alt="Re-felted pale blue garden summerhouse"></div>
       <div class="gallery-item" data-cap="Lead box gutter · Sandwich"><img src="work-4.jpg" alt="New lead box gutter between two pitched tile roofs in rural Kent"></div>
       <div class="gallery-item" data-cap="Ridge re-bed · Ramsgate"><img src="work-5.jpg" alt="Newly re-bedded white mortar ridge between old clay tiles"></div>
-      <div class="gallery-item" data-cap="Re-tile in progress · Dover"><img src="work-6.jpg" alt="Two Roof For Life roofers on a re-tile mid-strip with scaffolding"></div>
+      <div class="gallery-item" data-cap="Cement removal · Dover"><img src="work-6.jpg" alt="Two Roof For Life roofers cutting cement off old roof tiles"></div>
     </div>
   </div>
 </section>
@@ -1056,14 +1050,14 @@
   var Pf = atob('MDc4ODggNjAwIDgyNA==');
   var E  = atob('cm9vZmZvcmxpZmUxMjNAZ21haWwuY29t');
   var WA = '447888600824';
-  var waLink = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi Freddy, I found Roof For Life online and would like a quote please.');
+  var waLink = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi, I found Roof For Life online and would like a quote please.');
 
   function setTel(id){var el=document.getElementById(id); if(el) el.href='tel:'+P;}
   function setTxt(id,t){var el=document.getElementById(id); if(el) el.textContent=t;}
   function setHref(id,h){var el=document.getElementById(id); if(el) el.href=h;}
 
-  setTel('heroCall');    setTxt('heroCallTxt','Call Freddy · ' + Pf);
-  setTel('aboutCall');
+  setTel('heroCall');    setTxt('heroCallTxt','Call ' + Pf);
+  setTel('aboutCall');   setTxt('aboutCallTxt','Call ' + Pf);
   setTel('bannerCall');  setTxt('bannerCallTxt', Pf);
   setTel('bannerCallBtn');
   setTel('fabCall');
