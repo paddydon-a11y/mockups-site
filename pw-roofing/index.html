@@ -42,6 +42,7 @@
     background: var(--ink);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   img { display: block; max-width: 100%; height: auto; }
   a { text-decoration: none; color: inherit; }
@@ -94,8 +95,18 @@
     transition: background 0.2s !important;
   }
   .nav-cta:hover { background: var(--red-dark) !important; }
-  .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-  .nav-mobile svg { stroke: var(--white); }
+  .nav-mobile {
+    display: none;
+    background: var(--red);
+    border: none;
+    cursor: pointer;
+    width: 46px; height: 46px;
+    align-items: center; justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .nav-mobile:hover { background: var(--red-dark); }
+  .nav-mobile svg { stroke: #fff; width: 22px; height: 22px; }
 
   /* ========== HERO ========== */
   .hero {
@@ -195,46 +206,29 @@
     transform: translateY(-2px);
   }
 
-  /* Big "PW" watermark behind hero, bottom right */
-  .hero-wm {
-    position: absolute;
-    right: -2vw; top: 8vh;
-    font-size: 32vw;
-    font-weight: 900;
-    line-height: 1;
-    color: rgba(255,255,255,0.04);
-    z-index: 1;
-    letter-spacing: -0.04em;
-    pointer-events: none;
-    user-select: none;
-  }
+  /* (PW watermark removed — kept content plain) */
 
-  /* ========== POSTCODE MARQUEE ========== */
-  .marquee {
-    background: var(--red);
-    border-top: 8px solid var(--ink);
-    border-bottom: 8px solid var(--ink);
-    overflow: hidden;
-    position: relative;
+  /* ========== RED DIVIDER ========== */
+  .red-bar { width: 100%; height: 8px; background: var(--red); }
+
+  /* ========== TRUST STRIP ========== */
+  .trust-strip {
+    background: var(--ink-2);
+    padding: 26px 40px;
+    border-bottom: 1px solid var(--line);
   }
-  .marquee-track {
-    display: flex; gap: 56px;
-    padding: 16px 0;
-    white-space: nowrap;
-    animation: scroll 36s linear infinite;
-    width: max-content;
+  .trust-inner {
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 22px; flex-wrap: wrap;
   }
-  .marquee span {
-    font-size: 0.92rem; font-weight: 800;
-    letter-spacing: 4px; text-transform: uppercase;
-    color: #fff;
-    display: inline-flex; align-items: center; gap: 22px;
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.82rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--grey-1);
   }
-  .marquee span::after { content: "★"; color: rgba(255,255,255,0.6); margin-left: 56px; }
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+  .trust-item svg { width: 18px; height: 18px; color: var(--red-bright); flex: none; }
 
   /* ========== SERVICES — horizontal alternating rows ========== */
   .services-wrap { background: var(--ink); padding: 100px 0 110px; }
@@ -379,14 +373,7 @@
     letter-spacing: 2.5px; text-transform: uppercase;
     color: var(--grey-2);
   }
-  .about-wm {
-    position: absolute;
-    left: -6vw; bottom: -10vh;
-    font-size: 30vw; font-weight: 900;
-    color: rgba(255,255,255,0.025);
-    line-height: 1; letter-spacing: -0.05em;
-    pointer-events: none;
-  }
+  /* about watermark removed */
 
   /* ========== GALLERY — asymmetric masonry ========== */
   .gallery-wrap { background: var(--ink); padding: 100px 0 110px; }
@@ -536,14 +523,7 @@
     text-align: center;
     position: relative; overflow: hidden;
   }
-  .cta-banner::before {
-    content: "PW";
-    position: absolute; right: -3vw; top: -2vh;
-    font-size: 24vw; font-weight: 900;
-    color: rgba(0,0,0,0.08);
-    line-height: 1; letter-spacing: -0.04em;
-    pointer-events: none;
-  }
+  /* cta watermark removed */
   .cta-banner h2 {
     font-size: clamp(1.8rem, 3.4vw, 2.7rem);
     font-weight: 900;
@@ -646,7 +626,7 @@
     .g-b, .g-c { grid-column: span 6; }
     .g-d, .g-e, .g-f { grid-column: span 4; }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     .nav-inner { padding: 0 22px; height: 70px; }
     .nav-logo { font-size: 1.15rem; }
     .nav-monogram { width: 38px; height: 38px; font-size: 0.95rem; }
@@ -660,19 +640,19 @@
       border-bottom: 1px solid var(--line);
     }
     .nav-links.open a { font-size: 1.05rem; color: #fff; padding: 9px 0; }
-    .nav-mobile { display: block; }
+    .nav-mobile { display: inline-flex; }
+  }
+  @media (max-width: 768px) {
 
     .hero { min-height: 600px; height: auto; padding: 110px 0 60px; }
     .hero-content { position: relative; padding: 30px 22px 0; }
-    .hero-wm { font-size: 50vw; top: 30vh; right: -10vw; }
     .hero h1 { font-size: 2.4rem; letter-spacing: -1.5px; }
     .hero-lede { font-size: 1rem; }
     .hero-buttons { gap: 8px; }
     .hero-buttons .btn { flex: 1; min-width: 0; padding: 13px 14px; font-size: 0.82rem; letter-spacing: 1px; }
 
-    .marquee-track { padding: 12px 0; gap: 34px; }
-    .marquee span { font-size: 0.78rem; letter-spacing: 2.6px; }
-    .marquee span::after { margin-left: 34px; }
+    .trust-strip { padding: 22px 22px; }
+    .trust-item { font-size: 0.74rem; letter-spacing: 1.2px; }
 
     .services-wrap, .about-wrap, .gallery-wrap, .areas-wrap, .reviews-wrap, .contact-wrap { padding: 64px 0 70px; }
     .section-inner { padding: 0 22px; }
@@ -737,11 +717,10 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-wm" aria-hidden="true">PW</div>
   <div class="hero-content">
-    <span class="hero-stamp">Bridgend · Cardiff to Swansea</span>
-    <h1>Welsh roofs.<br><span class="red">Top to gutter.</span></h1>
-    <p class="hero-lede">Paul Hunnisett and team. Strip-and-retiles, repairs, lead and flashings, moss treatments, fascias and guttering. Family run out of Bridgend, on roofs across South Wales since 2016.</p>
+    <span class="hero-stamp">Bridgend · South Wales</span>
+    <h1>Roofers in <span class="red">South Wales.</span></h1>
+    <p class="hero-lede">Re-roofs, repairs, lead work and roofline. Family run, covering Cardiff to Swansea.</p>
     <div class="hero-buttons">
       <a id="heroCall" href="#" class="btn btn-red">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
@@ -755,79 +734,78 @@
   </div>
 </section>
 
-<!-- POSTCODE MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Bridgend CF31</span><span>Cardiff CF10</span><span>Penarth CF64</span><span>Pontypridd CF37</span><span>Swansea SA1</span><span>Neath SA10</span><span>Port Talbot SA12</span><span>Maesteg CF34</span><span>Pencoed CF35</span><span>Llantrisant CF72</span><span>Cowbridge CF71</span><span>Aberdare CF44</span>
-    <!-- duplicated for seamless scroll -->
-    <span>Bridgend CF31</span><span>Cardiff CF10</span><span>Penarth CF64</span><span>Pontypridd CF37</span><span>Swansea SA1</span><span>Neath SA10</span><span>Port Talbot SA12</span><span>Maesteg CF34</span><span>Pencoed CF35</span><span>Llantrisant CF72</span><span>Cowbridge CF71</span><span>Aberdare CF44</span>
+<!-- RED BAR -->
+<div class="red-bar"></div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Family Run
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Fully Insured
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Free Quotes
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      No Deposit Until Day One
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Tidy Workmanship
+    </div>
   </div>
 </div>
 
 <!-- SERVICES — horizontal alternating rows -->
 <section class="services-wrap" id="services">
   <div class="section-inner">
-    <div class="s-header reveal">
+    <div class="s-header">
       <span class="s-eyebrow">What We Do</span>
-      <h2 class="s-heading">Four trades. <span>One team.</span> No sub-let.</h2>
-      <p class="s-sub">Re-roofs are most of what fills the diary, but we cover the full spread of domestic roof work. Quote first, never any "extras" mid-job.</p>
+      <h2 class="s-heading">What We <span>Do</span></h2>
+      <p class="s-sub">Re-roofs, repairs, lead work and roofline. Covering the full spread of domestic roofing.</p>
     </div>
 
     <div class="svc-rows">
-      <article class="svc-row reveal">
+      <article class="svc-row">
         <div class="svc-pic"><img src="svc-reroof.jpg" alt="Full re-roof in progress in South Wales"></div>
         <div class="svc-body">
-          <div class="svc-num">01 / Re-roofs</div>
-          <h3>Strip and <span class="red">retile</span></h3>
-          <p>Full re-roofs on terraces, semis and new builds. Strip the lot, new battens and membrane, tile in concrete or natural slate. Most jobs done in a week.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Concrete tile</span>
-            <span class="svc-tag">Natural slate</span>
-            <span class="svc-tag">New build</span>
-            <span class="svc-tag">Scaffolded</span>
-          </div>
+          <div class="svc-num">01</div>
+          <h3>Re-<span class="red">roofs</span></h3>
+          <p>Full strip and retile on terraces, semis and new builds. New battens, breathable membrane, concrete tile or natural slate.</p>
         </div>
       </article>
 
-      <article class="svc-row flip reveal">
+      <article class="svc-row flip">
         <div class="svc-pic"><img src="svc-repairs.jpg" alt="Roof repair in progress, lifting tiles"></div>
         <div class="svc-body">
-          <div class="svc-num">02 / Repairs</div>
-          <h3>Leaks, slips and <span class="red">storm work</span></h3>
-          <p>Slipped tiles, blown ridges, leaks at the chimney. We come up the ladder, find it, fix it. Honest on what's a patch and what needs more.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Same-week call-outs</span>
-            <span class="svc-tag">Storm damage</span>
-            <span class="svc-tag">Insurance work</span>
-          </div>
+          <div class="svc-num">02</div>
+          <h3><span class="red">Repairs</span></h3>
+          <p>Slipped tiles, leaks, blown ridges and storm damage. Same-week call-outs across South Wales.</p>
         </div>
       </article>
 
-      <article class="svc-row reveal">
+      <article class="svc-row">
         <div class="svc-pic"><img src="svc-lead.jpg" alt="Lead flashing and chimney work"></div>
         <div class="svc-body">
-          <div class="svc-num">03 / Lead &amp; flashings</div>
-          <h3>The bits that <span class="red">fail first</span></h3>
-          <p>Chimney flashings, valleys, soakers, parapets. Code 4 and code 5 lead dressed properly. Where most leaks start, where most quotes go wrong.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Code 4 / 5 lead</span>
-            <span class="svc-tag">Chimney rebuilds</span>
-            <span class="svc-tag">Valleys</span>
-          </div>
+          <div class="svc-num">03</div>
+          <h3>Lead &amp; <span class="red">chimneys</span></h3>
+          <p>Lead flashing, valleys, soakers and chimney rebuilds. Code 4 and code 5 lead.</p>
         </div>
       </article>
 
-      <article class="svc-row flip reveal">
+      <article class="svc-row flip">
         <div class="svc-pic"><img src="svc-moss.jpg" alt="Moss removal and roof cleaning"></div>
         <div class="svc-body">
-          <div class="svc-num">04 / Moss &amp; roofline</div>
-          <h3>Moss off, <span class="red">roofline back</span></h3>
-          <p>Moss treatments, gutter clears, fascias, soffits and uPVC roofline. Keeps the slate breathing and the rainwater going where it should.</p>
-          <div class="svc-tags">
-            <span class="svc-tag">Moss treatment</span>
-            <span class="svc-tag">Fascias &amp; soffits</span>
-            <span class="svc-tag">Guttering</span>
-          </div>
+          <div class="svc-num">04</div>
+          <h3>Roofline &amp; <span class="red">moss</span></h3>
+          <p>Fascias, soffits, guttering and moss treatments. Keeps the slate breathing and the water moving.</p>
         </div>
       </article>
     </div>
@@ -836,12 +814,11 @@
 
 <!-- ABOUT -->
 <section class="about-wrap" id="about">
-  <div class="about-wm" aria-hidden="true">PW</div>
-  <div class="about-inner reveal">
+  <div class="about-inner">
     <span class="s-eyebrow">About PW</span>
-    <h2>One name on the <span>quote</span> and the ladder.</h2>
-    <p>PW Roofing is Paul Hunnisett out of Bridgend. Same person who quotes the job is the one up the ladder on day one. We're a small outfit on purpose, so we never run more jobs than we can finish on time.</p>
-    <p>Most of our work comes from neighbours-of-neighbours across the valleys and the M4 corridor. We turn up when we say, we leave the site tidy at the end of every day, and we don't take a deposit until day one of the work.</p>
+    <h2>About <span>PW Roofing</span></h2>
+    <p>PW Roofing is Paul Hunnisett, based in Bridgend. We've been on roofs across South Wales since 2016, working from Cardiff out to Swansea and up through the valleys.</p>
+    <p>Family-run, fully insured, free quotes. No deposit until day one of the work.</p>
     <div class="about-stats">
       <div class="about-stat">
         <div class="n">9+</div>
@@ -862,36 +839,30 @@
 <!-- GALLERY -->
 <section class="gallery-wrap" id="projects">
   <div class="section-inner">
-    <div class="s-header reveal">
+    <div class="s-header">
       <span class="s-eyebrow">Recent Projects</span>
-      <h2 class="s-heading">Roofs we <span>finished</span> this season.</h2>
-      <p class="s-sub">Photos taken on the job. South Wales weather, real houses, real customers.</p>
+      <h2 class="s-heading">Recent <span>Projects</span></h2>
+      <p class="s-sub">A selection of recent roofing work across South Wales.</p>
     </div>
 
-    <div class="gal reveal">
-      <figure class="gal-item g-a" data-cap="Full strip and retile · Bridgend">
-        <span class="gal-num">№01</span>
-        <img src="work-2.jpg" alt="Roofer ridging up a finished black tile roof">
+    <div class="gal">
+      <figure class="gal-item g-a" data-cap="Re-roof · Bridgend">
+        <img src="work-2.jpg" alt="Roofer on a finished black tile roof">
       </figure>
-      <figure class="gal-item g-b" data-cap="New tile + dormer · Pontypridd">
-        <span class="gal-num">№02</span>
-        <img src="work-6.jpg" alt="Finished black tile roof with dormer in South Wales valley">
+      <figure class="gal-item g-b" data-cap="Re-roof · Pontypridd">
+        <img src="work-6.jpg" alt="Finished black tile roof with dormer">
       </figure>
-      <figure class="gal-item g-c" data-cap="Re-roof + scaffold · Maesteg">
-        <span class="gal-num">№03</span>
-        <img src="work-5.jpg" alt="Finished black tile semi-detached with scaffolding still up">
+      <figure class="gal-item g-c" data-cap="Re-roof · Maesteg">
+        <img src="work-5.jpg" alt="Finished black tile semi with scaffolding">
       </figure>
-      <figure class="gal-item g-d" data-cap="Mid-strip · Caerphilly">
-        <span class="gal-num">№04</span>
-        <img src="work-1.jpg" alt="Roof mid-strip with old tiles piled on a scaffold board">
+      <figure class="gal-item g-d" data-cap="Strip · Caerphilly">
+        <img src="work-1.jpg" alt="Roof mid-strip with old tiles piled on scaffold">
       </figure>
-      <figure class="gal-item g-e" data-cap="New battens + sky · Llantrisant">
-        <span class="gal-num">№05</span>
+      <figure class="gal-item g-e" data-cap="New battens · Llantrisant">
         <img src="work-3.jpg" alt="Fresh battens against blue sky on a stripped pitched roof">
       </figure>
-      <figure class="gal-item g-f" data-cap="Handover day · Aberdare">
-        <span class="gal-num">№06</span>
-        <img src="work-4.jpg" alt="Customer collecting their car outside a freshly completed re-roof">
+      <figure class="gal-item g-f" data-cap="Handover · Aberdare">
+        <img src="work-4.jpg" alt="Freshly completed re-roof">
       </figure>
     </div>
   </div>
@@ -900,12 +871,12 @@
 <!-- AREAS -->
 <section class="areas-wrap" id="areas">
   <div class="section-inner">
-    <div class="s-header reveal">
+    <div class="s-header">
       <span class="s-eyebrow">Areas We Cover</span>
-      <h2 class="s-heading">From <span>Cardiff</span> to Swansea.</h2>
-      <p class="s-sub">Bridgend is home. We run the M4 corridor from Cardiff and the Vale of Glamorgan out to Port Talbot, Neath and Swansea, plus the valleys north.</p>
+      <h2 class="s-heading">Areas We <span>Cover</span></h2>
+      <p class="s-sub">Cardiff to Swansea, plus the valleys north of the M4. Free quotes anywhere in South Wales.</p>
     </div>
-    <div class="areas-grid reveal">
+    <div class="areas-grid">
       <a href="#contact">Bridgend <span>CF31–35</span></a>
       <a href="#contact">Cardiff <span>CF10–24</span></a>
       <a href="#contact">Penarth <span>CF64</span></a>
@@ -925,34 +896,34 @@
 <!-- REVIEWS -->
 <section class="reviews-wrap" id="reviews">
   <div class="section-inner">
-    <div class="s-header reveal">
-      <span class="s-eyebrow">Word From Welsh Homes</span>
-      <h2 class="s-heading">What our <span>neighbours</span> say.</h2>
+    <div class="s-header">
+      <span class="s-eyebrow">Reviews</span>
+      <h2 class="s-heading">What Our <span>Customers</span> Say</h2>
     </div>
-    <div class="reviews-grid reveal">
+    <div class="reviews-grid">
       <div class="review">
         <div class="stars">★★★★★</div>
-        <blockquote>"Paul and the lads stripped and re-tiled the whole back roof on our semi in five days. Tidy as anything, no mess in the garden, and the price he quoted was exactly the price we paid. Already recommended them to two neighbours."</blockquote>
+        <blockquote>"Paul re-tiled the back roof on our semi in five days. Tidy, on time, and the quote was the final price. Already recommended to two neighbours."</blockquote>
         <div class="review-author">Owain &amp; Bethan Davies</div>
-        <div class="review-role">Bridgend, CF31</div>
+        <div class="review-role">Homeowners, Bridgend</div>
       </div>
       <div class="review">
         <div class="stars">★★★★★</div>
-        <blockquote>"Had a leak coming down the bedroom wall for two winters. Three other roofers had a look and couldn't sort it. PW were up there within the week, traced it to a blown ridge tile and bad lead, fixed it the same day. Honest about what it was."</blockquote>
+        <blockquote>"Leak in the bedroom for two winters, three other roofers couldn't sort it. PW were up there within the week and had it fixed the same day."</blockquote>
         <div class="review-author">Sian Pritchard</div>
-        <div class="review-role">Pontypridd, CF37</div>
+        <div class="review-role">Homeowner, Pontypridd</div>
       </div>
       <div class="review">
         <div class="stars">★★★★★</div>
-        <blockquote>"New build dormer roof, slate finish. PW did the whole roof package including the lead box gutter behind the dormer. Sharp work, faster than the quote said, no mess for the brickies to deal with. Will use on the next plot."</blockquote>
+        <blockquote>"New build dormer roof. PW did the whole package including the lead. Faster than the quote, tidy work, will use again on the next plot."</blockquote>
         <div class="review-author">Mark Llewellyn</div>
-        <div class="review-role">Penarth builder, CF64</div>
+        <div class="review-role">Builder, Penarth</div>
       </div>
       <div class="review">
         <div class="stars">★★★★★</div>
-        <blockquote>"Moss treatment on the bungalow and a couple of slipped tiles done in one visit. Was lovely to deal with someone who actually returned a call. Five years on, the roof still looks brand new from the road."</blockquote>
+        <blockquote>"Moss treatment and a couple of slipped tiles done in one visit. Five years on, the roof still looks like new from the road."</blockquote>
         <div class="review-author">Gareth Phillips</div>
-        <div class="review-role">Swansea, SA1</div>
+        <div class="review-role">Homeowner, Swansea</div>
       </div>
     </div>
   </div>
@@ -961,13 +932,13 @@
 <!-- CONTACT -->
 <section class="contact-wrap" id="contact">
   <div class="section-inner">
-    <div class="s-header reveal">
+    <div class="s-header">
       <span class="s-eyebrow">Get a Quote</span>
-      <h2 class="s-heading">Send Paul the <span>brief</span>.</h2>
-      <p class="s-sub">Rough idea of the job, where you are, and a photo if you've got one. We get back the same day, usually within the hour.</p>
+      <h2 class="s-heading">Get In <span>Touch</span></h2>
+      <p class="s-sub">Free, no-obligation quote. We get back the same day.</p>
     </div>
 
-    <div class="contact-grid reveal">
+    <div class="contact-grid">
       <div class="ci">
         <a id="cardCall" href="#" class="ci-card">
           <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
@@ -975,21 +946,21 @@
         </a>
         <a id="cardWa" href="#" target="_blank" rel="noopener" class="ci-card">
           <div class="ci-ico" style="color:#25d366;background:rgba(37,211,102,0.15)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></div>
-          <div><div class="lbl">WhatsApp · fastest</div><div class="val">Send a photo &amp; postcode</div></div>
+          <div><div class="lbl">WhatsApp</div><div class="val">Message Us</div></div>
         </a>
         <div class="ci-card">
           <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><div class="lbl">Patch</div><div class="val">Bridgend · South Wales</div></div>
+          <div><div class="lbl">Based In</div><div class="val">Bridgend, South Wales</div></div>
         </div>
         <div class="ci-card">
           <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-          <div><div class="lbl">Hours</div><div class="val">Mon–Sat · 7am – 7pm</div></div>
+          <div><div class="lbl">Hours</div><div class="val">Mon to Sat, 7am to 7pm</div></div>
         </div>
       </div>
 
       <form class="form-card" action="/api/enquiry" method="POST" novalidate>
-        <h3>Tell us about the roof</h3>
-        <div class="sub">Roughly what's the job, where, and when you'd like it sorted.</div>
+        <h3>Send Us a Message</h3>
+        <div class="sub">We'll get back to you the same day.</div>
 
         <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_timestamp" id="formTimestamp">
@@ -1040,10 +1011,10 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="message">Brief</label>
-          <textarea id="message" name="message" placeholder="Roughly what's the job and any timing you've got in mind."></textarea>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell us about the roof."></textarea>
         </div>
-        <button type="submit" class="btn btn-red">Send to Paul</button>
+        <button type="submit" class="btn btn-red">Send Message</button>
       </form>
     </div>
   </div>
@@ -1064,7 +1035,7 @@
         <div class="mark">PW</div>
         <div class="name">PW Roofing</div>
       </div>
-      <p class="foot-about">Family-run roofers based in Bridgend, covering the M4 corridor from Cardiff out to Swansea and the valleys north. Re-roofs, repairs, lead and flashings, moss treatments, fascias and guttering. Quote first, no surprises.</p>
+      <p class="foot-about">Family-run roofers based in Bridgend. Covering Cardiff to Swansea. Re-roofs, repairs, lead work, fascias and guttering. Fully insured. Free quotes.</p>
     </div>
     <div>
       <h4>Services</h4>
