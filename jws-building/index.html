@@ -111,6 +111,9 @@
     .hero-grid{grid-template-columns:1fr;gap:40px}
     .hero-media{aspect-ratio:16/11;max-height:520px}
   }
+  @media(max-width:720px){
+    .hero-sticker{display:none}
+  }
   @media(max-width:560px){
     .hero-actions .btn-primary,.hero-actions .btn-ghost{flex:1;justify-content:center}
   }
@@ -196,9 +199,26 @@
   .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;background:#fff;border-radius:50%;z-index:7;display:grid;place-items:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.4);cursor:ew-resize;touch-action:none}
   .ba-knob svg{width:22px;height:22px;color:var(--ink)}
   .ba-knob:hover{transform:translate(-50%,-50%) scale(1.05)}
-  .ba-tip{text-align:center;margin-top:18px;font-size:13px;color:var(--ink-3);font-family:var(--body);font-weight:500}
-  .ba-tip::before{content:'\\2190 ';font-family:'Manrope';color:var(--green)}
-  .ba-tip::after{content:' \\2192';font-family:'Manrope';color:var(--green)}
+  .ba-tip{text-align:center;margin-top:18px;font-size:13px;color:var(--ink-3);font-family:var(--body);font-weight:500;display:inline-flex;align-items:center;gap:10px;justify-content:center;width:100%}
+  .ba-tip svg{width:14px;height:14px;color:var(--green)}
+
+  .ba-bg-text{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(80px,15vw,220px);
+    line-height:.85;
+    letter-spacing:-.05em;
+    color:transparent;
+    -webkit-text-stroke:1.5px rgba(93,168,43,.22);
+    text-align:center;
+    margin:0 0 -.18em 0;
+    user-select:none;
+    pointer-events:none;
+    text-transform:uppercase;
+  }
+  @media(max-width:720px){
+    .ba-bg-text{-webkit-text-stroke-width:1px}
+  }
 
   /* ============ CONTACT ============ */
   .contact{background:var(--bg);padding:120px 0}
@@ -317,7 +337,7 @@
     <div class="hero-grid">
       <div class="reveal">
         <div class="hero-chip">Family-run · Established builders</div>
-        <h1 class="hero-title">Built brick by brick. <span class="accent">Finished tidy.</span></h1>
+        <h1 class="hero-title">Built brick by brick. <span class="accent">Every trade in-house.</span></h1>
         <p class="hero-lead">JWS Building Services handles the whole job, from groundworks and extensions through to stone masonry, joinery and the patio that goes on top. One outfit, every trade in-house.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">
@@ -438,8 +458,35 @@
   </div>
 </section>
 
+<!-- BEFORE / AFTER -->
+<section class="ba-section" id="beforeafter">
+  <div class="ba-wrap">
+    <div class="ba-bg-text" aria-hidden="true">Before &amp; After</div>
+    <div class="ba-head reveal">
+      <div class="ba-chip">Same patch, six weeks apart</div>
+      <h2>Drag to see the <span class="accent">change.</span></h2>
+      <p>One garden, photographed front to back. Drag the handle across the photo to see the same patch before we started and after we finished.</p>
+    </div>
+    <div class="ba-frame" id="baFrame">
+      <img class="ba-after" src="after-garden.jpg" alt="Garden after JWS Building Services: grey porcelain patio with a fresh lawn strip and new fencing">
+      <img class="ba-before" src="before-garden.jpg" alt="Garden before JWS Building Services: bare earth, broken slabs, debris">
+      <div class="ba-label before-lbl">Before</div>
+      <div class="ba-label after-lbl">After</div>
+      <div class="ba-handle" id="baHandle"></div>
+      <div class="ba-knob" id="baKnob" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Drag to compare before and after" tabindex="0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
+      </div>
+    </div>
+    <div class="ba-tip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="15 6 9 12 15 18"/></svg>
+      Drag the handle to compare
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="9 6 15 12 9 18"/></svg>
+    </div>
+  </div>
+</section>
+
 <!-- GALLERY -->
-<section class="section" id="gallery" style="background:var(--bg-soft);padding-top:96px;padding-bottom:96px">
+<section class="section" id="gallery" style="padding-top:96px;padding-bottom:96px">
   <div class="wrap">
     <div class="sec-top">
       <h2 class="sec-title">Recent jobs, <span class="accent">across the patch.</span></h2>
@@ -456,28 +503,6 @@
       <div class="gi gi-7"><img src="work-7.jpg" alt="Compact white cloakroom with marble-effect tiles, basin and toilet"><span class="gi-tag">Cloakroom fit-out</span></div>
       <div class="gi gi-8"><img src="work-8.jpg" alt="New closeboard timber fence with concrete posts running down a side garden"><span class="gi-tag">Closeboard fencing</span></div>
     </div>
-  </div>
-</section>
-
-<!-- BEFORE / AFTER -->
-<section class="ba-section" id="beforeafter">
-  <div class="ba-wrap">
-    <div class="ba-head reveal">
-      <div class="ba-chip">Before &amp; after</div>
-      <h2>Drag to see the <span class="accent">change.</span></h2>
-      <p>One garden, photographed front to back. Drag the handle across the photo to see the same patch before we started and after we finished.</p>
-    </div>
-    <div class="ba-frame" id="baFrame">
-      <img class="ba-after" src="after-garden.jpg" alt="Garden after JWS Building Services: grey porcelain patio with a fresh lawn strip and new fencing">
-      <img class="ba-before" src="before-garden.jpg" alt="Garden before JWS Building Services: bare earth, broken slabs, debris">
-      <div class="ba-label before-lbl">Before</div>
-      <div class="ba-label after-lbl">After</div>
-      <div class="ba-handle" id="baHandle"></div>
-      <div class="ba-knob" id="baKnob" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Drag to compare before and after" tabindex="0">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg>
-      </div>
-    </div>
-    <div class="ba-tip">Drag the handle to compare</div>
   </div>
 </section>
 
