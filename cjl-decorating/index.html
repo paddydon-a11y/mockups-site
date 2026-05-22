@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C.J.L Decorating — Painter &amp; Decorator in March, Cambridgeshire</title>
+<meta name="description" content="Callum Littlewood, 12 years of painter &amp; decorator experience across March, Wisbech, Ely &amp; Cambridgeshire. Interior, exterior, feature walls, woodwork. Fully insured. Free no-obligation quotes. Call 07539 906588.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0b0b0c;
+  --ink-2: #1a1a1c;
+  --ink-3: #2a2a2d;
+  --white: #ffffff;
+  --bone: #f5f3ef;
+  --grey-1: #e7e5e1;
+  --grey-2: #b8b6b1;
+  --grey-3: #6b6a67;
+  --orange: #ff6a13;
+  --orange-deep: #e75810;
+  --green: #20bd5a;
+  --whatsapp: #25D366;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+button { font: inherit; }
+
+.display {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: #ffffff;
+  border-bottom: 1px solid var(--grey-1);
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  height: 76px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 44px; width: auto; }
+.nav-logo-text {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1rem; color: var(--ink); letter-spacing: 0.04em;
+  line-height: 1;
+}
+.nav-logo-text small {
+  display: block; font-family: 'Inter', sans-serif; font-weight: 600;
+  font-size: 0.65rem; color: var(--orange); letter-spacing: 0.18em;
+  margin-top: 4px; text-transform: uppercase;
+}
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 0.88rem; font-weight: 600; color: var(--ink-3); transition: color 0.2s; }
+.nav-links a:hover { color: var(--orange); }
+.nav-cta-btn {
+  background: var(--ink) !important; color: var(--white) !important;
+  padding: 12px 22px; border-radius: 0;
+  font-weight: 700 !important; font-size: 0.82rem !important;
+  letter-spacing: 0.02em;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s !important;
+}
+.nav-cta-btn::after {
+  content: ''; width: 8px; height: 8px; background: var(--orange);
+  display: inline-block; transition: transform 0.2s;
+}
+.nav-cta-btn:hover { background: var(--orange) !important; }
+.nav-cta-btn:hover::after { background: var(--white); transform: rotate(45deg); }
+.nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-mobile svg { stroke: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  padding: 140px 0 0;
+  background: var(--ink);
+  color: var(--white);
+  overflow: hidden;
+}
+.hero-grid {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 60px;
+  align-items: end;
+  min-height: calc(92vh - 140px);
+  padding-bottom: 64px;
+}
+.hero-text { position: relative; z-index: 2; padding-bottom: 16px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--orange);
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 2px; background: var(--orange);
+}
+.hero-text h1 {
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  margin-bottom: 28px;
+}
+.hero-text h1 .swatch {
+  display: inline-block; color: var(--orange);
+}
+.hero-sub {
+  font-size: 1.05rem; line-height: 1.7; max-width: 480px;
+  color: rgba(255,255,255,0.7); margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 32px;
+  font-weight: 700; font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  border: 2px solid transparent;
+  cursor: pointer; transition: all 0.2s;
+  text-transform: uppercase;
+}
+.btn-primary { background: var(--orange); color: var(--white); }
+.btn-primary:hover { background: var(--orange-deep); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.25); }
+.btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+.btn-dark { background: var(--ink); color: var(--white); }
+.btn-dark:hover { background: var(--orange); }
+.btn-arrow { width: 10px; height: 10px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); margin-left: 4px; }
+
+.hero-visual {
+  position: relative;
+  height: 100%;
+  display: flex; align-items: flex-end; justify-content: flex-end;
+}
+.hero-photo {
+  position: relative; width: 100%; max-width: 540px;
+  aspect-ratio: 4/5;
+  background: var(--ink-2);
+  overflow: hidden;
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-strip {
+  position: absolute; left: -32px; bottom: 64px;
+  background: var(--orange); color: var(--ink);
+  padding: 14px 22px;
+  font-family: 'Archivo Black', sans-serif;
+  letter-spacing: 0.04em; font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.hero-stats {
+  position: relative; z-index: 3;
+  background: var(--ink-2);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.hero-stat {
+  padding: 32px 40px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  color: var(--white);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat .num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+.hero-stat .lbl {
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 120px 32px;
+  background: var(--white);
+}
+.services-inner { max-width: 1280px; margin: 0 auto; }
+.section-head {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px;
+  margin-bottom: 72px;
+  align-items: end;
+}
+.section-eyebrow {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--orange);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+.section-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--orange); }
+.section-head h2 {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+.section-head p {
+  font-size: 1.05rem; line-height: 1.7; color: var(--grey-3);
+  max-width: 440px;
+}
+
+.service-list { border-top: 1px solid var(--ink); }
+.service-row {
+  display: grid; grid-template-columns: 100px 1fr 1.5fr auto;
+  align-items: center; gap: 40px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--grey-1);
+  transition: background 0.25s ease, padding 0.25s ease;
+  cursor: pointer;
+  position: relative;
+}
+.service-row::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 0; background: var(--orange); transition: width 0.25s ease;
+}
+.service-row:hover { padding-left: 24px; background: var(--bone); }
+.service-row:hover::before { width: 4px; }
+.service-num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.6rem; color: var(--orange);
+  letter-spacing: 0.02em;
+}
+.service-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  letter-spacing: -0.01em; text-transform: uppercase;
+  color: var(--ink);
+}
+.service-desc {
+  font-size: 0.92rem; color: var(--grey-3); line-height: 1.6;
+}
+.service-arrow {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.service-arrow::after {
+  content: ''; width: 8px; height: 8px;
+  border-top: 2px solid var(--ink); border-right: 2px solid var(--ink);
+  transform: rotate(45deg); margin-left: -2px;
+}
+.service-row:hover .service-arrow { background: var(--ink); }
+.service-row:hover .service-arrow::after { border-color: var(--white); }
+
+/* ── GALLERY ── */
+.gallery {
+  padding: 120px 32px;
+  background: var(--ink);
+  color: var(--white);
+}
+.gallery-inner { max-width: 1280px; margin: 0 auto; }
+.gallery .section-head h2 { color: var(--white); }
+.gallery .section-head p { color: rgba(255,255,255,0.6); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 130px;
+  gap: 16px;
+}
+.gallery-card {
+  position: relative; overflow: hidden;
+  cursor: pointer; background: var(--ink-2);
+}
+.gallery-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s ease, filter 0.5s ease;
+  filter: saturate(1.05);
+}
+.gallery-card:hover img { transform: scale(1.06); filter: saturate(1.2); }
+.gallery-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(11,11,12,0.55), transparent 50%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.gallery-card:hover::after { opacity: 1; }
+
+.gallery-card:nth-child(1) { grid-column: span 7; grid-row: span 3; }
+.gallery-card:nth-child(2) { grid-column: span 5; grid-row: span 2; }
+.gallery-card:nth-child(3) { grid-column: span 5; grid-row: span 2; }
+.gallery-card:nth-child(4) { grid-column: span 5; grid-row: span 2; }
+.gallery-card:nth-child(5) { grid-column: span 7; grid-row: span 2; }
+.gallery-card:nth-child(6) { grid-column: span 4; grid-row: span 2; }
+.gallery-card:nth-child(7) { grid-column: span 4; grid-row: span 2; }
+.gallery-card:nth-child(8) { grid-column: span 4; grid-row: span 2; }
+.gallery-card:nth-child(9) { grid-column: span 12; grid-row: span 2; }
+
+/* ── ABOUT ── */
+.about {
+  padding: 120px 32px;
+  background: var(--bone);
+}
+.about-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px;
+  align-items: center;
+}
+.about-visual { position: relative; }
+.about-photo {
+  aspect-ratio: 4/5; overflow: hidden;
+  background: var(--ink-2);
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-tag {
+  position: absolute; top: 24px; left: -16px;
+  background: var(--orange); color: var(--white);
+  padding: 10px 18px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.about-content h2 { margin-bottom: 24px; }
+.about-content p {
+  font-size: 1rem; line-height: 1.75; color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.about-quote {
+  margin-top: 28px; padding: 24px 28px;
+  background: var(--white);
+  border-left: 4px solid var(--orange);
+  font-size: 1.05rem; font-weight: 500;
+  color: var(--ink);
+}
+.about-quote span {
+  display: block; margin-top: 12px;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--grey-3);
+}
+.about-features {
+  margin-top: 32px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.about-feature {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.92rem; font-weight: 600;
+}
+.about-feature .dot {
+  width: 10px; height: 10px; background: var(--orange);
+  flex-shrink: 0;
+}
+
+/* ── AREAS ── */
+.areas {
+  padding: 100px 32px;
+  background: var(--white);
+}
+.areas-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
+.areas .section-eyebrow { justify-content: center; }
+.areas h2 { margin-bottom: 36px; }
+.areas-grid {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+  max-width: 880px; margin: 0 auto;
+}
+.area-pill {
+  padding: 12px 22px;
+  border: 2px solid var(--ink);
+  font-size: 0.92rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink); background: var(--white);
+  transition: all 0.2s;
+}
+.area-pill:hover { background: var(--ink); color: var(--white); }
+
+/* ── CTA ── */
+.cta {
+  padding: 120px 32px;
+  background: var(--ink);
+  color: var(--white);
+  position: relative; overflow: hidden;
+}
+.cta::before {
+  content: 'C.J.L'; position: absolute; right: -40px; bottom: -60px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(8rem, 18vw, 16rem);
+  color: rgba(255,106,19,0.06);
+  letter-spacing: -0.02em; pointer-events: none;
+}
+.cta-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+.cta h2 {
+  font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+  margin-bottom: 28px;
+  color: var(--white);
+}
+.cta h2 .swatch { color: var(--orange); }
+.cta p {
+  font-size: 1.1rem; line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+.cta-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.btn-whatsapp { background: var(--whatsapp); color: var(--white); }
+.btn-whatsapp:hover { background: var(--green); transform: translateY(-2px); }
+.cta-phone {
+  display: inline-block; margin-top: 32px;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: var(--orange); letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.cta-phone:hover { color: var(--white); }
+
+/* ── FOOTER ── */
+.footer {
+  padding: 64px 32px 28px;
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.footer-brand img { height: 40px; width: auto; background: var(--white); padding: 4px; }
+.footer-brand-name { font-family: 'Archivo Black', sans-serif; font-size: 1rem; color: var(--white); letter-spacing: 0.04em; }
+.footer-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 320px; }
+.footer-heading {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 18px;
+}
+.footer-links a {
+  display: block; font-size: 0.88rem; color: rgba(255,255,255,0.6);
+  padding: 5px 0; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: 1280px; margin: 56px auto 0; padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+.footer-copy a { color: var(--orange); }
+
+/* ── FLOATING CTAs ── */
+.floating-ctas {
+  position: fixed; bottom: 24px; right: 24px; z-index: 800;
+  display: flex; flex-direction: column; gap: 12px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.floating-ctas.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.float-btn {
+  width: 54px; height: 54px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.float-btn:hover { transform: scale(1.1); }
+.float-btn-call { background: var(--orange); box-shadow: 0 6px 20px rgba(255,106,19,0.45); }
+.float-btn-call svg { stroke: white; fill: none; }
+.float-btn-whatsapp { background: var(--whatsapp); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+.float-btn-whatsapp svg { fill: white; }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: var(--ink);
+  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.6rem; color: var(--white);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.mobile-menu a:hover { color: var(--orange); }
+.mobile-menu .phone { color: var(--orange); }
+.mobile-close { position: absolute; top: 22px; right: 24px; background: none; border: none; cursor: pointer; padding: 10px; }
+.mobile-close svg { stroke: var(--white); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero { min-height: auto; padding-bottom: 0; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; min-height: auto; padding-bottom: 32px; }
+  .hero-visual { justify-content: center; }
+  .hero-photo { max-width: 100%; aspect-ratio: 5/4; }
+  .hero-strip { left: 16px; bottom: 16px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-stat { padding: 26px 28px; }
+  .hero-stat:nth-child(1), .hero-stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero-stat:nth-child(2) { border-right: none; }
+  .section-head { grid-template-columns: 1fr; gap: 24px; }
+  .service-row { grid-template-columns: 60px 1fr auto; gap: 24px; }
+  .service-desc { display: none; }
+  .about-inner { grid-template-columns: 1fr; gap: 56px; }
+  .gallery-grid { grid-auto-rows: 120px; }
+  .gallery-card:nth-child(1) { grid-column: span 12; grid-row: span 2; }
+  .gallery-card:nth-child(2),
+  .gallery-card:nth-child(3),
+  .gallery-card:nth-child(4),
+  .gallery-card:nth-child(5),
+  .gallery-card:nth-child(6),
+  .gallery-card:nth-child(7),
+  .gallery-card:nth-child(8) { grid-column: span 6; grid-row: span 2; }
+  .gallery-card:nth-child(9) { grid-column: span 12; grid-row: span 2; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-inner { padding: 0 20px; height: 64px; }
+  .nav-logo img { height: 38px; }
+  .nav-logo-text { font-size: 0.88rem; }
+  .nav-logo-text small { font-size: 0.58rem; }
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .hero { padding-top: 110px; }
+  .hero-grid { padding: 0 20px 28px; }
+  .hero-text h1 { font-size: clamp(2.6rem, 11vw, 4rem); }
+  .hero-strip { font-size: 0.7rem; padding: 10px 16px; left: 12px; bottom: 12px; }
+  .services, .gallery, .about, .areas { padding: 80px 20px; }
+  .cta { padding: 80px 20px; }
+  .service-row { grid-template-columns: 50px 1fr 36px; gap: 16px; padding: 22px 0; }
+  .service-row:hover { padding-left: 12px; }
+  .service-num { font-size: 1.2rem; }
+  .service-title { font-size: 1.05rem; }
+  .service-arrow { width: 36px; height: 36px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .about-features { grid-template-columns: 1fr; }
+  .gallery-grid { grid-auto-rows: 160px; gap: 10px; }
+  .gallery-card:nth-child(1),
+  .gallery-card:nth-child(9) { grid-column: span 12; grid-row: span 2; }
+  .gallery-card:not(:first-child):not(:nth-child(9)) { grid-column: span 6; grid-row: span 1; }
+  .areas-grid { gap: 8px; }
+  .area-pill { padding: 9px 16px; font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+  .hero-actions { width: 100%; flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; width: 100%; }
+  .cta-actions { width: 100%; flex-direction: column; align-items: stretch; }
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-stat { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero-stat:last-child { border-bottom: none; }
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="C.J.L Decorating logo">
+      <div class="nav-logo-text">C.J.L DECORATING<small>March, Cambridgeshire</small></div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a href="tel:07539906588" class="nav-cta-btn">07539 906588</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')" aria-label="Close">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('open')">Work</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+  <a href="#areas" onclick="document.getElementById('mobileMenu').classList.remove('open')">Areas</a>
+  <a href="tel:07539906588" class="phone" onclick="document.getElementById('mobileMenu').classList.remove('open')">07539 906588</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Painter &amp; Decorator</div>
+      <h1 class="display">A <span class="swatch">perfect</span> finish, every time.</h1>
+      <p class="hero-sub">Callum Littlewood. Twelve years of paint, prep and patience across March, Wisbech, Ely &amp; the wider Cambridgeshire fens. Interiors, exteriors, feature walls and woodwork done with a careful hand.</p>
+      <div class="hero-actions">
+        <a href="tel:07539906588" class="btn btn-primary">Get a Free Quote<span class="btn-arrow"></span></a>
+        <a href="#gallery" class="btn btn-ghost">See the Work</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <img src="work-1.jpg" alt="Beautifully decorated staircase by C.J.L Decorating">
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">12</div>
+      <div class="lbl">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">100%</div>
+      <div class="lbl">Recommended</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">6&nbsp;★</div>
+      <div class="lbl">Five-Star Reviews</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">Free</div>
+      <div class="lbl">No-Obligation Quotes</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">What we do</div>
+        <h2 class="display">Painting, decorating &amp; <span style="color:var(--orange)">finish work</span>.</h2>
+      </div>
+      <p class="reveal">From a single feature wall to a whole-house repaint, every job starts with proper prep and ends with a finish you can actually show off. Honest pricing, clean sites, no rush jobs.</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row reveal">
+        <div class="service-num">01</div>
+        <div class="service-title">Interior Painting &amp; Decorating</div>
+        <div class="service-desc">Walls, ceilings, hallways and whole-room repaints. Sharp cutting-in, even coverage, no drips on your skirtings.</div>
+        <div class="service-arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="service-num">02</div>
+        <div class="service-title">Exterior House Painting</div>
+        <div class="service-desc">Masonry, render, doors and fascia boards weatherproofed and finished cleanly. Long-life paints, careful prep.</div>
+        <div class="service-arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="service-num">03</div>
+        <div class="service-title">Feature Walls &amp; Accent Colours</div>
+        <div class="service-desc">Bold burgundy, dark moody chimney breasts, dusky pinks. The wall that makes the room.</div>
+        <div class="service-arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="service-num">04</div>
+        <div class="service-title">Woodwork &amp; Staircases</div>
+        <div class="service-desc">Banisters, spindles, skirting, doors and panelling brought back to a glassy, even finish.</div>
+        <div class="service-arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="service-num">05</div>
+        <div class="service-title">New Build Snagging &amp; First Decoration</div>
+        <div class="service-desc">Moving into a new home? We sort the developer paintwork, hairline cracks and tired touch-ups.</div>
+        <div class="service-arrow"></div>
+      </div>
+      <div class="service-row reveal">
+        <div class="service-num">06</div>
+        <div class="service-title">Wallpapering &amp; Finishes</div>
+        <div class="service-desc">Patterned papers, plain papers, feature panels. Hung straight, seams tight, lifted edges fixed.</div>
+        <div class="service-arrow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Recent work</div>
+        <h2 class="display">Finishes worth <span style="color:var(--orange)">looking at</span>.</h2>
+      </div>
+      <p class="reveal">A few projects from around March, Wisbech and the Cambridgeshire fens. Fresh paintwork, feature colours, staircases and tidy snagging on new builds.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card reveal"><img src="work-2.jpg" alt="Deep burgundy feature wall around French doors" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-3.jpg" alt="Dark feature chimney breast in a bedroom" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-4.jpg" alt="Freshly painted white bedroom in a new build" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-5.jpg" alt="Empty room with crisp white paintwork" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-8.jpg" alt="Open plan room with red accent in the distance" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-6.jpg" alt="Staircase with freshly painted white spindles" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-7.jpg" alt="Living room mid-paint with clean white walls" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-9.jpg" alt="Room with subtle red accent wall" loading="lazy"></div>
+      <div class="gallery-card reveal"><img src="work-1.jpg" alt="Finished staircase with warm taupe walls and white panelling" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual reveal">
+      <div class="about-photo">
+        <img src="work-2.jpg" alt="Feature wall painted in deep burgundy">
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-eyebrow">About C.J.L</div>
+      <h2 class="display">A painter with a <span style="color:var(--orange)">professional touch</span>.</h2>
+      <p>C.J.L Decorating is run by Callum Littlewood, a Cambridgeshire painter &amp; decorator with twelve years on the brush. Based out of March, covering Wisbech, Ely, Chatteris, Whittlesey and surrounding fenland villages.</p>
+      <p>Every job starts the same way: dust sheets down, surfaces prepped, edges cut in sharp, and walls finished with two clean coats. No splatter, no rushed touch-ups, no walking off mid-job.</p>
+      <div class="about-quote">
+        100% recommend C.J.L for any decorating job. Tidy, on time, and the finish speaks for itself.
+        <span>Average from 6 customer reviews</span>
+      </div>
+      <div class="about-features">
+        <div class="about-feature"><span class="dot"></span>Fully Insured</div>
+        <div class="about-feature"><span class="dot"></span>Free Quotes</div>
+        <div class="about-feature"><span class="dot"></span>12 Years Experience</div>
+        <div class="about-feature"><span class="dot"></span>Tidy &amp; On Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="areas-inner">
+    <div class="section-eyebrow">Where we work</div>
+    <h2 class="display reveal">Covering March &amp; the <span style="color:var(--orange)">Cambridgeshire fens</span>.</h2>
+    <div class="areas-grid">
+      <span class="area-pill reveal">March</span>
+      <span class="area-pill reveal">Wisbech</span>
+      <span class="area-pill reveal">Whittlesey</span>
+      <span class="area-pill reveal">Chatteris</span>
+      <span class="area-pill reveal">Ely</span>
+      <span class="area-pill reveal">Soham</span>
+      <span class="area-pill reveal">Peterborough</span>
+      <span class="area-pill reveal">Huntingdon</span>
+      <span class="area-pill reveal">St Ives</span>
+      <span class="area-pill reveal">St Neots</span>
+      <span class="area-pill reveal">Cambridge</span>
+      <span class="area-pill reveal">Fenland</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner">
+    <div class="section-eyebrow">Get in touch</div>
+    <h2 class="display">Got a wall, a room, a whole house? <span class="swatch">Let&rsquo;s talk.</span></h2>
+    <p>Free, no-obligation quotes across March and the wider Cambridgeshire area. Drop a message, give us a ring or send a few photos and we will come back with a fair, honest price.</p>
+    <div class="cta-actions">
+      <a href="tel:07539906588" class="btn btn-primary">Call Callum<span class="btn-arrow"></span></a>
+      <a href="https://wa.me/447539906588?text=Hi%20Callum%2C%20can%20I%20get%20a%20quote%20please" target="_blank" rel="noopener" class="btn btn-whatsapp">
+        WhatsApp
+      </a>
+      <a href="mailto:c.j.ldecorating@icloud.com" class="btn btn-ghost">Email</a>
+    </div>
+    <a href="tel:07539906588" class="cta-phone">07539 906588</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="logo.png" alt="C.J.L Decorating logo">
+        <span class="footer-brand-name">C.J.L DECORATING</span>
+      </div>
+      <p class="footer-desc">Painter &amp; decorator based in March, Cambridgeshire. Interiors, exteriors, feature walls and woodwork finished cleanly. Fully insured. Run by Callum Littlewood.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <div class="footer-links">
+        <a href="#services">Interior Painting</a>
+        <a href="#services">Exterior Painting</a>
+        <a href="#services">Feature Walls</a>
+        <a href="#services">Woodwork</a>
+        <a href="#services">New Build Snagging</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Areas</div>
+      <div class="footer-links">
+        <a href="#areas">March</a>
+        <a href="#areas">Wisbech</a>
+        <a href="#areas">Ely</a>
+        <a href="#areas">Chatteris</a>
+        <a href="#areas">Cambridge</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <div class="footer-links">
+        <a href="tel:07539906588">07539 906588</a>
+        <a href="mailto:c.j.ldecorating@icloud.com">c.j.ldecorating@icloud.com</a>
+        <a>22 Elwyn Court</a>
+        <a>March, Cambridgeshire</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 C.J.L Decorating. All rights reserved.</span>
+    <span class="footer-copy">Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="floating-ctas" id="floatingCtas">
+  <a href="tel:07539906588" class="float-btn float-btn-call" aria-label="Call">
+    <svg width="22" height="22" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447539906588?text=Hi%20Callum%2C%20can%20I%20get%20a%20quote%20please" target="_blank" rel="noopener" class="float-btn float-btn-whatsapp" aria-label="WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+  </a>
+</div>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 50);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+const floatingCtas = document.getElementById('floatingCtas');
+const hero = document.getElementById('hero');
+const heroObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    floatingCtas.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.05 });
+heroObs.observe(hero);
+</script>
+</body>
+</html>
