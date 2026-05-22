@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A&amp;A Tree Care &amp; Landscaping · London &amp; Home Counties</title>
+<meta name="description" content="Tree surgery, paving, turfing, fencing and full garden landscaping across London and the home counties. From a small garden to a country estate. Free consultation.">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ tokens ============ */
+  :root{
+    --bg:#0e2419;
+    --bg-deep:#091a11;
+    --card:#16322a;
+    --card-hover:#1d4035;
+    --border:#2a5446;
+    --border-light:#3c6957;
+    --accent:#c8e656;          /* lime/chartreuse from leaflet */
+    --accent-bright:#d9f072;
+    --accent-hover:#a8c63a;
+    --accent-glow:rgba(200,230,86,0.18);
+    --moss:#8db94a;            /* secondary green from leaflet */
+    --heading:#ffffff;
+    --body:#d6dccc;
+    --muted:#8fa094;
+    --whatsapp:#25d366;
+    --display:'Plus Jakarta Sans',-apple-system,sans-serif;
+    --sans:'Inter',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  em{font-style:normal}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--body);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  /* ============ A&A monogram watermark ============ */
+  .monogram-bg{
+    position:fixed;inset:0;
+    pointer-events:none;z-index:0;
+    opacity:0.04;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><g fill='none' stroke='%23c8e656' stroke-width='2.4'><path d='M40 175 L70 90 L100 175 M52 145 L88 145'/><path d='M140 175 L170 90 L200 175 M152 145 L188 145'/><text x='120' y='200' font-family='Plus Jakarta Sans' font-size='16' font-weight='800' fill='%23c8e656' text-anchor='middle' stroke='none' letter-spacing='3'>A &amp; A</text></g></svg>");
+    background-size:240px 240px;
+  }
+
+  /* ============ nav ============ */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1240px;margin:0 auto;padding:18px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .nav-logo{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--display);font-weight:800;font-size:1.05rem;
+    color:var(--heading);letter-spacing:-0.01em;white-space:nowrap;
+  }
+  .nav-logo-mark{
+    width:42px;height:42px;border-radius:10px;
+    background:var(--accent);color:var(--bg);
+    display:grid;place-items:center;
+    font-family:var(--display);font-weight:900;font-size:0.95rem;
+    letter-spacing:-0.04em;
+  }
+  .nav-logo-text small{
+    display:block;font-family:var(--mono);font-weight:500;font-size:0.62rem;
+    text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);
+    margin-top:2px;
+  }
+  .nav-links{display:flex;align-items:center;gap:28px}
+  .nav-links a{
+    font-size:0.92rem;color:var(--body);
+    transition:color .2s ease;font-weight:500;
+  }
+  .nav-links a:hover{color:var(--accent)}
+  .nav-links a.nav-cta{
+    background:var(--accent);color:#000 !important;
+    padding:11px 20px;border-radius:999px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .nav-links a.nav-cta span{white-space:nowrap}
+  .nav-links a.nav-cta:hover{background:var(--accent-bright);transform:translateY(-1px)}
+  .nav-links a.nav-cta svg{stroke:#000;width:18px;height:18px;flex-shrink:0}
+  .nav-toggle{
+    display:none;background:transparent;border:1px solid var(--border-light);
+    color:var(--heading);width:44px;height:44px;border-radius:10px;
+    cursor:pointer;align-items:center;justify-content:center;
+  }
+  .nav-toggle svg{width:22px;height:22px;stroke:var(--heading);fill:none;stroke-width:2}
+  .nav-panel{display:none}
+
+  /* ============ hero (H1) ============ */
+  .hero{
+    position:relative;
+    display:flex;flex-direction:column;
+    min-height:calc(100vh - 78px);
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background:url(hero.jpg) center/cover no-repeat;
+    animation:kenburns 22s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns{
+    from{transform:scale(1)}
+    to{transform:scale(1.08)}
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(9,26,17,0.45) 0%,rgba(9,26,17,0.65) 55%,rgba(14,36,25,0.96) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    max-width:1240px;width:100%;margin:auto auto 0 auto;padding:140px 28px 80px;
+    display:grid;grid-template-columns:1.2fr 0.9fr;gap:60px;align-items:end;
+  }
+  .hero-text{max-width:680px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-weight:500;font-size:0.72rem;
+    text-transform:uppercase;letter-spacing:0.26em;color:var(--accent);
+    margin-bottom:24px;
+  }
+  .eyebrow .pulse{
+    width:8px;height:8px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 0 var(--accent-glow);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 var(--accent-glow)}
+    50%{box-shadow:0 0 0 10px transparent}
+  }
+  .hero h1{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(2.6rem,6.2vw,5.2rem);
+    line-height:1.02;letter-spacing:-0.035em;color:var(--heading);
+    margin-bottom:24px;
+  }
+  .hero h1 .accent{color:var(--accent);font-weight:900}
+  .hero .lede{
+    font-size:clamp(1.05rem,1.4vw,1.2rem);
+    color:#e9ede0;max-width:560px;margin-bottom:36px;line-height:1.55;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 26px;border-radius:999px;
+    font-family:var(--display);font-weight:700;font-size:0.98rem;
+    letter-spacing:-0.005em;
+    transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--accent);color:#000}
+  .btn-primary:hover{background:var(--accent-bright);transform:translateY(-2px);box-shadow:0 10px 30px var(--accent-glow)}
+  .btn-whatsapp{background:var(--whatsapp);color:#fff}
+  .btn-whatsapp:hover{background:#1eb957;transform:translateY(-2px)}
+  .btn svg{width:18px;height:18px}
+
+  .hero-badge{
+    background:rgba(14,36,25,0.85);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--border-light);
+    border-radius:18px;padding:24px 26px;
+    align-self:end;
+    display:flex;flex-direction:column;gap:14px;
+    max-width:340px;
+  }
+  .hero-badge-row{display:flex;align-items:center;gap:12px;font-size:0.9rem;color:#e9ede0}
+  .hero-badge-row svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2;flex-shrink:0}
+  .hero-badge-row strong{color:var(--heading);font-weight:600}
+  .hero-badge-stars{
+    display:flex;align-items:center;gap:8px;
+    padding-bottom:12px;border-bottom:1px solid var(--border);
+  }
+  .stars{color:var(--accent);font-size:1.05rem;letter-spacing:2px}
+
+  /* ============ trust strip (T1) ============ */
+  .trust{
+    background:var(--bg);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:32px 0;position:relative;z-index:2;
+  }
+  .trust-inner{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    align-items:center;gap:0;
+  }
+  .trust-item{
+    display:flex;align-items:center;gap:12px;
+    justify-content:center;
+    border-right:1px solid var(--border);
+    padding:8px 18px;
+    font-family:var(--mono);font-weight:500;font-size:0.78rem;
+    text-transform:uppercase;letter-spacing:0.16em;
+    color:#e9ede0;
+  }
+  .trust-item:last-child{border-right:0}
+  .trust-item svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2;flex-shrink:0}
+
+  /* ============ generic section ============ */
+  section{position:relative;z-index:2;padding:120px 0}
+  section.tight{padding-top:90px}
+  .section-head{margin-bottom:64px;max-width:760px}
+  .section-label{
+    font-family:var(--mono);font-weight:500;font-size:0.72rem;
+    text-transform:uppercase;letter-spacing:0.26em;color:var(--accent);
+    display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;
+  }
+  .section-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+  .section-head h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2rem,4.2vw,3.1rem);
+    line-height:1.08;letter-spacing:-0.03em;color:var(--heading);
+  }
+  .section-head h2 .accent{color:var(--accent)}
+
+  /* ============ services (S2) ============ */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  .service-card{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:34px 30px 30px;
+    transition:transform .25s ease,border-color .25s ease,background .25s ease;
+    overflow:hidden;
+  }
+  .service-card::before{
+    content:'';position:absolute;left:0;top:0;height:3px;width:100%;
+    background:var(--accent);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .35s ease;
+  }
+  .service-card:hover{transform:translateY(-4px);border-color:var(--border-light);background:var(--card-hover)}
+  .service-card:hover::before{transform:scaleX(1)}
+  .service-icon{
+    width:54px;height:54px;border-radius:14px;
+    background:rgba(200,230,86,0.12);
+    border:1px solid rgba(200,230,86,0.25);
+    display:grid;place-items:center;margin-bottom:22px;
+  }
+  .service-icon svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.8}
+  .service-card h3{
+    font-family:var(--display);font-weight:700;font-size:1.25rem;
+    letter-spacing:-0.015em;color:var(--heading);margin-bottom:10px;
+  }
+  .service-card p{font-size:0.96rem;color:var(--body);line-height:1.55}
+
+  .services-also{
+    margin-top:36px;padding:24px 28px;
+    background:rgba(200,230,86,0.05);
+    border:1px dashed var(--border-light);border-radius:14px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;
+  }
+  .services-also strong{
+    font-family:var(--mono);font-size:0.74rem;font-weight:500;
+    text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);
+  }
+  .services-also span{
+    font-family:var(--display);font-weight:600;color:#e9ede0;font-size:0.98rem;
+    padding-right:22px;border-right:1px solid var(--border-light);
+  }
+  .services-also span:last-child{border-right:0}
+
+  /* ============ gallery (G2 - asymmetric masonry) ============ */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:200px;
+    gap:14px;
+  }
+  .gallery-grid figure{
+    position:relative;
+    border-radius:14px;overflow:hidden;
+    background:var(--card);
+    border:1px solid var(--border);
+  }
+  .gallery-grid figure img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .gallery-grid figure:hover img{transform:scale(1.05)}
+  .gallery-grid figure:nth-child(1){grid-column:span 3;grid-row:span 2}
+  .gallery-grid figure:nth-child(2){grid-column:span 3;grid-row:span 1}
+  .gallery-grid figure:nth-child(3){grid-column:span 2;grid-row:span 1}
+  .gallery-grid figure:nth-child(4){grid-column:span 1;grid-row:span 1}
+  .gallery-grid figure:nth-child(5){grid-column:span 2;grid-row:span 2}
+  .gallery-grid figure:nth-child(6){grid-column:span 2;grid-row:span 1}
+  .gallery-grid figure:nth-child(7){grid-column:span 2;grid-row:span 1}
+  .gallery-grid figure:nth-child(8){grid-column:span 2;grid-row:span 1}
+
+  .gallery-caption{
+    margin-top:14px;
+    font-family:var(--mono);font-weight:500;font-size:0.78rem;
+    color:var(--muted);
+  }
+
+  /* ============ reviews (R1) ============ */
+  .reviews{background:var(--bg-deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:18px;padding:30px;
+    display:flex;flex-direction:column;gap:18px;
+    transition:transform .25s ease,border-color .25s ease;
+  }
+  .review-card:hover{transform:translateY(-3px);border-color:var(--border-light)}
+  .review-stars{color:var(--accent);letter-spacing:3px;font-size:1.05rem}
+  .review-text{font-size:1rem;color:#e9ede0;line-height:1.65;flex-grow:1}
+  .review-meta{
+    display:flex;align-items:center;gap:14px;
+    padding-top:18px;border-top:1px solid var(--border);
+  }
+  .review-avatar{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--accent);color:#000;
+    display:grid;place-items:center;
+    font-family:var(--display);font-weight:800;font-size:0.95rem;
+  }
+  .review-author{flex:1}
+  .review-author strong{display:block;color:var(--heading);font-weight:600;font-size:0.95rem}
+  .review-author small{font-size:0.78rem;color:var(--muted);font-family:var(--mono);letter-spacing:0.05em}
+  .review-source{
+    font-family:var(--mono);font-weight:500;
+    font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--accent);
+    padding:4px 10px;border:1px solid var(--border-light);border-radius:999px;
+  }
+
+  /* ============ CTA band ============ */
+  .cta-band{
+    background:var(--accent);color:var(--bg-deep);
+    padding:80px 0;
+  }
+  .cta-band-inner{
+    display:grid;grid-template-columns:1.4fr auto;gap:40px;align-items:center;
+  }
+  .cta-band h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.8rem,3.4vw,2.7rem);
+    line-height:1.1;letter-spacing:-0.03em;color:var(--bg-deep);
+  }
+  .cta-band p{font-size:1.05rem;color:rgba(9,26,17,0.78);margin-top:14px;max-width:560px}
+  .cta-band-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .cta-band-ctas .btn-primary{background:var(--bg-deep);color:var(--accent)}
+  .cta-band-ctas .btn-primary:hover{background:#000}
+  .cta-band-ctas .btn-whatsapp{background:#0e2419;color:#fff}
+
+  /* ============ areas ============ */
+  .areas-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid var(--border);border-left:1px solid var(--border);
+    border-radius:14px;overflow:hidden;
+  }
+  .areas-grid a{
+    padding:18px 22px;
+    border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+    font-family:var(--display);font-weight:600;font-size:0.98rem;
+    color:#e9ede0;background:var(--card);
+    display:flex;align-items:center;gap:10px;
+    transition:background .2s ease,color .2s ease;
+  }
+  .areas-grid a:hover{background:var(--card-hover);color:var(--accent)}
+  .areas-grid a::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);
+    transition:transform .2s ease;
+  }
+  .areas-grid a:hover::before{transform:scale(1.4)}
+
+  /* ============ contact (C1) ============ */
+  .contact-wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:36px}
+  .contact-info{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:18px;padding:34px;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  .contact-row{display:flex;gap:16px;align-items:flex-start}
+  .contact-row-icon{
+    width:44px;height:44px;border-radius:12px;
+    background:rgba(200,230,86,0.12);border:1px solid rgba(200,230,86,0.25);
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .contact-row-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:2}
+  .contact-row-text small{
+    display:block;font-family:var(--mono);font-size:0.7rem;
+    text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);margin-bottom:4px;
+  }
+  .contact-row-text a,.contact-row-text strong{
+    font-family:var(--display);font-weight:600;font-size:1.05rem;
+    color:var(--heading);line-height:1.4;display:block;
+    overflow-wrap:anywhere;
+  }
+  .contact-row-text a[href^="mailto:"]{font-size:0.96rem;letter-spacing:-0.005em}
+  .contact-row-text span{color:var(--muted);font-size:0.88rem;display:block;margin-top:2px}
+
+  .contact-form{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:18px;padding:34px;
+  }
+  .contact-form h3{
+    font-family:var(--display);font-weight:700;font-size:1.4rem;
+    color:var(--heading);margin-bottom:6px;letter-spacing:-0.02em;
+  }
+  .contact-form .helper{color:var(--muted);font-size:0.92rem;margin-bottom:24px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .field label{
+    font-family:var(--mono);font-weight:500;font-size:0.72rem;
+    text-transform:uppercase;letter-spacing:0.18em;color:var(--accent);
+  }
+  .field input,.field select,.field textarea{
+    background:var(--bg-deep);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:13px 14px;
+    color:var(--heading);
+    font-family:var(--sans);font-size:0.96rem;
+    transition:border-color .2s ease,background .2s ease;
+    width:100%;
+  }
+  .field textarea{resize:vertical;min-height:120px}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--accent);background:#0b2017;
+  }
+  .field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c8e656' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center;background-size:14px;padding-right:36px}
+  .form-submit{
+    width:100%;padding:16px;margin-top:8px;
+    background:var(--accent);color:#000;border:none;border-radius:12px;
+    font-family:var(--display);font-weight:700;font-size:1rem;
+    cursor:pointer;transition:background .2s ease,transform .2s ease;
+  }
+  .form-submit:hover{background:var(--accent-bright);transform:translateY(-1px)}
+
+  /* ============ footer ============ */
+  footer{
+    background:var(--bg-deep);
+    border-top:1px solid var(--border);
+    padding:54px 0 30px;
+    position:relative;z-index:2;
+  }
+  .footer-inner{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;
+    padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:24px;
+  }
+  .footer-brand small{
+    display:block;font-family:var(--mono);font-size:0.74rem;
+    text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);margin-top:14px;
+  }
+  .footer-brand p{margin-top:14px;color:var(--muted);max-width:340px;font-size:0.92rem;line-height:1.55}
+  .footer-col h4{
+    font-family:var(--mono);font-size:0.72rem;font-weight:500;
+    text-transform:uppercase;letter-spacing:0.22em;color:var(--accent);
+    margin-bottom:14px;
+  }
+  .footer-col a,.footer-col p{
+    display:block;color:#cfd6c5;font-size:0.92rem;line-height:1.9;
+  }
+  .footer-col a:hover{color:var(--accent)}
+  .footer-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    font-size:0.82rem;color:var(--muted);
+  }
+  .footer-bottom a{color:var(--accent)}
+
+  /* ============ floating CTAs ============ */
+  .fab-stack{
+    position:fixed;right:18px;bottom:18px;
+    display:flex;flex-direction:column;gap:12px;z-index:90;
+    opacity:0;pointer-events:none;transform:translateY(20px);
+    transition:opacity .3s ease,transform .3s ease;
+  }
+  .fab-stack.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+  .fab{
+    width:54px;height:54px;border-radius:50%;
+    display:grid;place-items:center;
+    box-shadow:0 8px 22px rgba(0,0,0,0.35);
+    transition:transform .2s ease;
+    position:relative;
+  }
+  .fab:hover{transform:scale(1.08);animation:none}
+  .fab svg{width:24px;height:24px}
+  .fab-call{background:var(--accent);color:#000;animation:fabpulseaccent 2s infinite}
+  .fab-call svg{stroke:#000;fill:none;stroke-width:2.2}
+  .fab-wa{background:var(--whatsapp);animation:fabpulsewa 2s infinite}
+  .fab-wa svg{fill:#fff}
+  @keyframes fabpulseaccent{
+    0%,100%{box-shadow:0 8px 22px rgba(0,0,0,0.35),0 0 0 0 var(--accent-glow)}
+    50%{box-shadow:0 8px 22px rgba(0,0,0,0.35),0 0 0 14px transparent}
+  }
+  @keyframes fabpulsewa{
+    0%,100%{box-shadow:0 8px 22px rgba(0,0,0,0.35),0 0 0 0 rgba(37,211,102,0.45)}
+    50%{box-shadow:0 8px 22px rgba(0,0,0,0.35),0 0 0 14px transparent}
+  }
+
+  /* ============ reveal animations ============ */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ============ responsive ============ */
+  @media (max-width:1080px){
+    .hero-inner{grid-template-columns:1fr;gap:36px}
+    .hero-badge{max-width:480px;margin-top:8px}
+    .gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:180px}
+    .gallery-grid figure:nth-child(1){grid-column:span 4;grid-row:span 2}
+    .gallery-grid figure:nth-child(2){grid-column:span 2;grid-row:span 1}
+    .gallery-grid figure:nth-child(3){grid-column:span 2;grid-row:span 1}
+    .gallery-grid figure:nth-child(4){grid-column:span 2;grid-row:span 1}
+    .gallery-grid figure:nth-child(5){grid-column:span 2;grid-row:span 2}
+    .gallery-grid figure:nth-child(6){grid-column:span 2;grid-row:span 1}
+    .gallery-grid figure:nth-child(7){grid-column:span 2;grid-row:span 1}
+    .gallery-grid figure:nth-child(8){grid-column:span 2;grid-row:span 1}
+    .services-grid{grid-template-columns:repeat(2,1fr)}
+    .reviews-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-inner{grid-template-columns:1.4fr 1fr 1fr}
+    .footer-col:nth-child(4){grid-column:1/-1;display:flex;gap:36px;flex-wrap:wrap}
+  }
+  @media (max-width:880px){
+    .nav-links{display:none}
+    .nav-links.open{display:flex}
+    .nav-toggle{display:flex}
+    .nav-panel{
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--bg);border-bottom:1px solid var(--border);
+      padding:18px 28px 24px;
+      flex-direction:column;align-items:stretch;gap:14px;
+      box-shadow:0 14px 30px rgba(0,0,0,0.4);
+    }
+    .nav-panel.open{display:flex}
+    .nav-panel a{
+      font-family:var(--display);font-weight:600;font-size:1rem;
+      color:var(--body);padding:12px 0;border-bottom:1px solid var(--border);
+    }
+    .nav-panel a:last-of-type{border-bottom:none}
+    .nav-panel .nav-cta{
+      background:var(--accent);color:#000 !important;
+      padding:14px;border-radius:12px;text-align:center;border:none !important;
+      justify-content:center;display:flex;align-items:center;gap:10px;
+    }
+    .nav-panel .nav-cta svg{stroke:#000;width:18px;height:18px;flex-shrink:0}
+    .trust-inner{grid-template-columns:1fr;gap:0}
+    .trust-item{border-right:0;border-bottom:1px solid var(--border);padding:14px 0;justify-content:flex-start}
+    .trust-item:last-child{border-bottom:0}
+    section{padding:80px 0}
+    .section-head{margin-bottom:44px}
+    .areas-grid{grid-template-columns:repeat(2,1fr)}
+    .cta-band-inner{grid-template-columns:1fr}
+    .contact-wrap{grid-template-columns:1fr;gap:24px}
+    .reviews-grid{grid-template-columns:1fr}
+    .footer-inner{grid-template-columns:1fr;gap:28px}
+    .footer-col:nth-child(4){grid-column:auto;display:block}
+  }
+  @media (max-width:880px){
+    .hero{min-height:auto;display:block}
+    .hero-bg{
+      position:relative;inset:auto;
+      height:340px;width:100%;
+      animation:none;
+    }
+    .hero-overlay{
+      position:absolute;inset:0;height:340px;
+      background:linear-gradient(180deg,rgba(9,26,17,0.25) 0%,rgba(9,26,17,0.55) 70%,var(--bg) 100%);
+    }
+    .hero-inner{
+      position:relative;z-index:2;
+      padding:32px 28px 60px;
+      grid-template-columns:1fr;gap:28px;
+      background:var(--bg);
+    }
+    .hero-badge{
+      max-width:none;width:100%;
+      background:var(--card);border-color:var(--border);
+      backdrop-filter:none;
+    }
+  }
+  @media (max-width:680px){
+    .hero-bg,.hero-overlay{height:260px}
+    .hero-inner{padding:26px 22px 50px}
+    .hero h1{font-size:clamp(2.2rem,9vw,3rem)}
+    .hero-badge{padding:20px}
+    .services-grid{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+    .gallery-grid figure{grid-column:span 1 !important;grid-row:span 1 !important}
+    .gallery-grid figure:nth-child(1){grid-row:span 1 !important}
+    .gallery-grid figure:nth-child(5){grid-row:span 1 !important}
+    .services-also{flex-direction:column;align-items:flex-start;gap:10px;padding:20px}
+    .services-also span{border-right:0;padding-right:0}
+    .container{padding:0 22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="monogram-bg" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-mark">A&amp;A</span>
+      <span class="nav-logo-text">
+        Tree Care &amp; Landscaping
+        <small>London &amp; Home Counties</small>
+      </span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#work">Recent work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.38 1.83.72 2.69a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.86.34 1.76.59 2.69.72A2 2 0 0 1 22 16.92Z"/></svg>
+        <span id="navCallText">&nbsp;</span>
+      </a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact" class="nav-cta" id="navCallMobile">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.38 1.83.72 2.69a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.86.34 1.76.59 2.69.72A2 2 0 0 1 22 16.92Z"/></svg>
+      <span id="navCallMobileText">&nbsp;</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="home">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="pulse"></span>Tree care &amp; landscaping · Free consultation</span>
+      <h1>From a small garden to a <span class="accent">country estate.</span></h1>
+      <p class="lede">Tree surgery, paving, turfing, fencing and full garden maintenance across London and the home counties. Free consultation, knowledgeable advice on every job.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary" id="heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.38 1.83.72 2.69a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.86.34 1.76.59 2.69.72A2 2 0 0 1 22 16.92Z"/></svg>
+          <span id="heroCallText">Call us</span>
+        </a>
+        <a href="#" class="btn btn-whatsapp" id="heroWa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp us
+        </a>
+      </div>
+    </div>
+    <aside class="hero-badge">
+      <div class="hero-badge-stars">
+        <span class="stars">★★★★★</span>
+        <strong style="color:var(--heading);font-weight:600">5.0 · Verified on Bark</strong>
+      </div>
+      <div class="hero-badge-row">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Fully insured · public liability cover</span>
+      </div>
+      <div class="hero-badge-row">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Free written quotes on every job</span>
+      </div>
+      <div class="hero-badge-row">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>Residential &amp; commercial · all areas</span>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Fully Insured
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+        Free Quotes
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2 L2 7 l10 5 10-5 z"/><path d="M2 17 l10 5 10-5"/><path d="M2 12 l10 5 10-5"/></svg>
+        Verified on Bark
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Fast Response
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Residential &amp; Commercial
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="tight">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">What we do</span>
+      <h2>Trees, lawns, paving and <span class="accent">everything between.</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L8 8 h2 L6 14 h2 L4 20 h16 L16 14 h2 L14 8 h2 z"/><line x1="12" y1="20" x2="12" y2="22"/></svg>
+        </div>
+        <h3>Tree surgery</h3>
+        <p>Crown reductions, deadwooding, felling and dismantles. All access methods, anything from a back-garden cherry to mature oaks.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M6 14 V8 a3 3 0 0 1 3 -3 h6 a3 3 0 0 1 3 3 v6"/><line x1="3" y1="11" x2="21" y2="11"/></svg>
+        </div>
+        <h3>All aspects of paving</h3>
+        <p>Indian sandstone, porcelain, block paving, granite setts. Properly dug out, sub-base laid, jointed and sealed.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 21 V13 l9 -7 l9 7 V21 z"/><path d="M9 21 V14 h6 v7"/></svg>
+        </div>
+        <h3>Hard landscaping</h3>
+        <p>Retaining walls, raised beds, steps, sleeper edging, gravel beds. Levels worked out first, finished to last decades.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 18 c4 -6 8 -6 10 0 c2 -6 6 -6 10 0"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
+        </div>
+        <h3>Turfing &amp; lawns</h3>
+        <p>New lawns from scratch: rotovated, levelled, top soil down, premium turf. Old lawns lifted and replaced where the ground&rsquo;s gone.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="4" y2="6"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="6"/><line x1="22" y1="20" x2="22" y2="4"/><line x1="2" y1="11" x2="24" y2="11"/></svg>
+        </div>
+        <h3>Fencing</h3>
+        <p>Closeboard, featheredge, hit-and-miss, panels and posts. Concrete-set, properly aligned, treated. Replacements after storms too.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 a6 6 0 0 0 -6 6 v4 a4 4 0 0 0 4 4 v6 h4 v-6 a4 4 0 0 0 4 -4 V8 a6 6 0 0 0 -6 -6 z"/></svg>
+        </div>
+        <h3>Garden maintenance</h3>
+        <p>Regular and one-off cuts. Lawn mowing, edging, weeding, borders kept, leaves cleared. Monthly contracts available.</p>
+      </div>
+    </div>
+    <div class="services-also reveal">
+      <strong>We also handle:</strong>
+      <span>Brickwork</span>
+      <span>Hedge trimming</span>
+      <span>Pruning</span>
+      <span>Stump removal</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="work" style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Recent work</span>
+      <h2>Gardens we&rsquo;ve <span class="accent">built and brought back.</span></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure><img src="work-7.jpg" alt="Cottage garden with wisteria"></figure>
+      <figure><img src="work-1.jpg" alt="Cottage garden with greenhouse and flower beds"></figure>
+      <figure><img src="work-2.jpg" alt="Block paving and stone steps"></figure>
+      <figure><img src="work-3.jpg" alt="Circular paved patio with stone wall"></figure>
+      <figure><img src="work-5.jpg" alt="Indian sandstone paving detail"></figure>
+      <figure><img src="work-4.jpg" alt="Garden patio with rattan furniture"></figure>
+      <figure><img src="work-6.jpg" alt="Gravel garden path with planted borders"></figure>
+      <figure><img src="work-8.jpg" alt="Formal box parterre from above"></figure>
+    </div>
+    <p class="gallery-caption">A selection from the last 12 months. Ask to see more of any specific job type when you call.</p>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-band-inner reveal">
+      <div>
+        <h2>Got a garden in mind? Let&rsquo;s walk it together.</h2>
+        <p>Free consultation, no obligation. Honest advice on what&rsquo;s worth doing, what isn&rsquo;t, and a written quote within a few days.</p>
+      </div>
+      <div class="cta-band-ctas">
+        <a href="#contact" class="btn btn-primary" id="ctaCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.38 1.83.72 2.69a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.86.34 1.76.59 2.69.72A2 2 0 0 1 22 16.92Z"/></svg>
+          <span id="ctaCallText">Call us today</span>
+        </a>
+        <a href="#" class="btn btn-whatsapp" id="ctaWa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">What our customers say</span>
+      <h2>5.0 average · <span class="accent">verified on Bark.</span></h2>
+    </div>
+    <div class="reviews-grid">
+      <article class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Had A&amp;A lift our old patio and lay new Indian sandstone across the back garden. Sub-base done properly, jointed clean, no movement six months on. Tidy lads.</p>
+        <div class="review-meta">
+          <div class="review-avatar">S</div>
+          <div class="review-author"><strong>Suzanne H.</strong><small>Surbiton · Paving</small></div>
+          <div class="review-source">Bark</div>
+        </div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Took down a big eucalyptus that was overhanging the neighbour&rsquo;s. Climbing, sectioned down, stump ground out same day. Quoted fairly and turned up when they said.</p>
+        <div class="review-meta">
+          <div class="review-avatar">J</div>
+          <div class="review-author"><strong>Jennifer D.</strong><small>Bromley · Tree surgery</small></div>
+          <div class="review-source">Bark</div>
+        </div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Whole back garden was a mess after the builders. A&amp;A levelled, topsoiled and turfed it, then came back two weeks later to check it had taken. Lawn looks proper now.</p>
+        <div class="review-meta">
+          <div class="review-avatar">M</div>
+          <div class="review-author"><strong>Mark R.</strong><small>Kingston · Turfing</small></div>
+          <div class="review-source">Bark</div>
+        </div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Full closeboard fence both sides of the garden, 22m run. Concrete-set posts, treated panels. Quick, polite, cleared up everything when they left. Would use again.</p>
+        <div class="review-meta">
+          <div class="review-avatar">T</div>
+          <div class="review-author"><strong>Tom L.</strong><small>Wimbledon · Fencing</small></div>
+          <div class="review-source">Bark</div>
+        </div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">We&rsquo;ve got A&amp;A on monthly maintenance now. Beech hedge kept tight, borders weeded, lawn cut and edged. Costs less than the previous lot and looks better.</p>
+        <div class="review-meta">
+          <div class="review-avatar">R</div>
+          <div class="review-author"><strong>Rachel P.</strong><small>Esher · Maintenance</small></div>
+          <div class="review-source">Bark</div>
+        </div>
+      </article>
+      <article class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Knowledgeable. Walked the garden, talked through what would work and what wouldn&rsquo;t, came back with a proper written quote. Brickwork on the raised beds is solid.</p>
+        <div class="review-meta">
+          <div class="review-avatar">D</div>
+          <div class="review-author"><strong>David K.</strong><small>Reigate · Hard landscaping</small></div>
+          <div class="review-source">Bark</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREAS ============ -->
+<section id="areas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Areas covered</span>
+      <h2>London &amp; the <span class="accent">home counties.</span></h2>
+    </div>
+    <div class="areas-grid reveal">
+      <a href="#contact">Kingston</a>
+      <a href="#contact">Surbiton</a>
+      <a href="#contact">Wimbledon</a>
+      <a href="#contact">Richmond</a>
+      <a href="#contact">Bromley</a>
+      <a href="#contact">Croydon</a>
+      <a href="#contact">Esher</a>
+      <a href="#contact">Reigate</a>
+      <a href="#contact">Sutton</a>
+      <a href="#contact">Epsom</a>
+      <a href="#contact">Sevenoaks</a>
+      <a href="#contact">Guildford</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" style="background:var(--bg-deep);border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Get in touch</span>
+      <h2>Free consultation. <span class="accent">Honest written quote.</span></h2>
+    </div>
+    <div class="contact-wrap">
+      <aside class="contact-info reveal">
+        <div class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.38 1.83.72 2.69a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.86.34 1.76.59 2.69.72A2 2 0 0 1 22 16.92Z"/></svg></div>
+          <div class="contact-row-text">
+            <small>Call us</small>
+            <a id="contactPhone1" href="#">&nbsp;</a>
+            <a id="contactPhone2" href="#">&nbsp;</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-row-text">
+            <small>Email</small>
+            <a id="contactEmail" href="#">&nbsp;</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="contact-row-text">
+            <small>Hours</small>
+            <strong>Mon–Sat · 7am–7pm</strong>
+            <span>WhatsApp replies most evenings &amp; Sundays</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="contact-row-text">
+            <small>Where we cover</small>
+            <strong>London &amp; the home counties</strong>
+            <span>Surrey · Kent · Berkshire</span>
+          </div>
+        </div>
+      </aside>
+      <form class="contact-form reveal" action="/api/enquiry" method="POST">
+        <h3>Tell us about the job</h3>
+        <p class="helper">One of the team will be back to you, usually same day.</p>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="A&amp;A Tree Care and Landscaping">
+        <input type="hidden" name="source" value="mockup-aa-tree-care-landscaping">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email <span style="color:var(--muted);text-transform:none;letter-spacing:0">(optional)</span></label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="field">
+          <label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <option value="">Pick a service…</option>
+            <optgroup label="Trees">
+              <option>Tree surgery</option>
+              <option>Hedge trimming</option>
+              <option>Pruning</option>
+              <option>Stump removal</option>
+            </optgroup>
+            <optgroup label="Landscaping">
+              <option>Paving / patios</option>
+              <option>Hard landscaping</option>
+              <option>Brickwork</option>
+              <option>Fencing</option>
+              <option>Turfing / new lawn</option>
+            </optgroup>
+            <optgroup label="Maintenance">
+              <option>Regular garden maintenance</option>
+              <option>One-off tidy up</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Tell us a bit more</label>
+          <textarea id="message" name="message" rows="4" placeholder="Rough size of garden, what you&rsquo;d like done, any deadlines…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="nav-logo-mark" style="width:38px;height:38px;border-radius:9px;font-size:0.85rem">A&amp;A</span>
+          <strong style="font-family:var(--display);font-weight:800;color:var(--heading);font-size:1.05rem">Tree Care &amp; Landscaping</strong>
+        </div>
+        <small>London &amp; Home Counties</small>
+        <p>Tree surgery, paving, turfing, fencing and full landscaping. Residential and commercial. Free consultation on every job.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Tree surgery</a>
+        <a href="#services">Paving</a>
+        <a href="#services">Hard landscaping</a>
+        <a href="#services">Turfing</a>
+        <a href="#services">Fencing</a>
+        <a href="#services">Garden maintenance</a>
+      </div>
+      <div class="footer-col">
+        <h4>Areas</h4>
+        <a href="#areas">Kingston</a>
+        <a href="#areas">Surbiton</a>
+        <a href="#areas">Wimbledon</a>
+        <a href="#areas">Bromley</a>
+        <a href="#areas">Esher</a>
+        <a href="#areas">Reigate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#contact" id="footerPhone1">&nbsp;</a>
+        <a href="#contact" id="footerPhone2">&nbsp;</a>
+        <a href="#contact" id="footerEmail" style="word-break:break-all">&nbsp;</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 A&amp;A Tree Care &amp; Landscaping. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING CTAs ============ -->
+<div class="fab-stack" id="fabStack" aria-hidden="true">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call A&amp;A">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.93.38 1.83.72 2.69a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.39-1.39a2 2 0 0 1 2.11-.45c.86.34 1.76.59 2.69.72A2 2 0 0 1 22 16.92Z"/></svg>
+  </a>
+  <a class="fab fab-wa" id="fabWa" href="#" aria-label="WhatsApp A&amp;A">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+</div>
+
+<script>
+  // ============ decode contact details ============
+  var P1 = atob('MDc0MjQzMzQ0NjA=');
+  var P1f = atob('MDc0MjQgMzM0IDQ2MA==');
+  var P2 = atob('MDc3NzA0MDE3MDM=');
+  var P2f = atob('MDc3NzAgNDAxIDcwMw==');
+  var E = atob('YWF0cmVlY2FyZWFuZGxhbmRzY2FwaW5nQG91dGxvb2suY29t');
+  var WA = '447424334460';
+  var WAtext = 'Hi%2C%20I%20found%20A%26A%20online%20and%20would%20like%20a%20quote%20please';
+
+  function setCall(id,phone,formatted){
+    var el=document.getElementById(id);
+    if(!el)return;
+    el.href='tel:'+phone;
+    var textEl=document.getElementById(id+'Text');
+    if(textEl) textEl.textContent='Call '+formatted;
+  }
+  document.getElementById('navCall').href='tel:'+P1;
+  document.getElementById('navCallText').textContent=P1f;
+  document.getElementById('navCallMobile').href='tel:'+P1;
+  document.getElementById('navCallMobileText').textContent=P1f;
+  document.getElementById('heroCall').href='tel:'+P1;
+  document.getElementById('heroCallText').textContent='Call '+P1f;
+  document.getElementById('ctaCall').href='tel:'+P1;
+  document.getElementById('ctaCallText').textContent='Call '+P1f;
+  document.getElementById('fabCall').href='tel:'+P1;
+
+  document.getElementById('contactPhone1').href='tel:'+P1;
+  document.getElementById('contactPhone1').textContent=P1f;
+  document.getElementById('contactPhone2').href='tel:'+P2;
+  document.getElementById('contactPhone2').textContent=P2f;
+
+  document.getElementById('contactEmail').href='mailto:'+E;
+  document.getElementById('contactEmail').textContent=E;
+  document.getElementById('footerEmail').href='mailto:'+E;
+  document.getElementById('footerEmail').textContent=E;
+  document.getElementById('footerPhone1').href='tel:'+P1;
+  document.getElementById('footerPhone1').textContent=P1f;
+  document.getElementById('footerPhone2').href='tel:'+P2;
+  document.getElementById('footerPhone2').textContent=P2f;
+
+  var waUrl='https://wa.me/'+WA+'?text='+WAtext;
+  document.getElementById('heroWa').href=waUrl;
+  document.getElementById('ctaWa').href=waUrl;
+  document.getElementById('fabWa').href=waUrl;
+
+  // ============ nav toggle ============
+  var toggle=document.getElementById('navToggle');
+  var panel=document.getElementById('navPanel');
+  toggle.addEventListener('click',function(){panel.classList.toggle('open')});
+  panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){panel.classList.remove('open')})});
+
+  // ============ form timestamp ============
+  document.getElementById('formTimestamp').value=Date.now();
+
+  // ============ phone validation ============
+  document.getElementById('phone').addEventListener('input',function(){
+    var v=this.value.replace(/\s/g,'');
+    if(v && !/^(0|\+44)\d{9,11}$/.test(v)){
+      this.setCustomValidity('Please enter a UK phone number');
+    }else{
+      this.setCustomValidity('');
+    }
+  });
+
+  // ============ reveal on scroll ============
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  // Safety net: ensure all reveals become visible even if IntersectionObserver fails
+  setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})},2500);
+
+  // ============ floating CTAs after hero ============
+  var fabStack=document.getElementById('fabStack');
+  var hero=document.querySelector('.hero');
+  window.addEventListener('scroll',function(){
+    var heroBottom=hero.getBoundingClientRect().bottom;
+    if(heroBottom<80){fabStack.classList.add('visible')}
+    else{fabStack.classList.remove('visible')}
+  },{passive:true});
+</script>
+
+</body>
+</html>
