@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casey Driveways & Landscaping · Solihull, Birmingham, West Midlands</title>
+<meta name="description" content="Driveways, block paving, patios and landscaping across Solihull, Birmingham, Coventry and the West Midlands. Friendly, reliable, neatly finished work.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --bg:#ffffff;
+  --surface:#f7f6f3;
+  --surface-2:#efece7;
+  --card:#ffffff;
+  --line:#e3e0d9;
+  --line-strong:#cfcbc1;
+  --ink:#1d1c1a;
+  --ink-soft:#3a3733;
+  --body:#5a554f;
+  --muted:#8b8579;
+  --accent:#4a6b2a;
+  --accent-dark:#3a5520;
+  --accent-soft:rgba(74,107,42,0.10);
+  --accent-line:rgba(74,107,42,0.28);
+  --shadow-sm:0 1px 2px rgba(20,20,16,0.05),0 2px 8px rgba(20,20,16,0.04);
+  --shadow-md:0 6px 18px rgba(20,20,16,0.06),0 18px 40px rgba(20,20,16,0.05);
+  --shadow-lg:0 20px 50px rgba(20,20,16,0.10),0 6px 18px rgba(20,20,16,0.06);
+  --radius:18px;
+  --radius-sm:12px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--body);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ===== Loading screen ===== */
+.loader{
+  position:fixed;inset:0;z-index:9999;
+  background:#ffffff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:32px;
+  transition:opacity .7s ease, visibility .7s ease;
+}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{
+  width:min(320px,72vw);
+  opacity:0;
+  animation:loaderLogoIn .8s ease forwards .15s;
+}
+.loader-bar-wrap{
+  width:min(220px,55vw);
+  height:2px;
+  background:var(--line);
+  border-radius:2px;
+  overflow:hidden;
+  opacity:0;
+  animation:loaderLogoIn .6s ease forwards .4s;
+}
+.loader-bar{
+  width:0%;height:100%;
+  background:var(--accent);
+  animation:loaderBar 1.6s ease-out forwards .5s;
+}
+.loader-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--muted);
+  opacity:0;
+  animation:loaderLogoIn .6s ease forwards .55s;
+}
+@keyframes loaderLogoIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes loaderBar{from{width:0%}to{width:100%}}
+
+/* ===== Container ===== */
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* ===== Nav ===== */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  padding:18px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+  white-space:nowrap;
+}
+.nav-logo img{height:44px;width:auto}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{
+  font-size:.92rem;font-weight:500;
+  color:var(--ink-soft);
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);
+  color:#fff !important;
+  padding:11px 22px;border-radius:999px;
+  font-weight:600;font-size:.9rem;
+  transition:background .2s, transform .2s;
+}
+.nav-cta:hover{background:var(--accent-dark);transform:translateY(-1px);color:#fff !important}
+.nav-cta svg{stroke:#fff;width:16px;height:16px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;align-items:center;justify-content:center}
+.hamburger span{display:block;width:24px;height:2px;background:var(--ink);position:relative;transition:transform .25s}
+.hamburger span::before,.hamburger span::after{content:'';position:absolute;left:0;width:24px;height:2px;background:var(--ink);transition:transform .25s}
+.hamburger span::before{top:-7px}
+.hamburger span::after{top:7px}
+.hamburger.open span{background:transparent}
+.hamburger.open span::before{transform:translateY(7px) rotate(45deg)}
+.hamburger.open span::after{transform:translateY(-7px) rotate(-45deg)}
+.mobile-panel{
+  display:none;
+  position:fixed;top:80px;left:0;right:0;z-index:55;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  padding:20px 28px 28px;
+  transform:translateY(-110%);
+  transition:transform .3s ease;
+}
+.mobile-panel.open{transform:translateY(0)}
+.mobile-panel a{display:block;padding:14px 0;font-size:1rem;font-weight:500;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+.mobile-panel a.mobile-cta{
+  margin-top:16px;text-align:center;background:var(--accent);color:#fff;border:none;border-radius:999px;padding:14px 22px;
+}
+
+/* ===== Hero ===== */
+.hero{
+  display:flex;flex-direction:column;
+  padding:60px 0 80px;
+}
+.hero-inner{
+  display:grid;grid-template-columns:1.05fr 1fr;
+  gap:60px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+  margin-bottom:24px;
+}
+.eyebrow::before{
+  content:'';width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(74,107,42,.45)}
+  50%{box-shadow:0 0 0 10px rgba(74,107,42,0)}
+}
+.hero h1{
+  font-family:'Manrope',sans-serif;
+  font-weight:800;
+  font-size:clamp(2.4rem,5.4vw,4.6rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  color:var(--ink);
+  margin-bottom:22px;
+}
+.hero h1 .accent{color:var(--accent)}
+.hero-lede{
+  font-size:1.08rem;
+  color:var(--body);
+  max-width:520px;
+  margin-bottom:34px;
+}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:36px}
+.btn-primary,.btn-secondary{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 28px;border-radius:999px;
+  font-weight:600;font-size:.97rem;
+  transition:transform .2s, box-shadow .2s, background .2s;
+  cursor:pointer;border:none;font-family:inherit;
+}
+.btn-primary{
+  background:var(--accent);color:#fff;
+  box-shadow:0 6px 20px rgba(74,107,42,.28);
+}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 10px 28px rgba(74,107,42,.34)}
+.btn-secondary{
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--line-strong);
+}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-primary svg,.btn-secondary svg{width:18px;height:18px}
+
+.hero-meta{
+  display:flex;gap:38px;
+  padding-top:30px;
+  border-top:1px solid var(--line);
+}
+.hero-meta-item .label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.hero-meta-item .value{
+  font-family:'Manrope',sans-serif;font-weight:700;font-size:1.15rem;color:var(--ink);
+}
+
+.hero-photo{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-lg);
+  aspect-ratio:4/5;
+}
+.hero-photo img{
+  width:100%;height:100%;object-fit:cover;
+  animation:kenburns 22s ease-in-out infinite alternate;
+}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-badge{
+  position:absolute;bottom:18px;left:18px;
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 16px;
+  display:flex;align-items:center;gap:12px;
+  box-shadow:var(--shadow-md);
+}
+.hero-badge .badge-dot{
+  width:10px;height:10px;border-radius:50%;background:var(--accent);
+  animation:pulse 2s infinite;
+}
+.hero-badge .badge-text{font-size:.82rem;font-weight:600;color:var(--ink);line-height:1.2}
+.hero-badge .badge-text small{display:block;font-weight:400;font-size:.7rem;color:var(--muted);margin-top:2px}
+
+/* ===== Trust strip ===== */
+.trust{
+  background:var(--surface);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.trust-inner{
+  max-width:1200px;margin:0 auto;
+  padding:26px 28px;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:30px;
+}
+.trust-item{
+  display:flex;align-items:center;gap:12px;
+  font-size:.88rem;font-weight:500;color:var(--ink-soft);
+}
+.trust-item svg{width:22px;height:22px;color:var(--accent);flex-shrink:0}
+
+/* ===== Sections ===== */
+.section{padding:110px 0}
+.section-head{margin-bottom:60px;max-width:760px}
+.section-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;
+  margin-bottom:18px;
+  display:block;
+}
+.section h2{
+  font-family:'Manrope',sans-serif;
+  font-weight:800;
+  font-size:clamp(1.95rem,3.8vw,3rem);
+  line-height:1.08;
+  letter-spacing:-.028em;
+  color:var(--ink);
+}
+.section h2 .accent{color:var(--accent)}
+
+/* ===== Services ===== */
+.services{background:var(--surface)}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.svc-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:36px 30px 32px;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s, box-shadow .3s, border-color .3s;
+}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent-line)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;
+}
+.svc-icon svg{width:24px;height:24px;color:var(--accent)}
+.svc-card h3{
+  font-family:'Manrope',sans-serif;
+  font-weight:700;font-size:1.22rem;
+  color:var(--ink);margin-bottom:10px;
+  letter-spacing:-.015em;
+}
+.svc-card p{font-size:.95rem;color:var(--body);line-height:1.6}
+
+/* ===== Gallery ===== */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  grid-template-rows:repeat(2,300px);
+  gap:18px;
+}
+.g-item{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.g-item:hover img{transform:scale(1.05)}
+.g-item:nth-child(1){grid-row:span 2}
+.g-cap{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.g-col{display:flex;flex-direction:column}
+
+/* ===== Reviews ===== */
+.reviews{background:var(--surface)}
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.review{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:36px 32px;
+  transition:transform .3s, box-shadow .3s;
+}
+.review:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.stars{display:flex;gap:3px;margin-bottom:18px}
+.stars svg{width:18px;height:18px;color:#e2a800;fill:#e2a800}
+.review-text{
+  font-family:'Manrope',sans-serif;
+  font-weight:500;font-size:1.08rem;
+  color:var(--ink-soft);line-height:1.55;
+  margin-bottom:24px;
+}
+.review-meta{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+.review-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Manrope',sans-serif;font-weight:700;font-size:.95rem;
+}
+.review-name{font-weight:600;font-size:.95rem;color:var(--ink);line-height:1.2}
+.review-attr{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+/* ===== Areas ===== */
+.areas-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-top:40px;
+}
+.area-chip{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:18px 22px;
+  font-weight:600;color:var(--ink-soft);
+  font-size:.95rem;
+  display:flex;align-items:center;gap:10px;
+  transition:border-color .25s, color .25s, transform .25s;
+}
+.area-chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.area-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+/* ===== Contact ===== */
+.contact{background:var(--ink);color:#fff}
+.contact .section-label{color:#a8c97a}
+.contact h2{color:#fff}
+.contact h2 .accent{color:#a8c97a}
+.contact-lede{color:rgba(255,255,255,.7);font-size:1.08rem;max-width:580px;margin-top:18px}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.3fr;gap:50px;
+  margin-top:60px;align-items:start;
+}
+.contact-info{display:flex;flex-direction:column;gap:18px}
+.info-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--radius);
+  padding:26px 28px;
+}
+.info-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
+  color:#a8c97a;margin-bottom:10px;
+}
+.info-value{font-family:'Manrope',sans-serif;font-weight:600;font-size:1.05rem;color:#fff;word-break:break-word}
+.info-value a{color:#fff;border-bottom:1px solid rgba(168,201,122,.45)}
+.info-sub{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:6px}
+
+.form-card{
+  background:#fff;
+  border-radius:var(--radius);
+  padding:40px 38px;
+  color:var(--ink);
+}
+.form-card h3{
+  font-family:'Manrope',sans-serif;font-weight:700;font-size:1.4rem;
+  color:var(--ink);margin-bottom:24px;letter-spacing:-.015em;
+}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.01em}
+.field input,.field select,.field textarea{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-family:inherit;font-size:.97rem;
+  color:var(--ink);
+  background:#fff;
+  transition:border-color .2s, box-shadow .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);
+}
+.field textarea{resize:vertical;min-height:110px}
+.form-submit{
+  width:100%;padding:16px;
+  background:var(--accent);color:#fff;border:none;border-radius:999px;
+  font-weight:600;font-size:1rem;font-family:inherit;cursor:pointer;
+  transition:background .2s, transform .2s;
+}
+.form-submit:hover{background:var(--accent-dark);transform:translateY(-1px)}
+
+/* ===== Footer ===== */
+.footer{
+  background:#0d0c0b;color:rgba(255,255,255,.6);
+  padding:48px 0 36px;
+  font-size:.88rem;
+}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.footer img{height:34px;width:auto;filter:invert(1) brightness(2);opacity:.85;margin-bottom:14px}
+.footer-tag{max-width:340px;line-height:1.55}
+.footer-credit{font-size:.78rem;color:rgba(255,255,255,.4)}
+.footer-credit a{color:#a8c97a}
+.footer-bottom{
+  margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:.78rem;color:rgba(255,255,255,.45);
+}
+
+/* ===== Floating FABs ===== */
+.fab-wrap{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transition:opacity .3s, visibility .3s}
+.fab-wrap.show{opacity:1;visibility:visible}
+.fab{
+  width:54px;height:54px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:#fff;
+  box-shadow:0 8px 22px rgba(20,20,16,.22);
+  transition:transform .2s;
+}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:24px;height:24px}
+.fab-whatsapp{background:#25d366}
+.fab-whatsapp:hover{background:#1ebe57}
+
+/* ===== Reveal animation ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ===== Mobile ===== */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-photo{aspect-ratio:16/11;order:2}
+  .hero-content{order:1}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:14px}
+  .gallery-grid .g-item:nth-child(1){grid-row:auto}
+  .gallery-grid .g-item{height:260px}
+  .contact-grid{grid-template-columns:1fr;gap:30px}
+  .trust-inner{grid-template-columns:repeat(2,1fr);gap:18px}
+  .areas-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:780px){
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-panel{display:block}
+  .wrap{padding:0 20px}
+  .nav-inner{padding:14px 20px}
+  .hero{padding:40px 0 60px}
+  .section{padding:80px 0}
+  .section-head{margin-bottom:42px}
+  .services-grid{grid-template-columns:1fr;gap:18px}
+  .hero-meta{gap:24px;flex-wrap:wrap}
+  .hero-badge{display:none}
+  .hero-badge-mobile{
+    display:flex;align-items:center;gap:12px;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px;
+    margin-top:16px;
+  }
+  .hero-badge-mobile .badge-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0}
+  .hero-badge-mobile .badge-text{font-size:.85rem;color:var(--ink);font-weight:600;line-height:1.3}
+  .hero-badge-mobile .badge-text small{display:block;font-weight:400;color:var(--muted);font-size:.74rem;margin-top:2px}
+  .form-card{padding:30px 24px}
+  .trust-inner{grid-template-columns:1fr;gap:14px;padding:22px 20px}
+  .trust-item{padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:none;padding-bottom:0}
+  .areas-grid{grid-template-columns:1fr}
+}
+.hero-badge-mobile{display:none}
+@media (max-width:780px){.hero-badge-mobile{display:flex}}
+</style>
+</head>
+<body>
+
+<!-- Loading screen -->
+<div class="loader" id="loader">
+  <img class="loader-logo" src="logo.png" alt="Casey Driveways & Landscaping">
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-tag">Solihull · West Midlands</div>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logo.png" alt="Casey Driveways & Landscaping"></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a id="navCall" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span id="navCallText">Call us</span>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a id="mobileCall" class="mobile-cta">Call us</a>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="eyebrow">Solihull · Birmingham · West Midlands</div>
+        <h1>Driveways laid <span class="accent">to last.</span></h1>
+        <p class="hero-lede">Block paving, resin, patios and landscaping across the West Midlands. Friendly service, keen pricing, neatly built work that lifts the front of your home.</p>
+        <div class="hero-ctas">
+          <a id="heroCall" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span id="heroCallText">Call us today</span>
+          </a>
+          <a href="#contact" class="btn-secondary">
+            Get a free quote
+          </a>
+        </div>
+        <div class="hero-badge-mobile">
+          <span class="badge-dot"></span>
+          <span class="badge-text">Now taking summer bookings<small>Free, no-pressure quotations</small></span>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <div class="label">Established</div>
+            <div class="value">Family run</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="label">Coverage</div>
+            <div class="value">25 mile radius</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="label">Quotes</div>
+            <div class="value">Free, no pressure</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Block paved driveway lined with trees">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <div class="badge-text">Now taking summer bookings<small>Free, no-pressure quotations</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Trust strip -->
+<section class="trust reveal">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M12 2l9 4v6c0 5-3.5 9-9 10-5.5-1-9-5-9-10V6l9-4z"/></svg>
+      Fully insured
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Free quotations
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+      5★ rated locally
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      Family run
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      10-year guarantee
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">What we do</span>
+      <h2>Built right. Finished <span class="accent">properly.</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <h3>Block paving</h3>
+        <p>Marshalls, Bradstone and Brett blocks. Sub-base done right, jointing finished neatly.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c4 0 4-4 8-4s4 4 8 4 4 4-4 8H7c-8-4-8-8-4-8z"/></svg></div>
+        <h3>Resin driveways</h3>
+        <p>Permeable resin-bound surfacing. SUDS compliant, low-maintenance, modern finish.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20l4-8 4 6 4-10 4 12"/><path d="M2 20h20"/></svg></div>
+        <h3>Patios & flagging</h3>
+        <p>Porcelain, Indian stone, sandstone. Levels right, joints tight, gardens transformed.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg></div>
+        <h3>Tarmac</h3>
+        <p>Sweeping driveways, shared accesses, full re-lays and patch repairs. Hot-laid and rolled.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="3" height="16"/><rect x="10" y="4" width="3" height="16"/><rect x="16" y="4" width="3" height="16"/></svg></div>
+        <h3>Fencing & gates</h3>
+        <p>Closeboard, feather-edge, decorative panels. Set in concrete, built to outlast the weather.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 20a4 4 0 010-8h0a5 5 0 0110-1h.5a3.5 3.5 0 010 7H7z"/><path d="M12 12V4M9 7l3-3 3 3"/></svg></div>
+        <h3>Landscaping</h3>
+        <p>Full garden makeovers: turf, planting, walling, lighting. Front to back, designed and built.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recent work -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">Recent work</span>
+      <h2>A look at some <span class="accent">recent driveways.</span></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item"><img src="hero.jpg" alt="Tree-lined block paved driveway"></div>
+      <div class="g-item"><img src="work-1.jpg" alt="Circular block paving pattern"></div>
+      <div class="g-item"><img src="work-3.jpg" alt="Timber fencing detail"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">From our customers</span>
+      <h2>What homeowners <span class="accent">say.</span></h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+        </div>
+        <p class="review-text">Ben and the lads ripped up our old crumbling drive and laid a beautiful block paved one in four days. Tidy on site, kept us in the loop the whole time, and the price was exactly what was quoted.</p>
+        <div class="review-meta">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sarah & Mark P.</div>
+            <div class="review-attr">Solihull · Block paving</div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+        </div>
+        <p class="review-text">Resin drive went in on a Wednesday and we were parking on it by Friday. Lovely modern finish, looks miles better than the patchy tarmac it replaced. Casey Driveways really know their stuff.</p>
+        <div class="review-meta">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">James H.</div>
+            <div class="review-attr">Knowle · Resin driveway</div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+        </div>
+        <p class="review-text">We had the front and rear done: block paved drive, porcelain patio, new fencing across the back. Three properly hard weeks of work and the finish is faultless. Would absolutely use them again.</p>
+        <div class="review-meta">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="review-name">Dawn & Phil R.</div>
+            <div class="review-attr">Shirley · Patio & fencing</div>
+          </div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12,2 15,9 22,10 17,15 18,22 12,18 6,22 7,15 2,10 9,9"/></svg>
+        </div>
+        <p class="review-text">Friendly, honest, and a perfectionist's eye for the levels. Our patio was an awkward shape and they made it look easy. Kerb appeal of the house has gone through the roof.</p>
+        <div class="review-meta">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Rachel M.</div>
+            <div class="review-attr">Redditch · Patio install</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="section" id="areas">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">Where we work</span>
+      <h2>Covering Solihull and the <span class="accent">wider West Midlands.</span></h2>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="area-chip">Solihull</div>
+      <div class="area-chip">Birmingham</div>
+      <div class="area-chip">Coventry</div>
+      <div class="area-chip">Redditch</div>
+      <div class="area-chip">Knowle</div>
+      <div class="area-chip">Dorridge</div>
+      <div class="area-chip">Shirley</div>
+      <div class="area-chip">Hall Green</div>
+      <div class="area-chip">Olton</div>
+      <div class="area-chip">Sutton Coldfield</div>
+      <div class="area-chip">Bromsgrove</div>
+      <div class="area-chip">Hockley Heath</div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-label">Get a quote</span>
+      <h2>Tell us about your <span class="accent">project.</span></h2>
+      <p class="contact-lede">Free, no-obligation quotation. Drop us a message and we'll come out, take a look, and put together a proper price for the work.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-card reveal">
+          <div class="info-label">Call us</div>
+          <div class="info-value"><a id="contactCall">…</a></div>
+          <div class="info-sub">Mon–Sat, 8am–6pm</div>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-label">Email</div>
+          <div class="info-value"><a id="contactEmail">…</a></div>
+          <div class="info-sub">Reply within one working day</div>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-label">Service area</div>
+          <div class="info-value">Solihull, Birmingham, Coventry, Redditch and the wider West Midlands.</div>
+        </div>
+        <div class="info-card reveal">
+          <div class="info-label">Booking lead time</div>
+          <div class="info-value">2–6 weeks depending on job size</div>
+          <div class="info-sub">Small repairs and patios often quicker</div>
+        </div>
+      </div>
+      <form class="form-card reveal" action="/api/enquiry" method="POST">
+        <h3>Request your free quote</h3>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Casey Driveways & Landscaping">
+        <input type="hidden" name="source" value="mockup-casey-driveways">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" pattern="^(0|\+44)\d{9,11}$" required>
+        </div>
+        <div class="field">
+          <label for="email">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+          <input id="email" name="email" type="email">
+        </div>
+        <div class="field">
+          <label for="service">What's the job?</label>
+          <select id="service" name="service">
+            <optgroup label="Driveways">
+              <option>Block paving</option>
+              <option>Resin driveway</option>
+              <option>Tarmac driveway</option>
+              <option>Driveway repair</option>
+            </optgroup>
+            <optgroup label="Outdoor spaces">
+              <option>Patio / flagging</option>
+              <option>Fencing & gates</option>
+              <option>Garden landscaping</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Not sure, please advise</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">A bit about the project</label>
+          <textarea id="message" name="message" placeholder="Rough size, current surface, any access issues, timeline if you have one…"></textarea>
+        </div>
+        <button class="form-submit" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <img src="logo.png" alt="Casey Driveways & Landscaping">
+        <div class="footer-tag">Block paving, resin, patios and full landscaping across Solihull and the West Midlands. Family-run, fully insured.</div>
+      </div>
+      <div>
+        <div class="footer-credit">Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Casey Driveways & Landscaping. All rights reserved.</div>
+      <div>Solihull · Birmingham · Coventry · Redditch</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fab-wrap" id="fabWrap">
+  <a class="fab fab-whatsapp" id="fabWhatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.4c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.3c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.5 1 1-3.4-.2-.3c-.9-1.4-1.4-3.1-1.4-4.8 0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8-8.5 8z"/></svg>
+  </a>
+  <a class="fab" id="fabCall" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('done'), 2100);
+  });
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Form timestamp
+  document.getElementById('formTimestamp').value = Date.now();
+
+  // Phone + email decode (obfuscated to dodge scrapers)
+  var P  = atob('MDc1NDA4NjA2MDI=');
+  var Pf = atob('MDc1NDAgODYwNjAy');
+  var Pi = atob('NDQ3NTQwODYwNjAy');
+  var E  = atob('aGVsbG9AY2FzZXlkcml2ZXdheXMudWs=');
+  ['navCall','heroCall','fabCall','mobileCall'].forEach(id => {
+    var el = document.getElementById(id);
+    if (el) el.href = 'tel:' + P;
+  });
+  document.getElementById('navCallText').textContent = Pf;
+  document.getElementById('heroCallText').textContent = 'Call ' + Pf;
+  document.getElementById('mobileCall').textContent = 'Call ' + Pf;
+  var cc = document.getElementById('contactCall');
+  cc.textContent = Pf;
+  cc.href = 'tel:' + P;
+  var em = document.getElementById('contactEmail');
+  em.textContent = E;
+  em.href = 'mailto:' + E;
+  document.getElementById('fabWhatsapp').href = 'https://wa.me/' + Pi + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const panel = document.getElementById('mobilePanel');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    panel.classList.toggle('open');
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    ham.classList.remove('open');
+    panel.classList.remove('open');
+  }));
+
+  // Reveal observer
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAB show after hero scrolls
+  const fab = document.getElementById('fabWrap');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight * 0.6) fab.classList.add('show');
+    else fab.classList.remove('show');
+  });
+
+  // Phone validation
+  const phoneField = document.getElementById('phone');
+  phoneField.addEventListener('input', () => {
+    const v = phoneField.value.replace(/\s/g, '');
+    if (v && !/^(0|\+44)\d{9,11}$/.test(v)) {
+      phoneField.setCustomValidity('Please enter a valid UK phone number');
+    } else {
+      phoneField.setCustomValidity('');
+    }
+  });
+</script>
+
+</body>
+</html>
