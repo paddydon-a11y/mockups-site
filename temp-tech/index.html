@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temp Tech | Roofers in Essex & Suffolk · Roof Repairs, Re-Roofs, Fascias</title>
+<meta name="description" content="Temp Tech. Domestic roofing run by Bill Temple. 30 years on the roofs. Re-roofs, roof repairs, fascias, soffits, guttering and chimney work across Essex, Suffolk and North Kent. Free estimates.">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --charcoal: #1a1a1a;
+    --charcoal-light: #242424;
+    --charcoal-mid: #2a2a2a;
+    --red: #dc2626;
+    --red-dark: #b91c1c;
+    --white: #ffffff;
+    --gray-light: #cccccc;
+    --gray-mid: #999999;
+    --dark-footer: #111111;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--white);
+    background: var(--charcoal);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* NAV - solid background per hard rule */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #111111; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; height: 80px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; text-transform: uppercase; }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; align-items: center; gap: 36px; }
+  .nav-links a { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-light); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 12px 28px; font-weight: 700 !important; letter-spacing: 1px; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--red-dark) !important; }
+  .nav-mobile { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+
+  /* HERO */
+  .hero {
+    position: relative; width: 100%; height: 100vh; min-height: 700px;
+    display: flex; align-items: center;
+    background: url('hero.webp') center/cover no-repeat;
+  }
+  .hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,10,10,0.72); z-index: 1; pointer-events: none; }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 1280px; margin: 0 auto;
+    padding: 0 40px; width: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .hero-text { flex: 1; }
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    text-transform: uppercase; letter-spacing: -2px; margin-bottom: 24px;
+  }
+  .hero h1 .line2 { color: var(--red); }
+  .hero p { font-size: 1.25rem; color: var(--gray-light); max-width: 560px; margin-bottom: 40px; font-weight: 400; }
+  .hero-rating {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 16px; margin-bottom: 24px;
+    font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .hero-rating .stars { color: var(--red); letter-spacing: 3px; }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 36px; font-size: 0.95rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    transition: all 0.25s; cursor: pointer; border: none;
+  }
+  .btn-red { background: var(--red); color: var(--white); }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+  .btn-wa { background: #25d366; color: #fff; }
+  .btn-wa:hover { background: #1fc05a; transform: translateY(-2px); }
+  .btn svg { flex-shrink: 0; }
+
+  .red-divider { width: 100%; height: 8px; background: var(--red); }
+
+  .section-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .section-heading { font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 16px; }
+  .section-heading span { color: var(--red); }
+  .section-sub { color: var(--gray-mid); font-size: 1.1rem; margin-bottom: 60px; max-width: 620px; }
+
+  /* SERVICES */
+  .services-wrap { background: var(--charcoal-light); padding: 100px 0; }
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .service-card { display: block; background: var(--charcoal); border-bottom: 4px solid var(--red); overflow: hidden; transition: transform 0.3s; }
+  .service-card:hover { transform: translateY(-6px); }
+  .service-card img { width: 100%; height: 220px; object-fit: cover; }
+  .service-card-body { padding: 28px 24px; }
+  .service-card h3 { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .service-card p { color: var(--gray-mid); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ABOUT */
+  .about-wrap { padding: 100px 0; background: var(--charcoal); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-img { width: 100%; height: 520px; object-fit: cover; }
+  .about-content h2 { font-size: 2.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
+  .about-content h2 span { color: var(--red); }
+  .about-content p { color: var(--gray-light); font-size: 1.05rem; line-height: 1.7; margin-bottom: 18px; }
+  .about-list { margin: 28px 0 36px; }
+  .about-list li {
+    padding: 12px 0; font-size: 1rem; font-weight: 600; color: var(--gray-light);
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .about-list li::before { content: ''; width: 10px; height: 10px; background: var(--red); flex-shrink: 0; }
+
+  /* GALLERY */
+  .gallery-wrap { background: var(--charcoal-light); padding: 100px 0; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .gallery-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/5; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item::after {
+    content: 'VIEW PROJECT';
+    position: absolute; inset: 0;
+    background: rgba(220,38,38,0.85);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--white);
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* TESTIMONIALS */
+  .testimonials-wrap { background: var(--charcoal); padding: 100px 0; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { background: var(--charcoal-light); padding: 36px 32px; border-left: 4px solid var(--red); display: flex; flex-direction: column; }
+  .testimonial-score { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .testimonial-score .score-pill { background: var(--red); color: #fff; font-weight: 900; padding: 4px 10px; font-size: 0.9rem; letter-spacing: 0.5px; }
+  .testimonial-score .stars { color: var(--red); letter-spacing: 3px; font-size: 1.05rem; }
+  .testimonial-card .quote-title { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+  .testimonial-card blockquote { font-size: 0.98rem; line-height: 1.75; color: var(--gray-light); margin-bottom: 22px; flex: 1; }
+  .testimonial-author { font-weight: 800; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .testimonial-role { color: var(--gray-mid); font-size: 0.82rem; margin-top: 4px; }
+
+  .checkatrade-strip { background: var(--charcoal-light); border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 0; }
+  .checkatrade-inner { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; text-align: center; max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .checkatrade-inner .ck-badge { background: #00b67a; color: #fff; font-weight: 900; padding: 10px 18px; font-size: 0.95rem; letter-spacing: 1.5px; text-transform: uppercase; }
+  .checkatrade-inner strong { color: var(--white); font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .checkatrade-inner span { color: var(--gray-mid); font-size: 0.95rem; }
+
+  /* AREAS */
+  .areas-wrap { background: var(--charcoal-light); padding: 80px 0; }
+  .areas-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .areas-tags li {
+    padding: 10px 18px;
+    background: var(--charcoal);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.88rem; font-weight: 600; color: var(--gray-light);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .areas-note { color: var(--gray-mid); margin-top: 26px; font-size: 0.95rem; }
+  .areas-note strong { color: var(--red); }
+
+  /* CONTACT FORM */
+  .contact-wrap { background: var(--charcoal); padding: 100px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+  .contact-info h3 { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 24px; }
+  .contact-info-card { background: var(--charcoal-light); border-left: 4px solid var(--red); padding: 22px 24px; margin-bottom: 14px; display: block; }
+  .contact-info-card small { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-mid); margin-bottom: 6px; }
+  .contact-info-card strong { display: block; font-size: 1.15rem; font-weight: 800; color: var(--white); }
+  .contact-info-card.is-link:hover { background: var(--charcoal-mid); }
+  .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .contact-form .form-group { margin-bottom: 16px; }
+  .contact-form label { display: block; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--gray-light); }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 14px 16px; font-size: 1rem; font-family: inherit;
+    background: var(--charcoal-light); border: 1px solid rgba(255,255,255,0.1); color: var(--white);
+    transition: border-color 0.2s;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--red); }
+  .contact-form textarea { height: 140px; resize: vertical; }
+  .contact-form button { width: 100%; font-family: inherit; cursor: pointer; }
+
+  /* CTA BANNER */
+  .cta-banner { background: var(--red); padding: 80px 40px; text-align: center; }
+  .cta-banner h2 { font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 16px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.1; }
+  .cta-banner .phone { font-size: 2.2rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 28px; display: block; }
+  .btn-white { background: var(--white); color: var(--charcoal); padding: 16px 40px; }
+  .btn-white:hover { background: var(--gray-light); transform: translateY(-2px); }
+
+  /* FOOTER */
+  .footer { background: var(--dark-footer); padding: 80px 0 0 0; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; padding: 0 40px 60px 40px; }
+  .footer-logo { font-size: 1.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-logo span { color: var(--red); }
+  .footer-about { color: var(--gray-mid); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+  .footer h4 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; color: var(--white); }
+  .footer ul li { margin-bottom: 12px; }
+  .footer ul a { color: var(--gray-mid); font-size: 0.9rem; transition: color 0.2s; }
+  .footer ul a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); max-width: 1280px; margin: 0 auto; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; color: var(--gray-mid); font-size: 0.8rem; }
+  .footer-bottom a { color: var(--red); }
+
+  /* FLOATING CTA */
+  .floating-btns { position: fixed; bottom: 20px; right: 20px; z-index: 90; display: flex; flex-direction: column; gap: 12px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .floating-btns.visible { opacity: 1; pointer-events: auto; }
+  .floating-btns a { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.3); transition: transform 0.2s; }
+  .floating-btns a:hover { transform: scale(1.1); }
+  .floating-btns a svg { width: 24px; height: 24px; }
+  .floating-btns .fab-call { background: var(--red); animation: pulse-red 2s ease-in-out infinite; }
+  .floating-btns .fab-wa { background: #25d366; animation: pulse-wa 2s ease-in-out infinite; }
+  @keyframes pulse-red { 0%{box-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 0 0 rgba(220,38,38,0.45);} 70%{box-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 0 12px rgba(220,38,38,0);} 100%{box-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 0 0 rgba(220,38,38,0);} }
+  @keyframes pulse-wa { 0%{box-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 0 0 rgba(37,211,102,0.45);} 70%{box-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 0 12px rgba(37,211,102,0);} 100%{box-shadow:0 4px 16px rgba(0,0,0,0.3),0 0 0 0 rgba(37,211,102,0);} }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-img { height: 380px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none !important; }
+    .nav-links.open { display: flex !important; flex-direction: column; position: fixed; top: 80px; left: 0; right: 0; background: #111111; padding: 24px; gap: 16px; z-index: 998; text-align: center; }
+    .nav-links.open a { font-size: 1.15rem; color: #fff; padding: 8px 0; }
+    .nav-mobile { display: block; }
+    .hero { padding-top: 120px; min-height: auto; height: auto; padding-bottom: 80px; }
+    .hero-content { flex-direction: column; text-align: left; align-items: flex-start; }
+    .hero h1 { font-size: 2.6rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .section-heading { font-size: 2rem; }
+    .about-content h2 { font-size: 2rem; }
+    .cta-banner h2 { font-size: 2rem; }
+    .cta-banner .phone { font-size: 1.5rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .contact-form .form-row { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .nav-inner { padding: 0 20px; }
+    .section-inner { padding: 0 20px; }
+    .services-wrap, .about-wrap, .gallery-wrap, .testimonials-wrap, .contact-wrap, .areas-wrap { padding: 70px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Temp <span>Tech</span></div>
+    <div class="nav-links" id="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About Bill</a>
+      <a href="#gallery">Projects</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <button class="nav-mobile" id="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-links').classList.toggle('open')">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-rating"><span class="stars">★★★★★</span> 9.95 / 10 on Checkatrade</div>
+      <h1>
+        30 Years<br>
+        <span class="line2">On The Roofs.</span>
+      </h1>
+      <p>Domestic roofing run single-handed by Bill Temple. Re-roofs, repairs, fascias, soffits, guttering and chimney work across Essex, Suffolk and North Kent. Free estimates, fast response.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-wa contact-wa" data-h="aHR0cHM6Ly93YS5tZS80NDc4ODMzMTgxOTI/dGV4dD1IaSUyMEJpbGwlMkMlMjBJJTIwZm91bmQlMjBUZW1wJTIwVGVjaCUyMG9ubGluZSUyMGFuZCUyMHdvdWxkJTIwbGlrZSUyMGElMjBxdW90ZSUyMHBsZWFzZS4=" href="#" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp Bill
+        </a>
+        <a class="btn btn-outline contact-call" data-c="MDc4ODMgMzE4MTky" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#"><span class="phone-display"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-divider"></div>
+
+<!-- SERVICES -->
+<section class="services-wrap" id="services">
+  <div class="section-inner">
+    <div class="section-heading">What Bill <span>Does</span></div>
+    <p class="section-sub">From a missing tile to a full strip and re-tile. All domestic roofing work, carried out personally by Bill.</p>
+    <div class="services-grid">
+      <a class="service-card" href="#contact">
+        <img src="work-2.webp" alt="Re-roofing and roof repairs">
+        <div class="service-card-body">
+          <h3>Re-Roofing &amp; Repairs</h3>
+          <p>Full strip and re-tile, missing or slipped tile fixes, and storm damage repair. Done properly the first time.</p>
+        </div>
+      </a>
+      <a class="service-card" href="#contact">
+        <img src="work-3.webp" alt="Fascias soffits and guttering">
+        <div class="service-card-body">
+          <h3>Fascias, Soffits &amp; Guttering</h3>
+          <p>Full roofline replacement in uPVC. Rotten timbers stripped out, new boards and seamless guttering fitted clean.</p>
+        </div>
+      </a>
+      <a class="service-card" href="#contact">
+        <img src="work-4.webp" alt="Chimney repair and removal">
+        <div class="service-card-body">
+          <h3>Chimney Repair &amp; Removal</h3>
+          <p>Chimney stack repointing, removal and capping. Lead flashing renewed, all roof work made good behind.</p>
+        </div>
+      </a>
+      <a class="service-card" href="#contact">
+        <img src="work-5.webp" alt="Flat roofing">
+        <div class="service-card-body">
+          <h3>Flat Roofing</h3>
+          <p>Felt, EPDM and GRP flat roofing for extensions, garages, dormers and bays. Watertight finish, fitted to last.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-wrap" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <img class="about-img" src="about.webp" alt="Bill Temple fitting roof tiles on a domestic re-roof">
+      <div class="about-content">
+        <h2>Meet <span>Bill</span></h2>
+        <p>Hello, I'm Bill, the owner of Temp Tech. With many happy and returning customers over the last 30 years, you can be sure of being well looked after.</p>
+        <p>My aim is to give you a stress-free project, delivered in a way that I am confident will exceed your expectations. I carry out all work myself and will be your single point of contact, start to finish. Customers often say I am approachable and cheerful. A positive attitude helps every job run smoothly.</p>
+        <ul class="about-list">
+          <li>30 Years On The Roofs</li>
+          <li>Sole Trader · One Point of Contact</li>
+          <li>3 Years on Checkatrade · £1,000 Guarantee</li>
+          <li>Free, No-Obligation Estimates</li>
+          <li>Fully Insured Domestic Roofing</li>
+          <li>Available Weekends by Phone and Text</li>
+        </ul>
+        <a class="btn btn-red contact-call" data-c="MDc4ODMgMzE4MTky" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#">Call Bill · <span class="phone-display"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-wrap" id="gallery">
+  <div class="section-inner">
+    <div class="section-heading">Recent <span>Projects</span></div>
+    <p class="section-sub">A selection of recent roofing work carried out across Essex and Suffolk.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="work-1.webp" alt="Roof tile and lead flashing repair"></div>
+      <div class="gallery-item"><img src="work-2.webp" alt="Terracotta tile re-roof finished in the sun"></div>
+      <div class="gallery-item"><img src="work-3.webp" alt="Pantile roof from above with chimney"></div>
+      <div class="gallery-item"><img src="work-4.webp" alt="Slate roof close-up next to chimney"></div>
+      <div class="gallery-item"><img src="work-5.webp" alt="Garden room flat felt roof finished"></div>
+      <div class="gallery-item"><img src="work-6.webp" alt="Re-roof in progress with breathable membrane"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Need a Roofer in Essex or Suffolk?</h2>
+  <a class="phone contact-call" data-c="MDc4ODMgMzE4MTky" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#"><span class="phone-display"></span></a>
+  <a class="btn btn-white contact-call" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#">Call Bill Now</a>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-wrap" id="testimonials">
+  <div class="section-inner">
+    <div class="section-heading">What Bill's <span>Clients</span> Say</div>
+    <p class="section-sub">Verified Checkatrade reviews from homeowners across Essex and Suffolk.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-score">
+          <span class="score-pill">10 / 10</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="quote-title">Gutters, Fascias and Soffit</div>
+        <blockquote>"Bill came over. He gave us the best quote out of all the others we received so we decided to go with him as he was cheaper and more friendly. He replaced the fascias, soffits and guttering around our bungalow. Thank you for the good work."</blockquote>
+        <div class="testimonial-author">Verified reviewer</div>
+        <div class="testimonial-role">Checkatrade · CM2 Chelmsford</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-score">
+          <span class="score-pill">10 / 10</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="quote-title">Replace Loose Roof Tiles</div>
+        <blockquote>"Bill gave us a very reasonable estimate and carried out the work the following day. Hard working in the 30+ degree heat. He made sure I was 100% happy before leaving. If I have any further work I wouldn't hesitate to contact Temp Tech."</blockquote>
+        <div class="testimonial-author">Verified reviewer</div>
+        <div class="testimonial-role">Checkatrade · CM3 Bicknacre</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-score">
+          <span class="score-pill">9.75 / 10</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="quote-title">Chimney Stack Removal</div>
+        <blockquote>"Temp Tech communicated positively and promptly. Their work was reasonably priced and they were very swift in completing the job, cleaning up thoroughly as they went. Completed on time and as explained."</blockquote>
+        <div class="testimonial-author">Verified reviewer</div>
+        <div class="testimonial-role">Checkatrade · IP12 Woodbridge</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-score">
+          <span class="score-pill">10 / 10</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="quote-title">Roof Tile Replacement</div>
+        <blockquote>"Quick first contact. Came to check the job the same day, fixed it the next morning. All good, no problem. Reasonable price, as quoted and in line with the expected cost. We'll be getting Bill back for some other jobs."</blockquote>
+        <div class="testimonial-author">Verified reviewer</div>
+        <div class="testimonial-role">Checkatrade · CO6 Coggeshall</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-score">
+          <span class="score-pill">10 / 10</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="quote-title">Roof Repair</div>
+        <blockquote>"I found Temp Tech very professional at all times. He is more than helpful and completed an excellent job repairing my roof. I would definitely recommend this company. I was pleased with the end result, and the price quoted was reasonable compared to other quotes I had received."</blockquote>
+        <div class="testimonial-author">Verified reviewer</div>
+        <div class="testimonial-role">Checkatrade · CO1 Colchester</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-score">
+          <span class="score-pill">10 / 10</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="quote-title">Full Roofing Job</div>
+        <blockquote>"Superb service from Temp Tech. Professional, efficient, and delivered a high-quality roof that has completely transformed our home. I would highly recommend Bill to anyone in need of roofing services in Colchester."</blockquote>
+        <div class="testimonial-author">Verified reviewer</div>
+        <div class="testimonial-role">Checkatrade · Colchester</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKATRADE STRIP -->
+<div class="checkatrade-strip">
+  <div class="checkatrade-inner">
+    <span class="ck-badge">Checkatrade Member</span>
+    <strong>3 Years on Checkatrade</strong>
+    <span>9.95 / 10 average from verified reviews · £1,000 Checkatrade guarantee applies</span>
+  </div>
+</div>
+
+<!-- AREAS -->
+<section class="areas-wrap" id="areas">
+  <div class="section-inner">
+    <div class="section-heading">Where Bill <span>Works</span></div>
+    <p class="section-sub">Domestic roofing across Essex, Suffolk and the North Kent border. Free estimates within an hour's drive of Colchester.</p>
+    <ul class="areas-tags">
+      <li>Colchester</li><li>Chelmsford</li><li>Ipswich</li><li>Woodbridge</li>
+      <li>Sudbury</li><li>Maldon</li><li>Braintree</li><li>Halstead</li>
+      <li>Witham</li><li>Coggeshall</li><li>Tiptree</li><li>Manningtree</li>
+      <li>Bicknacre</li><li>Felixstowe</li><li>Stowmarket</li><li>Saffron Walden</li>
+      <li>Bishop's Stortford</li><li>Bury St Edmunds</li><li>Brentwood</li><li>Southend</li>
+    </ul>
+    <p class="areas-note">Not on the list? <strong>If you're inside the M25 corridor or anywhere in East Anglia, give Bill a call.</strong></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-wrap" id="contact">
+  <div class="section-inner">
+    <div class="section-heading">Get In <span>Touch</span></div>
+    <p class="section-sub">Send Bill a message and he'll get back to you the same day with a free, no-obligation estimate.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Speak to Bill Directly</h3>
+        <a class="contact-info-card is-link contact-call" data-c="MDc4ODMgMzE4MTky" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#">
+          <small>Call</small>
+          <strong class="phone-display"></strong>
+        </a>
+        <a class="contact-info-card is-link contact-wa" data-h="aHR0cHM6Ly93YS5tZS80NDc4ODMzMTgxOTI/dGV4dD1IaSUyMEJpbGwlMkMlMjBJJTIwZm91bmQlMjBUZW1wJTIwVGVjaCUyMG9ubGluZSUyMGFuZCUyMHdvdWxkJTIwbGlrZSUyMGElMjBxdW90ZSUyMHBsZWFzZS4=" href="#" target="_blank" rel="noopener">
+          <small>WhatsApp / Text</small>
+          <strong class="phone-display"></strong>
+        </a>
+        <div class="contact-info-card">
+          <small>Available</small>
+          <strong>Mon to Sun · Phone &amp; Text</strong>
+        </div>
+        <div class="contact-info-card">
+          <small>Coverage</small>
+          <strong>Essex · Suffolk · North Kent</strong>
+        </div>
+      </div>
+      <form class="contact-form" action="/api/enquiry" method="POST" id="enquiryForm">
+        <input type="hidden" name="_site_id" value="temp-tech">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required pattern="^(0|\+44)[0-9\s]{9,13}$" title="UK phone number" maxlength="16">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="postcode">Job Postcode</label>
+          <input type="text" id="postcode" name="postcode" placeholder="e.g. CO1 1AA">
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Bill About The Job</label>
+          <textarea id="message" name="message" required placeholder="What needs doing? Roof repair, full re-roof, fascias, chimney work..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-red">Send to Bill</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Temp <span>Tech</span></div>
+      <p class="footer-about">Domestic roofing run by Bill Temple. Thirty years of experience, three years on Checkatrade. Re-roofs, repairs, fascias, soffits, guttering and chimney work across Essex, Suffolk and North Kent.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Re-Roofing</a></li>
+        <li><a href="#services">Roof Repairs</a></li>
+        <li><a href="#services">Fascias &amp; Soffits</a></li>
+        <li><a href="#services">Guttering</a></li>
+        <li><a href="#services">Chimney Work</a></li>
+        <li><a href="#services">Flat Roofing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Bill</a></li>
+        <li><a href="#gallery">Projects</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#areas">Areas Covered</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a class="contact-call" data-c="MDc4ODMgMzE4MTky" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#"><span class="phone-display"></span></a></li>
+        <li style="line-height:1.5;margin-top:4px;color:var(--gray-mid);font-size:0.9rem">Sole Trader<br>Essex &amp; Suffolk<br>Domestic Roofing</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Temp Tech. All rights reserved.</span>
+    <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- FLOATING CALL & WHATSAPP -->
+<div class="floating-btns" id="floatingBtns">
+  <a class="fab-call contact-call" data-h="dGVsOis0NDc4ODMzMTgxOTI=" href="#" aria-label="Call Bill">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <a class="fab-wa contact-wa" data-h="aHR0cHM6Ly93YS5tZS80NDc4ODMzMTgxOTI/dGV4dD1IaSUyMEJpbGwlMkMlMjBJJTIwZm91bmQlMjBUZW1wJTIwVGVjaCUyMG9ubGluZSUyMGFuZCUyMHdvdWxkJTIwbGlrZSUyMGElMjBxdW90ZSUyMHBsZWFzZS4=" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Bill">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Decode obfuscated contact info
+  (function(){
+    function d(s){ try { return atob(s); } catch(e){ return ''; } }
+    document.querySelectorAll('.contact-call, .contact-wa').forEach(function(el){
+      var h = el.getAttribute('data-h'); if(h){ el.setAttribute('href', d(h)); }
+    });
+    document.querySelectorAll('.phone-display').forEach(function(el){
+      var p = el.closest('[data-c]'); if(p){ el.textContent = d(p.getAttribute('data-c')); }
+      else { el.textContent = d('MDc4ODMgMzE4MTky'); }
+    });
+  })();
+
+  // Set form timestamp
+  (function(){
+    var ts = document.getElementById('formTimestamp');
+    if (ts) ts.value = Date.now();
+  })();
+
+  // Phone validation
+  var phoneInput = document.getElementById('phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(){
+      var val = this.value.replace(/[^0-9+\s]/g, '');
+      if (val && !/^(0|\+44)/.test(val)) {
+        this.setCustomValidity('Please enter a UK phone number starting with 0 or +44');
+      } else {
+        this.setCustomValidity('');
+      }
+    });
+  }
+
+  // Close mobile nav on link click
+  document.querySelectorAll('#nav-links a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.getElementById('nav-links').classList.remove('open');
+    });
+  });
+
+  // Floating CTA visibility
+  (function(){
+    var heroBtns = document.querySelector('.hero-buttons');
+    var floatingBtns = document.getElementById('floatingBtns');
+    if (!heroBtns || !floatingBtns) return;
+    function check(){
+      var rect = heroBtns.getBoundingClientRect();
+      if (rect.bottom < 0) floatingBtns.classList.add('visible');
+      else floatingBtns.classList.remove('visible');
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+</script>
+
+</body>
+</html>
