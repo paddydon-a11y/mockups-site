@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Olympus Networks · Structured Cabling, Fibre & CCTV · Scotland & North England</title>
+<meta name="description" content="Olympus Networks: Cat6/Cat6a structured cabling, fibre optic splicing, CCTV cameras and wireless access points across Scotland and northern England. Installed, terminated and tested.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#f7f8fb;
+    --surface-2:#eef1f6;
+    --border:#e2e8f0;
+    --border-2:#cbd5e1;
+    --ink:#0a1020;
+    --text:#3a4760;
+    --muted:#74809a;
+    --accent:#06b6d4;
+    --accent-deep:#0891b2;
+    --accent-soft:rgba(6,182,212,.12);
+    --accent-glow:rgba(6,182,212,.32);
+    --warn:#f59e0b;
+    --green:#22c55e;
+    --shadow-sm:0 1px 2px rgba(10,16,32,.04), 0 1px 1px rgba(10,16,32,.03);
+    --shadow-md:0 8px 24px rgba(10,16,32,.06), 0 2px 6px rgba(10,16,32,.04);
+    --shadow-lg:0 24px 60px rgba(10,16,32,.10), 0 8px 16px rgba(10,16,32,.05);
+    --r-sm:8px; --r-md:14px; --r-lg:22px;
+  }
+  *{box-sizing:border-box}
+  em{font-style:normal}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.08}
+  h1{font-size:clamp(2.4rem,5.2vw,4.6rem);letter-spacing:-.035em}
+  h2{font-size:clamp(1.95rem,4vw,2.9rem);letter-spacing:-.03em}
+  h3{font-size:clamp(1.15rem,1.6vw,1.35rem);letter-spacing:-.015em}
+  p{margin:0}
+  .container{max-width:1240px;margin:0 auto;padding:0 26px}
+  .label{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep);font-weight:600}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ============= LOADER (signature flourish) ============= */
+  .preloader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:36px;transition:opacity .55s ease,visibility .55s ease}
+  .preloader.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .topo-wrap{width:min(560px,86vw)}
+  .topo{width:100%;height:auto;display:block}
+  .topo .switch-body{fill:#fff;stroke:var(--ink);stroke-width:1.6}
+  .topo .switch-port{fill:#dde3ee}
+  .topo .switch-port.on{fill:var(--accent)}
+  .topo .switch-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;fill:var(--muted);text-transform:uppercase}
+  .topo .cable{fill:none;stroke:#cbd5e1;stroke-width:2;stroke-linecap:round;stroke-dasharray:520;stroke-dashoffset:520;animation:draw 1.05s cubic-bezier(.65,0,.35,1) forwards}
+  .topo .cable.c1{animation-delay:.15s}
+  .topo .cable.c2{animation-delay:.30s}
+  .topo .cable.c3{animation-delay:.45s}
+  .topo .cable.c4{animation-delay:.60s}
+  .topo .cable.c5{animation-delay:.75s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .topo .cable.lit{stroke:var(--accent);stroke-width:2.2}
+  .topo .pulse{fill:var(--accent);r:4.5;opacity:0;filter:drop-shadow(0 0 6px var(--accent))}
+  .topo .pulse.p1{animation:pulse 1.1s linear .15s forwards}
+  .topo .pulse.p2{animation:pulse 1.1s linear .30s forwards}
+  .topo .pulse.p3{animation:pulse 1.1s linear .45s forwards}
+  .topo .pulse.p4{animation:pulse 1.1s linear .60s forwards}
+  .topo .pulse.p5{animation:pulse 1.1s linear .75s forwards}
+  @keyframes pulse{0%{opacity:0}10%{opacity:1}90%{opacity:1}100%{opacity:0}}
+
+  .topo .node{fill:#fff;stroke:#cbd5e1;stroke-width:1.6;transform-box:fill-box;transform-origin:center;opacity:.55;transition:none}
+  .topo .node.lit{stroke:var(--accent);opacity:1;animation:nodeLight .45s ease forwards}
+  @keyframes nodeLight{
+    0%{filter:drop-shadow(0 0 0 var(--accent-glow))}
+    60%{filter:drop-shadow(0 0 18px var(--accent-glow))}
+    100%{filter:drop-shadow(0 0 8px var(--accent-glow))}
+  }
+  .topo .node-icon{fill:var(--ink);transition:fill .3s ease .2s}
+  .topo .node.lit .node-icon{fill:var(--accent-deep)}
+  .topo .node-ring{fill:none;stroke:var(--accent);stroke-width:1.4;opacity:0}
+  .topo .node.lit .node-ring{animation:ring 1.2s ease-out infinite}
+  @keyframes ring{0%{r:18;opacity:.7}100%{r:38;opacity:0}}
+  .topo .node-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;fill:var(--muted);text-transform:uppercase;text-anchor:middle}
+  .topo .node.lit + .node-label, .topo .node.lit ~ .node-label{fill:var(--ink)}
+
+  .loader-meta{width:min(560px,86vw);display:flex;flex-direction:column;align-items:center;gap:14px}
+  .loader-brand{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.32em;color:var(--ink);text-transform:uppercase;display:flex;align-items:center;gap:14px}
+  .loader-brand .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  .loader-status{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);min-height:1em}
+  .loader-bar{width:100%;max-width:320px;height:3px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+  .loader-bar span{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;animation:fill 2.1s cubic-bezier(.65,0,.35,1) forwards}
+  @keyframes fill{to{width:100%}}
+
+  /* ============= NAV ============= */
+  .nav{position:sticky;top:0;z-index:80;background:var(--bg);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;max-width:1240px;margin:0 auto}
+  .nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+  .nav-logo svg{width:24px;height:24px;flex:0 0 24px}
+  .nav-logo .wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.18em;font-size:.92rem;color:var(--ink);text-transform:uppercase}
+  .nav-logo .wordmark span{color:var(--accent-deep)}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.92rem;color:var(--text);font-weight:500;transition:color .2s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.nav-cta{background:var(--ink);color:#fff !important;padding:11px 20px;border-radius:99px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background .2s ease}
+  .nav-links a.nav-cta:hover{background:var(--accent-deep)}
+  .nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff}
+  .hamburger{display:none;background:none;border:1px solid var(--border-2);width:42px;height:42px;border-radius:10px;align-items:center;justify-content:center;cursor:pointer}
+  .hamburger svg{width:20px;height:20px;stroke:var(--ink)}
+  .mobile-panel{display:none;border-top:1px solid var(--border);background:var(--bg);padding:18px 26px 26px}
+  .mobile-panel.open{display:block}
+  .mobile-panel a{display:block;padding:14px 0;border-bottom:1px solid var(--border);color:var(--ink);font-weight:600}
+  .mobile-panel a.cta{background:var(--ink);color:#fff;border:0;border-radius:99px;text-align:center;margin-top:14px;padding:14px 20px}
+
+  @media (max-width:880px){
+    .nav-links{display:none}
+    .hamburger{display:inline-flex}
+  }
+
+  /* ============= HERO ============= */
+  .hero{display:flex;flex-direction:column;padding:64px 0 16px;position:relative}
+  .hero-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:54px;align-items:center}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;display:inline-flex;align-items:center;gap:10px;margin-bottom:22px}
+  .eyebrow .dot{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:beat 2s infinite}
+  @keyframes beat{0%,100%{box-shadow:0 0 0 0 var(--accent-glow)}50%{box-shadow:0 0 0 8px transparent}}
+  .hero h1{margin-bottom:24px}
+  .hero h1 .acc{color:var(--accent-deep);font-weight:800;position:relative;display:inline-block}
+  .hero h1 .acc::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.18em;background:var(--accent-soft);z-index:-1;border-radius:4px}
+  .hero-lede{font-size:1.08rem;max-width:560px;color:var(--text);margin-bottom:34px;line-height:1.7}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:99px;font-weight:600;font-size:.96rem;font-family:'Inter',sans-serif;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;cursor:pointer;border:0}
+  .btn-primary{background:var(--ink);color:#fff;box-shadow:var(--shadow-md)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);background:var(--accent-deep)}
+  .btn-primary svg{stroke:#fff}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--border-2)}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--surface)}
+  .btn-ghost svg{stroke:var(--ink)}
+  .btn-wa{background:#25D366;color:#fff}
+  .btn-wa:hover{background:#1ebd5a;transform:translateY(-2px)}
+  .btn-wa svg{stroke:#fff;width:18px;height:18px}
+  .btn svg{width:16px;height:16px;stroke-width:2.2}
+
+  .hero-meta{display:flex;gap:24px;margin-top:34px;padding-top:30px;border-top:1px dashed var(--border)}
+  .hero-meta-cell{font-size:.82rem;color:var(--muted)}
+  .hero-meta-cell strong{display:block;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+
+  .hero-photo{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/5;background:var(--surface-2);box-shadow:var(--shadow-lg)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;animation:burns 22s ease-in-out infinite alternate}
+  @keyframes burns{from{transform:scale(1)}to{transform:scale(1.07)}}
+  .hero-badge{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);padding:10px 14px;border-radius:99px;font-size:.78rem;font-weight:600;color:var(--ink);display:inline-flex;align-items:center;gap:9px;box-shadow:var(--shadow-md)}
+  .hero-badge .live{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 0 3px rgba(34,197,94,.18);animation:beat 2s infinite}
+
+  .hero-mobile-meta{display:none}
+
+  @media (max-width:980px){
+    .hero{padding:36px 0 12px}
+    .hero-inner{grid-template-columns:1fr;gap:30px}
+    .hero-photo{aspect-ratio:16/11;order:2}
+    .hero-text{order:1}
+    .hero-badge{display:none}
+    .hero-mobile-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;order:3}
+    .hero-mobile-meta span{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--surface);border:1px solid var(--border);padding:8px 12px;border-radius:99px}
+  }
+
+  /* ============= TRUST STRIP ============= */
+  .trust{margin-top:54px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
+  .trust-inner{display:grid;grid-template-columns:repeat(5,1fr);max-width:1240px;margin:0 auto}
+  .trust-item{padding:22px 24px;display:flex;align-items:center;gap:12px;border-right:1px solid var(--border);font-size:.86rem;font-weight:600;color:var(--ink)}
+  .trust-item:last-child{border-right:0}
+  .trust-item svg{width:18px;height:18px;stroke:var(--accent-deep);flex:0 0 18px}
+  @media (max-width:880px){
+    .trust-inner{grid-template-columns:1fr}
+    .trust-item{border-right:0;border-bottom:1px solid var(--border);padding:14px 22px}
+    .trust-item:last-child{border-bottom:0}
+  }
+
+  /* ============= SECTION ============= */
+  section.block{padding:90px 0}
+  section.block.tight{padding-top:30px}
+  .section-head{margin-bottom:48px;max-width:780px}
+  .section-head h2{margin-top:14px}
+  .section-head h2 .acc{color:var(--accent-deep)}
+
+  /* ============= SERVICES ============= */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .service-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:30px 26px;position:relative;overflow:hidden;transition:transform .26s ease,box-shadow .26s ease,border-color .26s ease}
+  .service-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.65,0,.35,1)}
+  .service-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-2)}
+  .service-card:hover::before{transform:scaleX(1)}
+  .service-icon{width:42px;height:42px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .service-icon svg{width:22px;height:22px;stroke:var(--accent-deep);fill:none;stroke-width:1.8}
+  .service-card h3{margin-bottom:8px}
+  .service-card p{font-size:.93rem;color:var(--muted);line-height:1.6}
+  .service-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;margin-bottom:14px;display:inline-block}
+  @media (max-width:880px){.services-grid{grid-template-columns:1fr}}
+
+  /* ============= GALLERY (G2 asymmetric masonry) ============= */
+  .gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:130px;gap:14px}
+  .tile{position:relative;overflow:hidden;border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface-2)}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .tile:hover img{transform:scale(1.06)}
+  .tile-cap{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:10px;display:block}
+  .gallery-row{display:flex;flex-direction:column}
+  .r1{grid-column:span 5;grid-row:span 3}
+  .r2{grid-column:span 4;grid-row:span 2}
+  .r3{grid-column:span 3;grid-row:span 2}
+  .r4{grid-column:span 4;grid-row:span 2}
+  .r5{grid-column:span 3;grid-row:span 2}
+  .r6{grid-column:span 5;grid-row:span 2}
+  .r7{grid-column:span 4;grid-row:span 2}
+  .r8{grid-column:span 3;grid-row:span 3}
+  @media (max-width:880px){
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+    .r1,.r2,.r3,.r4,.r5,.r6,.r7,.r8{grid-column:span 1 !important;grid-row:auto !important}
+    .tile{aspect-ratio:1/1}
+  }
+
+  /* ============= REVIEWS ============= */
+  .reviews{background:var(--surface)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .review{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:28px 26px;display:flex;flex-direction:column;gap:18px}
+  .review .stars{color:#f59e0b;font-size:.95rem;letter-spacing:2px}
+  .review p{font-size:.99rem;color:var(--ink);line-height:1.65}
+  .review .who{display:flex;align-items:center;gap:14px;margin-top:auto;border-top:1px solid var(--border);padding-top:18px}
+  .review .av{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent-deep);font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif}
+  .review .meta{font-size:.84rem}
+  .review .meta strong{display:block;color:var(--ink)}
+  .review .meta span{color:var(--muted);font-size:.78rem}
+  .review .src{display:flex;align-items:center;gap:6px;margin-left:auto;font-size:.74rem;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+  .review .src svg{width:14px;height:14px}
+  @media (max-width:880px){.reviews-grid{grid-template-columns:1fr}}
+
+  /* ============= AREAS ============= */
+  .areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .area{padding:18px 22px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);font-size:.92rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:10px;transition:border-color .2s ease, background .2s ease}
+  .area:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .area::before{content:"";width:6px;height:6px;background:var(--accent);border-radius:50%;flex:0 0 6px}
+  @media (max-width:780px){.areas-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:420px){.areas-grid{grid-template-columns:1fr}}
+
+  /* ============= CTA BAND ============= */
+  .cta-band{padding:80px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .cta-band::before,.cta-band::after{content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.5}
+  .cta-band::before{width:340px;height:340px;background:var(--accent);top:-100px;left:-80px;opacity:.25}
+  .cta-band::after{width:280px;height:280px;background:#3b82f6;bottom:-100px;right:-40px;opacity:.18}
+  .cta-inner{position:relative;display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:40px}
+  .cta-band h2{color:#fff;letter-spacing:-.03em}
+  .cta-band h2 .acc{color:var(--accent)}
+  .cta-band p{color:rgba(255,255,255,.74);margin-top:14px;max-width:520px}
+  .cta-actions{display:flex;flex-direction:column;gap:12px}
+  .cta-actions .btn-primary{background:var(--accent);color:var(--ink);box-shadow:0 12px 36px var(--accent-glow)}
+  .cta-actions .btn-primary:hover{background:#fff}
+  .cta-actions .btn-primary svg{stroke:var(--ink)}
+  .cta-actions .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+  .cta-actions .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+  .cta-actions .btn-ghost svg{stroke:#fff}
+  @media (max-width:880px){.cta-inner{grid-template-columns:1fr}}
+
+  /* ============= CONTACT ============= */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:32px}
+  .contact-grid > *{min-width:0}
+  .contact-cards{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .contact-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:22px;display:flex;gap:16px;align-items:flex-start;min-width:0}
+  .contact-card > div{min-width:0;flex:1;overflow-wrap:anywhere;word-break:break-word}
+  .contact-card a, .contact-card strong{overflow-wrap:anywhere;word-break:break-word}
+  .contact-card .ci{width:42px;height:42px;border-radius:10px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex:0 0 42px}
+  .contact-card .ci svg{width:20px;height:20px;stroke:var(--accent-deep);fill:none;stroke-width:1.8}
+  .contact-card .cl{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .contact-card strong{display:block;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.04rem;letter-spacing:-.01em}
+  .contact-card small{color:var(--muted);font-size:.84rem;display:block;margin-top:2px}
+
+  .form{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:32px}
+  .form h3{margin-bottom:6px}
+  .form .lede{font-size:.93rem;color:var(--muted);margin-bottom:24px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  .field label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text);font-weight:600}
+  .field input,.field select,.field textarea{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);transition:border-color .2s ease,background .2s ease}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--accent);background:#fff}
+  .field textarea{resize:vertical;min-height:120px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .submit{width:100%;background:var(--ink);color:#fff;padding:16px;border:0;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;letter-spacing:.02em;display:inline-flex;align-items:center;justify-content:center;gap:10px;transition:background .2s ease,transform .2s ease}
+  .submit:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .submit svg{width:18px;height:18px;stroke:#fff}
+  @media (max-width:980px){.contact-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
+
+  /* ============= FOOTER ============= */
+  footer{background:var(--ink);color:rgba(255,255,255,.78);padding:60px 0 36px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:36px}
+  .foot h4{color:#fff;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;font-weight:600;margin-bottom:14px}
+  .foot a{color:rgba(255,255,255,.7);font-size:.92rem;display:block;padding:5px 0;transition:color .2s ease}
+  .foot a:hover{color:#fff}
+  .foot-brand .wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.18em;color:#fff;text-transform:uppercase;margin-bottom:14px;font-size:1.1rem}
+  .foot-brand .wordmark span{color:var(--accent)}
+  .foot-brand p{font-size:.92rem;line-height:1.7;color:rgba(255,255,255,.65)}
+  .foot-bot{border-top:1px solid rgba(255,255,255,.10);padding-top:24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.82rem;color:rgba(255,255,255,.55)}
+  .foot-bot a{color:rgba(255,255,255,.85)}
+  @media (max-width:880px){.foot{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.foot{grid-template-columns:1fr}}
+
+  /* ============= FLOATING CTAs ============= */
+  .fab-wrap{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:12px;z-index:60;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+  .fab-wrap.show{opacity:1;visibility:visible}
+  .fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);transition:transform .2s ease}
+  .fab svg{width:22px;height:22px;stroke:#fff;fill:none}
+  .fab-call{background:var(--accent-deep);animation:pulseAccent 2s infinite}
+  .fab-wa{background:#25D366;animation:pulseGreen 2s infinite}
+  .fab:hover{animation:none;transform:scale(1.08)}
+  @keyframes pulseAccent{0%{box-shadow:0 0 0 0 var(--accent-glow), var(--shadow-lg)}70%{box-shadow:0 0 0 18px rgba(6,182,212,0), var(--shadow-lg)}100%{box-shadow:0 0 0 0 rgba(6,182,212,0), var(--shadow-lg)}}
+  @keyframes pulseGreen{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5), var(--shadow-lg)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0), var(--shadow-lg)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0), var(--shadow-lg)}}
+
+</style>
+</head>
+<body>
+
+<!-- ============= LOADER ============= -->
+<div id="preloader" class="preloader" aria-hidden="true">
+  <div class="topo-wrap">
+    <svg class="topo" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- cables (drawn first so nodes overlap them) -->
+      <!-- switch center top edge ports: y = 215; ports at x = 244,278,312,346,380 -->
+      <path class="cable c1" d="M244 215 C 244 150, 180 110, 110 90"/>
+      <path class="cable c2" d="M278 215 C 278 110, 290 70, 300 50"/>
+      <path class="cable c3" d="M312 215 C 312 130, 410 110, 490 90"/>
+      <path class="cable c4" d="M346 215 C 346 250, 430 290, 500 320"/>
+      <path class="cable c5" d="M380 215 C 380 260, 220 290, 110 320"/>
+
+      <!-- light pulses -->
+      <circle class="pulse p1" r="4">
+        <animateMotion dur="1.1s" begin="0.15s" fill="freeze" path="M244 215 C 244 150, 180 110, 110 90"/>
+      </circle>
+      <circle class="pulse p2" r="4">
+        <animateMotion dur="1.1s" begin="0.30s" fill="freeze" path="M278 215 C 278 110, 290 70, 300 50"/>
+      </circle>
+      <circle class="pulse p3" r="4">
+        <animateMotion dur="1.1s" begin="0.45s" fill="freeze" path="M312 215 C 312 130, 410 110, 490 90"/>
+      </circle>
+      <circle class="pulse p4" r="4">
+        <animateMotion dur="1.1s" begin="0.60s" fill="freeze" path="M346 215 C 346 250, 430 290, 500 320"/>
+      </circle>
+      <circle class="pulse p5" r="4">
+        <animateMotion dur="1.1s" begin="0.75s" fill="freeze" path="M380 215 C 380 260, 220 290, 110 320"/>
+      </circle>
+
+      <!-- central switch -->
+      <g>
+        <rect class="switch-body" x="210" y="215" width="180" height="50" rx="6"/>
+        <!-- ports -->
+        <rect class="switch-port" x="218" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="236" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="254" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="272" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="290" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="308" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="326" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="344" y="222" width="14" height="5" rx="1.5"/>
+        <rect class="switch-port" x="362" y="222" width="14" height="5" rx="1.5"/>
+        <!-- status LEDs -->
+        <circle cx="225" cy="252" r="2.4" fill="#22c55e"/>
+        <circle cx="240" cy="252" r="2.4" fill="#22c55e"/>
+        <circle cx="255" cy="252" r="2.4" fill="#06b6d4"/>
+        <text class="switch-label" x="300" y="257" text-anchor="middle">core / 24-port</text>
+      </g>
+
+      <!-- node 1: camera (top-left) -->
+      <g transform="translate(110,90)">
+        <circle class="node n1" r="22"/>
+        <g class="node-icon" transform="translate(-9,-7)">
+          <!-- CCTV camera glyph -->
+          <path d="M2 4 h14 a2 2 0 0 1 2 2 v6 a2 2 0 0 1 -2 2 h-14 a2 2 0 0 1 -2 -2 v-6 a2 2 0 0 1 2 -2 z" fill="currentColor"/>
+          <circle cx="9" cy="9" r="2.6" fill="#fff"/>
+        </g>
+        <circle class="node-ring n1r" r="22"/>
+      </g>
+      <text class="node-label" x="110" y="128">cctv · 4k</text>
+
+      <!-- node 2: wireless AP (top center) -->
+      <g transform="translate(300,50)">
+        <circle class="node n2" r="22"/>
+        <g class="node-icon" transform="translate(-9,-6)">
+          <path d="M3 9 Q9 3 15 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M0 11 Q9 0 18 11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <circle cx="9" cy="12" r="1.6" fill="currentColor"/>
+        </g>
+        <circle class="node-ring n2r" r="22"/>
+      </g>
+      <text class="node-label" x="300" y="88">wifi · ap</text>
+
+      <!-- node 3: workstation (top-right) -->
+      <g transform="translate(490,90)">
+        <circle class="node n3" r="22"/>
+        <g class="node-icon" transform="translate(-8,-7)">
+          <rect x="0" y="0" width="16" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M6 13 h4 v2 h2 v1 h-8 v-1 h2 z" fill="currentColor"/>
+        </g>
+        <circle class="node-ring n3r" r="22"/>
+      </g>
+      <text class="node-label" x="490" y="128">cat6a · pc</text>
+
+      <!-- node 4: fibre splice (bottom-right) -->
+      <g transform="translate(500,320)">
+        <circle class="node n4" r="22"/>
+        <g class="node-icon" transform="translate(-9,-6)">
+          <circle cx="3" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="15" cy="6" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M5 6 L13 6" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="9" cy="6" r="1.4" fill="currentColor"/>
+        </g>
+        <circle class="node-ring n4r" r="22"/>
+      </g>
+      <text class="node-label" x="500" y="358">fibre · os2</text>
+
+      <!-- node 5: camera 2 (bottom-left) -->
+      <g transform="translate(110,320)">
+        <circle class="node n5" r="22"/>
+        <g class="node-icon" transform="translate(-9,-7)">
+          <path d="M2 4 h14 a2 2 0 0 1 2 2 v6 a2 2 0 0 1 -2 2 h-14 a2 2 0 0 1 -2 -2 v-6 a2 2 0 0 1 2 -2 z" fill="currentColor"/>
+          <circle cx="9" cy="9" r="2.6" fill="#fff"/>
+        </g>
+        <circle class="node-ring n5r" r="22"/>
+      </g>
+      <text class="node-label" x="110" y="358">cctv · ptz</text>
+    </svg>
+  </div>
+  <div class="loader-meta">
+    <div class="loader-brand"><span class="dot"></span>Olympus <span style="color:var(--accent-deep)">Networks</span></div>
+    <div id="loaderStatus" class="loader-status">linking · 5 endpoints</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- ============= NAV ============= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="16" cy="16" r="3" fill="#06b6d4"/>
+        <circle cx="6" cy="6" r="2" fill="#0a1020"/>
+        <circle cx="26" cy="6" r="2" fill="#0a1020"/>
+        <circle cx="6" cy="26" r="2" fill="#0a1020"/>
+        <circle cx="26" cy="26" r="2" fill="#0a1020"/>
+        <path d="M16 16 L6 6 M16 16 L26 6 M16 16 L6 26 M16 16 L26 26" stroke="#0a1020" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">Olympus <span>Networks</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Coverage</a>
+      <a id="navCall" href="#" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallNum">Call Scott</span>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Coverage</a>
+    <a href="#contact">Contact</a>
+    <a id="mobileCall" href="#" class="cta">Call Scott</a>
+  </div>
+</nav>
+
+<!-- ============= HERO ============= -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow"><span class="dot"></span>Structured cabling · Fibre · CCTV · Scotland &amp; North England</div>
+        <h1>Network installs done right. <span class="acc">First time.</span></h1>
+        <p class="hero-lede">Cat6 and Cat6a structured cabling, fibre splicing, IP cameras and wireless access points. Pulled, terminated and Fluke tested by Scott and the Olympus Networks team across Scotland and northern England.</p>
+        <div class="hero-ctas">
+          <a id="heroCall" href="#" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span id="heroCallNum">Call Scott</span>
+          </a>
+          <a href="https://wa.me/447377909811?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-cell"><strong>Cat6a</strong>Channel tested</div>
+          <div class="hero-meta-cell"><strong>OS2/OM4</strong>Fibre splicing</div>
+          <div class="hero-meta-cell"><strong>4K IP</strong>Camera installs</div>
+        </div>
+        <div class="hero-mobile-meta">
+          <span>Fluke tested</span>
+          <span>OTDR fibre</span>
+          <span>All Scotland</span>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Olympus Networks structured cabling install: dressed Cat6 bundles in a comms cabinet">
+        <div class="hero-badge"><span class="live"></span>Fluke certified · Channel tested</div>
+      </div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Fluke Certified
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Cat6 / Cat6a
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        OS2 / OM4 Fibre
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Public Liability
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Scotland + N. England
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============= SERVICES ============= -->
+<section class="block tight" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Services · structured cabling, fibre, cctv, wireless</div>
+      <h2>What we install, terminate and <span class="acc">test</span>.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4z"/><path d="M14 14h6v6h-6z"/><path d="M10 7h7a3 3 0 0 1 3 3v4"/></svg></div>
+        <span class="service-tag">01 · copper</span>
+        <h3>Cat6 / Cat6a installation</h3>
+        <p>Floor, ceiling, riser and structured cabling. Pulled, dressed, terminated and channel tested to spec.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 12h8"/><path d="M2 8c4 0 4 8 0 8"/><path d="M22 8c-4 0-4 8 0 8"/></svg></div>
+        <span class="service-tag">02 · fibre</span>
+        <h3>Fibre optic splicing</h3>
+        <p>Single-mode and multi-mode terminations. Fusion splicing, OTDR traces and signed PDF reports on completion.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="10" rx="2"/><circle cx="10" cy="11" r="2.4"/><path d="M17 9l4-2v10l-4-2z"/></svg></div>
+        <span class="service-tag">03 · cctv</span>
+        <h3>IP camera installs</h3>
+        <p>4K IP and analogue cameras. Discreet routing, NVR and remote view setup. Recorded, tagged and labelled.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9q10-8 20 0"/><path d="M5 13q7-6 14 0"/><path d="M8 17q4-3 8 0"/><circle cx="12" cy="20" r="1.4" fill="currentColor"/></svg></div>
+        <span class="service-tag">04 · wireless</span>
+        <h3>Wireless access points</h3>
+        <p>Cisco, Ubiquiti and Aruba kit. Coverage survey, install, configure, label. Mesh and roaming sorted.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1"/><rect x="3" y="11" width="18" height="4" rx="1"/><rect x="3" y="17" width="18" height="4" rx="1"/><circle cx="6" cy="7" r=".8" fill="currentColor"/><circle cx="6" cy="13" r=".8" fill="currentColor"/><circle cx="6" cy="19" r=".8" fill="currentColor"/></svg></div>
+        <span class="service-tag">05 · racks</span>
+        <h3>Patch panels &amp; termination</h3>
+        <p>RJ45, LC and SC. Dressed bundles, labelled cables, clean racks. End-to-end IDs documented for the handover pack.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="9" width="20" height="6"/><path d="M2 12h20"/><path d="M6 9V6h12v3"/></svg></div>
+        <span class="service-tag">06 · containment</span>
+        <h3>Small containment</h3>
+        <p>Basket, tray, trunking and conduit. Installed flush to walls, painted in if needed. Cable routes that disappear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= GALLERY ============= -->
+<section class="block" id="work" style="padding-top:30px">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Recent work · cabling · fibre · cameras · wireless</div>
+      <h2>Last month, on site across <span class="acc">Scotland</span>.</h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery-row r1">
+        <div class="tile reveal" style="flex:1"><img src="hero.jpg" alt="Dressed Cat6 cable bundles in a comms cabinet"></div>
+        <span class="tile-cap">01 · dressed bundles, glasgow data hall</span>
+      </div>
+      <div class="gallery-row r2">
+        <div class="tile reveal" style="flex:1"><img src="work-1.jpg" alt="OM3 fibre splice tray, cyan patch cables"></div>
+        <span class="tile-cap">02 · om3 splice tray, edinburgh fit-out</span>
+      </div>
+      <div class="gallery-row r3">
+        <div class="tile reveal" style="flex:1"><img src="work-3.jpg" alt="Cable riser route, warehouse install with orange racking"></div>
+        <span class="tile-cap">03 · riser route, warehouse</span>
+      </div>
+      <div class="gallery-row r4">
+        <div class="tile reveal" style="flex:1"><img src="work-2.jpg" alt="Vertical Cat6 patch panel run with cable archways"></div>
+        <span class="tile-cap">04 · vertical patch run, aberdeen</span>
+      </div>
+      <div class="gallery-row r5">
+        <div class="tile reveal" style="flex:1"><img src="work-7.jpg" alt="Cisco wireless access point install in a period property"></div>
+        <span class="tile-cap">05 · ap install, period property</span>
+      </div>
+      <div class="gallery-row r6">
+        <div class="tile reveal" style="flex:1"><img src="work-5.jpg" alt="Server cabinet patching mid-installation, ladder and tools in shot"></div>
+        <span class="tile-cap">06 · cabinet patching, mid-build</span>
+      </div>
+      <div class="gallery-row r7">
+        <div class="tile reveal" style="flex:1"><img src="work-6.jpg" alt="External CCTV camera installed on a steel-clad building"></div>
+        <span class="tile-cap">07 · perimeter cctv, commercial unit</span>
+      </div>
+      <div class="gallery-row r8">
+        <div class="tile reveal" style="flex:1"><img src="work-8.jpg" alt="OS2 fibre splice and patch with pink fibres"></div>
+        <span class="tile-cap">08 · os2 splice + patch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= REVIEWS ============= -->
+<section class="block reviews" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Reviews · scotland &amp; north england clients</div>
+      <h2>What the last few jobs <span class="acc">sounded like</span>.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>Olympus did our office Cat6a install over a weekend. 24 ports, neat as you like, every cable labelled. Scott walked the run with me before he priced it.</p>
+        <div class="who">
+          <div class="av">H</div>
+          <div class="meta"><strong>Hamish G.</strong><span>Edinburgh · Office fit-out</span></div>
+          <div class="src"><svg viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>Google</div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>Booked them for two IP cameras and an access point in our cafe. Took the cabling along the cornice so you can't see it. Tidy job, recorder set up before they left.</p>
+        <div class="who">
+          <div class="av">A</div>
+          <div class="meta"><strong>Aileen R.</strong><span>Glasgow · CCTV + AP</span></div>
+          <div class="src"><svg viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>Google</div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>Asked for a fibre splice between two units on the estate. OTDR test report came back with the invoice. No fuss, no mess, and they were in and out the same day.</p>
+        <div class="who">
+          <div class="av">B</div>
+          <div class="meta"><strong>Bryn M.</strong><span>Newcastle · Fibre splice</span></div>
+          <div class="src"><svg viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>Google</div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>Olympus terminated and tested 36 outlets for our new fit-out. All passed Cat6a. Set up the patching to label end to end and dropped a folder of test results in my inbox.</p>
+        <div class="who">
+          <div class="av">K</div>
+          <div class="meta"><strong>Karen D.</strong><span>Aberdeen · 36-outlet fit-out</span></div>
+          <div class="src"><svg viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>Google</div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>Used Scott for a small CCTV run on a domestic property. Containment painted in to match the wall, cameras tucked away. Looks the part and the app works perfectly.</p>
+        <div class="who">
+          <div class="av">I</div>
+          <div class="meta"><strong>Iain S.</strong><span>Stirling · Home CCTV</span></div>
+          <div class="src"><svg viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>Google</div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>We had Olympus in for the data side of a warehouse build. Ran the basket containment up the riser, pulled 48 cables, terminated and tested. Spot on from start to finish.</p>
+        <div class="who">
+          <div class="av">D</div>
+          <div class="meta"><strong>Dougie L.</strong><span>Dundee · Warehouse build</span></div>
+          <div class="src"><svg viewBox="0 0 24 24" fill="#4285F4"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= AREAS ============= -->
+<section class="block" id="areas">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Coverage · scotland and north england</div>
+      <h2>Where Olympus <span class="acc">covers</span>.</h2>
+    </div>
+    <div class="areas-grid">
+      <div class="area reveal">Edinburgh</div>
+      <div class="area reveal">Glasgow</div>
+      <div class="area reveal">Aberdeen</div>
+      <div class="area reveal">Dundee</div>
+      <div class="area reveal">Stirling</div>
+      <div class="area reveal">Perth</div>
+      <div class="area reveal">Falkirk</div>
+      <div class="area reveal">Inverness</div>
+      <div class="area reveal">Newcastle</div>
+      <div class="area reveal">Carlisle</div>
+      <div class="area reveal">Durham</div>
+      <div class="area reveal">Sunderland</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CTA BAND ============= -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2>Network install, fibre splice or <span class="acc">CCTV</span> on the cards?</h2>
+        <p>Send Scott the plans, the floor count or just a photo of the cabinet. Quotes within 24 hours.</p>
+      </div>
+      <div class="cta-actions">
+        <a id="bandCall" href="#" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="bandCallNum">Call Scott</span>
+        </a>
+        <a href="https://wa.me/447377909811?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp Scott
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CONTACT ============= -->
+<section class="block" id="contact" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Get in touch · scott robertson</div>
+      <h2>Tell us about the <span class="acc">install</span>.</h2>
+      <p style="color:var(--muted);margin-top:14px;max-width:520px">Plans, photo of the cabinet or just a rough cable count is all we need to price it. Quotes back within 24 hours, usually same-day.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="ci"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="cl">Call Scott</div>
+            <strong><a id="contactPhone" href="#"></a></strong>
+            <small>Mon–Sat 8am–6pm</small>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="ci"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div>
+            <div class="cl">WhatsApp</div>
+            <strong><a href="https://wa.me/447377909811?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please">Message Scott</a></strong>
+            <small>Quickest for photos / plans</small>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="ci"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="cl">Email</div>
+            <strong><a id="contactEmail" href="#"></a></strong>
+            <small>Plans, drawings, BoQs</small>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="ci"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="cl">Coverage</div>
+            <strong>Scotland &amp; N. England</strong>
+            <small>Base: Scotland · Same-day surveys</small>
+          </div>
+        </div>
+      </div>
+      <form class="form" action="/api/enquiry" method="POST">
+        <h3>Send Scott the details</h3>
+        <p class="lede">We'll come back within a working day with a price or a survey slot.</p>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Olympus Networks">
+        <input type="hidden" name="source" value="mockup-olympus-networks">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" placeholder="07…">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-email">Email (optional)</label>
+          <input id="f-email" name="email" type="email" placeholder="you@example.co.uk">
+        </div>
+        <div class="field">
+          <label for="f-service">Service</label>
+          <select id="f-service" name="service">
+            <optgroup label="Cabling">
+              <option>Cat6 / Cat6a install</option>
+              <option>Patch panel / termination</option>
+              <option>Small containment</option>
+            </optgroup>
+            <optgroup label="Fibre">
+              <option>Fibre splicing (OS2 / OM3 / OM4)</option>
+              <option>OTDR test &amp; certify</option>
+            </optgroup>
+            <optgroup label="Cameras &amp; Wireless">
+              <option>CCTV install</option>
+              <option>Wireless access points</option>
+              <option>Site survey</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Multi-site fit-out</option>
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-message">Project details</label>
+          <textarea id="f-message" name="message" placeholder="Floor count, cable count, site address, anything that helps us price it."></textarea>
+        </div>
+        <button type="submit" class="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send to Scott
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div class="foot-brand">
+        <div class="wordmark">Olympus <span>Networks</span></div>
+        <p>Structured cabling, fibre splicing, CCTV and wireless across Scotland and northern England. Installed, terminated and tested.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Cat6 / Cat6a</a>
+        <a href="#services">Fibre splicing</a>
+        <a href="#services">CCTV cameras</a>
+        <a href="#services">Wireless access points</a>
+        <a href="#services">Small containment</a>
+      </div>
+      <div>
+        <h4>Coverage</h4>
+        <a href="#areas">Edinburgh</a>
+        <a href="#areas">Glasgow</a>
+        <a href="#areas">Aberdeen</a>
+        <a href="#areas">Newcastle</a>
+        <a href="#areas">North England</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a id="footCall" href="#"></a>
+        <a href="https://wa.me/447377909811?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please">WhatsApp</a>
+        <a id="footEmail" href="#"></a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2026 Olympus Networks · Scott Robertson</div>
+      <div>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============= FLOATING CTAs ============= -->
+<div class="fab-wrap" id="fabWrap">
+  <a id="fabCall" href="#" class="fab fab-call" aria-label="Call Scott">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/447377909811?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Decode contact info
+  var P = atob('MDczNzc5MDk4MTE=');
+  var Pf = atob('MDczNzcgOTA5IDgxMQ==');
+  var E = atob('T2x5bXB1c25ldHdvcmt6MjZAZ21haWwuY29t');
+  document.getElementById('navCall').href = 'tel:' + P;
+  document.getElementById('mobileCall').href = 'tel:' + P;
+  document.getElementById('heroCall').href = 'tel:' + P;
+  document.getElementById('bandCall').href = 'tel:' + P;
+  document.getElementById('fabCall').href = 'tel:' + P;
+  var fc = document.getElementById('footCall');
+  fc.href = 'tel:' + P; fc.textContent = Pf;
+  document.getElementById('contactPhone').href = 'tel:' + P;
+  document.getElementById('contactPhone').textContent = Pf;
+  var em = document.getElementById('contactEmail');
+  em.href = 'mailto:' + E; em.textContent = E;
+  var fe = document.getElementById('footEmail');
+  fe.href = 'mailto:' + E; fe.textContent = E;
+  document.getElementById('heroCallNum').textContent = 'Call ' + Pf;
+  document.getElementById('bandCallNum').textContent = 'Call ' + Pf;
+  document.getElementById('formTimestamp').value = Date.now();
+
+  // Loader: light up endpoints + status text
+  (function(){
+    var stat = document.getElementById('loaderStatus');
+    var statuses = [
+      'linking · cat6a 24-port',
+      'splicing · os2 fibre',
+      'authorising · ap mesh',
+      'streaming · cctv 4k',
+      'channel test · pass'
+    ];
+    var idx = 0;
+    statuses.forEach(function(s, i){
+      setTimeout(function(){ stat.textContent = s; }, 240 + i*330);
+    });
+    var nodes = ['n1','n2','n3','n4','n5'];
+    nodes.forEach(function(n, i){
+      setTimeout(function(){
+        document.querySelectorAll('.' + n).forEach(function(el){ el.classList.add('lit'); });
+        document.querySelectorAll('.c' + (i+1)).forEach(function(el){ el.classList.add('lit'); });
+      }, 1100 + i*150);
+    });
+    setTimeout(function(){
+      var pl = document.getElementById('preloader');
+      pl.classList.add('gone');
+      setTimeout(function(){ pl.style.display = 'none'; }, 600);
+    }, 2400);
+  })();
+
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', function(){
+    document.getElementById('mobilePanel').classList.toggle('open');
+  });
+
+  // Scroll reveals
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Floating FABs show after hero
+  var fab = document.getElementById('fabWrap');
+  var heroEl = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > (heroEl.offsetHeight - 200)) fab.classList.add('show');
+    else fab.classList.remove('show');
+  });
+
+  // Phone field validity
+  var pf = document.getElementById('f-phone');
+  pf.addEventListener('input', function(){
+    pf.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(pf.value) ? '' : 'UK phone number please');
+  });
+</script>
+
+</body>
+</html>
