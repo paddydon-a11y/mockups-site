@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alec Clinton Civils · Drainage, Concrete &amp; Civil Engineering</title>
+<meta name="description" content="Alec Clinton Civils. Deep drainage, external drainage, road repairs, concrete pours of all types, driveways, footpaths and reinstatement works. Civil engineering done right.">
+<meta name="theme-color" content="#1a1c1e">
+<link rel="canonical" href="https://alec-clinton-civils.example/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alec Clinton Civils · Drainage, Concrete &amp; Civils">
+<meta property="og:description" content="Deep drainage, road repairs, concrete pours, driveways, footpaths and reinstatement works.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#1a1c1e; --ink-2:#23262a; --ink-3:#2d3136;
+    --concrete:#8d8f8a; --concrete-l:#bcbeb8; --concrete-d:#6f716c;
+    --yellow:#f5c518; --yellow-d:#d9a900; --yellow-l:#ffd84a;
+    --paper:#f3f3f1; --paper-2:#e7e8e4;
+    --text:#e9eae6; --muted:#9aa0a0; --ink-soft:#4b4f52; --line-d:rgba(255,255,255,.1); --line-l:#dcdcd6;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.nav-cta,.btn,.stat-num{font-family:'Manrope',sans-serif;font-weight:800}
+  img{display:block;max-width:100%;height:auto}
+  a{text-decoration:none;color:inherit}ul{list-style:none}
+  .label{font-family:'Manrope';font-weight:700;font-size:.74rem;letter-spacing:2.6px;text-transform:uppercase}
+
+  /* ===== LOADER (concrete pour) ===== */
+  body:not(.loaded){overflow:hidden;height:100vh}
+  #loader{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 120% at 50% 28%,#26292d,#1a1c1e 60%,#141517);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .7s ease,visibility .7s}
+  body.loaded #loader{opacity:0;visibility:hidden;pointer-events:none}
+  .lo-svg{width:min(300px,72vw);height:auto;overflow:visible}
+  #stream{transform-box:view-box;transform-origin:155px 70px;animation:pourSway 1.1s ease-in-out infinite alternate}
+  @keyframes pourSway{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
+  .stream-flow{stroke-dasharray:6 10;animation:flow .5s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-16}}
+  #fill{transform-box:view-box;transform-origin:150px 172px;transform:scaleY(0);animation:pour 2.3s cubic-bezier(.4,0,.5,1) .25s forwards}
+  @keyframes pour{to{transform:scaleY(1)}}
+  .splash{transform-box:view-box;transform-origin:center;animation:splash 1.1s ease-out infinite}
+  .splash.s2{animation-delay:.35s}.splash.s3{animation-delay:.7s}
+  @keyframes splash{0%{opacity:0;transform:translateY(0) scale(.4)}30%{opacity:.7}100%{opacity:0;transform:translateY(-10px) scale(1.3)}}
+  .lo-word{font-family:'Manrope';font-weight:900;font-size:clamp(1.5rem,5vw,2.1rem);letter-spacing:1px;text-transform:uppercase;color:var(--text);text-align:center;line-height:1}
+  .lo-word b{color:var(--yellow)}
+  .lo-word span{display:block;font-size:.42em;letter-spacing:5px;color:var(--muted);font-weight:700;margin-top:7px}
+  .lo-bar{width:min(240px,56vw);height:4px;background:rgba(255,255,255,.12);overflow:hidden}
+  .lo-bar i{display:block;height:100%;width:0;background:var(--yellow);animation:fill 2.4s cubic-bezier(.5,.1,.2,1) forwards}
+  @keyframes fill{to{width:100%}}
+  @media(prefers-reduced-motion:reduce){#fill,#stream,.splash,.stream-flow,.lo-bar i{animation-duration:.01s;animation-delay:0s;transform:none}#fill{transform:scaleY(1)}.lo-bar i{width:100%}#loader{transition:opacity .2s}}
+
+  /* ===== NAV ===== */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(26,28,30,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-d);transition:box-shadow .3s,background .3s}
+  .nav.scrolled{background:rgba(26,28,30,.98);box-shadow:0 4px 22px rgba(0,0,0,.4)}
+  .nav-inner{max-width:1240px;margin:0 auto;padding:0 34px;height:78px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mk{width:40px;height:40px;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-family:'Manrope';font-weight:900;font-size:1.05rem;color:var(--ink);letter-spacing:-1px}
+  .brand .bt{font-family:'Manrope';font-weight:800;font-size:1.05rem;color:#fff;letter-spacing:.3px;line-height:1.05}
+  .brand .bt span{display:block;font-size:.62rem;font-weight:600;letter-spacing:3px;color:var(--yellow);text-transform:uppercase}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.8rem;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:var(--yellow);color:var(--ink) !important;padding:11px 22px;font-size:.8rem;letter-spacing:1px;transition:all .25s}
+  .nav-cta:hover{background:var(--yellow-l);transform:translateY(-1px)}
+  .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}.nav-mobile svg{stroke:#fff}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;background:#141517 url('hero.jpg') center/cover no-repeat;padding:120px 34px 70px}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,21,23,.95) 0%,rgba(20,21,23,.78) 42%,rgba(20,21,23,.4) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%}
+  .hero-eye{display:inline-flex;align-items:center;gap:10px;color:var(--yellow);margin-bottom:22px}
+  .hero-eye::before{content:"";width:26px;height:3px;background:var(--yellow)}
+  .hero h1{font-size:clamp(2.6rem,6.2vw,4.8rem);font-weight:900;line-height:.98;color:#fff;letter-spacing:-1.5px;text-transform:uppercase;margin-bottom:20px;max-width:16ch}
+  .hero h1 b{color:var(--yellow);font-weight:900}
+  .hero-lede{font-size:1.14rem;color:rgba(255,255,255,.8);max-width:500px;margin-bottom:32px}
+  .hero-btns{display:flex;gap:13px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:16px 30px;font-family:'Manrope';font-weight:800;font-size:.82rem;letter-spacing:1.4px;text-transform:uppercase;cursor:pointer;border:none;transition:all .25s}
+  .btn svg{width:17px;height:17px}
+  .btn-y{background:var(--yellow);color:var(--ink)}.btn-y:hover{background:var(--yellow-l);transform:translateY(-2px)}
+  .btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1ebe5b;transform:translateY(-2px)}
+  .btn-line{background:rgba(255,255,255,.07);color:#fff;border:1.5px solid rgba(255,255,255,.3)}.btn-line:hover{border-color:var(--yellow);color:var(--yellow)}
+  .btn-ink{background:var(--ink);color:#fff;padding:16px 34px}.btn-ink:hover{background:var(--ink-3);transform:translateY(-2px)}
+  .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+  .hero-tags span{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);padding:6px 12px}
+
+  /* ===== TRUST ===== */
+  .trust{background:var(--yellow);color:var(--ink)}
+  .trust-inner{max-width:1240px;margin:0 auto;padding:16px 34px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .trust-item{display:flex;align-items:center;gap:9px;font-family:'Manrope';font-weight:700;font-size:.8rem;letter-spacing:.6px;text-transform:uppercase}
+  .trust-item svg{width:17px;height:17px;stroke:var(--ink);fill:none;stroke-width:2.4;flex:none}
+
+  /* ===== SECTION HELPERS ===== */
+  .sec{max-width:1240px;margin:0 auto;padding:96px 34px}
+  .eyebrow{color:var(--yellow-d);margin-bottom:12px;display:block}
+  .head{font-family:'Manrope';font-weight:900;font-size:clamp(2rem,4vw,3rem);line-height:1.04;letter-spacing:-1px;text-transform:uppercase;margin-bottom:14px}
+  .sub{color:var(--muted);font-size:1.04rem;max-width:580px;margin-bottom:50px}
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--ink-2)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line-d);border:1px solid var(--line-d)}
+  .svc{background:var(--ink-2);padding:34px 28px;transition:background .25s}
+  .svc:hover{background:var(--ink-3)}
+  .svc-ic{width:50px;height:50px;border:2px solid var(--yellow);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .svc-ic svg{width:25px;height:25px;stroke:var(--yellow);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .svc h3{font-family:'Manrope';font-weight:800;font-size:1.12rem;color:#fff;text-transform:uppercase;letter-spacing:.4px;margin-bottom:9px}
+  .svc p{font-size:.9rem;color:var(--muted);line-height:1.6}
+
+  /* ===== GALLERY ===== */
+  .gallery{background:var(--ink)}
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gal{position:relative;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--line-d)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .gal:hover img{transform:scale(1.06)}
+  .gal .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;background:linear-gradient(to top,rgba(20,21,23,.9),transparent);font-family:'Manrope';font-weight:700;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;color:#fff}
+  .gal .cap b{color:var(--yellow)}
+
+  /* ===== ABOUT ===== */
+  .about{background:var(--ink-2)}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+  .about p{color:var(--muted);font-size:1.04rem;line-height:1.85;margin-bottom:16px}
+  .about-list{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .about-list li{display:flex;align-items:center;gap:10px;font-size:.92rem;font-weight:500;color:var(--text)}
+  .about-list svg{width:19px;height:19px;stroke:var(--yellow);fill:none;stroke-width:2.6;flex:none}
+  .stats{background:var(--yellow);color:var(--ink);padding:40px 36px}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px 22px}
+  .stat-num{font-family:'Manrope';font-weight:900;font-size:2.1rem;line-height:1}
+  .stat-lab{font-family:'Manrope';font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.6px;margin-top:5px}
+
+  /* ===== CTA ===== */
+  .cta{background:var(--ink) center/cover;position:relative;text-align:center;padding:88px 34px;border-top:3px solid var(--yellow)}
+  .cta h2{font-family:'Manrope';font-weight:900;font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;letter-spacing:-1px;color:#fff;margin-bottom:12px}
+  .cta p{color:var(--muted);margin-bottom:24px}
+  .cta .phone{display:block;font-family:'Manrope';font-weight:900;font-size:clamp(2rem,5vw,2.9rem);color:var(--yellow);margin-bottom:24px}
+  .cta-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+
+  /* ===== CONTACT ===== */
+  .contact{background:var(--ink-2)}
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px}
+  .ct-item{display:flex;gap:14px;margin-bottom:22px}
+  .ct-item .ic{width:46px;height:46px;border:1px solid var(--line-d);display:flex;align-items:center;justify-content:center;flex:none}
+  .ct-item .ic svg{width:21px;height:21px;stroke:var(--yellow);fill:none;stroke-width:2}
+  .ct-item b{font-family:'Manrope';font-weight:700;font-size:.74rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+  .ct-item a,.ct-item span{font-family:'Manrope';font-weight:700;font-size:1.15rem;color:#fff}
+  .ct-item a:hover{color:var(--yellow)}
+  .form{background:var(--ink);border:1px solid var(--line-d);padding:32px}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form label{display:block;font-family:'Manrope';font-weight:700;font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+  .form input,.form select,.form textarea{width:100%;padding:13px 15px;background:var(--ink-2);border:1px solid var(--line-d);color:#fff;font-family:'Inter';font-size:.95rem;margin-bottom:14px}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--yellow)}
+  .form textarea{height:120px;resize:vertical}.form button{width:100%}
+
+  /* ===== FOOTER ===== */
+  .footer{background:#141517;padding:56px 34px 24px;border-top:1px solid var(--line-d)}
+  .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:46px}
+  .footer .brand{margin-bottom:14px}
+  .footer p{color:var(--muted);font-size:.88rem;line-height:1.7;max-width:330px}
+  .footer h4{font-family:'Manrope';font-weight:700;font-size:.74rem;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:16px}
+  .footer li{margin-bottom:10px}.footer a{font-size:.88rem;color:var(--muted);transition:color .2s}.footer a:hover{color:var(--yellow)}
+  .fbot{max-width:1240px;margin:34px auto 0;padding-top:20px;border-top:1px solid var(--line-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.78rem;color:var(--muted)}
+  .fbot a{color:var(--yellow)}
+
+  /* ===== FLOATING ===== */
+  .fab{position:fixed;bottom:22px;right:22px;z-index:400;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(16px);pointer-events:none;transition:.4s}
+  .fab.on{opacity:1;transform:none;pointer-events:auto}
+  .fab a{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  .fab a svg{width:24px;height:24px}
+  .fab .call{background:var(--yellow)}.fab .call svg{stroke:var(--ink);fill:none;stroke-width:2}
+  .fab .wa{background:#25d366}.fab .wa svg{fill:#fff}
+
+  /* ===== MOBILE MENU ===== */
+  .mm{display:none;position:fixed;inset:0;z-index:999;background:rgba(20,21,23,.98);flex-direction:column;align-items:center;justify-content:center;gap:26px}
+  .mm.open{display:flex}
+  .mm a{font-family:'Manrope';font-weight:800;font-size:1.5rem;text-transform:uppercase;letter-spacing:1px;color:#fff}
+  .mm a:hover{color:var(--yellow)}
+  .mm-close{position:absolute;top:22px;right:26px;background:none;border:none;cursor:pointer}.mm-close svg{stroke:#fff}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:980px){
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .gal-grid{grid-template-columns:repeat(2,1fr)}
+    .about-grid{grid-template-columns:1fr;gap:42px}
+    .contact-grid{grid-template-columns:1fr;gap:34px}
+    .footer-inner{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .nav-links{display:none}.nav-mobile{display:block}.nav-inner{padding:0 20px}
+    .hero{min-height:auto;padding:116px 20px 56px}.sec{padding:64px 20px}
+    .trust-inner{padding:14px 20px;gap:10px 16px}
+    .svc-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr}
+    .form .row{grid-template-columns:1fr}.about-list{grid-template-columns:1fr}
+    .footer-inner{grid-template-columns:1fr;gap:30px}
+    .hero-btns .btn{flex:1}.cta-btns{flex-direction:column;align-items:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== LOADER (concrete pour) ===== -->
+<div id="loader" role="status" aria-label="Loading">
+  <svg class="lo-svg" viewBox="0 0 300 200" aria-hidden="true">
+    <defs>
+      <linearGradient id="conc" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#bcbeb8"/><stop offset="1" stop-color="#7c7e78"/>
+      </linearGradient>
+      <clipPath id="formClip"><rect x="54" y="120" width="192" height="52" rx="2"/></clipPath>
+    </defs>
+    <!-- chute -->
+    <g>
+      <path d="M196 44 L246 32 L252 52 L208 66 Z" fill="#3a3e42"/>
+      <path d="M196 44 L246 32 L252 52 L208 66 Z" fill="none" stroke="#f5c518" stroke-width="2"/>
+    </g>
+    <!-- pouring stream -->
+    <g id="stream">
+      <path d="M204 60 L214 60 L172 124 L160 124 Z" fill="url(#conc)" opacity=".9"/>
+      <line class="stream-flow" x1="186" y1="62" x2="166" y2="122" stroke="#e6e7e2" stroke-width="3"/>
+    </g>
+    <!-- splashes at pour point -->
+    <g fill="#cfd1cb">
+      <circle class="splash" cx="160" cy="120" r="4"/>
+      <circle class="splash s2" cx="150" cy="122" r="3"/>
+      <circle class="splash s3" cx="170" cy="121" r="3.5"/>
+    </g>
+    <!-- formwork -->
+    <g clip-path="url(#formClip)">
+      <rect id="fill" x="54" y="120" width="192" height="52" fill="url(#conc)"/>
+    </g>
+    <rect x="54" y="120" width="192" height="52" rx="2" fill="none" stroke="#caa400" stroke-width="0"/>
+    <!-- timber form boards -->
+    <rect x="48" y="116" width="8" height="62" fill="#c9a86a"/>
+    <rect x="244" y="116" width="8" height="62" fill="#c9a86a"/>
+    <rect x="48" y="172" width="204" height="8" fill="#b9985c"/>
+  </svg>
+  <div class="lo-word">ALEC <b>CLINTON</b><span>Civils</span></div>
+  <div class="lo-bar"><i></i></div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Alec Clinton Civils home">
+      <span class="mk">AC</span>
+      <span class="bt">Alec Clinton<span>Civils</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a id="navCall" href="#" class="nav-cta">Call</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('mm').classList.add('open')" aria-label="Menu"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+<div class="mm" id="mm">
+  <button class="mm-close" onclick="document.getElementById('mm').classList.remove('open')" aria-label="Close"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a href="#services" onclick="document.getElementById('mm').classList.remove('open')">Services</a>
+  <a href="#work" onclick="document.getElementById('mm').classList.remove('open')">Our Work</a>
+  <a href="#about" onclick="document.getElementById('mm').classList.remove('open')">About</a>
+  <a id="mCall" href="#" onclick="document.getElementById('mm').classList.remove('open')" style="color:var(--yellow)">Call</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="hero-eye label">Civil Engineering &amp; Groundworks</span>
+    <h1>Drainage, concrete &amp; <b>civils</b> done right.</h1>
+    <p class="hero-lede">Alec Clinton Civils handles deep drainage, road repairs, concrete pours of all types, driveways, footpaths and full reinstatement, for domestic and commercial sites.</p>
+    <div class="hero-btns">
+      <a id="heroCall" href="#" class="btn btn-y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><span id="heroCallTxt">Call</span></a>
+      <a id="heroWa" href="#" target="_blank" rel="noopener" class="btn btn-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>WhatsApp</a>
+      <a href="#work" class="btn btn-line">Our Work</a>
+    </div>
+    <div class="hero-tags"><span>Deep Drainage</span><span>Concrete Pours</span><span>Road Repairs</span><span>Driveways</span><span>Reinstatement</span></div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Domestic &amp; Commercial</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Fully Insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Own Plant &amp; Operators</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Concrete Pours, All Types</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Free Quotes</div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="services">
+  <div class="sec" id="services">
+    <span class="eyebrow label reveal">What we do</span>
+    <h2 class="head reveal">Groundworks &amp; civils,<br>start to finish.</h2>
+    <p class="sub reveal">From the first dig to the final pour and reinstatement, Alec Clinton Civils takes on the whole job, to spec and on programme.</p>
+    <div class="svc-grid">
+      <div class="svc reveal"><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M4 4v6a6 6 0 006 6h4a4 4 0 014 4M4 9h7M16 13l4 4-4 4"/></svg></div><h3>Deep Drainage</h3><p>Deep drainage runs, connections and manholes, surveyed, laid and tested.</p></div>
+      <div class="svc reveal"><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 7h18M7 7v10M3 17h18M14 7v10M3 12h18"/></svg></div><h3>External Drainage</h3><p>All external drainage, soakaways, gullies, channels and surface water solutions.</p></div>
+      <div class="svc reveal"><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 18l4-12h10l4 12M8 6v12M16 6v12M3 13h18"/></svg></div><h3>Road Repairs</h3><p>Pothole and carriageway repairs, patching and reinstatement to standard.</p></div>
+      <div class="svc reveal"><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 16h18v4H3zM5 16l3-9h8l3 9M9 7l-1 9M15 7l1 9"/></svg></div><h3>Concrete Pours</h3><p>Concrete pours of all types, slabs, bases, foundations and reinforced work.</p></div>
+      <div class="svc reveal"><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 6h18v4H3zM3 14h18v4H3zM8 6v4M14 6v4M11 14v4M17 14v4"/></svg></div><h3>Driveways &amp; Footpaths</h3><p>Block paving, tarmac and concrete driveways, paths and access, edged and finished.</p></div>
+      <div class="svc reveal"><div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5M9 14l2 2 4-4"/></svg></div><h3>Reinstatement Works</h3><p>Fences, verges and surfaces reinstated and left exactly as they should be.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery">
+  <div class="sec" id="work">
+    <span class="eyebrow label reveal">On site</span>
+    <h2 class="head reveal">Recent works.</h2>
+    <div class="gal-grid">
+      <div class="gal reveal"><img src="work-rebar.jpg" alt="Reinforced formwork ready for a concrete pour"><div class="cap"><b>Concrete</b> · reinforced base</div></div>
+      <div class="gal reveal"><img src="work-drainage.jpg" alt="Drainage ducting laid in a trench"><div class="cap"><b>Drainage</b> · new run</div></div>
+      <div class="gal reveal"><img src="work-formwork.jpg" alt="Timber formwork and mesh slab preparation"><div class="cap"><b>Formwork</b> · slab prep</div></div>
+      <div class="gal reveal"><img src="work-excavation.jpg" alt="Deep excavation with drainage and formwork"><div class="cap"><b>Deep dig</b> · drainage</div></div>
+      <div class="gal reveal"><img src="work-concrete.jpg" alt="Finished poured concrete steps and slab"><div class="cap"><b>Poured</b> · finished concrete</div></div>
+      <div class="gal reveal"><img src="work-slab.jpg" alt="Concrete slab formwork on a site"><div class="cap"><b>Bases</b> · formed &amp; poured</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about">
+  <div class="sec" id="about">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow label reveal">About</span>
+        <h2 class="head reveal" style="color:#fff">Civils done properly,<br>not just quickly.</h2>
+        <p class="reveal">Alec Clinton Civils is a groundworks and civil engineering contractor covering deep drainage, road repairs, concrete and reinstatement for domestic and commercial clients.</p>
+        <p class="reveal">With our own plant and experienced operators, we take a job from excavation through drainage, formwork and pour to a clean, fully reinstated finish, surveyed, tested and signed off.</p>
+        <ul class="about-list reveal">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Own plant &amp; operators</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Domestic &amp; commercial</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Fully insured</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Surveyed &amp; tested</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Clean reinstatement</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Free site visits</li>
+        </ul>
+      </div>
+      <div class="stats reveal">
+        <div class="stats-grid">
+          <div><div class="stat-num">6</div><div class="stat-lab">Core services</div></div>
+          <div><div class="stat-num">100%</div><div class="stat-lab">Own plant</div></div>
+          <div><div class="stat-num">All</div><div class="stat-lab">Concrete pours</div></div>
+          <div><div class="stat-num">Free</div><div class="stat-lab">Site quotes</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <h2>Got a job that needs doing?</h2>
+  <p>Free site visits and quotes for drainage, concrete and civils work.</p>
+  <a id="ctaPhone" href="#" class="phone"></a>
+  <div class="cta-btns">
+    <a id="ctaCall" href="#" class="btn btn-y"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>Call Now</a>
+    <a id="ctaWa" href="#" target="_blank" rel="noopener" class="btn btn-wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg>WhatsApp</a>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="sec contact" id="contact">
+  <div class="contact-grid">
+    <div>
+      <span class="eyebrow label">Get in touch</span>
+      <h2 class="head" style="color:#fff;margin-bottom:28px">Let's talk<br>about the job.</h2>
+      <div class="ct-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span><div><b>Phone</b><a id="ctItemCall" href="#"></a></div></div>
+      <div class="ct-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></span><div><b>WhatsApp</b><a id="ctItemWa" href="#" target="_blank" rel="noopener">Message us</a></div></div>
+      <div class="ct-item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><b>Coverage</b><span>Domestic &amp; commercial sites</span></div></div>
+    </div>
+    <div class="form">
+      <form action="https://construction-sites.co.uk/api/enquiry" method="POST" novalidate>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="businessName" value="Alec Clinton Civils">
+        <input type="hidden" name="source" value="mockup-alec-clinton-civils">
+        <div class="row">
+          <div><label for="fn">First name</label><input id="fn" name="first_name" required></div>
+          <div><label for="ln">Last name</label><input id="ln" name="last_name" required></div>
+        </div>
+        <div class="row">
+          <div><label for="ph">Phone</label><input id="ph" name="phone" type="tel" required></div>
+          <div><label for="em">Email</label><input id="em" name="email" type="email"></div>
+        </div>
+        <label for="svc">Type of work</label>
+        <select id="svc" name="service" required>
+          <option value="">Pick the closest one</option>
+          <option>Deep drainage</option><option>External drainage</option><option>Road repairs</option>
+          <option>Concrete pour</option><option>Driveway / footpath</option><option>Reinstatement works</option><option>Something else</option>
+        </select>
+        <label for="msg">Message</label>
+        <textarea id="msg" name="message" required placeholder="Roughly what's the job, where the site is, and when you need it."></textarea>
+        <button type="submit" class="btn btn-y">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <a href="#top" class="brand"><span class="mk">AC</span><span class="bt">Alec Clinton<span>Civils</span></span></a>
+      <p>Civil engineering and groundworks, deep drainage, road repairs, concrete pours of all types, driveways, footpaths and reinstatement for domestic and commercial sites.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Deep Drainage</a></li>
+        <li><a href="#services">External Drainage</a></li>
+        <li><a href="#services">Road Repairs</a></li>
+        <li><a href="#services">Concrete Pours</a></li>
+        <li><a href="#services">Reinstatement Works</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a id="footCall" href="#"></a></li>
+        <li><a id="footWa" href="#" target="_blank" rel="noopener">WhatsApp us</a></li>
+        <li>Domestic &amp; commercial</li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© <span id="yr"></span> Alec Clinton Civils. All rights reserved.</span>
+    <span>Website by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- ===== FLOATING ===== -->
+<div class="fab" id="fab">
+  <a id="fabCall" class="call" href="#" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+  <a id="fabWa" class="wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 01-5.688-1.448L.057 24z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  var P=atob('MDc3MTUgNTMzNzIx'), Praw=P.replace(/\s/g,'');
+  var WA='447715533721', wa='https://wa.me/'+WA+'?text='+encodeURIComponent('Hi Alec, I found your website and would like a quote please.');
+  function tel(id){var e=document.getElementById(id);if(e)e.href='tel:'+Praw;}
+  function txt(id,t){var e=document.getElementById(id);if(e)e.textContent=t;}
+  function href(id,h){var e=document.getElementById(id);if(e)e.href=h;}
+  tel('navCall');txt('navCall','Call '+P);
+  tel('mCall');txt('mCall','Call '+P);
+  tel('heroCall');txt('heroCallTxt','Call');
+  tel('ctaCall');tel('ctaPhone');txt('ctaPhone',P);
+  tel('fabCall');tel('footCall');txt('footCall',P);
+  tel('ctItemCall');txt('ctItemCall',P);
+  href('heroWa',wa);href('ctaWa',wa);href('fabWa',wa);href('ctItemWa',wa);href('footWa',wa);
+  var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
+  function reveal(){document.body.classList.add('loaded');}
+  window.addEventListener('load',function(){setTimeout(reveal,1700);});
+  setTimeout(reveal,3400);
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>16);},{passive:true});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  var fab=document.getElementById('fab'),hero=document.getElementById('top');
+  new IntersectionObserver(function(es){es.forEach(function(e){fab.classList.toggle('on',!e.isIntersecting);});},{threshold:.1}).observe(hero);
+})();
+</script>
+</body>
+</html>
