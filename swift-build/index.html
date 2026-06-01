@@ -50,13 +50,11 @@ a{text-decoration:none;color:inherit}
 /* ===== LOADER (swift wing-flap) ===== */
 .loader{position:fixed;inset:0;z-index:9999;background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .7s ease,visibility .7s ease}
 .loader.done{opacity:0;visibility:hidden}
-.swift{width:clamp(170px,30vw,260px);height:auto;overflow:visible}
-.swift path{fill:var(--ink)}
-.wing{transform-box:view-box;transform-origin:168px 162px;animation:flap .95s ease-in-out infinite}
-.wing-front{animation-delay:.05s}
-#birdG{animation:glide .95s ease-in-out infinite}
-@keyframes flap{0%{transform:rotate(-4deg)}45%{transform:rotate(22deg)}100%{transform:rotate(-4deg)}}
-@keyframes glide{0%,100%{transform:translateY(0)}45%{transform:translateY(7px)}}
+.logo-flap{position:relative;width:clamp(150px,28vw,240px);aspect-ratio:738/803;animation:glide 1s ease-in-out infinite}
+.logo-flap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.ll-wing{transform-origin:50% 56%;animation:flap 1s ease-in-out infinite}
+@keyframes flap{0%{transform:rotate(-3deg)}45%{transform:rotate(11deg)}100%{transform:rotate(-3deg)}}
+@keyframes glide{0%,100%{transform:translateY(0)}45%{transform:translateY(5px)}}
 .loader-word{font-family:var(--head);font-weight:800;letter-spacing:0.5em;text-indent:0.5em;font-size:clamp(1rem,2.4vw,1.4rem);color:var(--ink)}
 .loader-bar{width:min(300px,64vw);height:2px;background:var(--line);overflow:hidden;border-radius:2px}
 .loader-bar::after{content:'';display:block;height:100%;width:0;background:var(--accent);animation:fill 2.4s ease forwards}
@@ -67,8 +65,7 @@ a{text-decoration:none;color:inherit}
 .nav.scrolled{box-shadow:0 1px 24px rgba(23,25,29,0.07)}
 .nav-inner{max-width:1240px;margin:0 auto;padding:0 32px;height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
-.nav-logo svg{width:38px;height:34px}
-.nav-logo svg path{fill:var(--ink)}
+.nav-logo img{height:40px;width:auto}
 .nav-logo-text{font-family:var(--head);font-weight:800;font-size:1.05rem;letter-spacing:0.16em;color:var(--ink)}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-links a{font-size:0.88rem;font-weight:600;color:var(--ink-soft);transition:color .2s}
@@ -104,7 +101,7 @@ a{text-decoration:none;color:inherit}
 .hero-stat b{font-family:var(--head);font-size:1.7rem;font-weight:800;color:var(--ink);display:block;line-height:1}
 .hero-stat span{font-size:0.8rem;color:var(--muted);font-weight:500}
 .hero-media{position:relative;opacity:0;animation:fadeScale .9s ease forwards 1s}
-.hero-media img{width:100%;height:560px;object-fit:cover;border-radius:14px}
+.hero-media img{width:100%;height:auto;display:block;border-radius:14px}
 .hero-media .tag{position:absolute;left:-18px;bottom:34px;background:var(--ink);color:#fff;padding:16px 22px;border-radius:10px;box-shadow:0 18px 40px rgba(23,25,29,0.22)}
 .hero-media .tag b{font-family:var(--head);font-weight:800;font-size:1.05rem;display:block;letter-spacing:0.02em}
 .hero-media .tag span{font-size:0.78rem;color:rgba(255,255,255,0.7)}
@@ -139,7 +136,7 @@ a{text-decoration:none;color:inherit}
 /* GALLERY */
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .gal{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--ink)}
-.gal img{width:100%;height:380px;object-fit:cover;transition:transform .7s ease}
+.gal img{width:100%;height:auto;display:block;transition:transform .7s ease}
 .gal:hover img{transform:scale(1.06)}
 .gal-cap{position:absolute;left:0;right:0;bottom:0;padding:42px 22px 18px;background:linear-gradient(to top,rgba(23,25,29,0.82),transparent);color:#fff;font-family:var(--head);font-weight:700;font-size:1rem;opacity:0;transform:translateY(8px);transition:all .35s}
 .gal:hover .gal-cap{opacity:1;transform:translateY(0)}
@@ -147,7 +144,7 @@ a{text-decoration:none;color:inherit}
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .about-media{position:relative}
-.about-media img{width:100%;height:480px;object-fit:cover;border-radius:14px}
+.about-media img{width:100%;height:auto;display:block;border-radius:14px}
 .about-points{margin-top:26px;display:grid;gap:14px}
 .about-points li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:0.98rem;color:var(--ink-soft)}
 .about-points svg{width:22px;height:22px;flex-shrink:0;stroke:var(--accent);fill:none;stroke-width:2.4;margin-top:2px}
@@ -194,8 +191,7 @@ a.info-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .footer{background:var(--ink);color:rgba(255,255,255,0.62);padding:62px 0 26px}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;margin-bottom:44px}
 .footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.footer-logo svg{width:40px;height:36px}
-.footer-logo svg path{fill:#fff}
+.footer-logo img{height:42px;width:auto}
 .footer-logo-text{font-family:var(--head);font-weight:800;letter-spacing:0.16em;color:#fff;font-size:1.05rem}
 .footer p{font-size:0.9rem;max-width:340px;line-height:1.8}
 .footer h4{font-family:var(--head);color:#fff;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px}
@@ -219,7 +215,7 @@ a.info-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 
 @media(max-width:1024px){
   .hero-inner{grid-template-columns:1fr;gap:40px}
-  .hero-media img{height:420px}
+  .hero-media img{height:auto}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr;gap:40px}
@@ -235,7 +231,7 @@ a.info-card:hover{border-color:var(--accent);transform:translateY(-2px)}
   .section{padding:70px 0}
   .svc-grid{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:1fr}
-  .gal img{height:300px}
+  .gal img{height:auto}
   .rev-grid{grid-template-columns:1fr}
   .hero-media .tag{left:12px}
   .footer-top{grid-template-columns:1fr;gap:30px}
@@ -247,14 +243,10 @@ a.info-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 
 <!-- LOADER: swift wing-flap -->
 <div class="loader" id="loader">
-  <svg class="swift" viewBox="0 0 320 270" aria-label="Swift Build loading">
-    <g id="birdG">
-      <g class="wing wing-back"><path d="M168,162 Q104,66 48,52 Q70,96 112,128 Q146,152 168,162 Z"/></g>
-      <g class="wing wing-front"><path d="M168,162 Q112,104 70,138 Q104,146 134,156 Q156,160 168,162 Z"/></g>
-      <path d="M160,158 Q210,154 236,158 Q250,160 244,176 Q236,190 224,182 Q233,178 226,168 Q205,165 168,166 Q160,164 160,158 Z"/>
-      <path d="M166,160 Q150,200 116,224 Q130,216 137,221 Q128,228 141,230 Q123,234 106,232 Q146,196 158,160 Z"/>
-    </g>
-  </svg>
+  <div class="logo-flap" aria-label="Swift Build loading">
+    <img class="ll-body" src="body.png" alt="">
+    <img class="ll-wing" src="wing.png" alt="Swift Build logo">
+  </div>
   <div class="loader-word">SWIFT BUILD</div>
   <div class="loader-bar"></div>
 </div>
@@ -263,7 +255,7 @@ a.info-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#home" class="nav-logo">
-      <svg viewBox="0 0 320 230"><path d="M168,162 Q104,66 48,52 Q70,96 112,128 Q146,152 168,162 Z"/><path d="M168,162 Q112,104 70,138 Q104,146 134,156 Q156,160 168,162 Z"/><path d="M160,158 Q210,154 236,158 Q250,160 244,176 Q236,190 224,182 Q233,178 226,168 Q205,165 168,166 Q160,164 160,158 Z"/><path d="M166,160 Q150,200 116,224 Q130,216 137,221 Q128,228 141,230 Q123,234 106,232 Q146,196 158,160 Z"/></svg>
+      <img src="bird.png" alt="Swift Build Sussex logo">
       <span class="nav-logo-text">SWIFT BUILD</span>
     </a>
     <div class="nav-links">
@@ -551,7 +543,7 @@ a.info-card:hover{border-color:var(--accent);transform:translateY(-2px)}
     <div class="footer-top">
       <div>
         <div class="footer-logo">
-          <svg viewBox="0 0 320 230"><path d="M168,162 Q104,66 48,52 Q70,96 112,128 Q146,152 168,162 Z"/><path d="M168,162 Q112,104 70,138 Q104,146 134,156 Q156,160 168,162 Z"/><path d="M160,158 Q210,154 236,158 Q250,160 244,176 Q236,190 224,182 Q233,178 226,168 Q205,165 168,166 Q160,164 160,158 Z"/><path d="M166,160 Q150,200 116,224 Q130,216 137,221 Q128,228 141,230 Q123,234 106,232 Q146,196 158,160 Z"/></svg>
+          <img src="bird.png" alt="Swift Build Sussex logo" style="filter:invert(1)">
           <span class="footer-logo-text">SWIFT BUILD</span>
         </div>
         <p>Swift Build Sussex Ltd. Building, renovations, timber buildings, carpentry and landscaping across Sussex. Over ten years of friendly, reliable, high-quality workmanship.</p>
