@@ -38,7 +38,8 @@
     --radius:18px;
   }
   html{scroll-behavior:smooth}
-  body{font-family:'Mulish',system-ui,sans-serif;background:var(--bg);color:var(--body);font-size:1.18rem;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html{overflow-x:clip}
+  body{font-family:'Mulish',system-ui,sans-serif;background:var(--bg);color:var(--body);font-size:1.18rem;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:clip}
   body.loading{overflow:hidden;height:100vh}
   em{font-style:normal}
   a{color:inherit;text-decoration:none}
@@ -55,10 +56,8 @@
 
   /* LOADER */
   .loader{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .6s ease,visibility .6s ease}
-  .loader-logo{display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(8px);animation:logoIn .8s cubic-bezier(.22,.8,.3,1) .05s forwards}
-  .loader-logo .lbc{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(3.4rem,12vw,5.4rem);color:var(--gold);line-height:.9;letter-spacing:.02em}
-  .loader-logo .lt{margin-top:12px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.86rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);border:2px solid var(--gold);border-radius:10px;padding:8px 14px;text-align:center}
-  @keyframes logoIn{to{opacity:1;transform:translateY(0)}}
+  .loader-logo{width:min(66vw,300px);height:auto;opacity:0;transform:translateY(8px) scale(.96);animation:logoIn .8s cubic-bezier(.22,.8,.3,1) .05s forwards}
+  @keyframes logoIn{to{opacity:1;transform:translateY(0) scale(1)}}
   .loader-bar{position:relative;width:min(56vw,210px);height:3px;background:#eee;overflow:hidden;border-radius:3px}
   .loader-bar::before{content:'';position:absolute;inset:0 100% 0 0;background:linear-gradient(90deg,var(--gold-bright),var(--gold-deep));animation:sweep 1.25s cubic-bezier(.65,0,.35,1) .35s infinite}
   @keyframes sweep{0%{inset:0 100% 0 -30%}100%{inset:0 -30% 0 100%}}
@@ -81,7 +80,8 @@
   nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:88px}
   .brand{display:flex;align-items:center;gap:14px;white-space:nowrap}
-  .brand-mark{width:56px;height:56px;flex:0 0 56px;border-radius:13px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:#fff;font-size:1.3rem;letter-spacing:.01em}
+  .brand-logo{height:62px;width:auto;display:block}
+  @media(max-width:620px){.brand-logo{height:50px}}
   .brand-txt strong{display:block;font-family:'Bricolage Grotesque',sans-serif;color:var(--gold);font-weight:800;font-size:1.5rem;line-height:1}
   .brand-txt span{display:block;color:var(--muted);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-top:4px}
   .nav-links{display:flex;align-items:center;gap:32px}
@@ -259,10 +259,7 @@
 
 <!-- LOADER -->
 <div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-logo">
-    <span class="lbc">LBC</span>
-    <span class="lt">Fencing Decking<br>&amp; General Works</span>
-  </div>
+  <img class="loader-logo" src="logo.png" alt="LBC Fencing, Decking & General Works">
   <div class="loader-bar"></div>
 </div>
 <script>
@@ -273,8 +270,7 @@
 <nav>
   <div class="wrap nav-in">
     <a href="#" class="brand">
-      <span class="brand-mark">LBC</span>
-      <span class="brand-txt"><strong>LBC</strong><span>Fencing · Decking · Garden Works</span></span>
+      <img src="mark.png" class="brand-logo" alt="LBC Fencing, Decking & General Works">
     </a>
     <div class="nav-links">
       <a href="#services">What We Do</a>
@@ -415,7 +411,6 @@
     <div class="g-grid">
       <div class="g-item reveal" data-full="work-3.jpg"><img src="work-3.jpg" alt="New lap panel fence beside a freshly laid patio"><div class="cap">New fence &amp; patio</div></div>
       <div class="g-item reveal" data-full="hero.jpg"><img src="hero.jpg" alt="Lap panel fence around a planted garden"><div class="cap">Fencing around a planted garden</div></div>
-      <div class="g-item reveal" data-full="work-1.jpg"><img src="work-1.jpg" alt="New close-board fence on a cleared plot"><div class="cap">Close-board fence run</div></div>
       <div class="g-item reveal" data-full="work-2.jpg"><img src="work-2.jpg" alt="Lap panel fence along a back garden"><div class="cap">Back garden fencing</div></div>
       <div class="g-item reveal" data-full="work-4.jpg"><img src="work-4.jpg" alt="Fresh fence line with lawn"><div class="cap">Fence line &amp; lawn</div></div>
       <div class="g-item reveal" data-full="work-5.jpg"><img src="work-5.jpg" alt="Front garden fence and driveway"><div class="cap">Front garden fencing</div></div>
