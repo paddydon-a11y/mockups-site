@@ -73,7 +73,12 @@ em{font-style:normal}
 .nav-cta{background:var(--orange);color:#fff;padding:11px 18px;font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--orange);transition:.2s;white-space:nowrap;cursor:pointer}
 .nav-cta:hover{background:transparent;color:var(--orange)}
 .nav-cta-short{display:none}
-@media (max-width:920px){.nav-links{display:none}}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:9px}
+.hamburger span{width:28px;height:2.5px;background:var(--ink);border-radius:2px}
+.mobile-panel{display:none;flex-direction:column;padding:14px 32px 22px;border-bottom:1px solid var(--line);background:var(--bg)}
+.mobile-panel a{padding:14px 4px;color:var(--ink);border-bottom:1px solid var(--line);font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;font-size:15px;font-weight:600}
+.mobile-panel a.m-cta{background:var(--orange);color:#fff;text-align:center;border:0;margin-top:14px;padding:16px;letter-spacing:0.08em}
+@media (max-width:920px){.nav-links{display:none}.hamburger{display:flex}}
 @media (max-width:520px){
   .nav-inner{padding:12px 20px;gap:10px}
   .brand .nm{font-size:1.15rem}.brand .sub{font-size:.6rem;letter-spacing:0.16em}
@@ -283,7 +288,7 @@ footer{background:#000;color:var(--muted);padding:58px 0 30px;border-top:1px sol
     <a href="#" class="brand" aria-label="LWB Masonry">
       <img src="logo-mark.png" alt="LWB Masonry logo">
       <span class="brand-stack">
-        <span class="nm">LW<span class="o">B</span> Masonry</span>
+        <span class="nm">LWB Masonry</span>
         <span class="sub">Brickwork · Yorkshire</span>
       </span>
     </a>
@@ -294,11 +299,15 @@ footer{background:#000;color:var(--muted);padding:58px 0 30px;border-top:1px sol
       <a href="#areas">Areas</a>
       <a href="#contact">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta">
-      <span class="nav-cta-full">Free Quote</span>
-      <span class="nav-cta-short">Quote</span>
-      <span aria-hidden="true">→</span>
-    </a>
+    <button class="hamburger" id="ham" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Contact</a>
+    <a href="#" class="m-cta" id="mCall">Call <span class="cnum"></span></a>
   </div>
 </nav>
 
@@ -308,9 +317,9 @@ footer{background:#000;color:var(--muted);padding:58px 0 30px;border-top:1px sol
     <div>
       <span class="hero-eyebrow"><span class="bar"></span>Expert Masonry · Across Yorkshire</span>
       <h1>
-        Built on<br>
-        quality. <span class="strike"><span>Built</span></span><br>
-        to <span class="o">last.</span>
+        Quality<br>
+        Brickwork.<br>
+        <span class="strike"><span>Built</span></span> to <span class="o">last.</span>
       </h1>
       <p class="hero-sub">
         I'm <strong>Lewis</strong> and I run LWB Masonry. High quality brickwork and blockwork,
@@ -528,7 +537,7 @@ footer{background:#000;color:var(--muted);padding:58px 0 30px;border-top:1px sol
     <a href="#" class="brand">
       <img src="logo-mark.png" alt="LWB Masonry logo" style="height:44px">
       <span class="brand-stack">
-        <span class="nm">LW<span class="o">B</span> Masonry</span>
+        <span class="nm">LWB Masonry</span>
         <span class="sub">Brickwork · Yorkshire</span>
       </span>
     </a>
@@ -576,7 +585,13 @@ footer{background:#000;color:var(--muted);padding:58px 0 30px;border-top:1px sol
   var er=document.getElementById('emailRow'); er.href='mailto:'+E; document.getElementById('emailText').textContent=E;
   document.getElementById('fabCall').href='tel:'+P;
   document.getElementById('fabWa').href=waLink;
-  document.querySelector('.nav-cta').addEventListener('click',function(){ /* anchors to #contact */ });
+  document.getElementById('mCall').href='tel:'+P;
+  document.querySelectorAll('.cnum').forEach(function(s){s.textContent=Pf;});
+
+  // Mobile nav
+  var ham=document.getElementById('ham'), mp=document.getElementById('mpanel');
+  ham.addEventListener('click',function(){mp.style.display = mp.style.display==='flex'?'none':'flex';});
+  mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mp.style.display='none';});});
 
   // Reveal
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:0.12});
