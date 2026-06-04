@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&amp;N Building Ltd | Extensions, Lofts &amp; Refurbishments in Borehamwood</title>
+<meta name="description" content="A&N Building Ltd: high-end extensions, loft conversions, kitchens, bathrooms and full refurbishments across Borehamwood, Elstree, Bushey, Barnet and North London. Fully insured. Free quotes.">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f3eee4;          /* eggshell */
+  --bg-2:#ece4d6;        /* deeper paper for alt sections */
+  --card:#fbf8f2;
+  --card-hover:#ffffff;
+  --ink:#1c1813;         /* headings */
+  --body:#56504a;        /* body */
+  --muted:#8c8478;
+  --line:#e2dac9;
+  --line-2:#d6ccb8;
+  --accent:#b15c34;      /* warm copper */
+  --accent-hover:#934927;
+  --accent-soft:rgba(177,92,52,.12);
+  --dark:#1c1813;
+  --shadow:0 18px 50px -24px rgba(40,28,16,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,.display{font-family:'Manrope',sans-serif}
+em{font-style:normal}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+.label{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:'Manrope';display:inline-flex;align-items:center;gap:10px}
+.label::before{content:"";width:26px;height:2px;background:var(--accent);display:inline-block}
+h2.h{font-family:'Manrope';font-weight:800;color:var(--ink);font-size:clamp(1.95rem,4.4vw,3rem);line-height:1.06;letter-spacing:-.03em;margin:14px 0 0}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .7s ease,visibility .7s ease}
+#loader.done{opacity:0;visibility:hidden}
+.loader-mark{font-family:'Manrope';font-weight:800;font-size:2.4rem;letter-spacing:-.04em;color:var(--ink)}
+.loader-mark b{color:var(--accent)}
+.loader-bar{width:190px;height:2px;background:var(--line-2);overflow:hidden;border-radius:2px}
+.loader-bar span{display:block;height:100%;width:40%;background:var(--accent);animation:sweep 1.1s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:0;z-index:1000;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-logo{font-family:'Manrope';font-weight:800;font-size:1.42rem;letter-spacing:-.03em;color:var(--ink);white-space:nowrap;display:flex;align-items:baseline;gap:2px}
+.nav-logo b{color:var(--accent)}
+.nav-logo small{font-family:'Inter';font-weight:600;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-left:8px;transform:translateY(-2px)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{background:var(--accent);color:#fff !important;padding:11px 22px;border-radius:50px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .2s}
+.nav-links a.nav-cta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.nav-links a.nav-cta svg{stroke:#fff}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--ink);transition:.3s;border-radius:2px}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-panel{display:none;position:fixed;top:74px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:999;flex-direction:column;padding:14px 24px 26px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s}
+.mobile-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-panel a{padding:14px 0;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);font-size:1.05rem}
+.mobile-panel a.mob-cta{margin-top:16px;background:var(--accent);color:#fff;text-align:center;border-radius:50px;border:0;padding:16px}
+
+/* ---------- Hero (H1 full-bleed) ---------- */
+.hero{position:relative;display:flex;flex-direction:column;min-height:clamp(560px,86vh,820px)}
+.hero-media{position:absolute;inset:0;overflow:hidden;z-index:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 38%;animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.09)}}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,9,.34) 0%,rgba(20,14,9,.40) 42%,rgba(20,14,9,.90) 100%)}
+.hero-inner{position:relative;z-index:2;margin-top:auto;width:100%}
+.hero-inner .wrap{padding-bottom:54px;padding-top:60px}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;color:#f0e7d8;font-family:'Manrope';font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:20px}
+.hero .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(177,92,52,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(177,92,52,.55)}70%{box-shadow:0 0 0 12px rgba(177,92,52,0)}100%{box-shadow:0 0 0 0 rgba(177,92,52,0)}}
+.hero h1{font-family:'Manrope';font-weight:800;color:#fff;font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;letter-spacing:-.035em;max-width:16ch;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+.hero p{color:#ece2d2;font-size:clamp(1.02rem,1.5vw,1.18rem);max-width:48ch;margin-top:20px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:50px;font-weight:600;font-size:.98rem;font-family:'Manrope';transition:transform .2s,background .2s,box-shadow .2s;cursor:pointer;border:0}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(177,92,52,.7)}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1ebe5a;transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(4px)}
+.btn-ghost:hover{background:rgba(255,255,255,.2)}
+.btn svg{width:18px;height:18px}
+
+/* ---------- Trust strip (T1) ---------- */
+.trust{background:var(--dark);color:#efe6d6}
+.trust .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding-top:26px;padding-bottom:26px;gap:8px}
+.trust .ti{display:flex;align-items:center;gap:11px;font-family:'Manrope';font-weight:600;font-size:.96rem;color:#efe6d6}
+.trust .ti svg{width:20px;height:20px;stroke:var(--accent);flex-shrink:0}
+.trust .div{width:1px;height:26px;background:rgba(255,255,255,.16)}
+
+/* ---------- Section base ---------- */
+section{padding:90px 0}
+.sec-head{max-width:640px}
+.sec-head.center{margin:0 auto;text-align:center}
+.sec-head.center .label{display:inline-flex}
+
+/* ---------- Services (S4 bento) ---------- */
+#services{padding-top:96px}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:46px}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;grid-column:span 2}
+.scard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.scard:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-2);background:var(--card-hover)}
+.scard:hover::before{transform:scaleX(1)}
+.scard.feature{grid-column:span 6;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
+.scard.wide{grid-column:span 3}
+.s-ico{width:50px;height:50px;border-radius:13px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:18px}
+.scard.feature .s-ico{width:72px;height:72px;margin-bottom:0;border-radius:18px}
+.s-ico svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.scard.feature .s-ico svg{width:34px;height:34px}
+.scard h3{font-family:'Manrope';font-weight:700;color:var(--ink);font-size:1.22rem;letter-spacing:-.01em;margin-bottom:7px}
+.scard.feature h3{font-size:1.7rem}
+.scard p{font-size:.96rem;color:var(--body);max-width:46ch}
+
+/* ---------- Gallery (G2 masonry) ---------- */
+#work{background:var(--bg-2)}
+.masonry{column-count:3;column-gap:18px;margin-top:46px}
+.mtile{position:relative;break-inside:avoid;margin-bottom:18px;border-radius:16px;overflow:hidden;border:1px solid var(--line-2);cursor:pointer;background:var(--card)}
+.mtile img{width:100%;height:auto;transition:transform .6s ease}
+.mtile:hover img{transform:scale(1.05)}
+.mtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 16px;background:linear-gradient(transparent,rgba(20,14,9,.82));color:#fff;font-family:'Manrope';font-weight:600;font-size:.92rem;opacity:0;transform:translateY(8px);transition:.3s}
+.mtile:hover .gcap{opacity:1;transform:translateY(0)}
+
+/* ---------- About + founder (T3) ---------- */
+#about .ab-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center}
+#about .ab-photo{border-radius:18px;overflow:hidden;border:1px solid var(--line-2);box-shadow:var(--shadow)}
+#about .ab-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+#about p{margin-top:18px;font-size:1.04rem}
+.sig{display:flex;align-items:center;gap:16px;margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}
+.sig .ini{width:54px;height:54px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Manrope';font-weight:800;font-size:1.15rem}
+.sig .who b{display:block;font-family:'Manrope';color:var(--ink);font-size:1.05rem}
+.sig .who span{font-size:.88rem;color:var(--muted)}
+
+/* ---------- Reviews (R1) ---------- */
+#reviews{background:var(--bg-2)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;flex-direction:column}
+.stars{color:var(--accent);font-size:1.02rem;letter-spacing:2px;margin-bottom:14px}
+.rcard p{color:var(--ink);font-size:1rem;line-height:1.7;flex:1}
+.rmeta{display:flex;align-items:center;gap:13px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.rmeta .av{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Manrope';font-weight:800}
+.rmeta b{display:block;font-family:'Manrope';color:var(--ink);font-size:.96rem}
+.rmeta span{font-size:.82rem;color:var(--muted)}
+
+/* ---------- CTA band ---------- */
+.ctaband{background:var(--dark);color:#fff;text-align:center}
+.ctaband h2{font-family:'Manrope';font-weight:800;color:#fff;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.03em;line-height:1.08}
+.ctaband p{color:#cfc4b3;margin:16px auto 0;max-width:50ch}
+.ctaband .hero-cta{justify-content:center;margin-top:30px}
+
+/* ---------- Areas ---------- */
+#areas .area-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+#areas .area-list span{background:var(--card);border:1px solid var(--line);border-radius:50px;padding:11px 22px;font-family:'Manrope';font-weight:600;color:var(--ink);font-size:.95rem;transition:.2s}
+#areas .area-list span:hover{border-color:var(--accent);color:var(--accent)}
+#areas .area-list span.home{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ---------- Contact (C1) ---------- */
+#contact{background:var(--bg-2)}
+.con-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;margin-top:46px}
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.info-card .ic{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-card .ic svg{width:21px;height:21px;stroke:var(--accent);fill:none;stroke-width:1.8}
+.info-card .lab{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.info-card .val{font-family:'Manrope';font-weight:700;color:var(--ink);font-size:1.08rem;margin-top:3px;word-break:break-word}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px}
+.form label{display:block;font-size:.84rem;font-weight:600;color:var(--ink);margin:0 0 7px;font-family:'Manrope'}
+.form input,.form select,.form textarea{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:11px;background:#fff;font-family:'Inter';font-size:.96rem;color:var(--ink);margin-bottom:17px;transition:border-color .2s}
+.form input:focus,.form select:focus,.form textarea:focus{outline:0;border-color:var(--accent)}
+.form textarea{resize:vertical;min-height:110px}
+.form .btn-primary{width:100%;justify-content:center;font-size:1.02rem;padding:16px}
+.form-note{font-size:.8rem;color:var(--muted);margin-top:14px;text-align:center}
+#thankyou{display:none;background:var(--card);border:1px solid var(--accent);border-radius:18px;padding:40px;text-align:center}
+#thankyou h3{font-family:'Manrope';color:var(--ink);font-size:1.4rem;margin-bottom:8px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--dark);color:#cfc4b3;padding:54px 0 30px}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-logo{font-family:'Manrope';font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:-.03em}
+.foot-logo b{color:var(--accent)}
+.foot-top p{max-width:34ch;margin-top:10px;font-size:.92rem}
+.foot-cols{display:flex;gap:60px;flex-wrap:wrap}
+.foot-cols h4{font-family:'Manrope';color:#fff;font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.foot-cols a{display:block;font-size:.92rem;margin-bottom:9px;color:#cfc4b3;transition:color .2s}
+.foot-cols a:hover{color:var(--accent)}
+.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:24px;font-size:.84rem;color:#9b8f7e}
+.foot-bot a{color:var(--accent)}
+
+/* ---------- Floating CTAs ---------- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(16px);pointer-events:none;transition:.35s}
+.fabs.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -6px rgba(0,0,0,.5)}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--accent);animation:fpulse 2.2s infinite}
+.fab-wa{background:#25D366;animation:fpulse-g 2.2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(177,92,52,.5)}70%{box-shadow:0 0 0 14px rgba(177,92,52,0)}100%{box-shadow:0 0 0 0 rgba(177,92,52,0)}}
+@keyframes fpulse-g{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ---------- Lightbox ---------- */
+#lb{position:fixed;inset:0;z-index:2000;background:rgba(16,11,7,.93);display:none;align-items:center;justify-content:center;padding:30px}
+#lb.open{display:flex}
+#lb img{max-width:92%;max-height:88vh;border-radius:10px}
+#lb .x{position:absolute;top:22px;right:26px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1;font-family:'Manrope'}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:980px){
+  #about .ab-grid{grid-template-columns:1fr;gap:34px}
+  .con-grid{grid-template-columns:1fr;gap:30px}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .masonry{column-count:2}
+}
+@media(max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:flex}
+  .trust .wrap{justify-content:flex-start;flex-direction:column;align-items:flex-start;gap:0}
+  .trust .ti{width:100%;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .trust .ti:last-child{border-bottom:0}
+  .trust .div{display:none}
+}
+@media(max-width:760px){
+  section{padding:64px 0}
+  .bento{grid-template-columns:1fr;gap:14px}
+  .scard,.scard.feature,.scard.wide{grid-column:span 1}
+  .scard.feature{grid-template-columns:1fr;gap:0}
+  .scard.feature .s-ico{width:50px;height:50px;margin-bottom:18px}
+  .scard.feature h3{font-size:1.4rem}
+  .hero-media::after{background:linear-gradient(180deg,rgba(20,14,9,.42) 0%,rgba(20,14,9,.52) 45%,rgba(20,14,9,.92) 100%)}
+  .rev-grid{grid-template-columns:1fr}
+  .masonry{column-count:1}
+  .hero-inner .wrap{padding-bottom:40px}
+  .hero h1{font-size:clamp(2.1rem,9vw,2.9rem)}
+  .foot-top{flex-direction:column}
+}
+@media(max-width:380px){
+  .scard.feature{grid-template-columns:1fr}
+  .scard.feature .s-ico{margin-bottom:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-mark">A&amp;<b>N</b> Building</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-logo">A&amp;<b>N</b> Building<small>Ltd</small></a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-panel" id="mpanel">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="mob-cta" id="mobCall">Call us today</a>
+</div>
+
+<!-- Hero (H1) -->
+<section class="hero" id="top">
+  <div class="hero-media"><img src="hero.jpg" alt="Open-plan kitchen extension with bifold doors built by A&N Building"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span> Borehamwood &middot; Elstree &middot; North London</div>
+      <h1>Building work that <span class="accent">raises the whole house.</span></h1>
+      <p>Extensions, loft conversions, kitchens and full refurbishments, finished to the standard you'd want in your own home. Designed, project managed and built by A&amp;N Building Ltd.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary" id="heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call Niko</span>
+        </a>
+        <a href="#" class="btn btn-wa" id="heroWa">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp Niko
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust (T1) -->
+<div class="trust">
+  <div class="wrap">
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</div>
+    <div class="div"></div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Free Quotes</div>
+    <div class="div"></div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 15+ Years</div>
+    <div class="div"></div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg> Project Managed</div>
+    <div class="div"></div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Borehamwood Based</div>
+  </div>
+</div>
+
+<!-- Services (S4 bento) -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we build</span>
+      <h2 class="h">From a single room to the <span class="accent">whole house.</span></h2>
+    </div>
+    <div class="bento">
+      <div class="scard feature reveal">
+        <div class="s-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/></svg></div>
+        <div>
+          <h3>House Extensions</h3>
+          <p>Single and double-storey extensions and wrap-arounds, designed and built end to end. Steelwork, glazing and open-plan living that adds real space and value.</p>
+        </div>
+      </div>
+      <div class="scard wide reveal">
+        <div class="s-ico"><svg viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Loft Conversions</h3>
+        <p>Dormers, hip-to-gable and rooflight lofts. Extra bedrooms and en-suites, fully finished.</p>
+      </div>
+      <div class="scard wide reveal">
+        <div class="s-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M8 3v6M8 14h.01"/></svg></div>
+        <h3>Fitted Kitchens</h3>
+        <p>Islands, stone worktops and herringbone floors. Full open-plan kitchen builds.</p>
+      </div>
+      <div class="scard reveal">
+        <div class="s-ico"><svg viewBox="0 0 24 24"><path d="M5 12V6a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2"/><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M7 20l-1 2M17 20l1 2"/></svg></div>
+        <h3>Bathrooms</h3>
+        <p>Marble tiling, walk-in showers and underfloor heating.</p>
+      </div>
+      <div class="scard reveal">
+        <div class="s-ico"><svg viewBox="0 0 24 24"><path d="M14 7l3-3 4 4-3 3"/><path d="M14 7L3 18v3h3L17 10"/><path d="M9 12l3 3"/></svg></div>
+        <h3>Full Refurbishments</h3>
+        <p>Whole-house renovations from strip-out to handover.</p>
+      </div>
+      <div class="scard reveal">
+        <div class="s-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8h14v13"/><path d="M5 12h14M9 8v4M14 12v4M5 16h14"/></svg></div>
+        <h3>Rendering &amp; Exteriors</h3>
+        <p>Smooth render, roofing and brickwork that lift the whole facade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery (G2 masonry) -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2 class="h">Projects finished across <span class="accent">North London.</span></h2>
+    </div>
+    <div class="masonry">
+      <div class="mtile reveal" data-full="work-5.jpg"><img src="work-5.jpg" alt="Open-plan grey and walnut kitchen with island and skylights"><div class="gcap">Open-plan kitchen &middot; Borehamwood</div></div>
+      <div class="mtile reveal" data-full="work-2.jpg"><img src="work-2.jpg" alt="Marble bathroom with walk-in shower and gold mirror"><div class="gcap">Marble bathroom &middot; Bushey</div></div>
+      <div class="mtile reveal" data-full="work-3.jpg"><img src="work-3.jpg" alt="Walnut vanity bathroom with round mirror"><div class="gcap">En-suite refurbishment &middot; Barnet</div></div>
+      <div class="mtile reveal" data-full="hero.jpg"><img src="hero.jpg" alt="Kitchen extension with bifold doors to garden"><div class="gcap">Kitchen extension &middot; Mill Hill</div></div>
+      <div class="mtile reveal" data-full="work-6.jpg"><img src="work-6.jpg" alt="Structural roof glazing and rooflights between slate roofs"><div class="gcap">Roof glazing &amp; rooflights &middot; Elstree</div></div>
+      <div class="mtile reveal" data-full="work-4.jpg"><img src="work-4.jpg" alt="Loft dormer conversion and rendered front elevation"><div class="gcap">Loft &amp; render &middot; Edgware</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About + founder signature (T3) -->
+<section id="about">
+  <div class="wrap ab-grid">
+    <div class="reveal">
+      <span class="label">About A&amp;N</span>
+      <h2 class="h">One team, on site from <span class="accent">first day to last.</span></h2>
+      <p>A&amp;N Building is a Borehamwood-based firm building extensions, lofts and full refurbishments across Elstree, Bushey, Barnet and the surrounding areas. Niko runs every project personally, so the same people who quote the work are the ones who finish it, tidy, on time and built to last.</p>
+      <div class="sig">
+        <div class="ini">NP</div>
+        <div class="who"><b>Niko Peka</b><span>Founder, A&amp;N Building Ltd</span></div>
+      </div>
+    </div>
+    <div class="ab-photo reveal"><img src="work-1.jpg" alt="A&N Building completed kitchen project"></div>
+  </div>
+</section>
+
+<!-- Reviews (R1) -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="label">What clients say</span>
+      <h2 class="h">Rated for finish, tidiness <span class="accent">and turning up.</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Niko and the A&amp;N team built our rear kitchen extension in Borehamwood. The herringbone floor and island are exactly what we'd hoped for and they kept the site spotless the whole way through."</p>
+        <div class="rmeta"><div class="av">S</div><div><b>Sarah M.</b><span>Borehamwood &middot; Kitchen Extension</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Loft conversion in Bushey done to a really high standard. Niko was straight with us on price and timings, and the new dormer looks like it was always part of the house."</p>
+        <div class="rmeta"><div class="av">J</div><div><b>James T.</b><span>Bushey &middot; Loft Conversion</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"A&amp;N refurbished both our bathrooms in Barnet. The marble tiling and walk-in shower are stunning and the finish is flawless. Couldn't recommend them more highly."</p>
+        <div class="rmeta"><div class="av">P</div><div><b>Priya K.</b><span>Barnet &middot; Bathroom Renovation</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="ctaband">
+  <div class="wrap">
+    <h2>Got a project in mind?</h2>
+    <p>Tell Niko what you're planning and get an honest quote, no pressure. We cover Borehamwood, Elstree and the surrounding areas.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn btn-primary" id="bandCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandCallTxt">Call Niko</span>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Send an enquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Areas we cover</span>
+      <h2 class="h">Building across <span class="accent">Hertfordshire &amp; North London.</span></h2>
+    </div>
+    <div class="area-list reveal">
+      <span class="home">Borehamwood</span>
+      <span>Elstree</span>
+      <span>Bushey</span>
+      <span>Barnet</span>
+      <span>Mill Hill</span>
+      <span>Hatch End</span>
+      <span>Edgware</span>
+      <span>Hemel Hempstead</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact (C1) -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Get in touch</span>
+      <h2 class="h">Tell us about your <span class="accent">project.</span></h2>
+    </div>
+    <div class="con-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="lab">Call or text</div><a class="val" id="contactPhone" href="#">&nbsp;</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><div class="lab">Email</div><a class="val" id="contactEmail" href="#">&nbsp;</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="lab">Based in</div><div class="val">Borehamwood, Hertfordshire</div></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="lab">Response time</div><div class="val">Usually same day</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="form" id="enquiryForm" action="/api/enquiry" method="POST">
+          <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="businessName" value="A&N Building Ltd">
+          <input type="hidden" name="source" value="mockup-an-building">
+          <label for="f-name">Name</label>
+          <input id="f-name" type="text" name="name" required placeholder="Your name">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" type="tel" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="Your number">
+          <label for="f-email">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+          <input id="f-email" type="email" name="email" placeholder="you@email.com">
+          <label for="f-service">What can we help with?</label>
+          <select id="f-service" name="service">
+            <optgroup label="Building work">
+              <option>House Extension</option>
+              <option>Loft Conversion</option>
+              <option>Full Refurbishment</option>
+              <option>Rendering &amp; Exteriors</option>
+            </optgroup>
+            <optgroup label="Interiors">
+              <option>Fitted Kitchen</option>
+              <option>Bathroom Renovation</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+          <label for="f-msg">Project details</label>
+          <textarea id="f-msg" name="message" placeholder="Tell us a bit about what you're planning..."></textarea>
+          <button type="submit" class="btn btn-primary">Send enquiry</button>
+          <p class="form-note">We'll get back to you the same day, usually within a couple of hours.</p>
+        </form>
+        <div id="thankyou">
+          <h3>Thanks, message sent.</h3>
+          <p>Niko will get back to you shortly. For anything urgent, give us a call.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">A&amp;<b>N</b> Building Ltd</div>
+        <p>Extensions, lofts, kitchens, bathrooms and full refurbishments across Borehamwood and North London.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h4>Services</h4>
+          <a href="#services">Extensions</a>
+          <a href="#services">Loft Conversions</a>
+          <a href="#services">Fitted Kitchens</a>
+          <a href="#services">Bathrooms</a>
+        </div>
+        <div>
+          <h4>Areas</h4>
+          <a href="#areas">Borehamwood</a>
+          <a href="#areas">Bushey</a>
+          <a href="#areas">Barnet</a>
+          <a href="#areas">Edgware</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="#" id="footCall">Call us</a>
+          <a href="#" id="footEmail">Email us</a>
+          <a href="#contact">Enquiry form</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>&copy; <span id="yr"></span> A&amp;N Building Ltd. All rights reserved.</div>
+      <div>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" class="fab fab-wa" id="fabWa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div id="lb"><span class="x" id="lbx">&times;</span><img src="" alt="Project photo"></div>
+
+<script>
+// ---- Contact decode (base64) ----
+var P  = atob('MDc1NTc3MzgxMTU=');
+var Pf = atob('MDc1NTcgNzM4IDExNQ==');
+var WA = atob('NDQ3NTU3NzM4MTE1');
+var E  = atob('amltbXlwZWthQGhvdG1haWwuY29t');
+var waLink = 'https://wa.me/' + WA + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+
+function tel(id){var el=document.getElementById(id); if(el) el.href='tel:'+P;}
+['navCall','heroCall','bandCall','fabCall','mobCall','footCall'].forEach(tel);
+document.getElementById('heroWa').href = waLink;
+document.getElementById('fabWa').href = waLink;
+
+var cp = document.getElementById('contactPhone'); cp.textContent = Pf; cp.href='tel:'+P;
+var ce = document.getElementById('contactEmail'); ce.textContent = E; ce.href='mailto:'+E;
+document.getElementById('footEmail').href = 'mailto:'+E;
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('formTimestamp').value = Date.now();
+
+// ---- Loader ----
+window.addEventListener('load', function(){
+  setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, 550);
+});
+
+// ---- Mobile nav ----
+var burger=document.getElementById('burger'), mpanel=document.getElementById('mpanel');
+burger.addEventListener('click', function(){ burger.classList.toggle('open'); mpanel.classList.toggle('open'); });
+mpanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ burger.classList.remove('open'); mpanel.classList.remove('open'); }); });
+
+// ---- Reveal on scroll ----
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// ---- Floating CTAs ----
+var hero=document.querySelector('.hero'), fabs=document.getElementById('fabs');
+var fio = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ fabs.classList.toggle('show', !e.isIntersecting); });
+}, {threshold:0});
+fio.observe(hero);
+
+// ---- Lightbox ----
+var lb=document.getElementById('lb'), lbimg=lb.querySelector('img');
+document.querySelectorAll('.mtile').forEach(function(t){
+  t.addEventListener('click', function(){ lbimg.src=t.getAttribute('data-full'); lb.classList.add('open'); });
+});
+function closeLb(){ lb.classList.remove('open'); }
+document.getElementById('lbx').addEventListener('click', closeLb);
+lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+
+// ---- Form (mock submit) ----
+document.getElementById('enquiryForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('enquiryForm').style.display='none';
+  document.getElementById('thankyou').style.display='block';
+});
+</script>
+</body>
+</html>
