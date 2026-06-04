@@ -341,20 +341,6 @@
   </div>
 </section>
 
-<!-- ===== BEFORE / AFTER SLIDER ===== -->
-<section class="sec cmp-sec">
-  <div class="sec-label reveal" style="text-align:center">Start to finish</div>
-  <h2 class="sec-head reveal" style="text-align:center;margin-bottom:36px">Drag to see the difference.</h2>
-  <div class="cmp reveal" id="cmp">
-    <img class="cmp-img cmp-before" src="before.jpg" alt="Excavated and dug-out site before work">
-    <img class="cmp-img cmp-after" src="after.jpg" alt="Concrete footings poured and formed after work">
-    <span class="cmp-tag tl">Before</span>
-    <span class="cmp-tag tr">After</span>
-    <div class="cmp-divider"><div class="cmp-knob"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
-    <input type="range" class="cmp-range" id="cmpRange" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-  </div>
-</section>
-
 <!-- ===== TRUST ===== -->
 <div class="trust">
   <div class="trust-inner">
@@ -552,8 +538,6 @@
   window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>16);},{passive:true});
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-  var cmp=document.getElementById('cmp'),rng=document.getElementById('cmpRange');
-  if(cmp&&rng){rng.addEventListener('input',function(){cmp.style.setProperty('--pos',rng.value+'%');});}
 
   var fab=document.getElementById('fab'),hero=document.getElementById('top');
   new IntersectionObserver(function(es){es.forEach(function(e){fab.classList.toggle('on',!e.isIntersecting);});},{threshold:.1}).observe(hero);
