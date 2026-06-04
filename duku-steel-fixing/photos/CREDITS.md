@@ -1,23 +1,21 @@
 # Photo credits — Duku Ltd (free-licence set)
 
-All images are from Wikimedia Commons and free for commercial use. **Keep the attribution
-below visible** wherever the CC BY-SA images are published (e.g. a site credits/footer page).
-The two US Navy images are public domain — no attribution legally required, but credited here
-for the record.
+All images are from Wikimedia Commons and free for commercial use. Rebar / mesh only, no
+people. **Keep the attribution below visible** wherever the CC-licensed images are published
+(e.g. a site credits/footer page). The public-domain image needs no attribution but is
+credited here for the record.
 
 | File | What it shows | Author | Licence |
 |------|---------------|--------|---------|
-| `duku-01.jpg` | Bundle of reinforcement rods (close-up texture) | Markus Koljonen (Dilaudid) | **CC BY-SA 3.0** — attribution + share-alike |
-| `duku-02.jpg` | Steel fixer tying a rebar cage (hi-vis, on site) | Tomas Castelazo | **CC BY-SA 3.0** — attribution + share-alike |
-| `duku-03.jpg` | Cutting a reinforcement bar with an angle grinder | U.S. Navy / Marvin E. Thompson Jr. | Public domain |
-| `duku-06.jpg` | Two fixers tying a rebar cage together | U.S. Navy / Ryan C. Delcore | Public domain |
+| `rebar-mat.jpg` (hero) | Deck reinforcement mat laid out, ready for pour | Federal Highway Administration | Public domain |
+| `rebar-mesh.jpg` | Stacked rusty reinforcement mesh sheets | W.carter | **CC BY-SA 4.0** — attribution + share-alike |
+| `rebar-bars.jpg` | Ribbed reinforcement bars, close-up | W.carter | **CC BY-SA 4.0** — attribution + share-alike |
+| `rebar-slab.jpg` | Reinforcement mesh fixed on a slab | Helyesen | **CC BY 3.0** — attribution |
 
-## Attribution strings (for the CC BY-SA 3.0 images)
-- duku-01: "Steel reinforcement rods" by Markus Koljonen (Dilaudid), CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Steel_reinforcement_rods.jpg
-- duku-02: "Rebar worker" by Tomas Castelazo, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Rebar_worker.jpg
+## Attribution strings (for the CC-licensed images)
+- rebar-mesh: "Rusty rebar nets" by W.carter, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Rusty_rebar_nets.jpg
+- rebar-bars: "A bunch of rebar up close" by W.carter, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:A_bunch_of_rebar_up_close.jpg
+- rebar-slab: "Bauteilaktivierung 2 2" by Helyesen, CC BY 3.0 — https://commons.wikimedia.org/wiki/File:Bauteilaktivierung_2_2.jpg
 
 ## Note
-The Commons free-licence pool for UK-style steel fixing is limited, so these four are the
-brand-usable picks. The other search hits (vintage/archival, structural-steel erection,
-informal rural builds) were set aside in `_rejected/`. The strongest long-term source is
-Duku's own job photos.
+All placeholders — Duku's own job photos will be stronger for the live site.
