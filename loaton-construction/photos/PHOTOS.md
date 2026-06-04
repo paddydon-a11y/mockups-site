@@ -1,15 +1,15 @@
 # Photos — Loaton Limited mockup
 
-All images from Pexels (https://www.pexels.com), free for commercial use under the Pexels
-Licence — no attribution required. English building work: finished homes, brick extensions
-in progress, bricklaying, plastering, kitchen extensions.
+All from Pexels (https://www.pexels.com), free for commercial use, no attribution required.
+English building work, no people in any shot (close-ups of brickwork + real builds).
 
-hero.jpg  — finished English stone house (Pexels #9969055)
+hero.jpg  — finished English red-brick home (Pexels #14078226)
 work-1    — rear extension in progress, blockwork + steel (Pexels #4692281)
-work-2    — bricklayer at work (Pexels #10383580)
+work-2    — new brick walls against the sky (Pexels #11746743)
 work-3    — open-plan kitchen extension interior (Pexels #30924413)
-work-4    — plastering (Pexels #10383588)
-work-5    — finished red-brick home (Pexels #14078226)
+work-4    — brickwork / mortar close-up (Pexels #6473984)
+work-5    — red brick wall close-up (Pexels #35658705)
 work-6    — two-storey extension with scaffold (Pexels #28885519)
+about.jpg — finished stone home (Pexels #36692262)
 
 Placeholders until Loaton supply their own project photos.
