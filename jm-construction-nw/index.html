@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JM Construction NW Ltd | Builders in Chorley &amp; Lancashire · Extensions, Renovations, Design &amp; Build</title>
+<meta name="description" content="JM Construction NW Ltd is a quality building company in Chorley run by Joe. Extensions, renovations, kitchens, conversions and full design &amp; build across Lancashire. Free quotes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #b8993e;
+  --gold-light: #d4b95e;
+  --gold-dark: #96792e;
+  --silver: #8a8a8a;
+  --cream: #f6f3ed;
+  --cream-dark: #ede8df;
+  --ink: #1a1714;
+  --ink-light: #3d3830;
+  --ink-muted: #6b6358;
+  --warm-white: #faf8f4;
+  --stone: #c4b6a0;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--warm-white);
+  color: var(--ink-muted);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ═══════════════════════════════════════
+   LOADING SCREEN
+   ═══════════════════════════════════════ */
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo {
+  width: 132px; border-radius: 16px; opacity: 0;
+  animation: loaderFade 0.8s ease forwards 0.3s;
+  filter: brightness(1.2);
+}
+.loader-line {
+  width: 60px; height: 1px; background: var(--gold);
+  margin-top: 24px; transform: scaleX(0);
+  animation: loaderLine 1s ease forwards 0.6s;
+}
+.loader-text {
+  font-family: var(--serif); font-size: 0.85rem; letter-spacing: 0.25em;
+  color: var(--gold); text-transform: uppercase; margin-top: 16px;
+  opacity: 0; animation: loaderFade 0.6s ease forwards 0.9s;
+}
+@keyframes loaderFade { to { opacity: 1 } }
+@keyframes loaderLine { to { transform: scaleX(1) } }
+
+/* ═══════════════════════════════════════
+   NAV — minimal, editorial
+   ═══════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 48px; height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease;
+}
+.nav::after {
+  content: ''; position: absolute; bottom: 0; left: 48px; right: 48px;
+  height: 1px; background: rgba(26,23,20,0.08); transition: opacity 0.4s;
+}
+.nav.scrolled {
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+}
+.nav.scrolled::after { opacity: 1; }
+.nav-logo { display: flex; align-items: center; gap: 13px; }
+.nav-logo img { height: 40px; border-radius: 7px; }
+.nav-logo .wordmark { font-family: var(--serif); font-size: 1.18rem; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; line-height: 1; }
+.nav-logo .wordmark b { color: var(--gold-dark); font-weight: 600; }
+.nav.scrolled .nav-logo .wordmark { color: var(--ink); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.06em; color: var(--ink-muted);
+  transition: color 0.3s; text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-family: var(--sans); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 24px; border: 1.5px solid var(--gold); color: var(--gold);
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--gold); color: #fff; }
+
+/* ═══════════════════════════════════════
+   HERO — cinematic editorial
+   ═══════════════════════════════════════ */
+.hero {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.hero-text {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 64px 80px 80px; position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 28px; opacity: 0; animation: slideUp 0.8s ease forwards 1.8s;
+}
+.hero-eyebrow::before {
+  content: ''; display: inline-block; width: 40px; height: 1px;
+  background: var(--gold); vertical-align: middle; margin-right: 16px;
+}
+.hero h1 {
+  font-family: var(--serif); font-weight: 300; font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: 1.05; color: var(--ink); letter-spacing: -0.02em;
+  margin-bottom: 32px; opacity: 0; animation: slideUp 0.8s ease forwards 2s;
+}
+.hero h1 em {
+  font-style: italic; font-weight: 400; color: var(--gold-dark);
+}
+.hero-sub {
+  font-size: 1.05rem; line-height: 1.8; max-width: 420px;
+  margin-bottom: 48px; opacity: 0; animation: slideUp 0.8s ease forwards 2.2s;
+}
+.hero-actions {
+  display: flex; gap: 16px; align-items: center;
+  opacity: 0; animation: slideUp 0.8s ease forwards 2.4s;
+}
+.btn-gold {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px 36px; background: var(--gold); color: #fff;
+  border: none; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,153,62,0.25); }
+.btn-gold svg { width: 16px; height: 16px; }
+.btn-text {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.05em; color: var(--ink-muted);
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: color 0.3s; border: none; background: none; cursor: pointer;
+}
+.btn-text:hover { color: var(--ink); }
+.btn-text svg { width: 16px; height: 16px; transition: transform 0.3s; }
+.btn-text:hover svg { transform: translateX(4px); }
+
+.hero-image {
+  position: relative; overflow: hidden;
+}
+.hero-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; animation: heroReveal 1.2s ease forwards 1.6s;
+}
+.hero-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--warm-white) 0%, transparent 15%);
+  z-index: 1;
+}
+.hero-scroll-hint {
+  position: absolute; bottom: 40px; left: 80px; z-index: 2;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink-muted);
+  opacity: 0; animation: slideUp 0.8s ease forwards 2.8s;
+}
+.scroll-line {
+  width: 1px; height: 40px; background: var(--stone); position: relative; overflow: hidden;
+}
+.scroll-line::after {
+  content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+  background: var(--gold); animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%{top:-100%} 50%{top:0} 100%{top:100%} }
+@keyframes heroReveal { from{opacity:0;transform:scale(1.05)} to{opacity:1;transform:scale(1)} }
+@keyframes slideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+/* ═══════════════════════════════════════
+   STATS STRIP — editorial oversized numbers
+   ═══════════════════════════════════════ */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(26,23,20,0.08);
+  border-bottom: 1px solid rgba(26,23,20,0.08);
+}
+.stat {
+  padding: 48px 40px; text-align: center;
+  border-right: 1px solid rgba(26,23,20,0.08);
+  transition: background 0.3s;
+}
+.stat:last-child { border-right: none; }
+.stat:hover { background: var(--cream); }
+.stat-num {
+  font-family: var(--serif); font-size: 3.2rem; font-weight: 300;
+  color: var(--ink); line-height: 1; margin-bottom: 8px;
+  letter-spacing: -0.03em;
+}
+.stat-num span { color: var(--gold); }
+.stat-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-muted);
+}
+
+/* ═══════════════════════════════════════
+   ABOUT — editorial split with pull quote
+   ═══════════════════════════════════════ */
+.about {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+.about-image { position: relative; overflow: hidden; }
+.about-image img { width: 100%; height: 100%; object-fit: cover; }
+.about-image .tag {
+  position: absolute; bottom: 32px; left: 32px;
+  background: var(--gold); color: #fff; padding: 10px 20px;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.about-content {
+  padding: 80px 72px; display: flex; flex-direction: column; justify-content: center;
+  background: var(--cream);
+}
+.about-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+}
+.about-content h2 {
+  font-family: var(--serif); font-weight: 300; font-size: 2.6rem;
+  color: var(--ink); line-height: 1.15; margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.about-content h2 em { font-weight: 400; font-style: italic; color: var(--gold-dark); }
+.about-content p {
+  font-size: 0.95rem; line-height: 1.85; margin-bottom: 16px;
+  max-width: 480px;
+}
+.about-sig {
+  margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(26,23,20,0.1);
+  font-family: var(--serif); font-size: 1.1rem; font-style: italic;
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════
+   SERVICES — numbered editorial list
+   ═══════════════════════════════════════ */
+.services {
+  padding: 120px 80px; max-width: 1400px; margin: 0 auto;
+}
+.services-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 72px; gap: 40px;
+}
+.services-header h2 {
+  font-family: var(--serif); font-weight: 300; font-size: 2.8rem;
+  color: var(--ink); line-height: 1.1;
+}
+.services-header p {
+  max-width: 360px; font-size: 0.9rem; text-align: right;
+}
+.services-list { list-style: none; }
+.service-item {
+  display: grid; grid-template-columns: 80px 1fr 1fr;
+  gap: 40px; padding: 40px 0; align-items: start;
+  border-bottom: 1px solid rgba(26,23,20,0.08);
+  transition: all 0.4s ease; cursor: default;
+}
+.service-item:first-child { border-top: 1px solid rgba(26,23,20,0.08); }
+.service-item:hover { padding-left: 20px; }
+.service-item:hover .svc-num { color: var(--gold); }
+.svc-num {
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 300;
+  color: var(--stone); transition: color 0.3s;
+}
+.svc-title {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+  color: var(--ink); line-height: 1.2;
+}
+.svc-desc {
+  font-size: 0.88rem; line-height: 1.75; color: var(--ink-muted);
+}
+
+/* ═══════════════════════════════════════
+   PORTFOLIO — magazine masonry grid
+   ═══════════════════════════════════════ */
+.portfolio {
+  background: var(--ink); padding: 120px 0; color: #fff; position: relative;
+  overflow: hidden;
+}
+.portfolio::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M0 60L60 0' stroke='%23fff' stroke-width='.5'/%3E%3C/svg%3E");
+}
+.portfolio-header {
+  max-width: 1400px; margin: 0 auto; padding: 0 80px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 72px; position: relative;
+}
+.portfolio-header h2 {
+  font-family: var(--serif); font-weight: 300; font-size: 2.8rem;
+  color: #fff; line-height: 1.1;
+}
+.portfolio-header h2 em { font-style: italic; color: var(--gold-light); }
+.portfolio-count {
+  font-family: var(--serif); font-size: 0.85rem; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+}
+.portfolio-grid {
+  max-width: 1400px; margin: 0 auto; padding: 0 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 280px;
+  gap: 16px;
+  position: relative;
+}
+.p-item {
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.p-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.6s;
+}
+.p-item:hover img { transform: scale(1.06); }
+.p-item-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,23,20,0.8) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.4s;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 24px;
+}
+.p-item:hover .p-item-overlay { opacity: 1; }
+.p-item-overlay h3 {
+  font-family: var(--serif); font-weight: 400; font-size: 1.2rem;
+  color: #fff; margin-bottom: 4px;
+}
+.p-item-overlay span {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold-light);
+}
+.p-tall { grid-row: span 2; }
+
+/* Lightbox */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(26,23,20,0.95); align-items: center; justify-content: center;
+  padding: 40px;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+.lightbox-close {
+  position: absolute; top: 24px; right: 32px;
+  width: 48px; height: 48px; border: 1px solid rgba(255,255,255,0.2);
+  background: none; color: #fff; font-size: 1.2rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.3s;
+}
+.lightbox-close:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   TESTIMONIAL — large editorial quote
+   ═══════════════════════════════════════ */
+.testimonial {
+  padding: 120px 80px; max-width: 1000px; margin: 0 auto; text-align: center;
+}
+.test-quote-mark {
+  font-family: var(--serif); font-size: 6rem; line-height: 0.6;
+  color: var(--gold); opacity: 0.3; margin-bottom: 20px;
+}
+.test-text {
+  font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 300; font-style: italic; color: var(--ink);
+  line-height: 1.55; margin-bottom: 40px; letter-spacing: -0.01em;
+}
+.test-author {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+}
+.test-author span {
+  display: block; font-weight: 400; color: var(--ink-muted);
+  letter-spacing: 0.06em; margin-top: 4px; text-transform: none;
+  font-size: 0.75rem;
+}
+.test-stars {
+  color: var(--gold); font-size: 1rem; letter-spacing: 3px; margin-bottom: 32px;
+}
+.test-dots {
+  display: flex; gap: 8px; justify-content: center; margin-top: 40px;
+}
+.test-dot {
+  width: 8px; height: 8px; border: 1px solid var(--stone);
+  background: none; cursor: pointer; transition: all 0.3s;
+}
+.test-dot.active { background: var(--gold); border-color: var(--gold); width: 24px; }
+
+/* ═══════════════════════════════════════
+   CTA BAND — full-width with texture
+   ═══════════════════════════════════════ */
+.cta-band {
+  position: relative; padding: 100px 80px; overflow: hidden;
+  background: var(--gold); text-align: center;
+}
+.cta-band::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Ccircle cx='20' cy='20' r='1' fill='%23000'/%3E%3C/svg%3E");
+}
+.cta-band * { position: relative; }
+.cta-band h2 {
+  font-family: var(--serif); font-weight: 300; font-size: 2.8rem;
+  color: #fff; margin-bottom: 16px; letter-spacing: -0.01em;
+}
+.cta-band p {
+  font-size: 1rem; color: rgba(255,255,255,0.85);
+  max-width: 500px; margin: 0 auto 40px;
+}
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px 36px; background: #fff; color: var(--ink);
+  border: none; cursor: pointer; transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+.btn-white svg { width: 16px; height: 16px; }
+.btn-outline-white {
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 16px 36px; background: transparent; color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+.btn-outline-white svg { width: 16px; height: 16px; }
+
+/* ═══════════════════════════════════════
+   CONTACT — split editorial
+   ═══════════════════════════════════════ */
+.contact {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.contact-info-side {
+  padding: 100px 72px; background: var(--cream);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.contact-label {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+}
+.contact-info-side h2 {
+  font-family: var(--serif); font-weight: 300; font-size: 2.4rem;
+  color: var(--ink); line-height: 1.15; margin-bottom: 48px;
+}
+.contact-details { list-style: none; }
+.contact-detail {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 24px 0; border-bottom: 1px solid rgba(26,23,20,0.08);
+}
+.contact-detail:first-child { border-top: 1px solid rgba(26,23,20,0.08); }
+.cd-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(26,23,20,0.1);
+}
+.cd-icon svg { width: 18px; height: 18px; stroke: var(--gold); }
+.cd-text strong {
+  display: block; font-family: var(--serif); font-size: 1rem;
+  font-weight: 500; color: var(--ink); margin-bottom: 2px;
+}
+.cd-text span, .cd-text a {
+  font-size: 0.85rem; color: var(--ink-muted);
+}
+.cd-text a:hover { color: var(--gold); }
+.contact-form-side { padding: 100px 72px; }
+.contact-form-side h3 {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+  color: var(--ink); margin-bottom: 36px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink); margin-bottom: 8px;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 14px 18px;
+  background: var(--cream); border: 1px solid rgba(26,23,20,0.1);
+  color: var(--ink); font-family: var(--sans); font-size: 0.9rem;
+  transition: border-color 0.3s; outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--gold);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6358' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center;
+}
+.form-group select option { background: var(--warm-white); }
+.submit-btn {
+  width: 100%; padding: 16px; background: var(--gold); color: #fff;
+  border: none; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+}
+.submit-btn:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+/* ═══════════════════════════════════════
+   MAP
+   ═══════════════════════════════════════ */
+.map { border-top: 1px solid rgba(26,23,20,0.08); }
+.map iframe { width: 100%; height: 300px; border: none; filter: grayscale(0.4) contrast(1.1); }
+
+/* ═══════════════════════════════════════
+   FOOTER — refined
+   ═══════════════════════════════════════ */
+.footer {
+  background: var(--ink); color: rgba(255,255,255,0.4);
+  padding: 64px 80px;
+}
+.footer-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-left { display: flex; align-items: center; gap: 24px; }
+.footer-logo img { height: 40px; border-radius: 7px; }
+.footer-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.1); }
+.footer-text { font-size: 0.75rem; line-height: 1.6; }
+.footer-text a { color: var(--gold-light); transition: color 0.3s; }
+.footer-text a:hover { color: #fff; }
+.footer-right { font-size: 0.7rem; letter-spacing: 0.05em; }
+
+/* ═══════════════════════════════════════
+   FABs
+   ═══════════════════════════════════════ */
+.fab-stack {
+  position: fixed; bottom: 32px; right: 32px; z-index: 900;
+  display: flex; flex-direction: column; gap: 10px;
+  opacity: 0; transform: translateY(20px);
+  pointer-events: none; transition: all 0.5s ease;
+}
+.fab-stack.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.fab {
+  width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+  background: var(--gold); box-shadow: 0 4px 20px rgba(184,153,62,0.3);
+  transition: all 0.3s; cursor: pointer;
+}
+.fab:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,153,62,0.4); }
+.fab svg { width: 20px; height: 20px; stroke: #fff; fill: none; }
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-text { padding: 140px 40px 60px; }
+  .hero-image { height: 50vh; }
+  .hero-image::after { background: linear-gradient(to top, var(--warm-white) 0%, transparent 30%); }
+  .hero-scroll-hint { display: none; }
+  .about { grid-template-columns: 1fr; }
+  .about-image { height: 50vh; }
+  .about-content { padding: 60px 40px; }
+  .services { padding: 80px 40px; }
+  .service-item { grid-template-columns: 60px 1fr; }
+  .svc-desc { grid-column: 2; }
+  .portfolio-header { padding: 0 40px; }
+  .portfolio-grid { padding: 0 40px; grid-template-columns: 1fr 1fr; grid-auto-rows: 240px; }
+  .p-tall { grid-row: span 1; }
+  .testimonial { padding: 80px 40px; }
+  .contact { grid-template-columns: 1fr; }
+  .contact-info-side { padding: 60px 40px; }
+  .contact-form-side { padding: 60px 40px; }
+  .footer { padding: 48px 40px; }
+  .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .cta-band { padding: 80px 40px; }
+  .nav { padding: 0 24px; }
+  .nav::after { left: 24px; right: 24px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+@media (max-width: 768px) {
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat { border-bottom: 1px solid rgba(26,23,20,0.08); }
+  .services-header { flex-direction: column; align-items: flex-start; }
+  .services-header p { text-align: left; }
+  .service-item { grid-template-columns: 1fr; gap: 12px; }
+  .svc-num { font-size: 1rem; }
+  .svc-desc { grid-column: 1; }
+  .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-band h2 { font-size: 2rem; }
+  .hero h1 { font-size: 2.4rem; }
+}
+@media (max-width: 480px) {
+  .hero-text { padding: 120px 24px 40px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <img src="logo.jpg" alt="JM Construction NW Ltd" class="loader-logo">
+  <div class="loader-line"></div>
+  <div class="loader-text">Chorley &amp; Lancashire</div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo"><img src="logo.jpg" alt="JM Construction NW Ltd"><span class="wordmark">JM Construction <b>NW</b></span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:07742916490" class="nav-cta">07742 916490</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Chorley &amp; Lancashire</div>
+    <h1>Building with <em>integrity,</em> finished to the last <em>detail</em></h1>
+    <p class="hero-sub">JM Construction NW Ltd is a Chorley-based building company covering extensions, renovations, kitchens, conversions and full design &amp; build projects across Lancashire. One trusted team, finished to an exceptional standard.</p>
+    <div class="hero-actions">
+      <a href="tel:07742916490" class="btn-gold">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        07742 916490
+      </a>
+      <a href="#portfolio" class="btn-text">
+        View our work
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="hero.jpg" alt="Oak and wrought-iron staircase with marble floor by JM Construction NW" width="800" height="600">
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-num">5.0<span>&#9733;</span></div>
+    <div class="stat-label">Google Rating</div>
+  </div>
+  <div class="stat reveal reveal-delay-1">
+    <div class="stat-num">Design<span>+</span>Build</div>
+    <div class="stat-label">Full Service</div>
+  </div>
+  <div class="stat reveal reveal-delay-2">
+    <div class="stat-num">Lancs</div>
+    <div class="stat-label">Area Covered</div>
+  </div>
+  <div class="stat reveal reveal-delay-3">
+    <div class="stat-num">100<span>%</span></div>
+    <div class="stat-label">Fully Insured</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image reveal">
+    <img src="about.jpg" alt="Marble hallway with bespoke oak and glass staircase by JM Construction NW" loading="lazy">
+    <div class="tag">Design &amp; Build</div>
+  </div>
+  <div class="about-content">
+    <div class="reveal">
+      <div class="about-label">About JM Construction</div>
+      <h2>Quality craftsmanship, built on <em>trust</em></h2>
+      <p>JM Construction NW Ltd is a trusted building company based in Chorley, run by Joe, delivering high-quality work across Lancashire. We cover extensions, renovations, kitchens, conversions and full design &amp; build projects.</p>
+      <p>From the first drawing to the final detail, you deal with Joe throughout, with the same care, communication and craftsmanship on every job, whether it&rsquo;s a single room or a whole-house transformation.</p>
+      <p>We manage the full process in-house, from design and groundwork through to the finished, decorated space, leaving every home better than we found it.</p>
+      <div class="about-sig">&ldquo;We build it as if it were our own.&rdquo;</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <h2>What we do</h2>
+    <p>From heritage restorations to contemporary new builds, every project is completed to the highest standard.</p>
+  </div>
+  <ul class="services-list">
+    <li class="service-item reveal">
+      <span class="svc-num">01</span>
+      <h3 class="svc-title">Extensions</h3>
+      <p class="svc-desc">Single and double-storey extensions that add real space and value, built and finished to the highest standard inside and out.</p>
+    </li>
+    <li class="service-item reveal">
+      <span class="svc-num">02</span>
+      <h3 class="svc-title">Renovations &amp; Refurbishments</h3>
+      <p class="svc-desc">Full property renovations, from reconfiguring layouts and removing walls through to a complete fit-out, flooring and decorative finish.</p>
+    </li>
+    <li class="service-item reveal">
+      <span class="svc-num">03</span>
+      <h3 class="svc-title">Kitchens &amp; Bathrooms</h3>
+      <p class="svc-desc">Bespoke kitchens, bathrooms and wet rooms, designed, fitted, tiled and finished throughout by one trusted team.</p>
+    </li>
+    <li class="service-item reveal">
+      <span class="svc-num">04</span>
+      <h3 class="svc-title">Loft &amp; Garage Conversions</h3>
+      <p class="svc-desc">Turning unused lofts and garages into beautiful, practical living space that adds bedrooms, bathrooms and value to your home.</p>
+    </li>
+    <li class="service-item reveal">
+      <span class="svc-num">05</span>
+      <h3 class="svc-title">Design &amp; Build</h3>
+      <p class="svc-desc">A complete service from initial design and drawings through to construction and finishing, all managed in-house by Joe and the team.</p>
+    </li>
+    <li class="service-item reveal">
+      <span class="svc-num">06</span>
+      <h3 class="svc-title">Joinery &amp; Staircases</h3>
+      <p class="svc-desc">Bespoke joinery, staircases, panelling and fitted storage, crafted and installed with the meticulous attention to detail our clients rave about.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header reveal">
+    <h2>Selected <em>projects</em></h2>
+    <span class="portfolio-count">9 Projects</span>
+  </div>
+  <div class="portfolio-grid">
+    <div class="p-item p-tall reveal" onclick="openLightbox(this)">
+      <img src="work-1.jpg" alt="Bespoke oak staircase with wrought-iron balustrade" loading="lazy">
+      <div class="p-item-overlay"><h3>Oak &amp; Wrought-Iron Staircase</h3><span>Bespoke Joinery</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-2.jpg" alt="Fitted cream kitchen with wood worktops" loading="lazy">
+      <div class="p-item-overlay"><h3>Fitted Kitchen</h3><span>Kitchens</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-3.jpg" alt="Renovated grey kitchen with marble worktop" loading="lazy">
+      <div class="p-item-overlay"><h3>Kitchen Renovation</h3><span>Renovation</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-4.jpg" alt="Living room extension with bay windows" loading="lazy">
+      <div class="p-item-overlay"><h3>Living Room Extension</h3><span>Extensions</span></div>
+    </div>
+    <div class="p-item p-tall reveal" onclick="openLightbox(this)">
+      <img src="work-5.jpg" alt="Panelled landing with wainscoting and bay window" loading="lazy">
+      <div class="p-item-overlay"><h3>Panelled Landing</h3><span>Joinery &amp; Finish</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-6.jpg" alt="Open-plan kitchen with island" loading="lazy">
+      <div class="p-item-overlay"><h3>Open-Plan Kitchen</h3><span>Design &amp; Build</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-7.jpg" alt="Dark kitchen and diner with herringbone floor" loading="lazy">
+      <div class="p-item-overlay"><h3>Kitchen &amp; Diner</h3><span>Renovation</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-8.jpg" alt="Bespoke under-stair storage in oak" loading="lazy">
+      <div class="p-item-overlay"><h3>Bespoke Storage</h3><span>Joinery</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-9.jpg" alt="Renovated landing with new doors and decoration" loading="lazy">
+      <div class="p-item-overlay"><h3>Landing &amp; Doors</h3><span>Renovation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial reveal">
+  <div class="test-quote-mark">&ldquo;</div>
+  <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+  <p class="test-text" id="test-text">Myself and my husband cannot speak highly enough of Joe. His attention to detail and craftsmanship are amazing. Joe brought to life our dream of two extra bedrooms and a shower room for our family, and every inch of the build, inside and out, is finished to a wonderful standard. We would never hesitate to have Joe back as our builder again.</p>
+  <div class="test-author" id="test-author">
+    Holly Atkinson
+    <span>Two-Storey Extension, Chorley</span>
+  </div>
+  <div class="test-dots">
+    <div class="test-dot active" data-i="0"></div>
+    <div class="test-dot" data-i="1"></div>
+    <div class="test-dot" data-i="2"></div>
+    <div class="test-dot" data-i="3"></div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band reveal">
+  <h2>Let&rsquo;s build something together</h2>
+  <p>Whether it&rsquo;s an extension, renovation, conversion or a full design &amp; build. Call Joe for a free, no-obligation quote.</p>
+  <div class="cta-btns">
+    <a href="tel:07742916490" class="btn-white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      07742 916490
+    </a>
+    <a href="#contact" class="btn-outline-white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Send a Message
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info-side">
+    <div class="reveal">
+      <div class="contact-label">Get in Touch</div>
+      <h2>Ready to discuss your project?</h2>
+      <ul class="contact-details">
+        <li class="contact-detail">
+          <div class="cd-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="cd-text"><strong>Phone</strong><a href="tel:07742916490">07742 916490</a></div>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+          <div class="cd-text"><strong>Email</strong><a href="mailto:info@jmconstructionnwltd.co.uk">info@jmconstructionnwltd.co.uk</a></div>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="cd-text"><strong>Areas Covered</strong><span>Chorley, Preston, Leyland, Bolton &amp; across Lancashire</span></div>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="cd-text"><strong>Availability</strong><span>Mon&ndash;Fri: 7am&ndash;5pm &nbsp;&bull;&nbsp; Sat: By appointment</span></div>
+        </li>
+        <li class="contact-detail">
+          <div class="cd-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="cd-text"><strong>Free Quotes</strong><span>No obligation estimates on all projects</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="contact-form-side">
+    <div class="reveal">
+      <h3>Send us a message</h3>
+      <form action="https://construction-sites.co.uk/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="JM Construction NW Ltd">
+        <input type="hidden" name="source" value="mockup-jm-construction-nw">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required placeholder="07xxx xxx xxx" pattern="^(0|\+44)\d{9,11}$" title="Please enter a valid UK phone number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="service">Service Required</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option value="Extension">Extension</option>
+            <option value="Renovation">Renovation / Refurbishment</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Bathroom">Bathroom</option>
+            <option value="Loft or Garage Conversion">Loft / Garage Conversion</option>
+            <option value="Design & Build">Design &amp; Build</option>
+            <option value="Joinery">Joinery / Staircase</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map">
+  <iframe src="https://www.google.com/maps?q=Chorley,+Lancashire&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="JM Construction NW Ltd, Chorley, Lancashire"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="logo.jpg" alt="JM Construction NW Ltd" class="footer-logo">
+      <div class="footer-divider"></div>
+      <div class="footer-text">
+        Chorley &amp; Lancashire &nbsp;&bull;&nbsp; 07742 916490 &nbsp;&bull;&nbsp; info@jmconstructionnwltd.co.uk<br>
+        Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a>
+      </div>
+    </div>
+    <div class="footer-right">&copy; 2026 JM Construction NW Ltd. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fab-stack" id="fabStack">
+  <a href="tel:07742916490" class="fab" aria-label="Call JM Construction NW">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loading screen
+window.addEventListener('load', function() {
+  setTimeout(function() { document.getElementById('loader').classList.add('done'); }, 2000);
+});
+
+// Timestamp for spam protection
+document.getElementById('formTimestamp').value = Date.now();
+
+// Nav scroll & FAB visibility
+var nav = document.getElementById('nav');
+var fabStack = document.getElementById('fabStack');
+var heroEl = document.getElementById('hero');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  fabStack.classList.toggle('visible', window.scrollY > heroEl.offsetHeight);
+});
+
+// Scroll reveal
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+// Lightbox
+function openLightbox(el) {
+  var img = el.querySelector('img');
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-img').alt = img.alt;
+  lb.classList.add('active'); document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close') || e.target.parentElement.classList.contains('lightbox-close')) {
+    document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; } });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href.startsWith('#') && href.length > 1) {
+      e.preventDefault();
+      var target = document.querySelector(href);
+      if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+  });
+});
+
+// Testimonial rotation
+var reviews = [
+  { text: 'Myself and my husband cannot speak highly enough of Joe. His attention to detail and craftsmanship are amazing. Joe brought to life our dream of two extra bedrooms and a shower room for our family, and every inch of the build, inside and out, is finished to a wonderful standard. We would never hesitate to have Joe back as our builder again.', author: 'Holly Atkinson', project: 'Two-Storey Extension, Chorley' },
+  { text: 'We have just had Joe and his team back to build an extension, relocate the kitchen and install a new lawn and patio, the second time we have worked together. We cannot speak highly enough of Joe\u2019s professionalism and attention to detail. He has transformed our home and completely changed how we use the space.', author: 'Damien & Caragh Barlow', project: 'Extension & Kitchen, Chorley' },
+  { text: 'Joe did a fab job with our garage conversion. He made sure everything was done to our vision, made us aware of every detail and gave recommendations we really appreciated as this was our first property job. Punctual, and worked quickly but efficiently.', author: 'Amy', project: 'Garage Conversion, Lancashire' },
+  { text: 'Highly recommend! I have had Joe complete a number of projects for me over the past couple of years and the standard is always excellent. A genuinely trustworthy and reliable builder.', author: 'Thomas', project: 'Repeat Client, Lancashire' }
+];
+var currentReview = 0;
+var dots = document.querySelectorAll('.test-dot');
+dots.forEach(function(dot) {
+  dot.addEventListener('click', function() {
+    currentReview = parseInt(this.dataset.i);
+    updateReview();
+  });
+});
+function updateReview() {
+  var r = reviews[currentReview];
+  document.getElementById('test-text').textContent = r.text;
+  var authorEl = document.getElementById('test-author');
+  authorEl.innerHTML = r.author + '<span>' + r.project + '</span>';
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === currentReview); });
+}
+setInterval(function() { currentReview = (currentReview + 1) % reviews.length; updateReview(); }, 7000);
+
+// Phone validation
+var phoneInput = document.getElementById('phone');
+if (phoneInput) {
+  phoneInput.addEventListener('input', function() {
+    var v = this.value.replace(/[^0-9+]/g, '');
+    if (v && !v.match(/^(0|\+44)/)) { this.setCustomValidity('Please enter a valid UK phone number starting with 0 or +44'); }
+    else { this.setCustomValidity(''); }
+  });
+}
+</script>
+</body>
+</html>
