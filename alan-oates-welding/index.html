@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alan Oates Welding &amp; Maintenance | Mobile Welder · North Wales &amp; Chester</title>
+<meta name="description" content="Alan Oates Welding & Maintenance. Mobile welding across North Wales and Chester. Car, van and Transit repairs, MOT welding, gates and railings. Based in Mold, Flintshire.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-2: #f4f5f7;
+  --card: #ffffff;
+  --card-2: #f7f8fa;
+  --border: #e4e7ec;
+  --border-strong: #d4d9e0;
+  --ink: #16181d;
+  --ink-2: #2c313b;
+  --body: #545b67;
+  --muted: #8b919c;
+  --accent: #e2231a;
+  --accent-dark: #b81620;
+  --accent-soft: #fdeceb;
+  --accent-glow: rgba(226, 35, 26, 0.18);
+  --green: #1faf54;
+  --green-dark: #178c43;
+  --charcoal: #16181d;
+  --heading: 'Archivo', sans-serif;
+  --body-font: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body-font);
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+body.loading { overflow: hidden; }
+
+h1, h2, h3, h4, h5 { font-family: var(--heading); color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+/* ============================================================= */
+/* WELDING LOADER                                                 */
+/* ============================================================= */
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: radial-gradient(ellipse at center, #24272f 0%, #16181d 62%, #0a0b0e 100%);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.loader.done { opacity: 0; visibility: hidden; }
+
+.loader-stage {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 30px;
+}
+.loader-text {
+  font-family: var(--heading);
+  font-weight: 900;
+  font-size: clamp(2rem, 8vw, 4.4rem);
+  letter-spacing: 0.06em;
+  display: flex;
+  gap: 0.03em;
+}
+.loader-text .letter {
+  color: #3b4049;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 0 0 transparent;
+  transition: color 0.15s ease, text-shadow 0.25s ease;
+}
+.loader-text .letter.space { width: 0.42em; }
+.loader-text .letter.lit {
+  color: #ffffff;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 12px #ffd9d2,
+    0 0 26px var(--accent),
+    0 0 50px var(--accent-dark);
+  animation: letter-cool 1.4s ease forwards;
+}
+@keyframes letter-cool {
+  0%   { color: #fff; }
+  20%  { color: #ffe2dd; }
+  60%  { color: #ffb4ab; }
+  100% { color: #e7b3ad; text-shadow: 0 0 2px rgba(255,180,170,0.3); }
+}
+
+.loader-weld-line {
+  margin-top: 26px;
+  width: min(460px, 80vw);
+  height: 8px;
+  background: linear-gradient(90deg, #25282f 0%, #313640 100%);
+  border-radius: 4px;
+  position: relative;
+  overflow: visible;
+  box-shadow: inset 0 0 0 1px #3a3f49;
+}
+.loader-weld-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 0%;
+  border-radius: 4px;
+  background: linear-gradient(90deg,
+    #2a1512 0%,
+    #8a1810 22%,
+    #e2231a 52%,
+    #ff7a4d 80%,
+    #ffe2c0 96%,
+    #ffffff 100%);
+  box-shadow: 0 0 14px rgba(255,122,77,0.6), 0 0 30px rgba(226,35,26,0.45);
+  animation: weld-fill 2.2s ease-out forwards;
+}
+@keyframes weld-fill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.loader-arc {
+  position: absolute;
+  top: -6px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #ffe2c0 25%, #ff7a4d 52%, rgba(226,35,26,0) 75%);
+  transform: translateX(-50%);
+  left: 0%;
+  animation: arc-travel 2.2s ease-out forwards, arc-flicker 0.08s infinite;
+  filter: blur(0.4px);
+  mix-blend-mode: screen;
+}
+@keyframes arc-travel {
+  0% { left: 0%; }
+  100% { left: 100%; }
+}
+@keyframes arc-flicker {
+  0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.7; transform: translateX(-50%) scale(1.15); }
+}
+
+.loader-sparks {
+  position: absolute;
+  top: 0;
+  width: 1px; height: 1px;
+  transform: translateX(-50%);
+  left: 0%;
+  animation: arc-travel 2.2s ease-out forwards;
+  pointer-events: none;
+}
+.spark {
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 3px;
+  background: #ffe2c0;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #ff9a6a, 0 0 14px rgba(226,35,26,0.7);
+  opacity: 0;
+  animation: spark-fly 0.9s ease-out infinite;
+}
+.spark:nth-child(1) { --tx: 28px;  --ty: -60px; animation-delay: 0s; }
+.spark:nth-child(2) { --tx: -22px; --ty: -70px; animation-delay: 0.08s; }
+.spark:nth-child(3) { --tx: 36px;  --ty: -40px; animation-delay: 0.16s; }
+.spark:nth-child(4) { --tx: -30px; --ty: -50px; animation-delay: 0.24s; }
+.spark:nth-child(5) { --tx: 10px;  --ty: -80px; animation-delay: 0.32s; }
+.spark:nth-child(6) { --tx: -8px;  --ty: -55px; animation-delay: 0.4s; }
+.spark:nth-child(7) { --tx: 44px;  --ty: -30px; animation-delay: 0.48s; }
+.spark:nth-child(8) { --tx: -42px; --ty: -42px; animation-delay: 0.56s; }
+@keyframes spark-fly {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.2); }
+}
+
+.loader-sub {
+  margin-top: 22px;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #9aa0ab;
+  font-weight: 700;
+}
+.loader-sub .pip { color: var(--accent); }
+
+/* ============================================================= */
+/* NAV                                                            */
+/* ============================================================= */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1280px; margin: 0 auto; }
+.nav-logo { font-family: var(--heading); font-size: 1.35rem; font-weight: 900; color: var(--ink); letter-spacing: 0.01em; white-space: nowrap; text-transform: uppercase; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { color: var(--ink-2); font-size: 0.92rem; font-weight: 600; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  background: var(--accent); color: #fff !important;
+  padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+.nav-burger { display: none; width: 40px; height: 40px; border-radius: 9px; background: var(--card-2); border: 1px solid var(--border-strong); align-items: center; justify-content: center; }
+.nav-burger svg { width: 20px; height: 20px; color: var(--ink); }
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-burger { display: inline-flex; }
+}
+
+/* Mobile sheet */
+.mobile-sheet {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(320px, 88vw);
+  background: #ffffff;
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 200;
+  padding: 80px 28px 28px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.mobile-sheet.open { transform: translateX(0); }
+.mobile-sheet a { padding: 14px 4px; font-size: 1.05rem; color: var(--ink-2); border-bottom: 1px solid var(--border); font-weight: 600; }
+.mobile-sheet a:last-of-type { border-bottom: none; }
+.mobile-sheet-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--ink); background: var(--card-2); border-radius: 8px; }
+.mobile-sheet-backdrop { position: fixed; inset: 0; background: rgba(22,24,29,0.5); opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 150; }
+.mobile-sheet-backdrop.open { opacity: 1; visibility: visible; }
+
+/* ============================================================= */
+/* HERO                                                           */
+/* ============================================================= */
+.hero {
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 90vh;
+  padding: 132px 24px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 50% at 88% 18%, rgba(226,35,26,0.08), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: 22px;
+  box-shadow: 0 2px 10px rgba(22,24,29,0.04);
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.3s;
+}
+.hero-badge .dot {
+  width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(31,175,84,0.45); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(31,175,84,0); }
+}
+.hero h1 {
+  font-size: clamp(2.3rem, 5.4vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero-sub {
+  font-size: 1.08rem; color: var(--body);
+  max-width: 520px; margin-bottom: 30px;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.7s;
+}
+.hero-btns {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 0.9s;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 26px;
+  font-weight: 700; font-size: 0.95rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  letter-spacing: -0.01em;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(226,35,26,0.3); }
+.btn-wa { background: var(--green); color: #fff; }
+.btn-wa:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(31,175,84,0.3); }
+
+.hero-meta {
+  display: flex; gap: 22px; margin-top: 26px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.6s ease forwards 1.1s;
+}
+.hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--ink-2); font-weight: 500; }
+.hero-meta-item svg { width: 18px; height: 18px; color: var(--accent); }
+
+.hero-visual {
+  position: relative;
+  opacity: 0; animation: fadeScale 0.9s ease forwards 0.6s;
+}
+.hero-logo-panel {
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(226,35,26,0.07), transparent 70%),
+    #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 44px 40px;
+  box-shadow: 0 24px 60px rgba(22,24,29,0.08);
+  overflow: hidden;
+}
+.hero-logo-panel::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(22,24,29,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(22,24,29,0.03) 1px, transparent 1px);
+  background-size: 38px 38px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000 30%, transparent 80%);
+}
+.hero-logo-panel img { position: relative; width: 100%; max-width: 420px; margin: 0 auto; }
+.hero-logo-foot {
+  position: relative;
+  margin-top: 22px;
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+}
+.hero-chip {
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em;
+  color: var(--ink-2);
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  padding: 7px 13px; border-radius: 999px;
+}
+.hero-chip.red { color: var(--accent); border-color: rgba(226,35,26,0.25); background: var(--accent-soft); }
+
+/* ============================================================= */
+/* TRUST MARQUEE                                                  */
+/* ============================================================= */
+.trust-marquee {
+  margin-top: 70px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--card-2);
+  overflow: hidden; width: 100%;
+}
+.trust-track {
+  display: flex; gap: 46px;
+  white-space: nowrap;
+  animation: marqueeScroll 30s linear infinite;
+  width: max-content;
+}
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.trust-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.88rem; font-weight: 600; color: var(--ink-2);
+}
+.trust-item svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; }
+
+/* ============================================================= */
+/* SECTION BASE                                                   */
+/* ============================================================= */
+.section { padding: 92px 0; position: relative; }
+.section-head { text-align: center; margin-bottom: 52px; }
+.section-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 800; margin-bottom: 14px; text-transform: uppercase; }
+.section-head p { max-width: 600px; margin: 0 auto; color: var(--body); }
+
+/* SERVICES */
+.services { padding-top: 36px; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.service-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 30px 26px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover { border-color: var(--border-strong); box-shadow: 0 16px 36px rgba(22,24,29,0.08); transform: translateY(-3px); }
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.service-icon svg { width: 23px; height: 23px; color: var(--accent); }
+.service-card h3 { font-size: 1.18rem; margin-bottom: 10px; font-weight: 700; }
+.service-card p { color: var(--body); font-size: 0.92rem; line-height: 1.65; }
+
+/* GALLERY (placeholder slots for Alan's photos) */
+.gallery-section { padding: 80px 0 92px; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  color: #fff;
+  font-size: 0.88rem; font-weight: 600;
+}
+/* Placeholder appearance until real photos drop in */
+.gallery-item.placeholder {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 30%, rgba(226,35,26,0.06), transparent 70%),
+    repeating-linear-gradient(135deg, #fafbfc 0 14px, #f3f4f6 14px 28px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 20px;
+}
+.gallery-item.placeholder .ph-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: #fff; border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(22,24,29,0.05);
+}
+.gallery-item.placeholder .ph-icon svg { width: 22px; height: 22px; color: var(--accent); }
+.gallery-item.placeholder .ph-title { font-family: var(--heading); font-weight: 700; color: var(--ink); font-size: 1rem; }
+.gallery-item.placeholder .ph-sub { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+.gallery-note { text-align: center; margin-top: 26px; font-size: 0.9rem; color: var(--body); }
+.gallery-note strong { color: var(--ink); }
+@media (max-width: 820px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-caption { display: none; }
+}
+@media (max-width: 520px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+/* ABOUT */
+.about-section { padding: 92px 0; }
+.about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+.about-visual {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 35%, rgba(226,35,26,0.07), transparent 70%),
+    #fff;
+  aspect-ratio: 4/5;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 30px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(22,24,29,0.07);
+}
+.about-visual img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+.about-visual.placeholder::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(135deg, transparent 0 13px, rgba(22,24,29,0.025) 13px 26px);
+  pointer-events: none;
+}
+.about-ph-icon {
+  position: relative;
+  width: 60px; height: 60px; border-radius: 16px;
+  background: var(--accent-soft); display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.about-ph-icon svg { width: 28px; height: 28px; color: var(--accent); }
+.about-ph-text { position: relative; font-family: var(--heading); font-weight: 700; color: var(--ink); }
+.about-ph-sub { position: relative; font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.about-badge {
+  position: absolute; bottom: 16px; left: 16px;
+  background: var(--accent);
+  border-radius: 12px; padding: 12px 18px;
+}
+.about-badge strong { display: block; color: #fff; font-size: 1.7rem; font-family: var(--heading); font-weight: 900; line-height: 1; }
+.about-badge span { font-size: 0.72rem; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+.about-text h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); margin-bottom: 20px; text-transform: uppercase; }
+.about-text p { margin-bottom: 18px; color: var(--body); }
+.about-points { list-style: none; margin-top: 22px; display: grid; gap: 14px; }
+.about-points li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--ink-2); }
+.about-points svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+@media (max-width: 820px) {
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-visual { aspect-ratio: 4/3; }
+}
+
+/* REVIEWS */
+.reviews-section { padding: 92px 0; background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.reviews-header { display: flex; gap: 16px; align-items: center; justify-content: center; margin-bottom: 50px; }
+.reviews-score { text-align: center; }
+.reviews-score .big { font-family: var(--heading); font-size: 3.6rem; font-weight: 900; color: var(--ink); line-height: 1; }
+.reviews-score .stars { color: #f5a623; font-size: 1.2rem; letter-spacing: 0.15em; margin: 6px 0; }
+.reviews-score .count { font-size: 0.85rem; color: var(--body); display: flex; align-items: center; gap: 6px; justify-content: center; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
+.review-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+.review-card:hover { border-color: var(--border-strong); box-shadow: 0 14px 32px rgba(22,24,29,0.07); transform: translateY(-2px); }
+.review-stars { color: #f5a623; font-size: 0.95rem; letter-spacing: 0.1em; margin-bottom: 14px; }
+.review-text { color: var(--ink-2); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.7; }
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-family: var(--heading);
+}
+.review-author strong { display: block; color: var(--ink); font-size: 0.92rem; font-weight: 700; }
+.review-author span { color: var(--muted); font-size: 0.78rem; }
+.review-card:nth-child(2) .review-avatar { background: #16181d; }
+.review-card:nth-child(3) .review-avatar { background: #c2410c; }
+.review-card:nth-child(5) .review-avatar { background: #16181d; }
+.review-card:nth-child(6) .review-avatar { background: #c2410c; }
+
+/* CTA BAND */
+.cta-band {
+  padding: 72px 0;
+  background: var(--charcoal);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 35%, rgba(226,35,26,0.25), transparent 62%);
+  pointer-events: none;
+}
+.cta-band h2 { font-size: clamp(1.8rem, 3.6vw, 2.5rem); margin-bottom: 14px; position: relative; color: #fff; text-transform: uppercase; }
+.cta-band p { color: #c3c7cf; max-width: 560px; margin: 0 auto 28px; position: relative; }
+.cta-band-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* AREAS */
+.areas-section { padding: 80px 0; }
+.areas-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 880px; margin: 0 auto; }
+.area-tag {
+  padding: 10px 18px;
+  background: var(--card);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  font-size: 0.88rem; color: var(--ink-2); font-weight: 500;
+  transition: all 0.2s ease;
+}
+.area-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.areas-note { text-align: center; margin-top: 26px; font-size: 0.9rem; color: var(--body); }
+.areas-note strong { color: var(--accent); }
+
+/* CONTACT */
+.contact-section { padding: 92px 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; }
+.contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 18px; text-transform: uppercase; }
+.contact-info > p { color: var(--body); margin-bottom: 28px; }
+.info-list { display: grid; gap: 14px; }
+.info-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 20px;
+  display: flex; align-items: center; gap: 16px;
+  transition: all 0.25s ease;
+}
+.info-card:hover { border-color: var(--border-strong); box-shadow: 0 10px 24px rgba(22,24,29,0.06); transform: translateX(4px); }
+.info-icon {
+  width: 44px; height: 44px;
+  background: var(--accent-soft);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.info-icon svg { width: 20px; height: 20px; color: var(--accent); }
+.info-card small { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 2px; font-weight: 600; }
+.info-card strong { font-size: 1rem; font-weight: 700; color: var(--ink); }
+
+.contact-form-wrap {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px;
+  box-shadow: 0 16px 40px rgba(22,24,29,0.06);
+}
+.form-label { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-2); margin-bottom: 8px; font-weight: 700; }
+.form-field { margin-bottom: 20px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 13px 16px;
+  background: var(--card-2);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: var(--body-font); font-size: 0.95rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--accent); background: #fff; }
+.form-textarea { min-height: 120px; resize: vertical; }
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b919c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+.form-submit {
+  width: 100%; padding: 15px 24px;
+  background: var(--accent); color: #fff;
+  font-weight: 700; font-size: 0.95rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  margin-top: 8px;
+}
+.form-submit:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(226,35,26,0.3); }
+@media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* FOOTER */
+.footer { padding: 50px 0 30px; border-top: 1px solid var(--border); text-align: center; background: var(--card-2); }
+.footer-logo { font-family: var(--heading); font-size: 1.4rem; font-weight: 900; color: var(--ink); margin-bottom: 10px; text-transform: uppercase; }
+.footer-logo span { color: var(--accent); }
+.footer p { font-size: 0.82rem; color: var(--muted); margin: 6px 0; }
+.footer a { color: var(--accent); font-weight: 600; }
+
+/* FLOATING CTAs */
+.fab-container {
+  position: fixed; right: 16px; bottom: 16px; z-index: 90;
+  display: flex; flex-direction: column; gap: 14px;
+  opacity: 0; visibility: hidden; transform: translateY(20px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+.fab-container.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.fab {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+}
+.fab-call { background: var(--accent); animation: pulse-ring 2.4s ease-in-out infinite; }
+.fab-wa { background: var(--green); animation: pulse-ring-wa 2.4s ease-in-out infinite; }
+.fab svg { width: 24px; height: 24px; }
+.fab:hover { animation: none; transform: scale(1.08); }
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(226,35,26,0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(226,35,26,0); }
+  100% { box-shadow: 0 0 0 0 rgba(226,35,26,0); }
+}
+@keyframes pulse-ring-wa {
+  0% { box-shadow: 0 0 0 0 rgba(31,175,84,0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(31,175,84,0); }
+  100% { box-shadow: 0 0 0 0 rgba(31,175,84,0); }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.service-card:nth-child(1), .review-card:nth-child(1) { transition-delay: 0s; }
+.service-card:nth-child(2), .review-card:nth-child(2) { transition-delay: 0.08s; }
+.service-card:nth-child(3), .review-card:nth-child(3) { transition-delay: 0.16s; }
+.service-card:nth-child(4), .review-card:nth-child(4) { transition-delay: 0.24s; }
+.service-card:nth-child(5), .review-card:nth-child(5) { transition-delay: 0.32s; }
+.service-card:nth-child(6), .review-card:nth-child(6) { transition-delay: 0.40s; }
+
+@media (max-width: 820px) {
+  .hero { padding: 116px 20px 0; min-height: auto; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-btns, .hero-meta { justify-content: center; }
+  .trust-marquee { margin-top: 56px; }
+  .section { padding: 68px 0; }
+  .reviews-header { gap: 12px; }
+  .contact-form-wrap { padding: 24px; }
+  .section-head { margin-bottom: 40px; }
+  .hero-logo-panel { padding: 32px 26px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.1rem; }
+  .btn { padding: 13px 20px; font-size: 0.9rem; }
+}
+</style>
+</head>
+<body class="loading">
+
+<!-- WELDING LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-stage">
+    <h1 class="loader-text" id="loaderText">
+      <span class="letter">A</span>
+      <span class="letter">L</span>
+      <span class="letter">A</span>
+      <span class="letter">N</span>
+      <span class="letter space">&nbsp;</span>
+      <span class="letter">O</span>
+      <span class="letter">A</span>
+      <span class="letter">T</span>
+      <span class="letter">E</span>
+      <span class="letter">S</span>
+    </h1>
+    <div class="loader-weld-line">
+      <div class="loader-weld-fill"></div>
+      <div class="loader-sparks">
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span>
+        <span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span>
+      </div>
+      <div class="loader-arc"></div>
+    </div>
+    <div class="loader-sub">Welding <span class="pip">·</span> Maintenance <span class="pip">·</span> Mobile</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ALAN OATES <span>WELDING</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a class="nav-cta contact-call" data-h="dGVsOis0NDEzNTIzMDAyMzE=" href="#">Call Now</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-sheet-backdrop" id="sheetBackdrop"></div>
+<aside class="mobile-sheet" id="mobileSheet">
+  <button class="mobile-sheet-close" id="sheetClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="#services" class="sheet-link">Services</a>
+  <a href="#work" class="sheet-link">Work</a>
+  <a href="#about" class="sheet-link">About</a>
+  <a href="#reviews" class="sheet-link">Reviews</a>
+  <a href="#areas" class="sheet-link">Areas</a>
+  <a href="#contact" class="sheet-link">Contact</a>
+</aside>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Mobile Welder · North Wales &amp; Chester</div>
+      <h1>Mobile welding across <span class="accent">North Wales and Chester</span>.</h1>
+      <p class="hero-sub">Alan Oates brings the welder to you. Car, van and Transit repairs, MOT welding, plus gates and railings made and mended. Based in Mold, out to the coast.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary contact-call" data-c="MDEzNTIgMzAwMjMx" data-h="dGVsOis0NDEzNTIzMDAyMzE=" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call · <span class="phone-display"></span>
+        </a>
+        <a class="btn btn-wa contact-wa" data-h="aHR0cHM6Ly93YS5tZS80NDc4NDAzMjQ2ODE/dGV4dD1IaSUyMEFsYW4lMkMlMjBJJTIwZm91bmQlMjBBbGFuJTIwT2F0ZXMlMjBXZWxkaW5nJTIwb25saW5lJTIwYW5kJTIwd291bGQlMjBsaWtlJTIwYSUyMHF1b3RlJTIwcGxlYXNlLg==" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+          WhatsApp Alan
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Fully Mobile</div>
+        <div class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> MOT Welding</div>
+        <div class="hero-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Free Quotes</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-panel">
+        <img src="logo.png" alt="Alan Oates Welding & Maintenance logo">
+        <div class="hero-logo-foot">
+          <span class="hero-chip red">Cars · Vans · Transits</span>
+          <span class="hero-chip">Gates &amp; Railings</span>
+          <span class="hero-chip">MOT Repairs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-marquee">
+    <div class="trust-track">
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fully Mobile Rig</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> MOT Welding Specialist</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg> Gates &amp; Railings Made</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Fast Turnaround</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Honest, Fair Prices</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Mold &amp; the North Wales Coast</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Fully Mobile Rig</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> MOT Welding Specialist</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg> Gates &amp; Railings Made</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Fast Turnaround</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Honest, Fair Prices</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Mold &amp; the North Wales Coast</span>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">What Alan Does</span>
+      <h2>Welding and repairs, wherever the job is.</h2>
+      <p>From getting a car through its MOT to a new set of driveway gates, Alan brings the kit to you across North Wales and Chester.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>MOT Welding Repairs</h3>
+        <p>Sills, floor pans, subframes and chassis welded up solid to get your car or van through its MOT. Quick turnaround for retests.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3>Car, Van &amp; Transit Repair</h3>
+        <p>Bodywork and structural welding for cars, vans and Transits. Rust, holes, exhausts and brackets sorted at your home or yard.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8M21 21V8M3 8h18M3 8l9-5 9 5M8 21V12M16 21V12M12 21V12"/></svg></div>
+        <h3>Gates &amp; Driveway Gates</h3>
+        <p>Driveway and garden gates made to measure, repaired or re-hung. Built in steel to last and finished to suit the property.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6v12M21 6v12M3 9h18M3 14h18M8 6v12M13 6v12M18 6v12"/></svg></div>
+        <h3>Railings &amp; Handrails</h3>
+        <p>Garden, step and balcony railings fabricated and fitted. Galvanised or painted, square and safe, made to fit the space.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14h6l-2-6h4l2 8h4"/><path d="M3 20h18"/></svg></div>
+        <h3>On-Site Mobile Welding</h3>
+        <p>Full mobile rig and generator. Alan welds where the work is, so there is no towing a vehicle in or hauling steel about.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Fabrication &amp; Maintenance</h3>
+        <p>Brackets, frames, trailer repairs and one-off metalwork. Bring a drawing or a back-of-an-envelope sketch and Alan will build it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK (placeholder gallery, ready for Alan's photos) -->
+<section class="gallery-section" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Recent Work</span>
+      <h2>From an MOT sill to a set of gates.</h2>
+      <p>A look at the kind of jobs Alan takes on day to day across the region.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="work-01.jpeg" alt="Corroded car sill taped off and cut back, ready for welding">
+        <div class="gallery-caption">MOT sill repair, prepped and cut back</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="work-02.jpeg" alt="Fresh weld repair to a rusted vehicle underbody">
+        <div class="gallery-caption">Underbody welding, fresh steel let in</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="work-03.jpeg" alt="Lower sill ground back to bare metal on a dark car">
+        <div class="gallery-caption">Sill ground back, ready to weld up</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="work-04.jpeg" alt="Repaired and cleaned up lower sill on a dark car">
+        <div class="gallery-caption">Repaired sill, tidied and back on the road</div>
+      </div>
+      <div class="gallery-item placeholder reveal">
+        <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8M21 21V8M3 8h18M3 8l9-5 9 5M8 21V12M16 21V12M12 21V12"/></svg></div>
+        <div class="ph-title">Gates &amp; Driveway Gates</div>
+        <div class="ph-sub">Photo coming</div>
+      </div>
+      <div class="gallery-item placeholder reveal">
+        <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6v12M21 6v12M3 9h18M3 14h18M8 6v12M13 6v12M18 6v12"/></svg></div>
+        <div class="ph-title">Railings &amp; Handrails</div>
+        <div class="ph-sub">Photo coming</div>
+      </div>
+    </div>
+    <p class="gallery-note reveal"><strong>Real photos from Alan's own jobs.</strong> Gates and railings shots coming soon.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <img src="about.jpeg" alt="Steel seat frame fabricated and welded up in Alan's workshop">
+        <div class="about-badge">
+          <strong>Local</strong>
+          <span>Mold, Flintshire</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">About Alan</span>
+        <h2>A local welder you can actually get hold of.</h2>
+        <p>Alan Oates Welding &amp; Maintenance is a mobile outfit based in Mold, Flintshire, covering North Wales and across to Chester. Alan brings the welder and the rig straight to your door, whether that is a driveway, a yard or the side of the road.</p>
+        <p>From welding a car back through its MOT to building a set of gates from scratch, it is one fella who turns up, does the job properly and charges a fair price. No call centres, no being passed around.</p>
+        <ul class="about-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg><span>Fully mobile, welding at your home, yard or roadside.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg><span>Vehicles, gates, railings and general maintenance, big or small.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="20 6 9 17 4 12"/></svg><span>Straight quotes and quick turnarounds, especially for MOT retests.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">What People Say</span>
+      <h2>Drivers, homeowners and local trades.</h2>
+    </div>
+    <div class="reviews-header reveal">
+      <div class="reviews-score">
+        <div class="big">5.0</div>
+        <div class="stars">★★★★★</div>
+        <div class="count">Rated 5.0 by local customers</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"My car failed its MOT on the sills. Alan came out to the house the next morning, welded both sides up and it sailed through the retest. Saved me a fortune."</p>
+        <div class="review-author">
+          <div class="review-avatar">G</div>
+          <div><strong>Gareth Hughes</strong><span>Mold</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Alan made and fitted a pair of steel driveway gates for us. Spot on welding, hung perfectly and a really fair price. Could not be happier with them."</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div><strong>Sian Roberts</strong><span>Colwyn Bay</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Had a hole rusted through on my Transit floor. Alan turned up at the yard, sorted it on the spot and I was back working the same day. Top bloke."</p>
+        <div class="review-author">
+          <div class="review-avatar">D</div>
+          <div><strong>Dewi Pritchard</strong><span>Connah's Quay</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"New handrail fitted on our front steps for my mother. Alan was tidy, polite and the work is solid as a rock. Highly recommend him to anyone local."</p>
+        <div class="review-author">
+          <div class="review-avatar">L</div>
+          <div><strong>Lisa Bevan</strong><span>Rhyl</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Welded up a snapped exhaust bracket and a bit of bodywork on my van. Quick, well priced and a proper job. Will be using Alan again, no question."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div><strong>Mark Edwards</strong><span>Chester</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Reliable and turns up when he says he will, which is half the battle these days. Repaired our garden gate and a trailer for us. Genuinely good lad."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div><strong>Aled Williams</strong><span>Abergele</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Failed your MOT or need a gate sorted?</h2>
+    <p>Give Alan a call or drop a WhatsApp with a photo of the job. He will tell you straight what it needs and get you booked in.</p>
+    <div class="cta-band-btns">
+      <a class="btn btn-primary contact-call" data-c="MDEzNTIgMzAwMjMx" data-h="dGVsOis0NDEzNTIzMDAyMzE=" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call · <span class="phone-display"></span>
+      </a>
+      <a class="btn btn-wa contact-wa" data-h="aHR0cHM6Ly93YS5tZS80NDc4NDAzMjQ2ODE/dGV4dD1IaSUyMEFsYW4lMkMlMjBJJTIwZm91bmQlMjBBbGFuJTIwT2F0ZXMlMjBXZWxkaW5nJTIwb25saW5lJTIwYW5kJTIwd291bGQlMjBsaWtlJTIwYSUyMHF1b3RlJTIwcGxlYXNlLg==" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        WhatsApp Alan
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas-section" id="areas">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Where Alan Works</span>
+      <h2>Mold out across North Wales and Chester.</h2>
+    </div>
+    <div class="areas-tags reveal">
+      <span class="area-tag">Mold</span>
+      <span class="area-tag">Chester</span>
+      <span class="area-tag">Rhyl</span>
+      <span class="area-tag">Cemaes</span>
+      <span class="area-tag">Old Colwyn</span>
+      <span class="area-tag">Llandudno Junction</span>
+      <span class="area-tag">Conwy</span>
+      <span class="area-tag">Connah's Quay</span>
+      <span class="area-tag">Abergele</span>
+      <span class="area-tag">Colwyn Bay</span>
+      <span class="area-tag">Flint</span>
+      <span class="area-tag">Holywell</span>
+      <span class="area-tag">Buckley</span>
+      <span class="area-tag">Deeside</span>
+      <span class="area-tag">Prestatyn</span>
+      <span class="area-tag">Denbigh</span>
+      <span class="area-tag">Llandudno</span>
+      <span class="area-tag">St Asaph</span>
+    </div>
+    <p class="areas-note reveal">Not on the list? <strong>If you are anywhere across North Wales, Flintshire or the Chester area, give Alan a call.</strong></p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="section-label">Get in Touch</span>
+        <h2>Tell Alan about the job.</h2>
+        <p>Drop a quick message with what needs welding, where it is and a photo if you have one. Alan will come back to you the same day.</p>
+        <div class="info-list">
+          <a class="info-card contact-call" data-c="MDEzNTIgMzAwMjMx" data-h="dGVsOis0NDEzNTIzMDAyMzE=" href="#">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><small>Call the Landline</small><strong class="phone-display"></strong></div>
+          </a>
+          <a class="info-card contact-call" data-c="MDc4NDAgMzI0Njgx" data-h="dGVsOis0NDc4NDAzMjQ2ODE=" href="#">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div>
+            <div><small>Mobile &amp; WhatsApp</small><strong class="phone-display"></strong></div>
+          </a>
+          <a class="info-card contact-email" data-c="YWxhbmFhbGFuMjRAZ21haWwuY29t" data-h="bWFpbHRvOmFsYW5hYWxhbjI0QGdtYWlsLmNvbQ==" href="#">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><small>Email</small><strong class="email-display"></strong></div>
+          </a>
+          <div class="info-card">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><small>Based In</small><strong>Mold, Flintshire · North Wales</strong></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><small>Hours</small><strong>Mon to Sat · 8am to 6pm</strong></div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form-wrap reveal" action="/api/enquiry" method="POST" id="enquiryForm">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Alan Oates Welding & Maintenance">
+        <input type="hidden" name="source" value="mockup-alan-oates-welding">
+
+        <div class="form-field">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="phone">Phone</label>
+          <input class="form-input" type="tel" id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email (optional)</label>
+          <input class="form-input" type="email" id="email" name="email">
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="service">What Do You Need?</label>
+          <select class="form-select" id="service" name="service" required>
+            <option value="">Choose a service…</option>
+            <optgroup label="Vehicles">
+              <option>MOT Welding Repair</option>
+              <option>Car Repair</option>
+              <option>Van / Transit Repair</option>
+              <option>Exhaust / Bracket Weld</option>
+            </optgroup>
+            <optgroup label="Gates &amp; Railings">
+              <option>New Gates</option>
+              <option>Gate Repair / Re-hang</option>
+              <option>Railings or Handrail</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>On-Site Mobile Welding</option>
+              <option>Fabrication / Maintenance</option>
+              <option>Not Sure</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="message">Details</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="What needs doing, where you are, and anything else useful..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">ALAN OATES <span>WELDING</span></div>
+    <p>Mobile Welding &amp; Maintenance · Cars, Vans &amp; Transits · Gates &amp; Railings · MOT Welding</p>
+    <p>Mold, Flintshire · Covering North Wales &amp; Chester</p>
+    <p>© 2026 Alan Oates Welding &amp; Maintenance · Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="fab-container">
+  <a class="fab fab-call contact-call" data-h="dGVsOis0NDEzNTIzMDAyMzE=" href="#" aria-label="Call Alan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa contact-wa" data-h="aHR0cHM6Ly93YS5tZS80NDc4NDAzMjQ2ODE/dGV4dD1IaSUyMEFsYW4lMkMlMjBJJTIwZm91bmQlMjBBbGFuJTIwT2F0ZXMlMjBXZWxkaW5nJTIwb25saW5lJTIwYW5kJTIwd291bGQlMjBsaWtlJTIwYSUyMHF1b3RlJTIwcGxlYXNlLg==" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Alan">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
+<script>
+// Welding loader: ignite letters in sequence as the weld arc travels
+(function(){
+  var letters = document.querySelectorAll('#loaderText .letter');
+  var nonSpace = Array.from(letters).filter(function(l){ return !l.classList.contains('space'); });
+  var total = 2200;
+  nonSpace.forEach(function(l, i){
+    var delay = (i / nonSpace.length) * total * 0.92;
+    setTimeout(function(){ l.classList.add('lit'); }, delay);
+  });
+  setTimeout(function(){
+    document.getElementById('loader').classList.add('done');
+    document.body.classList.remove('loading');
+  }, 2800);
+})();
+
+// Contact info: decode obfuscated base64 phone/email to beat scrapers
+(function(){
+  function d(s){ try { return atob(s); } catch(e){ return ''; } }
+  document.querySelectorAll('.contact-call').forEach(function(el){
+    var h = el.getAttribute('data-h'); if(h){ el.setAttribute('href', d(h)); }
+  });
+  document.querySelectorAll('.contact-wa').forEach(function(el){
+    var h = el.getAttribute('data-h'); if(h){ el.setAttribute('href', d(h)); }
+  });
+  document.querySelectorAll('.contact-email').forEach(function(el){
+    var h = el.getAttribute('data-h'); if(h){ el.setAttribute('href', d(h)); }
+  });
+  document.querySelectorAll('.phone-display').forEach(function(el){
+    var p = el.closest('[data-c]'); if(p){ el.textContent = d(p.getAttribute('data-c')); }
+  });
+  document.querySelectorAll('.email-display').forEach(function(el){
+    var p = el.closest('[data-c]'); if(p){ el.textContent = d(p.getAttribute('data-c')); }
+  });
+})();
+
+// Mobile sheet menu
+(function(){
+  var burger = document.getElementById('navBurger');
+  var sheet = document.getElementById('mobileSheet');
+  var backdrop = document.getElementById('sheetBackdrop');
+  var close = document.getElementById('sheetClose');
+  function open(){ sheet.classList.add('open'); backdrop.classList.add('open'); }
+  function shut(){ sheet.classList.remove('open'); backdrop.classList.remove('open'); }
+  if(burger) burger.addEventListener('click', open);
+  if(close) close.addEventListener('click', shut);
+  if(backdrop) backdrop.addEventListener('click', shut);
+  document.querySelectorAll('.mobile-sheet a').forEach(function(a){ a.addEventListener('click', shut); });
+})();
+
+// Form timestamp
+document.getElementById('formTimestamp').value = Date.now();
+
+// UK phone validation
+var phone = document.getElementById('phone');
+phone.addEventListener('input', function(){
+  if(/^(0|\+44)\d{9,11}$/.test(phone.value.replace(/\s/g, ''))) phone.setCustomValidity('');
+  else phone.setCustomValidity('Please enter a valid UK phone number');
+});
+
+// Scroll reveal
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('revealed'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+// FAB scroll visibility
+var fabContainer = document.querySelector('.fab-container');
+var heroButtons = document.querySelector('.hero-btns');
+window.addEventListener('scroll', function(){
+  if(heroButtons && fabContainer){
+    if(heroButtons.getBoundingClientRect().bottom < 0) fabContainer.classList.add('visible');
+    else fabContainer.classList.remove('visible');
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>
