@@ -79,8 +79,8 @@ a { text-decoration: none; color: inherit; }
   height: 1px; background: rgba(26,23,20,0.08); transition: opacity 0.4s;
 }
 .nav.scrolled {
-  background: rgba(250,248,244,0.92);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  background: var(--warm-white);
+  box-shadow: 0 1px 0 rgba(26,23,20,0.06);
 }
 .nav.scrolled::after { opacity: 1; }
 .nav-logo { display: flex; align-items: center; gap: 13px; }
@@ -558,6 +558,9 @@ a { text-decoration: none; color: inherit; }
 }
 .fab:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,153,62,0.4); }
 .fab svg { width: 20px; height: 20px; stroke: #fff; fill: none; }
+.fab.fab-wa { background: #25d366; box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+.fab.fab-wa:hover { background: #1da851; }
+.fab.fab-wa svg { fill: #fff; stroke: none; }
 
 /* ═══════════════════════════════════════
    SCROLL REVEAL
@@ -570,6 +573,37 @@ a { text-decoration: none; color: inherit; }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* NAV HAMBURGER */
+.nav-burger { display: none; flex-direction: column; gap: 5px; width: 44px; height: 44px;
+  align-items: center; justify-content: center; background: none; border: none; cursor: pointer; }
+.nav-burger span { display: block; width: 24px; height: 2px; background: var(--ink);
+  transition: transform 0.3s ease, opacity 0.3s ease; }
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+  background: var(--warm-white); border-bottom: 1px solid rgba(26,23,20,0.08);
+  box-shadow: 0 14px 26px rgba(26,23,20,0.07); display: flex; flex-direction: column;
+  padding: 6px 24px 22px; transform: translateY(-14px); opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease; }
+.mobile-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mobile-menu a { padding: 16px 2px; font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+  border-bottom: 1px solid rgba(26,23,20,0.07); }
+.mobile-menu a.nav-cta { border: 1.5px solid var(--gold); color: var(--gold); text-align: center;
+  margin-top: 16px; padding: 15px; }
+
+/* FEATURE BAND */
+.feature-band { position: relative; width: 100%; height: 78vh; min-height: 460px; overflow: hidden; }
+.feature-band img { width: 100%; height: 100%; object-fit: cover; }
+.feature-band::after { content: ''; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(26,23,20,0.62) 0%, rgba(26,23,20,0.04) 55%); }
+.feature-band .fb-caption { position: absolute; z-index: 2; bottom: 44px; left: 80px; right: 80px; max-width: 560px; }
+.feature-band .fb-caption .lbl { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+.feature-band .fb-caption h2 { font-family: var(--serif); font-weight: 300;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem); color: #fff; line-height: 1.12; letter-spacing: -0.01em; }
 
 /* ═══════════════════════════════════════
    RESPONSIVE
@@ -598,7 +632,10 @@ a { text-decoration: none; color: inherit; }
   .cta-band { padding: 80px 40px; }
   .nav { padding: 0 24px; }
   .nav::after { left: 24px; right: 24px; }
-  .nav-links a:not(.nav-cta) { display: none; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .feature-band { height: 56vh; min-height: 360px; }
+  .feature-band .fb-caption { left: 40px; right: 40px; bottom: 32px; }
 }
 @media (max-width: 768px) {
   .stats { grid-template-columns: 1fr 1fr; }
@@ -639,7 +676,15 @@ a { text-decoration: none; color: inherit; }
     <a href="#contact">Contact</a>
     <a href="tel:07742916490" class="nav-cta">07742 916490</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:07742916490" class="nav-cta">07742 916490</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -664,6 +709,61 @@ a { text-decoration: none; color: inherit; }
   </div>
   <div class="hero-image">
     <img src="hero.jpg" alt="Oak and wrought-iron staircase with marble floor by JM Construction NW" width="800" height="600">
+  </div>
+</section>
+
+<!-- FEATURE BAND -->
+<section class="feature-band reveal">
+  <img src="work-7.jpg" alt="Bespoke navy kitchen with marble island and herringbone wood floor by JM Construction NW">
+  <div class="fb-caption">
+    <span class="lbl">Recent Project</span>
+    <h2>A bespoke navy kitchen, finished to the last detail</h2>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header reveal">
+    <h2>Selected <em>projects</em></h2>
+    <span class="portfolio-count">9 Projects</span>
+  </div>
+  <div class="portfolio-grid">
+    <div class="p-item p-tall reveal" onclick="openLightbox(this)">
+      <img src="work-1.jpg" alt="Bespoke oak staircase with wrought-iron balustrade" loading="lazy">
+      <div class="p-item-overlay"><h3>Oak &amp; Wrought-Iron Staircase</h3><span>Bespoke Joinery</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-2.jpg" alt="Fitted cream kitchen with wood worktops" loading="lazy">
+      <div class="p-item-overlay"><h3>Fitted Kitchen</h3><span>Kitchens</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-3.jpg" alt="Renovated grey kitchen with marble worktop" loading="lazy">
+      <div class="p-item-overlay"><h3>Kitchen Renovation</h3><span>Renovation</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-4.jpg" alt="Living room extension with bay windows" loading="lazy">
+      <div class="p-item-overlay"><h3>Living Room Extension</h3><span>Extensions</span></div>
+    </div>
+    <div class="p-item p-tall reveal" onclick="openLightbox(this)">
+      <img src="work-5.jpg" alt="Panelled landing with wainscoting and bay window" loading="lazy">
+      <div class="p-item-overlay"><h3>Panelled Landing</h3><span>Joinery &amp; Finish</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-6.jpg" alt="Open-plan kitchen with island" loading="lazy">
+      <div class="p-item-overlay"><h3>Open-Plan Kitchen</h3><span>Design &amp; Build</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-7.jpg" alt="Dark kitchen and diner with herringbone floor" loading="lazy">
+      <div class="p-item-overlay"><h3>Kitchen &amp; Diner</h3><span>Renovation</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-8.jpg" alt="Bespoke under-stair storage in oak" loading="lazy">
+      <div class="p-item-overlay"><h3>Bespoke Storage</h3><span>Joinery</span></div>
+    </div>
+    <div class="p-item reveal" onclick="openLightbox(this)">
+      <img src="work-9.jpg" alt="Renovated landing with new doors and decoration" loading="lazy">
+      <div class="p-item-overlay"><h3>Landing &amp; Doors</h3><span>Renovation</span></div>
+    </div>
   </div>
 </section>
 
@@ -743,52 +843,6 @@ a { text-decoration: none; color: inherit; }
       <p class="svc-desc">Bespoke joinery, staircases, panelling and fitted storage, crafted and installed with the meticulous attention to detail our clients rave about.</p>
     </li>
   </ul>
-</section>
-
-<!-- PORTFOLIO -->
-<section class="portfolio" id="portfolio">
-  <div class="portfolio-header reveal">
-    <h2>Selected <em>projects</em></h2>
-    <span class="portfolio-count">9 Projects</span>
-  </div>
-  <div class="portfolio-grid">
-    <div class="p-item p-tall reveal" onclick="openLightbox(this)">
-      <img src="work-1.jpg" alt="Bespoke oak staircase with wrought-iron balustrade" loading="lazy">
-      <div class="p-item-overlay"><h3>Oak &amp; Wrought-Iron Staircase</h3><span>Bespoke Joinery</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-2.jpg" alt="Fitted cream kitchen with wood worktops" loading="lazy">
-      <div class="p-item-overlay"><h3>Fitted Kitchen</h3><span>Kitchens</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-3.jpg" alt="Renovated grey kitchen with marble worktop" loading="lazy">
-      <div class="p-item-overlay"><h3>Kitchen Renovation</h3><span>Renovation</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-4.jpg" alt="Living room extension with bay windows" loading="lazy">
-      <div class="p-item-overlay"><h3>Living Room Extension</h3><span>Extensions</span></div>
-    </div>
-    <div class="p-item p-tall reveal" onclick="openLightbox(this)">
-      <img src="work-5.jpg" alt="Panelled landing with wainscoting and bay window" loading="lazy">
-      <div class="p-item-overlay"><h3>Panelled Landing</h3><span>Joinery &amp; Finish</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-6.jpg" alt="Open-plan kitchen with island" loading="lazy">
-      <div class="p-item-overlay"><h3>Open-Plan Kitchen</h3><span>Design &amp; Build</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-7.jpg" alt="Dark kitchen and diner with herringbone floor" loading="lazy">
-      <div class="p-item-overlay"><h3>Kitchen &amp; Diner</h3><span>Renovation</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-8.jpg" alt="Bespoke under-stair storage in oak" loading="lazy">
-      <div class="p-item-overlay"><h3>Bespoke Storage</h3><span>Joinery</span></div>
-    </div>
-    <div class="p-item reveal" onclick="openLightbox(this)">
-      <img src="work-9.jpg" alt="Renovated landing with new doors and decoration" loading="lazy">
-      <div class="p-item-overlay"><h3>Landing &amp; Doors</h3><span>Renovation</span></div>
-    </div>
-  </div>
 </section>
 
 <!-- LIGHTBOX -->
@@ -926,8 +980,11 @@ a { text-decoration: none; color: inherit; }
   </div>
 </footer>
 
-<!-- FABs -->
+<!-- FLOATING CTAs -->
 <div class="fab-stack" id="fabStack">
+  <a href="https://wa.me/447742916490?text=Hi%20Joe%2C%20I%20found%20JM%20Construction%20online%20and%20would%20like%20a%20quote%20please" target="_blank" rel="noopener" class="fab fab-wa" aria-label="WhatsApp JM Construction NW">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 7.7a4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 1.8.5 2.2.5a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.2z"/></svg>
+  </a>
   <a href="tel:07742916490" class="fab" aria-label="Call JM Construction NW">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
   </a>
@@ -948,8 +1005,26 @@ var fabStack = document.getElementById('fabStack');
 var heroEl = document.getElementById('hero');
 window.addEventListener('scroll', function() {
   nav.classList.toggle('scrolled', window.scrollY > 50);
-  fabStack.classList.toggle('visible', window.scrollY > heroEl.offsetHeight);
+  if (fabStack && heroEl) fabStack.classList.toggle('visible', window.scrollY > heroEl.offsetHeight * 0.55);
 });
+
+// Mobile hamburger menu
+var navBurger = document.getElementById('navBurger');
+var mobileMenu = document.getElementById('mobileMenu');
+if (navBurger && mobileMenu) {
+  navBurger.addEventListener('click', function() {
+    var open = mobileMenu.classList.toggle('open');
+    navBurger.classList.toggle('open', open);
+    navBurger.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      navBurger.classList.remove('open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 // Scroll reveal
 var observer = new IntersectionObserver(function(entries) {
