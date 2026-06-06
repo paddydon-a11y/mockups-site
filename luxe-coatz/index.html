@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxe Coatz | Painting, Decorating & Rendering in Leicester</title>
+<meta name="description" content="Luxe Coatz are Leicester's one-call home improvement team. Painting, decorating, exterior rendering, handyman work, furniture assembly and garden tidy-ups. Free quotes, fully insured.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#111c3f;
+  --navy-deep:#0b1430;
+  --navy-mid:#1a2a5e;
+  --red:#e01e2b;
+  --red-deep:#b9131f;
+  --cream:#f6f4ef;
+  --paper:#ffffff;
+  --ink:#0c1124;
+  --muted:#5a6378;
+  --line:#e6e3db;
+  --ring:rgba(224,30,43,.35);
+  --shadow:0 24px 60px -28px rgba(11,20,48,.45);
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{font-family:'Archivo',sans-serif;line-height:1.02;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+section{position:relative}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+
+/* ---------- LOADING SCREEN ---------- */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:
+    radial-gradient(120% 80% at 50% 0%, #1a2a5e 0%, var(--navy) 45%, var(--navy-deep) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:34px;overflow:hidden;
+  transition:transform .9s cubic-bezier(.76,0,.24,1), opacity .5s ease .55s;
+}
+body.loaded #loader{transform:translateY(-101%);}
+body.loading{overflow:hidden;height:100%}
+/* faint paint-splatter dots */
+#loader::before,#loader::after{
+  content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.18;
+}
+#loader::before{width:240px;height:240px;background:var(--red);top:-60px;left:-60px}
+#loader::after{width:320px;height:320px;background:#2c4596;bottom:-110px;right:-90px}
+
+.stage{position:relative;width:fit-content;max-width:90vw;margin:0 auto;padding-top:44px}
+/* the painted band: sized to the wordmark, revealed by a left-to-right wipe */
+.band{
+  position:relative;height:74px;display:flex;align-items:center;gap:.12em;
+  padding:0 clamp(20px,5vw,30px);border-radius:6px;
+  background:linear-gradient(180deg,var(--red) 0%,var(--red-deep) 100%);
+  overflow:hidden;
+  clip-path:inset(0 100% 0 0);
+  animation:paint 2.2s cubic-bezier(.66,0,.2,1) forwards;
+  box-shadow:0 18px 40px -18px rgba(224,30,43,.7);
+}
+.band .brand{
+  display:flex;align-items:center;gap:.12em;
+  font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:-.02em;
+  font-size:clamp(30px,8vw,56px);color:#fff;white-space:nowrap;
+}
+.band .brand b{color:#ffe1d6;font-weight:900}
+/* roller rides the leading edge of the wipe (left:0 -> 100% of the band width) */
+.roller{
+  position:absolute;top:0;left:0;width:60px;height:106px;
+  transform:translateX(-50%);
+  animation:roll 2.2s cubic-bezier(.66,0,.2,1) forwards;
+  z-index:3;
+}
+.roller .head{
+  position:absolute;top:8px;left:0;width:64px;height:30px;border-radius:7px;
+  background:linear-gradient(180deg,#fff,#dfe3ee);
+  box-shadow:inset 0 -6px 10px -6px rgba(11,20,48,.5), 0 6px 14px -6px rgba(0,0,0,.5);
+}
+.roller .head::after{/* paint coat on roller */
+  content:"";position:absolute;inset:0;border-radius:7px;
+  background:linear-gradient(180deg,var(--red),var(--red-deep));
+  opacity:.92;mix-blend-mode:normal;
+  clip-path:inset(0 0 55% 0);
+}
+.roller .arm{position:absolute;top:30px;left:30px;width:5px;height:26px;background:#c2c8d6;border-radius:3px;transform:rotate(8deg)}
+.roller .grip{position:absolute;top:54px;left:24px;width:16px;height:54px;border-radius:9px;background:linear-gradient(180deg,#37415f,#222a44)}
+/* drips falling from the band */
+.drip{position:absolute;top:116px;width:7px;background:var(--red-deep);border-radius:0 0 6px 6px;opacity:0;transform-origin:top}
+.drip::after{content:"";position:absolute;left:-2px;bottom:-6px;width:11px;height:11px;border-radius:50%;background:var(--red-deep)}
+.drip.d1{left:14%;height:0;animation:drip 1.1s ease-in 1.5s forwards}
+.drip.d2{left:42%;height:0;animation:drip 1.3s ease-in 1.75s forwards}
+.drip.d3{left:71%;height:0;animation:drip 1s ease-in 1.95s forwards}
+
+.tagline{
+  color:#c4ccea;font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:clamp(12px,3.2vw,16px);letter-spacing:.2em;text-transform:uppercase;
+  text-align:center;padding:0 26px;max-width:520px;
+  opacity:0;animation:fadeUp .7s ease 1.6s forwards
+}
+.progress{width:min(72vw,300px);height:6px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}
+.progress i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#ff5a4d,var(--red));animation:fill 2.4s cubic-bezier(.5,0,.2,1) forwards}
+
+@keyframes paint{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes roll{0%{left:0}100%{left:100%}}
+@keyframes drip{0%{height:0;opacity:1}70%{opacity:1}100%{height:42px;opacity:.85}}
+@keyframes fill{0%{width:0}100%{width:100%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- NAV ---------- */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:var(--navy);
+  transform:translateY(-100%);
+  transition:transform .6s ease .2s, box-shadow .3s ease, background .3s ease;
+}
+body.loaded header.nav{transform:translateY(0)}
+header.nav.scrolled{box-shadow:0 10px 30px -18px rgba(0,0,0,.6)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{display:flex;align-items:center;gap:11px;font-family:'Archivo',sans-serif;font-weight:900;font-size:23px;color:#fff;letter-spacing:-.02em}
+.logo .tin{width:34px;height:34px;flex:0 0 auto}
+.logo b{color:#ff5d4d}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:#cdd4e8;font-weight:600;font-size:15px;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;
+  font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;
+  padding:11px 20px;border-radius:99px;transition:transform .2s, background .2s;
+}
+.nav-cta:hover{background:var(--red-deep);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:26px;height:3px;background:#fff;border-radius:3px;transition:.3s}
+.mobile-menu{display:none}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:120px 0 80px;color:#fff;overflow:hidden;
+  background:var(--navy-deep);
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:72% center;opacity:.55}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(100deg, var(--navy-deep) 28%, rgba(11,20,48,.78) 52%, rgba(11,20,48,.30) 100%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  padding:8px 16px;border-radius:99px;font-weight:600;font-size:13.5px;letter-spacing:.04em;
+  color:#dfe5f6;margin-bottom:26px;
+}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:#34d27b;box-shadow:0 0 0 4px rgba(52,210,123,.25)}
+.hero h1{font-size:clamp(42px,7.2vw,82px);font-weight:900;max-width:14ch}
+.hero h1 .stroke{position:relative;color:#fff;white-space:nowrap}
+.hero h1 .stroke svg{position:absolute;left:-2%;bottom:-.18em;width:104%;height:.42em}
+.hero h1 em{font-style:normal;color:#ff5d4d}
+.hero p.lede{font-size:clamp(17px,2.3vw,20px);color:#cfd6ec;max-width:52ch;margin-top:24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;font-weight:700;
+  padding:16px 28px;border-radius:99px;font-size:16.5px;transition:transform .2s, box-shadow .2s, background .2s;cursor:pointer;border:0;
+}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 16px 34px -14px rgba(224,30,43,.65)}
+.btn-red:hover{background:var(--red-deep);transform:translateY(-3px)}
+.btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-3px)}
+.hero-phone{display:flex;align-items:center;gap:13px;margin-top:30px;color:#fff}
+.hero-phone .pi{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:grid;place-items:center}
+.hero-phone .lbl{display:block;font-size:13px;color:#aeb8d6;letter-spacing:.05em;text-transform:uppercase}
+.hero-phone .num{font-family:'Archivo',sans-serif;font-weight:800;font-size:23px;letter-spacing:.01em}
+
+/* ---------- TRUST BAR ---------- */
+.trust{background:var(--red);color:#fff}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:22px 0}
+.trust .ti{display:flex;align-items:center;gap:12px;justify-content:center;font-weight:600;font-size:15px}
+.trust .ti svg{flex:0 0 auto}
+.trust .ti span{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:-.01em}
+
+/* drip divider */
+.drip-edge{display:block;width:100%;height:36px}
+
+/* ---------- SECTION HEADINGS ---------- */
+.shead{max-width:640px;margin-bottom:46px}
+.kicker{display:inline-flex;align-items:center;gap:9px;color:var(--red);font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.kicker::before{content:"";width:26px;height:3px;background:var(--red);border-radius:3px}
+.shead h2{font-size:clamp(31px,4.6vw,50px);font-weight:800;color:var(--navy)}
+.shead.center{margin-inline:auto;text-align:center}
+.shead.center .kicker{justify-content:center}
+.shead.light h2{color:#fff}
+.shead p{color:var(--muted);font-size:17.5px;margin-top:16px}
+.shead.light p{color:#cfd6ec}
+
+/* ---------- SERVICES ---------- */
+.services{padding:84px 0;background:var(--cream)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 32px;
+  transition:transform .25s, box-shadow .25s, border-color .25s;position:relative;overflow:hidden;
+}
+.svc::after{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:var(--red);transition:width .35s ease}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.svc:hover::after{width:100%}
+.svc .ico{width:58px;height:58px;border-radius:14px;background:var(--navy);display:grid;place-items:center;margin-bottom:22px}
+.svc:nth-child(3n+2) .ico{background:var(--red)}
+.svc h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.svc p{color:var(--muted);font-size:15.5px}
+.svc ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.svc li{font-size:12.5px;font-weight:600;color:var(--navy);background:#eef1f8;border-radius:99px;padding:5px 12px}
+
+/* ---------- ONE CALL band ---------- */
+.onecall{background:var(--navy);color:#fff;padding:74px 0;text-align:center;position:relative;overflow:hidden}
+.onecall .splat{position:absolute;opacity:.07;color:var(--red)}
+.onecall h2{font-size:clamp(34px,6vw,68px);font-weight:900}
+.onecall h2 em{font-style:normal;color:#ff5d4d}
+.onecall p{color:#cfd6ec;max-width:46ch;margin:18px auto 30px;font-size:18px}
+
+/* ---------- BEFORE / AFTER ---------- */
+.transform{padding:86px 0;background:#fff}
+.ba-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center}
+.ba{
+  position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;
+  box-shadow:var(--shadow);user-select:none;touch-action:none;cursor:ew-resize;
+}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after-img{clip-path:inset(0 0 0 var(--pos,50%))}
+.ba .lbl{position:absolute;top:14px;font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(11,20,48,.78);padding:6px 12px;border-radius:99px}
+.ba .lbl.b{left:14px}
+.ba .lbl.a{right:14px;background:var(--red)}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 14px rgba(0,0,0,.4)}
+.ba .knob{position:absolute;top:50%;left:var(--pos,50%);transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35);color:var(--navy)}
+.transform .copy h2{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--navy)}
+.transform .copy p{color:var(--muted);margin-top:16px;font-size:17px}
+.transform .copy .hint{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--red);font-weight:700;font-size:14px}
+
+/* ---------- GALLERY ---------- */
+.gallery{padding:86px 0;background:var(--cream)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gal{position:relative;border-radius:14px;overflow:hidden;cursor:pointer}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gal:hover img{transform:scale(1.07)}
+.gal .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 13px;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:14.5px;background:linear-gradient(0deg,rgba(11,20,48,.85),transparent);opacity:0;transform:translateY(8px);transition:.3s}
+.gal:hover .cap{opacity:1;transform:translateY(0)}
+.gal.big{grid-column:span 2;grid-row:span 2}
+.gal.tall{grid-row:span 2}
+.gal.wide{grid-column:span 2}
+
+/* ---------- PROCESS ---------- */
+.process{padding:84px 0;background:var(--navy);color:#fff;overflow:hidden}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.proc{position:relative;padding-top:14px}
+.proc .n{font-family:'Archivo',sans-serif;font-weight:900;font-size:54px;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.28);line-height:1}
+.proc h3{font-size:20px;font-weight:800;margin:14px 0 8px}
+.proc p{color:#bcc5e0;font-size:15px}
+.proc .bar{height:3px;background:linear-gradient(90deg,var(--red),transparent);border-radius:3px;margin-top:18px}
+
+/* ---------- WHY ---------- */
+.why{padding:86px 0;background:#fff}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.why-photo{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;box-shadow:var(--shadow)}
+.why-photo img{width:100%;height:100%;object-fit:cover}
+.why-photo .badge{position:absolute;bottom:18px;left:18px;right:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(4px);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px}
+.why-photo .badge .big{font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;color:var(--red);line-height:1}
+.why-photo .badge .t{font-size:13.5px;color:var(--navy);font-weight:600}
+.why-list{display:grid;gap:18px;margin-top:8px}
+.wcard{display:flex;gap:16px;align-items:flex-start}
+.wcard .wi{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:#fdeaec;color:var(--red);display:grid;place-items:center}
+.wcard h4{font-size:18px;font-weight:800;color:var(--navy);font-family:'Archivo',sans-serif}
+.wcard p{color:var(--muted);font-size:15px;margin-top:3px}
+
+/* ---------- REVIEWS ---------- */
+.reviews{padding:86px 0;background:var(--cream)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.rev .stars{color:#f5a623;font-size:17px;letter-spacing:2px;margin-bottom:14px}
+.rev p{font-size:16px;color:var(--ink)}
+.rev .who{display:flex;align-items:center;gap:12px;margin-top:20px}
+.rev .av{width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Archivo',sans-serif;font-weight:800}
+.rev .who b{display:block;font-family:'Archivo',sans-serif;color:var(--navy);font-size:15px}
+.rev .who span{font-size:13px;color:var(--muted)}
+
+/* ---------- AREAS ---------- */
+.areas{padding:70px 0;background:#fff;text-align:center}
+.area-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+.area-chips span{background:var(--cream);border:1px solid var(--line);border-radius:99px;padding:9px 18px;font-weight:600;font-size:15px;color:var(--navy)}
+.area-chips span b{color:var(--red)}
+
+/* ---------- CONTACT ---------- */
+.contact{padding:88px 0;background:var(--navy-deep);color:#fff;position:relative;overflow:hidden}
+.c-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:50px;align-items:start}
+.c-info h2{font-size:clamp(30px,4.4vw,46px);font-weight:800}
+.c-info p.sub{color:#cfd6ec;margin-top:14px;font-size:17px;max-width:42ch}
+.c-rows{margin-top:30px;display:grid;gap:14px}
+.c-row{display:flex;align-items:center;gap:15px}
+.c-row .ci{width:50px;height:50px;border-radius:13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;flex:0 0 auto}
+.c-row .lbl{display:block;font-size:12.5px;color:#9aa5c8;text-transform:uppercase;letter-spacing:.06em}
+.c-row .val{font-family:'Archivo',sans-serif;font-weight:700;font-size:19px}
+.form{background:#fff;border-radius:22px;padding:30px;color:var(--ink);box-shadow:var(--shadow)}
+.form h3{font-family:'Archivo',sans-serif;font-size:22px;color:var(--navy);font-weight:800;margin-bottom:6px}
+.form .fsub{color:var(--muted);font-size:14.5px;margin-bottom:20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.field input,.field select,.field textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-family:inherit;font-size:15px;background:#fbfaf7;transition:border-color .2s, box-shadow .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--red);box-shadow:0 0 0 4px var(--ring)}
+.form .btn-red{width:100%;justify-content:center;margin-top:6px}
+.form .tiny{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ---------- FOOTER ---------- */
+footer{background:#070d20;color:#aeb8d6;padding:54px 0 30px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.08)}
+.f-top .logo{margin-bottom:16px}
+.f-top p{font-size:15px;max-width:38ch}
+.f-col h4{color:#fff;font-family:'Archivo',sans-serif;font-size:15px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px}
+.f-col a{display:block;color:#aeb8d6;font-size:15px;margin-bottom:9px;transition:color .2s}
+.f-col a:hover{color:#fff}
+.f-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-top:22px;font-size:13.5px}
+.f-bottom a{color:#ff7d6e;font-weight:600}
+
+/* floating call (mobile) */
+.float-call{
+  position:fixed;right:18px;bottom:18px;z-index:150;
+  width:60px;height:60px;border-radius:50%;background:var(--red);color:#fff;
+  display:none;place-items:center;box-shadow:0 14px 30px -8px rgba(224,30,43,.7);
+  animation:pulse 2.2s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,30,43,.5)}70%{box-shadow:0 0 0 16px rgba(224,30,43,0)}100%{box-shadow:0 0 0 0 rgba(224,30,43,0)}}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .why-grid,.ba-wrap,.c-grid{grid-template-columns:1fr;gap:34px}
+  .svc-grid,.rev-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-grid,.trust .wrap{grid-template-columns:repeat(2,1fr);gap:18px}
+  .trust .ti{justify-content:flex-start}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .why-photo{aspect-ratio:4/3}
+  .f-top{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:680px){
+  .wrap{width:min(1180px,90vw)}
+  .f-top{grid-template-columns:1fr;gap:26px}
+  .f-col a{word-break:break-word}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .float-call{display:grid}
+  .svc-grid,.rev-grid{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .gal.big,.gal.wide{grid-column:span 2}
+  .gal.tall,.gal.big{grid-row:span 1}
+  .hero{padding-top:100px}
+  .mobile-menu.open{display:block;position:fixed;inset:74px 0 0;z-index:190;background:var(--navy-deep);padding:30px 6vw}
+  .mobile-menu a{display:block;color:#fff;font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .mobile-menu .btn-red{margin-top:24px;width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .band,.roller,.drip,.progress i,.tagline{animation-duration:.4s !important}
+  *{scroll-behavior:auto}
+}
+</style>
+</head>
+<body class="loading">
+
+<!-- ================= LOADER ================= -->
+<div id="loader" aria-hidden="true">
+  <div class="stage">
+    <div class="roller">
+      <div class="head"></div><div class="arm"></div><div class="grip"></div>
+    </div>
+    <div class="band">
+      <div class="brand">Luxe<b>Coatz</b></div>
+    </div>
+    <span class="drip d1"></span><span class="drip d2"></span><span class="drip d3"></span>
+  </div>
+  <div class="tagline">We improve spaces. You enjoy them.</div>
+  <div class="progress"><i></i></div>
+</div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo" aria-label="Luxe Coatz home">
+      <svg class="tin" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M9 18h30l-2.4 22a4 4 0 0 1-4 3.6H15.4a4 4 0 0 1-4-3.6L9 18Z" fill="#fff"/>
+        <path d="M9 18h30l-.7 6.4H9.7L9 18Z" fill="#e01e2b"/>
+        <path d="M12 18c0-5 5-8 12-8s12 3 12 8" stroke="#fff" stroke-width="2.4"/>
+        <path d="M33 11c3-1 6 0 6 3s-3 4-6 3" fill="#e01e2b"/>
+      </svg>
+      Luxe<b>Coatz</b>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#transform">Transformations</a>
+      <a href="#work">Our work</a>
+      <a href="#why">Why us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#" class="nav-cta js-tel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2Z" fill="currentColor"/></svg><span class="tel-num">Call us</span></a>
+    <button class="burger" aria-label="Menu" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#transform">Transformations</a>
+  <a href="#work">Our work</a>
+  <a href="#why">Why us</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="btn btn-red js-tel"><span class="tel-num">Call us</span></a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="work-interior-navy.jpg" alt="Freshly painted deep navy feature wall by Luxe Coatz"></div>
+  <div class="wrap">
+    <span class="hero-eyebrow"><span class="dot"></span> Leicester &amp; Leicestershire &middot; Fully insured</span>
+    <h1>We improve spaces.<br><em>You</em> enjoy
+      <span class="stroke">them.
+        <svg viewBox="0 0 200 20" preserveAspectRatio="none" fill="none"><path d="M3 14c40-9 120-11 194-6" stroke="#e01e2b" stroke-width="7" stroke-linecap="round"/></svg>
+      </span>
+    </h1>
+    <p class="lede">From flawless paintwork and fresh exterior render to handyman jobs, flatpacks and garden tidy-ups. Luxe Coatz is your one-call team for a better home.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-red">Get a free quote
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#work" class="btn btn-ghost">See our work</a>
+    </div>
+    <a href="#" class="hero-phone js-tel">
+      <span class="pi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2Z" fill="#fff"/></svg></span>
+      <span><span class="lbl">Call or WhatsApp</span><span class="num tel-num">Loading…</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<div class="trust">
+  <div class="wrap">
+    <div class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z" stroke="#fff" stroke-width="1.8"/><path d="m8.5 12 2.3 2.3L16 9.3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Quality you can trust</span></div>
+    <div class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg><span>On time, every time</span></div>
+    <div class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="1.8"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg><span>Professional &amp; reliable</span></div>
+    <div class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" stroke="#fff" stroke-width="1.8"/><path d="M3 7l3-4h12l3 4M12 12v4m-2-2h4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg><span>Free, honest quotes</span></div>
+  </div>
+</div>
+
+<!-- drip into services -->
+<svg class="drip-edge" viewBox="0 0 1200 36" preserveAspectRatio="none" fill="#f6f4ef" aria-hidden="true"><path d="M0 0h1200v8c-40 0-50 18-90 18S1010 4 970 4s-60 22-100 22-55-18-95-18-58 20-98 20-56-20-96-20-60 22-100 22S320 6 280 6s-58 20-98 20S122 4 82 4 40 26 0 26V0Z"/></svg>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="kicker">What we do</span>
+      <h2>One team for the whole to-do list.</h2>
+      <p>Whether it is a single feature wall or a full exterior refresh, we turn up, do it right and leave the place spotless.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="13" height="6" rx="1.5" stroke="#fff" stroke-width="1.8"/><path d="M16 7h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-7v3" stroke="#fff" stroke-width="1.8"/><rect x="10" y="17" width="4" height="5" rx="1" stroke="#fff" stroke-width="1.8"/></svg></div>
+        <h3>Painting &amp; Decorating</h3>
+        <p>Interior and exterior, walls, ceilings and woodwork. Crisp lines, even coats and a finish that lasts.</p>
+        <ul><li>Feature walls</li><li>Full repaints</li><li>Gloss &amp; trim</li></ul>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 20l4-1 11-11-3-3L4 16l-1 4Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 5l3 3" stroke="#fff" stroke-width="1.8"/><path d="M14 21h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Exterior Rendering</h3>
+        <p>Fresh render, pebbledash makeovers and masonry coatings that protect and totally transform a property.</p>
+        <ul><li>Smooth render</li><li>Re-render</li><li>Masonry paint</li></ul>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M14 6l4 4-8 8-4 1 1-4 8-8-1-1Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 6l3-3 4 4-3 3" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Handyman Services</h3>
+        <p>Small repairs, mounting, fixing and the everyday jobs others skip. No callout too small.</p>
+        <ul><li>Repairs</li><li>Mounting</li><li>Odd jobs</li></ul>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4" stroke="#fff" stroke-width="1.8"/><path d="M4 11h16v5H4z" stroke="#fff" stroke-width="1.8"/><path d="M6 16v3m12-3v3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Furniture Assembly</h3>
+        <p>From flatpacks to full setups, we build it quickly, safely and hassle-free, then take the boxes away.</p>
+        <ul><li>Flatpacks</li><li>Wardrobes</li><li>Full setups</li></ul>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 21c5-2 8-6 8-11V5c-5 0-9 3-9 8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 21c-3-2-5-5-5-9" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Garden &amp; Grounds</h3>
+        <p>Neat lawns, trimmed hedges and clean edges. We keep the outside looking as sharp as the inside.</p>
+        <ul><li>Lawns</li><li>Hedges</li><li>Tidy-ups</li></ul>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 21V8l8-5 8 5v13" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 21v-6h6v6M9 11h.01M15 11h.01" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Commercial Work</h3>
+        <p>Offices, units, communal areas and lettings. Reliable finishes with minimal disruption to your business.</p>
+        <ul><li>Units &amp; offices</li><li>Communal areas</li><li>Lettings</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ONE CALL ================= -->
+<section class="onecall">
+  <svg class="splat" style="top:-20px;left:-20px" width="200" height="200" viewBox="0 0 100 100"><path d="M50 5c8 12 30 8 35 20s-10 22-3 33-22 18-32 12S20 92 12 80s10-22 2-33S35 22 50 5Z" fill="currentColor"/></svg>
+  <div class="wrap reveal">
+    <h2>One call. <em>We do it all.</em></h2>
+    <p>Stop juggling three different tradesmen. Luxe Coatz handles the lot, to one standard, with one friendly point of contact.</p>
+    <a href="#contact" class="btn btn-red">Book your free quote</a>
+  </div>
+</section>
+
+<!-- ================= BEFORE / AFTER ================= -->
+<section class="transform" id="transform">
+  <div class="wrap ba-wrap">
+    <div class="ba reveal" id="ba">
+      <img class="before-img" src="work-render-before.jpg" alt="Tired pebbledash exterior before rendering">
+      <img class="after-img" src="work-render-finished.jpg" alt="Smooth, freshly rendered and painted exterior after">
+      <span class="lbl b">Before</span>
+      <span class="lbl a">After</span>
+      <div class="handle"></div>
+      <div class="knob"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="copy reveal">
+      <span class="kicker">Real transformations</span>
+      <h2>Tired exteriors, made to look new again.</h2>
+      <p>Old pebbledash and weathered walls don't just look dated, they let damp in. Our render and masonry work gives the whole property a clean, modern, protected finish that lifts the entire street.</p>
+      <span class="hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 7 4 12l5 5M15 7l5 5-5 5" stroke="#e01e2b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Drag the slider to compare</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="work">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="kicker">Recent jobs</span>
+      <h2>A few we are proud of.</h2>
+      <p>Every photo here is real work from real Leicestershire homes and businesses.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal big reveal"><img src="work-interior-navy.jpg" alt="Deep navy feature wall, interior painting"><span class="cap">Bold navy feature wall &middot; interior</span></div>
+      <div class="gal tall reveal"><img src="work-render-twostorey.jpg" alt="Two storey house being rendered"><span class="cap">Full two-storey render</span></div>
+      <div class="gal reveal"><img src="work-render-finished.jpg" alt="Finished smooth rendered bungalow"><span class="cap">Smooth render, finished</span></div>
+      <div class="gal reveal"><img src="work-commercial-red.jpg" alt="Commercial storage units painted red and grey"><span class="cap">Commercial unit refresh</span></div>
+      <div class="gal wide reveal"><img src="work-render-side.jpg" alt="Long rendered side wall of a bungalow"><span class="cap">Re-rendered &amp; sealed side elevation</span></div>
+      <div class="gal reveal"><img src="work-windows-bay.jpg" alt="Crisp white bay window and rendered bay"><span class="cap">Bay &amp; window refresh</span></div>
+      <div class="gal reveal"><img src="work-render-progress.jpg" alt="House being rendered, work in progress"><span class="cap">Render in progress</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process">
+  <div class="wrap">
+    <div class="shead light reveal">
+      <span class="kicker">How it works</span>
+      <h2>Simple, tidy, no surprises.</h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc reveal"><div class="n">01</div><h3>Free quote</h3><p>We visit, listen to what you want and give you a clear, honest price in writing.</p><div class="bar"></div></div>
+      <div class="proc reveal"><div class="n">02</div><h3>Prep &amp; protect</h3><p>Floors covered, edges taped, surfaces prepped. Good prep is what makes a finish last.</p><div class="bar"></div></div>
+      <div class="proc reveal"><div class="n">03</div><h3>Quality finish</h3><p>Skilled hands, quality materials and an eye for the details others rush past.</p><div class="bar"></div></div>
+      <div class="proc reveal"><div class="n">04</div><h3>Clean &amp; sign-off</h3><p>We tidy up, walk you round and don't leave until you are genuinely happy.</p><div class="bar"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-photo reveal">
+      <img src="work-render-finished.jpg" alt="Freshly rendered home by Luxe Coatz">
+      <div class="badge">
+        <div class="big">5.0</div>
+        <div class="t">Rated by local homeowners for finish &amp; reliability</div>
+      </div>
+    </div>
+    <div>
+      <div class="shead reveal" style="margin-bottom:28px">
+        <span class="kicker">Why Luxe Coatz</span>
+        <h2>Big-firm finish, local-firm care.</h2>
+      </div>
+      <div class="why-list">
+        <div class="wcard reveal"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z" stroke="#e01e2b" stroke-width="1.8"/><path d="m8.5 12 2.3 2.3L16 9.3" stroke="#e01e2b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Fully insured &amp; guaranteed</h4><p>Public liability cover as standard and a guarantee that stands behind every job.</p></div></div>
+        <div class="wcard reveal"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 7h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" stroke="#e01e2b" stroke-width="1.8"/><path d="M3 7l3-4h12l3 4" stroke="#e01e2b" stroke-width="1.8"/><path d="M12 11v5m-2.5-2.5h5" stroke="#e01e2b" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><h4>One contact for everything</h4><p>Paint, render, repairs, flatpacks and the garden, all handled by one trusted team.</p></div></div>
+        <div class="wcard reveal"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#e01e2b" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="#e01e2b" stroke-width="1.8" stroke-linecap="round"/></svg></div><div><h4>Turn up when we say</h4><p>We respect your time and your home, arriving on schedule and keeping you in the loop.</p></div></div>
+        <div class="wcard reveal"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M5 21h14M7 8l5-5 5 5" stroke="#e01e2b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Spotless finish, every time</h4><p>We clean as we go and leave your space ready to enjoy, not a mess to deal with.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="shead center reveal">
+      <span class="kicker">Kind words</span>
+      <h2>Homeowners across Leicester.</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Rendered the whole front of our bungalow and painted the inside. It looks like a different house. Polite, tidy and the price was exactly what they quoted."</p><div class="who"><div class="av">SH</div><div><b>Sarah H.</b><span>Oadby, Leicester</span></div></div></div>
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Booked them for a feature wall, ended up having them assemble two wardrobes and fix a door too. One call really did do it all. Will use again."</p><div class="who"><div class="av">MJ</div><div><b>Marcus J.</b><span>Wigston</span></div></div></div>
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Did the communal areas in our block of flats over a weekend with no fuss. Tenants haven't stopped commenting on how fresh it looks. Proper job."</p><div class="who"><div class="av">LK</div><div><b>Leon K.</b><span>Leicester city centre</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AREAS ================= -->
+<section class="areas">
+  <div class="wrap reveal">
+    <span class="kicker" style="justify-content:center;display:flex">Where we work</span>
+    <h2 style="font-family:'Archivo';font-weight:800;color:var(--navy);font-size:clamp(26px,4vw,38px)">Proudly covering Leicester &amp; beyond</h2>
+    <div class="area-chips">
+      <span><b>Leicester</b></span><span>Oadby</span><span>Wigston</span><span>Loughborough</span><span>Hinckley</span><span>Syston</span><span>Birstall</span><span>Coalville</span><span>Melton Mowbray</span><span>Market Harborough</span><span>Glenfield</span><span>Blaby</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap c-grid">
+    <div class="c-info reveal">
+      <span class="kicker" style="color:#ff7d6e">Get in touch</span>
+      <h2>Let's improve your space.</h2>
+      <p class="sub">Tell us what you need and we will get you a free, no-obligation quote. No pressure, no jargon.</p>
+      <div class="c-rows">
+        <a href="#" class="c-row js-tel">
+          <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2Z" fill="#fff"/></svg></span>
+          <span><span class="lbl">Call or WhatsApp</span><span class="val tel-num">Loading…</span></span>
+        </a>
+        <a href="#" class="c-row js-email">
+          <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.8"/><path d="m4 7 8 6 8-6" stroke="#fff" stroke-width="1.8"/></svg></span>
+          <span><span class="lbl">Email</span><span class="val email-txt">Loading…</span></span>
+        </a>
+        <div class="c-row">
+          <span class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="#fff" stroke-width="1.8"/></svg></span>
+          <span><span class="lbl">Based in</span><span class="val">Leicester, United Kingdom</span></span>
+        </div>
+      </div>
+    </div>
+    <form class="form reveal" onsubmit="return false">
+      <h3>Request your free quote</h3>
+      <p class="fsub">We usually reply the same day.</p>
+      <div class="two">
+        <div class="field"><label>Your name</label><input type="text" placeholder="Jane Smith"></div>
+        <div class="field"><label>Phone</label><input type="tel" placeholder="07…"></div>
+      </div>
+      <div class="field"><label>What do you need?</label>
+        <select>
+          <option>Painting &amp; decorating</option>
+          <option>Exterior rendering</option>
+          <option>Handyman job</option>
+          <option>Furniture assembly</option>
+          <option>Garden &amp; grounds</option>
+          <option>Commercial work</option>
+          <option>A bit of everything</option>
+        </select>
+      </div>
+      <div class="field"><label>Tell us a little more</label><textarea rows="3" placeholder="e.g. Render the front of the house and paint the hallway"></textarea></div>
+      <button class="btn btn-red">Send my request
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="tiny">By sending this you agree to be contacted about your enquiry. We never share your details.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a href="#top" class="logo"><svg class="tin" viewBox="0 0 48 48" fill="none"><path d="M9 18h30l-2.4 22a4 4 0 0 1-4 3.6H15.4a4 4 0 0 1-4-3.6L9 18Z" fill="#fff"/><path d="M9 18h30l-.7 6.4H9.7L9 18Z" fill="#e01e2b"/><path d="M12 18c0-5 5-8 12-8s12 3 12 8" stroke="#fff" stroke-width="2.4"/><path d="M33 11c3-1 6 0 6 3s-3 4-6 3" fill="#e01e2b"/></svg> Luxe<b style="color:#ff5d4d">Coatz</b></a>
+        <p>Painting, decorating, rendering and home improvements across Leicester and Leicestershire. We improve spaces, you enjoy them.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <a href="#services">Painting &amp; decorating</a>
+        <a href="#services">Exterior rendering</a>
+        <a href="#services">Handyman work</a>
+        <a href="#services">Furniture assembly</a>
+        <a href="#services">Garden &amp; grounds</a>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <a href="#" class="js-tel"><span class="tel-num">Call us</span></a>
+        <a href="#" class="js-email"><span class="email-txt">Email us</span></a>
+        <a href="#contact">Free quote</a>
+        <span style="display:block;color:#7c87a8;font-size:14px;margin-top:6px">Leicester, UK</span>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>&copy; <span id="yr"></span> Luxe Coatz. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="float-call js-tel" aria-label="Call Luxe Coatz">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1l-2.2 2.2Z" fill="#fff"/></svg>
+</a>
+
+<script>
+/* ---- contact decode (anti-scraper) ---- */
+(function(){
+  var telDisp = atob('MDc0MDAgNTM3NjAx');
+  var telRaw  = atob('MDc0MDA1Mzc2MDE=');
+  var email   = atob('aW5mb0BsdXhlY29hdHouY29t');
+  document.querySelectorAll('.tel-num').forEach(function(el){ el.textContent = telDisp; });
+  document.querySelectorAll('.js-tel').forEach(function(el){ el.setAttribute('href','tel:'+telRaw); });
+  document.querySelectorAll('.email-txt').forEach(function(el){ el.textContent = email; });
+  document.querySelectorAll('.js-email').forEach(function(el){ el.setAttribute('href','mailto:'+email); });
+  var yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();
+})();
+
+/* ---- loader dismiss ---- */
+(function(){
+  var MIN=2700, start=Date.now();
+  function done(){
+    var wait=Math.max(0, MIN-(Date.now()-start));
+    setTimeout(function(){
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+      setTimeout(function(){ var l=document.getElementById('loader'); if(l) l.style.display='none'; },1000);
+    },wait);
+  }
+  if(document.readyState==='complete') done();
+  else window.addEventListener('load',done);
+  /* safety: never trap the user */
+  setTimeout(done, 4500);
+})();
+
+/* ---- nav scroll state + burger ---- */
+(function(){
+  var nav=document.querySelector('header.nav');
+  window.addEventListener('scroll',function(){ nav.classList.toggle('scrolled', window.scrollY>20); });
+  var b=document.getElementById('burger'), m=document.getElementById('mobileMenu');
+  b.addEventListener('click',function(){ m.classList.toggle('open'); });
+  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ m.classList.remove('open'); }); });
+})();
+
+/* ---- reveal on scroll ---- */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+/* ---- before / after slider ---- */
+(function(){
+  var ba=document.getElementById('ba'); if(!ba) return;
+  function set(x){
+    var r=ba.getBoundingClientRect();
+    var p=Math.max(2,Math.min(98,((x-r.left)/r.width)*100));
+    ba.style.setProperty('--pos',p+'%');
+  }
+  var drag=false;
+  function down(e){ drag=true; set((e.touches?e.touches[0].clientX:e.clientX)); }
+  function move(e){ if(!drag)return; set((e.touches?e.touches[0].clientX:e.clientX)); if(e.cancelable&&e.touches)e.preventDefault(); }
+  function up(){ drag=false; }
+  ba.addEventListener('mousedown',down); window.addEventListener('mousemove',move); window.addEventListener('mouseup',up);
+  ba.addEventListener('touchstart',down,{passive:true}); window.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',up);
+  ba.style.setProperty('--pos','50%');
+})();
+</script>
+</body>
+</html>
