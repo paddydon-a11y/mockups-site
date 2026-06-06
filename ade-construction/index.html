@@ -51,7 +51,7 @@ h1,h2,h3{color:var(--ink);line-height:1.08;letter-spacing:-.03em;font-weight:800
 .nav{position:sticky;top:0;z-index:90;background:var(--bg);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
 .brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
-.brand-mark{width:38px;height:38px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.02rem;letter-spacing:-.04em}
+.brand-mark{flex-shrink:0;height:38px;min-width:38px;padding:0 9px;border-radius:9px;background:var(--ink);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;line-height:1;letter-spacing:.02em;white-space:nowrap}
 .brand-mark span{color:var(--accent)}
 .brand-name{font-weight:800;font-size:1.12rem;color:var(--ink);letter-spacing:-.02em;line-height:1}
 .brand-name small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.2em;color:var(--muted);margin-top:3px}
@@ -173,7 +173,7 @@ section{padding:96px 0}
 /* CONTACT */
 .contact-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
 .cinfo{display:flex;flex-direction:column;gap:18px;margin-top:30px}
-.cinfo a,.cinfo div{display:flex;gap:15px;align-items:flex-start}
+.cinfo>a,.cinfo>div{display:flex;gap:15px;align-items:center}
 .cic{width:46px;height:46px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;flex-shrink:0}
 .cic svg{stroke:var(--accent)}
 .cinfo b{color:var(--ink);display:block;font-size:1rem}
@@ -233,6 +233,7 @@ footer{background:var(--ink);color:#cfc9c1;padding:60px 0 30px}
   .nav.open .burger span{background:transparent}
   .nav.open .burger span::before{top:0;transform:rotate(45deg)}
   .nav.open .burger span::after{top:0;transform:rotate(-45deg)}
+  .trust-in{flex-direction:column;gap:14px}
 }
 @media(max-width:680px){
   section{padding:66px 0}
@@ -518,7 +519,7 @@ var waLink = 'https://wa.me/'+WA+'?text=Hi%2C%20I%20found%20you%20online%20and%2
 function tel(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;}
 ['navCall','navCallM','heroCall','bandCall','contactCall','fabCall','footCall'].forEach(tel);
 ['heroWa','bandWa','fabWa'].forEach(function(id){var el=document.getElementById(id);if(el)el.href=waLink;});
-['heroCallTxt','navCallTxt','bandCallTxt','contactCallTxt','footCall'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=Pf;});
+['navCallTxt','bandCallTxt','contactCallTxt','footCall'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=Pf;});
 document.getElementById('contactEmail').href = 'mailto:'+E;
 document.getElementById('contactEmailTxt').textContent = E;
 document.getElementById('footEmail').href = 'mailto:'+E;
