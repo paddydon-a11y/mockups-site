@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polar Breeze | HVAC &amp; Refrigeration in Derby</title>
+<meta name="description" content="Polar Breeze HVAC &amp; Refrigeration. Heating, air conditioning, refrigeration and indoor air quality across Derby and Derbyshire. Installation, servicing and repairs for home and business. Breathe easy, worry free.">
+<link rel="icon" href="logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#eef4fb;
+  --bg2:#ffffff;
+  --card:#ffffff;
+  --ink:#0f2038;
+  --body:#475467;
+  --muted:#8493a6;
+  --line:#dde7f1;
+  --line2:#c7d6e7;
+  --blue:#1f6fe0;
+  --blue-dark:#1559c0;
+  --blue-tint:#e7f0fd;
+  --navy:#0e1f3a;
+  --ice:#7cc4f5;
+  --green:#25d366;
+  --shadow:0 18px 50px -22px rgba(15,32,56,.34);
+  --shadow-sm:0 8px 24px -14px rgba(15,32,56,.30);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Sora',-apple-system,sans-serif;color:var(--ink);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--blue)}
+.label{
+  font-family:'Inter',sans-serif;font-weight:700;font-size:.74rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
+  display:inline-block;margin-bottom:18px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;
+  font-weight:700;font-size:.97rem;padding:15px 26px;border-radius:9px;
+  cursor:pointer;border:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 26px -12px rgba(31,111,224,.6)}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.btn-wa{background:var(--green);color:#063a1e}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(37,211,102,.6)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ===== Brand mark ===== */
+.flake{display:block}
+.flake use,.flake path{vector-effect:non-scaling-stroke}
+
+/* ===== Polar reveal loader ===== */
+#loader{
+  position:fixed;inset:0;z-index:2000;overflow:hidden;
+  background:radial-gradient(120% 120% at 50% 30%,#163057 0%,#0c1d3a 55%,#081428 100%);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:transform .8s cubic-bezier(.7,0,.2,1),opacity .8s ease;
+}
+#loader.done{transform:translateY(-100%);opacity:0}
+/* sweeping cold-air streaks */
+.air{position:absolute;top:0;left:0;width:60vw;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent 0%,rgba(124,196,245,.10) 38%,rgba(195,229,255,.34) 50%,rgba(124,196,245,.10) 62%,transparent 100%);
+  filter:blur(8px);transform:translateX(-80vw) skewX(-12deg);
+  animation:airSweep 3.4s cubic-bezier(.5,0,.3,1) infinite;
+}
+.air.b{animation-delay:.7s;opacity:.7;height:60%}
+.air.c{animation-delay:1.5s;opacity:.5;height:38%;top:20%}
+@keyframes airSweep{
+  0%{transform:translateX(-80vw) skewX(-12deg)}
+  100%{transform:translateX(180vw) skewX(-12deg)}
+}
+/* drifting snow */
+.snow{position:absolute;top:-6vh;color:#dff0ff;opacity:0;border-radius:50%;
+  background:radial-gradient(circle,#fff 0%,#bfe3ff 60%,transparent 70%);
+  animation:snowFall linear infinite;}
+@keyframes snowFall{
+  0%{transform:translateY(-6vh) translateX(0);opacity:0}
+  10%{opacity:.9}
+  90%{opacity:.7}
+  100%{transform:translateY(112vh) translateX(40px);opacity:0}
+}
+.loader-inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center}
+.loader-mark{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;
+  opacity:0;filter:blur(18px);transform:scale(1.16);
+  animation:deFrost 1.7s cubic-bezier(.2,.7,.2,1) .25s forwards;}
+@keyframes deFrost{
+  0%{opacity:0;filter:blur(18px);transform:scale(1.16)}
+  55%{opacity:1}
+  100%{opacity:1;filter:blur(0);transform:scale(1)}
+}
+.loader-badge{width:118px;height:118px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,#2f7bea,#143a78);box-shadow:0 0 0 6px rgba(124,196,245,.16),0 20px 50px -16px rgba(0,0,0,.6)}
+.loader-badge .flake{width:78px;height:78px;animation:spin 9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-word{font-family:'Sora',sans-serif;font-weight:800;font-size:2rem;letter-spacing:.04em;color:#fff;line-height:1}
+.loader-word span{color:var(--ice)}
+.loader-sub{font-family:'Inter',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.32em;
+  text-transform:uppercase;color:#9fc4ee;margin-top:10px}
+/* frost wipe that reveals the mark */
+.frost-wipe{position:absolute;inset:-30px;pointer-events:none;
+  background:linear-gradient(100deg,transparent 38%,rgba(223,240,255,.85) 50%,transparent 62%);
+  transform:translateX(-130%);animation:wipe 1.5s ease .35s 1 forwards}
+@keyframes wipe{to{transform:translateX(130%)}}
+.loader-bar{width:160px;height:3px;background:rgba(255,255,255,.14);border-radius:3px;margin:34px 0 0;overflow:hidden}
+.loader-bar span{display:block;height:100%;width:0;border-radius:3px;
+  background:linear-gradient(90deg,var(--ice),#fff);animation:loaderBar 1.9s ease .35s forwards}
+@keyframes loaderBar{to{width:100%}}
+
+/* ===== Nav ===== */
+nav{position:sticky;top:0;z-index:900;background:rgba(238,244,251,.98);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:78px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.nav-logo .tile{width:44px;height:44px;border-radius:50%;background:linear-gradient(150deg,#2f7bea,#143a78);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo .tile .flake{width:30px;height:30px}
+.nav-logo .nm{line-height:1.02}
+.nav-logo .nm b{font-family:'Sora',sans-serif;font-weight:800;font-size:1.12rem;color:var(--ink);letter-spacing:.01em;display:block}
+.nav-logo .nm b span{color:var(--blue)}
+.nav-logo .nm i{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-weight:600;font-size:.94rem;color:var(--body);transition:color .15s}
+.nav-links a:hover{color:var(--blue)}
+.nav-links a.nav-cta{
+  background:var(--blue);color:#fff !important;padding:11px 20px;border-radius:8px;
+  display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 22px -12px rgba(31,111,224,.6);
+}
+.nav-links a.nav-cta:hover{background:var(--blue-dark)}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;transition:.25s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-panel{
+  display:none;position:fixed;top:78px;left:0;right:0;z-index:899;background:var(--bg2);
+  border-bottom:1px solid var(--line);padding:14px 24px 24px;
+  transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow-sm);
+}
+.mobile-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-panel a{display:block;padding:14px 4px;font-weight:600;font-size:1.05rem;color:var(--ink);border-bottom:1px solid var(--line)}
+.mobile-panel a.m-call{
+  margin-top:18px;background:var(--blue);color:#fff;text-align:center;border-radius:9px;border:none;padding:16px;
+}
+
+/* ===== Hero ===== */
+.hero{position:relative;padding:64px 0 76px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,196,245,.22),transparent 65%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.hero-eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(31,111,224,.5);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,111,224,.45)}70%{box-shadow:0 0 0 12px rgba(31,111,224,0)}100%{box-shadow:0 0 0 0 rgba(31,111,224,0)}}
+.hero-eyebrow span{font-family:'Inter',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue)}
+.hero h1{font-size:clamp(2.5rem,5.2vw,4.4rem);font-weight:800;margin-bottom:22px;letter-spacing:-.03em}
+.hero p.lede{font-size:1.12rem;max-width:35em;margin-bottom:32px;color:var(--body)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero-meta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:.9rem;color:var(--muted);font-weight:500}
+.hero-meta b{color:var(--ink);font-weight:700}
+.hero-meta .star{color:var(--blue)}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;height:540px;object-fit:cover;border-radius:18px;border:1px solid var(--line2)}
+.hero-badge{
+  position:absolute;left:-26px;bottom:34px;background:var(--bg2);border:1px solid var(--line);
+  border-radius:14px;padding:16px 20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px;max-width:300px;
+}
+.hero-badge .bi{width:48px;height:48px;border-radius:50%;background:var(--blue-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-badge .bi .flake{width:30px;height:30px}
+.hero-badge .txt{font-size:.9rem;font-weight:700;color:var(--ink);line-height:1.25}
+.hero-badge .txt em{color:var(--muted);font-weight:500;display:block;font-size:.8rem}
+
+/* ===== Trust ===== */
+.trust{background:var(--navy);color:#dbe7f5}
+.trust-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:22px 0}
+.trust-item{display:flex;align-items:center;gap:11px;font-weight:600;font-size:.95rem;color:#dbe7f5}
+.trust-item svg{width:20px;height:20px;stroke:var(--ice);flex-shrink:0}
+.trust-sep{width:1px;height:26px;background:rgba(255,255,255,.16)}
+
+/* ===== Section base ===== */
+section.block{padding:96px 0}
+.sec-head{max-width:720px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);font-weight:800}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+
+/* ===== Services ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:34px 30px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s;
+}
+.svc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--ice),var(--blue));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line2)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-ic{width:52px;height:52px;border-radius:13px;background:var(--blue-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-ic svg{width:26px;height:26px;stroke:var(--blue);fill:none}
+.svc-card h3{font-size:1.22rem;margin-bottom:10px;font-weight:700}
+.svc-card p{font-size:.96rem;color:var(--body)}
+
+/* ===== Gallery ===== */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:240px;gap:16px}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line2);cursor:pointer}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gal-item:hover img{transform:scale(1.06)}
+.gal-item.tall{grid-row:span 2}
+.gal-item.wide{grid-column:span 2}
+.gal-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;
+  background:linear-gradient(transparent,rgba(10,22,40,.86));color:#fff;
+  font-weight:600;font-size:.92rem;opacity:0;transform:translateY(8px);transition:.3s;
+}
+.gal-item:hover .gal-cap{opacity:1;transform:translateY(0)}
+
+/* ===== About ===== */
+.about{background:var(--navy);color:#dce7f3;position:relative;overflow:hidden}
+.about::before{content:"";position:absolute;top:-160px;left:-120px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,196,245,.16),transparent 65%)}
+.about-grid{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{width:100%;height:460px;object-fit:cover;border-radius:18px}
+.about h2{color:#fff;font-size:clamp(2rem,3.6vw,2.7rem);margin-bottom:22px}
+.about .label{color:var(--ice)}
+.about p{color:#b8c7da;font-size:1.06rem;margin-bottom:18px;max-width:36em}
+.about-sign{display:flex;align-items:center;gap:16px;margin-top:30px}
+.about-sign .initials{width:54px;height:54px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem}
+.about-sign .who b{color:#fff;display:block;font-family:'Sora',sans-serif;font-size:1.1rem}
+.about-sign .who span{font-size:.86rem;color:#9fb1c8}
+
+/* ===== Reviews ===== */
+.rev-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:48px}
+.rev-score{display:flex;align-items:center;gap:14px}
+.rev-score .big{font-family:'Sora',sans-serif;font-size:2.8rem;font-weight:800;color:var(--blue);line-height:1}
+.rev-score .stars{color:var(--blue);font-size:1.05rem;letter-spacing:2px}
+.rev-score .sub{font-size:.86rem;color:var(--muted);font-weight:500}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px;transition:transform .25s,box-shadow .25s}
+.rev-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.rev-card .stars{color:var(--blue);letter-spacing:2px;font-size:.95rem;margin-bottom:14px}
+.rev-card p{font-size:.98rem;color:var(--ink);margin-bottom:20px;line-height:1.6}
+.rev-by{display:flex;align-items:center;gap:13px}
+.rev-by .av{width:44px;height:44px;border-radius:50%;background:var(--blue-tint);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;font-family:'Sora',sans-serif}
+.rev-by b{display:block;font-size:.94rem;color:var(--ink);font-weight:700}
+.rev-by span{font-size:.82rem;color:var(--muted)}
+
+/* ===== Areas ===== */
+.areas{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.area-tags{display:flex;flex-wrap:wrap;gap:11px;max-width:880px}
+.area-tags span{background:var(--bg);border:1px solid var(--line2);border-radius:30px;padding:9px 18px;font-weight:600;font-size:.9rem;color:var(--ink)}
+.area-tags span.home{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* ===== CTA band ===== */
+.cta-band{background:linear-gradient(135deg,#143a78,#1f6fe0);color:#fff;text-align:center;padding:80px 0;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 120% at 80% 0%,rgba(124,196,245,.28),transparent 60%)}
+.cta-band>.wrap{position:relative}
+.cta-band h2{color:#fff;font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+.cta-band p{color:#d8e6fb;font-size:1.1rem;margin-bottom:30px;max-width:36em;margin-left:auto;margin-right:auto}
+.cta-band .btn-primary{background:#fff;color:var(--blue-dark)}
+.cta-band .btn-primary:hover{background:#e7f0fd}
+.cta-band .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.cta-band .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.1)}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ===== Contact ===== */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+.contact-info h3{font-size:1.5rem;margin-bottom:8px}
+.contact-info>p{margin-bottom:28px;color:var(--body)}
+.info-card{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.info-card .ic{width:44px;height:44px;border-radius:11px;background:var(--blue-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-card .ic svg{width:21px;height:21px;stroke:var(--blue)}
+.info-card b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;font-weight:700}
+.info-card a,.info-card span{font-size:1.04rem;color:var(--ink);font-weight:600;display:block}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:var(--shadow-sm)}
+.form h3{font-size:1.4rem;margin-bottom:6px}
+.form>p{font-size:.92rem;color:var(--muted);margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.84rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--line2);border-radius:9px;font-family:inherit;font-size:.96rem;
+  color:var(--ink);background:var(--bg2);transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue)}
+.field textarea{resize:vertical;min-height:110px}
+.form .btn-primary{width:100%;justify-content:center;margin-top:6px}
+
+/* ===== Footer ===== */
+footer{background:var(--navy);color:#9fb1c8;padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-brand{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.foot-brand .tile{width:48px;height:48px;border-radius:50%;background:linear-gradient(150deg,#2f7bea,#143a78);display:flex;align-items:center;justify-content:center}
+.foot-brand .tile .flake{width:32px;height:32px}
+.foot-brand b{font-family:'Sora',sans-serif;color:#fff;font-size:1.18rem;font-weight:800;line-height:1.05}
+.foot-brand b span{color:var(--ice)}
+.foot-brand b i{display:block;font-style:normal;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7e93ad}
+.foot-col p{font-size:.94rem;color:#90a3ba;max-width:30em}
+.foot-col h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px;font-weight:700;font-family:'Inter',sans-serif}
+.foot-col a{display:block;padding:6px 0;font-size:.94rem;color:#9fb1c8;transition:color .15s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.86rem;color:#74879f}
+.foot-bottom a{color:var(--ice);font-weight:600}
+
+/* ===== Floating CTAs ===== */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:850;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s}
+.fabs.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.4)}
+.fab svg{width:25px;height:25px}
+.fab-call{background:var(--blue);animation:fpulse 2.2s infinite}
+.fab-wa{background:var(--green);animation:fpulseG 2.2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(31,111,224,.5)}70%{box-shadow:0 0 0 14px rgba(31,111,224,0)}100%{box-shadow:0 0 0 0 rgba(31,111,224,0)}}
+@keyframes fpulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== Lightbox ===== */
+.lb{position:fixed;inset:0;background:rgba(10,22,40,.93);z-index:1500;display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:88vh;border-radius:10px}
+.lb-close{position:absolute;top:20px;right:26px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+
+/* ===== Responsive ===== */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .hero-photo img{height:380px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:block}
+  .trust-sep{display:none}
+  .trust-in{justify-content:center;gap:14px 26px}
+}
+@media(max-width:680px){
+  .wrap{padding:0 18px}
+  section.block{padding:70px 0}
+  .hero{padding:40px 0 56px}
+  .hero h1{font-size:clamp(2.1rem,8.5vw,2.8rem)}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .gal-item.wide{grid-column:span 2}
+  .gal-cap{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-badge{position:static;left:0;bottom:0;margin-top:16px;box-shadow:var(--shadow-sm);width:100%;max-width:none}
+  .hero-photo img{height:300px}
+  .rev-head{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:420px){
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+  .gal-item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- Reusable Polar Breeze marks (snowflake + breeze) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="flakeGrad" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bfe3ff"/><stop offset="1" stop-color="#2f7bea"/>
+    </linearGradient>
+    <symbol id="flake" viewBox="0 0 100 100">
+      <g fill="none" stroke="url(#flakeGrad)" stroke-linecap="round">
+        <g stroke-width="2.6" opacity=".55">
+          <path d="M14 38c10-5 21-5 31 0s21 5 31 0"/>
+          <path d="M14 62c10-5 21-5 31 0s21 5 31 0"/>
+        </g>
+        <g stroke-width="3.6">
+          <g id="arm">
+            <path d="M50 50 L50 18"/>
+            <path d="M50 25 L43 18"/><path d="M50 25 L57 18"/>
+            <path d="M50 35 L44.5 30"/><path d="M50 35 L55.5 30"/>
+          </g>
+          <use href="#arm" transform="rotate(60 50 50)"/>
+          <use href="#arm" transform="rotate(120 50 50)"/>
+          <use href="#arm" transform="rotate(180 50 50)"/>
+          <use href="#arm" transform="rotate(240 50 50)"/>
+          <use href="#arm" transform="rotate(300 50 50)"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="flakeWhite" viewBox="0 0 100 100">
+      <g fill="none" stroke="#fff" stroke-linecap="round">
+        <g stroke-width="2.6" opacity=".5">
+          <path d="M14 38c10-5 21-5 31 0s21 5 31 0"/>
+          <path d="M14 62c10-5 21-5 31 0s21 5 31 0"/>
+        </g>
+        <g stroke-width="3.6">
+          <g id="armw">
+            <path d="M50 50 L50 18"/>
+            <path d="M50 25 L43 18"/><path d="M50 25 L57 18"/>
+            <path d="M50 35 L44.5 30"/><path d="M50 35 L55.5 30"/>
+          </g>
+          <use href="#armw" transform="rotate(60 50 50)"/>
+          <use href="#armw" transform="rotate(120 50 50)"/>
+          <use href="#armw" transform="rotate(180 50 50)"/>
+          <use href="#armw" transform="rotate(240 50 50)"/>
+          <use href="#armw" transform="rotate(300 50 50)"/>
+        </g>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Polar reveal loader -->
+<div id="loader">
+  <div class="air a"></div><div class="air b"></div><div class="air c"></div>
+  <div class="snow-field" id="snowField"></div>
+  <div class="loader-inner">
+    <div class="loader-mark">
+      <div class="frost-wipe"></div>
+      <span class="loader-badge"><svg class="flake"><use href="#flakeWhite"/></svg></span>
+      <div>
+        <div class="loader-word">POLAR <span>BREEZE</span></div>
+        <div class="loader-sub">HVAC &amp; Refrigeration</div>
+      </div>
+    </div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="nav-logo">
+      <span class="tile"><svg class="flake"><use href="#flakeWhite"/></svg></span>
+      <span class="nm"><b>POLAR <span>BREEZE</span></b><i>HVAC &amp; Refrigeration</i></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Call</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mpanel">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#about">About</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="m-call" id="mCall">Call Polar Breeze</a>
+</div>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text reveal">
+      <div class="hero-eyebrow"><span class="dot"></span><span>HVAC &amp; Refrigeration &middot; Derby &amp; Derbyshire</span></div>
+      <h1>Breathe easy, <span class="accent">worry free</span>.</h1>
+      <p class="lede">Polar Breeze install, service and repair heating, air conditioning and refrigeration across Derby and Derbyshire. Keeping your home and business at the right temperature with cleaner, healthier air all year round.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary" id="heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Call Polar Breeze</span>
+        </a>
+        <a href="#" class="btn btn-wa" id="heroWa">
+          <svg viewBox="0 0 24 24" fill="#063a1e"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span class="star">&#10052;</span>
+        <span><b>Home &amp; commercial</b> specialists</span>
+        <span>&middot;</span>
+        <span><b>Free</b> surveys &amp; quotes</span>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="hero.jpg" alt="Polar Breeze engineer servicing an air conditioning unit in Derby">
+      <div class="hero-badge">
+        <div class="bi"><svg class="flake"><use href="#flake"/></svg></div>
+        <div class="txt">Heating, cooling &amp; air quality<em>Installed, serviced &amp; maintained</em></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Trust -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Fully Insured</div>
+  <div class="trust-sep"></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Heating &amp; Cooling</div>
+  <div class="trust-sep"></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6z"/></svg>Air Quality Specialists</div>
+  <div class="trust-sep"></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Derby &amp; Derbyshire</div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What We Do</span>
+      <h2>Heating, cooling and air quality, <span class="accent">done properly</span>.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M12 2c2 3 3 5 3 8a3 3 0 0 1-6 0c0-1 .5-2 1-3"/><path d="M12 14v8M9 19h6"/></svg></div>
+        <h3>Heating Systems</h3>
+        <p>Boilers, radiators and full heating systems installed, repaired and serviced to keep your home or business warm and efficient.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><rect x="2" y="4" width="20" height="9" rx="2"/><path d="M6 17v2M12 17v3M18 17v2"/></svg></div>
+        <h3>Air Conditioning</h3>
+        <p>Wall, ceiling and ducted air conditioning supplied, installed and maintained to keep you cool through the warmer months.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 12h14M9 6v2M9 15v3"/></svg></div>
+        <h3>Refrigeration</h3>
+        <p>Commercial cold rooms, display fridges and freezer units installed and serviced for shops, pubs, cafes and takeaways.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 12h4l2-7 4 14 2-5h6"/></svg></div>
+        <h3>Indoor Air Quality</h3>
+        <p>Air duct cleaning and mould remediation to clear out dust, damp and allergens so the air in your space is fresh and healthy.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2z"/></svg></div>
+        <h3>Servicing &amp; Repairs</h3>
+        <p>Planned maintenance and fast breakdown call-outs to keep your heating, cooling and refrigeration running reliably.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 21V8l9-5 9 5v13"/><rect x="9" y="13" width="6" height="8"/></svg></div>
+        <h3>Bespoke HVAC Solutions</h3>
+        <p>Heating and cooling designed around your building, from a single room to a whole property, sized and fitted to suit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="block" id="work" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent Work</span>
+      <h2>Comfort we've <span class="accent">dialled in</span>.</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item tall reveal" data-full="work-1.jpg"><img src="work-1.jpg" alt="Air conditioning wall unit installed by Polar Breeze"><div class="gal-cap">Wall-mounted air con install</div></div>
+      <div class="gal-item wide reveal" data-full="work-3.jpg"><img src="work-3.jpg" alt="Engineer servicing an HVAC system"><div class="gal-cap">HVAC service &amp; checkover</div></div>
+      <div class="gal-item reveal" data-full="work-4.jpg"><img src="work-4.jpg" alt="External condenser units fitted to a property"><div class="gal-cap">External condenser units</div></div>
+      <div class="gal-item reveal" data-full="work-2.jpg"><img src="work-2.jpg" alt="Air conditioning unit being installed indoors"><div class="gal-cap">Indoor unit fit-out</div></div>
+      <div class="gal-item reveal" data-full="work-5.jpg"><img src="work-5.jpg" alt="Engineer carrying out refrigeration maintenance"><div class="gal-cap">Refrigeration maintenance</div></div>
+      <div class="gal-item reveal" data-full="work-6.jpg"><img src="work-6.jpg" alt="Technician checking air conditioning controls"><div class="gal-cap">System commissioning</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="block about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal"><img src="craft.jpg" alt="Polar Breeze engineer at work on an HVAC system"></div>
+    <div class="about-text reveal">
+      <span class="label">About Polar Breeze</span>
+      <h2>Quality air, guaranteed.</h2>
+      <p>Polar Breeze is run by Scott Hibbert, looking after homes and businesses across Derby and the wider Derbyshire area. Heating, air conditioning, refrigeration and air quality, all from one trusted local engineer.</p>
+      <p>From a new air con system to a boiler repair, a cold room or clearing out tired air ducts, every job is planned, fitted and finished to a high standard, then backed by servicing to keep it running for years.</p>
+      <div class="about-sign">
+        <div class="initials">SH</div>
+        <div class="who"><b>Scott Hibbert</b><span>Polar Breeze HVAC &amp; Refrigeration</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="block" id="reviews">
+  <div class="wrap">
+    <div class="rev-head reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="label">What People Say</span>
+        <h2>Trusted across <span class="accent">Derbyshire</span>.</h2>
+      </div>
+      <div class="rev-score">
+        <div class="big">5.0</div>
+        <div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="sub">Based on local customer reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Scott installed air conditioning throughout our office and it's transformed the place over summer. Clean, tidy work and he talked us through everything. Spot on."</p>
+        <div class="rev-by"><div class="av">G</div><div><b>Gemma R.</b><span>Derby &middot; Air Conditioning</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Our heating packed in during a cold snap. Polar Breeze came out the same day, sorted it and had the house warm again by evening. Brilliant service."</p>
+        <div class="rev-by"><div class="av">D</div><div><b>David L.</b><span>Allestree &middot; Heating Repair</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Had the air ducts cleaned and a damp mould issue sorted at home. The difference in the air is night and day, no more musty smell. Highly recommend."</p>
+        <div class="rev-by"><div class="av">S</div><div><b>Sarah W.</b><span>Mickleover &middot; Air Quality</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Fitted out the refrigeration for our cafe, the display fridge and a small cold room. Fair price, neat install and everything holds temperature perfectly."</p>
+        <div class="rev-by"><div class="av">A</div><div><b>Ade K.</b><span>Long Eaton &middot; Refrigeration</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We have Scott back every year to service the air con. Always reliable, turns up when he says and leaves it spotless. Wouldn't use anyone else."</p>
+        <div class="rev-by"><div class="av">M</div><div><b>Mark T.</b><span>Spondon &middot; Servicing</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Designed and fitted heating and cooling for our new build. Knew exactly what we needed, no hard sell, and the system runs beautifully. Top job."</p>
+        <div class="rev-by"><div class="av">P</div><div><b>Priya N.</b><span>Belper &middot; HVAC Install</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="block areas">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:32px">
+      <span class="label">Where We Work</span>
+      <h2>Covering Derby &amp; across Derbyshire.</h2>
+    </div>
+    <div class="area-tags reveal">
+      <span class="home">Derby</span>
+      <span>Allestree</span>
+      <span>Mickleover</span>
+      <span>Chellaston</span>
+      <span>Spondon</span>
+      <span>Borrowash</span>
+      <span>Belper</span>
+      <span>Ripley</span>
+      <span>Ilkeston</span>
+      <span>Long Eaton</span>
+      <span>Ashbourne</span>
+      <span>&amp; across Derbyshire</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Need heating, cooling or cleaner air?</h2>
+    <p>Tell Scott what you're after and he'll come and take a look, then give you a clear, no-obligation quote.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary" id="ctaCall">Call Polar Breeze Today</a>
+      <a href="#contact" class="btn btn-ghost">Send a Message</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="block" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="label">Get in Touch</span>
+      <h3>Let's get your air right.</h3>
+      <p>Give us a call or drop a message. We'll get back to you the same day wherever we can.</p>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><b>Phone</b><a href="#" id="cPhone">Loading&hellip;</a></div>
+      </div>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+        <div><b>Email</b><a href="#" id="cEmail">Loading&hellip;</a></div>
+      </div>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><b>Based In</b><span>Derby &amp; Derbyshire</span></div>
+      </div>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><b>Hours</b><span>Mon&ndash;Sat, 8am&ndash;6pm &middot; Breakdowns by arrangement</span></div>
+      </div>
+    </div>
+    <form class="form reveal" action="/api/enquiry" method="POST">
+      <h3>Request a quote</h3>
+      <p>Tell us about your heating, cooling or air quality job and we'll be in touch.</p>
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="Polar Breeze HVAC &amp; Refrigeration">
+      <input type="hidden" name="source" value="mockup-polar-breeze">
+      <div class="field"><label for="n">Name</label><input id="n" type="text" name="name" required placeholder="Your name"></div>
+      <div class="field"><label for="p">Phone</label><input id="p" type="tel" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx"></div>
+      <div class="field"><label for="e">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="e" type="email" name="email" placeholder="you@email.com"></div>
+      <div class="field">
+        <label for="s">Service</label>
+        <select id="s" name="service">
+          <option value="">Choose a service&hellip;</option>
+          <optgroup label="Heating &amp; Cooling">
+            <option>Heating Systems</option>
+            <option>Air Conditioning</option>
+            <option>Bespoke HVAC Solutions</option>
+          </optgroup>
+          <optgroup label="Refrigeration &amp; Air Quality">
+            <option>Refrigeration</option>
+            <option>Indoor Air Quality</option>
+          </optgroup>
+          <option>Servicing &amp; Repairs</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field"><label for="m">Message</label><textarea id="m" name="message" placeholder="Tell us about the job&hellip;"></textarea></div>
+      <button type="submit" class="btn btn-primary">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><span class="tile"><svg class="flake"><use href="#flakeWhite"/></svg></span><b>POLAR <span>BREEZE</span><i>HVAC &amp; Refrigeration</i></b></div>
+        <p>Heating, air conditioning, refrigeration and indoor air quality across Derby and Derbyshire. Breathe easy, worry free.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Heating Systems</a>
+        <a href="#services">Air Conditioning</a>
+        <a href="#services">Refrigeration</a>
+        <a href="#services">Indoor Air Quality</a>
+        <a href="#services">Servicing &amp; Repairs</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#" id="fPhone">Phone</a>
+        <a href="#" id="fEmail">Email</a>
+        <a href="#contact">Request a Quote</a>
+        <span style="display:block;padding:6px 0;font-size:.94rem;color:#90a3ba">Derby &amp; Derbyshire</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span id="yr"></span> Polar Breeze HVAC &amp; Refrigeration. All rights reserved.</div>
+      <div>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" class="fab fab-wa" id="fabWa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+</div>
+
+<!-- Lightbox -->
+<div class="lb" id="lb"><span class="lb-close" id="lbClose">&times;</span><img id="lbImg" src="" alt=""></div>
+
+<script>
+// ----- Snow particles for loader -----
+(function(){
+  var f=document.getElementById('snowField');
+  if(!f)return;
+  for(var i=0;i<16;i++){
+    var s=document.createElement('span');s.className='snow';
+    var sz=(Math.random()*8+4).toFixed(1);
+    s.style.width=sz+'px';s.style.height=sz+'px';
+    s.style.left=(Math.random()*100).toFixed(2)+'vw';
+    s.style.animationDuration=(Math.random()*2.5+2.5).toFixed(2)+'s';
+    s.style.animationDelay=(Math.random()*2).toFixed(2)+'s';
+    f.appendChild(s);
+  }
+})();
+
+// ----- Contact decode (base64) -----
+var P  = atob('MDc0OTU3MTEyNTI=');
+var Pf = atob('MDc0OTUgNzExMjUy');
+var E  = atob('U2NvdHQucG9sYXJicmVlemVAZ21haWwuY29t');
+var WA = atob('NDQ3NDk1NzExMjUy');
+var waLink = 'https://wa.me/' + WA + '?text=Hi%20Polar%20Breeze%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+function tel(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;}
+['navCall','heroCall','ctaCall','fabCall','mCall'].forEach(tel);
+var hw=document.getElementById('heroWa');if(hw)hw.href=waLink;
+var fw=document.getElementById('fabWa');if(fw)fw.href=waLink;
+var cp=document.getElementById('cPhone');if(cp){cp.textContent=Pf;cp.href='tel:'+P;}
+var fp=document.getElementById('fPhone');if(fp){fp.textContent=Pf;fp.href='tel:'+P;}
+var ce=document.getElementById('cEmail');if(ce){ce.textContent=E;ce.href='mailto:'+E;}
+var fe=document.getElementById('fEmail');if(fe){fe.textContent='Email';fe.href='mailto:'+E;}
+
+// ----- Loader -----
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var l=document.getElementById('loader');
+    if(l){l.classList.add('done');setTimeout(function(){l.style.display='none';},800);}
+  },2300);
+});
+
+// ----- Mobile nav -----
+var burger=document.getElementById('burger'),mp=document.getElementById('mpanel');
+burger.addEventListener('click',function(){burger.classList.toggle('open');mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');mp.classList.remove('open');});});
+
+// ----- Year -----
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// ----- Form timestamp -----
+document.getElementById('formTimestamp').value=Date.now();
+
+// ----- Reveal on scroll -----
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// ----- Floating CTA visibility -----
+var fabs=document.getElementById('fabs'),hero=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>hero.offsetHeight-80){fabs.classList.add('show');}else{fabs.classList.remove('show');}
+});
+
+// ----- Lightbox -----
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('.gal-item').forEach(function(g){
+  g.addEventListener('click',function(){lbImg.src=g.getAttribute('data-full');lb.classList.add('open');});
+});
+function closeLb(){lb.classList.remove('open');}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+</script>
+</body>
+</html>
