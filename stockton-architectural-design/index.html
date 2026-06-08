@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stockton Architectural Design | Residential &amp; Commercial Architects, Devon</title>
+<meta name="description" content="Stockton Architectural Design, a Devon studio for residential and commercial architecture. Extensions, new builds, commercial schemes, planning applications, listed buildings and 3D visualisation, from first sketch to completion.">
+<link rel="icon" href="mark.svg">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ffffff;
+  --bg2:#f6f5f3;
+  --card:#ffffff;
+  --card2:#faf9f7;
+  --line:#e7e3df;
+  --line2:#d9d4ce;
+  --ink:#2c2a2b;
+  --ink2:#3f3d3e;
+  --body:#5c5759;
+  --muted:#938d89;
+  --plum:#7b4a61;
+  --plum-deep:#5c3447;
+  --plum-tint:#f3ecef;
+  --grey:#606163;
+  --shadow:0 30px 70px -34px rgba(44,42,43,.32);
+  --shadow-sm:0 14px 34px -18px rgba(44,42,43,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.locked{overflow:hidden;height:100vh}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif;color:var(--ink);font-weight:300;line-height:1.08;letter-spacing:-.02em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.accent{color:var(--plum)}
+.label{
+  font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--plum);
+  display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.label::before{content:"";width:30px;height:1px;background:var(--plum);opacity:.65}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;font-family:'Inter',sans-serif;
+  font-weight:600;font-size:.95rem;padding:16px 30px;border-radius:2px;cursor:pointer;border:none;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;letter-spacing:.01em;
+}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--plum);color:#fff;box-shadow:0 16px 34px -16px rgba(123,74,97,.55)}
+.btn-primary:hover{background:var(--plum-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--plum);color:var(--plum)}
+.btn-ghost-light{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ============ APERTURE LOADER ============ */
+#loader{
+  position:fixed;inset:0;z-index:3000;background:#ffffff;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:transform 1s cubic-bezier(.76,0,.24,1),opacity .7s ease .25s;
+}
+#loader.done{transform:translateY(-101%);opacity:0;pointer-events:none}
+#loader .grid{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:46px 46px;mask:radial-gradient(circle at 50% 45%,#000,transparent 72%);-webkit-mask:radial-gradient(circle at 50% 45%,#000,transparent 72%)}
+.ld-inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center}
+.ld-mark{width:96px;height:96px}
+.ld-mark polygon,.ld-mark rect{opacity:0;transform-origin:50% 50%;animation:faceIn .55s cubic-bezier(.2,.8,.25,1) forwards}
+.ld-mark .f1{animation-delay:.25s}.ld-mark .f2{animation-delay:.42s}
+.ld-mark .f3{animation-delay:.59s}.ld-mark .f4{animation-delay:.76s}.ld-mark .fc{animation-delay:.96s}
+@keyframes faceIn{0%{opacity:0;transform:scale(.2)}100%{opacity:1;transform:scale(1)}}
+.ld-word{margin-top:30px;font-family:'Outfit',sans-serif;font-weight:500;font-size:clamp(1.9rem,6vw,2.9rem);
+  letter-spacing:.22em;color:var(--ink);padding-left:.22em;opacity:0;animation:subIn .8s ease 1.25s forwards}
+.ld-sub{margin-top:12px;font-family:'Inter',sans-serif;font-weight:600;font-size:.64rem;letter-spacing:.5em;
+  text-transform:uppercase;color:var(--plum);padding-left:.5em;opacity:0;animation:subIn .8s ease 1.45s forwards}
+.ld-rule{height:1px;width:0;background:var(--plum);margin:22px auto 0;animation:ruleGrow .9s cubic-bezier(.5,0,.2,1) 1.6s forwards}
+@keyframes subIn{to{opacity:1}}
+@keyframes ruleGrow{to{width:120px}}
+
+/* ============ NAV ============ */
+header.nav{position:sticky;top:0;z-index:1200;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.brand .mk{width:36px;height:36px;flex:none}
+.brand .bt{display:flex;flex-direction:column;line-height:1}
+.brand .bt b{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.18rem;letter-spacing:.12em;color:var(--ink)}
+.brand .bt span{font-size:.54rem;letter-spacing:.34em;text-transform:uppercase;color:var(--plum);margin-top:5px;padding-left:.34em}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.83rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--plum)}
+.nav-call{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line2);
+  padding:11px 20px;border-radius:2px;color:var(--ink)!important;font-weight:600;font-size:.85rem;letter-spacing:.04em;transition:border-color .2s,color .2s}
+.nav-call:hover{border-color:var(--plum);color:var(--plum)!important}
+.nav-call svg{width:15px;height:15px;stroke:var(--plum)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+.mobile-panel{display:none}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{0%{transform:scale(1.03)}100%{transform:scale(1.12)}}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(30,26,24,.34) 0%,rgba(30,26,24,.08) 36%,rgba(28,24,22,.72) 82%,rgba(255,255,255,.0) 100%),
+             linear-gradient(90deg,rgba(28,24,22,.6) 0%,rgba(28,24,22,.04) 58%)}
+.hero-frame{position:absolute;inset:26px;border:1px solid rgba(255,255,255,.42);z-index:2;pointer-events:none}
+.hero-side{position:absolute;right:40px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;
+  z-index:3;font-size:.66rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:600}
+.hero-inner{position:relative;z-index:3;padding-bottom:66px;padding-top:120px}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.72rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:#fff;margin-bottom:26px}
+.hero .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--plum);
+  box-shadow:0 0 0 0 rgba(123,74,97,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(168,110,138,.6)}70%{box-shadow:0 0 0 12px rgba(168,110,138,0)}100%{box-shadow:0 0 0 0 rgba(168,110,138,0)}}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5.3rem);font-weight:300;color:#fff;max-width:17ch;text-shadow:0 2px 40px rgba(0,0,0,.4)}
+.hero h1 b{font-weight:500;color:#e7c9d6}
+.hero .lede{margin-top:26px;max-width:56ch;font-size:1.08rem;color:#f1ece9;text-shadow:0 1px 20px rgba(0,0,0,.5)}
+.hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.hero-badge{position:absolute;right:64px;bottom:120px;z-index:3;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.6);padding:20px 26px;border-radius:3px;text-align:left;max-width:230px}
+.hero-badge .num{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.5rem;color:var(--ink);line-height:1.2}
+.hero-badge .num b{color:var(--plum);font-weight:500}
+.hero-badge .cap{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+.fc{opacity:0;transform:translateY(26px);animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+.loaded .fc.d1{animation-delay:.05s}.loaded .fc.d2{animation-delay:.18s}.loaded .fc.d3{animation-delay:.31s}
+.loaded .fc.d4{animation-delay:.44s}.loaded .fc.d5{animation-delay:.57s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* ============ TRUST ============ */
+.trust{border-bottom:1px solid var(--line);background:var(--bg2)}
+.trust-row{display:flex;align-items:stretch;justify-content:space-between}
+.trust-item{flex:1;padding:30px 18px;text-align:center;border-left:1px solid var(--line)}
+.trust-item:first-child{border-left:none}
+.trust-item .t1{font-family:'Outfit',sans-serif;font-weight:500;font-size:1.02rem;color:var(--ink)}
+.trust-item .t2{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--plum);margin-top:7px}
+
+/* ============ SECTION ============ */
+section{padding:120px 0}
+.sec-head{max-width:780px}
+.sec-head h2{font-size:clamp(2rem,4.3vw,3.3rem);font-weight:300}
+.sec-head h2 b{font-weight:500;color:var(--plum)}
+
+/* ============ SERVICES ============ */
+.svc-grid{margin-top:60px;display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
+.svc{position:relative;padding:38px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+  display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;transition:background .3s ease}
+.svc:nth-child(2n){border-right:none}
+.svc::before{content:"";position:absolute;top:-1px;left:0;width:100%;height:2px;background:var(--plum);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.5,0,.2,1)}
+.svc:hover{background:var(--card2)}
+.svc:hover::before{transform:scaleX(1)}
+.svc .no{font-family:'Outfit',sans-serif;font-weight:200;font-size:2.3rem;color:var(--plum);line-height:1;opacity:.9}
+.svc h3{font-family:'Outfit',sans-serif;font-weight:500;font-size:1.2rem;color:var(--ink);margin-bottom:9px}
+.svc p{font-size:.95rem;color:var(--body);line-height:1.62}
+
+/* ============ GALLERY ============ */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px;margin-top:60px}
+.gtile{position:relative;overflow:hidden;border-radius:3px;border:1px solid var(--line);cursor:pointer;background:var(--card2)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.gtile:hover img{transform:scale(1.06)}
+.gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(28,24,22,.72));opacity:0;transition:opacity .3s}
+.gtile:hover::after{opacity:1}
+.gtile .gcap{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-size:.82rem;font-weight:500;opacity:0;transform:translateY(8px);transition:.35s}
+.gtile:hover .gcap{opacity:1;transform:none}
+.g-feature{grid-column:span 2;grid-row:span 2}
+.g-tall{grid-row:span 2}
+
+/* ============ FEATURE / ABOUT ============ */
+.feature{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.feat-photo{position:relative;min-height:580px;overflow:hidden}
+.feat-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feat-text{padding:96px 70px}
+.feat-text p.body{font-size:1.07rem;color:var(--body);margin-top:8px}
+.pillars{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pillar{border-top:2px solid var(--plum);padding-top:16px}
+.pillar b{display:block;font-family:'Outfit',sans-serif;font-weight:500;color:var(--ink);font-size:1.04rem}
+.pillar span{font-size:.85rem;color:var(--muted);line-height:1.5;display:block;margin-top:5px}
+.sigblock{margin-top:40px;display:flex;align-items:center;gap:16px}
+.sigblock .smk{width:46px;height:46px;flex:none}
+.sigblock .who b{display:block;font-family:'Outfit',sans-serif;color:var(--ink);font-weight:500;font-size:1rem}
+.sigblock .who span{font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+
+/* ============ CTA BAND ============ */
+.band{position:relative;padding:130px 0;overflow:hidden;text-align:center}
+.band-bg{position:absolute;inset:0;z-index:0}
+.band-bg img{width:100%;height:100%;object-fit:cover}
+.band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,24,22,.78),rgba(40,28,34,.74))}
+.band .inner{position:relative;z-index:2}
+.band h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:300;color:#fff}
+.band h2 b{font-weight:500;color:#e7c9d6}
+.band p{margin:20px auto 34px;max-width:50ch;color:#f1ece9;font-size:1.06rem}
+.band .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ============ REVIEWS ============ */
+.rev-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+.rate-badge{display:flex;align-items:center;gap:14px;border:1px solid var(--line2);border-radius:3px;padding:14px 22px;background:var(--card)}
+.rate-badge .big{font-family:'Outfit',sans-serif;font-weight:300;font-size:2rem;color:var(--plum);line-height:1}
+.rate-badge .stars{color:var(--plum);font-size:.9rem;letter-spacing:2px}
+.rate-badge .sub{font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+.rev-grid{margin-top:54px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:32px 30px;transition:transform .3s,box-shadow .3s}
+.rev:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm)}
+.rev .stars{color:var(--plum);font-size:.92rem;letter-spacing:2px;margin-bottom:16px}
+.rev p{font-size:.98rem;color:var(--body);line-height:1.72}
+.rev .by{margin-top:22px;display:flex;align-items:center;gap:13px;border-top:1px solid var(--line);padding-top:20px}
+.rev .av{width:42px;height:42px;border-radius:50%;background:var(--plum);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex:none}
+.rev .by b{display:block;color:var(--ink);font-size:.92rem;font-weight:600}
+.rev .by span{font-size:.78rem;color:var(--muted)}
+
+/* ============ AREAS ============ */
+.areas{background:var(--bg2);border-top:1px solid var(--line)}
+.area-list{margin-top:46px;display:flex;flex-wrap:wrap;gap:12px}
+.area-list a{border:1px solid var(--line2);border-radius:2px;padding:11px 20px;font-size:.9rem;color:var(--body);background:var(--card);
+  transition:border-color .2s,color .2s,background .2s}
+.area-list a:hover{border-color:var(--plum);color:var(--plum);background:var(--plum-tint)}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;margin-top:58px}
+.cinfo .citem{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.cinfo .citem:first-child{padding-top:0}
+.cinfo .ci-ic{width:46px;height:46px;border:1px solid var(--line2);border-radius:3px;display:flex;align-items:center;justify-content:center;flex:none}
+.cinfo .ci-ic svg{width:19px;height:19px;stroke:var(--plum)}
+.cinfo .ci-t{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cinfo .ci-v{font-family:'Outfit',sans-serif;font-size:1.1rem;color:var(--ink);font-weight:400;margin-top:4px;word-break:break-word}
+.cinfo .ci-v:hover{color:var(--plum)}
+form.enq{background:var(--card2);border:1px solid var(--line);border-radius:5px;padding:38px}
+form.enq .fr{margin-bottom:18px}
+form.enq label{display:block;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+form.enq input,form.enq select,form.enq textarea{width:100%;background:var(--bg);border:1px solid var(--line2);
+  border-radius:3px;padding:14px 16px;color:var(--ink);font-family:'Inter',sans-serif;font-size:.97rem;transition:border-color .2s}
+form.enq input:focus,form.enq select:focus,form.enq textarea:focus{outline:none;border-color:var(--plum)}
+form.enq textarea{resize:vertical;min-height:120px}
+form.enq .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form.enq button{width:100%;margin-top:8px}
+.formnote{font-size:.78rem;color:var(--muted);text-align:center;margin-top:16px}
+
+/* ============ FOOTER ============ */
+footer{background:#262425;color:#b9b4b2;padding:70px 0 34px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+.foot-brand .brand{margin-bottom:18px}
+.foot-brand .brand .bt b{color:#fff}
+.foot-brand p{font-size:.92rem;color:#938d8a;max-width:36ch}
+.foot-col h4{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--plum);font-weight:600;margin-bottom:18px}
+.foot-col a{display:block;font-size:.9rem;color:#b9b4b2;margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-bot{margin-top:56px;padding-top:26px;border-top:1px solid #3a3738;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.83rem;color:#8a8482}
+.foot-bot a{color:#d8a9bd}
+
+/* ============ FLOATING CTAs ============ */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:1100;display:flex;flex-direction:column;gap:13px;
+  opacity:0;transform:translateY(20px) scale(.85);pointer-events:none;transition:.4s cubic-bezier(.2,.7,.2,1)}
+.fabs.show{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
+.fab svg{width:23px;height:23px}
+.fab-call{background:var(--plum);animation:fpulse 2.4s infinite}
+.fab-mail{background:var(--ink);animation:fpulse 2.4s infinite .6s}
+.fab:hover{animation-play-state:paused;transform:scale(1.06)}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(123,74,97,.4)}70%{box-shadow:0 0 0 16px rgba(123,74,97,0)}100%{box-shadow:0 0 0 0 rgba(123,74,97,0)}}
+
+/* ============ LIGHTBOX ============ */
+#lb{position:fixed;inset:0;z-index:2500;background:rgba(20,16,18,.92);display:none;align-items:center;justify-content:center;padding:30px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:88vh;border-radius:4px}
+#lb .x{position:absolute;top:24px;right:30px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.85}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1000px){.feat-text{padding:64px 44px}.nav-links{gap:22px}}
+@media(max-width:880px){
+  .nav-links,.nav-call{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:block;position:absolute;top:80px;left:0;right:0;background:var(--bg);
+    border-bottom:1px solid var(--line);padding:14px 28px 26px;transform:translateY(-130%);
+    transition:transform .45s cubic-bezier(.5,0,.2,1);z-index:-1}
+  .mobile-panel.open{transform:translateY(0)}
+  .mobile-panel a{display:block;padding:15px 0;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--body);border-bottom:1px solid var(--line)}
+  .mobile-panel .btn{display:flex;margin-top:20px;width:100%}
+  .hero-side,.hero-badge{display:none}
+  .hero-frame{inset:14px}
+  .feat-grid{grid-template-columns:1fr}
+  .feat-photo{min-height:340px;order:2}
+  .feat-text{order:1;padding:56px 28px}
+  .contact-grid{grid-template-columns:1fr;gap:34px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-brand{grid-column:span 2}
+  .rev-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:780px){
+  section{padding:80px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{border-right:none}
+  .trust-row{flex-wrap:wrap}
+  .trust-item{flex:1 1 50%;border-left:none;border-bottom:1px solid var(--line);padding:22px 12px}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .g-feature{grid-row:span 2}
+  .gtile .gcap{display:none}
+  .rev-grid{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .wrap{padding:0 20px}
+  .hero h1{font-size:2rem}
+  .hero-cta .btn{flex:1}
+  .gal{grid-template-columns:1fr;grid-auto-rows:240px}
+  .g-feature,.g-tall{grid-column:span 1;grid-row:span 1}
+  .foot-top{grid-template-columns:1fr}
+  .foot-brand{grid-column:span 1}
+  form.enq .two{grid-template-columns:1fr}
+  form.enq{padding:26px 20px}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ===== APERTURE LOADER ===== -->
+<div id="loader">
+  <div class="grid"></div>
+  <div class="ld-inner">
+    <svg class="ld-mark" viewBox="0 0 100 100">
+      <polygon class="f1" points="0,0 100,0 65,35 35,35" fill="#7b4a61"/>
+      <polygon class="f2" points="100,0 100,100 65,65 65,35" fill="#888589"/>
+      <polygon class="f3" points="100,100 0,100 35,65 65,65" fill="#3f3d3e"/>
+      <polygon class="f4" points="0,100 0,0 35,35 35,65" fill="#c9c8ca"/>
+      <rect class="fc" x="35" y="35" width="30" height="30" fill="#ffffff"/>
+    </svg>
+    <div class="ld-word">STOCKTON</div>
+    <div class="ld-sub">Architectural Design</div>
+    <div class="ld-rule"></div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <img src="mark.svg" class="mk" alt="Stockton Architectural Design">
+      <span class="bt"><b>STOCKTON</b><span>Architectural Design</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Projects</a>
+      <a href="#about">Approach</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a id="navCall" href="#" class="nav-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+      <span id="navCallTxt">Call</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Projects</a>
+    <a href="#about">Approach</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn btn-primary">Start your project</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="hero.jpg" alt="Contemporary architect-designed home in Devon"></div>
+  <div class="hero-frame"></div>
+  <div class="hero-side">Devon &middot; Est. Studio</div>
+  <div class="hero-badge fc d5">
+    <div class="num"><b>Residential</b> &amp; commercial architecture</div>
+    <div class="cap">Across Devon &amp; the South West</div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow fc d1"><span class="dot"></span>Devon &middot; Architectural Design Studio</div>
+    <h1 class="fc d2">Architecture shaped around how you <b>live and work.</b></h1>
+    <p class="lede fc d3">Stockton Architectural Design is a Devon studio taking residential and commercial projects from first sketch to planning approval and completion.</p>
+    <div class="hero-cta fc d4">
+      <a href="#contact" class="btn btn-primary">Start your project</a>
+      <a id="heroCall" href="#" class="btn btn-ghost-light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        Call the studio
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<div class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><div class="t1">Residential &amp; Commercial</div><div class="t2">Both Sides</div></div>
+    <div class="trust-item"><div class="t1">Planning Applications</div><div class="t2">Handled For You</div></div>
+    <div class="trust-item"><div class="t1">Devon Studio</div><div class="t2">Local Knowledge</div></div>
+    <div class="trust-item"><div class="t1">Concept to Completion</div><div class="t2">One Relationship</div></div>
+    <div class="trust-item"><div class="t1">Free Consultation</div><div class="t2">No Obligation</div></div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2>One studio for the <b>whole journey.</b></h2>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc"><div class="no">01</div><div><h3>Residential Extensions</h3><p>Side-return, wrap-around and two-storey extensions that add light and space.</p></div></div>
+      <div class="svc"><div class="no">02</div><div><h3>New Build Homes</h3><p>Individual one-off houses designed from concept through to completion.</p></div></div>
+      <div class="svc"><div class="no">03</div><div><h3>Commercial Design</h3><p>Offices, retail and mixed-use schemes that work hard for the business.</p></div></div>
+      <div class="svc"><div class="no">04</div><div><h3>Planning Applications</h3><p>Full applications, appeals and pre-application advice handled for you.</p></div></div>
+      <div class="svc"><div class="no">05</div><div><h3>Listed &amp; Conservation</h3><p>Sympathetic alterations to listed, period and conservation-area buildings.</p></div></div>
+      <div class="svc"><div class="no">06</div><div><h3>Loft Conversions</h3><p>Extra bedrooms, studies and studios that make the most of the roof.</p></div></div>
+      <div class="svc"><div class="no">07</div><div><h3>Building Regulations</h3><p>Technical drawing packages ready for building control sign-off.</p></div></div>
+      <div class="svc"><div class="no">08</div><div><h3>3D Visualisation</h3><p>See your scheme in realistic 3D before a single brick is laid.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Selected projects</div>
+      <h2>A studio with <b>range.</b></h2>
+    </div>
+    <div class="gal reveal">
+      <div class="gtile g-feature"><img src="work-1.jpg" alt="Contemporary oak-frame home at dusk"><span class="gcap">New-build oak-frame home</span></div>
+      <div class="gtile"><img src="work-2.jpg" alt="Glazed oak-frame extension"><span class="gcap">Glazed timber extension</span></div>
+      <div class="gtile"><img src="work-3.jpg" alt="Period London townhouse refurbishment"><span class="gcap">Period townhouse refurbishment</span></div>
+      <div class="gtile g-tall"><img src="work-4.jpg" alt="Commercial office building"><span class="gcap">Commercial office scheme</span></div>
+      <div class="gtile"><img src="work-5.jpg" alt="Stone new-build house"><span class="gcap">Five-bedroom stone new build</span></div>
+      <div class="gtile"><img src="work-6.jpg" alt="Listed Georgian building"><span class="gcap">Listed building, sympathetic works</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURE / ABOUT ===== -->
+<div class="feature" id="about">
+  <div class="feat-grid">
+    <div class="feat-photo reveal"><img src="craft.jpg" alt="Oak frame structure under construction"></div>
+    <div class="feat-text reveal">
+      <div class="label">Our approach</div>
+      <h2 style="font-size:clamp(1.9rem,3.6vw,2.8rem)">From first sketch to <b>finished building.</b></h2>
+      <p class="body">Stockton Architectural Design is a Devon practice working across residential and commercial projects. We keep it straightforward: listen first, design carefully, and stay involved from concept and planning through to technical drawings and the build. One studio, one relationship, and architecture that respects its setting, its budget and the people who use it.</p>
+      <div class="pillars">
+        <div class="pillar"><b>Design</b><span>Considered concepts that suit how you live and work.</span></div>
+        <div class="pillar"><b>Planning</b><span>Applications and approvals navigated for you.</span></div>
+        <div class="pillar"><b>Delivery</b><span>Technical drawings through to a finished build.</span></div>
+      </div>
+      <div class="sigblock">
+        <img src="mark.svg" class="smk" alt="">
+        <div class="who"><b>Stockton Architectural Design</b><span>Residential &amp; commercial &middot; Devon</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA BAND ===== -->
+<div class="band">
+  <div class="band-bg"><img src="band.jpg" alt="Contemporary homes at sunset"></div>
+  <div class="wrap inner">
+    <h2>Got a project <b>in mind?</b></h2>
+    <p>Book a free, no-obligation consultation anywhere across Devon and the South West.</p>
+    <div class="row">
+      <a href="#contact" class="btn btn-primary">Start your project</a>
+      <a id="bandCall" href="#" class="btn btn-ghost-light">Call the studio</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="rev-top reveal">
+      <div class="sec-head">
+        <div class="label">What clients say</div>
+        <h2>Trusted across <b>Devon.</b></h2>
+      </div>
+      <div class="rate-badge">
+        <div class="big">5.0</div>
+        <div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="sub">Based on client reviews</div></div>
+      </div>
+    </div>
+    <div class="rev-grid reveal">
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Stockton drew up our rear extension in Exeter and got it through planning first time. Clear drawings, no jargon, and they genuinely listened to what we wanted."</p><div class="by"><div class="av">H</div><div><b>Helen &amp; Mark</b><span>Exeter &middot; Extension</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"We used Stockton for a small office scheme in Plymouth. Professional from concept to building control, and the 3D views helped us sign off with confidence."</p><div class="by"><div class="av">A</div><div><b>Andrew P.</b><span>Plymouth &middot; Commercial</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"They handled a tricky listed cottage near Totnes with real care. The conservation officer was happy, and so were we. Beautiful, sensitive design."</p><div class="by"><div class="av">R</div><div><b>Rachel D.</b><span>Totnes &middot; Listed Building</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Loft conversion in Newton Abbot. The design made far more of the space than we thought possible, and the planning side was completely painless."</p><div class="by"><div class="av">J</div><div><b>James T.</b><span>Newton Abbot &middot; Loft</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Designed our new build in Barnstaple. Patient, detailed and full of good ideas we would never have thought of ourselves. A pleasure to work with."</p><div class="by"><div class="av">H</div><div><b>The Hardings</b><span>Barnstaple &middot; New Build</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Honest advice from the first meeting. Our Torquay extension came in exactly as drawn. Could not recommend the studio more highly to anyone."</p><div class="by"><div class="av">S</div><div><b>Sue M.</b><span>Torquay &middot; Extension</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<div class="areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Where we work</div>
+      <h2>Architects across <b>Devon.</b></h2>
+    </div>
+    <div class="area-list reveal">
+      <a href="#contact">Exeter</a><a href="#contact">Plymouth</a><a href="#contact">Barnstaple</a>
+      <a href="#contact">Torquay</a><a href="#contact">Newton Abbot</a><a href="#contact">Exmouth</a>
+      <a href="#contact">Tiverton</a><a href="#contact">Totnes</a><a href="#contact">Tavistock</a>
+      <a href="#contact">Okehampton</a><a href="#contact">Dawlish</a><a href="#contact">Honiton</a>
+      <a href="#contact">Crediton</a><a href="#contact">Sidmouth</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get in touch</div>
+      <h2>Let us design your <b>next project.</b></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="ci-t">Call the studio</div><a id="contactPhone" class="ci-v" href="#">Tap to call</a></div></div>
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><div class="ci-t">Email</div><a id="contactEmail" class="ci-v" href="#">email</a></div></div>
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ci-t">Covering</div><div class="ci-v">Devon &amp; the South West</div></div></div>
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="ci-t">Response time</div><div class="ci-v">Within one working day</div></div></div>
+      </div>
+      <form class="enq reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Stockton Architectural Design">
+        <input type="hidden" name="source" value="mockup-stockton-architectural-design">
+        <div class="two">
+          <div class="fr"><label for="n">Your name</label><input id="n" name="name" required placeholder="Jane Smith"></div>
+          <div class="fr"><label for="p">Phone</label><input id="p" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="01xxx xxxxxx"></div>
+        </div>
+        <div class="fr"><label for="e">Email (optional)</label><input id="e" name="email" type="email" placeholder="you@email.com"></div>
+        <div class="fr"><label for="s">What kind of project?</label>
+          <select id="s" name="service">
+            <optgroup label="Residential">
+              <option>House extension</option>
+              <option>New build home</option>
+              <option>Loft conversion</option>
+              <option>Listed / period building</option>
+            </optgroup>
+            <optgroup label="Commercial">
+              <option>Office or workplace</option>
+              <option>Retail or hospitality</option>
+              <option>Mixed-use scheme</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Planning advice only</option>
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="fr"><label for="m">Tell us about your project</label><textarea id="m" name="message" placeholder="Where the site is, what you're hoping to do, rough timescales..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+        <div class="formnote">Or call the studio directly on <a id="formPhone" href="#" style="color:var(--plum)">our number</a></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <img src="mark.svg" class="mk" alt="Stockton Architectural Design">
+          <span class="bt"><b>STOCKTON</b><span>Architectural Design</span></span>
+        </a>
+        <p>Residential and commercial architecture across Devon and the South West. Considered design, from first sketch to finished building.</p>
+      </div>
+      <div class="foot-col"><h4>Services</h4>
+        <a href="#services">Extensions</a><a href="#services">New Builds</a>
+        <a href="#services">Commercial</a><a href="#services">Planning</a><a href="#services">Conservation</a></div>
+      <div class="foot-col"><h4>Areas</h4>
+        <a href="#areas">Exeter</a><a href="#areas">Plymouth</a>
+        <a href="#areas">Barnstaple</a><a href="#areas">Torquay</a><a href="#areas">Newton Abbot</a></div>
+      <div class="foot-col"><h4>Contact</h4>
+        <a id="footPhone" href="#">Call us</a>
+        <a id="footEmail" href="#">Email us</a>
+        <a href="#contact">Start a project</a></div>
+    </div>
+    <div class="foot-bot">
+      <div>&copy; 2026 Stockton Architectural Design. All rights reserved.</div>
+      <div>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING CTAs ===== -->
+<div class="fabs" id="fabs">
+  <a id="fabCall" href="#" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a id="fabMail" href="#" class="fab fab-mail" aria-label="Email">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+  </a>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lb"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+/* ---- contact obfuscation (PLACEHOLDER Devon details, swap for real) ---- */
+var P  = atob('MDEzOTIzNDU2Nzg=');
+var Pf = atob('MDEzOTIgMzQ1IDY3OA==');
+var E  = atob('c3R1ZGlvQHN0b2NrdG9uYXJjaGl0ZWN0dXJhbC5jby51aw==');
+['navCall','heroCall','bandCall','fabCall'].forEach(function(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;});
+['contactPhone','formPhone','footPhone'].forEach(function(id){var el=document.getElementById(id);if(el){el.href='tel:'+P;el.textContent=Pf;}});
+document.getElementById('navCallTxt').textContent = Pf;
+['contactEmail','footEmail','fabMail'].forEach(function(id){var el=document.getElementById(id);if(el){el.href='mailto:'+E;if(id==='contactEmail')el.textContent=E;}});
+
+/* ---- loader ---- */
+function revealSite(){
+  if(document.body.classList.contains('loaded'))return;
+  document.getElementById('loader').classList.add('done');
+  document.body.classList.remove('locked');
+  document.body.classList.add('loaded');
+}
+window.addEventListener('load',function(){ setTimeout(revealSite, 2750); });
+setTimeout(revealSite, 4200);
+
+/* ---- mobile nav ---- */
+var burger=document.getElementById('burger'), panel=document.getElementById('mpanel');
+burger.addEventListener('click',function(){panel.classList.toggle('open');});
+panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){panel.classList.remove('open');});});
+
+/* ---- floating CTAs after hero ---- */
+var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+new IntersectionObserver(function(en){fabs.classList.toggle('show',!en[0].isIntersecting);},{threshold:0}).observe(hero);
+
+/* ---- scroll reveal ---- */
+var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+/* ---- lightbox ---- */
+var lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('.gtile').forEach(function(t){t.addEventListener('click',function(){lbImg.src=t.querySelector('img').src;lb.classList.add('open');});});
+lb.addEventListener('click',function(){lb.classList.remove('open');});
+
+/* ---- form ---- */
+document.getElementById('formTimestamp').value = Date.now();
+var ph=document.getElementById('p');
+ph.addEventListener('input',function(){this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))?'':'Please enter a valid UK phone number');});
+</script>
+</body>
+</html>
