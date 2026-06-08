@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZillaWorks | Bricklayers in London</title>
+<meta name="description" content="ZillaWorks. Time-served bricklayers covering London. New builds, extensions, garden walls, repointing, restoration and bespoke brickwork built to last.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%2322262b'/%3E%3Cg fill='%23cd7152'%3E%3Crect x='5' y='7' width='9' height='4' rx='1'/%3E%3Crect x='16' y='7' width='11' height='4' rx='1'/%3E%3Crect x='5' y='13' width='13' height='4' rx='1'/%3E%3Crect x='20' y='13' width='7' height='4' rx='1'/%3E%3Crect x='5' y='19' width='8' height='4' rx='1'/%3E%3Crect x='15' y='19' width='12' height='4' rx='1'/%3E%3C/g%3E%3C/svg%3E">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#22262b;
+    --ink-2:#2c3138;
+    --paper:#ffffff;
+    --mist:#f2f3f3;
+    --mist-2:#e8eaeb;
+    --line:#e1e3e4;
+    --brick:#cd7152;
+    --brick-deep:#b15a3c;
+    --brick-lo:#9c4d32;
+    --mortar:#cdbb9c;
+    --muted:#69707a;
+    --shadow:0 24px 60px -28px rgba(15,18,22,.5);
+    --maxw:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body.loading{overflow:hidden;height:100vh}
+  h1,h2,h3{line-height:1.02;letter-spacing:-.01em}
+  .display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.005em;text-transform:uppercase}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  em{font-style:normal}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .kicker{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:12.5px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--brick);
+    display:inline-block;margin-bottom:18px;
+  }
+  .kicker.light{color:#e6a78c}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14.5px;
+    letter-spacing:.02em;padding:15px 26px;border-radius:2px;
+    transition:transform .18s ease,background .18s ease,color .18s ease;
+    cursor:pointer;border:none;
+  }
+  .btn-brick{background:var(--brick);color:#fff}
+  .btn-brick:hover{background:var(--brick-deep);transform:translateY(-2px)}
+  .btn-ink{background:var(--ink);color:#fff}
+  .btn-ink:hover{transform:translateY(-2px);background:#000}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-ghost:hover{background:#fff;color:var(--ink);transform:translateY(-2px)}
+  .btn svg{width:17px;height:17px}
+
+  /* ============ BRICK-LAYING PRELOADER ============ */
+  #loader{
+    position:fixed;inset:0;z-index:9999;
+    background:#15191d;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  #loader.done{pointer-events:none}
+  #wallStage{
+    position:relative;
+    width:min(86vw,760px);
+    height:min(58vh,420px);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    overflow:hidden;
+    border-radius:3px;
+  }
+  .course{display:flex;flex-wrap:nowrap;will-change:transform}
+  .brick{
+    flex:0 0 auto;
+    background:
+      linear-gradient(160deg,rgba(255,255,255,.13),rgba(0,0,0,.18)),
+      linear-gradient(180deg,#c9613f,#9c4226);
+    border-radius:2px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -2px 3px rgba(0,0,0,.28);
+    margin:2px;
+    opacity:0;
+    transform:translateY(-46px) rotate(-4deg);
+    will-change:transform,opacity;
+    transition:transform .5s cubic-bezier(.22,1.1,.36,1),opacity .35s ease;
+  }
+  .brick.laid{opacity:1;transform:translateY(0) rotate(0)}
+  #wallStage::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:
+      repeating-linear-gradient(0deg,#b3a079 0 2px,#9c8a64 2px 4px),
+      #b3a079;
+    opacity:.0;transition:opacity .4s ease;
+  }
+  .loader-brand{
+    position:absolute;inset:0;z-index:5;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:#fff;
+    opacity:0;transform:translateY(10px);
+    transition:opacity .55s ease,transform .55s ease;
+    pointer-events:none;
+  }
+  .loader-brand.show{opacity:1;transform:translateY(0)}
+  .loader-brand .lb-mark{
+    font-family:'Anton',sans-serif;font-size:clamp(54px,12vw,108px);
+    text-transform:uppercase;letter-spacing:.02em;line-height:.9;
+    text-shadow:0 3px 0 rgba(0,0,0,.35),0 14px 30px rgba(0,0,0,.5);
+  }
+  .loader-brand .lb-sub{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(11px,2.4vw,15px);
+    letter-spacing:.42em;text-transform:uppercase;margin-top:14px;color:#f1cdbb;
+    padding-left:.42em;
+  }
+  .loader-progress{
+    position:absolute;left:0;bottom:0;height:3px;background:var(--brick);
+    width:0;z-index:6;transition:width .2s linear;
+  }
+  .loader-skip{
+    position:absolute;bottom:22px;right:24px;z-index:7;
+    font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;
+    letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);
+    background:none;border:none;cursor:pointer;transition:color .2s;
+  }
+  .loader-skip:hover{color:#fff}
+  #loader.done{opacity:0;transition:opacity .5s ease .15s;}
+
+  /* ============ NAV ============ */
+  header.nav{
+    position:sticky;top:0;z-index:200;
+    background:var(--ink);
+    border-bottom:3px solid var(--brick);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;
+    height:70px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .brand{display:flex;align-items:center;gap:12px;color:#fff}
+  .brand .mark{
+    width:40px;height:40px;border-radius:3px;flex:0 0 auto;
+    background:linear-gradient(180deg,#d27c5e,#b15a3c);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Anton',sans-serif;font-size:16px;color:#fff;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25),inset 0 -2px 3px rgba(0,0,0,.3);
+    letter-spacing:.02em;
+  }
+  .brand .bt{font-family:'Archivo',sans-serif;font-weight:800;font-size:17px;
+    letter-spacing:.04em;text-transform:uppercase;line-height:1}
+  .brand .bs{display:block;font-family:'Archivo',sans-serif;font-weight:600;
+    font-size:9.5px;letter-spacing:.28em;color:#c7a190;text-transform:uppercase;margin-top:3px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-family:'Archivo',sans-serif;font-weight:600;font-size:14px;
+    color:#d8d4cd;letter-spacing:.02em;transition:color .15s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:var(--brick);color:#fff;padding:11px 20px;border-radius:2px;
+    font-weight:700 !important;font-size:13.5px !important;letter-spacing:.04em}
+  .nav-cta:hover{background:var(--brick-deep);color:#fff !important}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;transition:.2s}
+  .mobile-menu{display:none;background:var(--ink-2);border-top:1px solid rgba(255,255,255,.08)}
+  .mobile-menu.open{display:block}
+  .mobile-menu .mm{padding:14px 28px 22px}
+  .mobile-menu a{display:block;padding:13px 0;color:#e7e3dc;border-bottom:1px solid rgba(255,255,255,.07);
+    font-family:'Archivo',sans-serif;font-weight:600;font-size:15px}
+  .mobile-menu a.mm-call{color:var(--brick);border-bottom:none;margin-top:6px}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;background:var(--ink);overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background-image:url('hero.jpg');
+    background-size:cover;background-position:center;}
+  .hero-bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(110deg,rgba(20,23,27,.93) 0%,rgba(20,23,27,.78) 42%,rgba(20,23,27,.5) 100%)}
+  .hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
+    padding:96px 28px 104px;color:#fff}
+  .hero h1{font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(42px,7.2vw,90px);line-height:.94;max-width:14ch;letter-spacing:.005em}
+  .hero h1 .em{color:#e9a07c}
+  .hero p.lead{max-width:50ch;margin-top:24px;font-size:18px;color:#dad7d0}
+  .hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;align-items:center}
+  .hero-phone{display:flex;align-items:center;gap:11px;font-family:'Archivo',sans-serif;
+    font-weight:700;font-size:17px;color:#fff;margin-left:6px}
+  .hero-phone svg{width:19px;height:19px;color:var(--brick)}
+  .hero-photo-m{display:none}
+  .hero-stats{display:flex;gap:40px;margin-top:48px;flex-wrap:wrap}
+  .hero-stats .st .n{font-family:'Anton',sans-serif;font-size:40px;color:#fff;line-height:1}
+  .hero-stats .st .l{font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;
+    letter-spacing:.12em;text-transform:uppercase;color:#bdb6ac;margin-top:6px}
+
+  .course-rule{height:14px;background:
+    repeating-linear-gradient(90deg,var(--brick) 0 46px,transparent 46px 52px);
+    opacity:.9}
+
+  /* ============ TRUST BAR ============ */
+  .trust{background:var(--ink-2);color:#fff}
+  .trust .wrap{display:flex;gap:30px;justify-content:space-between;flex-wrap:wrap;
+    padding-top:26px;padding-bottom:26px}
+  .trust .ti{display:flex;align-items:center;gap:12px;font-family:'Archivo',sans-serif;
+    font-weight:600;font-size:14.5px;color:#e7e2da}
+  .trust .ti svg{width:22px;height:22px;color:var(--brick);flex:0 0 auto}
+
+  /* ============ SECTION SHELL ============ */
+  section.block{padding:96px 0}
+  .sec-head{max-width:62ch}
+  .sec-head h2{font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(32px,5vw,58px);line-height:.98}
+  .sec-head p{margin-top:18px;font-size:17px;color:var(--muted);max-width:56ch}
+  .secnum{font-family:'Anton',sans-serif;font-size:15px;color:var(--brick);
+    letter-spacing:.1em;display:block;margin-bottom:10px}
+
+  /* ============ SERVICES ============ */
+  .services{background:var(--mist)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 28px 32px;
+    position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+  .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .svc::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;
+    background:repeating-linear-gradient(90deg,var(--brick) 0 22px,transparent 22px 26px);
+    opacity:0;transition:opacity .2s}
+  .svc:hover::before{opacity:1}
+  .svc .ic{width:48px;height:48px;border-radius:3px;background:var(--ink);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .svc .ic svg{width:24px;height:24px;color:#e9a07c}
+  .svc h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;letter-spacing:0}
+  .svc p{margin-top:10px;font-size:15px;color:var(--muted)}
+
+  /* ============ SHOWPIECE ============ */
+  .showpiece{background:var(--ink);color:#fff;overflow:hidden}
+  .sp-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0;align-items:stretch}
+  .sp-text{padding:90px 60px 90px 0}
+  .sp-text h2{font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(34px,4.6vw,56px);line-height:.96}
+  .sp-text p{margin-top:20px;color:#cfc8be;font-size:17px;max-width:46ch}
+  .sp-list{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+  .sp-list .li{display:flex;align-items:center;gap:13px;font-family:'Archivo',sans-serif;
+    font-weight:600;font-size:15px;color:#ece7df}
+  .sp-list .li svg{width:18px;height:18px;color:var(--brick);flex:0 0 auto}
+  .sp-img{position:relative;min-height:480px;background:url('showpiece.jpg') center/cover}
+
+  /* ============ GALLERY ============ */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px;margin-top:50px}
+  .gal{position:relative;overflow:hidden;border-radius:4px;background:var(--mist-2)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .gal:hover img{transform:scale(1.06)}
+  .gal.tall{grid-row:span 2}
+  .gal.wide{grid-column:span 2}
+
+  /* ============ ABOUT ============ */
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .about-img{position:relative}
+  .about-img img{border-radius:5px;width:100%;box-shadow:var(--shadow)}
+  .about-img .badge{position:absolute;bottom:-22px;right:-14px;background:var(--brick);
+    color:#fff;padding:20px 24px;border-radius:4px;text-align:center;box-shadow:var(--shadow)}
+  .about-img .badge .n{font-family:'Anton',sans-serif;font-size:34px;line-height:1}
+  .about-img .badge .l{font-family:'Archivo',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+  .about-grid h2{font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(30px,4.4vw,52px);line-height:.98}
+  .about-grid p{margin-top:16px;color:var(--muted);font-size:16.5px}
+  .sig{font-family:'Anton',sans-serif;font-size:24px;color:var(--ink);margin-top:24px;letter-spacing:.02em}
+  .sig small{display:block;font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;
+    letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-top:4px}
+
+  /* ============ PROCESS ============ */
+  .process{background:var(--mist)}
+  .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:50px}
+  .proc{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 26px}
+  .proc .pn{font-family:'Anton',sans-serif;font-size:46px;color:var(--mist-2);line-height:.8}
+  .proc h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;margin-top:8px}
+  .proc p{margin-top:8px;font-size:14.5px;color:var(--muted)}
+
+  /* ============ REVIEWS ============ */
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 28px}
+  .rev .stars{color:var(--brick);font-size:16px;letter-spacing:2px}
+  .rev p{margin-top:14px;font-size:15.5px;color:#33373d}
+  .rev .who{margin-top:18px;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px}
+  .rev .who small{display:block;color:var(--muted);font-weight:500;font-size:12.5px;
+    letter-spacing:.04em;margin-top:2px}
+
+  /* ============ CONTACT ============ */
+  .contact{background:var(--ink);color:#fff}
+  .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+  .ct-grid h2{font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(32px,4.6vw,54px);line-height:.98}
+  .ct-grid .lead{margin-top:18px;color:#cfc8be;font-size:17px;max-width:42ch}
+  .ct-detail{margin-top:30px;display:flex;flex-direction:column;gap:18px}
+  .ct-row{display:flex;align-items:center;gap:15px}
+  .ct-row .ci{width:44px;height:44px;border-radius:3px;background:var(--ink-2);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .ct-row .ci svg{width:20px;height:20px;color:var(--brick)}
+  .ct-row .cl{font-family:'Archivo',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:#a59c90}
+  .ct-row a,.ct-row span.v{display:block;font-family:'Archivo',sans-serif;font-weight:700;
+    font-size:17px;color:#fff}
+  form{background:#fff;border-radius:5px;padding:32px;color:var(--ink)}
+  form .fg{margin-bottom:16px}
+  form label{font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;
+    letter-spacing:.04em;display:block;margin-bottom:7px}
+  form input,form textarea,form select{width:100%;padding:13px 15px;border:1.5px solid var(--line);
+    border-radius:3px;font-family:'Inter',sans-serif;font-size:15px;background:var(--mist);transition:border .15s}
+  form input:focus,form textarea:focus,form select:focus{outline:none;border-color:var(--brick);background:#fff}
+  form textarea{resize:vertical;min-height:110px}
+  form button{width:100%;justify-content:center;margin-top:6px}
+
+  /* ============ FOOTER ============ */
+  footer{background:#15181c;color:#b3b6bb;padding:54px 0 30px}
+  .ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,.08)}
+  .ft-grid h4{font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;
+    text-transform:uppercase;color:#fff;margin-bottom:16px}
+  .ft-grid a{display:block;color:#b3b6bb;font-size:14.5px;padding:5px 0;transition:color .15s}
+  .ft-grid a:hover{color:#fff}
+  .ft-about{font-size:14.5px;line-height:1.7;max-width:38ch}
+  .ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    padding-top:24px;font-size:13px;color:#7b7f85}
+  .ft-bottom a{color:#cfc8be}
+
+  /* FAB */
+  .fab{position:fixed;right:18px;bottom:18px;z-index:150;background:var(--brick);color:#fff;
+    width:58px;height:58px;border-radius:50%;display:none;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(205,113,82,.7);transition:transform .2s}
+  .fab:hover{transform:scale(1.07)}
+  .fab svg{width:25px;height:25px}
+
+  /* reveal */
+  .r{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+  .r.in{opacity:1;transform:none}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:980px){
+    .svc-grid{grid-template-columns:repeat(2,1fr)}
+    .sp-grid{grid-template-columns:1fr}
+    .sp-text{padding:70px 0 50px}
+    .sp-img{min-height:360px}
+    .about-grid{grid-template-columns:1fr;gap:60px}
+    .about-img .badge{right:14px}
+    .proc-grid{grid-template-columns:repeat(2,1fr)}
+    .rev-grid{grid-template-columns:1fr}
+    .ct-grid{grid-template-columns:1fr;gap:40px}
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+    .ft-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .nav-links{display:none}
+    .nav-toggle{display:block}
+    section.block{padding:64px 0}
+    .svc-grid{grid-template-columns:1fr}
+    .trust .wrap{gap:16px}
+    .trust .ti{font-size:13px}
+    .hero-stats{gap:26px}
+    .hero-stats .st .n{font-size:32px}
+    .fab{display:flex}
+    .ft-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+    .gal.wide{grid-column:span 1}
+    .gal.tall{grid-row:span 1}
+    .hero-bg{display:none}
+    .hero{background:var(--ink)}
+    .hero-inner{padding:54px 28px 40px}
+    .hero-photo-m{display:block;margin-top:34px;border-radius:5px;overflow:hidden;
+      box-shadow:var(--shadow)}
+    .hero-photo-m img{width:100%;height:240px;object-fit:cover}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .brick{transition:none}
+    .r{transition:none}
+  }
+</style>
+</head>
+<body class="loading">
+
+<!-- ===================== BRICK-LAYING LOADER ===================== -->
+<div id="loader" aria-hidden="true">
+  <div id="wallStage"></div>
+  <div class="loader-brand" id="loaderBrand">
+    <div class="lb-mark">Zilla<br>Works</div>
+    <div class="lb-sub">London Bricklayers</div>
+  </div>
+  <div class="loader-progress" id="loaderProgress"></div>
+  <button class="loader-skip" id="loaderSkip">Skip</button>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="ZillaWorks home">
+      <span class="mark">ZW</span>
+      <span><span class="bt">ZillaWorks</span><span class="bs">London Bricklayers</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta" id="navCta">Get a quote</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mm">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Get a quote</a>
+      <a href="#" class="mm-call" id="mobileCall">Call us</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="kicker light">London Bricklayers</span>
+    <h1>Brickwork built to <span class="em">last a lifetime</span></h1>
+    <p class="lead">ZillaWorks lays brick and block the way it should be done. New builds, extensions, garden walls, repointing and restoration right across London, finished to a standard you can stand behind.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-brick">Get a free quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#work" class="btn btn-ghost">See the work</a>
+      <a href="#" class="hero-phone" id="heroPhone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="heroPhoneText">Call or text</span>
+      </a>
+    </div>
+    <div class="hero-photo-m"><img src="hero.jpg" alt="Bricklayer laying a brick on a fresh mortar bed"></div>
+    <div class="hero-stats">
+      <div class="st"><div class="n">12+</div><div class="l">Years on the tools</div></div>
+      <div class="st"><div class="n">100%</div><div class="l">Built to last</div></div>
+      <div class="st"><div class="n">5.0</div><div class="l">Client rated</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TRUST ===================== -->
+<div class="trust">
+  <div class="wrap">
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Fully insured</div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>Time-served bricklayers</div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>Domestic &amp; commercial</div>
+    <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>London wide</div>
+  </div>
+</div>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="block services" id="services">
+  <div class="wrap">
+    <div class="sec-head r">
+      <span class="secnum">01 / What we build</span>
+      <h2>Every kind of wall, laid to the line</h2>
+      <p>From a new-build gable to a garden wall, a repoint or a brick-paved path, every job is laid by hand and built to last. No subbing out the bits that matter, no shortcuts on the parts you cannot see.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc r">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10h16v11M4 14h16M9 21v-7M15 21v-7"/></svg></div>
+        <h3>New build &amp; extensions</h3>
+        <p>Footings to roofline. Cavity walls, gable ends, piers and chimneys laid plumb, level and to the drawings.</p>
+      </div>
+      <div class="svc r">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V6h14v15M5 11h14M5 16h14M10 6V3M14 6V3"/></svg></div>
+        <h3>Garden &amp; boundary walls</h3>
+        <p>Retaining walls, raised beds, piers and copings. Built to hold ground and look sharp from the street.</p>
+      </div>
+      <div class="svc r">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l5-4 5 4M3 7v13h10V7M16 12h5v8h-5z"/><path d="M6 11h4M6 15h4"/></svg></div>
+        <h3>Repointing &amp; restoration</h3>
+        <p>Lime and sand-cement repointing, brick matching and rebuilds. Bring tired London brickwork back to life.</p>
+      </div>
+      <div class="svc r">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Patios, paths &amp; steps</h3>
+        <p>Herringbone and basket-weave brick paving, brick steps and edging. Hard landscaping that beds in for good.</p>
+      </div>
+      <div class="svc r">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16M8 7v10M14 7v10"/></svg></div>
+        <h3>Brickwork repairs &amp; rebuilds</h3>
+        <p>Cracked walls, blown brickwork, bowed bays and bulging parapets put right and rebuilt to match.</p>
+      </div>
+      <div class="svc r">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V11a8 8 0 0 1 16 0v10M4 21h16M9 21v-5a3 3 0 0 1 6 0v5"/></svg></div>
+        <h3>Feature &amp; bespoke work</h3>
+        <p>Arches, curved walls, brick BBQs and planters. The interesting jobs other bricklayers turn down.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SHOWPIECE ===================== -->
+<section class="showpiece">
+  <div class="wrap">
+    <div class="sp-grid">
+      <div class="sp-text r">
+        <span class="kicker light">02 / Down to the last brick</span>
+        <h2>Old London brick, matched so the repair disappears</h2>
+        <p>Half the skill in this city is making new work look like it has always been there. We source reclaimed and matched stock brick, set the bond to the original and point it to suit, so a repair or extension reads as one with the house, not a patch bolted on.</p>
+        <div class="sp-list">
+          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Brick, bond and mortar matched to the original</div>
+          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Consistent joints and a struck, weatherproof finish</div>
+          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Tidy site, dust kept down, neighbours kept onside</div>
+        </div>
+        <a href="#contact" class="btn btn-brick" style="margin-top:30px">Start your project
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="sp-img"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head r">
+      <span class="secnum">03 / Recent work</span>
+      <h2>Laid across London</h2>
+      <p>A few jobs off the trowel lately. Brick and block, on new builds, extensions and gardens across the capital.</p>
+    </div>
+    <div class="gal-grid r">
+      <div class="gal tall"><img src="work-1.jpg" alt="Red brick Victorian terrace corner with sash windows"></div>
+      <div class="gal wide"><img src="work-2.jpg" alt="Brick archway around a painted front door"></div>
+      <div class="gal"><img src="work-3.jpg" alt="Bricklayer building a block wall on a London site"></div>
+      <div class="gal"><img src="work-4.jpg" alt="Curved brick wall with a postbox on a London street"></div>
+      <div class="gal tall"><img src="work-5.jpg" alt="Flint and brick chequerboard wall on a period cottage"></div>
+      <div class="gal wide"><img src="work-8.jpg" alt="Close up of a brick being bedded on fresh mortar"></div>
+      <div class="gal"><img src="work-6.jpg" alt="Weathered London stock brick wall"></div>
+      <div class="gal"><img src="work-7.jpg" alt="Clean red brick wall in stretcher bond"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="block" id="about" style="background:var(--mist)">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img r">
+        <img src="about.jpg" alt="ZillaWorks bricklayer setting brickwork to the line">
+        <div class="badge"><div class="n">12+</div><div class="l">Years laying brick</div></div>
+      </div>
+      <div class="r">
+        <span class="secnum">04 / The people behind it</span>
+        <h2>Meet ZillaWorks</h2>
+        <p>We are a small, time-served bricklaying outfit based in London. Between us we have spent years on every face of the trade, from new-build sites and extensions to fiddly garden features and period repointing.</p>
+        <p>When you ring ZillaWorks you deal with the people who turn up, price the work and lay every brick. We keep the site tidy, keep you in the loop, and we do not leave until it is right.</p>
+        <p>Most of our work comes from people passing our name on, which tells you what you need to know. If you want brickwork that still looks good in twenty years, give us a shout.</p>
+        <div class="sig">ZillaWorks<small>London Bricklayers</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="block process">
+  <div class="wrap">
+    <div class="sec-head r">
+      <span class="secnum">05 / How it works</span>
+      <h2>From first call to last joint</h2>
+      <p>No mystery, no surprises on the invoice. Four straightforward steps from your enquiry to a finished wall.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc r"><div class="pn">01</div><h3>Have a chat</h3><p>Tell us what you are after. We will talk through the options and arrange to look at the site.</p></div>
+      <div class="proc r"><div class="pn">02</div><h3>Clear quote</h3><p>A written, fixed price with the bricks, bond and timings spelled out. No padding.</p></div>
+      <div class="proc r"><div class="pn">03</div><h3>Get it laid</h3><p>We turn up when we say we will, keep it tidy and lay it to the line. You see progress daily.</p></div>
+      <div class="proc r"><div class="pn">04</div><h3>Walk it together</h3><p>We walk the finished job together. We are not paid in full until you are happy with every course.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REVIEWS ===================== -->
+<section class="block" id="reviews">
+  <div class="wrap">
+    <div class="sec-head r">
+      <span class="secnum">06 / What people say</span>
+      <h2>Recommended by the neighbours</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev r">
+        <div class="stars">★★★★★</div>
+        <p>"ZillaWorks rebuilt our front boundary wall in Clapham and matched the old stock brick so well you cannot see the join. Tidy, polite and the price did not move from the quote."</p>
+        <div class="who">Sarah Whitlock<small>Clapham, SW4</small></div>
+      </div>
+      <div class="rev r">
+        <div class="stars">★★★★★</div>
+        <p>"Repointed the whole back of our Victorian terrace in Hackney. Massive difference, the brickwork looks twenty years younger. Turned up every day and left it spotless."</p>
+        <div class="who">Daniel Osei<small>Hackney, E8</small></div>
+      </div>
+      <div class="rev r">
+        <div class="stars">★★★★★</div>
+        <p>"New garden wall and brick steps in Ealing. The detail is unreal, every brick lines up. Loads of compliments off visitors. Worth every penny."</p>
+        <div class="who">Priya &amp; James Hart<small>Ealing, W5</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <div class="ct-grid">
+      <div class="r">
+        <span class="kicker light">07 / Get in touch</span>
+        <h2>Let's talk about your wall</h2>
+        <p class="lead">Send a few details or give us a call. We cover London and the surrounding areas, and we are happy to come and take a look before you commit to anything.</p>
+        <div class="ct-detail">
+          <div class="ct-row">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><span class="cl">Call or text</span><a href="#" id="contactCall">Tap to call</a></div>
+          </div>
+          <div class="ct-row">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+            <div><span class="cl">Email</span><a href="#" id="contactEmail">Email us</a></div>
+          </div>
+          <div class="ct-row">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><span class="cl">Covering</span><span class="v">London &amp; surrounding areas</span></div>
+          </div>
+          <div class="ct-row">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div><span class="cl">Hours</span><span class="v">Mon to Sat, 7am to 6pm</span></div>
+          </div>
+        </div>
+      </div>
+      <form id="quoteForm" action="/api/enquiry" method="POST" onsubmit="return false;">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="ZillaWorks">
+        <input type="hidden" name="source" value="mockup-zillaworks">
+        <div class="fg"><label for="name">Your name</label><input type="text" id="name" name="name" required></div>
+        <div class="fg"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" pattern="^(0|\+44)\d{9,11}$" required></div>
+        <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email"></div>
+        <div class="fg"><label for="job">What do you need?</label>
+          <select id="job" name="job">
+            <option>New build / extension brickwork</option>
+            <option>Garden or boundary wall</option>
+            <option>Repointing / restoration</option>
+            <option>Patio, path or steps</option>
+            <option>Brickwork repair or rebuild</option>
+            <option>Feature or bespoke work</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="fg"><label for="msg">Details</label><textarea id="msg" name="msg" placeholder="Tell us a bit about the job, where it is and rough timescales."></textarea></div>
+        <button type="submit" class="btn btn-brick">Send enquiry
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <a href="#top" class="brand" style="margin-bottom:18px">
+          <span class="mark">ZW</span>
+          <span><span class="bt" style="color:#fff">ZillaWorks</span><span class="bs">London Bricklayers</span></span>
+        </a>
+        <p class="ft-about">Time-served bricklayers covering London. New builds, extensions, garden walls, repointing and bespoke brickwork, built to last by ZillaWorks.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#services">New build &amp; extensions</a>
+        <a href="#services">Garden &amp; boundary walls</a>
+        <a href="#services">Repointing &amp; restoration</a>
+        <a href="#services">Patios, paths &amp; steps</a>
+        <a href="#services">Feature &amp; bespoke work</a>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <a href="#" id="footPhone">Call or text</a>
+        <a href="#" id="footEmail">Email us</a>
+        <a href="#contact">Request a quote</a>
+        <a href="#work">See recent work</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2026 ZillaWorks. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="fab" id="fabCall" aria-label="Call ZillaWorks">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+/* ===================== BRICK-LAYING LOADER ===================== */
+(function(){
+  var loader = document.getElementById('loader');
+  var stage  = document.getElementById('wallStage');
+  var brand  = document.getElementById('loaderBrand');
+  var prog   = document.getElementById('loaderProgress');
+  var skip   = document.getElementById('loaderSkip');
+  var body   = document.body;
+  var finished = false;
+
+  function finish(){
+    if(finished) return;
+    finished = true;
+    loader.classList.add('done');
+    setTimeout(function(){
+      loader.style.display = 'none';
+      body.classList.remove('loading');
+    }, 600);
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){ finish(); return; }
+
+  var stageW = stage.clientWidth, stageH = stage.clientHeight;
+  var brickH = Math.max(26, Math.round(stageH / 9));
+  var brickW = Math.round(brickH * 2.2);
+  var rows = Math.ceil(stageH / (brickH + 4)) + 1;
+  var cols = Math.ceil(stageW / (brickW + 4)) + 2;
+
+  var bricks = [];
+  for(var r = 0; r < rows; r++){
+    var course = document.createElement('div');
+    course.className = 'course';
+    var offset = (r % 2 === 1);
+    if(offset) course.style.marginLeft = (-brickW/2) + 'px';
+    for(var c = 0; c < cols; c++){
+      var b = document.createElement('div');
+      b.className = 'brick';
+      b.style.width = brickW + 'px';
+      b.style.height = brickH + 'px';
+      var courseFromBottom = r;
+      var delay = courseFromBottom * 95 + c * 18 + (Math.abs((c*7+r*13)%5))*8;
+      b.dataset.layDelay = delay;
+      b.dataset.row = r;
+      course.appendChild(b);
+      bricks.push(b);
+    }
+    stage.appendChild(course);
+  }
+
+  var maxR = rows - 1;
+  bricks.forEach(function(b){
+    var r = parseInt(b.dataset.row,10);
+    var fromBottom = maxR - r;
+    var delay = fromBottom * 95 + ((parseInt(b.dataset.layDelay,10))%160);
+    b.dataset.layDelay = delay;
+  });
+
+  var maxDelay = 0;
+  bricks.forEach(function(b){
+    var d = parseInt(b.dataset.layDelay,10);
+    if(d > maxDelay) maxDelay = d;
+    setTimeout(function(){ b.classList.add('laid'); }, d + 80);
+  });
+
+  var layDone = maxDelay + 560;
+  var start = null;
+  function tick(t){
+    if(start === null) start = t;
+    var pct = Math.min(100, ((t - start) / layDone) * 100);
+    prog.style.width = pct + '%';
+    if(pct < 100 && !finished) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  setTimeout(function(){ brand.classList.add('show'); }, Math.max(500, layDone - 650));
+
+  setTimeout(function(){
+    var courses = stage.querySelectorAll('.course');
+    courses.forEach(function(co, i){
+      var dir = (i % 2 === 0) ? -1 : 1;
+      co.style.transition = 'transform .7s cubic-bezier(.6,.02,.4,1), opacity .6s ease';
+      co.style.transitionDelay = (i * 45) + 'ms';
+      co.style.transform = 'translateX(' + (dir * 130) + '%)';
+      co.style.opacity = '0';
+    });
+    brand.style.transition = 'opacity .45s ease, transform .6s ease';
+    brand.style.opacity = '0';
+    brand.style.transform = 'scale(1.08)';
+  }, layDone + 520);
+
+  setTimeout(finish, layDone + 520 + (rows*45) + 760);
+
+  skip.addEventListener('click', finish);
+  loader.addEventListener('click', function(e){ if(e.target === loader) finish(); });
+})();
+
+/* ===================== CONTACT DECODE ===================== */
+(function(){
+  var P  = atob('MDc4Nzc2OTc1ODY=');
+  var Pf = atob('MDc4NzcgNjk3NTg2');
+  var E  = atob('bXJoYW1pZWwxQGdtYWlsLmNvbQ==');
+
+  function bindCall(id){ var a=document.getElementById(id); if(a){a.href='tel:'+P;} }
+  function bindText(id,txt){ var a=document.getElementById(id); if(a){a.textContent=txt;} }
+
+  bindCall('heroPhone'); bindText('heroPhoneText', Pf);
+  bindCall('contactCall'); bindText('contactCall', Pf);
+  bindCall('fabCall');
+  bindCall('footPhone'); bindText('footPhone', Pf);
+  var mc=document.getElementById('mobileCall'); if(mc){mc.href='tel:'+P; mc.textContent='Call '+Pf;}
+
+  var ce=document.getElementById('contactEmail'); if(ce){ce.href='mailto:'+E; ce.textContent=E;}
+  var fe=document.getElementById('footEmail'); if(fe){fe.href='mailto:'+E; fe.textContent=E;}
+
+  var ts=document.getElementById('formTimestamp'); if(ts){ts.value=Date.now();}
+})();
+
+/* ===================== NAV ===================== */
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var menu=document.getElementById('mobileMenu');
+  toggle.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); });
+  });
+})();
+
+/* ===================== FORM ===================== */
+(function(){
+  var form=document.getElementById('quoteForm');
+  var phone=document.getElementById('phone');
+  phone.addEventListener('input', function(){
+    this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value)?'':'Please enter a valid UK phone number');
+  });
+  form.addEventListener('submit', function(){
+    var btn=form.querySelector('button');
+    btn.textContent='Thanks, we will be in touch';
+    btn.style.background='#2f7d46';
+    setTimeout(function(){ form.reset(); }, 400);
+  });
+})();
+
+/* ===================== REVEAL ON SCROLL ===================== */
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.r').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
