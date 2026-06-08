@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peninsula Premier Construction | Carpentry, Joinery & Garden Rooms across Edinburgh & the Lothians</title>
+<meta name="description" content="Carpentry, joinery and construction across West Lothian, Midlothian, Fife, East Lothian and Edinburgh. Decks, pergolas, garden rooms, timber frames, cladding, windows and doors. Time-served, fully insured.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e2420'/%3E%3Cg stroke='%2322c55e' stroke-width='2' stroke-linecap='round' fill='none'%3E%3Cpath d='M7 26V11M25 26V11M4 11h24M7 8v3M12 8v3M16 8v3M20 8v3M25 8v3'/%3E%3C/g%3E%3C/svg%3E">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f3f6f2;
+  --card:#ffffff;
+  --card-soft:#eef2ec;
+  --ink:#14201a;
+  --body:#47534b;
+  --muted:#7d887f;
+  --line:#e4e9e3;
+  --line-strong:#d4dccf;
+  --accent:#16a34a;
+  --accent-dark:#0e7c38;
+  --accent-bright:#27c061;
+  --accent-glow:rgba(34,197,94,.16);
+  --charcoal:#1b211d;
+  --charcoal-2:#222a25;
+  --radius:18px;
+  --shadow:0 14px 40px -18px rgba(20,32,26,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--body);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{font-family:'Bricolage Grotesque',sans-serif;color:var(--ink);line-height:1.04;letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+.label{
+  font-family:'Inter',sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent-dark);display:inline-flex;align-items:center;gap:9px;
+}
+.label::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+
+/* ---------- LOADING SCREEN ---------- */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--charcoal);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+  transition:opacity .6s ease,visibility .6s ease;
+}
+#loader.done{opacity:0;visibility:hidden}
+.loader-svg{width:190px;height:140px;overflow:visible}
+.loader-svg path,.loader-svg line{
+  stroke:var(--accent-bright);stroke-width:4;stroke-linecap:round;fill:none;
+  stroke-dasharray:340;stroke-dashoffset:340;
+  animation:draw .7s ease forwards;
+  filter:drop-shadow(0 0 6px rgba(39,192,97,.55));
+}
+.loader-svg .p1{animation-delay:.1s}
+.loader-svg .p2{animation-delay:.25s}
+.loader-svg .beam-top{animation-delay:.45s}
+.loader-svg .beam-mid{animation-delay:.6s}
+.loader-svg .r1{animation-delay:.78s}
+.loader-svg .r2{animation-delay:.86s}
+.loader-svg .r3{animation-delay:.94s}
+.loader-svg .r4{animation-delay:1.02s}
+.loader-svg .r5{animation-delay:1.10s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.loader-name{
+  font-family:'Bricolage Grotesque',sans-serif;color:#fff;text-align:center;
+  font-size:1.15rem;font-weight:700;letter-spacing:.02em;opacity:0;
+  animation:fadeUp .6s ease forwards 1.15s;
+}
+.loader-name span{color:var(--accent-bright);display:block;font-size:.74rem;letter-spacing:.34em;
+  text-transform:uppercase;font-weight:600;margin-top:7px;color:#9fe7b9}
+.loader-bar{width:180px;height:4px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;opacity:0;animation:fadeUp .5s ease forwards 1.2s}
+.loader-bar i{display:block;height:100%;width:0;background:var(--accent-bright);border-radius:4px;animation:fill 1.4s ease .4s forwards}
+@keyframes fill{to{width:100%}}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 6px 24px -16px rgba(20,32,26,.4)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:var(--ink);font-size:1.02rem;letter-spacing:-.01em}
+.nav-logo .mark{width:40px;height:40px;border-radius:10px;background:var(--charcoal);display:grid;place-items:center;flex:none}
+.nav-logo .mark svg{width:24px;height:24px}
+.nav-logo small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dark);font-family:'Inter',sans-serif}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.nav-cta{
+  background:var(--accent);color:#fff !important;padding:11px 20px;border-radius:11px;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 18px -8px var(--accent-glow);
+}
+.nav-links a.nav-cta:hover{background:var(--accent-dark)}
+.nav-links a.nav-cta svg{stroke:#fff}
+.hamburger{display:none;background:none;border:1px solid var(--line-strong);border-radius:11px;width:46px;height:46px;cursor:pointer}
+.hamburger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px auto;border-radius:2px;transition:.3s}
+.mobile-panel{display:none;flex-direction:column;gap:4px;padding:10px 24px 22px;background:var(--bg);border-bottom:1px solid var(--line)}
+.mobile-panel a{padding:13px 4px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line)}
+.mobile-panel a.m-cta{background:var(--accent);color:#fff;border:none;border-radius:12px;text-align:center;margin-top:10px;padding:15px}
+
+/* ---------- HERO ---------- */
+.hero{display:flex;flex-direction:column;background:linear-gradient(180deg,#fff 0%,var(--bg-soft) 100%);overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;padding:72px 0 78px}
+.hero-eyebrow{margin-bottom:22px}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.5rem);font-weight:700;margin-bottom:22px}
+.hero .lede{font-size:1.12rem;max-width:520px;margin-bottom:32px;color:var(--body)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:13px;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;border:none}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 14px 30px -12px var(--accent-glow)}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1ebb59;transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line-strong)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-mini{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--muted);font-weight:500}
+.hero-mini .stars{color:#f5a524;letter-spacing:1px}
+.hero-photo{position:relative}
+.hero-photo .frame{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:4/3}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-badge{
+  position:absolute;left:-18px;bottom:26px;background:var(--charcoal);color:#fff;
+  padding:14px 20px;border-radius:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:13px;
+}
+.hero-badge .num{font-family:'Bricolage Grotesque',sans-serif;font-size:1.7rem;font-weight:700;color:var(--accent-bright);line-height:1}
+.hero-badge small{font-size:.72rem;color:#cdd6cf;line-height:1.3;display:block}
+.hero-badge b{color:#fff;font-size:.86rem}
+
+/* ---------- TRUST STRIP ---------- */
+.trust{background:var(--charcoal);padding:26px 0}
+.trust-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:11px;color:#e7ede8;font-weight:600;font-size:.94rem}
+.trust-item svg{width:22px;height:22px;stroke:var(--accent-bright);flex:none}
+
+/* ---------- SECTION ---------- */
+section{padding:96px 0}
+.sec-head{margin-bottom:48px;max-width:640px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:700;margin-top:16px}
+
+/* ---------- SERVICES ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;
+  position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;
+}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-strong)}
+.svc:hover::before{transform:scaleX(1)}
+.svc .ico{width:52px;height:52px;border-radius:13px;background:var(--card-soft);display:grid;place-items:center;margin-bottom:18px}
+.svc .ico svg{width:26px;height:26px;stroke:var(--accent-dark);fill:none}
+.svc h3{font-size:1.22rem;font-weight:700;margin-bottom:8px}
+.svc p{font-size:.95rem;color:var(--body)}
+.svc.feature{grid-column:span 2;background:var(--charcoal);border-color:var(--charcoal)}
+.svc.feature h3,.svc.feature p{color:#fff}
+.svc.feature p{color:#cfd8d1;max-width:420px}
+.svc.feature .ico{background:rgba(255,255,255,.08)}
+.svc.feature .ico svg{stroke:var(--accent-bright)}
+.svc.feature::before{background:var(--accent-bright)}
+.svc.feature .tag{display:inline-block;margin-top:16px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-bright);border:1px solid rgba(39,192,97,.4);padding:6px 12px;border-radius:20px}
+
+/* ---------- GALLERY ---------- */
+#work{background:var(--bg-soft)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gal figure{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;background:#ddd}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal figure:hover img{transform:scale(1.06)}
+.gal .big{grid-column:span 2;grid-row:span 2}
+.gal .tall{grid-row:span 2}
+.gal figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;color:#fff;font-weight:600;font-size:.9rem;
+  background:linear-gradient(transparent,rgba(20,32,26,.82));opacity:0;transition:opacity .3s;
+}
+.gal figure:hover figcaption{opacity:1}
+
+/* ---------- ABOUT ---------- */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.about-photo{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:5/4}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about h2{font-size:clamp(1.9rem,4vw,2.7rem);margin:14px 0 20px}
+.about p{margin-bottom:16px}
+.about .sign{display:flex;align-items:center;gap:14px;margin-top:24px}
+.about .sign .av{width:50px;height:50px;border-radius:50%;background:var(--charcoal);color:var(--accent-bright);display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.1rem}
+.about .sign b{color:var(--ink);font-family:'Bricolage Grotesque',sans-serif}
+.about .sign small{display:block;color:var(--muted);font-size:.84rem;font-weight:500}
+
+/* ---------- REVIEWS ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.rev .stars{color:#f5a524;letter-spacing:2px;margin-bottom:14px;font-size:1rem}
+.rev p{color:var(--ink);font-size:1rem;margin-bottom:20px;font-weight:500}
+.rev .who{display:flex;align-items:center;gap:12px}
+.rev .who .av{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;flex:none}
+.rev .who b{color:var(--ink);font-size:.92rem;display:block;font-family:'Bricolage Grotesque',sans-serif}
+.rev .who small{color:var(--muted);font-size:.8rem}
+
+/* ---------- AREAS ---------- */
+#areas{background:var(--charcoal);color:#dfe6e0}
+#areas h2{color:#fff}
+#areas .label{color:var(--accent-bright)}
+#areas .label::before{background:var(--accent-bright)}
+.areas-lede{max-width:560px;margin:18px 0 34px;color:#b9c4bc}
+.area-tags{display:flex;flex-wrap:wrap;gap:11px}
+.area-tags span{background:var(--charcoal-2);border:1px solid #313a34;padding:10px 18px;border-radius:30px;font-size:.9rem;font-weight:500;color:#e7ede8;transition:.2s}
+.area-tags span:hover{border-color:var(--accent-bright);color:#fff}
+.area-tags span.hub{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+
+/* ---------- CTA BAND ---------- */
+.cta-band{background:linear-gradient(120deg,var(--accent) 0%,var(--accent-dark) 100%);border-radius:24px;padding:54px 48px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;box-shadow:0 30px 60px -30px var(--accent-glow)}
+.cta-band h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.4rem);max-width:620px}
+.cta-band p{color:#e4f7ea;margin-top:8px;font-weight:500}
+.cta-band .btn-primary{background:#fff;color:var(--accent-dark)}
+.cta-band .btn-primary:hover{background:#eafff1}
+
+/* ---------- CONTACT ---------- */
+#contact{background:var(--bg-soft)}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:14px;display:flex;gap:16px;align-items:flex-start}
+.info-card .ic{width:46px;height:46px;border-radius:12px;background:var(--card-soft);display:grid;place-items:center;flex:none}
+.info-card .ic svg{width:22px;height:22px;stroke:var(--accent-dark);fill:none}
+.info-card b{display:block;color:var(--ink);font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;margin-bottom:2px}
+.info-card a,.info-card span{color:var(--body);font-size:.95rem}
+.info-card a:hover{color:var(--accent)}
+.form-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+.form-card h3{font-size:1.4rem;margin-bottom:6px}
+.form-card .sub{color:var(--muted);margin-bottom:24px;font-size:.95rem}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.84rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--line-strong);border-radius:11px;font-family:inherit;font-size:.96rem;color:var(--ink);background:#fff;transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:110px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-card button{width:100%;justify-content:center;margin-top:6px}
+#thankyou{display:none;text-align:center;padding:40px 20px}
+#thankyou .tick{width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin:0 auto 18px}
+#thankyou .tick svg{width:32px;height:32px;stroke:#fff}
+#thankyou h3{font-size:1.5rem;margin-bottom:8px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--charcoal);color:#aeb8b1;padding:56px 0 30px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+.foot-brand{max-width:340px}
+.foot-brand .nav-logo{color:#fff;margin-bottom:14px}
+.foot-brand .nav-logo .mark{background:var(--charcoal-2)}
+.foot-brand p{font-size:.92rem;color:#9fa9a2}
+.foot-col h4{color:#fff;font-size:.92rem;margin-bottom:14px;letter-spacing:.02em}
+.foot-col a,.foot-col span{display:block;color:#9fa9a2;font-size:.9rem;margin-bottom:9px}
+.foot-col a:hover{color:var(--accent-bright)}
+.foot-bottom{border-top:1px solid #2c342e;padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem;color:#828c85}
+.foot-bottom a{color:var(--accent-bright)}
+
+/* ---------- FLOATING CTA ---------- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(14px);transition:.35s}
+.fabs.show{opacity:1;visibility:visible;transform:none}
+.fab{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.45)}
+.fab svg{width:26px;height:26px;stroke:#fff;fill:none}
+.fab.call{background:var(--accent);animation:pulseG 2s infinite}
+.fab.wa{background:#25D366;animation:pulseW 2s infinite}
+.fab:hover{animation:none}
+@keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 14px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+@keyframes pulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ---------- LIGHTBOX ---------- */
+#lb{position:fixed;inset:0;z-index:9000;background:rgba(15,20,17,.92);display:none;align-items:center;justify-content:center;padding:24px}
+#lb img{max-width:92vw;max-height:88vh;border-radius:12px}
+#lb .x{position:absolute;top:20px;right:24px;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:36px;padding:48px 0 56px}
+  .hero-photo{order:2}
+  .about{grid-template-columns:1fr;gap:32px}
+  .about-photo{order:2;max-height:380px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc.feature{grid-column:span 2}
+  .rev-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .nav-links{display:none}
+  .hamburger{display:block}
+  nav.open .mobile-panel{display:flex}
+  nav.open .hamburger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  nav.open .hamburger span:nth-child(2){opacity:0}
+  nav.open .hamburger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+}
+@media(max-width:680px){
+  section{padding:64px 0}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .gal .big{grid-column:span 2;grid-row:span 1}
+  .gal .tall{grid-row:span 1}
+  .rev-grid{grid-template-columns:1fr}
+  .trust-in{flex-direction:column;align-items:flex-start;gap:14px}
+  .trust-item{border-bottom:1px solid #2c342e;width:100%;padding-bottom:14px}
+  .trust-item:last-child{border:none;padding-bottom:0}
+  .cta-band{padding:38px 26px;text-align:center;justify-content:center}
+  .hero-badge{left:50%;transform:translateX(-50%);bottom:-26px}
+}
+@media(max-width:520px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc.feature{grid-column:span 1}
+  .row2{grid-template-columns:1fr}
+  .wrap{padding:0 18px}
+  .hero h1{font-size:clamp(2.1rem,9vw,2.7rem)}
+  .hero-badge{position:static;transform:none;margin-top:18px;left:0;width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <svg class="loader-svg" viewBox="0 0 190 140" aria-hidden="true">
+    <!-- rafters across the top beam -->
+    <line class="r1" x1="40" y1="34" x2="40" y2="52"/>
+    <line class="r2" x1="68" y1="34" x2="68" y2="52"/>
+    <line class="r3" x1="95" y1="34" x2="95" y2="52"/>
+    <line class="r4" x1="122" y1="34" x2="122" y2="52"/>
+    <line class="r5" x1="150" y1="34" x2="150" y2="52"/>
+    <!-- top beam (overhangs) -->
+    <path class="beam-top" d="M22 52 H168"/>
+    <!-- mid beam -->
+    <path class="beam-mid" d="M34 74 H156"/>
+    <!-- posts -->
+    <path class="p1" d="M40 124 V52"/>
+    <path class="p2" d="M150 124 V52"/>
+  </svg>
+  <div class="loader-name">Peninsula Premier Construction<span>Building your pergola…</span></div>
+  <div class="loader-bar"><i></i></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="nav-logo">
+      <span class="mark"><svg viewBox="0 0 32 32" fill="none"><g stroke="#27c061" stroke-width="2" stroke-linecap="round"><path d="M7 26V11M25 26V11M4 11h24M7 8v3M12 8v3M16 8v3M20 8v3M25 8v3"/></g></svg></span>
+      <span>Peninsula Premier<small>Carpentry · Joinery · Construction</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </div>
+    <button class="hamburger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#about">About</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Contact</a>
+    <a href="#" class="m-cta" id="mCall">Call us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-text reveal">
+      <span class="label hero-eyebrow">Carpentry · Joinery · Construction</span>
+      <h1>Decks, pergolas &amp; <span class="accent">garden rooms</span>, built to last.</h1>
+      <p class="lede">All aspects of joinery across West Lothian, Edinburgh and the Lothians: timber frames, cladding, windows and doors. Time-served, fully insured, and finished to a standard you'll want to show off.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="heroCall">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a class="btn btn-wa" id="heroWa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.24-3.23-.67-2.73-1.08-4.46-3.86-4.6-4.04-.13-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.7-.34.18 0 .35.002.5.01.16.007.38-.06.59.45.24.58.82 2 .89 2.14.07.14.12.31.02.49-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.76 1.87.9.27.14.45.2.52.32.07.12.07.68-.17 1.36z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-mini"><span class="stars">★★★★★</span> Trusted by homeowners across the Lothians &amp; Fife</div>
+    </div>
+    <div class="hero-photo reveal">
+      <div class="frame"><img src="hero.jpg" alt="Cedar-clad garden room with bifold doors built by Peninsula Premier Construction"></div>
+      <div class="hero-badge">
+        <span class="num">10+</span>
+        <small><b>Years on the tools</b><br>Garden rooms · decks · frames</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fully Insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Free Quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 1 0 5.6L9 17.6 4 19l1.4-5L11 8.3a4 4 0 0 1 3.7-2z"/></svg>Time-Served Joiners</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>5 Regions Covered</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Quality Timber</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we build</span>
+      <h2>Every aspect of <span class="accent">joinery</span>, start to finish.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc feature reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 10h18M5 10V21M19 10V21M3 7l9-4 9 4M8 10v11M16 10v11M12 10v11"/></svg></div>
+        <h3>Garden Rooms &amp; Studios</h3>
+        <p>Fully insulated garden offices and studios, framed, clad and finished by one team. From the base to the bifolds, we build the lot.</p>
+        <span class="tag">Our speciality</span>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 21h18M5 21V8M19 21V8M3 8h18M3 8 5 4M21 8 19 4M9 8v13M15 8v13"/></svg></div>
+        <h3>Decking &amp; Pergolas</h3>
+        <p>Hardwood and composite decks, custom pergolas and garden frames built to handle Scottish weather.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M4 20V8l8-5 8 5v12M4 20h16M9 20v-6h6v6M8 11h2M14 11h2"/></svg></div>
+        <h3>Timber Frames</h3>
+        <p>Structural framing for extensions, new builds and garden buildings, squared and level.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 6h18M3 11h18M3 16h18M3 21h18M7 6v15"/></svg></div>
+        <h3>Cladding</h3>
+        <p>Cedar, larch and composite cladding, fitted sharp, straight and square.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></svg></div>
+        <h3>Windows &amp; Doors</h3>
+        <p>Supply and fit, bifolds, French doors, hanging, reveals and second-fix.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 13 12 4l9 9M5 11v8h14v-8M9 19v-5h6v5"/></svg></div>
+        <h3>Flat Roofing &amp; Lanterns</h3>
+        <p>GRP and EPDM flat roofs, roof lanterns and skylights, watertight and clean.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M4 4v16M4 7h7M4 12h7M4 17h7M14 4v16M20 4v16M14 9h6M14 14h6"/></svg></div>
+        <h3>Internal Joinery</h3>
+        <p>Slat walls, staircases, fitted storage and bespoke second-fix carpentry.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="m14 7 3 3M5 19l9.5-9.5a2.1 2.1 0 0 0-3-3L2 16v3h3M16 5l3 3"/></svg></div>
+        <h3>All Joinery &amp; Repairs</h3>
+        <p>First and second fix, repairs, alterations and one-off bespoke pieces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2>Real builds, <span class="accent">photographed on site.</span></h2>
+    </div>
+    <div class="gal">
+      <figure class="big reveal"><img src="hero.jpg" alt="Cedar-clad garden room with grey bifold doors"><figcaption>Cedar garden room with bifolds</figcaption></figure>
+      <figure class="reveal"><img src="work-1.jpg" alt="Grey composite-clad garden room"><figcaption>Composite-clad garden room</figcaption></figure>
+      <figure class="reveal"><img src="work-3.jpg" alt="Oak slatted feature wall inside a home"><figcaption>Oak slat feature wall</figcaption></figure>
+      <figure class="tall reveal"><img src="work-8.jpg" alt="Cedar garden studio with sliding doors"><figcaption>Garden studio &amp; sliding doors</figcaption></figure>
+      <figure class="reveal"><img src="work-4.jpg" alt="Timber-framed two storey house structure"><figcaption>Full timber frame</figcaption></figure>
+      <figure class="reveal"><img src="work-2.jpg" alt="Wavy-edge cedar clad garden room with deck"><figcaption>Wavy cedar clad &amp; deck</figcaption></figure>
+      <figure class="reveal"><img src="work-5.jpg" alt="Roof lantern installed on a flat roof extension"><figcaption>Roof lantern on flat roof</figcaption></figure>
+      <figure class="reveal"><img src="work-6.jpg" alt="Timber-clad garden room at dusk"><figcaption>Timber-clad garden room</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="about-photo reveal"><img src="work-2.jpg" alt="Cedar garden room with composite deck built by Peninsula Premier Construction"></div>
+    <div class="about-text reveal">
+      <span class="label">Who we are</span>
+      <h2>One team. Built properly, handed over clean.</h2>
+      <p>Peninsula Premier Construction is a time-served joinery and construction outfit covering Edinburgh and the surrounding counties. From garden rooms and pergolas to timber frames, cladding, windows and doors, we take on all aspects of joinery.</p>
+      <p>We keep it to one team from start to finish, so the detail stays right and the site stays tidy. No sub-contracted corners, no mess left behind.</p>
+      <div class="sign">
+        <div class="av">PP</div>
+        <div><b>Peninsula Premier Construction</b><small>Carpentry · Joinery · Construction · the Lothians &amp; Fife</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Word of mouth</span>
+      <h2>What homeowners <span class="accent">say.</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Built us a garden room in Livingston and it's spot on, fully insulated, cedar cladding, ready in three weeks. Couldn't recommend them enough."</p>
+        <div class="who"><div class="av">C</div><div><b>Claire M.</b><small>Livingston · Garden Room</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Composite deck and a pergola in the back garden. Tidy workers, turned up when they said they would and left the place spotless."</p>
+        <div class="who"><div class="av">S</div><div><b>Stuart D.</b><small>Bathgate · Decking &amp; Pergola</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Fitted our bifold doors and re-clad the back of the house. The quality of the joinery is brilliant, proper craftsmen."</p>
+        <div class="who"><div class="av">F</div><div><b>Fiona R.</b><small>Edinburgh · Cladding &amp; Doors</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Flat roof and a roof lantern over our kitchen extension. No leaks, lovely finish and a fair price. Will be using them again."</p>
+        <div class="who"><div class="av">G</div><div><b>Gary T.</b><small>Dalkeith · Flat Roof &amp; Lantern</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Framed and built our garden studio from scratch. Proper joiners who actually care about the detail. Delighted with it."</p>
+        <div class="who"><div class="av">L</div><div><b>Lynsey H.</b><small>Dunfermline · Garden Studio</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Slatted oak feature wall and some fitted storage. Looks like something out of a magazine. Honestly couldn't be happier."</p>
+        <div class="who"><div class="av">A</div><div><b>Andrew S.</b><small>Musselburgh · Internal Joinery</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="wrap">
+    <span class="label">Where we work</span>
+    <h2>Covering Edinburgh, the Lothians &amp; Fife.</h2>
+    <p class="areas-lede">Based in West Lothian and working right across the central belt. If you're nearby and don't see your town, just ask.</p>
+    <div class="area-tags">
+      <span class="hub">West Lothian</span>
+      <span class="hub">Midlothian</span>
+      <span class="hub">Fife</span>
+      <span class="hub">East Lothian</span>
+      <span class="hub">City of Edinburgh</span>
+      <span>Livingston</span><span>Bathgate</span><span>Linlithgow</span><span>Broxburn</span>
+      <span>Whitburn</span><span>Edinburgh</span><span>Dalkeith</span><span>Bonnyrigg</span>
+      <span>Penicuik</span><span>Musselburgh</span><span>Dunfermline</span><span>Kirkcaldy</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding:0 0 96px">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Thinking about a garden room, deck or pergola?</h2>
+        <p>Free, no-obligation quotes across the Lothians and Fife.</p>
+      </div>
+      <a class="btn btn-primary" id="bandCall">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Get in touch</span>
+      <h2>Tell us about your <span class="accent">project.</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Call us</b><a id="infoCall">Tap to reveal</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <div><b>Email</b><a id="infoEmail">Tap to reveal</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>Areas covered</b><span>West Lothian · Midlothian · Fife · East Lothian · Edinburgh</span></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><b>Response time</b><span>We aim to get back to you within 24 hours</span></div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3>Request a free quote</h3>
+        <p class="sub">Fill this in and we'll be in touch to talk it through.</p>
+        <form id="enqForm" action="/api/enquiry" method="POST">
+          <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="businessName" value="Peninsula Premier Construction">
+          <input type="hidden" name="source" value="mockup-peninsula-premier-construction">
+          <div class="row2">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+          </div>
+          <div class="field"><label for="email">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="email" name="email" type="email"></div>
+          <div class="field">
+            <label for="service">What can we help with?</label>
+            <select id="service" name="service">
+              <option value="">Select a service…</option>
+              <optgroup label="Garden &amp; outdoor">
+                <option>Garden Room / Studio</option>
+                <option>Decking</option>
+                <option>Pergola</option>
+                <option>Cladding</option>
+              </optgroup>
+              <optgroup label="Structural &amp; joinery">
+                <option>Timber Frame</option>
+                <option>Windows &amp; Doors</option>
+                <option>Flat Roofing / Lantern</option>
+                <option>Internal Joinery</option>
+                <option>Other / Not sure</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us a bit about the job…"></textarea></div>
+          <button type="submit" class="btn btn-primary">Send enquiry</button>
+        </form>
+        <div id="thankyou">
+          <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Thanks, message sent.</h3>
+          <p>We'll get back to you shortly to talk through your project.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="nav-logo">
+          <span class="mark"><svg viewBox="0 0 32 32" fill="none"><g stroke="#27c061" stroke-width="2" stroke-linecap="round"><path d="M7 26V11M25 26V11M4 11h24M7 8v3M12 8v3M16 8v3M20 8v3M25 8v3"/></g></svg></span>
+          <span>Peninsula Premier<small style="color:#27c061">Carpentry · Joinery · Construction</small></span>
+        </a>
+        <p>Carpentry, joinery and construction across the Lothians, Fife and Edinburgh. Garden rooms, decks, pergolas, frames, cladding, windows and doors.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Garden Rooms</a>
+        <a href="#services">Decking &amp; Pergolas</a>
+        <a href="#services">Cladding</a>
+        <a href="#services">Windows &amp; Doors</a>
+        <a href="#services">Timber Frames</a>
+      </div>
+      <div class="foot-col">
+        <h4>Areas</h4>
+        <span>West Lothian</span>
+        <span>Midlothian</span>
+        <span>Fife</span>
+        <span>East Lothian</span>
+        <span>City of Edinburgh</span>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a id="footCall">Call us</a>
+        <a id="footEmail">Email us</a>
+        <a id="footWa" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Peninsula Premier Construction. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="fabs" id="fabs">
+  <a class="fab call" id="fabCall" aria-label="Call us"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a class="fab wa" id="fabWa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.3-1.95 1.34-.5.05-.96.24-3.23-.67-2.73-1.08-4.46-3.86-4.6-4.04-.13-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.7-.34.18 0 .35.002.5.01.16.007.38-.06.59.45.24.58.82 2 .89 2.14.07.14.12.31.02.49-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.28-.12.55.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.76 1.87.9.27.14.45.2.52.32.07.12.07.68-.17 1.36z"/></svg></a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+// ----- Contact decode -----
+var P  = atob('MDczNzkwNzI5NTc=');
+var Pf = atob('MDczNzkgMDcyOTU3');
+var E  = atob('cHBjaGZjQGdtYWlsLmNvbQ==');
+var WA = atob('NDQ3Mzc5MDcyOTU3');
+var waLink = 'https://wa.me/'+WA+'?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+
+function setTel(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;}
+['navCall','heroCall','bandCall','fabCall','mCall'].forEach(setTel);
+document.getElementById('heroWa').href=waLink;
+document.getElementById('fabWa').href=waLink;
+document.getElementById('footWa').href=waLink;
+
+var ic=document.getElementById('infoCall');ic.textContent=Pf;ic.href='tel:'+P;
+var fc=document.getElementById('footCall');fc.textContent='Call '+Pf;fc.href='tel:'+P;
+var ie=document.getElementById('infoEmail');ie.textContent=E;ie.href='mailto:'+E;
+var fe=document.getElementById('footEmail');fe.textContent=E;fe.href='mailto:'+E;
+
+// ----- Loader -----
+window.addEventListener('load',function(){
+  setTimeout(function(){document.getElementById('loader').classList.add('done');},1900);
+});
+
+// ----- Nav -----
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){
+  nav.classList.toggle('scrolled',window.scrollY>10);
+  document.getElementById('fabs').classList.toggle('show',window.scrollY>600);
+});
+var burger=document.getElementById('burger');
+burger.addEventListener('click',function(){nav.classList.toggle('open');});
+document.querySelectorAll('#mpanel a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
+
+// ----- Form -----
+document.getElementById('formTimestamp').value=Date.now();
+var phone=document.getElementById('phone');
+phone.addEventListener('input',function(){
+  this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value)?'':'Please enter a valid UK phone number');
+});
+document.getElementById('enqForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  this.style.display='none';
+  document.getElementById('thankyou').style.display='block';
+});
+
+// ----- Lightbox -----
+var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.gal figure img').forEach(function(im){
+  im.addEventListener('click',function(){lbImg.src=this.src;lb.style.display='flex';});
+});
+lb.addEventListener('click',function(){lb.style.display='none';});
+
+// ----- Reveal -----
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
