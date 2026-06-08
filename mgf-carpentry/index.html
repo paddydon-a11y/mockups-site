@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MGF Carpentry | Carpenter & Joiner in Croydon, South London</title>
+<meta name="description" content="MGF Carpentry is a Croydon-based carpenter and joiner. Bespoke fitted storage, herringbone and wood flooring, staircases, kitchens, decking and first-fix carpentry across South London and Surrey.">
+<link rel="icon" href="logo-dark.png">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f3f4f5;
+  --bg2:#ffffff;
+  --card:#ffffff;
+  --ink:#16181b;
+  --body:#4b5158;
+  --muted:#878d94;
+  --line:#e4e6e9;
+  --line2:#d4d8dc;
+  --maroon:#1f3d63;
+  --maroon-dark:#152a45;
+  --maroon-tint:#e8eef5;
+  --green:#25d366;
+  --shadow:0 18px 50px -22px rgba(20,25,35,.34);
+  --shadow-sm:0 8px 24px -14px rgba(20,25,35,.30);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Spectral',Georgia,serif;color:var(--ink);font-weight:600;line-height:1.08;letter-spacing:-.015em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--maroon)}
+.label{
+  font-family:'Inter',sans-serif;font-weight:700;font-size:.74rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--maroon);
+  display:inline-block;margin-bottom:18px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;
+  font-weight:700;font-size:.97rem;padding:15px 26px;border-radius:9px;
+  cursor:pointer;border:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--maroon);color:#fff;box-shadow:0 10px 26px -12px rgba(31,61,99,.6)}
+.btn-primary:hover{background:var(--maroon-dark);transform:translateY(-2px)}
+.btn-wa{background:var(--green);color:#063a1e}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(37,211,102,.6)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--maroon);color:var(--maroon)}
+
+/* ===== Loader ===== */
+#loader{
+  position:fixed;inset:0;z-index:2000;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:transform .8s cubic-bezier(.7,0,.2,1);
+}
+#loader.done{transform:translateY(-100%)}
+.loader-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+.loader-logo{
+  width:140px;height:140px;opacity:0;transform:scale(.8) rotate(-8deg);
+  animation:loaderLogo .8s cubic-bezier(.2,.7,.2,1) .1s forwards;
+}
+@keyframes loaderLogo{to{opacity:1;transform:scale(1) rotate(0)}}
+.loader-bar{
+  width:150px;height:3px;background:var(--line2);border-radius:3px;margin:30px 0 16px;overflow:hidden;
+  opacity:0;animation:fadeIn .4s ease .5s forwards;
+}
+.loader-bar span{display:block;height:100%;width:0;background:var(--maroon);border-radius:3px;animation:loaderBar 1.2s ease .55s forwards}
+@keyframes loaderBar{to{width:100%}}
+.loader-cap{
+  font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .5s ease .8s forwards;
+}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ===== Nav ===== */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.nav-logo img{width:38px;height:38px;border-radius:9px}
+.nav-logo b{font-family:'Spectral',serif;font-weight:700;font-size:1.18rem;color:var(--ink);letter-spacing:.01em}
+.nav-logo b span{color:var(--maroon)}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-weight:600;font-size:.94rem;color:var(--body);transition:color .15s}
+.nav-links a:hover{color:var(--maroon)}
+.nav-links a.nav-cta{
+  background:var(--maroon);color:#fff !important;padding:11px 20px;border-radius:8px;
+  display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 22px -12px rgba(31,61,99,.6);
+}
+.nav-links a.nav-cta:hover{background:var(--maroon-dark)}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;transition:.25s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-panel{
+  display:none;position:fixed;top:74px;left:0;right:0;z-index:899;background:var(--bg2);
+  border-bottom:1px solid var(--line);padding:14px 24px 24px;
+  transform:translateY(-12px);opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow-sm);
+}
+.mobile-panel.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-panel a{display:block;padding:14px 4px;font-weight:600;font-size:1.05rem;color:var(--ink);border-bottom:1px solid var(--line)}
+.mobile-panel a.m-call{
+  margin-top:18px;background:var(--maroon);color:#fff;text-align:center;border-radius:9px;border:none;padding:16px;
+}
+
+/* ===== Hero ===== */
+.hero{padding:64px 0 76px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.hero-eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--maroon);box-shadow:0 0 0 0 rgba(31,61,99,.5);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,61,99,.45)}70%{box-shadow:0 0 0 12px rgba(31,61,99,0)}100%{box-shadow:0 0 0 0 rgba(31,61,99,0)}}
+.hero-eyebrow span{font-family:'Inter',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--maroon)}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.7rem);font-weight:700;margin-bottom:22px}
+.hero p.lede{font-size:1.12rem;max-width:34em;margin-bottom:32px;color:var(--body)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero-meta{display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:.9rem;color:var(--muted);font-weight:500}
+.hero-meta b{color:var(--ink);font-weight:700}
+.hero-meta .star{color:var(--maroon)}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;height:540px;object-fit:cover;border-radius:18px;border:1px solid var(--line2)}
+.hero-badge{
+  position:absolute;left:-26px;bottom:34px;background:var(--bg2);border:1px solid var(--line);
+  border-radius:14px;padding:18px 22px;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;
+}
+.hero-badge .num{font-family:'Spectral',serif;font-weight:700;font-size:2.5rem;color:var(--maroon);line-height:1}
+.hero-badge .txt{font-size:.82rem;font-weight:600;color:var(--ink);line-height:1.3}
+.hero-badge .txt em{color:var(--muted);font-weight:500;display:block;font-size:.78rem}
+
+/* ===== Trust ===== */
+.trust{background:var(--ink);color:#eef1f4}
+.trust-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:22px 0}
+.trust-item{display:flex;align-items:center;gap:11px;font-weight:600;font-size:.95rem;color:#eef1f4}
+.trust-item svg{width:20px;height:20px;stroke:#7ea6d6;flex-shrink:0}
+.trust-sep{width:1px;height:26px;background:rgba(255,255,255,.16)}
+
+/* ===== Section base ===== */
+section.block{padding:96px 0}
+.sec-head{max-width:680px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(2rem,4vw,3.05rem);font-weight:700}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+
+/* ===== Services ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{
+  position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:34px 30px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s;
+}
+.svc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--maroon);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line2)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-ic{width:50px;height:50px;border-radius:12px;background:var(--maroon-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-ic svg{width:25px;height:25px;stroke:var(--maroon);fill:none}
+.svc-card h3{font-size:1.3rem;margin-bottom:10px;font-weight:600}
+.svc-card p{font-size:.96rem;color:var(--body)}
+
+/* ===== Gallery ===== */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:240px;gap:16px}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line2);cursor:pointer}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gal-item:hover img{transform:scale(1.06)}
+.gal-item.tall{grid-row:span 2}
+.gal-item.wide{grid-column:span 2}
+.gal-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;
+  background:linear-gradient(transparent,rgba(16,20,28,.84));color:#fff;
+  font-weight:600;font-size:.92rem;opacity:0;transform:translateY(8px);transition:.3s;
+}
+.gal-item:hover .gal-cap{opacity:1;transform:translateY(0)}
+
+/* ===== About ===== */
+.about{background:var(--ink);color:#e6ebf1}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{width:100%;height:460px;object-fit:cover;border-radius:18px}
+.about h2{color:#fff;font-size:clamp(2rem,3.6vw,2.8rem);margin-bottom:22px}
+.about .label{color:#9db8d6}
+.about p{color:#bdc6d1;font-size:1.06rem;margin-bottom:18px;max-width:36em}
+.about-sign{display:flex;align-items:center;gap:16px;margin-top:30px}
+.about-sign .initials{width:54px;height:54px;border-radius:50%;background:var(--maroon);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:1.2rem}
+.about-sign .who b{color:#fff;display:block;font-family:'Spectral',serif;font-size:1.15rem}
+.about-sign .who span{font-size:.86rem;color:#aab4c0}
+
+/* ===== Reviews ===== */
+.rev-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:48px}
+.rev-score{display:flex;align-items:center;gap:14px}
+.rev-score .big{font-family:'Spectral',serif;font-size:3rem;font-weight:700;color:var(--maroon);line-height:1}
+.rev-score .stars{color:var(--maroon);font-size:1.05rem;letter-spacing:2px}
+.rev-score .sub{font-size:.86rem;color:var(--muted);font-weight:500}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px;transition:transform .25s,box-shadow .25s}
+.rev-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.rev-card .stars{color:var(--maroon);letter-spacing:2px;font-size:.95rem;margin-bottom:14px}
+.rev-card p{font-size:.98rem;color:var(--ink);margin-bottom:20px;line-height:1.6}
+.rev-by{display:flex;align-items:center;gap:13px}
+.rev-by .av{width:44px;height:44px;border-radius:50%;background:var(--maroon-tint);color:var(--maroon);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;font-family:'Spectral',serif}
+.rev-by b{display:block;font-size:.94rem;color:var(--ink);font-weight:700}
+.rev-by span{font-size:.82rem;color:var(--muted)}
+
+/* ===== Areas ===== */
+.areas{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.area-tags{display:flex;flex-wrap:wrap;gap:11px;max-width:880px}
+.area-tags span{background:var(--bg);border:1px solid var(--line2);border-radius:30px;padding:9px 18px;font-weight:600;font-size:.9rem;color:var(--ink)}
+.area-tags span.home{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+
+/* ===== CTA band ===== */
+.cta-band{background:var(--maroon);color:#fff;text-align:center;padding:80px 0}
+.cta-band h2{color:#fff;font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+.cta-band p{color:#d4e0ef;font-size:1.1rem;margin-bottom:30px;max-width:34em;margin-left:auto;margin-right:auto}
+.cta-band .btn-primary{background:#fff;color:var(--maroon)}
+.cta-band .btn-primary:hover{background:#e8eef5}
+.cta-band .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.cta-band .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.1)}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ===== Contact ===== */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+.contact-info h3{font-size:1.5rem;margin-bottom:8px}
+.contact-info>p{margin-bottom:28px;color:var(--body)}
+.info-card{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.info-card .ic{width:44px;height:44px;border-radius:11px;background:var(--maroon-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-card .ic svg{width:21px;height:21px;stroke:var(--maroon)}
+.info-card b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;font-weight:700}
+.info-card a,.info-card span{font-size:1.05rem;color:var(--ink);font-weight:600}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:var(--shadow-sm)}
+.form h3{font-size:1.4rem;margin-bottom:6px}
+.form>p{font-size:.92rem;color:var(--muted);margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.84rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--line2);border-radius:9px;font-family:inherit;font-size:.96rem;
+  color:var(--ink);background:var(--bg2);transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--maroon)}
+.field textarea{resize:vertical;min-height:110px}
+.form .btn-primary{width:100%;justify-content:center;margin-top:6px}
+
+/* ===== Footer ===== */
+footer{background:var(--ink);color:#aab4c0;padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-brand{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.foot-brand img{width:44px;height:44px;border-radius:10px}
+.foot-brand b{font-family:'Spectral',serif;color:#fff;font-size:1.25rem;font-weight:700}
+.foot-brand b span{color:#9db8d6}
+.foot-col p{font-size:.94rem;color:#9aa4b0;max-width:30em}
+.foot-col h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px;font-weight:700;font-family:'Inter',sans-serif}
+.foot-col a{display:block;padding:6px 0;font-size:.94rem;color:#aab4c0;transition:color .15s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.86rem;color:#7e8893}
+.foot-bottom a{color:#9db8d6;font-weight:600}
+
+/* ===== Floating CTAs ===== */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:850;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s}
+.fabs.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.4)}
+.fab svg{width:25px;height:25px}
+.fab-call{background:var(--maroon);animation:fpulse 2.2s infinite}
+.fab-wa{background:var(--green);animation:fpulseG 2.2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(31,61,99,.5)}70%{box-shadow:0 0 0 14px rgba(31,61,99,0)}100%{box-shadow:0 0 0 0 rgba(31,61,99,0)}}
+@keyframes fpulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== Lightbox ===== */
+.lb{position:fixed;inset:0;background:rgba(16,20,28,.93);z-index:1500;display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:88vh;border-radius:10px}
+.lb-close{position:absolute;top:20px;right:26px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+
+/* ===== Responsive ===== */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .hero-photo img{height:380px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .contact-grid{grid-template-columns:1fr;gap:32px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:block}
+  .trust-sep{display:none}
+  .trust-in{justify-content:center;gap:14px 26px}
+}
+@media(max-width:680px){
+  .wrap{padding:0 18px}
+  section.block{padding:70px 0}
+  .hero{padding:40px 0 56px}
+  .hero h1{font-size:clamp(2.2rem,9vw,2.9rem)}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .gal-item.wide{grid-column:span 2}
+  .gal-cap{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  /* hero badge lifts below image on mobile */
+  .hero-badge{position:static;left:0;bottom:0;margin-top:16px;box-shadow:var(--shadow-sm);width:100%}
+  .hero-photo img{height:300px}
+  .rev-head{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:420px){
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:200px}
+  .gal-item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-inner">
+    <img src="logo-dark.png" alt="MGF Carpentry" class="loader-logo">
+    <div class="loader-bar"><span></span></div>
+    <div class="loader-cap">Croydon &middot; South London</div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="nav-logo">
+      <img src="logo-dark.png" alt="MGF Carpentry logo">
+      <b>MGF <span>Carpentry</span></b>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mpanel">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#about">About</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="m-call" id="mCall">Call Mus</a>
+</div>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text reveal">
+      <div class="hero-eyebrow"><span class="dot"></span><span>Carpenter &amp; Joiner &middot; Croydon</span></div>
+      <h1>Bespoke carpentry, finished to the <span class="accent">millimetre</span>.</h1>
+      <p class="lede">MGF Carpentry is Mus Khudurun, a Croydon carpenter and joiner. Herringbone and wood flooring, fitted storage, staircases, kitchens and outdoor carpentry across South London and Surrey, measured and finished by hand.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary" id="heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call Mus</span>
+        </a>
+        <a href="#" class="btn btn-wa" id="heroWa">
+          <svg viewBox="0 0 24 24" fill="#063a1e"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span><b>5.0</b> from local homeowners</span>
+        <span>&middot;</span>
+        <span><b>Free</b> no-obligation quotes</span>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="hero.jpg" alt="Herringbone wood flooring fitted in a Croydon home">
+      <div class="hero-badge">
+        <div class="num">15</div>
+        <div class="txt">Years of carpentry<em>One craftsman, no middlemen</em></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Trust -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Fully Insured</div>
+  <div class="trust-sep"></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>15+ Years Experience</div>
+  <div class="trust-sep"></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6z"/></svg>Bespoke &amp; Made to Measure</div>
+  <div class="trust-sep"></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Croydon, South London</div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What Mus Does</span>
+      <h2>Carpentry done once, done <span class="accent">right</span>.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M3 13h18"/></svg></div>
+        <h3>Wood &amp; Herringbone Flooring</h3>
+        <p>Engineered, solid wood and parquet floors, laid level and tight with crisp borders and scotia.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 3v18M9 8h0M9 13h0"/></svg></div>
+        <h3>Fitted Wardrobes &amp; Storage</h3>
+        <p>Alcoves, walk-ins and built-in storage that uses every awkward inch of the room.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 9h6"/><circle cx="12" cy="12" r="1"/></svg></div>
+        <h3>Interior Carpentry &amp; Joinery</h3>
+        <p>Door hanging, skirting, architrave and bespoke trim work, fitted clean and square.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 13h18M9 21v-6h6v6"/></svg></div>
+        <h3>Kitchen &amp; Bathroom Fitting</h3>
+        <p>Supply and fit of kitchen units, worktops and bathroom carpentry, finished to a high standard.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M3 21h4v-4h4v-4h4v-4h4V5"/><path d="M3 21V3"/></svg></div>
+        <h3>Staircases &amp; Balustrades</h3>
+        <p>New stairs, handrails, spindles and full restorations to transform a hallway.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" stroke-width="1.7"><path d="M2 20h20M5 20l1-9M19 20l-1-9M3 11h18l-1-4H4z"/></svg></div>
+        <h3>Decking &amp; Outdoor Carpentry</h3>
+        <p>Decking, garden structures and outdoor timber work built to weather the years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="block" id="work" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent Work</span>
+      <h2>A look at the <span class="accent">finished jobs</span>.</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item tall reveal" data-full="work-1.jpg"><img src="work-1.jpg" alt="Bespoke fitted hallway storage with LED lighting"><div class="gal-cap">Fitted hallway storage with lighting</div></div>
+      <div class="gal-item wide reveal" data-full="work-3.jpg"><img src="work-3.jpg" alt="Herringbone parquet wood flooring"><div class="gal-cap">Herringbone parquet flooring</div></div>
+      <div class="gal-item reveal" data-full="work-4.jpg"><img src="work-4.jpg" alt="Fitted kitchen units and worktops"><div class="gal-cap">Fitted kitchen units</div></div>
+      <div class="gal-item reveal" data-full="work-2.jpg"><img src="work-2.jpg" alt="Timber staircase and balustrade"><div class="gal-cap">Staircase &amp; balustrade</div></div>
+      <div class="gal-item reveal" data-full="work-5.jpg"><img src="work-5.jpg" alt="Built-in alcove shelving"><div class="gal-cap">Built-in alcove shelving</div></div>
+      <div class="gal-item reveal" data-full="work-6.jpg"><img src="work-6.jpg" alt="Composite garden decking"><div class="gal-cap">Garden decking</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="block about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal"><img src="craft.jpg" alt="Bespoke fitted vanity unit with timber-clad wall"></div>
+    <div class="about-text reveal">
+      <span class="label">The Man Behind the Tools</span>
+      <h2>Croydon based, time-served, still on the tools.</h2>
+      <p>MGF Carpentry is Mus Khudurun. From laying a herringbone floor to fitting out a whole kitchen, every job is measured, cut and finished by Mus himself.</p>
+      <p>No middlemen, no sub-contractors, no surprises. Just one skilled carpenter who treats your home like his own and leaves it tidy at the end of every day.</p>
+      <div class="about-sign">
+        <div class="initials">MK</div>
+        <div class="who"><b>Mus Khudurun</b><span>Owner &amp; Carpenter, MGF Carpentry</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="block" id="reviews">
+  <div class="wrap">
+    <div class="rev-head reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="label">What People Say</span>
+        <h2>Trusted across <span class="accent">South London</span>.</h2>
+      </div>
+      <div class="rev-score">
+        <div class="big">5.0</div>
+        <div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="sub">Based on local homeowner reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Mus laid herringbone flooring through our lounge and hallway and it's absolutely spot on. Every board is tight, the borders are perfect. Couldn't be happier."</p>
+        <div class="rev-by"><div class="av">A</div><div><b>Amir S.</b><span>Croydon &middot; Wood Flooring</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Fitted wardrobes across our whole bedroom and used every awkward inch of the alcoves. Faultless finish, and he tidied up at the end of every day."</p>
+        <div class="rev-by"><div class="av">S</div><div><b>Sarah W.</b><span>Purley &middot; Fitted Wardrobes</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Mus hung six internal doors and re-did all our skirting. You'd never know it wasn't original, the trim work is properly neat. Highly recommend."</p>
+        <div class="rev-by"><div class="av">E</div><div><b>Emma L.</b><span>Thornton Heath &middot; Doors &amp; Skirting</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"He fitted our new kitchen units and worktops start to finish. Tidy, on time and a fair price. The whole thing looks like a showroom now."</p>
+        <div class="rev-by"><div class="av">D</div><div><b>Daniel R.</b><span>Coulsdon &middot; Kitchen Fitting</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Replaced our tired staircase with new treads, spindles and a handrail. It has completely transformed the hallway. Can't recommend MGF highly enough."</p>
+        <div class="rev-by"><div class="av">J</div><div><b>Joanne H.</b><span>Sutton &middot; Staircase</span></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Built us a large deck across the back garden. Solid as anything, a lovely job, and he turned up exactly when he said he would. Spot on."</p>
+        <div class="rev-by"><div class="av">T</div><div><b>Tom B.</b><span>Mitcham &middot; Decking</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="block areas">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:32px">
+      <span class="label">Where Mus Works</span>
+      <h2>Covering Croydon &amp; across South London.</h2>
+    </div>
+    <div class="area-tags reveal">
+      <span class="home">Croydon</span>
+      <span>Purley</span>
+      <span>Coulsdon</span>
+      <span>Sutton</span>
+      <span>Wallington</span>
+      <span>Carshalton</span>
+      <span>Thornton Heath</span>
+      <span>Norbury</span>
+      <span>Mitcham</span>
+      <span>Streatham</span>
+      <span>Beckenham</span>
+      <span>Bromley</span>
+      <span>Caterham</span>
+      <span>&amp; across South London &amp; Surrey</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Got a job in mind?</h2>
+    <p>From a single floor to a full fit-out, Mus will come and take a look, then give you an honest, no-obligation quote.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary" id="ctaCall">Call Mus Today</a>
+      <a href="#contact" class="btn btn-ghost">Send a Message</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="block" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="label">Get in Touch</span>
+      <h3>Let's talk about your project.</h3>
+      <p>Drop Mus a message or give him a call. He'll get back to you the same day wherever he can.</p>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><b>Phone</b><a href="#" id="cPhone">Loading…</a></div>
+      </div>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+        <div><b>Email</b><a href="#" id="cEmail">Loading…</a></div>
+      </div>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><b>Based In</b><span>Croydon, South London</span></div>
+      </div>
+      <div class="info-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div><b>Hours</b><span>Mon&ndash;Sat, 8am&ndash;6pm</span></div>
+      </div>
+    </div>
+    <form class="form reveal" action="/api/enquiry" method="POST">
+      <h3>Request a quote</h3>
+      <p>Tell Mus a little about the job and he'll be in touch.</p>
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="MGF Carpentry">
+      <input type="hidden" name="source" value="mockup-mgf-carpentry">
+      <div class="field"><label for="n">Name</label><input id="n" type="text" name="name" required placeholder="Your name"></div>
+      <div class="field"><label for="p">Phone</label><input id="p" type="tel" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx"></div>
+      <div class="field"><label for="e">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="e" type="email" name="email" placeholder="you@email.com"></div>
+      <div class="field">
+        <label for="s">Service</label>
+        <select id="s" name="service">
+          <option value="">Choose a service…</option>
+          <optgroup label="Inside the Home">
+            <option>Wood &amp; Herringbone Flooring</option>
+            <option>Fitted Wardrobes &amp; Storage</option>
+            <option>Interior Carpentry &amp; Joinery</option>
+            <option>Kitchen &amp; Bathroom Fitting</option>
+            <option>Staircases &amp; Balustrades</option>
+          </optgroup>
+          <optgroup label="Outside the Home">
+            <option>Decking</option>
+            <option>Garden Structures</option>
+            <option>Outdoor Carpentry</option>
+          </optgroup>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field"><label for="m">Message</label><textarea id="m" name="message" placeholder="Tell Mus about the job…"></textarea></div>
+      <button type="submit" class="btn btn-primary">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><img src="logo-white.png" alt="MGF Carpentry"><b>MGF <span>Carpentry</span></b></div>
+        <p>Bespoke carpentry and joinery from a Croydon craftsman. Wood flooring, fitted storage, staircases and kitchens for homeowners across South London and Surrey.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Wood Flooring</a>
+        <a href="#services">Fitted Wardrobes</a>
+        <a href="#services">Interior Joinery</a>
+        <a href="#services">Kitchen Fitting</a>
+        <a href="#services">Decking &amp; Outdoor</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#" id="fPhone">Phone</a>
+        <a href="#" id="fEmail">Email</a>
+        <a href="#contact">Request a Quote</a>
+        <span style="display:block;padding:6px 0;font-size:.94rem;color:#9aa4b0">Croydon, South London</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span id="yr"></span> MGF Carpentry. All rights reserved.</div>
+      <div>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" class="fab fab-wa" id="fabWa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.207zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+</div>
+
+<!-- Lightbox -->
+<div class="lb" id="lb"><span class="lb-close" id="lbClose">&times;</span><img id="lbImg" src="" alt=""></div>
+
+<script>
+// ----- Contact decode (base64) -----
+var P  = atob('MDc4MDM4MzYxMTU=');
+var Pf = atob('MDc4MDMgODM2MTE1');
+var E  = atob('bWdmY2FycGVudHJ5QGdtYWlsLmNvbQ==');
+var WA = atob('NDQ3ODAzODM2MTE1');
+var waLink = 'https://wa.me/' + WA + '?text=Hi%20Mus%2C%20I%20found%20MGF%20Carpentry%20online%20and%20would%20like%20a%20quote%20please';
+function tel(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;}
+['navCall','heroCall','ctaCall','fabCall','mCall'].forEach(tel);
+var hw=document.getElementById('heroWa');if(hw)hw.href=waLink;
+var fw=document.getElementById('fabWa');if(fw)fw.href=waLink;
+// phone text where shown
+var cp=document.getElementById('cPhone');if(cp){cp.textContent=Pf;cp.href='tel:'+P;}
+var fp=document.getElementById('fPhone');if(fp){fp.textContent=Pf;fp.href='tel:'+P;}
+var ce=document.getElementById('cEmail');if(ce){ce.textContent=E;ce.href='mailto:'+E;}
+var fe=document.getElementById('fEmail');if(fe){fe.textContent='Email';fe.href='mailto:'+E;}
+
+// ----- Loader -----
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    var l=document.getElementById('loader');
+    if(l){l.classList.add('done');setTimeout(function(){l.style.display='none';},800);}
+  },1750);
+});
+
+// ----- Mobile nav -----
+var burger=document.getElementById('burger'),mp=document.getElementById('mpanel');
+burger.addEventListener('click',function(){burger.classList.toggle('open');mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');mp.classList.remove('open');});});
+
+// ----- Year -----
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// ----- Form timestamp -----
+document.getElementById('formTimestamp').value=Date.now();
+
+// ----- Reveal on scroll -----
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// ----- Floating CTA visibility -----
+var fabs=document.getElementById('fabs'),hero=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>hero.offsetHeight-80){fabs.classList.add('show');}else{fabs.classList.remove('show');}
+});
+
+// ----- Lightbox -----
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('.gal-item').forEach(function(g){
+  g.addEventListener('click',function(){lbImg.src=g.getAttribute('data-full');lb.classList.add('open');});
+});
+function closeLb(){lb.classList.remove('open');}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+</script>
+</body>
+</html>
