@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAR Decor · Painters, Decorators & Property Maintenance in Surrey</title>
+<meta name="description" content="DAR Decor by Andres Ramirez. Painting, decorating, wallpapering and property maintenance across Surrey. Clean, hard-wearing work, tidy finish, honest pricing. Free quotes.">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f4f5f3;
+  --stone2:#eceeea;
+  --ink:#16191c;
+  --body:#4c5258;
+  --muted:#878d93;
+  --line:#e4e6e2;
+  --accent:#c1543a;        /* clay / decorator terracotta */
+  --accent-hover:#a23f2b;
+  --accent-glow:rgba(193,84,58,.16);
+  --deep:#173a4a;          /* denim band, drawn from the hero room */
+  --deep2:#1d4757;
+  --denim:#2f6076;
+  --ochre:#e0a531;
+  --sage:#6f8c5a;
+  --plum:#7a4f74;
+  --wa:#25d366;
+  --radius:18px;
+  --shadow:0 18px 50px -28px rgba(20,30,40,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,.dsp{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);line-height:1.05;letter-spacing:-.03em}
+em{font-style:normal}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+
+/* ===== eyebrow / swatch-chip flourish ===== */
+.eyebrow{display:inline-flex;align-items:center;gap:11px;font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.eyebrow .chips{display:inline-flex;gap:4px}
+.eyebrow .chips i{width:11px;height:18px;border-radius:3px;display:block}
+.eyebrow .chips i:nth-child(1){background:var(--accent)}
+.eyebrow .chips i:nth-child(2){background:var(--denim)}
+.eyebrow .chips i:nth-child(3){background:var(--ochre)}
+.eyebrow.light{color:#fff}
+
+/* ===== buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;padding:15px 26px;border-radius:13px;cursor:pointer;border:2px solid transparent;transition:transform .2s ease,box-shadow .2s ease,background .2s ease;white-space:nowrap}
+.btn svg{width:19px;height:19px}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 12px 28px -12px var(--accent)}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#06381b}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{transform:translateY(-2px)}
+
+/* ===== nav ===== */
+nav{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Hanken Grotesk';font-weight:800;font-size:1.3rem;color:var(--ink);white-space:nowrap;letter-spacing:-.02em}
+.brand .mark{display:flex;gap:3px}
+.brand .mark i{width:8px;height:24px;border-radius:2px;display:block}
+.brand .mark i:nth-child(1){background:var(--accent)}
+.brand .mark i:nth-child(2){background:var(--denim)}
+.brand .mark i:nth-child(3){background:var(--ochre)}
+.brand small{font-weight:500;color:var(--muted);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-family:'Inter'}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{background:var(--ink);color:#fff !important;padding:10px 20px;border-radius:10px}
+.nav-links a.nav-cta:hover{background:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.hamburger span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;transition:.3s}
+.mobile-panel{display:none;position:fixed;inset:74px 0 auto 0;background:var(--bg);border-bottom:1px solid var(--line);padding:18px 24px 26px;z-index:199;flex-direction:column;gap:4px;box-shadow:var(--shadow)}
+.mobile-panel a{padding:14px 6px;font-weight:600;font-size:1.05rem;color:var(--ink);border-bottom:1px solid var(--line)}
+.mobile-panel a.m-call{margin-top:14px;background:var(--accent);color:#fff;text-align:center;border-radius:12px;border:0;padding:16px}
+.mobile-panel.open{display:flex}
+
+/* ===== hero (H2 split) ===== */
+.hero{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--stone) 0%,var(--bg) 100%);padding:64px 0 0}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.hero-eyebrow{margin-bottom:22px}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.5rem);font-weight:800}
+.hero .lede{font-size:1.12rem;color:var(--body);margin:22px 0 30px;max-width:30em}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap}
+.hero-phone{margin-top:22px;font-size:.95rem;color:var(--muted);font-weight:500}
+.hero-phone b{color:var(--ink);font-family:'Hanken Grotesk';font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.hero-media{position:relative}
+.hero-media img{width:100%;height:540px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero-badge{position:absolute;left:-22px;bottom:30px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px 19px;box-shadow:var(--shadow);display:flex;align-items:center;gap:13px}
+.hero-badge .swatch{display:flex;gap:4px}
+.hero-badge .swatch i{width:14px;height:30px;border-radius:4px;display:block}
+.hero-badge .swatch i:nth-child(1){background:var(--accent)}
+.hero-badge .swatch i:nth-child(2){background:var(--denim)}
+.hero-badge .swatch i:nth-child(3){background:var(--ochre)}
+.hero-badge .swatch i:nth-child(4){background:var(--sage)}
+.hero-badge b{font-family:'Hanken Grotesk';font-weight:800;color:var(--ink);font-size:1.05rem;display:block;line-height:1.2}
+.hero-badge span{font-size:.78rem;color:var(--muted)}
+
+/* ===== trust strip ===== */
+.trust{padding:0;margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg)}
+.trust-inner{display:flex;justify-content:space-between;flex-wrap:wrap}
+.trust-item{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:10px;padding:22px 14px;font-weight:600;color:var(--ink);font-size:.92rem;border-left:1px solid var(--line)}
+.trust-item:first-child{border-left:0}
+.trust-item svg{width:19px;height:19px;color:var(--accent);flex-shrink:0}
+
+/* ===== section frame ===== */
+section{padding:88px 0}
+.sec-head{max-width:680px;margin-bottom:46px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-top:18px}
+
+/* ===== services (S4 bento) ===== */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.svc{position:relative;background:var(--stone);border:1px solid var(--line);border-radius:var(--radius);padding:30px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,background .25s}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);background:#fff}
+.svc:hover::before{transform:scaleX(1)}
+.svc--feat{grid-column:span 3}
+.svc--wide{grid-column:span 3}
+.svc--std{grid-column:span 2}
+.svc .chip{width:26px;height:36px;border-radius:5px;margin-bottom:18px;box-shadow:0 6px 14px -6px rgba(0,0,0,.35)}
+.svc h3{font-size:1.28rem;font-weight:800;margin-bottom:8px}
+.svc--feat h3{font-size:1.7rem}
+.svc p{font-size:.97rem;color:var(--body)}
+.svc--feat p,.svc--wide p{font-size:1.05rem}
+.c-clay{background:var(--accent)} .c-denim{background:var(--denim)} .c-ochre{background:var(--ochre)} .c-sage{background:var(--sage)} .c-plum{background:var(--plum)} .c-ink{background:var(--ink)}
+
+/* ===== gallery (G2 masonry) ===== */
+#work{background:var(--stone)}
+.masonry{columns:3;column-gap:18px}
+.tile{break-inside:avoid;margin-bottom:18px}
+.tile figure{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 10px 30px -22px rgba(20,30,40,.5)}
+.tile img{width:100%;height:auto;transition:transform .6s ease}
+.tile:hover img{transform:scale(1.05)}
+.tile figcaption{padding:13px 16px;font-size:.85rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:9px}
+.tile figcaption i{width:9px;height:9px;border-radius:2px;background:var(--accent);flex-shrink:0}
+
+/* ===== about ===== */
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:54px;align-items:center}
+.about .lede2{font-size:1.18rem;color:var(--ink);font-weight:500;line-height:1.6}
+.about p{margin-top:16px}
+.founder{display:flex;align-items:center;gap:16px;margin-top:30px}
+.founder .ini{width:60px;height:60px;border-radius:14px;background:var(--deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Hanken Grotesk';font-weight:800;font-size:1.3rem;flex-shrink:0}
+.founder b{display:block;color:var(--ink);font-family:'Hanken Grotesk';font-size:1.1rem}
+.founder span{font-size:.88rem;color:var(--muted)}
+.about-card{background:var(--stone);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.about-card .palette-row{display:flex;gap:7px;margin-bottom:22px}
+.about-card .palette-row i{height:46px;flex:1;border-radius:7px}
+.about-card ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.about-card li{display:flex;gap:12px;align-items:flex-start;font-size:.96rem;color:var(--ink);font-weight:500}
+.about-card li svg{width:20px;height:20px;color:var(--accent);flex-shrink:0;margin-top:2px}
+
+/* ===== reviews (R3) ===== */
+#reviews{background:var(--deep);color:#fff}
+#reviews h2{color:#fff}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rev{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:28px}
+.rev .stars{color:var(--ochre);font-size:1rem;letter-spacing:2px;margin-bottom:13px}
+.rev p{color:#e7edf0;font-size:1.02rem;line-height:1.6}
+.rev .who{margin-top:18px;font-size:.86rem;color:#9fb6c0}
+.rev .who b{color:#fff;font-family:'Hanken Grotesk';font-weight:700}
+
+/* ===== areas ===== */
+.areas-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.areas-grid span{background:var(--stone);border:1px solid var(--line);border-radius:10px;padding:11px 17px;font-weight:600;font-size:.92rem;color:var(--ink)}
+.areas-grid span.home{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ===== cta band ===== */
+.ctaband{background:var(--deep);color:#fff;border-radius:24px;padding:54px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;position:relative;overflow:hidden}
+.ctaband .strip{position:absolute;top:0;left:0;right:0;height:6px;display:flex}
+.ctaband .strip i{flex:1}
+.ctaband .strip i:nth-child(1){background:var(--accent)}.ctaband .strip i:nth-child(2){background:var(--denim)}.ctaband .strip i:nth-child(3){background:var(--ochre)}.ctaband .strip i:nth-child(4){background:var(--sage)}.ctaband .strip i:nth-child(5){background:var(--plum)}
+.ctaband h2{color:#fff;font-size:clamp(1.7rem,3.3vw,2.4rem);max-width:16em}
+.ctaband p{color:#bcd0d8;margin-top:8px}
+
+/* ===== contact (C1) ===== */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px}
+.cinfo{display:flex;flex-direction:column;gap:16px}
+.cinfo .row{display:flex;gap:15px;align-items:flex-start;background:var(--stone);border:1px solid var(--line);border-radius:14px;padding:20px}
+.cinfo .row svg{width:22px;height:22px;color:var(--accent);flex-shrink:0;margin-top:3px}
+.cinfo .row b{display:block;font-family:'Hanken Grotesk';color:var(--ink);font-size:1.05rem}
+.cinfo .row span,.cinfo .row a{color:var(--body);font-size:.95rem}
+.cinfo .row a:hover{color:var(--accent)}
+form{background:var(--stone);border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.field{margin-bottom:17px}
+.field label{display:block;font-weight:600;font-size:.86rem;color:var(--ink);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:11px;font-family:'Inter';font-size:.97rem;background:#fff;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.field textarea{resize:vertical;min-height:110px}
+form .btn-primary{width:100%}
+
+/* ===== footer ===== */
+footer{background:var(--ink);color:#aeb4ba;padding:54px 0 30px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand{font-family:'Hanken Grotesk';font-weight:800;font-size:1.4rem;color:#fff;display:flex;align-items:center;gap:11px}
+.foot-brand .mark{display:flex;gap:3px}
+.foot-brand .mark i{width:8px;height:24px;border-radius:2px;display:block}
+.foot-brand .mark i:nth-child(1){background:var(--accent)}.foot-brand .mark i:nth-child(2){background:var(--denim)}.foot-brand .mark i:nth-child(3){background:var(--ochre)}
+.foot-cols{display:flex;gap:54px;flex-wrap:wrap}
+.foot-cols h4{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.foot-cols a,.foot-cols span{display:block;font-size:.92rem;margin-bottom:8px;color:#aeb4ba}
+.foot-cols a:hover{color:#fff}
+.foot-bottom{padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem}
+.foot-bottom a{color:var(--ochre)}
+
+/* ===== floating CTAs ===== */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.35s}
+.fabs.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.5)}
+.fab svg{width:26px;height:26px}
+.fab-call{background:var(--accent);color:#fff;animation:pulseA 2.2s infinite}
+.fab-wa{background:var(--wa);color:#06381b;animation:pulseW 2.2s infinite}
+.fab:hover{animation:none}
+@keyframes pulseA{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 16px rgba(193,84,58,0)}100%{box-shadow:0 0 0 0 rgba(193,84,58,0)}}
+@keyframes pulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ===== reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== responsive ===== */
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:34px}
+  .hero-media img{height:380px}
+  .about{grid-template-columns:1fr;gap:32px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .masonry{columns:2}
+  .svc--feat,.svc--wide{grid-column:span 6}
+  .svc--std{grid-column:span 3}
+}
+@media(max-width:780px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding-top:40px}
+  section{padding:62px 0}
+  .trust-inner{flex-direction:column}
+  .trust-item{border-left:0;border-top:1px solid var(--line);justify-content:flex-start}
+  .trust-item:first-child{border-top:0}
+  .bento{grid-template-columns:1fr;gap:14px}
+  .svc--feat,.svc--wide,.svc--std{grid-column:span 1}
+  .rev-grid{grid-template-columns:1fr}
+  .masonry{columns:1}
+  .ctaband{padding:34px}
+  .hero-badge{display:none}
+  .tile figcaption{display:none}
+  .foot-top{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="mark"><i></i><i></i><i></i></span>DAR&nbsp;Decor</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta">Get a quote</a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Get a quote</a>
+    <a href="#" id="mCall" class="m-call">Call Andres</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="eyebrow"><span class="chips"><i></i><i></i><i></i></span> Painters &amp; Decorators · Surrey</span></div>
+      <h1>Decorating that makes the whole house feel <span class="accent">new</span>.</h1>
+      <p class="lede">DAR Decor brings clean, hard-wearing painting, wallpapering and property maintenance to homes across Surrey. Tidy work, honest pricing, finished when we say.</p>
+      <div class="hero-cta">
+        <a href="#" id="heroCall" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Andres
+        </a>
+        <a href="#" id="heroWa" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <p class="hero-phone">Free quotes across Surrey · <b id="heroNum">Tap to call</b></p>
+    </div>
+    <div class="hero-media">
+      <img src="hero.jpg" alt="Freshly decorated room in a Surrey home, deep blue walls and herringbone floor by DAR Decor">
+      <div class="hero-badge">
+        <span class="swatch"><i></i><i></i><i></i><i></i></span>
+        <div><b>12+ years</b><span>Surrey homes &amp; landlords</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="wrap trust-inner">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg> Fully Insured</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free Quotes</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 12+ Years</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg> Tidy &amp; Clean</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Surrey Based</div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="chips"><i></i><i></i><i></i></span> What we do</span>
+      <h2>Painting, decorating &amp; the jobs that keep a home <span class="accent">sharp</span>.</h2>
+    </div>
+    <div class="bento">
+      <div class="svc svc--feat reveal">
+        <div class="chip c-clay"></div>
+        <h3>Interior Painting &amp; Decorating</h3>
+        <p>Walls, ceilings and woodwork prepped, filled and cut in clean. A hard-wearing finish that lasts, not just a quick coat.</p>
+      </div>
+      <div class="svc svc--wide reveal">
+        <div class="chip c-denim"></div>
+        <h3>Exterior Painting</h3>
+        <p>Render, masonry, fascias and front doors brought back to life and weatherproofed for the British winter.</p>
+      </div>
+      <div class="svc svc--std reveal">
+        <div class="chip c-ochre"></div>
+        <h3>Wallpapering</h3>
+        <p>Hung straight, pattern matched, no bubbles or peeling seams.</p>
+      </div>
+      <div class="svc svc--std reveal">
+        <div class="chip c-sage"></div>
+        <h3>Plastering &amp; Repairs</h3>
+        <p>Skimming, patching and crack repair, left flat and ready to paint.</p>
+      </div>
+      <div class="svc svc--std reveal">
+        <div class="chip c-plum"></div>
+        <h3>Carpentry &amp; Fixings</h3>
+        <p>Skirting, architrave and doors hung, fixed and finished.</p>
+      </div>
+      <div class="svc svc--std reveal">
+        <div class="chip c-ink"></div>
+        <h3>Property Maintenance</h3>
+        <p>The smaller jobs and repairs that keep a house on top form.</p>
+      </div>
+      <div class="svc svc--std reveal">
+        <div class="chip c-denim"></div>
+        <h3>Tiling &amp; Splashbacks</h3>
+        <p>Kitchens and bathrooms laid level, grouted and sealed.</p>
+      </div>
+      <div class="svc svc--std reveal">
+        <div class="chip c-clay"></div>
+        <h3>Wood &amp; Metal Finishing</h3>
+        <p>Gloss and satin work primed, undercoated and protected.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="chips"><i></i><i></i><i></i></span> Recent work</span>
+      <h2>A look at the <span class="accent">finish</span>.</h2>
+    </div>
+    <div class="masonry">
+      <div class="tile reveal"><figure><img src="work-1.jpg" alt="Modern room repainted in soft grey and blue with new flooring"><figcaption><i></i>Two-tone living room repaint</figcaption></figure></div>
+      <div class="tile reveal"><figure><img src="work-3.jpg" alt="Freshly painted orange front door with brass letterbox on a Surrey home"><figcaption><i></i>Front door, repainted and revived</figcaption></figure></div>
+      <div class="tile reveal"><figure><img src="work-2.jpg" alt="Red brick period property with crisp white sash windows repainted"><figcaption><i></i>Sash windows &amp; exterior woodwork</figcaption></figure></div>
+      <div class="tile reveal"><figure><img src="work-6.jpg" alt="Selection of paint colours ready for a Surrey decorating project"><figcaption><i></i>Choosing the right colours</figcaption></figure></div>
+      <div class="tile reveal"><figure><img src="work-4.jpg" alt="Terraced street of English homes with freshly painted frontages"><figcaption><i></i>Terraced frontages refreshed</figcaption></figure></div>
+      <div class="tile reveal"><figure><img src="work-5.jpg" alt="Detail of a styled, freshly decorated room with timber flooring"><figcaption><i></i>Finishing touches</figcaption></figure></div>
+      <div class="tile reveal"><figure><img src="work-7.jpg" alt="Clean white feature wall with shelving in a decorated room"><figcaption><i></i>Feature wall &amp; clean lines</figcaption></figure></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <span class="eyebrow"><span class="chips"><i></i><i></i><i></i></span> About DAR Decor</span>
+      <p class="lede2" style="margin-top:18px">Run by Andres Ramirez, a Surrey decorator who treats every house like his own.</p>
+      <p>From a single feature wall to a full repaint inside and out, the prep is done right, the finish is sharp and the place is left clean at the end of every day. Honest pricing, tidy work and no mess left behind.</p>
+      <div class="founder">
+        <div class="ini">AR</div>
+        <div><b>Andres Ramirez</b><span>Owner &amp; decorator · DAR Decor</span></div>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="palette-row"><i class="c-clay"></i><i class="c-denim"></i><i class="c-ochre"></i><i class="c-sage"></i><i class="c-plum"></i></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Dust sheets down, furniture protected, floors covered</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Filling, sanding and priming before a brush of colour</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Trade-quality paints that hold up for years</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Cleared up and hoovered before we leave</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow light"><span class="chips"><i></i><i></i><i></i></span> What homeowners say</span>
+      <h2>Recommended across Surrey.</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Andres redecorated our whole downstairs in Guildford. Hallway, lounge and stairs. The lines are dead straight and there's not a drop of paint where it shouldn't be."</p><div class="who"><b>Sarah H.</b> · Guildford · Full interior repaint</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Had the outside of the house repainted before we put it on the market. DAR Decor turned up when they said, masked everything off and the render looks brand new."</p><div class="who"><b>Mark T.</b> · Woking · Exterior painting</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Wallpapered the feature wall in our bedroom in Esher. The pattern is matched perfectly across the join, you genuinely cannot see where it meets."</p><div class="who"><b>Priya N.</b> · Esher · Wallpapering</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Used Andres for a few jobs round the house. Filled cracks, reskimmed a ceiling and glossed the doors. Polite, tidy and cleared up properly after himself."</p><div class="who"><b>Dan &amp; Claire</b> · Leatherhead · Maintenance</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="chips"><i></i><i></i><i></i></span> Where we work</span>
+      <h2>Decorating across <span class="accent">Surrey</span>.</h2>
+    </div>
+    <div class="areas-grid reveal">
+      <span class="home">Guildford</span><span>Woking</span><span>Epsom</span><span>Esher</span><span>Cobham</span><span>Leatherhead</span><span>Weybridge</span><span>Reigate</span><span>Dorking</span><span>Godalming</span><span>Walton-on-Thames</span><span>Surrey-wide</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="ctaband reveal">
+      <div class="strip"><i></i><i></i><i></i><i></i><i></i></div>
+      <div>
+        <h2>Thinking about a fresh coat?</h2>
+        <p>Get a free, no-obligation quote from Andres this week.</p>
+      </div>
+      <a href="#" id="bandCall" class="btn btn-light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandNum">Call us today</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="chips"><i></i><i></i><i></i></span> Get in touch</span>
+      <h2>Tell Andres about your <span class="accent">project</span>.</h2>
+      <p style="margin-top:14px">Drop a few details below or give us a call. We'll get back to you the same day with a free quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><b>Call or text</b><a href="#" id="infoCall">Tap to call</a></div></div>
+        <div class="row"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg><div><b>WhatsApp</b><a href="#" id="infoWa">Message us a photo</a></div></div>
+        <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Area covered</b><span>Surrey &amp; surrounding towns</span></div></div>
+        <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Response time</b><span>Same-day reply, quotes within 48 hrs</span></div></div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="DAR Decor">
+        <input type="hidden" name="source" value="mockup-dar-decor">
+        <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
+        <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        <div class="field"><label for="email">Email (optional)</label><input type="email" id="email" name="email"></div>
+        <div class="field"><label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <optgroup label="Painting & Decorating">
+              <option>Interior painting &amp; decorating</option>
+              <option>Exterior painting</option>
+              <option>Wallpapering</option>
+              <option>Wood &amp; metal finishing</option>
+            </optgroup>
+            <optgroup label="Repairs & Maintenance">
+              <option>Plastering &amp; repairs</option>
+              <option>Carpentry &amp; fixings</option>
+              <option>Tiling &amp; splashbacks</option>
+              <option>General property maintenance</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Tell us about the job</label><textarea id="message" name="message" placeholder="Which rooms, inside or out, rough timescale..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><span class="mark"><i></i><i></i><i></i></span>DAR Decor</div>
+        <p style="margin-top:12px;max-width:24em;font-size:.92rem">Painting, decorating and property maintenance for homes and landlords across Surrey.</p>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <h4>Services</h4>
+          <a href="#services">Interior decorating</a>
+          <a href="#services">Exterior painting</a>
+          <a href="#services">Wallpapering</a>
+          <a href="#services">Property maintenance</a>
+        </div>
+        <div>
+          <h4>Areas</h4>
+          <span>Guildford</span><span>Woking</span><span>Esher</span><span>Leatherhead</span>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="#" id="footCall">Tap to call</a>
+          <a href="#contact">Request a quote</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 DAR Decor. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" id="fabCall" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" id="fabWa" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+  </a>
+</div>
+
+<script>
+// ---- contact details (base64) ----
+var P  = atob('MDc1Nzg3MTg4NjM=');
+var Pf = atob('MDc1NzggNzE4IDg2Mw==');
+var WA = atob('NDQ3NTc4NzE4ODYz');
+var waLink = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi Andres, I found DAR Decor online and would like a quote please');
+var tel = 'tel:' + P;
+['heroCall','bandCall','infoCall','footCall','fabCall','mCall'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=tel;});
+['heroWa','infoWa','fabWa'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=waLink;});
+document.getElementById('infoCall').textContent = Pf;
+document.getElementById('footCall').textContent = Pf;
+document.getElementById('heroNum').textContent = Pf;
+document.getElementById('bandNum').textContent = 'Call ' + Pf;
+
+// ---- form timestamp + phone validity ----
+document.getElementById('formTimestamp').value = Date.now();
+var ph = document.getElementById('phone');
+ph.addEventListener('input', function(){
+  this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,'')) ? '' : 'Please enter a valid UK phone number');
+});
+
+// ---- mobile nav ----
+var ham = document.getElementById('ham'), panel = document.getElementById('mpanel');
+ham.addEventListener('click', function(){ panel.classList.toggle('open'); });
+panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ panel.classList.remove('open'); }); });
+
+// ---- floating CTAs ----
+var fabs = document.getElementById('fabs'), hero = document.getElementById('top');
+new IntersectionObserver(function(es){ es.forEach(function(e){ fabs.classList.toggle('show', !e.isIntersecting); }); }, {threshold:.1}).observe(hero);
+
+// ---- scroll reveals ----
+var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
