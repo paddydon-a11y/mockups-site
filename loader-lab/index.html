@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Trade Loader Lab — internal reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#101113; --card:#17191c; --card-2:#1d2024; --line:#26292e;
+  --ink:#f2f3f4; --body:#9aa1a9; --hot:#ffb224;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto;padding:56px 24px 80px}
+h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
+.sub{color:var(--body);margin-top:12px;max-width:680px;line-height:1.7;font-size:0.98rem}
+.sub code{font-family:'DM Mono',monospace;font-size:0.85em;background:var(--card-2);padding:2px 6px;border-radius:4px}
+.rules{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--card);max-width:680px}
+.rules h2{font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--hot);margin-bottom:10px}
+.rules li{color:var(--body);font-size:0.92rem;line-height:1.65;margin-left:18px;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer;text-align:left;color:var(--ink);font-family:inherit;transition:transform .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-3px);border-color:#3a3f46}
+.card .trade{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--hot)}
+.card h3{margin-top:8px;font-size:1.15rem;font-weight:700;letter-spacing:-0.01em}
+.card p{margin-top:8px;color:var(--body);font-size:0.88rem;line-height:1.6}
+.card .play-hint{margin-top:14px;font-family:'DM Mono',monospace;font-size:0.74rem;color:#6b727b}
+
+/* ===== shared loader shell ===== */
+.loader{position:fixed;inset:0;z-index:99;display:none;align-items:center;justify-content:center;overflow:hidden}
+.loader.on{display:flex}
+.loader.bye{animation:loaderOut .45s ease forwards}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+.wordmark{font-weight:900;letter-spacing:0.04em;font-size:clamp(1.4rem,4.5vw,2.4rem);text-transform:uppercase;opacity:0}
+.wordsub{font-family:'DM Mono',monospace;font-size:clamp(0.66rem,1.6vw,0.8rem);letter-spacing:0.28em;text-transform:uppercase;opacity:0;margin-top:10px}
+@keyframes wordIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== 1. DECORATOR — roller sweep ===== */
+/* bare plaster wall gets two coats of brand colour */
+#ld-roller{background:#cfc9bf;flex-direction:column}
+#ld-roller .band{position:absolute;inset:0;transform:scaleX(0);transform-origin:left}
+#ld-roller .band.b1{background:#2e7bb5}
+#ld-roller .band.b2{background:#1d4e75}
+#ld-roller.play .band.b1{animation:sweep .9s cubic-bezier(.7,0,.3,1) .1s forwards}
+#ld-roller.play .band.b2{animation:sweep .9s cubic-bezier(.7,0,.3,1) .55s forwards}
+@keyframes sweep{to{transform:scaleX(1)}}
+#ld-roller .roller{position:absolute;top:50%;left:0;width:74px;height:150px;margin-top:-75px;opacity:0;z-index:3}
+#ld-roller.play .roller{animation:rollAcross .9s cubic-bezier(.7,0,.3,1) .1s forwards}
+@keyframes rollAcross{0%{opacity:1;left:-80px}99%{opacity:1}100%{opacity:0;left:100%}}
+#ld-roller .roller .sleeve{width:34px;height:150px;background:#e8e4dc;border-radius:17px;box-shadow:inset -6px 0 0 rgba(0,0,0,.12)}
+#ld-roller .roller .arm{position:absolute;top:64px;left:32px;width:36px;height:8px;background:#8c939b;border-radius:4px}
+#ld-roller .roller .grip{position:absolute;top:58px;left:62px;width:12px;height:42px;background:#d8a23c;border-radius:6px}
+#ld-roller .wm-zone{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center}
+#ld-roller.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
+#ld-roller.play .wordsub{animation:wordIn .5s ease 1.45s forwards}
+
+/* ===== 2. ELECTRICIAN — power up ===== */
+#ld-power{background:#070708;flex-direction:column}
+#ld-power svg{width:min(560px,86vw);height:auto;overflow:visible}
+#ld-power .trace{fill:none;stroke:#ffd54a;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:340;stroke-dashoffset:340}
+#ld-power.play .trace.tl{animation:draw .7s ease-out .1s forwards}
+#ld-power.play .trace.tr{animation:draw .7s ease-out .1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+#ld-power .bulb{fill:none;stroke:#4a4a45;stroke-width:2.5;transition:none}
+#ld-power.play .bulb{animation:bulbOn .9s steps(1) .75s forwards}
+@keyframes bulbOn{0%{stroke:#4a4a45}20%{stroke:#ffd54a}30%{stroke:#4a4a45}45%{stroke:#ffd54a}55%{stroke:#5a5a52}100%{stroke:#ffd54a}}
+#ld-power .glow{opacity:0}
+#ld-power.play .glow{animation:glowOn .5s ease 1.5s forwards}
+@keyframes glowOn{to{opacity:1}}
+#ld-power .flash{position:absolute;inset:0;background:#fff8e1;opacity:0;pointer-events:none}
+#ld-power.play .flash{animation:flash .32s ease 1.42s}
+@keyframes flash{0%{opacity:0}25%{opacity:.85}100%{opacity:0}}
+#ld-power.play .wordmark{animation:wordIn .5s ease 1.6s forwards}
+#ld-power.play .wordsub{animation:wordIn .5s ease 1.78s forwards}
+
+/* ===== 3. GAS / PLUMBING — ignition ===== */
+#ld-flame{background:#0a1626;flex-direction:column}
+#ld-flame .rig{position:relative;width:min(520px,84vw)}
+#ld-flame svg.pipe{width:100%;height:auto;overflow:visible;display:block}
+#ld-flame .pipeline{fill:none;stroke:#3d5a7d;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:620;stroke-dashoffset:620}
+#ld-flame.play .pipeline{animation:pipeDraw .85s ease-in-out .1s forwards}
+@keyframes pipeDraw{to{stroke-dashoffset:0}}
+#ld-flame .valve{fill:#3d5a7d;opacity:0}
+#ld-flame.play .valve{animation:glowOn .2s ease .9s forwards}
+/* flame bottom sits on the open pipe end at (470,96) in the 520x150 viewBox */
+#ld-flame .flame{position:absolute;left:calc(90.4% - 22px);top:calc(64% - 58px);width:44px;height:58px;opacity:0;transform-origin:50% 100%}
+#ld-flame .flame .outer{position:absolute;inset:0;background:linear-gradient(#5ab0ff,#1f6fe0);border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
+#ld-flame .flame .inner{position:absolute;left:11px;top:18px;width:22px;height:34px;background:linear-gradient(#fff3c4,#ffb224);border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
+#ld-flame.play .flame{animation:ignite .4s cubic-bezier(.2,1.4,.4,1) 1.05s forwards,flick .55s ease-in-out 1.45s infinite alternate}
+@keyframes ignite{0%{opacity:0;transform:scale(.1)}100%{opacity:1;transform:scale(1)}}
+@keyframes flick{from{transform:scale(1) rotate(-2deg)}to{transform:scale(1.07) rotate(2deg)}}
+#ld-flame.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-flame.play .wordsub{animation:wordIn .5s ease 1.68s forwards}
+
+/* ===== 4. BRICKWORK — coursework ===== */
+#ld-brick{background:#f4f1ec;flex-direction:column;color:#241c14}
+#ld-brick .wall{display:flex;flex-direction:column-reverse;gap:5px;width:auto}
+#ld-brick .course{display:flex;gap:5px}
+#ld-brick .course.offset{transform:translateX(-26px)}
+#ld-brick .brick{height:26px;flex:0 0 52px;background:#b0402a;border-radius:2px;opacity:0;transform:translateY(-16px)}
+#ld-brick .brick.half{flex-basis:24px}
+#ld-brick.play .brick{animation:lay .3s cubic-bezier(.3,1.3,.5,1) forwards;animation-delay:var(--d)}
+@keyframes lay{to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){
+  #ld-brick .brick{flex:0 0 34px;height:20px}
+  #ld-brick .brick.half{flex:0 0 15px}
+  #ld-brick .course.offset{transform:translateX(-17px)}
+}
+#ld-brick .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:34px}
+#ld-brick .wordmark{color:#241c14}
+#ld-brick .wordsub{color:#7a6f60}
+#ld-brick.play .wordmark{animation:wordIn .45s ease 1.55s forwards}
+#ld-brick.play .wordsub{animation:wordIn .45s ease 1.7s forwards}
+
+/* ===== 5. ROOFING — slate run ===== */
+#ld-slate{background:#161a1e;flex-direction:column}
+#ld-slate .pitch{transform:rotate(-9deg);display:flex;flex-direction:column;gap:6px}
+#ld-slate .row{display:flex;gap:6px}
+#ld-slate .row.offset{transform:translateX(-34px)}
+#ld-slate .slate{width:68px;height:40px;background:#2e3742;border-radius:0 0 8px 8px;border-top:2px solid #1d2329;opacity:0;transform:translateY(-30px) translateX(20px)}
+#ld-slate.play .slate{animation:slateIn .35s cubic-bezier(.3,1.2,.5,1) forwards;animation-delay:var(--d)}
+@keyframes slateIn{to{opacity:1;transform:translateY(0) translateX(0)}}
+#ld-slate .ridge{position:absolute;top:-12px;left:-4%;width:108%;height:5px;background:#c8472e;border-radius:3px;transform:scaleX(0);transform-origin:left}
+#ld-slate.play .ridge{animation:sweep .5s ease 1.15s forwards}
+#ld-slate .wm-zone{position:absolute;display:flex;flex-direction:column;align-items:center;z-index:2}
+#ld-slate.play .wordmark{animation:wordIn .45s ease 1.6s forwards}
+#ld-slate.play .wordsub{animation:wordIn .45s ease 1.75s forwards}
+
+/* ===== 6. REFRIGERATION — deep freeze ===== */
+#ld-frost{background:#0b1d33;flex-direction:column}
+#ld-frost .vignette{position:absolute;inset:0;box-shadow:inset 0 0 0 0 rgba(214,235,255,0)}
+#ld-frost.play .vignette{animation:frostEdge 1.6s ease .3s forwards}
+@keyframes frostEdge{to{box-shadow:inset 0 0 140px 30px rgba(214,235,255,.28)}}
+#ld-frost svg.crystal{position:absolute;width:min(420px,90vw);height:auto;opacity:.5}
+#ld-frost .arm{fill:none;stroke:#9fd2ff;stroke-width:2;stroke-linecap:round;stroke-dasharray:160;stroke-dashoffset:160}
+#ld-frost.play .arm{animation:draw 1s ease-out forwards;animation-delay:var(--d)}
+#ld-frost .temp{position:relative;font-family:'DM Mono',monospace;font-weight:500;font-size:clamp(3rem,10vw,5rem);color:#dcefff;z-index:2}
+#ld-frost .temp .unit{font-size:.45em;color:#7fa8cc}
+#ld-frost .wm-zone{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+#ld-frost.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
+#ld-frost.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
+
+/* reduced motion: no theatrics, quick brand card */
+@media (prefers-reduced-motion: reduce){
+  .loader *{animation:none !important;transition:none !important}
+  .loader.play .wordmark,.loader.play .wordsub{opacity:1}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Trade Loader Lab</h1>
+  <p class="sub">Internal reference for trade-themed loading screens. Pick the concept that matches the prospect's trade, lift the code into the mockup, rebrand the colours and wordmark. The loader counts as the mockup's <em>distinctive flourish</em>. Full rules in <code>construction-sites/MOCKUP-SYSTEM.md</code> → "Trade loaders". Click any card to play it full-screen.</p>
+  <div class="rules">
+    <h2>Hard rules</h2>
+    <ul>
+      <li>2.5 seconds max, then a fail-safe timeout removes the loader even if assets are still pending.</li>
+      <li>Page content renders underneath — never gate content on JS.</li>
+      <li>transform/opacity animations only. No layout thrash, smooth at 390px.</li>
+      <li><code>prefers-reduced-motion</code>: skip the theatrics, show the brand card, fade fast.</li>
+      <li>Mockups: play on every load (it's the pitch). Live client sites: gate behind <code>sessionStorage</code> so it plays once per session.</li>
+      <li>One loader concept per mockup, executed cleanly. Check <code>recipe-ledger.json</code> — no concept repeats within the last 10 mockups.</li>
+    </ul>
+  </div>
+
+  <div class="grid">
+    <button class="card" data-loader="ld-roller" data-dur="2300">
+      <span class="trade">Decorators / Painters</span>
+      <h3>Roller Sweep</h3>
+      <p>A paint roller wipes two coats of brand colour across the screen, then the wordmark appears on the fresh wall.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-power" data-dur="2500">
+      <span class="trade">Electricians</span>
+      <h3>Power Up</h3>
+      <p>A circuit trace draws in from both sides, the bulb flickers and catches, and the whole screen flashes on.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-flame" data-dur="2500">
+      <span class="trade">Gas / Plumbing / Heating</span>
+      <h3>Ignition</h3>
+      <p>A pipe run draws itself across the screen and the boiler flame ignites at the end of it, blue core and all.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-brick" data-dur="2400">
+      <span class="trade">Bricklayers / Builders</span>
+      <h3>Coursework</h3>
+      <p>Brick courses lay themselves up from the footing, half-bond offset and all, then the wordmark stamps the wall.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-slate" data-dur="2400">
+      <span class="trade">Roofers</span>
+      <h3>Slate Run</h3>
+      <p>Slates cascade along the pitch in overlapping courses and the ridge line caps it off.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-frost" data-dur="2600">
+      <span class="trade">Refrigeration / HVAC</span>
+      <h3>Deep Freeze</h3>
+      <p>The temperature readout plunges from 18&deg; to -18&deg; while frost crystallises in from the edges.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<!-- 1. roller -->
+<div class="loader" id="ld-roller" aria-hidden="true">
+  <div class="band b1"></div>
+  <div class="band b2"></div>
+  <div class="roller"><div class="sleeve"></div><div class="arm"></div><div class="grip"></div></div>
+  <div class="wm-zone">
+    <div class="wordmark">J&amp;M Decorators</div>
+    <div class="wordsub">Painting &amp; Decorating</div>
+  </div>
+</div>
+
+<!-- 2. power up -->
+<div class="loader" id="ld-power" aria-hidden="true">
+  <svg viewBox="0 0 560 160" aria-hidden="true">
+    <path class="trace tl" d="M0 80 H160 V50 H230 V80 H252"/>
+    <path class="trace tr" d="M560 80 H400 V110 H330 V80 H308"/>
+    <g class="bulb">
+      <circle cx="280" cy="72" r="22"/>
+      <path d="M271 94 v10 h18 v-10 M274 110 h12"/>
+      <path d="M272 68 q8 10 16 0" />
+    </g>
+    <circle class="glow" cx="280" cy="72" r="30" fill="rgba(255,213,74,0.18)"/>
+  </svg>
+  <div class="flash"></div>
+  <div class="wordmark">Ohm Electrical</div>
+  <div class="wordsub">NICEIC Approved</div>
+</div>
+
+<!-- 3. ignition -->
+<div class="loader" id="ld-flame" aria-hidden="true">
+  <div class="rig">
+    <svg class="pipe" viewBox="0 0 520 150" aria-hidden="true">
+      <path class="pipeline" d="M0 120 H150 V40 H320 V96 H470"/>
+      <rect class="valve" x="462" y="86" width="16" height="20" rx="3"/>
+    </svg>
+    <div class="flame"><div class="outer"></div><div class="inner"></div></div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;margin-top:44px">
+    <div class="wordmark">Blueflame Heating</div>
+    <div class="wordsub">Gas Safe Registered</div>
+  </div>
+</div>
+
+<!-- 4. brickwork (courses injected by JS) -->
+<div class="loader" id="ld-brick" aria-hidden="true">
+  <div class="wall" aria-hidden="true"></div>
+  <div class="wm-zone">
+    <div class="wordmark">Red Lion Brickwork</div>
+    <div class="wordsub">Bricklaying &amp; Pointing</div>
+  </div>
+</div>
+
+<!-- 5. slate run (rows injected by JS) -->
+<div class="loader" id="ld-slate" aria-hidden="true">
+  <div class="pitch" aria-hidden="true"><div class="ridge"></div></div>
+  <div class="wm-zone">
+    <div class="wordmark">Apex Roofing</div>
+    <div class="wordsub">Slate &amp; Tile Specialists</div>
+  </div>
+</div>
+
+<!-- 6. deep freeze -->
+<div class="loader" id="ld-frost" aria-hidden="true">
+  <div class="vignette"></div>
+  <svg class="crystal" viewBox="0 0 400 400" aria-hidden="true">
+    <g transform="translate(200 200)">
+      <path class="arm" style="--d:.2s" d="M0 0 L0 -150 M0 -60 L-22 -86 M0 -60 L22 -86 M0 -110 L-16 -130 M0 -110 L16 -130"/>
+      <path class="arm" style="--d:.35s" transform="rotate(60)" d="M0 0 L0 -150 M0 -60 L-22 -86 M0 -60 L22 -86 M0 -110 L-16 -130 M0 -110 L16 -130"/>
+      <path class="arm" style="--d:.5s" transform="rotate(120)" d="M0 0 L0 -150 M0 -60 L-22 -86 M0 -60 L22 -86 M0 -110 L-16 -130 M0 -110 L16 -130"/>
+      <path class="arm" style="--d:.65s" transform="rotate(180)" d="M0 0 L0 -150 M0 -60 L-22 -86 M0 -60 L22 -86 M0 -110 L-16 -130 M0 -110 L16 -130"/>
+      <path class="arm" style="--d:.8s" transform="rotate(240)" d="M0 0 L0 -150 M0 -60 L-22 -86 M0 -60 L22 -86 M0 -110 L-16 -130 M0 -110 L16 -130"/>
+      <path class="arm" style="--d:.95s" transform="rotate(300)" d="M0 0 L0 -150 M0 -60 L-22 -86 M0 -60 L22 -86 M0 -110 L-16 -130 M0 -110 L16 -130"/>
+    </g>
+  </svg>
+  <div class="temp"><span id="tempVal">18</span><span class="unit">&deg;C</span></div>
+  <div class="wm-zone">
+    <div class="wordmark">Polar Cold Solutions</div>
+    <div class="wordsub">Commercial Refrigeration</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // build the brick wall: 6 courses, alternating half-bond
+  var wall = document.querySelector('#ld-brick .wall');
+  var delay = 0;
+  for (var c = 0; c < 6; c++) {
+    var row = document.createElement('div');
+    row.className = 'course' + (c % 2 ? ' offset' : '');
+    var bricks = c % 2 ? 8 : 7;
+    for (var b = 0; b < bricks; b++) {
+      var br = document.createElement('div');
+      br.className = 'brick' + (c % 2 && (b === 0 || b === bricks - 1) ? ' half' : '');
+      br.style.setProperty('--d', (0.08 + delay).toFixed(2) + 's');
+      delay += 0.035;
+      row.appendChild(br);
+    }
+    wall.appendChild(row);
+  }
+
+  // build the slate pitch: 4 rows x 7 slates, top row first
+  var pitch = document.querySelector('#ld-slate .pitch');
+  var sd = 0;
+  for (var r = 0; r < 4; r++) {
+    var srow = document.createElement('div');
+    srow.className = 'row' + (r % 2 ? ' offset' : '');
+    for (var s = 0; s < 7; s++) {
+      var sl = document.createElement('div');
+      sl.className = 'slate';
+      sl.style.setProperty('--d', (0.1 + sd).toFixed(2) + 's');
+      sd += 0.038;
+      srow.appendChild(sl);
+    }
+    pitch.appendChild(srow);
+  }
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = null;
+
+  function play(id, dur) {
+    if (running) return;
+    var el = document.getElementById(id);
+    running = id;
+    el.classList.add('on');
+    void el.offsetWidth; // restart animations
+    el.classList.add('play');
+
+    if (id === 'ld-frost' && !reduced) {
+      var span = document.getElementById('tempVal');
+      var t0 = performance.now();
+      (function tick(now) {
+        var p = Math.min((now - t0) / 1400, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        span.textContent = Math.round(18 - 36 * eased);
+        if (p < 1 && running === id) requestAnimationFrame(tick);
+      })(t0);
+    }
+
+    var total = reduced ? 900 : dur;
+    setTimeout(function () { el.classList.add('bye'); }, total);
+    // fail-safe: always tear down, even if an animation hangs
+    setTimeout(function () {
+      el.classList.remove('on', 'play', 'bye');
+      running = null;
+    }, total + 500);
+  }
+
+  document.querySelectorAll('.card').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      play(btn.dataset.loader, parseInt(btn.dataset.dur, 10));
+    });
+  });
+
+  /* Lifting a loader into a LIVE client site? Gate it once per session:
+     if (sessionStorage.getItem('seenLoader')) { skip } else { sessionStorage.setItem('seenLoader','1'); play(); }
+     Mockups play on every load — the reload IS the demo. */
+})();
+</script>
+</body>
+</html>
