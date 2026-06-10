@@ -205,6 +205,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-dry.play .wordmark{animation:wordIn .5s ease 1.45s forwards}
 #ld-dry.play .wordsub{animation:wordIn .5s ease 1.62s forwards}
 
+/* ===== 10. JOINERS / CARPENTERS — dovetail lock ===== */
+#ld-dove{background:#0b0f0c;flex-direction:column}
+#ld-dove svg.joint{width:min(300px,78vw);height:auto;overflow:visible}
+#ld-dove .board{opacity:0}
+#ld-dove.play .board.bl{animation:doveL .85s cubic-bezier(.22,1,.36,1) .15s forwards}
+#ld-dove.play .board.br{animation:doveR .85s cubic-bezier(.22,1,.36,1) .15s forwards}
+@keyframes doveL{from{transform:translateX(-70px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes doveR{from{transform:translateX(70px);opacity:0}to{transform:translateX(0);opacity:1}}
+#ld-dove .kerf{transform:scaleY(0);transform-origin:top;opacity:0}
+#ld-dove.play .kerf{animation:kerfCut .4s ease 1.05s forwards}
+@keyframes kerfCut{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+#ld-dove .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:30px}
+#ld-dove .wordmark{color:#fff}
+#ld-dove .wordsub{color:#3fcf7d}
+#ld-dove.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
+#ld-dove.play .wordsub{animation:wordIn .5s ease 1.42s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -281,6 +298,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Waterproofing / Damp Proofing</span>
       <h3>Dry Out</h3>
       <p>The flooded screen drains down while a depth gauge falls to zero, then the wordmark lands on the dry basement wall. First used on hr-building-construction.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-dove" data-dur="2400">
+      <span class="trade">Joiners / Carpenters</span>
+      <h3>Dovetail Lock</h3>
+      <p>A tail board and a pin board slide in from each side and lock flush, a saw kerf marks the joint, then the wordmark lands. First used on nicyai-carpentry.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -389,6 +412,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Watertight <span class="amp">&amp;</span> Dry</div>
     <div class="wordsub">Basement Waterproofing</div>
+  </div>
+</div>
+
+<!-- 10. dovetail lock -->
+<div class="loader" id="ld-dove" aria-hidden="true">
+  <svg class="joint" viewBox="-10 -10 340 140" aria-hidden="true">
+    <g class="board bl">
+      <path d="M0,0 L150,0 L150,10 L180,16 L180,34 L150,40 L150,48 L180,54 L180,72 L150,78 L150,86 L180,92 L180,110 L150,116 L150,120 L0,120 Z" fill="#3fcf7d"/>
+    </g>
+    <g class="board br">
+      <path d="M320,0 L150,0 L150,10 L180,16 L180,34 L150,40 L150,48 L180,54 L180,72 L150,78 L150,86 L180,92 L180,110 L150,116 L150,120 L320,120 Z" fill="#e8ece9"/>
+    </g>
+    <rect class="kerf" x="163" y="0" width="2.5" height="120" fill="#0b0f0c"/>
+  </svg>
+  <div class="wm-zone">
+    <div class="wordmark">Nicyai</div>
+    <div class="wordsub">Carpentry &middot; Essex</div>
   </div>
 </div>
 
