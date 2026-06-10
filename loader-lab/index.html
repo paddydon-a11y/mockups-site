@@ -191,6 +191,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-trowel.play .wordmark{animation:wordIn .55s ease 1.15s forwards}
 #ld-trowel.play .wordsub{animation:wordIn .55s ease 1.3s forwards}
 
+/* ===== 9. WATERPROOFING — dry out ===== */
+#ld-dry{background:#0a1e36;background-image:radial-gradient(circle, rgba(255,255,255,.05) 1.6px, transparent 2.1px);background-size:26px 26px;flex-direction:column}
+#ld-dry .water{position:absolute;left:0;right:0;bottom:0;height:64%;background:linear-gradient(180deg,#2a62a8 0%,#16406f 28%,#0e3258 100%);border-top:3px solid rgba(255,255,255,.4)}
+#ld-dry.play .water{animation:drainOut 1.7s cubic-bezier(.6,.05,.4,1) .25s forwards}
+@keyframes drainOut{to{transform:translateY(102%)}}
+#ld-dry .gauge{position:relative;z-index:2;font-family:'DM Mono',monospace;color:#dce9f8;text-align:center}
+#ld-dry .gauge .gl{font-size:0.68rem;letter-spacing:0.3em;color:#7e97b5;text-transform:uppercase}
+#ld-dry .gauge .gv{font-size:clamp(2.6rem,9vw,4.2rem);line-height:1.1}
+#ld-dry .gauge .gv .unit{font-size:.4em;color:#7e97b5}
+#ld-dry .wm-zone{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin-top:26px}
+#ld-dry .wordmark .amp{color:#c9a44e}
+#ld-dry.play .wordmark{animation:wordIn .5s ease 1.45s forwards}
+#ld-dry.play .wordsub{animation:wordIn .5s ease 1.62s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -261,6 +275,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Plasterers / Renderers</span>
       <h3>Trowel Float</h3>
       <p>Angled trowel passes sweep a rough mottled surface smooth into fresh plaster pink, then the wordmark lands on the float coat. First used on tom-thompson-plastering.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-dry" data-dur="2400">
+      <span class="trade">Waterproofing / Damp Proofing</span>
+      <h3>Dry Out</h3>
+      <p>The flooded screen drains down while a depth gauge falls to zero, then the wordmark lands on the dry basement wall. First used on hr-building-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -359,6 +379,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<!-- 9. dry out -->
+<div class="loader" id="ld-dry" aria-hidden="true">
+  <div class="water"></div>
+  <div class="gauge">
+    <div class="gl">Water level</div>
+    <div class="gv"><span id="dryVal">-1.80</span><span class="unit"> m</span></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Watertight <span class="amp">&amp;</span> Dry</div>
+    <div class="wordsub">Basement Waterproofing</div>
+  </div>
+</div>
+
 <!-- 7. slab lay (rows injected by JS) -->
 <div class="loader" id="ld-slab" aria-hidden="true">
   <div class="patio" aria-hidden="true"></div>
@@ -430,6 +463,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     el.classList.add('on');
     void el.offsetWidth; // restart animations
     el.classList.add('play');
+
+    if (id === 'ld-dry' && !reduced) {
+      var dspan = document.getElementById('dryVal');
+      var d0 = performance.now();
+      (function dtick(now) {
+        var p = Math.min((now - d0 - 250) / 1700, 1);
+        if (p > 0) {
+          var eased = 1 - Math.pow(1 - p, 3);
+          dspan.textContent = (-1.8 * (1 - eased)).toFixed(2);
+        }
+        if (p < 1 && running === id) requestAnimationFrame(dtick);
+      })(d0);
+    }
 
     if (id === 'ld-frost' && !reduced) {
       var span = document.getElementById('tempVal');
