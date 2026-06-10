@@ -147,6 +147,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-frost.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
 #ld-frost.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
 
+/* ===== 7. PATIOS / PAVING — slab lay ===== */
+#ld-slab{background:#1a2130;flex-direction:column}
+#ld-slab .patio{position:absolute;inset:-4%;display:flex;flex-direction:column;gap:7px;justify-content:center}
+#ld-slab .prow{display:flex;gap:7px}
+#ld-slab .prow.offset{transform:translateX(-46px)}
+#ld-slab .pslab{flex:0 0 92px;height:58px;border-radius:3px;background:#2c3546;opacity:0;transform:translateY(14px) scale(.9)}
+#ld-slab .pslab.s2{background:#333e52}
+#ld-slab .pslab.s3{background:#26303f}
+#ld-slab.play .pslab{animation:slabLay .42s ease forwards;animation-delay:var(--d)}
+@keyframes slabLay{to{opacity:1;transform:translateY(0) scale(1)}}
+#ld-slab .wm-zone{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+#ld-slab .wordmark{color:#f0a513}
+#ld-slab .wordsub{color:#2b8fe8}
+#ld-slab.play .wordmark{animation:wordIn .55s ease .95s forwards}
+#ld-slab.play .wordsub{animation:wordIn .55s ease 1.1s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -205,6 +221,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Refrigeration / HVAC</span>
       <h3>Deep Freeze</h3>
       <p>The temperature readout plunges from 18&deg; to -18&deg; while frost crystallises in from the edges.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-slab" data-dur="2400">
+      <span class="trade">Patios / Paving / Landscaping</span>
+      <h3>Slab Lay</h3>
+      <p>Paving slabs course across the screen in offset bond with mortar-gap joints, then the wordmark lands on the finished patio. First used on dgl-home-improvements.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -291,6 +313,15 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<!-- 7. slab lay (rows injected by JS) -->
+<div class="loader" id="ld-slab" aria-hidden="true">
+  <div class="patio" aria-hidden="true"></div>
+  <div class="wm-zone">
+    <div class="wordmark">DGL</div>
+    <div class="wordsub">Home Improvements</div>
+  </div>
+</div>
+
 <script>
 (function(){
   // build the brick wall: 6 courses, alternating half-bond
@@ -324,6 +355,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       srow.appendChild(sl);
     }
     pitch.appendChild(srow);
+  }
+
+  // build the slab patio: full-viewport offset bond, diagonal lay-in
+  var patio = document.querySelector('#ld-slab .patio');
+  var srows = Math.ceil(window.innerHeight / 65) + 2;
+  var scols = Math.ceil(window.innerWidth / 99) + 2;
+  var shades = ['', ' s2', ' s3'];
+  for (var pr = 0; pr < srows; pr++) {
+    var prow = document.createElement('div');
+    prow.className = 'prow' + (pr % 2 ? ' offset' : '');
+    for (var pc = 0; pc < scols; pc++) {
+      var ps = document.createElement('div');
+      ps.className = 'pslab' + shades[(pr * 3 + pc * 5) % 3];
+      ps.style.setProperty('--d', (((pr + pc) * 55) % 700) / 1000 + 's');
+      prow.appendChild(ps);
+    }
+    patio.appendChild(prow);
   }
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
