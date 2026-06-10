@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SM Builders · Bricklayer in West Yorkshire</title>
+<meta name="description" content="SM Builders. Time-served bricklayer covering Leeds, Bradford, Wakefield and across West Yorkshire. Extensions, garden walls, repointing, chimneys and new build brickwork by Zubair Mahmood.">
+<meta property="og:title" content="SM Builders - Your New Website">
+<meta property="og:description" content="Bricklayer in West Yorkshire - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/sm-builders/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/sm-builders/">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f1f4f6;
+  --stone-2:#e6ebef;
+  --line:#dde4e9;
+  --line-2:#c9d3db;
+  --ink:#142019;
+  --body:#48584f;
+  --muted:#84938a;
+  --green:#1b4d3e;
+  --green-2:#26614f;
+  --green-deep:#123528;
+  --green-line:#2a5949;
+  --brick:#9b4a32;
+  --wa:#1fb955;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);color:var(--body);
+  font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{font-family:'Zilla Slab',serif;color:var(--ink);letter-spacing:-0.015em}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.7rem;letter-spacing:0.26em;text-transform:uppercase;
+  color:var(--green);font-weight:500;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.label::before{content:"";width:26px;height:2px;background:var(--green)}
+.hl{color:var(--green);font-weight:700}
+/* running-bond mortar motif */
+.course-rule{
+  height:14px;width:120px;margin-top:18px;
+  background:
+    repeating-linear-gradient(90deg, var(--green) 0 26px, transparent 26px 30px),
+    repeating-linear-gradient(90deg, transparent 0 13px, transparent 13px 15px);
+  -webkit-mask:linear-gradient(#000 0 5px,transparent 5px 9px,#000 9px 14px);
+  mask:linear-gradient(#000 0 5px,transparent 5px 9px,#000 9px 14px);
+  opacity:.85;
+}
+
+/* ===== loader - Coursework (bricks lay up in half-bond) ===== */
+#loader{
+  position:fixed;inset:0;z-index:999;
+  background:var(--stone);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  overflow:hidden;
+}
+#loader.bye{animation:loaderOut .45s ease forwards}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+#loader .wall{display:flex;flex-direction:column-reverse;gap:5px}
+#loader .course{display:flex;gap:5px}
+#loader .course.offset{transform:translateX(-26px)}
+#loader .brick{height:26px;flex:0 0 52px;background:var(--brick);border-radius:2px;opacity:0;transform:translateY(-16px)}
+#loader .brick.half{flex-basis:24px}
+#loader.play .brick{animation:lay .3s cubic-bezier(.3,1.3,.5,1) forwards;animation-delay:var(--d)}
+@keyframes lay{to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){
+  #loader .brick{flex:0 0 34px;height:20px}
+  #loader .brick.half{flex:0 0 15px}
+  #loader .course.offset{transform:translateX(-17px)}
+}
+#loader .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:32px;width:100%;padding:0 24px;text-align:center}
+#loader .wordmark{
+  font-family:'Zilla Slab',serif;font-weight:700;color:var(--ink);
+  font-size:clamp(1.6rem,5vw,2.4rem);letter-spacing:0.01em;opacity:0;line-height:1.2;text-align:center;
+}
+#loader .wordmark .dotg{color:var(--green)}
+#loader .wordsub{
+  font-family:'JetBrains Mono',monospace;font-size:clamp(0.62rem,1.6vw,0.74rem);
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-top:10px;opacity:0;
+}
+#loader.play .wordmark{animation:wordIn .45s ease 1.55s forwards}
+#loader.play .wordsub{animation:wordIn .45s ease 1.7s forwards}
+@keyframes wordIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){
+  #loader *{animation:none !important}
+  #loader .wall{display:none}
+  #loader .wordmark,#loader .wordsub{opacity:1}
+}
+
+/* ===== nav ===== */
+nav{position:sticky;top:0;z-index:90;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-inner{
+  max-width:1160px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.nav-brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.nav-brand .tile{
+  width:40px;height:40px;border-radius:8px;background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Zilla Slab',serif;font-weight:700;font-size:1.05rem;color:#fff;
+}
+.nav-brand .nb-text{display:flex;flex-direction:column;line-height:1.15}
+.nav-brand .nb-main{font-family:'Zilla Slab',serif;font-weight:700;font-size:1.3rem;color:var(--ink)}
+.nav-brand .nb-sub{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:0.92rem;font-weight:500}
+.nav-links a{color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-links a.nav-cta{
+  background:var(--green);color:#fff !important;
+  padding:11px 20px;border-radius:10px;font-weight:600;font-size:0.88rem;
+  transition:background .2s,transform .2s;
+}
+.nav-links a.nav-cta:hover{background:var(--green-2);transform:translateY(-1px)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px;color:var(--ink)}
+.nav-toggle svg{width:26px;height:26px}
+.mobile-panel{display:none;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 24px 22px}
+.mobile-panel.open{display:block}
+.mobile-panel a{display:block;padding:12px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:500}
+.mobile-panel a:last-child{border-bottom:0}
+.mobile-panel a.mp-cta{
+  background:var(--green);color:#fff;text-align:center;border-radius:10px;
+  margin-top:14px;padding:14px;font-weight:600;border-bottom:0;
+}
+
+/* ===== hero (H7 dual stack) ===== */
+.hero{padding:62px 0 72px;background:linear-gradient(180deg,var(--bg) 0%,var(--stone) 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--green);font-weight:500;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(27,77,62,.4)}70%{box-shadow:0 0 0 9px rgba(27,77,62,0)}100%{box-shadow:0 0 0 0 rgba(27,77,62,0)}}
+.hero h1{
+  font-size:clamp(2.5rem,5.6vw,4.3rem);font-weight:700;line-height:1.05;margin:20px 0 0;
+}
+.hero .lede{margin:20px 0 30px;font-size:1.05rem;max-width:30em}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 28px;border-radius:12px;
+  font-family:'Zilla Slab',serif;font-weight:600;font-size:1.05rem;
+  transition:transform .2s,background .2s,box-shadow .2s;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-2);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(18,53,40,.45)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(31,185,85,.5)}
+.hero-pics{display:flex;flex-direction:column;gap:16px}
+.hero-pic{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.hero-pic.p1{aspect-ratio:16/9.4;box-shadow:0 26px 50px -26px rgba(20,32,25,.4)}
+.hero-pic.p2{aspect-ratio:16/7.2;width:86%;align-self:flex-end;box-shadow:0 20px 44px -24px rgba(20,32,25,.35)}
+.hero-pic img{width:100%;height:100%;object-fit:cover}
+
+/* ===== trust strip (T1) ===== */
+.trust{background:var(--green-deep)}
+.trust-inner{
+  max-width:1160px;margin:0 auto;padding:19px 24px;
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Zilla Slab',serif;font-weight:600;font-size:0.95rem;color:#e9f1ec;
+}
+.trust-item svg{width:17px;height:17px;stroke:#8fc7ae;flex:none}
+
+/* ===== sections ===== */
+section{padding:90px 0}
+.s-head{max-width:660px;margin-bottom:44px}
+.s-head h2{font-size:clamp(2rem,4.2vw,3rem);font-weight:700;margin-top:16px;line-height:1.1}
+
+/* services (S1, 2-col) */
+.services{background:var(--stone)}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.svc-card{
+  position:relative;background:var(--bg);border:1px solid var(--line);
+  border-radius:var(--radius);padding:30px 28px;overflow:hidden;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:transform .25s,box-shadow .25s;
+}
+.svc-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--green);transform:scaleX(0);transform-origin:left;
+  transition:transform .35s ease;
+}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(20,32,25,.25)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-card .ic{
+  width:46px;height:46px;border-radius:10px;background:var(--stone);flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.svc-card .ic svg{width:22px;height:22px;stroke:var(--green)}
+.svc-card h3{font-size:1.22rem;font-weight:700}
+.svc-card p{margin-top:6px;font-size:0.92rem;line-height:1.6}
+
+/* gallery (G3 horizontal scroll snap, captions below) */
+.work-scroll{
+  display:flex;gap:18px;overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:8px;
+  scrollbar-width:none;
+}
+.work-scroll::-webkit-scrollbar{display:none}
+.w-item{flex:0 0 340px;scroll-snap-align:start;display:flex;flex-direction:column;gap:9px}
+.w-item .ph{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);aspect-ratio:4/4.6}
+.w-item .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.w-item:hover .ph img{transform:scale(1.045)}
+.w-item .cap{font-family:'JetBrains Mono',monospace;font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.scroll-hint{
+  margin-top:18px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:10px;
+}
+.scroll-hint::after{content:"";flex:0 0 40px;height:1px;background:var(--line-2)}
+
+/* about (slim, after gallery) */
+.about{background:var(--stone)}
+.about-card{display:flex;gap:26px;align-items:flex-start;max-width:740px}
+.about-card .avatar{
+  width:64px;height:64px;border-radius:50%;flex:none;
+  background:var(--green);color:#fff;
+  font-family:'Zilla Slab',serif;font-weight:700;font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-card h3{font-size:1.4rem;font-weight:700}
+.about-card .role{font-family:'JetBrains Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--green);margin:4px 0 12px}
+.about-card p{font-size:0.99rem}
+
+/* reviews (R1) */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev-card{
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;
+  display:flex;flex-direction:column;gap:16px;
+  transition:transform .25s,box-shadow .25s;
+}
+.rev-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(20,32,25,.2)}
+.stars{color:#e0a93c;font-size:1rem;letter-spacing:3px}
+.rev-card blockquote{font-size:0.95rem;line-height:1.7;color:var(--body);border:0}
+.rev-meta{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.rev-meta .avatar{
+  width:40px;height:40px;border-radius:50%;flex:none;
+  background:var(--green);color:#fff;font-family:'Zilla Slab',serif;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:0.95rem;
+}
+.rev-meta .rname{font-weight:600;color:var(--ink);font-size:0.9rem;line-height:1.3}
+.rev-meta .rsrc{display:flex;align-items:center;gap:6px;font-size:0.76rem;color:var(--muted)}
+.rev-meta .rsrc svg{width:13px;height:13px}
+
+/* areas */
+.areas{background:var(--stone)}
+.areas .chips{display:flex;flex-wrap:wrap;gap:12px;max-width:880px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 18px;border:1px solid var(--line-2);border-radius:999px;
+  font-weight:500;font-size:0.9rem;color:var(--ink);background:var(--bg);
+  transition:border-color .2s,transform .2s;
+}
+.chip:hover{border-color:var(--green);transform:translateY(-2px)}
+.chip svg{width:14px;height:14px;stroke:var(--green);flex:none}
+.chip.home{background:var(--green);color:#fff;border-color:var(--green)}
+.chip.home svg{stroke:#8fc7ae}
+
+/* cta band */
+.ctaband{background:var(--green-deep);padding:82px 0}
+.ctaband-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.ctaband h2{color:#fff;font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:700;line-height:1.15;max-width:560px}
+.ctaband h2 .hl{color:#8fc7ae}
+.ctaband .btn-green{background:#fff;color:var(--green-deep)}
+.ctaband .btn-green:hover{background:var(--stone)}
+.ctaband .btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:12px;
+  font-family:'Zilla Slab',serif;font-weight:600;font-size:1.05rem;
+  color:#fff;border:1.5px solid rgba(255,255,255,.4);transition:border-color .2s;
+}
+.ctaband .btn-ghost:hover{border-color:#fff}
+
+/* contact (C1) */
+.contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:start}
+.info-card{
+  display:flex;gap:16px;align-items:center;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 22px;margin-bottom:14px;
+  transition:transform .2s,border-color .2s;
+}
+a.info-card:hover{transform:translateY(-2px);border-color:var(--green)}
+.info-card .ic{
+  width:44px;height:44px;border-radius:10px;background:var(--stone);flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.info-card .ic svg{width:20px;height:20px;stroke:var(--green)}
+.info-card .ic.wa-ic svg{stroke:none;fill:var(--wa)}
+.info-card .lab{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.info-card .val{font-family:'Zilla Slab',serif;font-weight:600;color:var(--ink);font-size:1.06rem;margin-top:2px}
+.form-card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px}
+.form-card h3{font-size:1.35rem;font-weight:700;margin-bottom:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:0.76rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--body);margin-bottom:7px}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 14px;border:1px solid var(--line-2);border-radius:10px;
+  font-family:inherit;font-size:0.95rem;color:var(--ink);background:var(--bg);
+  transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--green)}
+.field textarea{min-height:110px;resize:vertical}
+.form-card .btn{width:100%;justify-content:center;border:0;cursor:pointer}
+
+/* footer */
+footer{background:var(--green-deep);color:#a9c4b6;padding:54px 0 30px;font-size:0.9rem}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;margin-bottom:38px}
+.foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.foot-brand .tile{
+  width:42px;height:42px;border-radius:8px;background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Zilla Slab',serif;font-weight:700;color:#fff;
+}
+.foot-brand .fb-main{font-family:'Zilla Slab',serif;font-weight:700;font-size:1.3rem;color:#fff}
+footer h4{font-family:'JetBrains Mono',monospace;font-size:0.64rem;letter-spacing:0.24em;text-transform:uppercase;color:#8fc7ae;margin-bottom:16px;font-weight:500}
+footer ul{list-style:none}
+footer li{padding:4px 0}
+footer li a:hover{color:#fff}
+.foot-bottom{
+  border-top:1px solid var(--green-line);padding-top:22px;font-size:0.8rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+}
+.foot-bottom a{color:#8fc7ae}
+.foot-bottom a:hover{color:#fff}
+
+/* floating FABs */
+.fabs{
+  position:fixed;right:18px;bottom:18px;z-index:80;
+  display:flex;flex-direction:column;gap:12px;
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .3s,transform .3s;
+}
+.fabs.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 28px -8px rgba(0,0,0,.35);
+}
+.fab svg{width:23px;height:23px}
+.fab-call{background:var(--green);animation:fabPulse 2.2s infinite}
+.fab-call svg{stroke:#fff}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(27,77,62,.4)}70%{box-shadow:0 0 0 13px rgba(27,77,62,0)}100%{box-shadow:0 0 0 0 rgba(27,77,62,0)}}
+.fab-wa{background:var(--wa);animation:fabPulseG 2.2s infinite}
+.fab-wa svg{fill:#fff}
+@keyframes fabPulseG{0%{box-shadow:0 0 0 0 rgba(31,185,85,.4)}70%{box-shadow:0 0 0 13px rgba(31,185,85,0)}100%{box-shadow:0 0 0 0 rgba(31,185,85,0)}}
+.fab:hover{animation-play-state:paused}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ===== responsive ===== */
+@media (max-width:980px){
+  .rev-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-toggle{display:block}
+  .hero{padding:42px 0 56px}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-pic.p1{aspect-ratio:16/10}
+  .hero-pic.p2{width:100%;aspect-ratio:16/8}
+  .contact-grid{grid-template-columns:1fr}
+  .ctaband-inner{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  section{padding:58px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .trust-inner{flex-direction:column;align-items:flex-start;gap:0}
+  .trust-item{width:100%;padding:11px 0;border-bottom:1px solid var(--green-line)}
+  .trust-item:last-child{border-bottom:0}
+  .form-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{justify-content:center}
+  .about-card{flex-direction:column}
+  .w-item{flex-basis:280px}
+}
+</style>
+</head>
+<body>
+
+<!-- Coursework loader -->
+<div id="loader" aria-hidden="true">
+  <div class="wall" aria-hidden="true"></div>
+  <div class="wm-zone">
+    <div class="wordmark">SM Builders<span class="dotg">.</span></div>
+    <div class="wordsub">Bricklayer · West Yorkshire</div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <span class="tile">SM</span>
+      <span class="nb-text">
+        <span class="nb-main">SM Builders</span>
+        <span class="nb-sub">West Yorkshire</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#" class="mp-cta js-call">Call Zubair</a>
+  </div>
+</nav>
+
+<!-- Hero (H7) -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Bricklayer · West Yorkshire</span>
+      <h1>Brickwork laid right, <span class="hl">course by course</span>.</h1>
+      <div class="course-rule"></div>
+      <p class="lede">Extensions, garden walls, repointing and new build brickwork across Leeds, Bradford, Wakefield and the rest of West Yorkshire.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-green js-call">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="js-phone-txt">Call Zubair</span>
+        </a>
+        <a href="#" class="btn btn-wa js-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.05 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02a.9.9 0 0 0-.65.31c-.22.25-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-pics">
+      <div class="hero-pic p1"><img src="hero-1.jpg" alt="Bricklayer laying a brick to a string line with a trowel" fetchpriority="high"></div>
+      <div class="hero-pic p2"><img src="work-1.jpg" alt="Blockwork extension shell on a West Yorkshire semi" fetchpriority="high"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Trust strip (T1) -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Time-Served Bricklayer</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fully Insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Free Quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Tidy Sites</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>West Yorkshire Wide</div>
+  </div>
+</div>
+
+<!-- Services (S1) -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="label">What we do</span>
+      <h2>Brickwork, <span class="hl">start to finish</span>.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div>
+          <h3>Extensions &amp; Garages</h3>
+          <p>Cavity walls, footings to wall plate, built square and level.</p>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M2 20h20M4 20v-6h7v6M13 20v-9h7v9"/></svg></div>
+        <div>
+          <h3>Garden &amp; Boundary Walls</h3>
+          <p>Straight runs, piers and copings that stand up to the weather.</p>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a4.5 4.5 0 0 0-6.4 6.4l-5 5a1.5 1.5 0 0 0 2 2l5-5a4.5 4.5 0 0 0 6.4-6.4l-2.8 2.8-2-2z"/></svg></div>
+        <div>
+          <h3>Repointing &amp; Restoration</h3>
+          <p>Old mortar raked out, repointed to match the original joints.</p>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 21V9l4-2v14M14 21V7l4 2v12M2 21h20"/></svg></div>
+        <div>
+          <h3>Chimney Repairs &amp; Rebuilds</h3>
+          <p>Stacks rebuilt, flaunching renewed, pots and lead sorted.</p>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v6M15 9v6M9 15v6"/></svg></div>
+        <div>
+          <h3>New Build Brickwork</h3>
+          <p>Face brickwork and blockwork for builders and self-builds.</p>
+        </div>
+      </div>
+      <div class="svc-card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="m12 2 3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <div>
+          <h3>Brick &amp; Stone Repairs</h3>
+          <p>Cracked, spalled or damp brickwork cut out and matched in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recent work (G3 horizontal scroll) -->
+<section id="work">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="label">Recent work</span>
+      <h2>Walls worth <span class="hl">looking at</span>.</h2>
+    </div>
+    <div class="work-scroll reveal">
+      <div class="w-item">
+        <div class="ph"><img src="work-1.jpg" alt="Blockwork extension shell on a semi-detached house" loading="lazy"></div>
+        <span class="cap">Rear extension · cavity blockwork</span>
+      </div>
+      <div class="w-item">
+        <div class="ph"><img src="work-2.jpg" alt="Bricklayer on scaffold beside a brick chimney stack" loading="lazy"></div>
+        <span class="cap">Chimney stack · scaffold rebuild</span>
+      </div>
+      <div class="w-item">
+        <div class="ph"><img src="work-3.jpg" alt="Repointing work on a red brick house from scaffolding" loading="lazy"></div>
+        <span class="cap">Repointing · red brick semi</span>
+      </div>
+      <div class="w-item">
+        <div class="ph"><img src="work-4.jpg" alt="New build brick gable with concrete lintel" loading="lazy"></div>
+        <span class="cap">New build · gable &amp; lintels</span>
+      </div>
+      <div class="w-item">
+        <div class="ph"><img src="work-5.jpg" alt="Finished detached house in red facing brick" loading="lazy"></div>
+        <span class="cap">Face brickwork · finished plot</span>
+      </div>
+      <div class="w-item">
+        <div class="ph"><img src="work-6.jpg" alt="Mixed stone and brick boundary wall repair" loading="lazy"></div>
+        <span class="cap">Stone &amp; brick · boundary repair</span>
+      </div>
+    </div>
+    <div class="scroll-hint">Drag to see more</div>
+  </div>
+</section>
+
+<!-- About (slim, after gallery) -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-card reveal">
+      <div class="avatar">ZM</div>
+      <div>
+        <h3>Zubair Mahmood</h3>
+        <div class="role">SM Builders · West Yorkshire</div>
+        <p>SM Builders is Zubair Mahmood, a time-served bricklayer working across West Yorkshire. One pair of hands on the trowel from the first course to the last, lines pinged, gauges checked and the site swept before the van leaves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews (R1) -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="label">Reviews</span>
+      <h2>Word of mouth, <span class="hl">in writing</span>.</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>SM Builders rebuilt our garden wall in Pudsey after a lorry clipped it. Zubair matched the old bricks so well you cannot tell where the new work starts. Tidy lad, fair price.</blockquote>
+        <div class="rev-meta">
+          <div class="avatar">D</div>
+          <div>
+            <div class="rname">David H. · Pudsey</div>
+            <div class="rsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Zubair did the brickwork on our extension in Birstall. Courses dead level, joints consistent, and he kept the site spotless. The building inspector commented on how clean the cavity work was.</blockquote>
+        <div class="rev-meta">
+          <div class="avatar">A</div>
+          <div>
+            <div class="rname">Aisha R. · Birstall</div>
+            <div class="rsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Had the chimney stack repointed and two courses rebuilt on our terrace in Halifax. Quoted on the Tuesday, done by Friday, no mess on the drive. Would not hesitate to have him back.</blockquote>
+        <div class="rev-meta">
+          <div class="avatar">G</div>
+          <div>
+            <div class="rname">Gareth L. · Halifax</div>
+            <div class="rsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="label">Areas we cover</span>
+      <h2>Across <span class="hl">West Yorkshire</span>.</h2>
+    </div>
+    <div class="chips reveal">
+      <span class="chip home"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>West Yorkshire</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Leeds</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Bradford</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Wakefield</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Huddersfield</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Halifax</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Dewsbury</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Batley</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Morley</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Pudsey</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Brighouse</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Keighley</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/></svg>Castleford</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<div class="ctaband">
+  <div class="wrap ctaband-inner reveal">
+    <h2>Wall down? Extension planned? <span class="hl">Talk to Zubair.</span></h2>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-green js-call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="js-phone-txt">Call Zubair</span>
+      </a>
+      <a href="#contact" class="btn-ghost">Request a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- Contact (C1) -->
+<section id="contact">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="label">Get in touch</span>
+      <h2>Get a free <span class="hl">quote</span>.</h2>
+      <p style="margin-top:14px;max-width:520px">Tell Zubair about the job and he'll come and have a look. Free quote, no obligation, honest advice either way.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <a class="info-card js-call" href="#">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="lab">Call Zubair</div><div class="val js-phone-txt-f">…</div></div>
+        </a>
+        <a class="info-card js-wa" href="#" target="_blank" rel="noopener">
+          <div class="ic wa-ic"><svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.05 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02a.9.9 0 0 0-.65.31c-.22.25-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></div>
+          <div><div class="lab">WhatsApp</div><div class="val">Message Zubair</div></div>
+        </a>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="lab">Coverage</div><div class="val">All of West Yorkshire</div></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="lab">Response</div><div class="val">Same-day call back</div></div>
+        </div>
+      </div>
+      <form class="form-card reveal" action="/api/enquiry" method="POST" id="enquiry">
+        <h3>Tell us about the job</h3>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="SM Builders">
+        <input type="hidden" name="source" value="mockup-sm-builders">
+        <div class="form-row">
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required placeholder="Your name"></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" maxlength="16" title="Enter a valid UK phone number" placeholder="07xxx xxxxxx"></div>
+        </div>
+        <div class="field"><label for="f-email">Email (optional)</label><input id="f-email" name="email" type="email" placeholder="you@email.com"></div>
+        <div class="field"><label for="f-service">What needs building?</label>
+          <select id="f-service" name="service">
+            <optgroup label="Building work">
+              <option>Extension or garage</option>
+              <option>New build brickwork</option>
+              <option>Garden or boundary wall</option>
+            </optgroup>
+            <optgroup label="Repairs">
+              <option>Repointing</option>
+              <option>Chimney repair or rebuild</option>
+              <option>Brick or stone repairs</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Tell us about the wall, the extension, the chimney…"></textarea></div>
+        <button type="submit" class="btn btn-green">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="tile">SM</span>
+          <span class="fb-main">SM Builders</span>
+        </div>
+        <p>Time-served bricklayer covering Leeds, Bradford, Wakefield and the rest of West Yorkshire. Run by Zubair Mahmood.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Extensions &amp; Garages</a></li>
+          <li><a href="#services">Garden &amp; Boundary Walls</a></li>
+          <li><a href="#services">Repointing &amp; Restoration</a></li>
+          <li><a href="#services">Chimney Repairs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#" class="js-call js-phone-txt-f">…</a></li>
+          <li><a href="#" class="js-wa">WhatsApp Zubair</a></li>
+          <li>West Yorkshire</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SM Builders. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating FABs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call js-call" href="#" aria-label="Call Zubair">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Zubair">
+    <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.86 9.86 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.05 20.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02a.9.9 0 0 0-.65.31c-.22.25-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.17 1.71 2.61 4.15 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  // ===== obfuscated contact =====
+  function b64u(s){try{return decodeURIComponent(escape(atob(s)))}catch(e){return atob(s)}}
+  var P = b64u('MDc4MDg1NjU5NDk=');
+  var Pf = b64u('MDc4MDggNTY1OTQ5');
+  var WA = '447808565949';
+  document.querySelectorAll('.js-call').forEach(function(el){ el.href = 'tel:' + P; });
+  document.querySelectorAll('.js-phone-txt-f').forEach(function(el){ el.textContent = Pf; });
+  document.querySelectorAll('.js-wa').forEach(function(el){
+    el.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hi Zubair, I found SM Builders online and would like a quote please');
+  });
+
+  // ===== Coursework loader: build the wall (6 courses, half-bond) =====
+  var wall = document.querySelector('#loader .wall');
+  var delay = 0;
+  for (var c = 0; c < 6; c++) {
+    var row = document.createElement('div');
+    row.className = 'course' + (c % 2 ? ' offset' : '');
+    var bricks = c % 2 ? 8 : 7;
+    for (var b = 0; b < bricks; b++) {
+      var br = document.createElement('div');
+      br.className = 'brick' + (c % 2 && (b === 0 || b === bricks - 1) ? ' half' : '');
+      br.style.setProperty('--d', (0.08 + delay).toFixed(2) + 's');
+      delay += 0.035;
+      row.appendChild(br);
+    }
+    wall.appendChild(row);
+  }
+  var loader = document.getElementById('loader');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  loader.classList.add('play');
+  var dur = reduced ? 900 : 2300;
+  setTimeout(function(){ loader.classList.add('bye'); }, dur);
+  setTimeout(function(){ loader.style.display = 'none'; }, dur + 500); // fail-safe teardown
+
+  // ===== nav toggle =====
+  var tgl = document.getElementById('navToggle'), mp = document.getElementById('mobilePanel');
+  tgl.addEventListener('click', function(){ mp.classList.toggle('open'); });
+  mp.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mp.classList.remove('open'); }); });
+
+  // ===== form =====
+  var ts = document.getElementById('formTimestamp');
+  if(ts) ts.value = Date.now();
+  var phone = document.getElementById('f-phone');
+  if(phone){ phone.addEventListener('input', function(){
+    if(/^(0|\+44)\d{9,11}$/.test(phone.value.replace(/\s/g,''))) phone.setCustomValidity('');
+    else phone.setCustomValidity('Please enter a valid UK phone number');
+  }); }
+
+  // ===== scroll reveals =====
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // ===== FABs past hero =====
+  var fabs = document.getElementById('fabs');
+  var hero = document.querySelector('.hero');
+  var hio = new IntersectionObserver(function(es){
+    fabs.classList.toggle('show', !es[0].isIntersecting);
+  }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+  hio.observe(hero);
+})();
+</script>
+</body>
+</html>
