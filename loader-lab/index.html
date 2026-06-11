@@ -265,6 +265,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-swatch.play .wordmark{animation:wordIn .6s ease .9s forwards}
 #ld-swatch.play .wordsub{animation:wordIn .6s ease 1.1s forwards}
 
+/* ===== 12. AGGREGATES / HAULAGE — tipper pour ===== */
+#ld-tipper{background:#ffffff;flex-direction:column;gap:30px}
+#ld-tipper .tip-scene{position:relative;width:240px;height:150px}
+#ld-tipper .tip-truck{position:absolute;right:0;top:8px;width:120px;height:74px}
+#ld-tipper .tip-bed{position:absolute;left:0;top:14px;width:78px;height:34px;background:#2e2e33;border-radius:4px 8px 2px 2px;transform-origin:92% 100%}
+#ld-tipper.play .tip-bed{animation:axBedTip 1s cubic-bezier(.4,0,.3,1) .25s forwards}
+@keyframes axBedTip{to{transform:rotate(-24deg)}}
+#ld-tipper .tip-cab{position:absolute;right:0;top:20px;width:34px;height:30px;background:#f07a1d;border-radius:7px 4px 2px 2px}
+#ld-tipper .tip-cab::after{content:"";position:absolute;left:6px;top:5px;width:12px;height:10px;background:#fff;border-radius:2px}
+#ld-tipper .tip-chassis{position:absolute;left:0;right:0;top:50px;height:7px;background:#2e2e33;border-radius:2px}
+#ld-tipper .tip-wheel{position:absolute;top:56px;width:18px;height:18px;background:#26262a;border-radius:50%;border:4px solid #6a6c72}
+#ld-tipper .tip-wheel.w1{left:8px}#ld-tipper .tip-wheel.w2{left:32px}#ld-tipper .tip-wheel.w3{right:6px}
+#ld-tipper .tip-grain{position:absolute;width:7px;height:7px;border-radius:2px;background:#f07a1d;left:54px;top:30px;opacity:0}
+#ld-tipper.play .tip-grain{animation:axGrainFall .7s ease-in infinite}
+#ld-tipper .tip-grain.g2{animation-delay:.12s;background:#d9d5cf}
+#ld-tipper .tip-grain.g3{animation-delay:.24s}
+#ld-tipper .tip-grain.g4{animation-delay:.36s;background:#a8a49d}
+#ld-tipper .tip-grain.g5{animation-delay:.48s}
+#ld-tipper .tip-grain.g6{animation-delay:.6s;background:#d9d5cf}
+@keyframes axGrainFall{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}100%{opacity:.9;transform:translate(-26px,86px)}}
+#ld-tipper .tip-pile{position:absolute;left:0;bottom:0;width:0;height:0;border-left:42px solid transparent;border-right:42px solid transparent;border-bottom:46px solid #c9c5be;transform:scale(0);transform-origin:bottom center}
+#ld-tipper.play .tip-pile{animation:axPileGrow 1.5s cubic-bezier(.3,.6,.3,1) .5s forwards}
+@keyframes axPileGrow{to{transform:scale(1)}}
+#ld-tipper .tip-ground{position:absolute;left:-30px;right:-30px;bottom:-8px;height:3px;background:#e6e7ea}
+#ld-tipper .wm-zone{display:flex;flex-direction:column;align-items:center}
+#ld-tipper .wordmark{color:#26262a;text-transform:none}
+#ld-tipper .wordmark b{color:#f07a1d}
+#ld-tipper .wordsub{color:#8b8e95}
+#ld-tipper.play .wordmark{animation:wordIn .55s ease 1.2s forwards}
+#ld-tipper.play .wordsub{animation:wordIn .55s ease 1.4s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -359,6 +390,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Interior Designers / Decorators</span>
       <h3>Swatch Fan</h3>
       <p>A paint fan deck of brand-colour swatches fans open card by card, then the wordmark lands beneath it. Run it in the mockup's own palette. First used on casa-bijai.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-tipper" data-dur="2400">
+      <span class="trade">Aggregates / Haulage / Plant</span>
+      <h3>Tipper Pour</h3>
+      <p>A tipper's bed tilts up, a trail of grains pours out and a pile grows beneath it, then the wordmark lands. First used on aggrex.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -494,6 +531,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Nicyai</div>
     <div class="wordsub">Carpentry &middot; Essex</div>
+  </div>
+</div>
+
+<!-- 12. tipper pour -->
+<div class="loader" id="ld-tipper" aria-hidden="true">
+  <div class="tip-scene">
+    <div class="tip-pile"></div>
+    <div class="tip-grain"></div><div class="tip-grain g2"></div><div class="tip-grain g3"></div>
+    <div class="tip-grain g4"></div><div class="tip-grain g5"></div><div class="tip-grain g6"></div>
+    <div class="tip-truck">
+      <div class="tip-bed"></div>
+      <div class="tip-cab"></div>
+      <div class="tip-chassis"></div>
+      <div class="tip-wheel w1"></div><div class="tip-wheel w2"></div><div class="tip-wheel w3"></div>
+    </div>
+    <div class="tip-ground"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Aggre<b>X</b></div>
+    <div class="wordsub">Aggregates &middot; Haulage</div>
   </div>
 </div>
 
