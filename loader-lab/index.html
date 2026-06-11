@@ -296,6 +296,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-tipper.play .wordmark{animation:wordIn .55s ease 1.2s forwards}
 #ld-tipper.play .wordsub{animation:wordIn .55s ease 1.4s forwards}
 
+/* ===== 13. BUILDERS / GENERAL TRADES — spirit level ===== */
+#ld-level{background:#ffffff;flex-direction:column;gap:26px;color:#15201f}
+#ld-level .lvl{position:relative;width:min(320px,72vw);height:54px}
+#ld-level .lvl-vial{position:absolute;inset:0;border:2px solid #dde0db;border-radius:27px;background:#f3f4f2;overflow:hidden}
+#ld-level.play .lvl-vial{animation:lvlVialSet .3s ease 1.45s forwards}
+@keyframes lvlVialSet{to{border-color:#0b5e63;box-shadow:0 0 0 4px rgba(11,94,99,.14)}}
+#ld-level .lvl-marks::before,#ld-level .lvl-marks::after{content:"";position:absolute;top:6px;bottom:6px;width:2px;background:#0b5e63;opacity:.75}
+#ld-level .lvl-marks::before{left:calc(50% - 26px)}
+#ld-level .lvl-marks::after{left:calc(50% + 24px)}
+#ld-level .lvl-bubble{position:absolute;top:50%;left:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#e0bf8f,#c29a66 62%,#a87f4d);transform:translateX(-120px)}
+#ld-level.play .lvl-bubble{animation:lvlBub 1.5s cubic-bezier(.34,1.3,.45,1) forwards}
+@keyframes lvlBub{0%{transform:translateX(-120px)}45%{transform:translateX(46px)}70%{transform:translateX(-14px)}100%{transform:translateX(0)}}
+#ld-level .lvl-baseline{position:absolute;left:0;right:0;top:50%;height:2px;background:#0b5e63;transform:scaleX(0);transform-origin:center}
+#ld-level.play .lvl-baseline{animation:lvlLine .5s ease 1.5s forwards}
+@keyframes lvlLine{0%{transform:scaleX(0);opacity:1}70%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+#ld-level .wordmark{color:#15201f}
+#ld-level .wordsub{color:#a87f4d}
+#ld-level.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
+#ld-level.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -396,6 +416,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Aggregates / Haulage / Plant</span>
       <h3>Tipper Pour</h3>
       <p>A tipper's bed tilts up, a trail of grains pours out and a pile grows beneath it, then the wordmark lands. First used on aggrex.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-level" data-dur="2400">
+      <span class="trade">Builders / General Trades</span>
+      <h3>Spirit Level</h3>
+      <p>The bubble drifts along the vial, overshoots, then settles dead centre between the marks. The vial flashes "level" and the wordmark lands. First used on winning-creations.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -560,6 +586,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Casa Bijai</div>
     <div class="wordsub">Interior Design &middot; Glasgow</div>
+  </div>
+</div>
+
+<!-- 13. spirit level -->
+<div class="loader" id="ld-level" aria-hidden="true">
+  <div class="lvl">
+    <div class="lvl-vial"><div class="lvl-marks"></div><div class="lvl-bubble"></div></div>
+    <div class="lvl-baseline"></div>
+  </div>
+  <div class="wm-zone" style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">Winning Creations</div>
+    <div class="wordsub">Builder &amp; Stonemason</div>
   </div>
 </div>
 
