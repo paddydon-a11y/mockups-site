@@ -421,6 +421,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes scSplitB{to{transform:translateY(102%)}}
 @keyframes scFade{to{opacity:0}}
 
+/* ===== 19. TILERS — tile lay ===== */
+#ld-tilelay{background:#c8cdc7}
+#ld-tilelay .tl-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(6,1fr);gap:3px;padding:3px}
+#ld-tilelay .tl-cell{opacity:0;transform:scale(.25)}
+#ld-tilelay.play .tl-cell{animation:tileLay .3s cubic-bezier(.2,.7,.3,1.1) forwards;animation-delay:var(--d)}
+@keyframes tileLay{to{opacity:1;transform:scale(1)}}
+#ld-tilelay .tl-brand{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#ld-tilelay .tl-card{background:#fbfbfa;border:1px solid #dde1dc;padding:24px 40px;text-align:center;box-shadow:0 22px 60px rgba(25,27,28,.16);opacity:0}
+#ld-tilelay.play .tl-card{animation:wordIn .4s ease 1.15s forwards}
+#ld-tilelay .wordmark{color:#191b1c;text-transform:none;letter-spacing:-.02em}
+#ld-tilelay .wordmark b{color:#c2502b}
+#ld-tilelay .wordsub{color:#8a908c}
+#ld-tilelay.play .wordmark{animation:wordIn .4s ease 1.2s forwards}
+#ld-tilelay.play .wordsub{animation:wordIn .4s ease 1.35s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -557,6 +572,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Joiners / Carpenters</span>
       <h3>Saw Cut</h3>
       <p>A pencil line gauges across a timber board, a handsaw cuts the kerf along it, sawdust falls, then the two halves of the board split apart to reveal the page. First used on rogers-carpentry.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-tilelay" data-dur="2400">
+      <span class="trade">Tilers</span>
+      <h3>Tile Lay</h3>
+      <p>A wall of porcelain tiles snaps into place in a diagonal wave across a grout-grey screen, a few terracotta and ink accents in the mix, then the brand plaque lands on the finished wall. First used on expert-tiling-london.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -829,6 +850,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<!-- 19. tile lay (cells injected by JS) -->
+<div class="loader" id="ld-tilelay" aria-hidden="true">
+  <div class="tl-grid" aria-hidden="true"></div>
+  <div class="tl-brand">
+    <div class="tl-card">
+      <div class="wordmark">Expert <b>Tiling</b> London</div>
+      <div class="wordsub">North London &middot; Wall &amp; Floor Tiling</div>
+    </div>
+  </div>
+</div>
+
 <!-- 7. slab lay (rows injected by JS) -->
 <div class="loader" id="ld-slab" aria-hidden="true">
   <div class="patio" aria-hidden="true"></div>
@@ -888,6 +920,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       prow.appendChild(ps);
     }
     patio.appendChild(prow);
+  }
+
+  // build the tile-lay wall: 8x6 porcelain grid, terracotta + ink accents, diagonal wave
+  var tgrid = document.querySelector('#ld-tilelay .tl-grid');
+  var tTerr = [3, 12, 22, 30, 41, 44];
+  var tInk = [17, 38];
+  for (var tr = 0; tr < 6; tr++) {
+    for (var tc = 0; tc < 8; tc++) {
+      var ti = tr * 8 + tc;
+      var tcell = document.createElement('div');
+      tcell.className = 'tl-cell';
+      if (tTerr.indexOf(ti) > -1) tcell.style.background = '#c2502b';
+      else if (tInk.indexOf(ti) > -1) tcell.style.background = '#191b1c';
+      else tcell.style.background = ((tr + tc) % 2 === 0) ? '#f6f6f4' : '#fdfdfc';
+      tcell.style.setProperty('--d', ((tr + tc) * 65) / 1000 + 's');
+      tgrid.appendChild(tcell);
+    }
   }
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
