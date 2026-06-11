@@ -370,6 +370,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-gable.play .wordmark{animation:wordIn .5s ease 1s forwards}
 #ld-gable.play .wordsub{animation:wordIn .5s ease 1.25s forwards}
 
+/* ===== 17. LANDSCAPERS / GARDENERS — turf roll ===== */
+#ld-turf{background:#ffffff;flex-direction:column;gap:30px;color:#181a17}
+#ld-turf .lr-track{position:relative;width:min(440px,80vw);height:46px}
+#ld-turf .lr-soil{position:absolute;left:0;right:0;bottom:0;height:6px;background:#d8cfc2;border-radius:3px}
+#ld-turf .lr-turf{position:absolute;left:0;right:0;bottom:6px;height:17px;border-radius:3px 3px 0 0;background:linear-gradient(180deg,#3f9a63 0%,#2e7d4f 70%,#256a42 100%);transform:scaleX(0);transform-origin:left center}
+#ld-turf .lr-turf::after{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(100deg,rgba(255,255,255,.16) 0 2px,transparent 2px 7px)}
+#ld-turf .lr-roll{position:absolute;bottom:23px;left:-14px;width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#fff 0 4px,#3f9a63 4px 9px,#2e7d4f 9px 13px,#3f9a63 13px 17px,#256a42 17px 20px);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+#ld-turf.play .lr-turf{animation:turfOut 1.5s cubic-bezier(.6,.05,.3,1) .15s forwards}
+#ld-turf.play .lr-roll{animation:turfRoll 1.5s cubic-bezier(.6,.05,.3,1) .15s forwards}
+@keyframes turfOut{to{transform:scaleX(1)}}
+@keyframes turfRoll{to{transform:translateX(min(440px,80vw)) rotate(720deg);opacity:0}}
+#ld-turf .wordmark{color:#181a17}
+#ld-turf .wordmark b{color:#2e7d4f}
+#ld-turf .wordsub{color:#8a908a}
+#ld-turf.play .wordmark{animation:wordIn .5s ease .95s forwards}
+#ld-turf.play .wordsub{animation:wordIn .5s ease 1.2s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -494,6 +511,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / Extensions &amp; Lofts</span>
       <h3>Gable Raise</h3>
       <p>Three overlapping rooflines draw themselves in stroke by stroke, like gables going up along a street, then the wordmark lands beneath the finished pitch. First used on kind-builders.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-turf" data-dur="2400">
+      <span class="trade">Landscapers / Gardeners</span>
+      <h3>Turf Roll</h3>
+      <p>A roll of turf unrolls itself across bare soil, the roll spinning along the leading edge, then the wordmark lands above the fresh lawn. First used on notts-home-fix.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -724,6 +747,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Kind <b>Builders</b></div>
     <div class="wordsub">Building with Integrity &middot; Harrow</div>
+  </div>
+</div>
+
+<!-- 17. turf roll -->
+<div class="loader" id="ld-turf" aria-hidden="true">
+  <div class="wm-zone">
+    <div class="wordmark">Notts <b>Home Fix</b></div>
+    <div class="wordsub">Handyman &middot; Gardens &middot; Landscaping</div>
+  </div>
+  <div class="lr-track">
+    <div class="lr-soil"></div>
+    <div class="lr-turf"></div>
+    <div class="lr-roll"></div>
   </div>
 </div>
 
