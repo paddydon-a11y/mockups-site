@@ -387,6 +387,40 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-turf.play .wordmark{animation:wordIn .5s ease .95s forwards}
 #ld-turf.play .wordsub{animation:wordIn .5s ease 1.2s forwards}
 
+/* ===== 18. JOINERS / CARPENTERS — saw cut ===== */
+#ld-sawcut{background:#9e672f}
+#ld-sawcut .sc-half{position:absolute;left:0;width:100%;height:50.5%;background:repeating-linear-gradient(0deg, rgba(60,38,10,.07) 0 2px, transparent 2px 26px),linear-gradient(180deg,#c89a55,#b9854a 60%,#b07c40)}
+#ld-sawcut .sc-top{top:0}
+#ld-sawcut .sc-bottom{bottom:0;background:repeating-linear-gradient(0deg, rgba(60,38,10,.07) 0 2px, transparent 2px 26px),linear-gradient(180deg,#ab7339,#9e672f)}
+#ld-sawcut .sc-brand{position:absolute;left:0;right:0;bottom:13vh;display:flex;flex-direction:column;align-items:center}
+#ld-sawcut .wordmark{color:#241c12;text-transform:none;letter-spacing:-.01em}
+#ld-sawcut .wordmark b{color:#fff}
+#ld-sawcut .wordsub{color:rgba(36,28,18,.72)}
+#ld-sawcut.play .wordmark{animation:wordIn .45s ease .1s forwards}
+#ld-sawcut.play .wordsub{animation:wordIn .45s ease .25s forwards}
+#ld-sawcut .sc-cutline{position:absolute;top:50%;left:0;width:100%;height:0}
+#ld-sawcut .sc-pencil{position:absolute;top:-1px;left:0;width:100%;height:0;border-top:2px dashed rgba(36,28,18,.5);transform:scaleX(0);transform-origin:left}
+#ld-sawcut.play .sc-pencil{animation:scLine .4s ease .5s forwards}
+#ld-sawcut .sc-kerf{position:absolute;top:-3px;left:0;width:100%;height:6px;background:#1d1409;transform:scaleX(0);transform-origin:left}
+#ld-sawcut.play .sc-kerf{animation:scLine .9s linear .95s forwards}
+#ld-sawcut .sc-saw{position:absolute;top:-46px;left:0;width:130px;height:auto;transform:translateX(-140px);opacity:0}
+#ld-sawcut.play .sc-saw{animation:scSaw .9s linear .95s forwards}
+#ld-sawcut .sc-dust{position:absolute;top:4px;width:5px;height:5px;border-radius:50%;background:#e9d3a8;opacity:0}
+#ld-sawcut.play .scd1{left:18%;animation:scDust .7s ease-out 1.15s forwards}
+#ld-sawcut.play .scd2{left:36%;animation:scDust .7s ease-out 1.3s forwards}
+#ld-sawcut.play .scd3{left:55%;animation:scDust .7s ease-out 1.45s forwards}
+#ld-sawcut.play .scd4{left:72%;animation:scDust .7s ease-out 1.6s forwards}
+#ld-sawcut.play .scd5{left:88%;animation:scDust .7s ease-out 1.72s forwards}
+#ld-sawcut.play .sc-top{animation:scSplitT .55s cubic-bezier(.7,0,.3,1) 1.85s forwards}
+#ld-sawcut.play .sc-bottom{animation:scSplitB .55s cubic-bezier(.7,0,.3,1) 1.85s forwards}
+#ld-sawcut.play .sc-cutline{animation:scFade .3s ease 1.85s forwards}
+@keyframes scLine{to{transform:scaleX(1)}}
+@keyframes scSaw{0%{transform:translateX(-140px);opacity:1}99%{opacity:1}100%{transform:translateX(105vw);opacity:0}}
+@keyframes scDust{from{transform:translateY(0);opacity:.9}to{transform:translateY(46px);opacity:0}}
+@keyframes scSplitT{to{transform:translateY(-102%)}}
+@keyframes scSplitB{to{transform:translateY(102%)}}
+@keyframes scFade{to{opacity:0}}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -517,6 +551,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Landscapers / Gardeners</span>
       <h3>Turf Roll</h3>
       <p>A roll of turf unrolls itself across bare soil, the roll spinning along the leading edge, then the wordmark lands above the fresh lawn. First used on notts-home-fix.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-sawcut" data-dur="2400">
+      <span class="trade">Joiners / Carpenters</span>
+      <h3>Saw Cut</h3>
+      <p>A pencil line gauges across a timber board, a handsaw cuts the kerf along it, sawdust falls, then the two halves of the board split apart to reveal the page. First used on rogers-carpentry.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -760,6 +800,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="lr-soil"></div>
     <div class="lr-turf"></div>
     <div class="lr-roll"></div>
+  </div>
+</div>
+
+<!-- 18. saw cut -->
+<div class="loader" id="ld-sawcut" aria-hidden="true">
+  <div class="sc-half sc-top">
+    <div class="wm-zone sc-brand">
+      <div class="wordmark">Rogers <b>Carpentry</b></div>
+      <div class="wordsub">Swindon &middot; Carpentry &amp; Joinery</div>
+    </div>
+  </div>
+  <div class="sc-half sc-bottom"></div>
+  <div class="sc-cutline">
+    <span class="sc-pencil"></span>
+    <span class="sc-kerf"></span>
+    <svg class="sc-saw" viewBox="0 0 130 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 36 L96 36 L96 14 L10 14 Q0 14 0 24 Z" fill="#2a2118"/>
+      <path d="M96 36 L100 42 L104 36 L108 42 L112 36 L116 42 L120 36 L124 42 L128 36 L96 36 Z" fill="#2a2118"/>
+      <rect x="96" y="14" width="32" height="22" rx="2" fill="#4a3a26"/>
+      <circle cx="14" cy="25" r="5" fill="#c89a55"/>
+    </svg>
+    <span class="sc-dust scd1"></span>
+    <span class="sc-dust scd2"></span>
+    <span class="sc-dust scd3"></span>
+    <span class="sc-dust scd4"></span>
+    <span class="sc-dust scd5"></span>
   </div>
 </div>
 
