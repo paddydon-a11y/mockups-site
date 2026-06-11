@@ -334,6 +334,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-crane .wordsub{color:#8b919b}
 #ld-crane.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
 
+/* ===== 15. GROUNDWORKS / PLANT — dig out ===== */
+#ld-dig{background:#16181d;flex-direction:column;gap:26px;color:#fff}
+#ld-dig .dig-stage{position:relative;width:min(300px,78vw);height:140px}
+#ld-dig .dig-digger{position:absolute;right:-8px;bottom:7px;width:200px;height:auto}
+#ld-dig .dig-arm{transform-box:fill-box;transform-origin:92% 48%}
+#ld-dig.play .dig-arm{animation:digScoop .5s ease-in-out .15s 3}
+@keyframes digScoop{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(10deg)}}
+#ld-dig .dig-ground{position:absolute;left:4px;bottom:7px;display:flex;align-items:flex-end;gap:5px}
+#ld-dig .dig-ground span{width:19px;height:17px;background:#2c313a;border-radius:3px}
+#ld-dig .dig-ground span:nth-child(even){height:13px}
+#ld-dig .dig-ground span:nth-child(3n){height:15px;background:#3a4150}
+#ld-dig.play .dig-ground span:nth-child(n+7){animation:digFall .4s ease-in .38s forwards}
+#ld-dig.play .dig-ground span:nth-child(n+4):nth-child(-n+6){animation:digFall .4s ease-in .88s forwards}
+#ld-dig.play .dig-ground span:nth-child(-n+3){animation:digFall .4s ease-in 1.38s forwards}
+@keyframes digFall{to{transform:translateY(28px) rotate(10deg);opacity:0}}
+#ld-dig .dig-line{position:absolute;left:0;right:0;bottom:0;height:3px;background:#f5b50a;border-radius:2px}
+#ld-dig .wordmark b{color:#f5b50a}
+#ld-dig .wordsub{color:rgba(255,255,255,.55)}
+#ld-dig.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
+#ld-dig.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -446,6 +467,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / New Builds</span>
       <h3>Crane Lift</h3>
       <p>A hook on a cable lowers the wordmark into place with a settle bounce, then releases and winches back up out of frame. First used on droitbuilding.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-dig" data-dur="2400">
+      <span class="trade">Groundworks / Plant</span>
+      <h3>Dig Out</h3>
+      <p>An excavator scoops the ground blocks away in three waves, then the wordmark rises out of the excavation. First used on nw-contractors.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -637,6 +664,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <div class="crane-strip"></div>
       <div class="wordsub">Builders &middot; Kent</div>
     </div>
+  </div>
+</div>
+
+<!-- 15. dig out -->
+<div class="loader" id="ld-dig" aria-hidden="true">
+  <div class="dig-stage">
+    <svg class="dig-digger" viewBox="0 0 220 130" aria-hidden="true">
+      <g class="dig-arm">
+        <path d="M112 74 L56 38 L66 28 L122 64 Z" fill="#f5b50a"/>
+        <path d="M61 33 L28 78 L38 86 L71 41 Z" fill="#f5b50a"/>
+        <path d="M24 76 L46 88 L36 106 L16 96 Z" fill="#f5b50a"/>
+      </g>
+      <rect x="108" y="58" width="74" height="36" rx="6" fill="#f5b50a"/>
+      <rect x="146" y="28" width="36" height="36" rx="5" fill="#f5b50a"/>
+      <rect x="152" y="35" width="15" height="13" rx="2" fill="#16181d"/>
+      <rect x="100" y="98" width="102" height="26" rx="13" fill="#f5b50a"/>
+      <circle cx="116" cy="111" r="7" fill="#16181d"/>
+      <circle cx="151" cy="111" r="7" fill="#16181d"/>
+      <circle cx="186" cy="111" r="7" fill="#16181d"/>
+    </svg>
+    <div class="dig-ground"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="dig-line"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">N.W. <b>Contractors</b></div>
+    <div class="wordsub">Groundworks &middot; South Wales</div>
   </div>
 </div>
 
