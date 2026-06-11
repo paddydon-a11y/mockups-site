@@ -316,6 +316,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-level.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
 #ld-level.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
 
+/* ===== 14. BUILDERS / NEW BUILDS — crane lift ===== */
+#ld-crane{background:#ffffff;color:#14161a}
+#ld-crane .crane-lift{display:flex;flex-direction:column;align-items:center;transform:translateY(-72vh)}
+#ld-crane.play .crane-lift{animation:craneLower 1.3s cubic-bezier(.3,1.25,.5,1) .15s forwards}
+@keyframes craneLower{to{transform:translateY(0)}}
+#ld-crane .crane-gear{display:flex;flex-direction:column;align-items:center}
+#ld-crane.play .crane-gear{animation:craneRelease .5s ease 1.7s forwards}
+@keyframes craneRelease{to{transform:translateY(-78vh);opacity:0}}
+#ld-crane .crane-cable{width:3px;height:34vh;background:#14161a;opacity:.85}
+#ld-crane .crane-hook{width:46px;height:30px;background:#f7b500;border-radius:6px;position:relative;margin-top:-2px}
+#ld-crane .crane-hook::after{content:"";position:absolute;left:50%;bottom:-12px;width:14px;height:14px;border:3px solid #14161a;border-radius:50%;transform:translateX(-50%);border-top-color:transparent}
+#ld-crane .crane-load{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:10px}
+#ld-crane .wordmark{color:#14161a;opacity:1}
+#ld-crane .wordmark b{color:#d99e00}
+#ld-crane .crane-strip{width:100%;height:7px;background:repeating-linear-gradient(135deg,#f7b500 0 12px,#14161a 12px 24px);border-radius:2px}
+#ld-crane .wordsub{color:#8b919b}
+#ld-crane.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -422,6 +440,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / General Trades</span>
       <h3>Spirit Level</h3>
       <p>The bubble drifts along the vial, overshoots, then settles dead centre between the marks. The vial flashes "level" and the wordmark lands. First used on winning-creations.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-crane" data-dur="2400">
+      <span class="trade">Builders / New Builds</span>
+      <h3>Crane Lift</h3>
+      <p>A hook on a cable lowers the wordmark into place with a settle bounce, then releases and winches back up out of frame. First used on droitbuilding.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -598,6 +622,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone" style="display:flex;flex-direction:column;align-items:center">
     <div class="wordmark">Winning Creations</div>
     <div class="wordsub">Builder &amp; Stonemason</div>
+  </div>
+</div>
+
+<!-- 14. crane lift -->
+<div class="loader" id="ld-crane" aria-hidden="true">
+  <div class="crane-lift">
+    <div class="crane-gear">
+      <div class="crane-cable"></div>
+      <div class="crane-hook"></div>
+    </div>
+    <div class="crane-load">
+      <div class="wordmark">Droit<b>building</b></div>
+      <div class="crane-strip"></div>
+      <div class="wordsub">Builders &middot; Kent</div>
+    </div>
   </div>
 </div>
 
