@@ -436,10 +436,39 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-tilelay.play .wordmark{animation:wordIn .4s ease 1.2s forwards}
 #ld-tilelay.play .wordsub{animation:wordIn .4s ease 1.35s forwards}
 
+/* ===== 20. PRESSURE WASHING / HANDYMAN — jet wash ===== */
+/* a grimy screen gets blasted clean left-to-right; the lance rides the wipe edge */
+#ld-jetwash{
+  background:
+    radial-gradient(140px 90px at 15% 30%, rgba(62,48,36,.5), transparent 70%),
+    radial-gradient(180px 120px at 70% 60%, rgba(74,60,44,.55), transparent 70%),
+    radial-gradient(120px 80px at 40% 80%, rgba(54,44,32,.5), transparent 70%),
+    radial-gradient(200px 130px at 85% 20%, rgba(70,56,40,.45), transparent 70%),
+    #6b5946;
+}
+#ld-jetwash .jw-clean{position:absolute;inset:0;background:#fff;transform:translateX(-100%);display:flex;align-items:center;justify-content:center}
+#ld-jetwash.play .jw-clean{animation:jwSweep 1.5s cubic-bezier(.55,.05,.35,1) .15s forwards}
+@keyframes jwSweep{to{transform:translateX(0)}}
+#ld-jetwash .jw-gun{position:absolute;top:50%;right:-98px;margin-top:-80px;animation:jwJitter .18s linear infinite alternate}
+@keyframes jwJitter{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
+#ld-jetwash .jw-spr{animation:jwSpray .22s linear infinite alternate;transform-origin:95px 18px}
+@keyframes jwSpray{from{transform:scaleX(.92);opacity:.85}to{transform:scaleX(1.06);opacity:1}}
+#ld-jetwash .jw-drop{position:absolute;width:7px;height:7px;border-radius:50%;background:rgba(120,180,255,.9);animation:jwDrop .5s ease-out infinite}
+#ld-jetwash .jw-drop.d2{width:5px;height:5px;animation-delay:.15s;animation-duration:.45s}
+#ld-jetwash .jw-drop.d3{width:6px;height:6px;animation-delay:.3s;animation-duration:.55s}
+@keyframes jwDrop{0%{transform:translate(0,0);opacity:1}100%{transform:translate(46px,40px);opacity:0}}
+#ld-jetwash .wm-zone{display:flex;flex-direction:column;align-items:center}
+#ld-jetwash .wordmark{color:#102450}
+#ld-jetwash .wordmark b{color:#1c54c9}
+#ld-jetwash .wordsub{color:#7585ab}
+#ld-jetwash.play .wordmark{animation:wordIn .5s ease .75s forwards}
+#ld-jetwash.play .wordsub{animation:wordIn .5s ease .95s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
   .loader.play .wordmark,.loader.play .wordsub{opacity:1}
+  #ld-jetwash .jw-clean{transform:none}
 }
 </style>
 </head>
@@ -578,6 +607,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Tilers</span>
       <h3>Tile Lay</h3>
       <p>A wall of porcelain tiles snaps into place in a diagonal wave across a grout-grey screen, a few terracotta and ink accents in the mix, then the brand plaque lands on the finished wall. First used on expert-tiling-london.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-jetwash" data-dur="2400">
+      <span class="trade">Pressure Washing / Handyman / Cleaning</span>
+      <h3>Jet Wash</h3>
+      <p>The whole screen starts caked in grime, then a pressure lance rides the wipe edge and blasts it clean left to right, spray cone and droplets flying, until the wordmark sits on the fresh white surface. First used on smithfield-handyman.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -857,6 +892,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="tl-card">
       <div class="wordmark">Expert <b>Tiling</b> London</div>
       <div class="wordsub">North London &middot; Wall &amp; Floor Tiling</div>
+    </div>
+  </div>
+</div>
+
+<!-- 20. jet wash -->
+<div class="loader" id="ld-jetwash" aria-hidden="true">
+  <div class="jw-clean">
+    <div class="wm-zone">
+      <div class="wordmark">Smithfield <b>Handy Man</b></div>
+      <div class="wordsub">Whitehaven &middot; Est. 2026</div>
+    </div>
+    <div class="jw-gun">
+      <svg width="180" height="160" viewBox="0 0 180 160" fill="none" aria-hidden="true">
+        <g class="jw-spr">
+          <path d="M95 18 L178 0 L178 74 Z" fill="rgba(120,180,255,0.45)"/>
+          <path d="M95 18 L152 10 L152 52 Z" fill="rgba(170,210,255,0.6)"/>
+        </g>
+        <g transform="rotate(32 60 70)">
+          <rect x="49" y="2" width="19" height="14" rx="4" fill="#1c54c9"/>
+          <rect x="54" y="12" width="9" height="60" rx="4" fill="#41507a"/>
+          <rect x="50" y="68" width="17" height="58" rx="8" fill="#102450"/>
+          <rect x="56" y="88" width="26" height="11" rx="5" fill="#102450"/>
+        </g>
+      </svg>
+      <span class="jw-drop" style="left:46px;top:30px"></span>
+      <span class="jw-drop d2" style="left:60px;top:60px"></span>
+      <span class="jw-drop d3" style="left:40px;top:80px"></span>
     </div>
   </div>
 </div>
