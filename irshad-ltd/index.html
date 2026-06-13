@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irshad Ltd - Electricians in West London</title>
+<meta name="description" content="Irshad Ltd is a West London electrician for domestic and commercial work. Rewires, fuse board upgrades, EICRs, lighting, EV chargers and fault finding. Fully insured, free quotes.">
+
+<!-- Share preview -->
+<meta property="og:title" content="Irshad Ltd - Your New Website">
+<meta property="og:description" content="Electrician in West London - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/irshad-ltd/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/irshad-ltd/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e1014">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --bg:#0e1014;
+  --bg2:#121519;
+  --card:#16191f;
+  --card-hover:#1b1f27;
+  --line:#262b33;
+  --line-light:#333a44;
+  --ink:#f4f6f8;
+  --body:#c2c9d2;
+  --muted:#888f9c;
+  --accent:#c2f24a;
+  --accent-2:#a8d92e;
+  --accent-ink:#0e1014;
+  --accent-glow:rgba(194,242,74,0.16);
+  --wa:#25d366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+em{font-style:normal}
+h1,h2,h3{font-family:'Saira',sans-serif;color:var(--ink);line-height:1.05;letter-spacing:-0.02em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+
+/* ===== Label ===== */
+.label{font-family:'Saira',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);display:inline-block;margin-bottom:14px}
+.sec-head{max-width:760px;margin-bottom:46px}
+.sec-head h2{font-size:clamp(1.95rem,4.2vw,3rem);font-weight:800}
+
+/* ===== Circuit divider ===== */
+.circuit{display:flex;align-items:center;justify-content:center;gap:0;height:1px;max-width:1180px;margin:0 auto;opacity:.6}
+.circuit svg{width:100%;height:14px;overflow:visible}
+
+/* ===== Loader ===== */
+#loader{position:fixed;inset:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0b0c0f;overflow:hidden}
+#loader.bye{animation:loaderOut .5s ease forwards}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+#loader svg.pu{width:min(540px,84vw);height:auto;overflow:visible}
+#loader .trace{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:340;stroke-dashoffset:340}
+#loader.play .trace{animation:puDraw .7s ease-out .15s forwards}
+@keyframes puDraw{to{stroke-dashoffset:0}}
+#loader .bulb{fill:none;stroke:#3a3f33;stroke-width:2.5}
+#loader.play .bulb{animation:puBulb .9s steps(1) .8s forwards}
+@keyframes puBulb{0%{stroke:#3a3f33}20%{stroke:var(--accent)}30%{stroke:#3a3f33}45%{stroke:var(--accent)}55%{stroke:#54583f}100%{stroke:var(--accent)}}
+#loader .glow{opacity:0}
+#loader.play .glow{animation:puGlow .5s ease 1.55s forwards}
+@keyframes puGlow{to{opacity:1}}
+#loader .flash{position:absolute;inset:0;background:#eafbc0;opacity:0;pointer-events:none}
+#loader.play .flash{animation:puFlash .34s ease 1.45s}
+@keyframes puFlash{0%{opacity:0}25%{opacity:.8}100%{opacity:0}}
+#loader .lwm{font-family:'Saira',sans-serif;font-weight:800;letter-spacing:.02em;font-size:clamp(1.5rem,5vw,2.3rem);text-transform:uppercase;color:var(--ink);opacity:0;margin-top:6px}
+#loader .lsub{font-family:'Saira',sans-serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);opacity:0;margin-top:12px}
+#loader.play .lwm{animation:wordIn .5s ease 1.62s forwards}
+#loader.play .lsub{animation:wordIn .5s ease 1.8s forwards}
+@keyframes wordIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+  #loader .trace,#loader .bulb{stroke:var(--accent);stroke-dashoffset:0;animation:none}
+  #loader .glow,#loader .lwm,#loader .lsub{opacity:1;animation:none}
+  #loader .flash{display:none}
+}
+
+/* ===== Nav ===== */
+nav{position:sticky;top:0;z-index:90;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand .mark{width:34px;height:34px;flex:none;display:grid;place-items:center;background:var(--accent);border-radius:8px}
+.brand .mark svg{width:19px;height:19px}
+.brand-txt{font-family:'Saira',sans-serif;font-weight:800;font-size:1.18rem;color:var(--ink);letter-spacing:-0.01em;line-height:1}
+.brand-txt small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{background:var(--accent);color:var(--accent-ink)!important;padding:11px 20px;border-radius:9px;font-weight:700;font-family:'Saira',sans-serif;letter-spacing:.01em;display:inline-flex;align-items:center;gap:8px}
+.nav-links a.nav-cta svg{stroke:var(--accent-ink)}
+.nav-links a.nav-cta:hover{background:var(--accent-2)}
+.burger{display:none;background:none;border:1px solid var(--line-light);border-radius:9px;width:46px;height:42px;cursor:pointer;align-items:center;justify-content:center}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:'';position:absolute;left:0;width:20px;height:2px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.mobile-panel{display:none;flex-direction:column;gap:4px;padding:10px 24px 22px;border-bottom:1px solid var(--line);background:var(--bg)}
+.mobile-panel.open{display:flex}
+.mobile-panel a{padding:13px 4px;font-weight:500;border-bottom:1px solid var(--line);color:var(--body)}
+.mobile-panel a.m-cta{background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;text-align:center;font-weight:700;font-family:'Saira',sans-serif;margin-top:12px;padding:15px}
+
+/* ===== Hero (H2) ===== */
+.hero{position:relative;display:flex;flex-direction:column;padding:74px 0 54px;background:radial-gradient(1100px 520px at 78% 0%,rgba(194,242,74,0.07),transparent 60%)}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Saira',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-glow);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(194,242,74,.5)}70%{box-shadow:0 0 0 12px rgba(194,242,74,0)}100%{box-shadow:0 0 0 0 rgba(194,242,74,0)}}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.6rem);font-weight:800;letter-spacing:-0.03em}
+.hero .lede{font-size:1.12rem;color:var(--body);margin:22px 0 32px;max-width:520px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:11px;font-family:'Saira',sans-serif;font-weight:700;font-size:1.02rem;cursor:pointer;transition:transform .2s,background .2s;border:1px solid transparent}
+.btn svg{width:19px;height:19px}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary svg{stroke:var(--accent-ink)}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-2px)}
+.btn-wa{background:transparent;color:var(--ink);border-color:var(--line-light)}
+.btn-wa svg{fill:var(--wa)}
+.btn-wa:hover{border-color:var(--wa);transform:translateY(-2px)}
+.hero-media{position:relative}
+.hero-photo{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/5;background:#000}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-badge{position:absolute;left:16px;bottom:16px;background:rgba(14,16,20,.82);backdrop-filter:blur(6px);border:1px solid var(--line-light);border-radius:12px;padding:11px 16px;display:flex;align-items:center;gap:10px}
+.hero-badge .bdot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.hero-badge b{font-family:'Saira',sans-serif;color:var(--ink);font-size:.92rem}
+.hero-badge span{display:block;font-size:.72rem;color:var(--muted)}
+.hero-badge-m{display:none}
+
+/* fade cascade */
+.fade{opacity:0;animation:fadeUp .7s ease forwards}
+.fade.d1{animation-delay:.1s}.fade.d2{animation-delay:.22s}.fade.d3{animation-delay:.34s}.fade.d4{animation-delay:.46s}.fade.d5{animation-delay:.58s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== Trust strip (T1) ===== */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.trust-row{display:flex;align-items:stretch;flex-wrap:wrap}
+.trust-item{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;gap:10px;padding:22px 14px;text-align:center;border-left:1px solid var(--line)}
+.trust-item:first-child{border-left:none}
+.trust-item svg{width:20px;height:20px;stroke:var(--accent);flex:none}
+.trust-item span{font-family:'Saira',sans-serif;font-weight:600;font-size:.94rem;color:var(--ink)}
+
+/* ===== Sections ===== */
+section{padding:88px 0}
+.services{padding-top:78px}
+.services-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:640px){.services-grid{grid-template-columns:1fr 1fr}}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 26px;overflow:hidden;transition:transform .25s,border-color .25s,background .25s}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc:hover{transform:translateY(-4px);background:var(--card-hover);border-color:var(--line-light)}
+.svc:hover::before{transform:scaleX(1)}
+.svc .ico{width:46px;height:46px;border-radius:11px;background:rgba(194,242,74,.1);display:grid;place-items:center;margin-bottom:18px}
+.svc .ico svg{width:24px;height:24px;stroke:var(--accent);fill:none}
+.svc h3{font-size:1.22rem;font-weight:700;margin-bottom:8px}
+.svc p{font-size:.95rem;color:var(--muted)}
+
+/* ===== Gallery (G1) ===== */
+.gallery{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gitem{cursor:pointer;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);transition:transform .25s,border-color .25s}
+.gitem:hover{transform:translateY(-3px);border-color:var(--accent)}
+.gitem .ph{aspect-ratio:4/3;overflow:hidden}
+.gitem img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gitem:hover img{transform:scale(1.06)}
+.gitem figcaption{padding:13px 16px;font-family:'Saira',sans-serif;font-size:.86rem;font-weight:600;color:var(--body);display:flex;align-items:center;gap:9px}
+.gitem figcaption::before{content:'';width:7px;height:7px;border-radius:2px;background:var(--accent);flex:none}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(8,9,11,.93);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:86vh;border-radius:12px;border:1px solid var(--line-light)}
+.lb-close{position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-light);background:var(--card);color:var(--ink);font-size:1.5rem;cursor:pointer;line-height:1}
+
+/* ===== About ===== */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.about p{font-size:1.06rem;color:var(--body);margin-bottom:18px}
+.about .sig{display:flex;align-items:center;gap:16px;margin-top:26px}
+.about .sig .ini{width:52px;height:52px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:'Saira',sans-serif;font-weight:800;font-size:1.15rem}
+.about .sig b{font-family:'Saira',sans-serif;color:var(--ink);font-size:1.02rem;display:block}
+.about .sig span{font-size:.85rem;color:var(--muted)}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px}
+.stat-card .row{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+.stat-card .row:last-child{border-bottom:none}
+.stat-card .n{font-family:'Saira',sans-serif;font-weight:800;font-size:2.1rem;color:var(--accent);line-height:1}
+.stat-card .t{font-size:.9rem;color:var(--muted);text-align:right;max-width:150px}
+
+/* ===== Reviews (R1) ===== */
+.reviews{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.rev .stars{color:var(--accent);font-size:1rem;letter-spacing:2px;margin-bottom:13px}
+.rev p{font-size:.97rem;color:var(--body);margin-bottom:18px}
+.rev .who{display:flex;align-items:center;gap:12px}
+.rev .av{width:42px;height:42px;border-radius:50%;background:var(--accent-glow);border:1px solid var(--line-light);display:grid;place-items:center;font-family:'Saira',sans-serif;font-weight:700;color:var(--accent)}
+.rev .who b{font-family:'Saira',sans-serif;color:var(--ink);font-size:.92rem;display:block}
+.rev .who span{font-size:.78rem;color:var(--muted)}
+.rev .gsrc{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.74rem;color:var(--muted)}
+.rev .gsrc svg{width:14px;height:14px}
+
+/* ===== Areas ===== */
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.area{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 18px;font-family:'Saira',sans-serif;font-weight:600;font-size:.95rem;color:var(--body);display:flex;align-items:center;gap:10px;transition:border-color .2s,color .2s}
+.area:hover{border-color:var(--accent);color:var(--ink)}
+.area svg{width:15px;height:15px;stroke:var(--accent);flex:none}
+
+/* ===== CTA band ===== */
+.ctaband{background:linear-gradient(120deg,#171b21,#0f1216);border:1px solid var(--line-light);border-radius:20px;padding:52px 44px;text-align:center;position:relative;overflow:hidden}
+.ctaband::after{content:'';position:absolute;inset:0;background:radial-gradient(500px 200px at 50% 0%,var(--accent-glow),transparent 70%);pointer-events:none}
+.ctaband h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;margin-bottom:14px}
+.ctaband p{color:var(--body);margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto}
+.ctaband .hero-cta{justify-content:center}
+
+/* ===== Contact (C1) ===== */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:14px}
+.cinfo .card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 22px;display:flex;align-items:center;gap:16px}
+.cinfo .card .ci{width:46px;height:46px;border-radius:11px;background:rgba(194,242,74,.1);display:grid;place-items:center;flex:none}
+.cinfo .card .ci svg{width:22px;height:22px;stroke:var(--accent);fill:none}
+.cinfo .card .lbl{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.cinfo .card .val{font-family:'Saira',sans-serif;font-weight:700;color:var(--ink);font-size:1.08rem}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px}
+.form .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--body);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--line-light);border-radius:10px;padding:13px 15px;color:var(--ink);font-family:inherit;font-size:.96rem}
+.field textarea{resize:vertical;min-height:110px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.form .submit{width:100%;justify-content:center;margin-top:6px;font-size:1.06rem}
+
+/* ===== Footer ===== */
+footer{border-top:1px solid var(--line);padding:54px 0 34px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+.foot-brand{max-width:330px}
+.foot-brand p{font-size:.92rem;color:var(--muted);margin-top:14px}
+.foot-cols{display:flex;gap:60px;flex-wrap:wrap}
+.foot-col h4{font-family:'Saira',sans-serif;color:var(--ink);font-size:.86rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:14px}
+.foot-col a{display:block;font-size:.9rem;color:var(--muted);padding:5px 0;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bot{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem;color:var(--muted)}
+.foot-bot a{color:var(--accent)}
+
+/* ===== Floating CTAs ===== */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .3s,transform .3s,visibility .3s}
+.fabs.show{opacity:1;visibility:visible;transform:translateY(0)}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.fab svg{width:25px;height:25px}
+.fab-call{background:var(--accent);animation:fpulse 2.2s infinite}
+.fab-call svg{stroke:var(--accent-ink)}
+.fab-wa{background:var(--wa);animation:fpulse 2.2s infinite .4s}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation-play-state:paused;transform:scale(1.06)}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(194,242,74,.4)}70%{box-shadow:0 0 0 14px rgba(194,242,74,0)}100%{box-shadow:0 0 0 0 rgba(194,242,74,0)}}
+.fab-wa{animation-name:fpulseg}
+@keyframes fpulseg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:34px}
+  .hero-photo{aspect-ratio:16/11}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .contact-grid{grid-template-columns:1fr;gap:28px}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .areas-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  section{padding:64px 0}
+  .hero{padding:48px 0 40px}
+  .hero-badge{display:none}
+  .hero-badge-m{display:flex;align-items:center;gap:10px;margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .hero-badge-m .bdot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none}
+  .hero-badge-m b{font-family:'Saira',sans-serif;color:var(--ink);font-size:.92rem}
+  .hero-badge-m span{display:block;font-size:.74rem;color:var(--muted)}
+  .trust-row{flex-direction:column}
+  .trust-item{border-left:none;border-top:1px solid var(--line);justify-content:flex-start;padding:16px 4px}
+  .trust-item:first-child{border-top:none}
+  .rev-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .areas-grid{grid-template-columns:repeat(2,1fr)}
+  .form .frow{grid-template-columns:1fr;gap:0}
+  .ctaband{padding:40px 24px}
+}
+@media(max-width:380px){
+  .wrap{padding:0 18px}
+  .svc{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Loader: Power Up ===== -->
+<div id="loader">
+  <svg class="pu" viewBox="0 0 560 160" aria-hidden="true">
+    <path class="trace tl" d="M0 80 H160 V50 H230 V80 H252"/>
+    <path class="trace tr" d="M560 80 H400 V110 H330 V80 H308"/>
+    <g class="bulb">
+      <circle cx="280" cy="72" r="22"/>
+      <path d="M271 94 v10 h18 v-10 M274 110 h12"/>
+      <path d="M272 68 q8 10 16 0"/>
+    </g>
+    <circle class="glow" cx="280" cy="72" r="30" fill="rgba(194,242,74,0.18)"/>
+  </svg>
+  <div class="flash"></div>
+  <div class="lwm">Irshad Ltd</div>
+  <div class="lsub">Electricians &middot; West London</div>
+</div>
+
+<!-- ===== Nav ===== -->
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Irshad Ltd home">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#0e1014"/></svg>
+      </span>
+      <span class="brand-txt">Irshad Ltd<small>Electrical Contractors</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a class="nav-cta" id="navCall" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0e1014" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu"><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Contact</a>
+    <a class="m-cta" id="mCall" href="#contact"><span id="mCallTxt">Call us</span></a>
+  </div>
+</nav>
+
+<!-- ===== Hero (H2) ===== -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow fade"><span class="dot"></span>Qualified Electricians &middot; West London</span>
+      <h1 class="fade d1">Reliable electrics for <span class="accent">West London</span> homes &amp; businesses.</h1>
+      <p class="lede fade d2">From extra sockets to full rewires, fuse board upgrades and EV chargers. Tidy work, fully tested and certified, with a number that actually gets answered.</p>
+      <div class="hero-cta fade d3">
+        <a class="btn btn-primary" id="heroCall" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a class="btn btn-wa" id="heroWa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+          WhatsApp us
+        </a>
+      </div>
+    </div>
+    <div class="hero-media fade d4">
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Glowing filament bulb against a dark background" fetchpriority="high">
+        <div class="hero-badge">
+          <span class="bdot"></span>
+          <div><b>Fully insured</b><span>Free, no-pressure quotes</span></div>
+        </div>
+      </div>
+      <div class="hero-badge-m">
+        <span class="bdot"></span>
+        <div><b>Fully insured</b><span>Free, no-pressure quotes</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Trust strip (T1) ===== -->
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-row">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Fully Insured</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Free Quotes</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M9 13h.01M15 9h.01M15 13h.01"/></svg><span>Domestic &amp; Commercial</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg><span>Fast Response</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Work Guaranteed</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Services (S1) ===== -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we do</span>
+      <h2>Every job, from a single socket to a <span class="accent">full rewire</span>.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+        <h3>Rewiring &amp; Upgrades</h3>
+        <p>Full or partial rewires, consumer unit and circuit upgrades, signed off and certified.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div>
+        <h3>Fuse Board Replacement</h3>
+        <p>Old fuse boards swapped for modern consumer units with RCD protection.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+        <h3>EICR &amp; Landlord Certs</h3>
+        <p>Electrical safety inspections and reports for landlords, sales and peace of mind.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Fault Finding &amp; Repairs</h3>
+        <p>Tripping circuits and dead sockets traced fast and fixed properly.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
+        <h3>Lighting &amp; LED Design</h3>
+        <p>Downlights, spotlights and feature lighting, indoors and out.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M12 12v5M10 17h4"/></svg></div>
+        <h3>EV Charger Installation</h3>
+        <p>Home and workplace charge points wired in safely and neatly.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="9" cy="9" r="1.3"/><circle cx="15" cy="9" r="1.3"/><path d="M9 15h6"/></svg></div>
+        <h3>Sockets &amp; Switches</h3>
+        <p>Extra points, USB sockets and smart switches added wherever you need them.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg></div>
+        <h3>Commercial &amp; Office</h3>
+        <p>Shops, offices and units kept safe, compliant and running.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="circuit reveal" aria-hidden="true">
+  <svg viewBox="0 0 1180 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="1180" y2="7" stroke="#262b33" stroke-width="1"/><rect x="280" y="3.5" width="7" height="7" fill="#c2f24a"/><rect x="590" y="3.5" width="7" height="7" fill="#c2f24a"/><rect x="900" y="3.5" width="7" height="7" fill="#c2f24a"/></svg>
+</div>
+
+<!-- ===== Gallery (G1) ===== -->
+<section class="gallery" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2>A look at jobs across <span class="accent">West London</span>.</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gitem reveal" data-full="work-1.jpg"><div class="ph"><img src="work-1.jpg" alt="Commercial distribution board"></div><figcaption>Distribution board, Acton</figcaption></figure>
+      <figure class="gitem reveal" data-full="work-2.jpg"><div class="ph"><img src="work-2.jpg" alt="First-fix rewiring back boxes"></div><figcaption>First-fix rewire, Ealing</figcaption></figure>
+      <figure class="gitem reveal" data-full="work-3.jpg"><div class="ph"><img src="work-3.jpg" alt="Recessed LED downlight in a ceiling"></div><figcaption>Recessed downlights, Chiswick</figcaption></figure>
+      <figure class="gitem reveal" data-full="work-4.jpg"><div class="ph"><img src="work-4.jpg" alt="Wall-mounted home EV charger"></div><figcaption>EV charger install, Hammersmith</figcaption></figure>
+      <figure class="gitem reveal" data-full="work-5.jpg"><div class="ph"><img src="work-5.jpg" alt="Feature ceiling lighting"></div><figcaption>Feature lighting, Fulham</figcaption></figure>
+      <figure class="gitem reveal" data-full="work-6.jpg"><div class="ph"><img src="work-6.jpg" alt="Cable run into a wall box"></div><figcaption>Cable run &amp; repair, Hounslow</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About (after gallery) ===== -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="label">About</span>
+      <h2 style="font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:800;margin-bottom:22px">Local, qualified, and easy to deal with.</h2>
+      <p>Irshad Ltd is a West London electrical firm covering domestic and commercial work from Ealing through to Fulham. Whether it is one socket or a full rewire and fuse board upgrade, every job is left tidy, tested and certified.</p>
+      <p>Honest pricing, no call-out games, and a number that gets answered when you ring it.</p>
+      <div class="sig">
+        <span class="ini">IA</span>
+        <div><b>Irshad Ahmed</b><span>Owner, Irshad Ltd</span></div>
+      </div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="row"><span class="n">10+</span><span class="t">Years on the tools</span></div>
+      <div class="row"><span class="n">24/7</span><span class="t">Emergency callouts</span></div>
+      <div class="row"><span class="n">100%</span><span class="t">Certified &amp; tested work</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Reviews (R1) ===== -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Reviews</span>
+      <h2>What West London <span class="accent">homeowners</span> say.</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Irshad replaced our old fuse board and sorted a tripping circuit the same afternoon. Tidy work, explained everything, fair price. Highly recommend to anyone in Ealing.</p>
+        <div class="who"><span class="av">S</span><div><b>Sarah M.</b><span>Ealing &middot; Fuse board</span></div></div>
+        <span class="gsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.7 6-4.7z"/></svg>Google Review</span>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Booked Irshad Ltd for a full rewire on our Victorian flat in Chiswick. Turned up when they said, kept the dust down and the certificate came through quickly.</p>
+        <div class="who"><span class="av">J</span><div><b>James P.</b><span>Chiswick &middot; Rewire</span></div></div>
+        <span class="gsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.7 6-4.7z"/></svg>Google Review</span>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Needed an EICR for a rental in Acton at short notice. Professional, thorough, and the report was with me the next day. Will use again for the other properties.</p>
+        <div class="who"><span class="av">P</span><div><b>Priya S.</b><span>Acton &middot; EICR / Landlord</span></div></div>
+        <span class="gsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.7 6-4.7z"/></svg>Google Review</span>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Had spotlights and an EV charger fitted in Hammersmith. Neat cabling, no mess, and he talked me through the consumer unit upgrade I needed first. Proper job.</p>
+        <div class="who"><span class="av">D</span><div><b>Daniel O.</b><span>Hammersmith &middot; Lighting &amp; EV</span></div></div>
+        <span class="gsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.7 6-4.7z"/></svg>Google Review</span>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Lights kept tripping across the whole house in Fulham. Irshad found the fault in under an hour when two others could not. Genuinely knows his stuff.</p>
+        <div class="who"><span class="av">R</span><div><b>Rebecca T.</b><span>Fulham &middot; Fault finding</span></div></div>
+        <span class="gsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.7 6-4.7z"/></svg>Google Review</span>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Used Irshad Ltd for the electrics on our small shop fit-out in Southall. Quoted fairly, worked around our hours and left everything labelled and tested. Top marks.</p>
+        <div class="who"><span class="av">M</span><div><b>Mo K.</b><span>Southall &middot; Commercial</span></div></div>
+        <span class="gsrc"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-2 3.2-4.9 3.2-7.9z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.6l-3.6-2.7c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M6 14.4a6.6 6.6 0 0 1 0-4.2V7.4H2.3a11 11 0 0 0 0 9.8L6 14.4z"/><path fill="#EA4335" d="M12 5.5c1.6 0 3 .5 4.1 1.6l3.1-3.1A11 11 0 0 0 2.3 7.4L6 10.2c.9-2.6 3.2-4.7 6-4.7z"/></svg>Google Review</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Areas ===== -->
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Areas we cover</span>
+      <h2>Across <span class="accent">West London</span> and the surrounding boroughs.</h2>
+    </div>
+    <div class="areas-grid">
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>West London</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ealing</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Acton</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chiswick</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Hammersmith</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Fulham</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Shepherd's Bush</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Hounslow</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Brentford</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Southall</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Hayes</div>
+      <div class="area reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Uxbridge</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA band ===== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="ctaband reveal">
+      <h2>Power problem in West London?</h2>
+      <p>Give us a ring or drop a message on WhatsApp. We will tell you what is wrong, what it costs, and when we can be there.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="bandCall" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="bandCallTxt">Call us</span>
+        </a>
+        <a class="btn btn-wa" id="bandWa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+          WhatsApp us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact (C1) ===== -->
+<section id="contact" style="padding-top:24px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Get a quote</span>
+      <h2>Tell us what you need and we will get <span class="accent">back to you</span>.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <a class="card" id="infoCall" href="#">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><span class="lbl">Call us</span><span class="val" id="infoCallTxt">Tap to call</span></div>
+        </a>
+        <a class="card" id="infoWa" href="#" target="_blank" rel="noopener">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+          <div><span class="lbl">WhatsApp</span><span class="val">Message us anytime</span></div>
+        </a>
+        <div class="card">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><span class="lbl">Based in</span><span class="val">West London</span></div>
+        </div>
+        <div class="card">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><span class="lbl">Response</span><span class="val">Usually same day</span></div>
+        </div>
+      </div>
+
+      <form class="form reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Irshad Ltd">
+        <input type="hidden" name="source" value="mockup-irshad-ltd">
+        <div class="frow">
+          <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
+          <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07…"></div>
+        </div>
+        <div class="field"><label for="email">Email (optional)</label><input type="email" id="email" name="email"></div>
+        <div class="field">
+          <label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <option value="">Select a service…</option>
+            <optgroup label="Domestic">
+              <option>Rewiring &amp; upgrades</option>
+              <option>Fuse board / consumer unit</option>
+              <option>Fault finding &amp; repairs</option>
+              <option>Lighting &amp; downlights</option>
+              <option>Sockets &amp; switches</option>
+              <option>EV charger installation</option>
+            </optgroup>
+            <optgroup label="Certificates">
+              <option>EICR / electrical report</option>
+              <option>Landlord certificate</option>
+            </optgroup>
+            <optgroup label="Commercial">
+              <option>Commercial &amp; office electrics</option>
+              <option>Shop / unit fit-out</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="A line or two about the job and your address or postcode."></textarea></div>
+        <button type="submit" class="btn btn-primary submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#0e1014"/></svg></span>
+          <span class="brand-txt">Irshad Ltd<small>Electrical Contractors</small></span>
+        </a>
+        <p>Qualified electricians covering domestic and commercial work across West London. Fully insured, free quotes, certified every time.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Services</h4>
+          <a href="#services">Rewiring</a>
+          <a href="#services">Fuse boards</a>
+          <a href="#services">EICR &amp; certs</a>
+          <a href="#services">EV chargers</a>
+        </div>
+        <div class="foot-col">
+          <h4>Areas</h4>
+          <a href="#areas">Ealing</a>
+          <a href="#areas">Chiswick</a>
+          <a href="#areas">Hammersmith</a>
+          <a href="#areas">Fulham</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="#contact" id="footCall">Call us</a>
+          <a href="#contact">Get a quote</a>
+          <a href="#work">Recent work</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; <span id="year"></span> Irshad Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Floating CTAs ===== -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call us">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp us">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+  </a>
+</div>
+
+<!-- ===== Lightbox ===== -->
+<div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Close">&times;</button><img id="lbImg" src="" alt=""></div>
+
+<script>
+(function(){
+  // ---- Contact obfuscation ----
+  var P  = atob('MDc0MTIwMzgwMTE=');      // phone, no spaces
+  var Pf = atob('MDc0MTIgMDM4IDAxMQ==');  // phone, formatted
+  var WA = '44' + P.slice(1);
+  var waHref = 'https://wa.me/' + WA + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+  function tel(id){ var e=document.getElementById(id); if(e) e.href='tel:'+P; }
+  ['navCall','heroCall','bandCall','infoCall','fabCall','mCall','footCall'].forEach(tel);
+  ['heroWa','bandWa','infoWa','fabWa'].forEach(function(id){ var e=document.getElementById(id); if(e) e.href=waHref; });
+  ['heroCallTxt','bandCallTxt','mCallTxt'].forEach(function(id){ var e=document.getElementById(id); if(e) e.textContent='Call '+Pf; });
+  ['infoCallTxt','footCall'].forEach(function(id){ var e=document.getElementById(id); if(e) e.textContent=Pf; });
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Loader (Power Up) ----
+  var loader = document.getElementById('loader');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function killLoader(){ if(!loader) return; loader.classList.add('bye'); setTimeout(function(){ if(loader) loader.style.display='none'; }, 520); }
+  if(loader){
+    if(reduce){ setTimeout(killLoader, 500); }
+    else {
+      loader.classList.add('play');
+      setTimeout(killLoader, 2150);
+      setTimeout(function(){ if(loader && loader.style.display!=='none') killLoader(); }, 2600); // fail-safe
+    }
+  }
+
+  // ---- Mobile nav ----
+  var burger=document.getElementById('burger'), panel=document.getElementById('mpanel');
+  if(burger){ burger.addEventListener('click', function(){ panel.classList.toggle('open'); }); }
+  panel && panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ panel.classList.remove('open'); }); });
+
+  // ---- Reveal on scroll ----
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // ---- Floating CTAs after hero ----
+  var hero=document.getElementById('top'), fabs=document.getElementById('fabs');
+  if(hero && fabs){
+    var ho=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ fabs.classList.toggle('show', !e.isIntersecting); });
+    }, {threshold:0});
+    ho.observe(hero);
+  }
+
+  // ---- Lightbox ----
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbClose=document.getElementById('lbClose');
+  document.querySelectorAll('.gitem').forEach(function(g){
+    g.addEventListener('click', function(){ lbImg.src=g.getAttribute('data-full'); lb.classList.add('open'); });
+  });
+  function closeLb(){ lb.classList.remove('open'); lbImg.src=''; }
+  lbClose && lbClose.addEventListener('click', closeLb);
+  lb && lb.addEventListener('click', function(e){ if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+
+  // ---- Form ----
+  var ts=document.getElementById('formTimestamp'); if(ts) ts.value=Date.now();
+  var ph=document.getElementById('phone');
+  if(ph){ ph.addEventListener('input', function(){
+    var ok=/^(0|\+44)\d{9,11}$/.test(ph.value.replace(/\s/g,''));
+    ph.setCustomValidity(ok||ph.value==='' ? '' : 'Please enter a valid UK phone number');
+  }); }
+})();
+</script>
+</body>
+</html>
