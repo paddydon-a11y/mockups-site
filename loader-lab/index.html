@@ -492,11 +492,50 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes soTick{to{opacity:.85}}
 @keyframes soPeg{to{opacity:1;transform:scale(1)}}
 
+/* ===== 21. HANDYMAN / MULTI-TRADE — snag list ===== */
+/* a handyman to-do list ticks itself off line by line, then the wordmark lands */
+#ld-snag{background:#0e9e8a;flex-direction:column;gap:24px}
+#ld-snag .sl-pad{background:#fff;border-radius:16px;padding:22px 24px;width:min(80vw,290px);box-shadow:0 20px 50px rgba(0,0,0,.25);transform:rotate(-1.4deg)}
+#ld-snag .sl-head{font-weight:800;color:#13302b;font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:9px;text-transform:none;letter-spacing:0}
+#ld-snag .sl-clip{width:34px;height:6px;background:#ff6a3d;border-radius:4px}
+#ld-snag .sl-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed #e4eae7;position:relative}
+#ld-snag .sl-row:last-child{border-bottom:none}
+#ld-snag .sl-box{width:24px;height:24px;border:2.5px solid #cdd9d4;border-radius:7px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:#fff}
+#ld-snag .sl-box svg{width:15px;height:15px}
+#ld-snag .sl-box path{stroke:#fff;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24}
+#ld-snag .sl-txt{font-weight:600;color:#13302b;font-size:1rem;position:relative}
+#ld-snag .sl-txt::after{content:"";position:absolute;left:0;top:52%;height:2px;width:100%;background:#86978f;transform:scaleX(0);transform-origin:left;border-radius:2px}
+#ld-snag.play .r1 .sl-box{animation:slBox .3s ease .35s forwards}
+#ld-snag.play .r1 .sl-box path{animation:slCheck .3s ease .45s forwards}
+#ld-snag.play .r1 .sl-txt{animation:slMute .3s ease .45s forwards}
+#ld-snag.play .r1 .sl-txt::after{animation:slStrike .35s ease .45s forwards}
+#ld-snag.play .r2 .sl-box{animation:slBox .3s ease .8s forwards}
+#ld-snag.play .r2 .sl-box path{animation:slCheck .3s ease .9s forwards}
+#ld-snag.play .r2 .sl-txt{animation:slMute .3s ease .9s forwards}
+#ld-snag.play .r2 .sl-txt::after{animation:slStrike .35s ease .9s forwards}
+#ld-snag.play .r3 .sl-box{animation:slBox .3s ease 1.25s forwards}
+#ld-snag.play .r3 .sl-box path{animation:slCheck .3s ease 1.35s forwards}
+#ld-snag.play .r3 .sl-txt{animation:slMute .3s ease 1.35s forwards}
+#ld-snag.play .r3 .sl-txt::after{animation:slStrike .35s ease 1.35s forwards}
+@keyframes slBox{to{border-color:#ff6a3d;background:#ff6a3d}}
+@keyframes slCheck{to{stroke-dashoffset:0}}
+@keyframes slMute{to{color:#86978f}}
+@keyframes slStrike{to{transform:scaleX(1)}}
+#ld-snag .wm-zone{display:flex;flex-direction:column;align-items:center}
+#ld-snag .wordmark{color:#fff;text-transform:none;letter-spacing:.01em}
+#ld-snag .wordsub{color:rgba(255,255,255,.72)}
+#ld-snag.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
+#ld-snag.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
   .loader.play .wordmark,.loader.play .wordsub{opacity:1}
   #ld-jetwash .jw-clean{transform:none}
+  #ld-snag .sl-box{background:#ff6a3d;border-color:#ff6a3d}
+  #ld-snag .sl-box path{stroke-dashoffset:0}
+  #ld-snag .sl-txt{color:#86978f}
+  #ld-snag .sl-txt::after{transform:scaleX(1)}
 }
 </style>
 </head>
@@ -649,6 +688,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A builder's plot draws itself on a blueprint, profile pegs snap into the corners and the dimension lines tick off, then the wordmark stamps the footprint. First used on brentbarker-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-snag" data-dur="2300">
+      <span class="trade">Handyman / Multi-trade</span>
+      <h3>Snag List</h3>
+      <p>A handyman's to-do list ticks itself off line by line, each box filling coral and the job striking through, then the wordmark lands under the finished list. First used on gary-the-handyman.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -671,6 +716,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Meridian <b>Build</b></div>
     <div class="wordsub">Builders &middot; Extensions</div>
+  </div>
+</div>
+
+<!-- 21. snag list (handyman) -->
+<div class="loader" id="ld-snag" aria-hidden="true">
+  <div class="sl-pad">
+    <div class="sl-head"><span class="sl-clip"></span>Today's jobs</div>
+    <div class="sl-row r1"><span class="sl-box"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="sl-txt">Leaky tap</span></div>
+    <div class="sl-row r2"><span class="sl-box"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="sl-txt">Flat-pack wardrobe</span></div>
+    <div class="sl-row r3"><span class="sl-box"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="sl-txt">Fence panel</span></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Gary the Handyman</div>
+    <div class="wordsub">Handyman &middot; Garden &middot; Roof</div>
   </div>
 </div>
 
