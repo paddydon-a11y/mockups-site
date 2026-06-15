@@ -620,6 +620,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-snag .sl-txt{color:#86978f}
   #ld-snag .sl-txt::after{transform:scaleX(1)}
 }
+
+/* 26. pile drive (piling / marine / civils) */
+#ld-piledrive{background:radial-gradient(ellipse 60% 50% at 50% 32%,#1a2128 0%,transparent 62%),linear-gradient(180deg,#11161a,#090c0e);flex-direction:column}
+#ld-piledrive .pd-scene{position:relative;width:min(340px,80vw);height:230px}
+#ld-piledrive .pd-gauge{position:absolute;top:6px;right:0;font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:#5f93c0;letter-spacing:.08em;text-align:right;line-height:1.5}
+#ld-piledrive .pd-gauge b{color:#ff6a1a;font-weight:600}
+#ld-piledrive .pd-ground{position:absolute;left:0;right:0;bottom:64px;height:2px;background:linear-gradient(90deg,transparent,#3a444d 12%,#3a444d 88%,transparent)}
+#ld-piledrive .pd-ground:after{content:'';position:absolute;left:0;right:0;top:2px;height:56px;background:repeating-linear-gradient(135deg,rgba(95,147,192,.05) 0 7px,transparent 7px 14px)}
+#ld-piledrive .pd-pile{position:absolute;left:50%;transform:translateX(-50%);bottom:160px;width:26px;height:96px;background:linear-gradient(90deg,#2a221d,#6b4a32 18%,#b07a4e 44%,#8a5e3c 70%,#3a2a1f);border-radius:3px 3px 0 0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.4)}
+#ld-piledrive .pd-pile:before{content:'';position:absolute;top:-5px;left:0;right:0;height:10px;background:radial-gradient(ellipse at 50% 50%,#c8693a,#7a3d22 70%);border-radius:50%}
+#ld-piledrive .pd-hammer{position:absolute;left:50%;transform:translateX(-50%);bottom:264px;width:40px;height:34px;background:linear-gradient(180deg,#4b5560,#2b333b);border-radius:4px}
+#ld-piledrive .pd-hammer:after{content:'';position:absolute;left:50%;top:-120px;transform:translateX(-50%);width:3px;height:120px;background:linear-gradient(180deg,transparent,#3a444d)}
+#ld-piledrive.play .pd-pile{animation:pdDrive 2.4s cubic-bezier(.5,0,.7,1) forwards}
+#ld-piledrive.play .pd-hammer{animation:pdHammer 2.4s cubic-bezier(.5,0,.7,1) forwards}
+@keyframes pdDrive{0%{bottom:188px}24%{bottom:130px}26%{bottom:124px}50%{bottom:104px}52%{bottom:98px}78%{bottom:76px}80%{bottom:70px}100%{bottom:66px}}
+@keyframes pdHammer{0%{bottom:290px}24%{bottom:232px}26%{bottom:226px}50%{bottom:206px}52%{bottom:200px}78%{bottom:178px}80%{bottom:172px}100%{bottom:168px}}
+#ld-piledrive .pd-spark{position:absolute;left:50%;bottom:160px;width:4px;height:4px;transform:translateX(-50%)}
+#ld-piledrive .pd-spark span{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd9a8;box-shadow:0 0 6px #ff8642,0 0 12px #ff6a1a;opacity:0}
+#ld-piledrive .pd-spark span:nth-child(1){--x:-22px;--y:-14px}#ld-piledrive .pd-spark span:nth-child(2){--x:20px;--y:-16px}#ld-piledrive .pd-spark span:nth-child(3){--x:-14px;--y:-22px}#ld-piledrive .pd-spark span:nth-child(4){--x:16px;--y:-22px}#ld-piledrive .pd-spark span:nth-child(5){--x:0;--y:-26px}
+#ld-piledrive.play .pd-spark.s1 span{animation:pdSpark .42s ease-out .56s forwards}
+#ld-piledrive.play .pd-spark.s2 span{animation:pdSpark .42s ease-out 1.18s forwards}
+#ld-piledrive.play .pd-spark.s3 span{animation:pdSpark .42s ease-out 1.86s forwards}
+@keyframes pdSpark{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.3)}}
+#ld-piledrive .wm-zone{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;margin-top:8px}
+#ld-piledrive .wordmark{color:#eef2f5}
+#ld-piledrive .wordmark b{color:#ff6a1a}
+#ld-piledrive .wordsub{color:#6f7c86}
+#ld-piledrive.play .wordmark{animation:wordIn .5s ease 2s forwards}
+#ld-piledrive.play .wordsub{animation:wordIn .5s ease 2.15s forwards}
 </style>
 </head>
 <body>
@@ -795,6 +824,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The toolbox lid swings open and a spanner, brush and screwdriver rise up out of the box, then the wordmark lands beneath. Perfect for a do-it-all maintainer. First used on gary-addison-property-maintenance.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-piledrive" data-dur="2500">
+      <span class="trade">Piling / Marine / Civil Engineering</span>
+      <h3>Pile Drive</h3>
+      <p>A tubular steel pile sinks into the seabed under three hammer blows while a depth gauge ticks the metres down, sparks burst at each impact, then the wordmark seats on the capped pile. First used on piling-welding.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -810,6 +845,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Gary <b>Addison</b></div>
     <div class="wordsub">Property Maintenance</div>
+  </div>
+</div>
+
+<!-- 26. pile drive (piling / marine / civils) -->
+<div class="loader" id="ld-piledrive" aria-hidden="true">
+  <div class="pd-scene">
+    <div class="pd-gauge">DEPTH<br><b><span id="pdVal">00.0</span>m</b></div>
+    <div class="pd-hammer"></div>
+    <div class="pd-pile"></div>
+    <div class="pd-ground"></div>
+    <div class="pd-spark s1"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="pd-spark s2"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="pd-spark s3"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Piling &amp; <b>Welding</b></div>
+    <div class="wordsub">Driven &middot; Welded &middot; Signed Off</div>
   </div>
 </div>
 
@@ -1296,6 +1348,13 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
         span.textContent = Math.round(18 - 36 * eased);
         if (p < 1 && running === id) requestAnimationFrame(tick);
       })(t0);
+    }
+
+    if (id === 'ld-piledrive' && !reduced) {
+      var pdSpan = document.getElementById('pdVal');
+      [[560,'08.4'],[1180,'14.6'],[1860,'19.8'],[2280,'22.0']].forEach(function(s){
+        setTimeout(function(){ if (running === id) pdSpan.textContent = s[1]; }, s[0]);
+      });
     }
 
     var total = reduced ? 900 : dur;
