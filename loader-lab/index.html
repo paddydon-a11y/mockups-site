@@ -527,6 +527,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-snag.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
 #ld-snag.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
 
+/* threshold (multi-trade / maintenance / property) — two door panels part to reveal the page */
+#ld-threshold{background:transparent}
+#ld-threshold .door{position:absolute;top:0;bottom:0;width:50%;background:#16181d;will-change:transform}
+#ld-threshold .door.l{left:0}
+#ld-threshold .door.r{right:0}
+#ld-threshold .door::after{content:"";position:absolute;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,#a8243d,transparent)}
+#ld-threshold .door.l::after{right:0}
+#ld-threshold .door.r::after{left:0}
+#ld-threshold .wm-zone{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:14px}
+#ld-threshold .wordmark{color:#fff}
+#ld-threshold .wordmark .amp{color:#a8243d}
+#ld-threshold .wordsub{color:#9aa0ac}
+#ld-threshold .tbar{width:128px;height:3px;background:rgba(255,255,255,.14);border-radius:3px;overflow:hidden;margin-top:2px;opacity:0}
+#ld-threshold .tbar i{display:block;height:100%;width:100%;background:#a8243d;transform:translateX(-100%)}
+#ld-threshold.play .wordmark{animation:wordIn .45s ease .15s forwards}
+#ld-threshold.play .wordsub{animation:wordIn .45s ease .3s forwards}
+#ld-threshold.play .tbar{opacity:1}
+#ld-threshold.play .tbar i{animation:thBar 1.25s cubic-bezier(.5,.1,.2,1) .15s forwards}
+#ld-threshold.play .wm-zone{animation:thFade .4s ease 1.35s forwards}
+#ld-threshold.play .door.l{animation:thDoorL .8s cubic-bezier(.76,0,.24,1) 1.35s forwards}
+#ld-threshold.play .door.r{animation:thDoorR .8s cubic-bezier(.76,0,.24,1) 1.35s forwards}
+@keyframes thBar{to{transform:translateX(0)}}
+@keyframes thFade{to{opacity:0}}
+@keyframes thDoorL{to{transform:translateX(-101%)}}
+@keyframes thDoorR{to{transform:translateX(101%)}}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -692,6 +718,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Handyman / Multi-trade</span>
       <h3>Snag List</h3>
       <p>A handyman's to-do list ticks itself off line by line, each box filling coral and the job striking through, then the wordmark lands under the finished list. First used on gary-the-handyman.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-threshold" data-dur="2150">
+      <span class="trade">Multi-trade / Maintenance / Property</span>
+      <h3>Threshold</h3>
+      <p>Two charcoal door panels meet on a thin accent seam, the wordmark and bar sit on the join, then the doors slide apart to reveal the page. Opening doors for a property firm. First used on gm-property-maintenance.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -1035,6 +1067,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="jw-drop d2" style="left:60px;top:60px"></span>
       <span class="jw-drop d3" style="left:40px;top:80px"></span>
     </div>
+  </div>
+</div>
+
+<!-- 22. threshold (multi-trade / maintenance / property) -->
+<div class="loader" id="ld-threshold" aria-hidden="true">
+  <div class="door l"></div>
+  <div class="door r"></div>
+  <div class="wm-zone">
+    <div class="wordmark">G<span class="amp">&amp;</span>M</div>
+    <div class="wordsub">Property Maintenance</div>
+    <div class="tbar"><i></i></div>
   </div>
 </div>
 
