@@ -492,6 +492,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes soTick{to{opacity:.85}}
 @keyframes soPeg{to{opacity:1;transform:scale(1)}}
 
+/* ===== 22. DRYLINING / FIT-OUT — stud & board ===== */
+/* metal stud track draws, studs rise at centres, a plasterboard sheet slides over and fixes, wordmark lands on the wall */
+#ld-stud{background:#0d0d0d;flex-direction:column;gap:26px;color:#fff}
+#ld-stud .sb-stage{position:relative;width:min(280px,76vw);height:128px}
+#ld-stud .sb-track,#ld-stud .sb-floor{position:absolute;left:0;width:100%;height:2px;background:#3a3a3a}
+#ld-stud .sb-track{top:8px;transform:scaleX(0);transform-origin:left}
+#ld-stud .sb-floor{bottom:8px}
+#ld-stud.play .sb-track{animation:sbTrack .4s ease forwards}
+#ld-stud .sb-stud{position:absolute;top:10px;bottom:10px;width:5px;background:#cfcfcf;transform:scaleY(0);transform-origin:bottom}
+#ld-stud.play .sb-stud{animation:sbStud .34s cubic-bezier(.2,.8,.2,1) forwards}
+#ld-stud.play .sb-stud.d1{animation-delay:.4s}
+#ld-stud.play .sb-stud.d2{animation-delay:.52s}
+#ld-stud.play .sb-stud.d3{animation-delay:.64s}
+#ld-stud.play .sb-stud.d4{animation-delay:.76s}
+#ld-stud.play .sb-stud.d5{animation-delay:.88s}
+#ld-stud .sb-board{position:absolute;top:10px;bottom:10px;left:6%;width:88%;background:#fff;opacity:0;transform:translateX(-44px)}
+#ld-stud.play .sb-board{animation:sbBoard .5s ease 1.05s forwards}
+#ld-stud .sb-screw{position:absolute;width:5px;height:5px;border-radius:50%;background:#9a9a9a;opacity:0}
+#ld-stud .sb-screw.s1{top:18px;left:11%}#ld-stud .sb-screw.s2{bottom:18px;left:11%}
+#ld-stud .sb-screw.s3{top:18px;right:11%}#ld-stud .sb-screw.s4{bottom:18px;right:11%}
+#ld-stud.play .sb-screw{animation:sbScrew .2s ease 1.55s forwards}
+#ld-stud .wm-zone{display:flex;flex-direction:column;align-items:center}
+#ld-stud .wordmark b{color:#fff}
+#ld-stud .wordsub{color:rgba(255,255,255,.55)}
+#ld-stud.play .wordmark{animation:wordIn .5s ease 1.65s forwards}
+#ld-stud.play .wordsub{animation:wordIn .5s ease 1.8s forwards}
+@keyframes sbTrack{to{transform:scaleX(1)}}
+@keyframes sbStud{to{transform:scaleY(1)}}
+@keyframes sbBoard{to{opacity:1;transform:translateX(0)}}
+@keyframes sbScrew{to{opacity:1}}
+
 /* ===== 21. HANDYMAN / MULTI-TRADE — snag list ===== */
 /* a handyman to-do list ticks itself off line by line, then the wordmark lands */
 #ld-snag{background:#0e9e8a;flex-direction:column;gap:24px}
@@ -724,6 +755,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Multi-trade / Maintenance / Property</span>
       <h3>Threshold</h3>
       <p>Two charcoal door panels meet on a thin accent seam, the wordmark and bar sit on the join, then the doors slide apart to reveal the page. Opening doors for a property firm. First used on gm-property-maintenance.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-stud" data-dur="2300">
+      <span class="trade">Drylining / Fit-out / Ceilings</span>
+      <h3>Stud &amp; Board</h3>
+      <p>A metal stud track draws across the floor, studs rise into place at centres, a plasterboard sheet slides over and fixes at the corners, then the wordmark lands on the finished wall. First used on jlg-construction-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -1078,6 +1115,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">G<span class="amp">&amp;</span>M</div>
     <div class="wordsub">Property Maintenance</div>
     <div class="tbar"><i></i></div>
+  </div>
+</div>
+
+<!-- 22. stud & board (drylining / fit-out) -->
+<div class="loader" id="ld-stud" aria-hidden="true">
+  <div class="sb-stage">
+    <div class="sb-track"></div>
+    <div class="sb-stud d1" style="left:10%"></div>
+    <div class="sb-stud d2" style="left:30%"></div>
+    <div class="sb-stud d3" style="left:50%"></div>
+    <div class="sb-stud d4" style="left:70%"></div>
+    <div class="sb-stud d5" style="left:90%"></div>
+    <div class="sb-board"></div>
+    <div class="sb-screw s1"></div><div class="sb-screw s2"></div>
+    <div class="sb-screw s3"></div><div class="sb-screw s4"></div>
+    <div class="sb-floor"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">JLG <b>Construction</b></div>
+    <div class="wordsub">Fit-out &middot; Drylining &middot; Ceilings</div>
   </div>
 </div>
 
