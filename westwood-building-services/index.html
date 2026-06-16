@@ -15,7 +15,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
 <script>
@@ -48,7 +48,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 em{font-style:normal}
-h1,h2,h3,h4{font-family:'Syne',sans-serif;color:var(--ink);line-height:1.05;letter-spacing:-.03em;font-weight:800}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);line-height:1.05;letter-spacing:-.03em;font-weight:800}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
@@ -71,21 +71,19 @@ img{display:block;max-width:100%}
 .roofline{display:block;width:100%;height:18px;color:var(--line-2)}
 .roofline svg{width:100%;height:100%}
 
-/* ---------- LOADER (windows lit) ---------- */
-#loader{position:fixed;inset:0;z-index:9999;background:var(--green-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .5s ease,visibility .5s ease}
+/* ---------- LOADER (logo + lights on) ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--green-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;transition:opacity .5s ease,visibility .5s ease}
 #loader.done{opacity:0;visibility:hidden}
-#loader svg{width:200px;height:auto;overflow:visible}
-.ld-out{fill:none;stroke:rgba(255,255,255,.85);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900;animation:ldraw 1s ease forwards}
-@keyframes ldraw{to{stroke-dashoffset:0}}
-.ld-win{fill:#b08b4f;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.4)}
-.ld-win.on{animation:winon .4s cubic-bezier(.2,.8,.3,1.4) forwards}
+.ld-logo{width:min(290px,66vw);opacity:0;transform:translateY(14px) scale(.96);animation:ldLogo .85s cubic-bezier(.2,.8,.3,1) forwards}
+.ld-logo img{width:100%;height:auto}
+@keyframes ldLogo{to{opacity:1;transform:none}}
+.ld-wins{display:flex;gap:13px}
+.ld-win{width:22px;height:22px;border-radius:4px;background:var(--brass);opacity:0;transform:scale(.3);filter:drop-shadow(0 0 7px rgba(176,139,79,.85))}
+.ld-win.on{animation:winon .42s cubic-bezier(.2,.8,.3,1.5) forwards}
 @keyframes winon{to{opacity:1;transform:scale(1)}}
-.ld-word{font-family:'Syne',sans-serif;font-weight:800;letter-spacing:.18em;color:#fff;font-size:1.05rem;opacity:0;animation:fadeUp .6s ease forwards .9s}
-.ld-word b{color:var(--brass);font-weight:800}
 @media(prefers-reduced-motion:reduce){
-  .ld-out{animation:none;stroke-dashoffset:0}
+  .ld-logo{animation:none;opacity:1;transform:none}
   .ld-win{opacity:1;transform:none}
-  .ld-word{animation:none;opacity:1}
 }
 
 /* ---------- NAV ---------- */
@@ -114,12 +112,12 @@ img{display:block;max-width:100%}
 .hero-inner{position:relative;z-index:2;padding:60px 0}
 .hero-eyebrow{color:#fff}
 .hero-eyebrow .dot{background:var(--brass)}
-.hero h1{color:#fff;font-size:clamp(2.5rem,6vw,5rem);margin:20px 0 22px;max-width:14ch}
-.hero h1 .ac{color:#c9b389}
-.hero-lede{font-size:clamp(1.05rem,1.7vw,1.28rem);color:rgba(255,255,255,.9);max-width:46ch;margin-bottom:34px}
+.hero h1{color:#fff;font-size:clamp(2.4rem,5.6vw,4.7rem);margin:20px 0 22px;max-width:15ch;text-shadow:0 2px 22px rgba(10,20,16,.45)}
+.hero h1 .ac{color:#e3cfa3}
+.hero-lede{font-size:clamp(1.05rem,1.7vw,1.28rem);color:rgba(255,255,255,.92);max-width:46ch;margin-bottom:34px;text-shadow:0 1px 14px rgba(10,20,16,.4)}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .hero-badge{position:absolute;right:0;bottom:54px;z-index:3;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:16px}
-.hero-badge .big{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:#fff;line-height:1}
+.hero-badge .big{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;color:#fff;line-height:1}
 .hero-badge .sm{font-size:.8rem;color:rgba(255,255,255,.82);line-height:1.3}
 .hero-badge .div{width:1px;height:38px;background:rgba(255,255,255,.25)}
 .fade-up{opacity:0;transform:translateY(26px);animation:fadeUp .8s cubic-bezier(.2,.7,.3,1) forwards}
@@ -132,7 +130,7 @@ img{display:block;max-width:100%}
 .trust-item{flex:1;display:flex;align-items:center;justify-content:center;gap:11px;padding:24px 14px;text-align:left;border-right:1px solid rgba(255,255,255,.1)}
 .trust-item:last-child{border-right:none}
 .trust-item svg{color:var(--brass);flex-shrink:0}
-.trust-item b{font-family:'Syne',sans-serif;font-weight:700;color:#fff;font-size:.96rem;display:block;letter-spacing:-.01em}
+.trust-item b{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:#fff;font-size:.96rem;display:block;letter-spacing:-.01em}
 .trust-item span{font-size:.78rem;color:rgba(255,255,255,.6)}
 
 /* ---------- SERVICES (S2) ---------- */
@@ -165,7 +163,7 @@ img{display:block;max-width:100%}
 .about-inner p{margin-bottom:16px}
 .about-stats{display:flex;gap:14px;flex-wrap:wrap}
 .about-stat{flex:1;min-width:140px;background:var(--stone);border-radius:14px;padding:26px 22px}
-.about-stat .n{font-family:'Syne',sans-serif;font-weight:800;font-size:2.3rem;color:var(--green);line-height:1}
+.about-stat .n{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2.3rem;color:var(--green);line-height:1}
 .about-stat .l{font-size:.86rem;color:var(--muted);margin-top:6px}
 
 /* ---------- REVIEWS (R1 local) ---------- */
@@ -175,7 +173,7 @@ img{display:block;max-width:100%}
 .stars{color:var(--brass);font-size:1rem;letter-spacing:2px;margin-bottom:14px}
 .rev-card p{font-size:.97rem;color:var(--ink);margin-bottom:20px;flex:1}
 .rev-who{display:flex;align-items:center;gap:13px}
-.rev-av{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+.rev-av{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.05rem}
 .rev-who b{display:block;color:var(--ink);font-size:.93rem}
 .rev-who span{font-size:.82rem;color:var(--muted)}
 
@@ -198,7 +196,7 @@ img{display:block;max-width:100%}
 .c-info{display:flex;flex-direction:column;gap:16px}
 .c-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
 .c-card .ci{width:44px;height:44px;border-radius:11px;background:var(--stone);color:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.c-card b{display:block;color:var(--ink);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:3px}
+.c-card b{display:block;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;margin-bottom:3px}
 .c-card a,.c-card span{color:var(--body);font-size:.95rem}
 .c-card a:hover{color:var(--green)}
 .form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px}
@@ -255,15 +253,25 @@ img{display:block;max-width:100%}
   .trust-item{flex:1 1 33%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
 }
 @media(max-width:780px){
-  .section{padding:64px 0}
+  .section{padding:60px 0}
+  .wrap{padding:0 20px}
   .hero{min-height:auto;padding-top:40px}
-  .hero-inner{padding:30px 0 56px}
-  .hero-badge{position:static;margin-top:30px;width:100%;justify-content:flex-start;backdrop-filter:none;background:rgba(255,255,255,.08)}
+  .hero-inner{padding:30px 0 52px}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(16,26,22,.82) 0%,rgba(16,26,22,.6) 48%,rgba(16,26,22,.58) 100%)}
+  .hero-badge{position:static;margin-top:30px;width:100%;justify-content:flex-start;backdrop-filter:none;background:rgba(255,255,255,.1)}
   .svc-grid{grid-template-columns:1fr}
   .rev-grid{grid-template-columns:1fr}
-  .g-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
-  .g-big{grid-column:span 2;grid-row:span 2}
-  .g-wide{grid-column:span 2}
+  /* gallery: big full-width photos, finished housing is the showstopper */
+  .g-grid{grid-template-columns:1fr;grid-auto-rows:auto;gap:14px}
+  .g-big,.g-wide{grid-column:span 1;grid-row:span 1}
+  .g-item{height:auto;aspect-ratio:16/11}
+  .g-ext .g-item{aspect-ratio:4/3}
+  .g-lead{order:-1}
+  .g-cap{font-size:.9rem;padding-top:10px}
+  /* about stats: 2-up grid that can shrink (no overflow eating page padding) */
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .about-stat{min-width:0;padding:22px 18px}
+  .about-stat .n{font-size:1.8rem;overflow-wrap:anywhere}
   .frow{grid-template-columns:1fr}
   .trust-item{flex:1 1 100%;justify-content:flex-start;padding:16px 20px}
 }
@@ -271,19 +279,15 @@ img{display:block;max-width:100%}
 </head>
 <body>
 
-<!-- LOADER: windows lit -->
+<!-- LOADER: actual logo + lights on -->
 <div id="loader" aria-hidden="true">
-  <svg viewBox="0 0 220 150" fill="none">
-    <!-- twin-gable home silhouette (matches logo roofline) -->
-    <path class="ld-out" d="M14 86 L62 58 L62 44 L78 44 L78 49 L110 30 L142 49 L142 44 L158 44 L158 58 L206 86 M30 78 L30 132 L190 132 L190 78"/>
-    <!-- windows light up one by one -->
-    <rect class="ld-win" data-i="0" x="48"  y="92" width="20" height="22" rx="2"/>
-    <rect class="ld-win" data-i="1" x="80"  y="92" width="20" height="22" rx="2"/>
-    <rect class="ld-win" data-i="2" x="120" y="92" width="20" height="22" rx="2"/>
-    <rect class="ld-win" data-i="3" x="152" y="92" width="20" height="22" rx="2"/>
-    <rect class="ld-win" data-i="4" x="96"  y="118" width="28" height="14" rx="2"/>
-  </svg>
-  <div class="ld-word">WEST<b>WOOD</b></div>
+  <div class="ld-logo"><img src="logo-white.png" alt="Westwood Building Services"></div>
+  <div class="ld-wins">
+    <span class="ld-win"></span>
+    <span class="ld-win"></span>
+    <span class="ld-win"></span>
+    <span class="ld-win"></span>
+  </div>
 </div>
 
 <!-- NAV -->
@@ -332,7 +336,7 @@ img{display:block;max-width:100%}
       <div><div class="big">50<span style="color:var(--brass)">+</span></div></div>
       <div class="sm">years of combined<br>building experience</div>
       <div class="div"></div>
-      <div class="sm"><b style="color:#fff;font-family:'Syne'">New builds<br>to renovations</b></div>
+      <div class="sm"><b style="color:#fff;font-family:'Plus Jakarta Sans'">New builds<br>to renovations</b></div>
     </div>
   </div>
 </section>
@@ -401,9 +405,9 @@ img{display:block;max-width:100%}
     </div>
     <div class="g-grid">
       <figure class="g-fig reveal"><div class="g-item g-big"><img src="p3.jpg" alt="Open-plan kitchen renovation"></div><figcaption class="g-cap">Open-plan kitchen, full renovation</figcaption></figure>
-      <figure class="g-fig reveal"><div class="g-item g-wide"><img src="p2.jpg" alt="New build homes, Clifton Road"></div><figcaption class="g-cap">New-build homes, Clifton Road</figcaption></figure>
+      <figure class="g-fig reveal g-ext g-lead"><div class="g-item g-wide"><img src="p2.jpg" alt="New build homes, Clifton Road"></div><figcaption class="g-cap">New-build homes, Clifton Road</figcaption></figure>
       <figure class="g-fig reveal"><div class="g-item"><img src="p4.jpg" alt="Landscaped garden and patio"></div><figcaption class="g-cap">Landscaped garden &amp; patio</figcaption></figure>
-      <figure class="g-fig reveal"><div class="g-item"><img src="p6.jpg" alt="New build development at dusk"></div><figcaption class="g-cap">New-build development</figcaption></figure>
+      <figure class="g-fig reveal g-ext"><div class="g-item"><img src="p6.jpg" alt="New build development at dusk"></div><figcaption class="g-cap">New-build development</figcaption></figure>
       <figure class="g-fig reveal"><div class="g-item g-wide"><img src="p5.jpg" alt="Living room refurbishment with bespoke joinery"></div><figcaption class="g-cap">Living room refurbishment, bespoke joinery</figcaption></figure>
     </div>
   </div>
@@ -606,7 +610,7 @@ var fp=document.getElementById('footerPhone'); fp.href='tel:'+P; fp.textContent=
   var wins=[].slice.call(loader.querySelectorAll('.ld-win'));
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!reduce){
-    wins.forEach(function(w,i){ setTimeout(function(){ w.classList.add('on'); }, 1100 + i*180); });
+    wins.forEach(function(w,i){ setTimeout(function(){ w.classList.add('on'); }, 950 + i*170); });
   }
   function kill(){ loader.classList.add('done'); }
   setTimeout(kill, reduce ? 700 : 2300);
