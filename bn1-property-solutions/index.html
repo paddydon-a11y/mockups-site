@@ -53,6 +53,10 @@ h1,h2,h3,h4,.dfont{font-family:'Hanken Grotesk',sans-serif}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.brand-logo{height:54px;width:auto;display:block}
+.ldr-logo{width:215px;max-width:64vw;height:auto;display:block}
+.foot-logo{height:56px;width:auto;display:block;margin-bottom:14px}
+@media(max-width:880px){.brand-logo{height:46px}}
 
 /* blueprint-grid watermark flourish */
 body::before{
@@ -96,7 +100,8 @@ section,nav,footer{position:relative;z-index:1}
 .ldr-prop.p3{right:24px;animation-delay:1.8s}
 @keyframes beamDrop{to{transform:translateX(-50%) translateY(15px)}}
 @keyframes propRise{to{height:38px}}
-.ldr-mark{display:flex;flex-direction:column;align-items:center;gap:4px;opacity:0;animation:fadeUp .6s ease 2s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.ldr-mark{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeUp .55s ease 1.7s forwards}
 .ldr-mark .bn{font-weight:900;font-size:1.9rem;letter-spacing:-.02em;color:#fff;line-height:1}
 .ldr-mark .bn b{color:var(--accent)}
 .ldr-mark .sub{font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted)}
@@ -362,8 +367,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:54px 0 
     <div class="ldr-prop p3"></div>
   </div>
   <div class="ldr-mark">
-    <div class="bn">BN<b>1</b></div>
-    <div class="sub">Property Solutions</div>
+    <img src="logo-mark.png" alt="BN1 Property Solutions" class="ldr-logo">
   </div>
 </div>
 
@@ -371,8 +375,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:54px 0 
 <nav>
   <div class="wrap nav-in">
     <a href="#" class="brand" aria-label="BN1 Property Solutions">
-      <svg class="glyph" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="9" fill="#161d28" stroke="#243043"/><path d="M8 20 20 10l12 10" stroke="#2f86ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><text x="20" y="30" font-family="Hanken Grotesk,Arial" font-weight="900" font-size="12" fill="#fff" text-anchor="middle">BN1</text></svg>
-      <span class="txt"><span class="bn">BN<b>1</b> Property</span><span class="sub">Solutions · Sussex</span></span>
+      <img src="logo-mark.png" alt="BN1 Property Solutions" class="brand-logo">
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -622,7 +625,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:54px 0 
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="bn">BN<b>1</b> Property Solutions</div>
+        <img src="logo-mark.png" alt="BN1 Property Solutions" class="foot-logo">
         <p>Family-run builders covering Brighton and the wider Sussex area. Extensions, structural work, brickwork, garden rooms, patios, groundworks and digger hire.</p>
       </div>
       <div class="foot-col">
@@ -679,7 +682,7 @@ var ie=document.getElementById('infoEmail');ie.textContent=E;ie.href='mailto:'+E
 var fe=document.getElementById('footEmail');fe.href='mailto:'+E;
 
 // Loader
-window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},2750);});
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},3300);});
 
 // Nav toggle
 var burger=document.getElementById('burger'),mPanel=document.getElementById('mPanel');
