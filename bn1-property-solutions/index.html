@@ -69,42 +69,16 @@ body::before{
 }
 section,nav,footer{position:relative;z-index:1}
 
-/* ---------- Loader: beam-span ---------- */
+/* ---------- Loader: centred logo ---------- */
 #loader{
   position:fixed;inset:0;z-index:9999;background:var(--bg-2);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+  display:flex;align-items:center;justify-content:center;
   transition:opacity .6s ease,visibility .6s ease;
 }
 #loader.done{opacity:0;visibility:hidden}
-.ldr-stage{width:230px;height:96px;position:relative}
-.ldr-opening{
-  position:absolute;left:0;right:0;bottom:30px;height:46px;
-  border-left:3px solid var(--border-light);border-right:3px solid var(--border-light);
-}
-.ldr-opening::before{content:"";position:absolute;left:-3px;right:-3px;bottom:0;height:3px;background:var(--border-light)}
-.ldr-beam{
-  position:absolute;left:50%;top:6px;width:230px;height:15px;border-radius:2px;
-  background:linear-gradient(180deg,#4a9bff,#2f86ff 45%,#1d5fc2);
-  box-shadow:0 0 22px var(--accent-glow);
-  transform:translateX(-50%) translateY(-70px);
-  animation:beamDrop 1.5s cubic-bezier(.55,0,.25,1) .25s forwards;
-}
-.ldr-beam::after{content:"";position:absolute;inset:0;border-radius:2px;
-  background:repeating-linear-gradient(90deg,transparent 0 26px,rgba(0,0,0,.22) 26px 28px)}
-.ldr-prop{
-  position:absolute;bottom:0;width:5px;height:0;background:linear-gradient(180deg,#5a6b80,#2c3645);
-  animation:propRise .5s ease forwards;
-}
-.ldr-prop.p1{left:24px;animation-delay:1.5s}
-.ldr-prop.p2{left:115px;animation-delay:1.65s}
-.ldr-prop.p3{right:24px;animation-delay:1.8s}
-@keyframes beamDrop{to{transform:translateX(-50%) translateY(15px)}}
-@keyframes propRise{to{height:38px}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.ldr-mark{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeUp .55s ease 1.7s forwards}
-.ldr-mark .bn{font-weight:900;font-size:1.9rem;letter-spacing:-.02em;color:#fff;line-height:1}
-.ldr-mark .bn b{color:var(--accent)}
-.ldr-mark .sub{font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--muted)}
+@keyframes logoIn{0%{opacity:0;transform:scale(.92)}100%{opacity:1;transform:scale(1)}}
+.ldr-logo{width:230px;max-width:66vw;height:auto;display:block;animation:logoIn .7s ease forwards}
 
 /* ---------- Nav ---------- */
 nav{position:sticky;top:0;z-index:200;background:var(--bg-2);border-bottom:1px solid var(--border)}
@@ -140,7 +114,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--bg-2);border-bottom:1px s
 }
 
 /* ---------- Hero H4 ---------- */
-.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;padding:120px 24px 90px}
+.hero{position:relative;min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;padding:96px 24px 84px}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;animation:ken 24s ease-in-out infinite alternate}
 @keyframes ken{from{transform:scale(1.03)}to{transform:scale(1.14)}}
@@ -346,7 +320,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:54px 0 
   .svc-grid{grid-template-columns:1fr}
   .mach-list{grid-template-columns:1fr}
   .f-row{grid-template-columns:1fr}
-  .hero{min-height:88vh;padding:110px 20px 80px}
+  .hero{min-height:80vh;padding:92px 20px 74px}
   .gal{grid-template-columns:1fr;grid-auto-rows:220px}
   .g-big,.g-wide,.g-tall{grid-column:span 1;grid-row:span 1}
   .about{padding:30px 22px}
@@ -359,16 +333,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:54px 0 
 
 <!-- Loader -->
 <div id="loader">
-  <div class="ldr-stage">
-    <div class="ldr-opening"></div>
-    <div class="ldr-beam"></div>
-    <div class="ldr-prop p1"></div>
-    <div class="ldr-prop p2"></div>
-    <div class="ldr-prop p3"></div>
-  </div>
-  <div class="ldr-mark">
-    <img src="logo-mark.png" alt="BN1 Property Solutions" class="ldr-logo">
-  </div>
+  <img src="logo-mark.png" alt="BN1 Property Solutions" class="ldr-logo">
 </div>
 
 <!-- Nav -->
@@ -682,7 +647,7 @@ var ie=document.getElementById('infoEmail');ie.textContent=E;ie.href='mailto:'+E
 var fe=document.getElementById('footEmail');fe.href='mailto:'+E;
 
 // Loader
-window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},3300);});
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},1900);});
 
 // Nav toggle
 var burger=document.getElementById('burger'),mPanel=document.getElementById('mPanel');
