@@ -418,6 +418,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-gable.play .wordmark{animation:wordIn .5s ease 1s forwards}
 #ld-gable.play .wordsub{animation:wordIn .5s ease 1.25s forwards}
 
+/* ===== 24. RENOVATION / FULL-HOUSE BUILDERS — house raise ===== */
+/* the whole house outline strokes itself on, the roof drops in to cap it, the window lights up, wordmark lands. mirrors a house-mark logo */
+#ld-house{background:#141a24;flex-direction:column;gap:24px;color:#f4f1ec}
+#ld-house svg{width:min(150px,46vw);height:auto;overflow:visible}
+#ld-house .hh-stroke{fill:none;stroke:#f4f1ec;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400}
+#ld-house .hh-roof{fill:none;stroke:#f4f1ec;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;transform:translateY(-26px);opacity:0}
+#ld-house .hh-glow{fill:#d98a4e;opacity:0;filter:blur(8px)}
+#ld-house .hh-win{fill:#d98a4e;opacity:0}
+#ld-house.play .hh-stroke{animation:hhDraw 1.1s ease .15s forwards}
+#ld-house.play .hh-roof{animation:hhRoof .5s cubic-bezier(.2,.9,.3,1.2) 1.1s forwards}
+#ld-house.play .hh-glow{animation:hhWin .6s ease 1.6s forwards}
+#ld-house.play .hh-win{animation:hhWin .5s ease 1.55s forwards}
+#ld-house .wordmark b{color:#d98a4e}
+#ld-house .wordsub{color:#8b95a3}
+#ld-house.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
+#ld-house.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
+@keyframes hhDraw{to{stroke-dashoffset:0}}
+@keyframes hhRoof{to{transform:translateY(0);opacity:1}}
+@keyframes hhWin{to{opacity:1}}
+
 /* ===== 17. LANDSCAPERS / GARDENERS — turf roll ===== */
 #ld-turf{background:#ffffff;flex-direction:column;gap:30px;color:#181a17}
 #ld-turf .lr-track{position:relative;width:min(440px,80vw);height:46px}
@@ -815,6 +835,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Three overlapping rooflines draw themselves in stroke by stroke, like gables going up along a street, then the wordmark lands beneath the finished pitch. First used on kind-builders.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-house" data-dur="2700">
+      <span class="trade">Renovation / Full-house Builders</span>
+      <h3>House Raise</h3>
+      <p>The whole house outline strokes itself on, the roof drops down to cap it, then the little window lights up in the accent colour before the wordmark lands. Mirrors a house-mark logo. First used on mtk-renovations.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-turf" data-dur="2400">
       <span class="trade">Landscapers / Gardeners</span>
       <h3>Turf Roll</h3>
@@ -1196,6 +1222,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Kind <b>Builders</b></div>
     <div class="wordsub">Building with Integrity &middot; Harrow</div>
+  </div>
+</div>
+
+<!-- 24. house raise -->
+<div class="loader" id="ld-house" aria-hidden="true">
+  <svg viewBox="0 0 200 150" aria-hidden="true">
+    <path class="hh-stroke" d="M40 140 L40 78 L160 78 L160 140"/>
+    <path class="hh-roof" d="M28 80 L100 36 L172 80"/>
+    <path class="hh-roof" d="M140 56 L140 40 L154 40 L154 65"/>
+    <rect class="hh-glow" x="86" y="92" width="28" height="28" rx="3"/>
+    <rect class="hh-win" x="88" y="94" width="24" height="24" rx="2"/>
+  </svg>
+  <div class="wm-zone">
+    <div class="wordmark">MTK <b>Renovations</b></div>
+    <div class="wordsub">Building &middot; Extensions &middot; Lofts</div>
   </div>
 </div>
 
