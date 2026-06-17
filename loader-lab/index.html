@@ -125,6 +125,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-flame.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
 #ld-flame.play .wordsub{animation:wordIn .5s ease 1.68s forwards}
 
+/* cistern (plumbing — ballcock float rises in a filling cistern) */
+#ld-cistern{background:#0b0b0b;flex-direction:column}
+#ld-cistern .cist{width:min(170px,46vw);height:min(170px,46vw)}
+#ld-cistern svg{width:100%;height:100%;overflow:visible}
+#ld-cistern .c-water{transform-origin:bottom;transform:scaleY(0)}
+#ld-cistern.play .c-water{animation:cFill 1.8s cubic-bezier(.5,0,.4,1) .1s forwards}
+@keyframes cFill{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+#ld-cistern .c-lever{transform-origin:14px 30px;transform:rotate(22deg)}
+#ld-cistern.play .c-lever{animation:cLever 1.8s cubic-bezier(.5,0,.4,1) .1s forwards}
+@keyframes cLever{from{transform:rotate(22deg)}to{transform:rotate(-4deg)}}
+#ld-cistern .c-float{transform:translateY(60px)}
+#ld-cistern.play .c-float{animation:cFloat 1.8s cubic-bezier(.5,0,.4,1) .1s forwards}
+@keyframes cFloat{from{transform:translateY(60px)}to{transform:translateY(0)}}
+#ld-cistern .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:38px}
+#ld-cistern .wordmark{color:#fff}
+#ld-cistern .wordmark b{color:#ff1f8e}
+#ld-cistern .wordsub{color:#ffe500}
+#ld-cistern.play .wordmark{animation:wordIn .5s ease 1s forwards}
+#ld-cistern.play .wordsub{animation:wordIn .5s ease 1.2s forwards}
+@media(prefers-reduced-motion:reduce){
+  #ld-cistern .c-water,#ld-cistern .c-lever,#ld-cistern .c-float,#ld-cistern .wordmark,#ld-cistern .wordsub{animation:none!important;transform:none;opacity:1}
+  #ld-cistern .c-water{transform:scaleY(1)}
+}
+
 /* ===== 4. BRICKWORK — coursework ===== */
 #ld-brick{background:#f4f1ec;flex-direction:column;color:#241c14}
 #ld-brick .wall{display:flex;flex-direction:column-reverse;gap:5px;width:auto}
@@ -960,6 +984,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A lone spark rises and catches, swelling into a torch flame that settles and flickers, then the wordmark resolves beneath in ember. Built for a fire-named brand (Prometheus, the bringer of fire). First used on prometheus-planning-investment.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-cistern" data-dur="2200">
+      <span class="trade">Plumbing / Heating</span>
+      <h3>Ballcock Float</h3>
+      <p>A toilet cistern fills — the water level climbs while the brass ballcock float rides up on its lever arm and shuts the inlet valve at the top, then the wordmark lands. An on-brand pun loader, first used on never-mind-the-ballcocks.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -1079,6 +1109,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- 3. ignition -->
+<!-- ballcock float (plumbing / heating) -->
+<div class="loader" id="ld-cistern" aria-hidden="true">
+  <div class="cist">
+    <svg viewBox="0 0 150 150" fill="none">
+      <rect x="20" y="18" width="110" height="104" rx="6" stroke="#3a3a3a" stroke-width="3"/>
+      <clipPath id="cistTank"><rect x="23" y="21" width="104" height="98" rx="4"/></clipPath>
+      <g clip-path="url(#cistTank)"><rect class="c-water" x="23" y="21" width="104" height="98" fill="#ff1f8e" opacity="0.92"/></g>
+      <g class="c-lever">
+        <rect x="10" y="28" width="40" height="5" rx="2.5" fill="#ffe500"/>
+        <g class="c-float" transform="translate(44,30)">
+          <circle cx="18" cy="0" r="13" fill="#ffe500" stroke="#0b0b0b" stroke-width="2"/>
+          <circle cx="13" cy="-4" r="3" fill="#fff" opacity=".7"/>
+        </g>
+      </g>
+      <rect x="5" y="20" width="6" height="22" rx="2" fill="#3a3a3a"/>
+    </svg>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Never Mind the <b>Ballcocks</b></div>
+    <div class="wordsub">Plumbing &amp; Heating</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-flame" aria-hidden="true">
   <div class="rig">
     <svg class="pipe" viewBox="0 0 520 150" aria-hidden="true">
