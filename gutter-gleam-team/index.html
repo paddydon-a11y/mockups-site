@@ -63,14 +63,22 @@ img{max-width:100%;display:block}
 .jw-clean{position:absolute;inset:0;background:#fff;transform:translateX(-100%);display:flex;align-items:center;justify-content:center}
 #loader.play .jw-clean{animation:jwSweep 1.5s cubic-bezier(.55,.05,.35,1) .15s forwards}
 @keyframes jwSweep{to{transform:translateX(0)}}
-.jw-gun{position:absolute;top:50%;right:-98px;margin-top:-80px;animation:jwJitter .18s linear infinite alternate}
-@keyframes jwJitter{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
-.jw-spr{animation:jwSpray .22s linear infinite alternate;transform-origin:95px 18px}
-@keyframes jwSpray{from{transform:scaleX(.92);opacity:.85}to{transform:scaleX(1.06);opacity:1}}
-.jw-drop{position:absolute;width:7px;height:7px;border-radius:50%;background:rgba(120,180,255,.9);animation:jwDrop .5s ease-out infinite}
-.jw-drop.d2{width:5px;height:5px;animation-delay:.15s;animation-duration:.45s}
-.jw-drop.d3{width:6px;height:6px;animation-delay:.3s;animation-duration:.55s}
-@keyframes jwDrop{0%{transform:translate(0,0);opacity:1}100%{transform:translate(46px,40px);opacity:0}}
+.jw-gun{position:absolute;top:50%;right:15%;margin-top:-70px;z-index:5;transform-origin:right center;animation:jwJitter .2s linear infinite alternate}
+.jw-gun svg{width:200px;height:auto;display:block;overflow:visible}
+@keyframes jwJitter{from{transform:translateY(-1px) rotate(-1.3deg)}to{transform:translateY(1px) rotate(1.3deg)}}
+.jw-spr{transform-origin:58px 69px;animation:jwSpray .2s linear infinite alternate}
+@keyframes jwSpray{from{transform:scaleX(.86);opacity:.7}to{transform:scaleX(1.12);opacity:1}}
+.jw-drop{position:absolute;width:7px;height:7px;border-radius:50%;background:rgba(120,180,255,.92);left:50px;top:60px;animation:jwDrop .55s ease-out infinite}
+.jw-drop.d2{left:54px;top:72px;width:5px;height:5px;animation-delay:.18s;animation-duration:.5s}
+.jw-drop.d3{left:46px;top:80px;width:6px;height:6px;animation-delay:.34s;animation-duration:.62s}
+@keyframes jwDrop{0%{transform:translate(0,0) scale(1);opacity:1}85%{opacity:.85}100%{transform:translate(-175px,10px) scale(.45);opacity:0}}
+@media(max-width:600px){
+  .jw-gun{right:5%;margin-top:-54px}
+  .jw-gun svg{width:150px}
+  .jw-drop{left:38px;top:46px}
+  .jw-drop.d2{left:41px;top:54px}
+  .jw-drop.d3{left:35px;top:60px}
+}
 .jw-wm{display:flex;flex-direction:column;align-items:center;text-align:center}
 .jw-wm .wordmark{font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(1.5rem,5vw,2.3rem);color:var(--navy);letter-spacing:-.02em;opacity:0}
 .jw-wm .wordmark b{color:var(--cyan)}
@@ -286,21 +294,22 @@ footer{background:var(--navy);color:#bcd2e0;padding:54px 0 28px}
     </div>
   </div>
   <div class="jw-gun">
-    <svg width="180" height="160" viewBox="0 0 180 160" fill="none" aria-hidden="true">
+    <svg viewBox="0 0 210 150" fill="none" aria-hidden="true">
       <g class="jw-spr">
-        <path d="M95 18 L178 0 L178 74 Z" fill="rgba(120,180,255,0.45)"/>
-        <path d="M95 18 L152 10 L152 52 Z" fill="rgba(170,210,255,0.6)"/>
+        <path d="M58 69 L2 38 L2 100 Z" fill="rgba(120,180,255,0.38)"/>
+        <path d="M58 69 L22 54 L22 84 Z" fill="rgba(170,210,255,0.65)"/>
       </g>
-      <g transform="rotate(32 60 70)">
-        <rect x="49" y="2" width="19" height="14" rx="4" fill="#1c54c9"/>
-        <rect x="54" y="12" width="9" height="60" rx="4" fill="#41507a"/>
-        <rect x="50" y="68" width="17" height="58" rx="8" fill="#102450"/>
-        <rect x="56" y="88" width="26" height="11" rx="5" fill="#102450"/>
+      <rect x="70" y="62" width="74" height="14" rx="6" fill="#41507a"/>
+      <rect x="56" y="64" width="16" height="10" rx="3" fill="#1c54c9"/>
+      <rect x="132" y="56" width="18" height="26" rx="4" fill="#41507a"/>
+      <g transform="rotate(24 150 100)">
+        <rect x="138" y="78" width="20" height="58" rx="9" fill="#102450"/>
+        <rect x="120" y="92" width="24" height="11" rx="5" fill="#102450"/>
       </g>
     </svg>
-    <span class="jw-drop" style="left:46px;top:30px"></span>
-    <span class="jw-drop d2" style="left:60px;top:60px"></span>
-    <span class="jw-drop d3" style="left:40px;top:80px"></span>
+    <span class="jw-drop"></span>
+    <span class="jw-drop d2"></span>
+    <span class="jw-drop d3"></span>
   </div>
 </div>
 
