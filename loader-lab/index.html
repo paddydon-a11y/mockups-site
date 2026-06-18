@@ -315,6 +315,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-dove.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
 #ld-dove.play .wordsub{animation:wordIn .5s ease 1.42s forwards}
 
+/* ===== 10b. JOINERS / CARPENTERS — saw kerf ===== */
+#ld-saw{background:#ffffff;flex-direction:column}
+#ld-saw svg.sawg{width:min(300px,78vw);height:auto;overflow:visible}
+#ld-saw .blade{transform:translateX(-150px);opacity:0}
+#ld-saw.play .blade{animation:sawGo 1.6s cubic-bezier(.45,0,.55,1) .2s forwards}
+@keyframes sawGo{0%{transform:translateX(-150px);opacity:1}100%{transform:translateX(170px);opacity:1}}
+#ld-saw .kerfl{stroke-dasharray:280;stroke-dashoffset:280}
+#ld-saw.play .kerfl{animation:sawKerf 1.6s linear .2s forwards}
+@keyframes sawKerf{to{stroke-dashoffset:0}}
+#ld-saw .dust{opacity:0}
+#ld-saw.play .dust{animation:sawDust .7s ease-out .9s forwards}
+@keyframes sawDust{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(26px)}}
+#ld-saw .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:30px}
+#ld-saw .wordmark{color:#241a14}
+#ld-saw .wordsub{color:#c2540e}
+#ld-saw.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-saw.play .wordsub{animation:wordIn .5s ease 1.65s forwards}
+
 /* ===== 11. INTERIOR DESIGN — swatch fan ===== */
 #ld-swatch{background:#ffffff;flex-direction:column;gap:34px}
 #ld-swatch .sfan{position:relative;width:170px;height:158px}
@@ -864,6 +882,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A tail board and a pin board slide in from each side and lock flush, a saw kerf marks the joint, then the wordmark lands. First used on nicyai-carpentry.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-saw" data-dur="2400">
+      <span class="trade">Joiners / Carpenters</span>
+      <h3>Saw Kerf</h3>
+      <p>A tenon saw travels across two timber boards, cutting a kerf as it goes, sawdust falls, then the wordmark lands beneath. First used on ll-carpentry.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-swatch" data-dur="2400">
       <span class="trade">Interior Designers / Decorators</span>
       <h3>Swatch Fan</h3>
@@ -1233,6 +1257,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Nicyai</div>
     <div class="wordsub">Carpentry &middot; Essex</div>
+  </div>
+</div>
+
+<!-- 10b. saw kerf -->
+<div class="loader" id="ld-saw" aria-hidden="true">
+  <svg class="sawg" viewBox="0 0 280 120" aria-hidden="true">
+    <defs>
+      <linearGradient id="lwd" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#caa472"/><stop offset="1" stop-color="#a87c44"/>
+      </linearGradient>
+    </defs>
+    <rect x="6" y="34" width="268" height="22" rx="3" fill="url(#lwd)"/>
+    <rect x="6" y="64" width="268" height="22" rx="3" fill="url(#lwd)"/>
+    <line x1="14" y1="45" x2="266" y2="45" stroke="#8c6533" stroke-width="1" opacity=".5"/>
+    <line x1="14" y1="75" x2="266" y2="75" stroke="#8c6533" stroke-width="1" opacity=".5"/>
+    <line class="kerfl" x1="10" y1="60" x2="270" y2="60" stroke="#241a14" stroke-width="3"/>
+    <g>
+      <circle class="dust" cx="120" cy="62" r="2.4" fill="#c2540e"/>
+      <circle class="dust" cx="135" cy="60" r="1.8" fill="#caa472"/>
+      <circle class="dust" cx="150" cy="63" r="2.2" fill="#8c6533"/>
+      <circle class="dust" cx="108" cy="61" r="1.6" fill="#caa472"/>
+    </g>
+    <g class="blade">
+      <rect x="-6" y="20" width="10" height="80" rx="2" fill="#9aa0a6"/>
+      <polygon points="-6,20 4,20 -1,12" fill="#c2540e"/>
+      <path d="M-6,24 L-6,96" stroke="#fff" stroke-width="1" opacity=".5"/>
+    </g>
+  </svg>
+  <div class="wm-zone">
+    <div class="wordmark">L L Carpentry</div>
+    <div class="wordsub">Bespoke Joinery &middot; East London</div>
   </div>
 </div>
 
