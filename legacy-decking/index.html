@@ -49,7 +49,6 @@ body{
   color: var(--ink-dim);
   line-height: 1.7;
   overflow-x: hidden;
-  padding-bottom: 80px;
   -webkit-font-smoothing: antialiased;
 }
 img{max-width:100%;display:block}
@@ -121,10 +120,54 @@ a{color:inherit;text-decoration:none}
   border: 1px solid var(--border);
   padding: 6px 12px;
 }
+.nav-toggle{
+  display: none;
+  width: 40px; height: 40px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+}
+.nav-toggle span{
+  display: block;
+  width: 18px; height: 1.5px;
+  background: var(--ink);
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav-toggle.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2){ opacity: 0; }
+.nav-toggle.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
 @media (max-width: 800px){
   .nav{padding: 14px 18px}
-  .nav-links a:not(.nav-stamp){display:none}
-  .nav-stamp{display:none}
+  .nav-toggle{ display: flex; }
+  .nav-links{
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    height: calc(100vh - 64px);
+    flex-direction: column;
+    gap: 0;
+    background: rgba(10,9,7,0.98);
+    border-top: 1px solid var(--border);
+    padding: 30px 22px;
+    align-items: stretch;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+  }
+  .nav-links.open{ transform: translateX(0); }
+  .nav-links a{
+    font-size: 0.95rem;
+    letter-spacing: 0.22em;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+  }
+  .nav-stamp{
+    margin-top: 22px;
+    align-self: flex-start;
+  }
 }
 
 /* ===== HERO ===== */
@@ -978,13 +1021,16 @@ body.loading{ overflow: hidden; }
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo"><span class="dot"></span>Legacy <span>Decking</span></a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#catalogue">Work</a>
     <a href="#build">Services</a>
     <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
     <span class="nav-stamp">EST · GREATER MANCHESTER</span>
   </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1471,6 +1517,22 @@ function onScroll(){
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+
+// Mobile nav toggle
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', function(){
+  var isOpen = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+navLinks.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
 
 // Lightbox
 var lb = document.getElementById('lightbox');
