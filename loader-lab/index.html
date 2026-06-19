@@ -445,6 +445,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-dig.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
 #ld-dig.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
 
+/* ===== 15b. GROUNDWORKS / CIVILS — trench dig (Mud Monkey) ===== */
+#ld-trench{background:#14110d;flex-direction:column;gap:24px;color:#fff}
+#ld-trench .tr-stage{position:relative;width:min(280px,78vw);height:120px;overflow:hidden}
+#ld-trench .tr-bar{position:absolute;left:0;right:0;height:14px;transform-origin:center top}
+#ld-trench .b1{top:24px;background:#6b4f2e}
+#ld-trench .b2{top:40px;background:#54401f}
+#ld-trench .b3{top:56px;background:#3a2d18}
+#ld-trench .b4{top:72px;background:#2a2012}
+#ld-trench .b5{top:88px;background:#ff6a1f}
+#ld-trench.play .tr-bar{animation:trenchDig 1.7s cubic-bezier(.6,0,.2,1) forwards}
+#ld-trench.play .b1{animation-delay:.30s}
+#ld-trench.play .b2{animation-delay:.46s}
+#ld-trench.play .b3{animation-delay:.62s}
+#ld-trench.play .b4{animation-delay:.78s}
+#ld-trench.play .b5{animation-delay:.94s}
+@keyframes trenchDig{0%{transform:scaleX(1);opacity:1}100%{transform:scaleX(0);opacity:0}}
+#ld-trench .tr-bucket{position:absolute;top:6px;left:-50px;width:46px;height:46px;color:#ff6a1f}
+#ld-trench.play .tr-bucket{animation:trenchSweep 1.7s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes trenchSweep{0%{left:-50px;transform:rotate(-8deg)}85%{left:calc(100% + 4px);transform:rotate(10deg)}100%{left:calc(100% + 4px);transform:rotate(10deg);opacity:0}}
+#ld-trench .wordmark b{color:#ff6a1f}
+#ld-trench .wordsub{color:rgba(255,255,255,.55)}
+#ld-trench.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-trench.play .wordsub{animation:wordIn .5s ease 1.8s forwards}
+
 /* ===== 16. BUILDERS / EXTENSIONS & LOFTS — gable raise ===== */
 #ld-gable{background:#ffffff;flex-direction:column;gap:26px;color:#1f3347}
 #ld-gable svg{width:min(340px,72vw);height:auto;overflow:visible}
@@ -941,6 +965,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>An excavator scoops the ground blocks away in three waves, then the wordmark rises out of the excavation. First used on nw-contractors.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-trench" data-dur="2400">
+      <span class="trade">Groundworks / Civils</span>
+      <h3>Trench Dig</h3>
+      <p>Stacked earth strata (brown courses capped in hi-vis orange) are dug away left to right by a sweeping excavator bucket, then the wordmark rises from the cut. First used on mud-monkey-construction.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-gable" data-dur="2400">
       <span class="trade">Builders / Extensions &amp; Lofts</span>
       <h3>Gable Raise</h3>
@@ -1399,6 +1429,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">N.W. <b>Contractors</b></div>
     <div class="wordsub">Groundworks &middot; South Wales</div>
+  </div>
+</div>
+
+<!-- 15b. trench dig -->
+<div class="loader" id="ld-trench" aria-hidden="true">
+  <div class="tr-stage">
+    <svg class="tr-bucket" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 6v14"/><path d="M8 20l8 16h18l4-12-14-4z"/><path d="M16 36l2 6h14l2-6"/>
+    </svg>
+    <div class="tr-bar b1"></div>
+    <div class="tr-bar b2"></div>
+    <div class="tr-bar b3"></div>
+    <div class="tr-bar b4"></div>
+    <div class="tr-bar b5"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Mud <b>Monkey</b></div>
+    <div class="wordsub">Groundworks &amp; Civils</div>
   </div>
 </div>
 
