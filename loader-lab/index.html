@@ -565,6 +565,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-tilelay.play .wordmark{animation:wordIn .4s ease 1.2s forwards}
 #ld-tilelay.play .wordsub{animation:wordIn .4s ease 1.35s forwards}
 
+/* ===== 19b. TILERS — tile set (compact sequential variant) ===== */
+#ld-tileset{background:#f3f5f9;flex-direction:column;gap:26px}
+#ld-tileset .ts-grid{display:grid;grid-template-columns:repeat(3,58px);grid-template-rows:repeat(3,58px);gap:7px}
+#ld-tileset .ts-grid i{background:#163560;border-radius:7px;transform:scale(0);transform-origin:center}
+#ld-tileset .ts-grid i.o{background:#ef7c1f}
+#ld-tileset.play .ts-grid i{animation:tileSetIn .42s cubic-bezier(.34,1.56,.64,1) forwards}
+#ld-tileset.play .ts-grid i:nth-child(1){animation-delay:.05s}
+#ld-tileset.play .ts-grid i:nth-child(2){animation-delay:.13s}
+#ld-tileset.play .ts-grid i:nth-child(3){animation-delay:.21s}
+#ld-tileset.play .ts-grid i:nth-child(4){animation-delay:.29s}
+#ld-tileset.play .ts-grid i:nth-child(5){animation-delay:.37s}
+#ld-tileset.play .ts-grid i:nth-child(6){animation-delay:.45s}
+#ld-tileset.play .ts-grid i:nth-child(7){animation-delay:.53s}
+#ld-tileset.play .ts-grid i:nth-child(8){animation-delay:.61s}
+#ld-tileset.play .ts-grid i:nth-child(9){animation-delay:.69s}
+@keyframes tileSetIn{from{transform:scale(0)}to{transform:scale(1)}}
+#ld-tileset .wordmark{color:#13233d;text-transform:none;letter-spacing:-.03em}
+#ld-tileset .wordmark b{color:#ef7c1f}
+#ld-tileset .wordsub{color:#8a94a6}
+#ld-tileset.play .wordmark{animation:wordIn .5s ease .92s forwards}
+#ld-tileset.play .wordsub{animation:wordIn .5s ease 1.1s forwards}
+@media (prefers-reduced-motion:reduce){#ld-tileset .ts-grid i{animation:none!important;transform:scale(1)}#ld-tileset .wordmark,#ld-tileset .wordsub{opacity:1;animation:none}}
+
 /* ===== 20. PRESSURE WASHING / HANDYMAN — jet wash ===== */
 /* a grimy screen gets blasted clean left-to-right; the lance rides the wipe edge */
 #ld-jetwash{
@@ -952,6 +975,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Tilers</span>
       <h3>Tile Lay</h3>
       <p>A wall of porcelain tiles snaps into place in a diagonal wave across a grout-grey screen, a few terracotta and ink accents in the mix, then the brand plaque lands on the finished wall. First used on expert-tiling-london.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-tileset" data-dur="2300">
+      <span class="trade">Tilers / Decorators</span>
+      <h3>Tile Set</h3>
+      <p>A compact 3x3 grid of tiles pops in one by one with a springy settle, a couple of accent tiles in the mix, then the wordmark lands beneath the finished panel. A tighter, centred variant of Tile Lay. First used on enb-tiling.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-jetwash" data-dur="2400">
@@ -1481,6 +1510,15 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <div class="wordmark">Expert <b>Tiling</b> London</div>
       <div class="wordsub">North London &middot; Wall &amp; Floor Tiling</div>
     </div>
+  </div>
+</div>
+
+<!-- 19b. tile set (compact sequential 3x3, wordmark below) -->
+<div class="loader" id="ld-tileset" aria-hidden="true">
+  <div class="ts-grid"><i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i></div>
+  <div class="wm-zone" style="text-align:center">
+    <div class="wordmark">EN<b>B</b></div>
+    <div class="wordsub">Tiling &middot; Painting &middot; Decorating</div>
   </div>
 </div>
 

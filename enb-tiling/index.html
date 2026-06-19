@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENB Tiling, Painting &amp; Decorating | Congleton &amp; Stoke-on-Trent</title>
+<meta name="description" content="ENB Tiling, Painting & Decorating: wall & floor tiling, bathrooms, kitchen splashbacks, painting and decorating across Congleton, Stoke-on-Trent, Sandbach, Macclesfield and Cheshire. Free quotes.">
+<meta property="og:title" content="ENB Tiling, Painting & Decorating | Your New Website">
+<meta property="og:description" content="Tiling, painting & decorating across Congleton and Stoke-on-Trent, preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/enb-tiling/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/enb-tiling/">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23163560'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='5' opacity='.35'%3E%3Cpath d='M50 14V86M14 50H86'/%3E%3C/g%3E%3Ctext x='50' y='54' font-family='Arial' font-weight='900' font-size='34' text-anchor='middle' dominant-baseline='central'%3E%3Ctspan fill='%23ffffff'%3EEN%3C/tspan%3E%3Ctspan fill='%23ef7c1f'%3EB%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f3f5f9;
+  --stone-2:#e8edf4;
+  --navy:#163560;
+  --navy-hi:#22497f;
+  --ink:#13233d;
+  --body:#4b5568;
+  --muted:#8a94a6;
+  --line:#e2e8f1;
+  --line-2:#d2dae6;
+  --orange:#ef7c1f;
+  --orange-dk:#d4640c;
+  --glow:rgba(239,124,31,.16);
+  --shadow:0 20px 46px -24px rgba(19,35,61,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4,.sora{font-family:'Sora',sans-serif;color:var(--ink);line-height:1.04;letter-spacing:-.02em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+section{position:relative}
+
+/* ---- loader: tile set ---- */
+#loader{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--stone);overflow:hidden}
+#loader .grid{display:grid;grid-template-columns:repeat(3,58px);grid-template-rows:repeat(3,58px);gap:7px;margin-bottom:26px}
+#loader .grid i{background:var(--navy);border-radius:7px;transform:scale(0);transform-origin:center}
+#loader .grid i.o{background:var(--orange)}
+#loader.play .grid i{animation:tileIn .42s cubic-bezier(.34,1.56,.64,1) forwards}
+#loader.play .grid i:nth-child(1){animation-delay:.05s}
+#loader.play .grid i:nth-child(2){animation-delay:.13s}
+#loader.play .grid i:nth-child(3){animation-delay:.21s}
+#loader.play .grid i:nth-child(4){animation-delay:.29s}
+#loader.play .grid i:nth-child(5){animation-delay:.37s}
+#loader.play .grid i:nth-child(6){animation-delay:.45s}
+#loader.play .grid i:nth-child(7){animation-delay:.53s}
+#loader.play .grid i:nth-child(8){animation-delay:.61s}
+#loader.play .grid i:nth-child(9){animation-delay:.69s}
+@keyframes tileIn{from{transform:scale(0)}to{transform:scale(1)}}
+#loader .wm{font-family:'Sora';font-weight:800;font-size:clamp(2.2rem,9vw,3.2rem);letter-spacing:-.03em;color:var(--ink);opacity:0}
+#loader .wm b{color:var(--orange);font-weight:800}
+#loader .wm-sub{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);opacity:0;margin-top:9px;font-family:'Inter';font-weight:600}
+#loader.play .wm{animation:wmIn .5s ease .92s forwards}
+#loader.play .wm-sub{animation:wmIn .5s ease 1.1s forwards}
+@keyframes wmIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+#loader.done{opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s ease}
+@media (prefers-reduced-motion:reduce){
+  #loader .grid i{animation:none!important;transform:scale(1)}
+  #loader .wm,#loader .wm-sub{opacity:1;animation:none}
+}
+
+/* ---- nav ---- */
+header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.brand .logo{width:42px;height:42px;border-radius:10px;flex:none;display:block}
+.brand .bn{display:flex;flex-direction:column;line-height:1.08}
+.brand .bn b{font-family:'Sora';font-weight:700;font-size:1.02rem;color:var(--ink);letter-spacing:-.01em}
+.brand .bn span{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.92rem;font-weight:600;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--orange-dk)}
+.nav-links a.nav-cta{background:var(--navy);color:#fff !important;padding:11px 20px;border-radius:10px;font-weight:700}
+.nav-links a.nav-cta:hover{background:var(--navy-hi)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:26px;height:3px;background:var(--navy);border-radius:2px;transition:.25s}
+.mobile-panel{display:none;background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:74px;z-index:190}
+.mobile-panel.open{display:block}
+.mobile-panel a{display:block;padding:15px 24px;font-weight:600;border-top:1px solid var(--line);color:var(--ink)}
+.mobile-panel a.m-cta{background:var(--navy);color:#fff;margin:14px 24px;border-radius:11px;text-align:center;border:0;padding:15px}
+
+/* ---- hero H2-split ---- */
+.hero{display:flex;flex-direction:column;background:
+   linear-gradient(180deg,#fff 0%,var(--stone) 100%),
+   repeating-linear-gradient(0deg,transparent 0 71px,rgba(22,53,96,.04) 71px 72px),
+   repeating-linear-gradient(90deg,transparent 0 71px,rgba(22,53,96,.04) 71px 72px);
+   overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;padding-top:68px;padding-bottom:74px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.71rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-dk);margin-bottom:22px}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 0 rgba(239,124,31,.5);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,124,31,.5)}70%{box-shadow:0 0 0 11px rgba(239,124,31,0)}100%{box-shadow:0 0 0 0 rgba(239,124,31,0)}}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-.03em}
+.hero h1 .o{color:var(--orange)}
+.hero .lede{font-size:1.12rem;color:var(--body);margin:24px 0 30px;max-width:33em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:12px;font-weight:700;font-size:1rem;font-family:'Sora';transition:.22s;cursor:pointer;border:0}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-hi);transform:translateY(-2px)}
+.btn-wa{background:#25d366;color:#063}
+.btn-wa:hover{background:#1eb858;transform:translateY(-2px)}
+.btn svg{width:19px;height:19px}
+.hero-photo{position:relative}
+.hero-photo .ph{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:4/3}
+.hero-photo .ph img{width:100%;height:100%;object-fit:cover}
+.hero-badge{position:absolute;left:-18px;bottom:24px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:13px}
+.hero-badge .stars{color:var(--orange);font-size:1.05rem;letter-spacing:1px}
+.hero-badge b{font-family:'Sora';font-weight:700;color:var(--ink);font-size:1rem;display:block}
+.hero-badge small{color:var(--muted);font-size:.78rem;font-weight:600}
+/* tile-border divider */
+.tileband{display:flex;height:14px;overflow:hidden}
+.tileband i{flex:0 0 28px;height:14px;border-right:2px solid #fff;background:var(--stone-2)}
+.tileband i:nth-child(4n+1){background:var(--navy)}
+.tileband i:nth-child(4n+3){background:var(--orange)}
+
+/* ---- trust ---- */
+.trust{background:var(--navy)}
+.trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:11px;color:#dbe3f1;font-weight:600;font-size:.94rem}
+.trust-item svg{width:21px;height:21px;color:var(--orange);flex:none}
+
+/* ---- sections ---- */
+.sec{padding:88px 0}
+.sec.tight{padding-top:30px}
+.lab{display:inline-flex;align-items:center;gap:10px;font-size:.71rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--orange-dk);margin-bottom:16px}
+.lab::before{content:"";width:24px;height:3px;background:var(--orange);border-radius:2px}
+.sec h2{font-size:clamp(1.95rem,4.2vw,3rem);font-weight:800}
+.sec h2 .o{color:var(--orange)}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:42px;flex-wrap:wrap}
+.head-row p{max-width:30em;color:var(--body);font-size:1rem}
+
+/* ---- services S4 bento ---- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:16px}
+.card{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:26px;overflow:hidden;transition:.25s;display:flex;flex-direction:column;justify-content:flex-end}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.card:hover::before{transform:scaleX(1)}
+.card .ic{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:rgba(22,53,96,.07)}
+.card .ic svg{width:24px;height:24px;color:var(--navy)}
+.card h3{font-size:1.14rem;font-weight:700;margin-bottom:7px}
+.card p{font-size:.93rem;color:var(--body)}
+.card.feature{grid-column:span 3;grid-row:span 2;justify-content:flex-end;color:#fff;border:0;min-height:316px}
+.card.feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,35,61,.15) 0%,rgba(19,35,61,.55) 55%,rgba(19,35,61,.9) 100%);z-index:1}
+.card.feature .fimg{position:absolute;inset:0;z-index:0}
+.card.feature .fimg img{width:100%;height:100%;object-fit:cover}
+.card.feature .ic{position:relative;z-index:2;background:rgba(255,255,255,.16)}
+.card.feature .ic svg{color:#fff}
+.card.feature h3{position:relative;z-index:2;color:#fff;font-size:1.5rem}
+.card.feature p{position:relative;z-index:2;color:rgba(255,255,255,.88);font-size:.98rem;max-width:26em}
+.card.feature .tag{position:absolute;top:22px;left:22px;z-index:2;background:var(--orange);color:#fff;font-family:'Sora';font-weight:700;font-size:.72rem;letter-spacing:.04em;padding:6px 12px;border-radius:8px}
+.card.wide{grid-column:span 3}
+.card.std{grid-column:span 2}
+
+/* ---- gallery G2 masonry ---- */
+.gal{background:var(--stone)}
+.masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+.gtile{position:relative;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--stone-2)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gtile:hover img{transform:scale(1.06)}
+.gtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 13px;background:linear-gradient(transparent,rgba(19,35,61,.85));color:#fff;font-weight:600;font-size:.86rem}
+.g-big{grid-column:span 2;grid-row:span 2}
+.g-tall{grid-row:span 2}
+
+/* ---- about ---- */
+.about{background:var(--navy);color:#cdd6e6;
+  background-image:linear-gradient(0deg,rgba(22,53,96,1),rgba(22,53,96,1)),
+    repeating-linear-gradient(0deg,transparent 0 47px,rgba(255,255,255,.04) 47px 48px),
+    repeating-linear-gradient(90deg,transparent 0 47px,rgba(255,255,255,.04) 47px 48px);
+  background-blend-mode:normal}
+.about .lab{color:var(--orange)}
+.about h2{color:#fff}
+.about-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:54px;align-items:center}
+.about p{margin-top:18px;color:#c4cde0}
+.sigblock{display:flex;align-items:center;gap:15px;margin-top:26px}
+.sigblock .ini{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--orange),var(--orange-dk));display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;color:#fff;font-size:1rem;flex:none;letter-spacing:-.02em}
+.sigblock b{color:#fff;font-family:'Sora';font-size:1.04rem}
+.sigblock span{display:block;font-size:.82rem;color:#93a0bf}
+.about-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:30px}
+.about-card .stat{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;gap:18px}
+.about-card .stat:last-child{border-bottom:0}
+.about-card .stat b{font-family:'Sora';font-weight:800;font-size:1.5rem;color:#fff;flex:none}
+.about-card .stat span{color:#93a0bf;font-size:.9rem;text-align:right}
+
+/* ---- reviews ---- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:28px}
+.rev .stars{color:var(--orange);font-size:1.05rem;letter-spacing:1px;margin-bottom:14px}
+.rev p{color:var(--ink);font-size:.97rem;line-height:1.65}
+.rev .by{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.rev .av{width:42px;height:42px;border-radius:11px;background:var(--stone-2);display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;color:var(--navy);flex:none}
+.rev .by b{font-size:.92rem;color:var(--ink);display:block;font-family:'Sora'}
+.rev .by small{color:var(--muted);font-size:.78rem}
+
+/* ---- areas ---- */
+.areas{background:var(--stone)}
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:8px}
+.area-grid a{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:15px 16px;font-weight:600;color:var(--ink);font-size:.93rem;display:flex;align-items:center;gap:9px;transition:.2s}
+.area-grid a:hover{border-color:var(--orange);color:var(--orange-dk);transform:translateY(-2px)}
+.area-grid a .pin{width:7px;height:7px;border-radius:2px;background:var(--orange);flex:none}
+
+/* ---- cta band ---- */
+.band{background:var(--navy);color:#fff;text-align:center;
+  background-image:linear-gradient(0deg,rgba(22,53,96,1),rgba(22,53,96,1)),
+    repeating-linear-gradient(90deg,transparent 0 47px,rgba(255,255,255,.05) 47px 48px)}
+.band h2{color:#fff;font-size:clamp(1.9rem,4vw,2.8rem)}
+.band p{color:rgba(255,255,255,.9);margin:14px auto 28px;max-width:34em}
+.band .btn-primary{background:var(--orange);color:#fff}
+.band .btn-primary:hover{background:var(--orange-dk);color:#fff}
+
+/* ---- contact ---- */
+.con-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px}
+.info-card{background:var(--stone);border:1px solid var(--line);border-radius:15px;padding:22px;display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.info-card .ic{width:46px;height:46px;border-radius:11px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.info-card .ic svg{width:21px;height:21px;color:var(--navy)}
+.info-card b{font-family:'Sora';color:var(--ink);font-size:1rem;display:block;margin-bottom:2px}
+.info-card a,.info-card span{color:var(--body);font-size:.95rem}
+.info-card a:hover{color:var(--orange-dk)}
+form{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:var(--shadow)}
+.fld{margin-bottom:16px}
+.fld label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+.fld input,.fld select,.fld textarea{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:10px;font-family:inherit;font-size:.96rem;color:var(--ink);background:var(--bg)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--orange);box-shadow:0 0 0 3px var(--glow)}
+.fld textarea{resize:vertical;min-height:110px}
+form .btn-primary{width:100%;justify-content:center;background:var(--orange)}
+form .btn-primary:hover{background:var(--orange-dk)}
+
+/* ---- footer ---- */
+footer{background:var(--navy);color:#9aa6c2;padding:54px 0 30px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-top .bn b{color:#fff}
+.foot-desc{max-width:32em;font-size:.93rem;margin-top:14px}
+.foot-bot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;font-size:.85rem}
+.foot-bot a{color:var(--orange)}
+
+/* ---- floating fabs ---- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s}
+.fabs.on{opacity:1;transform:none;pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.45)}
+.fab svg{width:24px;height:24px;color:#fff}
+.fab-call{background:var(--orange);animation:fp 2.2s infinite}
+.fab-wa{background:#25d366;animation:fpg 2.2s infinite}
+@keyframes fp{0%{box-shadow:0 0 0 0 rgba(239,124,31,.5)}70%{box-shadow:0 0 0 14px rgba(239,124,31,0)}100%{box-shadow:0 0 0 0 rgba(239,124,31,0)}}
+@keyframes fpg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.fab:hover{animation:none}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- lightbox ---- */
+#lb{position:fixed;inset:0;background:rgba(19,35,61,.94);z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
+#lb.on{display:flex}
+#lb img{max-width:92%;max-height:90%;border-radius:10px}
+#lb .x{position:absolute;top:20px;right:26px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1;font-family:'Sora'}
+
+/* ---- responsive ---- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:36px;padding-top:48px;padding-bottom:54px}
+  .about-grid,.con-grid{grid-template-columns:1fr;gap:34px}
+  .rev-grid{grid-template-columns:repeat(2,1fr)}
+  .area-grid{grid-template-columns:repeat(3,1fr)}
+  .bento{grid-template-columns:repeat(4,1fr)}
+  .card.feature{grid-column:span 4;grid-row:span 1;min-height:280px}
+  .card.wide{grid-column:span 4}
+  .card.std{grid-column:span 2}
+}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+@media (max-width:680px){
+  .sec{padding:60px 0}
+  .sec h2,.band h2{font-size:1.72rem;overflow-wrap:break-word}
+  .hero h1{font-size:2.05rem}
+  .rev-grid{grid-template-columns:1fr}
+  .area-grid{grid-template-columns:repeat(2,1fr)}
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .card,.card.feature,.card.wide,.card.std{grid-column:span 1;grid-row:span 1;min-height:0}
+  .card.feature{min-height:230px}
+  .masonry{grid-template-columns:repeat(2,1fr);grid-auto-rows:148px}
+  .g-big{grid-column:span 2;grid-row:span 2}
+  .g-tall{grid-row:span 1}
+  .gcap{display:none}
+  .trust-in{flex-direction:column;align-items:flex-start;gap:13px}
+  .trust-item{padding:2px 0}
+  .hero-badge{position:static;margin-top:16px;width:100%}
+  .hero-photo .ph{aspect-ratio:16/11}
+  .foot-bot{flex-direction:column}
+  .brand .bn span{display:none}
+}
+@media (max-width:430px){
+  .brand{gap:9px}
+  .brand .bn b{font-size:.9rem}
+}
+</style>
+</head>
+<body>
+
+<!-- loader: tile set -->
+<div id="loader" class="play" aria-hidden="true">
+  <div class="grid">
+    <i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="wm">EN<b>B</b></div>
+  <div class="wm-sub">Tiling · Painting · Decorating</div>
+</div>
+
+<!-- nav -->
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <img class="logo" src="logo.jpg" alt="ENB Tiling, Painting & Decorating logo">
+      <span class="bn"><b>ENB Tiling &amp; Decorating</b><span>Congleton · Stoke-on-Trent</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta">Free Quote</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact" class="m-cta">Free Quote</a>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow"><span class="dot"></span> Congleton · Stoke-on-Trent · Cheshire</div>
+      <h1>Tiling &amp; decorating, set out to the <span class="o">millimetre</span>.</h1>
+      <p class="lede">Wall and floor tiling, bathrooms, splashbacks, painting and decorating across Congleton and Stoke-on-Trent. Tile levelling system, clean cut-outs around pipework and straight grout lines on every job.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="heroCall" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call <span class="callno"></span>
+        </a>
+        <a class="btn btn-wa" id="heroWa" href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.045z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="ph"><img src="hero.jpg" alt="Tiled bathroom with marble-effect walls, twin basins and a pebble-floor walk-in shower by ENB"></div>
+      <div class="hero-badge">
+        <div><div class="stars">★★★★★</div></div>
+        <div><b>Tidy, precise, reliable</b><small>Tiling &amp; decorating · Cheshire &amp; Staffs</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="tileband"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</section>
+
+<!-- trust -->
+<section class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg> Tile levelling system</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Free quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z"/></svg> Tidy &amp; reliable</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg> Congleton &amp; Stoke</div>
+  </div>
+</section>
+
+<!-- services -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">What we do</span>
+        <h2>Tiling first, <span class="o">finished throughout</span>.</h2>
+      </div>
+    </div>
+    <div class="bento">
+      <div class="card feature reveal">
+        <div class="fimg"><img src="work-1.jpg" alt="Patterned wood and encaustic-effect floor tiling in a hallway"></div>
+        <span class="tag">Wall &amp; floor tiling</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+        <h3>Tiling, set out true</h3>
+        <p>Ceramic, porcelain, mosaic and natural stone. Levelled flat, jointed even and cut clean around pipes, sockets and corners.</p>
+      </div>
+      <div class="card wide reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/></svg></div>
+        <h3>Bathrooms &amp; Wet Rooms</h3>
+        <p>Fully tiled bathrooms, en-suites and walk-in showers, sealed and watertight.</p>
+      </div>
+      <div class="card wide reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg></div>
+        <h3>Kitchen Splashbacks</h3>
+        <p>Metro, brick-bond and feature splashbacks fitted neat to the worktop and units.</p>
+      </div>
+      <div class="card std reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3v8H6V3"/><path d="M4 11h16v4a2 2 0 0 1-2 2h-3v5h-2v-5"/></svg></div>
+        <h3>Painting &amp; Decorating</h3>
+        <p>Walls, ceilings and woodwork cut in clean and rolled even, inside and out.</p>
+      </div>
+      <div class="card std reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+        <h3>Wallpaper Hanging</h3>
+        <p>Feature walls and full rooms, pattern-matched and pasted up to a clean finish.</p>
+      </div>
+      <div class="card std reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <h3>Floor Tiling &amp; LVT</h3>
+        <p>Porcelain, patterned and luxury vinyl floors laid level and square.</p>
+      </div>
+      <div class="card wide reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4L3 18v3h3l5.3-5.3a5 5 0 0 0 6.4-6.4l-2.8 2.8-2-2z"/></svg></div>
+        <h3>Wall Prep &amp; Plastering</h3>
+        <p>Boarding, filling, skim and prep so tiles and paint go on flat and last.</p>
+      </div>
+      <div class="card wide reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Sealant &amp; Grouting</h3>
+        <p>Fresh grout and crisp, watertight silicone beads around baths, sinks and screens.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section class="sec gal" id="work">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">Recent work</span>
+        <h2>Straight lines, <span class="o">clean edges</span>.</h2>
+      </div>
+    </div>
+    <div class="masonry">
+      <div class="gtile g-big reveal" data-full="hero.jpg"><img src="hero.jpg" alt="Marble-effect tiled bathroom with twin basins and pebble shower floor"><div class="gcap">Fully tiled bathroom, feature shower</div></div>
+      <div class="gtile g-tall reveal" data-full="work-1.jpg"><img src="work-1.jpg" alt="Patterned wood-effect and encaustic floor tiles in a hallway"><div class="gcap">Patterned hallway floor</div></div>
+      <div class="gtile reveal" data-full="work-2.jpg"><img src="work-2.jpg" alt="Kitchen before and after repaint and refresh"><div class="gcap">Kitchen repaint, before &amp; after</div></div>
+      <div class="gtile reveal" data-full="work-4.jpg"><img src="work-4.jpg" alt="Grey marble-effect bathroom wall tiling in progress"><div class="gcap">Marble-effect bathroom walls</div></div>
+      <div class="gtile g-tall reveal" data-full="work-3.jpg"><img src="work-3.jpg" alt="Wood-effect plank floor tiles laid through a living room"><div class="gcap">Wood-effect floor tiling</div></div>
+      <div class="gtile reveal" data-full="work-5.jpg"><img src="work-5.jpg" alt="White brick-bond kitchen splashback tiling"><div class="gcap">Brick-bond splashback</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section class="sec about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="lab">Who we are</span>
+      <h2>Local, hands-on, neat to the last bead.</h2>
+      <p>ENB is a tiling and decorating outfit based in Congleton, covering Stoke-on-Trent and across Cheshire. Tiling is our trade, and we paint and decorate to the same standard, with a tile levelling system on every floor and a tidy site at the end of each day.</p>
+      <div class="sigblock">
+        <span class="ini">ENB</span>
+        <span><b>The ENB team</b><span>Tiling, painting &amp; decorating</span></span>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="stat"><b>Level</b><span>tile levelling system on every job</span></div>
+      <div class="stat"><b>Clean</b><span>precise cut-outs around pipework</span></div>
+      <div class="stat"><b>Local</b><span>Congleton, Stoke &amp; Cheshire</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">What people say</span>
+        <h2>Recommended <span class="o">locally</span>.</h2>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>ENB tiled our bathroom floor to ceiling and the finish is spot on, perfectly level with really tidy grout lines. Clean, polite and turned up when they said they would. Couldn't be happier.</p>
+        <div class="by"><span class="av">L</span><span><b>Laura H.</b><small>Congleton · Bathroom tiling</small></span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>Had a kitchen splashback tiled and the hallway redecorated. Brilliant job, cut-outs around the sockets were dead neat and everything was left spotless. Already booked them back for the bathroom.</p>
+        <div class="by"><span class="av">M</span><span><b>Mark T.</b><small>Sandbach · Tiling &amp; decorating</small></span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>Patterned floor tiles in our hallway and they look amazing, set out beautifully so the pattern lines up at every doorway. Proper attention to detail and a fair price. Highly recommend ENB.</p>
+        <div class="by"><span class="av">S</span><span><b>Sophie R.</b><small>Stoke-on-Trent · Floor tiling</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- areas -->
+<section class="sec areas" id="areas">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">Where we work</span>
+        <h2>Across Cheshire &amp; <span class="o">North Staffs</span>.</h2>
+      </div>
+    </div>
+    <div class="area-grid">
+      <a href="#contact"><span class="pin"></span>Congleton</a>
+      <a href="#contact"><span class="pin"></span>Stoke-on-Trent</a>
+      <a href="#contact"><span class="pin"></span>Sandbach</a>
+      <a href="#contact"><span class="pin"></span>Holmes Chapel</a>
+      <a href="#contact"><span class="pin"></span>Macclesfield</a>
+      <a href="#contact"><span class="pin"></span>Astbury</a>
+      <a href="#contact"><span class="pin"></span>Kidsgrove</a>
+      <a href="#contact"><span class="pin"></span>Alderley Edge</a>
+      <a href="#contact"><span class="pin"></span>Wilmslow</a>
+      <a href="#contact"><span class="pin"></span>Stafford</a>
+    </div>
+  </div>
+</section>
+
+<!-- cta band -->
+<section class="sec band">
+  <div class="wrap">
+    <h2>Got a room to tile or decorate?</h2>
+    <p>Send us a few photos and we will get a free, no-pressure quote back to you. Bathrooms, kitchens, floors or a full redecorate.</p>
+    <a class="btn btn-primary" id="bandCall" href="#">Call <span class="callno"></span></a>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">Get in touch</span>
+        <h2>Message us for a <span class="o">free quote</span>.</h2>
+      </div>
+    </div>
+    <div class="con-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Call us</b><a id="infoCall" href="#"></a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></div>
+          <div><b>WhatsApp</b><a id="infoWa" href="#">Message us for a quick quote</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+          <div><b>Email</b><a id="infoEmail" href="#"></a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg></div>
+          <div><b>Based in</b><span>Congleton, covering Stoke-on-Trent &amp; Cheshire</span></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="ENB Tiling, Painting & Decorating">
+        <input type="hidden" name="source" value="mockup-enb-tiling">
+        <div class="fld"><label for="name">Name</label><input id="name" name="name" required></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        <div class="fld"><label for="email">Email (optional)</label><input id="email" name="email" type="email"></div>
+        <div class="fld"><label for="service">Service</label>
+          <select id="service" name="service">
+            <optgroup label="Tiling">
+              <option>Bathroom Tiling</option>
+              <option>Wall &amp; Floor Tiling</option>
+              <option>Kitchen Splashback</option>
+              <option>Floor Tiling / LVT</option>
+            </optgroup>
+            <optgroup label="Decorating">
+              <option>Painting &amp; Decorating</option>
+              <option>Wallpaper Hanging</option>
+            </optgroup>
+            <optgroup label="Prep">
+              <option>Wall Prep &amp; Plastering</option>
+              <option>Sealant &amp; Grouting</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="fld"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us a bit about the job and where you are..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="brand">
+          <img class="logo" src="logo.jpg" alt="ENB Tiling, Painting & Decorating logo">
+          <span class="bn"><b>ENB Tiling, Painting &amp; Decorating</b><span style="color:#93a0bf">Congleton · Stoke-on-Trent</span></span>
+        </a>
+        <p class="foot-desc">Wall &amp; floor tiling, bathrooms, kitchen splashbacks, painting and decorating across Congleton, Stoke-on-Trent, Sandbach, Macclesfield and Cheshire.</p>
+      </div>
+      <div>
+        <a href="#contact" class="btn btn-primary" style="background:var(--orange)">Get a free quote</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 ENB Tiling, Painting &amp; Decorating. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating fabs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a class="fab fab-wa" id="fabWa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.045z"/></svg></a>
+</div>
+
+<!-- lightbox -->
+<div id="lb"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+// contact links (base64)
+var P=atob('MDc0MzgyOTg4MTc='), Pf=atob('MDc0MzggMjk4ODE3'), WA='447438298817', E=atob('ZWJlamphbmk0NUBnbWFpbC5jb20=');
+var waLink='https://wa.me/'+WA+'?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+['heroCall','bandCall','infoCall','fabCall'].forEach(function(id){var e=document.getElementById(id);if(e)e.href='tel:'+P;});
+['heroWa','infoWa','fabWa'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=waLink;});
+document.getElementById('infoCall').textContent=Pf;
+var em=document.getElementById('infoEmail');em.textContent=E;em.href='mailto:'+E;
+document.querySelectorAll('.callno').forEach(function(e){e.textContent=Pf;});
+document.getElementById('formTimestamp').value=Date.now();
+
+// loader teardown
+function killLoader(){var l=document.getElementById('loader');if(l)l.classList.add('done');}
+window.addEventListener('load',function(){setTimeout(killLoader,2050);});
+setTimeout(killLoader,2600);
+
+// mobile nav
+var burger=document.getElementById('burger'),mp=document.getElementById('mpanel');
+burger.addEventListener('click',function(){mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mp.classList.remove('open');});});
+
+// reveals
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// floating fabs
+var fabs=document.getElementById('fabs'),hero=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>hero.offsetHeight-120)fabs.classList.add('on');else fabs.classList.remove('on');
+});
+
+// lightbox
+var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.gtile').forEach(function(t){
+  t.addEventListener('click',function(){lbImg.src=t.dataset.full;lb.classList.add('on');});
+});
+lb.addEventListener('click',function(){lb.classList.remove('on');});
+</script>
+</body>
+</html>
