@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://previews.construction-sites.co.uk/mud-monkey-construction/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#14110d">
+<link rel="icon" type="image/png" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,53 +87,27 @@ img{display:block;max-width:100%}
   transition:opacity .5s ease;
 }
 #loader.done{opacity:0;pointer-events:none}
-.dig{width:280px;max-width:78vw}
-.dig-stage{position:relative;height:120px;overflow:hidden}
-.strata-bar{position:absolute;left:0;right:0;height:14px;transform-origin:center top}
-.sb1{top:30px;background:#6b4f2e}
-.sb2{top:46px;background:#54401f}
-.sb3{top:62px;background:#3a2d18}
-.sb4{top:78px;background:#2a2012}
-.sb5{top:94px;background:#ff6a1f}
-.dig .strata-bar{animation:dig 1.7s cubic-bezier(.6,0,.2,1) forwards}
-.sb1{animation-delay:.30s}.sb2{animation-delay:.46s}.sb3{animation-delay:.62s}.sb4{animation-delay:.78s}.sb5{animation-delay:.94s}
-@keyframes dig{
-  0%{transform:scaleX(1);opacity:1}
-  100%{transform:scaleX(0);opacity:0}
+.ld-logo{display:flex;flex-direction:column;align-items:center;gap:26px}
+.ld-logo img{
+  width:240px;max-width:62vw;height:auto;
+  opacity:0;transform:scale(.9);
+  animation:logoIn .8s cubic-bezier(.2,.8,.3,1) forwards;
 }
-.bucket{
-  position:absolute;top:8px;left:-50px;width:46px;height:46px;
-  color:var(--accent);
-  animation:sweep 1.7s cubic-bezier(.5,0,.3,1) forwards;
-}
-@keyframes sweep{
-  0%{left:-50px;transform:rotate(-8deg)}
-  85%{left:calc(100% + 4px);transform:rotate(10deg)}
-  100%{left:calc(100% + 4px);transform:rotate(10deg);opacity:0}
-}
-.dig-word{
-  text-align:center;margin-top:18px;opacity:0;
-  animation:wordrise 1s ease forwards;animation-delay:1.25s;
-}
-.dig-word .m{font-family:'Anton',sans-serif;font-size:2.1rem;color:var(--hi);text-transform:uppercase;line-height:1;letter-spacing:.01em}
-.dig-word .m span{color:var(--accent)}
-.dig-word .sub{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.42em;color:var(--muted);margin-top:8px}
-@keyframes wordrise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes logoIn{to{opacity:1;transform:scale(1)}}
+.ld-bar{width:140px;height:4px;border-radius:3px;background:var(--card);overflow:hidden;opacity:0;animation:barShow .4s ease .5s forwards}
+.ld-bar span{display:block;height:100%;width:40%;border-radius:3px;background:var(--accent);transform:translateX(-120%);animation:barRun 1.3s ease-in-out .6s infinite}
+@keyframes barShow{to{opacity:1}}
+@keyframes barRun{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
 @media (prefers-reduced-motion:reduce){
-  .dig .strata-bar,.bucket{animation:none;opacity:0}
-  .dig-word{animation:none;opacity:1}
+  .ld-logo img{animation:none;opacity:1;transform:none}
+  .ld-bar{display:none}
 }
 
 /* ============ NAV ============ */
 header{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--border)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .nav-logo{display:flex;align-items:center;gap:11px;white-space:nowrap}
-.nav-logo .gmark{
-  width:38px;height:38px;border-radius:9px;flex:none;
-  background:var(--accent);color:#14110d;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Anton',sans-serif;font-size:1.25rem;
-}
+.nav-logo .nav-mark{height:46px;width:auto;flex:none;display:block}
 .nav-logo .nt{font-family:'Anton',sans-serif;font-size:1.18rem;color:var(--hi);text-transform:uppercase;line-height:.9}
 .nav-logo .nt small{display:block;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.32em;color:var(--muted)}
 .nav-links{display:flex;align-items:center;gap:34px}
@@ -333,23 +308,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:54px 0 30
 </head>
 <body>
 
-<!-- LOADER: TRENCH DIG -->
+<!-- LOADER: LOGO REVEAL -->
 <div id="loader" aria-hidden="true">
-  <div class="dig">
-    <div class="dig-stage">
-      <svg class="bucket" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M8 6v14"/><path d="M8 20l8 16h18l4-12-14-4z"/><path d="M16 36l2 6h14l2-6"/>
-      </svg>
-      <div class="strata-bar sb1"></div>
-      <div class="strata-bar sb2"></div>
-      <div class="strata-bar sb3"></div>
-      <div class="strata-bar sb4"></div>
-      <div class="strata-bar sb5"></div>
-    </div>
-    <div class="dig-word">
-      <div class="m">MUD <span>MONKEY</span></div>
-      <div class="sub">CONSTRUCTION LTD</div>
-    </div>
+  <div class="ld-logo">
+    <img src="logo-badge.jpg" alt="Mud Monkey Construction Ltd" width="240" height="231">
+    <div class="ld-bar"><span></span></div>
   </div>
 </div>
 
@@ -357,7 +320,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:54px 0 30
 <header>
   <div class="wrap nav">
     <a href="#" class="nav-logo">
-      <span class="gmark">M</span>
+      <img class="nav-mark" src="logo.png" alt="Mud Monkey Construction Ltd logo">
       <span class="nt">Mud Monkey<small>CONSTRUCTION LTD</small></span>
     </a>
     <nav class="nav-links">
@@ -622,7 +585,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:54px 0 30
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <div class="fl"><span class="gmark" style="width:36px;height:36px;border-radius:8px;background:var(--accent);color:#14110d;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:1.2rem">M</span><span class="nt" style="font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--hi);text-transform:uppercase">Mud Monkey</span></div>
+        <div class="fl"><img src="logo.png" alt="Mud Monkey Construction Ltd logo" style="height:40px;width:auto;display:block"><span class="nt" style="font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--hi);text-transform:uppercase">Mud Monkey</span></div>
         <p>Groundworks and civil engineering. Built in the mud, built to last. Experienced, reliable and fully insured.</p>
       </div>
       <div class="foot-cols">
