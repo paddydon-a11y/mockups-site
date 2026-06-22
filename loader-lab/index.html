@@ -859,6 +859,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-canopy.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
 #ld-canopy.play .wordsub{animation:wordIn .5s ease 1.65s forwards}
 @media (prefers-reduced-motion:reduce){#ld-canopy .cnp .trunk,#ld-canopy .cnp .branch{stroke-dashoffset:0}#ld-canopy .cnp .leaf{transform:scale(1);opacity:1}}
+
+/* ===== 35. JOINERS / BUILDERS — nail drive ===== */
+#ld-nail{background:#14171b;flex-direction:column;gap:30px;color:#fff}
+#ld-nail .nd-scene{position:relative;width:210px;height:150px}
+#ld-nail .nd-board{position:absolute;left:20px;right:20px;bottom:24px;height:20px;border-radius:4px;background:linear-gradient(180deg,#caa066,#a87c44);box-shadow:inset 0 2px 0 rgba(255,255,255,.18)}
+#ld-nail .nd-board::after{content:"";position:absolute;inset:0;border-radius:4px;background:repeating-linear-gradient(95deg,rgba(80,50,15,.18) 0 1px,transparent 1px 9px)}
+#ld-nail .nd-nailwrap{position:absolute;left:50%;bottom:34px;width:14px;margin-left:-7px;height:60px}
+#ld-nail .nd-nail{position:absolute;left:0;bottom:0;width:14px;height:60px}
+#ld-nail .nd-shank{position:absolute;left:5px;bottom:0;width:4px;height:52px;background:linear-gradient(90deg,#9aa3ae,#cdd4dc,#9aa3ae)}
+#ld-nail .nd-head{position:absolute;left:0;top:0;width:14px;height:7px;border-radius:2px;background:linear-gradient(180deg,#dfe5ec,#aab2bd)}
+#ld-nail .nd-hammer{position:absolute;left:50%;top:-14px;width:120px;margin-left:-30px;transform-origin:72% 88%;transform:rotate(-46deg)}
+#ld-nail .nd-hammer .head{fill:#c2cad4}#ld-nail .nd-hammer .face{fill:#9aa3ae}#ld-nail .nd-hammer .handle{fill:#9a6a38}
+#ld-nail .nd-spark{position:absolute;left:50%;bottom:88px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#d3a35e;opacity:0}
+#ld-nail .nd-spark.s2{margin-left:-14px}#ld-nail .nd-spark.s3{margin-left:8px}
+#ld-nail.play .nd-hammer{animation:ndHammer 1.5s cubic-bezier(.5,0,.5,1) forwards}
+#ld-nail.play .nd-nail{animation:ndNail 1.5s steps(1) forwards}
+#ld-nail.play .nd-spark{animation:ndSpark .3s ease-out forwards}
+#ld-nail.play .nd-spark.s1{animation-delay:.18s}#ld-nail.play .nd-spark.s2{animation-delay:.46s}#ld-nail.play .nd-spark.s3{animation-delay:.75s}
+@keyframes ndHammer{0%{transform:rotate(-46deg)}12%{transform:rotate(2deg)}19%{transform:rotate(-34deg)}31%{transform:rotate(2deg)}38%{transform:rotate(-26deg)}50%{transform:rotate(2deg)}66%,100%{transform:rotate(-22deg)}}
+@keyframes ndNail{0%{transform:translateY(0)}13%{transform:translateY(16px)}32%{transform:translateY(31px)}51%,100%{transform:translateY(44px)}}
+@keyframes ndSpark{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-14px) scale(.4)}}
+#ld-nail .wordmark{color:#fff;text-transform:none;letter-spacing:.04em}
+#ld-nail .wordmark b{color:#2f6bf0}
+#ld-nail .wordsub{color:#2f6bf0}
+#ld-nail.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
+#ld-nail.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+@media (prefers-reduced-motion:reduce){#ld-nail .nd-hammer{transform:rotate(-22deg)}#ld-nail .nd-nail{transform:translateY(44px)}}
 </style>
 </head>
 <body>
@@ -1098,6 +1125,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Tree Surgery / Grounds / Property Maintenance</span>
       <h3>Canopy</h3>
       <p>A bare trunk and branches stroke themselves in, then a flush of green leaves pops on in sequence and the wordmark lands beneath the full canopy. Built for an exterior maintenance brand whose lead service is tree work. First used on b1-property-maintenance.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-nail" data-dur="2300">
+      <span class="trade">Joiners / Builders / Carpenters</span>
+      <h3>Nail Drive</h3>
+      <p>A steel nail sits proud of a timber board, then the hammer swings down and drives it flush in three strikes, oak sparks flicking off at each blow, before the wordmark lands. Animates the brand for any builder whose logo is a hammer. First used on sfc-joiner-builder.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -1697,6 +1730,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">B<b>1</b> Property</div>
     <div class="wordsub">Property Maintenance</div>
+  </div>
+</div>
+
+<!-- 35. nail drive (joiners / builders) -->
+<div class="loader" id="ld-nail" aria-hidden="true">
+  <div class="nd-scene">
+    <div class="nd-board"></div>
+    <div class="nd-nailwrap"><div class="nd-nail"><span class="nd-head"></span><span class="nd-shank"></span></div></div>
+    <span class="nd-spark s1"></span><span class="nd-spark s2"></span><span class="nd-spark s3"></span>
+    <svg class="nd-hammer" viewBox="0 0 120 130" aria-hidden="true">
+      <rect class="handle" x="62" y="40" width="9" height="84" rx="4" transform="rotate(8 66 80)"/>
+      <path class="head" d="M30 16 H86 a6 6 0 0 1 6 6 V36 a6 6 0 0 1 -6 6 H66 l-6 6 -10 -2 V22 a6 6 0 0 1 6-6 Z"/>
+      <rect class="face" x="30" y="34" width="40" height="8" rx="3"/>
+    </svg>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">S.F.C</div>
+    <div class="wordsub">Joiner &amp; Builder</div>
   </div>
 </div>
 
