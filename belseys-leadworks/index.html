@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belseys Leadworks · Lead Roofing &amp; Metalwork Specialists, Dorset</title>
+<meta name="description" content="Belseys Leadworks: specialist leadwork, lead roofing, box gutters, chimney flashings, standing-seam &amp; hard-metal roofing across Dorset. Over 20 years' experience. Heritage &amp; conservation work a speciality. Free quotes.">
+
+<!-- Share preview -->
+<meta property="og:title" content="Belseys Leadworks · Your New Website">
+<meta property="og:description" content="Specialist lead roofing &amp; metalwork across Dorset. A preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/belseys-leadworks/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/belseys-leadworks/">
+<meta name="theme-color" content="#15181b">
+<link rel="icon" href="favicon.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#1a1e22;
+  --bg2:#21262b;
+  --bg3:#13161a;
+  --card:#23282e;
+  --card2:#2c333b;
+  --ink:#ffffff;
+  --body:#b2b9c1;
+  --muted:#7c848d;
+  --line:rgba(255,255,255,.09);
+  --line2:rgba(255,255,255,.17);
+  --accent:#ef7d2d;
+  --accent-h:#ff9244;
+  --accent-glow:rgba(239,125,45,.22);
+  --lead:#9aa2a9;
+  --lead2:#c3cad0;
+  --green:#25d366;
+  --disp:'Saira',system-ui,sans-serif;
+  --head:'Saira',system-ui,sans-serif;
+  --body-f:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body-f);background:var(--bg);color:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+em{font-style:normal}
+h1,h2,h3,h4{color:var(--ink);line-height:1.04}
+h1,h2{font-family:var(--disp);font-weight:800;letter-spacing:-.01em;text-transform:uppercase}
+h3,h4{font-family:var(--head);font-weight:700;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+
+/* ===== labels ===== */
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--head);font-weight:700;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-glow);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 12px rgba(239,125,45,0)}100%{box-shadow:0 0 0 0 rgba(239,125,45,0)}}
+.label{font-family:var(--head);font-weight:800;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+
+/* ===== seam divider ===== */
+.seam{height:0;border-top:2px dashed var(--line2);width:100%;position:relative;opacity:.7}
+.seam::before,.seam::after{content:"";position:absolute;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.seam::before{left:0}.seam::after{right:0}
+
+/* ===== buttons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--head);font-weight:700;font-size:.95rem;padding:15px 26px;border-radius:11px;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--accent);color:#15181b;box-shadow:0 12px 30px -10px var(--accent)}
+.btn-primary:hover{background:var(--accent-h);transform:translateY(-2px);box-shadow:0 18px 38px -10px var(--accent)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid var(--line2)}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 12px 30px -10px var(--green)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 38px -10px var(--green)}
+
+/* ===== loader ===== */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .5s ease,visibility .5s}
+#loader.done{opacity:0;visibility:hidden}
+.ld-mark{width:104px;height:104px}
+.ld-sun{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;stroke-dasharray:160;stroke-dashoffset:160;animation:ldraw .85s .55s cubic-bezier(.4,0,.2,1) forwards}
+.ld-roof{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:150;stroke-dashoffset:150;animation:ldraw .7s .15s ease forwards}
+.ld-ray{stroke:var(--accent);stroke-width:4;stroke-linecap:round;opacity:0;animation:rayin .4s 1.2s ease forwards}
+@keyframes ldraw{to{stroke-dashoffset:0}}
+@keyframes rayin{to{opacity:.85}}
+.ld-word{font-family:var(--disp);font-weight:800;font-size:1.7rem;letter-spacing:.02em;color:#fff;text-transform:uppercase;opacity:0;transform:translateY(10px);animation:wordin .5s 1.35s ease-out forwards;text-align:center;line-height:1}
+.ld-word .accent{color:var(--accent)}
+.ld-sub{display:block;font-family:var(--head);font-weight:600;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:11px;opacity:0;animation:wordin .5s 1.6s ease-out forwards}
+@keyframes wordin{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .ld-sun,.ld-roof,.ld-ray,.ld-word,.ld-sub{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}
+}
+
+/* ===== nav ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(20,23,26,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+nav.scrolled{border-bottom-color:var(--line);box-shadow:0 4px 24px -16px rgba(0,0,0,.7)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.nav-logo img{height:46px;width:auto;border-radius:11px}
+.nav-logo .nl-txt{display:flex;flex-direction:column;line-height:1}
+.nav-logo .nl-txt b{font-family:var(--disp);font-weight:800;font-size:1.05rem;color:#fff;letter-spacing:.01em;text-transform:uppercase}
+.nav-logo .nl-txt span{font-family:var(--head);font-weight:600;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lead);margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-family:var(--head);font-weight:600;font-size:.95rem;color:#e7e9ed;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.nav-cta{background:var(--accent);color:#15181b!important;padding:11px 20px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.86rem}
+.nav-links a.nav-cta:hover{background:var(--accent-h)}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:#15181b}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2.5px;background:#fff;border-radius:2px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-panel{position:fixed;top:74px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);z-index:899;transform:translateY(-130%);transition:transform .35s cubic-bezier(.4,0,.2,1);padding:18px 24px 26px}
+.mobile-panel.open{transform:translateY(0)}
+.mobile-panel a{display:block;font-family:var(--head);font-weight:700;font-size:1.1rem;color:#fff;padding:14px 0;border-bottom:1px solid var(--line)}
+.mobile-panel a.btn{width:100%;margin-top:18px;padding-top:18px;padding-bottom:18px;color:#15181b;justify-content:center;text-align:center;border-bottom:none}
+
+/* ===== hero ===== */
+.hero{padding-top:74px;background:var(--bg);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-140px;right:-160px;width:560px;height:560px;background:radial-gradient(circle,var(--accent-glow),transparent 62%);pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;padding-top:60px;padding-bottom:70px;position:relative}
+.hero-eyebrow{margin-bottom:22px}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.9rem);line-height:.98}
+.hero h1 .accent{display:block}
+.hero-lede{font-size:1.12rem;color:var(--body);max-width:530px;margin-top:24px}
+.hero-cta{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.hero-meta{display:flex;align-items:center;gap:20px;margin-top:28px;flex-wrap:wrap}
+.hero-meta .star{color:var(--accent);font-size:1rem;letter-spacing:1px}
+.hero-meta .mt{font-size:.88rem;color:var(--muted);font-weight:500}
+.hero-meta .mt b{color:#fff;font-weight:700}
+.hero-media{position:relative}
+.hero-media .frame{border-radius:18px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.hero-media img{width:100%;height:548px;object-fit:cover}
+.hero-badge{position:absolute;left:-22px;bottom:30px;background:#fff;color:#15181b;border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 22px 44px -18px rgba(0,0,0,.7)}
+.hero-badge .hb-ico{width:42px;height:42px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-badge .hb-ico svg{width:24px;height:24px;stroke:#15181b}
+.hero-badge .hb-t{font-family:var(--head);font-weight:800;font-size:1.05rem;color:#15181b;line-height:1.1}
+.hero-badge .hb-s{font-size:.76rem;color:#6b7079;font-weight:500}
+.hero-badge-m{display:none}
+
+/* ===== trust band ===== */
+.trust{background:var(--accent)}
+.trust-in{display:flex;align-items:stretch;justify-content:space-between}
+.trust-item{flex:1;display:flex;align-items:center;justify-content:center;gap:11px;padding:22px 14px;border-right:1px solid rgba(0,0,0,.16);text-align:left}
+.trust-item:last-child{border-right:none}
+.trust-item svg{width:22px;height:22px;stroke:#15181b;flex-shrink:0}
+.trust-item span{font-family:var(--head);font-weight:700;font-size:.92rem;color:#15181b;text-transform:uppercase;letter-spacing:.02em}
+
+/* ===== section ===== */
+section{position:relative}
+.sec{padding-top:92px;padding-bottom:92px}
+.sec-head{max-width:680px;margin-bottom:48px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head .label{margin-bottom:16px;display:block}
+.sec-head h2{font-size:clamp(2.1rem,4.6vw,3.4rem)}
+
+/* ===== services ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc-card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 26px 28px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.svc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -28px rgba(0,0,0,.85);border-color:var(--line2)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-ico{width:50px;height:50px;border-radius:12px;background:var(--card2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:background .25s}
+.svc-card:hover .svc-ico{background:var(--accent-glow)}
+.svc-ico svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.svc-card h3{font-size:1.18rem;color:#fff;margin-bottom:7px}
+.svc-card p{font-size:.93rem;color:var(--body)}
+
+/* ===== gallery ===== */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gtile{position:relative;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--card2)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gtile:hover img{transform:scale(1.06)}
+.gtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(to top,rgba(8,9,10,.9),transparent);color:#fff;font-family:var(--head);font-weight:700;font-size:.92rem;opacity:0;transform:translateY(8px);transition:.3s}
+.gtile:hover .gcap{opacity:1;transform:translateY(0)}
+.gtile.big{grid-column:span 2;grid-row:span 2}
+.gtile.tall{grid-row:span 2}
+.gtile.wide{grid-column:span 2}
+
+/* ===== about ===== */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about h2{font-size:clamp(2rem,4.2vw,3rem);margin-bottom:20px}
+.about p{font-size:1.05rem;color:var(--body);margin-bottom:16px;max-width:560px}
+.about .stats{display:flex;gap:38px;margin-top:30px}
+.about .stat .n{font-family:var(--disp);font-weight:800;font-size:2.6rem;color:var(--accent);line-height:1}
+.about .stat .l{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+.about-media{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:460px}
+.about-media img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.about-media img:first-child{grid-row:span 2}
+
+/* ===== process ===== */
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proc-card{position:relative;padding:34px 28px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.proc-card .pn{font-family:var(--disp);font-weight:800;font-size:1.05rem;width:46px;height:46px;border-radius:11px;background:var(--accent);color:#15181b;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.proc-card h3{font-size:1.26rem;color:#fff;margin-bottom:9px}
+.proc-card p{font-size:.96rem;color:var(--body)}
+.proc-card .conn{position:absolute;top:55px;right:-18px;color:var(--line2);z-index:2}
+.proc-card:last-child .conn{display:none}
+
+/* ===== reviews ===== */
+.reviews{background:var(--bg2)}
+.rev-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:42px;flex-wrap:wrap}
+.rev-rating{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px}
+.rev-rating .big{font-family:var(--disp);font-weight:800;font-size:2rem;color:#fff;line-height:1}
+.rev-rating .stars{color:var(--accent);font-size:1.05rem;letter-spacing:2px}
+.rev-rating .cnt{font-size:.82rem;color:var(--muted);font-weight:500}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px;display:flex;flex-direction:column}
+.rev-card .stars{color:var(--accent);font-size:.95rem;letter-spacing:2px;margin-bottom:14px}
+.rev-card .qt{font-size:.98rem;color:#eceef1;line-height:1.6;margin-bottom:20px;flex:1}
+.rev-card .who{display:flex;align-items:center;gap:12px}
+.rev-card .av{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#15181b;font-family:var(--head);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.rev-card .nm{font-family:var(--head);font-weight:700;font-size:.95rem;color:#fff}
+.rev-card .meta{font-size:.78rem;color:var(--muted)}
+.rev-card .g{margin-left:auto;width:20px;height:20px}
+
+/* ===== areas ===== */
+.areas-grid{display:flex;flex-wrap:wrap;gap:11px;margin-top:8px}
+.area-chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:30px;padding:10px 18px;font-family:var(--head);font-weight:600;font-size:.92rem;color:#e7e9ed;transition:.2s}
+.area-chip:hover{border-color:var(--accent);color:var(--accent)}
+.area-chip svg{width:14px;height:14px;stroke:var(--accent)}
+
+/* ===== cta band ===== */
+.ctaband{background:var(--accent);color:#15181b;border-radius:24px;padding:58px 50px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;position:relative;overflow:hidden}
+.ctaband::after{content:"";position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:340px;height:2px;border-top:2px dashed rgba(21,24,27,.35)}
+.ctaband h2{color:#15181b;font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:640px}
+.ctaband p{color:rgba(21,24,27,.78);margin-top:10px;font-size:1.02rem;font-weight:500}
+.ctaband .cb-btns{display:flex;gap:13px;flex-wrap:wrap;position:relative;z-index:2}
+.ctaband .btn-primary{background:#15181b;color:#fff;box-shadow:0 12px 30px -10px rgba(0,0,0,.6)}
+.ctaband .btn-primary:hover{background:#000}
+
+/* ===== contact ===== */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.ci-card{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.ci-card:first-of-type{padding-top:0}
+.ci-ico{width:48px;height:48px;border-radius:12px;background:var(--card2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-ico svg{width:23px;height:23px;stroke:var(--accent)}
+.ci-card .t{font-family:var(--head);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.ci-card .v{font-family:var(--head);font-weight:700;font-size:1.12rem;color:#fff}
+.ci-card .v a{transition:color .2s}.ci-card .v a:hover{color:var(--accent)}
+.ci-card .s{font-size:.86rem;color:var(--body)}
+.form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px}
+.form h3{font-size:1.4rem;color:#fff;margin-bottom:6px}
+.form .fsub{font-size:.92rem;color:var(--body);margin-bottom:22px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-family:var(--head);font-weight:600;font-size:.82rem;color:#e7e9ed;margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line2);border-radius:10px;font-family:var(--body-f);font-size:.95rem;color:#fff;background:var(--bg);transition:border-color .2s}
+.field input::placeholder,.field textarea::placeholder{color:#6b7079}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field select{color:#fff}
+.field select option{background:var(--bg);color:#fff}
+.field textarea{resize:vertical;min-height:110px}
+.form .btn{width:100%;margin-top:6px}
+.form-note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:14px}
+
+/* ===== footer ===== */
+footer{background:var(--bg3);color:#fff;padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .fb-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.foot-brand .fb-logo img{height:48px;border-radius:11px}
+.foot-brand .fb-logo .nm{font-family:var(--disp);font-weight:800;font-size:1.2rem;color:#fff;text-transform:uppercase;letter-spacing:.02em}
+.foot-brand p{color:#9aa0a8;font-size:.92rem;max-width:280px}
+.foot-col h4{font-family:var(--head);font-weight:800;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.foot-col a,.foot-col span{display:block;color:#9aa0a8;font-size:.92rem;margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:24px;flex-wrap:wrap}
+.foot-bottom p{color:#6b7079;font-size:.85rem}
+.foot-bottom a{color:#b4b9c2}
+.foot-bottom a:hover{color:var(--accent)}
+
+/* ===== floating fabs ===== */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:880;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(16px);transition:.35s}
+.fabs.show{opacity:1;visibility:visible;transform:translateY(0)}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.6)}
+.fab svg{width:25px;height:25px}
+.fab-call{background:var(--accent);animation:fpulse 2.2s infinite}
+.fab-wa{background:var(--green);animation:fpulse 2.2s infinite .4s}
+.fab:hover{animation-play-state:paused}
+@keyframes fpulse{0%{box-shadow:0 12px 28px -8px rgba(0,0,0,.6),0 0 0 0 rgba(239,125,45,.4)}70%{box-shadow:0 12px 28px -8px rgba(0,0,0,.6),0 0 0 14px rgba(239,125,45,0)}100%{box-shadow:0 12px 28px -8px rgba(0,0,0,.6),0 0 0 0 rgba(239,125,45,0)}}
+
+/* ===== reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== lightbox ===== */
+.lb{position:fixed;inset:0;z-index:950;background:rgba(8,9,10,.95);display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:88vh;border-radius:10px}
+.lb-close{position:absolute;top:22px;right:26px;color:#fff;font-size:2.2rem;cursor:pointer;font-family:var(--head);line-height:1}
+
+/* ===== responsive ===== */
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;padding-top:46px;padding-bottom:54px}
+  .hero-media img{height:420px}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:38px}
+  .about-media{height:360px}
+  .svc-grid,.rev-grid,.proc-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-card .conn{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .trust-in{flex-wrap:wrap}
+  .trust-item{flex:1 1 50%;border-right:none;border-bottom:1px solid rgba(0,0,0,.16);justify-content:flex-start;padding-left:4px}
+}
+@media (max-width:680px){
+  .sec{padding-top:62px;padding-bottom:62px}
+  .svc-grid,.rev-grid,.proc-grid,.foot-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .gtile.big{grid-column:span 2;grid-row:span 1}
+  .gtile.wide{grid-column:span 2}
+  .gtile.tall{grid-row:span 1}
+  .hero h1{font-size:clamp(2.4rem,10vw,3.4rem)}
+  .hero-media img{height:340px}
+  .hero-badge{display:none}
+  .hero-badge-m{display:flex;align-items:center;gap:14px;margin-top:18px;background:#fff;border-radius:14px;padding:15px 18px}
+  .hero-badge-m .hb-ico{width:40px;height:40px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .hero-badge-m .hb-ico svg{width:22px;height:22px;stroke:#15181b}
+  .hero-badge-m .hb-t{font-family:var(--head);font-weight:800;color:#15181b;font-size:1rem;line-height:1.1}
+  .hero-badge-m .hb-s{font-size:.74rem;color:#6b7079}
+  .ctaband{padding:42px 28px}
+  .about .stats{gap:26px}
+  .ci-card .v{font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADER ===== -->
+<div id="loader" aria-hidden="true">
+  <svg class="ld-mark" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle class="ld-sun" cx="55" cy="44" r="25"/>
+    <path class="ld-roof" d="M20 58 L55 30 L90 58"/>
+    <line class="ld-ray" x1="55" y1="9" x2="55" y2="2"/>
+    <line class="ld-ray" x1="79" y1="20" x2="84" y2="15"/>
+    <line class="ld-ray" x1="31" y1="20" x2="26" y2="15"/>
+  </svg>
+  <div class="ld-word">BELSEYS <span class="accent">LEADWORKS</span>
+    <span class="ld-sub">Lead Roofing &amp; Metalwork · Dorset</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#home" class="nav-logo">
+      <img src="logo.jpg" alt="Belseys Leadworks">
+      <span class="nl-txt"><b>Belseys</b><span>Leadworks · Dorset</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Call us</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-panel" id="mpanel">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#about">About</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-primary" id="mCall" href="#contact">Call us today</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow"><span class="eyebrow"><span class="dot"></span>Lead specialists across Dorset</span></div>
+      <h1>Leadwork built<span class="accent">to outlast the roof.</span></h1>
+      <p class="hero-lede">Belseys Leadworks is a specialist lead roofing and hard-metal team with over 20 years on the tools. Box gutters, chimney flashings, standing-seam roofs and heritage detail, hand-formed, watertight and made to last a lifetime.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="heroCall" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#15181b" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Call us</span>
+        </a>
+        <a class="btn btn-ghost" href="#contact">Get a free quote</a>
+      </div>
+      <div class="hero-meta">
+        <span class="star">★★★★★</span>
+        <span class="mt"><b>20+ years</b> on the tools</span>
+        <span class="mt"><b>Fully insured</b> · free quotes</span>
+      </div>
+      <div class="hero-badge-m">
+        <div class="hb-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M3 9l9-6 9 6"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div><div class="hb-t">Code-5 lead, done right</div><div class="hb-s">Traditional &amp; conservation work</div></div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="frame"><img src="hero.jpg" alt="Standing-seam lead roofing on a Dorset stone house by Belseys Leadworks"></div>
+      <div class="hero-badge">
+        <div class="hb-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M3 9l9-6 9 6"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg></div>
+        <div><div class="hb-t">Code-5 lead, done right</div><div class="hb-s">Traditional &amp; conservation work</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TRUST ===== -->
+<section class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Fully Insured</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>20+ Years' Experience</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg><span>Heritage &amp; Conservation</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M20 6L9 17l-5-5"/></svg><span>Free Quotes</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg><span>Workmanship Guaranteed</span></div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we do</span>
+      <h2>Specialist leadwork, <span class="accent">end to end.</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg></div><h3>Lead Roofing</h3><p>Traditional lead sheet to bays, flats, porches and parapets, laid to code and detailed to last generations.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 8h18l-2 9a2 2 0 0 1-2 1.5H7A2 2 0 0 1 5 17z"/><path d="M3 8l2-4h14l2 4"/></svg></div><h3>Box Gutters &amp; Valleys</h3><p>Hand-formed lead box gutters, valley and parapet linings that move with the building and stay watertight.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M5 21V8l5-4v4l5-4v17"/><path d="M15 9h4v12"/><path d="M3 21h18"/></svg></div><h3>Chimney Leadwork</h3><p>Soakers, step and cover flashings, back gutters and full chimney trays to stop leaks at the source.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 20l8-16 8 16"/><path d="M7 14h10"/></svg></div><h3>Standing-Seam &amp; Hard Metal</h3><p>Standing-seam roofing in lead, zinc and copper, with sharp lines, concealed fixings and a clean modern finish.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 5v8l-8 5-8-5V8z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Heritage &amp; Conservation</h3><p>Lead and metalwork for listed buildings, churches and period homes, with sympathetic, like-for-like detail.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 12l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 14h4v6h-4z"/></svg></div><h3>Dormers &amp; Bay Roofs</h3><p>Cheeks, tops and flashings to dormers, bays and porches, clad and dressed for a crisp, lasting seal.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 12l9-7 9 7"/><path d="M5 11v9h14v-9"/><path d="M3 20h18"/></svg></div><h3>Slate &amp; Tile Roofing</h3><p>Re-roofs, slipped slates, ridges and repairs finished alongside the leadwork. One team, one trip.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2z"/></svg></div><h3>Leak Repairs &amp; Maintenance</h3><p>Failed flashings, splits and tired lead tracked down and put right before they cost you a ceiling.</p></div>
+      <div class="svc-card reveal"><div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M7 14h6"/></svg></div><h3>Rainwater &amp; Cladding</h3><p>Lead-welded hoppers, downpipes, ornamental detail and metal cladding to finish the job properly.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="seam reveal"></div></div>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2>Lead that does <span class="accent">the job properly.</span></h2>
+    </div>
+    <div class="gal">
+      <div class="gtile big reveal" data-src="work-7.jpg"><img src="work-7.jpg" alt="Standing-seam lead roof and porch on a Dorset stone house"><div class="gcap">Standing-seam roof &amp; porch · Dorset</div></div>
+      <div class="gtile wide reveal" data-src="work-1.jpg"><img src="work-1.jpg" alt="Standing-seam metal roof detail on stone building"><div class="gcap">Standing-seam roof · stone barn</div></div>
+      <div class="gtile reveal" data-src="work-2.jpg"><img src="work-2.jpg" alt="Slate roof with lead-dressed dormers"><div class="gcap">Slate roof &amp; dormers</div></div>
+      <div class="gtile reveal" data-src="work-3.jpg"><img src="work-3.jpg" alt="Slate hip roof with lead ridge and finial"><div class="gcap">Slate hip &amp; finial</div></div>
+      <div class="gtile reveal" data-src="work-4.jpg"><img src="work-4.jpg" alt="Lead step flashing to a brick chimney on a slate roof"><div class="gcap">Chimney flashing · brickwork</div></div>
+      <div class="gtile tall reveal" data-src="work-5.jpg"><img src="work-5.jpg" alt="Hand-formed lead chimney box and back gutter"><div class="gcap">Lead chimney box &amp; back gutter</div></div>
+      <div class="gtile wide reveal" data-src="work-6.jpg"><img src="work-6.jpg" alt="Hand-dressed lead box gutter bench detail"><div class="gcap">Hand-dressed lead box gutter</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="wrap sec">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="label" style="display:block;margin-bottom:16px">Who we are</span>
+        <h2>A new name, with deep roots in the trade.</h2>
+        <p>Belseys Leadworks is a newly established Dorset business built on more than 20 years of hands-on leadwork. From a single slipped flashing to a full lead roof, the work is hand-formed on site, dressed by eye and finished the traditional way.</p>
+        <p>We work for homeowners, builders and conservation projects across Dorset, turning up when we say, keeping the site tidy, and leaving a roof that's watertight for the long haul. No shortcuts, no call-backs.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">20+</div><div class="l">Years experience</div></div>
+          <div class="stat"><div class="n">100%</div><div class="l">Specialist leadwork</div></div>
+          <div class="stat"><div class="n">5.0</div><div class="l">Customer rating</div></div>
+        </div>
+      </div>
+      <div class="about-media reveal">
+        <img src="work-5.jpg" alt="Lead chimney box detail">
+        <img src="work-6.jpg" alt="Hand-dressed lead box gutter">
+        <img src="hero.jpg" alt="Standing-seam lead roof">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="label">How we work</span>
+      <h2>From survey <span class="accent">to watertight.</span></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card reveal">
+        <div class="pn">01</div>
+        <h3>Survey &amp; quote</h3>
+        <p>We come out, get up on the roof, and give you a clear fixed price, with the right lead code spec'd for the job and no guesswork.</p>
+        <svg class="conn" width="36" height="20" viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10h28m0 0l-7-6m7 6l-7 6"/></svg>
+      </div>
+      <div class="proc-card reveal">
+        <div class="pn">02</div>
+        <h3>Formed on site</h3>
+        <p>Every detail is bossed and welded by hand to fit your building, so it sits right, moves right and seals for the long term.</p>
+        <svg class="conn" width="36" height="20" viewBox="0 0 36 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10h28m0 0l-7-6m7 6l-7 6"/></svg>
+      </div>
+      <div class="proc-card reveal">
+        <div class="pn">03</div>
+        <h3>Left watertight</h3>
+        <p>We patination-oil the lead, clear the site and walk it through with you, and stand behind the workmanship after we leave.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reviews" id="reviews">
+  <div class="wrap sec">
+    <div class="rev-top reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="label">Reviews</span>
+        <h2>What customers <span class="accent">say.</span></h2>
+      </div>
+      <div class="rev-rating">
+        <span class="big">5.0</span>
+        <div><div class="stars">★★★★★</div><div class="cnt">Rated by Dorset homeowners</div></div>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"Re-led both chimneys and the back gutter on our place in Dorchester. The leadwork is a proper craft job, dressed beautifully and not a drip since. Couldn't fault them."</p>
+        <div class="who"><div class="av">H</div><div><div class="nm">Helen R.</div><div class="meta">Dorchester · Chimney leadwork</div></div><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"Standing-seam roof over our garden room, and the finish is stunning. Clean lines, no visible fixings and they left the place spotless. Worth every penny."</p>
+        <div class="who"><div class="av">M</div><div><div class="nm">Mark T.</div><div class="meta">Wimborne · Standing-seam roof</div></div><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"We're builders and use Belseys for all our lead now. Reliable, turns up, and the detailing is spot on every time. Makes our jobs look the part."</p>
+        <div class="who"><div class="av">D</div><div><div class="nm">Dave P.</div><div class="meta">Poole · Trade lead detailing</div></div><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"Listed cottage near Sherborne, so the leadwork had to be sympathetic. They matched the original detail perfectly and the conservation officer was happy. First class."</p>
+        <div class="who"><div class="av">J</div><div><div class="nm">Julia S.</div><div class="meta">Sherborne · Heritage leadwork</div></div><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"Had a persistent leak two other roofers couldn't find. Belseys traced it to a split lead valley, re-formed it in a morning and that was that. Proper specialists."</p>
+        <div class="who"><div class="av">A</div><div><div class="nm">Andy C.</div><div class="meta">Weymouth · Leak repair</div></div><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="qt">"New dormers clad and the bay roof re-led on our place in Bridport. Tidy, polite and clearly knew exactly what they were doing. Highly recommend."</p>
+        <div class="who"><div class="av">C</div><div><div class="nm">Claire H.</div><div class="meta">Bridport · Dormers &amp; bay roof</div></div><svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 4.75c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.46 14.97.5 12 .5A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 6.68 9.14 4.75 12 4.75z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section class="sec" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Where we work</span>
+      <h2>Covering Dorset <span class="accent">&amp; the surrounding area.</span></h2>
+    </div>
+    <div class="areas-grid reveal">
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Dorset</span>
+      <span class="area-chip">Dorchester</span>
+      <span class="area-chip">Poole</span>
+      <span class="area-chip">Bournemouth</span>
+      <span class="area-chip">Weymouth</span>
+      <span class="area-chip">Bridport</span>
+      <span class="area-chip">Sherborne</span>
+      <span class="area-chip">Wimborne</span>
+      <span class="area-chip">Blandford Forum</span>
+      <span class="area-chip">Wareham</span>
+      <span class="area-chip">Swanage</span>
+      <span class="area-chip">Shaftesbury</span>
+      <span class="area-chip">Gillingham</span>
+      <span class="area-chip">Beaminster</span>
+      <span class="area-chip">Verwood</span>
+      <span class="area-chip">Ferndown</span>
+      <span class="area-chip">Christchurch</span>
+      <span class="area-chip">Lyme Regis</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="wrap" style="padding-bottom:30px">
+  <div class="ctaband reveal">
+    <div>
+      <h2>Got leadwork that needs doing right?</h2>
+      <p>Free quotes across Dorset, with no obligation, no pushy sales just an honest price from a specialist.</p>
+    </div>
+    <div class="cb-btns">
+      <a class="btn btn-primary" id="ctaCall" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Call us</span>
+      </a>
+      <a class="btn btn-wa" id="ctaWa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Get in touch</span>
+      <h2>Tell us about <span class="accent">your roof.</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="ci-card">
+          <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="t">Call us</div><div class="v"><a id="cPhone1"></a></div><div class="s">Free quotes &amp; advice, just give us a ring.</div></div>
+        </div>
+        <div class="ci-card">
+          <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2z"/></svg></div>
+          <div><div class="t">WhatsApp</div><div class="v"><a id="cWa" target="_blank" rel="noopener"></a></div><div class="s">Send a photo of the job for a quick steer.</div></div>
+        </div>
+        <div class="ci-card">
+          <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="t">Based in</div><div class="v">Dorset</div><div class="s">Covering Dorset &amp; the surrounding area.</div></div>
+        </div>
+        <div class="ci-card">
+          <div class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="t">Hours</div><div class="v">Mon–Sat, 7am–6pm</div><div class="s">Leak emergencies by arrangement.</div></div>
+        </div>
+      </div>
+      <form class="form reveal" action="/api/enquiry" method="POST" id="enqForm">
+        <h3>Request a free quote</h3>
+        <p class="fsub">Send a few details and we'll come back with a fixed price.</p>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Belseys Leadworks">
+        <input type="hidden" name="source" value="mockup-belseys-leadworks">
+        <div class="frow">
+          <div class="field"><label>Name *</label><input type="text" name="name" required placeholder="Your name"></div>
+          <div class="field"><label>Phone *</label><input type="tel" name="phone" id="phoneInput" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx"></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@email.com"></div>
+        <div class="field"><label>Service</label>
+          <select name="service">
+            <option value="">Select a service…</option>
+            <optgroup label="Leadwork">
+              <option>Lead roofing</option><option>Box gutters &amp; valleys</option><option>Chimney leadwork &amp; flashings</option><option>Heritage &amp; conservation</option>
+            </optgroup>
+            <optgroup label="Metal &amp; roofing">
+              <option>Standing-seam / hard metal</option><option>Dormers &amp; bay roofs</option><option>Slate &amp; tile roofing</option><option>Rainwater &amp; cladding</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Leak repair / maintenance</option><option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field"><label>Message</label><textarea name="message" placeholder="Tell us about the job, location and rough timescale…"></textarea></div>
+        <button type="submit" class="btn btn-primary">Send my enquiry</button>
+        <p class="form-note">No spam, no obligation. We only use your details to quote your job.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fb-logo"><img src="logo.jpg" alt="Belseys Leadworks"><span class="nm">Belseys Leadworks</span></div>
+        <p>Specialist lead roofing &amp; metalwork across Dorset. Over 20 years' experience. Hand-formed, watertight, built to last.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Lead roofing</a>
+        <a href="#services">Box gutters &amp; valleys</a>
+        <a href="#services">Chimney leadwork</a>
+        <a href="#services">Standing-seam &amp; hard metal</a>
+        <a href="#services">Heritage &amp; conservation</a>
+      </div>
+      <div class="foot-col">
+        <h4>Areas</h4>
+        <a href="#areas">Dorchester</a>
+        <a href="#areas">Poole</a>
+        <a href="#areas">Bournemouth</a>
+        <a href="#areas">Weymouth</a>
+        <a href="#areas">Sherborne</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a id="fPhone"></a>
+        <a id="fWa" target="_blank" rel="noopener">WhatsApp us</a>
+        <span>Dorset &amp; surrounding area</span>
+        <span>Mon–Sat, 7am–6pm</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="yr"></span> Belseys Leadworks. All rights reserved.</p>
+      <p>Site by <a href="https://construction-sites.co.uk/builders-web-design" target="_blank" rel="noopener">Construction Sites</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING FABS ===== -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="#15181b" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a class="fab fab-wa" id="fabWa" target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.8 1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"/></svg></a>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lb" id="lb"><span class="lb-close" id="lbClose">&times;</span><img id="lbImg" src="" alt="Project photo"></div>
+
+<script>
+// ---- contact decode ----
+var P  = atob('MDc4Njg5OTU4NDg=');
+var Pf = atob('MDc4NjggOTk1ODQ4');
+var WA = atob('NDQ3ODY4OTk1ODQ4');
+var waLink = 'https://wa.me/'+WA+'?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20for%20some%20leadwork%20please';
+
+function setTel(id,num){var el=document.getElementById(id);if(el)el.href='tel:'+num;}
+['navCall','heroCall','ctaCall','fabCall','mCall'].forEach(function(id){setTel(id,P);});
+document.getElementById('fabWa').href=waLink;
+document.getElementById('ctaWa').href=waLink;
+// contact block
+var cp1=document.getElementById('cPhone1');cp1.textContent=Pf;cp1.href='tel:'+P;
+var cw=document.getElementById('cWa');cw.textContent=Pf;cw.href=waLink;
+var fp=document.getElementById('fPhone');fp.textContent='Call '+Pf;fp.href='tel:'+P;
+var fw=document.getElementById('fWa');fw.href=waLink;
+document.getElementById('yr').textContent=new Date().getFullYear();
+var ft=document.getElementById('formTimestamp');if(ft)ft.value=Date.now();
+
+// ---- phone validity ----
+var pin=document.getElementById('phoneInput');
+if(pin){pin.addEventListener('input',function(){
+  this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))?'':'Please enter a valid UK phone number');
+});}
+
+// ---- loader ----
+window.addEventListener('load',function(){
+  setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('done');},2100);
+});
+setTimeout(function(){var l=document.getElementById('loader');if(l)l.classList.add('done');},2600);
+
+// ---- nav scroll ----
+var nav=document.getElementById('nav');
+var fabs=document.getElementById('fabs');
+window.addEventListener('scroll',function(){
+  var y=window.scrollY;
+  nav.classList.toggle('scrolled',y>20);
+  fabs.classList.toggle('show',y>640);
+});
+
+// ---- mobile menu ----
+var burger=document.getElementById('burger'),mpanel=document.getElementById('mpanel');
+burger.addEventListener('click',function(){burger.classList.toggle('open');mpanel.classList.toggle('open');});
+mpanel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');mpanel.classList.remove('open');});});
+
+// ---- reveal ----
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// ---- lightbox ----
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('.gtile').forEach(function(t){t.addEventListener('click',function(){lbImg.src=t.getAttribute('data-src');lb.classList.add('open');});});
+function closeLb(){lb.classList.remove('open');}
+document.getElementById('lbClose').addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+</script>
+</body>
+</html>
