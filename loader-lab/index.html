@@ -446,6 +446,38 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes frWeld{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){#ld-frame .fr-col,#ld-frame .fr-beam,#ld-frame .fr-beam::after{animation:none!important;transform:none;opacity:1}#ld-frame .wordmark,#ld-frame .wordsub{opacity:1;animation:none}}
 
+/* ===== beam load-path (structural engineers / design consultants) ===== */
+#ld-loadpath{background:#f5f6f8;flex-direction:column;gap:24px}
+#ld-loadpath .lp-stage{width:280px;height:150px}
+#ld-loadpath .lp-stage svg{width:100%;height:100%;overflow:visible}
+#ld-loadpath .lp-col{transform-origin:bottom;transform:scaleY(0)}
+#ld-loadpath .lp-flange{stroke:#14181f;stroke-width:5;stroke-linecap:round;fill:none;stroke-dasharray:180;stroke-dashoffset:180}
+#ld-loadpath .lp-web{stroke:#4f46e5;stroke-width:2.4;opacity:0}
+#ld-loadpath .lp-load{opacity:0;transform:translateY(-16px)}
+#ld-loadpath .lp-react{opacity:0}
+#ld-loadpath .lp-tickc{stroke:#16a34a;stroke-width:4;fill:none;stroke-linecap:round;stroke-dasharray:34;stroke-dashoffset:34}
+#ld-loadpath .lp-ring{stroke:#16a34a;stroke-width:2.5;fill:none;opacity:0}
+#ld-loadpath .wordmark{color:#14181f}
+#ld-loadpath .wordmark b{color:#4f46e5}
+#ld-loadpath .wordsub{color:#878d9a}
+#ld-loadpath.play .lp-col.l{animation:lpRise .5s cubic-bezier(.5,0,.2,1) .1s forwards}
+#ld-loadpath.play .lp-col.r{animation:lpRise .5s cubic-bezier(.5,0,.2,1) .22s forwards}
+#ld-loadpath.play .lp-flange{animation:lpDraw .8s cubic-bezier(.6,0,.3,1) .45s forwards}
+#ld-loadpath.play .lp-web{animation:lpFade .4s ease 1.05s forwards}
+#ld-loadpath.play .lp-load{animation:lpDrop .45s cubic-bezier(.5,0,.2,1) 1.15s forwards}
+#ld-loadpath.play .lp-beam{animation:lpDeflect 1.1s cubic-bezier(.4,0,.4,1) 1.55s forwards}
+#ld-loadpath.play .lp-react{animation:lpFade .4s ease 1.5s forwards}
+#ld-loadpath.play .lp-ring{animation:lpFade .35s ease 1.8s forwards}
+#ld-loadpath.play .lp-tickc{animation:lpDraw .4s ease 1.85s forwards}
+#ld-loadpath.play .wordmark{animation:wordIn .5s ease 2s forwards}
+#ld-loadpath.play .wordsub{animation:wordIn .5s ease 2.18s forwards}
+@keyframes lpRise{to{transform:scaleY(1)}}
+@keyframes lpDraw{to{stroke-dashoffset:0}}
+@keyframes lpFade{to{opacity:1}}
+@keyframes lpDrop{to{opacity:1;transform:translateY(0)}}
+@keyframes lpDeflect{0%{transform:translateY(0)}45%{transform:translateY(3px)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){#ld-loadpath .lp-col,#ld-loadpath .lp-flange,#ld-loadpath .lp-web,#ld-loadpath .lp-load,#ld-loadpath .lp-react,#ld-loadpath .lp-ring,#ld-loadpath .lp-tickc{animation:none!important;transform:none;opacity:1;stroke-dashoffset:0}#ld-loadpath .wordmark,#ld-loadpath .wordsub{opacity:1;animation:none}}
+
 /* ===== book-match marble (tilers / marble & stone) ===== */
 #ld-frame-bm{background:#1c1c1e;flex-direction:column;gap:28px}
 #ld-frame-bm .bm{position:relative;width:236px;height:150px;overflow:hidden;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
@@ -1138,6 +1170,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Two steel columns rise from the baseline, then a beam slides across to cap them with an accent weld line, and the wordmark seats beneath the finished portal frame. Reads "we build structures". First used on adex-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-loadpath" data-dur="2700">
+      <span class="trade">Structural Engineers / Design Consultants</span>
+      <h3>Beam Load-Path</h3>
+      <p>Two columns rise, an I-beam (RSJ) draws across to span the opening, a load arrow presses down with reaction arrows answering at the supports, the beam settles with a tiny deflection, then a green "pass" tick stamps and the wordmark lands. Reads "we check the calcs". First used on struct-design-consultants.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-crane" data-dur="2400">
       <span class="trade">Builders / New Builds</span>
       <h3>Crane Lift</h3>
@@ -1643,6 +1681,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="wordmark">A<b>D</b>EX</div>
   <div class="wordsub">Solutions International</div>
+</div>
+
+<!-- beam load-path (structural engineers) -->
+<div class="loader" id="ld-loadpath" aria-hidden="true">
+  <div class="lp-stage">
+    <svg viewBox="0 0 280 150" fill="none">
+      <line x1="20" y1="128" x2="260" y2="128" stroke="#d2d7e0" stroke-width="3" stroke-linecap="round"/>
+      <rect class="lp-col l" x="44" y="74" width="11" height="54" rx="2" fill="#14181f"/>
+      <rect class="lp-col r" x="225" y="74" width="11" height="54" rx="2" fill="#14181f"/>
+      <g class="lp-beam">
+        <line class="lp-flange" x1="40" y1="62" x2="240" y2="62"/>
+        <line class="lp-flange" x1="40" y1="76" x2="240" y2="76"/>
+        <line class="lp-web" x1="80" y1="64" x2="80" y2="74"/>
+        <line class="lp-web" x1="120" y1="64" x2="120" y2="74"/>
+        <line class="lp-web" x1="160" y1="64" x2="160" y2="74"/>
+        <line class="lp-web" x1="200" y1="64" x2="200" y2="74"/>
+      </g>
+      <g class="lp-load">
+        <line x1="140" y1="20" x2="140" y2="52" stroke="#4f46e5" stroke-width="3" stroke-linecap="round"/>
+        <path d="M133 45 L140 54 L147 45" stroke="#4f46e5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+      <g class="lp-react">
+        <path d="M44 112 L49.5 104 L55 112" stroke="#8b85f0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M225 112 L230.5 104 L236 112" stroke="#8b85f0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+      <circle class="lp-ring" cx="232" cy="34" r="15"/>
+      <path class="lp-tickc" d="M225 34 L230 39 L240 28"/>
+    </svg>
+  </div>
+  <div class="wordmark">STRUCT <b>DESIGN</b></div>
+  <div class="wordsub">Calculations &middot; Verified</div>
 </div>
 
 <!-- 15. dig out -->
