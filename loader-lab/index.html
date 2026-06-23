@@ -908,6 +908,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-nail.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
 #ld-nail.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
 @media (prefers-reduced-motion:reduce){#ld-nail .nd-hammer{transform:translateY(30px)}#ld-nail .nd-nail{transform:translateY(48px)}}
+
+/* ===== 36. MULTI-TRADE / ALL-ROUNDER — toolkit tick ===== */
+#ld-toolkit{background:#f3f4f5;flex-direction:column;gap:30px;text-align:center}
+#ld-toolkit .tk-tools{display:flex;gap:20px}
+#ld-toolkit .tk-tool{width:56px;height:56px;border-radius:13px;background:#fff;border:1px solid #e4e7e8;display:flex;align-items:center;justify-content:center;position:relative;opacity:.3;transform:translateY(8px) scale(.92);color:#8a9295}
+#ld-toolkit .tk-tool svg{width:28px;height:28px}
+#ld-toolkit .tk-tool .chk{position:absolute;right:-5px;bottom:-5px;width:20px;height:20px;border-radius:50%;background:#0e6e61;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.4)}
+#ld-toolkit .tk-tool .chk svg{width:12px;height:12px;color:#fff}
+#ld-toolkit.play .tk-tool:nth-child(1){animation:tkOn .5s ease .15s forwards}
+#ld-toolkit.play .tk-tool:nth-child(2){animation:tkOn .5s ease .45s forwards}
+#ld-toolkit.play .tk-tool:nth-child(3){animation:tkOn .5s ease .75s forwards}
+#ld-toolkit.play .tk-tool:nth-child(4){animation:tkOn .5s ease 1.05s forwards}
+#ld-toolkit.play .tk-tool:nth-child(1) .chk{animation:tkChk .35s ease .5s forwards}
+#ld-toolkit.play .tk-tool:nth-child(2) .chk{animation:tkChk .35s ease .8s forwards}
+#ld-toolkit.play .tk-tool:nth-child(3) .chk{animation:tkChk .35s ease 1.1s forwards}
+#ld-toolkit.play .tk-tool:nth-child(4) .chk{animation:tkChk .35s ease 1.4s forwards}
+@keyframes tkOn{0%{opacity:.3;transform:translateY(8px) scale(.92);color:#8a9295;border-color:#e4e7e8}55%{opacity:1;transform:translateY(0) scale(1.08);color:#0e6e61;border-color:#0e6e61}100%{opacity:1;transform:translateY(0) scale(1);color:#0e6e61;border-color:#0e6e61}}
+@keyframes tkChk{0%{opacity:0;transform:scale(.4)}60%{opacity:1;transform:scale(1.18)}100%{opacity:1;transform:scale(1)}}
+#ld-toolkit .wordmark{color:#181d1c;text-transform:none;letter-spacing:-.01em}
+#ld-toolkit .wordmark b{color:#0e6e61}
+#ld-toolkit .wordsub{color:#8a9295}
+#ld-toolkit.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
+#ld-toolkit.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld-toolkit .tk-tool,#ld-toolkit .tk-tool .chk,#ld-toolkit .wordmark,#ld-toolkit .wordsub{opacity:1;animation:none!important;transform:none}
+  #ld-toolkit .tk-tool{color:#0e6e61;border-color:#0e6e61}
+}
 </style>
 </head>
 <body>
@@ -1159,6 +1186,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Joiners / Builders / Carpenters</span>
       <h3>Nail Drive</h3>
       <p>A steel nail sits proud of a timber board, then the hammer swings down and drives it flush in three strikes, oak sparks flicking off at each blow, before the wordmark lands. Animates the brand for any builder whose logo is a hammer. First used on sfc-joiner-builder.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-toolkit" data-dur="2300">
+      <span class="trade">Multi-trade / all-rounder</span>
+      <h3>Toolkit Tick</h3>
+      <p>Four trade tool glyphs (trowel, saw, pipe-wrench, spade, one per trade) light up from grey to accent and check off left to right in sequence, then the wordmark lands. Dramatises the "one call, every trade" pitch for a builder who covers building, joinery, plumbing and landscaping. First used on slh-property-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -1787,6 +1820,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">S.F.C</div>
     <div class="wordsub">Joiner &amp; Builder</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-toolkit" aria-hidden="true">
+  <div class="tk-tools">
+    <div class="tk-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4l9 9 5-5-9-9z" transform="translate(1 2)"/><path d="M14 13l5 5"/><path d="M17 16l2.5 2.5"/></svg><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></span></div>
+    <div class="tk-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l13-13 3 3-13 13"/><path d="M3 15l-1 5 5-1"/><path d="M4.5 14l2 2M8.5 10l2 2M12.5 6l2 2"/></svg><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></span></div>
+    <div class="tk-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.2L3 17.8 6.2 21l6.3-6.3a4 4 0 005.2-5.4l-2.4 2.4-2.3-.6-.6-2.3z"/></svg><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></span></div>
+    <div class="tk-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="M9 5h6"/><path d="M12 10c-3 1-4 3-4 5a4 4 0 008 0c0-2-1-4-4-5z"/></svg><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></span></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">SLH <b>Property</b> Solutions</div>
+    <div class="wordsub">One call &middot; Every trade</div>
   </div>
 </div>
 
