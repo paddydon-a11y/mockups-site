@@ -424,6 +424,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-crane .wordsub{color:#8b919b}
 #ld-crane.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
 
+/* ===== steel frame rise (construction / building contractors) ===== */
+#ld-frame{background:#15171a;color:#fff;flex-direction:column}
+#ld-frame .fr-stage{position:relative;width:200px;height:120px;margin-bottom:30px}
+#ld-frame .fr-col{position:absolute;bottom:0;width:13px;background:linear-gradient(180deg,#b3bcc1,#7e878c);border-radius:2px;transform:scaleY(0);transform-origin:bottom}
+#ld-frame .fr-col::before{content:"";position:absolute;left:-5px;top:0;width:23px;height:9px;background:#8d969b;border-radius:2px}
+#ld-frame .fr-col.l{left:14px;height:100px}
+#ld-frame .fr-col.r{right:14px;height:100px}
+#ld-frame .fr-beam{position:absolute;top:6px;left:8px;width:184px;height:14px;background:linear-gradient(90deg,#7e878c,#b3bcc1,#7e878c);border-radius:2px;transform:scaleX(0);transform-origin:left;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+#ld-frame .fr-beam::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:4px;background:#15803d;border-radius:0 0 2px 2px;opacity:0}
+#ld-frame.play .fr-col.l{animation:frRise .55s cubic-bezier(.2,.7,.2,1) .15s forwards}
+#ld-frame.play .fr-col.r{animation:frRise .55s cubic-bezier(.2,.7,.2,1) .35s forwards}
+#ld-frame.play .fr-beam{animation:frSpan .55s cubic-bezier(.2,.7,.2,1) .75s forwards}
+#ld-frame.play .fr-beam::after{animation:frWeld .3s ease 1.15s forwards}
+#ld-frame .wordmark b{color:#7ee2a0}
+#ld-frame .wordsub{color:#7a8288}
+#ld-frame.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
+#ld-frame.play .wordsub{animation:wordIn .5s ease 1.45s forwards}
+@keyframes frRise{to{transform:scaleY(1)}}
+@keyframes frSpan{to{transform:scaleX(1)}}
+@keyframes frWeld{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){#ld-frame .fr-col,#ld-frame .fr-beam,#ld-frame .fr-beam::after{animation:none!important;transform:none;opacity:1}#ld-frame .wordmark,#ld-frame .wordsub{opacity:1;animation:none}}
+
 /* ===== 15. GROUNDWORKS / PLANT — dig out ===== */
 #ld-dig{background:#16181d;flex-direction:column;gap:26px;color:#fff}
 #ld-dig .dig-stage{position:relative;width:min(300px,78vw);height:140px}
@@ -1001,6 +1023,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The bubble drifts along the vial, overshoots, then settles dead centre between the marks. The vial flashes "level" and the wordmark lands. First used on winning-creations.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-frame" data-dur="2300">
+      <span class="trade">Construction / Building Contractors</span>
+      <h3>Steel Frame Rise</h3>
+      <p>Two steel columns rise from the baseline, then a beam slides across to cap them with an accent weld line, and the wordmark seats beneath the finished portal frame. Reads "we build structures". First used on adex-solutions.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-crane" data-dur="2400">
       <span class="trade">Builders / New Builds</span>
       <h3>Crane Lift</h3>
@@ -1464,6 +1492,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <div class="wordsub">Builders &middot; Kent</div>
     </div>
   </div>
+</div>
+
+<!-- steel frame rise -->
+<div class="loader" id="ld-frame" aria-hidden="true">
+  <div class="fr-stage">
+    <div class="fr-beam"></div>
+    <div class="fr-col l"></div>
+    <div class="fr-col r"></div>
+  </div>
+  <div class="wordmark">A<b>D</b>EX</div>
+  <div class="wordsub">Solutions International</div>
 </div>
 
 <!-- 15. dig out -->
