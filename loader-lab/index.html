@@ -987,6 +987,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-bolt .bt-spanner{transform:rotate(8deg)}#ld-bolt .bt-bolt svg{transform:rotate(90deg)}
   #ld-bolt .bt-seal{opacity:1;transform:scale(1)}#ld-bolt .bt-bolt svg .hex{fill:#e7c3b6;stroke:#bb4d2f}
 }
+
+/* delivery drop (multi-trade builders with a van/truck logo) */
+#ld-delivery{background:linear-gradient(180deg,#f7f8f6,#eceee9);flex-direction:column}
+#ld-delivery .dl-stage{position:relative;width:300px;max-width:78vw;height:90px;margin-bottom:26px}
+#ld-delivery .dl-road{position:absolute;left:0;right:0;bottom:18px;height:2px;background-image:repeating-linear-gradient(90deg,#d3d6cf 0 14px,transparent 14px 26px)}
+#ld-delivery .dl-road-fill{position:absolute;left:0;bottom:18px;height:2px;width:0;background-image:repeating-linear-gradient(90deg,#ef4d1e 0 14px,transparent 14px 26px)}
+#ld-delivery.play .dl-road-fill{animation:dlRoad 1.5s .15s ease-out forwards}
+@keyframes dlRoad{to{width:100%}}
+#ld-delivery .dl-van{position:absolute;bottom:20px;left:-132px;width:118px}
+#ld-delivery.play .dl-van{animation:dlDrive 1.55s .1s cubic-bezier(.4,.6,.3,1) forwards}
+@keyframes dlDrive{0%{transform:translateX(0)}80%{transform:translateX(218px)}88%{transform:translateX(210px)}100%{transform:translateX(214px)}}
+#ld-delivery .dl-lamp{opacity:0}
+#ld-delivery.play .dl-lamp{animation:dlLamp .5s 1.55s ease-out forwards}
+@keyframes dlLamp{0%,100%{opacity:0}40%{opacity:1}}
+#ld-delivery .wordmark{color:#1c1f24}
+#ld-delivery .wordmark b{color:#ef4d1e}
+#ld-delivery .wordsub{color:#878d95}
+#ld-delivery.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
+#ld-delivery.play .wordsub{animation:wordIn .5s ease 1.92s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld-delivery .dl-van{position:relative;left:auto;bottom:auto;margin:0 auto}
+  #ld-delivery .dl-road,#ld-delivery .dl-road-fill{display:none}
+  #ld-delivery .dl-van,#ld-delivery .dl-lamp,#ld-delivery .wordmark,#ld-delivery .wordsub{animation:none!important;opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -1256,6 +1280,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Building maintenance / repairs</span>
       <h3>Bolt Tighten</h3>
       <p>A spanner sits over a hex bolt and ratchets it tight in three stepped clicks; the bolt seats and glows in the accent colour, a tick seal stamps in the corner, then the wordmark lands. "Keeping things sound and tight" for any maintenance, repairs or handyman brand. First used on bcm-building-maintenance.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-delivery" data-dur="2300">
+      <span class="trade">Multi-trade builders / home improvements</span>
+      <h3>Delivery Drop</h3>
+      <p>A line-drawn delivery van drives in from the left along a dashed route line that fills with the accent colour behind it, settles with a small bounce, the headlamp beams flash, then the wordmark lands. For any "we deliver the finished job" brand with a van or truck in the logo. First used on singh-delivers.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -1923,6 +1953,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">BCM <b>Building Maintenance</b></div>
     <div class="wordsub">North Devon &middot; No job too small</div>
+  </div>
+</div>
+
+<!-- 43. delivery drop (multi-trade builders / home improvements with a van/truck logo) -->
+<div class="loader" id="ld-delivery" aria-hidden="true">
+  <div class="dl-stage">
+    <div class="dl-road"></div>
+    <div class="dl-road-fill"></div>
+    <svg class="dl-van" viewBox="0 0 120 64" fill="none">
+      <path d="M4 44V18a3 3 0 0 1 3-3h58a3 3 0 0 1 3 3v26" stroke="#1c1f24" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M68 24h18l12 13v7" stroke="#1c1f24" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M68 24v20" stroke="#1c1f24" stroke-width="3"/>
+      <path d="M2 44h116" stroke="#1c1f24" stroke-width="3" stroke-linecap="round"/>
+      <rect x="72" y="28" width="13" height="9" rx="1.5" stroke="#1c1f24" stroke-width="2.4"/>
+      <circle cx="26" cy="48" r="8" fill="#f4f5f3" stroke="#1c1f24" stroke-width="3"/>
+      <circle cx="90" cy="48" r="8" fill="#f4f5f3" stroke="#1c1f24" stroke-width="3"/>
+      <path class="dl-lamp" d="M98 33l12-3M98 38l12 0M98 43l12 3" stroke="#ef4d1e" stroke-width="2.6" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Singh <b>Delivers</b></div>
+    <div class="wordsub">Making home improvement easy</div>
   </div>
 </div>
 
