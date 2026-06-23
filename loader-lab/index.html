@@ -446,6 +446,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes frWeld{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){#ld-frame .fr-col,#ld-frame .fr-beam,#ld-frame .fr-beam::after{animation:none!important;transform:none;opacity:1}#ld-frame .wordmark,#ld-frame .wordsub{opacity:1;animation:none}}
 
+/* ===== book-match marble (tilers / marble & stone) ===== */
+#ld-frame-bm{background:#1c1c1e;flex-direction:column;gap:28px}
+#ld-frame-bm .bm{position:relative;width:236px;height:150px;overflow:hidden;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+#ld-frame-bm .bm-half{position:absolute;top:0;height:100%;width:50%;background:linear-gradient(115deg,#c7cac4 0%,#eef0ec 22%,#d3d6d0 38%,#f1f3ef 55%,#cfd2cc 72%,#e7e9e4 100%)}
+#ld-frame-bm .bm-half::before{content:"";position:absolute;top:-10%;left:34%;width:5px;height:120%;background:rgba(90,96,92,.5);filter:blur(1px);transform:rotate(13deg)}
+#ld-frame-bm .bm-half::after{content:"";position:absolute;top:-10%;left:60%;width:2px;height:120%;background:rgba(120,126,120,.45);filter:blur(.5px);transform:rotate(13deg)}
+#ld-frame-bm .bm-half.l{left:0;transform:translateX(-112%)}
+#ld-frame-bm .bm-half.r{right:0;transform:scaleX(-1) translateX(-112%)}
+#ld-frame-bm .bm-seam{position:absolute;top:0;left:50%;width:2px;height:100%;background:#e0712a;transform:translateX(-50%) scaleY(0);transform-origin:center}
+#ld-frame-bm.play .bm-half.l{animation:bmIn .6s cubic-bezier(.3,.7,.2,1) .2s forwards}
+#ld-frame-bm.play .bm-half.r{animation:bmInR .6s cubic-bezier(.3,.7,.2,1) .2s forwards}
+#ld-frame-bm.play .bm-seam{animation:bmSeam .4s ease .85s forwards}
+#ld-frame-bm .wordmark b{color:#e0712a}
+#ld-frame-bm .wordsub{color:#8b8884}
+#ld-frame-bm.play .wordmark{animation:wordIn .5s ease 1.05s forwards}
+#ld-frame-bm.play .wordsub{animation:wordIn .5s ease 1.2s forwards}
+@keyframes bmIn{to{transform:translateX(0)}}
+@keyframes bmInR{to{transform:scaleX(-1) translateX(0)}}
+@keyframes bmSeam{to{transform:translateX(-50%) scaleY(1)}}
+@media (prefers-reduced-motion:reduce){#ld-frame-bm .bm-half.l{transform:none!important}#ld-frame-bm .bm-half.r{transform:scaleX(-1)!important}#ld-frame-bm .bm-seam{transform:translateX(-50%) scaleY(1)}#ld-frame-bm .wordmark,#ld-frame-bm .wordsub{opacity:1;animation:none}}
+
 /* ===== 15. GROUNDWORKS / PLANT — dig out ===== */
 #ld-dig{background:#16181d;flex-direction:column;gap:26px;color:#fff}
 #ld-dig .dig-stage{position:relative;width:min(300px,78vw);height:140px}
@@ -1050,6 +1071,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The bubble drifts along the vial, overshoots, then settles dead centre between the marks. The vial flashes "level" and the wordmark lands. First used on winning-creations.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-frame-bm" data-dur="2300">
+      <span class="trade">Tilers / Marble &amp; Stone</span>
+      <h3>Book-match Marble</h3>
+      <p>Two veined marble panels slide in from opposite sides and meet mirror-imaged to form a book-matched panel, a fine accent grout seam draws down the join, then the wordmark lands. Ties straight to marble specialism. First used on mbrother-tiling.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-frame" data-dur="2300">
       <span class="trade">Construction / Building Contractors</span>
       <h3>Steel Frame Rise</h3>
@@ -1524,6 +1551,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <div class="crane-strip"></div>
       <div class="wordsub">Builders &middot; Kent</div>
     </div>
+  </div>
+</div>
+
+<!-- book-match marble -->
+<div class="loader" id="ld-frame-bm" aria-hidden="true">
+  <div class="bm">
+    <div class="bm-half l"></div>
+    <div class="bm-half r"></div>
+    <div class="bm-seam"></div>
+  </div>
+  <div style="text-align:center">
+    <div class="wordmark">M<b>BROTHER</b></div>
+    <div class="wordsub">Tiling &middot; London</div>
   </div>
 </div>
 
