@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicolae Radu Stonemasonry · Stonemason in Bedfordshire · Walls, Patios &amp; Pointing</title>
+<meta name="description" content="Nicolae Radu Stonemasonry, a Bedfordshire stonemason. Dry stone walling, stone garden and boundary walls, natural stone patios, repointing and general stonework. Call for a free quote.">
+<meta property="og:title" content="Nicolae Radu Stonemasonry · Bedfordshire Stonemason">
+<meta property="og:description" content="Traditional stonework across Bedfordshire, dry stone walling, stone walls, patios, repointing and general stonework. Free quotes.">
+<meta property="og:image" content="og.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f4efe6;
+  --bg-2:#fbf8f2;
+  --card:#ffffff;
+  --card-2:#ece4d6;
+  --ink:#2a2620;
+  --body:#524c42;
+  --muted:#8c8475;
+  --line:#e2d9c9;
+  --line-2:#d2c6b1;
+  --accent:#33586b;
+  --accent-deep:#274453;
+  --accent-soft:rgba(51,88,107,.10);
+  --stone:#b9a786;
+  --shadow:0 18px 50px -22px rgba(42,38,32,.40);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.disp{font-family:'Marcellus',serif;color:var(--ink);font-weight:400;line-height:1.1;letter-spacing:.005em}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.accent{color:var(--accent)}
+
+/* ---------- LOADER : pointing sweep ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:30px;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.point-stage{position:relative;width:260px;height:120px}
+.stone-wall{position:absolute;inset:0;border-radius:7px;overflow:hidden;
+  background:linear-gradient(#d8ccb4,#c4b496);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -10px 20px rgba(0,0,0,.14)}
+/* two courses of stone with a mortar joint between them */
+.course{position:absolute;left:0;right:0;height:44px;
+  background-image:
+    linear-gradient(90deg,rgba(0,0,0,.10) 0 2px,transparent 2px),
+    linear-gradient(90deg,rgba(0,0,0,.10) 0 2px,transparent 2px),
+    linear-gradient(135deg,#d2c4a8,#bda87f);
+  background-size:62px 100%,46px 100%,100% 100%;
+  background-position:0 0,30px 0,0 0}
+.course.top{top:14px}
+.course.bot{bottom:14px;background-position:22px 0,52px 0,0 0}
+.joint{position:absolute;left:0;right:0;top:58px;height:14px;background:#9d8e72;box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}
+/* fresh mortar fills behind the trowel, left to right */
+.mortar{position:absolute;left:0;top:58px;height:14px;width:100%;
+  background:linear-gradient(#efe7d6,#dccfb4);box-shadow:inset 0 1px 2px rgba(255,255,255,.6),inset 0 -2px 3px rgba(0,0,0,.12);
+  clip-path:inset(0 100% 0 0);animation:fill 1.7s .3s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes fill{to{clip-path:inset(0 0 0 0)}}
+.trowel{position:absolute;top:30px;left:-26px;width:60px;height:60px;animation:sweep 1.7s .3s cubic-bezier(.7,0,.3,1) forwards}
+.trowel svg{width:100%;height:100%;filter:drop-shadow(0 6px 7px rgba(0,0,0,.3))}
+@keyframes sweep{0%{transform:translate(0,0)}100%{transform:translate(240px,0)}}
+.loader-sub{font-family:'Marcellus',serif;font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeUp .6s 1.55s forwards}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:900;background:rgba(244,239,230,.92);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav::before{content:"";position:absolute;inset:0;backdrop-filter:saturate(140%) blur(8px);z-index:-1}
+nav.scrolled{box-shadow:0 1px 0 var(--line),0 10px 30px -20px rgba(0,0,0,.4)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.brand-mark{width:44px;height:44px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Marcellus',serif;font-size:1.05rem;letter-spacing:.02em;flex:none}
+.brand-name{display:block;font-family:'Marcellus',serif;font-size:1.16rem;color:var(--ink);letter-spacing:.07em;line-height:1}
+.brand-sub{display:block;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.82rem;font-weight:600;letter-spacing:.04em;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff !important;padding:11px 20px;border-radius:6px;font-weight:700;font-size:.82rem;letter-spacing:.03em;transition:background .2s}
+.nav-cta:hover{background:var(--accent-deep)}
+.nav-cta svg{stroke:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.hamburger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+.mobile-panel{display:none}
+
+/* ---------- HERO : H4 centered overlay ---------- */
+.hero{position:relative;min-height:94vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#1c1813}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{0%{transform:scale(1.03)}100%{transform:scale(1.14)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse at 50% 42%,rgba(20,16,12,.18) 0%,rgba(20,16,12,.52) 62%,rgba(20,16,12,.78) 100%),
+  linear-gradient(180deg,rgba(20,16,12,.32) 0%,rgba(20,16,12,.10) 34%,rgba(20,16,12,.62) 100%)}
+.hero-inner{position:relative;z-index:2;padding:96px 24px;max-width:980px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Marcellus',serif;font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:#e8ddc9;margin-bottom:24px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(120,170,195,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(120,170,195,.55)}70%{box-shadow:0 0 0 12px rgba(120,170,195,0)}100%{box-shadow:0 0 0 0 rgba(120,170,195,0)}}
+.hero h1{color:#fff;font-size:clamp(2.6rem,6.6vw,5.6rem);letter-spacing:.01em;max-width:17ch;margin:0 auto;text-shadow:0 2px 34px rgba(0,0,0,.45)}
+.hero h1 .accent{color:#a9cad9}
+.hero-lede{color:#ece4d6;font-size:clamp(1.02rem,1.5vw,1.22rem);max-width:60ch;margin:24px auto 0;line-height:1.7}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:7px;font-weight:700;font-size:.92rem;letter-spacing:.02em;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 14px 34px -14px rgba(51,88,107,.9)}
+.btn-primary:hover{background:var(--accent-deep)}
+.btn-wa{background:#25d366;color:#08361b}
+.btn-ghost{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(4px)}
+.btn svg{width:18px;height:18px}
+
+/* ---------- TRUST STRIP ---------- */
+.trust{background:var(--ink);color:#ece4d6}
+.trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:11px;font-size:.82rem;font-weight:600;letter-spacing:.03em;flex:1;justify-content:center;min-width:160px}
+.trust-item svg{width:20px;height:20px;stroke:var(--stone);flex:none}
+.trust-item + .trust-item{border-left:1px solid rgba(255,255,255,.12)}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative}
+.pad{padding:104px 0}
+.pad-first{padding-top:96px}
+.shead{margin-bottom:54px;max-width:48ch}
+.label{display:block;font-family:'Marcellus',serif;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.shead h2{font-size:clamp(2rem,4.4vw,3.1rem)}
+
+/* services - S2 3-col icon cards */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px 30px;transition:transform .28s,box-shadow .28s,border-color .28s;position:relative;overflow:hidden}
+.scard::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--accent);transition:width .4s ease}
+.scard:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--line-2)}
+.scard:hover::after{width:100%}
+.scard .ico{width:54px;height:54px;border-radius:11px;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:20px}
+.scard .ico svg{width:27px;height:27px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.scard h3{font-size:1.3rem;margin-bottom:10px;letter-spacing:.015em}
+.scard p{font-size:.95rem;color:var(--body)}
+.scard .tag{display:inline-block;margin-top:16px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* gallery - G3 3-col grid */
+.gal-wrap{background:var(--bg-2)}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gtile{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;background:#ddd;border:1px solid var(--line);aspect-ratio:4/3}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.gtile:hover img{transform:scale(1.07)}
+.gtile .cap{position:absolute;inset:auto 0 0 0;padding:34px 16px 14px;font-size:.8rem;font-weight:600;letter-spacing:.03em;color:#fff;background:linear-gradient(0deg,rgba(20,16,12,.84),transparent);opacity:0;transition:opacity .3s}
+.gtile:hover .cap{opacity:1}
+.gal-foot{margin-top:18px;font-size:.86rem;color:var(--muted)}
+
+/* about - after gallery */
+.about{background:var(--card-2)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.about p{font-size:1.05rem;color:var(--body);margin-bottom:18px;max-width:58ch}
+.sig{display:flex;align-items:center;gap:16px;margin-top:30px}
+.sig-mark{width:56px;height:56px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Marcellus',serif;font-size:1.1rem;flex:none}
+.sig-name{font-family:'Marcellus',serif;color:var(--ink);font-size:1.08rem;letter-spacing:.03em}
+.sig-role{font-size:.8rem;color:var(--muted);letter-spacing:.06em}
+.about-photo{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.stat-row{display:flex;gap:40px;margin-top:36px;flex-wrap:wrap}
+.stat .n{font-family:'Marcellus',serif;font-size:2.4rem;color:var(--accent);line-height:1}
+.stat .l{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* reviews - R3 */
+.rev-wrap{background:var(--bg-2)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.stars{color:var(--accent);letter-spacing:3px;font-size:1rem;margin-bottom:14px}
+.rev p{font-size:1.02rem;color:var(--ink);line-height:1.6;margin-bottom:18px}
+.rev .by{font-size:.84rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+.rev .by b{color:var(--ink);font-weight:700}
+
+/* cta band */
+.band{background:var(--ink);color:#fff;text-align:center}
+.band h2{color:#fff;font-size:clamp(1.9rem,4vw,2.8rem);max-width:22ch;margin:0 auto 14px}
+.band p{color:#d3cab9;max-width:50ch;margin:0 auto 30px}
+.band .hero-cta{justify-content:center}
+
+/* contact - C1 */
+.con-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+.con-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.con-card svg{width:24px;height:24px;stroke:var(--accent);flex:none;margin-top:3px}
+.con-card .t{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.con-card .v{font-size:1.06rem;font-weight:600;color:var(--ink)}
+.con-card .v.sm{font-size:.95rem;font-weight:500}
+form{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:32px}
+.field{margin-bottom:18px}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:7px;letter-spacing:.02em}
+input,select,textarea{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:7px;background:var(--bg-2);font-family:inherit;font-size:.96rem;color:var(--ink);transition:border .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+textarea{resize:vertical;min-height:110px}
+.submit{width:100%;background:var(--accent);color:#fff;border:0;padding:16px;border-radius:7px;font-weight:700;font-size:1rem;letter-spacing:.02em;cursor:pointer;transition:background .2s}
+.submit:hover{background:var(--accent-deep)}
+
+/* footer */
+footer{background:var(--ink);color:#bcb3a4;padding:56px 0 30px}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .brand-name{color:#fff}
+.foot-tag{font-size:.9rem;max-width:34ch;margin-top:14px;color:#9f978a}
+.foot-col h4{font-family:'Marcellus',serif;color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.foot-col a{display:block;font-size:.88rem;margin-bottom:9px;color:#bcb3a4;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+.foot-bot{padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:#8c8475}
+.foot-bot a{color:var(--stone)}
+
+/* floating fabs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(12px);transition:.35s}
+.fabs.show{opacity:1;visibility:visible;transform:none}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--accent);animation:fpulse 2.2s infinite}
+.fab-wa{background:#25d366;animation:fpulse 2.2s infinite .4s}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(51,88,107,.5)}70%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 14px rgba(51,88,107,0)}100%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(51,88,107,0)}}
+.fab-wa{animation-name:fpulseg}
+@keyframes fpulseg{0%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(37,211,102,0)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-panel{display:block;position:absolute;top:74px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow);padding:18px 24px 26px;transform:translateY(-130%);transition:transform .35s ease;z-index:899}
+  .mobile-panel.open{transform:none}
+  .mobile-panel a{display:block;padding:13px 0;font-weight:600;border-bottom:1px solid var(--line);color:var(--ink)}
+  .mobile-panel .nav-cta{display:flex;justify-content:center;margin-top:16px;border:0}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  .about-photo{order:2;max-width:440px}
+  .con-grid{grid-template-columns:1fr;gap:28px}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{flex:none;justify-content:flex-start;padding:14px 0;width:100%;min-width:0;border-left:0 !important}
+  .trust-item + .trust-item{border-top:1px solid rgba(255,255,255,.12)}
+}
+@media(max-width:640px){
+  .pad{padding:72px 0}
+  .pad-first{padding-top:68px}
+  .brand-mark{width:40px;height:40px;font-size:.95rem}
+  .brand-name{font-size:1rem;letter-spacing:.05em}
+  .brand-sub{font-size:.54rem;letter-spacing:.18em}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr;gap:14px}
+  .hero{min-height:90vh}
+  .foot-cols{gap:36px}
+  .stat-row{gap:26px}
+}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:9500;background:rgba(18,14,10,.94);display:none;align-items:center;justify-content:center;padding:24px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:86vh;border-radius:8px;box-shadow:0 30px 80px -20px #000}
+#lb .x{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;font-family:'Marcellus',serif}
+#lb .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.4rem;cursor:pointer;padding:10px;user-select:none;opacity:.7}
+#lb .nav-arrow:hover{opacity:1}
+#lb .prev{left:14px}#lb .next{right:14px}
+</style>
+</head>
+<body>
+
+<!-- LOADER : pointing sweep -->
+<div id="loader">
+  <div class="point-stage">
+    <div class="stone-wall">
+      <div class="course top"></div>
+      <div class="course bot"></div>
+      <div class="joint"></div>
+      <div class="mortar"></div>
+    </div>
+    <div class="trowel" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none">
+        <rect x="6" y="8" width="20" height="9" rx="3" fill="#7a5a38"/>
+        <rect x="24" y="10" width="8" height="5" rx="1.5" fill="#b9bdc4"/>
+        <path d="M30 6 L58 10 L40 24 L30 19 Z" fill="#d8dde3" stroke="#a7adb5" stroke-width="1.4"/>
+        <path d="M30 6 L30 19 L40 24 Z" fill="#bcc2c9"/>
+      </svg>
+    </div>
+  </div>
+  <div class="loader-sub">Nicolae Radu · Stonemasonry</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark">NR</span>
+      <span>
+        <span class="brand-name">NICOLAE RADU</span>
+        <span class="brand-sub">Stonemasonry</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a id="navCall" class="nav-cta" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#areas">Areas</a>
+    <a id="navCall2" class="nav-cta" href="#">Call us</a>
+  </div>
+</nav>
+
+<!-- HERO : H4 centered overlay -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="hero.jpg" alt="Traditional English dry stone wall set in open countryside"></div>
+  <div class="hero-inner">
+    <span class="eyebrow"><span class="dot"></span>Bedfordshire Stonemason</span>
+    <h1>Stonework built the <span class="accent">traditional way</span></h1>
+    <p class="hero-lede">Dry stone walling, stone garden and boundary walls, natural stone patios, repointing and general stonework, laid by hand and built to last across Bedfordshire.</p>
+    <div class="hero-cta">
+      <a id="heroCall" class="btn btn-primary" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="heroCallTxt">Call us</span>
+      </a>
+      <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#08361b"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-1 1.1c-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.9.9-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#work">See the work</a>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg>Fully Insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v20M2 7l10-5 10 5"/><path d="M5 9v8M19 9v8M9 12v5M15 12v5"/></svg>Traditional Methods</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Free Quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.3 5.7 21.4 8 14 2 9.4h7.6z"/></svg>Quality Workmanship</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Bedfordshire &amp; surrounding</div>
+  </div>
+</div>
+
+<!-- SERVICES : S2 3-col icon cards -->
+<section class="pad pad-first" id="services">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="label">What we do</span>
+      <h2>Stonework, <span class="accent">start to finish</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Stonemasonry</h3>
+        <p>Natural stone cut, dressed and set by hand, walls, features and structural stonework built true and tidy.</p>
+        <span class="tag">Cut &amp; Set</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M8 7v5M14 7v5M6 12v5M12 12v5M18 12v5"/></svg></div>
+        <h3>Stone Walls</h3>
+        <p>Garden, boundary and retaining walls in natural stone, laid to bond, coped and capped to stand for decades.</p>
+        <span class="tag">Garden &amp; Boundary</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 18c2-3 4-4 8-4s6 1 8 4"/><path d="M6 14c1-2 3-3 6-3s5 1 6 3"/><path d="M8 10c1-1.5 2.5-2 4-2s3 .5 4 2"/></svg></div>
+        <h3>Dry Stone Walling</h3>
+        <p>Traditional dry stone walls built without mortar, stone graded, laid and hearted the old way, then through-stoned and capped.</p>
+        <span class="tag">Mortar-Free</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+        <h3>Patios &amp; Paving</h3>
+        <p>Natural stone patios and paths laid on solid foundations, with clean joints and falls that drain, a finish that lifts the whole garden.</p>
+        <span class="tag">Natural Stone</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 16h18"/><path d="M7 8v8M13 8v8M19 8v8"/><path d="M3 12h4M10 12h4M17 12h4"/></svg></div>
+        <h3>Pointing &amp; Repairs</h3>
+        <p>Old joints raked out and repointed by hand, plus stone repairs and replacement, breathable mortars that suit old walls.</p>
+        <span class="tag">Repointing</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 3l7 7-4 4-7-7z"/><path d="M10 7L3 14v7h7l7-7"/></svg></div>
+        <h3>General Stonework</h3>
+        <p>Steps, piers, edging, repairs and one-off stone features, if it is in stone, it is worth a call.</p>
+        <span class="tag">Repairs &amp; Features</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY : G3 3-col grid -->
+<section class="gal-wrap pad" id="work">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="label">Recent work</span>
+      <h2>Stone we have <span class="accent">stood back from</span></h2>
+    </div>
+    <div class="gal">
+      <div class="gtile reveal" data-cap="Dry stone field wall built without mortar"><img src="work-1.jpg" alt="Traditional dry stone field wall"><span class="cap">Dry stone field wall built without mortar</span></div>
+      <div class="gtile reveal" data-cap="Natural stone garden and boundary wall"><img src="work-2.jpg" alt="Natural stone garden boundary wall along a lane"><span class="cap">Natural stone garden and boundary wall</span></div>
+      <div class="gtile reveal" data-cap="Natural stone patio and paving"><img src="work-3.jpg" alt="Natural stone patio and paving"><span class="cap">Natural stone patio and paving</span></div>
+      <div class="gtile reveal" data-cap="Drystone wall across open moorland"><img src="work-4.jpg" alt="Drystone wall running across open moorland"><span class="cap">Drystone wall across open moorland</span></div>
+      <div class="gtile reveal" data-cap="Dressed stone coursing, pointed by hand"><img src="work-5.jpg" alt="Close-up of dressed and pointed stone coursing"><span class="cap">Dressed stone coursing, pointed by hand</span></div>
+      <div class="gtile reveal" data-cap="Stone steps and feature work"><img src="work-6.jpg" alt="Natural stone steps and feature work"><span class="cap">Stone steps and feature work</span></div>
+      <div class="gtile reveal" data-cap="Cotswold stone wall and cottage"><img src="work-7.jpg" alt="Cotswold honey-stone garden wall below a stone cottage"><span class="cap">Cotswold stone wall and cottage</span></div>
+      <div class="gtile reveal" data-cap="Freshly built and pointed stonework"><img src="work-8.jpg" alt="Freshly built and pointed stone wall"><span class="cap">Freshly built and pointed stonework</span></div>
+    </div>
+    <p class="gal-foot reveal">A few examples of the kind of work we do. Click any photo to view it larger.</p>
+  </div>
+</section>
+
+<!-- ABOUT : after gallery -->
+<section class="about pad" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="label">The mason</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:22px">Nicolae Radu</h2>
+      <p>Nicolae Radu Stonemasonry is hands-on work, stone graded, dressed and laid by Nicolae himself, from setting out the first course to striking the last joint clean.</p>
+      <p>The work is traditional natural stone: dry stone walling, garden and boundary walls, patios and repointing, with the patience old stone asks for. No shortcuts, no mess left behind, just a wall that does its job for the long run.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">Hand</div><div class="l">Laid &amp; finished</div></div>
+        <div class="stat"><div class="n">Natural</div><div class="l">Stone throughout</div></div>
+        <div class="stat"><div class="n">Free</div><div class="l">No-obligation quotes</div></div>
+      </div>
+      <div class="sig">
+        <span class="sig-mark">NR</span>
+        <span><span class="sig-name">Nicolae Radu</span><br><span class="sig-role">Stonemason · Bedfordshire</span></span>
+      </div>
+    </div>
+    <div class="about-photo reveal"><img src="about.jpg" alt="Detail of quality natural stone walling by Nicolae Radu"></div>
+  </div>
+</section>
+
+<!-- REVIEWS : R3 -->
+<section class="rev-wrap pad">
+  <div class="wrap">
+    <div class="shead reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="label">What people say</span>
+      <h2>Word of <span class="accent">mouth</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Nicolae rebuilt our front boundary wall in matching stone and you would never know it was new. Tidy, polite and got on with it. Delighted.</p><div class="by"><b>Sarah H.</b>, Bedford · Boundary wall</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Proper dry stone walling, no mortar, just done the old way. It looks the part and feels solid as anything. Would have him back without hesitation.</p><div class="by"><b>Tom W.</b>, Ampthill · Dry stone wall</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Laid a natural stone patio for us and the finish is lovely, clean joints, drains properly and lifts the whole garden. Fair price too.</p><div class="by"><b>Priya M.</b>, Biggleswade · Stone patio</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Repointed the front of our old cottage. He knew the right mortar to use and took his time over it. Careful, knowledgeable work.</p><div class="by"><b>David L.</b>, Leighton Buzzard · Repointing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band pad">
+  <div class="wrap">
+    <span class="label" style="color:#a9cad9">Get a quote</span>
+    <h2>Got stonework that needs a proper hand?</h2>
+    <p>Send a couple of photos on WhatsApp or give us a call. Happy to come and have a look.</p>
+    <div class="hero-cta">
+      <a id="bandCall" class="btn btn-primary" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+      <a id="bandWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">WhatsApp a photo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT : C1 -->
+<section class="pad" id="contact">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="label">Get in touch</span>
+      <h2>Tell us about the <span class="accent">job</span></h2>
+    </div>
+    <div class="con-grid">
+      <div class="reveal">
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="t">Phone</div><div class="v" id="contactPhone"></div></div>
+        </div>
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="#25d366" stroke="none"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2z"/></svg>
+          <div><div class="t">WhatsApp</div><div class="v sm"><a id="waText" href="#" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">Send a photo of the stone</a></div></div>
+        </div>
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div><div class="t">Area</div><div class="v sm">Bedfordshire and the surrounding counties.</div></div>
+        </div>
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><div class="t">Hours</div><div class="v sm">Mon–Sat, daytime. Confirm at onboarding.</div></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Nicolae Radu Stonemasonry">
+        <input type="hidden" name="source" value="mockup-nicolae-radu-stonemasonry">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx"></div>
+        <div class="field"><label for="email">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="email" name="email" type="email"></div>
+        <div class="field"><label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <optgroup label="Walling">
+              <option>Dry stone walling</option>
+              <option>Stone garden / boundary wall</option>
+              <option>Retaining wall</option>
+            </optgroup>
+            <optgroup label="Stonework">
+              <option>Natural stone patio / paving</option>
+              <option>Pointing / repairs</option>
+              <option>General stonework</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Details</label><textarea id="message" name="message" placeholder="Where the job is, what the stone is, and what needs doing."></textarea></div>
+        <button class="submit" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="pad" id="areas" style="background:var(--card-2);padding-top:72px;padding-bottom:72px">
+  <div class="wrap">
+    <div class="shead reveal"><span class="label">Where we work</span><h2>Bedfordshire &amp; <span class="accent">surrounding</span></h2></div>
+    <p class="reveal" style="max-width:60ch;color:var(--body)">Based in Bedfordshire and working right across the county and into the neighbouring areas. If your town is not listed, ask, it is likely well within reach.</p>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Bedford</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Ampthill</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Biggleswade</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Leighton Buzzard</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Sandy</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Flitwick</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Dunstable</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">Luton</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600;letter-spacing:.02em">St Neots</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="brand-name" style="font-family:'Marcellus',serif;font-size:1.3rem;letter-spacing:.07em">NICOLAE RADU</span>
+        <p class="foot-tag">Traditional stonework across Bedfordshire, dry stone walling, stone walls, patios, repointing and general stonework.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Services</h4>
+          <a href="#services">Stonemasonry</a>
+          <a href="#services">Stone walls</a>
+          <a href="#services">Dry stone walling</a>
+          <a href="#services">Patios &amp; paving</a>
+          <a href="#services">Pointing &amp; repairs</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="#work">Recent work</a>
+          <a href="#about">About</a>
+          <a href="#areas">Areas</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> Nicolae Radu Stonemasonry</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call Nicolae Radu Stonemasonry">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp Nicolae Radu Stonemasonry">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-1 1.1c-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.9.9-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+  </a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb"><span class="x" id="lbX">&times;</span><span class="nav-arrow prev" id="lbPrev">&#8249;</span><img id="lbImg" src="" alt=""><span class="nav-arrow next" id="lbNext">&#8250;</span></div>
+
+<script>
+// contact info (base64)
+var P = atob('MDc5NTExNTc2MDU=');
+var Pf = atob('MDc5NTEgMTU3NjA1');
+var WA = atob('NDQ3OTUxMTU3NjA1');
+var waUrl = 'https://wa.me/' + WA + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+function setCall(id){var e=document.getElementById(id);if(e)e.href='tel:'+P;}
+['navCall','navCall2','heroCall','bandCall','fabCall'].forEach(setCall);
+['heroWa','bandWa','fabWa','waText'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=waUrl;});
+document.getElementById('contactPhone').textContent = Pf;
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('formTimestamp').value = Date.now();
+
+// phone validity
+var ph=document.getElementById('phone');
+if(ph){ph.addEventListener('input',function(){this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value)?'':'Please enter a valid UK phone number');});}
+
+// loader
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},2150);});
+
+// nav scrolled + mobile panel
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+var ham=document.getElementById('ham'),mp=document.getElementById('mpanel');
+ham.addEventListener('click',function(){mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mp.classList.remove('open');});});
+
+// floating fabs
+var fabs=document.getElementById('fabs'),hero=document.getElementById('top');
+var io=new IntersectionObserver(function(es){es.forEach(function(en){fabs.classList.toggle('show',!en.isIntersecting);});},{threshold:0});
+io.observe(hero);
+
+// reveal
+var ro=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+// lightbox
+var tiles=[].slice.call(document.querySelectorAll('.gtile')),imgs=tiles.map(function(t){return t.querySelector('img').src;}),alts=tiles.map(function(t){return t.querySelector('img').alt;});
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),ci=0;
+function show(i){ci=(i+imgs.length)%imgs.length;lbImg.src=imgs[ci];lbImg.alt=alts[ci];}
+tiles.forEach(function(t,i){t.addEventListener('click',function(){show(i);lb.classList.add('open');});});
+document.getElementById('lbX').addEventListener('click',function(){lb.classList.remove('open');});
+document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();show(ci+1);});
+document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();show(ci-1);});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')show(ci+1);if(e.key==='ArrowLeft')show(ci-1);});
+</script>
+</body>
+</html>
