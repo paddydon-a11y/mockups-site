@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NC Plastering &amp; General Building · Plasterer in Bristol &amp; Chippenham</title>
+<meta name="description" content="NC Plastering & General Building — plastering, skimming, dry lining, tiling and general building maintenance across Bristol, Chippenham and the surrounding area. Tidy work, fair prices, free quotes. Deal direct with the tradesman.">
+<meta name="theme-color" content="#2050c8">
+<meta property="og:title" content="NC Plastering & General Building · Bristol & Chippenham">
+<meta property="og:description" content="Plastering, dry lining, tiling and general building maintenance across Bristol, Chippenham and the surrounding area. Tidy work, fair prices, free quotes.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/nc-plastering/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/nc-plastering/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f4efe6;
+  --bg-2:#faf7f1;
+  --card:#ffffff;
+  --card-2:#efe8dc;
+  --ink:#142440;
+  --body:#4d5567;
+  --muted:#8d8577;
+  --line:#e6ddcf;
+  --line-2:#d8ccb8;
+  --accent:#2050c8;
+  --accent-deep:#173da0;
+  --accent-soft:rgba(32,80,200,.10);
+  --clay:#cf6b34;
+  --clay-soft:rgba(207,107,52,.12);
+  --plaster:#e7b69c;
+  --shadow:0 20px 54px -24px rgba(20,36,64,.40);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;color:var(--ink);font-weight:700;line-height:1.05;letter-spacing:-.018em}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.accent{color:var(--accent)}
+.clay{color:var(--clay)}
+
+/* ---------- LOADER : plaster cure ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.cure-stage{position:relative;width:248px;height:150px;border-radius:10px;overflow:hidden;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.4),inset 0 -14px 30px rgba(0,0,0,.16),0 16px 40px -22px rgba(20,36,64,.6)}
+/* wet, darker plaster base */
+.cure-wet{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 30% 20%,#8a6a55 0%,#75543f 55%,#5f4330 100%)}
+/* set, pale-pink plaster revealed by a diagonal cure front */
+.cure-set{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 70% 30%,#f0d7c6 0%,#e7b69c 55%,#dba282 100%);
+  clip-path:polygon(-30% 0,-10% 0,-50% 100%,-70% 100%);
+  animation:curefront 1.8s .35s cubic-bezier(.7,0,.25,1) forwards}
+@keyframes curefront{to{clip-path:polygon(120% 0,160% 0,120% 100%,80% 100%)}}
+/* travelling sheen with the cure front */
+.cure-sheen{position:absolute;top:0;bottom:0;width:60px;left:-80px;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.65),transparent);
+  transform:skewX(-18deg);animation:cuesheen 1.8s .35s cubic-bezier(.7,0,.25,1) forwards}
+@keyframes cuesheen{to{left:300px}}
+.loader-sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeUp .6s 1.7s forwards}
+.loader-sub b{color:var(--ink);font-weight:800;letter-spacing:.16em}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:900;background:rgba(244,239,230,.9);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav::before{content:"";position:absolute;inset:0;backdrop-filter:saturate(140%) blur(8px);z-index:-1}
+nav.scrolled{box-shadow:0 1px 0 var(--line),0 12px 30px -20px rgba(20,36,64,.4)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.brand-mark{position:relative;width:46px;height:46px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.04rem;letter-spacing:-.02em;flex:none;box-shadow:0 8px 20px -8px rgba(32,80,200,.75)}
+.brand-mark::after{content:"";position:absolute;right:-3px;bottom:-3px;width:14px;height:14px;border-radius:4px;background:var(--clay);box-shadow:0 4px 10px -3px rgba(207,107,52,.8)}
+.brand-name{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.16rem;color:var(--ink);letter-spacing:-.01em;line-height:1}
+.brand-sub{display:block;font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:5px;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.82rem;font-weight:600;letter-spacing:.01em;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff !important;padding:11px 20px;border-radius:7px;font-weight:700;font-size:.82rem;letter-spacing:.01em;transition:background .2s,transform .2s}
+.nav-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.nav-cta svg{stroke:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.hamburger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+.mobile-panel{display:none}
+
+/* ---------- HERO : split text-left + stacked photo-right ---------- */
+.hero{position:relative;padding:64px 0 78px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-200px;right:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,var(--clay-soft),transparent 68%);z-index:0}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+.eyebrow .dot{width:8px;height:8px;border-radius:2px;background:var(--clay);box-shadow:0 0 0 0 rgba(207,107,52,.55);animation:pulse 2.3s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(207,107,52,.55)}70%{box-shadow:0 0 0 11px rgba(207,107,52,0)}100%{box-shadow:0 0 0 0 rgba(207,107,52,0)}}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.5rem);letter-spacing:-.025em;max-width:15ch}
+.hero-lede{color:var(--body);font-size:clamp(1.04rem,1.4vw,1.18rem);max-width:50ch;margin:22px 0 0}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:8px;font-weight:700;font-size:.92rem;letter-spacing:.01em;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 14px 34px -14px rgba(32,80,200,.9)}
+.btn-primary:hover{background:var(--accent-deep)}
+.btn-wa{background:#25d366;color:#08361b}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn svg{width:18px;height:18px}
+.hero-meta{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.hero-meta .m{display:flex;align-items:center;gap:9px;font-size:.84rem;font-weight:600;color:var(--ink)}
+.hero-meta svg{width:18px;height:18px;stroke:var(--accent);flex:none}
+/* stacked photos */
+.hero-photos{position:relative;height:480px}
+.hp{position:absolute;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:5px solid #fff}
+.hp img{width:100%;height:100%;object-fit:cover}
+.hp-1{top:0;left:0;width:72%;height:74%;z-index:1}
+.hp-2{bottom:0;right:0;width:56%;height:56%;z-index:2}
+.hero-chip{position:absolute;z-index:3;left:50%;top:60%;transform:translate(-50%,-50%) rotate(-3deg);
+  background:var(--ink);color:#fff;border-radius:12px;padding:14px 18px;box-shadow:0 18px 40px -16px rgba(20,36,64,.7);text-align:center}
+.hero-chip .big{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.5rem;line-height:1;color:#fff}
+.hero-chip .sml{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#b9c2d6;margin-top:5px}
+.hero-chip .big em{color:var(--plaster)}
+
+/* ---------- TRUST ---------- */
+.trust{background:var(--ink);color:#dde3ef}
+.trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:11px;font-size:.82rem;font-weight:600;letter-spacing:.01em;flex:1;justify-content:center;min-width:160px}
+.trust-item svg{width:20px;height:20px;stroke:var(--plaster);flex:none}
+.trust-item + .trust-item{border-left:1px solid rgba(255,255,255,.12)}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative}
+.pad{padding:104px 0}
+.pad-first{padding-top:96px}
+.shead{margin-bottom:54px;max-width:52ch}
+.label{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);margin-bottom:16px}
+.shead h2{font-size:clamp(2rem,4.4vw,3.1rem)}
+
+/* services - left accent border cards */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.scard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 30px 32px 34px;transition:transform .28s,box-shadow .28s,border-color .28s;overflow:hidden}
+.scard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);transform:scaleY(.0);transform-origin:top;transition:transform .4s ease}
+.scard:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--line-2)}
+.scard:hover::before{transform:scaleY(1)}
+.scard .ico{width:54px;height:54px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:20px}
+.scard .ico svg{width:27px;height:27px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.scard h3{font-size:1.26rem;margin-bottom:10px;letter-spacing:-.01em}
+.scard p{font-size:.95rem;color:var(--body)}
+.scard .tag{display:inline-block;margin-top:16px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* gallery - asymmetric mosaic */
+.gal-wrap{background:var(--bg-2)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+.gtile{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;background:#ddd;border:1px solid var(--line)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.gtile:hover img{transform:scale(1.07)}
+.gtile.big{grid-column:span 2;grid-row:span 2}
+.gtile.tall{grid-row:span 2}
+.gtile .cap{position:absolute;inset:auto 0 0 0;padding:34px 16px 14px;font-size:.8rem;font-weight:600;letter-spacing:.01em;color:#fff;background:linear-gradient(0deg,rgba(12,20,36,.86),transparent);opacity:0;transition:opacity .3s}
+.gtile:hover .cap{opacity:1}
+.gal-foot{margin-top:18px;font-size:.86rem;color:var(--muted)}
+
+/* about - after gallery */
+.about{background:var(--card-2)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.about p{font-size:1.05rem;color:var(--body);margin-bottom:18px;max-width:58ch}
+.sig{display:flex;align-items:center;gap:16px;margin-top:30px}
+.sig-mark{width:56px;height:56px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.04rem;flex:none}
+.sig-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:var(--ink);font-size:1.08rem;letter-spacing:-.01em}
+.sig-role{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+.about-photo{border-radius:14px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;border:5px solid #fff}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.stat-row{display:flex;gap:40px;margin-top:36px;flex-wrap:wrap}
+.stat .n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.3rem;color:var(--accent);line-height:1;letter-spacing:-.02em}
+.stat .l{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* reviews - R 2x2 */
+.rev-wrap{background:var(--bg-2)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.stars{color:var(--clay);letter-spacing:3px;font-size:1rem;margin-bottom:14px}
+.rev p{font-size:1.02rem;color:var(--ink);line-height:1.6;margin-bottom:18px}
+.rev .by{font-size:.84rem;color:var(--muted);font-weight:600;letter-spacing:.01em}
+.rev .by b{color:var(--ink);font-weight:700}
+
+/* cta band */
+.band{background:var(--ink);color:#fff;text-align:center;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0,rgba(32,80,200,.34),transparent 60%)}
+.band::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 84% 120%,rgba(207,107,52,.26),transparent 55%)}
+.band .wrap{position:relative}
+.band h2{color:#fff;font-size:clamp(1.9rem,4vw,2.8rem);max-width:24ch;margin:0 auto 14px}
+.band p{color:#c6cee0;max-width:54ch;margin:0 auto 30px}
+.band .hero-cta{justify-content:center}
+
+/* contact - C1 */
+.con-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+.con-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.con-card svg{width:24px;height:24px;stroke:var(--accent);flex:none;margin-top:3px}
+.con-card .t{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.con-card .v{font-size:1.06rem;font-weight:600;color:var(--ink)}
+.con-card .v.sm{font-size:.95rem;font-weight:500}
+form{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:32px}
+.field{margin-bottom:18px}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:7px;letter-spacing:.01em}
+input,select,textarea{width:100%;padding:13px 15px;border:1px solid var(--line-2);border-radius:8px;background:var(--bg-2);font-family:inherit;font-size:.96rem;color:var(--ink);transition:border .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+textarea{resize:vertical;min-height:110px}
+.submit{width:100%;background:var(--accent);color:#fff;border:0;padding:16px;border-radius:8px;font-weight:700;font-size:1rem;letter-spacing:.01em;cursor:pointer;transition:background .2s}
+.submit:hover{background:var(--accent-deep)}
+
+/* footer */
+footer{background:var(--ink);color:#b3bdcf;padding:56px 0 30px}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand .brand-name{color:#fff}
+.foot-tag{font-size:.9rem;max-width:38ch;margin-top:14px;color:#94a0b4}
+.foot-col h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#fff;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.foot-col a{display:block;font-size:.88rem;margin-bottom:9px;color:#b3bdcf;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+.foot-bot{padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem;color:#8893a8}
+.foot-bot a{color:var(--plaster)}
+
+/* floating fabs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(12px);transition:.35s}
+.fabs.show{opacity:1;visibility:visible;transform:none}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--accent);animation:fpulse 2.2s infinite}
+.fab-wa{background:#25d366;animation:fpulseg 2.2s infinite .4s}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(32,80,200,.5)}70%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 14px rgba(32,80,200,0)}100%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(32,80,200,0)}}
+@keyframes fpulseg{0%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 10px 26px -8px rgba(0,0,0,.5),0 0 0 0 rgba(37,211,102,0)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-photos{height:420px;max-width:520px}
+}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-panel{display:block;position:absolute;top:74px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow);padding:18px 24px 26px;transform:translateY(-130%);transition:transform .35s ease;z-index:899}
+  .mobile-panel.open{transform:none}
+  .mobile-panel a{display:block;padding:13px 0;font-weight:600;border-bottom:1px solid var(--line);color:var(--ink)}
+  .mobile-panel .nav-cta{display:flex;justify-content:center;margin-top:16px;border:0}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .gtile.big{grid-column:span 2;grid-row:span 2}
+  .about-grid{grid-template-columns:1fr;gap:34px}
+  .about-photo{order:2;max-width:440px}
+  .con-grid{grid-template-columns:1fr;gap:28px}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{flex:none;justify-content:flex-start;padding:14px 0;width:100%;min-width:0;border-left:0 !important}
+  .trust-item + .trust-item{border-top:1px solid rgba(255,255,255,.12)}
+}
+@media(max-width:640px){
+  .pad{padding:72px 0}
+  .pad-first{padding-top:68px}
+  .brand-mark{width:42px;height:42px;font-size:.92rem}
+  .brand-name{font-size:1rem}
+  .brand-sub{font-size:.52rem;letter-spacing:.14em}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr;grid-auto-rows:230px}
+  .gtile.big,.gtile.tall{grid-column:auto;grid-row:auto}
+  .hero-photos{height:380px}
+  .stat-row{gap:26px}
+  .foot-cols{gap:36px}
+}
+
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:9500;background:rgba(12,18,30,.94);display:none;align-items:center;justify-content:center;padding:24px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:86vh;border-radius:8px;box-shadow:0 30px 80px -20px #000}
+#lb .x{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+#lb .nav-arrow{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.4rem;cursor:pointer;padding:10px;user-select:none;opacity:.7}
+#lb .nav-arrow:hover{opacity:1}
+#lb .prev{left:14px}#lb .next{right:14px}
+</style>
+</head>
+<body>
+
+<!-- LOADER : plaster cure -->
+<div id="loader">
+  <div class="cure-stage" aria-hidden="true">
+    <div class="cure-wet"></div>
+    <div class="cure-set"></div>
+    <div class="cure-sheen"></div>
+  </div>
+  <div class="loader-sub"><b>NC</b> · Plastering &amp; General Building</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark">NC</span>
+      <span>
+        <span class="brand-name">NC PLASTERING</span>
+        <span class="brand-sub">&amp; General Building</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a id="navCall" class="nav-cta" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#areas">Areas</a>
+    <a id="navCall2" class="nav-cta" href="#">Call us</a>
+  </div>
+</nav>
+
+<!-- HERO : split text-left + stacked photo-right -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-block">
+      <span class="eyebrow"><span class="dot"></span>Bristol &amp; Chippenham Plasterer</span>
+      <h1>Smooth walls, <span class="clay">tidy work</span>, done right</h1>
+      <p class="hero-lede">Plastering and skimming, dry lining, tiling and general building maintenance across Bristol, Chippenham and the surrounding area. Deal direct with the tradesman, no middleman, no lead fees, just a fair price and a proper finish.</p>
+      <div class="hero-cta">
+        <a id="heroCall" class="btn btn-primary" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#08361b"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-1 1.1c-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.9.9-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Free, no-obligation quotes</div>
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg>Fully insured</div>
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Clean, tidy finish</div>
+      </div>
+    </div>
+    <div class="hero-photos">
+      <div class="hp hp-1"><img src="work-1.jpg" alt="Freshly skimmed walls with a smooth pink plaster finish"></div>
+      <div class="hp hp-2"><img src="hero.jpg" alt="Newly rendered rear extension with bifold doors"></div>
+      <div class="hero-chip">
+        <div class="big"><em>Fresh</em> plaster</div>
+        <div class="sml">Skimmed &amp; ready to decorate</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg>Fully Insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>Plastering Specialist</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Free Quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17.3 5.7 21.4 8 14 2 9.4h7.6z"/></svg>Tidy, Quality Work</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Bristol &amp; Chippenham</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="pad pad-first" id="services">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="label">What we do</span>
+      <h2>Plastering &amp; building, <span class="accent">finished properly</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M7 3v18"/></svg></div>
+        <h3>Plastering &amp; Skimming</h3>
+        <p>Skimming over old or new walls and ceilings, re-plastering, patch repairs and bonding, left flat, smooth and ready to decorate.</p>
+        <span class="tag">Walls &amp; Ceilings</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M9 9v11M15 4v16"/></svg></div>
+        <h3>Dry Lining</h3>
+        <p>Plasterboarding walls and ceilings, stud partitions, dot-and-dab and metal framing, taped, jointed or skimmed ready for finishing.</p>
+        <span class="tag">Boarding &amp; Partitions</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+        <h3>Tiling</h3>
+        <p>Wall and floor tiling for bathrooms, kitchens and splashbacks, neatly set out, properly fixed and grouted for a clean, lasting finish.</p>
+        <span class="tag">Walls &amp; Floors</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Rendering</h3>
+        <p>External rendering and silicone render to refresh and protect walls, a clean, weatherproof finish for extensions and tired façades.</p>
+        <span class="tag">Silicone &amp; Sand-Cement</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M14 3l7 7-4 4-7-7z"/><path d="M10 7L3 14v7h7l7-7"/><path d="M9 13l2 2"/></svg></div>
+        <h3>General Building Maintenance</h3>
+        <p>The jobs around the house that need a reliable pair of hands, repairs, renovations and finishing work, sorted properly and left tidy.</p>
+        <span class="tag">Repairs &amp; Renovations</span>
+      </div>
+      <div class="scard reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 8h16v11H4z"/><path d="M4 8l3-4h10l3 4"/><path d="M9 19v-5h6v5"/></svg></div>
+        <h3>Flat Roofs</h3>
+        <p>Flat roof coverings and repairs as part of an extension or maintenance job, kept watertight and tidy alongside the rest of the work.</p>
+        <span class="tag">Coverings &amp; Repairs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY : asymmetric mosaic -->
+<section class="gal-wrap pad" id="work">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="label">Recent work</span>
+      <h2>A few jobs we have <span class="accent">finished off</span></h2>
+    </div>
+    <div class="gal">
+      <div class="gtile big reveal" data-cap="Fresh skim — smooth walls ready to decorate"><img src="work-1.jpg" alt="Freshly skimmed room with smooth pink plaster walls and reveal"><span class="cap">Fresh skim — smooth walls ready to decorate</span></div>
+      <div class="gtile reveal" data-cap="Re-plastered feature wall"><img src="work-2.jpg" alt="Newly plastered chimney-breast feature wall"><span class="cap">Re-plastered feature wall</span></div>
+      <div class="gtile tall reveal" data-cap="Skimmed bathroom ceiling"><img src="work-4.jpg" alt="Freshly skimmed bathroom ceiling above white tiling"><span class="cap">Skimmed bathroom ceiling</span></div>
+      <div class="gtile reveal" data-cap="Kitchen walls re-plastered"><img src="work-3.jpg" alt="Kitchen re-plastered around new units"><span class="cap">Kitchen walls re-plastered</span></div>
+      <div class="gtile reveal" data-cap="Rendered rear extension"><img src="work-5.jpg" alt="Newly rendered rear extension with bifold doors and flat roof"><span class="cap">Rendered rear extension</span></div>
+      <div class="gtile reveal" data-cap="Out and about across Bristol"><img src="work-6.jpg" alt="NC Plastering and General Building work van"><span class="cap">Out and about across Bristol</span></div>
+    </div>
+    <p class="gal-foot reveal">A few examples of recent work. Click any photo to view it larger.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about pad" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="label">Who you're dealing with</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:22px">NC Plastering &amp; General Building</h2>
+      <p>NC Plastering &amp; General Building is run by Noureddine, a Bristol plasterer and general builder who does the work himself. Plastering and skimming are the bread and butter, alongside dry lining, tiling, rendering and the general building jobs that keep a home right.</p>
+      <p>You deal with the tradesman direct, no call centres and no lead-generator middlemen. That means a straight answer, a fair price and work that is set out properly, finished smooth and left clean and tidy when it is done.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">Free</div><div class="l">No-obligation quotes</div></div>
+        <div class="stat"><div class="n">Direct</div><div class="l">Deal with the tradesman</div></div>
+        <div class="stat"><div class="n">Local</div><div class="l">Bristol &amp; Chippenham</div></div>
+      </div>
+      <div class="sig">
+        <span class="sig-mark">NC</span>
+        <span><span class="sig-name">Noureddine Charkaoui</span><br><span class="sig-role">Plasterer &amp; General Builder · Bristol</span></span>
+      </div>
+    </div>
+    <div class="about-photo reveal"><img src="about.jpg" alt="Freshly skimmed ceiling by NC Plastering & General Building"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="rev-wrap pad">
+  <div class="wrap">
+    <div class="shead reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="label">What people say</span>
+      <h2>Word of <span class="accent">mouth</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Noureddine skimmed our whole living room and hallway and it's come up perfect, lovely and smooth. Turned up when he said, clean and tidy throughout. Really happy with it.</p><div class="by"><b>Hannah W.</b>, Bristol · Plastering</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Had the bathroom re-boarded and tiled. Proper job, neatly set out and grouted, and a fair price too. Would definitely use again and have recommended him to family.</p><div class="by"><b>Mark T.</b>, Chippenham · Dry lining &amp; tiling</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Re-plastered two ceilings that were cracked and a feature wall. You'd never know there'd been any work, dead smooth. Polite, reliable and left everything spotless.</p><div class="by"><b>Sophie R.</b>, Keynsham · Plastering</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>Used NC for the rendering on our extension and a few bits of building work. Quality work, kept us in the loop and tidied up every day. Can't fault him, highly recommend.</p><div class="by"><b>David L.</b>, Bradley Stoke · Rendering &amp; building</div></div>
+    </div>
+    <p class="gal-foot reveal" style="text-align:center;margin-top:22px">Reviews shown are illustrative placeholders for this preview.</p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band pad">
+  <div class="wrap">
+    <span class="label" style="color:var(--plaster)">Get a quote</span>
+    <h2>Got a wall, ceiling or job that needs doing?</h2>
+    <p>Send a couple of photos over on WhatsApp or give us a call. Happy to come and have a look and price it up, free and no obligation.</p>
+    <div class="hero-cta">
+      <a id="bandCall" class="btn btn-primary" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+      <a id="bandWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">WhatsApp a photo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="pad" id="contact">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="label">Get in touch</span>
+      <h2>Tell us about the <span class="accent">job</span></h2>
+    </div>
+    <div class="con-grid">
+      <div class="reveal">
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="t">Phone</div><div class="v" id="contactPhone"></div></div>
+        </div>
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="#25d366" stroke="none"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2z"/></svg>
+          <div><div class="t">WhatsApp</div><div class="v sm"><a id="waText" href="#" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">Send a photo of the job</a></div></div>
+        </div>
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          <div><div class="t">Email</div><div class="v sm"><a id="emailLink" href="#" style="color:var(--accent);font-weight:600">noure@hotmail.co.uk</a></div></div>
+        </div>
+        <div class="con-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div><div class="t">Area</div><div class="v sm">Bristol, Chippenham and the surrounding area (around 30 miles).</div></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="NC Plastering & General Building">
+        <input type="hidden" name="source" value="mockup-nc-plastering">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx"></div>
+        <div class="field"><label for="email">Email <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="email" name="email" type="email"></div>
+        <div class="field"><label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <optgroup label="Plastering">
+              <option>Plastering / skimming</option>
+              <option>Re-plastering / patch repairs</option>
+              <option>Rendering</option>
+            </optgroup>
+            <optgroup label="Building &amp; finishing">
+              <option>Dry lining / plasterboarding</option>
+              <option>Tiling</option>
+              <option>General building maintenance</option>
+              <option>Flat roof</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Details</label><textarea id="message" name="message" placeholder="Where the job is, what needs doing, and roughly when you'd like it done."></textarea></div>
+        <button class="submit" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="pad" id="areas" style="background:var(--card-2);padding-top:72px;padding-bottom:72px">
+  <div class="wrap">
+    <div class="shead reveal"><span class="label">Where we work</span><h2>Bristol, Chippenham &amp; <span class="accent">the surrounding area</span></h2></div>
+    <p class="reveal" style="max-width:64ch;color:var(--body)">Based in Bristol and covering Chippenham and the towns and villages in between, travelling around 30 miles depending on the job. If your area is not listed, just ask, it is likely well within reach.</p>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:26px">
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Bristol</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Chippenham</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Keynsham</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Bradley Stoke</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Filton</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Kingswood</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Yate</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Bath</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Thornbury</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Corsham</span>
+      <span style="background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:30px;color:var(--ink);font-size:.82rem;font-weight:600">Melksham</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="brand-name" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.3rem">NC PLASTERING</span>
+        <p class="foot-tag">Plastering, dry lining, tiling and general building maintenance across Bristol, Chippenham and the surrounding area.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Services</h4>
+          <a href="#services">Plastering &amp; skimming</a>
+          <a href="#services">Dry lining</a>
+          <a href="#services">Tiling</a>
+          <a href="#services">Rendering</a>
+          <a href="#services">General building</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="#work">Recent work</a>
+          <a href="#about">About</a>
+          <a href="#areas">Areas</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> NC Plastering &amp; General Building</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTAs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call NC Plastering">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.36 2.07.7 3.06a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.02-1.27a2 2 0 0 1 2.11-.45c.99.34 2.01.57 3.06.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp NC Plastering">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-1 1.1c-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.9.9-2.8-.2-.3A8 8 0 1 1 12 20z"/></svg>
+  </a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb"><span class="x" id="lbX">&times;</span><span class="nav-arrow prev" id="lbPrev">&#8249;</span><img id="lbImg" src="" alt=""><span class="nav-arrow next" id="lbNext">&#8250;</span></div>
+
+<script>
+// contact info (base64)
+var P = atob('MDc5Mzk1NDAwNTU=');
+var Pf = atob('MDc5MzkgNTQwMDU1');
+var WA = atob('NDQ3OTM5NTQwMDU1');
+var EM = 'noure' + '@' + 'hotmail.co.uk';
+var waUrl = 'https://wa.me/' + WA + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+function setCall(id){var e=document.getElementById(id);if(e)e.href='tel:'+P;}
+['navCall','navCall2','heroCall','bandCall','fabCall'].forEach(setCall);
+['heroWa','bandWa','fabWa','waText'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=waUrl;});
+document.getElementById('contactPhone').textContent = Pf;
+var el=document.getElementById('emailLink');if(el){el.href='mailto:'+EM;el.textContent=EM;}
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('formTimestamp').value = Date.now();
+
+// phone validity
+var ph=document.getElementById('phone');
+if(ph){ph.addEventListener('input',function(){this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value)?'':'Please enter a valid UK phone number');});}
+
+// loader
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},2300);});
+
+// nav scrolled + mobile panel
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+var ham=document.getElementById('ham'),mp=document.getElementById('mpanel');
+ham.addEventListener('click',function(){mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mp.classList.remove('open');});});
+
+// floating fabs
+var fabs=document.getElementById('fabs'),hero=document.getElementById('top');
+var io=new IntersectionObserver(function(es){es.forEach(function(en){fabs.classList.toggle('show',!en.isIntersecting);});},{threshold:0});
+io.observe(hero);
+
+// reveal
+var ro=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+// lightbox
+var tiles=[].slice.call(document.querySelectorAll('.gtile')),imgs=tiles.map(function(t){return t.querySelector('img').src;}),alts=tiles.map(function(t){return t.querySelector('img').alt;});
+var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),ci=0;
+function show(i){ci=(i+imgs.length)%imgs.length;lbImg.src=imgs[ci];lbImg.alt=alts[ci];}
+tiles.forEach(function(t,i){t.addEventListener('click',function(){show(i);lb.classList.add('open');});});
+document.getElementById('lbX').addEventListener('click',function(){lb.classList.remove('open');});
+document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();show(ci+1);});
+document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();show(ci-1);});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')show(ci+1);if(e.key==='ArrowLeft')show(ci-1);});
+</script>
+</body>
+</html>
