@@ -218,6 +218,25 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-frost .wm-zone{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
 #ld-frost.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
 #ld-frost.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
+/* squeegee wipe (cleaning) */
+#ld-squeegee{background:#143a63;flex-direction:column}
+#ld-squeegee .wm-zone{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+#ld-squeegee .wordmark{color:#fff}
+#ld-squeegee .wordmark b{color:#5cc4f0;font-weight:900}
+#ld-squeegee .wordsub{color:#9dc3e6}
+#ld-squeegee .sq-film{position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(115deg,rgba(255,255,255,.10) 0 2px,transparent 2px 9px),linear-gradient(120deg,rgba(255,255,255,.22),rgba(255,255,255,.06) 60%,rgba(255,255,255,.20));clip-path:inset(0 0 0 0)}
+#ld-squeegee.play .sq-film{animation:sqWipe 1.5s cubic-bezier(.7,0,.3,1) .35s forwards}
+#ld-squeegee .sq-blade{position:absolute;top:-4vh;bottom:-4vh;left:-90px;width:34px;z-index:3;transform:translateX(0)}
+#ld-squeegee.play .sq-blade{animation:sqRun 1.5s cubic-bezier(.7,0,.3,1) .35s forwards}
+#ld-squeegee .sq-blade::before{content:"";position:absolute;inset:0 12px;border-radius:5px;background:linear-gradient(180deg,#cfe6f7,#7fb4d8);box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+#ld-squeegee .sq-blade::after{content:"";position:absolute;left:14px;right:14px;top:14%;bottom:14%;border-radius:4px;background:#1696d8}
+#ld-squeegee .sq-spark{position:absolute;z-index:1;color:#5cc4f0;opacity:0;transform:scale(.4)}
+#ld-squeegee.play .sq-spark.k1{animation:sqSpark .5s ease 1.55s forwards}
+#ld-squeegee.play .sq-spark.k2{animation:sqSpark .5s ease 1.75s forwards}
+#ld-squeegee.play .sq-spark.k3{animation:sqSpark .5s ease 1.95s forwards}
+@keyframes sqWipe{to{clip-path:inset(0 0 0 100%)}}
+@keyframes sqRun{to{transform:translateX(calc(100vw + 120px))}}
+@keyframes sqSpark{0%{opacity:0;transform:scale(.4) rotate(-20deg)}55%{opacity:1;transform:scale(1.15)}100%{opacity:.95;transform:scale(1)}}
 
 /* ===== 7. PATIOS / PAVING — slab lay ===== */
 #ld-slab{background:#1a2130;flex-direction:column}
@@ -1117,6 +1136,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The temperature readout plunges from 18&deg; to -18&deg; while frost crystallises in from the edges.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-squeegee" data-dur="2500">
+      <span class="trade">Cleaning</span>
+      <h3>Squeegee Wipe</h3>
+      <p>A steamy streaked film covers the screen, a squeegee blade travels left-to-right wiping it crystal clear, sparkles pop and the wordmark lands. First used on pi-cleaning-services.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-slab" data-dur="2400">
       <span class="trade">Patios / Paving / Landscaping</span>
       <h3>Slab Lay</h3>
@@ -1537,6 +1562,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">Polar Cold Solutions</div>
     <div class="wordsub">Commercial Refrigeration</div>
   </div>
+</div>
+
+<!-- squeegee wipe (cleaning) -->
+<div class="loader" id="ld-squeegee" aria-hidden="true">
+  <svg class="sq-spark k1" style="top:24%;left:32%" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6 5.4 10.8 12 12-6.6 1.2-11.4 6-12 12-.6-6-5.4-10.8-12-12C6.6 10.8 11.4 6 12 0z"/></svg>
+  <svg class="sq-spark k2" style="bottom:28%;right:30%" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6 5.4 10.8 12 12-6.6 1.2-11.4 6-12 12-.6-6-5.4-10.8-12-12C6.6 10.8 11.4 6 12 0z"/></svg>
+  <svg class="sq-spark k3" style="top:30%;right:36%" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 6 5.4 10.8 12 12-6.6 1.2-11.4 6-12 12-.6-6-5.4-10.8-12-12C6.6 10.8 11.4 6 12 0z"/></svg>
+  <div class="wm-zone">
+    <div class="wordmark">P<b>&amp;</b>I Cleaning</div>
+    <div class="wordsub">Domestic &amp; Commercial</div>
+  </div>
+  <div class="sq-film"></div>
+  <div class="sq-blade"></div>
 </div>
 
 <!-- 8. trowel float -->
