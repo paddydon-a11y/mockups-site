@@ -43,13 +43,10 @@ h1,h2,h3,h4{font-family:'Spectral',serif;font-weight:500;line-height:1.06;letter
 /* ---------- loader : leaf-bloom ---------- */
 #loader{position:fixed;inset:0;z-index:9999;background:var(--ink);display:grid;place-items:center;transition:opacity .7s ease,visibility .7s}
 #loader.done{opacity:0;visibility:hidden}
-.bloom{display:flex;flex-direction:column;align-items:center;gap:24px}
-.bloom svg{width:88px;height:88px;overflow:visible}
-.bloom .petal{transform-origin:50% 92%;opacity:0;animation:petal .9s cubic-bezier(.2,.8,.2,1) forwards}
-.bloom .p1{animation-delay:.05s}.bloom .p2{animation-delay:.22s}.bloom .p3{animation-delay:.22s}
-.bloom .p4{animation-delay:.4s}.bloom .p5{animation-delay:.4s}
-@keyframes petal{0%{opacity:0;transform:scale(.2) translateY(14px)}60%{opacity:1}100%{opacity:1;transform:scale(1) translateY(0)}}
-.bloom .lw{font-family:'Spectral',serif;font-size:.95rem;letter-spacing:.42em;text-transform:uppercase;color:#fff;opacity:0;animation:fadeUp .7s ease .85s forwards;padding-left:.42em}
+.bloom{display:flex;flex-direction:column;align-items:center;gap:22px}
+.bloom img{width:96px;height:96px;opacity:0;transform:scale(.45) translateY(10px);animation:bloomIn 1s cubic-bezier(.2,.8,.2,1) forwards;filter:drop-shadow(0 8px 26px rgba(195,208,33,.28))}
+@keyframes bloomIn{0%{opacity:0;transform:scale(.45) translateY(10px)}55%{opacity:1}70%{transform:scale(1.06) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}
+.bloom .lw{font-family:'Spectral',serif;font-size:.95rem;letter-spacing:.42em;text-transform:uppercase;color:#fff;opacity:0;animation:fadeUp .7s ease .7s forwards;padding-left:.42em}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* ---------- nav ---------- */
@@ -286,13 +283,7 @@ section{position:relative}
 <!-- loader -->
 <div id="loader">
   <div class="bloom">
-    <svg viewBox="0 0 100 100" aria-hidden="true">
-      <path class="petal p1" d="M50 8 C42 28 42 52 50 70 C58 52 58 28 50 8Z" fill="#94a904"/>
-      <path class="petal p2" d="M50 70 C36 56 22 44 16 24 C36 30 50 48 50 70Z" fill="#c3d021"/>
-      <path class="petal p3" d="M50 70 C64 56 78 44 84 24 C64 30 50 48 50 70Z" fill="#c3d021"/>
-      <path class="petal p4" d="M50 70 C40 60 24 58 10 64 C26 76 42 76 50 70Z" fill="#94a904"/>
-      <path class="petal p5" d="M50 70 C60 60 76 58 90 64 C74 76 58 76 50 70Z" fill="#94a904"/>
-    </svg>
+    <img src="logo.png" alt="Kingdom Landscapes logo">
     <div class="lw">Kingdom Landscapes</div>
   </div>
 </div>
