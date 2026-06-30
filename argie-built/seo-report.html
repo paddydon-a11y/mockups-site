@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Improvement Plan | Argie Built</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#182430; --ink-soft:#39485a; --body:#445261; --muted:#8595a3;
+  --accent:#00c0cc; --accent-deep:#069aa6; --accent-glow:rgba(0,192,204,.12);
+  --navy-deep:#0f1922; --stone:#f3f5f7; --line:#e2e8ee; --green:#1ba37e; --green-bg:#e7f6f0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--body);line-height:1.55;background:#dfe4e9;-webkit-font-smoothing:antialiased;font-size:13.5px}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;color:var(--ink);line-height:1.12;letter-spacing:-.02em;font-weight:700}
+.page{width:210mm;min-height:297mm;margin:14px auto;background:#fff;box-shadow:0 12px 40px -16px rgba(15,25,34,.4);overflow:hidden;display:flex;flex-direction:column}
+.pad{padding:22px 30px;flex:1;display:flex;flex-direction:column}
+
+/* header */
+.masthead{background:linear-gradient(125deg,var(--navy-deep) 0%,#1d2f3d 100%);color:#fff;padding:22px 30px;position:relative;overflow:hidden}
+.masthead::after{content:"";position:absolute;right:-70px;top:-70px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(0,192,204,.22),transparent 70%)}
+.mast-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.mast-logo{height:32px;background:#fff;padding:7px 12px;border-radius:9px}
+.mast-kicker{font-family:'Sora';font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;text-align:right}
+.mast-kicker span{display:block;color:#9fb3c0;font-weight:500;letter-spacing:.1em;margin-top:3px;font-size:.6rem}
+.masthead h1{color:#fff;font-size:1.85rem;font-weight:800;margin-top:15px;position:relative;z-index:2;letter-spacing:-.03em}
+.masthead h1 b{color:var(--accent);font-weight:800}
+.mast-sub{color:#aebcc7;margin-top:8px;max-width:70ch;position:relative;z-index:2;font-size:.88rem}
+
+.intro{font-size:.92rem;color:var(--ink-soft);border-left:3px solid var(--accent);padding-left:13px;margin:18px 0 6px}
+.intro b{color:var(--ink)}
+
+.sec-label{font-family:'Sora';font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--accent-deep);margin:16px 0 4px}
+
+.items{margin-top:4px}
+.item{display:flex;gap:13px;padding:11px 0;border-bottom:1px solid var(--line)}
+.item .ic{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center}
+.item .ic svg{width:18px;height:18px;stroke:var(--accent-deep)}
+.item .big{background:var(--ink)}
+.item .big svg{stroke:var(--accent)}
+.item h3{font-size:.95rem;margin-bottom:2px;display:flex;align-items:center;gap:8px}
+.item h3 .tag{font-family:'Sora';font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;background:var(--ink);color:#fff;padding:2px 7px;border-radius:20px;font-weight:600}
+.item p{font-size:.85rem;color:var(--body)}
+
+.note{background:var(--navy-deep);border-radius:12px;padding:13px 18px;margin-top:14px;color:#cdd8e1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.note .lead-stat{font-family:'Sora';color:var(--accent);font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1}
+.note p{font-size:.82rem;color:#aebcc7}
+.note p b{color:#fff}
+
+.cta{background:var(--green-bg);border:1px solid #c5e9dc;border-radius:13px;padding:16px 20px;margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.cta h3{font-size:1.05rem;color:#0e7355}
+.cta p{color:#1f4d40;font-size:.84rem;margin-top:3px;max-width:48ch}
+.cta .btn{background:var(--accent);color:#04343a;font-family:'Sora';font-weight:600;padding:11px 20px;border-radius:10px;text-decoration:none;font-size:.88rem;white-space:nowrap}
+
+footer{padding:13px 30px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.74rem}
+footer a{color:var(--accent-deep);text-decoration:none;font-weight:600}
+
+.print-hint{text-align:center;font-size:.8rem;color:#5a6b78;padding:10px;max-width:210mm;margin:0 auto}
+@media print{
+  body{background:#fff} .page{box-shadow:none;margin:0;width:auto;min-height:auto}
+  .print-hint{display:none}
+  @page{size:A4;margin:0}
+}
+</style>
+</head>
+<body>
+
+<div class="print-hint">Print-ready. To save as PDF: press <b>Ctrl/Cmd + P</b>, then Destination "Save as PDF", A4.</div>
+
+<div class="page">
+
+  <div class="masthead">
+    <div class="mast-top">
+      <img class="mast-logo" src="images/logo.jpg" alt="Argie Built">
+      <div class="mast-kicker">Website Improvement Plan<span>Prepared June 2026</span></div>
+    </div>
+    <h1>Getting your website bringing in <b>more work</b>.</h1>
+    <p class="mast-sub">You've already got the brand, the reviews and 20 years of trade behind you. Here's how we'd improve the website so it starts winning you enquiries from Google, not just word of mouth.</p>
+  </div>
+
+  <div class="pad">
+
+    <p class="intro">Right now the site is built as a <b>single page</b>, so when someone searches "plumber in Brighton" or "bathroom fitter Hove", Google doesn't have much to show them. None of this is a criticism of the work you do. It's all fixable, and these are the changes that would make the biggest difference.</p>
+
+    <div class="sec-label">What we'd improve, and why it matters to you</div>
+
+    <div class="items">
+
+      <div class="item">
+        <div class="ic big"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div>
+          <h3>Build a proper page for each service and area <span class="tag">Biggest win</span></h3>
+          <p>A page each for Plumbing, Bathrooms, Carpentry and Building, plus pages for the towns you cover. That's what lets you rank for "bathroom fitter Hove", "emergency plumber Brighton" and the rest, instead of one page trying to do everything.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h16v2M9 20h6M12 5v15"/></svg></div>
+        <div>
+          <h3>Give every page a clear Google title</h3>
+          <p>The headline Google shows in its results should say what you do and where, for example "Plumber, Carpenter &amp; Builder in Brighton &amp; Hove". At the moment it doesn't, so you're easy to miss.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <h3>Add your business details for Google &amp; the map</h3>
+          <p>We'd add the behind-the-scenes information that tells Google your name, address, hours, area and star rating, and link your Google Business Profile, so your reviews and map listing can show up in the results.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 11-13h-7z"/></svg></div>
+        <div>
+          <h3>Make it load faster on a phone</h3>
+          <p>The current homepage loads a lot of extra code before a single photo appears. We'd rebuild it light and quick, which both Google and your customers reward.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div>
+        <div>
+          <h3>Set it to British English and tidy the wording</h3>
+          <p>Small touches like "taps" instead of "faucets" and a UK setting help local customers and Google trust that you're a Sussex business.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
+        <div>
+          <h3>Add a sitemap and connect Google Search Console</h3>
+          <p>So Google can find every page cleanly, and we can keep an eye on how you're ranking and which searches are bringing people in.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">
+      <span class="lead-stat">134</span>
+      <p>Separate style files your homepage loads today before showing a photo, plus over 550&nbsp;KB of code. <b>A lighter rebuild fixes this and improves your Google speed score.</b></p>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>We've started a mockup to show the direction</h3>
+        <p>Using your logo, colours and content, we've put together a working concept of how the new site could look and feel. Have a look and tell us what you think.</p>
+      </div>
+      <a class="btn" href="https://previews.construction-sites.co.uk/argie-built/">View the mockup</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Website Improvement Plan prepared for Argie Built</span>
+    <span>Prepared by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+  </footer>
+</div>
+
+</body>
+</html>
