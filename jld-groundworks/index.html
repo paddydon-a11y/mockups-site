@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JLD Groundworks Building &amp; Paving, Groundworks, Driveways &amp; Patios in St Helens &amp; Merseyside</title>
+<meta name="description" content="JLD Groundworks Building & Paving, complete groundwork & building contractor in St Helens & Merseyside. Driveways, patios, Indian stone, porcelain, fencing, brickwork, extensions & landscaping. Over 20 years' experience. Free quotes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#0c1726; --navy-2:#101f33; --navy-3:#16263d;
+  --blue:#123fb0; --blue-hi:#2a5cf0; --blue-soft:#e8eefb;
+  --amber:#f6a623; --amber-hi:#ffbb3d;
+  --concrete:#eef1f6; --paper:#f6f8fb; --white:#ffffff;
+  --ink:#13202e; --slate:#5a6b7d; --line:#dfe5ee;
+  --line-d:rgba(255,255,255,.12);
+  --disp:"Sora",system-ui,sans-serif;
+  --body:"Inter",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 18px 50px rgba(12,23,38,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.6;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--amber);color:var(--navy)}
+.wrap{width:min(1240px,92vw);margin-inline:auto}
+h1,h2,h3,h4{font-family:var(--disp);font-weight:700;line-height:1.05;letter-spacing:-.02em}
+
+/* ---------- wordmark ---------- */
+.wm{display:inline-flex;flex-direction:column;line-height:.86;font-family:var(--disp);letter-spacing:-.02em}
+.wm .r1{display:flex;align-items:baseline;gap:.28em;white-space:nowrap}
+.wm .jld{font-weight:800;font-style:italic;color:var(--blue);font-size:1.55em;letter-spacing:-.04em}
+.wm .gw{font-weight:800;color:var(--blue);font-size:1.04em}
+.wm .r2{font-weight:600;font-size:.62em;letter-spacing:.06em;color:var(--blue);border-top:2px solid var(--amber);padding-top:.16em;margin-top:.14em;width:fit-content}
+.on-dark .jld,.on-dark .gw,.on-dark .r2{color:#fff}
+.on-dark .r2{border-top-color:var(--amber)}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.01em;padding:.95em 1.5em;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:transform .25s var(--ease),background .25s,color .25s,border-color .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn .ic{width:17px;height:17px;flex:none}
+.btn-amber{background:var(--amber);color:var(--navy);box-shadow:0 8px 22px rgba(246,166,35,.34)}
+.btn-amber:hover{background:var(--amber-hi)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-hi)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-outline-d{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-outline-d:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-lg{padding:1.1em 1.9em;font-size:15px}
+
+/* chevron / labels */
+.kicker{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:26px;height:8px;background:repeating-linear-gradient(135deg,var(--amber) 0 5px,var(--navy) 5px 10px)}
+.on-dark .kicker{color:var(--amber)}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1000;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .7s ease,visibility .7s}
+#loader.done{opacity:0;visibility:hidden}
+.l-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;max-width:92vw}
+#loader .wm{font-size:clamp(19px,6vw,30px);opacity:0;transform:translateY(8px);animation:lin .6s .15s forwards}
+@keyframes lin{to{opacity:1;transform:none}}
+.l-grid{width:min(300px,62vw);height:2px;background:rgba(255,255,255,.14);position:relative;overflow:hidden;border-radius:2px}
+.l-grid span{position:absolute;top:0;right:0;bottom:0;left:0;background:var(--amber);transform:scaleX(0);transform-origin:left}
+.l-lab{font-family:var(--mono);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ---------- top bar + nav ---------- */
+.topbar{background:var(--navy);color:#cdd6e2;font-family:var(--mono);font-size:12px;letter-spacing:.02em}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px;gap:20px}
+.topbar a{color:#cdd6e2;transition:color .3s}.topbar a:hover{color:#fff}
+.topbar .tb-r{display:flex;gap:22px;align-items:center}
+.topbar b{color:#fff}
+@media(max-width:760px){.topbar .tb-hide{display:none}}
+
+header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+header.scrolled{box-shadow:0 6px 24px rgba(12,23,38,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.nav .wm{font-size:19px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-family:var(--disp);font-weight:600;font-size:14.5px;color:var(--ink);transition:color .25s}
+.nav-links a:hover{color:var(--blue)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.nav-phone{font-family:var(--disp);font-weight:700;color:var(--navy);display:inline-flex;align-items:center;gap:8px}
+.nav-phone .ic{width:18px;height:18px;color:var(--blue)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero-grid{position:absolute;top:0;right:0;bottom:0;left:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:46px 46px;z-index:0}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:72px 0 84px}
+.hero-copy .kicker{margin-bottom:20px}
+.hero h1{font-size:clamp(38px,5.4vw,68px);font-weight:800;margin-bottom:22px}
+.hero h1 .hl{color:var(--amber)}
+.hero-lead{font-size:18px;color:#c4cfdd;max-width:46ch;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-trust{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:34px}
+.hero-trust span{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:#dbe3ee;background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:100px;padding:.5em .9em;display:inline-flex;align-items:center;gap:7px}
+.hero-trust span b{color:var(--amber);font-family:var(--disp)}
+.hero-media{position:relative}
+.hero-media .main{border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);aspect-ratio:4/5;border:1px solid var(--line-d)}
+.hero-media .main img{width:100%;height:100%;object-fit:cover}
+.hero-badge{position:absolute;left:-22px;bottom:34px;background:#fff;color:var(--navy);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px}
+.hero-badge .big{font-family:var(--disp);font-weight:800;font-size:34px;color:var(--blue);line-height:1}
+.hero-badge small{font-size:12px;color:var(--slate);display:block;max-width:11ch;line-height:1.25}
+.hero-wave{position:absolute;left:0;right:0;bottom:-1px;height:18px;background:repeating-linear-gradient(135deg,var(--amber) 0 16px,var(--navy) 16px 32px);opacity:.9;z-index:3}
+
+/* ---------- marquee ---------- */
+.strip{background:var(--blue);color:#fff;overflow:hidden;white-space:nowrap;border-block:0}
+.strip-track{display:inline-flex;align-items:center;padding:14px 0;will-change:transform}
+.strip-track span{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.02em;padding:0 26px;display:inline-flex;align-items:center;gap:26px}
+.strip-track span::after{content:"";width:7px;height:7px;background:var(--amber);transform:rotate(45deg)}
+
+/* ---------- sections ---------- */
+section{position:relative}
+.pad{padding:clamp(64px,9vh,118px) 0}
+.sec-head{max-width:680px;margin-bottom:52px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head.center .kicker{justify-content:center}
+.sec-head h2{font-size:clamp(30px,4.4vw,52px);margin:16px 0 16px}
+.sec-head p{color:var(--slate);font-size:17px}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+/* ---------- about ---------- */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.about-media{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.about-media img{width:100%;aspect-ratio:16/11;object-fit:cover}
+.about-media .cap{position:absolute;left:16px;bottom:16px;background:rgba(12,23,38,.82);backdrop-filter:blur(6px);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:.6em 1em;border-radius:8px}
+.about h2{font-size:clamp(28px,3.8vw,44px);margin:16px 0 18px}
+.about p{color:var(--slate);font-size:16.5px;margin-bottom:16px}
+.about p b{color:var(--ink)}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.stat{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+.stat .n{font-family:var(--disp);font-weight:800;font-size:32px;color:var(--blue);line-height:1}
+.stat .l{font-size:12.5px;color:var(--slate);margin-top:6px}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{position:relative;border-radius:14px;overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;isolation:isolate;border:1px solid var(--line)}
+.svc img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s var(--ease)}
+.svc::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(180deg,rgba(12,23,38,.05) 30%,rgba(12,23,38,.55) 62%,rgba(12,23,38,.92))}
+.svc:hover img{transform:scale(1.07)}
+.svc-body{padding:22px}
+.svc h3{font-size:20px;margin-bottom:6px}
+.svc p{font-size:13px;color:#cdd6e2;opacity:0;max-height:0;transition:.45s var(--ease)}
+.svc:hover p{opacity:1;max-height:80px;margin-top:4px}
+.svc .tag{position:absolute;top:14px;left:14px;z-index:1;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:rgba(18,63,176,.9);padding:.45em .7em;border-radius:6px}
+.svc.flat{background:var(--navy);color:#fff;min-height:280px}
+.svc.flat::after{display:none}
+.svc.flat .ico{width:42px;height:42px;color:var(--amber);margin-bottom:auto}
+.svc.flat .svc-body{padding:24px}
+.svc.flat p{opacity:1;max-height:none;color:#aab6c6;margin-top:8px}
+.svc.flat .more{font-family:var(--disp);font-weight:700;color:var(--amber);font-size:13px;margin-top:14px;display:inline-flex;gap:6px;align-items:center}
+
+/* ---------- projects ---------- */
+.projects{background:var(--navy);color:#fff}
+.projects .sec-head h2{color:#fff}
+.projects .sec-head p{color:#aeb9c8}
+.proj{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,64px);align-items:center;padding:clamp(34px,5vh,64px) 0;border-top:1px solid var(--line-d)}
+.proj:nth-child(even) .proj-txt{order:2}
+.proj-media{border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);position:relative}
+.proj-media img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform 1.1s var(--ease)}
+.proj:hover .proj-media img{transform:scale(1.05)}
+.proj-num{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:.1em}
+.proj-txt h3{font-size:clamp(24px,3vw,36px);margin:12px 0 14px}
+.proj-txt p{color:#b3bdcb;margin-bottom:20px;max-width:44ch}
+.proj-chips{display:flex;flex-wrap:wrap;gap:8px}
+.proj-chips span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;border:1px solid var(--line-d);border-radius:100px;padding:.5em .9em;color:#dbe3ee}
+
+/* ---------- gallery ---------- */
+.gallery{background:var(--paper)}
+.masonry{column-count:3;column-gap:16px}
+.masonry figure{break-inside:avoid;margin-bottom:16px;position:relative;border-radius:12px;overflow:hidden;cursor:pointer;box-shadow:0 8px 24px rgba(12,23,38,.07)}
+.masonry img{width:100%;transition:transform .9s var(--ease)}
+.masonry figure:hover img{transform:scale(1.06)}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 14px 12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:linear-gradient(transparent,rgba(12,23,38,.85));opacity:0;transition:.4s}
+.masonry figure:hover figcaption{opacity:1}
+.masonry figure::after{content:"+";position:absolute;top:12px;right:14px;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:rgba(18,63,176,.92);color:#fff;font-size:18px;opacity:0;transform:scale(.7);transition:.35s}
+.masonry figure:hover::after{opacity:1;transform:none}
+
+/* ---------- why ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.why:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blue-soft)}
+.why .ico{width:46px;height:46px;border-radius:11px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;margin-bottom:18px}
+.why .ico svg{width:24px;height:24px}
+.why h3{font-size:19px;margin-bottom:8px}
+.why p{color:var(--slate);font-size:14.5px}
+
+/* ---------- process ---------- */
+.process{background:var(--concrete)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.pstep{background:#fff;border-radius:14px;padding:30px 26px;position:relative;border:1px solid var(--line)}
+.pstep .pn{font-family:var(--disp);font-weight:800;font-size:15px;color:#fff;background:var(--blue);width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:18px}
+.pstep h4{font-size:19px;margin-bottom:8px}
+.pstep p{color:var(--slate);font-size:14.5px}
+.pstep:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:42px;color:var(--amber);font-weight:700;z-index:2}
+
+/* ---------- coverage ---------- */
+.coverage{background:var(--navy);color:#fff}
+.cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.coverage h2{color:#fff;font-size:clamp(28px,4vw,46px);margin:16px 0 18px}
+.coverage .lead{color:#b3bdcb;font-size:17px;margin-bottom:26px}
+.towns{display:flex;flex-wrap:wrap;gap:9px}
+.towns span{font-family:var(--mono);font-size:12px;letter-spacing:.03em;border:1px solid var(--line-d);border-radius:100px;padding:.55em 1em;color:#dbe3ee}
+.towns span.hl{background:var(--amber);color:var(--navy);border-color:var(--amber);font-weight:600}
+.cov-card{background:var(--navy-2);border:1px solid var(--line-d);border-radius:16px;padding:34px}
+.cov-card h3{font-size:22px;margin-bottom:6px}
+.cov-card .sub{color:#aeb9c8;font-size:14px;margin-bottom:22px}
+.cov-line{display:flex;align-items:center;gap:14px;padding:14px 0;border-top:1px solid var(--line-d)}
+.cov-line .ic{width:20px;height:20px;color:var(--amber);flex:none}
+.cov-line a,.cov-line span{color:#fff;font-weight:500}
+.cov-line small{display:block;color:#8b97a8;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- CTA band ---------- */
+.ctaband{background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.ctaband .grid{position:absolute;top:0;right:0;bottom:0;left:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:42px 42px}
+.ctaband .wrap{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;padding:54px 0}
+.ctaband h2{font-size:clamp(26px,3.6vw,42px);color:#fff;max-width:18ch}
+.ctaband p{color:#d6e0fb;margin-top:10px}
+.ctaband .acts{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,68px)}
+.contact h2{font-size:clamp(28px,4vw,46px);margin:16px 0 16px}
+.contact .lead{color:var(--slate);font-size:17px;margin-bottom:30px}
+.cd{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.cd .ic{width:44px;height:44px;border-radius:11px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;flex:none}
+.cd .ic svg{width:21px;height:21px}
+.cd .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.cd .v{font-family:var(--disp);font-weight:700;font-size:18px;color:var(--ink)}
+.cd .v a:hover{color:var(--blue)}
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,3vw,38px);box-shadow:var(--shadow)}
+.form-card h3{font-size:22px;margin-bottom:6px}
+.form-card .fsub{color:var(--slate);font-size:14px;margin-bottom:22px}
+form{display:flex;flex-direction:column;gap:14px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:7px}
+.field input,.field select,.field textarea{width:100%;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:13px 14px;font-family:var(--body);font-size:15px;color:var(--ink);transition:border-color .3s,box-shadow .3s}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+form .btn{margin-top:6px}
+.formnote{font-family:var(--mono);font-size:11px;color:var(--slate);text-align:center}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:#aeb9c8;padding:62px 0 110px}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:42px;border-bottom:1px solid var(--line-d)}
+.foot-brand .wm{font-size:22px;margin-bottom:16px}
+.foot-brand p{font-size:13.5px;max-width:34ch}
+.foot-col h5{font-family:var(--disp);font-weight:700;color:#fff;font-size:14px;margin-bottom:16px}
+.foot-col a,.foot-col p{display:block;font-size:13.5px;color:#aeb9c8;margin-bottom:10px;transition:color .3s}
+.foot-col a:hover{color:var(--amber)}
+.foot-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#7e8a9b}
+
+/* floating CTAs (call + whatsapp) */
+.fabs{position:fixed;right:18px;bottom:22px;z-index:185;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(18px) scale(.9);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s}
+.fabs.show{opacity:1;visibility:visible;transform:none}
+.fab{position:relative;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.32);transition:transform .3s,background .3s,filter .3s}
+.fab svg{width:26px;height:26px}
+.fab.call{background:var(--blue)}.fab.call:hover{background:var(--blue-hi)}
+.fab.wa{background:#25d366}.fab.wa:hover{filter:brightness(1.08)}
+.fab:hover{transform:scale(1.07)}
+.fab .lab{position:absolute;right:68px;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:600;font-size:13px;padding:.5em .85em;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transform:translateX(8px);transition:.25s var(--ease);box-shadow:var(--shadow)}
+.fab .lab::after{content:"";position:absolute;right:-5px;top:50%;transform:translateY(-50%) rotate(45deg);width:9px;height:9px;background:var(--navy)}
+.fab:hover .lab{opacity:1;transform:none}
+
+/* lightbox */
+#lb{position:fixed;top:0;right:0;bottom:0;left:0;z-index:900;background:rgba(7,12,20,.94);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:5vh 5vw}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#lb .x{position:absolute;top:20px;right:26px;color:#fff;font-family:var(--mono);font-size:13px;letter-spacing:.1em;cursor:pointer}
+#lb .ar{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:34px;cursor:pointer;padding:18px;opacity:.7;user-select:none}
+#lb .ar:hover{opacity:1;color:var(--amber)}
+#lb .prev{left:1vw}#lb .next{right:1vw}
+
+@media(max-width:1080px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .pstep:nth-child(2)::after{display:none}
+}
+@media(max-width:920px){
+  .nav-links{position:fixed;top:0;right:0;bottom:0;left:auto;width:min(80vw,320px);background:#fff;flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .4s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.2);z-index:150}
+  .nav-links.open{transform:none}
+  .burger{display:flex;z-index:160}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav-phone span{display:none}
+  .nav-actions .btn-amber{display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:40px;padding:48px 0 70px}
+  .hero-media{max-width:440px}
+  .about-grid,.cov-grid,.contact-grid{grid-template-columns:1fr}
+  .about-media{order:-1}
+  .proj{grid-template-columns:1fr;gap:22px}
+  .proj:nth-child(even) .proj-txt{order:0}
+  .masonry{column-count:2}
+}
+@media(max-width:600px){
+  .svc-grid{grid-template-columns:1fr}
+  .why-grid,.steps{grid-template-columns:1fr}
+  .pstep::after{display:none!important}
+  .frow{grid-template-columns:1fr}
+  .masonry{column-count:1}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .hero-badge{left:auto;right:14px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="l-inner">
+    <span class="wm on-dark"><span class="r1"><span class="jld">JLD</span><span class="gw">GROUNDWORKS</span></span><span class="r2">BUILDING &amp; PAVING</span></span>
+    <div class="l-grid"><span id="lbar"></span></div>
+    <div class="l-lab">Setting out…</div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="tb-hide">Over 20 years' experience · St Helens &amp; across Merseyside</span>
+    <div class="tb-r">
+      <a href="tel:+447795901915"><b>07795 901915</b></a>
+      <a class="tb-hide" href="mailto:jldgroundworks@hotmail.com">jldgroundworks@hotmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header id="head">
+  <div class="wrap nav">
+    <a href="#top" aria-label="JLD Groundworks Building & Paving">
+      <span class="wm"><span class="r1"><span class="jld">JLD</span><span class="gw">GROUNDWORKS</span></span><span class="r2">BUILDING &amp; PAVING</span></span>
+    </a>
+    <nav class="nav-links" id="menu">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#why">Why us</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="tel:+447795901915" class="nav-phone"><svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>07795 901915</span></a>
+      <a href="#contact" class="btn btn-amber">Free quote</a>
+      <div class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker">Groundworks · Building · Paving</span>
+      <h1>Groundworks &amp; building, <span class="hl">done properly.</span></h1>
+      <p class="hero-lead">From driveways and patios to extensions and full landscaping, JLD is your complete groundwork &amp; building contractor in St Helens and across Merseyside. Over 20 years on the tools.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-amber btn-lg">Get a free quote</a>
+        <a href="tel:+447795901915" class="btn btn-outline-d btn-lg"><svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Call Dave</a>
+      </div>
+      <div class="hero-trust">
+        <span><b>20+</b> years' experience</span>
+        <span>Indian Stone Specialists</span>
+        <span>Marshalls paving</span>
+        <span>Free, no-obligation quotes</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="main"><img src="assets/photos/patio-porcelain-lawn.jpg" alt="Grey porcelain patio with artificial lawn installed by JLD Groundworks" /></div>
+      <div class="hero-badge"><span class="big">20+</span><small>Years building across Merseyside</small></div>
+    </div>
+  </div>
+  <div class="hero-wave"></div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track" id="strip">
+    <span>Driveways</span><span>Patios &amp; Paving</span><span>Indian Stone</span><span>Porcelain</span><span>Groundworks</span><span>Fencing</span><span>Brickwork &amp; Pointing</span><span>Extensions</span><span>Damp Proofing</span><span>Landscaping</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="pad about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media rv">
+      <img src="assets/photos/van.jpg" alt="JLD Groundworks Building & Paving van" />
+      <span class="cap">JLD Groundworks · St Helens</span>
+    </div>
+    <div class="rv d1">
+      <span class="kicker">Your local contractor</span>
+      <h2>One trusted team for the whole job</h2>
+      <p>Run by <b>Dave Davies</b>, JLD Groundworks Building &amp; Paving has spent <b>over 20 years</b> delivering quality groundwork, paving and building across Merseyside, for homeowners and businesses alike.</p>
+      <p>Because we cover everything from the dig and the base to the brickwork, paving and finishing, you deal with <b>one reliable team</b> from start to finish. No chasing trades, no surprises, just tidy, properly-built work and a fair, honest quote.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">20+</div><div class="l">Years' experience</div></div>
+        <div class="stat"><div class="n">10+</div><div class="l">Services in-house</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">Free quotes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad" id="services">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">What we do</span>
+      <h2>Complete groundwork &amp; building services</h2>
+      <p>One contractor for the lot, outside and in. Tap any service to get a free quote.</p>
+    </div>
+    <div class="svc-grid">
+      <a href="#contact" class="svc rv"><span class="tag">Most popular</span><img src="assets/photos/patio-porcelain-grey.jpg" alt="Porcelain driveway and paving"><div class="svc-body"><h3>Driveways &amp; Paving</h3><p>Block paving, porcelain and natural stone driveways laid on solid, properly-dug bases.</p></div></a>
+      <a href="#contact" class="svc rv d1"><img src="assets/photos/patio-indian-step.jpg" alt="Indian stone patio and steps"><div class="svc-body"><h3>Patios &amp; Indian Stone</h3><p>Indian sandstone &amp; porcelain patios, steps and pathways. We're Indian Stone Specialists.</p></div></a>
+      <a href="#contact" class="svc rv d2"><img src="assets/photos/garden-landscaping.jpg" alt="Garden landscaping with artificial lawn"><div class="svc-body"><h3>Landscaping</h3><p>Full garden transformations, paving, artificial lawns, walls, borders and more.</p></div></a>
+      <a href="#contact" class="svc rv d3"><img src="assets/photos/bathroom-marble.jpg" alt="Marble bathroom renovation"><div class="svc-body"><h3>Bathrooms &amp; Interiors</h3><p>Full bathroom fits, tiling, wall panelling and interior joinery, finished to a high standard.</p></div></a>
+
+      <a href="#contact" class="svc flat rv"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div class="svc-body"><h3>Groundworks</h3><p>Excavation, foundations, drainage, concreting and site preparation, the bit that has to be right.</p><span class="more">Get a quote →</span></div></a>
+      <a href="#contact" class="svc flat rv d1"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 21V7l8-4 8 4v14M4 11h16M4 15h16M9 21V11M15 21V11" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><div class="svc-body"><h3>Extensions</h3><p>Single &amp; double-storey extensions built from the ground up, managed end to end.</p><span class="more">Get a quote →</span></div></a>
+      <a href="#contact" class="svc flat rv d2"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 6h6v5H3zM9 11h6v5H9zM15 6h6v5h-6zM3 16h6v2H3zM15 16h6v2h-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><div class="svc-body"><h3>Brickwork &amp; Pointing</h3><p>Garden walls, retaining walls, repairs and crisp re-pointing by experienced brickies.</p><span class="more">Get a quote →</span></div></a>
+      <a href="#contact" class="svc flat rv d3"><svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 21V8h16v13M4 8l8-5 8 5M8 21v-6h3v6M14 13h2v2h-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><div class="svc-body"><h3>Fencing &amp; Damp Proofing</h3><p>New fencing, gates and boundaries, plus damp proofing to keep properties dry and sound.</p><span class="more">Get a quote →</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="pad projects" id="projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Recent work</span>
+      <h2>Real jobs, finished right</h2>
+      <p>A few recent projects from across Merseyside, every one our own work.</p>
+    </div>
+
+    <article class="proj">
+      <div class="proj-media rv"><img src="assets/photos/patio-porcelain-lawn.jpg" alt="Porcelain patio with charcoal border and artificial lawn"></div>
+      <div class="proj-txt rv d1">
+        <span class="proj-num">PROJECT 01</span>
+        <h3>Porcelain patio &amp; garden transformation</h3>
+        <p>A full rear-garden makeover, excavated and re-levelled, laid with grey porcelain paving and a contrasting charcoal border, finished with a crisp artificial lawn.</p>
+        <div class="proj-chips"><span>Groundworks</span><span>Porcelain paving</span><span>Artificial lawn</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="proj-media rv"><img src="assets/photos/bathroom-marble.jpg" alt="Marble-effect bathroom with freestanding bath and walk-in shower"></div>
+      <div class="proj-txt rv d1">
+        <span class="proj-num">PROJECT 02</span>
+        <h3>Marble-effect bathroom fit-out</h3>
+        <p>A complete bathroom renovation, marble-effect walls and floor, freestanding bath, black-framed walk-in shower and a slatted feature wall. Plumbing, tiling and finishing all handled in-house.</p>
+        <div class="proj-chips"><span>Bathroom</span><span>Tiling</span><span>Plumbing</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="proj-media rv"><img src="assets/photos/stairs-panelling.jpg" alt="Dark panelled feature wall to staircase"></div>
+      <div class="proj-txt rv d1">
+        <span class="proj-num">PROJECT 03</span>
+        <h3>Panelled hallway &amp; staircase</h3>
+        <p>Bespoke wall panelling running up the staircase, sprayed in a deep charcoal and paired with marble-effect floor tiling, a sharp, modern update to a family home.</p>
+        <div class="proj-chips"><span>Joinery</span><span>Wall panelling</span><span>Tiling</span></div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div class="proj-media rv"><img src="assets/photos/patio-indian-step.jpg" alt="Indian stone steps and patio at patio doors"></div>
+      <div class="proj-txt rv d1">
+        <span class="proj-num">PROJECT 04</span>
+        <h3>Indian stone steps &amp; patio</h3>
+        <p>Smooth Indian sandstone laid as a generous patio with neatly-built bullnose steps up to the patio doors, hard-wearing, slip-friendly and built to last.</p>
+        <div class="proj-chips"><span>Indian stone</span><span>Steps</span><span>Patio</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="pad gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">Gallery</span>
+      <h2>See the standard of work</h2>
+      <p>Tap any photo to take a closer look.</p>
+    </div>
+    <div class="masonry" id="masonry">
+      <figure data-src="assets/photos/patio-porcelain-lawn.jpg"><img src="assets/photos/patio-porcelain-lawn.jpg" alt="Porcelain patio and artificial lawn"><figcaption>Porcelain patio &amp; lawn</figcaption></figure>
+      <figure data-src="assets/photos/bathroom-marble.jpg"><img src="assets/photos/bathroom-marble.jpg" alt="Marble bathroom"><figcaption>Marble bathroom</figcaption></figure>
+      <figure data-src="assets/photos/patio-porcelain-grey.jpg"><img src="assets/photos/patio-porcelain-grey.jpg" alt="Grey porcelain paving beside bifold doors"><figcaption>Porcelain &amp; charcoal border</figcaption></figure>
+      <figure data-src="assets/photos/stairs-understairs.jpg"><img src="assets/photos/stairs-understairs.jpg" alt="Panelled staircase wall"><figcaption>Staircase panelling</figcaption></figure>
+      <figure data-src="assets/photos/patio-indian-step.jpg"><img src="assets/photos/patio-indian-step.jpg" alt="Indian stone steps"><figcaption>Indian stone steps</figcaption></figure>
+      <figure data-src="assets/photos/panelling-feature.jpg"><img src="assets/photos/panelling-feature.jpg" alt="Charcoal panelled feature wall"><figcaption>Feature wall panelling</figcaption></figure>
+      <figure data-src="assets/photos/bathroom-cloakroom.jpg"><img src="assets/photos/bathroom-cloakroom.jpg" alt="Marble cloakroom"><figcaption>Marble cloakroom</figcaption></figure>
+      <figure data-src="assets/photos/garden-landscaping.jpg"><img src="assets/photos/garden-landscaping.jpg" alt="Landscaped garden"><figcaption>Landscaped garden</figcaption></figure>
+      <figure data-src="assets/photos/stairs-panelling.jpg"><img src="assets/photos/stairs-panelling.jpg" alt="Panelled landing wall"><figcaption>Panelled landing</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="pad" id="why">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">Why JLD</span>
+      <h2>Why homeowners choose us</h2>
+      <p>The reasons people across Merseyside come back to JLD, and recommend us to neighbours.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>20+ years' experience</h3><p>Two decades of groundwork and building behind every job, we've seen it, dug it and built it before.</p></div>
+      <div class="why rv d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><h3>One team, whole job</h3><p>Groundworks, paving, brickwork, building and finishing all in-house. No juggling trades or passing the buck.</p></div>
+      <div class="why rv d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.7.9-5.5-4-3.9 5.5-.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div><h3>Quality materials</h3><p>Premium Marshalls paving and genuine Indian stone, laid properly so it stays looking sharp for years.</p></div>
+      <div class="why rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Free, honest quotes</h3><p>A proper site visit and a clear, no-obligation quote. The price we agree is the price you pay.</p></div>
+      <div class="why rv d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 13l2-6h14l2 6M5 13h14v5H5zM7 18v2M17 18v2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div><h3>Tidy &amp; reliable</h3><p>We turn up when we say, keep the site clean and clear up properly when the job's done.</p></div>
+      <div class="why rv d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg></div><h3>Local to Merseyside</h3><p>Based in St Helens and working right across the area, local knowledge and a name to protect.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="pad process" id="process">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="kicker">How it works</span>
+      <h2>Getting started is easy</h2>
+    </div>
+    <div class="steps">
+      <div class="pstep rv"><div class="pn">1</div><h4>Get in touch</h4><p>Call Dave or send your details through the form with a few notes about the job.</p></div>
+      <div class="pstep rv d1"><div class="pn">2</div><h4>Free site visit</h4><p>We come out, take a look, talk options and give you a clear written quote.</p></div>
+      <div class="pstep rv d2"><div class="pn">3</div><h4>We build it</h4><p>Booked in and built by our own team, properly, tidily and on schedule.</p></div>
+      <div class="pstep rv d3"><div class="pn">4</div><h4>Walk-round</h4><p>We finish, clear up and check you're delighted before we leave.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="pad coverage" id="areas">
+  <div class="wrap cov-grid">
+    <div class="rv">
+      <span class="kicker">Where we work</span>
+      <h2>St Helens &amp; across Merseyside</h2>
+      <p class="lead">Based in St Helens, we cover the whole of Merseyside and roughly a 15–20 mile radius. Not sure if we reach you? Just ask.</p>
+      <div class="towns">
+        <span class="hl">St Helens</span>
+        <span>Liverpool</span><span>Warrington</span><span>Widnes</span><span>Wigan</span>
+        <span>Prescot</span><span>Newton-le-Willows</span><span>Haydock</span>
+        <span>Rainford</span><span>Billinge</span><span>Ashton-in-Makerfield</span>
+        <span class="hl">+ surrounding areas</span>
+      </div>
+    </div>
+    <div class="cov-card rv d1">
+      <h3>Get a free quote today</h3>
+      <p class="sub">Quick to respond, usually same day.</p>
+      <a class="cov-line" href="tel:+447795901915"><svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><span>07795 901915<small>Call or text Dave</small></span></a>
+      <a class="cov-line" href="mailto:jldgroundworks@hotmail.com"><svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg><span>jldgroundworks@hotmail.com<small>Email us</small></span></a>
+      <a class="cov-line" href="https://www.facebook.com/people/JLD-Groundworks-BuildingPaving/61555853636308/" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .3-1.5 1.6-1.5H17V2.2C16.5 2.1 15.4 2 14.4 2 12 2 10.5 3.4 10.5 6.2V9H8v3.2h2.5V22H14v-9.8h2.6l.4-3.2z"/></svg><span>Find us on Facebook<small>See more recent jobs</small></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="ctaband">
+  <div class="grid"></div>
+  <div class="wrap">
+    <div class="rv">
+      <h2>Planning a project? Let's get you a price.</h2>
+      <p>Free, no-obligation quotes across St Helens &amp; Merseyside.</p>
+    </div>
+    <div class="acts rv d1">
+      <a href="tel:+447795901915" class="btn btn-amber btn-lg">Call 07795 901915</a>
+      <a href="#contact" class="btn btn-outline-d btn-lg">Request a quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="pad" id="contact">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <span class="kicker">Get in touch</span>
+      <h2>Free quotes, fast answers</h2>
+      <p class="lead">Tell us a bit about your project and Dave will get back to you with advice and a price. Prefer to talk? Give us a call.</p>
+      <div class="cd">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <div><div class="k">Phone</div><div class="v"><a href="tel:+447795901915">07795 901915</a></div></div>
+      </div>
+      <div class="cd">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <div><div class="k">Email</div><div class="v"><a href="mailto:jldgroundworks@hotmail.com">jldgroundworks@hotmail.com</a></div></div>
+      </div>
+      <div class="cd">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.4" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <div><div class="k">Area &amp; hours</div><div class="v">St Helens &amp; Merseyside · Mon–Sat</div></div>
+      </div>
+    </div>
+    <div class="form-card rv d1">
+      <h3>Request your free quote</h3>
+      <p class="fsub">No obligation, just honest advice and a price.</p>
+      <form id="enq" novalidate>
+        <div class="frow">
+          <div class="field"><label for="n">Name</label><input id="n" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="p">Phone</label><input id="p" type="tel" placeholder="Best number" required></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+          <div class="field"><label for="s">Service</label><select id="s"><option value="">Choose…</option><option>Driveway / Paving</option><option>Patio / Indian stone</option><option>Groundworks</option><option>Extension</option><option>Brickwork / Pointing</option><option>Fencing</option><option>Landscaping</option><option>Bathroom / Interior</option><option>Damp proofing</option><option>Something else</option></select></div>
+        </div>
+        <div class="field"><label for="m">Project details</label><textarea id="m" placeholder="Tell us about the job, location and rough size…"></textarea></div>
+        <button type="submit" class="btn btn-amber btn-lg">Send my request</button>
+        <p class="formnote" id="fn">Demo form, submissions aren't sent yet.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="wm on-dark"><span class="r1"><span class="jld">JLD</span><span class="gw">GROUNDWORKS</span></span><span class="r2">BUILDING &amp; PAVING</span></span>
+        <p>Complete groundwork, paving and building contractor. Over 20 years' experience across St Helens and Merseyside.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#services">Driveways &amp; Paving</a>
+        <a href="#services">Patios &amp; Indian Stone</a>
+        <a href="#services">Groundworks</a>
+        <a href="#services">Extensions</a>
+        <a href="#services">Landscaping</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#about">About JLD</a>
+        <a href="#projects">Projects</a>
+        <a href="#why">Why choose us</a>
+        <a href="#areas">Areas covered</a>
+        <a href="#contact">Get a quote</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="tel:+447795901915">07795 901915</a>
+        <a href="mailto:jldgroundworks@hotmail.com">jldgroundworks@hotmail.com</a>
+        <a href="https://www.facebook.com/people/JLD-Groundworks-BuildingPaving/61555853636308/" target="_blank" rel="noopener">Facebook</a>
+        <p>St Helens, Merseyside</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 JLD Groundworks Building &amp; Paving</span>
+      <span>Mockup · some details to be confirmed</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING CTAS: WHATSAPP + CALL -->
+<div class="fabs">
+  <a href="https://wa.me/447795901915" class="fab wa" target="_blank" rel="noopener" aria-label="WhatsApp JLD Groundworks">
+    <span class="lab">WhatsApp us</span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.16l-.3-.18-2.84.9.9-2.77-.2-.31A8.2 8.2 0 1 1 12 20.2z"/><path d="M17.5 14.4c-.3-.15-1.7-.84-2-.94-.26-.1-.45-.15-.64.15s-.73.93-.9 1.12c-.16.2-.33.22-.62.07a8.2 8.2 0 0 1-2.4-1.48 9 9 0 0 1-1.67-2.07c-.17-.3 0-.45.13-.6.13-.13.3-.34.44-.51.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.48l-.55-.01c-.2 0-.5.07-.77.37-.26.3-1 .98-1 2.38s1.03 2.76 1.17 2.95c.15.2 2.02 3.08 4.9 4.32.68.3 1.22.47 1.63.6.69.22 1.31.19 1.8.12.55-.08 1.7-.7 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.2-.55-.34z"/></svg>
+  </a>
+  <a href="tel:+447795901915" class="fab call" aria-label="Call JLD Groundworks">
+    <span class="lab">Call Dave</span>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb"><span class="x">Close ✕</span><span class="ar prev">‹</span><img src="" alt="JLD Groundworks project"><span class="ar next">›</span></div>
+
+<script>
+/* loader */
+(function(){var b=document.getElementById('lbar'),l=document.getElementById('loader'),p=0;
+var t=setInterval(function(){p=Math.min(100,p+Math.random()*18+8);b.style.transform='scaleX('+(p/100)+')';if(p>=100){clearInterval(t);setTimeout(function(){l.classList.add('done')},380);}},110);
+setTimeout(function(){l.classList.add('done')},2600);})();
+
+/* nav + floating CTAs appear past hero */
+var head=document.getElementById('head'),fabs=document.querySelector('.fabs'),hero=document.getElementById('top');
+function onScroll(){
+  head.classList.toggle('scrolled',scrollY>10);
+  var past=hero?(hero.getBoundingClientRect().bottom<=80):(scrollY>window.innerHeight*0.7);
+  fabs.classList.toggle('show',past);
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){burger.classList.toggle('open');menu.classList.toggle('open');});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');menu.classList.remove('open');});});
+
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+/* strip marquee */
+var strip=document.getElementById('strip');strip.innerHTML+=strip.innerHTML;
+var sx=0;function sdrift(){sx-=0.55;if(Math.abs(sx)>=strip.scrollWidth/2)sx=0;strip.style.transform='translateX('+sx+'px)';requestAnimationFrame(sdrift);}requestAnimationFrame(sdrift);
+
+/* lightbox */
+var lb=document.getElementById('lb'),lbi=lb.querySelector('img'),figs=[].slice.call(document.querySelectorAll('#masonry figure')),i=0;
+function show(n){i=(n+figs.length)%figs.length;lbi.src=figs[i].getAttribute('data-src');}
+figs.forEach(function(f,n){f.addEventListener('click',function(){show(n);lb.classList.add('on');});});
+lb.querySelector('.x').addEventListener('click',function(){lb.classList.remove('on');});
+lb.querySelector('.next').addEventListener('click',function(e){e.stopPropagation();show(i+1);});
+lb.querySelector('.prev').addEventListener('click',function(e){e.stopPropagation();show(i-1);});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('on');});
+addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')lb.classList.remove('on');if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1);});
+
+/* form */
+document.getElementById('enq').addEventListener('submit',function(e){e.preventDefault();var fn=document.getElementById('fn');fn.textContent='Thanks! This is a demo form so nothing was sent, but your real site will email enquiries straight to Dave.';fn.style.color='var(--blue)';});
+</script>
+</body>
+</html>
