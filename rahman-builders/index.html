@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RAHMAN Builders — Rendering & Plastering Specialists, London | K Rend · Sand & Cement · Multi-Finish</title>
+<meta name="description" content="RAHMAN Builders are London rendering and plastering specialists. Silicone K Rend thin-coat, traditional sand & cement render, multi-finish skim plastering and house extensions across London. Free quotes — call Faiz on 07832 355843." />
+<meta name="theme-color" content="#1d2125" />
+<meta property="og:title" content="RAHMAN Builders — Rendering & Plastering Specialists, London" />
+<meta property="og:description" content="Silicone K Rend, sand & cement render, multi-finish skim and extensions across London. Free quotes." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/og.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --paper:#f4f1ea;        /* fresh render cream */
+  --paper-2:#ece7dc;
+  --ink:#1d2125;          /* anthracite (frames) */
+  --ink-2:#2b3137;
+  --muted:#6c7177;        /* render grey */
+  --line:#d9d3c6;
+  --clay:#bf4f2e;         /* brick / terracotta accent */
+  --clay-d:#a8421f;
+  --grey:#8b9197;         /* cool render grey */
+  --white:#ffffff;
+  --shadow:0 18px 50px -22px rgba(29,33,37,.45);
+  --r:14px;
+  --maxw:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--paper);color:var(--ink);
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.mono{font-family:'IBM Plex Mono',monospace;font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem}
+.clay{color:var(--clay)}
+
+/* ---------- loader: scratch-coat -> topcoat render reveal ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.rndr{position:relative;width:260px;height:104px;border-radius:8px;overflow:hidden;background:#34302a;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+/* scratch coat (dark, combed) sweeps first */
+.coat-base{position:absolute;inset:0;background:
+  repeating-linear-gradient(0deg, #46413a 0 7px, #3e3933 7px 9px);
+  transform:scaleX(0);transform-origin:left;animation:sweepBase 1s ease .15s forwards}
+/* topcoat (light render) sweeps over, revealing smooth finish */
+.coat-top{position:absolute;inset:0;background:
+  linear-gradient(120deg,#e9e3d6,#d9d2c2 55%,#efe9dd);
+  transform:scaleX(0);transform-origin:left;animation:sweepTop 1.05s cubic-bezier(.7,0,.2,1) 1.05s forwards}
+/* trowel edge */
+.trowel{position:absolute;top:-8px;bottom:-8px;width:10px;background:linear-gradient(#cfd3d6,#9aa0a4);border-radius:3px;box-shadow:0 0 14px rgba(0,0,0,.4);left:-20px;opacity:0;animation:trowelMove 1.05s cubic-bezier(.7,0,.2,1) 1.05s forwards}
+@keyframes sweepBase{to{transform:scaleX(1)}}
+@keyframes sweepTop{to{transform:scaleX(1)}}
+@keyframes trowelMove{0%{opacity:0;left:-20px}8%{opacity:1}100%{opacity:0;left:260px}}
+.load-word{font-family:'Space Grotesk';font-weight:700;letter-spacing:.18em;color:var(--paper);font-size:1.05rem;opacity:0;transform:translateY(8px);animation:fadeUp .6s ease 1.9s forwards}
+.load-word b{color:var(--clay);font-weight:700}
+.load-sub{font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:#8b8f93;opacity:0;animation:fadeUp .6s ease 2.15s forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* ---------- nav ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:900;transition:.35s}
+header .bar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:var(--maxw);margin:0 auto}
+header.scrolled{background:rgba(244,241,234,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Space Grotesk';font-weight:700;letter-spacing:.02em}
+.brand .mark{width:38px;height:38px;border-radius:9px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:1.18rem;font-weight:700;position:relative;overflow:hidden;flex:0 0 auto}
+.brand .mark::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:var(--clay)}
+.brand .mark span{position:relative;z-index:1}
+.brand b{font-size:1.12rem}
+.brand small{display:block;font-family:'IBM Plex Mono';font-weight:400;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:1px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-2);transition:.2s}
+.nav-links a:hover{color:var(--clay)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:10px;font-weight:600;font-size:.9rem;transition:.25s}
+.nav-cta:hover{background:var(--clay);transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+
+/* ---------- hero ---------- */
+.hero{padding:150px 0 70px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--muted);margin-bottom:22px}
+.hero-eyebrow::before{content:"";width:30px;height:1px;background:var(--clay)}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.25rem)}
+.hero h1 em{font-style:normal;color:var(--clay)}
+.hero p.lead{font-size:1.12rem;color:var(--ink-2);max-width:30rem;margin:24px 0 32px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:11px;font-weight:600;font-size:1rem;transition:.25s;cursor:pointer;border:none}
+.btn-primary{background:var(--clay);color:#fff;box-shadow:0 12px 26px -12px rgba(191,79,46,.7)}
+.btn-primary:hover{background:var(--clay-d);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.hero-meta{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.hero-meta div{display:flex;flex-direction:column}
+.hero-meta b{font-family:'Space Grotesk';font-size:1.5rem;color:var(--ink)}
+.hero-meta span{font-size:.82rem;color:var(--muted)}
+.hero-visual{position:relative}
+.hero-visual .frame{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);position:relative;aspect-ratio:4/3}
+.hero-visual .frame img{width:100%;height:100%;object-fit:cover}
+.hero-badge{margin-top:16px;background:var(--ink);color:var(--paper);padding:14px 20px;border-radius:13px;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px}
+.hero-badge .mono{color:var(--clay);font-size:.62rem;flex:0 0 auto}
+.hero-badge b{font-family:'Space Grotesk';font-size:1rem;line-height:1.2;font-weight:600}
+.hero-swatches{position:absolute;top:18px;right:18px;display:flex;gap:7px;background:rgba(29,33,37,.55);backdrop-filter:blur(6px);padding:8px 10px;border-radius:30px}
+.hero-swatches i{width:18px;height:18px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+
+/* ---------- marquee trust ---------- */
+.ticker{background:var(--ink);color:var(--paper);overflow:hidden;border-top:1px solid #2c3036;border-bottom:1px solid #2c3036}
+.ticker-track{display:flex;gap:42px;white-space:nowrap;padding:15px 0;animation:scroll 26s linear infinite;width:max-content}
+.ticker span{font-family:'IBM Plex Mono';font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#b9bdc1;display:inline-flex;align-items:center;gap:42px}
+.ticker span::after{content:"◆";color:var(--clay);font-size:.6rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:96px 0}
+.sec-head{max-width:640px;margin-bottom:54px}
+.sec-head .mono{color:var(--clay);display:block;margin-bottom:14px}
+.sec-head h2{font-size:clamp(2rem,3.6vw,2.9rem)}
+.sec-head p{color:var(--ink-2);margin-top:16px;font-size:1.06rem}
+
+/* services */
+.services{background:linear-gradient(180deg,var(--paper),var(--paper-2))}
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);margin-bottom:26px;background:var(--ink);color:var(--paper)}
+.feature .ft-body{padding:46px 44px}
+.feature .tag{display:inline-block;background:var(--clay);color:#fff;font-family:'IBM Plex Mono';font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;border-radius:30px;margin-bottom:20px}
+.feature h3{font-size:1.9rem;margin-bottom:14px}
+.feature p{color:#c4c8cc;margin-bottom:22px}
+.feature ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:26px}
+.feature li{font-size:.92rem;color:#dde0e3;display:flex;gap:9px;align-items:flex-start}
+.feature li::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--clay);margin-top:8px;flex:0 0 auto}
+.feature .ft-img{position:relative;min-height:340px}
+.feature .ft-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--clay);transform:scaleY(0);transform-origin:top;transition:.35s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.card:hover::before{transform:scaleY(1)}
+.card .ico{width:46px;height:46px;border-radius:11px;background:var(--paper-2);display:grid;place-items:center;margin-bottom:18px;color:var(--clay)}
+.card h3{font-size:1.22rem;margin-bottom:9px}
+.card p{font-size:.92rem;color:var(--muted)}
+.card .num{position:absolute;top:22px;right:24px;font-family:'IBM Plex Mono';font-size:.74rem;color:var(--line)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+.about-img{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:9/10}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-quote{position:absolute;right:-14px;bottom:18px;background:var(--clay);color:#fff;padding:18px 22px;border-radius:13px;max-width:230px;box-shadow:var(--shadow)}
+.about-quote p{font-family:'Space Grotesk';font-size:1.02rem;line-height:1.25}
+.about h2{font-size:clamp(2rem,3.6vw,2.8rem);margin-bottom:18px}
+.about p{color:var(--ink-2);margin-bottom:16px}
+.about .signoff{display:flex;align-items:center;gap:14px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+.about .signoff b{font-family:'Space Grotesk';font-size:1.05rem}
+.about .signoff span{font-size:.85rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.chip{font-family:'IBM Plex Mono';font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;background:var(--white);border:1px solid var(--line);padding:7px 13px;border-radius:30px;color:var(--ink-2)}
+
+/* process */
+.process{background:var(--ink);color:var(--paper)}
+.process .sec-head h2{color:var(--paper)}
+.process .sec-head p{color:#aeb3b8}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
+.step{position:relative;padding-top:34px}
+.step .n{font-family:'Space Grotesk';font-size:2.4rem;font-weight:700;color:#3a4046;line-height:1}
+.step .n b{color:var(--clay)}
+.step h3{font-size:1.18rem;margin:12px 0 8px}
+.step p{font-size:.9rem;color:#aeb3b8}
+.step::before{content:"";position:absolute;top:46px;left:54px;right:-24px;height:1px;background:repeating-linear-gradient(90deg,#3a4046 0 6px,transparent 6px 12px)}
+.step:last-child::before{display:none}
+
+/* gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gtile{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;background:var(--ink)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.gtile:hover img{transform:scale(1.07)}
+.gtile::after{content:"+";position:absolute;right:14px;bottom:10px;color:#fff;font-size:1.4rem;opacity:0;transform:translateY(8px);transition:.3s;font-family:'Space Grotesk'}
+.gtile:hover::after{opacity:1;transform:none}
+.gtile .cap{position:absolute;left:12px;bottom:12px;color:#fff;font-family:'IBM Plex Mono';font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(29,33,37,.6);padding:4px 9px;border-radius:20px;opacity:0;transition:.3s}
+.gtile:hover .cap{opacity:1}
+.g-wide{grid-column:span 2}.g-tall{grid-row:span 2}.g-big{grid-column:span 2;grid-row:span 2}
+
+/* reviews */
+.reviews{background:var(--paper-2)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px}
+.rev .stars{color:var(--clay);font-size:.95rem;letter-spacing:3px;margin-bottom:14px}
+.rev p{font-size:.98rem;color:var(--ink-2);margin-bottom:20px}
+.rev .who{display:flex;align-items:center;gap:12px}
+.rev .av{width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-family:'Space Grotesk';font-weight:600}
+.rev .who b{display:block;font-size:.95rem}
+.rev .who span{font-size:.8rem;color:var(--muted)}
+.rev-note{text-align:center;margin-top:26px;font-size:.78rem;color:var(--muted);font-style:italic}
+
+/* CTA / contact */
+.cta{background:var(--ink);color:var(--paper);border-radius:0}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.cta h2{font-size:clamp(2.1rem,4vw,3.1rem);color:var(--paper)}
+.cta h2 em{font-style:normal;color:var(--clay)}
+.cta p{color:#b9bdc1;margin:18px 0 30px;font-size:1.05rem;max-width:30rem}
+.cta-actions{display:flex;flex-direction:column;gap:14px;max-width:340px}
+.cta-actions a{display:flex;align-items:center;gap:16px;background:#262c32;border:1px solid #333a41;border-radius:13px;padding:18px 20px;transition:.25s}
+.cta-actions a:hover{background:#2f363d;transform:translateX(4px);border-color:var(--clay)}
+.cta-actions .ic{width:46px;height:46px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto}
+.cta-actions .ic.call{background:var(--clay);color:#fff}
+.cta-actions .ic.wa{background:#25d366;color:#0a3d1f}
+.cta-actions .ic.area{background:#3a4147;color:var(--paper)}
+.cta-actions b{font-family:'Space Grotesk';font-size:1.12rem;display:block}
+.cta-actions span{font-size:.82rem;color:#9aa0a5}
+.cta-form{background:#22282e;border:1px solid #333a41;border-radius:18px;padding:32px}
+.cta-form h3{font-size:1.3rem;margin-bottom:6px;color:var(--paper)}
+.cta-form .mono{color:var(--clay);display:block;margin-bottom:20px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:.78rem;color:#9aa0a5;margin-bottom:6px;font-family:'IBM Plex Mono';letter-spacing:.08em;text-transform:uppercase}
+.field input,.field select,.field textarea{width:100%;background:#1a1f24;border:1px solid #3a4147;border-radius:10px;padding:13px 14px;color:var(--paper);font-family:inherit;font-size:.95rem;transition:.2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--clay)}
+.cta-form button{width:100%;margin-top:6px}
+.form-note{font-size:.74rem;color:#7d8389;margin-top:14px;text-align:center}
+
+/* footer */
+footer{background:#15181b;color:#9aa0a5;padding:54px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-grid h4{color:var(--paper);font-size:1rem;margin-bottom:16px}
+.foot-grid a{display:block;font-size:.9rem;margin-bottom:9px;transition:.2s}
+.foot-grid a:hover{color:var(--clay)}
+.foot-brand p{font-size:.9rem;margin-top:14px;max-width:26rem}
+.foot-bottom{border-top:1px solid #262c32;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem}
+
+/* FABs — labelled contact pills */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:800;display:flex;flex-direction:column;gap:10px;align-items:flex-end;opacity:0;transform:translateY(20px);transition:.4s;pointer-events:none}
+.fabs.show{opacity:1;transform:none;pointer-events:auto}
+.fab{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 20px 0 16px;border-radius:30px;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;box-shadow:0 10px 26px -8px rgba(29,33,37,.5);transition:.25s;line-height:1}
+.fab svg{width:21px;height:21px;flex:0 0 auto}
+.fab:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(29,33,37,.55)}
+.fab.call{background:var(--clay)}
+.fab.wa{background:#1fae55}
+.fab small{display:block;font-family:'Inter';font-weight:400;font-size:.66rem;opacity:.85;letter-spacing:.01em}
+.fab .lbl{display:flex;flex-direction:column;text-align:left}
+@media(max-width:600px){.fab small{display:none}.fab{height:50px;font-size:.9rem}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:9998;background:rgba(20,23,26,.94);display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:86vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close{position:absolute;top:24px;right:30px;color:#fff;font-size:2rem;cursor:pointer;font-family:'Space Grotesk'}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.4rem;cursor:pointer;user-select:none;padding:16px;opacity:.8}
+.lb-nav:hover{opacity:1}
+.lb-prev{left:14px}.lb-next{right:14px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .hero-grid,.about-grid,.cta-grid{grid-template-columns:1fr;gap:40px}
+  .feature{grid-template-columns:1fr}
+  .feature .ft-img{min-height:260px}
+  .svc-grid,.rev-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .step::before{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .hero-visual .frame{aspect-ratio:16/11}
+}
+@media(max-width:600px){
+  section{padding:64px 0}
+  .svc-grid,.rev-grid,.steps,.foot-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .g-big{grid-column:span 2;grid-row:span 1}
+  .feature ul{grid-template-columns:1fr}
+  .hero-badge{left:0}
+  .about-quote{right:0}
+}
+.mobile-menu{position:fixed;inset:0;z-index:899;background:var(--paper);transform:translateX(100%);transition:.4s;display:flex;flex-direction:column;padding:90px 30px 30px}
+.mobile-menu.open{transform:none}
+.mobile-menu a{font-family:'Space Grotesk';font-size:1.5rem;padding:16px 0;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<!-- loader -->
+<div id="loader">
+  <div class="rndr">
+    <div class="coat-base"></div>
+    <div class="coat-top"></div>
+    <div class="trowel"></div>
+  </div>
+  <div class="load-word">RAHMAN <b>BUILDERS</b></div>
+  <div class="load-sub">Rendering · Plastering · London</div>
+</div>
+
+<!-- header -->
+<header id="header">
+  <div class="bar">
+    <a href="#top" class="brand">
+      <span class="mark"><span>R</span></span>
+      <span><b>RAHMAN</b><small>Builders · London</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="tel:+447832355843" class="nav-cta">📞 07832 355843</a>
+    </nav>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#process">Process</a>
+  <a href="#work">Our Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Get a Quote</a>
+  <a href="tel:+447832355843" class="clay">📞 07832 355843</a>
+</div>
+
+<!-- hero -->
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal in">
+      <span class="hero-eyebrow mono">Rendering & Plastering Specialists</span>
+      <h1>A flawless <em>render & finish</em> on every London home.</h1>
+      <p class="lead">From silicone K Rend and traditional sand &amp; cement to glass-smooth multi-finish skim — RAHMAN Builders deliver clean, lasting work across London. Renders, plastering and full extensions, finished properly.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get a Free Quote →</a>
+        <a href="#work" class="btn btn-ghost">See Our Work</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>K Rend</b><span>Approved silicone systems</span></div>
+        <div><b>London</b><span>&amp; surrounding boroughs</span></div>
+        <div><b>Free</b><span>No-obligation quotes</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal in">
+      <div class="frame">
+        <img src="assets/hero.jpg" alt="Completed rendered and brick rear extension by RAHMAN Builders in London" />
+        <div class="hero-swatches" title="Finish range">
+          <i style="background:#e9e3d6"></i>
+          <i style="background:#9aa0a4"></i>
+          <i style="background:#5f6469"></i>
+          <i style="background:#bf4f2e"></i>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <span class="mono">Completed Project</span>
+        <b>Two-storey rear extension, render &amp; brick</b>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ticker -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Silicone K Rend<span>Sand &amp; Cement Render</span><span>Multi-Finish Skim</span><span>External Wall Insulation</span><span>House Extensions</span><span>Re-Renders &amp; Repairs</span><span>Dry Lining</span><span>Pebbledash</span></span>
+    <span>Silicone K Rend<span>Sand &amp; Cement Render</span><span>Multi-Finish Skim</span><span>External Wall Insulation</span><span>House Extensions</span><span>Re-Renders &amp; Repairs</span><span>Dry Lining</span><span>Pebbledash</span></span>
+  </div>
+</div>
+
+<!-- services -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono">What We Do</span>
+      <h2>Renders &amp; finishes, done by specialists.</h2>
+      <p>We focus on the trades we know best — modern thin-coat renders, traditional render and clean plastering — and build the extensions to put them on.</p>
+    </div>
+
+    <!-- feature: K Rend -->
+    <div class="feature reveal">
+      <div class="ft-body">
+        <span class="tag">Our Specialism</span>
+        <h3>Silicone K Rend &amp; Thin-Coat Systems</h3>
+        <p>Through-coloured silicone render that stays cleaner for longer, resists cracking and never needs painting. The crisp, contemporary grey finish you see on the best modern London extensions.</p>
+        <ul>
+          <li>Self-coloured silicone topcoats</li>
+          <li>Insulated render (EWI) systems</li>
+          <li>Mesh-reinforced basecoats</li>
+          <li>Bead &amp; detailing to spec</li>
+          <li>Smooth or textured finishes</li>
+          <li>Low-maintenance &amp; breathable</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Ask About K Rend →</a>
+      </div>
+      <div class="ft-img">
+        <img src="assets/work-2.jpg" alt="Smooth grey silicone render to extension and boundary walls" />
+      </div>
+    </div>
+
+    <!-- grid -->
+    <div class="svc-grid">
+      <div class="card reveal">
+        <span class="num">01</span>
+        <div class="ico">▟</div>
+        <h3>Sand &amp; Cement Render</h3>
+        <p>Traditional scratch &amp; topcoat render — float, sponge or pebbledash finishes built to last on any masonry.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">02</span>
+        <div class="ico">▤</div>
+        <h3>Multi-Finish Plastering</h3>
+        <p>Glass-smooth skim to walls and ceilings, re-skims over old surfaces and fresh plasterboard — ready to decorate.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">03</span>
+        <div class="ico">◳</div>
+        <h3>House Extensions</h3>
+        <p>Single &amp; double-storey rear extensions and loft spaces — managed from groundwork to the final coat of render.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">04</span>
+        <div class="ico">▦</div>
+        <h3>Dry Lining &amp; Boarding</h3>
+        <p>Plasterboarding, tacking and taping to new studwork and ceilings, prepped perfectly for a flawless skim.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">05</span>
+        <div class="ico">◰</div>
+        <h3>Re-Renders &amp; Repairs</h3>
+        <p>Hacking off failed or blown render, crack repair and full re-renders to bring tired façades back to life.</p>
+      </div>
+      <div class="card reveal">
+        <span class="num">06</span>
+        <div class="ico">⌂</div>
+        <h3>External Wall Insulation</h3>
+        <p>Insulated render systems that warm the home and transform the exterior in one cleanly finished job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <img src="assets/about.jpg" alt="Rendered rear extension with bifold doors and finished patio in London" />
+      <div class="about-quote"><p>“If the render isn't right, the whole job isn't right.”</p></div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="mono clay">About RAHMAN Builders</span>
+      <h2>A render specialist who treats your home like his own.</h2>
+      <p>RAHMAN Builders is run by <strong>Faiz Rahman</strong> — a London tradesman who built his name on rendering and plastering done the right way. Tidy sites, honest advice and a finish that still looks sharp years later.</p>
+      <p>Most of our work comes from recommendation: homeowners, builders and developers who've seen the standard first-hand. Whether it's a single skimmed ceiling or a full extension wrapped in silicone render, you'll deal directly with Faiz from quote to clean-up.</p>
+      <div class="chips">
+        <span class="chip">Free Quotes</span>
+        <span class="chip">Tidy &amp; Reliable</span>
+        <span class="chip">Domestic &amp; Trade</span>
+        <span class="chip">London-Wide</span>
+      </div>
+      <div class="signoff">
+        <div class="brand"><span class="mark"><span>R</span></span></div>
+        <div><b>Faiz Rahman</b><span>Owner · RAHMAN Builders</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- process -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono">How It Works</span>
+      <h2>Four steps to a perfect finish.</h2>
+      <p>No surprises, no mess left behind — just a clear plan and a clean job from start to finish.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n"><b>01</b></div><h3>Visit &amp; Quote</h3><p>We come out, measure up and talk through finishes — then send a clear, fixed quote.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Prep &amp; Protect</h3><p>Surfaces hacked back, beads set, areas sheeted up. Good prep is half a good render.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Render &amp; Finish</h3><p>Base coats, mesh and topcoat applied and worked to a flawless, even finish.</p></div>
+      <div class="step reveal"><div class="n">04</div><h3>Clean &amp; Sign-Off</h3><p>Site cleared, work walked round with you and left exactly as we'd want our own.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono">Recent Work</span>
+      <h2>Real projects across London.</h2>
+      <p>Renders, plastering and extensions completed by the team — tap any image to view it larger.</p>
+    </div>
+    <div class="gallery-grid reveal" id="gallery">
+      <div class="gtile g-big" data-src="assets/work-1.jpg"><img src="assets/work-1.jpg" alt="Rendered extension with bifold doors"><span class="cap">K Rend extension</span></div>
+      <div class="gtile g-wide" data-src="assets/work-4.jpg"><img src="assets/work-4.jpg" alt="Finished rendered extension and patio"><span class="cap">Render & landscaping</span></div>
+      <div class="gtile g-tall" data-src="assets/work-3.jpg"><img src="assets/work-3.jpg" alt="External render to side wall"><span class="cap">External render</span></div>
+      <div class="gtile" data-src="assets/work-6.jpg"><img src="assets/work-6.jpg" alt="Fresh multi-finish skim around skylight"><span class="cap">Multi-finish skim</span></div>
+      <div class="gtile" data-src="assets/work-9.jpg"><img src="assets/work-9.jpg" alt="Completed two-storey extension"><span class="cap">Two-storey build</span></div>
+      <div class="gtile g-wide" data-src="assets/work-5.jpg"><img src="assets/work-5.jpg" alt="Extension build in progress"><span class="cap">Extension in progress</span></div>
+      <div class="gtile" data-src="assets/work-7.jpg"><img src="assets/work-7.jpg" alt="Interior plastering and skim"><span class="cap">Interior plastering</span></div>
+      <div class="gtile" data-src="assets/work-8.jpg"><img src="assets/work-8.jpg" alt="Freshly skimmed walls and ceiling"><span class="cap">Skimmed & ready</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="mono">What Clients Say</span>
+      <h2>Trusted by London homeowners.</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>“Faiz rendered the whole rear of our extension in K Rend and it looks superb — crisp, even and not a mark on it. Tidy worker and always on time.”</p>
+        <div class="who"><div class="av">SA</div><div><b>Sana A.</b><span>Walthamstow, E17</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>“Had ceilings and walls skimmed throughout. The finish is glass-smooth and everything was sheeted up and cleaned down each day. Couldn't fault it.”</p>
+        <div class="who"><div class="av">MJ</div><div><b>Mark J.</b><span>Enfield, EN3</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>“We use Faiz for our render and plaster work across several projects. Reliable, properly skilled and the standard is always there. Highly recommend.”</p>
+        <div class="who"><div class="av">DP</div><div><b>D. Patel</b><span>Ilford, IG1</span></div></div>
+      </div>
+    </div>
+    <p class="rev-note">Reviews are illustrative pending the client's real testimonials.</p>
+  </div>
+</section>
+
+<!-- CTA / contact -->
+<section class="cta" id="contact">
+  <div class="wrap cta-grid">
+    <div class="reveal">
+      <span class="mono clay">Get In Touch</span>
+      <h2>Get a <em>free quote</em> for your render or plastering.</h2>
+      <p>Tell Faiz what you need doing and he'll come and take a look. Honest advice, a clear price and a finish you'll be glad you waited for.</p>
+      <div class="cta-actions">
+        <a href="tel:+447832355843">
+          <span class="ic call">📞</span>
+          <span><b>07832 355843</b><span>Call or text Faiz directly</span></span>
+        </a>
+        <a href="https://wa.me/447832355843" target="_blank" rel="noopener">
+          <span class="ic wa">💬</span>
+          <span><b>WhatsApp Us</b><span>Send photos for a faster quote</span></span>
+        </a>
+        <a href="#top">
+          <span class="ic area">📍</span>
+          <span><b>London-Wide</b><span>All boroughs &amp; surrounding areas</span></span>
+        </a>
+      </div>
+    </div>
+    <form class="cta-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Thanks — we\'ll be in touch';this.querySelector('button').style.background='#25d366';">
+      <h3>Request a callback</h3>
+      <span class="mono">Reply same day where possible</span>
+      <div class="field"><label>Your name</label><input type="text" required placeholder="Full name" /></div>
+      <div class="field"><label>Phone</label><input type="tel" required placeholder="Mobile number" /></div>
+      <div class="field"><label>What do you need?</label>
+        <select>
+          <option>Silicone K Rend</option>
+          <option>Sand &amp; cement render</option>
+          <option>Multi-finish plastering</option>
+          <option>House extension</option>
+          <option>Re-render / repair</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field"><label>Details</label><textarea rows="3" placeholder="Tell us about the job, location & timing"></textarea></div>
+      <button type="submit" class="btn btn-primary">Send Request →</button>
+      <p class="form-note">No email required — we'll call or message you back.</p>
+    </form>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand"><span class="mark"><span>R</span></span><span><b style="color:#fff">RAHMAN</b><small>Builders · London</small></span></a>
+        <p>London rendering and plastering specialists — silicone K Rend, sand &amp; cement, multi-finish skim and full extensions, finished to a standard we're proud to put our name to.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#services">Silicone K Rend</a>
+        <a href="#services">Sand &amp; Cement Render</a>
+        <a href="#services">Multi-Finish Plastering</a>
+        <a href="#services">House Extensions</a>
+        <a href="#services">External Wall Insulation</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+447832355843">📞 07832 355843</a>
+        <a href="https://wa.me/447832355843" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="#contact">📝 Request a quote</a>
+        <a href="#work">📷 Our work</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 RAHMAN Builders · Faiz Rahman · London</span>
+      <span>Rendering · Plastering · Extensions</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fabs" id="fabs">
+  <a href="https://wa.me/447832355843" class="fab wa" target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.16 5.34 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.13c1.68 1 3.28 1.6 5.4 1.6 5.45 0 9.89-4.43 9.89-9.88a9.82 9.82 0 0 0-2.9-7 9.78 9.78 0 0 0-6.98-2.9c-5.46 0-9.9 4.44-9.9 9.89 0 2.22.65 3.89 1.74 5.63l-1 3.66 3.75-1zM17.5 14.3c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07a8.1 8.1 0 0 1-2.39-1.47 8.94 8.94 0 0 1-1.65-2.06c-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41z"/></svg>
+    <span class="lbl">WhatsApp<small>Send job photos</small></span>
+  </a>
+  <a href="tel:+447832355843" class="fab call" aria-label="Call Faiz on 07832 355843">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+    <span class="lbl">Call Faiz<small>07832 355843</small></span>
+  </a>
+</div>
+
+<!-- lightbox -->
+<div class="lb" id="lb">
+  <span class="lb-close" id="lbClose">✕</span>
+  <span class="lb-nav lb-prev" id="lbPrev">‹</span>
+  <img id="lbImg" src="" alt="" />
+  <span class="lb-nav lb-next" id="lbNext">›</span>
+</div>
+
+<script>
+// loader
+window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('loader').classList.add('done'),2600)});
+// header scroll + fabs
+const header=document.getElementById('header'),fabs=document.getElementById('fabs');
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  header.classList.toggle('scrolled',y>40);
+  fabs.classList.toggle('show',y>520);
+});
+// mobile menu
+const burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{mm.classList.toggle('open');burger.classList.toggle('on')});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+// reveal
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// lightbox
+const tiles=[...document.querySelectorAll('.gtile')],lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+let idx=0;
+function open(i){idx=(i+tiles.length)%tiles.length;lbImg.src=tiles[idx].dataset.src;lb.classList.add('open')}
+tiles.forEach((t,i)=>t.addEventListener('click',()=>open(i)));
+document.getElementById('lbClose').onclick=()=>lb.classList.remove('open');
+document.getElementById('lbNext').onclick=(e)=>{e.stopPropagation();open(idx+1)};
+document.getElementById('lbPrev').onclick=(e)=>{e.stopPropagation();open(idx-1)};
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowRight')open(idx+1);if(e.key==='ArrowLeft')open(idx-1)});
+</script>
+</body>
+</html>
