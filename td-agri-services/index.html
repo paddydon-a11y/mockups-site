@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TD Agri Services | Groundworks &amp; Agricultural Contractor near Garstang &amp; Pilling</title>
+<meta name="description" content="TD Agri Services — groundworks and agricultural contractor based in Pilling, near Garstang, Lancashire. Farm groundworks, concrete yards, drainage, ditching, access tracks, digger &amp; plant hire. Free quotes — call Tom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#11150f;
+  --bg2:#0c0f0a;
+  --card:#181d13;
+  --card-hover:#1f261a;
+  --border:#2a3122;
+  --border-light:#3a4430;
+  --accent:#f3b322;        /* hi-vis machinery amber */
+  --accent-hover:#d99a0f;
+  --accent-glow:rgba(243,179,34,.16);
+  --green:#82ab33;          /* field green */
+  --green-dim:rgba(130,171,51,.16);
+  --white:#f4f6ef;
+  --body:#c7cfba;
+  --muted:#8a937c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--body);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Saira Condensed',sans-serif;color:var(--white);font-weight:700;line-height:1.02;text-transform:uppercase;letter-spacing:.005em}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+.grn{color:var(--green)}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;background:var(--bg2);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s ease,visibility .6s ease}
+#loader.hide{opacity:0;visibility:hidden}
+#loader svg{width:74px;height:74px}
+#loader .ctr{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300;animation:draw 1.5s ease forwards}
+#loader .ctr.c2{stroke:var(--green);animation-delay:.18s}
+#loader .ctr.c3{stroke:var(--accent);animation-delay:.36s}
+@keyframes draw{to{stroke-dashoffset:0}}
+#loader .lbar{width:160px;height:2px;background:var(--border);position:relative;overflow:hidden}
+#loader .lbar::after{content:"";position:absolute;inset:0;width:38%;background:var(--accent);animation:slide 1.1s ease-in-out infinite}
+@keyframes slide{0%{left:-38%}100%{left:100%}}
+#loader .ltext{font-family:'Saira Condensed',sans-serif;letter-spacing:.46em;font-size:.84rem;color:var(--accent);text-transform:uppercase;padding-left:.46em;font-weight:600}
+
+/* ---------- Contour watermark ---------- */
+.contour-wm{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23f3b322' stroke-width='1.4'%3E%3Cpath d='M-20 120 Q60 60 120 120 T260 120'/%3E%3Cpath d='M-20 150 Q60 90 120 150 T260 150'/%3E%3Cpath d='M-20 90 Q60 30 120 90 T260 90'/%3E%3Cpath d='M-20 180 Q60 120 120 180 T260 180'/%3E%3Cpath d='M-20 60 Q60 0 120 60 T260 60'/%3E%3C/g%3E%3C/svg%3E");background-size:380px}
+
+/* ---------- Logo ---------- */
+.logo{flex-shrink:0}
+.logo .tile{fill:var(--accent)}
+.logo .td{fill:#15180f;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.5px}
+.logo .haz{fill:#15180f}
+
+/* ---------- Nav ---------- */
+nav{position:sticky;top:0;z-index:1000;background:rgba(12,15,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.brand svg{width:42px;height:42px}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Saira Condensed',sans-serif;font-size:1.5rem;font-weight:700;color:var(--white);letter-spacing:.02em;text-transform:uppercase}
+.brand-sub{font-size:.58rem;letter-spacing:.34em;color:var(--accent);text-transform:uppercase;margin-top:3px;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:var(--body);font-size:.92rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.nav-cta{background:var(--accent);color:#15180f !important;padding:11px 22px;border-radius:3px;font-weight:700;letter-spacing:.02em;font-family:'Saira Condensed',sans-serif;font-size:1.02rem;text-transform:uppercase}
+.nav-links a.nav-cta:hover{background:var(--accent-hover)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.hamburger span{width:26px;height:2px;background:var(--white);transition:.3s}
+.mobile-panel{display:none;flex-direction:column;background:var(--card);border-bottom:1px solid var(--border)}
+.mobile-panel a{padding:15px 24px;border-top:1px solid var(--border);color:var(--body);font-weight:500}
+.mobile-panel a.m-cta{background:var(--accent);color:#15180f;text-align:center;font-weight:700;text-transform:uppercase;font-family:'Saira Condensed',sans-serif}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;z-index:1;padding:0}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:70px 24px 76px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;font-weight:600}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-glow);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 12px rgba(243,179,34,0)}100%{box-shadow:0 0 0 0 rgba(243,179,34,0)}}
+.hero h1{font-size:clamp(3rem,6.4vw,5.4rem);font-weight:800;letter-spacing:.004em;margin-bottom:20px;color:var(--white)}
+.hero .lede{font-size:1.1rem;max-width:500px;margin-bottom:30px;color:var(--body)}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:3px;font-weight:700;font-size:1.05rem;font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.02em;transition:transform .2s,background .2s;cursor:pointer}
+.btn-primary{background:var(--accent);color:#15180f}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-wa{background:#25d366;color:#04331a}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1px solid var(--border-light);color:var(--white)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-media{position:relative}
+.hero-media img{width:100%;height:500px;object-fit:cover;border-radius:6px;border:1px solid var(--border-light)}
+.hero-frame{position:absolute;inset:-9px;border:1px solid var(--accent);border-radius:9px;opacity:.4;pointer-events:none}
+.hero-badge{position:absolute;left:20px;bottom:20px;background:rgba(12,15,10,.93);border:1px solid var(--border-light);border-radius:4px;padding:13px 18px;display:flex;align-items:center;gap:12px}
+.hero-badge .stars{color:var(--accent);font-size:.95rem;letter-spacing:1px}
+.hero-badge b{color:var(--white);font-weight:600;font-size:.9rem;font-family:'Inter'}
+.hero-badge span{color:var(--muted);font-size:.74rem;display:block}
+.hazbar{height:8px;background:repeating-linear-gradient(135deg,var(--accent) 0 22px,#15180f 22px 44px);opacity:.92}
+
+/* ---------- Trust strip ---------- */
+.trust{border-bottom:1px solid var(--border);background:var(--card);position:relative;z-index:1}
+.trust-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:24px 24px}
+.trust-item{display:flex;align-items:center;gap:11px;font-size:.9rem;color:var(--white);font-weight:500}
+.trust-item svg{width:23px;height:23px;stroke:var(--accent);fill:none;stroke-width:1.7;flex-shrink:0}
+
+/* ---------- Sections ---------- */
+section{position:relative;z-index:1}
+.sec{padding:94px 0}
+.sec-head{margin-bottom:48px;max-width:720px}
+.label{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:15px}
+.label::before{content:"";width:26px;height:2px;background:var(--accent)}
+.sec-head h2{font-size:clamp(2.2rem,4.6vw,3.5rem);font-weight:800}
+.sec-head p{margin-top:14px;font-size:1.04rem;color:var(--body)}
+
+/* ---------- Services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:30px 28px;position:relative;overflow:hidden;transition:transform .25s,background .25s,border-color .25s}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc:hover{transform:translateY(-4px);background:var(--card-hover);border-color:var(--border-light)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-ico{width:52px;height:52px;border-radius:6px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-ico svg{width:27px;height:27px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.svc h3{font-size:1.62rem;margin-bottom:9px;font-weight:700}
+.svc p{font-size:.93rem;color:var(--body)}
+.svc.feature{grid-column:span 3;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:linear-gradient(120deg,var(--card),var(--card-hover));border-color:var(--border-light)}
+.svc.feature .svc-ico{margin-bottom:0;width:62px;height:62px;background:var(--accent)}
+.svc.feature .svc-ico svg{stroke:#15180f;width:32px;height:32px}
+.svc.feature h3{font-size:2.1rem}
+.svc.feature p{font-size:1.04rem;max-width:680px}
+
+/* ---------- Gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gal a{position:relative;overflow:hidden;border-radius:5px;border:1px solid var(--border);cursor:pointer}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal a:hover img{transform:scale(1.06)}
+.gal .big{grid-column:span 2;grid-row:span 2}
+.gal .tall{grid-row:span 2}
+.gcap{position:absolute;left:0;bottom:0;right:0;padding:26px 16px 12px;font-size:.82rem;color:#fff;background:linear-gradient(transparent,rgba(8,11,6,.9));font-weight:500}
+
+/* ---------- About ---------- */
+.about{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.about-media{position:relative}
+.about-media img{border-radius:6px;border:1px solid var(--border-light);height:400px;width:100%;object-fit:cover}
+.about-stat{position:absolute;right:-14px;bottom:-14px;background:var(--accent);color:#15180f;border-radius:6px;padding:16px 22px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.about-stat b{font-family:'Saira Condensed',sans-serif;font-size:2rem;font-weight:800;display:block;line-height:1}
+.about-stat span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.about p{margin-bottom:16px;color:var(--body)}
+.checklist{list-style:none;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.checklist li{display:flex;align-items:flex-start;gap:10px;font-size:.93rem;color:var(--white)}
+.checklist svg{width:19px;height:19px;stroke:var(--green);fill:none;stroke-width:2.2;flex-shrink:0;margin-top:3px}
+.sig{display:flex;align-items:center;gap:14px;margin-top:26px}
+.sig .ini{width:52px;height:52px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Saira Condensed',sans-serif;font-size:1.3rem;font-weight:800}
+.sig b{color:var(--white);display:block;font-weight:600;font-family:'Inter'}
+.sig span{font-size:.82rem;color:var(--muted)}
+
+/* ---------- Reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:28px}
+.rev .stars{color:var(--accent);letter-spacing:2px;margin-bottom:14px}
+.rev p{color:var(--white);font-size:1rem;line-height:1.68;margin-bottom:18px;font-family:'Inter'}
+.rev .who{display:flex;align-items:center;gap:13px}
+.rev .av{width:44px;height:44px;border-radius:50%;background:var(--green-dim);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Saira Condensed',sans-serif;font-size:1.2rem}
+.rev .who b{color:var(--white);font-weight:600;font-size:.92rem;font-family:'Inter'}
+.rev .who span{font-size:.78rem;color:var(--muted)}
+
+/* ---------- Areas ---------- */
+.areas{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.areas-inner{text-align:center}
+.area-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:30px;max-width:920px;margin-left:auto;margin-right:auto}
+.area-list span{border:1px solid var(--border);background:var(--card);padding:9px 17px;border-radius:30px;font-size:.86rem;color:var(--body)}
+.area-list span.home{border-color:var(--accent);color:var(--accent);font-weight:600}
+
+/* ---------- CTA band ---------- */
+.cta-band{background:linear-gradient(120deg,#1a2113,#11150f);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light)}
+.cta-band .wrap{text-align:center}
+.cta-band h2{font-size:clamp(2.2rem,4.4vw,3.3rem);margin-bottom:14px}
+.cta-band p{max-width:580px;margin:0 auto 28px;color:var(--body)}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:22px 24px;display:flex;align-items:flex-start;gap:15px;margin-bottom:14px}
+.info-card svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.7;flex-shrink:0;margin-top:3px}
+.info-card b{color:var(--white);display:block;font-weight:600;margin-bottom:3px;font-family:'Inter'}
+.info-card a,.info-card span{color:var(--body);font-size:.94rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:30px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:7px;font-weight:500}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--border-light);border-radius:4px;padding:13px 14px;color:var(--white);font-family:'Inter',sans-serif;font-size:.94rem}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:96px}
+form button{width:100%;background:var(--accent);color:#15180f;border:0;padding:16px;border-radius:4px;font-weight:700;font-size:1.15rem;cursor:pointer;font-family:'Saira Condensed',sans-serif;text-transform:uppercase;letter-spacing:.03em;transition:background .2s}
+form button:hover{background:var(--accent-hover)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:54px 0 28px;position:relative;z-index:1}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:34px}
+.foot-brand{max-width:340px}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{font-size:.9rem;color:var(--muted)}
+.foot-col h4{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.foot-col a{display:block;color:var(--body);font-size:.9rem;margin-bottom:9px}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem;color:var(--muted)}
+.foot-bottom a{color:var(--accent)}
+
+/* ---------- Floating CTAs ---------- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transition:.3s}
+.fabs.show{opacity:1;visibility:visible}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+.fab svg{width:26px;height:26px}
+.fab-call{background:var(--accent);animation:fpulse 2s infinite}
+.fab-wa{background:#25d366;animation:fpulseg 2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 14px rgba(243,179,34,0)}100%{box-shadow:0 0 0 0 rgba(243,179,34,0)}}
+@keyframes fpulseg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ---------- Lightbox ---------- */
+#lb{position:fixed;inset:0;background:rgba(6,8,4,.95);z-index:2000;display:none;align-items:center;justify-content:center;padding:24px}
+#lb.open{display:flex}
+#lb img{max-width:92%;max-height:88vh;border-radius:6px;border:1px solid var(--border-light)}
+#lb .x{position:absolute;top:22px;right:26px;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:920px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-panel.open{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:48px 24px 54px}
+  .hero-media img{height:320px}
+  .about-inner{grid-template-columns:1fr;gap:34px}
+  .about-media img{order:2;height:320px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .rev-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc.feature{grid-column:span 1;grid-template-columns:1fr;gap:16px;text-align:left}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .gal .big{grid-column:span 2;grid-row:span 2}
+  .gal .tall{grid-row:span 1}
+  .gcap{display:none}
+  .hero-badge{display:none}
+  .trust-inner{flex-direction:column;align-items:flex-start;gap:13px}
+  .checklist{grid-template-columns:1fr}
+  .sec{padding:62px 0}
+}
+@media(max-width:400px){
+  .gal{grid-template-columns:1fr;grid-auto-rows:200px}
+  .gal .big{grid-column:span 1;grid-row:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <path class="ctr c1" d="M4 38 Q20 24 32 38 T60 38"/>
+    <path class="ctr c2" d="M4 46 Q20 32 32 46 T60 46"/>
+    <path class="ctr c3" d="M4 30 Q20 16 32 30 T60 30"/>
+  </svg>
+  <div class="lbar"></div>
+  <div class="ltext">TD Agri Services</div>
+</div>
+
+<div class="contour-wm"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="TD Agri Services home">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <rect class="tile" x="2" y="2" width="44" height="44" rx="9"/>
+        <text class="td" x="24" y="27" text-anchor="middle">TD</text>
+        <rect class="haz" x="9" y="34" width="30" height="5" rx="1.5" transform="skewX(-18)" style="transform-origin:center"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">TD Agri Services</span>
+        <span class="brand-sub">Groundworks · Pilling</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a id="navCall" class="nav-cta" href="#contact">Call Tom</a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#about">About</a>
+    <a href="#areas">Areas</a>
+    <a id="mCall" class="m-cta" href="#contact">Call Tom</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="dot"></span>Groundworks &amp; agricultural contractor · near Garstang</span>
+      <h1>Groundwork that <span class="accent">holds the land</span>.</h1>
+      <p class="lede">TD Agri Services takes on farm groundworks, concrete yards, drainage, access tracks and plant hire across the Fylde and North Lancashire. Properly dug, properly drained, properly finished.</p>
+      <div class="hero-cta">
+        <a id="heroCall" class="btn btn-primary" href="#contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15180f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.85.7 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.34 1.79.57 2.73.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Tom
+        </a>
+        <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#04331a"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.1-1.7 1.1-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.7 1.2 1.5 1.6 2.5 2.2.3.1.5.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.1z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-frame"></div>
+      <img src="hero.jpg" alt="Groundworks excavator on a farm site near Garstang, Lancashire">
+      <div class="hero-badge">
+        <span class="stars">★★★★★</span>
+        <div><b>Trusted by local farms</b><span>Free quotes · Pilling &amp; Garstang</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="hazbar"></div>
+
+<!-- Trust strip -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Farm &amp; agricultural specialists</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 18h4l2-9 3 13 3-9 2 5h4"/></svg>Diggers &amp; plant, operated</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in Pilling, near Garstang</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Free, no-obligation quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Reliable, tidy, on time</div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2>Groundworks built for <span class="accent">farms &amp; land</span></h2>
+      <p>From the first dig to the final level, TD Agri Services handles the muck, the stone and the concrete — so your yard, building or field works the way it should.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc feature reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 18h4l2-9 3 13 3-9 2 5h4"/><path d="M3 21h18"/></svg></div>
+        <div>
+          <h3>Agricultural Groundworks</h3>
+          <p>Complete site preparation for farm buildings, livestock units, sheds and extensions — excavation, foundations, footings, drainage and hardstanding, dug and set out to take whatever the job demands.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M3 14h18M9 4v16"/></svg></div>
+        <h3>Concrete Yards &amp; Bases</h3>
+        <p>Farm yards, livestock building bases, silage clamps, machinery pads and hardstanding — laid, levelled and built to last.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20l4-14h4l4 14"/><path d="M9 11h6"/></svg></div>
+        <h3>Farm Roads &amp; Access Tracks</h3>
+        <p>Stone and hardcore tracks, access roads, gateways and passing places that stand up to tractors, trailers and the weather.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 6c4 3 12 3 16 0"/><path d="M4 12c4 3 12 3 16 0"/><path d="M4 18c4 3 12 3 16 0"/></svg></div>
+        <h3>Land Drainage &amp; Ditching</h3>
+        <p>Field drainage, ditching, culverts, soakaways and dyke clearance to keep land workable and water moving where it should.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 3 3 4-6 6 8"/><path d="M3 21h18"/></svg></div>
+        <h3>Digger &amp; Plant Hire</h3>
+        <p>Excavators and dumpers supplied with an experienced operator, by the day or on contract — the right machine for the ground.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 21V8l5-4 5 4v13"/><path d="M13 21V11l4-3 4 3v10"/></svg></div>
+        <h3>Site Clearance &amp; Demolition</h3>
+        <p>Clearing old buildings and overgrowth, demolition, muck away, grading and levelling — site left clean and ready to build.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 21V5M12 21V5M20 21V5"/><path d="M2 8h20M2 13h20"/></svg></div>
+        <h3>Footings, Fencing &amp; Earthworks</h3>
+        <p>Footings for barns and extensions, stock and post-and-rail fencing, earthmoving, ponds and reclamation work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="sec" id="work" style="padding-top:18px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>On the ground around <span class="accent">the Fylde</span></h2>
+    </div>
+    <div class="gal reveal">
+      <a class="big" data-img="hero.jpg"><img src="hero.jpg" alt="Excavator working a farm groundworks site"><span class="gcap">Farm groundworks &amp; excavation</span></a>
+      <a data-img="work-1.jpg"><img src="work-1.jpg" alt="Excavator and stone for an access track"><span class="gcap">Stone &amp; hardcore for access</span></a>
+      <a class="tall" data-img="work-3.jpg"><img src="work-3.jpg" alt="Farm track and field gateway"><span class="gcap">Access track &amp; gateway</span></a>
+      <a data-img="work-2.jpg"><img src="work-2.jpg" alt="Concrete block paving / hardstanding"><span class="gcap">Hardstanding &amp; yard surfacing</span></a>
+      <a data-img="work-4.jpg"><img src="work-4.jpg" alt="Field gate and stock fencing at dawn"><span class="gcap">Gates &amp; stock fencing</span></a>
+      <a data-img="work-5.jpg"><img src="work-5.jpg" alt="Lancashire farmland and fields"><span class="gcap">Land drainage &amp; reclamation</span></a>
+      <a data-img="work-6.jpg"><img src="work-6.jpg" alt="Rolling Lancashire countryside"><span class="gcap">Serving the farms of Lancashire</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about sec" id="about">
+  <div class="wrap about-inner">
+    <div class="reveal">
+      <div class="label">About TD Agri Services</div>
+      <h2 style="font-size:clamp(2rem,3.8vw,2.9rem);margin-bottom:18px">A local lad who knows the land</h2>
+      <p>TD Agri Services is run by Tom Dainty, a groundworker based in Pilling, just outside Garstang. Brought up around farms and the Fylde, Tom takes on agricultural groundworks the way it should be done — dug right, drained right and finished properly, whatever the weather throws at it.</p>
+      <p>From a new concrete yard or building base to land drainage, access tracks and digger work, it's one local contractor who turns up, gets stuck in and leaves the job tidy.</p>
+      <ul class="checklist">
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Farm &amp; agricultural focus</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Diggers &amp; plant with operator</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Drainage &amp; concrete specialists</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Honest, no-obligation quotes</li>
+      </ul>
+      <div class="sig">
+        <div class="ini">TD</div>
+        <div><b>Tom Dainty</b><span>Owner, TD Agri Services</span></div>
+      </div>
+    </div>
+    <div class="about-media reveal">
+      <img src="about.jpg" alt="Lancashire farmland near Garstang and Pilling">
+      <div class="about-stat"><b>Local</b><span>Pilling · Garstang · Fylde</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What customers say</div>
+      <h2>Work that <span class="accent">stands up</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Tom put in a new concrete yard and drainage for us. Spot on job, turned up when he said and left everything tidy. Wouldn't go anywhere else now."</p>
+        <div class="who"><div class="av">J</div><div><b>James W.</b><span>Pilling · Concrete yard &amp; drainage</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Had a proper stone access track laid up to the field. Holds the tractors no bother even after the wet. Fair price and good honest work."</p>
+        <div class="who"><div class="av">S</div><div><b>Sarah H.</b><span>Garstang · Access track</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Sorted out our land drainage and ditching that had been a problem for years. Knows what he's doing with a digger. Highly recommend Tom."</p>
+        <div class="who"><div class="av">D</div><div><b>David P.</b><span>Cockerham · Land drainage</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="areas sec" id="areas">
+  <div class="wrap areas-inner reveal">
+    <div class="label" style="justify-content:center">Where we work</div>
+    <h2>Covering the <span class="accent">Fylde &amp; North Lancashire</span></h2>
+    <div class="area-list">
+      <span class="home">Pilling</span>
+      <span>Garstang</span><span>Preesall</span><span>Knott End</span><span>Hambleton</span>
+      <span>Stalmine</span><span>Out Rawcliffe</span><span>Cockerham</span><span>Forton</span>
+      <span>Scorton</span><span>Catterall</span><span>Churchtown</span><span>Great Eccleston</span>
+      <span>St Michael's</span><span>Winmarleigh</span><span>Nateby</span><span>Poulton-le-Fylde</span>
+      <span>Fleetwood</span><span>Cleveleys</span><span>Lancaster</span><span>Glasson</span><span>Kirkham</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band sec">
+  <div class="wrap">
+    <h2>Got a job that needs digging?</h2>
+    <p>Tell Tom what you're planning — a yard, a track, drainage or a building base — and get a free, no-obligation quote.</p>
+    <a id="bandCall" class="btn btn-primary" href="#contact">Call us today</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get in touch</div>
+      <h2>Request your <span class="accent">free quote</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.85.7 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.34 1.79.57 2.73.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Call or text Tom</b><a id="infoPhone" href="#"></a></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2z"/></svg>
+          <div><b>WhatsApp</b><a id="infoWa" href="#" target="_blank" rel="noopener">Message Tom for a quote</a></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Based in Pilling</b><span>Near Garstang · covering the Fylde &amp; North Lancashire</span></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><b>Hours</b><span>Mon–Sat · early starts no problem</span></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="TD Agri Services">
+        <input type="hidden" name="source" value="mockup-td-agri-services">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        <div class="field"><label for="email">Email (optional)</label><input id="email" name="email" type="email"></div>
+        <div class="field"><label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <option>Agricultural groundworks</option>
+            <option>Concrete yard / base</option>
+            <option>Farm road / access track</option>
+            <option>Land drainage / ditching</option>
+            <option>Digger / plant hire</option>
+            <option>Site clearance / demolition</option>
+            <option>Footings / fencing / earthworks</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Tell us about the job</label><textarea id="message" name="message" placeholder="Location, what you're planning, and rough timescale..."></textarea></div>
+        <button type="submit">Request my free quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+            <rect class="tile" x="2" y="2" width="44" height="44" rx="9"/>
+            <text class="td" x="24" y="27" text-anchor="middle">TD</text>
+            <rect class="haz" x="9" y="34" width="30" height="5" rx="1.5" transform="skewX(-18)" style="transform-origin:center"/>
+          </svg>
+          <span class="brand-text"><span class="brand-name">TD Agri Services</span><span class="brand-sub">Groundworks · Pilling</span></span>
+        </a>
+        <p>Groundworks and agricultural contracting across the Fylde and North Lancashire — concrete yards, drainage, tracks, plant hire and more.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Agricultural Groundworks</a>
+        <a href="#services">Concrete Yards &amp; Bases</a>
+        <a href="#services">Land Drainage &amp; Ditching</a>
+        <a href="#services">Farm Roads &amp; Tracks</a>
+        <a href="#services">Digger &amp; Plant Hire</a>
+      </div>
+      <div class="foot-col">
+        <h4>Areas</h4>
+        <a href="#areas">Pilling</a>
+        <a href="#areas">Garstang</a>
+        <a href="#areas">Preesall</a>
+        <a href="#areas">Cockerham</a>
+        <a href="#areas">Poulton-le-Fylde</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a id="footPhone" href="#"></a>
+        <a href="#contact">Request a quote</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 TD Agri Services. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fabs" id="fabs">
+  <a id="fabCall" class="fab fab-call" href="#" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#15180f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.85.7 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.34 1.79.57 2.73.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a id="fabWa" class="fab fab-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.1-1.7 1.1-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.7 1.2 1.5 1.6 2.5 2.2.3.1.5.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.1z"/></svg>
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div id="lb"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+// Contact decode
+var P  = atob('MDc1MDg3NzMyMTE=');
+var Pf = atob('MDc1MDggNzczMjEx');
+var WA = atob('NDQ3NTA4NzczMjEx');
+var waLink = 'https://wa.me/'+WA+'?text=Hi%20Tom%2C%20I%20found%20TD%20Agri%20Services%20online%20and%20would%20like%20a%20quote%20please';
+['navCall','heroCall','bandCall','fabCall','infoPhone','footPhone','mCall'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href='tel:'+P;
+});
+['heroWa','fabWa','infoWa'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href=waLink;
+});
+document.getElementById('infoPhone').textContent = Pf;
+document.getElementById('footPhone').textContent = Pf;
+document.getElementById('bandCall').textContent = 'Call ' + Pf;
+document.getElementById('mCall').textContent = 'Call Tom · ' + Pf;
+
+// Loader
+window.addEventListener('load', function(){
+  setTimeout(function(){ document.getElementById('loader').classList.add('hide'); }, 1500);
+});
+
+// Form timestamp
+document.getElementById('formTimestamp').value = Date.now();
+
+// Phone validity
+var ph=document.getElementById('phone');
+ph.addEventListener('input',function(){
+  this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))?'':'Please enter a valid UK phone number');
+});
+
+// Mobile nav
+var ham=document.getElementById('ham'), mp=document.getElementById('mpanel');
+ham.addEventListener('click',function(){ mp.classList.toggle('open'); });
+mp.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ mp.classList.remove('open'); }); });
+
+// Floating CTAs
+var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY > hero.offsetHeight - 100) fabs.classList.add('show'); else fabs.classList.remove('show');
+});
+
+// Reveal
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Lightbox
+var lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('.gal a').forEach(function(a){
+  a.addEventListener('click',function(e){ e.preventDefault(); lbImg.src=this.getAttribute('data-img'); lb.classList.add('open'); });
+});
+lb.addEventListener('click',function(e){ if(e.target!==lbImg) lb.classList.remove('open'); });
+</script>
+</body>
+</html>
