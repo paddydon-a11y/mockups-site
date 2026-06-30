@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alan Leighton Decorating · Painter &amp; Decorator in Wrexham</title>
+<meta name="description" content="Alan Leighton Decorating is a Wrexham painter and decorator covering interior and exterior work — painting, wallpapering, murals, feature walls, panelling, staircases and fencing. Tidy, reliable, free quotes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#ffffff;
+  --paper:#f6f3ec;
+  --paper-2:#efeae0;
+  --ink:#1b1d1f;
+  --body:#4d4f50;
+  --muted:#8c8b85;
+  --slate:#27465a;
+  --slate-deep:#1a323f;
+  --ochre:#bd8540;
+  --ochre-light:#d6a766;
+  --line:#e4ded2;
+  --line-2:#d6cfc0;
+  --wa:#25d366;
+  --radius:15px;
+  --shadow:0 20px 54px -30px rgba(20,30,38,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+em{font-style:normal}
+h1,h2,h3,h4{font-family:'Newsreader',serif;color:var(--ink);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+.label{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--slate);font-weight:600;display:inline-flex;align-items:center;gap:.6rem}
+.label::before{content:"";width:26px;height:2px;background:var(--ochre)}
+section{position:relative}
+
+/* ---------- Wallpaper-unroll loader ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--slate-deep);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .6s ease,visibility .6s}
+#loader.done{opacity:0;visibility:hidden}
+.roll{position:relative;width:240px;height:150px;overflow:hidden}
+.roll-paper{position:absolute;inset:0;background:
+  repeating-linear-gradient(135deg,rgba(214,167,102,.18) 0 2px,transparent 2px 16px),
+  linear-gradient(180deg,#f6f3ec,#e8e1d3);
+  transform-origin:top center;transform:scaleY(0);animation:unroll 1.25s cubic-bezier(.6,0,.2,1) forwards;border-radius:3px}
+.roll-bar{position:absolute;left:-14px;right:-14px;height:16px;border-radius:9px;background:linear-gradient(180deg,#d6a766,#a9762f);box-shadow:0 6px 16px rgba(0,0,0,.4);animation:rollDown 1.25s cubic-bezier(.6,0,.2,1) forwards;z-index:3}
+@keyframes unroll{to{transform:scaleY(1)}}
+@keyframes rollDown{0%{top:0}100%{top:138px}}
+.loader-mark{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0;animation:markIn .55s ease 1s forwards;z-index:2}
+.loader-mark .al{font-family:'Newsreader',serif;font-size:2.7rem;font-weight:700;color:var(--slate-deep);letter-spacing:.04em;line-height:1}
+.loader-mark .sub{margin-top:.35rem;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--slate)}
+@keyframes markIn{to{opacity:1}}
+
+/* ---------- Nav ---------- */
+nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:.95rem 0}
+.brand{display:flex;align-items:center;gap:.7rem;white-space:nowrap}
+.brand .mono{width:44px;height:44px;border-radius:11px;background:var(--slate);color:#fff;display:grid;place-items:center;font-family:'Newsreader',serif;font-weight:700;font-size:1.18rem;letter-spacing:.02em;position:relative;overflow:hidden}
+.brand .mono::after{content:"";position:absolute;left:0;bottom:0;height:5px;width:100%;background:var(--ochre)}
+.brand .bt{display:flex;flex-direction:column;line-height:1.12}
+.brand .bt b{font-family:'Newsreader',serif;font-size:1.04rem;color:var(--ink);font-weight:600}
+.brand .bt span{font-size:.61rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:1.9rem}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--slate)}
+.nav-links a.nav-cta{background:var(--slate);color:#fff!important;padding:.7rem 1.3rem;border-radius:40px;font-weight:600;display:inline-flex;align-items:center;gap:.5rem}
+.nav-links a.nav-cta:hover{background:var(--slate-deep)}
+.nav-links a.nav-cta svg{stroke:#fff}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+.mobile-panel{display:none}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;display:flex;flex-direction:column;min-height:90vh;color:#fff}
+.hero-bg{position:absolute;inset:0;overflow:hidden;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:30% 40%;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(96deg,rgba(13,24,30,.86) 0%,rgba(13,24,30,.6) 46%,rgba(13,24,30,.28) 100%)}
+.hero-inner{position:relative;z-index:2;flex:1;display:flex;align-items:flex-end;padding:7rem 0 3.4rem}
+.hero-copy{max-width:690px}
+.hero .eyebrow{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:.6rem;opacity:0;animation:fadeUp .7s ease .1s forwards}
+.hero .eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--ochre-light);box-shadow:0 0 0 0 rgba(214,167,102,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(214,167,102,.6)}70%{box-shadow:0 0 0 12px rgba(214,167,102,0)}100%{box-shadow:0 0 0 0 rgba(214,167,102,0)}}
+.hero h1{color:#fff;font-size:clamp(2.5rem,6vw,5rem);font-weight:600;margin:1.2rem 0 1.3rem;opacity:0;animation:fadeUp .7s ease .25s forwards}
+.hero h1 .brushed{position:relative;display:inline-block;color:#fff;padding:0 .1em;white-space:nowrap}
+.hero h1 .brushed::before{content:"";position:absolute;left:0;right:0;top:10%;bottom:10%;background:var(--ochre);border-radius:6px 13px 7px 12px;transform-origin:left center;transform:scaleX(0);z-index:-1;animation:paintIn 1s cubic-bezier(.7,0,.25,1) 1s forwards}
+@keyframes paintIn{to{transform:scaleX(1)}}
+.hero .lede{font-size:1.1rem;color:rgba(255,255,255,.9);max-width:570px;margin-bottom:2rem;opacity:0;animation:fadeUp .7s ease .4s forwards}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease .55s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.7rem;border-radius:44px;font-weight:600;font-size:.98rem;transition:transform .2s,background .2s,box-shadow .2s}
+.btn svg{width:19px;height:19px}
+.btn-primary{background:var(--ochre);color:#241606}
+.btn-primary:hover{background:var(--ochre-light);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#063d1c}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(37,211,102,.7)}
+.hero-badge{position:absolute;right:0;bottom:3.4rem;z-index:3;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:1rem 1.3rem;display:flex;align-items:center;gap:.9rem;opacity:0;animation:fadeUp .7s ease .8s forwards}
+.hero-badge .stars{color:var(--ochre-light);font-size:1rem;letter-spacing:1px}
+.hero-badge b{color:#fff;font-family:'Newsreader',serif;font-size:1.3rem}
+.hero-badge span{display:block;font-size:.72rem;color:rgba(255,255,255,.8)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- Trust strip ---------- */
+.trust{background:var(--slate)}
+.trust-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.3rem 0}
+.trust-item{display:flex;align-items:center;gap:.6rem;font-size:.9rem;font-weight:500;color:#fff}
+.trust-item svg{width:20px;height:20px;stroke:var(--ochre-light);flex-shrink:0}
+
+/* ---------- Sections ---------- */
+.sec{padding:6rem 0}
+.sec.paper{background:var(--paper)}
+.sec-head{max-width:660px;margin-bottom:3rem}
+.sec-head h2{font-size:clamp(2rem,4.2vw,3.1rem);margin-top:1rem}
+.sec-head h2 .ac{color:var(--slate)}
+.sec-head p{margin-top:.9rem}
+
+/* services — photo cards */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.svc{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.svc::before{content:"";position:absolute;top:0;left:0;height:4px;width:100%;background:var(--ochre);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:3}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--paper-2);cursor:pointer}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+.svc:hover .svc-img img{transform:scale(1.06)}
+.svc-body{padding:1.6rem 1.5rem 1.8rem}
+.svc h3{font-size:1.32rem;margin-bottom:.5rem}
+.svc p{font-size:.94rem;color:var(--body)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+.about-copy h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:1rem 0 1.3rem}
+.about-copy p{margin-bottom:1.1rem}
+.sig{display:flex;align-items:center;gap:1rem;margin-top:1.8rem}
+.sig .ini{width:54px;height:54px;border-radius:50%;background:var(--slate);color:#fff;display:grid;place-items:center;font-family:'Newsreader',serif;font-weight:700;font-size:1.2rem}
+.sig b{display:block;color:var(--ink);font-family:'Newsreader',serif;font-size:1.1rem}
+.sig span{font-size:.82rem;color:var(--muted)}
+.about-photo{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);aspect-ratio:4/5}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-photo .tag{position:absolute;left:1rem;bottom:1rem;background:rgba(27,29,31,.78);color:#fff;backdrop-filter:blur(4px);padding:.5rem .9rem;border-radius:30px;font-size:.74rem;letter-spacing:.04em}
+
+/* gallery — masonry */
+.gal{column-count:3;column-gap:1rem}
+.gal figure{break-inside:avoid;margin-bottom:1rem;border-radius:13px;overflow:hidden;position:relative;cursor:pointer;background:var(--paper-2)}
+.gal img{width:100%;display:block;transition:transform .55s ease}
+.gal figure:hover img{transform:scale(1.05)}
+.gal figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(13,24,30,.4),transparent 45%);opacity:0;transition:opacity .3s}
+.gal figure:hover::after{opacity:1}
+.gal figcaption{position:absolute;left:.85rem;bottom:.7rem;color:#fff;font-size:.78rem;font-weight:500;z-index:2;opacity:0;transform:translateY(6px);transition:.3s}
+.gal figure:hover figcaption{opacity:1;transform:translateY(0)}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:2rem}
+.rev .stars{color:var(--ochre);letter-spacing:2px;margin-bottom:.9rem}
+.rev p{color:var(--ink);font-size:1.05rem;line-height:1.65;font-family:'Newsreader',serif;font-weight:400;margin-bottom:1.2rem}
+.rev .who{font-size:.86rem;color:var(--muted)}
+.rev .who b{color:var(--slate);font-family:'Inter',sans-serif}
+
+/* areas */
+.areas-grid{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.areas-grid span{background:var(--bg);border:1px solid var(--line);border-radius:40px;padding:.55rem 1.1rem;font-size:.88rem;font-weight:500;color:var(--body)}
+
+/* cta band */
+.cta-band{background:var(--slate);color:#fff;text-align:center;padding:5rem 0;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;top:-40%;right:-10%;width:420px;height:420px;border-radius:50%;background:rgba(214,167,102,.16)}
+.cta-band h2{color:#fff;font-size:clamp(1.9rem,4vw,3rem);position:relative}
+.cta-band p{color:rgba(255,255,255,.85);max-width:520px;margin:1rem auto 2rem;position:relative}
+.cta-band .hero-cta{justify-content:center;position:relative;opacity:1;animation:none}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.5rem}
+.cinfo{background:var(--slate);color:#fff;border-radius:var(--radius);padding:2.4rem}
+.cinfo h3{color:#fff;font-size:1.5rem;margin-bottom:.6rem}
+.cinfo>p{color:rgba(255,255,255,.85);margin-bottom:1.8rem;font-size:.95rem}
+.crow{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-top:1px solid rgba(255,255,255,.16)}
+.crow svg{width:22px;height:22px;stroke:var(--ochre-light);flex-shrink:0}
+.crow b{display:block;color:#fff;font-size:1.02rem}
+.crow span{font-size:.8rem;color:rgba(255,255,255,.7)}
+form{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:2.4rem}
+.fld{margin-bottom:1.1rem}
+.fld label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+.fld input,.fld select,.fld textarea{width:100%;padding:.85rem 1rem;border:1px solid var(--line-2);border-radius:10px;font-family:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);transition:border-color .2s}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--slate)}
+.fld textarea{resize:vertical;min-height:110px}
+.fbtn{width:100%;background:var(--slate);color:#fff;border:0;padding:1.05rem;border-radius:44px;font-weight:600;font-size:1rem;cursor:pointer;font-family:inherit;transition:background .2s}
+.fbtn:hover{background:var(--slate-deep)}
+
+/* footer */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:3.5rem 0 2rem}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot-brand b{font-family:'Newsreader',serif;font-size:1.3rem;color:#fff;display:block;margin-bottom:.5rem}
+.foot-brand p{max-width:300px;font-size:.9rem}
+.foot-col h4{color:#fff;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.9rem}
+.foot-col a{display:block;font-size:.9rem;margin-bottom:.5rem;color:rgba(255,255,255,.7)}
+.foot-col a:hover{color:var(--ochre-light)}
+.foot-bot{padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;font-size:.82rem}
+.foot-bot a{color:var(--ochre-light)}
+
+/* floating CTAs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(20px);transition:.35s}
+.fabs.show{opacity:1;visibility:visible;transform:translateY(0)}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.4)}
+.fab svg{width:25px;height:25px}
+.fab-call{background:var(--slate);animation:fpulse 2.2s infinite}
+.fab-wa{background:var(--wa);animation:fpulsew 2.2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(39,70,90,.5)}70%{box-shadow:0 0 0 14px rgba(39,70,90,0)}100%{box-shadow:0 0 0 0 rgba(39,70,90,0)}}
+@keyframes fpulsew{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:9500;background:rgba(10,18,22,.94);display:none;align-items:center;justify-content:center;padding:4vw}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:88vh;border-radius:10px}
+.lb-x{position:absolute;top:20px;right:24px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media (max-width:960px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .gal{column-count:2}
+  .about-grid{grid-template-columns:1fr;gap:2.2rem}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:780px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:block;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow);max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .mobile-panel.open{max-height:460px}
+  .mobile-panel a{display:block;padding:1rem 4vw;border-top:1px solid var(--line);font-weight:500}
+  .mobile-panel a.m-cta{background:var(--slate);color:#fff;text-align:center;font-weight:600}
+  .sec{padding:4.2rem 0}
+  .hero-inner{padding:5.5rem 0 2.4rem}
+  .hero-badge{display:none}
+  .trust-in{flex-direction:column;gap:.8rem}
+  .trust-item{border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:.7rem;width:100%}
+  .trust-item:last-child{border:0;padding-bottom:0}
+  .svc-grid{grid-template-columns:1fr}
+  .gal{column-count:1}
+  .rev-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Wallpaper-unroll loader -->
+<div id="loader">
+  <div class="roll">
+    <div class="roll-paper"></div>
+    <div class="loader-mark">
+      <div class="al">AL</div>
+      <div class="sub">Decorating</div>
+    </div>
+    <div class="roll-bar"></div>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="brand">
+      <span class="mono">AL</span>
+      <span class="bt"><b>Alan Leighton Decorating</b><span>Wrexham</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Alan
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact" class="m-cta" id="mCall">Call Alan</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-bg"><img src="images/wallpaper.jpg" alt="Hallway with hand-hung botanical feature wallpaper and freshly glossed staircase, decorated by Alan Leighton"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Wrexham &amp; North Wales</span>
+      <h1>A painter &amp; decorator with a <span class="brushed">faultless</span> finish</h1>
+      <p class="lede">Interior and exterior decorating done properly — painting, wallpapering, murals, feature walls, panelling and fencing. Tidy, on time, and finished to a standard you'll want to show off.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="heroCall" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#241606" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call Alan</span>
+        </a>
+        <a class="btn btn-wa" id="heroWa" href="#">
+          <svg viewBox="0 0 24 24" fill="#063d1c"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.911zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="position:absolute;left:50%;transform:translateX(-50%);width:min(1200px,92vw)">
+    <div class="hero-badge">
+      <div><span class="stars">★★★★★</span><b>5.0</b><span>Trusted local decorator</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- Trust strip -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fully insured</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Free, no-obligation quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>Clean, careful prep</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Tidy &amp; reliable</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Interior &amp; exterior</div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What I do</span>
+      <h2>Decorating, <span class="ac">inside and out</span></h2>
+      <p>From a single feature wall to a whole house, plus exterior painting and fencing — one trusted pair of hands for the lot.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-img" data-full="images/interior.jpg"><img src="images/interior.jpg" alt="Freshly painted open-plan room with neutral walls and ceiling"></div>
+        <div class="svc-body"><h3>Interior Painting</h3>
+        <p>Walls, ceilings, skirting and trim — cut in clean and rolled smooth, on new builds and lived-in homes alike.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img" data-full="images/wallpaper.jpg"><img src="images/wallpaper.jpg" alt="Botanical feature wallpaper hung in a hallway"></div>
+        <div class="svc-body"><h3>Wallpapering</h3>
+        <p>Patterned papers and statement walls hung dead straight and pattern-matched, no creases or lifted seams.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img" data-full="images/mural.jpg"><img src="images/mural.jpg" alt="3D floral mural wallpaper feature wall with gold coving"></div>
+        <div class="svc-body"><h3>Murals &amp; Feature Walls</h3>
+        <p>Wall murals, metallic papers and bold feature walls — the kind of finish that makes a room.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img" data-full="images/panelling.jpg"><img src="images/panelling.jpg" alt="Hallway with painted wall panelling and wainscoting"></div>
+        <div class="svc-body"><h3>Panelling &amp; Woodwork</h3>
+        <p>Wall panelling, wainscoting, doors, spindles and banisters — hand-finished in matt, satin or gloss.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img" data-full="images/staircase.jpg"><img src="images/staircase.jpg" alt="Period staircase being stripped and prepared for decorating"></div>
+        <div class="svc-body"><h3>Staircases &amp; Period Work</h3>
+        <p>Stripping, filling and restoring tired staircases and older homes back to a crisp, fresh finish.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img" data-full="images/fence-gate.jpg"><img src="images/fence-gate.jpg" alt="New close-board timber fencing and gate fitted to a rear yard"></div>
+        <div class="svc-body"><h3>Exterior &amp; Fencing</h3>
+        <p>Outside painting plus fencing, gates and general external work to smarten up the outside of your home.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="sec paper" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <span class="label">The decorator</span>
+      <h2>Run by Alan, <span style="color:var(--slate)">start to finish</span></h2>
+      <p>Alan Leighton Decorating is a Wrexham decorator who turns up when he says he will, protects your floors and furniture, and leaves a finish you'd never get from a rushed job.</p>
+      <p>Whether it's a feature wall, a full house repaint, fresh wallpaper, panelling or a new fence and gate outside, the prep is where the quality lives — surfaces filled, sanded and primed before a drop of topcoat goes on. You deal with Alan directly, every step.</p>
+      <div class="sig">
+        <span class="ini">AL</span>
+        <div><b>Alan Leighton</b><span>Owner &amp; decorator</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="about-photo">
+        <img src="images/feature-wall.jpg" alt="Silver metallic feature wallpaper hung in a living room by Alan Leighton">
+        <span class="tag">Metallic feature wall · Wrexham</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2>A look at <span class="ac">the finish</span></h2>
+      <p>A few jobs from in and around Wrexham. Tap any photo to see it bigger.</p>
+    </div>
+    <div class="gal reveal">
+      <figure data-full="images/wallpaper.jpg"><img src="images/wallpaper.jpg" alt="Botanical feature wallpaper and glossed staircase"><figcaption>Botanical wallpaper &amp; staircase</figcaption></figure>
+      <figure data-full="images/mural.jpg"><img src="images/mural.jpg" alt="3D floral mural feature wall with gold coving"><figcaption>Floral mural feature wall</figcaption></figure>
+      <figure data-full="images/interior.jpg"><img src="images/interior.jpg" alt="Freshly painted open-plan living space"><figcaption>Full interior repaint</figcaption></figure>
+      <figure data-full="images/feature-wall.jpg"><img src="images/feature-wall.jpg" alt="Silver metallic feature wallpaper in a living room"><figcaption>Metallic feature wall</figcaption></figure>
+      <figure data-full="images/kitchen.jpg"><img src="images/kitchen.jpg" alt="Painted open-plan kitchen with grey units"><figcaption>Kitchen &amp; ceiling repaint</figcaption></figure>
+      <figure data-full="images/panelling.jpg"><img src="images/panelling.jpg" alt="Painted wall panelling and wainscoting"><figcaption>Panelling &amp; wainscoting</figcaption></figure>
+      <figure data-full="images/staircase.jpg"><img src="images/staircase.jpg" alt="Period staircase stripped and prepared"><figcaption>Staircase restoration</figcaption></figure>
+      <figure data-full="images/fence-gate.jpg"><img src="images/fence-gate.jpg" alt="New timber fencing and gate to a rear yard"><figcaption>New fencing &amp; gate</figcaption></figure>
+      <figure data-full="images/fencing.jpg"><img src="images/fencing.jpg" alt="New close-board timber fence run alongside a house"><figcaption>Garden fencing</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="sec paper">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What people say</span>
+      <h2>Word of mouth, <span class="ac">job after job</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Alan hung a tricky botanical wallpaper up our stairs and glossed all the spindles. Pattern lines up perfectly and not a mark on the carpet. Couldn't be happier."</p>
+        <div class="who"><b>Hannah W.</b> · Wrexham · Wallpaper &amp; staircase</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Repainted the whole downstairs and put up some lovely wall panelling in the hall. Tidy, polite and turned up every day on time. Brilliant finish."</p>
+        <div class="who"><b>Mark T.</b> · Gresford · Panelling &amp; repaint</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Fitted new fencing and a gate at the back and painted the exterior while he was at it. Great value and a proper job — would have him back without hesitation."</p>
+        <div class="who"><b>Sian R.</b> · Rhostyllen · Fencing &amp; exterior</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"That 3D floral mural in our bedroom is stunning. Alan took real care lining it up around the coving. Clear price up front and left everything spotless."</p>
+        <div class="who"><b>David P.</b> · Coedpoeth · Mural feature wall</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="sec" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Where I work</span>
+      <h2>Covering <span class="ac">Wrexham &amp; around</span></h2>
+    </div>
+    <div class="reveal">
+      <p style="max-width:640px">Based in Wrexham and working across the town and surrounding villages. If you're nearby and not listed, get in touch — Alan will let you know.</p>
+      <div class="areas-grid">
+        <span>Wrexham</span><span>Gresford</span><span>Rhostyllen</span><span>Coedpoeth</span><span>Gwersyllt</span><span>Brymbo</span><span>Rossett</span><span>Marford</span><span>Ruabon</span><span>Cefn Mawr</span><span>Chirk</span><span>Llangollen</span><span>Mold</span><span>Chester</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Thinking about getting the decorators in?</h2>
+    <p>Send a few photos or a quick description and Alan will get you a clear, no-obligation quote.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" id="ctaCall" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#241606" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="ctaCallTxt">Call Alan</span>
+      </a>
+      <a class="btn btn-wa" id="ctaWa" href="#">WhatsApp a photo</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="sec paper" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:2rem">
+      <span class="label">Get in touch</span>
+      <h2>Get your <span class="ac">free quote</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <h3>Speak to Alan</h3>
+        <p>Quotes are free and there's no pressure. Call, WhatsApp or drop the form a line.</p>
+        <a class="crow" id="cPhone" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b id="cPhoneTxt">Call</b><span>Mon–Sat, 8am–6pm</span></div>
+        </a>
+        <a class="crow" id="cWa" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+          <div><b>WhatsApp</b><span>Send photos for a quick quote</span></div>
+        </a>
+        <div class="crow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Wrexham</b><span>Covering Wrexham &amp; North Wales</span></div>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Alan Leighton Decorating">
+        <input type="hidden" name="source" value="mockup-alan-leighton-decorating">
+        <div class="fld"><label>Name</label><input type="text" name="name" required placeholder="Your name"></div>
+        <div class="fld"><label>Phone</label><input type="tel" name="phone" id="phoneInput" required placeholder="Your number" pattern="^(0|\+44)\d{9,11}$"></div>
+        <div class="fld"><label>Email (optional)</label><input type="email" name="email" placeholder="you@email.com"></div>
+        <div class="fld"><label>What do you need?</label>
+          <select name="service">
+            <optgroup label="Interior">
+              <option>Interior painting</option>
+              <option>Wallpapering</option>
+              <option>Mural / feature wall</option>
+              <option>Panelling &amp; woodwork</option>
+              <option>Staircase / period work</option>
+            </optgroup>
+            <optgroup label="Exterior">
+              <option>Exterior painting</option>
+              <option>Fencing &amp; gates</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="fld"><label>Message</label><textarea name="message" placeholder="Rooms, rough sizes, timescales..."></textarea></div>
+        <button type="submit" class="fbtn">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <b>Alan Leighton Decorating</b>
+        <p>Painting and decorating across Wrexham and North Wales, inside and out. Run hands-on by Alan Leighton.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Interior Painting</a>
+        <a href="#services">Wallpapering</a>
+        <a href="#services">Murals &amp; Feature Walls</a>
+        <a href="#services">Panelling &amp; Woodwork</a>
+        <a href="#services">Exterior &amp; Fencing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#areas">Areas</a>
+        <a href="#contact">Free Quote</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> Alan Leighton Decorating · Wrexham</span>
+      <span>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa" id="fabWa" href="#" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.477-.911z"/></svg>
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div class="lb" id="lb"><span class="lb-x" id="lbx">&times;</span><img id="lbimg" src="" alt=""></div>
+
+<script>
+// ---- contact details (base64) ----
+var P  = atob('MDc0ODcyMzkyOTk=');
+var Pf = atob('MDc0ODcgMjM5IDI5OQ==');
+var W  = atob('NDQ3NDg3MjM5Mjk5');
+var waMsg = 'Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+var waUrl = 'https://wa.me/' + W + '?text=' + waMsg;
+var tel = 'tel:' + P;
+
+['navCall','heroCall','ctaCall','mCall','fabCall'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=tel;});
+['heroWa','ctaWa','cWa','fabWa'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=waUrl;});
+var cp=document.getElementById('cPhone'); if(cp){cp.href=tel;document.getElementById('cPhoneTxt').textContent=Pf;}
+document.getElementById('yr').textContent=new Date().getFullYear();
+var ft=document.getElementById('formTimestamp'); if(ft) ft.value=Date.now();
+
+// phone field validation
+var pin=document.getElementById('phoneInput');
+if(pin){pin.addEventListener('input',function(){this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))?'':'Please enter a valid UK phone number');});}
+
+// loader
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done');},1500);});
+
+// burger
+var burger=document.getElementById('burger'), mp=document.getElementById('mpanel');
+burger.addEventListener('click',function(){mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mp.classList.remove('open');});});
+
+// reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// floating CTAs after hero
+var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+var hio=new IntersectionObserver(function(es){es.forEach(function(en){fabs.classList.toggle('show',!en.isIntersecting);});},{threshold:.1});
+hio.observe(hero);
+
+// lightbox
+var lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
+document.querySelectorAll('[data-full]').forEach(function(f){f.addEventListener('click',function(){lbimg.src=f.getAttribute('data-full');lb.classList.add('open');});});
+function closeLb(){lb.classList.remove('open');}
+document.getElementById('lbx').addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+</script>
+</body>
+</html>
