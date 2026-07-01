@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNA Construction | Kitchen &amp; Bathroom Design, Installation &amp; Plumbing &mdash; Uxbridge, Heathrow &amp; East London</title>
+<meta name="description" content="SNA Construction &mdash; kitchen and bathroom design, installation and plumbing across Uxbridge, Heathrow and East London. Full fit by one team, from first design to final seal. Free design visit and no-obligation quotation.">
+<link rel="icon" href="logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#14120f;
+  --bg2:#1a1713;
+  --card:#1d1a15;
+  --card2:#23201a;
+  --line:#2c2823;
+  --line2:#3b352c;
+  --ink:#f6f1e9;
+  --body:#c4bcad;
+  --muted:#8d8678;
+  --brass:#c8a05a;
+  --brass2:#e3c386;
+  --brass-deep:#9e7c3c;
+  --glow:rgba(200,160,90,.16);
+  --green:#25d366;
+  --shadow:0 30px 70px -30px rgba(0,0,0,.7);
+  --shadow-sm:0 14px 34px -18px rgba(0,0,0,.6);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.locked{overflow:hidden;height:100vh}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif;color:var(--ink);font-weight:300;line-height:1.06;letter-spacing:-.02em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.accent{color:var(--brass2)}
+.label{
+  font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--brass);
+  display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.label::before{content:"";width:30px;height:1px;background:var(--brass);opacity:.7}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;font-family:'Inter',sans-serif;
+  font-weight:600;font-size:.95rem;padding:16px 30px;border-radius:2px;
+  cursor:pointer;border:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
+  letter-spacing:.01em;
+}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--brass);color:#1a140a;box-shadow:0 16px 34px -16px rgba(200,160,90,.6)}
+.btn-primary:hover{background:var(--brass2);transform:translateY(-2px)}
+.btn-wa{background:var(--green);color:#06310f}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 16px 34px -16px rgba(37,211,102,.55)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--brass);color:var(--brass2)}
+
+/* ============ WATER-FILL LOADER ============ */
+#loader{
+  position:fixed;inset:0;z-index:3000;background:radial-gradient(120% 120% at 50% 35%,#1d1913 0%,#14120f 60%,#0d0b08 100%);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:transform 1s cubic-bezier(.76,0,.24,1),opacity .7s ease .25s;
+}
+#loader.done{transform:translateY(-101%);opacity:0;pointer-events:none}
+.ld-inner{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;z-index:3}
+.ld-word{position:relative;font-family:'Outfit',sans-serif;font-weight:300;
+  font-size:clamp(3rem,11vw,7rem);letter-spacing:.14em;line-height:1;white-space:nowrap;padding-left:.14em}
+.ld-word .outline{color:transparent;-webkit-text-stroke:1.1px rgba(200,160,90,.55)}
+.ld-fill{position:absolute;left:0;right:0;bottom:0;height:0;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;
+  animation:fillUp 2.35s cubic-bezier(.55,.05,.25,1) .35s forwards}
+.ld-fill .fillword{font-family:'Outfit',sans-serif;font-weight:300;
+  font-size:clamp(3rem,11vw,7rem);letter-spacing:.14em;line-height:1;white-space:nowrap;padding-left:.14em;
+  background:linear-gradient(180deg,#f0d8a2,#c8a05a 60%,#a07e3e);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.ld-fill::before{content:"";position:absolute;top:0;left:-10%;width:120%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--brass2),#fff6e2,var(--brass2),transparent);
+  filter:blur(.4px);box-shadow:0 0 14px 2px rgba(227,195,134,.6);
+  animation:ripple 1.6s ease-in-out infinite}
+@keyframes fillUp{0%{height:0}100%{height:100%}}
+@keyframes ripple{0%,100%{transform:translateX(-3%) scaleY(1)}50%{transform:translateX(3%) scaleY(1.7)}}
+.ld-sub{margin-top:22px;font-family:'Inter',sans-serif;font-weight:600;font-size:.74rem;
+  letter-spacing:.55em;text-transform:uppercase;color:var(--muted);padding-left:.55em;
+  opacity:0;animation:subIn .7s ease 2.5s forwards}
+.ld-rule{height:1px;width:0;background:var(--brass);margin:20px auto 0;
+  animation:ruleGrow .9s cubic-bezier(.5,0,.2,1) 2.55s forwards;box-shadow:0 0 10px var(--glow)}
+@keyframes subIn{to{opacity:1}}
+@keyframes ruleGrow{to{width:130px}}
+.drop{position:absolute;top:-30px;width:7px;height:7px;border-radius:0 50% 50% 50%;
+  background:radial-gradient(circle at 40% 30%,#fff2d6,var(--brass));transform:rotate(45deg);opacity:0}
+.drop.d1{left:14%;animation:fall 1.7s ease-in 1s infinite}
+.drop.d2{left:43%;animation:fall 1.9s ease-in 1.5s infinite}
+.drop.d3{left:71%;animation:fall 1.6s ease-in 2.1s infinite}
+.drop.d4{left:88%;animation:fall 2.1s ease-in .6s infinite}
+@keyframes fall{0%{opacity:0;top:-30px}12%{opacity:.95}80%{opacity:.8}100%{opacity:0;top:120px}}
+
+/* ============ NAV ============ */
+header.nav{position:sticky;top:0;z-index:1200;background:var(--bg);border-bottom:1px solid var(--line);
+  transition:background .3s ease,border-color .3s ease}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.brand .mk{width:38px;height:38px;flex:none}
+.brand .bt{display:flex;flex-direction:column;line-height:1}
+.brand .bt b{font-family:'Outfit',sans-serif;font-weight:600;font-size:1.16rem;letter-spacing:.14em;color:var(--ink)}
+.brand .bt span{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);margin-top:5px;padding-left:.02em}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:.84rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--brass2)}
+.nav-call{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line2);
+  padding:11px 20px;border-radius:2px;color:var(--ink)!important;font-weight:600;font-size:.86rem;letter-spacing:.04em;
+  transition:border-color .2s,color .2s}
+.nav-call:hover{border-color:var(--brass);color:var(--brass2)!important}
+.nav-call svg{width:15px;height:15px;stroke:var(--brass)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+.mobile-panel{display:none}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 24s ease-in-out infinite alternate}
+@keyframes kenburns{0%{transform:scale(1.03)}100%{transform:scale(1.13)}}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(15,12,9,.55) 0%,rgba(15,12,9,.2) 38%,rgba(15,12,9,.78) 80%,var(--bg) 100%),
+             linear-gradient(90deg,rgba(15,12,9,.7) 0%,rgba(15,12,9,.05) 55%)}
+.hero-frame{position:absolute;inset:26px;border:1px solid rgba(227,195,134,.28);z-index:2;pointer-events:none}
+.hero-side{position:absolute;right:40px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;
+  z-index:3;font-size:.68rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(246,241,233,.6);font-weight:600}
+.hero-inner{position:relative;z-index:3;padding-bottom:64px;padding-top:120px}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.74rem;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--brass2);margin-bottom:26px}
+.hero .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--brass2);
+  box-shadow:0 0 0 0 rgba(227,195,134,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(227,195,134,.5)}70%{box-shadow:0 0 0 12px rgba(227,195,134,0)}100%{box-shadow:0 0 0 0 rgba(227,195,134,0)}}
+.hero h1{font-size:clamp(2.6rem,6.4vw,5.5rem);font-weight:300;color:#fff;max-width:16ch;
+  text-shadow:0 2px 40px rgba(0,0,0,.5)}
+.hero h1 b{font-weight:600;color:var(--brass2)}
+.hero .lede{margin-top:26px;max-width:56ch;font-size:1.08rem;color:#e7e0d4;text-shadow:0 1px 20px rgba(0,0,0,.6)}
+.hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.hero-badge{position:absolute;right:64px;bottom:120px;z-index:3;background:rgba(20,17,13,.72);
+  backdrop-filter:blur(8px);border:1px solid rgba(227,195,134,.35);padding:20px 26px;border-radius:3px;text-align:center}
+.hero-badge .num{font-family:'Outfit',sans-serif;font-weight:300;font-size:2.6rem;color:var(--brass2);line-height:1}
+.hero-badge .cap{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--body);margin-top:6px;max-width:9ch;margin-left:auto;margin-right:auto}
+
+/* fade cascade */
+.fc{opacity:0;transform:translateY(26px);animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+.loaded .fc.d1{animation-delay:.05s}.loaded .fc.d2{animation-delay:.18s}.loaded .fc.d3{animation-delay:.31s}
+.loaded .fc.d4{animation-delay:.44s}.loaded .fc.d5{animation-delay:.57s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+/* ============ TRUST STRIP ============ */
+.trust{border-bottom:1px solid var(--line);background:var(--bg2)}
+.trust-row{display:flex;align-items:stretch;justify-content:space-between}
+.trust-item{flex:1;padding:30px 18px;text-align:center;border-left:1px solid var(--line)}
+.trust-item:first-child{border-left:none}
+.trust-item .t1{font-family:'Outfit',sans-serif;font-weight:500;font-size:1.02rem;color:var(--ink);letter-spacing:.01em}
+.trust-item .t2{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:7px}
+
+/* ============ SECTION ============ */
+section{padding:118px 0}
+.sec-head{max-width:760px}
+.sec-head h2{font-size:clamp(2rem,4.3vw,3.3rem);font-weight:300}
+.sec-head h2 b{font-weight:600;color:var(--brass2)}
+
+/* ============ SERVICES ============ */
+.svc-grid{margin-top:60px;display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.svc{position:relative;padding:38px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+  display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;transition:background .3s ease}
+.svc:nth-child(2n){border-right:none}
+.svc::before{content:"";position:absolute;top:-1px;left:0;width:100%;height:2px;background:var(--brass);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.5,0,.2,1)}
+.svc:hover{background:var(--card)}
+.svc:hover::before{transform:scaleX(1)}
+.svc .no{font-family:'Outfit',sans-serif;font-weight:200;font-size:2.3rem;color:var(--brass);line-height:1;opacity:.85}
+.svc h3{font-family:'Outfit',sans-serif;font-weight:500;font-size:1.22rem;color:var(--ink);letter-spacing:0;margin-bottom:9px}
+.svc p{font-size:.95rem;color:var(--body);line-height:1.62}
+
+/* ============ GALLERY ============ */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px;margin-top:60px}
+.gtile{position:relative;overflow:hidden;border-radius:3px;border:1px solid var(--line);cursor:pointer;background:var(--card)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.gtile:hover img{transform:scale(1.07)}
+.gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,11,8,.6));opacity:0;transition:opacity .3s}
+.gtile:hover::after{opacity:1}
+.gtile .gcap{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-size:.82rem;font-weight:500;
+  letter-spacing:.02em;opacity:0;transform:translateY(8px);transition:.35s}
+.gtile:hover .gcap{opacity:1;transform:none}
+.g-feature{grid-column:span 2;grid-row:span 2}
+.g-tall{grid-row:span 2}
+.gcap-m{display:none}
+
+/* ============ FEATURE / ABOUT ============ */
+.feature{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.feat-photo{position:relative;min-height:560px;overflow:hidden}
+.feat-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feat-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,15,.25),transparent 40%)}
+.feat-text{padding:96px 70px}
+.feat-text p.body{font-size:1.07rem;color:var(--body);margin-top:8px}
+.sigblock{margin-top:38px;display:flex;align-items:center;gap:18px}
+.sigblock .ini{width:58px;height:58px;border-radius:50%;border:1px solid var(--brass);color:var(--brass2);
+  display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:400;font-size:1.3rem;flex:none}
+.sigblock .who b{display:block;font-family:'Outfit',sans-serif;color:var(--ink);font-weight:500;font-size:1.02rem}
+.sigblock .who span{font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+.feat-stats{margin-top:42px;display:flex;gap:46px;flex-wrap:wrap}
+.feat-stats .fs .n{font-family:'Outfit',sans-serif;font-weight:200;font-size:2.7rem;color:var(--brass2);line-height:1}
+.feat-stats .fs .l{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* ============ CTA BAND ============ */
+.band{position:relative;padding:130px 0;overflow:hidden;text-align:center}
+.band-bg{position:absolute;inset:0;z-index:0}
+.band-bg img{width:100%;height:100%;object-fit:cover}
+.band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,11,8,.82),rgba(13,11,8,.7))}
+.band .inner{position:relative;z-index:2}
+.band h2{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:300;color:#fff}
+.band h2 b{font-weight:600;color:var(--brass2)}
+.band p{margin:20px auto 34px;max-width:50ch;color:#e7e0d4;font-size:1.06rem}
+.band .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ============ REVIEWS ============ */
+.rev-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+.rate-badge{display:flex;align-items:center;gap:14px;border:1px solid var(--line2);border-radius:3px;padding:14px 22px}
+.rate-badge .big{font-family:'Outfit',sans-serif;font-weight:300;font-size:2rem;color:var(--brass2);line-height:1}
+.rate-badge .stars{color:var(--brass2);font-size:.9rem;letter-spacing:2px}
+.rate-badge .sub{font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+.rev-grid{margin-top:54px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:32px 30px;transition:transform .3s,border-color .3s}
+.rev:hover{transform:translateY(-4px);border-color:var(--line2)}
+.rev .stars{color:var(--brass2);font-size:.92rem;letter-spacing:2px;margin-bottom:16px}
+.rev p{font-size:.98rem;color:var(--body);line-height:1.72}
+.rev .by{margin-top:22px;display:flex;align-items:center;gap:13px;border-top:1px solid var(--line);padding-top:20px}
+.rev .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(140deg,var(--brass),var(--brass-deep));
+  color:#1a140a;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex:none}
+.rev .by b{display:block;color:var(--ink);font-size:.92rem;font-weight:600}
+.rev .by span{font-size:.78rem;color:var(--muted)}
+
+/* ============ AREAS ============ */
+.areas{background:var(--bg2);border-top:1px solid var(--line)}
+.area-list{margin-top:46px;display:flex;flex-wrap:wrap;gap:12px}
+.area-list a{border:1px solid var(--line2);border-radius:2px;padding:11px 20px;font-size:.9rem;color:var(--body);
+  letter-spacing:.02em;transition:border-color .2s,color .2s,background .2s}
+.area-list a:hover{border-color:var(--brass);color:var(--brass2);background:var(--card)}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;margin-top:58px}
+.cinfo .citem{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.cinfo .citem:first-child{padding-top:0}
+.cinfo .ci-ic{width:46px;height:46px;border:1px solid var(--line2);border-radius:3px;display:flex;align-items:center;justify-content:center;flex:none}
+.cinfo .ci-ic svg{width:19px;height:19px;stroke:var(--brass2)}
+.cinfo .ci-t{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.cinfo .ci-v{font-family:'Outfit',sans-serif;font-size:1.12rem;color:var(--ink);font-weight:400;margin-top:4px;word-break:break-word}
+.cinfo .ci-v:hover{color:var(--brass2)}
+form.enq{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:38px}
+form.enq .fr{margin-bottom:18px}
+form.enq label{display:block;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+form.enq input,form.enq select,form.enq textarea{width:100%;background:var(--bg);border:1px solid var(--line2);
+  border-radius:3px;padding:14px 16px;color:var(--ink);font-family:'Inter',sans-serif;font-size:.97rem;transition:border-color .2s}
+form.enq input:focus,form.enq select:focus,form.enq textarea:focus{outline:none;border-color:var(--brass)}
+form.enq textarea{resize:vertical;min-height:120px}
+form.enq .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form.enq button{width:100%;margin-top:8px}
+.formnote{font-size:.78rem;color:var(--muted);text-align:center;margin-top:16px}
+
+/* ============ FOOTER ============ */
+footer{background:#0f0d0a;border-top:1px solid var(--line);padding:70px 0 34px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+.foot-brand .brand{margin-bottom:18px}
+.foot-brand p{font-size:.92rem;color:var(--muted);max-width:34ch}
+.foot-col h4{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:18px}
+.foot-col a{display:block;font-size:.9rem;color:var(--body);margin-bottom:11px;transition:color .2s}
+.foot-col a:hover{color:var(--brass2)}
+.foot-bot{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);display:flex;
+  justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.83rem;color:var(--muted)}
+.foot-bot a{color:var(--brass2)}
+
+/* ============ FLOATING CTAs ============ */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:1100;display:flex;flex-direction:column;gap:13px;
+  opacity:0;transform:translateY(20px) scale(.85);pointer-events:none;transition:.4s cubic-bezier(.2,.7,.2,1)}
+.fabs.show{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--brass);animation:fpulse 2.4s infinite}
+.fab-wa{background:var(--green);animation:fpulse 2.4s infinite .6s}
+.fab:hover{animation-play-state:paused;transform:scale(1.06)}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(200,160,90,.45)}70%{box-shadow:0 0 0 16px rgba(200,160,90,0)}100%{box-shadow:0 0 0 0 rgba(200,160,90,0)}}
+.fab-wa{animation-name:fpulseg}
+@keyframes fpulseg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ============ LIGHTBOX ============ */
+#lb{position:fixed;inset:0;z-index:2500;background:rgba(8,7,5,.94);display:none;align-items:center;justify-content:center;padding:30px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:88vh;border-radius:4px;border:1px solid var(--line2)}
+#lb .x{position:absolute;top:24px;right:30px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.8}
+#lb .x:hover{opacity:1}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1000px){
+  .feat-text{padding:64px 44px}
+  .nav-links{gap:24px}
+}
+@media(max-width:880px){
+  .nav-links,.nav-call{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:block;position:absolute;top:78px;left:0;right:0;background:var(--bg2);
+    border-bottom:1px solid var(--line);padding:14px 28px 26px;
+    transform:translateY(-130%);transition:transform .45s cubic-bezier(.5,0,.2,1);z-index:-1}
+  .mobile-panel.open{transform:translateY(0)}
+  .mobile-panel a{display:block;padding:15px 0;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--body);border-bottom:1px solid var(--line)}
+  .mobile-panel .btn{display:flex;margin-top:20px;width:100%}
+  .hero-side,.hero-badge{display:none}
+  .hero-frame{inset:14px}
+  .hero h1{font-size:clamp(2.2rem,9vw,3.2rem)}
+  .feat-grid{grid-template-columns:1fr}
+  .feat-photo{min-height:340px;order:2}
+  .feat-text{order:1;padding:56px 28px}
+  .contact-grid{grid-template-columns:1fr;gap:34px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-brand{grid-column:span 2}
+  .rev-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:780px){
+  section{padding:78px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{border-right:none}
+  .trust-row{flex-wrap:wrap}
+  .trust-item{flex:1 1 50%;border-left:none;border-bottom:1px solid var(--line);padding:22px 12px}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
+  .g-feature{grid-column:span 2;grid-row:span 2}
+  .gcap{position:static!important}
+  .gtile .gcap{display:none}
+  .rev-grid{grid-template-columns:1fr}
+  .feat-stats{gap:30px}
+}
+@media(max-width:520px){
+  .wrap{padding:0 20px}
+  .hero h1{font-size:2rem}
+  .hero-cta .btn{flex:1}
+  .gal{grid-template-columns:1fr;grid-auto-rows:240px}
+  .g-feature,.g-tall{grid-column:span 1;grid-row:span 1}
+  .foot-top{grid-template-columns:1fr}
+  .foot-brand{grid-column:span 1}
+  form.enq .two{grid-template-columns:1fr}
+  form.enq{padding:26px 20px}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ===== WATER-FILL LOADER ===== -->
+<div id="loader">
+  <span class="drop d1"></span><span class="drop d2"></span><span class="drop d3"></span><span class="drop d4"></span>
+  <div class="ld-inner">
+    <div class="ld-word">
+      <span class="outline">SNA</span>
+      <span class="ld-fill"><span class="fillword">SNA</span></span>
+    </div>
+    <div class="ld-sub">Construction</div>
+    <div class="ld-rule"></div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <img src="logo.svg" class="mk" alt="SNA Construction">
+      <span class="bt"><b>SNA</b><span>Construction</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a id="navCall" href="#" class="nav-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+      <span id="navCallTxt">Call</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Contact</a>
+    <a id="mCall" href="#" class="btn btn-primary">Call Aram</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="kitchen-1.jpg" alt="Modern shaker kitchen with stone worktops and island"></div>
+  <div class="hero-frame"></div>
+  <div class="hero-side">Uxbridge &middot; Heathrow &middot; East London</div>
+  <div class="hero-badge fc d5">
+    <div class="num">3</div>
+    <div class="cap">Trades, one team</div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow fc d1"><span class="dot"></span>Kitchens &middot; Bathrooms &middot; Plumbing</div>
+    <h1 class="fc d2">Beautiful kitchens &amp; bathrooms, <b>fitted properly.</b></h1>
+    <p class="lede fc d3">Design, installation and plumbing across Uxbridge, Heathrow and East London. One team from first design to final seal &mdash; no sub-contracted shortcuts.</p>
+    <div class="hero-cta fc d4">
+      <a id="heroCall" href="#" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="heroCallTxt">Call Aram</span>
+      </a>
+      <a id="heroWa" href="#" class="btn btn-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5L9 6.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<div class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><div class="t1">Kitchens &amp; Bathrooms</div><div class="t2">Design to Fit</div></div>
+    <div class="trust-item"><div class="t1">Plumbing In-House</div><div class="t2">One Team</div></div>
+    <div class="trust-item"><div class="t1">Uxbridge &middot; Heathrow</div><div class="t2">&amp; East London</div></div>
+    <div class="trust-item"><div class="t1">Fully Insured</div><div class="t2">Peace of Mind</div></div>
+    <div class="trust-item"><div class="t1">Free Quotations</div><div class="t2">No Obligation</div></div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2>From first design to the <b>final seal.</b></h2>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc"><div class="no">01</div><div><h3>Kitchen Design &amp; Installation</h3><p>Bespoke kitchens planned, supplied and fitted &mdash; units, worktops, appliances and finish.</p></div></div>
+      <div class="svc"><div class="no">02</div><div><h3>Bathroom Design &amp; Installation</h3><p>Full bathrooms stripped out, plumbed, tiled and finished by one team.</p></div></div>
+      <div class="svc"><div class="no">03</div><div><h3>Plumbing &amp; First Fix</h3><p>New runs, moved waste, taps and fittings &mdash; sorted right the first time.</p></div></div>
+      <div class="svc"><div class="no">04</div><div><h3>Wet Rooms &amp; Walk-in Showers</h3><p>Fully tanked, level-access wet rooms and walk-in showers built to last.</p></div></div>
+      <div class="svc"><div class="no">05</div><div><h3>Worktops &amp; Splashbacks</h3><p>Quartz, granite and laminate worktops templated and fitted dead level.</p></div></div>
+      <div class="svc"><div class="no">06</div><div><h3>Bespoke Tiling</h3><p>Marble, porcelain and mosaic to walls and floors, set true and clean.</p></div></div>
+      <div class="svc"><div class="no">07</div><div><h3>3D Design &amp; Planning</h3><p>See your kitchen or bathroom laid out before we lift a single tool.</p></div></div>
+      <div class="svc"><div class="no">08</div><div><h3>Full Refurbishments</h3><p>Complete kitchen and bathroom renovations, managed start to finish.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>A few we are <b>proud of.</b></h2>
+    </div>
+    <div class="gal reveal">
+      <div class="gtile g-feature"><img src="kitchen-2.jpg" alt="Classic white kitchen with island and pendant lights"><span class="gcap">Classic in-frame kitchen &amp; island</span></div>
+      <div class="gtile"><img src="bath-1.jpg" alt="Walnut and brass double vanity bathroom"><span class="gcap">Walnut &amp; brass double vanity</span></div>
+      <div class="gtile"><img src="kitchen-3.jpg" alt="Bright open-plan shaker kitchen"><span class="gcap">Bright open-plan kitchen</span></div>
+      <div class="gtile g-tall"><img src="bath-4.jpg" alt="Dark marble en-suite with brass rainfall shower"><span class="gcap">Stone en-suite, rainfall shower</span></div>
+      <div class="gtile"><img src="bath-3.jpg" alt="Calacatta marble freestanding bath"><span class="gcap">Freestanding marble suite</span></div>
+      <div class="gtile"><img src="bath-6.jpg" alt="Moody marble cloakroom"><span class="gcap">Moody marble cloakroom</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURE / ABOUT ===== -->
+<div class="feature" id="about">
+  <div class="feat-grid">
+    <div class="feat-photo reveal"><img src="craft.jpg" alt="Brushed brass tap, close detail"></div>
+    <div class="feat-text reveal">
+      <div class="label">The SNA difference</div>
+      <h2 style="font-size:clamp(1.9rem,3.6vw,2.8rem)">Getting the <b>details</b> right, every time.</h2>
+      <p class="body">SNA Construction is built on one rule: every kitchen and bathroom we hand back should look as good in ten years as it does on day one. Aram and the team handle the design, the plumbing and the full fit in-house across Uxbridge, Heathrow and East London &mdash; one point of contact, and no sub-contracted shortcuts.</p>
+      <div class="feat-stats">
+        <div class="fs"><div class="n">3</div><div class="l">Core Trades</div></div>
+        <div class="fs"><div class="n">100%</div><div class="l">Own Team</div></div>
+        <div class="fs"><div class="n">5.0</div><div class="l">Average Rating</div></div>
+      </div>
+      <div class="sigblock">
+        <div class="ini">A</div>
+        <div class="who"><b>Aram</b><span>SNA Construction</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA BAND ===== -->
+<div class="band">
+  <div class="band-bg"><img src="band.jpg" alt="Marble bathroom with freestanding tub"></div>
+  <div class="wrap inner">
+    <h2>Planning a <b>new kitchen or bathroom?</b></h2>
+    <p>Free design visit and a clear, no-surprises quotation across Uxbridge, Heathrow and East London.</p>
+    <div class="row">
+      <a id="bandCall" href="#" class="btn btn-primary">Call Aram today</a>
+      <a href="#contact" class="btn btn-ghost">Request a quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="rev-top reveal">
+      <div class="sec-head">
+        <div class="label">What clients say</div>
+        <h2>Trusted across <b>West &amp; East London.</b></h2>
+      </div>
+      <div class="rate-badge">
+        <div class="big">5.0</div>
+        <div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="sub">Based on local reviews</div></div>
+      </div>
+    </div>
+    <div class="rev-grid reveal">
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Aram fitted our new kitchen in Uxbridge and the finish is spot on. Turned up when he said he would and left the place spotless every day."</p><div class="by"><div class="av">S</div><div><b>Sarah M.</b><span>Uxbridge &middot; New Kitchen</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Full bathroom done near Heathrow. SNA handled the plumbing, tiling, everything. Finished on time and tidier than I expected."</p><div class="by"><div class="av">D</div><div><b>David R.</b><span>Hayes &middot; Full Bathroom</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Turned our old bathroom into a walk-in wet room in Stratford. Proper skilled work, no mess left behind at all."</p><div class="by"><div class="av">J</div><div><b>Janet H.</b><span>Stratford &middot; Wet Room</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Best decision we made was going with Aram. The kitchen and worktops in our Ilford home get a comment from everyone who visits."</p><div class="by"><div class="av">T</div><div><b>Tom &amp; Lucy</b><span>Ilford &middot; Kitchen</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Honest quote, no surprises, a beautiful job. Sorted a tricky plumbing move and re-tiled the whole bathroom in West Drayton."</p><div class="by"><div class="av">K</div><div><b>Karen B.</b><span>West Drayton &middot; Bathroom</span></div></div></div>
+      <div class="rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Re-did our kitchen and downstairs cloakroom. Tidy, polite and genuinely skilled. Could not recommend SNA any higher."</p><div class="by"><div class="av">M</div><div><b>Mark T.</b><span>Hillingdon &middot; Kitchen &amp; WC</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<div class="areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Where we work</div>
+      <h2>Kitchens, bathrooms &amp; plumbing across <b>West &amp; East London.</b></h2>
+    </div>
+    <div class="area-list reveal">
+      <a href="#contact">Uxbridge</a><a href="#contact">Heathrow</a><a href="#contact">Hillingdon</a>
+      <a href="#contact">Hayes</a><a href="#contact">West Drayton</a><a href="#contact">Yiewsley</a>
+      <a href="#contact">Cowley</a><a href="#contact">Ickenham</a><a href="#contact">Ruislip</a>
+      <a href="#contact">Hounslow</a><a href="#contact">Stratford</a><a href="#contact">Ilford</a>
+      <a href="#contact">Barking</a><a href="#contact">Newham</a><a href="#contact">Walthamstow</a>
+      <a href="#contact">Bow</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get in touch</div>
+      <h2>Let us design your <b>next project.</b></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo reveal">
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="ci-t">Call Aram</div><a id="contactPhone" class="ci-v" href="#">Tap to call</a></div></div>
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"/></svg></div>
+          <div><div class="ci-t">WhatsApp</div><a id="contactWa" class="ci-v" href="#">Message us</a></div></div>
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="ci-t">Covering</div><div class="ci-v">Uxbridge, Heathrow &amp; East London</div></div></div>
+        <div class="citem"><div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="ci-t">Response time</div><div class="ci-v">Usually same day</div></div></div>
+      </div>
+      <form class="enq reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="SNA Construction">
+        <input type="hidden" name="source" value="mockup-sna-construction">
+        <div class="two">
+          <div class="fr"><label for="n">Your name</label><input id="n" name="name" required placeholder="Jane Smith"></div>
+          <div class="fr"><label for="p">Phone</label><input id="p" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx"></div>
+        </div>
+        <div class="fr"><label for="e">Email (optional)</label><input id="e" name="email" type="email" placeholder="you@email.com"></div>
+        <div class="fr"><label for="s">What can we help with?</label>
+          <select id="s" name="service">
+            <optgroup label="Kitchens">
+              <option>Kitchen design &amp; installation</option>
+              <option>Worktops &amp; splashbacks</option>
+              <option>Kitchen refurbishment</option>
+            </optgroup>
+            <optgroup label="Bathrooms">
+              <option>Bathroom design &amp; installation</option>
+              <option>Wet room / walk-in shower</option>
+              <option>Bespoke tiling</option>
+            </optgroup>
+            <optgroup label="Plumbing &amp; Other">
+              <option>Plumbing / first fix</option>
+              <option>3D design &amp; planning</option>
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="fr"><label for="m">Tell us about your project</label><textarea id="m" name="message" placeholder="Rough size of the room, what you're after, timescales..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+        <div class="formnote">Or call Aram directly on <a id="formPhone" href="#" style="color:var(--brass2)">our number</a></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <img src="logo.svg" class="mk" alt="SNA Construction">
+          <span class="bt"><b>SNA</b><span>Construction</span></span>
+        </a>
+        <p>Kitchen and bathroom design, installation and plumbing across Uxbridge, Heathrow and East London. One team, from first design to final seal.</p>
+      </div>
+      <div class="foot-col"><h4>Services</h4>
+        <a href="#services">Kitchen Installation</a><a href="#services">Bathroom Installation</a>
+        <a href="#services">Plumbing</a><a href="#services">Wet Rooms</a><a href="#services">Bespoke Tiling</a></div>
+      <div class="foot-col"><h4>Areas</h4>
+        <a href="#areas">Uxbridge</a><a href="#areas">Heathrow</a>
+        <a href="#areas">Hayes</a><a href="#areas">West Drayton</a><a href="#areas">East London</a></div>
+      <div class="foot-col"><h4>Contact</h4>
+        <a id="footPhone" href="#">Call us</a>
+        <a id="footWa" href="#">WhatsApp</a>
+        <a href="#contact">Request a quote</a></div>
+    </div>
+    <div class="foot-bot">
+      <div>&copy; 2026 SNA Construction. All rights reserved.</div>
+      <div>Site by <a href="https://construction-sites.co.uk">construction-sites.co.uk</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING CTAs ===== -->
+<div class="fabs" id="fabs">
+  <a id="fabCall" href="#" class="fab fab-call" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1a140a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a id="fabWa" href="#" class="fab fab-wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#06310f"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5L9 6.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+  </a>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lb"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+/* ---- contact obfuscation ---- */
+var P  = atob('MDc0MjExMDYwNjM=');
+var Pf = atob('MDc0MjEgMTA2MDYz');
+var WA = '447421106063';
+var waLink = 'https://wa.me/' + WA + '?text=' + encodeURIComponent("Hi Aram, I found SNA Construction online and would like a quote please");
+function tel(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;}
+['navCall','heroCall','bandCall','mCall','fabCall'].forEach(tel);
+['contactPhone','formPhone','footPhone'].forEach(function(id){var el=document.getElementById(id);if(el){el.href='tel:'+P;el.textContent=Pf;}});
+document.getElementById('navCallTxt').textContent = Pf;
+['heroWa','fabWa','contactWa','footWa'].forEach(function(id){var el=document.getElementById(id);if(el)el.href=waLink;});
+var cw=document.getElementById('contactWa');if(cw)cw.textContent=Pf;
+
+/* ---- loader ---- */
+window.addEventListener('load',function(){
+  var minTime = 3050;
+  setTimeout(function(){
+    document.getElementById('loader').classList.add('done');
+    document.body.classList.remove('locked');
+    document.body.classList.add('loaded');
+  }, minTime);
+});
+/* fallback in case load already fired */
+setTimeout(function(){
+  if(!document.body.classList.contains('loaded')){
+    document.getElementById('loader').classList.add('done');
+    document.body.classList.remove('locked');
+    document.body.classList.add('loaded');
+  }
+}, 4200);
+
+/* ---- mobile nav ---- */
+var burger=document.getElementById('burger'), panel=document.getElementById('mpanel');
+burger.addEventListener('click',function(){panel.classList.toggle('open');burger.classList.toggle('on');});
+panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){panel.classList.remove('open');});});
+
+/* ---- floating CTAs after hero ---- */
+var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+var fo=new IntersectionObserver(function(en){fabs.classList.toggle('show',!en[0].isIntersecting);},{threshold:0});
+fo.observe(hero);
+
+/* ---- scroll reveal ---- */
+var ro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+
+/* ---- lightbox ---- */
+var lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('.gtile').forEach(function(t){
+  t.addEventListener('click',function(){lbImg.src=t.querySelector('img').src;lb.classList.add('open');});
+});
+lb.addEventListener('click',function(){lb.classList.remove('open');});
+
+/* ---- form ---- */
+document.getElementById('formTimestamp').value = Date.now();
+var ph=document.getElementById('p');
+ph.addEventListener('input',function(){
+  this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))?'':'Please enter a valid UK phone number');
+});
+</script>
+</body>
+</html>
