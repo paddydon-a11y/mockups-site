@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TB Construction | Driveways, Patios &amp; Groundworks in Stoke-on-Trent</title>
+<meta name="description" content="TB Construction — premium driveways, patios, porcelain paving, groundworks, garden walls and tarmac in Stoke-on-Trent, Newcastle-under-Lyme, Macclesfield and surrounding areas. Free quotes — call Tommy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#16191d;
+  --bg2:#101215;
+  --card:#1c2026;
+  --card-hover:#232830;
+  --border:#2b3138;
+  --border-light:#3b434c;
+  --accent:#cf9a52;        /* sandstone gold */
+  --accent-hover:#e0b271;
+  --accent-glow:rgba(207,154,82,.16);
+  --steel:#7fa7c4;          /* cool steel accent */
+  --steel-dim:rgba(127,167,196,.16);
+  --white:#f5f2ec;
+  --body:#c3c9d0;
+  --muted:#828b95;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--body);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--white);font-weight:700;line-height:1.05;letter-spacing:-.01em}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.accent{color:var(--accent)}
+
+/* ---------- Loader (paver-grid fill) ---------- */
+#loader{position:fixed;inset:0;background:var(--bg2);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .6s ease,visibility .6s ease}
+#loader.hide{opacity:0;visibility:hidden}
+#loader .pav{display:grid;grid-template-columns:repeat(3,20px);grid-auto-rows:20px;gap:5px}
+#loader .pav i{background:var(--border);border-radius:3px;opacity:.25;animation:pave 1.4s ease-in-out infinite}
+#loader .pav i:nth-child(1){animation-delay:0s}
+#loader .pav i:nth-child(2){animation-delay:.1s}
+#loader .pav i:nth-child(3){animation-delay:.2s}
+#loader .pav i:nth-child(4){animation-delay:.3s}
+#loader .pav i:nth-child(5){animation-delay:.4s}
+#loader .pav i:nth-child(6){animation-delay:.5s}
+#loader .pav i:nth-child(7){animation-delay:.6s}
+#loader .pav i:nth-child(8){animation-delay:.7s}
+#loader .pav i:nth-child(9){animation-delay:.8s}
+@keyframes pave{0%,100%{opacity:.2;background:var(--border)}45%{opacity:1;background:var(--accent)}}
+#loader .ltext{font-family:'Space Grotesk',sans-serif;letter-spacing:.4em;font-size:.82rem;color:var(--accent);text-transform:uppercase;padding-left:.4em;font-weight:600}
+
+/* ---------- Grid watermark ---------- */
+.grid-wm{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;background-image:linear-gradient(var(--accent) 1px,transparent 1px),linear-gradient(90deg,var(--accent) 1px,transparent 1px);background-size:52px 52px}
+
+/* ---------- Logo ---------- */
+.logo .tile{fill:var(--accent)}
+.logo .tb{fill:#15130f;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.5px}
+
+/* ---------- Nav ---------- */
+nav{position:sticky;top:0;z-index:1000;background:rgba(16,18,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.brand svg{width:42px;height:42px}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);letter-spacing:.01em}
+.brand-sub{font-size:.58rem;letter-spacing:.32em;color:var(--accent);text-transform:uppercase;margin-top:4px;font-weight:600}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{color:var(--body);font-size:.92rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.nav-cta{background:var(--accent);color:#15130f !important;padding:11px 22px;border-radius:4px;font-weight:700;letter-spacing:.01em;font-family:'Space Grotesk',sans-serif;font-size:.96rem}
+.nav-links a.nav-cta:hover{background:var(--accent-hover)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.hamburger span{width:26px;height:2px;background:var(--white);transition:.3s}
+.mobile-panel{display:none;flex-direction:column;background:var(--card);border-bottom:1px solid var(--border)}
+.mobile-panel a{padding:15px 24px;border-top:1px solid var(--border);color:var(--body);font-weight:500}
+.mobile-panel a.m-cta{background:var(--accent);color:#15130f;text-align:center;font-weight:700;font-family:'Space Grotesk',sans-serif}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;z-index:1}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:70px 24px 76px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;font-weight:600}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-glow);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 12px rgba(207,154,82,0)}100%{box-shadow:0 0 0 0 rgba(207,154,82,0)}}
+.hero h1{font-size:clamp(2.7rem,5.8vw,4.7rem);font-weight:700;letter-spacing:-.02em;margin-bottom:20px;color:var(--white)}
+.hero .lede{font-size:1.1rem;max-width:510px;margin-bottom:30px;color:var(--body)}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:4px;font-weight:700;font-size:1rem;font-family:'Space Grotesk',sans-serif;letter-spacing:.01em;transition:transform .2s,background .2s;cursor:pointer}
+.btn-primary{background:var(--accent);color:#15130f}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-wa{background:#25d366;color:#04331a}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:1px solid var(--border-light);color:var(--white)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-media{position:relative}
+.hero-media img{width:100%;height:500px;object-fit:cover;border-radius:8px;border:1px solid var(--border-light)}
+.hero-frame{position:absolute;inset:-9px;border:1px solid var(--accent);border-radius:11px;opacity:.4;pointer-events:none}
+.hero-badge{position:absolute;left:20px;bottom:20px;background:rgba(16,18,21,.93);border:1px solid var(--border-light);border-radius:6px;padding:13px 18px;display:flex;align-items:center;gap:12px}
+.hero-badge .stars{color:var(--accent);font-size:.95rem;letter-spacing:1px}
+.hero-badge b{color:var(--white);font-weight:600;font-size:.9rem}
+.hero-badge span{color:var(--muted);font-size:.74rem;display:block}
+.strip{height:6px;background:repeating-linear-gradient(90deg,var(--accent) 0 40px,var(--border) 40px 46px);opacity:.7}
+
+/* ---------- Trust strip ---------- */
+.trust{border-bottom:1px solid var(--border);background:var(--card);position:relative;z-index:1}
+.trust-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:24px 24px}
+.trust-item{display:flex;align-items:center;gap:11px;font-size:.9rem;color:var(--white);font-weight:500}
+.trust-item svg{width:23px;height:23px;stroke:var(--accent);fill:none;stroke-width:1.7;flex-shrink:0}
+
+/* ---------- Sections ---------- */
+section{position:relative;z-index:1}
+.sec{padding:94px 0}
+.sec-head{margin-bottom:48px;max-width:730px}
+.label{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:15px}
+.label::before{content:"";width:26px;height:2px;background:var(--accent)}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:700;letter-spacing:-.02em}
+.sec-head p{margin-top:14px;font-size:1.04rem;color:var(--body)}
+
+/* ---------- Services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:28px 26px;position:relative;overflow:hidden;transition:transform .25s,background .25s,border-color .25s}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc:hover{transform:translateY(-4px);background:var(--card-hover);border-color:var(--border-light)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-ico{width:50px;height:50px;border-radius:8px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.svc-ico svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.svc h3{font-size:1.28rem;margin-bottom:9px;font-weight:600}
+.svc p{font-size:.92rem;color:var(--body)}
+.svc.feature{grid-column:span 2;grid-row:span 1;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:linear-gradient(120deg,var(--card),var(--card-hover));border-color:var(--border-light)}
+.svc.feature .svc-ico{margin-bottom:0;width:60px;height:60px;background:var(--accent)}
+.svc.feature .svc-ico svg{stroke:#15130f;width:31px;height:31px}
+.svc.feature h3{font-size:1.7rem}
+.svc.feature p{font-size:1rem}
+
+/* ---------- Gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gal a{position:relative;overflow:hidden;border-radius:6px;border:1px solid var(--border);cursor:pointer}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal a:hover img{transform:scale(1.06)}
+.gal .big{grid-column:span 2;grid-row:span 2}
+.gal .tall{grid-row:span 2}
+.gcap{position:absolute;left:0;bottom:0;right:0;padding:26px 16px 12px;font-size:.82rem;color:#fff;background:linear-gradient(transparent,rgba(8,9,11,.9));font-weight:500}
+
+/* ---------- About ---------- */
+.about{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.about-media{position:relative}
+.about-media img{border-radius:8px;border:1px solid var(--border-light);height:410px;width:100%;object-fit:cover}
+.about-stat{position:absolute;right:-14px;bottom:-14px;background:var(--accent);color:#15130f;border-radius:8px;padding:16px 22px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.about-stat b{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;display:block;line-height:1.1}
+.about-stat span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.about p{margin-bottom:16px;color:var(--body)}
+.checklist{list-style:none;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.checklist li{display:flex;align-items:flex-start;gap:10px;font-size:.93rem;color:var(--white)}
+.checklist svg{width:19px;height:19px;stroke:var(--accent);fill:none;stroke-width:2.2;flex-shrink:0;margin-top:3px}
+.sig{display:flex;align-items:center;gap:14px;margin-top:26px}
+.sig .ini{width:52px;height:52px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700}
+.sig b{color:var(--white);display:block;font-weight:600}
+.sig span{font-size:.82rem;color:var(--muted)}
+
+/* ---------- Reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:28px}
+.rev .stars{color:var(--accent);letter-spacing:2px;margin-bottom:14px}
+.rev p{color:var(--white);font-size:1rem;line-height:1.68;margin-bottom:18px}
+.rev .who{display:flex;align-items:center;gap:13px}
+.rev .av{width:44px;height:44px;border-radius:50%;background:var(--steel-dim);color:var(--steel);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Space Grotesk',sans-serif;font-size:1.1rem}
+.rev .who b{color:var(--white);font-weight:600;font-size:.92rem}
+.rev .who span{font-size:.78rem;color:var(--muted)}
+
+/* ---------- Areas ---------- */
+.areas{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.areas-inner{text-align:center}
+.area-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:30px;max-width:940px;margin-left:auto;margin-right:auto}
+.area-list span{border:1px solid var(--border);background:var(--card);padding:9px 17px;border-radius:30px;font-size:.86rem;color:var(--body)}
+.area-list span.home{border-color:var(--accent);color:var(--accent);font-weight:600}
+
+/* ---------- CTA band ---------- */
+.cta-band{background:linear-gradient(120deg,#20242b,#16191d);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light)}
+.cta-band .wrap{text-align:center}
+.cta-band h2{font-size:clamp(2rem,4.2vw,3.1rem);margin-bottom:14px}
+.cta-band p{max-width:590px;margin:0 auto 28px;color:var(--body)}
+
+/* ---------- Contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px 24px;display:flex;align-items:flex-start;gap:15px;margin-bottom:14px}
+.info-card svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.7;flex-shrink:0;margin-top:3px}
+.info-card b{color:var(--white);display:block;font-weight:600;margin-bottom:3px}
+.info-card a,.info-card span{color:var(--body);font-size:.94rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:30px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:7px;font-weight:500}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--border-light);border-radius:5px;padding:13px 14px;color:var(--white);font-family:'Inter',sans-serif;font-size:.94rem}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:96px}
+form button{width:100%;background:var(--accent);color:#15130f;border:0;padding:16px;border-radius:5px;font-weight:700;font-size:1.05rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;letter-spacing:.02em;transition:background .2s}
+form button:hover{background:var(--accent-hover)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:54px 0 28px;position:relative;z-index:1}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:34px}
+.foot-brand{max-width:340px}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{font-size:.9rem;color:var(--muted)}
+.foot-col h4{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.foot-col a{display:block;color:var(--body);font-size:.9rem;margin-bottom:9px}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem;color:var(--muted)}
+.foot-bottom a{color:var(--accent)}
+
+/* ---------- Floating CTAs ---------- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:900;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transition:.3s}
+.fabs.show{opacity:1;visibility:visible}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+.fab svg{width:26px;height:26px}
+.fab-call{background:var(--accent);animation:fpulse 2s infinite}
+.fab-wa{background:#25d366;animation:fpulseg 2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 14px rgba(207,154,82,0)}100%{box-shadow:0 0 0 0 rgba(207,154,82,0)}}
+@keyframes fpulseg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ---------- Lightbox ---------- */
+#lb{position:fixed;inset:0;background:rgba(6,7,9,.95);z-index:2000;display:none;align-items:center;justify-content:center;padding:24px}
+#lb.open{display:flex}
+#lb img{max-width:92%;max-height:88vh;border-radius:8px;border:1px solid var(--border-light)}
+#lb .x{position:absolute;top:22px;right:26px;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1000px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc.feature{grid-column:span 2}
+}
+@media(max-width:920px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-panel.open{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:48px 24px 54px}
+  .hero-media img{height:320px}
+  .about-inner{grid-template-columns:1fr;gap:34px}
+  .about-media img{order:2;height:320px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .rev-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc.feature{grid-column:span 1;grid-template-columns:1fr;gap:16px;text-align:left}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .gal .big{grid-column:span 2;grid-row:span 2}
+  .gal .tall{grid-row:span 1}
+  .gcap{display:none}
+  .hero-badge{display:none}
+  .trust-inner{flex-direction:column;align-items:flex-start;gap:13px}
+  .checklist{grid-template-columns:1fr}
+  .sec{padding:62px 0}
+}
+@media(max-width:400px){
+  .gal{grid-template-columns:1fr;grid-auto-rows:200px}
+  .gal .big{grid-column:span 1;grid-row:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="pav"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="ltext">TB Construction</div>
+</div>
+
+<div class="grid-wm"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="TB Construction home">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <rect class="tile" x="2" y="2" width="44" height="44" rx="10"/>
+        <text class="tb" x="24" y="30" text-anchor="middle">TB</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">TB Construction</span>
+        <span class="brand-sub">Driveways · Patios · Groundworks</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a id="navCall" class="nav-cta" href="#contact">Call Tommy</a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#about">About</a>
+    <a href="#areas">Areas</a>
+    <a id="mCall" class="m-cta" href="#contact">Call Tommy</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow"><span class="dot"></span>Groundworks &amp; landscaping · Stoke-on-Trent</span>
+      <h1>Driveways &amp; patios, <span class="accent">built to last</span>.</h1>
+      <p class="lede">TB Construction lays premium block paving, natural stone and porcelain patios, garden walls, tarmac and full groundworks across Stoke-on-Trent, Newcastle-under-Lyme and Macclesfield. Dug properly, set out square, finished to a standard you'll be proud of.</p>
+      <div class="hero-cta">
+        <a id="heroCall" class="btn btn-primary" href="#contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15130f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.85.7 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.34 1.79.57 2.73.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Tommy
+        </a>
+        <a id="heroWa" class="btn btn-wa" href="#" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#04331a"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.1-1.7 1.1-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.7 1.2 1.5 1.6 2.5 2.2.3.1.5.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.1z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-frame"></div>
+      <img src="hero.jpg" alt="New block paved driveway laid by TB Construction in Stoke-on-Trent">
+      <div class="hero-badge">
+        <span class="stars">★★★★★</span>
+        <div><b>Premium domestic work</b><span>Free quotes · Stoke &amp; surrounding</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="strip"></div>
+
+<!-- Trust strip -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/></svg>Driveways, patios &amp; groundworks</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 18h4l2-9 3 13 3-9 2 5h4"/></svg>Own diggers &amp; plant</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in Stoke-on-Trent</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Free, no-obligation quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Tidy, reliable, on time</div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2>Hard landscaping &amp; <span class="accent">groundworks done right</span></h2>
+      <p>From the dig and the sub-base to the final course of paving, TB Construction handles the whole job in-house — so your driveway, patio or wall is built on solid ground and finished to last.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc feature reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M3 14h18M9 4v16M15 4v16"/></svg></div>
+        <div>
+          <h3>Driveways</h3>
+          <p>Block paving, natural stone and tarmac driveways laid over a properly dug, compacted sub-base — with the right falls, drainage and edging to keep them looking sharp for years.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
+        <h3>Patios</h3>
+        <p>Indian sandstone, riven and sawn stone patios, steps and seating areas — laid full-bed and pointed to a clean, lasting finish.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 12h18M12 3v18"/></svg></div>
+        <h3>Porcelain Patios</h3>
+        <p>Premium porcelain paving for a crisp, contemporary finish — low-maintenance, slip-resistant and laid dead level.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M4 20V9l6-4 6 4v11"/><path d="M9 20v-5h2v5"/></svg></div>
+        <h3>Groundworks</h3>
+        <p>Excavation, sub-bases, drainage, muck-away and levelling — the groundwork that everything else is built on.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 18h4l2-9 3 13 3-9 2 5h4"/><path d="M3 21h18"/></svg></div>
+        <h3>Digger Work</h3>
+        <p>Mini and midi diggers with an experienced operator for excavation, footings, dig-outs and site clearance.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M4 21V4h16v17"/><path d="M4 9h16M4 14h16M9 4v17M15 4v17"/></svg></div>
+        <h3>Garden Walls</h3>
+        <p>Brick and block garden walls, retaining walls and piers — built plumb with neat coursing and quality copings.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1"/><path d="M2 12h20"/></svg></div>
+        <h3>Tarmac</h3>
+        <p>Tarmac driveways, hardstandings and access — laid hot and rolled for a smooth, hard-wearing surface.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1"/><path d="M3 9l3-5h12l3 5"/></svg></div>
+        <h3>Shed Bases</h3>
+        <p>Concrete and paved bases for sheds, cabins and hot tubs — dead level and built to take the weight.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 21V8h16v13"/><path d="M4 8l8-5 8 5"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Footings</h3>
+        <p>Excavated and poured footings and foundations for extensions, walls and outbuildings — set out square and to depth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="sec" id="work" style="padding-top:18px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>A few <span class="accent">completed projects</span></h2>
+    </div>
+    <div class="gal reveal">
+      <a class="big" data-img="work-1.jpg"><img src="work-1.jpg" alt="Indian sandstone patio laid and pointed"><span class="gcap">Indian sandstone patio</span></a>
+      <a data-img="hero.jpg"><img src="hero.jpg" alt="Block paved driveway with kerb edging"><span class="gcap">Block paved driveway</span></a>
+      <a class="tall" data-img="work-3.jpg"><img src="work-3.jpg" alt="Brick garden wall with slatted timber fence on top"><span class="gcap">Brick garden wall &amp; fencing</span></a>
+      <a data-img="work-2.jpg"><img src="work-2.jpg" alt="Natural stone patio and path alongside a house"><span class="gcap">Natural stone patio &amp; path</span></a>
+      <a data-img="work-4.jpg"><img src="work-4.jpg" alt="Brick garden wall alongside a tarmac driveway"><span class="gcap">Garden wall &amp; tarmac drive</span></a>
+      <a data-img="work-5.jpg"><img src="work-5.jpg" alt="Timber fencing and stone retaining wall on a driveway"><span class="gcap">Fencing &amp; retaining wall</span></a>
+      <a data-img="work-6.jpg"><img src="work-6.jpg" alt="Freshly poured concrete base and groundworks"><span class="gcap">Concrete base &amp; groundworks</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about sec" id="about">
+  <div class="wrap about-inner">
+    <div class="reveal">
+      <div class="label">About TB Construction</div>
+      <h2 style="font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:18px">A local name for quality outdoor work</h2>
+      <p>TB Construction is run by Tommy Bennion, a Stoke-on-Trent groundworker and landscaper who takes real pride in a job done properly. From driveways and patios to garden walls, tarmac and full groundworks, it's one contractor who turns up, gets stuck in and leaves the site clean and tidy.</p>
+      <p>The aim is simple — premium domestic work, built on solid foundations and finished to a standard that speaks for itself. If you want a driveway or patio done once and done right, you're in the right place.</p>
+      <ul class="checklist">
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Driveways &amp; patio specialists</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Own diggers &amp; plant</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Proper sub-bases &amp; drainage</li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Honest, no-obligation quotes</li>
+      </ul>
+      <div class="sig">
+        <div class="ini">TB</div>
+        <div><b>Tommy Bennion</b><span>Owner, TB Construction</span></div>
+      </div>
+    </div>
+    <div class="about-media reveal">
+      <img src="about.jpg" alt="Completed exterior work by TB Construction">
+      <div class="about-stat"><b>Local</b><span>Stoke · Newcastle · Macclesfield</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What customers say</div>
+      <h2>Work that <span class="accent">speaks for itself</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Tommy laid us a new block paved driveway and it's transformed the front of the house. Dug out properly, spot on levels and left everything spotless. Couldn't be happier."</p>
+        <div class="who"><div class="av">J</div><div><b>James H.</b><span>Stoke-on-Trent · Driveway</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Had an Indian sandstone patio and a garden wall done. Quality work from start to finish, turned up when he said he would and the finish is superb. Highly recommend."</p>
+        <div class="who"><div class="av">S</div><div><b>Sarah L.</b><span>Newcastle-under-Lyme · Patio &amp; wall</span></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Proper porcelain patio, dead level and beautifully pointed. Fair price and a real eye for detail. Wouldn't hesitate to use TB Construction again."</p>
+        <div class="who"><div class="av">D</div><div><b>David M.</b><span>Macclesfield · Porcelain patio</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Areas -->
+<section class="areas sec" id="areas">
+  <div class="wrap areas-inner reveal">
+    <div class="label" style="justify-content:center">Where we work</div>
+    <h2>Covering <span class="accent">Stoke, Newcastle &amp; Macclesfield</span></h2>
+    <div class="area-list">
+      <span class="home">Stoke-on-Trent</span>
+      <span>Newcastle-under-Lyme</span><span>Macclesfield</span><span>Kidsgrove</span><span>Biddulph</span>
+      <span>Congleton</span><span>Alsager</span><span>Leek</span><span>Cheadle</span><span>Stone</span>
+      <span>Trentham</span><span>Hanley</span><span>Longton</span><span>Burslem</span><span>Tunstall</span>
+      <span>Fenton</span><span>Werrington</span><span>Endon</span><span>Cheddleton</span><span>Silverdale</span>
+      <span>Audley</span><span>Talke</span><span>Bollington</span><span>Sandbach</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="cta-band sec">
+  <div class="wrap">
+    <h2>Planning a driveway or patio?</h2>
+    <p>Tell Tommy what you've got in mind — a new drive, a patio, a wall or full groundworks — and get a free, no-obligation quote.</p>
+    <a id="bandCall" class="btn btn-primary" href="#contact">Call us today</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get in touch</div>
+      <h2>Request your <span class="accent">free quote</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.85.7 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.34 1.79.57 2.73.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Call or text Tommy</b><a id="infoPhone" href="#"></a></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2z"/></svg>
+          <div><b>WhatsApp</b><a id="infoWa" href="#" target="_blank" rel="noopener">Message Tommy for a quote</a></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Based in Stoke-on-Trent</b><span>Covering Newcastle-under-Lyme, Macclesfield &amp; surrounding areas</span></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><b>Hours</b><span>Mon–Sat · early starts no problem</span></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="TB Construction">
+        <input type="hidden" name="source" value="mockup-tb-construction">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        <div class="field"><label for="email">Email (optional)</label><input id="email" name="email" type="email"></div>
+        <div class="field"><label for="service">What do you need?</label>
+          <select id="service" name="service">
+            <option>Driveway</option>
+            <option>Patio</option>
+            <option>Porcelain patio</option>
+            <option>Groundworks</option>
+            <option>Digger work</option>
+            <option>Garden wall</option>
+            <option>Tarmac</option>
+            <option>Shed base</option>
+            <option>Footings</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Tell us about the job</label><textarea id="message" name="message" placeholder="Location, what you're planning, and rough timescale..."></textarea></div>
+        <button type="submit">Request my free quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+            <rect class="tile" x="2" y="2" width="44" height="44" rx="10"/>
+            <text class="tb" x="24" y="30" text-anchor="middle">TB</text>
+          </svg>
+          <span class="brand-text"><span class="brand-name">TB Construction</span><span class="brand-sub">Driveways · Patios · Groundworks</span></span>
+        </a>
+        <p>Premium driveways, patios, groundworks, garden walls and tarmac across Stoke-on-Trent, Newcastle-under-Lyme, Macclesfield and surrounding areas.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Driveways</a>
+        <a href="#services">Patios &amp; Porcelain</a>
+        <a href="#services">Groundworks &amp; Digger Work</a>
+        <a href="#services">Garden Walls</a>
+        <a href="#services">Tarmac &amp; Shed Bases</a>
+      </div>
+      <div class="foot-col">
+        <h4>Areas</h4>
+        <a href="#areas">Stoke-on-Trent</a>
+        <a href="#areas">Newcastle-under-Lyme</a>
+        <a href="#areas">Macclesfield</a>
+        <a href="#areas">Congleton</a>
+        <a href="#areas">Leek &amp; Biddulph</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a id="footPhone" href="#"></a>
+        <a href="#contact">Request a quote</a>
+        <a id="footFb" href="#" target="_blank" rel="noopener">Facebook</a>
+        <a id="footTt" href="#" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 TB Construction. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTAs -->
+<div class="fabs" id="fabs">
+  <a id="fabCall" class="fab fab-call" href="#" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#15130f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.85.7 2.73a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.35-1.35a2 2 0 0 1 2.11-.45c.88.34 1.79.57 2.73.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a id="fabWa" class="fab fab-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.1-1.7 1.1-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.7 1.2 1.5 1.6 2.5 2.2.3.1.5.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.7-.1 1.1z"/></svg>
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div id="lb"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+// Contact decode
+var P  = atob('MDc1MjM3MTA2ODI=');
+var Pf = atob('MDc1MjMgNzEwNjgy');
+var WA = atob('NDQ3NTIzNzEwNjgy');
+var waLink = 'https://wa.me/'+WA+'?text=Hi%20Tommy%2C%20I%20found%20TB%20Construction%20online%20and%20would%20like%20a%20quote%20please';
+['navCall','heroCall','bandCall','fabCall','infoPhone','footPhone','mCall'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href='tel:'+P;
+});
+['heroWa','fabWa','infoWa'].forEach(function(id){
+  var el=document.getElementById(id); if(el) el.href=waLink;
+});
+document.getElementById('infoPhone').textContent = Pf;
+document.getElementById('footPhone').textContent = Pf;
+document.getElementById('bandCall').textContent = 'Call ' + Pf;
+document.getElementById('mCall').textContent = 'Call Tommy · ' + Pf;
+// Social placeholders (search links — update with real profile URLs once confirmed)
+document.getElementById('footFb').href = 'https://www.facebook.com/search/top?q=TB%20Construction%20Stoke';
+document.getElementById('footTt').href = 'https://www.tiktok.com/search?q=TB%20Construction';
+
+// Loader
+window.addEventListener('load', function(){
+  setTimeout(function(){ document.getElementById('loader').classList.add('hide'); }, 1500);
+});
+
+// Form timestamp
+document.getElementById('formTimestamp').value = Date.now();
+
+// Phone validity
+var ph=document.getElementById('phone');
+ph.addEventListener('input',function(){
+  this.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(this.value.replace(/\s/g,''))?'':'Please enter a valid UK phone number');
+});
+
+// Mobile nav
+var ham=document.getElementById('ham'), mp=document.getElementById('mpanel');
+ham.addEventListener('click',function(){ mp.classList.toggle('open'); });
+mp.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ mp.classList.remove('open'); }); });
+
+// Floating CTAs
+var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY > hero.offsetHeight - 100) fabs.classList.add('show'); else fabs.classList.remove('show');
+});
+
+// Reveal
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Lightbox
+var lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('.gal a').forEach(function(a){
+  a.addEventListener('click',function(e){ e.preventDefault(); lbImg.src=this.getAttribute('data-img'); lb.classList.add('open'); });
+});
+lb.addEventListener('click',function(e){ if(e.target!==lbImg) lb.classList.remove('open'); });
+</script>
+</body>
+</html>
