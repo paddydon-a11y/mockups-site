@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P J Wilson Electrical | Domestic Electrician in Watford &amp; Hertfordshire</title>
+<meta name="description" content="P J Wilson Electrical: trusted domestic electrician in Watford and across Hertfordshire. Rewires, consumer units, lighting &amp; LED, EV charging, solar &amp; battery storage, inspection &amp; testing. Free, no-obligation quotes.">
+<link rel="icon" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#f5f8f3;
+  --paper2:#eaf0e6;
+  --card:#ffffff;
+  --ink:#0d1512;
+  --ink2:#16221c;
+  --slate:#3c4a42;
+  --body:#48544c;
+  --muted:#7f8a80;
+  --line:#e0e6db;
+  --line2:#cdd6c7;
+  --green:#33b400;
+  --green-vivid:#2fbc00;
+  --green-deep:#2c7d20;
+  --green-forest:#3c7a2f;
+  --leaf:#5d9348;
+  --lime:#a1eb88;
+  --mint:#e3f4dc;
+  --wa:#25d366;
+  --shadow:0 34px 80px -40px rgba(13,21,18,.45);
+  --shadow-sm:0 18px 40px -26px rgba(13,21,18,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--paper);color:var(--body);
+  line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden;height:100vh}
+h1,h2,h3,h4{font-family:'Sora',sans-serif;color:var(--ink);font-weight:600;line-height:1.08;letter-spacing:-.02em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding:0 30px}
+.label{font-family:'Inter',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--green-deep);display:inline-flex;align-items:center;gap:13px;margin-bottom:20px}
+.label::before{content:"";width:32px;height:2px;background:var(--green);border-radius:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;font-family:'Inter',sans-serif;
+  font-weight:600;font-size:.94rem;padding:16px 30px;border-radius:8px;cursor:pointer;border:none;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--green);color:#06230a;box-shadow:0 16px 34px -16px rgba(51,180,0,.7)}
+.btn-primary:hover{background:var(--green-vivid);transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:var(--green-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green-deep)}
+
+/* ===== LOADER - circuit charge ===== */
+#loader{position:fixed;inset:0;z-index:3000;background:radial-gradient(120% 120% at 50% 40%,#12211a 0%,#0d1512 60%,#080d0a 100%);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:transform 1s cubic-bezier(.76,0,.24,1),opacity .6s ease .3s}
+#loader.done{transform:translateY(-101%);opacity:0;pointer-events:none}
+.ld-inner{display:flex;flex-direction:column;align-items:center;text-align:center;width:min(340px,76vw)}
+.ld-logo{width:78px;height:78px;margin-bottom:22px;opacity:0;transform:scale(.8);
+  animation:logoPop .7s cubic-bezier(.2,.8,.2,1) .15s forwards;filter:drop-shadow(0 0 16px rgba(51,180,0,.45))}
+@keyframes logoPop{to{opacity:1;transform:scale(1)}}
+.ld-word{font-family:'Sora',sans-serif;font-weight:600;color:#fff;font-size:1.5rem;letter-spacing:.04em;line-height:1}
+.ld-word b{color:var(--lime);font-weight:700}
+.ld-sub{font-family:'Inter',sans-serif;font-weight:600;font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;
+  color:rgba(225,240,220,.5);margin-top:8px;padding-left:.42em}
+.ld-track{margin-top:26px;width:100%;height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;position:relative}
+.ld-fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:4px;
+  background:linear-gradient(90deg,var(--green-forest),var(--green-vivid),var(--lime));
+  box-shadow:0 0 14px 2px rgba(51,180,0,.6);animation:charge 2.1s cubic-bezier(.5,0,.2,1) .4s forwards}
+.ld-spark{position:absolute;top:50%;left:0;width:9px;height:9px;border-radius:50%;background:#eaffe0;
+  box-shadow:0 0 12px 3px rgba(161,235,136,.9);transform:translate(-50%,-50%);opacity:0;
+  animation:sparkRun 2.1s cubic-bezier(.5,0,.2,1) .4s forwards}
+@keyframes charge{to{width:100%}}
+@keyframes sparkRun{0%{opacity:1;left:0}90%{opacity:1}100%{opacity:0;left:100%}}
+
+/* ===== NAV ===== */
+header.nav{position:sticky;top:0;z-index:1200;background:rgba(245,248,243,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);transition:background .3s,border-color .3s}
+.nav-row{display:flex;align-items:center;justify-content:space-between;height:82px}
+.brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.brand img{width:46px;height:46px;flex:none}
+.brand .bt{display:flex;flex-direction:column;line-height:1}
+.brand .bt b{font-family:'Sora',sans-serif;font-weight:700;font-size:1.14rem;letter-spacing:.01em;color:var(--ink)}
+.brand .bt span{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green-deep);margin-top:5px;font-weight:700}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.82rem;font-weight:600;letter-spacing:.06em;color:var(--slate);transition:color .2s}
+.nav-links a:hover{color:var(--green-deep)}
+.nav-call{display:inline-flex;align-items:center;gap:9px;background:var(--green);
+  padding:12px 22px;border-radius:8px;color:#06230a!important;font-weight:700;font-size:.85rem;
+  transition:background .2s,transform .2s}
+.nav-call:hover{background:var(--green-vivid);transform:translateY(-1px)}
+.nav-call svg{width:15px;height:15px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.mobile-panel{display:none}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{0%{transform:scale(1.03)}100%{transform:scale(1.13)}}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,14,10,.6) 0%,rgba(8,14,10,.28) 38%,rgba(8,14,10,.85) 82%,var(--paper) 100%),
+            linear-gradient(90deg,rgba(8,14,10,.72) 0%,rgba(8,14,10,.05) 60%)}
+.hero-inner{position:relative;z-index:3;padding-bottom:76px;padding-top:120px}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:11px;font-size:.72rem;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--lime);margin-bottom:22px}
+.hero .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(161,235,136,.5)}70%{box-shadow:0 0 0 12px rgba(161,235,136,0)}100%{box-shadow:0 0 0 0 rgba(161,235,136,0)}}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:700;color:#fff;max-width:17ch;letter-spacing:-.03em}
+.hero h1 b{color:var(--lime);font-weight:700}
+.hero .lede{margin-top:22px;max-width:56ch;font-size:1.09rem;color:#e6efe1;text-shadow:0 1px 20px rgba(0,0,0,.5)}
+.hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+
+.fc{opacity:0;transform:translateY(26px);animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+.loaded .fc.d1{animation-delay:.05s}.loaded .fc.d2{animation-delay:.18s}.loaded .fc.d3{animation-delay:.31s}.loaded .fc.d4{animation-delay:.44s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== TRUST ===== */
+.trust{background:var(--ink);color:var(--paper)}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr)}
+.trust-item{padding:32px 22px;text-align:center;border-left:1px solid rgba(225,240,220,.1);display:flex;flex-direction:column;align-items:center;gap:10px}
+.trust-item:first-child{border-left:none}
+.trust-item svg{width:26px;height:26px;stroke:var(--lime)}
+.trust-item .t1{font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;color:#fff}
+.trust-item .t2{font-size:.72rem;letter-spacing:.04em;color:rgba(225,240,220,.6)}
+
+/* ===== SECTION ===== */
+section{padding:112px 0}
+.sec-head{max-width:760px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:700;letter-spacing:-.03em}
+.sec-head h2 b{color:var(--green-deep)}
+.sec-head p{margin-top:20px;font-size:1.05rem;color:var(--body);max-width:60ch}
+
+/* ===== SERVICES ===== */
+.svc-grid{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px 30px;
+  transition:transform .3s,box-shadow .3s,border-color .3s;overflow:hidden}
+.svc::after{content:"";position:absolute;left:0;top:0;height:100%;width:4px;background:var(--green);transform:scaleY(0);transform-origin:top;transition:transform .35s cubic-bezier(.5,0,.2,1)}
+.svc:hover{transform:translateY(-5px);box-shadow:var(--shadow-sm);border-color:var(--line2)}
+.svc:hover::after{transform:scaleY(1)}
+.svc .ic{width:52px;height:52px;border-radius:12px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc .ic svg{width:26px;height:26px;stroke:var(--green-deep);fill:none;stroke-width:1.9}
+.svc h3{font-size:1.24rem;font-weight:600;margin-bottom:10px}
+.svc p{font-size:.94rem;color:var(--body)}
+
+/* ===== GALLERY ===== */
+.gal{margin-top:54px;columns:3;column-gap:16px}
+.gtile{break-inside:avoid;margin-bottom:16px;position:relative;overflow:hidden;border-radius:12px;cursor:pointer;border:1px solid var(--line)}
+.gtile img{width:100%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.gtile:hover img{transform:scale(1.06)}
+.gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,14,10,.5));opacity:0;transition:opacity .3s}
+.gtile:hover::after{opacity:1}
+.gtile .cap{position:absolute;left:16px;bottom:14px;z-index:2;color:#fff;font-weight:600;font-size:.86rem;
+  opacity:0;transform:translateY(8px);transition:.3s}
+.gtile:hover .cap{opacity:1;transform:none}
+
+/* ===== ABOUT ===== */
+.about{background:var(--paper2)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.about-body h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;letter-spacing:-.03em}
+.about-body h2 b{color:var(--green-deep)}
+.about-body p{margin-top:18px;font-size:1.03rem;color:var(--body)}
+.about-pts{margin-top:26px;display:grid;gap:14px}
+.about-pts li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;font-size:.98rem;color:var(--ink);font-weight:500}
+.about-pts .ck{width:26px;height:26px;flex:none;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
+.about-pts .ck svg{width:14px;height:14px;stroke:#06230a;stroke-width:3}
+.about-media{position:relative}
+.about-media img{width:100%;border-radius:16px;box-shadow:var(--shadow)}
+.about-media .chip{position:absolute;bottom:-24px;left:-24px;background:var(--ink);color:#fff;padding:22px 26px;border-radius:14px;box-shadow:var(--shadow);max-width:230px}
+.about-media .chip b{display:block;font-family:'Sora';font-size:1.05rem;color:var(--lime)}
+.about-media .chip span{font-size:.86rem;color:rgba(225,240,220,.8);line-height:1.5;display:block;margin-top:5px}
+
+/* ===== CTA ===== */
+.cta{background:linear-gradient(150deg,#0d1512,#173021 60%,#0a120c);color:var(--paper);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:640px;height:640px;border-radius:50%;
+  background:radial-gradient(circle,rgba(51,180,0,.2),transparent 70%)}
+.cta .wrap{position:relative}
+.cta h2{color:#fff;font-size:clamp(2rem,4.6vw,3.3rem);font-weight:700;letter-spacing:-.03em}
+.cta h2 b{color:var(--lime)}
+.cta p{margin:18px auto 0;max-width:52ch;color:rgba(225,240,220,.82);font-size:1.06rem}
+.cta-btns{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:58px}
+.contact-info h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;letter-spacing:-.03em}
+.contact-info h2 b{color:var(--green-deep)}
+.contact-info>p{margin-top:16px;font-size:1.03rem;color:var(--body);max-width:44ch}
+.cinfo{margin-top:32px;display:flex;flex-direction:column}
+.cinfo a,.cinfo div.ci{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:19px 0;border-top:1px solid var(--line)}
+.cinfo .ck{width:46px;height:46px;flex:none;border-radius:11px;background:var(--mint);display:flex;align-items:center;justify-content:center;color:var(--green-deep)}
+.cinfo .ck svg{width:20px;height:20px}
+.cinfo .cl{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cinfo .cv{font-family:'Sora',sans-serif;font-size:1.14rem;color:var(--ink);font-weight:600}
+.cinfo a:hover .cv{color:var(--green-deep)}
+.form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:38px;box-shadow:var(--shadow-sm)}
+.form h3{font-family:'Sora';font-weight:600;font-size:1.45rem;margin-bottom:6px}
+.form .fsub{font-size:.92rem;color:var(--muted);margin-bottom:22px}
+.field{margin-bottom:17px}
+.field label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;font-family:'Inter';font-size:.96rem;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line2);border-radius:9px;padding:14px 16px;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(51,180,0,.15)}
+.field textarea{resize:vertical;min-height:118px}
+.form .btn{width:100%;margin-top:4px}
+.form .note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:13px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--ink);color:rgba(225,240,220,.68);padding:62px 0 30px}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:42px;padding-bottom:42px;border-bottom:1px solid rgba(225,240,220,.1)}
+.foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.foot-brand img{width:46px;height:46px}
+.foot-brand b{font-family:'Sora';font-size:1.16rem;color:#fff}
+.foot-col h5{color:#fff;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+.foot-col a,.foot-col p{display:block;font-size:.92rem;color:rgba(225,240,220,.68);margin-bottom:10px;transition:color .2s}
+.foot-col a:hover{color:var(--lime)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;flex-wrap:wrap;gap:10px;font-size:.8rem;color:rgba(225,240,220,.45)}
+
+/* ===== FAB ===== */
+.fab{position:fixed;right:22px;bottom:22px;z-index:1100;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);transition:.4s}
+.fab.show{opacity:1;transform:none}
+.fab a{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.4);transition:transform .2s}
+.fab a:hover{transform:scale(1.08)}
+.fab .call{background:var(--green)}
+.fab .ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.fab a svg{width:25px;height:25px}
+
+/* ===== LIGHTBOX ===== */
+#lb{position:fixed;inset:0;z-index:2000;background:rgba(6,10,7,.94);display:none;align-items:center;justify-content:center;padding:40px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:88vh;border-radius:8px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
+#lb .x{position:absolute;top:22px;right:30px;color:#fff;font-size:2.2rem;cursor:pointer;line-height:1}
+
+@media(max-width:960px){
+  .nav-links,.nav-call{display:none}
+  .burger{display:flex}
+  .mobile-panel{display:block;position:fixed;inset:82px 0 0;background:var(--paper);z-index:1150;transform:translateX(100%);transition:transform .4s;padding:32px 30px}
+  .mobile-panel.open{transform:none}
+  .mobile-panel a{display:block;font-family:'Sora';font-size:1.4rem;color:var(--ink);padding:15px 0;border-bottom:1px solid var(--line)}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .gal{columns:2}
+  .trust-row{grid-template-columns:1fr 1fr}
+  .trust-item:nth-child(-n+2){border-bottom:1px solid rgba(225,240,220,.1)}
+  .trust-item:nth-child(3){border-left:none}
+  .foot-top{grid-template-columns:1fr;gap:30px}
+  .about-media .chip{left:12px}
+}
+@media(max-width:560px){
+  .svc-grid,.gal,.trust-row{grid-template-columns:1fr;columns:1}
+  .trust-item{border-left:none;border-top:1px solid rgba(225,240,220,.1)}
+  .trust-item:first-child{border-top:none}
+  section{padding:78px 0}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-inner">
+    <img class="ld-logo" src="logo.png" alt="">
+    <div class="ld-word">P J Wilson <b>Electrical</b></div>
+    <div class="ld-sub">Domestic Electrician</div>
+    <div class="ld-track"><div class="ld-fill"></div><div class="ld-spark"></div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <img src="logo.png" alt="P J Wilson Electrical">
+      <span class="bt"><b>P J Wilson</b><span>Electrical</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:07903613564" class="nav-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      07903 613564
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-panel" id="mpanel">
+  <a href="#services">Services</a>
+  <a href="#work">Our Work</a>
+  <a href="#about">About</a>
+  <a href="#why">Why Us</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:07903613564" style="color:var(--green-deep)">Call 07903 613564</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="photos/kitchen-pendants.jpg" alt="Domestic electrical lighting installation"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow fc d1"><span class="dot"></span> Domestic Electrician · Watford &amp; Hertfordshire</div>
+    <h1 class="fc d2">Reliable domestic electrics, <b>done properly.</b></h1>
+    <p class="lede fc d3">From rewires and consumer units to lighting design, EV charging and solar &amp; battery storage, P J Wilson Electrical delivers safe, tidy and dependable electrical work for homes across Hertfordshire.</p>
+    <div class="hero-cta fc d4">
+      <a href="#contact" class="btn btn-primary">Get a Free Quote
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="tel:07903613564" class="btn btn-ghost" style="color:#fff;border-color:rgba(245,248,243,.4)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        07903 613564</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-row">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div class="t1">Safe &amp; Certified</div><div class="t2">Work to current wiring regs</div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><div class="t1">Free, No-Obligation Quotes</div><div class="t2">Clear, upfront pricing</div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><div class="t1">Tidy &amp; Reliable</div><div class="t2">Respect for your home</div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="t1">Watford &amp; Hertfordshire</div><div class="t2">Local, friendly service</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What We Do</div>
+      <h2>Domestic electrical services, <b>big or small.</b></h2>
+      <p>Whether it's a single socket, a full rewire or a smart lighting and energy upgrade, every job is completed safely, cleanly and to a high standard.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v10H4z"/><path d="M8 14v4M16 14v4M6 18h12"/></svg></div><h3>Rewires &amp; Consumer Units</h3><p>Full and partial rewires, fuse board upgrades and modern consumer units to keep your home safe and up to standard.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12c.7.7 1 1.3 1 2h6c0-.7.3-1.3 1-2A7 7 0 0 0 12 2z"/></svg></div><h3>Lighting &amp; LED Design</h3><p>Downlights, pendants, under-cabinet and feature LED lighting, beautifully planned and neatly installed, inside and out.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="12" rx="2"/><path d="M16 10h3l2 2v5h-5M8 4v3"/><circle cx="8" cy="19" r="1.5"/></svg></div><h3>EV Charging Points</h3><p>Home electric vehicle charger installation, sited and wired safely for fast, convenient charging on your driveway.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M7 8h4M7 12h4M15 6l-2 5h3l-2 5"/><path d="M8 20h8"/></svg></div><h3>Solar &amp; Battery Storage</h3><p>Battery storage and solar-ready installations to store your energy and lower your bills with a professionally fitted system.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Inspection &amp; Testing</h3><p>Electrical inspections and EICR reports for homeowners, buyers and landlords, with clear advice on any remedial work.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>Repairs, Sockets &amp; Faults</h3><p>Fault finding, additional sockets and switches, and general domestic electrical repairs, sorted quickly and safely.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / GALLERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent Work</div>
+      <h2>A look at <b>the finished job.</b></h2>
+      <p>A selection of recent domestic projects across Hertfordshire, from kitchen lighting schemes to consumer units and battery storage. More on <a href="https://www.instagram.com/pjwilsonelectrical/" target="_blank" rel="noopener" style="color:var(--green-deep);font-weight:600">Instagram</a>.</p>
+    </div>
+    <div class="gal">
+      <div class="gtile reveal" onclick="lb(this)"><img src="photos/kitchen-skylight.jpg" alt="Recessed downlights around kitchen skylight"><span class="cap">Recessed downlighting</span></div>
+      <div class="gtile reveal" onclick="lb(this)"><img src="photos/kitchen-led.jpg" alt="Under-cabinet LED strip lighting"><span class="cap">Under-cabinet LED</span></div>
+      <div class="gtile reveal" onclick="lb(this)"><img src="photos/kitchen-pendants.jpg" alt="Kitchen pendant lighting installation"><span class="cap">Feature pendant lighting</span></div>
+      <div class="gtile reveal" onclick="lb(this)"><img src="photos/consumer-unit.jpg" alt="New consumer unit / fuse board installation"><span class="cap">Consumer unit upgrade</span></div>
+      <div class="gtile reveal" onclick="lb(this)"><img src="photos/kitchen-floor-led.jpg" alt="Kitchen plinth LED lighting"><span class="cap">Plinth &amp; floor LED</span></div>
+      <div class="gtile reveal" onclick="lb(this)"><img src="photos/battery-storage.jpg" alt="Home battery storage installation"><span class="cap">Battery storage install</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-body reveal">
+      <div class="label">About</div>
+      <h2>Your local electrician, <b>Perry Wilson.</b></h2>
+      <p>P J Wilson Electrical is run by Perry Wilson, a domestic electrician serving Watford and the surrounding Hertfordshire area. Every job, large or small, is treated with the same care, attention to detail and pride in a job well done.</p>
+      <p>Friendly, honest and dependable, Perry takes the time to understand exactly what you need, keeps you informed throughout, and always leaves your home clean and tidy.</p>
+      <ul class="about-pts">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Domestic electrical specialist</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Free, no-obligation quotations</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Safe work &amp; certificates on completion</li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Clean, tidy and respectful of your home</li>
+      </ul>
+    </div>
+    <div class="about-media reveal">
+      <img src="photos/kitchen-floor-led.jpg" alt="Finished kitchen electrical and lighting work">
+      <div class="chip"><b>Watford &amp; Herts</b><span>Local, friendly domestic electrician you can rely on.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / PROCESS -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Simple &amp; Stress-Free</div>
+      <h2>Getting the work done <b>couldn't be easier.</b></h2>
+    </div>
+    <div class="svc-grid" style="margin-top:48px">
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>01 · Get in touch</h3><p>Call, message or send an enquiry describing the work you need doing.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>02 · Free quote</h3><p>You'll get a clear, no-obligation quote so you know exactly where you stand.</p></div>
+      <div class="svc reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><h3>03 · The job, done right</h3><p>Work carried out safely and tidily, on time, with certification on completion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <div class="label" style="color:var(--lime);justify-content:center">Ready When You Are</div>
+    <h2>Need an electrician <b>in Hertfordshire?</b></h2>
+    <p>Get a free, no-obligation quote for your electrical work today. Friendly advice, honest pricing and quality work every time.</p>
+    <div class="cta-btns">
+      <a href="tel:07903613564" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 07903 613564</a>
+      <a href="#contact" class="btn btn-ghost" style="color:#fff;border-color:rgba(245,248,243,.4)">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <div class="label">Get In Touch</div>
+      <h2>Let's get your <b>project sorted.</b></h2>
+      <p>Serving Watford and homes throughout Hertfordshire. Get in touch for a free, no-obligation quote.</p>
+      <div class="cinfo">
+        <a href="tel:07903613564">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><div class="cl">Call or text Perry</div><div class="cv">07903 613564</div></div>
+        </a>
+        <a href="https://www.instagram.com/pjwilsonelectrical/" target="_blank" rel="noopener">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></span>
+          <div><div class="cl">Instagram</div><div class="cv">@pjwilsonelectrical</div></div>
+        </a>
+        <div class="ci">
+          <span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><div class="cl">Coverage</div><div class="cv">Watford &amp; Hertfordshire</div></div>
+        </div>
+      </div>
+    </div>
+    <form class="form reveal" onsubmit="return handleSubmit(event)">
+      <h3>Request a Free Quote</h3>
+      <p class="fsub">Tell Perry what you need and he'll get straight back to you.</p>
+      <div class="field"><label for="n">Name</label><input id="n" type="text" required placeholder="Your name"></div>
+      <div class="field"><label for="p">Phone</label><input id="p" type="tel" required placeholder="Your phone number"></div>
+      <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com (optional)"></div>
+      <div class="field"><label for="t">What do you need?</label>
+        <select id="t">
+          <option>Rewire / consumer unit</option>
+          <option>Lighting / LED installation</option>
+          <option>EV charging point</option>
+          <option>Solar / battery storage</option>
+          <option>Inspection &amp; testing (EICR)</option>
+          <option>Repairs / sockets / fault finding</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field"><label for="m">Details</label><textarea id="m" placeholder="Tell us about the work and your location..."></textarea></div>
+      <button type="submit" class="btn btn-primary">Send Enquiry
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="note">Or call Perry directly on <a href="tel:07903613564" style="color:var(--green-deep);font-weight:700">07903 613564</a></p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><img src="logo.png" alt=""><b>P J Wilson Electrical</b></div>
+        <p style="max-width:36ch">Trusted domestic electrician serving Watford and the wider Hertfordshire area. Safe, tidy and reliable electrical work for your home.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#services">Rewires &amp; Consumer Units</a>
+        <a href="#services">Lighting &amp; LED</a>
+        <a href="#services">EV Charging</a>
+        <a href="#services">Solar &amp; Battery Storage</a>
+        <a href="#services">Inspection &amp; Testing</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="tel:07903613564">07903 613564</a>
+        <a href="https://www.instagram.com/pjwilsonelectrical/" target="_blank" rel="noopener">@pjwilsonelectrical</a>
+        <p>Watford &amp; Hertfordshire</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 P J Wilson Electrical. All rights reserved.</span>
+      <span>Safe, tidy &amp; reliable domestic electrics.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<div class="fab" id="fab">
+  <a class="ig" href="https://www.instagram.com/pjwilsonelectrical/" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg>
+  </a>
+  <a class="call" href="tel:07903613564" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#06230a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb" onclick="this.classList.remove('open')"><span class="x">&times;</span><img src="" alt=""></div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{
+  document.getElementById('loader').classList.add('done');
+  document.body.classList.remove('locked');document.body.classList.add('loaded');
+},2500);});
+const burger=document.getElementById('burger'),mp=document.getElementById('mpanel');
+burger.addEventListener('click',()=>mp.classList.toggle('open'));
+mp.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mp.classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+window.addEventListener('scroll',()=>document.getElementById('fab').classList.toggle('show',window.scrollY>640));
+function lb(el){const i=el.querySelector('img');const box=document.getElementById('lb');box.querySelector('img').src=i.src;box.classList.add('open');}
+function handleSubmit(e){e.preventDefault();alert('Thank you. Your enquiry has been noted. In the live site this will be sent to Perry. Please call 07903 613564 for anything urgent.');return false;}
+</script>
+</body>
+</html>
