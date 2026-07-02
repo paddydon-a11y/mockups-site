@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamil Painting &amp; Decorating | Painter &amp; Decorator in Dagenham, Barking, Ilford &amp; Romford</title>
+<meta name="description" content="Kamil Painting &amp; Decorating: professional interior and exterior painting, wallpapering and plasterboard work across Dagenham, Barking, Ilford, Romford and East London. Call Kamil on 07516 320636 for a free quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f5f1;
+  --paper-2:#efece5;
+  --putty:#e6e1d6;
+  --line:#d9d3c7;
+  --ink:#191a1e;
+  --ink-2:#3a3c42;
+  --muted:#6d6e74;
+  --blue:#2743c9;
+  --blue-deep:#1b2e8f;
+  --blue-pale:#dde3fb;
+  --tape:#f3c93f;
+  --white:#ffffff;
+  --radius:14px;
+  --font-display:'Familjen Grotesk',sans-serif;
+  --font-body:'Instrument Sans',sans-serif;
+  --font-mono:'Spline Sans Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+::selection{background:var(--blue);color:#fff}
+
+/* ---------- texture ---------- */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- mono labels / tape chips ---------- */
+.mono{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:.5em;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--blue);color:#fff;padding:.5em 1.1em;transform:rotate(-1.2deg);
+  clip-path:polygon(1.5% 0,98.5% 2%,100% 92%,97% 100%,2% 98%,0 8%)}
+.chip.putty{background:var(--putty);color:var(--ink-2)}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.65}
+
+/* ---------- loader: swatch fan ---------- */
+#loader{position:fixed;inset:0;z-index:1000;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;transition:opacity .55s ease,visibility .55s}
+#loader.done{opacity:0;visibility:hidden}
+.fan{position:relative;width:120px;height:170px}
+.swatch{position:absolute;inset:0;border-radius:10px;transform-origin:50% 92%;box-shadow:0 8px 24px rgba(20,22,30,.14);
+  animation:fanout .9s cubic-bezier(.6,.05,.2,1.2) forwards;opacity:0}
+.swatch::after{content:"";position:absolute;left:12px;right:12px;bottom:12px;height:22px;border-radius:5px;background:rgba(255,255,255,.85)}
+.swatch:nth-child(1){background:#e6e1d6;--rot:-32deg;animation-delay:.05s}
+.swatch:nth-child(2){background:#c9c2b2;--rot:-16deg;animation-delay:.15s}
+.swatch:nth-child(3){background:#fdfcf9;--rot:0deg;animation-delay:.25s;border:1px solid var(--line)}
+.swatch:nth-child(4){background:#191a1e;--rot:16deg;animation-delay:.35s}
+.swatch:nth-child(4)::after{background:rgba(255,255,255,.2)}
+.swatch:nth-child(5){background:var(--blue);--rot:32deg;animation-delay:.45s}
+.swatch:nth-child(5)::after{background:rgba(255,255,255,.3)}
+@keyframes fanout{0%{transform:rotate(0) translateY(26px);opacity:0}60%{opacity:1}100%{transform:rotate(var(--rot)) translateY(0);opacity:1}}
+.loader-word{font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:.34em;text-indent:.34em;opacity:0;animation:wordin .6s ease .75s forwards}
+.loader-word b{color:var(--blue)}
+.loader-sub{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);opacity:0;animation:wordin .6s ease .95s forwards;margin-top:-24px}
+@keyframes wordin{to{opacity:1}}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:90;background:#f7f5f1;border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 6px 24px rgba(20,22,30,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1240px;margin:0 auto;padding:0 24px}
+.brand{display:flex;flex-direction:column;line-height:1.05}
+.brand .word{font-family:var(--font-display);font-weight:700;font-size:1.42rem;letter-spacing:.06em}
+.brand .word i{font-style:normal;color:var(--blue)}
+.brand .tag{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-2);position:relative}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--blue);transition:width .25s}
+.nav-links a:not(.nav-cta):hover::after{width:100%}
+.nav-cta{background:var(--ink);color:#fff;padding:.66em 1.35em;border-radius:999px;font-weight:600;transition:background .25s,transform .25s}
+.nav-cta:hover{background:var(--blue);transform:translateY(-1px)}
+.burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px;position:relative;z-index:96}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:85;background:var(--paper);padding:110px 30px 40px;flex-direction:column;gap:8px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:var(--font-display);font-weight:600;font-size:1.7rem;padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.mobile-menu a .mono{font-size:.62rem}
+.mobile-menu .m-call{margin-top:auto;background:var(--blue);color:#fff;text-align:center;justify-content:center;border-radius:14px;border:0;padding:18px;font-size:1.25rem}
+
+/* ---------- hero ---------- */
+header{padding:150px 0 72px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-left .chip{margin-bottom:26px}
+h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,5vw,4.1rem);line-height:1.03;letter-spacing:-.015em}
+h1 .cutin{position:relative;display:inline-block;white-space:nowrap}
+h1 .cutin::before{content:"";position:absolute;left:-.12em;right:-.12em;top:.08em;bottom:.02em;background:var(--blue);z-index:-1;transform:scaleX(0);transform-origin:left;border-radius:4px;animation:cutin .8s cubic-bezier(.7,0,.2,1) 1.5s forwards}
+h1 .cutin{color:var(--ink);transition:color .01s 1.85s;animation:cutcolor .01s 1.85s forwards}
+@keyframes cutin{to{transform:scaleX(1)}}
+@keyframes cutcolor{to{color:#fff}}
+.hero-sub{font-size:1.13rem;color:var(--ink-2);max-width:46ch;margin:24px 0 34px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-weight:600;font-size:1rem;padding:.95em 1.7em;border-radius:999px;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;border:0}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 10px 26px rgba(39,67,201,.28)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--blue-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+.btn-ghost:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.hero-meta{display:flex;gap:26px;margin-top:40px;flex-wrap:wrap}
+.hero-meta div{border-left:2px solid var(--blue);padding-left:14px}
+.hero-meta strong{font-family:var(--font-display);font-size:1.05rem;display:block}
+.hero-meta span{font-size:.84rem;color:var(--muted)}
+.hero-photo{position:relative}
+.hero-photo .frame{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 70px rgba(20,22,30,.22);clip-path:inset(0 100% 0 0 round var(--radius));animation:wipe 1s cubic-bezier(.7,0,.2,1) .9s forwards}
+@keyframes wipe{to{clip-path:inset(0 0 0 0 round var(--radius))}}
+.hero-photo img{width:100%;height:540px;object-fit:cover}
+.hero-photo .chip{position:absolute;bottom:22px;left:22px;z-index:2;transform:rotate(-2deg)}
+.hero-photo::after{content:"";position:absolute;top:-16px;right:-16px;width:120px;height:120px;border-top:3px solid var(--blue);border-right:3px solid var(--blue);border-radius:0 18px 0 0;opacity:0;animation:wordin .5s ease 1.9s forwards}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--ink);color:var(--paper);padding:16px 0;overflow:hidden;position:relative;z-index:2}
+.marquee-track{display:flex;gap:0;width:max-content;animation:scrollx 26s linear infinite}
+.marquee-track span{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;display:flex;align-items:center;gap:26px;padding-right:26px;white-space:nowrap}
+.marquee-track .drop{width:9px;height:9px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--blue);flex:none}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:96px 0;position:relative;z-index:2}
+.sec-head{margin-bottom:54px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.sec-head .kicker{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.sec-head .kicker .rule{width:44px;height:2px;background:var(--blue)}
+h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.08;letter-spacing:-.01em;max-width:22ch}
+.sec-head p{max-width:52ch;color:var(--ink-2)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- services ---------- */
+#services{background:var(--paper)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column;min-height:250px}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.svc:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(20,22,30,.1);border-color:transparent}
+.svc:hover::before{transform:scaleX(1)}
+.svc .num{font-family:var(--font-mono);font-size:.7rem;color:var(--blue);letter-spacing:.2em;margin-bottom:auto}
+.svc h3{font-family:var(--font-display);font-weight:600;font-size:1.36rem;margin:20px 0 10px}
+.svc p{font-size:.94rem;color:var(--muted)}
+.svc.feature{grid-column:span 1;background:var(--ink);border-color:var(--ink)}
+.svc.feature h3,.svc.feature .num{color:#fff}
+.svc.feature .num{color:#9fb0f5}
+.svc.feature p{color:#b9bac2}
+.svc.feature::before{background:var(--blue)}
+
+/* ---------- plasterboard band ---------- */
+#plasterboard{background:var(--ink);color:var(--paper)}
+#plasterboard h2{color:#fff}
+#plasterboard .sec-head p{color:#b9bac2}
+#plasterboard .mono{color:#8e9099}
+.board-grid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:18px;align-items:stretch}
+.board-grid figure{border-radius:var(--radius);overflow:hidden;position:relative;min-height:380px}
+.board-grid figure img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .6s}
+.board-grid figure:hover img{transform:scale(1.045)}
+.board-grid figure figcaption{position:absolute;bottom:16px;left:16px;z-index:2}
+.board-copy{background:#22242b;border:1px solid #32343d;border-radius:var(--radius);padding:38px 34px;display:flex;flex-direction:column;justify-content:center;gap:0}
+.board-copy h3{font-family:var(--font-display);font-size:1.5rem;font-weight:600;margin-bottom:14px;color:#fff}
+.board-copy p{color:#b9bac2;font-size:.97rem;margin-bottom:18px}
+.board-copy ul{display:grid;gap:10px}
+.board-copy li{display:flex;gap:12px;align-items:flex-start;color:#d8d9de;font-size:.95rem}
+.board-copy li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--blue);flex:none;margin-top:7px}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+.step{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;position:relative}
+.step .snum{font-family:var(--font-display);font-weight:700;font-size:2.6rem;color:var(--blue-pale);line-height:1;-webkit-text-stroke:1.5px var(--blue);color:transparent}
+.step h3{font-family:var(--font-display);font-weight:600;font-size:1.15rem;margin:16px 0 8px}
+.step p{font-size:.9rem;color:var(--muted)}
+
+/* ---------- gallery ---------- */
+#work{background:var(--paper-2)}
+.masonry{columns:3;column-gap:16px}
+.masonry a{display:block;margin-bottom:16px;border-radius:12px;overflow:hidden;position:relative;break-inside:avoid;cursor:zoom-in}
+.masonry img{width:100%;transition:transform .55s}
+.masonry a::after{content:"View";position:absolute;inset:auto 12px 12px auto;background:rgba(25,26,30,.82);color:#fff;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.55em 1em;border-radius:999px;opacity:0;transition:opacity .3s}
+.masonry a:hover::after{opacity:1}
+.masonry a:hover img{transform:scale(1.04)}
+.gallery-note{margin-top:26px;text-align:center}
+
+/* lightbox */
+#lightbox{position:fixed;inset:0;z-index:200;background:rgba(15,16,20,.94);display:none;align-items:center;justify-content:center;padding:34px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:92vw;max-height:86vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#lightbox button{position:absolute;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+#lightbox button:hover{background:var(--blue)}
+#lb-close{top:24px;right:24px}
+#lb-prev{left:24px;top:50%;transform:translateY(-50%)}
+#lb-next{right:24px;top:50%;transform:translateY(-50%)}
+
+/* ---------- why ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why{border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;background:var(--white)}
+.why .ic{width:46px;height:46px;border-radius:12px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.why .ic svg{width:22px;height:22px;stroke:var(--blue)}
+.why h3{font-family:var(--font-display);font-weight:600;font-size:1.15rem;margin-bottom:8px}
+.why p{font-size:.92rem;color:var(--muted)}
+
+/* ---------- about ---------- */
+#about{background:var(--paper-2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-photo{border-radius:var(--radius);overflow:hidden;box-shadow:0 26px 60px rgba(20,22,30,.16);position:relative}
+.about-photo img{width:100%;height:520px;object-fit:cover}
+.about-photo .chip{position:absolute;bottom:20px;left:20px}
+.about-copy h2{margin-bottom:20px}
+.about-copy p{color:var(--ink-2);margin-bottom:16px}
+.about-badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.badge{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border:1.5px solid var(--ink);border-radius:999px;padding:.6em 1.2em;color:var(--ink-2)}
+
+/* ---------- contact ---------- */
+#contact .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.c-item{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
+.c-item .ic{width:48px;height:48px;flex:none;border-radius:12px;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.c-item .ic svg{width:22px;height:22px;stroke:#fff}
+.c-item strong{font-family:var(--font-display);font-size:1.08rem;display:block}
+.c-item a:hover{color:var(--blue)}
+.c-item span{font-size:.86rem;color:var(--muted)}
+form{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:38px;box-shadow:0 20px 50px rgba(20,22,30,.08)}
+form h3{font-family:var(--font-display);font-weight:600;font-size:1.4rem;margin-bottom:6px}
+form>p{font-size:.9rem;color:var(--muted);margin-bottom:24px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;margin-bottom:14px}
+label .l{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+input,select,textarea{width:100%;padding:.85em 1em;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);font-family:var(--font-body);font-size:.95rem;color:var(--ink);transition:border-color .25s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+.form-note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:14px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#b9bac2;padding:60px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;margin-bottom:44px}
+footer .brand .word{color:#fff}
+footer h4{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#8e9099;margin-bottom:16px}
+footer li{margin-bottom:10px;font-size:.92rem}
+footer a:hover{color:#fff}
+.foot-bottom{border-top:1px solid #32343d;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:#8e9099}
+
+/* ---------- FABs ---------- */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;gap:12px}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(20,22,30,.3);transition:transform .25s}
+.fab:hover{transform:translateY(-3px) scale(1.05)}
+.fab.call{background:var(--blue)}
+.fab.wa{background:#25d366}
+.fab svg{width:24px;height:24px;fill:#fff}
+
+/* ---------- responsive ---------- */
+@media(max-width:1000px){
+  .hero-grid,.about-grid,#contact .contact-grid{grid-template-columns:1fr;gap:40px}
+  .hero-photo img{height:420px}
+  .svc-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .board-grid{grid-template-columns:1fr 1fr}
+  .board-copy{grid-column:span 2}
+  .steps{grid-template-columns:1fr 1fr}
+  .masonry{columns:2}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .burger{display:block}
+  header{padding-top:120px}
+  .svc-grid,.why-grid,.steps{grid-template-columns:1fr}
+  .board-grid{grid-template-columns:1fr}
+  .board-copy{grid-column:span 1}
+  .masonry{columns:2;column-gap:10px}
+  .masonry a{margin-bottom:10px}
+  .hero-photo img{height:340px}
+  .about-photo img{height:400px}
+  form{padding:26px}
+  .f-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  section{padding:70px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" aria-hidden="true">
+  <div class="fan">
+    <div class="swatch"></div><div class="swatch"></div><div class="swatch"></div><div class="swatch"></div><div class="swatch"></div>
+  </div>
+  <div class="loader-word">KAMIL<b>.</b></div>
+  <div class="loader-sub">Painting &amp; Decorating</div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="word">KAMIL<i>.</i></span>
+      <span class="tag">Painting &amp; Decorating</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#plasterboard">Plasterboard</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="tel:07516320636">Call 07516 320636</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services <span class="mono">01</span></a>
+  <a href="#plasterboard">Plasterboard <span class="mono">02</span></a>
+  <a href="#work">Our Work <span class="mono">03</span></a>
+  <a href="#about">About <span class="mono">04</span></a>
+  <a href="#contact">Contact <span class="mono">05</span></a>
+  <a class="m-call" href="tel:07516320636">Call Kamil: 07516 320636</a>
+</div>
+
+<!-- Hero -->
+<header id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <span class="chip"><span class="dot"></span>Dagenham &amp; Barking, Ilford, Romford</span>
+      <h1>Sharp lines.<br>Smooth walls.<br>A <span class="cutin">proper finish.</span></h1>
+      <p class="hero-sub">Kamil Painting &amp; Decorating delivers clean, careful painting, wallpapering and plasterboard work for homes across East London. Prepared properly, finished neatly, left spotless.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:07516320636">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Kamil
+        </a>
+        <a class="btn btn-ghost" href="#contact">Get a free quote</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>Painting</strong><span>Interior and exterior</span></div>
+        <div><strong>Decorating</strong><span>Wallpaper and finishes</span></div>
+        <div><strong>Plasterboard</strong><span>Walls and ceilings</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame">
+        <img src="assets/hero-kitchen.jpg" alt="Open plan kitchen with crisp painted walls and ceiling, finished by Kamil Painting and Decorating" fetchpriority="high">
+      </div>
+      <span class="chip putty">Real job photo</span>
+    </div>
+  </div>
+</header>
+
+<!-- Areas marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Dagenham <i class="drop"></i> Barking <i class="drop"></i> Ilford <i class="drop"></i> Romford <i class="drop"></i> Hornchurch <i class="drop"></i> Upminster <i class="drop"></i> Chadwell Heath <i class="drop"></i> Goodmayes <i class="drop"></i> Seven Kings <i class="drop"></i> Rainham <i class="drop"></i> East London <i class="drop"></i> Free quotes <i class="drop"></i> </span>
+  </div>
+</div>
+
+<!-- Services -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker"><span class="rule"></span><span class="mono">What we do</span></div>
+        <h2>Painting, decorating and plasterboard. Done right.</h2>
+      </div>
+      <p>From a single feature wall to a full house repaint, every job gets the same treatment: honest advice, careful prep and a finish you will want to show off.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc feature rv">
+        <span class="num">01</span>
+        <h3>Interior Painting</h3>
+        <p>Walls, ceilings, woodwork, doors and staircases. Filled, sanded, caulked and painted with crisp cut lines and even coverage.</p>
+      </div>
+      <div class="svc rv">
+        <span class="num">02</span>
+        <h3>Exterior Painting</h3>
+        <p>Render, masonry, fascias, windows and front doors. Weatherproof finishes that lift the whole front of the house.</p>
+      </div>
+      <div class="svc rv">
+        <span class="num">03</span>
+        <h3>Wallpapering &amp; Feature Walls</h3>
+        <p>Pattern matching, straight seams and clean trims. From a single statement wall to full rooms.</p>
+      </div>
+      <div class="svc rv">
+        <span class="num">04</span>
+        <h3>Plasterboard Walls &amp; Ceilings</h3>
+        <p>Stud partitions, boarding, ceilings and boxing-in. Taped, jointed and finished ready for decoration.</p>
+      </div>
+      <div class="svc rv">
+        <span class="num">05</span>
+        <h3>Repairs &amp; Making Good</h3>
+        <p>Cracks, holes, water stains and tired surfaces repaired and blended in before any paint goes on.</p>
+      </div>
+      <div class="svc rv">
+        <span class="num">06</span>
+        <h3>Full Room &amp; House Refresh</h3>
+        <p>Complete redecoration for lettings, sales or a fresh start. One trade, one point of contact, one tidy handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Plasterboard band -->
+<section id="plasterboard">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker"><span class="rule"></span><span class="mono">Plasterboard &amp; partitions</span></div>
+        <h2>New walls and ceilings, built from the frame up.</h2>
+      </div>
+    </div>
+    <div class="board-grid">
+      <figure class="rv"><img src="assets/plasterboard-1.jpg" alt="Timber and metal stud partition walls with insulation ready for plasterboard" loading="lazy"><figcaption><span class="chip putty">Stud work in progress</span></figcaption></figure>
+      <figure class="rv"><img src="assets/plasterboard-2.jpg" alt="Plasterboard partition walls and ceiling framing during first fix" loading="lazy"><figcaption><span class="chip putty">Boarding stage</span></figcaption></figure>
+      <div class="board-copy rv">
+        <h3>From bare frame to paint-ready</h3>
+        <p>Splitting a room, boxing in pipework or replacing a tired ceiling? We build and board partitions, then take them all the way through to a decorated finish.</p>
+        <ul>
+          <li>Stud partitions and room dividers</li>
+          <li>Boarding to walls and ceilings</li>
+          <li>Taping, jointing and finishing</li>
+          <li>Decorated by the same hands that built it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker"><span class="rule"></span><span class="mono">How it works</span></div>
+        <h2>A tidy job from first visit to final coat.</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="snum">1</span><h3>Look &amp; quote</h3><p>Kamil visits, talks through what you want and gives a clear, free quote. No pressure, no surprises.</p></div>
+      <div class="step rv"><span class="snum">2</span><h3>Protect &amp; prep</h3><p>Floors and furniture covered, surfaces filled, sanded and primed. The prep is what makes the finish.</p></div>
+      <div class="step rv"><span class="snum">3</span><h3>Paint &amp; finish</h3><p>Quality paints applied properly: even coats, sharp cutting-in and clean edges throughout.</p></div>
+      <div class="step rv"><span class="snum">4</span><h3>Snag &amp; handover</h3><p>A final walk-round together, any touch-ups done on the spot, and everything left clean and tidy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker"><span class="rule"></span><span class="mono">Our work</span></div>
+        <h2>Real jobs, real photos.</h2>
+      </div>
+      <p>Every image below is from Kamil's own projects: painting, decorating and plasterboard through to fully finished rooms.</p>
+    </div>
+    <div class="masonry" id="gallery">
+      <a href="assets/staircase.jpg"><img src="assets/staircase.jpg" alt="Finished hallway and curved oak staircase with freshly painted walls" loading="lazy"></a>
+      <a href="assets/kitchen-walnut.jpg"><img src="assets/kitchen-walnut.jpg" alt="Kitchen with walnut cabinetry and cleanly painted walls and ceiling" loading="lazy"></a>
+      <a href="assets/bath-window.jpg"><img src="assets/bath-window.jpg" alt="Bathroom with freestanding bath and smooth painted walls" loading="lazy"></a>
+      <a href="assets/fireplace-room.jpg"><img src="assets/fireplace-room.jpg" alt="Living room with fireplace, decorated in soft neutral tones" loading="lazy"></a>
+      <a href="assets/loft-living.jpg"><img src="assets/loft-living.jpg" alt="Loft living space during final decoration" loading="lazy"></a>
+      <a href="assets/bay-room.jpg"><img src="assets/bay-room.jpg" alt="Bay window bedroom with crisp painted walls and ceiling" loading="lazy"></a>
+      <a href="assets/bath-marble.jpg"><img src="assets/bath-marble.jpg" alt="Marble bathroom with walk-in shower, finished and decorated" loading="lazy"></a>
+      <a href="assets/decorating-hall.jpg"><img src="assets/decorating-hall.jpg" alt="Hallway mid-decoration with dust sheets down" loading="lazy"></a>
+      <a href="assets/coving-room.jpg"><img src="assets/coving-room.jpg" alt="Room with recessed ceiling detail and flawless painted finish" loading="lazy"></a>
+      <a href="assets/loft-kitchen.jpg"><img src="assets/loft-kitchen.jpg" alt="Loft apartment kitchen decorated in white" loading="lazy"></a>
+      <a href="assets/refresh-room.jpg"><img src="assets/refresh-room.jpg" alt="Redecorated reception room with new flooring and fresh white walls" loading="lazy"></a>
+      <a href="assets/bath-freestanding.jpg"><img src="assets/bath-freestanding.jpg" alt="Bathroom with freestanding bath, marble tiling and painted walls" loading="lazy"></a>
+      <a href="assets/vanity-marble.jpg"><img src="assets/vanity-marble.jpg" alt="Twin vanity bathroom with marble walls, decorated and finished" loading="lazy"></a>
+      <a href="assets/landing.jpg"><img src="assets/landing.jpg" alt="Landing and hallway with freshly painted walls and downlights" loading="lazy"></a>
+      <a href="assets/bay-room-wide.jpg"><img src="assets/bay-room-wide.jpg" alt="Large bay window room with new carpet and painted walls" loading="lazy"></a>
+    </div>
+    <p class="gallery-note mono">Tap any photo to view it full size</p>
+  </div>
+</section>
+
+<!-- Why -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker"><span class="rule"></span><span class="mono">Why Kamil</span></div>
+        <h2>The details other trades skip.</h2>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Prep first, always</h3>
+        <p>Most of a great finish happens before the lid comes off the paint. Filling, sanding and priming are never rushed.</p>
+      </div>
+      <div class="why rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>One trade, start to finish</h3>
+        <p>Board it, tape it, paint it, paper it. No juggling different trades or chasing anyone else.</p>
+      </div>
+      <div class="why rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Turns up when agreed</h3>
+        <p>Clear start dates, honest timelines and a phone that gets answered. Simple things, done properly.</p>
+      </div>
+      <div class="why rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+        <h3>Clean, straight lines</h3>
+        <p>Sharp cutting-in against ceilings, skirting and trim. The lines you notice every day, done with care.</p>
+      </div>
+      <div class="why rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/></svg></div>
+        <h3>Free written quotes</h3>
+        <p>A clear price before work starts, so you know exactly where you stand.</p>
+      </div>
+      <div class="why rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 21l9-9M14 4l6 6-9 9H5v-6l9-9z"/></svg></div>
+        <h3>Left spotless</h3>
+        <p>Dust sheets down every day and a proper clean-up at the end. You get your rooms back, not a mess.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo rv">
+      <img src="assets/staircase.jpg" alt="Hallway and staircase decorated by Kamil Painting and Decorating" loading="lazy">
+      <span class="chip">Finished by Kamil</span>
+    </div>
+    <div class="about-copy rv">
+      <div class="kicker" style="display:flex;align-items:center;gap:14px;margin-bottom:16px"><span style="width:44px;height:2px;background:var(--blue)"></span><span class="mono">About</span></div>
+      <h2>Meet Kamil, your local painter and decorator.</h2>
+      <p>Kamil runs a hands-on painting and decorating service covering Dagenham, Barking, Ilford, Romford and the surrounding parts of East London. When you book the job, Kamil is the one who turns up and does the work.</p>
+      <p>From high-end finishes in new builds to bringing tired rooms back to life, the approach never changes: respect the home, prep the surfaces properly and do not call it done until it looks right.</p>
+      <p>Call or message for an honest look at your job and a free quote.</p>
+      <div class="about-badges">
+        <span class="badge">Painting</span>
+        <span class="badge">Decorating</span>
+        <span class="badge">Plasterboard</span>
+        <span class="badge">East London</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kicker"><span class="rule"></span><span class="mono">Get in touch</span></div>
+        <h2>Tell us about your job.</h2>
+      </div>
+      <p>Call, WhatsApp or send the form. Kamil will get back to you to arrange a free, no-obligation quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="c-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><strong><a href="tel:07516320636">07516 320636</a></strong><span>Call Kamil directly</span></div>
+        </div>
+        <div class="c-item">
+          <div class="ic" style="background:#25d366"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div><strong><a href="https://wa.me/447516320636" target="_blank" rel="noopener">WhatsApp Kamil</a></strong><span>Send photos of your job for a quick estimate</span></div>
+        </div>
+        <div class="c-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><strong><a href="mailto:kamilnamiel1987@gmail.com">kamilnamiel1987@gmail.com</a></strong><span>Email any time</span></div>
+        </div>
+        <div class="c-item">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Dagenham &amp; Barking, Ilford, Romford</strong><span>Plus surrounding East London areas</span></div>
+        </div>
+      </div>
+      <form class="rv" onsubmit="return sendQuote(event)">
+        <h3>Request a free quote</h3>
+        <p>A few details and Kamil will be in touch.</p>
+        <div class="f-row">
+          <label><span class="l">Your name</span><input type="text" name="name" required placeholder="Jane Smith"></label>
+          <label><span class="l">Phone</span><input type="tel" name="phone" required placeholder="07123 456789"></label>
+        </div>
+        <label><span class="l">Area</span><input type="text" name="area" placeholder="e.g. Dagenham, Ilford, Romford"></label>
+        <label><span class="l">What needs doing?</span>
+          <select name="service">
+            <option>Interior painting</option>
+            <option>Exterior painting</option>
+            <option>Wallpapering / feature wall</option>
+            <option>Plasterboard walls or ceilings</option>
+            <option>Full room or house refresh</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label><span class="l">Tell us a bit more</span><textarea name="message" rows="4" placeholder="e.g. Living room and hallway repaint, walls and ceilings..."></textarea></label>
+        <button class="btn btn-primary" type="submit">Send quote request</button>
+        <p class="form-note">Prefer to talk? Call <a href="tel:07516320636" style="color:var(--blue);font-weight:600">07516 320636</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand" style="margin-bottom:16px">
+          <span class="word">KAMIL<i>.</i></span>
+          <span class="tag">Painting &amp; Decorating</span>
+        </a>
+        <p style="font-size:.9rem;max-width:36ch;margin-top:14px">Professional painting, decorating and plasterboard work for homes across East London.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Interior Painting</a></li>
+          <li><a href="#services">Exterior Painting</a></li>
+          <li><a href="#services">Wallpapering</a></li>
+          <li><a href="#plasterboard">Plasterboard &amp; Partitions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:07516320636">07516 320636</a></li>
+          <li><a href="https://wa.me/447516320636" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:kamilnamiel1987@gmail.com">kamilnamiel1987@gmail.com</a></li>
+          <li>Dagenham, Barking, Ilford, Romford</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> Kamil Painting &amp; Decorating. All rights reserved.</span>
+      <span>Serving Dagenham, Barking, Ilford, Romford and East London</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fabs">
+  <a class="fab wa" href="https://wa.me/447516320636" target="_blank" rel="noopener" aria-label="WhatsApp Kamil">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+  <a class="fab call" href="tel:07516320636" aria-label="Call Kamil">
+    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-label="Photo viewer">
+  <button id="lb-close" aria-label="Close">&#10005;</button>
+  <button id="lb-prev" aria-label="Previous">&#8249;</button>
+  <button id="lb-next" aria-label="Next">&#8250;</button>
+  <img id="lb-img" src="" alt="Project photo full size">
+</div>
+
+<script>
+// Loader
+window.addEventListener('load',function(){
+  setTimeout(function(){document.getElementById('loader').classList.add('done')},1600);
+});
+setTimeout(function(){document.getElementById('loader').classList.add('done')},3500);
+
+// Nav scroll
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
+
+// Mobile menu
+var burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',function(){
+  var open=menu.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+  menu.classList.remove('open');burger.classList.remove('open');document.body.style.overflow='';
+})});
+
+// Marquee duplicate
+var track=document.getElementById('marqueeTrack');
+track.innerHTML+=track.innerHTML;
+
+// Reveal
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el,i){
+  el.style.transitionDelay=(i%3)*0.08+'s';
+  io.observe(el);
+});
+
+// Lightbox
+var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img');
+var links=Array.prototype.slice.call(document.querySelectorAll('#gallery a'));
+var idx=0;
+function show(i){idx=(i+links.length)%links.length;lbImg.src=links[idx].href}
+links.forEach(function(a,i){a.addEventListener('click',function(ev){ev.preventDefault();show(i);lb.classList.add('open');document.body.style.overflow='hidden'})});
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lb-prev').addEventListener('click',function(){show(idx-1)});
+document.getElementById('lb-next').addEventListener('click',function(){show(idx+1)});
+lb.addEventListener('click',function(e){if(e.target===lb)closeLb()});
+document.addEventListener('keydown',function(e){
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')show(idx-1);
+  if(e.key==='ArrowRight')show(idx+1);
+});
+
+// Form
+function sendQuote(e){
+  e.preventDefault();
+  var f=e.target;
+  var body='Name: '+f.name.value+'%0APhone: '+f.phone.value+'%0AArea: '+f.area.value+'%0AJob: '+f.service.value+'%0ADetails: '+f.message.value;
+  window.location.href='mailto:kamilnamiel1987@gmail.com?subject=Quote request from '+encodeURIComponent(f.name.value)+'&body='+body;
+  return false;
+}
+
+// Year
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
