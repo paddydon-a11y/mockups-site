@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BT Carpentry Construction Group | Carpentry, Loft Conversions &amp; Extensions in West Malling, Kent</title>
+<meta name="description" content="BT Carpentry Construction Group: bespoke carpentry, loft conversions, extensions and commercial carpentry across West Malling and a 30 mile radius. Own electricians and plumbers on the team. Call Bill on 07847 612378 for a free quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1d20;
+  --graphite:#26282c;
+  --steel:#5c6167;
+  --smoke:#9aa0a6;
+  --paper:#eef0f1;
+  --card:#ffffff;
+  --orange:#e8721c;
+  --orange-hi:#f68b33;
+  --timber:#c89b6a;
+  --line:rgba(27,29,32,.12);
+  --line-light:rgba(255,255,255,.14);
+  --disp:"Big Shoulders Display",sans-serif;
+  --body:"Hanken Grotesk",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.disp{font-family:var(--disp);text-transform:uppercase;line-height:.95;letter-spacing:.01em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+::selection{background:var(--orange);color:#fff}
+
+/* ============ LOADER: circular saw cut ============ */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--graphite);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s ease,visibility .5s}
+#loader.done{opacity:0;visibility:hidden}
+#loader.gone{display:none}
+.cutline{position:absolute;left:0;top:50%;height:2px;width:0;background:var(--orange);box-shadow:0 0 14px rgba(232,114,28,.8);animation:cut 1.5s .2s cubic-bezier(.6,.02,.3,1) forwards}
+@keyframes cut{to{width:100%}}
+.blade-carrier{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);animation:travel 1.5s .2s cubic-bezier(.6,.02,.3,1) forwards}
+@keyframes travel{to{left:100%}}
+.blade{width:74px;height:74px;animation:spin .55s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-mark{position:relative;text-align:center;color:#fff}
+.loader-mark .disp{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:.08em}
+.loader-mark .disp span{color:var(--orange)}
+.loader-mark small{display:block;margin-top:6px;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--smoke)}
+.loader-mark::after{content:"";position:absolute;left:50%;top:50%;width:150px;height:150px;border:1px solid rgba(232,114,28,.35);border-radius:50%;transform:translate(-50%,-50%) scale(.9);animation:ringpulse 1.6s ease-in-out infinite}
+@keyframes ringpulse{50%{transform:translate(-50%,-50%) scale(1.05);border-color:rgba(232,114,28,.7)}}
+
+/* ============ NAV ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(38,40,44,.96);border-bottom:1px solid var(--line-light);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 24px;height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff}
+.brand .logotype{display:flex;flex-direction:column;line-height:1}
+.brand .logotype b{font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:.06em;text-transform:uppercase}
+.brand .logotype b i{font-style:normal;color:var(--orange)}
+.brand .logotype small{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--smoke);margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a{color:#d8dadd;font-size:14px;font-weight:600;letter-spacing:.04em;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--orange);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-call{display:inline-flex;align-items:center;gap:9px;background:var(--orange);color:#fff;font-weight:700;font-size:14px;padding:11px 20px;border-radius:999px;letter-spacing:.03em;transition:background .25s,transform .25s}
+.nav-call:hover{background:var(--orange-hi);transform:translateY(-1px)}
+.burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px;position:relative;z-index:1002}
+.burger span{display:block;width:24px;height:2px;background:#fff;margin:6px auto;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+#mobile-menu{display:none}
+
+/* ============ HERO ============ */
+header{position:relative;min-height:100svh;display:flex;align-items:flex-end;background:var(--graphite);color:#fff;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url("images/kitchen-aga.jpg") center/cover no-repeat;animation:kenburns 16s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(12deg,rgba(23,24,27,.94) 22%,rgba(23,24,27,.55) 55%,rgba(23,24,27,.25) 100%)}
+.hero-ring{position:absolute;right:-160px;top:8%;width:560px;height:560px;border:2px solid rgba(232,114,28,.4);border-radius:50%;pointer-events:none;max-width:none}
+.hero-ring::after{content:"";position:absolute;inset:70px;border:1px dashed rgba(232,114,28,.3);border-radius:50%}
+.hero-in{position:relative;z-index:2;width:100%;padding:170px 24px 96px}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--orange-hi);margin-bottom:22px;opacity:0;animation:rise .8s .35s forwards}
+.hero-kicker::before{content:"";width:34px;height:2px;background:var(--orange)}
+h1{font-size:clamp(52px,8.6vw,112px);font-weight:800;max-width:11ch;opacity:0;animation:rise .8s .5s forwards}
+h1 .o{color:var(--orange)}
+.hero-sub{max-width:56ch;margin-top:22px;font-size:clamp(16px,1.6vw,18.5px);color:#cfd2d6;opacity:0;animation:rise .8s .65s forwards}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;opacity:0;animation:rise .8s .8s forwards}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px;letter-spacing:.03em;padding:16px 30px;border-radius:999px;transition:transform .25s,background .25s,border-color .25s;cursor:pointer;border:0}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:var(--orange-hi);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff;background:transparent}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange-hi);transform:translateY(-2px)}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px;opacity:0;animation:rise .8s .95s forwards}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#e4e6e8;background:rgba(255,255,255,.09);border:1px solid var(--line-light);padding:9px 16px;border-radius:999px}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ============ SAWTOOTH DIVIDER ============ */
+.sawtooth{display:block;width:100%;height:26px}
+
+/* ============ SHARED SECTION BITS ============ */
+section{padding:96px 0}
+.sec-head{margin-bottom:52px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.kicker::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--orange)}
+h2{font-size:clamp(38px,5.4vw,64px);font-weight:800}
+.sec-head p{max-width:62ch;margin-top:16px;color:var(--steel);font-size:17px}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ TRUST STRIP ============ */
+.trust{background:var(--ink);color:#fff;padding:0}
+.trust-in{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line-light)}
+.trust-item{padding:34px 26px;border-right:1px solid var(--line-light);display:flex;flex-direction:column;gap:6px}
+.trust-item b{font-family:var(--disp);font-size:26px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.trust-item b span{color:var(--orange)}
+.trust-item small{color:var(--smoke);font-size:13.5px}
+
+/* ============ SERVICES ============ */
+#services{background:var(--paper)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.svc:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(27,29,32,.14)}
+.svc-photo{position:relative;aspect-ratio:16/10;overflow:hidden}
+.svc-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.svc:hover .svc-photo img{transform:scale(1.07)}
+.svc-num{position:absolute;top:14px;left:14px;width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:18px;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.svc-body{padding:26px 26px 30px;display:flex;flex-direction:column;gap:10px;flex:1}
+.svc h3{font-size:27px;font-weight:700}
+.svc p{color:var(--steel);font-size:15px;flex:1}
+.svc-link{font-weight:700;font-size:14px;color:var(--orange);display:inline-flex;align-items:center;gap:7px;letter-spacing:.04em}
+.svc-link svg{transition:transform .25s}
+.svc:hover .svc-link svg{transform:translateX(5px)}
+.svc.feature{grid-column:span 2}
+.svc.feature .svc-photo{aspect-ratio:auto;flex:1;min-height:260px}
+@media(min-width:901px){.svc.feature{flex-direction:row}.svc.feature .svc-photo{width:55%}.svc.feature .svc-body{width:45%;justify-content:center}}
+
+/* ============ ONE TEAM BAND ============ */
+.team-band{background:var(--graphite);color:#fff;position:relative;overflow:hidden}
+.team-band .hero-ring{right:auto;left:-200px;top:-30%;opacity:.5}
+.team-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;position:relative;z-index:2}
+.team-band h2 span{color:var(--orange)}
+.team-band p{color:#c9ccd0;margin-top:18px;font-size:17px}
+.team-list{list-style:none;display:grid;gap:14px}
+.team-list li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid var(--line-light);padding:18px 20px}
+.team-list .dot-ic{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.team-list b{display:block;font-size:15.5px}
+.team-list small{color:var(--smoke);font-size:13.5px}
+
+/* ============ GALLERY ============ */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:14px}
+.gal{position:relative;overflow:hidden;cursor:pointer;background:var(--graphite)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s}
+.gal:hover img{transform:scale(1.06);opacity:.75}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:36px 18px 14px;background:linear-gradient(transparent,rgba(23,24,27,.85));color:#fff;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.35s}
+.gal:hover figcaption{opacity:1;transform:none}
+.gal.tall{grid-row:span 2}
+.gal.wide{grid-column:span 2}
+#lightbox{position:fixed;inset:0;z-index:1200;background:rgba(23,24,27,.95);display:none;align-items:center;justify-content:center;padding:5vh 5vw}
+#lightbox.open{display:flex}
+#lightbox img{max-width:100%;max-height:88vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#lb-close{position:absolute;top:22px;right:26px;background:var(--orange);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:20px;cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:1px solid var(--line-light);color:#fff;width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;transition:background .25s}
+.lb-nav:hover{background:var(--orange)}
+#lb-prev{left:22px}#lb-next{right:22px}
+
+/* ============ ABOUT ============ */
+#about{background:var(--card)}
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{width:100%;aspect-ratio:4/4.6;object-fit:cover;position:relative;z-index:1}
+.about-photo::after{content:"";position:absolute;right:-22px;bottom:-22px;width:170px;height:170px;border-radius:50%;background:var(--orange);opacity:.92;z-index:0}
+.about-badge{z-index:2}
+.about-badge{position:absolute;left:-18px;top:26px;background:var(--graphite);color:#fff;padding:16px 22px;display:flex;flex-direction:column;box-shadow:0 16px 34px rgba(0,0,0,.25)}
+.about-badge b{font-family:var(--disp);font-size:30px;color:var(--orange);text-transform:uppercase;line-height:1}
+.about-badge small{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--smoke);margin-top:5px}
+.about-copy p{color:var(--steel);margin-top:16px;font-size:16.5px}
+.about-points{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none}
+.about-points li{display:flex;gap:10px;align-items:center;font-weight:600;font-size:14.5px}
+.about-points .dot{flex:0 0 10px;width:10px;height:10px;border-radius:50%;background:var(--orange)}
+.tiktok-card{margin-top:30px;display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:#fff;padding:16px 22px;transition:transform .25s}
+.tiktok-card:hover{transform:translateY(-3px)}
+.tiktok-card b{display:block;font-size:15px}
+.tiktok-card small{color:var(--smoke);font-size:12.5px}
+
+/* ============ PROCESS ============ */
+#process{background:var(--paper)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+.proc{background:var(--card);border:1px solid var(--line);padding:30px 26px;position:relative;transition:transform .3s,box-shadow .3s}
+.proc:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(27,29,32,.12)}
+.proc::before{counter-increment:step;content:"0" counter(step);font-family:var(--disp);font-weight:800;font-size:52px;color:transparent;-webkit-text-stroke:1.5px var(--orange);display:block;line-height:1;margin-bottom:16px}
+.proc h3{font-size:22px;margin-bottom:8px}
+.proc p{color:var(--steel);font-size:14.5px}
+
+/* ============ COVERAGE ============ */
+.coverage{background:var(--graphite);color:#fff;position:relative;overflow:hidden}
+.cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.coverage h2 span{color:var(--orange)}
+.coverage p{color:#c9ccd0;margin-top:16px}
+.cov-towns{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.cov-towns span{background:rgba(255,255,255,.07);border:1px solid var(--line-light);padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:600;transition:border-color .25s,color .25s}
+.cov-towns span:hover{border-color:var(--orange);color:var(--orange-hi)}
+.radius-badge{display:inline-flex;align-items:center;gap:14px;margin-top:28px;background:rgba(232,114,28,.14);border:1px solid rgba(232,114,28,.45);padding:14px 22px}
+.radius-badge b{font-family:var(--disp);font-size:34px;color:var(--orange-hi);text-transform:uppercase;line-height:1}
+.radius-badge small{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#d8dadd}
+
+/* ============ QUOTE CTA BAND ============ */
+.cta-band{background:var(--orange);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:40px solid rgba(255,255,255,.14)}
+.cta-band::after{content:"";position:absolute;left:-80px;bottom:-140px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.08)}
+.cta-in{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+.cta-band h2{font-size:clamp(34px,4.6vw,54px)}
+.cta-band p{margin-top:10px;font-size:16.5px;color:rgba(255,255,255,.88);max-width:52ch}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--orange)}
+.btn-white:hover{transform:translateY(-2px)}
+
+/* ============ CONTACT ============ */
+#contact{background:var(--card)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}
+.c-item{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
+.c-item .dot-ic{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center}
+.c-item b{display:block;font-size:16px}
+.c-item a{color:var(--steel);font-size:15px}
+.c-item a:hover{color:var(--orange)}
+.c-item small{color:var(--steel);font-size:14px}
+form{background:var(--paper);border:1px solid var(--line);padding:36px}
+form h3{font-size:26px;margin-bottom:6px}
+form>p{color:var(--steel);font-size:14.5px;margin-bottom:22px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.f-field{display:flex;flex-direction:column;gap:6px}
+.f-field.full{grid-column:1/-1}
+label{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+input,select,textarea{font-family:var(--body);font-size:15px;padding:13px 15px;border:1.5px solid var(--line);background:#fff;color:var(--ink);outline:none;transition:border-color .25s;border-radius:0;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--orange)}
+textarea{resize:vertical;min-height:120px}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+.form-note{margin-top:14px;font-size:12.5px;color:var(--steel);text-align:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:var(--smoke);padding:56px 0 90px}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:34px;align-items:flex-start}
+.foot-brand{display:flex;align-items:center;gap:12px;color:#fff}
+footer p{font-size:13.5px;max-width:44ch;margin-top:14px}
+.foot-links{list-style:none;display:grid;gap:9px}
+.foot-links a{font-size:14px;transition:color .25s}
+.foot-links a:hover{color:var(--orange-hi)}
+.foot-base{margin-top:40px;padding-top:22px;border-top:1px solid var(--line-light);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12.5px}
+
+/* ============ FABs ============ */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(14px);transition:.4s;pointer-events:none}
+.fabs.show{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.3);transition:transform .25s}
+.fab:hover{transform:translateY(-3px) scale(1.05)}
+.fab-call{background:var(--orange)}
+.fab-tt{background:#111}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1024px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc.feature{grid-column:span 2}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .trust-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .nav-links,.nav-call{display:none}
+  .burger{display:block}
+  #mobile-menu{display:block;position:fixed;top:0;right:0;bottom:0;width:min(84vw,360px);background:var(--ink);z-index:1001;padding:110px 34px 34px;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(.7,0,.3,1),visibility 0s .4s;overflow-y:auto}
+  #mobile-menu.open{transform:none;visibility:visible;transition:transform .4s cubic-bezier(.7,0,.3,1)}
+  #mobile-menu ul{list-style:none;display:grid;gap:4px}
+  #mobile-menu a{display:block;color:#fff;font-family:var(--disp);font-size:30px;font-weight:700;text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--line-light)}
+  #mobile-menu a:hover{color:var(--orange-hi)}
+  #mobile-menu .mm-call{margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;font-family:var(--body);font-size:16px;font-weight:700;padding:15px 26px;border-radius:999px;border-bottom:0;text-transform:none}
+  #menu-shade{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;opacity:0;visibility:hidden;transition:.3s}
+  #menu-shade.open{opacity:1;visibility:visible}
+  .team-grid,.about-grid,.cov-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .about-photo::after{right:-10px;bottom:-10px;width:120px;height:120px}
+}
+@media(max-width:640px){
+  section{padding:72px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .svc.feature{grid-column:span 1}
+  .svc.feature .svc-photo{min-height:0;aspect-ratio:16/10}
+  .proc-grid{grid-template-columns:1fr}
+  .trust-in{grid-template-columns:1fr 1fr}
+  .trust-item{padding:24px 18px}
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+  .gal.tall{grid-row:span 1}
+  .gal.wide{grid-column:span 1}
+  .f-row{grid-template-columns:1fr}
+  .hero-in{padding:150px 24px 80px}
+  .about-badge{left:-8px}
+  form{padding:26px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader" aria-hidden="true">
+  <div class="cutline"></div>
+  <div class="blade-carrier">
+    <svg class="blade" viewBox="0 0 100 100" fill="none">
+      <g fill="#e8721c">
+        <circle cx="50" cy="50" r="30" fill="none" stroke="#e8721c" stroke-width="8"/>
+        <path d="M50 8 l6 14 -12 0 z"/><path d="M50 92 l-6 -14 12 0 z"/>
+        <path d="M8 50 l14 -6 0 12 z"/><path d="M92 50 l-14 6 0 -12 z"/>
+        <path d="M20 20 l14 5 -9 9 z"/><path d="M80 80 l-14 -5 9 -9 z"/>
+        <path d="M80 20 l-5 14 -9 -9 z"/><path d="M20 80 l5 -14 9 9 z"/>
+      </g>
+      <circle cx="50" cy="50" r="7" fill="#26282c" stroke="#e8721c" stroke-width="4"/>
+    </svg>
+  </div>
+  <div class="loader-mark">
+    <div class="disp">BT <span>Carpentry</span></div>
+    <small>Construction Group</small>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="BT Carpentry Construction Group home">
+      <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+        <circle cx="23" cy="23" r="21" fill="#3a3d42"/>
+        <circle cx="23" cy="23" r="21" fill="none" stroke="#e8721c" stroke-width="2.5" stroke-dasharray="96 36" stroke-linecap="round" transform="rotate(-50 23 23)"/>
+        <text x="23" y="29" text-anchor="middle" font-family="Big Shoulders Display,sans-serif" font-weight="800" font-size="19" fill="#fff" letter-spacing="1">BT</text>
+      </svg>
+      <span class="logotype">
+        <b>BT <i>Carpentry</i></b>
+        <small>Construction Group</small>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#coverage">Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-call" href="tel:07847612378">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      07847 612378
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div id="menu-shade"></div>
+<div id="mobile-menu">
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Our Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#coverage">Areas</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="mm-call" href="tel:07847612378">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+    Call Bill: 07847 612378
+  </a>
+</div>
+
+<!-- HERO -->
+<header id="top">
+  <div class="hero-img"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-ring" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <span class="hero-kicker">West Malling, Kent. 30 mile radius</span>
+    <h1>Carpentry &amp; construction, <span class="o">cut</span> to fit your home</h1>
+    <p class="hero-sub">Bespoke carpentry, loft conversions, extensions and commercial fit outs from an established Kent team. With our own trusted electricians and plumbers on board, we cover the whole job from first fix to final finish.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-orange" href="#contact">Get a Free Quote
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="tel:07847612378">Call Bill: 07847 612378</a>
+    </div>
+    <div class="hero-chips">
+      <span class="chip"><span class="dot"></span>5 years on Checkatrade</span>
+      <span class="chip"><span class="dot"></span>Found on Book a Builder</span>
+      <span class="chip"><span class="dot"></span>Domestic &amp; commercial</span>
+      <span class="chip"><span class="dot"></span>Follow the work: @chippybill</span>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap">
+    <div class="trust-in">
+      <div class="trust-item"><b><span>5</span> yrs</b><small>Vetted and reviewed on Checkatrade</small></div>
+      <div class="trust-item"><b><span>30</span> mile</b><small>Coverage around West Malling</small></div>
+      <div class="trust-item"><b>One <span>team</span></b><small>Own electricians and plumbers</small></div>
+      <div class="trust-item"><b>Free <span>quotes</span></b><small>Clear pricing before any work starts</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">What we do</span>
+      <h2>From bespoke joinery to full builds</h2>
+      <p>Carpentry is our trade and construction is our business. Whether it is a hand built alcove unit or a complete loft conversion, the same care goes into every cut.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc feature reveal">
+        <div class="svc-photo">
+          <span class="svc-num">01</span>
+          <img src="images/loft-kitchen.jpg" alt="Completed loft conversion with fitted kitchen and staircase" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <h3>Loft Conversions</h3>
+          <p>Turn unused roof space into a bedroom, office or a whole extra floor. We manage the full conversion: structure, staircases, dormers, insulation and finishing, with our own electricians and plumbers handling every service that needs connecting.</p>
+          <a class="svc-link" href="#contact">Get a loft quote
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <span class="svc-num">02</span>
+          <img src="images/kitchen-aga.jpg" alt="Extended kitchen with marble worktops and range cooker" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <h3>Extensions</h3>
+          <p>Single and double storey extensions built start to finish: footings, structure, roofing, glazing and the finished rooms inside.</p>
+          <a class="svc-link" href="#contact">Plan your extension
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <span class="svc-num">03</span>
+          <img src="images/alcove-units.jpg" alt="Bespoke fitted alcove cupboards and floating shelves" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <h3>Bespoke Carpentry</h3>
+          <p>Fitted alcove units, shelving, doors, wardrobes, staircases and made to measure joinery, designed around your space and built by hand.</p>
+          <a class="svc-link" href="#contact">Discuss your ideas
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <span class="svc-num">04</span>
+          <img src="images/garden-room.jpg" alt="Timber garden room with anthracite bifold doors" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <h3>Garden Rooms &amp; Outbuildings</h3>
+          <p>Insulated garden offices, studios and timber outbuildings with bifold doors, built to be used all year round.</p>
+          <a class="svc-link" href="#contact">Get a garden room quote
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <span class="svc-num">05</span>
+          <img src="images/kitchen-black.jpg" alt="Fitted kitchen with black granite worktops and range cooker" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <h3>Kitchens &amp; Bathrooms</h3>
+          <p>Complete kitchen and bathroom refits: fitting, tiling, plumbing and electrics handled by one team under one quote.</p>
+          <a class="svc-link" href="#contact">Start your refit
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-photo">
+          <span class="svc-num">06</span>
+          <img src="images/bathroom.jpg" alt="Newly tiled grey bathroom with fresh plastered ceiling" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <h3>Commercial Carpentry</h3>
+          <p>First and second fix carpentry packages, fit outs and site work for commercial clients, contractors and developers across Kent.</p>
+          <a class="svc-link" href="#contact">Talk to us about your site
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ONE TEAM BAND -->
+<section class="team-band">
+  <div class="hero-ring" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="team-grid">
+      <div class="reveal">
+        <span class="kicker">One team, every trade</span>
+        <h2>Our own electricians &amp; plumbers, <span>on every job</span></h2>
+        <p>Most carpentry firms leave you to find your own sparky and plumber. We do not. BT Carpentry Construction Group works with its own trusted electricians and plumbers, so lofts, extensions, kitchens and bathrooms are covered end to end by people we know and trust.</p>
+      </div>
+      <ul class="team-list reveal">
+        <li>
+          <span class="dot-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
+          <div><b>Electrics covered</b><small>Rewires, lighting, sockets and consumer units as part of the build.</small></div>
+        </li>
+        <li>
+          <span class="dot-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C8 8 6 11.5 6 14.5A6 6 0 0 0 18 14.5C18 11.5 16 8 12 2z"/></svg></span>
+          <div><b>Plumbing covered</b><small>Bathrooms, kitchens and heating alterations without a separate contractor.</small></div>
+        </li>
+        <li>
+          <span class="dot-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+          <div><b>One quote, one point of contact</b><small>Bill runs the job. You are never chasing three different trades.</small></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Our work</span>
+      <h2>Recent projects</h2>
+      <p>A selection of real jobs by the BT team, from bespoke fitted furniture to complete loft conversions. See more on TikTok at @chippybill.</p>
+    </div>
+    <div class="gal-grid reveal">
+      <figure class="gal wide" data-i="0"><img src="images/loft-kitchen.jpg" alt="Loft conversion with fitted kitchen and oak staircase" loading="lazy"><figcaption>Loft conversion with fitted kitchen</figcaption></figure>
+      <figure class="gal tall" data-i="1"><img src="images/bathroom.jpg" alt="Grey tiled bathroom refit" loading="lazy"><figcaption>Full bathroom refit</figcaption></figure>
+      <figure class="gal" data-i="2"><img src="images/kitchen-aga.jpg" alt="Kitchen with marble worktops and range cooker" loading="lazy"><figcaption>Kitchen with marble worktops</figcaption></figure>
+      <figure class="gal" data-i="3"><img src="images/alcove-units.jpg" alt="Bespoke alcove units and floating shelves" loading="lazy"><figcaption>Bespoke alcove units</figcaption></figure>
+      <figure class="gal" data-i="4"><img src="images/garden-room.jpg" alt="Timber garden room with bifold doors" loading="lazy"><figcaption>Garden room with bifolds</figcaption></figure>
+      <figure class="gal" data-i="5"><img src="images/kitchen-black.jpg" alt="Fitted kitchen with black worktops" loading="lazy"><figcaption>Fitted kitchen, black granite</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<div id="lightbox" role="dialog" aria-label="Image viewer">
+  <button id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav" id="lb-prev" aria-label="Previous">&#8592;</button>
+  <img id="lb-img" src="" alt="Project photo">
+  <button class="lb-nav" id="lb-next" aria-label="Next">&#8594;</button>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <img src="images/alcove-units.jpg" alt="Bespoke fitted living room furniture by BT Carpentry" loading="lazy">
+        <div class="about-badge"><b>5 yrs</b><small>On Checkatrade</small></div>
+      </div>
+      <div class="about-copy reveal">
+        <span class="kicker">About us</span>
+        <h2>Built on the tools, run by Bill</h2>
+        <p>BT Carpentry Construction Group is led by Bill Taylor, a carpenter by trade based in West Malling, Kent. What started as bespoke carpentry has grown into an established construction group taking on loft conversions, extensions and commercial packages, while keeping the hands on standards of a working chippy.</p>
+        <p>Every project is priced honestly, planned properly and finished to the standard we would want in our own homes. You deal with Bill directly from first visit to final walk round.</p>
+        <ul class="about-points">
+          <li><span class="dot"></span>Carpenter led, quality first</li>
+          <li><span class="dot"></span>Domestic and commercial work</li>
+          <li><span class="dot"></span>Own electricians and plumbers</li>
+          <li><span class="dot"></span>Free, no pressure quotes</li>
+        </ul>
+        <a class="tiktok-card" href="https://www.tiktok.com/@chippybill" target="_blank" rel="noopener">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M19.6 7.1a5.6 5.6 0 0 1-3.4-1.2 5.6 5.6 0 0 1-2-3.4h-3v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.3a5.9 5.9 0 0 0-.8-.1 5.7 5.7 0 1 0 5.7 5.7V9.6a8.6 8.6 0 0 0 5.3 1.8v-3a5.5 5.5 0 0 1 0-1.3z"/></svg>
+          <span><b>@chippybill on TikTok</b><small>Watch the jobs as they happen</small></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">How it works</span>
+      <h2>Straightforward from quote to completion</h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc reveal"><h3>Get in touch</h3><p>Call Bill or send the quick form with a few details about your project.</p></div>
+      <div class="proc reveal"><h3>Site visit &amp; quote</h3><p>We visit, talk through what you want and put together a clear free quote.</p></div>
+      <div class="proc reveal"><h3>The build</h3><p>Our carpenters, electricians and plumbers deliver the job as one team.</p></div>
+      <div class="proc reveal"><h3>Final walk round</h3><p>We walk the finished work with you and only sign off when you are happy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage" id="coverage">
+  <div class="wrap">
+    <div class="cov-grid">
+      <div class="reveal">
+        <span class="kicker">Where we work</span>
+        <h2>West Malling &amp; <span>30 miles around</span></h2>
+        <p>We are based in West Malling and cover homes and commercial sites across Kent and the surrounding area, roughly a 30 mile radius from our base.</p>
+        <div class="radius-badge"><b>30 mi</b><small>Radius from<br>West Malling</small></div>
+      </div>
+      <div class="reveal">
+        <div class="cov-towns">
+          <span>West Malling</span><span>Kings Hill</span><span>Maidstone</span><span>Aylesford</span><span>Snodland</span><span>Tonbridge</span><span>Sevenoaks</span><span>Tunbridge Wells</span><span>Paddock Wood</span><span>Rochester</span><span>Chatham</span><span>Gillingham</span><span>Sittingbourne</span><span>Gravesend</span><span>Dartford</span><span>Sidcup</span><span>Bromley</span><span>Orpington</span><span>Swanley</span><span>&amp; surrounding areas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="wrap cta-in">
+    <div class="reveal">
+      <h2>Ready to get a price on your project?</h2>
+      <p>Free quotes on carpentry, lofts, extensions and commercial work. No call centres and no lead platforms, you speak to Bill directly.</p>
+    </div>
+    <div class="hero-ctas reveal" style="margin-top:0;opacity:1;animation:none">
+      <a class="btn btn-dark" href="#contact">Request a Free Quote</a>
+      <a class="btn btn-white" href="tel:07847612378">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        07847 612378
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Contact</span>
+      <h2>Tell us about your project</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="c-item">
+          <span class="dot-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>
+          <div><b>Call Bill</b><a href="tel:07847612378">07847 612378</a></div>
+        </div>
+        <div class="c-item">
+          <span class="dot-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+          <div><b>Based in</b><small>West Malling, Kent. Covering a 30 mile radius.</small></div>
+        </div>
+        <div class="c-item">
+          <span class="dot-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M19.6 7.1a5.6 5.6 0 0 1-3.4-1.2 5.6 5.6 0 0 1-2-3.4h-3v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.3a5.9 5.9 0 0 0-.8-.1 5.7 5.7 0 1 0 5.7 5.7V9.6a8.6 8.6 0 0 0 5.3 1.8v-3a5.5 5.5 0 0 1 0-1.3z"/></svg></span>
+          <div><b>TikTok</b><a href="https://www.tiktok.com/@chippybill" target="_blank" rel="noopener">@chippybill</a></div>
+        </div>
+        <div class="c-item">
+          <span class="dot-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+          <div><b>Also find us on</b><small>Checkatrade (5 years) and Book a Builder</small></div>
+        </div>
+      </div>
+      <form class="reveal" onsubmit="event.preventDefault();alert('Thanks, your enquiry has been sent. Bill will be in touch shortly. (Demo form on this mockup.)');this.reset();">
+        <h3>Request your free quote</h3>
+        <p>Send a few details and Bill will come back to you to arrange a visit.</p>
+        <div class="f-row">
+          <div class="f-field"><label for="f-name">Name</label><input id="f-name" type="text" required placeholder="Your name"></div>
+          <div class="f-field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" required placeholder="Your number"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-field"><label for="f-town">Town / postcode</label><input id="f-town" type="text" placeholder="e.g. West Malling"></div>
+          <div class="f-field"><label for="f-type">Project type</label>
+            <select id="f-type">
+              <option>Loft conversion</option>
+              <option>Extension</option>
+              <option>Bespoke carpentry</option>
+              <option>Garden room / outbuilding</option>
+              <option>Kitchen or bathroom</option>
+              <option>Commercial carpentry</option>
+              <option>Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field full"><label for="f-msg">Tell us about the job</label><textarea id="f-msg" placeholder="A little about your project, timescales and anything useful"></textarea></div>
+        </div>
+        <button class="btn btn-orange" type="submit">Send Enquiry
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="form-note">Prefer to talk? Call Bill on <a href="tel:07847612378" style="color:var(--orange);font-weight:700">07847 612378</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-brand" href="#top">
+          <svg width="42" height="42" viewBox="0 0 46 46" aria-hidden="true">
+            <circle cx="23" cy="23" r="21" fill="#3a3d42"/>
+            <circle cx="23" cy="23" r="21" fill="none" stroke="#e8721c" stroke-width="2.5" stroke-dasharray="96 36" stroke-linecap="round" transform="rotate(-50 23 23)"/>
+            <text x="23" y="29" text-anchor="middle" font-family="Big Shoulders Display,sans-serif" font-weight="800" font-size="19" fill="#fff" letter-spacing="1">BT</text>
+          </svg>
+          <span class="logotype" style="display:flex;flex-direction:column;line-height:1">
+            <b style="font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:.06em;text-transform:uppercase">BT <i style="font-style:normal;color:var(--orange)">Carpentry</i></b>
+            <small style="font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--smoke);margin-top:4px">Construction Group</small>
+          </span>
+        </a>
+        <p>Carpentry, loft conversions, extensions and commercial carpentry across West Malling, Kent and a 30 mile radius.</p>
+      </div>
+      <ul class="foot-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#coverage">Areas We Cover</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
+      </ul>
+      <ul class="foot-links">
+        <li><a href="tel:07847612378">07847 612378</a></li>
+        <li><a href="https://www.tiktok.com/@chippybill" target="_blank" rel="noopener">TikTok: @chippybill</a></li>
+        <li><a href="#">Checkatrade profile</a></li>
+        <li><a href="#">Book a Builder profile</a></li>
+      </ul>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 BT Carpentry Construction Group. All rights reserved.</span>
+      <span>West Malling, Kent</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" href="tel:07847612378" aria-label="Call BT Carpentry">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+  </a>
+  <a class="fab fab-tt" href="https://www.tiktok.com/@chippybill" target="_blank" rel="noopener" aria-label="BT Carpentry on TikTok">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M19.6 7.1a5.6 5.6 0 0 1-3.4-1.2 5.6 5.6 0 0 1-2-3.4h-3v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.3a5.9 5.9 0 0 0-.8-.1 5.7 5.7 0 1 0 5.7 5.7V9.6a8.6 8.6 0 0 0 5.3 1.8v-3a5.5 5.5 0 0 1 0-1.3z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loader
+const loaderEl=document.getElementById('loader');
+function loaderDone(){
+  if(loaderEl.classList.contains('done'))return;
+  loaderEl.classList.add('done');
+  setTimeout(()=>loaderEl.classList.add('gone'),600);
+}
+window.addEventListener('load',()=>setTimeout(loaderDone,1900));
+setTimeout(loaderDone,3500);
+
+// Nav scroll state + FABs
+const nav=document.getElementById('nav'),fabs=document.getElementById('fabs');
+addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>10);
+  fabs.classList.toggle('show',scrollY>innerHeight*.6);
+},{passive:true});
+
+// Mobile menu
+const burger=document.getElementById('burger'),mm=document.getElementById('mobile-menu'),shade=document.getElementById('menu-shade');
+function toggleMenu(force){
+  const open=force!==undefined?force:!mm.classList.contains('open');
+  mm.classList.toggle('open',open);shade.classList.toggle('open',open);
+  burger.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+burger.addEventListener('click',()=>toggleMenu());
+shade.addEventListener('click',()=>toggleMenu(false));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Lightbox
+const shots=[...document.querySelectorAll('.gal')].map(g=>({src:g.querySelector('img').src,alt:g.querySelector('img').alt}));
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img');
+let idx=0;
+function showLb(i){idx=(i+shots.length)%shots.length;lbImg.src=shots[idx].src;lbImg.alt=shots[idx].alt;lb.classList.add('open');document.body.style.overflow='hidden'}
+function hideLb(){lb.classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('.gal').forEach(g=>g.addEventListener('click',()=>showLb(+g.dataset.i)));
+document.getElementById('lb-close').addEventListener('click',hideLb);
+document.getElementById('lb-prev').addEventListener('click',e=>{e.stopPropagation();showLb(idx-1)});
+document.getElementById('lb-next').addEventListener('click',e=>{e.stopPropagation();showLb(idx+1)});
+lb.addEventListener('click',e=>{if(e.target===lb)hideLb()});
+addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')hideLb();
+  if(e.key==='ArrowLeft')showLb(idx-1);
+  if(e.key==='ArrowRight')showLb(idx+1);
+});
+</script>
+</body>
+</html>
