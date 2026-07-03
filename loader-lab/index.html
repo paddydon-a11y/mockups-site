@@ -867,6 +867,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes thDoorL{to{transform:translateX(-101%)}}
 @keyframes thDoorR{to{transform:translateX(101%)}}
 
+/* auto slide (automatic doors — sensor scan + approach dot, then panels glide apart) */
+#ld-autoslide{background:#101214}
+#ld-autoslide .as-door{position:absolute;top:0;bottom:0;width:51%;background:linear-gradient(105deg,#191c1e 0%,#1e2124 55%,#181b1d 100%);border-top:3px solid #2e3032;will-change:transform;z-index:4}
+#ld-autoslide .as-door::before{content:"";position:absolute;top:0;bottom:0;width:1px;background:#474949}
+#ld-autoslide .as-door::after{content:"";position:absolute;top:50%;height:120px;width:4px;margin-top:-60px;border-radius:3px;background:#474949}
+#ld-autoslide .as-door.l{left:0}
+#ld-autoslide .as-door.l::before{right:0}
+#ld-autoslide .as-door.l::after{right:18px}
+#ld-autoslide .as-door.r{right:0}
+#ld-autoslide .as-door.r::before{left:0}
+#ld-autoslide .as-door.r::after{left:18px}
+#ld-autoslide .as-sensor{position:absolute;top:0;left:0;right:0;height:3px;background:#242628;z-index:5}
+#ld-autoslide .as-sensor i{display:block;height:100%;width:100%;background:#47aaeb;transform:scaleX(0);transform-origin:left}
+#ld-autoslide .as-dot{position:absolute;top:16px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#47aaeb;box-shadow:0 0 12px #47aaeb;opacity:0;z-index:5}
+#ld-autoslide .wm-zone{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:12px}
+#ld-autoslide .wordmark{color:#fff;opacity:0}
+#ld-autoslide .wordmark b{color:#47aaeb}
+#ld-autoslide .wordsub{color:#9ca3af;opacity:0}
+#ld-autoslide.play .as-sensor i{animation:asScan .8s ease .1s forwards}
+#ld-autoslide.play .as-dot{animation:asBlink .9s ease .15s}
+#ld-autoslide.play .as-door.l{animation:asDoorL .85s cubic-bezier(.65,0,.35,1) .95s forwards}
+#ld-autoslide.play .as-door.r{animation:asDoorR .85s cubic-bezier(.65,0,.35,1) .95s forwards}
+#ld-autoslide.play .wordmark{animation:wordIn .5s ease .9s forwards}
+#ld-autoslide.play .wordsub{animation:wordIn .5s ease 1.05s forwards}
+@keyframes asScan{to{transform:scaleX(1)}}
+@keyframes asBlink{0%,100%{opacity:0}20%,45%{opacity:1}60%{opacity:.25}80%{opacity:1}}
+@keyframes asDoorL{to{transform:translateX(-102%)}}
+@keyframes asDoorR{to{transform:translateX(102%)}}
+
 /* reduced motion: no theatrics, quick brand card */
 @media (prefers-reduced-motion: reduce){
   .loader *{animation:none !important;transition:none !important}
@@ -1393,6 +1422,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Groundworks / Driveways / Tarmac / Surfacing</span>
       <h3>Surface Course Layup</h3>
       <p>A driveway/road cross-section builds up from the ground: a grey sub-base course scales in, then a dark binder course, then the accent finished course, before a bright screed bar glides left-to-right across the top leaving a smooth band and the wordmark seats beneath. The layered build-up IS the trade. First used on pp-contracting.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-autoslide" data-dur="2400">
+      <span class="trade">Automatic Doors / Entrance Systems / Access</span>
+      <h3>Auto Slide</h3>
+      <p>An approach sensor scans across the top of the screen and its detector dot blinks, then two glass door panels with meeting stiles and handle bars glide apart from the centre exactly like an automatic sliding entrance, revealing the wordmark. Distinct from Threshold (generic door panels): the sensor detection IS the automatic-door trade. First used on dac-automation.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -2158,6 +2193,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">PP <b>Contracting</b></div>
     <div class="wordsub">Groundworks &middot; Driveways &middot; Retford</div>
   </div>
+</div>
+
+<div class="loader" id="ld-autoslide" aria-hidden="true">
+  <div class="wm-zone">
+    <div class="wordmark"><b>DAC</b> Automation</div>
+    <div class="wordsub">Automatic Doors &middot; Midlands</div>
+  </div>
+  <div class="as-door l"></div>
+  <div class="as-door r"></div>
+  <div class="as-sensor"><i></i></div>
+  <div class="as-dot"></div>
 </div>
 
 <script>
