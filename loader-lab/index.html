@@ -238,6 +238,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes sqRun{to{transform:translateX(calc(100vw + 120px))}}
 @keyframes sqSpark{0%{opacity:0;transform:scale(.4) rotate(-20deg)}55%{opacity:1;transform:scale(1.15)}100%{opacity:.95;transform:scale(1)}}
 
+/* ===== 6c. RENOVATION — dust sheet unveil ===== */
+#ld-dustsheet{background:#081b25;flex-direction:column}
+#ld-dustsheet .wm-zone{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(10px) scale(.97)}
+#ld-dustsheet.play .wm-zone{animation:dsBrand .7s ease .95s forwards}
+#ld-dustsheet .ds-crown{width:74px;margin-bottom:14px}
+#ld-dustsheet .wordmark{color:#f6f1e3;letter-spacing:.12em}
+#ld-dustsheet .wordmark b{color:#e7c268;font-weight:900}
+#ld-dustsheet .wordsub{color:#8aa0a6;letter-spacing:.3em}
+#ld-dustsheet .ds-bar{width:120px;height:2px;background:#1d4254;margin-top:18px;position:relative;overflow:hidden;border-radius:2px}
+#ld-dustsheet .ds-bar::after{content:"";position:absolute;top:0;left:-46px;width:44px;height:100%;background:#d2a63c}
+#ld-dustsheet.play .ds-bar::after{animation:dsBar 1.1s ease-in-out .95s infinite}
+#ld-dustsheet .ds-sheet{position:absolute;inset:-6%;z-index:3;will-change:transform}
+#ld-dustsheet.play .ds-sheet{animation:dsPull 1s cubic-bezier(.55,.06,.68,.19) .55s forwards}
+#ld-dustsheet .ds-sheet svg{width:100%;height:100%}
+@keyframes dsPull{to{transform:translate(115%,36%) rotate(13deg)}}
+@keyframes dsBrand{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes dsBar{0%{left:-46px}100%{left:120px}}
+
 /* ===== 7. PATIOS / PAVING — slab lay ===== */
 #ld-slab{background:#1a2130;flex-direction:column}
 #ld-slab .patio{position:absolute;inset:-4%;display:flex;flex-direction:column;gap:7px;justify-content:center}
@@ -1190,6 +1208,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A steamy streaked film covers the screen, a squeegee blade travels left-to-right wiping it crystal clear, sparkles pop and the wordmark lands. First used on pi-cleaning-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-dustsheet" data-dur="2400">
+      <span class="trade">Renovation / Refurbishment</span>
+      <h3>Dust Sheet Unveil</h3>
+      <p>A draped dust sheet covers the screen, then pulls away to the corner like a grand unveiling, revealing the crest and wordmark beneath. First used on castle-crest.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-slab" data-dur="2400">
       <span class="trade">Patios / Paving / Landscaping</span>
       <h3>Slab Lay</h3>
@@ -1635,6 +1659,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="sq-film"></div>
   <div class="sq-blade"></div>
+</div>
+
+<!-- 7b. dust sheet unveil -->
+<div class="loader" id="ld-dustsheet" aria-hidden="true">
+  <div class="wm-zone">
+    <svg class="ds-crown" viewBox="0 0 74 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 40h66M8 40 4 12l16 10L37 4l17 18 16-10-4 28" stroke="#d2a63c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="4" cy="8" r="3" fill="#e7c268"/><circle cx="37" cy="4" r="3" fill="#e7c268"/><circle cx="70" cy="8" r="3" fill="#e7c268"/>
+    </svg>
+    <div class="wordmark">CASTLE <b>&amp;</b> CREST</div>
+    <div class="wordsub">Home Renovation &middot; London</div>
+    <div class="ds-bar"></div>
+  </div>
+  <div class="ds-sheet">
+    <svg viewBox="0 0 480 380" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="dsCloth" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ece7d8"/><stop offset=".28" stop-color="#d8d1bd"/>
+          <stop offset=".46" stop-color="#efe9db"/><stop offset=".66" stop-color="#d2cab4"/>
+          <stop offset=".85" stop-color="#e8e2d2"/><stop offset="1" stop-color="#cfc7b1"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 0h480v322c-22 14-44-10-66 4s-40 22-62 10-46 4-68 14-46-6-68-16-44 12-66 18-50-16-72-8-56 10-78-4V0z" fill="url(#dsCloth)"/>
+      <path d="M70 0c8 90 -12 200 6 316" stroke="#b9b09a" stroke-width="2" fill="none" opacity=".5"/>
+      <path d="M180 0c-10 100 14 210 2 330" stroke="#b9b09a" stroke-width="2" fill="none" opacity=".4"/>
+      <path d="M300 0c10 110 -12 200 0 328" stroke="#b9b09a" stroke-width="2" fill="none" opacity=".5"/>
+      <path d="M400 0c6 90 -8 210 4 322" stroke="#b9b09a" stroke-width="2" fill="none" opacity=".4"/>
+    </svg>
+  </div>
 </div>
 
 <!-- 8. trowel float -->
