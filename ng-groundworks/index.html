@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NG Groundworks | Groundworks, Fencing, Patios &amp; Driveways in Norfolk</title>
+<meta name="description" content="NG Groundworks: domestic and commercial groundworks, fencing, patios, driveways and extensions across King's Lynn, Norfolk and surrounding areas. Experienced six-man team and free quotes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2f2ee;
+  --paper2:#e9e9e3;
+  --ink:#15171b;
+  --ink2:#3c4048;
+  --line:#d4d4cc;
+  --blue:#1c47c7;
+  --blue-deep:#12308f;
+  --blue-ink:#0d1f52;
+  --white:#ffffff;
+  --font-display:"Big Shoulders Display",sans-serif;
+  --font-body:"Barlow",sans-serif;
+  --font-label:"Barlow Condensed",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+em{font-style:normal}
+h1,h2,h3{font-family:var(--font-display);line-height:1;text-transform:uppercase}
+.hl{color:var(--blue);font-weight:900}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ---------- loader: fence build ---------- */
+#loader{position:fixed;inset:0;background:var(--paper);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .5s ease,visibility .5s ease}
+#loader.done{opacity:0;visibility:hidden}
+.fence{display:flex;align-items:flex-end;gap:6px;height:74px}
+.fence .post{width:9px;height:70px;background:var(--ink);transform:translateY(-110px);animation:postDrop .45s cubic-bezier(.6,0,.4,1.4) forwards}
+.fence .post:nth-child(1){animation-delay:.1s}
+.fence .post:nth-child(3){animation-delay:.25s}
+.fence .post:nth-child(5){animation-delay:.4s}
+.fence .panel{width:64px;height:54px;background:repeating-linear-gradient(90deg,var(--blue) 0 8px,var(--blue-deep) 8px 10px);transform:scaleX(0);transform-origin:left;animation:panelSlide .4s ease forwards}
+.fence .panel:nth-child(2){animation-delay:.62s}
+.fence .panel:nth-child(4){animation-delay:.82s}
+@keyframes postDrop{to{transform:translateY(0)}}
+@keyframes panelSlide{to{transform:scaleX(1)}}
+.loader-word{font-family:var(--font-display);font-weight:900;font-size:1.9rem;letter-spacing:.06em;text-transform:uppercase;opacity:0;animation:wordIn .5s ease 1.05s forwards}
+.loader-word em{color:var(--blue)}
+@keyframes wordIn{to{opacity:1}}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--paper);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(21,23,27,.08)}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;font-family:var(--font-display);text-transform:uppercase;line-height:1}
+.logo .ng{font-size:2.1rem;font-weight:900;color:var(--blue);letter-spacing:-.02em}
+.logo .rest{display:flex;flex-direction:column;font-weight:700;font-size:.86rem;letter-spacing:.14em;color:var(--ink)}
+.logo .rest span:last-child{color:var(--ink2);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-family:var(--font-label);font-weight:600;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.nav-links a:hover{color:var(--blue)}
+.nav-call{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff !important;padding:11px 20px;text-decoration:none;font-family:var(--font-label);font-weight:600;letter-spacing:.1em;font-size:1rem}
+.nav-call:hover{background:var(--blue-deep)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:26px;height:3px;background:var(--ink);margin:5px 0;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:var(--paper);z-index:190;padding:36px 24px;flex-direction:column;gap:6px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;font-family:var(--font-display);font-weight:800;font-size:2rem;text-transform:uppercase;color:var(--ink);padding:10px 0;border-bottom:1px solid var(--line)}
+.mobile-menu a:hover{color:var(--blue)}
+.mobile-menu .mm-call{margin-top:22px;background:var(--blue);color:#fff;text-align:center;padding:16px;border-bottom:0;font-size:1.4rem}
+
+/* ---------- hero ---------- */
+header.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;isolation:isolate;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kb 18s ease-out forwards}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,17,26,.42) 0%,rgba(13,17,26,.18) 40%,rgba(13,17,26,.82) 100%)}
+.hero-in{width:100%;max-width:1200px;margin:0 auto;padding:140px 24px 64px}
+.hero h1{font-size:clamp(3rem,8.6vw,6.4rem);font-weight:900;margin:0 0 .22em;max-width:13ch}
+.hero h1 .hl{color:#9db4f7}
+.hero p{max-width:54ch;font-size:1.12rem;color:#e8eaef}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;text-decoration:none;font-family:var(--font-label);font-weight:600;font-size:1.08rem;letter-spacing:.12em;text-transform:uppercase;transition:.2s}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-deep)}
+.btn-ghost{border:2px solid rgba(255,255,255,.75);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+.hero-strip{border-top:1px solid rgba(255,255,255,.28);margin-top:44px;padding-top:18px;display:flex;flex-wrap:wrap;gap:10px 38px;font-size:1rem;font-weight:600;color:#fff}
+
+/* ---------- ticker band ---------- */
+.band{background:var(--ink);color:var(--paper);overflow:hidden;padding:14px 0;border-top:4px solid var(--blue)}
+.band-track{display:flex;gap:56px;white-space:nowrap;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.25rem;letter-spacing:.08em;animation:tick 30s linear infinite;width:max-content}
+.band-track span em{color:#7d97ec;margin-right:56px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:96px 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(2.4rem,5.4vw,4rem);font-weight:800;max-width:15ch}
+.sec-head h2::before{content:"";display:block;width:46px;height:6px;background:var(--blue);margin-bottom:18px}
+.sec-head p{max-width:44ch;color:var(--ink2)}
+
+/* services */
+#services{background:var(--paper)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{position:relative;background:var(--white);border:1px solid var(--line);padding:30px 28px 34px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s;overflow:hidden}
+.svc:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(21,23,27,.10)}
+.svc::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--line);transition:background .25s}
+.svc:hover::before{background:var(--blue)}
+.svc h3{font-size:1.7rem;font-weight:800}
+.svc p{color:var(--ink2);font-size:.99rem}
+.svc.feature{background:var(--blue-ink);color:#fff;border-color:var(--blue-ink)}
+.svc.feature::before{background:var(--blue)}
+.svc.feature p{color:#c3cdea}
+.svc-icon{width:44px;height:44px;color:var(--blue)}
+.svc.feature .svc-icon{color:#8ea6f2}
+
+/* team band */
+#team{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+#team::before{content:"NG";position:absolute;right:-40px;bottom:-90px;font-family:var(--font-display);font-weight:900;font-size:26rem;line-height:1;color:rgba(255,255,255,.045);pointer-events:none}
+.team-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.team-grid h2{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;margin:0 0 18px}
+.team-grid h2::before{content:"";display:block;width:46px;height:6px;background:var(--blue);margin-bottom:18px}
+.team-grid h2 .hl{color:#8ea6f2}
+.team-grid p{color:#c9ccd4;margin-bottom:14px}
+.team-photo{position:relative}
+.team-photo img{width:100%;height:460px;object-fit:cover}
+.team-photo::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid var(--blue);z-index:-1}
+.team-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:30px;background:rgba(255,255,255,.12)}
+.tstat{background:var(--ink);padding:18px 14px}
+.tstat b{display:block;font-family:var(--font-display);font-weight:900;font-size:2.2rem;color:#fff;line-height:1}
+.tstat b span{color:var(--blue)}
+.tstat > span{font-size:.92rem;font-weight:600;color:#9ba0ab}
+
+/* gallery */
+#work{background:var(--paper2)}
+.masonry{columns:3;column-gap:18px}
+.masonry figure{margin:0 0 18px;position:relative;cursor:pointer;overflow:hidden;break-inside:avoid;background:var(--ink)}
+.masonry img{width:100%;transition:transform .5s ease,opacity .4s}
+.masonry figure:hover img{transform:scale(1.05);opacity:.82}
+.masonry figcaption{position:absolute;left:0;bottom:0;right:0;padding:34px 16px 12px;background:linear-gradient(180deg,transparent,rgba(13,17,26,.85));color:#fff;font-size:.95rem;font-weight:500;opacity:0;transform:translateY(8px);transition:.3s}
+.masonry figure:hover figcaption{opacity:1;transform:translateY(0)}
+@media(hover:none){.masonry figcaption{display:none}}
+
+/* lightbox */
+#lightbox{position:fixed;inset:0;background:rgba(13,15,20,.94);z-index:500;display:none;align-items:center;justify-content:center;padding:34px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:92vw;max-height:84vh;object-fit:contain}
+#lightbox .lb-close{position:absolute;top:20px;right:26px;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+#lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:0;color:#fff;font-size:2rem;width:52px;height:52px;cursor:pointer}
+#lightbox .lb-nav:hover{background:var(--blue)}
+#lightbox .prev{left:18px}
+#lightbox .next{right:18px}
+#lightbox .lb-cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#c9ccd4;font-size:.95rem}
+
+/* process */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+.proc{background:var(--white);border:1px solid var(--line);padding:28px 24px;position:relative}
+.proc::before{counter-increment:step;content:"0" counter(step);font-family:var(--font-display);font-weight:900;font-size:3rem;color:var(--paper2);position:absolute;top:12px;right:16px;line-height:1;-webkit-text-stroke:1px var(--line)}
+.proc h3{font-size:1.35rem;font-weight:800;margin-bottom:10px;position:relative}
+.proc p{color:var(--ink2);font-size:.96rem;position:relative}
+.proc .pk{display:inline-block;width:30px;height:4px;background:var(--blue);margin-bottom:16px}
+
+/* coverage + quote CTA */
+#coverage{background:var(--blue-ink);color:#fff;position:relative;overflow:hidden}
+#coverage::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 90px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 90px)}
+.cov-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative}
+.cov-grid h2{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;margin:0 0 18px}
+.cov-grid h2::before{content:"";display:block;width:46px;height:6px;background:var(--blue);margin-bottom:18px}
+.cov-grid h2 .hl{color:#8ea6f2}
+.cov-grid p{color:#c3cdea}
+.cov-areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.cov-areas span{border:1px solid rgba(255,255,255,.3);padding:8px 16px;font-size:.95rem;font-weight:500}
+.cov-card{background:#fff;color:var(--ink);padding:38px 34px}
+.cov-card h3{font-size:1.9rem;font-weight:800;margin-bottom:10px}
+.cov-card p{color:var(--ink2);margin-bottom:22px}
+.cov-card .btn{width:100%;justify-content:center}
+.cov-card .btn + .btn{margin-top:10px}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--blue)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.c-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.c-item .ci{width:44px;height:44px;flex:none;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center}
+.c-item .ci svg{width:22px;height:22px}
+.c-item b{font-size:.92rem;color:var(--ink2);display:block;font-weight:600}
+.c-item a{font-size:1.2rem;font-weight:600;text-decoration:none;word-break:break-word}
+.c-item a:hover{color:var(--blue)}
+.c-item p{font-size:1.05rem;font-weight:500}
+form{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--blue);padding:36px 32px}
+form h3{font-size:1.8rem;font-weight:800;margin-bottom:6px}
+form > p{color:var(--ink2);margin-bottom:22px;font-size:.98rem}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f-field{margin-bottom:14px}
+.f-field label{display:block;font-size:.9rem;font-weight:600;color:var(--ink2);margin-bottom:6px}
+.f-field input,.f-field select,.f-field textarea{width:100%;border:1px solid var(--line);background:var(--paper);padding:13px 14px;font-family:var(--font-body);font-size:1rem;color:var(--ink)}
+.f-field input:focus,.f-field select:focus,.f-field textarea:focus{outline:2px solid var(--blue);outline-offset:-1px}
+form .btn{width:100%;justify-content:center;border:0;cursor:pointer;font-size:1.1rem}
+.form-note{font-size:.85rem;color:var(--ink2);margin-top:12px;text-align:center}
+
+/* footer */
+footer{background:var(--ink);color:#9ba0ab;padding:54px 0 96px}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:center}
+footer .logo .rest{color:#fff}
+footer .logo .rest span:last-child{color:#9ba0ab}
+.foot-links{display:flex;flex-wrap:wrap;gap:22px;list-style:none}
+.foot-links a{text-decoration:none;font-family:var(--font-label);letter-spacing:.12em;text-transform:uppercase;font-size:.9rem}
+.foot-links a:hover{color:#fff}
+.foot-base{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:22px;font-size:.88rem;display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
+
+/* FABs + sticky call */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:150;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(14px);transition:.35s;pointer-events:none}
+.fabs.show{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 24px rgba(21,23,27,.28);text-decoration:none}
+.fab svg{width:26px;height:26px}
+.fab-call{background:var(--blue)}
+.fab-fb{background:#1877f2}
+.sticky-call{display:none;position:fixed;left:0;right:0;bottom:0;z-index:160;background:var(--blue);color:#fff;text-align:center;padding:15px;font-family:var(--font-label);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:1.05rem;text-decoration:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:960px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid,.cov-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .masonry{columns:2}
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .team-photo img{height:380px}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .nav-call{display:none}
+  .burger{display:block}
+  section{padding:70px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .masonry{columns:1}
+  .proc-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .sticky-call{display:block}
+  .fabs{bottom:76px}
+  footer{padding-bottom:130px}
+  .hero-in{padding-top:120px}
+}
+</style>
+</head>
+<body>
+
+<!-- loader -->
+<div id="loader" aria-hidden="true">
+  <div class="fence">
+    <span class="post"></span><span class="panel"></span><span class="post"></span><span class="panel"></span><span class="post"></span>
+  </div>
+  <div class="loader-word"><em>NG</em> Groundworks</div>
+</div>
+
+<!-- nav -->
+<nav id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top">
+      <span class="ng">NG</span>
+      <span class="rest"><span>Groundworks</span><span>Norfolk</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#team">The Team</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-call js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" data-d="MDczNzUgMzc4ODgx">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+      <span>Call us</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#team">The Team</a>
+  <a href="#work">Our Work</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Contact</a>
+  <a class="mm-call js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" data-d="Q2FsbCAwNzM3NSAzNzg4ODE="><span>Call us</span></a>
+</div>
+
+<!-- hero -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="photos/patio-sandstone.jpg" alt="Indian sandstone patio installed by NG Groundworks in Norfolk"></div>
+  <div class="hero-in">
+    <h1>Groundworks, fencing &amp; patios <span class="hl">across Norfolk</span></h1>
+    <p>NG Groundworks is a six-man team based in King's Lynn, taking on domestic and commercial groundworks, fencing, patios, driveways and extensions across Norfolk. Solid preparation, tidy finishes and straight answers on price.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-blue" href="#contact">Get a Free Quote</a>
+      <a class="btn btn-ghost js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" data-d="Q2FsbCBOaWNrOiAwNzM3NSAzNzg4ODE="><span>Call Nick</span></a>
+    </div>
+    <div class="hero-strip">
+      <span>Domestic &amp; commercial</span>
+      <span>Team of six</span>
+      <span>Free, no-obligation quotes</span>
+    </div>
+  </div>
+</header>
+
+<!-- ticker -->
+<div class="band" aria-hidden="true">
+  <div class="band-track" id="ticker">
+    <span>Groundworks <em>&#9670;</em> Fencing <em>&#9670;</em> Patios <em>&#9670;</em> Driveways <em>&#9670;</em> Extensions <em>&#9670;</em> Brickwork &amp; Garden Walls <em>&#9670;</em></span>
+  </div>
+</div>
+
+<!-- services -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Five trades, <span class="hl">one</span> reliable team</h2>
+      <p>From breaking ground to the finished job, we handle the whole lot in-house. No shortcuts: careful preparation and clean workmanship on every job.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc feature rv">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 40h40M8 40V28l10-6 8 5V40"/><path d="M26 27l10-14 8 6-8 10"/><circle cx="40" cy="17" r="2.5"/></svg>
+        <h3>Groundworks</h3>
+        <p>Site clearance, excavation, footings, drainage and concrete bases for domestic and commercial projects. The unseen work that everything else stands on, done right first time.</p>
+      </article>
+      <article class="svc rv">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 42V14M20 42V14M32 42V14M44 42V14"/><path d="M4 20h40M4 34h40"/></svg>
+        <h3>Fencing</h3>
+        <p>Closeboard, panel and picket fencing with concrete posts and gravel boards, built straight and built to last. Boundaries, gardens and commercial perimeters.</p>
+      </article>
+      <article class="svc rv">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h16v12H6zM26 18h16v12H26zM6 34h10v8H6zM20 34h22v8H20zM12 6h24v8H12z"/></svg>
+        <h3>Patios</h3>
+        <p>Indian sandstone, porcelain and block paved patios and paths, laid on a proper sub-base with neat pointing and clean edges.</p>
+      </article>
+      <article class="svc rv">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 42L24 6l10 36"/><path d="M20 22h8M18 32h12"/></svg>
+        <h3>Driveways</h3>
+        <p>Block paving, gravel and paved driveways with the groundwork, drainage and edging done properly underneath, so they stay level for years.</p>
+      </article>
+      <article class="svc rv">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42V20L20 8l14 12v22"/><path d="M34 26h8v16h-8"/><path d="M14 42V30h12v12"/></svg>
+        <h3>Extensions</h3>
+        <p>Footings, slab, drainage and build for single and double storey extensions. One team from the first dig to the finished shell.</p>
+      </article>
+      <article class="svc rv">
+        <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h40M4 24h40M4 34h40M4 44h40M4 4h40"/><path d="M14 4v10M28 4v10M10 14v10M24 14v10M38 14v10M14 24v10M28 24v10M42 24v10M10 34v10M24 34v10M38 34v10"/></svg>
+        <h3>Brickwork &amp; Garden Walls</h3>
+        <p>Garden walls, piers and boundary brickwork to complement new fencing, patios and driveways, matched to your property.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- team -->
+<section id="team">
+  <div class="wrap">
+    <div class="team-grid">
+      <div class="rv">
+        <h2>A <span class="hl">six-man</span> team, not one man and a van</h2>
+        <p>NG Groundworks is run by Nick George from King's Lynn with an experienced team of six. That means jobs are planned, staffed and finished on schedule, whether it's a garden fence or a commercial groundworks package.</p>
+        <p>You deal with Nick directly from quote to completion. The site is kept tidy, the work is done once and done right, and we don't disappear halfway through.</p>
+        <div class="team-stats">
+          <div class="tstat"><b>6<span>-man</span></b><span>Experienced team</span></div>
+          <div class="tstat"><b>2<span>-in-1</span></b><span>Domestic &amp; commercial</span></div>
+          <div class="tstat"><b>1<span>00%</span></b><span>Free quotations</span></div>
+        </div>
+      </div>
+      <div class="team-photo rv">
+        <img src="photos/brickwork-team.jpg" alt="NG Groundworks team building a brick garden wall">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Our work, <span class="hl">around</span> Norfolk</h2>
+      <p>Real jobs by our own team: fencing runs, sandstone patios, block paving and brickwork from recent projects.</p>
+    </div>
+    <div class="masonry" id="gallery">
+      <figure><img src="photos/fence-closeboard.jpg" alt="Closeboard fencing with concrete posts and gravel boards"><figcaption>Closeboard fencing with concrete posts</figcaption></figure>
+      <figure><img src="photos/patio-sandstone.jpg" alt="Indian sandstone patio"><figcaption>Indian sandstone patio</figcaption></figure>
+      <figure><img src="photos/fence-front-garden.jpg" alt="Front garden closeboard fencing"><figcaption>Front boundary fencing</figcaption></figure>
+      <figure><img src="photos/path-sandstone.jpg" alt="Sandstone path with picket fencing"><figcaption>Sandstone path and picket fence</figcaption></figure>
+      <figure><img src="photos/porch-block-paving.jpg" alt="Block paved front step and gravel driveway"><figcaption>Block paved entrance and gravel drive</figcaption></figure>
+      <figure><img src="photos/fence-gravel-yard.jpg" alt="Fencing run alongside a gravel yard"><figcaption>Commercial fencing and gravel yard</figcaption></figure>
+      <figure><img src="photos/patio-buff.jpg" alt="Buff riven paving patio"><figcaption>Riven paved patio</figcaption></figure>
+      <figure><img src="photos/brickwork-team.jpg" alt="Brick garden wall under construction"><figcaption>Garden wall brickwork</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- lightbox -->
+<div id="lightbox" role="dialog" aria-label="Photo viewer">
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav prev" aria-label="Previous">&#8249;</button>
+  <img src="" alt="">
+  <button class="lb-nav next" aria-label="Next">&#8250;</button>
+  <div class="lb-cap"></div>
+</div>
+
+<!-- process -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>From first call to <span class="hl">finished</span> job</h2>
+      <p>Simple, straightforward and the same every time. You always know what happens next and what it costs.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc rv"><span class="pk"></span><h3>Get in touch</h3><p>Call, message or use the form. Tell us what you're planning and where you are in Norfolk.</p></div>
+      <div class="proc rv"><span class="pk"></span><h3>Site visit &amp; quote</h3><p>Nick visits, measures up and talks the job through. You get a clear, free quotation with no obligation.</p></div>
+      <div class="proc rv"><span class="pk"></span><h3>The work</h3><p>The team arrives when we say we will, works clean and keeps you informed as the job progresses.</p></div>
+      <div class="proc rv"><span class="pk"></span><h3>Walk-round &amp; handover</h3><p>We walk the finished job with you, tidy the site and leave everything as it should be.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- coverage / quote -->
+<section id="coverage">
+  <div class="wrap">
+    <div class="cov-grid">
+      <div class="rv">
+        <h2>Based in King's Lynn, working <span class="hl">across</span> Norfolk</h2>
+        <p>We take on domestic and commercial work throughout Norfolk and the surrounding areas. If you're nearby, get in touch and we'll tell you straight away if we can help.</p>
+        <div class="cov-areas">
+          <span>King's Lynn</span><span>Norwich</span><span>Dereham</span><span>Swaffham</span><span>Fakenham</span><span>Downham Market</span><span>Wisbech</span><span>Hunstanton</span><span>&amp; surrounding areas</span>
+        </div>
+      </div>
+      <div class="cov-card rv">
+        <h3>Ready to start?</h3>
+        <p>Send a few details for a free, no-obligation quote, or speak to Nick directly.</p>
+        <a class="btn btn-blue" href="#contact">Request a Free Quote</a>
+        <a class="btn btn-ink js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" data-d="Q2FsbCAwNzM3NSAzNzg4ODE="><span>Call us</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Get your <span class="hl">free</span> quote</h2>
+      <p>Phone is quickest, but the form works just as well. We'll get back to you promptly.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="c-item">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></span>
+          <div><b>Call Nick</b><a class="js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" data-d="MDczNzUgMzc4ODgx"><span>Call us</span></a></div>
+        </div>
+        <div class="c-item">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+          <div><b>Email</b><a class="js-email" href="#contact" data-e="bmcuZ3JvdW5kd29ya3M3M0Bob3RtYWlsLmNvbQ=="><span>Email us</span></a></div>
+        </div>
+        <div class="c-item">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21.9v-7h2.4l.4-2.9h-2.8V10c0-.8.2-1.4 1.4-1.4h1.5V6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8v2.9h2.5v7c-4.8-.7-8.5-4.9-8.5-9.9C2 6.5 6.5 2 12 2s10 4.5 10 10c0 5-3.7 9.2-8.5 9.9z"/></svg></span>
+          <div><b>Facebook</b><a href="https://www.facebook.com/search/top?q=NG%20fencing%20and%20groundworks" target="_blank" rel="noopener">NG Fencing &amp; Groundworks</a></div>
+        </div>
+        <div class="c-item">
+          <span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg></span>
+          <div><b>Based in</b><p>King's Lynn, Norfolk</p></div>
+        </div>
+      </div>
+      <form class="rv" id="quoteForm">
+        <h3>Request a quote</h3>
+        <p>A few quick details and we'll come back to you with a free, no-obligation quote.</p>
+        <div class="f-row">
+          <div class="f-field"><label for="fn">Name</label><input id="fn" type="text" required></div>
+          <div class="f-field"><label for="fp">Phone</label><input id="fp" type="tel" required></div>
+        </div>
+        <div class="f-row">
+          <div class="f-field"><label for="fl">Town / village</label><input id="fl" type="text"></div>
+          <div class="f-field"><label for="fs">Service</label>
+            <select id="fs">
+              <option>Groundworks</option><option>Fencing</option><option>Patios</option><option>Driveways</option><option>Extensions</option><option>Brickwork &amp; garden walls</option><option>Something else</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-field"><label for="fm">Tell us about the job</label><textarea id="fm" rows="4"></textarea></div>
+        <button class="btn btn-blue" type="submit">Send Enquiry</button>
+        <p class="form-note">Mockup demo form. On the live site this goes straight to NG Groundworks.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="logo" href="#top">
+        <span class="ng">NG</span>
+        <span class="rest"><span>Groundworks</span><span>Norfolk</span></span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">The Team</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 NG Groundworks, King's Lynn, Norfolk. All rights reserved.</span>
+      <span>Groundworks &middot; Fencing &middot; Patios &middot; Driveways &middot; Extensions</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs + sticky call -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" aria-label="Call NG Groundworks"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg></a>
+  <a class="fab fab-fb" href="https://www.facebook.com/search/top?q=NG%20fencing%20and%20groundworks" target="_blank" rel="noopener" aria-label="NG Groundworks on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21.9v-7h2.4l.4-2.9h-2.8V10c0-.8.2-1.4 1.4-1.4h1.5V6c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8v2.9h2.5v7c-4.8-.7-8.5-4.9-8.5-9.9C2 6.5 6.5 2 12 2s10 4.5 10 10c0 5-3.7 9.2-8.5 9.9z"/></svg></a>
+</div>
+<a class="sticky-call js-phone" href="#contact" data-p="MDczNzUzNzg4ODE=" data-d="Q2FsbCBOaWNrIGZvciBhIGZyZWUgcXVvdGU6IDA3Mzc1IDM3ODg4MQ=="><span>Call us for a free quote</span></a>
+
+<noscript><p style="text-align:center;padding:12px">To call us, dial oh-seven-three-seven-five, three-seven-eight, eight-eight-one.</p></noscript>
+
+<script>
+// decode contact details (scraper protection)
+document.querySelectorAll('.js-phone').forEach(el=>{
+  const p=atob(el.dataset.p);
+  el.href='tel:'+p;
+  if(el.dataset.d){const s=el.querySelector('span');if(s)s.textContent=atob(el.dataset.d)}
+});
+document.querySelectorAll('.js-email').forEach(el=>{
+  const e=atob(el.dataset.e);
+  el.href='mailto:'+e;
+  const s=el.querySelector('span');if(s)s.textContent=e;
+});
+
+// loader
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('done')},1500)});
+setTimeout(()=>{document.getElementById('loader').classList.add('done')},3500);
+
+// nav
+const nav=document.getElementById('nav'),burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu'),fabs=document.getElementById('fabs');
+addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>10);
+  fabs.classList.toggle('show',scrollY>innerHeight*.6);
+},{passive:true});
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mm.classList.toggle('open')});
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mm.classList.remove('open')}));
+
+// ticker duplicate
+const t=document.getElementById('ticker');t.innerHTML+=t.innerHTML;
+
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// form (demo)
+document.getElementById('quoteForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  e.target.innerHTML='<h3>Thanks, your enquiry is on its way</h3><p>We will be in touch shortly. If it is urgent, give Nick a call on the number above.</p>';
+});
+
+// lightbox
+const lb=document.getElementById('lightbox'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('.lb-cap');
+const figs=[...document.querySelectorAll('#gallery figure')];let idx=0;
+function showLb(i){idx=(i+figs.length)%figs.length;const im=figs[idx].querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lbCap.textContent=figs[idx].querySelector('figcaption').textContent;lb.classList.add('open')}
+figs.forEach((f,i)=>f.addEventListener('click',()=>showLb(i)));
+lb.querySelector('.lb-close').addEventListener('click',()=>lb.classList.remove('open'));
+lb.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();showLb(idx-1)});
+lb.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();showLb(idx+1)});
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')showLb(idx-1);if(e.key==='ArrowRight')showLb(idx+1)});
+</script>
+</body>
+</html>
