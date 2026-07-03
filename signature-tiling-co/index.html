@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Tiling &amp; Co | Premium Tiling &amp; Patios in Stoke-on-Trent</title>
+<meta name="description" content="Signature Tiling & Co. Premium wall and floor tiling, bathrooms, kitchen splashbacks and porcelain patios across Stoke-on-Trent, Staffordshire and Cheshire.">
+<meta property="og:title" content="Signature Tiling & Co, Your New Website">
+<meta property="og:description" content="Premium tiling and patios in Stoke-on-Trent. A preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/signature-tiling-co/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/signature-tiling-co/">
+<meta name="theme-color" content="#0b0d11">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#0b0d11;
+  --card:#1f2125;
+  --card-hover:#292b2f;
+  --border:#33353a;
+  --border-light:#424449;
+  --accent:#2f7ff5;
+  --accent-hover:#1666dc;
+  --accent-glow:rgba(47,127,245,.15);
+  --accent-deep:#0a3d91;
+  --chrome:#e8ebef;
+  --head:#ffffff;
+  --body:#c9cdd4;
+  --muted:#8d939c;
+  --wa:#25d366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+em{font-style:normal}
+body{background:var(--bg);color:var(--body);font-family:'Inter',sans-serif;font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.disp{font-family:'Schibsted Grotesk',sans-serif;color:var(--head)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.label{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.label::before{content:"";width:10px;height:10px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));transform:rotate(45deg);flex:none}
+.h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-top:14px}
+.h2 .acc{color:var(--accent)}
+.grout{position:relative}
+.grout::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;
+  background:repeating-linear-gradient(45deg,transparent,transparent 47px,#9fb4d8 47px,#9fb4d8 48px),
+             repeating-linear-gradient(-45deg,transparent,transparent 47px,#9fb4d8 47px,#9fb4d8 48px)}
+.grout>*{position:relative}
+
+/* ============ SCROLL PROGRESS (grout line fills sapphire) ============ */
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:1100;background:transparent;pointer-events:none}
+#prog span{display:block;height:100%;background:linear-gradient(90deg,var(--accent-deep),var(--accent),#7db4ff);transform:scaleX(0);transform-origin:left;transition:transform .1s linear;box-shadow:0 0 12px rgba(47,127,245,.7)}
+
+/* ============ LOADER ============ */
+#loader{position:fixed;inset:0;z-index:2000;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease,visibility .45s ease}
+#loader.done{opacity:0;visibility:hidden}
+.ld-stage{display:flex;flex-direction:column;align-items:center;gap:34px}
+.ld-row{display:flex;gap:14px}
+.ld-tile{width:52px;height:52px;transform:rotate(45deg) scale(0);border:1px solid var(--border-light);position:relative;overflow:hidden;animation:tileIn .5s cubic-bezier(.2,.9,.3,1.2) forwards}
+.ld-tile.blue{background:linear-gradient(135deg,#2f7ff5,#0a3d91)}
+.ld-tile.silver{background:linear-gradient(135deg,#f2f4f7,#9aa1ab 55%,#c7ccd3)}
+.ld-tile::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.65) 50%,transparent 62%);transform:translateX(-130%);animation:glaze .7s ease forwards}
+.ld-tile:nth-child(1){animation-delay:.05s}.ld-tile:nth-child(1)::after{animation-delay:.85s}
+.ld-tile:nth-child(2){animation-delay:.18s}.ld-tile:nth-child(2)::after{animation-delay:.95s}
+.ld-tile:nth-child(3){animation-delay:.31s}.ld-tile:nth-child(3)::after{animation-delay:1.05s}
+.ld-tile:nth-child(4){animation-delay:.44s}.ld-tile:nth-child(4)::after{animation-delay:1.15s}
+.ld-tile:nth-child(5){animation-delay:.57s}.ld-tile:nth-child(5)::after{animation-delay:1.25s}
+@keyframes tileIn{to{transform:rotate(45deg) scale(1)}}
+@keyframes glaze{to{transform:translateX(130%)}}
+.ld-word{opacity:0;transform:translateY(14px);animation:wordIn .55s ease 1.3s forwards;text-align:center}
+.ld-word .w1{font-family:'Schibsted Grotesk',sans-serif;font-weight:900;font-size:clamp(1.5rem,5vw,2.1rem);letter-spacing:.12em;background:linear-gradient(180deg,#fff,#b9c0c9 60%,#e8ebef);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ld-word .w2{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.42em;color:var(--muted);margin-top:8px;text-transform:uppercase}
+@keyframes wordIn{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .ld-tile{animation:none;transform:rotate(45deg) scale(1)}
+  .ld-tile::after{animation:none}
+  .ld-word{animation:none;opacity:1;transform:none}
+  #loader{transition-duration:.2s}
+}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.nav-logo img{height:44px;width:auto}
+.nav-logo .nl-t{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;letter-spacing:.04em;color:var(--head);font-size:1.02rem;line-height:1.1}
+.nav-logo .nl-t span{display:block;font-family:'JetBrains Mono',monospace;font-weight:400;font-size:.58rem;letter-spacing:.34em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--head)}
+.nav-links a.nav-cta{background:var(--accent);color:#fff !important;padding:10px 22px;border-radius:8px;font-weight:600;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--accent-hover)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:24px;height:2px;background:var(--head);margin:5px 0;transition:.3s}
+.m-panel{display:none;background:var(--bg);border-bottom:1px solid var(--border)}
+.m-panel.open{display:block}
+.m-panel ul{list-style:none;padding:10px 24px 22px}
+.m-panel li a{display:block;padding:13px 0;border-bottom:1px solid var(--border);font-weight:500;color:var(--body)}
+.m-panel .m-call{margin-top:16px;display:block;background:var(--accent);color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;border-bottom:0}
+
+/* ============ HERO ============ */
+.hero{display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-220px;right:-220px;width:560px;height:560px;background:radial-gradient(circle,var(--accent-glow),transparent 65%);pointer-events:none}
+.hero-bigword{position:absolute;bottom:-28px;left:-10px;font-family:'Schibsted Grotesk',sans-serif;font-weight:900;font-size:clamp(6rem,17vw,15rem);letter-spacing:-.02em;line-height:1;color:transparent;-webkit-text-stroke:1px #1b1e24;user-select:none;pointer-events:none;white-space:nowrap}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:74px;padding-bottom:110px;position:relative;z-index:1}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 12px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(2.4rem,5.6vw,4.6rem);font-weight:900;letter-spacing:-.035em;line-height:1.04;margin:20px 0 22px}
+.hero h1 .acc{background:linear-gradient(110deg,#4d94ff 20%,#bfd9ff 38%,#1666dc 52%,#4d94ff 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:chromeShift 4.5s ease-in-out infinite}
+@keyframes chromeShift{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.hero .lede{font-size:1.08rem;max-width:520px}
+.hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;padding:15px 28px;border-radius:10px;transition:transform .2s,background .2s,box-shadow .2s;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-2px)}
+.btn-quote{background:var(--accent);color:#fff;box-shadow:0 8px 24px var(--accent-glow)}
+.btn-quote::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-130%);animation:btnGlaze 3.6s ease infinite}
+@keyframes btnGlaze{0%{transform:translateX(-130%)}45%,100%{transform:translateX(130%)}}
+.btn-quote:hover{background:var(--accent-hover)}
+.btn-call{background:var(--card);color:var(--head);border:1px solid var(--border-light)}
+.btn-call:hover{background:var(--card-hover)}
+.btn svg{flex:none}
+.hero-meta{display:flex;gap:28px;margin-top:40px;padding-top:26px;border-top:1px solid var(--border);flex-wrap:wrap}
+.hm{display:flex;flex-direction:column;gap:2px}
+.hm b{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:1.35rem;color:var(--head);letter-spacing:-.02em}
+.hm > span{font-size:.78rem;color:var(--muted)}
+.cnt{font-size:inherit;color:inherit;font-family:inherit}
+/* diamond photo cluster, floating + parallax */
+.hero-art{position:relative;height:540px}
+.dwrap{position:absolute;will-change:transform}
+.dw-1{top:0;left:50%;margin-left:-125px;z-index:3;animation:diaFloat 7s ease-in-out infinite alternate}
+.dw-2{top:168px;left:50%;margin-left:-268px;z-index:2;animation:diaFloat 8s ease-in-out .8s infinite alternate}
+.dw-3{top:168px;left:50%;margin-left:18px;z-index:2;animation:diaFloat 9s ease-in-out 1.6s infinite alternate}
+.dw-4{top:96px;left:50%;margin-left:186px;z-index:1;animation:diaFloat 6s ease-in-out .4s infinite alternate}
+.dw-5{top:352px;left:50%;margin-left:-186px;z-index:1;animation:diaFloat 7.5s ease-in-out 1.2s infinite alternate}
+@keyframes diaFloat{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
+.dia{width:250px;height:250px;transform:rotate(45deg);overflow:hidden;border:1px solid var(--border-light);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.5);position:relative}
+.dia img{width:142%;height:142%;object-fit:cover;transform:rotate(-45deg) translate(-15%,-15%);transform-origin:center}
+.dia::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);transform:translateX(-130%) rotate(0deg);animation:diaGlaze 7s ease 2.4s infinite}
+@keyframes diaGlaze{0%{transform:translateX(-130%)}22%,100%{transform:translateX(130%)}}
+.dia-solid{width:96px;height:96px;transform:rotate(45deg);border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));box-shadow:0 14px 34px rgba(10,61,145,.5)}
+.dia-line{width:130px;height:130px;transform:rotate(45deg);border-radius:14px;border:1px solid var(--accent);opacity:.35}
+.hero-photo-m{display:none}
+
+/* ============ TRUST ============ */
+.trust{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0e1015}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:22px;padding-bottom:22px;flex-wrap:wrap}
+.t-item{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:var(--chrome)}
+.t-item svg{color:var(--accent);flex:none}
+
+/* ============ MATERIALS MARQUEE ============ */
+.mq{overflow:hidden;border-bottom:1px solid var(--border);background:var(--bg);padding-top:26px;padding-bottom:26px}
+.mq-track{display:flex;align-items:center;gap:44px;width:max-content;animation:mq 30s linear infinite}
+.mq-item{font-family:'Schibsted Grotesk',sans-serif;font-weight:900;font-size:clamp(2.2rem,4.6vw,3.6rem);letter-spacing:.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px #4a5058;text-transform:uppercase;transition:color .3s}
+.mq-item.lit{color:transparent;-webkit-text-stroke:1px var(--accent)}
+.mq-dia{width:16px;height:16px;flex:none;transform:rotate(45deg);background:linear-gradient(135deg,var(--accent),var(--accent-deep))}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
+
+/* ============ SERVICES ============ */
+.sec{padding-top:96px;padding-bottom:96px}
+.sec-head{margin-bottom:48px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px 28px;position:relative;overflow:hidden;transition:transform .25s,background .25s,box-shadow .25s}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-deep));transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.svc:hover{transform:translateY(-4px);background:var(--card-hover);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-ico{width:46px;height:46px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));transform:rotate(45deg);border-radius:10px;display:flex;align-items:center;justify-content:center;margin:6px 0 24px 6px;transition:transform .35s}
+.svc:hover .svc-ico{transform:rotate(225deg)}
+.svc-ico svg{transform:rotate(-45deg);color:#fff;transition:transform .35s}
+.svc:hover .svc-ico svg{transform:rotate(-225deg)}
+.svc h3{font-size:1.18rem;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.svc p{font-size:.92rem;color:var(--muted)}
+
+/* ============ FINISH SWITCHER ============ */
+.fin{background:#0e1015;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.fin-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.fin-chips{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+.fchip{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;cursor:pointer;transition:border-color .25s,background .25s,transform .25s;text-align:left;font-family:'Inter',sans-serif;color:var(--body)}
+.fchip:hover{transform:translateX(4px)}
+.fchip .fd{width:14px;height:14px;transform:rotate(45deg);border:1px solid var(--border-light);flex:none;transition:background .25s,border-color .25s}
+.fchip b{font-family:'Schibsted Grotesk',sans-serif;color:var(--head);font-size:1rem;display:block;line-height:1.3}
+.fchip small{font-size:.8rem;color:var(--muted)}
+.fchip.on{border-color:var(--accent);background:linear-gradient(135deg,rgba(47,127,245,.12),rgba(10,61,145,.12))}
+.fchip.on .fd{background:linear-gradient(135deg,var(--accent),var(--accent-deep));border-color:var(--accent)}
+.fin-view{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.fin-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.fin-view img.show{opacity:1}
+.fin-tag{position:absolute;left:18px;bottom:18px;background:rgba(11,13,17,.88);border:1px solid var(--border-light);border-radius:8px;padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--chrome);z-index:2}
+
+/* ============ GALLERY ============ */
+.gal{background:#0e1015}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px;perspective:1200px}
+.g-tile{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transform-style:preserve-3d;transition:transform .25s ease,box-shadow .25s}
+.g-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-tile:hover img{transform:scale(1.06)}
+.g-tile:hover{box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.g-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);transform:translateX(-130%);transition:transform .7s ease;pointer-events:none}
+.g-tile:hover::after{transform:translateX(130%)}
+.g-big{grid-column:span 2;grid-row:span 2}
+.g-wide{grid-column:span 2}
+.g-cap{position:absolute;left:12px;bottom:12px;background:rgba(11,13,17,.85);border:1px solid var(--border-light);color:var(--chrome);font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:6px}
+/* lightbox */
+#lb{position:fixed;inset:0;z-index:1500;background:rgba(5,6,8,.94);display:none;align-items:center;justify-content:center;padding:34px}
+#lb.open{display:flex}
+#lb img{max-width:92vw;max-height:86vh;border-radius:10px;object-fit:contain}
+#lb button{position:absolute;top:22px;right:26px;background:var(--card);border:1px solid var(--border-light);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+
+/* ============ ABOUT / STATS ============ */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.about-grid p{margin-top:22px;max-width:560px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;position:relative;overflow:hidden}
+.stat::after{content:"";position:absolute;right:-34px;bottom:-34px;width:88px;height:88px;transform:rotate(45deg);border:1px solid var(--accent);opacity:.2;border-radius:14px}
+.stat b{font-family:'Schibsted Grotesk',sans-serif;font-size:2.2rem;font-weight:900;letter-spacing:-.03em;color:var(--head);display:block}
+.stat > span{font-size:.85rem;color:var(--muted)}
+
+/* ============ PROCESS ============ */
+.proc-rail{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;margin-top:56px}
+.proc-rail::before{content:"";position:absolute;top:27px;left:8%;right:8%;height:1px;background:var(--border-light)}
+.proc-rail::after{content:"";position:absolute;top:26px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-deep));transform:scaleX(0);transform-origin:left;transition:transform 1.6s cubic-bezier(.6,0,.2,1) .3s}
+.proc-rail.in::after{transform:scaleX(1)}
+.pstep{text-align:center;position:relative;z-index:1}
+.pstep .pd{width:54px;height:54px;margin:0 auto 22px;transform:rotate(45deg);border-radius:12px;background:var(--card);border:1px solid var(--border-light);display:flex;align-items:center;justify-content:center;transition:background .4s,border-color .4s}
+.pstep .pd span{transform:rotate(-45deg);font-family:'Schibsted Grotesk',sans-serif;font-weight:900;font-size:1.1rem;color:var(--muted);transition:color .4s}
+.proc-rail.in .pstep .pd{background:linear-gradient(135deg,var(--accent),var(--accent-deep));border-color:var(--accent)}
+.proc-rail.in .pstep .pd span{color:#fff}
+.pstep .pd{transition-delay:.2s}
+.pstep:nth-child(2) .pd{transition-delay:.55s}
+.pstep:nth-child(3) .pd{transition-delay:.95s}
+.pstep:nth-child(4) .pd{transition-delay:1.35s}
+.pstep h3{font-size:1.05rem;font-weight:800;margin-bottom:6px}
+.pstep p{font-size:.86rem;color:var(--muted);max-width:220px;margin:0 auto}
+
+/* ============ REVIEWS ============ */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px 28px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.35)}
+.stars{color:var(--accent);letter-spacing:3px;font-size:1rem;margin-bottom:14px}
+.rev p{font-size:.97rem;color:var(--body)}
+.rev-who{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.rev-av{width:40px;height:40px;transform:rotate(45deg);border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));display:flex;align-items:center;justify-content:center;flex:none}
+.rev-av span{transform:rotate(-45deg);font-family:'Schibsted Grotesk',sans-serif;font-weight:800;color:#fff}
+.rev-who b{color:var(--head);font-size:.94rem;display:block;line-height:1.3}
+.rev-who small{color:var(--muted);font-size:.8rem}
+
+/* ============ AREAS ============ */
+.areas-wrap{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.chip{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:10px 22px;font-size:.9rem;font-weight:500;color:var(--chrome);transition:border-color .2s,color .2s}
+.chip:hover{border-color:var(--accent);color:#fff}
+.chip.first{border-color:var(--accent);color:#fff;background:linear-gradient(135deg,rgba(47,127,245,.18),rgba(10,61,145,.18))}
+
+/* ============ CTA BAND ============ */
+.band{background:linear-gradient(120deg,var(--accent-deep),var(--accent));border-radius:20px;padding:56px 48px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:-100% 0 0 0;opacity:.12;background:repeating-linear-gradient(45deg,transparent,transparent 39px,#fff 39px,#fff 40px),repeating-linear-gradient(-45deg,transparent,transparent 39px,#fff 39px,#fff 40px);animation:bandDrift 26s linear infinite}
+@keyframes bandDrift{from{transform:translateY(0)}to{transform:translateY(113px)}}
+@media (prefers-reduced-motion:reduce){.band::before{animation:none}}
+.band>*{position:relative}
+.band h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:900;letter-spacing:-.03em;color:#fff}
+.band p{color:rgba(255,255,255,.85);margin-top:8px;max-width:480px}
+.btn-white{background:#fff;color:#0b1e3f}
+.btn-white:hover{background:#eef2f8}
+
+/* ============ CONTACT ============ */
+.con-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.con-cards{display:grid;gap:16px;margin-top:34px}
+.ccard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:center}
+.ccard .ci{width:44px;height:44px;border-radius:10px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;color:var(--accent);flex:none}
+.ccard b{color:var(--head);display:block;font-size:.95rem}
+.ccard a,.ccard span{font-size:.9rem;color:var(--muted)}
+.ccard a:hover{color:var(--accent)}
+form{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:34px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fgroup{margin-bottom:16px}
+.fgroup label{display:block;font-size:.82rem;font-weight:600;color:var(--chrome);margin-bottom:7px}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;background:#101318;border:1px solid var(--border);border-radius:9px;color:var(--head);font-family:'Inter',sans-serif;font-size:.95rem;padding:13px 15px;transition:border-color .2s}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{outline:none;border-color:var(--accent)}
+.fsub{width:100%;background:var(--accent);color:#fff;border:0;border-radius:10px;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;padding:16px;cursor:pointer;transition:background .2s,transform .2s}
+.fsub:hover{background:var(--accent-hover);transform:translateY(-2px)}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--border);background:#0e1015;padding-top:56px}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:44px}
+.f-brand img{height:52px;margin-bottom:16px}
+.f-brand p{font-size:.9rem;color:var(--muted);max-width:320px}
+.f-col h4{color:var(--head);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-family:'JetBrains Mono',monospace;font-weight:500}
+.f-col ul{list-style:none}
+.f-col li{margin-bottom:10px}
+.f-col a{font-size:.92rem;color:var(--muted);transition:color .2s}
+.f-col a:hover{color:var(--chrome)}
+.f-bot{border-top:1px solid var(--border);padding-top:22px;padding-bottom:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.f-bot a{color:var(--chrome)}
+.f-bot a:hover{color:var(--accent)}
+
+/* ============ FABS ============ */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:1000;display:flex;flex-direction:column;gap:14px;opacity:0;visibility:hidden;transform:translateY(14px);transition:.35s}
+.fabs.show{opacity:1;visibility:visible;transform:none}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.45)}
+.fab-call{background:var(--accent);animation:fpulse 2.2s infinite}
+.fab-wa{background:var(--wa);animation:fpulseg 2.2s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 0 0 0 rgba(47,127,245,.45)}70%{box-shadow:0 0 0 16px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes fpulseg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 16px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dwrap{animation:none !important}.dia::after{animation:none}.hero h1 .acc{animation:none}.btn-quote::after{animation:none}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1020px){
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-art{display:none}
+  .hero-photo-m{display:block;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+  .hero-photo-m img{width:100%;aspect-ratio:16/11;object-fit:cover}
+  .hero-bigword{display:none}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.con-grid,.fin-grid{grid-template-columns:1fr;gap:44px}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:190px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .proc-rail{grid-template-columns:repeat(2,1fr);gap:38px}
+  .proc-rail::before,.proc-rail::after{display:none}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+}
+@media (max-width:640px){
+  .hero-inner{padding-top:52px;padding-bottom:64px}
+  .hero .lede{font-size:1rem}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center}
+  .hero-meta{gap:20px}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr;grid-auto-rows:230px}
+  .g-big,.g-wide{grid-column:span 1;grid-row:span 1}
+  .g-cap{display:none}
+  .fin-tag{display:none}
+  .trust-in{flex-direction:column;gap:0}
+  .t-item{padding-top:12px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+  .t-item:last-child{border-bottom:0}
+  .sec{padding-top:68px;padding-bottom:68px}
+  .band{padding:40px 26px}
+  .frow{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+  .proc-rail{grid-template-columns:1fr;gap:30px}
+  .pstep{display:grid;grid-template-columns:54px 1fr;gap:18px;text-align:left;align-items:start}
+  .pstep .pd{margin:0}
+  .pstep p{margin:0;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"><span></span></div>
+
+<!-- LOADER -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-stage">
+    <div class="ld-row">
+      <div class="ld-tile silver"></div>
+      <div class="ld-tile blue"></div>
+      <div class="ld-tile silver"></div>
+      <div class="ld-tile blue"></div>
+      <div class="ld-tile silver"></div>
+    </div>
+    <div class="ld-word">
+      <div class="w1">SIGNATURE</div>
+      <div class="w2">Tiling &amp; Co</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="Signature Tiling & Co logo">
+      <span class="nl-t">SIGNATURE<span>Tiling &amp; Co</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#finishes">Finishes</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="m-panel" id="mpanel">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#finishes">Finishes</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Get a Free Quote</a></li>
+      <li><a href="#" id="mCall" class="m-call">Call Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero grout">
+  <div class="hero-bigword" aria-hidden="true">SIGNATURE</div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Stoke-on-Trent · Staffordshire &amp; Cheshire</div>
+      <h1>Tiling with a <span class="acc">signature</span> finish</h1>
+      <p class="lede">Premium wall and floor tiling, bathrooms, kitchen splashbacks and porcelain patios. Precision work, clean lines, built to last.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-quote">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+          Get a Free Quote
+        </a>
+        <a href="#" class="btn btn-call js-call">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="js-phone">Call Us</span>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="hm"><b><span class="cnt" data-count="10">0</span>+</b><span>Years experience</span></div>
+        <div class="hm"><b><span class="cnt" data-count="100">0</span>+</b><span>Projects completed</span></div>
+        <div class="hm"><b>5.0★</b><span>Rated by our clients</span></div>
+      </div>
+    </div>
+    <div class="hero-art" id="heroArt" aria-hidden="true">
+      <div class="dwrap dw-1" data-depth="18"><div class="dia"><img src="work-1.png" alt=""></div></div>
+      <div class="dwrap dw-2" data-depth="30"><div class="dia"><img src="work-2.png" alt=""></div></div>
+      <div class="dwrap dw-3" data-depth="24"><div class="dia"><img src="work-3.png" alt=""></div></div>
+      <div class="dwrap dw-4" data-depth="42"><div class="dia-solid"></div></div>
+      <div class="dwrap dw-5" data-depth="36"><div class="dia-line"></div></div>
+    </div>
+    <div class="hero-photo-m" aria-hidden="true"><img src="work-2.png" alt=""></div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="t-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Checkatrade Vetted</div>
+    <div class="t-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fully Insured</div>
+    <div class="t-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>10+ Years Experience</div>
+    <div class="t-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Free Quotes</div>
+    <div class="t-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Indoors &amp; Outdoors</div>
+  </div>
+</div>
+
+<!-- MATERIALS MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track" id="mqTrack">
+    <span class="mq-item">Porcelain</span><span class="mq-dia"></span>
+    <span class="mq-item lit">Ceramic</span><span class="mq-dia"></span>
+    <span class="mq-item">Natural Stone</span><span class="mq-dia"></span>
+    <span class="mq-item lit">Mosaic</span><span class="mq-dia"></span>
+    <span class="mq-item">Brick Slips</span><span class="mq-dia"></span>
+    <span class="mq-item lit">Marble</span><span class="mq-dia"></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2 class="h2">Premium tiling, <span class="acc">inside and out</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Wall &amp; Floor Tiling</h3>
+        <p>Ceramic, porcelain and stone. Set out straight, cut clean.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 12V6a2 2 0 0 1 2-2h3"/><path d="M4 12v5a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-5"/><path d="M9 20v2"/><path d="M15 20v2"/></svg></div>
+        <h3>Bathrooms &amp; Wet Rooms</h3>
+        <p>Full bathroom tiling, showers and wet rooms, tanked and sealed.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="10" rx="1"/><path d="M3 20h18"/><path d="M8 14v6"/><path d="M16 14v6"/></svg></div>
+        <h3>Kitchen Splashbacks</h3>
+        <p>Metro, brick-bond and feature splashbacks that lift the whole kitchen.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20v-8l8-6 8 6v8"/><path d="M9 20v-5h6v5"/></svg></div>
+        <h3>Porcelain Patios</h3>
+        <p>Outdoor porcelain laid on solid beds with flush, even joints.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-9 7h4v11h10V10h4z"/></svg></div>
+        <h3>Feature Walls &amp; Brick Slips</h3>
+        <p>Brick slips, mosaics and statement walls, set out to the millimetre.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Repairs &amp; Regrouting</h3>
+        <p>Cracked tiles swapped, tired grout cut out and refreshed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINISH SWITCHER -->
+<section class="sec fin" id="finishes">
+  <div class="wrap fin-grid">
+    <div class="reveal">
+      <div class="label">Pick your finish</div>
+      <h2 class="h2">One team, <span class="acc">any look</span></h2>
+      <div class="fin-chips" id="finChips">
+        <button class="fchip on" data-img="0" data-tag="Marble Effect · Bathrooms">
+          <span class="fd"></span><span><b>Marble Effect</b><small>Large format, book-matched veins</small></span>
+        </button>
+        <button class="fchip" data-img="1" data-tag="Glazed Metro · Kitchens">
+          <span class="fd"></span><span><b>Glazed Metro</b><small>Hand-glazed look, stacked or brick-bond</small></span>
+        </button>
+        <button class="fchip" data-img="2" data-tag="Brick Slips · Feature Walls">
+          <span class="fd"></span><span><b>Brick Slips</b><small>Reclaimed character, pointed like real brick</small></span>
+        </button>
+        <button class="fchip" data-img="3" data-tag="Textured Slat · Showers">
+          <span class="fd"></span><span><b>Textured Slat</b><small>Fluted lines, spa feel in the shower</small></span>
+        </button>
+        <button class="fchip" data-img="4" data-tag="Outdoor Porcelain · Patios">
+          <span class="fd"></span><span><b>Outdoor Porcelain</b><small>20mm slabs, frost-proof, flush joints</small></span>
+        </button>
+      </div>
+    </div>
+    <div class="fin-view reveal" id="finView">
+      <img src="work-5.png" alt="Marble effect bathroom tiling" class="show">
+      <img src="work-1.png" alt="Glazed metro kitchen splashback">
+      <img src="work-2.png" alt="Brick slip feature wall">
+      <img src="work-4.png" alt="Textured slat tiled shower">
+      <img src="work-8.jpg" alt="Outdoor porcelain patio">
+      <div class="fin-tag" id="finTag">Marble Effect · Bathrooms</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gal grout" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2 class="h2">Finishes that <span class="acc">speak for themselves</span></h2>
+    </div>
+    <div class="gal-grid">
+      <div class="g-tile g-big reveal"><img src="work-2.png" alt="Brick slip feature wall with crittall style sliding door"><span class="g-cap">Brick Slip Feature Wall</span></div>
+      <div class="g-tile reveal"><img src="work-1.png" alt="Glossy blue metro tile kitchen splashback"><span class="g-cap">Kitchen Splashback</span></div>
+      <div class="g-tile reveal"><img src="work-3.png" alt="LED lit bathroom with large format tiles"><span class="g-cap">Bathroom, LED Detail</span></div>
+      <div class="g-tile reveal"><img src="work-4.png" alt="Slatted grey tiled walk-in shower"><span class="g-cap">Walk-in Shower</span></div>
+      <div class="g-tile reveal"><img src="work-5.png" alt="Marble effect bathroom with brass fittings"><span class="g-cap">Marble Effect Bathroom</span></div>
+      <div class="g-tile g-wide reveal"><img src="work-8.jpg" alt="Modern charcoal porcelain patio"><span class="g-cap">Porcelain Patio</span></div>
+      <div class="g-tile reveal"><img src="work-6.png" alt="White large format tiled shower enclosure"><span class="g-cap">Shower Enclosure</span></div>
+      <div class="g-tile reveal"><img src="work-7.png" alt="Bathroom with feature lighting and fitted bath"><span class="g-cap">Full Bathroom</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT + STATS -->
+<section class="sec">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="label">About us</div>
+      <h2 class="h2">A trusted name across <span class="acc">Staffordshire &amp; Cheshire</span></h2>
+      <p>Signature Tiling &amp; Co has spent over ten years tiling homes and commercial spaces across Stoke-on-Trent and beyond. From full bathrooms to porcelain patios, every job gets the same treatment: careful setting out, tidy workmanship and a finish we would put our name to.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b><span class="cnt" data-count="10">0</span>+</b><span>Years in business</span></div>
+      <div class="stat"><b><span class="cnt" data-count="100">0</span>+</b><span>Projects completed</span></div>
+      <div class="stat"><b><span class="cnt" data-count="100">0</span>+</b><span>Happy clients</span></div>
+      <div class="stat"><b><span class="cnt" data-count="8">0</span></b><span>Trained team members</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec gal" style="padding-top:80px;padding-bottom:80px">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:0">
+      <div class="label">How we work</div>
+      <h2 class="h2">From survey to <span class="acc">sealed and signed off</span></h2>
+    </div>
+    <div class="proc-rail" id="procRail">
+      <div class="pstep"><div class="pd"><span>1</span></div><div><h3>Survey &amp; Quote</h3><p>We visit, measure up and give you a fixed price.</p></div></div>
+      <div class="pstep"><div class="pd"><span>2</span></div><div><h3>Prep &amp; Set Out</h3><p>Surfaces levelled, tanked where needed, lines set out.</p></div></div>
+      <div class="pstep"><div class="pd"><span>3</span></div><div><h3>Fix &amp; Cut</h3><p>Tiles fixed flat and true, cuts tight around every edge.</p></div></div>
+      <div class="pstep"><div class="pd"><span>4</span></div><div><h3>Grout &amp; Seal</h3><p>Grouted, sealed and polished before we hand it back.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Reviews</div>
+      <h2 class="h2">What clients <span class="acc">say about us</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Signature Tiling did an amazing job tiling our entire bathroom. Spotless work from start to finish and the attention to detail was brilliant."</p>
+        <div class="rev-who"><div class="rev-av"><span>J</span></div><div><b>Jennifer</b><small>Stoke-on-Trent · Bathroom tiling</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Brilliant service from start to finish. The new splashback completely transformed the space. Tidy, on time and priced fairly."</p>
+        <div class="rev-who"><div class="rev-av"><span>J</span></div><div><b>John</b><small>Newcastle-under-Lyme · Kitchen splashback</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Responded the same day I got in touch. Honest, reliable and extremely skilled. You can tell the finish matters to them."</p>
+        <div class="rev-who"><div class="rev-av"><span>S</span></div><div><b>Steve</b><small>Stafford · Wet room</small></div></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Had Signature Tiling lay a porcelain patio at the back of the house. Level, even joints and it drains perfectly. Looks like a showroom."</p>
+        <div class="rev-who"><div class="rev-av"><span>D</span></div><div><b>Dave</b><small>Crewe · Porcelain patio</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="sec gal" id="areas" style="padding-top:80px;padding-bottom:80px">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:0">
+      <div class="label">Coverage</div>
+      <h2 class="h2">Areas <span class="acc">we cover</span></h2>
+    </div>
+    <div class="areas-wrap reveal">
+      <span class="chip first">Stoke-on-Trent</span>
+      <span class="chip">Newcastle-under-Lyme</span>
+      <span class="chip">Stafford</span>
+      <span class="chip">Leek</span>
+      <span class="chip">Uttoxeter</span>
+      <span class="chip">Alsager</span>
+      <span class="chip">Crewe</span>
+      <span class="chip">Congleton</span>
+      <span class="chip">Macclesfield</span>
+      <span class="chip">Nantwich</span>
+      <span class="chip">Staffordshire &amp; Cheshire wide</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="sec" style="padding-top:80px;padding-bottom:0">
+  <div class="wrap">
+    <div class="band reveal">
+      <div>
+        <h2>Ready for a signature finish?</h2>
+        <p>Tell us about your project and we will get back to you with a free, no obligation quote.</p>
+      </div>
+      <a href="#contact" class="btn btn-white">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec grout" id="contact">
+  <div class="wrap con-grid">
+    <div class="reveal">
+      <div class="label">Get in touch</div>
+      <h2 class="h2">Get your <span class="acc">free quote</span></h2>
+      <p style="margin-top:18px;max-width:440px">Send a few details about your project, or give us a call. We aim to reply the same day.</p>
+      <div class="con-cards">
+        <div class="ccard">
+          <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Phone</b><a href="#" class="js-call js-phone">Call us</a></div>
+        </div>
+        <div class="ccard">
+          <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <div><b>Email</b><a href="#" id="conEmail">…</a></div>
+        </div>
+        <div class="ccard">
+          <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>Based in</b><span>Stoke-on-Trent, covering Staffordshire &amp; Cheshire</span></div>
+        </div>
+        <div class="ccard">
+          <div class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><b>Response time</b><span>Same day, wherever possible</span></div>
+        </div>
+      </div>
+    </div>
+    <form action="/api/enquiry" method="POST" class="reveal">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="Signature Tiling & Co">
+      <input type="hidden" name="source" value="mockup-signature-tiling-co">
+      <div class="frow">
+        <div class="fgroup">
+          <label for="fname">Name *</label>
+          <input type="text" id="fname" name="name" required placeholder="Your name">
+        </div>
+        <div class="fgroup">
+          <label for="fphone">Phone *</label>
+          <input type="tel" id="fphone" name="phone" required pattern="^(0|\+44)\d{9,11}$" placeholder="07xxx xxxxxx">
+        </div>
+      </div>
+      <div class="fgroup">
+        <label for="femail">Email</label>
+        <input type="email" id="femail" name="email" placeholder="you@email.co.uk">
+      </div>
+      <div class="fgroup">
+        <label for="fservice">Service</label>
+        <select id="fservice" name="service">
+          <optgroup label="Indoor tiling">
+            <option>Wall &amp; floor tiling</option>
+            <option>Bathroom / wet room</option>
+            <option>Kitchen splashback</option>
+            <option>Feature wall / brick slips</option>
+            <option>Repairs &amp; regrouting</option>
+          </optgroup>
+          <optgroup label="Outdoor">
+            <option>Porcelain patio</option>
+            <option>Other outdoor tiling</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option>Commercial project</option>
+            <option>Something else</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="fgroup">
+        <label for="fmsg">Your project</label>
+        <textarea id="fmsg" name="message" rows="4" placeholder="Tell us a little about the job..."></textarea>
+      </div>
+      <button type="submit" class="fsub">Request My Free Quote</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <img src="logo.png" alt="Signature Tiling & Co logo">
+        <p>Premium tiling and patio installation across Stoke-on-Trent, Staffordshire and Cheshire.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Wall &amp; Floor Tiling</a></li>
+          <li><a href="#services">Bathrooms &amp; Wet Rooms</a></li>
+          <li><a href="#services">Kitchen Splashbacks</a></li>
+          <li><a href="#services">Porcelain Patios</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#" class="js-call js-phone">Call us</a></li>
+          <li><a href="#contact">Request a quote</a></li>
+          <li><a href="#work">Recent work</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Signature Tiling &amp; Co. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABS -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call js-call" aria-label="Call us">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" class="fab fab-wa" id="waFab" aria-label="WhatsApp us" target="_blank" rel="noopener">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lb"><button id="lbClose" aria-label="Close">✕</button><img src="" alt="Enlarged work photo"></div>
+
+<script>
+// Contact obfuscation
+var P = atob('MDc4NzE2MTE2Mjk=');
+var Pf = atob('MDc4NzEgNjExNjI5');
+var E = atob('aW5mb0BzaWduYXR1cmV0aWxlY28uY28udWs=');
+document.querySelectorAll('.js-call').forEach(function(a){ a.href = 'tel:' + P; });
+document.querySelectorAll('.js-phone').forEach(function(el){ el.textContent = Pf; });
+var conEmail = document.getElementById('conEmail');
+conEmail.textContent = E;
+conEmail.href = 'mailto:' + E;
+document.getElementById('waFab').href = 'https://wa.me/44' + P.slice(1) + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+document.getElementById('mCall').href = 'tel:' + P;
+document.getElementById('mCall').textContent = 'Call ' + Pf;
+document.getElementById('formTimestamp').value = Date.now();
+
+var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+// Loader teardown (fail-safe)
+(function(){
+  var l = document.getElementById('loader');
+  setTimeout(function(){ l.classList.add('done'); }, reduced ? 600 : 2100);
+  setTimeout(function(){ l.classList.add('done'); }, 2500); // fail-safe
+})();
+
+// Scroll progress
+var progBar = document.querySelector('#prog span');
+function updProg(){
+  var max = document.documentElement.scrollHeight - window.innerHeight;
+  progBar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+}
+window.addEventListener('scroll', updProg, {passive:true});
+updProg();
+
+// Mobile menu
+var burger = document.getElementById('burger');
+var mpanel = document.getElementById('mpanel');
+burger.addEventListener('click', function(){ mpanel.classList.toggle('open'); });
+mpanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mpanel.classList.remove('open'); }); });
+
+// Scroll reveals
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Process rail draw
+var rail = document.getElementById('procRail');
+var railIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ rail.classList.add('in'); railIO.unobserve(rail); } });
+},{threshold:.3});
+railIO.observe(rail);
+
+// Count-up stats
+function countUp(el){
+  var target = parseInt(el.dataset.count, 10);
+  if (reduced){ el.textContent = target; return; }
+  var t0 = null;
+  function step(ts){
+    if(!t0) t0 = ts;
+    var p = Math.min((ts - t0) / 1100, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+    if(p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+var cntIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); cntIO.unobserve(e.target); } });
+},{threshold:.6});
+document.querySelectorAll('.cnt').forEach(function(el){ cntIO.observe(el); });
+
+// Hero diamond parallax (desktop, fine pointer, no reduced motion)
+var heroArt = document.getElementById('heroArt');
+if (heroArt && finePointer && !reduced){
+  var hero = document.querySelector('.hero');
+  hero.addEventListener('mousemove', function(ev){
+    var r = hero.getBoundingClientRect();
+    var x = (ev.clientX - r.left) / r.width - .5;
+    var y = (ev.clientY - r.top) / r.height - .5;
+    heroArt.querySelectorAll('.dwrap').forEach(function(d){
+      var depth = parseFloat(d.dataset.depth);
+      d.style.translate = (x * depth) + 'px ' + (y * depth) + 'px';
+    });
+  });
+  hero.addEventListener('mouseleave', function(){
+    heroArt.querySelectorAll('.dwrap').forEach(function(d){ d.style.translate = '0 0'; });
+  });
+}
+
+// Finish switcher
+var finImgs = document.querySelectorAll('#finView img');
+var finTag = document.getElementById('finTag');
+document.querySelectorAll('.fchip').forEach(function(chip){
+  chip.addEventListener('click', function(){
+    document.querySelectorAll('.fchip').forEach(function(c){ c.classList.remove('on'); });
+    chip.classList.add('on');
+    var i = parseInt(chip.dataset.img, 10);
+    finImgs.forEach(function(img, j){ img.classList.toggle('show', i === j); });
+    finTag.textContent = chip.dataset.tag;
+  });
+});
+
+// Gallery 3D tilt (desktop only)
+if (finePointer && !reduced){
+  document.querySelectorAll('.g-tile').forEach(function(tile){
+    tile.addEventListener('mousemove', function(ev){
+      var r = tile.getBoundingClientRect();
+      var x = (ev.clientX - r.left) / r.width - .5;
+      var y = (ev.clientY - r.top) / r.height - .5;
+      tile.style.transform = 'rotateX(' + (-y * 7) + 'deg) rotateY(' + (x * 7) + 'deg) scale(1.02)';
+    });
+    tile.addEventListener('mouseleave', function(){ tile.style.transform = ''; });
+  });
+}
+
+// FABs after hero
+var heroEl = document.querySelector('.hero');
+var fabs = document.getElementById('fabs');
+window.addEventListener('scroll', function(){
+  fabs.classList.toggle('show', window.scrollY > heroEl.offsetHeight * 0.7);
+},{passive:true});
+
+// Lightbox
+var lb = document.getElementById('lb');
+var lbImg = lb.querySelector('img');
+document.querySelectorAll('.g-tile img').forEach(function(img){
+  img.parentElement.addEventListener('click', function(){
+    lbImg.src = img.src;
+    lb.classList.add('open');
+  });
+});
+document.getElementById('lbClose').addEventListener('click', function(){ lb.classList.remove('open'); });
+lb.addEventListener('click', function(e){ if(e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') lb.classList.remove('open'); });
+</script>
+</body>
+</html>
