@@ -677,6 +677,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-windows.play .wordmark{animation:wordIn .5s ease 2s forwards}
 #ld-windows.play .wordsub{animation:wordIn .5s ease 2.15s forwards}
 
+/* ===== MULTI-TRADE / DECORATORS — four-trade roller bands ===== */
+#ld-ggroller{background:#ffffff}
+#ld-ggroller .gg-bands{position:absolute;inset:0;display:flex;flex-direction:column}
+#ld-ggroller .gg-band{flex:1;position:relative;overflow:hidden}
+#ld-ggroller .gg-fill{position:absolute;inset:0;transform:scaleX(0);transform-origin:left center}
+#ld-ggroller .gg-band:nth-child(1) .gg-fill{background:#d81f3d}
+#ld-ggroller .gg-band:nth-child(2) .gg-fill{background:#f27a1a}
+#ld-ggroller .gg-band:nth-child(3) .gg-fill{background:#2456d6}
+#ld-ggroller .gg-band:nth-child(4) .gg-fill{background:#f5a300}
+#ld-ggroller .gg-roller{position:absolute;top:50%;left:0;width:18px;height:56%;transform:translate(-28px,-50%);background:#fff;border:3px solid #101014;opacity:0}
+#ld-ggroller.play .gg-band:nth-child(1) .gg-fill{animation:ggSweep .7s cubic-bezier(.6,0,.3,1) .05s forwards}
+#ld-ggroller.play .gg-band:nth-child(2) .gg-fill{animation:ggSweep .7s cubic-bezier(.6,0,.3,1) .2s forwards}
+#ld-ggroller.play .gg-band:nth-child(3) .gg-fill{animation:ggSweep .7s cubic-bezier(.6,0,.3,1) .35s forwards}
+#ld-ggroller.play .gg-band:nth-child(4) .gg-fill{animation:ggSweep .7s cubic-bezier(.6,0,.3,1) .5s forwards}
+#ld-ggroller.play .gg-band:nth-child(1) .gg-roller{animation:ggRoll .7s cubic-bezier(.6,0,.3,1) .05s forwards}
+#ld-ggroller.play .gg-band:nth-child(2) .gg-roller{animation:ggRoll .7s cubic-bezier(.6,0,.3,1) .2s forwards}
+#ld-ggroller.play .gg-band:nth-child(3) .gg-roller{animation:ggRoll .7s cubic-bezier(.6,0,.3,1) .35s forwards}
+#ld-ggroller.play .gg-band:nth-child(4) .gg-roller{animation:ggRoll .7s cubic-bezier(.6,0,.3,1) .5s forwards}
+@keyframes ggSweep{to{transform:scaleX(1)}}
+@keyframes ggRoll{0%{opacity:1;transform:translate(-28px,-50%)}99%{opacity:1}100%{opacity:0;transform:translate(100vw,-50%)}}
+#ld-ggroller .gg-card{position:relative;z-index:2;background:#fff;border:2px solid #101014;box-shadow:8px 8px 0 rgba(16,16,20,.16);padding:24px 38px 22px;text-align:center;opacity:0;transform:translateY(14px)}
+#ld-ggroller.play .gg-card{animation:ggCard .45s ease 1.25s forwards}
+@keyframes ggCard{to{opacity:1;transform:translateY(0)}}
+#ld-ggroller .gg-card .wordmark{color:#101014;opacity:1;transform:none}
+#ld-ggroller .gg-card .wordmark b{color:#d81f3d}
+#ld-ggroller .gg-card .wordsub{color:#7c7c88;opacity:1;transform:none}
+#ld-ggroller .gg-chips{display:flex;justify-content:center;gap:6px;margin-top:12px}
+#ld-ggroller .gg-chips span{width:24px;height:8px}
+
 /* ===== 17. LANDSCAPERS / GARDENERS — turf roll ===== */
 #ld-turf{background:#ffffff;flex-direction:column;gap:30px;color:#181a17}
 #ld-turf .lr-track{position:relative;width:min(440px,80vw);height:46px}
@@ -1387,6 +1416,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A twin-gable home strokes itself on at dusk, then its windows glow warm one by one, like a new house coming to life, before the wordmark lands. Ties to "designed for modern living". First used on westwood-building-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-ggroller" data-dur="2400">
+      <span class="trade">Multi-trade / Decorators</span>
+      <h3>Four-Trade Roller Bands</h3>
+      <p>The screen splits into four horizontal bands and a roller edge sweeps each one, laying a different trade colour in stagger (paint, build, plumb, wire), then a bordered brand card lands over the colour stack. First used on gg-construction.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-turf" data-dur="2400">
       <span class="trade">Landscapers / Gardeners</span>
       <h3>Turf Roll</h3>
@@ -2052,6 +2087,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">West<b>wood</b></div>
     <div class="wordsub">New Homes &middot; Renovations &middot; Lichfield</div>
+  </div>
+</div>
+
+<!-- four-trade roller bands -->
+<div class="loader" id="ld-ggroller" aria-hidden="true">
+  <div class="gg-bands">
+    <div class="gg-band"><div class="gg-fill"></div><div class="gg-roller"></div></div>
+    <div class="gg-band"><div class="gg-fill"></div><div class="gg-roller"></div></div>
+    <div class="gg-band"><div class="gg-fill"></div><div class="gg-roller"></div></div>
+    <div class="gg-band"><div class="gg-fill"></div><div class="gg-roller"></div></div>
+  </div>
+  <div class="gg-card">
+    <div class="wordmark">GG <b>Construction</b></div>
+    <div class="wordsub">Painting &middot; Building &middot; Plumbing &middot; Electrics</div>
+    <div class="gg-chips"><span style="background:#d81f3d"></span><span style="background:#f27a1a"></span><span style="background:#2456d6"></span><span style="background:#f5a300"></span></div>
   </div>
 </div>
 
