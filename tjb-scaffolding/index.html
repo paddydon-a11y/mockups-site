@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TJB Scaffolding Limited | Domestic &amp; Commercial Scaffolding, Southampton</title>
+<meta name="description" content="TJB Scaffolding Limited. Domestic and commercial scaffolding across Southampton and surrounding areas. Free quotes, safe access, struck on time.">
+<meta property="og:title" content="TJB Scaffolding Limited, Your New Website">
+<meta property="og:description" content="Scaffolding in Southampton. A preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/tjb-scaffolding/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/tjb-scaffolding/">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="logo.jpg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0d;
+  --panel:#121215;
+  --card:#17171b;
+  --card-hover:#1d1d22;
+  --line:#26262c;
+  --line-light:#33333a;
+  --gold:#e8b23a;
+  --gold-bright:#f6cd6a;
+  --gold-deep:#c9922a;
+  --gold-glow:rgba(232,178,58,0.14);
+  --chrome:#c9ccd2;
+  --ink:#f2f0ea;
+  --body:#b9b7b0;
+  --mute:#807e78;
+  --wa:#25d366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--body);
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+em{font-style:normal}
+.display{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;line-height:.95;letter-spacing:.01em;color:var(--ink)}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.label{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;
+  font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:10px;
+}
+.label::before{content:'';width:22px;height:2px;background:var(--gold)}
+section h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-top:14px}
+h2 .hl{color:var(--gold)}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:.95rem;padding:16px 28px;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-gold{
+  background:linear-gradient(160deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
+  color:#151004;box-shadow:0 8px 26px rgba(232,178,58,.22);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,178,58,.32)}
+.btn-wa{background:var(--wa);color:#06230f}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line-light);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── LOADER (scaffold raise, lifted from Oxley, recoloured + compressed) ── */
+.loader{
+  position:fixed;inset:0;z-index:1000;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+  transition:opacity .6s ease,visibility .6s ease;
+}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-svg{width:clamp(200px,32vw,330px);height:auto;overflow:visible}
+.scaff-pole,.scaff-board{
+  fill:none;stroke:var(--gold);stroke-linecap:round;
+  stroke-dasharray:600;stroke-dashoffset:600;
+  animation:draw .4s cubic-bezier(.7,0,.3,1) forwards;
+  animation-delay:var(--d,0s);
+  filter:drop-shadow(0 0 8px rgba(232,178,58,.25));
+}
+.scaff-pole{stroke-width:5}
+.scaff-board{stroke-width:8;stroke:var(--chrome);filter:drop-shadow(0 0 6px rgba(201,204,210,.2))}
+.scaff-brace{stroke:rgba(232,178,58,.5);stroke-width:3;stroke-dasharray:4 5}
+.scaff-coupler{fill:var(--gold);opacity:0;animation:pop .25s ease forwards;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(0);transform-origin:center}60%{opacity:1;transform:scale(1.3)}100%{opacity:1;transform:scale(1)}}
+.loader-brand{text-align:center;opacity:0;animation:fadeUp .5s ease 1.7s forwards}
+.loader-brand-name{
+  font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.7rem,4.4vw,2.6rem);
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink);
+}
+.loader-brand-name span{color:var(--gold)}
+.loader-brand-tag{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.66rem;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin-top:8px;
+}
+.loader-progress{
+  width:clamp(170px,28vw,240px);height:2px;background:rgba(255,255,255,.07);
+  position:relative;overflow:hidden;opacity:0;animation:fadeIn .3s ease .2s forwards;
+}
+.loader-progress::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:0%;
+  background:var(--gold);animation:progress 2.1s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes progress{to{width:100%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .scaff-pole,.scaff-board,.scaff-coupler{animation:none;stroke-dashoffset:0;opacity:1}
+  .loader-brand{animation:fadeIn .3s ease forwards}
+  .loader-progress{display:none}
+}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:200;background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.nav-logo{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.nav-logo img{width:58px;height:auto;flex:none}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.05}
+.nav-logo-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:.06em;color:var(--ink);text-transform:uppercase}
+.nav-logo-name span{color:var(--gold)}
+.nav-logo-sub{font-family:'IBM Plex Mono',monospace;font-size:.58rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a.nav-cta{
+  background:linear-gradient(160deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
+  color:#151004 !important;font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.07em;padding:11px 20px;display:inline-flex;align-items:center;gap:8px;
+}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#151004}
+.nav-burger{display:none;background:none;border:1px solid var(--line-light);width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer}
+.nav-burger svg{width:20px;height:20px;stroke:var(--ink)}
+.nav-menu{display:none}
+.nav-menu.open{
+  display:block;position:fixed;top:83px;left:0;right:0;z-index:190;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  padding:10px 24px 24px;
+}
+.nav-menu a{display:block;padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink);font-weight:500}
+.nav-menu a.menu-cta{
+  margin-top:16px;border:none;text-align:center;
+  background:linear-gradient(160deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
+  color:#151004;font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.07em;padding:15px;
+}
+
+/* ── HERO ── */
+.hero{position:relative;display:flex;flex-direction:column;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:110px 110px;
+  opacity:.35;
+  -webkit-mask-image:radial-gradient(ellipse at 75% 40%,#000 0%,transparent 70%);
+  mask-image:radial-gradient(ellipse at 75% 40%,#000 0%,transparent 70%);
+}
+.hero-inner{
+  position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+  padding-top:84px;padding-bottom:72px;
+}
+.hero-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.7rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:10px;
+}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--gold-glow)}70%{box-shadow:0 0 0 12px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.9rem);margin:20px 0 22px}
+.hero h1 .hl{color:var(--gold)}
+.hero-lede{max-width:46ch;font-size:1.02rem}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.hero-meta{
+  display:flex;gap:26px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mute);flex-wrap:wrap;
+}
+.hero-meta b{color:var(--chrome);font-weight:600}
+.hero-badge-card{
+  position:relative;background:var(--panel);border:1px solid var(--line);
+  padding:44px 40px 40px;text-align:center;
+}
+.hero-badge-card::before,.hero-badge-card::after{
+  content:'';position:absolute;width:14px;height:14px;border:2px solid var(--gold);
+}
+.hero-badge-card::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.hero-badge-card::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+.hero-badge-card img{width:min(340px,80%);margin:0 auto;filter:drop-shadow(0 18px 44px rgba(232,178,58,.18))}
+.hero-badge-strap{
+  margin-top:26px;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.66rem;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--mute);
+}
+.hero-badge-strap b{color:var(--gold);font-weight:600}
+
+/* ── TRUST ── */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:24px;padding-bottom:24px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:11px;font-weight:600;font-size:.92rem;color:var(--ink)}
+.trust-item svg{width:19px;height:19px;stroke:var(--gold);flex:none}
+
+/* ── SECTIONS ── */
+section{padding:88px 0}
+#services{padding-top:64px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.svc{
+  position:relative;background:var(--card);border:1px solid var(--line);
+  padding:34px 32px;overflow:hidden;transition:transform .25s ease,background .25s ease;
+}
+.svc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--gold-bright),var(--gold-deep));
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+}
+.svc:hover{transform:translateY(-3px);background:var(--card-hover)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-num{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.68rem;
+  letter-spacing:.22em;color:var(--gold);
+}
+.svc h3{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:1.3rem;color:var(--ink);margin:12px 0 8px}
+.svc p{font-size:.94rem}
+
+/* ── GALLERY ── */
+#work{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px;margin-top:44px}
+.g-item{position:relative;overflow:hidden;cursor:pointer;border:1px solid var(--line)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-item:hover img{transform:scale(1.05)}
+.g-big{grid-column:span 2;grid-row:span 2}
+.g-tall{grid-row:span 2}
+.g-wide{grid-column:span 2}
+.g-tag{
+  position:absolute;left:0;bottom:0;right:0;
+  padding:26px 16px 12px;
+  background:linear-gradient(transparent,rgba(11,11,13,.88));
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--chrome);
+}
+.g-tag b{color:var(--gold);font-weight:600;margin-right:8px}
+
+/* ── ABOUT ── */
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-copy p{margin-top:18px;max-width:56ch}
+.about-card{
+  background:var(--card);border:1px solid var(--line);padding:34px;
+  display:grid;grid-template-columns:1fr 1fr;gap:26px;
+}
+.stat b{display:block;font-family:'Oswald',sans-serif;font-weight:700;font-size:2rem;color:var(--gold);line-height:1}
+.stat span{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:block;margin-top:8px}
+
+/* ── REVIEWS ── */
+#reviews{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.rev{background:var(--card);border:1px solid var(--line);padding:30px 30px 26px}
+.rev-stars{display:flex;gap:4px;margin-bottom:16px}
+.rev-stars svg{width:16px;height:16px;fill:var(--gold)}
+.rev p{color:var(--body);font-size:.96rem}
+.rev-who{
+  margin-top:18px;font-family:'IBM Plex Mono',monospace;font-weight:600;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);
+}
+.rev-who b{color:var(--chrome);font-weight:600}
+
+/* ── AREAS ── */
+.areas-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.area{
+  border:1px solid var(--line-light);padding:10px 20px;
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.76rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--body);
+  transition:border-color .2s,color .2s;
+}
+.area:hover{border-color:var(--gold);color:var(--gold)}
+.area.home{border-color:var(--gold);color:var(--gold);background:var(--gold-glow)}
+
+/* ── CTA BAND ── */
+.cta-band{position:relative;overflow:hidden;padding:110px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cta-band-bg{position:absolute;inset:0}
+.cta-band-bg img{width:100%;height:100%;object-fit:cover;opacity:.38}
+.cta-band-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(11,11,13,.94) 30%,rgba(11,11,13,.55))}
+.cta-band-in{position:relative;text-align:left;max-width:620px}
+.cta-band h2{font-size:clamp(2rem,4.6vw,3.2rem)}
+.cta-band p{margin-top:14px}
+.cta-band .hero-ctas{margin-top:26px}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;margin-top:44px}
+.c-cards{display:flex;flex-direction:column;gap:16px}
+.c-card{background:var(--card);border:1px solid var(--line);padding:24px 26px;display:flex;gap:18px;align-items:flex-start}
+.c-card svg{width:21px;height:21px;stroke:var(--gold);flex:none;margin-top:3px}
+.c-card h4{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:1rem;color:var(--ink)}
+.c-card p,.c-card a{font-size:.94rem;color:var(--body)}
+.c-card a.c-strong{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:600;color:var(--gold);letter-spacing:.03em}
+.form{background:var(--card);border:1px solid var(--line);padding:34px}
+.form h3{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:1.35rem;color:var(--ink);margin-bottom:6px;letter-spacing:.03em}
+.form-sub{font-size:.92rem;margin-bottom:24px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{margin-bottom:16px}
+.f-group label{display:block;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.f-group input,.f-group select,.f-group textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line-light);color:var(--ink);
+  padding:13px 14px;font-family:'Inter',sans-serif;font-size:.95rem;
+}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{outline:none;border-color:var(--gold)}
+.form .btn{width:100%;justify-content:center;border:none;cursor:pointer;font-size:1rem}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line);padding:54px 0 34px;background:var(--panel)}
+.foot-in{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;align-items:center}
+.foot-brand{display:flex;align-items:center;gap:16px}
+.foot-brand img{width:66px}
+.foot-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.foot-name span{color:var(--gold)}
+.foot-tag{font-size:.85rem;color:var(--mute);margin-top:4px}
+.foot-base{
+  margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:.82rem;color:var(--mute);
+}
+.foot-base a{color:var(--chrome)}
+.foot-base a:hover{color:var(--gold)}
+
+/* ── FABS ── */
+.fab{
+  position:fixed;right:22px;width:54px;height:54px;border-radius:50%;z-index:150;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .3s,visibility .3s,transform .3s;
+}
+.fab.show{opacity:1;visibility:visible;transform:translateY(0)}
+.fab svg{width:23px;height:23px}
+.fab-call{bottom:92px;background:linear-gradient(160deg,var(--gold-bright),var(--gold-deep));animation:fabpulse 2s infinite}
+.fab-call svg{stroke:#151004}
+.fab-wa{bottom:24px;background:var(--wa);animation:fabpulse-wa 2s infinite}
+.fab-wa svg{fill:#06230f}
+.fab:hover{animation:none}
+@keyframes fabpulse{0%{box-shadow:0 0 0 0 rgba(232,178,58,.4)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes fabpulse-wa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ── LIGHTBOX ── */
+.lb{position:fixed;inset:0;z-index:500;background:rgba(6,6,8,.95);display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:86vh;border:1px solid var(--line-light)}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:none;cursor:pointer}
+.lb-close svg{width:30px;height:30px;stroke:var(--chrome)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ── MOBILE ── */
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:44px;padding-top:56px;padding-bottom:56px}
+  .hero h1{font-size:clamp(2.4rem,11vw,3.2rem)}
+  .hero-badge-card{padding:34px 24px 30px}
+  .trust-in{flex-direction:column;gap:0;padding-top:10px;padding-bottom:10px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:none}
+  .svc-grid,.rev-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .g-big{grid-column:span 2;grid-row:span 2}
+  .g-wide{grid-column:span 2}
+  .g-tag{display:none}
+  .about-in{grid-template-columns:1fr;gap:36px}
+  .contact-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .cta-band{padding:80px 0}
+  .foot-in{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <svg class="loader-svg" viewBox="0 0 400 500" aria-hidden="true">
+    <line class="scaff-pole" x1="60" y1="480" x2="60" y2="40" style="--d:0s"/>
+    <line class="scaff-pole" x1="160" y1="480" x2="160" y2="40" style="--d:0.07s"/>
+    <line class="scaff-pole" x1="260" y1="480" x2="260" y2="40" style="--d:0.14s"/>
+    <line class="scaff-pole" x1="340" y1="480" x2="340" y2="40" style="--d:0.21s"/>
+    <line class="scaff-pole" x1="60" y1="430" x2="340" y2="430" style="--d:0.42s"/>
+    <line class="scaff-pole" x1="60" y1="330" x2="340" y2="330" style="--d:0.6s"/>
+    <line class="scaff-pole" x1="60" y1="230" x2="340" y2="230" style="--d:0.78s"/>
+    <line class="scaff-pole" x1="60" y1="130" x2="340" y2="130" style="--d:0.96s"/>
+    <line class="scaff-pole scaff-brace" x1="60" y1="430" x2="160" y2="330" style="--d:0.66s"/>
+    <line class="scaff-pole scaff-brace" x1="160" y1="430" x2="260" y2="330" style="--d:0.73s"/>
+    <line class="scaff-pole scaff-brace" x1="260" y1="430" x2="340" y2="330" style="--d:0.8s"/>
+    <line class="scaff-pole scaff-brace" x1="60" y1="330" x2="160" y2="230" style="--d:0.87s"/>
+    <line class="scaff-pole scaff-brace" x1="160" y1="330" x2="260" y2="230" style="--d:0.94s"/>
+    <line class="scaff-pole scaff-brace" x1="260" y1="330" x2="340" y2="230" style="--d:1.01s"/>
+    <line class="scaff-pole scaff-brace" x1="60" y1="230" x2="160" y2="130" style="--d:1.08s"/>
+    <line class="scaff-pole scaff-brace" x1="160" y1="230" x2="260" y2="130" style="--d:1.15s"/>
+    <line class="scaff-pole scaff-brace" x1="260" y1="230" x2="340" y2="130" style="--d:1.22s"/>
+    <line class="scaff-board" x1="40" y1="90" x2="360" y2="90" style="--d:1.4s"/>
+    <line class="scaff-board" x1="40" y1="70" x2="360" y2="70" style="--d:1.5s"/>
+    <line class="scaff-board" x1="40" y1="50" x2="360" y2="50" style="--d:1.6s"/>
+    <circle class="scaff-coupler" cx="60"  cy="430" r="6" style="--d:0.46s"/>
+    <circle class="scaff-coupler" cx="160" cy="430" r="6" style="--d:0.5s"/>
+    <circle class="scaff-coupler" cx="260" cy="430" r="6" style="--d:0.54s"/>
+    <circle class="scaff-coupler" cx="340" cy="430" r="6" style="--d:0.58s"/>
+    <circle class="scaff-coupler" cx="60"  cy="330" r="6" style="--d:0.64s"/>
+    <circle class="scaff-coupler" cx="340" cy="330" r="6" style="--d:0.68s"/>
+    <circle class="scaff-coupler" cx="60"  cy="230" r="6" style="--d:0.82s"/>
+    <circle class="scaff-coupler" cx="340" cy="230" r="6" style="--d:0.86s"/>
+    <circle class="scaff-coupler" cx="60"  cy="130" r="6" style="--d:1.0s"/>
+    <circle class="scaff-coupler" cx="340" cy="130" r="6" style="--d:1.04s"/>
+  </svg>
+  <div class="loader-progress"></div>
+  <div class="loader-brand">
+    <div class="loader-brand-name">TJB <span>SCAFFOLDING</span></div>
+    <div class="loader-brand-tag">Southampton · Hampshire</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in wrap">
+    <a href="#" class="nav-logo">
+      <img src="logo.jpg" alt="TJB Scaffolding Limited logo">
+      <span class="nav-logo-text">
+        <span class="nav-logo-name">TJB <span>Scaffolding</span></span>
+        <span class="nav-logo-sub">Limited · Southampton</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta js-call">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span class="js-phone-text">Call us</span>
+      </a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="nav-menu" id="navMenu">
+  <a href="#services">Services</a>
+  <a href="#work">Our Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Get a Quote</a>
+  <a href="#" class="menu-cta js-call js-phone-text">Call us</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner wrap">
+    <div>
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Southampton · Domestic &amp; Commercial</div>
+      <h1 class="display">Solid <span class="hl">scaffold.</span><br>Safe access.<br>No messing.</h1>
+      <p class="hero-lede">TJB Scaffolding Limited puts up scaffolding for homes, builders and businesses across Southampton. Erected right, kept safe, struck on time. Tell us about the job and we will get you a price.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-gold js-call">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span class="js-phone-text">Call us</span>
+        </a>
+        <a href="#" class="btn btn-wa js-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp us
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><b>Free</b> quotes</span>
+        <span><b>Domestic</b> &amp; commercial</span>
+        <span><b>Southampton</b> based</span>
+      </div>
+    </div>
+    <div class="hero-badge-card">
+      <img src="logo.jpg" alt="TJB Scaffolding Limited gold badge logo">
+      <div class="hero-badge-strap">Scaffolding <b>·</b> Access <b>·</b> Hire</div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="trust-in wrap">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free quotes</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Domestic &amp; commercial</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Safe, tidy sites</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fast turnaround</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Local team</div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="label reveal">What we do</div>
+    <h2 class="display reveal">Scaffolding <span class="hl">services</span></h2>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-num">01</div>
+        <h3>Domestic Scaffolding</h3>
+        <p>Extensions, re-roofs, render, repairs and everything else around the house.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">02</div>
+        <h3>Commercial Scaffolding</h3>
+        <p>Units, offices, schools and shopfronts, programmed around your trades.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">03</div>
+        <h3>New Build Scaffolding</h3>
+        <p>Staged lifts that follow the build from footings to ridge.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">04</div>
+        <h3>Chimney &amp; Roof Access</h3>
+        <p>Tight-access chimney stacks and roof edge protection.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">05</div>
+        <h3>Temporary Roofs</h3>
+        <p>Weather protection so the job carries on whatever the forecast.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">06</div>
+        <h3>Towers &amp; Walkways</h3>
+        <p>Towers, staircases and walkways for short jobs and awkward spots.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="label reveal">Recent work</div>
+    <h2 class="display reveal">On the <span class="hl">scaffold</span></h2>
+    <div class="gal">
+      <div class="g-item g-big reveal"><img src="work-1.jpg" alt="Scaffold elevation netted and boarded" loading="lazy"><div class="g-tag"><b>01</b>Netted and boarded, ready for trades</div></div>
+      <div class="g-item reveal"><img src="work-2.jpg" alt="Scaffold access staircase" loading="lazy"><div class="g-tag"><b>02</b>Access staircases</div></div>
+      <div class="g-item reveal"><img src="work-3.jpg" alt="Boarded scaffold lift with guardrails" loading="lazy"><div class="g-tag"><b>03</b>Boarded lift, edge protection</div></div>
+      <div class="g-item g-tall reveal"><img src="work-4.jpg" alt="System scaffold full elevation" loading="lazy"><div class="g-tag"><b>04</b>System scaffold, full elevation</div></div>
+      <div class="g-item g-tall reveal"><img src="work-5.jpg" alt="Scaffold on a large building" loading="lazy" style="object-position:center 80%"><div class="g-tag"><b>05</b>Full wrap on a new build</div></div>
+      <div class="g-item g-wide reveal"><img src="work-6.jpg" alt="Scaffold boards from below" loading="lazy"><div class="g-tag"><b>06</b>Boards in, next lift up</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-in wrap">
+    <div class="about-copy">
+      <div class="label reveal">About TJB</div>
+      <h2 class="display reveal">Built on the <span class="hl">basics</span></h2>
+      <p class="reveal">TJB Scaffolding Limited is a Southampton firm built on doing the basics well: turning up when we say, erecting safe and level scaffold, and striking it the moment you are done.</p>
+      <p class="reveal">Domestic or commercial, big or small, you deal with the same local team from quote to strike. Call us and tell us about the job.</p>
+    </div>
+    <div class="about-card reveal">
+      <div class="stat"><b>Local</b><span>Southampton based</span></div>
+      <div class="stat"><b>Free</b><span>Quotes &amp; site visits</span></div>
+      <div class="stat"><b>1 team</b><span>Quote to strike</span></div>
+      <div class="stat"><b>Fast</b><span>Erect &amp; strike</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="label reveal">Reviews</div>
+    <h2 class="display reveal">Word gets <span class="hl">around</span></h2>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"TJB scaffolded our two-storey extension in Shirley. Up on the day they promised, and struck the same week the builders finished."</p>
+        <div class="rev-who"><b>Claire H.</b> · Shirley · Extension</div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"Needed chimney access in Totton at short notice. TJB had it up within days, neat job and the garden was left spotless."</p>
+        <div class="rev-who"><b>Dave M.</b> · Totton · Chimney access</div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"Straightforward from the first call. Fair price for our re-roof in Eastleigh and the scaffold felt rock solid the whole way through."</p>
+        <div class="rev-who"><b>Priya K.</b> · Eastleigh · Re-roof</div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"TJB Scaffolding sorted access on our unit in Hedge End around trading hours. Communication was spot on throughout."</p>
+        <div class="rev-who"><b>Steve B.</b> · Hedge End · Commercial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="wrap">
+    <div class="label reveal">Coverage</div>
+    <h2 class="display reveal">Southampton &amp; <span class="hl">surrounding areas</span></h2>
+    <div class="areas-list reveal">
+      <span class="area home">Southampton</span>
+      <span class="area">Eastleigh</span>
+      <span class="area">Totton</span>
+      <span class="area">Hedge End</span>
+      <span class="area">Chandler's Ford</span>
+      <span class="area">Romsey</span>
+      <span class="area">West End</span>
+      <span class="area">Fair Oak</span>
+      <span class="area">Hythe</span>
+      <span class="area">Bursledon</span>
+      <span class="area">Winchester</span>
+      <span class="area">Fareham</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-bg"><img src="cta-bg.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="cta-band-in">
+      <div class="label reveal">Ready when you are</div>
+      <h2 class="display reveal">Need scaffold up? <span class="hl">Get a price today.</span></h2>
+      <p class="reveal">Call, WhatsApp or send the form and we will come back to you with a straight answer.</p>
+      <div class="hero-ctas reveal">
+        <a href="#" class="btn btn-gold js-call">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span class="js-phone-text">Call us</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Request a quote</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="label reveal">Get a quote</div>
+    <h2 class="display reveal">Tell us about <span class="hl">the job</span></h2>
+    <div class="contact-grid">
+      <div class="c-cards">
+        <div class="c-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <div>
+            <h4>Call us</h4>
+            <a href="#" class="c-strong js-call js-phone-text">&nbsp;</a>
+            <p>Quickest way to a quote.</p>
+          </div>
+        </div>
+        <div class="c-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          <div>
+            <h4>WhatsApp</h4>
+            <p>Send photos of the property and we can price most jobs from them.</p>
+          </div>
+        </div>
+        <div class="c-card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <h4>Covering</h4>
+            <p>Southampton and surrounding areas, domestic and commercial.</p>
+          </div>
+        </div>
+      </div>
+      <form class="form reveal" action="/api/enquiry" method="POST">
+        <h3>Request a free quote</h3>
+        <p class="form-sub">Send a few details and we will get back to you with a price.</p>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="TJB Scaffolding Limited">
+        <input type="hidden" name="source" value="mockup-tjb-scaffolding">
+        <div class="f-row">
+          <div class="f-group">
+            <label for="fName">Name *</label>
+            <input type="text" id="fName" name="name" required>
+          </div>
+          <div class="f-group">
+            <label for="fPhone">Phone *</label>
+            <input type="tel" id="fPhone" name="phone" required pattern="^(0|\+44)\d{9,11}$">
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-group">
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" name="email">
+          </div>
+          <div class="f-group">
+            <label for="fService">Service</label>
+            <select id="fService" name="service">
+              <optgroup label="Domestic">
+                <option>Extension or renovation</option>
+                <option>Re-roof</option>
+                <option>Chimney access</option>
+                <option>Render or repairs</option>
+              </optgroup>
+              <optgroup label="Commercial">
+                <option>Commercial building</option>
+                <option>New build site</option>
+                <option>Temporary roof</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Towers and walkways</option>
+                <option>Something else</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="f-group">
+          <label for="fMsg">About the job</label>
+          <textarea id="fMsg" name="message" rows="4" placeholder="Where is the property and what needs access?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <img src="logo.jpg" alt="TJB Scaffolding Limited logo">
+        <div>
+          <div class="foot-name">TJB <span>Scaffolding</span> Ltd</div>
+          <div class="foot-tag">Domestic and commercial scaffolding, Southampton.</div>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-ghost">Get a free quote</a>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 TJB Scaffolding Limited. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABS -->
+<a href="#" class="fab fab-call js-call" id="fabCall" aria-label="Call us">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+</a>
+<a href="#" class="fab fab-wa js-wa" id="fabWa" aria-label="WhatsApp us">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lbImg" alt="Scaffolding project photo">
+</div>
+
+<script>
+// Loader teardown (2.4s) + fail-safe
+(function(){
+  var kill = function(){ var l = document.getElementById('loader'); if (l) l.classList.add('done'); };
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(kill, reduced ? 600 : 2400);
+  setTimeout(kill, 3200); // fail-safe
+})();
+
+// Contact decode
+(function(){
+  var P = atob('MDc1NDI4NTE4MDY=');
+  var Pf = atob('MDc1NDIgODUxODA2');
+  var W = atob('NDQ3NTQyODUxODA2');
+  var waUrl = 'https://wa.me/' + W + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+  document.querySelectorAll('.js-call').forEach(function(el){ el.href = 'tel:' + P; });
+  document.querySelectorAll('.js-wa').forEach(function(el){ el.href = waUrl; });
+  document.querySelectorAll('.js-phone-text').forEach(function(el){ el.textContent = Pf; });
+})();
+
+// Form timestamp
+document.getElementById('formTimestamp').value = Date.now();
+
+// Phone validity message
+(function(){
+  var p = document.getElementById('fPhone');
+  p.addEventListener('invalid', function(){ p.setCustomValidity('Please enter a valid UK phone number'); });
+  p.addEventListener('input', function(){ p.setCustomValidity(''); });
+})();
+
+// Burger
+(function(){
+  var b = document.getElementById('burger'), m = document.getElementById('navMenu');
+  b.addEventListener('click', function(){ m.classList.toggle('open'); });
+  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ m.classList.remove('open'); }); });
+})();
+
+// FABs on scroll
+window.addEventListener('scroll', function(){
+  var show = window.scrollY > 620;
+  document.getElementById('fabCall').classList.toggle('show', show);
+  document.getElementById('fabWa').classList.toggle('show', show);
+});
+
+// Reveal
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+// Lightbox
+(function(){
+  var lb = document.getElementById('lb'), img = document.getElementById('lbImg');
+  document.querySelectorAll('.g-item img').forEach(function(g){
+    g.parentElement.addEventListener('click', function(){
+      img.src = g.src; lb.classList.add('open');
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', function(){ lb.classList.remove('open'); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') lb.classList.remove('open'); });
+})();
+</script>
+</body>
+</html>
