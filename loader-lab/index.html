@@ -198,6 +198,47 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-brick.play .wordmark{animation:wordIn .45s ease 1.55s forwards}
 #ld-brick.play .wordsub{animation:wordIn .45s ease 1.7s forwards}
 
+/* keystone arch (stonemasons / bricklayers) — first used on the JRBS mockup.
+   Mason's sequence: centering line draws, wedge voussoirs lay up from both
+   springings, keystone drops + arch settles, centering struck, gleam sweep. */
+#ld-keystone{background:#16130c;flex-direction:column}
+#ld-keystone .kstage{position:relative;width:260px;height:150px}
+#ld-keystone.play .kstage{animation:kSettle .16s ease 1.52s}
+@keyframes kSettle{50%{transform:translateY(2px)}}
+#ld-keystone .kcentering{position:absolute;inset:0;overflow:visible}
+#ld-keystone .kcentering path{fill:none;stroke:#5c5540;stroke-width:1.5;stroke-dasharray:152;stroke-dashoffset:152}
+#ld-keystone.play .kcentering{animation:kStrike .4s ease 1.6s forwards}
+#ld-keystone.play .kcentering path{animation:kDraw .5s ease .05s forwards}
+@keyframes kDraw{to{stroke-dashoffset:0}}
+@keyframes kStrike{to{opacity:0}}
+#ld-keystone .kv{position:absolute;left:50%;top:102px;width:26px;height:48px;margin-left:-13px;transform-origin:50% 100%;opacity:0;background:linear-gradient(180deg,#d6c398,#c1ab7d);clip-path:polygon(0 0,100% 0,76% 100%,24% 100%);transform:rotate(var(--a)) translateY(-114px)}
+#ld-keystone .kv.alt{background:linear-gradient(180deg,#cab381,#b39e6f)}
+#ld-keystone.play .kv{animation:kSet .28s ease var(--d) forwards}
+@keyframes kSet{to{opacity:1;transform:rotate(var(--a)) translateY(-100px)}}
+#ld-keystone .kv.s1{--a:-90deg;--d:.3s}#ld-keystone .kv.s2{--a:90deg;--d:.38s}
+#ld-keystone .kv.n1{--a:-72deg;--d:.46s}#ld-keystone .kv.n2{--a:72deg;--d:.54s}
+#ld-keystone .kv.n3{--a:-54deg;--d:.62s}#ld-keystone .kv.n4{--a:54deg;--d:.7s}
+#ld-keystone .kv.n5{--a:-36deg;--d:.78s}#ld-keystone .kv.n6{--a:36deg;--d:.86s}
+#ld-keystone .kv.n7{--a:-18deg;--d:.94s}#ld-keystone .kv.n8{--a:18deg;--d:1.02s}
+#ld-keystone .kv.key{--a:0deg;width:32px;margin-left:-16px;height:54px;top:96px;z-index:2;background:linear-gradient(180deg,#bd8a2e,#96690f);clip-path:polygon(2% 0,98% 0,72% 100%,28% 100%);transform:translateY(-160px)}
+#ld-keystone.play .kv.key{animation:kKey .38s cubic-bezier(.34,1.45,.64,1) 1.18s forwards}
+@keyframes kKey{0%{opacity:0;transform:translateY(-160px)}55%{opacity:1}100%{opacity:1;transform:translateY(-108px)}}
+#ld-keystone .kgleam{position:absolute;top:-16px;bottom:-6px;width:44px;left:0;background:linear-gradient(90deg,transparent,rgba(255,246,224,.28),transparent);transform:translateX(-80px) rotate(12deg);opacity:0}
+#ld-keystone.play .kgleam{animation:kGleam .6s ease 1.68s forwards}
+@keyframes kGleam{0%{opacity:0;transform:translateX(-80px) rotate(12deg)}25%{opacity:1}100%{opacity:0;transform:translateX(300px) rotate(12deg)}}
+#ld-keystone .kbase{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:224px;height:2px;background:#3a3526}
+#ld-keystone .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:34px}
+#ld-keystone .wordmark{color:#f2ecdd;font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:.12em}
+#ld-keystone .wordsub{color:#cdb98f}
+#ld-keystone.play .wordmark{animation:wordIn .5s ease 1.62s forwards}
+#ld-keystone.play .wordsub{animation:wordIn .5s ease 1.77s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld-keystone .kv,#ld-keystone .wordmark,#ld-keystone .wordsub{opacity:1;animation:none!important}
+  #ld-keystone .kv.key{transform:translateY(-108px)}
+  #ld-keystone .kcentering{opacity:0;animation:none}
+  #ld-keystone .kgleam{animation:none}
+}
+
 /* ===== 23. BRICKLAYERS — string line ===== */
 #ld-stringline{background:#16191c;flex-direction:column;color:#fff}
 #ld-stringline .sl-stage{position:relative;width:min(440px,80vw);height:120px;margin-bottom:30px}
@@ -1272,6 +1313,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Brick courses lay themselves up from the footing, half-bond offset and all, then the wordmark stamps the wall.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-keystone" data-dur="2400">
+      <span class="trade">Stonemasons / Bricklayers</span>
+      <h3>Keystone Arch</h3>
+      <p>A centering line draws in, wedge voussoirs lay up from both springings, the keystone drops and the arch settles, the centering is struck and a gleam sweeps the stone.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-stringline" data-dur="2400">
       <span class="trade">Bricklayers / Builders</span>
       <h3>String Line</h3>
@@ -1733,6 +1780,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Red Lion Brickwork</div>
     <div class="wordsub">Bricklaying &amp; Pointing</div>
+  </div>
+</div>
+
+<!-- 4b. keystone arch -->
+<div class="loader" id="ld-keystone" aria-hidden="true">
+  <div class="kstage" aria-hidden="true">
+    <svg class="kcentering" viewBox="0 0 260 150" width="260" height="150"><path d="M82 150 A48 48 0 0 1 178 150"/></svg>
+    <div class="kv s1"></div>
+    <div class="kv s2 alt"></div>
+    <div class="kv n1 alt"></div>
+    <div class="kv n2"></div>
+    <div class="kv n3"></div>
+    <div class="kv n4 alt"></div>
+    <div class="kv n5 alt"></div>
+    <div class="kv n6"></div>
+    <div class="kv n7"></div>
+    <div class="kv n8 alt"></div>
+    <div class="kv key"></div>
+    <div class="kgleam"></div>
+    <div class="kbase"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">JRBS</div>
+    <div class="wordsub">Stonemason &amp; Bricklayer</div>
   </div>
 </div>
 

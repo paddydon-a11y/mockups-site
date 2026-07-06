@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRBS | Stonemason &amp; Bricklayer, West Yorkshire</title>
+<meta name="description" content="JRBS: stonemasonry and brickwork across West Yorkshire. Stone walls, repointing, restoration, garden walls and chimney rebuilds. 25 years on the tools.">
+<meta property="og:title" content="JRBS: Your New Website">
+<meta property="og:description" content="Stonemason &amp; bricklayer in West Yorkshire: preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/jrbs/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/jrbs/">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg2:#f3f4f1;
+  --card:#f8f9f6;
+  --ink:#17150e;
+  --body:#4c4a41;
+  --muted:#8d8a7e;
+  --line:#e5e4dc;
+  --line2:#d4d2c6;
+  --accent:#a8761f;
+  --accent-deep:#8a5e12;
+  --accent-glow:rgba(168,118,31,.14);
+  --wa:#1faf54;
+  --wa-deep:#188f44;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+em{font-style:normal}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Instrument Serif',serif;font-weight:400;color:var(--ink);line-height:1.04}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.label{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-deep);display:flex;align-items:center;gap:10px}
+.label::before{content:"";width:22px;height:1px;background:var(--accent);flex:none}
+.accent{color:var(--accent);font-weight:400}
+
+/* ============ LOADER: Keystone Arch ============ */
+/* A mason's sequence: timber centering line draws in, wedge voussoirs lay up
+   from both springings, the keystone drops and the arch settles, the centering
+   is struck, a gleam sweeps the finished stone. */
+#loader{position:fixed;inset:0;z-index:999;background:#16130c;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .45s ease,visibility .45s ease}
+#loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+.ld-stage{position:relative;width:260px;height:150px;animation:ldSettle .16s ease 1.52s}
+@keyframes ldSettle{50%{transform:translateY(2px)}}
+.ld-centering{position:absolute;inset:0;overflow:visible;animation:ldStrike .4s ease 1.6s forwards}
+.ld-centering path{fill:none;stroke:#5c5540;stroke-width:1.5;stroke-dasharray:152;stroke-dashoffset:152;animation:ldDraw .5s ease .05s forwards}
+@keyframes ldDraw{to{stroke-dashoffset:0}}
+@keyframes ldStrike{to{opacity:0}}
+.ld-v{position:absolute;left:50%;top:102px;width:26px;height:48px;margin-left:-13px;transform-origin:50% 100%;opacity:0;background:linear-gradient(180deg,#d6c398,#c1ab7d);clip-path:polygon(0 0,100% 0,76% 100%,24% 100%);transform:rotate(var(--a)) translateY(-114px);animation:ldSet .28s ease var(--d) forwards}
+.ld-v.alt{background:linear-gradient(180deg,#cab381,#b39e6f)}
+@keyframes ldSet{to{opacity:1;transform:rotate(var(--a)) translateY(-100px)}}
+.ld-v.s1{--a:-90deg;--d:.3s}.ld-v.s2{--a:90deg;--d:.38s}
+.ld-v.n1{--a:-72deg;--d:.46s}.ld-v.n2{--a:72deg;--d:.54s}
+.ld-v.n3{--a:-54deg;--d:.62s}.ld-v.n4{--a:54deg;--d:.7s}
+.ld-v.n5{--a:-36deg;--d:.78s}.ld-v.n6{--a:36deg;--d:.86s}
+.ld-v.n7{--a:-18deg;--d:.94s}.ld-v.n8{--a:18deg;--d:1.02s}
+.ld-v.k{--a:0deg;width:32px;margin-left:-16px;height:54px;top:96px;z-index:2;background:linear-gradient(180deg,#bd8a2e,#96690f);clip-path:polygon(2% 0,98% 0,72% 100%,28% 100%);transform:translateY(-160px);animation:ldKey .38s cubic-bezier(.34,1.45,.64,1) 1.18s forwards}
+@keyframes ldKey{0%{opacity:0;transform:translateY(-160px)}55%{opacity:1}100%{opacity:1;transform:translateY(-108px)}}
+.ld-gleam{position:absolute;top:-16px;bottom:-6px;width:44px;left:0;background:linear-gradient(90deg,transparent,rgba(255,246,224,.28),transparent);transform:translateX(-80px) rotate(12deg);opacity:0;animation:ldGleam .6s ease 1.68s forwards}
+@keyframes ldGleam{0%{opacity:0;transform:translateX(-80px) rotate(12deg)}25%{opacity:1}100%{opacity:0;transform:translateX(300px) rotate(12deg)}}
+.ld-base{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:224px;height:2px;background:#3a3526}
+.ld-word{margin-top:30px;text-align:center;font-family:'Instrument Serif',serif;font-size:2rem;color:#f2ecdd;letter-spacing:.14em;opacity:0;animation:wordup .5s ease 1.62s forwards}
+.ld-word span{color:#cdb98f;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.3em;display:block;margin-top:4px;text-transform:uppercase}
+@keyframes wordup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+  .ld-stage{animation:none}
+  .ld-centering{animation:none;opacity:0}
+  .ld-v{animation:none!important;opacity:1!important;transform:rotate(var(--a)) translateY(-100px)!important}
+  .ld-v.k{transform:translateY(-108px)!important}
+  .ld-gleam{animation:none}
+  .ld-word{animation:wordup .3s ease .2s forwards}
+}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:90;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:1.6rem;color:var(--ink);letter-spacing:.06em;white-space:nowrap;display:flex;align-items:baseline;gap:10px}
+.nav-logo b{font-weight:400}
+.nav-logo small{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff !important;padding:10px 20px;border-radius:999px;font-weight:600;transition:background .2s}
+.nav-links a.nav-cta:hover{background:#000}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#fff}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.25s}
+.m-menu{display:none}
+
+/* ============ HERO ============ */
+.hero{display:flex;flex-direction:column;background:var(--bg);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+  repeating-linear-gradient(0deg,transparent 0 55px,rgba(23,21,14,.055) 55px 56px),
+  repeating-linear-gradient(90deg,transparent 0 89px,rgba(23,21,14,.038) 89px 90px),
+  repeating-linear-gradient(90deg,transparent 0 233px,rgba(23,21,14,.038) 233px 234px);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 55%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.45) 55%,transparent 100%)}
+.hero-inner{padding-top:64px;padding-bottom:96px;position:relative;z-index:1}
+.hero-inner > .label{margin-bottom:26px}
+.hero-inner > .label i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex:none;font-style:normal}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero-inner h1{font-size:clamp(2.7rem,6.6vw,6.2rem);letter-spacing:-.015em;line-height:1;position:relative;z-index:2;max-width:15ch}
+.stonefill{background:linear-gradient(rgba(168,118,31,.55),rgba(122,82,16,.55)),url('work-3.jpg') 36% 62%/190% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+@supports not (background-clip:text){.stonefill{color:var(--accent);background:none;-webkit-text-fill-color:currentColor}}
+.hero-row{display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:start;margin-top:44px}
+.hero-copy{padding-top:56px}
+.hero-copy p{font-size:1.1rem;max-width:44ch;margin-bottom:34px}
+.hero-copy .h-since{margin-top:44px;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.hero-copy .h-since::before{content:"";width:44px;height:1px;background:var(--line2);flex:none}
+.hero-copy .h-since b{color:var(--ink);font-weight:600;white-space:nowrap}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:.98rem;transition:transform .2s,box-shadow .2s,background .2s}
+.btn svg{width:17px;height:17px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-call{background:var(--ink);color:#fff;box-shadow:0 10px 26px rgba(23,21,14,.22)}
+.btn-call svg{stroke:#fff}
+.btn-call:hover{background:#000}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 26px rgba(31,175,84,.24)}
+.btn-wa svg{fill:#fff}
+.btn-wa:hover{background:var(--wa-deep)}
+.hero-visual{position:relative;z-index:1;margin-top:-104px}
+.hero-visual::before{content:"";position:absolute;left:-40px;right:-64px;top:24%;height:1px;background:var(--line2)}
+.hero-visual::after{content:"";position:absolute;left:-64px;right:-40px;top:calc(24% + 14px);height:1px;background:var(--line)}
+.rings{position:absolute;left:50%;top:0;transform:translate(-50%,-9%);width:128%;aspect-ratio:2/1;border:1.5px dashed rgba(168,118,31,.55);border-bottom:0;border-radius:999px 999px 0 0;z-index:0;pointer-events:none}
+.rings::before{content:"";position:absolute;left:26px;right:26px;top:26px;bottom:0;border:1px solid rgba(168,118,31,.28);border-bottom:0;border-radius:999px 999px 0 0}
+.rings::after{content:"";position:absolute;left:52px;right:52px;top:52px;bottom:0;border:1px solid rgba(168,118,31,.16);border-bottom:0;border-radius:999px 999px 0 0}
+.arch{position:relative;z-index:2;border-radius:50% 50% 22px 22px / 36% 36% 22px 22px;overflow:hidden;border:1px solid var(--line2);aspect-ratio:4/4.7;box-shadow:0 30px 60px -28px rgba(23,21,14,.35)}
+.arch img{width:100%;height:100%;object-fit:cover;animation:kenburns 20s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-chip{position:relative;z-index:2;display:flex;align-items:center;gap:14px;margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 18px}
+.hero-chip .num{font-family:'Instrument Serif',serif;font-size:2rem;color:var(--ink);line-height:1}
+.hero-chip .txt{font-size:.85rem;color:var(--body);line-height:1.4}
+.hero-chip .txt b{color:var(--ink)}
+
+/* ============ TRUST ============ */
+.trust{background:var(--bg);border-top:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:26px;padding-bottom:26px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:var(--ink)}
+.trust-item svg{width:17px;height:17px;stroke:var(--accent);flex:none}
+
+/* ============ SECTIONS ============ */
+section{padding-top:96px;padding-bottom:96px}
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.01em}
+
+/* Services: numbered editorial list */
+.services{background:var(--bg2)}
+.svc{list-style:none;border-top:1px solid var(--line2)}
+.svc li{display:grid;grid-template-columns:90px 1fr auto;gap:26px;align-items:baseline;border-bottom:1px solid var(--line2);padding:26px 0;position:relative}
+.svc li::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--accent);transition:width .45s ease}
+.svc li:hover::after{width:100%}
+.svc .no{font-family:'Instrument Serif',serif;font-size:2.1rem;color:var(--line2);transition:color .3s}
+.svc li:hover .no{color:var(--accent)}
+.svc h3{font-size:1.55rem}
+.svc p{font-size:.95rem;color:var(--muted);max-width:38ch;text-align:right}
+
+/* Gallery: editorial plate, captions below */
+.plate{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+.tile{display:flex;flex-direction:column;gap:10px}
+.tile .ph{overflow:hidden;border-radius:14px;border:1px solid var(--line)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.tile:hover img{transform:scale(1.05)}
+.tile figcaption{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;gap:8px;align-items:center}
+.tile figcaption::before{content:"";width:14px;height:1px;background:var(--accent);flex:none}
+.t-a{grid-column:span 4}.t-a .ph{aspect-ratio:16/9}
+.t-b{grid-column:span 2}.t-b .ph{aspect-ratio:4/4.55}
+.t-c{grid-column:span 2}.t-c .ph{aspect-ratio:4/3.4}
+.t-d{grid-column:span 2}.t-d .ph{aspect-ratio:4/3.4}
+.t-e{grid-column:span 2}.t-e .ph{aspect-ratio:4/3.4}
+.t-f{grid-column:span 3}.t-f .ph{aspect-ratio:16/10}
+.t-g{grid-column:span 3}.t-g .ph{aspect-ratio:16/10}
+.t-h{grid-column:span 6}.t-h .ph{aspect-ratio:21/8}
+
+/* About slim */
+.about{background:var(--bg2)}
+.about-in{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.about-mark{width:104px;height:104px;border-radius:50% 50% 14px 14px / 40% 40% 14px 14px;background:var(--ink);color:#f2ecdd;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:2rem;letter-spacing:.08em}
+.about p{font-size:1.16rem;color:var(--body);max-width:62ch}
+.about p b{color:var(--ink);font-weight:600}
+
+/* Reviews R3 */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:30px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(23,21,14,.25)}
+.stars{color:var(--accent);letter-spacing:3px;font-size:.95rem;margin-bottom:14px}
+.rev q{quotes:none;font-size:1.02rem;color:var(--body);display:block;margin-bottom:18px}
+.rev .who{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.rev .who b{color:var(--ink);font-weight:600}
+
+/* Areas */
+.areas .chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{border:1px solid var(--line2);border-radius:999px;padding:9px 20px;font-size:.92rem;font-weight:500;color:var(--body);transition:border-color .2s,color .2s}
+.chip:hover{border-color:var(--accent);color:var(--ink)}
+.chip.home{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* CTA band */
+.band{background:var(--ink);color:#fff;padding-top:84px;padding-bottom:84px;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 64px,rgba(242,236,221,.05) 64px 65px),repeating-linear-gradient(90deg,transparent 0 128px,rgba(242,236,221,.04) 128px 129px)}
+.band-in{position:relative;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.band h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch}
+.band h2 em{color:#cdb98f}
+.band .btn-call{background:#fff;color:var(--ink);box-shadow:none}
+.band .btn-call svg{stroke:var(--ink)}
+.band .btn-call:hover{background:#f2ecdd}
+
+/* Contact */
+.contact .c-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.c-info{display:flex;flex-direction:column;gap:18px}
+.c-card{border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;background:var(--card)}
+.c-card svg{width:19px;height:19px;stroke:var(--accent);flex:none;margin-top:3px}
+.c-card .t{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.c-card .v{font-size:1.05rem;font-weight:600;color:var(--ink)}
+.c-card .s{font-size:.85rem;color:var(--muted)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-full{grid-column:1/-1}
+label{font-size:.8rem;font-weight:600;color:var(--ink);display:block;margin-bottom:7px}
+input,select,textarea{width:100%;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--ink);background:var(--bg);transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+textarea{min-height:120px;resize:vertical}
+.f-submit{grid-column:1/-1;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:16px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;transition:background .2s}
+.f-submit:hover{background:#000}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding-top:44px;padding-bottom:44px;background:var(--bg2)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+.foot .fl{font-family:'Instrument Serif',serif;font-size:1.3rem;color:var(--ink);letter-spacing:.06em}
+.foot a{color:var(--body);font-weight:500}
+.foot a:hover{color:var(--ink)}
+
+/* FABs */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(12px);transition:.3s}
+.fabs.on{opacity:1;visibility:visible;transform:none}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.fab svg{width:22px;height:22px}
+.fab-call{background:var(--ink);animation:fabpulse 2.2s infinite}
+.fab-call svg{stroke:#fff}
+.fab-wa{background:var(--wa);animation:fabpulse-g 2.2s infinite}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation-play-state:paused}
+@keyframes fabpulse{0%{box-shadow:0 0 0 0 rgba(23,21,14,.3)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes fabpulse-g{0%{box-shadow:0 0 0 0 rgba(31,175,84,.4)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.arch img{animation:none}}
+
+/* ============ MOBILE ============ */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .m-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 24px 24px;z-index:89}
+  .m-menu.open{display:block}
+  .m-menu a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem;font-weight:500;color:var(--ink)}
+  .m-menu a:last-child{border-bottom:0}
+  .m-menu .m-call{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:#fff;border-radius:999px;margin-top:16px;padding:15px;font-weight:600;border-bottom:0}
+  .m-menu .m-call svg{width:16px;height:16px;stroke:#fff}
+  .hero-inner{padding-top:40px;padding-bottom:64px}
+  .hero-inner > .label{margin-bottom:18px}
+  .hero-inner h1{font-size:clamp(2.85rem,6.6vw,6.2rem)}
+  .hero-row{grid-template-columns:1fr;gap:30px;margin-top:22px}
+  .hero-copy{padding-top:0}
+  .hero-copy p{max-width:none;font-size:1.02rem;margin-bottom:24px}
+  .hero-copy .h-since{margin-top:26px}
+  .hero-copy .h-since .rail-3{display:none}
+  .btn{padding:13px 18px;font-size:.92rem}
+  .hero-visual{margin-top:24px}
+  .hero-visual::before,.hero-visual::after{display:none}
+  .arch{aspect-ratio:4/4.2}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:0}
+  section{padding-top:64px;padding-bottom:64px}
+  .svc li{grid-template-columns:1fr;gap:6px;padding:22px 0}
+  .svc .no{font-size:1.5rem}
+  .svc p{text-align:left;max-width:none}
+  .plate{grid-template-columns:1fr;gap:26px}
+  .t-a,.t-b,.t-c,.t-d,.t-e,.t-f,.t-g,.t-h{grid-column:span 1}
+  .t-a .ph,.t-b .ph,.t-c .ph,.t-d .ph,.t-e .ph,.t-f .ph,.t-g .ph,.t-h .ph{aspect-ratio:4/3}
+  .about-in{grid-template-columns:1fr;gap:28px}
+  .rev-grid{grid-template-columns:1fr}
+  .contact .c-grid{grid-template-columns:1fr;gap:44px}
+  form{grid-template-columns:1fr}
+  .band-in{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader: Keystone Arch -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-stage">
+    <svg class="ld-centering" viewBox="0 0 260 150" width="260" height="150"><path d="M82 150 A48 48 0 0 1 178 150"/></svg>
+    <div class="ld-v s1"></div>
+    <div class="ld-v s2 alt"></div>
+    <div class="ld-v n1 alt"></div>
+    <div class="ld-v n2"></div>
+    <div class="ld-v n3"></div>
+    <div class="ld-v n4 alt"></div>
+    <div class="ld-v n5 alt"></div>
+    <div class="ld-v n6"></div>
+    <div class="ld-v n7"></div>
+    <div class="ld-v n8 alt"></div>
+    <div class="ld-v k"></div>
+    <div class="ld-gleam"></div>
+    <div class="ld-base"></div>
+  </div>
+  <div class="ld-word">JRBS<span>Stonemason &amp; Bricklayer</span></div>
+</div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="nav-logo"><b>JRBS</b><small>West Yorkshire</small></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navPhone">Call us</span></a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="m-menu" id="mMenu">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="m-call" id="mCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="mPhone">Call us</span></a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="label"><i></i>Stonemason &amp; Bricklayer · West Yorkshire</div>
+    <h1>Stone and brick, built to <em class="stonefill">outlast</em> the weather.</h1>
+    <div class="hero-row">
+    <div class="hero-copy">
+      <p>JRBS builds and restores stonework and brickwork across West Yorkshire. Twenty five years of walls, extensions, repointing and restoration, laid by hand and level to the line.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-call" id="heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroPhone">Call us</span></a>
+        <a href="https://wa.me/447368831424?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="btn btn-wa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp us</a>
+      </div>
+      <div class="h-since"><span>Repointing · Restoration<span class="rail-3"> · <b>New Builds</b></span></span></div>
+    </div>
+    <div class="hero-visual">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="arch"><img src="hero.jpg" alt="Dry stone wall running over the Pennine hills" fetchpriority="high"></div>
+      <div class="hero-chip"><div class="num">25</div><div class="txt"><b>years on the tools.</b> Time-served in stone and brick, working across West Yorkshire.</div></div>
+    </div>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>25 Years Experience</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Stone &amp; Brick Specialists</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free Quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Repointing &amp; Restoration</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>West Yorkshire Wide</div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2>Every job, <em class="accent">stone</em> or brick.</h2>
+    </div>
+    <ul class="svc">
+      <li class="reveal"><span class="no">01</span><h3>Stonemasonry</h3><p>New stonework, cut and coursed to match what stands</p></li>
+      <li class="reveal"><span class="no">02</span><h3>Brickwork</h3><p>Extensions, alterations and new builds, laid clean and true</p></li>
+      <li class="reveal"><span class="no">03</span><h3>Repointing &amp; Restoration</h3><p>Old mortar raked out, joints repointed the traditional way</p></li>
+      <li class="reveal"><span class="no">04</span><h3>Garden &amp; Boundary Walls</h3><p>Retaining walls, garden walls and dry stone walling</p></li>
+      <li class="reveal"><span class="no">05</span><h3>Chimney Rebuilds</h3><p>Stacks taken down, rebuilt and flaunched to last</p></li>
+      <li class="reveal"><span class="no">06</span><h3>Heads, Sills &amp; Lintels</h3><p>Stone heads and sills supplied, dressed and fitted</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>Work that <em class="accent">speaks</em> for itself.</h2>
+    </div>
+    <div class="plate">
+      <figure class="tile t-a reveal"><div class="ph"><img src="work-1.jpg" alt="Dry stone field wall and stone barn in the Yorkshire Dales" loading="lazy"></div><figcaption>Dry stone walling</figcaption></figure>
+      <figure class="tile t-b reveal"><div class="ph"><img src="work-2.jpg" alt="Gritstone boundary wall on open moorland" loading="lazy"></div><figcaption>Gritstone boundary wall</figcaption></figure>
+      <figure class="tile t-c reveal"><div class="ph"><img src="work-3.jpg" alt="Coursed buff sandstone wall close up" loading="lazy"></div><figcaption>Coursed sandstone</figcaption></figure>
+      <figure class="tile t-d reveal"><div class="ph"><img src="work-4.jpg" alt="Stone cottages with pitched stone roofs" loading="lazy"></div><figcaption>Heritage stonework</figcaption></figure>
+      <figure class="tile t-e reveal"><div class="ph"><img src="work-8.jpg" alt="Mason's mallet and chisels resting on a stone block" loading="lazy"></div><figcaption>Banker work</figcaption></figure>
+      <figure class="tile t-f reveal"><div class="ph"><img src="work-5.jpg" alt="Brick gable and chimneys above an old stone wall" loading="lazy"></div><figcaption>Brick gables &amp; chimneys</figcaption></figure>
+      <figure class="tile t-g reveal"><div class="ph"><img src="work-6.jpg" alt="Long brick boundary wall with piers" loading="lazy"></div><figcaption>Boundary walls &amp; piers</figcaption></figure>
+      <figure class="tile t-h reveal"><div class="ph"><img src="work-7.jpg" alt="Stacked facing bricks close up" loading="lazy"></div><figcaption>Materials, matched by eye</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-in reveal">
+    <div class="about-mark">JR</div>
+    <p><b>Twenty five years, one standard.</b> JRBS is a time-served stonemason and bricklayer based in West Yorkshire. From a single lintel to a full rebuild, every course is set out, checked and laid by hand. No agencies, no shortcuts: the person who quotes the job is the one on the trowel.</p>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Reviews</div>
+      <h2>Word gets <em class="accent">around</em>.</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><q>JRBS rebuilt the front garden wall in reclaimed stone and you would swear it had always been there. Tidy workers, wall is spot on.</q><div class="who"><b>Susan H.</b> · Halifax · Garden Wall</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><q>Had the whole gable repointed. They raked everything out by hand and the pointing is beautiful. House looks ten times better.</q><div class="who"><b>David C.</b> · Huddersfield · Repointing</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><q>Brickwork on our extension is faultless, matched the originals so well you cannot see the join. Turned up when they said, every day.</q><div class="who"><b>Rachel B.</b> · Wakefield · Extension Brickwork</div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><q>Chimney stack was leaning and letting water in. JRBS took it down and rebuilt it in a week. Fair price and no mess left behind.</q><div class="who"><b>Ian T.</b> · Leeds · Chimney Rebuild</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Areas covered</div>
+      <h2>Across <em class="accent">West Yorkshire</em>.</h2>
+    </div>
+    <div class="chips reveal">
+      <span class="chip home">West Yorkshire</span>
+      <span class="chip">Leeds</span>
+      <span class="chip">Bradford</span>
+      <span class="chip">Wakefield</span>
+      <span class="chip">Halifax</span>
+      <span class="chip">Huddersfield</span>
+      <span class="chip">Dewsbury</span>
+      <span class="chip">Keighley</span>
+      <span class="chip">Brighouse</span>
+      <span class="chip">Pontefract</span>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap band-in">
+    <h2>A wall worth building is worth building <em>once</em>.</h2>
+    <a href="#" class="btn btn-call" id="bandCall">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span id="bandPhone">Call us</span></a>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get a quote</div>
+      <h2>Tell us about <em class="accent">the job</em>.</h2>
+    </div>
+    <div class="c-grid">
+      <div class="c-info reveal">
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="t">Phone</div><div class="v" id="contactPhone">&nbsp;</div><div class="s">Weekdays 8am to 6pm</div></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <div><div class="t">WhatsApp</div><div class="v">Message us a photo</div><div class="s">Snap the wall or the job and send it over for a quick price</div></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><div class="t">Response</div><div class="v">Same day reply</div><div class="s">Quotes are free and without obligation</div></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="t">Based in</div><div class="v">West Yorkshire</div><div class="s">Covering Leeds, Bradford, Wakefield, Halifax, Huddersfield and beyond</div></div>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="JRBS">
+        <input type="hidden" name="source" value="mockup-jrbs">
+        <div><label for="fName">Name *</label><input type="text" id="fName" name="name" required autocomplete="name"></div>
+        <div><label for="fPhone">Phone *</label><input type="tel" id="fPhone" name="phone" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        <div class="f-full"><label for="fEmail">Email</label><input type="email" id="fEmail" name="email" autocomplete="email"></div>
+        <div class="f-full"><label for="fService">What do you need?</label>
+          <select id="fService" name="service">
+            <optgroup label="Stonemasonry">
+              <option>Stone walls / new stonework</option>
+              <option>Repointing &amp; restoration</option>
+              <option>Heads, sills &amp; lintels</option>
+              <option>Dry stone walling</option>
+            </optgroup>
+            <optgroup label="Brickwork">
+              <option>Extension / new build brickwork</option>
+              <option>Garden &amp; boundary walls</option>
+              <option>Chimney rebuild</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="f-full"><label for="fMsg">About the job</label><textarea id="fMsg" name="message" placeholder="Where is it, roughly what needs doing, and any timescales."></textarea></div>
+        <button type="submit" class="f-submit">Request a Free Quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fl">JRBS</div>
+    <div>Stonemason &amp; bricklayer, West Yorkshire · © 2026 JRBS</div>
+    <div>Site by <a href="https://construction-sites.co.uk/builders-web-design" target="_blank" rel="noopener">construction-sites.co.uk</a></div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="https://wa.me/447368831424?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="fab fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</div>
+
+<script>
+// Loader teardown (fail-safe)
+(function(){
+  var l = document.getElementById('loader');
+  var kill = function(){ l.classList.add('gone'); };
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setTimeout(kill, 900); }
+  else { setTimeout(kill, 2300); }
+  setTimeout(kill, 2500); // hard fail-safe
+})();
+
+// Phone decode
+(function(){
+  var P = atob('MDczNjg4MzE0MjQ=');
+  var Pf = atob('MDczNjggODMxNDI0');
+  ['navCall','heroCall','bandCall','fabCall','mCall'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.href = 'tel:' + P;
+  });
+  ['navPhone','heroPhone','bandPhone','mPhone'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.textContent = Pf;
+  });
+  var cp = document.getElementById('contactPhone');
+  if (cp) cp.textContent = Pf;
+})();
+
+// Form timestamp + phone validity message
+document.getElementById('formTimestamp').value = Date.now();
+(function(){
+  var p = document.getElementById('fPhone');
+  p.addEventListener('input', function(){
+    p.setCustomValidity(p.validity.patternMismatch ? 'Please enter a UK phone number starting 0 or +44' : '');
+  });
+})();
+
+// Mobile menu
+(function(){
+  var b = document.getElementById('burger'), m = document.getElementById('mMenu');
+  b.addEventListener('click', function(){ m.classList.toggle('open'); });
+  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ m.classList.remove('open'); }); });
+})();
+
+// Reveal on scroll
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+// FABs after hero
+(function(){
+  var f = document.getElementById('fabs'), h = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    f.classList.toggle('on', window.scrollY > h.offsetHeight - 100);
+  }, {passive: true});
+})();
+</script>
+</body>
+</html>
