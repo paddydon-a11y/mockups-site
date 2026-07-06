@@ -106,6 +106,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-power.play .wordmark{animation:wordIn .5s ease 1.6s forwards}
 #ld-power.play .wordsub{animation:wordIn .5s ease 1.78s forwards}
 
+/* ===== 2b. ELECTRICIANS — board energise (first used: rwd-electrical) ===== */
+#ld-board{background:#1a2530;flex-direction:column}
+#ld-board .bd{width:min(320px,72vw);border:2px solid #43566b;border-radius:14px;padding:22px 24px 18px;position:relative;background:#20303f;margin-bottom:30px}
+#ld-board .bd:before{content:"CONSUMER UNIT";position:absolute;top:-9px;left:18px;background:#1a2530;padding:0 8px;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.26em;color:#5d7189}
+#ld-board .bks{display:flex;gap:10px;justify-content:center}
+#ld-board .bk{width:30px;height:52px;border:2px solid #43566b;border-radius:6px;position:relative;background:#283a4b}
+#ld-board .bk i{position:absolute;left:4px;right:4px;top:26px;height:16px;border-radius:3px;background:#3a4d61}
+#ld-board.play .bk i{animation:bdFlick .18s linear forwards}
+#ld-board.play .bk:nth-child(1) i{animation-delay:.22s}
+#ld-board.play .bk:nth-child(2) i{animation-delay:.39s}
+#ld-board.play .bk:nth-child(3) i{animation-delay:.56s}
+#ld-board.play .bk:nth-child(4) i{animation-delay:.73s}
+#ld-board.play .bk:nth-child(5) i{animation-delay:.9s}
+#ld-board.play .bk:nth-child(6) i{animation-delay:1.07s}
+@keyframes bdFlick{0%{top:26px;background:#3a4d61}55%{top:8px;background:#3a4d61}100%{top:8px;background:#feb416;box-shadow:0 0 12px rgba(254,180,22,.16),0 0 6px rgba(254,180,22,.55)}}
+#ld-board .bus{height:3px;background:#31445a;margin-top:16px;border-radius:2px;overflow:hidden}
+#ld-board .bus i{display:block;height:100%;width:100%;background:#feb416;transform:scaleX(0);transform-origin:left}
+#ld-board.play .bus i{animation:bdBus .5s cubic-bezier(.6,0,.3,1) 1.3s forwards}
+@keyframes bdBus{to{transform:scaleX(1)}}
+#ld-board .wordmark{color:#fff}
+#ld-board .wordmark b{color:#feb416}
+#ld-board .wordsub{color:#5d7189}
+#ld-board.play .wordmark{animation:wordIn .4s ease 1.85s forwards}
+#ld-board.play .wordsub{animation:wordIn .4s ease 1.98s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld-board .bd{display:none}
+  #ld-board .wordmark,#ld-board .wordsub{opacity:1;animation:none!important}
+}
+
 /* ===== 3. GAS / PLUMBING — ignition ===== */
 #ld-flame{background:#0a1626;flex-direction:column}
 #ld-flame .rig{position:relative;width:min(520px,84vw)}
@@ -1196,6 +1225,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A circuit trace draws in from both sides, the bulb flickers and catches, and the whole screen flashes on.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-board" data-dur="2400">
+      <span class="trade">Electricians</span>
+      <h3>Board Energise</h3>
+      <p>Consumer-unit breakers flick ON one by one, current traces the busbar, and the wordmark lands lit. First used: rwd-electrical.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-flame" data-dur="2500">
       <span class="trade">Gas / Plumbing / Heating</span>
       <h3>Ignition</h3>
@@ -1600,6 +1635,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="flash"></div>
   <div class="wordmark">Ohm Electrical</div>
   <div class="wordsub">NICEIC Approved</div>
+</div>
+
+<!-- 2b. board energise -->
+<div class="loader" id="ld-board" aria-hidden="true">
+  <div class="bd">
+    <div class="bks">
+      <div class="bk"><i></i></div>
+      <div class="bk"><i></i></div>
+      <div class="bk"><i></i></div>
+      <div class="bk"><i></i></div>
+      <div class="bk"><i></i></div>
+      <div class="bk"><i></i></div>
+    </div>
+    <div class="bus"><i></i></div>
+  </div>
+  <div class="wordmark">RWD <b>Electrical</b></div>
+  <div class="wordsub">Maidstone &middot; Est. 2000</div>
 </div>
 
 <!-- 3. ignition -->
