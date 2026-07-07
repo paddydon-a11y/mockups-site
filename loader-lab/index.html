@@ -178,6 +178,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-cistern .c-water{transform:scaleY(1)}
 }
 
+/* ===== 28. BATHROOM FITTERS / RENOVATIONS — bath fill ===== */
+#ld-bath{background:#264BB5;flex-direction:column}
+#ld-bath .tubwrap{width:min(230px,60vw)}
+#ld-bath .tubwrap svg{width:100%;height:auto;overflow:visible}
+#ld-bath .b-draw{stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:560;stroke-dashoffset:560}
+#ld-bath.play .b-draw{animation:bathDraw .7s ease-out forwards}
+@keyframes bathDraw{to{stroke-dashoffset:0}}
+#ld-bath .b-water{fill:#bcd2ff;opacity:.9;transform:scaleY(0);transform-origin:50% 100%}
+#ld-bath.play .b-water{animation:bathFill 1s ease-in-out .55s forwards}
+@keyframes bathFill{to{transform:scaleY(1)}}
+#ld-bath .b-steam{stroke:#bcd2ff;stroke-width:2.5;fill:none;stroke-linecap:round;opacity:0}
+#ld-bath.play .b-steam{animation:bathSteam 1s ease-in-out 1.25s forwards}
+#ld-bath.play .b-steam.s2{animation-delay:1.4s}
+@keyframes bathSteam{0%{opacity:0;transform:translateY(6px)}45%{opacity:.85}100%{opacity:.25;transform:translateY(-4px)}}
+#ld-bath .wm-zone{display:flex;flex-direction:column;align-items:center;margin-top:34px}
+#ld-bath .wordmark{color:#fff}
+#ld-bath .wordmark b{color:#f77126}
+#ld-bath .wordsub{color:#bcd2ff}
+#ld-bath.play .wordmark{animation:wordIn .5s ease 1.4s forwards}
+#ld-bath.play .wordsub{animation:wordIn .5s ease 1.6s forwards}
+@media(prefers-reduced-motion:reduce){
+  #ld-bath .b-draw,#ld-bath .b-water,#ld-bath .b-steam,#ld-bath .wordmark,#ld-bath .wordsub{animation:none!important;opacity:1}
+  #ld-bath .b-draw{stroke-dashoffset:0}
+  #ld-bath .b-water{transform:scaleY(1)}
+  #ld-bath .b-steam{opacity:.25}
+}
+
 /* ===== 4. BRICKWORK — coursework ===== */
 #ld-brick{background:#f4f1ec;flex-direction:column;color:#241c14}
 #ld-brick .wall{display:flex;flex-direction:column-reverse;gap:5px;width:auto}
@@ -1670,6 +1697,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A roll of turf unrolls left-to-right laying a fresh green strip over bare soil, grass blades spring up along it, then the wordmark settles. First used on lm-landscape-groundworks (2026-07-07), where the same turf-over-soil strip doubles as the hero divider. Distinct from Dig Out (excavation) and Surface Course Layup (courses stack): this one is the finished green going down.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-bath" data-dur="2400">
+      <span class="trade">Bathroom Fitters / Property Renovations</span>
+      <h3>Bath Fill</h3>
+      <p>A bathtub outline draws itself in with its taps, the bath fills with rising water, and two steam wisps lift off before the wordmark settles. Distinct from Cistern Fill (a plumbing tank behind the panel): this is the finished-bathroom moment the customer is buying. Built for ashburys-property-renovations (2026-07-07) but swapped for a plain logo reveal at review; not yet used on a shipped mockup.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -1807,6 +1840,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 
 <!-- 3. ignition -->
 <!-- ballcock float (plumbing / heating) -->
+<div class="loader" id="ld-bath" aria-hidden="true">
+  <div class="tubwrap">
+    <svg viewBox="0 0 200 120" aria-hidden="true">
+      <defs><clipPath id="bathTubLab"><path d="M28 52 h144 v10 a34 34 0 0 1 -34 34 h-76 a34 34 0 0 1 -34 -34 z"/></clipPath></defs>
+      <rect class="b-water" x="28" y="52" width="144" height="46" clip-path="url(#bathTubLab)"/>
+      <path class="b-draw" d="M20 52 h160 M28 52 v10 a34 34 0 0 0 34 34 h76 a34 34 0 0 0 34 -34 v-10 M52 96 v12 M148 96 v12 M44 52 v-18 a10 10 0 0 1 10 -10 h8 M62 30 v8"/>
+      <path class="b-steam" d="M86 40 q-5 -8 0 -16 q5 -8 0 -14"/>
+      <path class="b-steam s2" d="M108 42 q-5 -8 0 -16 q5 -8 0 -14"/>
+    </svg>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark"><b>A</b>shburys</div>
+    <div class="wordsub">Property Renovations &middot; Stockport</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-cistern" aria-hidden="true">
   <div class="cist">
     <svg viewBox="0 0 150 150" fill="none">
