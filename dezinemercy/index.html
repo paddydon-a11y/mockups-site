@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dezinemercy Ltd | Residential &amp; Commercial Construction, Scotland</title>
+<meta name="description" content="Dezinemercy Ltd is a full-service construction company working across Scotland. Residential and commercial builds delivered from groundworks to handover. Free quotes.">
+<meta property="og:title" content="Dezinemercy Ltd · Your New Website">
+<meta property="og:description" content="Residential &amp; commercial construction in Scotland: preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/dezinemercy/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/dezinemercy/">
+<meta name="theme-color" content="#ffffff">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f2f5f3;
+  --card:#f7faf8;
+  --line:#dde5e0;
+  --line-soft:#e9efeb;
+  --pine:#16382c;
+  --pine-deep:#0f2a21;
+  --pine-soft:#1d4738;
+  --ink:#152420;
+  --body:#42544c;
+  --muted:#7d8d85;
+  --accent:#e85d1f;
+  --accent-hover:#c94708;
+  --accent-glow:rgba(232,93,31,0.15);
+  --on-pine:#eef4f0;
+  --on-pine-muted:#9db3a8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em,i{font-style:normal}
+h1,h2,h3{font-family:'Bitter',serif;color:var(--ink);line-height:1.12}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ===== section label: drawing title-block double keyline ===== */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.26em;text-transform:uppercase;color:var(--accent);display:inline-block;border-top:2px solid var(--pine);padding-top:9px;position:relative;margin-bottom:18px}
+.sec-label::before{content:"";position:absolute;top:4px;left:0;width:100%;border-top:1px solid var(--line)}
+.on-dark .sec-label{border-top-color:var(--accent);color:var(--accent)}
+.on-dark .sec-label::before{border-top-color:rgba(238,244,240,0.25)}
+
+/* ===================== LOADER: programme chart ===================== */
+#loader{position:fixed;inset:0;z-index:2000;background:var(--pine);display:flex;align-items:center;justify-content:center;animation:ldOut .45s ease 2.15s forwards}
+.ld-box{width:min(480px,86vw)}
+.ld-head{font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--on-pine-muted);border-top:2px solid var(--accent);border-bottom:1px solid rgba(238,244,240,0.18);padding-top:10px;padding-bottom:10px;display:flex;justify-content:space-between;gap:12px}
+.ld-rows{margin-top:22px;display:grid;gap:15px}
+.ld-row{display:grid;grid-template-columns:96px 1fr 16px;align-items:center;gap:12px}
+.ld-lab{font-family:'JetBrains Mono',monospace;font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--on-pine-muted)}
+.ld-track{height:10px;background:rgba(238,244,240,0.12);border-radius:2px;overflow:hidden;position:relative}
+.ld-bar{position:absolute;inset:0;background:var(--accent);border-radius:2px;transform:scaleX(0);transform-origin:left}
+.ld-row:nth-child(1) .ld-bar{animation:ldBar .5s cubic-bezier(.4,0,.2,1) .15s forwards}
+.ld-row:nth-child(2) .ld-bar{width:88%;animation:ldBar .5s cubic-bezier(.4,0,.2,1) .55s forwards}
+.ld-row:nth-child(3) .ld-bar{width:72%;animation:ldBar .5s cubic-bezier(.4,0,.2,1) .95s forwards}
+.ld-row:nth-child(4) .ld-bar{width:56%;background:var(--on-pine);animation:ldBar .5s cubic-bezier(.4,0,.2,1) 1.35s forwards}
+.ld-tick{opacity:0;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:600}
+.ld-row:nth-child(1) .ld-tick{animation:ldTick .25s ease .6s forwards}
+.ld-row:nth-child(2) .ld-tick{animation:ldTick .25s ease 1s forwards}
+.ld-row:nth-child(3) .ld-tick{animation:ldTick .25s ease 1.4s forwards}
+.ld-row:nth-child(4) .ld-tick{animation:ldTick .25s ease 1.8s forwards}
+.ld-mark{margin-top:26px;text-align:center;opacity:0;animation:ldTick .4s ease 1.75s forwards}
+.ld-mark .ld-name{font-family:'Bitter',serif;font-weight:900;font-size:1.55rem;color:var(--on-pine);letter-spacing:0.04em}
+.ld-mark .ld-name span{color:var(--accent)}
+.ld-mark .ld-sub{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--on-pine-muted);margin-top:6px}
+@keyframes ldBar{to{transform:scaleX(1)}}
+@keyframes ldTick{to{opacity:1}}
+@keyframes ldOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion: reduce){
+  #loader{animation:ldOut .3s ease .5s forwards}
+  .ld-bar{animation:none !important;transform:scaleX(1)}
+  .ld-tick,.ld-mark{animation:none !important;opacity:1}
+}
+
+/* ===================== NAV ===================== */
+nav{position:sticky;top:0;z-index:1000;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.nav-logo{font-family:'Bitter',serif;font-weight:900;font-size:1.22rem;color:var(--ink);letter-spacing:0.03em;white-space:nowrap;display:flex;align-items:center;gap:9px}
+.nav-logo .dot{color:var(--accent)}
+.nav-logo .ltd{font-family:'JetBrains Mono',monospace;font-size:0.56rem;font-weight:600;letter-spacing:0.2em;color:var(--pine);border:1px solid var(--line);padding:3px 7px;border-radius:3px;transform:translateY(1px)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:0.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{background:var(--accent);color:#fff !important;font-weight:600;padding:10px 20px;border-radius:6px;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--accent-hover)}
+.nav-cta svg,.btn svg{width:17px;height:17px;flex:0 0 auto}
+.nav-burger{display:none;background:none;border:1px solid var(--line);border-radius:6px;width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center}
+.nav-burger svg{width:22px;height:22px;stroke:var(--ink)}
+.mob-menu{display:none;background:var(--bg);border-bottom:1px solid var(--line)}
+.mob-menu.open{display:block}
+.mob-menu ul{list-style:none;padding:8px 24px 20px}
+.mob-menu a{display:block;padding:13px 0;font-weight:500;color:var(--ink);border-bottom:1px solid var(--line-soft);font-size:1.02rem}
+.mob-menu .mob-call{margin-top:14px;background:var(--accent);color:#fff;text-align:center;border-radius:8px;font-weight:600;border-bottom:none;padding:14px 0}
+
+/* ===================== HERO (drawing sheet DZM-001) ===================== */
+.hero{background:var(--bg);display:flex;flex-direction:column;overflow:hidden}
+.hero-wrap{padding-top:44px;padding-bottom:64px}
+.sheet{position:relative;border:1.5px solid var(--pine)}
+.sheet::before{content:"";position:absolute;inset:5px;border:1px solid var(--line);pointer-events:none}
+.sheet-tag{position:absolute;font-family:'JetBrains Mono',monospace;font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding-left:10px;padding-right:10px;white-space:nowrap;z-index:2}
+.sheet-tag b{color:var(--accent);font-weight:600}
+.st-tl{top:-8px;left:26px}
+.st-tr{top:-8px;right:26px}
+.st-bl{bottom:-8px;left:26px}
+.st-br{bottom:-8px;right:26px}
+.hero-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center;padding-top:58px;padding-bottom:58px;padding-left:52px;padding-right:52px}
+.dim{display:flex;align-items:center;margin-top:4px;margin-bottom:24px;max-width:34rem}
+.dim .t{width:1.5px;height:14px;background:var(--pine);flex:0 0 auto}
+.dim .l{flex:1;height:1.5px;background:var(--pine)}
+.dim .lab{font-family:'JetBrains Mono',monospace;font-size:0.63rem;font-weight:600;letter-spacing:0.2em;color:var(--pine);padding-left:14px;padding-right:14px;white-space:nowrap}
+.dim .lab b{color:var(--accent);font-weight:600}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--pine);margin-bottom:20px}
+.eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 9px rgba(232,93,31,0)}100%{box-shadow:0 0 0 0 rgba(232,93,31,0)}}
+.hero h1{font-size:clamp(2.6rem,5.2vw,4.7rem);font-weight:900;letter-spacing:-0.03em;margin-bottom:18px}
+.hero h1 .accent{color:var(--accent)}
+.hero .lede{font-size:1.12rem;max-width:34rem;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;padding:15px 26px;border-radius:8px;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px var(--accent-glow)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1eb457}
+.btn-ghost{border:1.5px solid var(--pine);color:var(--pine)}
+.btn-ghost:hover{background:var(--pine);color:#fff}
+.hero-photo{position:relative}
+.hero-photo .frame{overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;position:relative}
+.hero-photo .frame img{width:100%;height:100%;object-fit:cover;animation:kenburns 20s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
+.reg{position:absolute;width:14px;height:14px;border-color:var(--accent);border-style:solid;border-width:0;z-index:2}
+.reg-tl{top:8px;left:8px;border-top-width:2px;border-left-width:2px}
+.reg-tr{top:8px;right:8px;border-top-width:2px;border-right-width:2px}
+.reg-bl{bottom:8px;left:8px;border-bottom-width:2px;border-left-width:2px}
+.reg-br{bottom:8px;right:8px;border-bottom-width:2px;border-right-width:2px}
+.tblock{display:grid;grid-template-columns:1.2fr 1fr 1.1fr;border:1px solid var(--line);border-top:none;background:var(--bg)}
+.tb-cell{padding-top:11px;padding-bottom:12px;padding-left:16px;padding-right:12px;border-right:1px solid var(--line)}
+.tb-cell:last-child{border-right:none}
+.tb-cell h5{font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.tb-cell span{font-size:0.82rem;font-weight:600;color:var(--ink);white-space:nowrap}
+.tb-cell .live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:6px;animation:pulse 2s infinite}
+
+/* ===================== TRUST STRIP ===================== */
+.trust{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:10px;font-weight:600;font-size:0.92rem;color:var(--ink)}
+.trust-item svg{width:19px;height:19px;stroke:var(--accent);flex:0 0 auto}
+
+/* ===================== SECTIONS ===================== */
+section{padding-top:92px;padding-bottom:92px}
+.sec-head{margin-bottom:48px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-0.02em}
+.sec-head h2 .accent{color:var(--accent)}
+
+/* services S2 */
+#services{background:var(--bg);padding-top:80px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px 30px;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.svc-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(21,36,32,0.08)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-num{font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:600;letter-spacing:0.2em;color:var(--muted);display:block;margin-bottom:20px}
+.svc-icon{width:52px;height:52px;border-radius:12px;background:var(--pine);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc-icon svg{width:26px;height:26px;stroke:var(--on-pine)}
+.svc-card h3{font-size:1.32rem;font-weight:800;margin-bottom:10px}
+.svc-card p{font-size:0.96rem}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--pine);background:var(--stone);border:1px solid var(--line);border-radius:100px;padding:8px 16px}
+
+/* gallery G2 */
+#work{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:215px;gap:14px}
+.g-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.g-item:hover img{transform:scale(1.05)}
+.g-big{grid-column:span 2;grid-row:span 2}
+.g-wide{grid-column:span 2}
+.gtag{position:absolute;bottom:12px;left:12px;background:rgba(15,42,33,0.88);color:var(--on-pine);font-family:'JetBrains Mono',monospace;font-size:0.62rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:7px 13px;border-radius:100px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.g-item:hover .gtag{opacity:1;transform:translateY(0)}
+
+/* process: signature, dark pine panel */
+#process{background:var(--pine);position:relative}
+#process h2{color:#fff}
+#process .sec-head p{color:var(--on-pine-muted)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative}
+.steps::before{content:"";position:absolute;top:26px;left:6%;width:88%;border-top:1px dashed rgba(238,244,240,0.25)}
+.step{position:relative}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--pine-deep);border:1px solid var(--pine-soft);color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.8rem;display:flex;align-items:center;justify-content:center;margin-bottom:18px;position:relative;z-index:1}
+.step h3{color:#fff;font-size:1.18rem;font-weight:800;margin-bottom:8px}
+.step p{color:var(--on-pine-muted);font-size:0.93rem}
+.step-bar{height:6px;border-radius:3px;background:rgba(238,244,240,0.12);margin-top:16px;overflow:hidden}
+.step-bar i{display:block;height:100%;background:var(--accent);border-radius:3px;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.4,0,.2,1)}
+.step:nth-child(2) .step-bar i{transition-delay:.15s}
+.step:nth-child(3) .step-bar i{transition-delay:.3s}
+.step:nth-child(4) .step-bar i{transition-delay:.45s}
+#process.revealed .step-bar i{transform:scaleX(1)}
+.step:nth-child(4) .step-bar i{background:var(--on-pine)}
+
+/* about slim */
+#about{padding-top:84px;padding-bottom:84px}
+.about-in{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:start;max-width:980px}
+.about-mark{font-family:'Bitter',serif;font-weight:900;font-size:1.1rem;color:var(--pine);border:2px solid var(--pine);border-radius:12px;padding:16px 18px;letter-spacing:0.04em}
+.about-mark span{color:var(--accent)}
+#about p{font-size:1.1rem;color:var(--body);max-width:44rem}
+#about p b{color:var(--ink)}
+
+/* reviews R3 */
+#reviews{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rev-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:30px;transition:transform .25s,box-shadow .25s}
+.rev-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(21,36,32,0.07)}
+.stars{color:var(--accent);letter-spacing:3px;font-size:0.95rem;margin-bottom:14px}
+.rev-card blockquote{font-size:1rem;color:var(--ink);line-height:1.65;margin-bottom:18px}
+.rev-who{font-family:'JetBrains Mono',monospace;font-size:0.66rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+.rev-who b{color:var(--pine);font-weight:600}
+
+/* areas */
+#areas .area-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.area-chip{font-weight:600;font-size:0.92rem;color:var(--ink);background:var(--stone);border:1px solid var(--line);border-radius:100px;padding:10px 20px;display:inline-flex;align-items:center;gap:8px}
+.area-chip svg{width:15px;height:15px;stroke:var(--accent);flex:0 0 auto}
+#areas .area-note{margin-top:26px;max-width:40rem}
+
+/* cta band */
+#ctaband{background:var(--pine);padding-top:70px;padding-bottom:70px}
+.cta-in{display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap}
+.cta-in h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-0.02em;max-width:34rem}
+.cta-in h2 span{color:var(--accent)}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* contact C1 */
+#contact{padding-bottom:100px}
+.contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:start}
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.info-card .ic{width:44px;height:44px;border-radius:10px;background:var(--pine);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.info-card .ic svg{width:21px;height:21px;stroke:var(--on-pine)}
+.info-card h3{font-size:1.02rem;font-weight:800;margin-bottom:3px}
+.info-card p,.info-card a{font-size:0.95rem;color:var(--body)}
+.info-card a.link{color:var(--accent);font-weight:600}
+form{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:34px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{margin-bottom:16px}
+label{display:block;font-weight:600;font-size:0.86rem;color:var(--ink);margin-bottom:7px}
+input,select,textarea{width:100%;font-family:'Inter',sans-serif;font-size:0.96rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:13px 15px;outline:none;transition:border .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+textarea{min-height:120px;resize:vertical}
+.f-submit{width:100%;justify-content:center;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:1.02rem}
+.f-note{font-size:0.8rem;color:var(--muted);text-align:center;margin-top:14px}
+
+/* footer */
+footer{background:var(--pine-deep);color:var(--on-pine-muted);padding-top:56px;padding-bottom:34px}
+.foot-in{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid rgba(238,244,240,0.12)}
+.foot-brand{font-family:'Bitter',serif;font-weight:900;font-size:1.3rem;color:#fff;letter-spacing:0.03em}
+.foot-brand span{color:var(--accent)}
+.foot-tag{margin-top:8px;font-size:0.92rem;max-width:24rem}
+.foot-col h4{font-family:'JetBrains Mono',monospace;font-size:0.64rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--on-pine);margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col a{display:block;padding:4px 0;font-size:0.92rem;color:var(--on-pine-muted);transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;font-size:0.82rem}
+.foot-base a{color:var(--on-pine);font-weight:500}
+.foot-base a:hover{color:#fff}
+
+/* FABs */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:900;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(21,36,32,0.25)}
+.fab svg{width:23px;height:23px}
+.fab-call{background:var(--accent);animation:fabPulse 2s infinite}
+.fab-wa{background:#25D366;animation:fabPulseWa 2s infinite}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 13px rgba(232,93,31,0)}100%{box-shadow:0 0 0 0 rgba(232,93,31,0)}}
+@keyframes fabPulseWa{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.3)}70%{box-shadow:0 0 0 13px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-photo .frame img{animation:none}
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  .hero-wrap{padding-top:26px;padding-bottom:44px}
+  .sheet{border-left:none;border-right:none}
+  .sheet::before{display:none}
+  .st-tr,.st-bl{display:none}
+  .st-tl{left:0}
+  .st-br{right:0}
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding-top:44px;padding-bottom:44px;padding-left:0;padding-right:0}
+  .hero .lede{font-size:1.03rem}
+  .hero-photo .frame{aspect-ratio:16/11}
+  .hero-photo .frame img{animation:none}
+  .reg{display:none}
+  .tb-cell{padding-left:10px;padding-right:8px}
+  .tb-cell span{font-size:0.72rem;white-space:normal}
+  .trust-in{flex-direction:column;gap:0;padding-top:10px;padding-bottom:10px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:none}
+  section{padding-top:64px;padding-bottom:64px}
+  .svc-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr;grid-auto-rows:230px}
+  .g-big,.g-wide{grid-column:span 1;grid-row:span 1}
+  .gtag{display:none}
+  .steps{grid-template-columns:1fr;gap:34px}
+  .steps::before{display:none}
+  .about-in{grid-template-columns:1fr;gap:26px}
+  .rev-grid{grid-template-columns:1fr}
+  .cta-in{flex-direction:column;align-items:flex-start}
+  .contact-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .foot-in{flex-direction:column}
+}
+@media (max-width:420px){
+  .hero h1{font-size:2.15rem}
+  .btn{width:100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader: programme chart -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-box">
+    <div class="ld-head"><span>Dezinemercy Ltd</span><span>Project Programme</span></div>
+    <div class="ld-rows">
+      <div class="ld-row"><span class="ld-lab">Groundworks</span><span class="ld-track"><span class="ld-bar"></span></span><span class="ld-tick">✓</span></div>
+      <div class="ld-row"><span class="ld-lab">Structure</span><span class="ld-track"><span class="ld-bar"></span></span><span class="ld-tick">✓</span></div>
+      <div class="ld-row"><span class="ld-lab">Finish</span><span class="ld-track"><span class="ld-bar"></span></span><span class="ld-tick">✓</span></div>
+      <div class="ld-row"><span class="ld-lab">Handover</span><span class="ld-track"><span class="ld-bar"></span></span><span class="ld-tick">✓</span></div>
+    </div>
+    <div class="ld-mark">
+      <div class="ld-name">DEZINEMERCY<span>.</span></div>
+      <div class="ld-sub">Construction · Scotland</div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in wrap">
+    <a href="#" class="nav-logo">DEZINEMERCY<span class="dot">.</span> <span class="ltd">LTD</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#process">How We Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="navCall" class="nav-cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span id="navCallTxt">Call Us</span></a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#process">How We Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="mob-call" data-call>Call for a Free Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-wrap wrap">
+    <div class="sheet">
+      <span class="sheet-tag st-tl">DWG <b>·</b> DZM-001</span>
+      <span class="sheet-tag st-tr">REV A <b>·</b> For Construction</span>
+      <span class="sheet-tag st-bl">Residential &amp; Commercial</span>
+      <span class="sheet-tag st-br">Scale 1:1 <b>·</b> Scotland</span>
+      <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow"><span class="pulse"></span>Construction Company · Scotland</div>
+      <h1>Built from the<br><span class="accent">ground up.</span></h1>
+      <div class="dim"><span class="t"></span><span class="l"></span><span class="lab">Groundworks <b>&#8594;</b> Handover</span><span class="l"></span><span class="t"></span></div>
+      <p class="lede">Residential and commercial projects delivered end to end by one established team, on site from breaking ground to handing over the keys. Free quotes across Scotland.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary" data-call><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-call-txt>Call for a Free Quote</span></a>
+        <a href="#" class="btn btn-wa" data-wa><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame">
+        <img src="hero.jpg" alt="Completed residential build in stone and timber">
+        <span class="reg reg-tl"></span><span class="reg reg-tr"></span><span class="reg reg-bl"></span><span class="reg reg-br"></span>
+      </div>
+      <div class="tblock">
+        <div class="tb-cell"><h5>Project Type</h5><span>Residential · Commercial</span></div>
+        <div class="tb-cell"><h5>Coverage</h5><span>All Scotland</span></div>
+        <div class="tb-cell"><h5>Status</h5><span><span class="live"></span>Taking on projects</span></div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="trust-in wrap">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Fully Insured</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Free Quotes</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Residential &amp; Commercial</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Established Team</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Scotland Wide</div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">What We Build</span>
+      <h2>Residential. Commercial. <span class="accent">Complete.</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <span class="svc-num">01</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 22V12h6v10"/></svg></div>
+        <h3>Residential Construction</h3>
+        <p>New build homes, extensions and renovations, foundations through to final fix.</p>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-num">02</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16M10 8h1M13 8h1M10 12h1M13 12h1M10 16h1M13 16h1"/></svg></div>
+        <h3>Commercial Construction</h3>
+        <p>Offices, retail and industrial units, delivered on programme and on budget.</p>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-num">03</span>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>General Building</h3>
+        <p>Brickwork, roofing, plastering and structural work, all handled by one team.</p>
+      </div>
+    </div>
+    <div class="chip-row reveal">
+      <span class="chip">Groundworks</span>
+      <span class="chip">New Builds</span>
+      <span class="chip">Extensions</span>
+      <span class="chip">Renovations</span>
+      <span class="chip">Structural Work</span>
+      <span class="chip">Roofing</span>
+      <span class="chip">Brickwork</span>
+      <span class="chip">Project Management</span>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">Recent Work</span>
+      <h2>Built by <span class="accent">Dezinemercy</span></h2>
+    </div>
+    <div class="gal reveal">
+      <div class="g-item g-big"><img src="work-1.jpg" alt="Foundations and groundworks on a large construction site"><span class="gtag">Groundworks &amp; Foundations</span></div>
+      <div class="g-item g-wide"><img src="work-2.jpg" alt="Structural extension with steel beams in place"><span class="gtag">Structural Extension</span></div>
+      <div class="g-item"><img src="work-3.jpg" alt="New timber roof structure on a residential build"><span class="gtag">Roof Structure</span></div>
+      <div class="g-item"><img src="work-4.jpg" alt="Commercial steel frame interior under construction"><span class="gtag">Commercial Frame</span></div>
+      <div class="g-item g-wide"><img src="work-5.jpg" alt="Contemporary residential development"><span class="gtag">Residential Development</span></div>
+      <div class="g-item g-wide"><img src="work-6.jpg" alt="Pair of new build homes nearing completion"><span class="gtag">New Build Homes</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="on-dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">How We Work</span>
+      <h2>From the ground up</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Groundworks</h3>
+        <p>Site preparation, excavation and foundations done right first time.</p>
+        <div class="step-bar"><i></i></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Structure</h3>
+        <p>Brickwork, steel and roof, built to spec and signed off at each stage.</p>
+        <div class="step-bar"><i></i></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Finish</h3>
+        <p>First fix, second fix and decoration by our own established team.</p>
+        <div class="step-bar"><i></i></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Handover</h3>
+        <p>Snagged, cleaned and handed over ready to live or trade in.</p>
+        <div class="step-bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-in reveal">
+      <div class="about-mark">DZM<span>.</span></div>
+      <p><b>Dezinemercy Ltd</b> is a full-service construction company working across Scotland. We take on residential and commercial projects of every size with our own established team of staff, so the same people who break ground are there at handover. One contract, one point of contact, one standard of work.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">Reviews</span>
+      <h2>What clients <span class="accent">say</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Dezinemercy built our rear extension from the footings to the final coat of paint. One team the whole way through and the site was left tidy every single Friday.</blockquote>
+        <div class="rev-who"><b>Alan M.</b> · Glasgow · Extension</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>They took on our unit fit-out against a tight programme and handed over early. Clear pricing from the start and no surprises on the final invoice.</blockquote>
+        <div class="rev-who"><b>Fiona R.</b> · Edinburgh · Commercial Fit-Out</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Our new build was finished to a really high standard. The team kept us updated at every stage and nothing was ever too much trouble.</blockquote>
+        <div class="rev-who"><b>Derek S.</b> · Stirling · New Build</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Used Dezinemercy for structural work and a full renovation. The quote was clear, the lads turned up when they said, and the finish is spot on.</blockquote>
+        <div class="rev-who"><b>Karen W.</b> · Falkirk · Renovation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">Coverage</span>
+      <h2>Working across <span class="accent">Scotland</span></h2>
+    </div>
+    <div class="area-chips reveal">
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Glasgow</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Edinburgh</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Stirling</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Falkirk</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Perth</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Dundee</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Fife</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ayrshire</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Lanarkshire</span>
+      <span class="area-chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>The Lothians</span>
+    </div>
+    <p class="area-note reveal">Residential and commercial projects taken on across the whole of Scotland. If your site is not listed above, call us and we will confirm coverage.</p>
+  </div>
+</section>
+
+<section id="ctaband">
+  <div class="cta-in wrap">
+    <h2 class="reveal">Planning a build? Tell us what you want to <span>put up.</span></h2>
+    <div class="cta-btns reveal">
+      <a href="#" class="btn btn-primary" data-call><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-call-txt>Call Us</span></a>
+      <a href="#contact" class="btn btn-ghost" style="border-color:#fff;color:#fff">Request a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">Contact</span>
+      <h2>Get your <span class="accent">free quote</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><h3>Call Us</h3><a href="#" id="contactCall" class="link">&nbsp;</a><p>Talk your project through with the team.</p></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div><h3>WhatsApp</h3><a href="#" class="link" data-wa>Message us on WhatsApp</a><p>Send plans or photos of your site.</p></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><h3>Quick Response</h3><p>Enquiries answered within one working day.</p></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h3>Coverage</h3><p>Residential and commercial projects across Scotland.</p></div>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Dezinemercy Ltd">
+        <input type="hidden" name="source" value="mockup-dezinemercy">
+        <div class="f-row">
+          <div class="f-group"><label for="fName">Name *</label><input id="fName" name="name" type="text" required placeholder="Your name"></div>
+          <div class="f-group"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" placeholder="Your phone number"></div>
+        </div>
+        <div class="f-group"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" placeholder="Optional"></div>
+        <div class="f-group"><label for="fService">What do you need?</label>
+          <select id="fService" name="service">
+            <optgroup label="Residential">
+              <option>New Build Home</option>
+              <option>Extension</option>
+              <option>Renovation</option>
+              <option>General Building</option>
+            </optgroup>
+            <optgroup label="Commercial">
+              <option>Office / Retail Fit-Out</option>
+              <option>Industrial / Warehouse</option>
+              <option>Commercial New Build</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Groundworks</option>
+              <option>Roofing</option>
+              <option>Something Else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="f-group"><label for="fMsg">Your project</label><textarea id="fMsg" name="message" placeholder="Tell us about the site, the building and your timescales"></textarea></div>
+        <button type="submit" class="btn btn-primary f-submit">Request a Free Quote</button>
+        <p class="f-note">No obligation. We reply within one working day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <div class="foot-brand">DEZINEMERCY<span>.</span></div>
+        <p class="foot-tag">Residential and commercial construction across Scotland, delivered from the ground up.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Residential Construction</a></li>
+          <li><a href="#services">Commercial Construction</a></li>
+          <li><a href="#services">General Building</a></li>
+          <li><a href="#work">Recent Work</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#process">How We Work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#areas">Areas Covered</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Dezinemercy Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">Construction Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" data-call aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" class="fab fab-wa" data-wa aria-label="WhatsApp us"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  // loader fail-safe teardown
+  var loader = document.getElementById('loader');
+  setTimeout(function(){ if (loader && loader.parentNode) loader.parentNode.removeChild(loader); }, 2500);
+
+  // contact decode
+  var P  = atob('MDc0NDgxMjIyNDE=');
+  var Pf = atob('MDc0NDggMTIyMjQx');
+  var W  = atob('NDQ3NDQ4MTIyMjQx');
+  var waHref = 'https://wa.me/' + W + '?text=' + encodeURIComponent('Hi, I found you online and would like a quote please');
+  document.querySelectorAll('[data-call], #navCall, #contactCall').forEach(function(el){ el.setAttribute('href','tel:' + P); });
+  document.querySelectorAll('[data-wa]').forEach(function(el){ el.setAttribute('href', waHref); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); });
+  document.getElementById('contactCall').textContent = Pf;
+  document.getElementById('navCallTxt').textContent = Pf;
+  document.querySelectorAll('[data-call-txt]').forEach(function(el){ el.textContent = 'Call ' + Pf; });
+
+  // form timestamp + phone validity message
+  var ts = document.getElementById('formTimestamp');
+  if (ts) ts.value = Date.now();
+  var fPhone = document.getElementById('fPhone');
+  if (fPhone) fPhone.addEventListener('invalid', function(){ fPhone.setCustomValidity('Enter a UK phone number starting 0 or +44'); });
+  if (fPhone) fPhone.addEventListener('input', function(){ fPhone.setCustomValidity(''); });
+
+  // burger
+  var burger = document.getElementById('burger');
+  var mobMenu = document.getElementById('mobMenu');
+  burger.addEventListener('click', function(){
+    var open = mobMenu.classList.toggle('open');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  mobMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mobMenu.classList.remove('open'); }); });
+
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        if (e.target.closest && e.target.closest('#process')) document.getElementById('process').classList.add('revealed');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // FABs after hero
+  var fabs = document.getElementById('fabs');
+  var hero = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    fabs.classList.toggle('show', window.scrollY > hero.offsetHeight * 0.75);
+  }, {passive:true});
+
+  // hero cascade
+  var seq = ['.eyebrow','.hero h1','.hero .lede','.hero-ctas','.hero-photo'];
+  seq.forEach(function(sel, i){
+    var el = document.querySelector(sel);
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity .6s ease ' + (0.15 + i*0.12) + 's, transform .6s ease ' + (0.15 + i*0.12) + 's';
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1262,8 +1262,65 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-layup .wordsub{color:rgba(126,168,255,.75)}
 #ld-layup.play .wordmark{animation:wordIn .5s ease 2s forwards}
 #ld-layup.play .wordsub{animation:wordIn .5s ease 2.15s forwards}
+
+/* programme chart (gantt) — first used on dezinemercy */
+#ld-gantt{background:#16382c;flex-direction:column;gap:24px}
+#ld-gantt .pc-box{width:min(420px,80vw)}
+#ld-gantt .pc-head{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#9db3a8;border-top:2px solid #e85d1f;border-bottom:1px solid rgba(238,244,240,.18);padding:9px 0;display:flex;justify-content:space-between}
+#ld-gantt .pc-rows{margin-top:18px;display:grid;gap:13px}
+#ld-gantt .pc-row{display:grid;grid-template-columns:92px 1fr 14px;align-items:center;gap:11px}
+#ld-gantt .pc-lab{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#9db3a8}
+#ld-gantt .pc-track{height:9px;background:rgba(238,244,240,.12);border-radius:2px;overflow:hidden;position:relative}
+#ld-gantt .pc-bar{position:absolute;inset:0;background:#e85d1f;border-radius:2px;transform:scaleX(0);transform-origin:left}
+#ld-gantt .pc-row:nth-child(2) .pc-bar{width:88%}
+#ld-gantt .pc-row:nth-child(3) .pc-bar{width:72%}
+#ld-gantt .pc-row:nth-child(4) .pc-bar{width:56%;background:#eef4f0}
+#ld-gantt.play .pc-row:nth-child(1) .pc-bar{animation:pcBar .5s cubic-bezier(.4,0,.2,1) .15s forwards}
+#ld-gantt.play .pc-row:nth-child(2) .pc-bar{animation:pcBar .5s cubic-bezier(.4,0,.2,1) .55s forwards}
+#ld-gantt.play .pc-row:nth-child(3) .pc-bar{animation:pcBar .5s cubic-bezier(.4,0,.2,1) .95s forwards}
+#ld-gantt.play .pc-row:nth-child(4) .pc-bar{animation:pcBar .5s cubic-bezier(.4,0,.2,1) 1.35s forwards}
+#ld-gantt .pc-tick{opacity:0;color:#e85d1f;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600}
+#ld-gantt.play .pc-row:nth-child(1) .pc-tick{animation:wordIn .25s ease .6s forwards}
+#ld-gantt.play .pc-row:nth-child(2) .pc-tick{animation:wordIn .25s ease 1s forwards}
+#ld-gantt.play .pc-row:nth-child(3) .pc-tick{animation:wordIn .25s ease 1.4s forwards}
+#ld-gantt.play .pc-row:nth-child(4) .pc-tick{animation:wordIn .25s ease 1.8s forwards}
+@keyframes pcBar{to{transform:scaleX(1)}}
+#ld-gantt .wordmark{color:#eef4f0}
+#ld-gantt .wordmark b{color:#e85d1f}
+#ld-gantt .wordsub{color:#9db3a8}
+#ld-gantt.play .wordmark{animation:wordIn .5s ease 1.75s forwards}
+#ld-gantt.play .wordsub{animation:wordIn .5s ease 1.9s forwards}
 @keyframes luLay{to{transform:scaleX(1)}}
 @keyframes luScreed{0%{opacity:1;left:-8%}100%{opacity:1;left:94%}}
+
+/* 27. turf roll (landscapers / groundworks) */
+#ld-turf{background:#16281d;flex-direction:column}
+#ld-turf .tr-strip{position:relative;width:min(420px,80vw);height:34px;margin-bottom:30px}
+#ld-turf .tr-soil{position:absolute;left:0;right:0;bottom:0;height:9px;background:#3b2f22;border-radius:3px}
+#ld-turf .tr-turf{position:absolute;left:0;bottom:9px;height:11px;width:100%;background:linear-gradient(90deg,#4d7a4f,#5c8f5c);border-radius:3px 2px 2px 3px;transform-origin:left center;transform:scaleX(0)}
+#ld-turf.play .tr-turf{animation:trLay 1.25s .15s cubic-bezier(.4,0,.2,1) forwards}
+#ld-turf .tr-roll{position:absolute;bottom:16px;left:0;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#6ea06e,#3f6a42 62%,#2c4a36);box-shadow:inset 0 0 0 3px rgba(22,40,29,.35)}
+#ld-turf.play .tr-roll{animation:trRoll 1.25s .15s cubic-bezier(.4,0,.2,1) forwards}
+#ld-turf .tr-blade{position:absolute;bottom:20px;width:3px;height:12px;border-radius:2px 2px 0 0;background:#7fb37f;transform-origin:bottom center;transform:scaleY(0);opacity:0}
+#ld-turf .tr-blade.b1{left:18%}
+#ld-turf .tr-blade.b2{left:44%;height:15px}
+#ld-turf .tr-blade.b3{left:71%}
+#ld-turf.play .tr-blade.b1{animation:trBlade .3s 1.05s ease-out forwards}
+#ld-turf.play .tr-blade.b2{animation:trBlade .3s 1.2s ease-out forwards}
+#ld-turf.play .tr-blade.b3{animation:trBlade .3s 1.35s ease-out forwards}
+@keyframes trLay{to{transform:scaleX(1)}}
+@keyframes trRoll{0%{transform:translateX(0) rotate(0deg) scale(1)}85%{transform:translateX(calc(min(420px,80vw) - 26px)) rotate(720deg) scale(.55)}100%{transform:translateX(calc(min(420px,80vw) - 24px)) rotate(760deg) scale(.4);opacity:0}}
+@keyframes trBlade{to{transform:scaleY(1);opacity:1}}
+#ld-turf .wordmark{color:#eef4ef}
+#ld-turf .wordmark b{color:#c08a4a}
+#ld-turf .wordsub{color:#b9c9bd}
+#ld-turf.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-turf.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld-turf .tr-turf{transform:scaleX(1);animation:none!important}
+  #ld-turf .tr-roll,#ld-turf .tr-blade{opacity:0;animation:none!important}
+  #ld-turf .wordmark,#ld-turf .wordsub{opacity:1;animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -1599,6 +1656,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Automatic Doors / Entrance Systems / Access</span>
       <h3>Auto Slide</h3>
       <p>An approach sensor scans across the top of the screen and its detector dot blinks, then two glass door panels with meeting stiles and handle bars glide apart from the centre exactly like an automatic sliding entrance, revealing the wordmark. Distinct from Threshold (generic door panels): the sensor detection IS the automatic-door trade. First used on dac-automation.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-gantt" data-dur="2400">
+      <span class="trade">Construction / Main Contractor / Design &amp; Build</span>
+      <h3>Programme Chart</h3>
+      <p>A project programme (gantt) chart under a mono title-block header: four bars (Groundworks, Structure, Finish, Handover) fill left-to-right in sequence, each earning a tick as it completes, then the wordmark settles beneath. For full-service contractors selling programme discipline and complete delivery. Distinct from Surface Course Layup (courses stack) and Storey Stack (floors rise): this one is the paperwork, not the build. First used on dezinemercy.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-turf" data-dur="2400">
+      <span class="trade">Landscapers / Groundworks</span>
+      <h3>Turf Roll</h3>
+      <p>A roll of turf unrolls left-to-right laying a fresh green strip over bare soil, grass blades spring up along it, then the wordmark settles. First used on lm-landscape-groundworks (2026-07-07), where the same turf-over-soil strip doubles as the hero divider. Distinct from Dig Out (excavation) and Surface Course Layup (courses stack): this one is the finished green going down.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -2475,6 +2544,38 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="as-door r"></div>
   <div class="as-sensor"><i></i></div>
   <div class="as-dot"></div>
+</div>
+
+<div class="loader" id="ld-gantt" aria-hidden="true">
+  <div class="pc-box">
+    <div class="pc-head"><span>Dezinemercy Ltd</span><span>Project Programme</span></div>
+    <div class="pc-rows">
+      <div class="pc-row"><span class="pc-lab">Groundworks</span><span class="pc-track"><span class="pc-bar"></span></span><span class="pc-tick">&#10003;</span></div>
+      <div class="pc-row"><span class="pc-lab">Structure</span><span class="pc-track"><span class="pc-bar"></span></span><span class="pc-tick">&#10003;</span></div>
+      <div class="pc-row"><span class="pc-lab">Finish</span><span class="pc-track"><span class="pc-bar"></span></span><span class="pc-tick">&#10003;</span></div>
+      <div class="pc-row"><span class="pc-lab">Handover</span><span class="pc-track"><span class="pc-bar"></span></span><span class="pc-tick">&#10003;</span></div>
+    </div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">DEZINEMERCY<b>.</b></div>
+    <div class="wordsub">Construction &middot; Scotland</div>
+  </div>
+</div>
+
+<!-- 27. turf roll (landscapers / groundworks) -->
+<div class="loader" id="ld-turf" aria-hidden="true">
+  <div class="tr-strip">
+    <div class="tr-soil"></div>
+    <div class="tr-turf"></div>
+    <div class="tr-blade b1"></div>
+    <div class="tr-blade b2"></div>
+    <div class="tr-blade b3"></div>
+    <div class="tr-roll"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">LM Landscape <b>&amp;</b> Groundworks</div>
+    <div class="wordsub">Shropshire &amp; Mid Wales</div>
+  </div>
 </div>
 
 <script>
