@@ -1348,6 +1348,39 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-turf .tr-roll,#ld-turf .tr-blade{opacity:0;animation:none!important}
   #ld-turf .wordmark,#ld-turf .wordsub{opacity:1;animation:none!important}
 }
+
+/* 28. split-unit breeze (air con / HVAC) */
+#ld-breeze{background:#0a2f2a;flex-direction:column;overflow:hidden}
+#ld-breeze .bz-unit{width:min(230px,58vw);margin-bottom:6px;opacity:0}
+#ld-breeze.play .bz-unit{animation:bzUnitIn .5s ease .1s forwards}
+@keyframes bzUnitIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+#ld-breeze .bz-flap{transform-origin:4px 2px}
+#ld-breeze.play .bz-flap{animation:bzFlap .6s ease .7s forwards}
+@keyframes bzFlap{from{transform:rotate(0deg)}to{transform:rotate(24deg)}}
+#ld-breeze .bz-led{opacity:0}
+#ld-breeze.play .bz-led{animation:bzShow .3s ease .65s forwards}
+@keyframes bzShow{to{opacity:1}}
+#ld-breeze .bz-air{position:absolute;left:50%;top:42%;width:200vw;height:120px;transform:translate(-50%,-50%);pointer-events:none}
+#ld-breeze .bz-air span{position:absolute;left:-40%;height:4px;border-radius:99px;background:linear-gradient(90deg,rgba(132,212,255,0) 0%,rgba(132,212,255,.9) 40%,rgba(230,246,255,.95) 60%,rgba(132,212,255,0) 100%);box-shadow:0 0 14px rgba(132,212,255,.55);opacity:0;transform:translateX(-30%)}
+#ld-breeze .bz-air span:nth-child(1){top:18px;width:46%}
+#ld-breeze .bz-air span:nth-child(2){top:58px;width:60%}
+#ld-breeze .bz-air span:nth-child(3){top:96px;width:38%}
+#ld-breeze.play .bz-air span:nth-child(1){animation:bzBreeze 1.1s cubic-bezier(.2,.6,.3,1) .85s forwards}
+#ld-breeze.play .bz-air span:nth-child(2){animation:bzBreeze 1.2s cubic-bezier(.2,.6,.3,1) .95s forwards}
+#ld-breeze.play .bz-air span:nth-child(3){animation:bzBreeze 1s cubic-bezier(.2,.6,.3,1) 1.05s forwards}
+@keyframes bzBreeze{0%{opacity:0;transform:translateX(-20%)}15%{opacity:1}100%{opacity:0;transform:translateX(230%)}}
+#ld-breeze .bz-temp{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.18em;color:#2fd1b5;opacity:0;margin-bottom:14px}
+#ld-breeze.play .bz-temp{animation:bzShow .4s ease .8s forwards}
+#ld-breeze .wordmark{color:#fff}
+#ld-breeze .wordmark b{color:#2fd1b5}
+#ld-breeze .wordsub{color:#8fb3ac}
+#ld-breeze.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-breeze.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld-breeze .bz-unit,#ld-breeze .bz-temp{opacity:1;animation:none!important}
+  #ld-breeze .bz-air span,#ld-breeze .bz-flap,#ld-breeze .bz-led{animation:none!important}
+  #ld-breeze .wordmark,#ld-breeze .wordsub{opacity:1;animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -1695,6 +1728,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Landscapers / Groundworks</span>
       <h3>Turf Roll</h3>
       <p>A roll of turf unrolls left-to-right laying a fresh green strip over bare soil, grass blades spring up along it, then the wordmark settles. First used on lm-landscape-groundworks (2026-07-07), where the same turf-over-soil strip doubles as the hero divider. Distinct from Dig Out (excavation) and Surface Course Layup (courses stack): this one is the finished green going down.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-breeze" data-dur="2400">
+      <span class="trade">Air Conditioning / HVAC / Refrigeration</span>
+      <h3>Split-Unit Breeze</h3>
+      <p>A wall-mounted split unit draws in on deep spruce, its louvre flap tilts open and three ice-blue cool-air ribbons sweep across the full width of the screen while a mono readout ticks down from 27.0&#176; to 19.0&#176;, then the wordmark settles. First used on sturgeon-air-con (2026-07-07), where matching light-blue air wisps drift across the whole site as a fixed background. Distinct from Deep Freeze (temperature plunge + frost crystal) and Frost Snowflake Bloom (ice growth): this one is moving air, not ice.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-bath" data-dur="2400">
@@ -2624,6 +2663,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">LM Landscape <b>&amp;</b> Groundworks</div>
     <div class="wordsub">Shropshire &amp; Mid Wales</div>
+  </div>
+</div>
+
+<!-- 28. split-unit breeze (air con / HVAC) -->
+<div class="loader" id="ld-breeze" aria-hidden="true">
+  <div class="bz-air"><span></span><span></span><span></span></div>
+  <svg class="bz-unit" viewBox="0 0 240 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="236" height="62" rx="14" stroke="#cfe5e0" stroke-width="3"/>
+    <line x1="18" y1="22" x2="222" y2="22" stroke="#1d4f47" stroke-width="3" stroke-linecap="round"/>
+    <line x1="18" y1="32" x2="222" y2="32" stroke="#1d4f47" stroke-width="3" stroke-linecap="round"/>
+    <circle class="bz-led" cx="212" cy="50" r="4" fill="#2fd1b5"/>
+    <g class="bz-flap"><line x1="22" y1="52" x2="196" y2="52" stroke="#2fd1b5" stroke-width="4" stroke-linecap="round"/></g>
+  </svg>
+  <div class="bz-temp">19.0&#176;C &#183; COOLING</div>
+  <div class="wm-zone">
+    <div class="wordmark">STURGEON <b>AIR CON</b></div>
+    <div class="wordsub">Compliant Air Conditioning &middot; SW6</div>
   </div>
 </div>
 
