@@ -918,6 +918,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes soDraw{to{stroke-dashoffset:0}}
 @keyframes soTick{to{opacity:.85}}
 @keyframes soPeg{to{opacity:1;transform:scale(1)}}
+/* sight lines (house builders / renovation) */
+#ld-sightlines{background:#0f1114;flex-direction:column;gap:24px}
+#ld-sightlines svg{width:min(70vw,300px);height:auto;overflow:visible}
+#ld-sightlines .sight{stroke:#ef7800;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:120}
+#ld-sightlines.play .sight{animation:slDraw .8s ease-out forwards}
+#ld-sightlines.play .sight.s2{animation-delay:.12s}
+#ld-sightlines.play .sight.s3{animation-delay:.24s}
+#ld-sightlines.play .sight.s4{animation-delay:.36s}
+#ld-sightlines .ring{stroke:rgba(239,120,0,.4);stroke-width:1;fill:none;opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.4)}
+#ld-sightlines.play .ring{animation:slRing .7s ease-out 1.05s forwards}
+#ld-sightlines .star{fill:#ef7800;transform-box:fill-box;transform-origin:center;transform:scale(0)}
+#ld-sightlines.play .star{animation:slStar .55s cubic-bezier(.2,.8,.3,1.3) .95s forwards}
+#ld-sightlines .wordmark{color:#fff}
+#ld-sightlines .wordmark b{color:#ef7800}
+#ld-sightlines .wordsub{color:#ef7800}
+#ld-sightlines.play .wordmark{animation:wordIn .5s ease 1.3s forwards}
+#ld-sightlines.play .wordsub{animation:wordIn .5s ease 1.45s forwards}
+@keyframes slDraw{to{stroke-dashoffset:0}}
+@keyframes slRing{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes slStar{to{transform:scale(1)}}
 
 /* ===== 22. DRYLINING / FIT-OUT — stud & board ===== */
 /* metal stud track draws, studs rise at centres, a plasterboard sheet slides over and fixes, wordmark lands on the wall */
@@ -1409,6 +1429,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-plugin .pi-plug,#ld-plugin .pi-spark,#ld-plugin .pi-bar i{animation:none!important}
   #ld-plugin .wordmark,#ld-plugin .wordsub{opacity:1;animation:none!important}
 }
+
+/* 30. scaffold raise (builders / extensions / general building) */
+#ld-scaffold{background:#16181c;flex-direction:column}
+#ld-scaffold .sc-svg{width:min(280px,68vw);height:auto;margin-bottom:24px}
+#ld-scaffold .sc-frame{fill:none;stroke:#3a3f47;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+#ld-scaffold.play .sc-frame{animation:scDraw 1s ease forwards var(--d)}
+@keyframes scDraw{to{stroke-dashoffset:0}}
+#ld-scaffold .sc-build{fill:#e2570f;transform:scaleY(0);transform-origin:bottom;transform-box:fill-box}
+#ld-scaffold.play .sc-build{animation:scRise .7s cubic-bezier(.2,.7,.3,1) forwards 1s}
+@keyframes scRise{to{transform:scaleY(1)}}
+#ld-scaffold .sc-roof{fill:#ffffff;opacity:0;transform:translateY(8px)}
+#ld-scaffold.play .sc-roof{animation:scRoof .4s ease forwards 1.6s}
+@keyframes scRoof{to{opacity:1;transform:none}}
+#ld-scaffold .wm-zone{position:relative;display:flex;flex-direction:column;align-items:center}
+#ld-scaffold .wordmark{color:#ffffff}
+#ld-scaffold .wordmark b{color:#e2570f}
+#ld-scaffold .wordsub{color:#8a929c}
+#ld-scaffold.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
+#ld-scaffold.play .wordsub{animation:wordIn .5s ease 1.85s forwards}
+@media (prefers-reduced-motion:reduce){#ld-scaffold .sc-frame{stroke-dashoffset:0}#ld-scaffold .sc-build{transform:none}#ld-scaffold .sc-roof{opacity:1;transform:none}#ld-scaffold .wordmark,#ld-scaffold .wordsub{opacity:1;animation:none!important}}
 </style>
 </head>
 <body>
@@ -1650,6 +1690,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A builder's plot draws itself on a blueprint, profile pegs snap into the corners and the dimension lines tick off, then the wordmark stamps the footprint. First used on brentbarker-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-sightlines" data-dur="2300">
+      <span class="trade">House Builders / Renovation</span>
+      <h3>Sight Lines</h3>
+      <p>Four surveyor's sight-lines sweep in from the corners and converge on a single station point, a brand star sparks at the meeting point and a ring pulses out, then the wordmark settles. Run it in the mockup's palette; ends on a 4-point star if the logo has one. First used on dex-renovations.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-snag" data-dur="2300">
       <span class="trade">Handyman / Multi-trade</span>
       <h3>Snag List</h3>
@@ -1776,6 +1822,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A bathtub outline draws itself in with its taps, the bath fills with rising water, and two steam wisps lift off before the wordmark settles. Distinct from Cistern Fill (a plumbing tank behind the panel): this is the finished-bathroom moment the customer is buying. Built for ashburys-property-renovations (2026-07-07) but swapped for a plain logo reveal at review; not yet used on a shipped mockup.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-scaffold" data-dur="2300">
+      <span class="trade">Builders / Extensions / General Building</span>
+      <h3>Scaffold Raise</h3>
+      <p>On charcoal, a tube-and-clamp scaffold frame draws itself in around an empty plot, then a solid orange building volume rises up inside it from the base, a roof caps it off, and the wordmark settles. First used on aam-builders (2026-07-08), a 20-strong multi-trade Birmingham builder. Distinct from Elevation (a house front drawn as a blueprint line then render-filled): this is the scaffold assembling and the building rising inside it, the whole-build moment.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<!-- 30. scaffold raise (builders / extensions / general building) -->
+<div class="loader" id="ld-scaffold" aria-hidden="true">
+  <svg class="sc-svg" viewBox="0 0 200 170" fill="none" aria-hidden="true">
+    <rect class="sc-build" x="70" y="70" width="60" height="70"/>
+    <polygon class="sc-roof" points="66,70 100,46 134,70"/>
+    <path class="sc-frame" style="--len:360;--d:0s" d="M54 140 L54 62 L146 62 L146 140 M54 100 L146 100 M100 62 L100 140"/>
+    <path class="sc-frame" style="--len:300;--d:.12s" d="M46 140 L54 130 M146 130 L154 140 M46 80 L54 70 M146 70 L154 80 M40 140 L160 140"/>
+  </svg>
+  <div class="wm-zone">
+    <div class="wordmark">AAM <b>Builders</b></div>
+    <div class="wordsub">Building Birmingham</div>
   </div>
 </div>
 
@@ -1849,6 +1915,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Meridian <b>Build</b></div>
     <div class="wordsub">Builders &middot; Extensions</div>
+  </div>
+</div>
+
+<!-- 20b. sight lines (house builders / renovation) -->
+<div class="loader" id="ld-sightlines" aria-hidden="true">
+  <svg viewBox="0 0 150 150" aria-hidden="true">
+    <line class="sight s1" x1="6" y1="6" x2="75" y2="75"/>
+    <line class="sight s2" x1="144" y1="6" x2="75" y2="75"/>
+    <line class="sight s3" x1="6" y1="144" x2="75" y2="75"/>
+    <line class="sight s4" x1="144" y1="144" x2="75" y2="75"/>
+    <circle class="ring" cx="75" cy="75" r="26"/>
+    <path class="star" d="M75 51 L80 70 L99 75 L80 80 L75 99 L70 80 L51 75 L70 70 Z"/>
+  </svg>
+  <div class="wm-zone">
+    <div class="wordmark">Dex<b>-Renovations</b></div>
+    <div class="wordsub">Building Your Future</div>
   </div>
 </div>
 
