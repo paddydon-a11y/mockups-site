@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geomatec Consulting Engineers | Structural &amp; Civil Engineering, East Ham, London</title>
+<meta name="description" content="Structural and civil engineering design practice in East Ham, London. Structural calculations, building regs drawings and site support for extensions, lofts, basements and new builds.">
+<meta property="og:title" content="Geomatec Consulting Engineers - Your New Website">
+<meta property="og:description" content="Structural &amp; civil engineers in East Ham, London - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/geomatec/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/geomatec/">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="roundel.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f4f7fa;
+  --card:#f8fafc;
+  --card-hover:#f1f5f9;
+  --line:#dde5ec;
+  --line-strong:#c3cfda;
+  --ink:#10365c;
+  --ink-deep:#0b2743;
+  --body:#3d566e;
+  --muted:#7d90a3;
+  --sky:#35a8e0;
+  --sky-deep:#1887c2;
+  --sky-glow:rgba(53,168,224,.14);
+  --grid:rgba(16,54,92,.045);
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html{overflow-x:clip}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+html.no-scroll{overflow:hidden}
+em,i{font-style:normal}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{color:var(--ink);line-height:1.15;letter-spacing:-.03em;font-weight:700}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+.wrap{max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px}
+
+/* ---------- drafting grid ground ---------- */
+.gridded{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+
+/* ---------- dimension-line section label ---------- */
+.dim{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.dim .dim-line{flex:none;width:64px;height:1px;background:var(--line-strong);position:relative}
+.dim .dim-line::before,.dim .dim-line::after{content:"";position:absolute;top:-3px;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+.dim .dim-line.l::before{left:0;border-right:7px solid var(--sky-deep)}
+.dim .dim-line.r::after{right:0;border-left:7px solid var(--sky-deep)}
+.dim span{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--sky-deep);white-space:nowrap}
+.sec-h2{font-size:clamp(1.9rem,4vw,2.9rem)}
+.sec-h2 .acc{color:var(--sky-deep)}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:2000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;transition:opacity .45s ease}
+#loader.done{opacity:0;pointer-events:none}
+#loader svg{width:min(340px,78vw);height:auto;overflow:visible}
+.ld-arrow{opacity:0;animation:ldDrop .5s cubic-bezier(.5,0,.6,1) forwards}
+@keyframes ldDrop{from{opacity:0;transform:translateY(-26px)}to{opacity:1;transform:translateY(0)}}
+#ldBeamStraight{stroke-dasharray:280;stroke-dashoffset:280;animation:ldDraw .55s ease forwards .1s}
+@keyframes ldDraw{to{stroke-dashoffset:0}}
+.ld-brand{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.ld-brand.show{opacity:1;transform:translateY(0)}
+.ld-brand img{width:min(250px,60vw)}
+.ld-brand span{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){
+  #loader svg{display:none}
+  .ld-brand{opacity:1;transform:none}
+}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.nav-logo{display:flex;align-items:center;white-space:nowrap}
+.nav-logo img{height:44px;width:auto}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff !important;font-weight:600;padding:11px 20px;border-radius:10px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--ink-deep)}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#fff}
+.burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .25s,opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.m-menu{display:none;position:fixed;top:73px;left:0;right:0;bottom:0;background:var(--bg);z-index:890;padding:28px 24px;flex-direction:column;gap:4px}
+.m-menu.open{display:flex}
+.m-menu a{font-size:1.15rem;font-weight:600;color:var(--ink);padding:13px 0;border-bottom:1px solid var(--line)}
+.m-menu a.m-call{margin-top:22px;background:var(--ink);color:#fff;text-align:center;padding:16px;border-radius:12px;border:none}
+
+/* ---------- hero ---------- */
+.hero{display:flex;flex-direction:column;position:relative}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:76px;padding-bottom:84px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sky-deep);margin-bottom:22px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--sky);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--sky-glow)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(2.4rem,4.6vw,4.1rem);margin-bottom:20px}
+.hero h1 .acc{color:var(--sky-deep)}
+.hero .lede{font-size:1.08rem;max-width:34rem;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;padding:15px 26px;border-radius:12px;transition:transform .2s,background .2s,box-shadow .2s;cursor:pointer}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary svg{stroke:#fff}
+.btn-primary:hover{background:var(--ink-deep);transform:translateY(-2px)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa svg{fill:#fff}
+.btn-wa:hover{background:#1fb958;transform:translateY(-2px)}
+.hero-fig{position:relative}
+.hero-photo{position:relative;border-radius:var(--radius);border:1px solid var(--line);overflow:hidden}
+.hero-photo::before,.hero-photo::after{content:"";position:absolute;width:18px;height:18px;z-index:3}
+.hero-photo::before{top:10px;left:10px;border-top:2px solid var(--sky);border-left:2px solid var(--sky)}
+.hero-photo::after{bottom:10px;right:10px;border-bottom:2px solid var(--sky);border-right:2px solid var(--sky)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/11}
+.hero-badge{position:absolute;bottom:18px;left:18px;z-index:4;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(16,54,92,.12)}
+.hero-badge .mono{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.hero-badge svg{width:16px;height:16px;stroke:var(--sky-deep);flex:none}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-copy .eyebrow,.hero-copy h1,.hero-copy .lede,.hero-copy .hero-ctas,.hero-fig{opacity:0;animation:fadeUp .7s ease forwards}
+.hero-copy .eyebrow{animation-delay:.15s}
+.hero-copy h1{animation-delay:.28s}
+.hero-copy .lede{animation-delay:.41s}
+.hero-copy .hero-ctas{animation-delay:.54s}
+.hero-fig{animation-delay:.62s}
+@media (prefers-reduced-motion:reduce){.hero-copy .eyebrow,.hero-copy h1,.hero-copy .lede,.hero-copy .hero-ctas,.hero-fig{opacity:1;animation:none}}
+
+/* ---------- trust ---------- */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--stone)}
+.trust-in{display:flex;justify-content:space-between;gap:12px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:600;color:var(--ink)}
+.trust-item svg{width:16px;height:16px;stroke:var(--sky-deep);flex:none}
+
+/* ---------- sections ---------- */
+section{padding:88px 0}
+.sec-head{margin-bottom:48px}
+
+/* ---------- services register ---------- */
+.register{border-top:1px solid var(--line-strong)}
+.reg-row{display:grid;grid-template-columns:110px 320px 1fr;gap:24px;align-items:baseline;padding:22px 0 22px 0;border-bottom:1px solid var(--line);position:relative;transition:padding-left .25s ease,background .25s}
+.reg-row::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--sky);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.reg-row:hover::after{transform:scaleX(1)}
+.reg-row:hover{padding-left:10px}
+.reg-no{font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:600;color:var(--sky-deep);letter-spacing:.12em}
+.reg-title{font-size:1.22rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.reg-desc{font-size:.95rem;color:var(--body)}
+.reg-head{display:grid;grid-template-columns:110px 320px 1fr;gap:24px;padding-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+/* sectors chips */
+.sectors{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.sectors span{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);background:var(--stone);border:1px solid var(--line);border-radius:999px;padding:9px 16px}
+.sectors .lead-chip{color:#fff;background:var(--sky-deep);border-color:var(--sky-deep)}
+
+/* ---------- gallery ---------- */
+#work{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.gitem{cursor:pointer}
+.gitem .gph{border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;position:relative}
+.gitem img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .5s ease}
+.gitem:hover img{transform:scale(1.045)}
+.gtag{display:flex;align-items:center;gap:9px;margin-top:11px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--body)}
+.gtag::before{content:"";width:14px;height:1px;background:var(--sky-deep);flex:none}
+
+/* lightbox */
+#lightbox{position:fixed;inset:0;background:rgba(11,39,67,.94);z-index:1500;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:32px}
+#lightbox.open{display:flex}
+#lightbox img{max-width:92vw;max-height:78vh;border-radius:12px}
+#lightbox .lb-cap{color:#bcd6ea;font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+#lightbox button{position:absolute;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.15rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#lbClose{top:22px;right:22px}
+#lbPrev{left:18px;top:50%;transform:translateY(-50%)}
+#lbNext{right:18px;top:50%;transform:translateY(-50%)}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-copy p{margin-bottom:16px}
+.about-copy .reg-line{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.about-fig{background:var(--stone);border:1px solid var(--line);border-radius:var(--radius);padding:34px;position:relative}
+.about-fig::before{content:"";position:absolute;top:10px;left:10px;width:18px;height:18px;border-top:2px solid var(--sky);border-left:2px solid var(--sky)}
+.tb-rows{display:grid;gap:0;border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;background:var(--bg)}
+.tb-row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--line)}
+.tb-row:last-child{border-bottom:none}
+.tb-row .k{font-family:'IBM Plex Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:13px 16px;border-right:1px solid var(--line);background:var(--card)}
+.tb-row .v{font-size:.9rem;font-weight:600;color:var(--ink);padding:11px 16px;display:flex;align-items:center}
+
+/* ---------- process ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:step}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.step::before{content:"";position:absolute;top:0;left:0;height:3px;width:100%;background:var(--sky);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.step:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(16,54,92,.08)}
+.step:hover::before{transform:scaleX(1)}
+.step .no{font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;color:var(--sky-deep);letter-spacing:.14em;display:block;margin-bottom:14px}
+.step h3{font-size:1.12rem;margin-bottom:9px}
+.step p{font-size:.92rem}
+
+/* ---------- reviews ---------- */
+#reviews{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.review{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:transform .25s,box-shadow .25s}
+.review:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(16,54,92,.08)}
+.stars{color:#f5a623;font-size:.95rem;letter-spacing:3px;margin-bottom:14px}
+.review p{font-size:.97rem;margin-bottom:18px}
+.review .attr{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.review .attr b{color:var(--ink)}
+
+/* ---------- areas ---------- */
+.areas-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.areas-list span{font-size:.9rem;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;transition:border-color .2s,background .2s}
+.areas-list span:hover{border-color:var(--sky);background:var(--sky-glow)}
+.areas-note{margin-top:22px;max-width:44rem}
+
+/* ---------- cta band ---------- */
+.cta-band{background:var(--ink);position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px}
+.cta-in{position:relative;display:flex;align-items:center;justify-content:space-between;gap:32px;padding-top:64px;padding-bottom:64px;flex-wrap:wrap}
+.cta-in h2{color:#fff;font-size:clamp(1.6rem,3vw,2.3rem);max-width:34rem}
+.cta-in h2 .acc{color:var(--sky)}
+.cta-in .btn-primary{background:var(--sky-deep)}
+.cta-in .btn-primary:hover{background:var(--sky)}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.c-cards{display:grid;gap:16px}
+.c-card{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.c-card svg{width:20px;height:20px;stroke:var(--sky-deep);flex:none;margin-top:3px}
+.c-card .k{font-family:'IBM Plex Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+.c-card .v{font-weight:600;color:var(--ink);font-size:1.02rem}
+.c-card a.v:hover{color:var(--sky-deep)}
+form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{margin-bottom:16px}
+label{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line-strong);border-radius:10px;padding:13px 15px;font-family:'IBM Plex Sans',sans-serif;font-size:.95rem;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px var(--sky-glow)}
+textarea{min-height:120px;resize:vertical}
+.f-submit{width:100%;justify-content:center;border:none;font-family:'IBM Plex Sans',sans-serif}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink-deep);color:#9fb8cd;padding:56px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:26px}
+.foot-brand img{height:40px;width:auto;margin-bottom:14px;background:#fff;border-radius:8px;padding:6px 10px}
+.foot-brand p{font-size:.9rem;max-width:26rem}
+.foot-col h4{color:#fff;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+.foot-col a,.foot-col span{display:block;font-size:.9rem;padding:4px 0;color:#9fb8cd}
+.foot-col a:hover{color:#fff}
+.foot-base{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.82rem}
+.foot-base a{color:#bcd6ea}
+.foot-base a:hover{color:#fff}
+
+/* ---------- FABs ---------- */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:850;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(16,54,92,.25)}
+.fab svg{width:22px;height:22px}
+.fab-call{background:var(--ink);animation:fabPulse 2.2s infinite}
+.fab-call svg{stroke:#fff}
+.fab-wa{background:#25d366;animation:fabPulseWa 2.2s infinite}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(16,54,92,.3)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes fabPulseWa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- mobile ---------- */
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .hero-inner{grid-template-columns:1fr;gap:34px;padding-top:48px;padding-bottom:60px}
+  .hero-fig{order:2}
+  .hero-photo img{aspect-ratio:16/11}
+  .hero-badge{position:static;margin-top:12px;box-shadow:none;justify-content:center;width:100%}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:none}
+  section{padding:64px 0}
+  .reg-head{display:none}
+  .reg-row{grid-template-columns:1fr;gap:6px;padding-top:18px;padding-bottom:18px}
+  .reg-row:hover{padding-left:0}
+  .gallery{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:38px}
+  .steps{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:38px}
+  .f-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .cta-in{padding-top:52px;padding-bottom:52px}
+  .tb-row{grid-template-columns:118px 1fr}
+  .dim{gap:10px}
+  .dim .dim-line{width:22px}
+  .dim span{white-space:normal;letter-spacing:.2em}
+}
+</style>
+</head>
+<body>
+
+<!-- loader: beam deflection -->
+<div id="loader" aria-hidden="true">
+  <svg viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- UDL arrows -->
+    <g stroke="#35a8e0" stroke-width="2.5" stroke-linecap="round">
+      <g class="ld-arrow" style="animation-delay:.15s"><line x1="50" y1="18" x2="50" y2="48"/><path d="M44 42 L50 49 L56 42" fill="none"/></g>
+      <g class="ld-arrow" style="animation-delay:.23s"><line x1="98" y1="18" x2="98" y2="48"/><path d="M92 42 L98 49 L104 42" fill="none"/></g>
+      <g class="ld-arrow" style="animation-delay:.31s"><line x1="146" y1="18" x2="146" y2="48"/><path d="M140 42 L146 49 L152 42" fill="none"/></g>
+      <g class="ld-arrow" style="animation-delay:.39s"><line x1="194" y1="18" x2="194" y2="48"/><path d="M188 42 L194 49 L200 42" fill="none"/></g>
+      <g class="ld-arrow" style="animation-delay:.47s"><line x1="242" y1="18" x2="242" y2="48"/><path d="M236 42 L242 49 L248 42" fill="none"/></g>
+      <g class="ld-arrow" style="animation-delay:.55s"><line x1="290" y1="18" x2="290" y2="48"/><path d="M284 42 L290 49 L296 42" fill="none"/></g>
+    </g>
+    <!-- beam: holds dead straight under load -->
+    <path id="ldBeamStraight" d="M30 62 L310 62" stroke="#10365c" stroke-width="5" stroke-linecap="round"/>
+    <!-- supports -->
+    <path d="M30 66 L20 84 L40 84 Z" fill="#10365c"/>
+    <path d="M310 66 L300 84 L320 84 Z" fill="#10365c"/>
+    <line x1="12" y1="88" x2="48" y2="88" stroke="#c3cfda" stroke-width="2"/>
+    <line x1="292" y1="88" x2="328" y2="88" stroke="#c3cfda" stroke-width="2"/>
+    <!-- dimension string -->
+    <g stroke="#7d90a3" stroke-width="1.2">
+      <line x1="30" y1="112" x2="310" y2="112"/>
+      <path d="M38 108 L30 112 L38 116" fill="none"/>
+      <path d="M302 108 L310 112 L302 116" fill="none"/>
+    </g>
+  </svg>
+  <div class="ld-brand" id="ldBrand">
+    <img src="logo.png" alt="Geomatec Consulting Engineers">
+    <span>Structural &amp; Civil Engineering</span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in wrap">
+    <a href="#" class="nav-logo" aria-label="Geomatec Consulting Engineers">
+      <img src="logo.png" alt="Geomatec Consulting Engineers">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#about">Practice</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="navCall" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallNum">&nbsp;</span>
+      </a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="m-menu" id="mMenu">
+  <a href="#services">Services</a>
+  <a href="#work">Projects</a>
+  <a href="#about">Practice</a>
+  <a href="#process">Process</a>
+  <a href="#contact">Contact</a>
+  <a href="#" id="mCall" class="m-call">Call us</a>
+</div>
+
+<!-- hero -->
+<header class="hero gridded">
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Structural &amp; Civil Engineers · East Ham, London</span>
+      <h1>Calculations and <span class="acc">drawings</span> your builder can build from.</h1>
+      <p class="lede">Structural design for extensions, lofts, basements and new builds. Residential and commercial, engineered from our East Ham office and delivered across London.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="heroCallNum">Call us</span>
+        </a>
+        <a href="#" class="btn btn-wa waLink">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-fig">
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Completed rear extension engineered by Geomatec" fetchpriority="high">
+      </div>
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span class="mono">Rear Extension · Structural Design</span>
+      </div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="trust-in wrap">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Structural Calculations</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Building Regs Drawings</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Temporary Works Design</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Domestic &amp; Commercial</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Based in East Ham E6</div>
+    </div>
+  </div>
+</header>
+
+<!-- services: drawing register -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="dim"><span class="dim-line l"></span><span>Drawing Register · Services</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2">What we <span class="acc">design</span></h2>
+    </div>
+    <div class="register reveal">
+      <div class="reg-head" aria-hidden="true"><span>Sheet</span><span>Service</span><span>Scope</span></div>
+      <div class="reg-row"><span class="reg-no">S-01</span><span class="reg-title">Extensions</span><span class="reg-desc">Steel and beam design for single and double storey extensions.</span></div>
+      <div class="reg-row"><span class="reg-no">S-02</span><span class="reg-title">Loft Conversions</span><span class="reg-desc">Steelwork, floor design and building regs packages for lofts.</span></div>
+      <div class="reg-row"><span class="reg-no">S-03</span><span class="reg-title">Basements</span><span class="reg-desc">Retaining walls, underpinning and waterproofed basement design.</span></div>
+      <div class="reg-row"><span class="reg-no">S-04</span><span class="reg-title">Load Bearing Wall Removal</span><span class="reg-desc">Beam design and temporary works for open plan layouts.</span></div>
+      <div class="reg-row"><span class="reg-no">S-05</span><span class="reg-title">New Builds</span><span class="reg-desc">Full structural packages from foundations to roof.</span></div>
+      <div class="reg-row"><span class="reg-no">S-06</span><span class="reg-title">Subsidence</span><span class="reg-desc">Movement assessment with practical, costed remedial design.</span></div>
+      <div class="reg-row"><span class="reg-no">S-07</span><span class="reg-title">Mezzanine Floors</span><span class="reg-desc">Mezzanine design for homes, warehouses and retail units.</span></div>
+      <div class="reg-row"><span class="reg-no">S-08</span><span class="reg-title">FRP Strengthening</span><span class="reg-desc">Carbon fibre strengthening for existing concrete structures.</span></div>
+      <div class="reg-row"><span class="reg-no">S-09</span><span class="reg-title">Internal Refurbishment</span><span class="reg-desc">Structural input for reconfigured layouts, kitchens and bathrooms.</span></div>
+    </div>
+    <div class="sectors reveal">
+      <span class="lead-chip">Sectors</span>
+      <span>Residential</span>
+      <span>Offices</span>
+      <span>Commercial &amp; Retail</span>
+      <span>Industrial</span>
+      <span>Mixed Use</span>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="dim"><span class="dim-line l"></span><span>Site Record · Projects</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2">Engineering <span class="acc">on site</span></h2>
+    </div>
+    <div class="gallery reveal">
+      <div class="gitem" data-cap="West Hampstead NW6 · Loft steelwork"><div class="gph"><img src="work-loft-steel.jpg" alt="Steel beam installed in a loft conversion, West Hampstead" loading="lazy"></div><span class="gtag">West Hampstead NW6 · Loft steelwork</span></div>
+      <div class="gitem" data-cap="Lansdowne Gardens SW8 · Roof steelwork"><div class="gph"><img src="work-roof-steel.jpg" alt="Steel ridge beam in a pitched roof, Lansdowne Gardens" loading="lazy"></div><span class="gtag">Lansdowne Gardens SW8 · Roof steelwork</span></div>
+      <div class="gitem" data-cap="Lansdowne Gardens SW8 · Pile reinforcement"><div class="gph"><img src="work-pile-cage.jpg" alt="Reinforcement cage for a piled foundation" loading="lazy"></div><span class="gtag">Lansdowne Gardens SW8 · Pile reinforcement</span></div>
+      <div class="gitem" data-cap="Lovell Road, Surrey · Temporary works"><div class="gph"><img src="work-temporary-works.jpg" alt="Temporary works propping during structural alterations" loading="lazy"></div><span class="gtag">Lovell Road, Surrey · Temporary works</span></div>
+      <div class="gitem" data-cap="West Hampstead NW6 · Slab reinforcement"><div class="gph"><img src="work-slab-reinforcement.jpg" alt="Slab reinforcement laid before a concrete pour" loading="lazy"></div><span class="gtag">West Hampstead NW6 · Slab reinforcement</span></div>
+      <div class="gitem" data-cap="Alleyn Road, London · Basement slab"><div class="gph"><img src="work-basement-slab.jpg" alt="Basement slab reinforcement and waterproofing membrane" loading="lazy"></div><span class="gtag">Alleyn Road, London · Basement slab</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <div class="dim"><span class="dim-line l"></span><span>The Practice</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2" style="margin-bottom:20px">A design practice, <span class="acc">not a middleman</span></h2>
+      <p>Geomatec Consulting Engineers is a structural and civil engineering design practice on East Ham High Street. We design for residential, commercial and industrial clients in the UK and overseas, with the same drive for economy and elegant design on a single loft beam as on a full new build.</p>
+      <p class="reg-line">Geomatec Consulting Engineers Ltd · Registered in England No. 11211615</p>
+    </div>
+    <div class="about-fig reveal">
+      <div class="tb-rows">
+        <div class="tb-row"><span class="k">Practice</span><span class="v">Structural &amp; civil engineering design</span></div>
+        <div class="tb-row"><span class="k">Office</span><span class="v">182-184 High Street, East Ham, E6 2JA</span></div>
+        <div class="tb-row"><span class="k">Sectors</span><span class="v">Residential · Commercial · Industrial</span></div>
+        <div class="tb-row"><span class="k">Coverage</span><span class="v">London site visits · UK &amp; overseas design</span></div>
+        <div class="tb-row"><span class="k">Deliverables</span><span class="v">Calculations · Drawings · Site support</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- process -->
+<section id="process" class="gridded" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="dim"><span class="dim-line l"></span><span>Issue Sequence · How it works</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2">From survey to <span class="acc">sign-off</span></h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><span class="no">01 · SURVEY</span><h3>Site visit</h3><p>An engineer visits, measures up and checks what is holding what up.</p></div>
+      <div class="step"><span class="no">02 · DESIGN</span><h3>Calculations</h3><p>The scheme is sized and calculated, designed for economy on site.</p></div>
+      <div class="step"><span class="no">03 · ISSUE</span><h3>Drawings out</h3><p>Calculations and drawings packaged ready for building control.</p></div>
+      <div class="step"><span class="no">04 · SUPPORT</span><h3>On site</h3><p>Your builder's questions answered while the steel goes in.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="dim"><span class="dim-line l"></span><span>Client Notes</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2">Word gets <span class="acc">around</span></h2>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Geomatec did the calculations and drawings for our rear extension. Building control passed everything first time and the engineer explained the steel layout to our builder over the phone."</p>
+        <span class="attr"><b>Sanjay P.</b> · East Ham · Rear extension</span>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"We use Geomatec on all our loft jobs now. The drawings are clear, the beam schedules are right, and if the site team hit a snag someone actually picks up the phone."</p>
+        <span class="attr"><b>Tomasz W.</b> · Ilford · Loft conversions, builder</span>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"Needed a load bearing wall removed between the kitchen and dining room. Geomatec surveyed on the Thursday and the calcs were with building control the following week."</p>
+        <span class="attr"><b>Amina K.</b> · Forest Gate · Wall removal</span>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>"They assessed cracking at our property in Barking, told us honestly it was minor movement, and designed a sensible repair rather than scaring us into underpinning."</p>
+        <span class="attr"><b>D. Okafor</b> · Barking · Subsidence assessment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- areas -->
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="dim"><span class="dim-line l"></span><span>Coverage</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2">Areas we <span class="acc">cover</span></h2>
+    </div>
+    <div class="areas-list reveal">
+      <span>East Ham</span><span>Newham</span><span>Ilford</span><span>Barking</span><span>Stratford</span><span>Forest Gate</span><span>Walthamstow</span><span>Romford</span><span>Docklands</span><span>Central London</span><span>Essex</span>
+    </div>
+    <p class="areas-note reveal">Site visits across Greater London and Essex. Design work travels further: we take on structural packages UK wide and overseas.</p>
+  </div>
+</section>
+
+<!-- cta band -->
+<div class="cta-band">
+  <div class="cta-in wrap">
+    <h2 class="reveal">Send us your architect's plans. We will <span class="acc">quote the structural package</span> quickly.</h2>
+    <a href="#" class="btn btn-primary heroCall reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="heroCallNum">Call us</span>
+    </a>
+  </div>
+</div>
+
+<!-- contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="dim"><span class="dim-line l"></span><span>Enquiries</span><span class="dim-line r"></span></div>
+      <h2 class="sec-h2">Start with a <span class="acc">conversation</span></h2>
+      <p style="max-width:40rem;margin-top:14px">Tell us what you are planning and we will come back with what the structural side needs, how long it takes and what it costs.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="c-cards reveal">
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><span class="k">Office</span><a href="#" class="v officeCall">&nbsp;</a></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          <div><span class="k">Mobile / WhatsApp</span><a href="#" class="v mobileCall">&nbsp;</a></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <div><span class="k">Email</span><a href="#" class="v" id="emailLink">&nbsp;</a></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><span class="k">Office Address</span><span class="v">182-184 High Street, East Ham, London E6 2JA</span></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Geomatec Consulting Engineers Ltd">
+        <input type="hidden" name="source" value="mockup-geomatec">
+        <div class="f-row">
+          <div class="f-group"><label for="fName">Name *</label><input id="fName" name="name" type="text" required autocomplete="name"></div>
+          <div class="f-group"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        </div>
+        <div class="f-group"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email"></div>
+        <div class="f-group"><label for="fService">What are you planning?</label>
+          <select id="fService" name="service">
+            <optgroup label="Residential">
+              <option>Extension</option>
+              <option>Loft conversion</option>
+              <option>Basement</option>
+              <option>Load bearing wall removal</option>
+              <option>Internal refurbishment</option>
+              <option>Subsidence / cracking</option>
+            </optgroup>
+            <optgroup label="Commercial &amp; Industrial">
+              <option>Mezzanine floor</option>
+              <option>FRP strengthening</option>
+              <option>New build</option>
+              <option>Other</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="f-group"><label for="fMsg">Tell us about the project</label><textarea id="fMsg" name="message" placeholder="e.g. Single storey rear extension, architect's plans ready"></textarea></div>
+        <button type="submit" class="btn btn-primary f-submit">Request a Quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="logo.png" alt="Geomatec Consulting Engineers">
+        <p>Structural and civil engineering design practice in East Ham, London. Calculations, drawings and site support for residential, commercial and industrial projects.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Extensions</a>
+        <a href="#services">Loft Conversions</a>
+        <a href="#services">Basements</a>
+        <a href="#services">Wall Removal</a>
+        <a href="#services">Subsidence</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#" class="officeCall">Call the office</a>
+        <a href="#" id="footEmail">Email us</a>
+        <span>182-184 High Street</span>
+        <span>East Ham, London E6 2JA</span>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Geomatec Consulting Engineers Ltd · Registered in England No. 11211615</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lbClose" aria-label="Close">✕</button>
+  <button id="lbPrev" aria-label="Previous">‹</button>
+  <button id="lbNext" aria-label="Next">›</button>
+  <img alt="Project photo">
+  <span class="lb-cap"></span>
+</div>
+
+<!-- FABs -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call heroCallBare" aria-label="Call Geomatec">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" class="fab fab-wa waLink" aria-label="WhatsApp Geomatec">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// ---------- contact decode ----------
+var P  = atob('MDIwODA0OTUxMDY=');
+var Pf = atob('MDIwIDgwNDkgNTEwNg==');
+var M  = atob('MDczMDUyMTg0NDQ=');
+var Mf = atob('MDczMDUgMjE4IDQ0NA==');
+var W  = atob('NDQ3MzA1MjE4NDQ0');
+var E  = atob('aW5mb0BnZW9tYXRlYy5jby51aw==');
+var waHref = 'https://wa.me/' + W + '?text=' + encodeURIComponent('Hi, I found you online and would like a quote please');
+
+document.getElementById('navCall').href = 'tel:' + P;
+document.getElementById('navCallNum').textContent = Pf;
+document.getElementById('mCall').href = 'tel:' + P;
+document.getElementById('mCall').textContent = 'Call ' + Pf;
+document.querySelectorAll('.heroCall').forEach(function(a){ a.href = 'tel:' + P; });
+document.querySelectorAll('.heroCallNum').forEach(function(s){ s.textContent = 'Call ' + Pf; });
+document.querySelectorAll('.heroCallBare').forEach(function(a){ a.href = 'tel:' + P; });
+document.querySelectorAll('.officeCall').forEach(function(a){ a.href = 'tel:' + P; if(a.classList.contains('v')) a.textContent = Pf; });
+document.querySelectorAll('.mobileCall').forEach(function(a){ a.href = 'tel:' + M; a.textContent = Mf; });
+document.querySelectorAll('.waLink').forEach(function(a){ a.href = waHref; a.target = '_blank'; a.rel = 'noopener'; });
+var el = document.getElementById('emailLink');
+el.textContent = E; el.href = 'mailto:' + E;
+var fe = document.getElementById('footEmail'); fe.href = 'mailto:' + E;
+document.getElementById('formTimestamp').value = Date.now();
+
+// ---------- loader: beam deflection ----------
+(function(){
+  var loader = document.getElementById('loader');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var torn = false;
+  function tearDown(){ if(torn || !loader) return; torn = true; loader.classList.add('done'); document.documentElement.classList.remove('no-scroll'); setTimeout(function(){ if(loader){ loader.remove(); loader = null; } }, 500); }
+  document.documentElement.classList.add('no-scroll');
+  if (reduced){
+    document.getElementById('ldBrand').classList.add('show');
+    setTimeout(tearDown, 700);
+  } else {
+    setTimeout(function(){ document.getElementById('ldBrand').classList.add('show'); }, 1150);
+    setTimeout(tearDown, 2150);
+  }
+  setTimeout(tearDown, 2500); // fail-safe
+})();
+
+// ---------- mobile menu ----------
+var burger = document.getElementById('burger');
+var mMenu = document.getElementById('mMenu');
+burger.addEventListener('click', function(){
+  var open = mMenu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  document.documentElement.classList.toggle('no-scroll', open);
+});
+mMenu.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){
+    mMenu.classList.remove('open');
+    burger.classList.remove('open');
+    document.documentElement.classList.remove('no-scroll');
+  });
+});
+
+// ---------- reveal ----------
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// ---------- FABs ----------
+var fabs = document.getElementById('fabs');
+var heroCtas = document.querySelector('.hero-ctas');
+window.addEventListener('scroll', function(){
+  var r = heroCtas.getBoundingClientRect();
+  fabs.classList.toggle('show', r.bottom < 0);
+}, { passive: true });
+
+// ---------- lightbox ----------
+var lb = document.getElementById('lightbox');
+var lbImg = lb.querySelector('img');
+var lbCap = lb.querySelector('.lb-cap');
+var items = Array.prototype.slice.call(document.querySelectorAll('.gitem'));
+var idx = 0;
+function showLb(i){
+  idx = (i + items.length) % items.length;
+  lbImg.src = items[idx].querySelector('img').src;
+  lbCap.textContent = items[idx].getAttribute('data-cap');
+  lb.classList.add('open');
+  document.documentElement.classList.add('no-scroll');
+}
+function hideLb(){ lb.classList.remove('open'); document.documentElement.classList.remove('no-scroll'); }
+items.forEach(function(it, i){ it.addEventListener('click', function(){ showLb(i); }); });
+document.getElementById('lbClose').addEventListener('click', hideLb);
+document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); showLb(idx - 1); });
+document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); showLb(idx + 1); });
+lb.addEventListener('click', function(e){ if (e.target === lb) hideLb(); });
+document.addEventListener('keydown', function(e){
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') hideLb();
+  if (e.key === 'ArrowLeft') showLb(idx - 1);
+  if (e.key === 'ArrowRight') showLb(idx + 1);
+});
+
+// ---------- phone validity message ----------
+var fPhone = document.getElementById('fPhone');
+fPhone.addEventListener('input', function(){
+  fPhone.setCustomValidity(fPhone.validity.patternMismatch ? 'Please enter a valid UK phone number' : '');
+});
+</script>
+</body>
+</html>
