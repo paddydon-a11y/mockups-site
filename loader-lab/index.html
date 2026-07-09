@@ -1449,6 +1449,38 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-turf .wordmark,#ld-turf .wordsub{opacity:1;animation:none!important}
 }
 
+/* 29. dot & dab (plasterers / dry liners) */
+#ld-dotdab{background:#22262a;flex-direction:column}
+#ld-dotdab .dd-stage{position:relative;width:min(340px,78vw);aspect-ratio:34/23}
+#ld-dotdab .dd-dab{position:absolute;width:34px;height:34px;border-radius:50%;background:#bf5b46;transform:scale(0)}
+#ld-dotdab.play .dd-dab{animation:ddPop .28s cubic-bezier(.34,1.56,.64,1) forwards}
+#ld-dotdab .dd-dab:nth-child(1){left:6%;top:8%;animation-delay:.10s}
+#ld-dotdab .dd-dab:nth-child(2){left:45%;top:8%;animation-delay:.20s}
+#ld-dotdab .dd-dab:nth-child(3){left:84%;top:8%;animation-delay:.30s}
+#ld-dotdab .dd-dab:nth-child(4){left:6%;top:66%;animation-delay:.40s}
+#ld-dotdab .dd-dab:nth-child(5){left:45%;top:66%;animation-delay:.50s}
+#ld-dotdab .dd-dab:nth-child(6){left:84%;top:66%;animation-delay:.60s}
+@keyframes ddPop{to{transform:scale(1)}}
+#ld-dotdab .dd-board{position:absolute;inset:-6% -4%;background:#eceae4;border:1px solid #dcd9d0;border-radius:6px;box-shadow:0 18px 50px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transform:translateY(120%)}
+#ld-dotdab.play .dd-board{animation:ddSeat .55s cubic-bezier(.22,1,.36,1) .85s forwards}
+@keyframes ddSeat{60%{transform:translateY(-2.5%)}100%{transform:translateY(0)}}
+#ld-dotdab .dd-board .wordmark{color:#22262a;opacity:0;transform:none}
+#ld-dotdab .dd-board .wordmark b{color:#bf5b46}
+#ld-dotdab .dd-board .wordsub{color:#4b5258;opacity:0;transform:none}
+#ld-dotdab.play .dd-board .wordmark{animation:wordIn .4s ease 1.45s forwards}
+#ld-dotdab.play .dd-board .wordsub{animation:wordIn .4s ease 1.6s forwards}
+#ld-dotdab .dd-bar{width:120px;height:3px;background:#e0ddd4;border-radius:2px;overflow:hidden;opacity:0}
+#ld-dotdab.play .dd-bar{animation:wordIn .3s ease 1.6s forwards}
+#ld-dotdab .dd-bar i{display:block;width:100%;height:100%;background:#bf5b46;transform:scaleX(0);transform-origin:left}
+#ld-dotdab.play .dd-bar i{animation:ddBar .7s ease 1.65s forwards}
+@keyframes ddBar{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){
+  #ld-dotdab .dd-dab{animation:none!important;transform:scale(1)}
+  #ld-dotdab .dd-board{animation:none!important;transform:translateY(0)}
+  #ld-dotdab .dd-board .wordmark,#ld-dotdab .dd-board .wordsub,#ld-dotdab .dd-bar{opacity:1;animation:none!important}
+  #ld-dotdab .dd-bar i{transform:scaleX(1);animation:none!important}
+}
+
 /* 28. split-unit breeze (air con / HVAC) */
 #ld-breeze{background:#0a2f2a;flex-direction:column;overflow:hidden}
 #ld-breeze .bz-unit{width:min(230px,58vw);margin-bottom:6px;opacity:0}
@@ -1894,6 +1926,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Construction / Main Contractor / Design &amp; Build</span>
       <h3>Programme Chart</h3>
       <p>A project programme (gantt) chart under a mono title-block header: four bars (Groundworks, Structure, Finish, Handover) fill left-to-right in sequence, each earning a tick as it completes, then the wordmark settles beneath. For full-service contractors selling programme discipline and complete delivery. Distinct from Surface Course Layup (courses stack) and Storey Stack (floors rise): this one is the paperwork, not the build. First used on dezinemercy.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-dotdab" data-dur="2500">
+      <span class="trade">Plasterers / Dry Liners</span>
+      <h3>Dot &amp; Dab</h3>
+      <p>Six adhesive dabs pop onto the bare wall in a grid, then a plasterboard sheet slides up and seats onto them with a soft settle, and the wordmark stamps onto the fresh board. First used on carter-plastering (2026-07-09). Distinct from every trowel/skim/render-sweep loader: this is the boarding stage, nothing is troweled, wiped or laid in courses.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-turf" data-dur="2400">
@@ -2944,6 +2982,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">LM Landscape <b>&amp;</b> Groundworks</div>
     <div class="wordsub">Shropshire &amp; Mid Wales</div>
+  </div>
+</div>
+
+<!-- 29. dot & dab (plasterers / dry liners) -->
+<div class="loader" id="ld-dotdab" aria-hidden="true">
+  <div class="dd-stage">
+    <div class="dd-dab"></div><div class="dd-dab"></div><div class="dd-dab"></div>
+    <div class="dd-dab"></div><div class="dd-dab"></div><div class="dd-dab"></div>
+    <div class="dd-board">
+      <div class="wordmark">CARTER <b>P&amp;R</b></div>
+      <div class="wordsub">Plastering &middot; Rendering &middot; Manchester</div>
+      <div class="dd-bar"><i></i></div>
+    </div>
   </div>
 </div>
 
