@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Joinery Services Ltd | Bespoke Joinery, Fitted Wardrobes & Kitchens, Bedford</title>
+<meta name="description" content="Thomas Joinery Services Ltd: bespoke fitted wardrobes, handmade kitchens, staircases and custom carpentry across Bedford, Kempston, Cardington and Bedfordshire. Over 35 years at the bench. Free design consultation.">
+<meta property="og:title" content="Thomas Joinery Services Ltd | Your New Website">
+<meta property="og:description" content="Bespoke joinery, fitted wardrobes and handmade kitchens across Bedford and Bedfordshire, a preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/thomas-joinery-services/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/thomas-joinery-services/">
+<meta name="theme-color" content="#1a1714">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f5f4f1;      /* cool stone panel */
+  --stone-2:#ecebe6;
+  --ink:#1a1714;        /* near-black timber ink */
+  --body:#4b463f;
+  --muted:#8b857b;
+  --line:#e6e3dd;
+  --oak:#a9722e;        /* planed-oak amber accent */
+  --oak-dk:#814f1a;     /* readable oak on white */
+  --walnut:#3a2a1a;     /* deep walnut dark panels */
+  --walnut-2:#2a1e12;
+  --shadow:0 22px 50px -26px rgba(40,28,16,.42);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em,i{font-style:normal}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Newsreader',serif;color:var(--ink);line-height:1.06;letter-spacing:-.01em;font-weight:500}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+section{position:relative}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ---- loader: dovetail joint ---- */
+#loader{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--stone);overflow:hidden}
+.joint{position:relative;width:236px;height:118px;margin-bottom:26px}
+.board{position:absolute;top:0;height:118px;width:130px;opacity:0}
+.board.l{left:-12px;background:linear-gradient(180deg,#b57e38,#8a5a22);transform:translateX(-190%);
+  clip-path:polygon(0 0,72% 0,100% 14%,100% 30%,72% 44%,72% 56%,100% 70%,100% 86%,72% 100%,0 100%)}
+.board.r{right:-12px;background:linear-gradient(180deg,#4a3521,#2e2013);transform:translateX(190%);
+  clip-path:polygon(100% 0,28% 0,0 14%,0 30%,28% 44%,28% 56%,0 70%,0 86%,28% 100%,100% 100%)}
+#loader.play .board.l{animation:slideL .85s cubic-bezier(.68,-0.2,.3,1) .2s forwards}
+#loader.play .board.r{animation:slideR .85s cubic-bezier(.68,-0.2,.3,1) .2s forwards}
+@keyframes slideL{0%{opacity:1;transform:translateX(-190%)}100%{opacity:1;transform:translateX(0)}}
+@keyframes slideR{0%{opacity:1;transform:translateX(190%)}100%{opacity:1;transform:translateX(0)}}
+.joint .seam{position:absolute;left:50%;top:8px;bottom:8px;width:2px;margin-left:-1px;background:rgba(0,0,0,.16);opacity:0;transform:scaleY(0);transform-origin:center}
+#loader.play .seam{animation:seamIn .4s ease 1s forwards}
+@keyframes seamIn{to{opacity:1;transform:scaleY(1)}}
+.ld-wm{text-align:center;opacity:0}
+#loader.play .ld-wm{animation:wmIn .55s ease 1.15s forwards}
+@keyframes wmIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.ld-wm b{font-family:'Newsreader',serif;font-weight:500;font-size:1.7rem;color:var(--ink);display:block;letter-spacing:.01em}
+.ld-wm b span{color:var(--oak-dk)}
+.ld-wm small{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);display:block;margin-top:9px}
+#loader.done{opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s ease}
+@media (prefers-reduced-motion:reduce){
+  .board{opacity:1 !important;transform:none !important;animation:none !important}
+  .seam,.ld-wm{opacity:1 !important;transform:none !important;animation:none !important}
+}
+
+/* ---- nav ---- */
+header{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.brand .mono-mark{width:44px;height:44px;border-radius:10px;background:var(--walnut);color:#f2e6d6;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:600;font-size:1.24rem;letter-spacing:.02em;position:relative;overflow:hidden;flex:none}
+.brand .mono-mark::after{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:repeating-linear-gradient(180deg,var(--oak) 0 6px,transparent 6px 12px)}
+.brand .bn{display:flex;flex-direction:column;line-height:1.08}
+.brand .bn b{font-family:'Newsreader',serif;font-weight:600;font-size:1.16rem;color:var(--ink);letter-spacing:.005em}
+.brand .bn span{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--oak-dk)}
+.nav-links a.nav-cta{background:var(--ink);color:#fff !important;padding:11px 20px;border-radius:10px;font-weight:600}
+.nav-links a.nav-cta:hover{background:var(--walnut)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;transition:.25s}
+.mobile-panel{display:none;background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:76px;z-index:190}
+.mobile-panel a{display:block;padding:15px 24px;font-weight:500;border-top:1px solid var(--line);color:var(--ink)}
+.mobile-panel a.m-cta{background:var(--ink);color:#fff;margin:14px 24px;border-radius:11px;text-align:center;border:0;padding:15px}
+
+/* ---- hero H2-split ---- */
+.hero{display:flex;flex-direction:column;background:linear-gradient(180deg,#fff 0%,var(--stone) 100%);overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;padding-top:76px;padding-bottom:80px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--oak-dk);margin-bottom:24px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--oak);box-shadow:0 0 0 0 rgba(169,114,46,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(169,114,46,.5)}70%{box-shadow:0 0 0 11px rgba(169,114,46,0)}100%{box-shadow:0 0 0 0 rgba(169,114,46,0)}}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.7rem);font-weight:500;letter-spacing:-.02em}
+.hero h1 .oak{color:var(--oak-dk)}
+.hero .lede{font-size:1.12rem;color:var(--body);margin:26px 0 32px;max-width:34em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:11px;font-weight:600;font-size:1rem;font-family:'Inter';transition:.22s;cursor:pointer;border:0}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--walnut);transform:translateY(-2px)}
+.btn-wa{background:#25d366;color:#053d1c}
+.btn-wa:hover{background:#1eb858;transform:translateY(-2px)}
+.btn svg{width:19px;height:19px}
+.hero-photo{position:relative}
+.hero-photo .ph{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:4/5}
+.hero-photo .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-badge{position:absolute;left:-20px;bottom:28px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:13px}
+.hero-badge .mk{width:40px;height:40px;border-radius:9px;background:var(--stone);display:flex;align-items:center;justify-content:center;flex:none}
+.hero-badge .mk svg{width:22px;height:22px;color:var(--oak-dk)}
+.hero-badge b{font-family:'Newsreader',serif;font-weight:600;color:var(--ink);font-size:1.16rem;display:block;line-height:1}
+.hero-badge small{color:var(--muted);font-size:.76rem;font-weight:500}
+
+/* ---- kerf divider ---- */
+.kerf{height:14px;background:
+  repeating-linear-gradient(90deg,var(--oak) 0 22px,transparent 22px 44px);
+  opacity:.9}
+
+/* ---- trust T1 ---- */
+.trust{background:var(--ink)}
+.trust-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:24px;padding-bottom:24px}
+.trust-item{display:flex;align-items:center;gap:11px;color:#e7e0d5;font-weight:500;font-size:.93rem}
+.trust-item svg{width:20px;height:20px;color:var(--oak);flex:none}
+
+/* ---- sections ---- */
+.sec{padding:92px 0}
+.lab{display:inline-flex;align-items:center;gap:11px;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--oak-dk);margin-bottom:18px}
+.lab::before{content:"";width:26px;height:2px;background:var(--oak)}
+.sec h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:500}
+.sec h2 .oak{color:var(--oak-dk)}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+
+/* ---- services S3 numbered editorial list ---- */
+.svc-list{border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:baseline;padding:30px 6px;border-bottom:1px solid var(--line);position:relative;transition:padding .3s ease}
+.svc::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--oak);transition:width .4s ease}
+.svc:hover::after{width:100%}
+.svc:hover{padding-left:16px}
+.svc .num{font-family:'Newsreader',serif;font-size:2.5rem;font-weight:400;color:var(--oak);line-height:.9;min-width:64px}
+.svc .body h3{font-size:1.5rem;font-weight:500;margin-bottom:6px}
+.svc .body p{font-size:.98rem;color:var(--body);max-width:44em}
+.svc .tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-top:8px}
+
+/* ---- gallery G4 editorial plate ---- */
+.gal{background:var(--stone)}
+.plate{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.gtile{cursor:pointer}
+.gtile .fr{position:relative;border-radius:12px;overflow:hidden;background:#ddd;border:1px solid var(--line)}
+.gtile .fr img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gtile:hover .fr img{transform:scale(1.05)}
+.gtile .gcap{display:flex;align-items:center;gap:9px;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.gtile .gcap::before{content:"";width:10px;height:10px;flex:none;background:var(--oak);clip-path:polygon(0 0,100% 22%,100% 78%,0 100%)}
+.g-wide{grid-column:span 3}.g-tall{grid-column:span 3}.g-std{grid-column:span 2}
+.g-wide .fr{aspect-ratio:3/2}.g-tall .fr{aspect-ratio:4/5}.g-std .fr{aspect-ratio:1/1}
+
+/* ---- about T3 ---- */
+.about{background:var(--walnut);color:#e2d8ca}
+.about .lab{color:var(--oak)}.about .lab::before{background:var(--oak)}
+.about h2{color:#fff}
+.about-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+.about p{margin-top:18px;color:#d3c7b6}
+.sigblock{display:flex;align-items:center;gap:15px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.sigblock .ini{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--oak),#6f4a1e);display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:600;color:#fff;font-size:1.2rem;flex:none}
+.sigblock b{color:#fff;font-family:'Newsreader',serif;font-size:1.14rem;font-weight:600}
+.sigblock span{display:block;font-size:.82rem;color:#b5a893;font-family:'JetBrains Mono',monospace;letter-spacing:.06em}
+.about-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:12px 30px}
+.about-card .stat{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;gap:18px}
+.about-card .stat:last-child{border-bottom:0}
+.about-card .stat b{font-family:'Newsreader',serif;font-weight:600;font-size:1.9rem;color:#fff;line-height:1}
+.about-card .stat span{color:#b5a893;font-size:.9rem;text-align:right}
+
+/* ---- reviews R3 ---- */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:15px;padding:32px}
+.rev .stars{color:var(--oak);font-size:1.02rem;letter-spacing:2px;margin-bottom:16px}
+.rev p{color:var(--ink);font-family:'Newsreader',serif;font-size:1.28rem;line-height:1.5;font-weight:400}
+.rev .by{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.rev .av{width:42px;height:42px;border-radius:10px;background:var(--stone);display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:600;color:var(--oak-dk);flex:none}
+.rev .by b{font-size:.95rem;color:var(--ink);display:block;font-family:'Inter';font-weight:600}
+.rev .by small{color:var(--muted);font-size:.76rem;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+
+/* ---- areas ---- */
+.areas{background:var(--stone)}
+.area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.area-grid a{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:15px 18px;font-weight:500;color:var(--ink);font-size:.94rem;display:flex;align-items:center;gap:10px;transition:.2s}
+.area-grid a:hover{border-color:var(--oak);color:var(--oak-dk);transform:translateY(-2px)}
+.area-grid a .pin{width:8px;height:8px;flex:none;background:var(--oak);clip-path:polygon(0 0,100% 22%,100% 78%,0 100%)}
+
+/* ---- cta band ---- */
+.band{background:var(--walnut-2);color:#fff;text-align:center;overflow:hidden}
+.band .wrap{position:relative}
+.band h2{color:#fff;font-size:clamp(2rem,4.2vw,2.9rem)}
+.band p{color:rgba(255,255,255,.82);margin:16px auto 30px;max-width:34em}
+.band .btn-primary{background:var(--oak);color:#241a0f}
+.band .btn-primary:hover{background:#c08a3f;color:#241a0f}
+
+/* ---- contact C1 ---- */
+.con-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px}
+.info-card{background:var(--stone);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;gap:15px;align-items:flex-start;margin-bottom:14px}
+.info-card .ic{width:46px;height:46px;border-radius:10px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none}
+.info-card .ic svg{width:21px;height:21px;color:var(--oak-dk)}
+.info-card>div{min-width:0}
+.info-card b{font-family:'Newsreader',serif;color:var(--ink);font-size:1.06rem;font-weight:600;display:block;margin-bottom:3px}
+.info-card a,.info-card span{color:var(--body);font-size:.95rem;overflow-wrap:anywhere}
+.con-grid>*{min-width:0}
+.info-card a:hover{color:var(--oak-dk)}
+form{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:32px;box-shadow:var(--shadow)}
+.fld{margin-bottom:16px}
+.fld label{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+.fld input,.fld select,.fld textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:9px;font-family:inherit;font-size:.96rem;color:var(--ink);background:var(--bg)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--oak);box-shadow:0 0 0 3px rgba(169,114,46,.15)}
+.fld textarea{resize:vertical;min-height:110px}
+form .btn-primary{width:100%;justify-content:center}
+
+/* ---- footer ---- */
+footer{background:var(--ink);color:#a79f92;padding:56px 0 30px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-top .brand .bn b{color:#fff}
+.foot-desc{max-width:30em;font-size:.92rem;margin-top:16px;color:#a79f92}
+.foot-bot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:22px;font-size:.84rem}
+.foot-bot a{color:var(--oak)}
+
+/* ---- floating fabs ---- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.3s}
+.fabs.on{opacity:1;transform:none;pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.5)}
+.fab svg{width:24px;height:24px;color:#fff}
+.fab-call{background:var(--ink);animation:fp 2.4s infinite}
+.fab-wa{background:#25d366;animation:fpg 2.4s infinite}
+@keyframes fp{0%{box-shadow:0 0 0 0 rgba(26,23,20,.5)}70%{box-shadow:0 0 0 14px rgba(26,23,20,0)}100%{box-shadow:0 0 0 0 rgba(26,23,20,0)}}
+@keyframes fpg{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.fab:hover{animation:none}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- lightbox ---- */
+#lb{position:fixed;inset:0;background:rgba(26,20,14,.94);z-index:500;display:none;align-items:center;justify-content:center;padding:24px}
+#lb.on{display:flex}
+#lb img{max-width:92%;max-height:90%;border-radius:8px}
+#lb .x{position:absolute;top:20px;right:26px;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1;font-family:'Newsreader',serif}
+
+/* ---- responsive ---- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:38px;padding-top:52px;padding-bottom:58px}
+  .about-grid,.con-grid{grid-template-columns:1fr;gap:36px}
+  .plate{grid-template-columns:repeat(4,1fr)}
+  .g-wide,.g-tall{grid-column:span 2}.g-std{grid-column:span 2}
+  .area-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .mobile-panel.open{display:block}
+}
+@media (max-width:680px){
+  .sec{padding:64px 0}
+  .sec h2,.hero h1,.band h2{overflow-wrap:break-word}
+  .hero h1{font-size:2.3rem}
+  .rev-grid{grid-template-columns:1fr}
+  .area-grid{grid-template-columns:repeat(2,1fr)}
+  .plate{grid-template-columns:1fr;gap:14px}
+  .g-wide,.g-tall,.g-std{grid-column:span 1}
+  .g-wide .fr,.g-tall .fr,.g-std .fr{aspect-ratio:4/3}
+  .trust-in{flex-direction:column;align-items:flex-start;gap:15px}
+  .trust-item{padding:2px 0}
+  .hero-badge{position:static;margin-top:16px;width:100%}
+  .hero-photo .ph{aspect-ratio:16/12}
+  .svc{grid-template-columns:auto 1fr;gap:20px}
+  .svc .tag{display:none}
+  .svc .num{font-size:2rem;min-width:44px}
+  .foot-bot{flex-direction:column}
+  .brand .bn span{display:none}
+}
+@media (max-width:430px){
+  .brand{gap:9px}
+  .brand .bn b{font-size:1.02rem}
+  .svc .body h3{font-size:1.28rem}
+}
+</style>
+</head>
+<body>
+
+<!-- loader: dovetail joint -->
+<div id="loader" class="play" aria-hidden="true">
+  <div class="joint">
+    <div class="board l"></div>
+    <div class="board r"></div>
+    <div class="seam"></div>
+  </div>
+  <div class="ld-wm">
+    <b>Thomas <span>Joinery</span></b>
+    <small>Bespoke Joinery · Bedford</small>
+  </div>
+</div>
+
+<!-- nav -->
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand" aria-label="Thomas Joinery Services Ltd">
+      <span class="mono-mark">TJ</span>
+      <span class="bn"><b>Thomas Joinery</b><span>Bespoke &middot; Bedford</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta">Free Quote</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mpanel">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact" class="m-cta">Free Quote</a>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow"><span class="dot"></span> Bespoke Joinery · Bedford &amp; Bedfordshire</div>
+      <h1>Made to measure, <span class="oak">made to last</span>.</h1>
+      <p class="lede">Fitted wardrobes, handmade kitchens and one-off bespoke pieces, designed around your home and fitted by hand across Bedford. Over 35 years at the bench.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" id="heroCall" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call <span class="callno"></span>
+        </a>
+        <a class="btn btn-wa" id="heroWa" href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.507 14.307l-.009.075c-2.199-1.096-2.429-1.242-2.713-.816-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.293-.506.32-.578.878-1.634.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.576-.05-.997-.042-1.368.344-1.614 1.774-1.207 3.604.174 5.55 2.714 3.552 4.16 4.206 6.804 5.114.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375c-.99-1.575-1.516-3.39-1.516-5.26 0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="ph"><img src="hero.jpg" alt="Bespoke white shaker fitted wardrobes with brass handles, handmade by Thomas Joinery Services in Bedford"></div>
+      <div class="hero-badge">
+        <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 21h18M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01"/></svg></div>
+        <div><b>35+ years</b><small>At the bench, across Bedfordshire</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="kerf"></div>
+</section>
+
+<!-- trust -->
+<section class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1-6.3-4.6L5.7 21 8 14 2 9.4h7.6z"/></svg> 35+ years experience</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4l6 6L9 21H3v-6z"/><path d="M11 7l6 6"/></svg> Bespoke &amp; made to measure</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Fitted by hand</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Free design consultation</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg> Bedford &amp; surrounding areas</div>
+  </div>
+</section>
+
+<!-- services -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">What we make</span>
+        <h2>Joinery, built for <span class="oak">your rooms</span>.</h2>
+      </div>
+    </div>
+    <div class="svc-list">
+      <div class="svc reveal">
+        <div class="num">01</div>
+        <div class="body"><h3>Fitted Wardrobes</h3><p>Hinged, sliding and recessed wardrobes built to the exact run, fully shelved and drawered inside.</p></div>
+        <div class="tag">Bedrooms</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">02</div>
+        <div class="body"><h3>Bespoke Kitchens</h3><p>Handmade units, islands and worktops, designed, made and fitted level and square.</p></div>
+        <div class="tag">Kitchens</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">03</div>
+        <div class="body"><h3>Bespoke Joinery</h3><p>One-off cabinetry, media walls, alcove units, panelling and bespoke furniture, made to the room.</p></div>
+        <div class="tag">Living spaces</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">04</div>
+        <div class="body"><h3>Staircases &amp; Handrails</h3><p>New staircases, oak and glass balustrades and handrails, cut and fitted on site.</p></div>
+        <div class="tag">Stairs</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">05</div>
+        <div class="body"><h3>Under-Stairs &amp; Storage</h3><p>Pull-out drawers, cupboards and shelving that turn wasted space into proper storage.</p></div>
+        <div class="tag">Storage</div>
+      </div>
+      <div class="svc reveal">
+        <div class="num">06</div>
+        <div class="body"><h3>Custom Carpentry</h3><p>Doors, skirting, architrave and second-fix joinery, neat and built to last.</p></div>
+        <div class="tag">Home</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section class="sec gal" id="work">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">Recent work</span>
+        <h2>Made in the workshop, <span class="oak">fitted in the home</span>.</h2>
+      </div>
+    </div>
+    <div class="plate">
+      <div class="gtile g-wide reveal" data-full="work-kitchen.jpg"><div class="fr"><img src="work-kitchen.jpg" alt="Bespoke kitchen with large island in Bedford"></div><div class="gcap">Bespoke kitchen &amp; island</div></div>
+      <div class="gtile g-tall reveal" data-full="hero.jpg"><div class="fr"><img src="hero.jpg" alt="White shaker fitted wardrobes with brass handles"></div><div class="gcap">Fitted shaker wardrobes</div></div>
+      <div class="gtile g-std reveal" data-full="work-staircase.jpg"><div class="fr"><img src="work-staircase.jpg" alt="Oak and glass staircase balustrade"></div><div class="gcap">Oak &amp; glass staircase</div></div>
+      <div class="gtile g-std reveal" data-full="work-understairs.jpg"><div class="fr"><img src="work-understairs.jpg" alt="Bespoke under-stairs pull-out storage"></div><div class="gcap">Under-stairs storage</div></div>
+      <div class="gtile g-std reveal" data-full="work-wardrobe-interior.jpg"><div class="fr"><img src="work-wardrobe-interior.jpg" alt="Fitted wardrobe interior with shelves and drawers"></div><div class="gcap">Wardrobe interior</div></div>
+      <div class="gtile g-std reveal" data-full="work-bathroom.jpg"><div class="fr"><img src="work-bathroom.jpg" alt="Oak-clad bathroom with bath surround"></div><div class="gcap">Oak-clad bathroom</div></div>
+      <div class="gtile g-std reveal" data-full="work-pergola.jpg"><div class="fr"><img src="work-pergola.jpg" alt="Bespoke oak garden bar and pergola"></div><div class="gcap">Oak garden bar</div></div>
+      <div class="gtile g-std reveal" data-full="work-mirror.jpg"><div class="fr"><img src="work-mirror.jpg" alt="Bespoke oak mirror and floating shelves"></div><div class="gcap">Bespoke mirror &amp; shelves</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section class="sec about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="lab">Who we are</span>
+      <h2>Carpentry, passed down the bench.</h2>
+      <p>Thomas Joinery Services is a Bedford joinery workshop with over 35 years at the bench, a trade passed down from generation to generation. We design, make and fit bespoke wardrobes, kitchens, staircases and one-off pieces, using materials from names we trust so the work lasts for years.</p>
+      <p>Every job starts with a free design consultation and ends with a piece built for the room it lives in, not pulled off a shelf.</p>
+      <div class="sigblock">
+        <span class="ini">TJ</span>
+        <span><b>Thomas Joinery Services Ltd</b><span>Bespoke joinery &middot; Bedford</span></span>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="stat"><b>35+</b><span>years at the bench</span></div>
+      <div class="stat"><b>Made<br>to measure</b><span>every piece, to the room</span></div>
+      <div class="stat"><b>Bedford</b><span>&amp; surrounding Bedfordshire</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">What people say</span>
+        <h2>Work that <span class="oak">speaks for itself</span>.</h2>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>The fitted wardrobes are exactly what we asked for and the finish is spot on. You would never know the alcove was an awkward shape.</p>
+        <div class="by"><span class="av">S</span><span><b>Sarah W.</b><small>Bedford &middot; Fitted wardrobes</small></span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>Handmade our kitchen from scratch and fitted it beautifully. Tidy, on time and nothing was too much trouble.</p>
+        <div class="by"><span class="av">M</span><span><b>Mark T.</b><small>Kempston &middot; Bespoke kitchen</small></span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>The under-stairs storage has completely changed our hallway. Proper craftsmanship and a lovely job all round.</p>
+        <div class="by"><span class="av">L</span><span><b>Louise H.</b><small>Cardington &middot; Under-stairs storage</small></span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>New oak staircase and handrail, and it looks fantastic. Real attention to detail from start to finish.</p>
+        <div class="by"><span class="av">D</span><span><b>David R.</b><small>Sharnbrook &middot; Staircase</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- areas -->
+<section class="sec areas" id="areas">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">Where we work</span>
+        <h2>Across Bedford &amp; <span class="oak">Bedfordshire</span>.</h2>
+      </div>
+    </div>
+    <div class="area-grid">
+      <a href="#contact"><span class="pin"></span>Bedford</a>
+      <a href="#contact"><span class="pin"></span>Kempston</a>
+      <a href="#contact"><span class="pin"></span>Shortstown</a>
+      <a href="#contact"><span class="pin"></span>Cardington</a>
+      <a href="#contact"><span class="pin"></span>Sharnbrook</a>
+      <a href="#contact"><span class="pin"></span>Biddenham</a>
+      <a href="#contact"><span class="pin"></span>Elstow</a>
+      <a href="#contact"><span class="pin"></span>Wootton</a>
+      <a href="#contact"><span class="pin"></span>Bromham</a>
+      <a href="#contact"><span class="pin"></span>Clapham</a>
+      <a href="#contact"><span class="pin"></span>Great Barford</a>
+      <a href="#contact"><span class="pin"></span>Ampthill</a>
+    </div>
+  </div>
+</section>
+
+<!-- cta band -->
+<section class="sec band">
+  <div class="wrap">
+    <h2>Got a room in mind?</h2>
+    <p>Tell us what you are after and we will book a free design consultation. Wardrobes, kitchens, stairs or a one-off piece, we make it to measure.</p>
+    <a class="btn btn-primary" id="bandCall" href="#">Call <span class="callno"></span></a>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="lab">Get in touch</span>
+        <h2>Request a <span class="oak">free quote</span>.</h2>
+      </div>
+    </div>
+    <div class="con-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Call us</b><a id="infoCall" href="#">Call us</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><b>Email</b><a id="infoEmail" href="#">Email us</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.507 14.307l-.009.075c-2.199-1.096-2.429-1.242-2.713-.816-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.293-.506.32-.578.878-1.634.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.576-.05-.997-.042-1.368.344-1.614 1.774-1.207 3.604.174 5.55 2.714 3.552 4.16 4.206 6.804 5.114.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375c-.99-1.575-1.516-3.39-1.516-5.26 0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411z"/></svg></div>
+          <div><b>WhatsApp</b><a id="infoWa" href="#">Message us for a quick quote</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg></div>
+          <div><b>Based in</b><span>Bedford, covering the surrounding Bedfordshire towns and villages</span></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Thomas Joinery Services Ltd">
+        <input type="hidden" name="source" value="mockup-thomas-joinery-services">
+        <div class="fld"><label for="name">Name</label><input id="name" name="name" required></div>
+        <div class="fld"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        <div class="fld"><label for="email">Email (optional)</label><input id="email" name="email" type="email"></div>
+        <div class="fld"><label for="service">What can we make?</label>
+          <select id="service" name="service">
+            <optgroup label="Bedrooms &amp; storage">
+              <option>Fitted Wardrobes</option>
+              <option>Under-Stairs &amp; Storage</option>
+            </optgroup>
+            <optgroup label="Kitchens &amp; living">
+              <option>Bespoke Kitchen</option>
+              <option>Media Wall / Alcove Units</option>
+              <option>Bespoke Furniture</option>
+            </optgroup>
+            <optgroup label="Structural joinery">
+              <option>Staircase / Handrail</option>
+              <option>Doors &amp; Second-Fix Carpentry</option>
+            </optgroup>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="fld"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us a bit about the piece and the room it is for..."></textarea></div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="brand" aria-label="Thomas Joinery Services Ltd">
+          <span class="mono-mark">TJ</span>
+          <span class="bn"><b>Thomas Joinery Services Ltd</b><span>Bespoke &middot; Bedford</span></span>
+        </a>
+        <p class="foot-desc">Bespoke fitted wardrobes, handmade kitchens, staircases and custom carpentry across Bedford, Kempston, Cardington and the surrounding Bedfordshire towns. Over 35 years at the bench.</p>
+      </div>
+      <div>
+        <a href="#contact" class="btn btn-primary" style="background:var(--oak);color:#241a0f">Book a free consultation</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; 2026 Thomas Joinery Services Ltd. Company no. 12012061. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating fabs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a class="fab fab-wa" id="fabWa" href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.507 14.307l-.009.075c-2.199-1.096-2.429-1.242-2.713-.816-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.293-.506.32-.578.878-1.634.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.576-.05-.997-.042-1.368.344-1.614 1.774-1.207 3.604.174 5.55 2.714 3.552 4.16 4.206 6.804 5.114.714.227 1.365.195 1.88.121.574-.091 1.767-.721 2.016-1.426.255-.705.255-1.29.18-1.425-.074-.135-.27-.21-.57-.345m-5.446 7.443h-.016c-1.77 0-3.524-.48-5.055-1.38l-.36-.214-3.75.975 1.005-3.645-.239-.375c-.99-1.575-1.516-3.39-1.516-5.26 0-5.445 4.455-9.885 9.942-9.885 2.654 0 5.145 1.035 7.021 2.91 1.875 1.859 2.909 4.35 2.909 6.99-.004 5.444-4.46 9.885-9.935 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411z"/></svg></a>
+</div>
+
+<!-- lightbox -->
+<div id="lb"><span class="x">&times;</span><img src="" alt="Thomas Joinery Services project"></div>
+
+<script>
+// contact links (base64 obfuscated)
+var P=atob('MDc1ODgyNjQxNTY='), Pf=atob('MDc1ODggMjY0MTU2'),
+    EM=atob('VGhvbWFzQFRob21hc0pvaW5lcnlTZXJ2aWNlcy5jby51aw=='), WA='447588264156';
+var waLink='https://wa.me/'+WA+'?text=Hi%2C%20I%20found%20your%20website%20and%20would%20like%20a%20quote%20please';
+['heroCall','bandCall','infoCall','fabCall'].forEach(function(id){var e=document.getElementById(id);if(e)e.href='tel:'+P;});
+['heroWa','infoWa','fabWa'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=waLink;});
+var ic=document.getElementById('infoCall'); if(ic) ic.textContent=Pf;
+var ie=document.getElementById('infoEmail'); if(ie){ie.textContent=EM; ie.href='mailto:'+EM;}
+document.querySelectorAll('.callno').forEach(function(e){e.textContent=Pf;});
+document.getElementById('formTimestamp').value=Date.now();
+
+// loader teardown
+function killLoader(){var l=document.getElementById('loader');if(l)l.classList.add('done');}
+window.addEventListener('load',function(){setTimeout(killLoader,2200);});
+setTimeout(killLoader,2700);
+
+// mobile nav
+var burger=document.getElementById('burger'),mp=document.getElementById('mpanel');
+burger.addEventListener('click',function(){mp.classList.toggle('open');});
+mp.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mp.classList.remove('open');});});
+
+// reveals
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+// floating fabs
+var fabs=document.getElementById('fabs'),hero=document.querySelector('.hero');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>hero.offsetHeight-120)fabs.classList.add('on');else fabs.classList.remove('on');
+});
+
+// lightbox
+var lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.gtile').forEach(function(t){
+  t.addEventListener('click',function(){lbImg.src=t.dataset.full;lb.classList.add('on');});
+});
+lb.addEventListener('click',function(){lb.classList.remove('on');});
+</script>
+</body>
+</html>
