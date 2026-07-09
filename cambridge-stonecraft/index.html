@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cambridge Stonecraft Ltd | Stonemasonry &amp; Restoration, Cambridge</title>
+<meta name="description" content="Stonemasons in Wilburton, Cambridge. Repointing, stone cleaning, carving and full restoration for churches, listed buildings and fine homes across the East of England and London. Over forty years at the chisel.">
+<link rel="icon" href="img/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cambridge Stonecraft Ltd | Stonemasonry &amp; Restoration">
+<meta property="og:description" content="Repointing, stone cleaning, carving and full restoration across Cambridgeshire, the East of England and London. Over forty years at the chisel.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/cambridge-stonecraft/img/window-carving.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/cambridge-stonecraft/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#eceeea;          /* cool limestone white */
+    --paper:#f6f7f4;        /* card / plate */
+    --white:#ffffff;
+    --ink:#1c1e1b;          /* quarry slate - headings */
+    --body:#494b45;         /* weathered slate - body */
+    --muted:#8a8c82;        /* labels */
+    --line:#d5d7cd;         /* hairline */
+    --line-strong:#c1c3b7;
+    --accent:#8a6a37;       /* weathered lichen-bronze, used sparingly */
+    --accent-deep:#6b5127;
+    --slate:#1f221e;        /* dark ground: footer + loader */
+    --slate-2:#2b2e29;
+    --stone-fade:#e2e4dd;   /* debossed watermark */
+    --shadow:0 22px 50px -30px rgba(28,30,27,.55);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  html.locked{overflow:hidden}
+  body{
+    background:var(--bg);color:var(--body);
+    font-family:'DM Sans',system-ui,sans-serif;
+    font-size:17px;line-height:1.72;font-weight:400;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  em{font-style:normal}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:'Cinzel',serif;color:var(--ink);font-weight:600;line-height:1.08;letter-spacing:.005em}
+
+  .wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:28px;padding-right:28px}
+  .label{
+    font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--accent);
+    display:inline-flex;align-items:center;gap:.7em;
+  }
+  .label::before{content:"";width:26px;height:1px;background:var(--accent);display:inline-block;opacity:.7}
+  .label.center::after{content:"";width:26px;height:1px;background:var(--accent);display:inline-block;opacity:.7}
+
+  /* incised / carved lettering */
+  .carved{
+    color:var(--ink);
+    text-shadow:0 1px 0 rgba(255,255,255,.75), 0 -1px 1px rgba(28,30,27,.14);
+  }
+  .accentword{color:var(--accent)}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font-family:'DM Sans',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:.01em;
+    padding:15px 26px;border-radius:2px;border:1px solid transparent;cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    white-space:nowrap;
+  }
+  .btn svg{width:17px;height:17px;flex:0 0 auto}
+  .btn-primary{background:var(--ink);color:#f3f3ee;border-color:var(--ink)}
+  .btn-primary:hover{background:#000;transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn-wa{background:#1f7a4d;color:#fff;border-color:#1f7a4d}
+  .btn-wa:hover{background:#186139;transform:translateY(-2px)}
+
+  /* ---------------- LOADER (chisel carve) ---------------- */
+  .loader{
+    position:fixed;inset:0;z-index:9999;background:var(--slate);overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+    transition:opacity .6s ease .1s, visibility .6s ease .1s;
+  }
+  .loader.done{opacity:0;visibility:hidden}
+  .carve-stage{position:relative;padding:6px 4px}
+  .carve-word{
+    font-family:'Cinzel',serif;font-weight:600;
+    font-size:clamp(1.35rem,5.4vw,2.6rem);letter-spacing:.12em;color:#3a3d37;
+    position:relative;white-space:nowrap;
+  }
+  .carve-word .cut{
+    position:absolute;inset:0;color:#e9e6dc;
+    text-shadow:0 1px 0 rgba(0,0,0,.6), 0 -1px 0 rgba(255,255,255,.08);
+    clip-path:inset(0 100% 0 0);
+    animation:carveReveal 1.25s cubic-bezier(.5,.05,.2,1) .25s forwards;
+  }
+  .chisel{
+    position:absolute;top:50%;left:-4%;width:34px;height:44px;
+    transform:translate(-50%,-58%);opacity:0;
+    animation:chiselRun 1.25s cubic-bezier(.5,.05,.2,1) .25s forwards;
+  }
+  .chip{position:absolute;top:50%;left:0;width:4px;height:4px;border-radius:1px;background:#cfccbf;opacity:0}
+  .c1{animation:chip 1.25s ease .45s 2}
+  .c2{animation:chip 1.25s ease .70s 2}
+  .c3{animation:chip 1.25s ease .95s 2}
+  .loader-rule{width:0;height:1px;background:var(--accent);animation:ruleGrow .7s ease 1.25s forwards}
+  .loader-sub{
+    font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.34em;
+    text-transform:uppercase;color:#8f9187;opacity:0;animation:fadeIn .6s ease 1.4s forwards;
+  }
+  @keyframes carveReveal{to{clip-path:inset(0 0 0 0)}}
+  @keyframes chiselRun{
+    0%{opacity:0;left:-4%}
+    8%{opacity:1}
+    92%{opacity:1;left:104%}
+    100%{opacity:0;left:104%}
+  }
+  @keyframes chip{
+    0%{opacity:0;transform:translate(0,0) scale(1)}
+    20%{opacity:1}
+    100%{opacity:0;transform:translate(var(--cx,12px),var(--cy,-16px)) scale(.3)}
+  }
+  @keyframes ruleGrow{to{width:190px}}
+  @keyframes fadeIn{to{opacity:1}}
+
+  /* ---------------- NAV ---------------- */
+  nav{position:sticky;top:0;z-index:800;background:var(--bg);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;
+    padding-top:15px;padding-bottom:15px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:30px;width:auto;filter:brightness(0) saturate(100%);opacity:.88}
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-links a{font-size:.9rem;font-weight:500;color:var(--body);letter-spacing:.01em;position:relative;padding:4px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .3s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{display:inline-flex;align-items:center;gap:.5em;font-weight:600;font-size:.9rem;color:var(--ink);
+    border:1px solid var(--line-strong);padding:9px 18px;border-radius:2px;transition:border-color .25s,transform .25s}
+  .nav-cta svg{width:15px;height:15px}
+  .nav-cta:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:26px;height:2px;background:var(--ink);transition:.3s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mnav{position:fixed;inset:0 0 0 auto;width:min(84vw,360px);background:var(--bg);z-index:900;
+    transform:translateX(100%);transition:transform .38s cubic-bezier(.5,.05,.2,1);
+    display:flex;flex-direction:column;padding:26px 28px;border-left:1px solid var(--line);box-shadow:var(--shadow)}
+  .mnav.open{transform:translateX(0)}
+  .mnav-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px}
+  .mnav-head img{height:26px;filter:brightness(0);opacity:.85}
+  .mnav a:not(.btn){font-family:'Cinzel',serif;font-size:1.2rem;color:var(--ink);padding:15px 0;border-bottom:1px solid var(--line)}
+  .mnav .btn{margin-top:24px}
+  .mclose{background:none;border:0;font-size:1.7rem;line-height:1;color:var(--ink);cursor:pointer}
+  .scrim{position:fixed;inset:0;background:rgba(20,22,18,.4);z-index:850;opacity:0;visibility:hidden;transition:.35s}
+  .scrim.open{opacity:1;visibility:visible}
+
+  /* ---------------- HERO ---------------- */
+  .hero{position:relative;overflow:hidden}
+  .hero-watermark{
+    position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);
+    font-family:'Cinzel',serif;font-weight:700;font-size:26vw;color:var(--stone-fade);
+    letter-spacing:.02em;white-space:nowrap;pointer-events:none;z-index:0;
+    text-shadow:0 1px 0 rgba(255,255,255,.6);user-select:none;
+  }
+  .hero-inner{position:relative;z-index:2;text-align:center;
+    padding-top:78px;padding-bottom:40px;max-width:940px;margin-inline:auto}
+  .hero .eyebrow{justify-content:center;margin-bottom:26px}
+  .hero-rule{width:100%;max-width:520px;margin:0 auto 30px;height:0;
+    border-top:1px solid var(--line-strong);position:relative}
+  .hero-rule::after{content:"";position:absolute;left:50%;top:-3px;width:7px;height:7px;
+    background:var(--bg);border:1px solid var(--accent);transform:translateX(-50%) rotate(45deg)}
+  h1.hero-h1{font-size:clamp(2.7rem,7vw,5.4rem);font-weight:700;letter-spacing:.01em;text-transform:uppercase}
+  h1.hero-h1 span{display:block}
+  .hero-lede{max-width:640px;margin:28px auto 0;font-size:1.08rem;color:var(--body)}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+  .hero-rule.bottom{margin-top:46px;margin-bottom:0}
+
+  /* hero plates */
+  .plates{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:18px;
+    padding-top:52px;padding-bottom:6px}
+  .plate{position:relative}
+  .plate .pf{overflow:hidden;border:1px solid var(--line);background:var(--paper);border-radius:2px;box-shadow:var(--shadow)}
+  .plate img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;transition:transform 1.4s ease}
+  .plate:hover img{transform:scale(1.05)}
+  .plate .cap{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:12px;display:flex;gap:.6em;align-items:baseline}
+  .plate .cap b{color:var(--ink);font-weight:600}
+
+  /* ---------------- TRUST ---------------- */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);margin-top:56px}
+  .trust-in{display:flex;justify-content:space-between;align-items:stretch;
+    padding-top:0;padding-bottom:0;flex-wrap:wrap}
+  .trust-item{flex:1;min-width:0;display:flex;align-items:center;gap:12px;
+    padding-top:22px;padding-bottom:22px;padding-left:6px;padding-right:6px;
+    border-right:1px solid var(--line)}
+  .trust-item:last-child{border-right:0}
+  .trust-item svg{width:22px;height:22px;stroke:var(--accent);flex:0 0 auto}
+  .trust-item .tt{font-family:'Cinzel',serif;font-size:.92rem;color:var(--ink);font-weight:600;line-height:1.2}
+
+  /* ---------------- SECTIONS ---------------- */
+  section{position:relative}
+  .sec-pad{padding-top:104px;padding-bottom:104px}
+  .sec-head{margin-bottom:52px}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:600;text-transform:uppercase;letter-spacing:.01em;margin-top:18px}
+  .sec-head.center{text-align:center}
+  .sec-head.center .label{justify-content:center}
+
+  /* SERVICES - S3 numbered editorial (Roman numerals) */
+  .services{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .svc-list{border-top:1px solid var(--line-strong)}
+  .svc{display:grid;grid-template-columns:112px 1fr auto;gap:30px;align-items:baseline;
+    padding:30px 6px;border-bottom:1px solid var(--line);position:relative;transition:padding-left .3s ease}
+  .svc::before{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--accent);transition:width .45s ease}
+  .svc:hover::before{width:100%}
+  .svc:hover{padding-left:16px}
+  .svc .num{font-family:'Cinzel',serif;font-size:1.9rem;color:var(--accent);font-weight:500;line-height:1}
+  .svc .body h3{font-family:'Cinzel',serif;font-size:1.4rem;color:var(--ink);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.01em}
+  .svc .body p{font-size:1rem;color:var(--body);max-width:60ch}
+  .svc .arrow{color:var(--muted);transition:transform .3s ease,color .3s ease}
+  .svc:hover .arrow{color:var(--accent);transform:translateX(6px)}
+  .svc .arrow svg{width:26px;height:26px}
+
+  /* GALLERY - G2 asymmetric plate */
+  .gal{background:var(--bg)}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px}
+  .gtile{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--paper);cursor:pointer;border-radius:2px}
+  .gtile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .gtile:hover img{transform:scale(1.06)}
+  .gtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:16px 18px 14px;
+    background:linear-gradient(to top,rgba(22,24,20,.82),rgba(22,24,20,0));
+    color:#f3f3ee;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.13em;
+    text-transform:uppercase;opacity:0;transform:translateY(8px);transition:.35s}
+  .gtile .gcap b{display:block;font-family:'Cinzel',serif;font-size:.98rem;letter-spacing:.02em;
+    text-transform:none;color:#fff;margin-bottom:3px;font-weight:600}
+  .gtile:hover .gcap{opacity:1;transform:translateY(0)}
+  .g-big{grid-column:span 2;grid-row:span 2}
+  .g-tall{grid-row:span 2}
+  .g-wide{grid-column:span 2}
+
+  /* ABOUT (slim, after gallery) */
+  .about{background:var(--slate);color:#cfd1c8;border-top:1px solid #33362f}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about h2{color:#f4f4ee;font-size:clamp(1.9rem,3.8vw,2.7rem);text-transform:uppercase;margin-top:16px}
+  .about .label{color:#c9a15f}
+  .about .label::before{background:#c9a15f}
+  .about p{color:#c3c5bb;margin-top:22px;font-size:1.06rem}
+  .about-figs{display:flex;gap:34px;margin-top:30px;flex-wrap:wrap}
+  .fig .n{font-family:'Cinzel',serif;font-size:2.4rem;color:#f4f4ee;line-height:1}
+  .fig .k{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#9a9c90;margin-top:8px}
+  .about-photo{border:1px solid #3a3d35;border-radius:2px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  .about-photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+  /* REVIEWS - R2 pull quotes */
+  .reviews{background:var(--bg)}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .quote{border-top:2px solid var(--ink);padding-top:26px}
+  .quote .stars{color:var(--accent);letter-spacing:3px;font-size:.85rem;margin-bottom:16px}
+  .quote p{font-family:'Cinzel',serif;font-weight:400;font-size:1.32rem;line-height:1.5;color:var(--ink)}
+  .quote .who{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);margin-top:20px}
+  .quote .who b{color:var(--accent);font-weight:500}
+
+  /* AREAS */
+  .areas{background:var(--paper);border-top:1px solid var(--line)}
+  .area-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .area-tags span{font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--body);
+    border:1px solid var(--line-strong);padding:8px 15px;border-radius:2px;background:var(--bg)}
+  .area-tags span.lead{border-color:var(--accent);color:var(--accent-deep)}
+
+  /* CONTACT - C2 band + form */
+  .contact{background:var(--slate);color:#d6d8ce}
+  .contact-band{text-align:center;max-width:760px;margin:0 auto;padding-bottom:14px}
+  .contact-band .label{justify-content:center;color:#c9a15f}
+  .contact-band .label::before,.contact-band .label::after{background:#c9a15f}
+  .contact-band h2{color:#f4f4ee;font-size:clamp(2rem,4.6vw,3.2rem);text-transform:uppercase;margin-top:18px}
+  .contact-band p{color:#b9bbb0;margin-top:18px;font-size:1.06rem}
+  .contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:44px;margin-top:56px;align-items:start}
+  .cinfo{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .cinfo a,.cinfo div{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid #33362f;min-width:0}
+  .cinfo a>span:last-child,.cinfo div>span:last-child{min-width:0}
+  .cinfo .v{overflow-wrap:anywhere}
+  .cinfo .ico{width:38px;height:38px;border:1px solid #4a4d44;border-radius:2px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .cinfo .ico svg{width:17px;height:17px;stroke:#c9a15f}
+  .cinfo .k{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#8f9187}
+  .cinfo .v{color:#eceee4;font-size:1.02rem;font-weight:500;margin-top:3px}
+  form{background:var(--paper);padding:34px;border-radius:2px;border:1px solid var(--line)}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .field input,.field select,.field textarea{width:100%;background:var(--white);border:1px solid var(--line-strong);
+    border-radius:2px;padding:13px 14px;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--ink);transition:border-color .25s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+  .field textarea{resize:vertical;min-height:120px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  form .btn{width:100%;margin-top:6px}
+  .formnote{font-size:.78rem;color:var(--muted);text-align:center;margin-top:14px}
+
+  /* FOOTER */
+  footer{background:#171a15;color:#9fa196;padding-top:64px;padding-bottom:30px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;padding-bottom:44px;border-bottom:1px solid #2a2d26}
+  .foot-brand img{height:34px;margin-bottom:20px}
+  .foot-brand p{max-width:38ch;font-size:.95rem;color:#8d8f85}
+  .foot-col h4{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a15f;margin-bottom:16px;font-weight:500}
+  .foot-col a,.foot-col span{display:block;font-size:.92rem;color:#a3a599;padding:5px 0;overflow-wrap:anywhere}
+  .foot-col a:hover{color:#f0f0e8}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:.82rem;color:#7c7e74}
+  .foot-bottom a{color:#a3a599}
+  .foot-bottom a:hover{color:#f0f0e8}
+
+  /* FABs */
+  .fabs{position:fixed;right:20px;bottom:20px;z-index:700;display:flex;flex-direction:column;gap:12px;
+    opacity:0;visibility:hidden;transform:translateY(14px);transition:.35s}
+  .fabs.show{opacity:1;visibility:visible;transform:translateY(0)}
+  .fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(0,0,0,.4);color:#fff}
+  .fab svg{width:24px;height:24px}
+  .fab-call{background:var(--ink);animation:pulseInk 2.4s infinite}
+  .fab-wa{background:#1f7a4d;animation:pulseWa 2.4s infinite}
+  .fab:hover{animation:none}
+  @keyframes pulseInk{0%{box-shadow:0 0 0 0 rgba(28,30,27,.5)}70%{box-shadow:0 0 0 14px rgba(28,30,27,0)}100%{box-shadow:0 0 0 0 rgba(28,30,27,0)}}
+  @keyframes pulseWa{0%{box-shadow:0 0 0 0 rgba(31,122,77,.5)}70%{box-shadow:0 0 0 14px rgba(31,122,77,0)}100%{box-shadow:0 0 0 0 rgba(31,122,77,0)}}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:950;background:rgba(15,17,13,.94);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;object-fit:contain;border:1px solid #3a3d35}
+  .lb-close{position:absolute;top:22px;right:26px;color:#fff;font-size:2rem;background:none;border:0;cursor:pointer;line-height:1}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid #4a4d44;color:#fff;
+    width:48px;height:48px;border-radius:50%;font-size:1.4rem;cursor:pointer;transition:.25s}
+  .lb-nav:hover{background:rgba(255,255,255,.1)}
+  .lb-prev{left:20px}.lb-next{right:20px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .rv.in{opacity:1;transform:none}
+
+  /* ---------------- RESPONSIVE ---------------- */
+  @media(max-width:980px){
+    .about-grid,.contact-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+    .foot-brand{grid-column:1 / -1}
+    .plates{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:880px){
+    .nav-links,.nav-cta{display:none}
+    .burger{display:flex}
+    .quotes{grid-template-columns:1fr}
+    .gal-grid{grid-auto-rows:200px}
+  }
+  @media(max-width:680px){
+    body{font-size:16px}
+    .sec-pad{padding-top:72px;padding-bottom:72px}
+    .hero-inner{padding-top:52px}
+    .hero-watermark{font-size:38vw;top:40%}
+    .plates{grid-template-columns:1fr;gap:14px}
+    .plate img{aspect-ratio:16/11}
+    .trust-in{flex-direction:column}
+    .trust-item{border-right:0;border-bottom:1px solid var(--line);padding-left:2px}
+    .trust-item:last-child{border-bottom:0}
+    .svc{grid-template-columns:56px 1fr;gap:16px}
+    .svc .arrow{display:none}
+    .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+    .g-big{grid-column:span 2;grid-row:span 2}
+    .g-wide{grid-column:span 2;grid-row:span 1}
+    .g-tall{grid-row:span 1}
+    .gtile .gcap{opacity:1;transform:none;position:static;background:none;color:var(--body);padding:10px 2px 0}
+    .gtile .gcap b{color:var(--ink)}
+    .gtile{cursor:default}
+    .row2{grid-template-columns:1fr}
+    form{padding:24px}
+    .foot-grid{grid-template-columns:1fr}
+    .about-figs{gap:24px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    html{scroll-behavior:auto}
+    .carve-word .cut{clip-path:inset(0 0 0 0)}
+    .rv{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body class="locked">
+
+<!-- LOADER -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="carve-stage">
+    <div class="carve-word">CAMBRIDGE STONECRAFT<span class="cut">CAMBRIDGE STONECRAFT</span></div>
+    <span class="chip c1" style="--cx:14px;--cy:-18px"></span>
+    <span class="chip c2" style="--cx:-10px;--cy:-20px"></span>
+    <span class="chip c3" style="--cx:16px;--cy:-14px"></span>
+    <svg class="chisel" viewBox="0 0 34 44" fill="none">
+      <rect x="13" y="0" width="8" height="26" rx="1.5" fill="#b8bbb0"/>
+      <rect x="13" y="0" width="4" height="26" fill="#d8dace"/>
+      <path d="M13 26 L21 26 L17 42 Z" fill="#9a9d92"/>
+      <path d="M13 26 L17 26 L17 42 Z" fill="#c4c7bb"/>
+    </svg>
+  </div>
+  <div class="loader-rule"></div>
+  <div class="loader-sub">Stonemasonry · Restoration · Cambridge</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="Cambridge Stonecraft home">
+      <img src="img/logo.png" alt="Cambridge Stonecraft Ltd">
+    </a>
+    <div class="nav-links">
+      <a href="#services">Stone Masonry</a>
+      <a href="#services">Restoration</a>
+      <a href="#work">Our Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" id="navCall" href="#contact">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call us</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="scrim" id="scrim"></div>
+<aside class="mnav" id="mnav" aria-label="Mobile menu">
+  <div class="mnav-head">
+    <img src="img/logo.png" alt="Cambridge Stonecraft">
+    <button class="mclose" id="mclose" aria-label="Close">&times;</button>
+  </div>
+  <a href="#services">Stone Masonry</a>
+  <a href="#services">Restoration</a>
+  <a href="#work">Our Projects</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-primary" id="mCall" href="#contact">Call us</a>
+</aside>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-watermark" aria-hidden="true">MMXXVI</div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="label eyebrow rv">Stonemasonry &amp; Restoration</span>
+      <div class="hero-rule rv"></div>
+      <h1 class="hero-h1 carved rv">
+        <span>Stone that</span>
+        <span class="accentword">outlasts</span>
+        <span>generations</span>
+      </h1>
+      <p class="hero-lede rv">Repointing, cleaning, carving and full restoration for the churches, listed buildings and fine homes of Cambridgeshire, the East of England and London. Over forty years at the chisel.</p>
+      <div class="hero-cta rv">
+        <a class="btn btn-primary" id="heroCall" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallLbl">Call us</span>
+        </a>
+        <a class="btn btn-ghost" href="#work">View our projects</a>
+      </div>
+      <div class="hero-rule bottom rv"></div>
+    </div>
+
+    <div class="plates">
+      <div class="plate rv">
+        <div class="pf"><img src="img/window-carving.jpg" alt="Restored stone tracery window in a flint church wall"></div>
+        <div class="cap"><b>Tracery window</b> · flint church</div>
+      </div>
+      <div class="plate rv">
+        <div class="pf"><img src="img/ely-cathedral.jpg" alt="Parapet and pinnacle stone restoration at Ely Cathedral"></div>
+        <div class="cap"><b>Ely Cathedral</b> · parapet</div>
+      </div>
+      <div class="plate rv">
+        <div class="pf"><img src="img/carving-closeup.jpg" alt="Hand-carved stone corbel set into a flint wall"></div>
+        <div class="cap"><b>Carved corbel</b> · flintwork</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="wrap trust-in">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="tt">Over 40 Years</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3v6M9 6h6M6 21V11l6-4 6 4v10M9 21v-5h6v5"/></svg><span class="tt">Churches &amp; Cathedrals</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg><span class="tt">Listed &amp; Heritage Work</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="tt">East of England &amp; London</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span class="tt">Free Site Visits</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section class="services sec-pad" id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="label">What we do</span>
+      <h2>Cut, cleaned <span class="accentword">&amp;</span> carved by hand</h2>
+    </div>
+    <div class="svc-list">
+      <div class="svc rv">
+        <div class="num">I</div>
+        <div class="body"><h3>Repointing</h3><p>Lime and cement pointing raked out and made good, matched to the original mortar and colour.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">II</div>
+        <div class="body"><h3>Brick &amp; Stone Cleaning</h3><p>Soot, lichen and staining lifted gently from the face, without damaging the stone beneath.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">III</div>
+        <div class="body"><h3>Bay Windows &amp; Cills</h3><p>New and replacement stone cills, mullions and bay stonework, cut to the original profile.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">IV</div>
+        <div class="body"><h3>Columns &amp; Balusters</h3><p>Turned and carved columns, balustrades and piers restored or renewed in matching stone.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">V</div>
+        <div class="body"><h3>Fireplaces</h3><p>Stone and brick fireplaces built, repaired and restored to their period detail.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">VI</div>
+        <div class="body"><h3>Steps</h3><p>Worn stone steps re-dressed, replaced and laid true, from doorways to churchyard flights.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">VII</div>
+        <div class="body"><h3>Carving &amp; Ornament</h3><p>Hand-carved tracery, finials and mouldings, cut fresh or copied faithfully from the old.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc rv">
+        <div class="num">VIII</div>
+        <div class="body"><h3>Restoration &amp; Conservation</h3><p>Full, sympathetic restoration of listed buildings and churches, from a single stone to a whole elevation.</p></div>
+        <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gal sec-pad" id="work">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="label center">Our Projects</span>
+      <h2>Work worth <span class="accentword">looking</span> up at</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gtile g-big rv" data-full="img/ely-cathedral.jpg"><img src="img/ely-cathedral.jpg" alt="Ely Cathedral parapet restoration"><div class="gcap"><b>Ely Cathedral</b>Parapet &amp; pinnacle restoration</div></div>
+      <div class="gtile g-tall rv" data-full="img/st-peters.jpg"><img src="img/st-peters.jpg" alt="Stone pinnacle and terracotta finial repair, St Peter's Church"><div class="gcap"><b>St Peter's Church</b>Pinnacle &amp; finial repair</div></div>
+      <div class="gtile rv" data-full="img/powchers-hall.jpg"><img src="img/powchers-hall.jpg" alt="Hand-cut ashlar stone pier at Powchers Hall"><div class="gcap"><b>Powchers Hall</b>Hand-cut ashlar pier</div></div>
+      <div class="gtile g-wide rv" data-full="img/proj-1.jpg"><img src="img/proj-1.jpg" alt="New Gothic-arch stone porch and window surrounds"><div class="gcap"><b>Stone porch</b>Gothic arch &amp; window surrounds</div></div>
+      <div class="gtile rv" data-full="img/window-carving.jpg"><img src="img/window-carving.jpg" alt="Restored tracery window in flint wall"><div class="gcap"><b>Tracery window</b>Cill &amp; surround, flint church</div></div>
+      <div class="gtile rv" data-full="img/memorial.jpg"><img src="img/memorial.jpg" alt="Cleaned and restored marble churchyard memorial"><div class="gcap"><b>Churchyard memorial</b>Cleaned &amp; reset</div></div>
+      <div class="gtile g-wide rv" data-full="img/proj-8.jpg"><img src="img/proj-8.jpg" alt="Yorkstone paving with cobble setts"><div class="gcap"><b>Yorkstone paving</b>Flags &amp; cobble setts</div></div>
+      <div class="gtile rv" data-full="img/proj-6.jpg"><img src="img/proj-6.jpg" alt="New stone threshold step to period house"><div class="gcap"><b>New threshold</b>Cut stone doorstep</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about sec-pad" id="about">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <span class="label">The people at the chisel</span>
+      <h2>Four decades of working stone</h2>
+      <p>Cambridge Stonecraft has worked the stone of the East of England for over forty years. From the pinnacles of Ely Cathedral to village church windows and the fireplaces of private homes, the team cuts, cleans, repoints and carves by hand. Reliable, honest and highly skilled, they treat every building, listed or lived-in, with the same care.</p>
+      <div class="about-figs">
+        <div class="fig"><div class="n">40+</div><div class="k">Years at the chisel</div></div>
+        <div class="fig"><div class="n">Listed</div><div class="k">Buildings &amp; churches</div></div>
+        <div class="fig"><div class="n">Hand</div><div class="k">Cut &amp; carved</div></div>
+      </div>
+    </div>
+    <div class="about-photo rv"><img src="img/proj-2.jpg" alt="Ashlar stone plinths and access work at a Cambridge college building"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews sec-pad">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="label center">In their words</span>
+      <h2>Trusted with <span class="accentword">old</span> stone</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"They repointed the whole front of our Grade II farmhouse near Ely and matched the old lime mortar perfectly. You honestly cannot tell the new from the old."</p>
+        <div class="who"><b>Margaret H.</b> &nbsp;·&nbsp; Wilburton</div>
+      </div>
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Cambridge Stonecraft recut the stone cills and mullions on our bay window. Faithful to the original and beautifully finished, start to finish."</p>
+        <div class="who"><b>David &amp; Sarah P.</b> &nbsp;·&nbsp; Cambridge</div>
+      </div>
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We asked them to clean and reset the memorials in our churchyard. Careful, respectful work done properly, and a fair price for it."</p>
+        <div class="who"><b>Rev. J. Cole</b> &nbsp;·&nbsp; Newmarket</div>
+      </div>
+      <div class="quote rv">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Forty years of knowing stone shows. The carved finial they replaced on our church tower is a genuine work of art. Highly recommended."</p>
+        <div class="who"><b>Church Warden</b> &nbsp;·&nbsp; St Ives</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas sec-pad">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="label">Where we work</span>
+      <h2>Across the East <span class="accentword">&amp;</span> into London</h2>
+    </div>
+    <div class="area-tags rv">
+      <span class="lead">Wilburton</span>
+      <span class="lead">Cambridge</span>
+      <span>Ely</span>
+      <span>Newmarket</span>
+      <span>St Ives</span>
+      <span>Huntingdon</span>
+      <span>Soham</span>
+      <span>Haddenham</span>
+      <span>Saffron Walden</span>
+      <span>Bury St Edmunds</span>
+      <span>Peterborough</span>
+      <span>Cambridgeshire</span>
+      <span>Suffolk &amp; Norfolk</span>
+      <span>London home counties</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact sec-pad" id="contact">
+  <div class="wrap">
+    <div class="contact-band rv">
+      <span class="label center">Get in touch</span>
+      <h2>Tell us about your stone</h2>
+      <p>Send a few photos and where you are. We will arrange a free site visit and give you an honest view of the work and the cost.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo rv">
+        <a id="infoPhone" href="#">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span><span class="k">Telephone</span><span class="v" id="phoneText">Call us</span></span>
+        </a>
+        <a id="infoEmail" href="#">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></span>
+          <span><span class="k">Email</span><span class="v" id="emailText">Email us</span></span>
+        </a>
+        <div>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span><span class="k">Workshop</span><span class="v">Milfoil Farm, Station Road,<br>Wilburton, Cambridge</span></span>
+        </div>
+        <div>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span><span class="k">Hours</span><span class="v">Mon&ndash;Fri, 8am&ndash;5pm</span></span>
+        </div>
+      </div>
+
+      <form id="enquiry" method="POST" action="/api/enquiry" class="rv">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Cambridge Stonecraft Ltd">
+        <input type="hidden" name="source" value="mockup-cambridge-stonecraft">
+        <div class="row2">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" required></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        </div>
+        <div class="field"><label for="email">Email (optional)</label><input id="email" name="email" type="email"></div>
+        <div class="field"><label for="service">What can we help with?</label>
+          <select id="service" name="service">
+            <optgroup label="Stone Masonry">
+              <option>Repointing</option>
+              <option>Brick &amp; stone cleaning</option>
+              <option>Bay windows &amp; cills</option>
+              <option>Columns &amp; balusters</option>
+              <option>Fireplaces</option>
+              <option>Steps</option>
+            </optgroup>
+            <optgroup label="Restoration">
+              <option>Carving &amp; ornament</option>
+              <option>Church &amp; listed building work</option>
+              <option>Full restoration / conservation</option>
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field"><label for="message">Tell us about the job</label><textarea id="message" name="message" placeholder="The building, roughly what needs doing, and where you are."></textarea></div>
+        <button class="btn btn-primary" type="submit">Send enquiry</button>
+        <p class="formnote">We reply to most enquiries the same working day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="img/logo.png" alt="Cambridge Stonecraft Ltd">
+        <p>Stonemasonry, cleaning, carving and restoration across Cambridgeshire, the East of England and London. Over forty years at the chisel.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Craft</h4>
+        <a href="#services">Repointing</a>
+        <a href="#services">Stone cleaning</a>
+        <a href="#services">Bay windows &amp; cills</a>
+        <a href="#services">Carving &amp; ornament</a>
+        <a href="#services">Restoration</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a id="footPhone" href="#">Call us</a>
+        <a id="footEmail" href="#">Email us</a>
+        <span>Wilburton, Cambridge</span>
+        <a href="#work">Our projects</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> Cambridge Stonecraft Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">Construction Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-call" id="fabCall" href="#" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a class="fab fab-wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.8-1.5-4-3.4-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5 0-.1-.6-1.5-.9-2.1-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3 1.8.8 2.5.9 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.9.9-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  </a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+</div>
+
+<script>
+(function(){
+  // ---- contact details (base64) ----
+  var b = {
+    tel:  "MDc4NTk5MDAxMTY=",
+    disp: "MDc4NTkgOTAwMTE2",
+    wa:   "NDQ3ODU5OTAwMTE2",
+    mail: "Y2FtYnJpZGdlc3RvbmVjcmFmdDIwMDRAZ21haWwuY29t"
+  };
+  var tel = atob(b.tel), disp = atob(b.disp), wa = atob(b.wa), mail = atob(b.mail);
+  function setTel(el){ if(el){ el.href = "tel:"+tel; } }
+  setTel(document.getElementById('navCall'));
+  setTel(document.getElementById('heroCall'));
+  setTel(document.getElementById('mCall'));
+  setTel(document.getElementById('fabCall'));
+  var hl = document.getElementById('heroCallLbl'); if(hl) hl.textContent = "Call " + disp;
+  var ip = document.getElementById('infoPhone'); if(ip){ ip.href="tel:"+tel; }
+  var pt = document.getElementById('phoneText'); if(pt) pt.textContent = disp;
+  var ie = document.getElementById('infoEmail'); if(ie){ ie.href="mailto:"+mail; }
+  var et = document.getElementById('emailText'); if(et) et.textContent = mail;
+  var fp = document.getElementById('footPhone'); if(fp){ fp.href="tel:"+tel; fp.textContent = disp; }
+  var fe = document.getElementById('footEmail'); if(fe){ fe.href="mailto:"+mail; fe.textContent = mail; }
+  var fw = document.getElementById('fabWa'); if(fw) fw.href = "https://wa.me/"+wa;
+
+  // ---- year ----
+  var yr = document.getElementById('yr'); if(yr) yr.textContent = new Date().getFullYear();
+
+  // ---- form timestamp + phone validity ----
+  var ts = document.getElementById('formTimestamp'); if(ts) ts.value = Date.now();
+  var ph = document.getElementById('phone');
+  if(ph){ ph.addEventListener('input', function(){
+    this.setCustomValidity(this.validity.patternMismatch ? 'Please enter a valid UK phone number' : '');
+  }); }
+  var frm = document.getElementById('enquiry');
+  if(frm){ frm.addEventListener('submit', function(e){ e.preventDefault();
+    var btn = frm.querySelector('button[type=submit]'); btn.textContent='Thank you, we will be in touch'; btn.disabled=true;
+  }); }
+
+  // ---- loader teardown ----
+  var loader = document.getElementById('loader');
+  function killLoader(){ if(loader){ loader.classList.add('done'); } document.body.classList.remove('locked'); }
+  window.addEventListener('load', function(){ setTimeout(killLoader, 2100); });
+  setTimeout(killLoader, 2600); // fail-safe
+
+  // ---- mobile nav ----
+  var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'),
+      scrim=document.getElementById('scrim'), mclose=document.getElementById('mclose');
+  function openM(){ mnav.classList.add('open'); scrim.classList.add('open'); burger.classList.add('open'); document.documentElement.classList.add('locked'); }
+  function closeM(){ mnav.classList.remove('open'); scrim.classList.remove('open'); burger.classList.remove('open'); document.documentElement.classList.remove('locked'); }
+  if(burger){ burger.addEventListener('click', function(){ mnav.classList.contains('open')?closeM():openM(); }); }
+  if(mclose) mclose.addEventListener('click', closeM);
+  if(scrim) scrim.addEventListener('click', closeM);
+  Array.prototype.forEach.call(mnav.querySelectorAll('a'), function(a){ a.addEventListener('click', closeM); });
+
+  // ---- FABs on scroll ----
+  var fabs=document.getElementById('fabs'), hero=document.getElementById('top');
+  var fo = new IntersectionObserver(function(en){ en.forEach(function(e){ fabs.classList.toggle('show', !e.isIntersecting); }); }, {threshold:0, rootMargin:"-320px 0px 0px 0px"});
+  if(hero) fo.observe(hero);
+
+  // ---- reveals ----
+  var ro = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } }); }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+  Array.prototype.forEach.call(document.querySelectorAll('.rv'), function(el,i){
+    el.style.transitionDelay = (Math.min(i,6)*0.05)+'s'; ro.observe(el);
+  });
+
+  // ---- lightbox ----
+  var tiles = Array.prototype.slice.call(document.querySelectorAll('.gtile'));
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), cur=0;
+  var isMobile = window.matchMedia('(max-width:680px)').matches;
+  function show(i){ cur=(i+tiles.length)%tiles.length; lbImg.src = tiles[cur].getAttribute('data-full'); }
+  tiles.forEach(function(t,i){ t.addEventListener('click', function(){ if(window.matchMedia('(max-width:680px)').matches) return; show(i); lb.classList.add('open'); }); });
+  document.getElementById('lbClose').addEventListener('click', function(){ lb.classList.remove('open'); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(cur+1); });
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(cur-1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape') lb.classList.remove('open'); if(e.key==='ArrowRight') show(cur+1); if(e.key==='ArrowLeft') show(cur-1); });
+})();
+</script>
+</body>
+</html>
