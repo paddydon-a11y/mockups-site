@@ -1036,6 +1036,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-partition .wordsub{color:rgba(255,255,255,.55)}
 #ld-partition.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
 #ld-partition.play .wordsub{animation:wordIn .5s ease 1.4s forwards}
+
+/* switch flick (electricians alt) */
+#ld-switchflick{background:#0b0d12;flex-direction:column}
+#ld-switchflick .sf-scene{position:relative;width:230px;height:420px}
+#ld-switchflick .sf-flex{position:absolute;top:0;left:50%;width:2px;height:64px;background:#2a3345;transform:translateX(-50%) translateY(-16px);opacity:0}
+#ld-switchflick .sf-pendant{position:absolute;top:64px;left:50%;transform:translateX(-50%) translateY(-16px);width:34px;height:44px;background:linear-gradient(160deg,#c97f3a,#8a5323);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);opacity:0}
+#ld-switchflick .sf-bulb{position:absolute;top:108px;left:50%;transform:translateX(-50%);width:14px;height:14px;border-radius:50%;background:#2a3345}
+#ld-switchflick .sf-glow{position:absolute;top:100px;left:50%;transform:translateX(-50%);width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(240,163,47,.32),rgba(240,163,47,0) 65%);opacity:0}
+#ld-switchflick .sf-mark{position:absolute;top:170px;left:50%;transform:translateX(-50%);width:230px;text-align:center;opacity:0}
+#ld-switchflick .sf-mark .wordmark{color:#f4f1ea}
+#ld-switchflick .sf-mark .wordmark b{color:#f0a32f}
+#ld-switchflick .sf-mark .wordsub{color:rgba(244,241,234,.5)}
+#ld-switchflick .sf-switch{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:34px;height:52px;border:1px solid #2a3345;border-radius:6px;background:#12161f}
+#ld-switchflick .sf-nub{position:absolute;left:50%;top:8px;transform:translateX(-50%);width:12px;height:16px;border-radius:3px;background:#778091}
+#ld-switchflick.play .sf-flex{animation:sfDrop .4s ease forwards}
+#ld-switchflick.play .sf-pendant{animation:sfDrop .4s ease forwards}
+#ld-switchflick.play .sf-nub{animation:sfFlick .18s ease .7s forwards}
+#ld-switchflick.play .sf-bulb{animation:sfBulb .5s ease .95s forwards}
+#ld-switchflick.play .sf-glow{animation:sfGlow .7s ease 1s forwards}
+#ld-switchflick.play .sf-mark{animation:sfMark .6s ease 1.15s forwards}
+@keyframes sfDrop{to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes sfFlick{to{top:28px;background:#f0a32f}}
+@keyframes sfBulb{to{background:#ffbc4d;box-shadow:0 0 18px 6px rgba(240,163,47,.55)}}
+@keyframes sfGlow{to{opacity:1}}
+@keyframes sfMark{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes slDraw{to{stroke-dashoffset:0}}
 @keyframes slRing{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
 @keyframes slStar{to{transform:scale(1)}}
@@ -2012,6 +2037,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Structural / Civil Engineers</span>
       <h3>Load Test</h3>
       <p>On a white drafting grid, a navy beam draws in between two pin supports, six UDL load arrows drop onto it and the beam holds dead straight under the load (it is properly designed, so it does not sag), a dimension string underlines it, and the wordmark settles. First used on geomatec (2026-07-09). Distinct from Blueprint Draw (a wireframe drawing itself in): this is a load-and-hold structural beat, nothing is drawn-in wireframe, laid or troweled.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-switchflick" data-dur="2400">
+      <span class="trade">Electricians (alt)</span>
+      <h3>Switch Flick</h3>
+      <p>On night-ink, a pendant lamp drops in on its flex, a rocker switch at the bottom of the scene flicks itself ON, the bulb catches and blooms an amber glow pool, and the wordmark settles in the light. Domestic lighting beat, distinct from Power Up (circuit trace + flickering bulb): nothing traces in, the payoff is the switch flick and the warm glow. First used on ben-wright-electrical (2026-07-10).</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -3130,6 +3161,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="wordmark">REMARKABLE <b>INTERIORS</b></div>
   <div class="wordsub">Fit-Out &middot; Refurbishment &middot; Bournemouth</div>
+</div>
+
+<!-- 32. switch flick (electricians alt) -->
+<div class="loader" id="ld-switchflick" aria-hidden="true">
+  <div class="sf-scene">
+    <div class="sf-glow"></div>
+    <div class="sf-flex"></div>
+    <div class="sf-pendant"></div>
+    <div class="sf-bulb"></div>
+    <div class="sf-mark">
+      <div class="wordmark">BEN WRIGHT <b>ELECTRICAL</b></div>
+      <div class="wordsub">Electrician &middot; Liphook</div>
+    </div>
+    <div class="sf-switch"><div class="sf-nub"></div></div>
+  </div>
 </div>
 
 <script>
