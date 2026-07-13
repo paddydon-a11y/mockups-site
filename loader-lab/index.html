@@ -1624,6 +1624,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-beam.play .wordmark{animation:wordIn .5s ease 1.2s forwards}
 #ld-beam.play .wordsub{animation:wordIn .5s ease 1.35s forwards}
 @media (prefers-reduced-motion:reduce){#ld-beam .bm-straight{stroke-dashoffset:0;animation:none!important}#ld-beam .bm-arrow{opacity:1;animation:none!important}#ld-beam .wordmark,#ld-beam .wordsub{opacity:1;animation:none!important}}
+/* tape & feather (tape jointing / dry lining finishing) - first used on agyengos-drylining */
+#ld-tapefeather{background:#ffffff;flex-direction:column}
+#ld-tapefeather .tf-stage{position:relative;width:min(320px,72vw);height:190px;margin-bottom:26px}
+#ld-tapefeather .tf-board{position:absolute;top:10px;bottom:10px;width:50%;background:#eee7d6 radial-gradient(circle at 50% 17px,#d5cbb2 2px,rgba(255,255,255,0) 2.8px);background-size:100% 34px;border-top:1px solid #ddd3bd;border-bottom:1px solid #ddd3bd}
+#ld-tapefeather .tf-board.l{left:0;border-right:2px solid #c9bfa5;border-radius:6px 0 0 6px}
+#ld-tapefeather .tf-board.r{right:0;border-left:2px solid #c9bfa5;border-radius:0 6px 6px 0}
+#ld-tapefeather .tf-tape{position:absolute;left:50%;top:10px;bottom:10px;width:26px;transform:translateX(-50%) scaleY(0);transform-origin:top;background:#dfd6bd}
+#ld-tapefeather.play .tf-tape{animation:tfGrow .7s ease-out .15s forwards}
+#ld-tapefeather .tf-feather{position:absolute;left:50%;top:10px;bottom:10px;width:92px;transform:translateX(-50%) scaleY(0);transform-origin:top;background:radial-gradient(60% 100% at 50% 50%,#ffffff 55%,rgba(255,255,255,0) 100%)}
+#ld-tapefeather.play .tf-feather{animation:tfGrow .7s ease-out .95s forwards}
+#ld-tapefeather .tf-knife{position:absolute;left:50%;top:-24px;transform:translateX(-50%);opacity:0}
+#ld-tapefeather.play .tf-knife{animation:tfKnife .8s ease-in .9s forwards}
+@keyframes tfGrow{to{transform:translateX(-50%) scaleY(1)}}
+@keyframes tfKnife{0%{opacity:0;transform:translateX(-50%) translateY(0)}15%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(190px)}}
+#ld-tapefeather .wm-zone{display:flex;flex-direction:column;align-items:center}
+#ld-tapefeather .wordmark{color:#17202b}
+#ld-tapefeather.play .wordmark{animation:wordIn .5s ease 1.75s forwards}
+#ld-tapefeather .wordsub{color:#8b98a5}
+#ld-tapefeather.play .wordsub{animation:wordIn .5s ease 1.9s forwards}
+#ld-tapefeather .tf-bar{width:0;height:3px;background:#e14b6e;margin-top:12px}
+#ld-tapefeather.play .tf-bar{animation:tfBar .5s ease 2s forwards}
+@keyframes tfBar{to{width:74px}}
+@media (prefers-reduced-motion:reduce){#ld-tapefeather .tf-tape,#ld-tapefeather .tf-feather{transform:translateX(-50%) scaleY(1);animation:none!important}#ld-tapefeather .tf-knife{display:none}#ld-tapefeather .wordmark,#ld-tapefeather .wordsub{opacity:1;animation:none!important}#ld-tapefeather .tf-bar{width:74px;animation:none!important}}
 </style>
 </head>
 <body>
@@ -2001,6 +2024,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Plasterers / Dry Liners</span>
       <h3>Dot &amp; Dab</h3>
       <p>Six adhesive dabs pop onto the bare wall in a grid, then a plasterboard sheet slides up and seats onto them with a soft settle, and the wordmark stamps onto the fresh board. First used on carter-plastering (2026-07-09). Distinct from every trowel/skim/render-sweep loader: this is the boarding stage, nothing is troweled, wiped or laid in courses.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-tapefeather" data-dur="2400">
+      <span class="trade">Tape Jointers / Dry Liners</span>
+      <h3>Tape &amp; Feather</h3>
+      <p>Two plasterboards meet at a visible joint; paper tape draws down the seam, then a taping knife runs after it feathering a wide band of compound until the joint disappears into seamless white, and the wordmark settles. First used on agyengos-drylining (2026-07-13). Distinct from Stud &amp; Board and Dot &amp; Dab (both boarding) and every trowel/skim loader: this is the joint finishing stage, the whole move is making a seam vanish.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-turf" data-dur="2400">
@@ -2848,6 +2877,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">JLG <b>Construction</b></div>
     <div class="wordsub">Fit-out &middot; Drylining &middot; Ceilings</div>
+  </div>
+</div>
+
+<!-- tape & feather (tape jointing / dry lining finishing) -->
+<div class="loader" id="ld-tapefeather" aria-hidden="true">
+  <div class="tf-stage">
+    <div class="tf-board l"></div>
+    <div class="tf-board r"></div>
+    <div class="tf-tape"></div>
+    <div class="tf-feather"></div>
+    <div class="tf-knife">
+      <svg width="56" height="34" viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="24" y="0" width="8" height="16" rx="2" fill="#141a22"/>
+        <path d="M6 16 H50 L46 30 H10 Z" fill="#9aa7b4"/>
+        <rect x="6" y="15" width="44" height="2.5" fill="#141a22"/>
+      </svg>
+    </div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">AGYENGO'S <b style="color:#e14b6e">DRYLINING</b></div>
+    <div class="wordsub">Tape Jointing &middot; Birmingham</div>
+    <div class="tf-bar"></div>
   </div>
 </div>
 
