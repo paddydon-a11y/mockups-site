@@ -1083,6 +1083,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes sfBulb{to{background:#ffbc4d;box-shadow:0 0 18px 6px rgba(240,163,47,.55)}}
 @keyframes sfGlow{to{opacity:1}}
 @keyframes sfMark{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* 33. kerf cut (builders / multi-trade alt) */
+#ld-kerf{background:transparent;padding:0}
+#ld-kerf .kf-panel{position:absolute;left:0;width:100%;background:#1d2a56}
+#ld-kerf .kf-top{top:0;height:62%;display:flex;align-items:center;justify-content:center}
+#ld-kerf .kf-bot{bottom:0;height:38%}
+#ld-kerf .kf-mark{text-align:center}
+#ld-kerf .kf-mark .wordmark{color:#fff;opacity:1;transform:none}
+#ld-kerf .kf-mark .wordmark b{color:#f2600c}
+#ld-kerf .kf-mark .wordsub{color:#f2600c;letter-spacing:.34em;opacity:1;transform:none}
+#ld-kerf .kf-kerf{position:absolute;top:62%;left:0;height:3px;width:100%;background:#f2600c;transform:translateY(-1px) scaleX(0);transform-origin:left;box-shadow:0 0 14px #f2600c}
+#ld-kerf .kf-blade{position:absolute;top:62%;left:0;width:64px;height:64px;margin-top:-32px;margin-left:-32px;opacity:0}
+#ld-kerf .kf-blade svg{width:64px;height:64px}
+#ld-kerf.play .kf-kerf{animation:kfKerf 1.1s cubic-bezier(.4,0,.6,1) .45s forwards}
+#ld-kerf.play .kf-blade{animation:kfTravel 1.1s cubic-bezier(.4,0,.6,1) .45s forwards}
+#ld-kerf.play .kf-blade svg{animation:kfSpin .5s linear infinite}
+#ld-kerf.play .kf-top{animation:kfSplitTop .55s cubic-bezier(.7,0,.3,1) 1.7s forwards}
+#ld-kerf.play .kf-bot{animation:kfSplitBot .55s cubic-bezier(.7,0,.3,1) 1.7s forwards}
+@keyframes kfKerf{to{transform:translateY(-1px) scaleX(1)}}
+@keyframes kfTravel{0%{opacity:0;left:0}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes kfSpin{to{transform:rotate(360deg)}}
+@keyframes kfSplitTop{to{transform:translateY(-102%)}}
+@keyframes kfSplitBot{to{transform:translateY(102%)}}
 @keyframes slDraw{to{stroke-dashoffset:0}}
 @keyframes slRing{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
 @keyframes slStar{to{transform:scale(1)}}
@@ -2100,6 +2123,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Electricians (alt)</span>
       <h3>Switch Flick</h3>
       <p>On night-ink, a pendant lamp drops in on its flex, a rocker switch at the bottom of the scene flicks itself ON, the bulb catches and blooms an amber glow pool, and the wordmark settles in the light. Domestic lighting beat, distinct from Power Up (circuit trace + flickering bulb): nothing traces in, the payoff is the switch flick and the warm glow. First used on ben-wright-electrical (2026-07-10).</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-kerf" data-dur="2400">
+      <span class="trade">Builders / multi-trade (alt)</span>
+      <h3>Kerf Cut</h3>
+      <p>A navy hoarding board fills the screen with the wordmark on it. A spinning circular saw blade travels left to right, scoring a glowing orange kerf behind it; when the cut completes, the board splits along the kerf and the two halves slide apart to reveal the page. Echoes a saw-blade badge logo. First used on simpson-sons-building (2026-07-13). Distinct from Coursework and all trowel/roller/draw loaders: nothing is laid or drawn, the board is CUT open.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -3268,6 +3297,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <div class="wordsub">Electrician &middot; Liphook</div>
     </div>
     <div class="sf-switch"><div class="sf-nub"></div></div>
+  </div>
+</div>
+
+<!-- 33. kerf cut (builders / multi-trade alt) -->
+<div class="loader" id="ld-kerf" aria-hidden="true">
+  <div class="kf-panel kf-top">
+    <div class="kf-mark">
+      <div class="wordmark">SIMPSON <b>&amp; SONS</b></div>
+      <div class="wordsub">Building Solutions &middot; Maidstone</div>
+    </div>
+  </div>
+  <div class="kf-panel kf-bot"></div>
+  <div class="kf-kerf"></div>
+  <div class="kf-blade">
+    <svg viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="24" fill="#f2600c"/>
+      <g fill="#f2600c">
+        <path d="M32 2 L37 12 L27 12 Z"/><path d="M32 62 L27 52 L37 52 Z"/>
+        <path d="M2 32 L12 27 L12 37 Z"/><path d="M62 32 L52 37 L52 27 Z"/>
+        <path d="M11 11 L21 13 L14 20 Z"/><path d="M53 53 L43 51 L50 44 Z"/>
+        <path d="M53 11 L51 21 L44 14 Z"/><path d="M11 53 L13 43 L20 50 Z"/>
+      </g>
+      <circle cx="32" cy="32" r="7" fill="#1d2a56"/>
+      <circle cx="32" cy="32" r="3" fill="#fff"/>
+    </svg>
   </div>
 </div>
 
