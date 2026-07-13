@@ -473,6 +473,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes chChip{0%{opacity:0;transform:translate(0,0) scale(1)}20%{opacity:1}100%{opacity:0;transform:translate(var(--cx,12px),var(--cy,-16px)) scale(.3)}}
 @keyframes chRule{to{width:180px}}
 
+/* ===== DRAINAGE / DRAIN JETTING / GROUNDWORKS — jet clear ===== */
+#ld-jetclear{background:#0b1c33;flex-direction:column;gap:26px}
+#ld-jetclear .jc-pipe{position:relative;width:min(480px,80vw);height:32px;border-radius:16px;background:#132b4d;overflow:hidden;box-shadow:inset 0 2px 8px rgba(0,0,0,.45)}
+#ld-jetclear .jc-sludge{position:absolute;inset:4px;border-radius:12px;background:repeating-linear-gradient(-45deg,#2a3b52 0 10px,#1e2d42 10px 20px)}
+#ld-jetclear .jc-flow{position:absolute;inset:4px;border-radius:12px;background:linear-gradient(90deg,#1d4ed8 0%,#0ea5e9 60%,#7dd3fc 100%);transform:scaleX(0);transform-origin:left center}
+#ld-jetclear.play .jc-flow{animation:jcFlow 1.15s cubic-bezier(.65,0,.35,1) .3s forwards}
+#ld-jetclear .jc-nozzle{position:absolute;top:50%;left:-52px;transform:translate(0,-50%);z-index:3}
+#ld-jetclear.play .jc-nozzle{animation:jcNozzle 1.15s cubic-bezier(.65,0,.35,1) .3s forwards}
+@keyframes jcFlow{to{transform:scaleX(1)}}
+@keyframes jcNozzle{to{transform:translate(calc(min(480px,80vw) + 8px),-50%)}}
+#ld-jetclear .wordmark{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.4rem;color:#fff;opacity:0}
+#ld-jetclear .wordmark span{color:#0ea5e9}
+#ld-jetclear.play .wordmark{animation:wordIn .5s ease 1.4s forwards}
+#ld-jetclear .wordsub{color:#7d93ad;opacity:0}
+#ld-jetclear.play .wordsub{animation:wordIn .5s ease 1.6s forwards}
+
 /* ===== 7b. DECKING / PROPERTY MAINTENANCE — deck lay ===== */
 #ld-deck{background:#232220;flex-direction:column}
 #ld-deck .deckwrap{width:min(300px,64vw);display:flex;flex-direction:column;gap:7px}
@@ -1838,6 +1854,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A chisel runs across a slate block and the wordmark is revealed carved out of the stone behind it, stone chips flying, then a bronze rule and subline settle. First used on cambridge-stonecraft.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-jetclear" data-dur="2350">
+      <span class="trade">Drainage / Drain Jetting / Groundworks</span>
+      <h3>Jet Clear</h3>
+      <p>A steel nozzle blasts through a sludge-blocked pipe bar and a blue-to-cyan flow fills it clean behind the jet, then the wordmark and subline settle. First used on clear-flow-jetting.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-deck" data-dur="2300">
       <span class="trade">Decking / Property Maintenance / Landscaping</span>
       <h3>Decking Lay</h3>
@@ -3101,6 +3123,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="ch-rule"></div>
   <div class="wordsub">Stonemasonry &middot; Restoration &middot; Cambridge</div>
+</div>
+
+<!-- jet clear (drainage / drain jetting / groundworks) -->
+<div class="loader" id="ld-jetclear" aria-hidden="true">
+  <div class="jc-pipe">
+    <div class="jc-sludge"></div>
+    <div class="jc-flow"></div>
+    <div class="jc-nozzle">
+      <svg width="52" height="30" viewBox="0 0 52 30" fill="none">
+        <rect x="0" y="9" width="30" height="12" rx="3" fill="#c8d6e5"/>
+        <rect x="28" y="6" width="10" height="18" rx="2" fill="#9fb3c8"/>
+        <path d="M38 12 L50 15 L38 18 Z" fill="#e2ecf5"/>
+      </svg>
+    </div>
+  </div>
+  <div class="wordmark">CLEAR <span>FLOW</span></div>
+  <div class="wordsub">Drain Jetting &middot; CCTV Surveys &middot; Ground Works</div>
 </div>
 
 <!-- 7b. deck lay (decking / property maintenance / landscaping) -->
