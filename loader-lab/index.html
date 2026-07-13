@@ -106,6 +106,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-power.play .wordmark{animation:wordIn .5s ease 1.6s forwards}
 #ld-power.play .wordsub{animation:wordIn .5s ease 1.78s forwards}
 
+/* ===== 2c. ELECTRICIANS - earthing trace (first used: down-to-earth-electrical) ===== */
+#ld-earth{background:#ffffff;flex-direction:column;gap:22px}
+#ld-earth svg{width:104px;height:104px;overflow:visible}
+#ld-earth .et{fill:none;stroke-linecap:round}
+#ld-earth .et-ring{stroke:#22303a;stroke-width:7;stroke-dasharray:302;stroke-dashoffset:302}
+#ld-earth.play .et-ring{animation:draw .7s ease-out .1s forwards}
+#ld-earth .et-stem{stroke:#00a5a5;stroke-width:9;stroke-dasharray:30;stroke-dashoffset:30}
+#ld-earth.play .et-stem{animation:draw .3s ease-out .75s forwards}
+#ld-earth .et-b1{stroke:#00a5a5;stroke-width:9;stroke-dasharray:52;stroke-dashoffset:52}
+#ld-earth.play .et-b1{animation:draw .28s ease-out .95s forwards}
+#ld-earth .et-b2{stroke:#00a5a5;stroke-width:9;stroke-dasharray:34;stroke-dashoffset:34}
+#ld-earth.play .et-b2{animation:draw .24s ease-out 1.14s forwards}
+#ld-earth .et-b3{stroke:#00a5a5;stroke-width:9;stroke-dasharray:16;stroke-dashoffset:16}
+#ld-earth.play .et-b3{animation:draw .2s ease-out 1.3s forwards}
+#ld-earth .et-pulse{opacity:0}
+#ld-earth.play .et-pulse{animation:etPulse .5s ease-in 1.45s}
+@keyframes etPulse{0%{opacity:1;transform:translateY(-20px)}70%{opacity:1}100%{opacity:0;transform:translateY(16px)}}
+#ld-earth .wordmark{color:#22303a}
+#ld-earth .wordsub{color:#00a5a5}
+#ld-earth.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-earth.play .wordsub{animation:wordIn .5s ease 1.62s forwards}
+
 /* ===== 2b. ELECTRICIANS — board energise (first used: rwd-electrical) ===== */
 #ld-board{background:#1a2530;flex-direction:column}
 #ld-board .bd{width:min(320px,72vw);border:2px solid #43566b;border-radius:14px;padding:22px 24px 18px;position:relative;background:#20303f;margin-bottom:30px}
@@ -1678,6 +1700,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A circuit trace draws in from both sides, the bulb flickers and catches, and the whole screen flashes on.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-earth" data-dur="2200">
+      <span class="trade">Electricians</span>
+      <h3>Earthing Trace</h3>
+      <p>The IEC earth symbol draws itself stroke by stroke, a current pulse runs to ground, and the wordmark powers on. First used: down-to-earth-electrical.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-board" data-dur="2400">
       <span class="trade">Electricians</span>
       <h3>Board Energise</h3>
@@ -2248,6 +2276,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="flash"></div>
   <div class="wordmark">Ohm Electrical</div>
   <div class="wordsub">NICEIC Approved</div>
+</div>
+
+<!-- 2c. earthing trace -->
+<div class="loader" id="ld-earth" aria-hidden="true">
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <circle class="et et-ring" cx="60" cy="60" r="48"/>
+    <line class="et et-stem" x1="60" y1="30" x2="60" y2="58"/>
+    <line class="et et-b1" x1="34" y1="60" x2="86" y2="60"/>
+    <line class="et et-b2" x1="43" y1="74" x2="77" y2="74"/>
+    <line class="et et-b3" x1="52" y1="88" x2="68" y2="88"/>
+    <circle class="et-pulse" cx="60" cy="44" r="5" fill="#00a5a5"/>
+  </svg>
+  <div class="wordmark">Down to Earth</div>
+  <div class="wordsub">Electrical Services</div>
 </div>
 
 <!-- 2b. board energise -->
