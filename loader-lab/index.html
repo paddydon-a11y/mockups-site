@@ -911,6 +911,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-turf.play .wordmark{animation:wordIn .5s ease .95s forwards}
 #ld-turf.play .wordsub{animation:wordIn .5s ease 1.2s forwards}
 
+/* roof to room (ziaudin-roofing) */
+#ld-r2r{background:#1a222b;flex-direction:column;gap:26px}
+#ld-r2r .r2r-house{width:190px;height:150px}
+#ld-r2r .r2r-house svg{width:100%;height:100%;display:block}
+#ld-r2r .r2r-course{transform:scaleX(0);transform-origin:left center}
+#ld-r2r.play .r2r-course{animation:r2rX .34s ease-out forwards}
+#ld-r2r.play .r2r-c1{animation-delay:.12s}
+#ld-r2r.play .r2r-c2{animation-delay:.3s}
+#ld-r2r.play .r2r-c3{animation-delay:.48s}
+#ld-r2r.play .r2r-c4{animation-delay:.66s}
+#ld-r2r .r2r-ridge{transform:scaleX(0);transform-origin:center}
+#ld-r2r.play .r2r-ridge{animation:r2rX .3s ease-out .86s forwards}
+#ld-r2r .r2r-wall{transform:scaleY(0);transform-origin:bottom center}
+#ld-r2r.play .r2r-wall{animation:r2rY .4s ease-out 1.02s forwards}
+#ld-r2r .r2r-paint{transform:scaleX(0);transform-origin:left center}
+#ld-r2r.play .r2r-paint{animation:r2rX .38s ease-out 1.34s forwards}
+@keyframes r2rX{to{transform:scaleX(1)}}
+@keyframes r2rY{to{transform:scaleY(1)}}
+#ld-r2r .wordmark{color:#f2f5f8}
+#ld-r2r .wordmark b{color:#f59e0b}
+#ld-r2r .wordsub{color:#aab6c2}
+#ld-r2r.play .wordmark{animation:wordIn .45s ease 1.55s forwards}
+#ld-r2r.play .wordsub{animation:wordIn .45s ease 1.75s forwards}
+
+
 /* ===== 18. JOINERS / CARPENTERS — saw cut ===== */
 #ld-sawcut{background:#9e672f}
 #ld-sawcut .sc-half{position:absolute;left:0;width:100%;height:50.5%;background:repeating-linear-gradient(0deg, rgba(60,38,10,.07) 0 2px, transparent 2px 26px),linear-gradient(180deg,#c89a55,#b9854a 60%,#b07c40)}
@@ -1980,6 +2005,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A roll of turf unrolls itself across bare soil, the roll spinning along the leading edge, then the wordmark lands above the fresh lawn. First used on notts-home-fix.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-r2r" data-dur="2300">
+      <span class="trade">Roofers / Multi-trade (roof + plaster + paint)</span>
+      <h3>Roof to Room</h3>
+      <p>A gable house elevation builds itself top-down through the trades: tile courses sweep the pitch row by row, the ridge caps it, the wall wipes to fresh plaster, then a paint band rolls across the base. First used on ziaudin-roofing.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-sawcut" data-dur="2400">
       <span class="trade">Joiners / Carpenters</span>
       <h3>Saw Cut</h3>
@@ -2889,6 +2920,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="lr-soil"></div>
     <div class="lr-turf"></div>
     <div class="lr-roll"></div>
+  </div>
+</div>
+
+
+<!-- roof to room -->
+<div class="loader" id="ld-r2r" aria-hidden="true">
+  <div class="r2r-house">
+    <svg viewBox="0 0 190 150" fill="none">
+      <g clip-path="url(#r2rClip)">
+        <rect class="r2r-course r2r-c1" x="20" y="58" width="150" height="12" fill="#f59e0b"/>
+        <rect class="r2r-course r2r-c2" x="20" y="44" width="150" height="12" fill="#e08c07"/>
+        <rect class="r2r-course r2r-c3" x="20" y="30" width="150" height="12" fill="#f59e0b"/>
+        <rect class="r2r-course r2r-c4" x="20" y="16" width="150" height="12" fill="#e08c07"/>
+      </g>
+      <clipPath id="r2rClip"><path d="M95 8 L172 70 L18 70 Z"/></clipPath>
+      <rect class="r2r-ridge" x="80" y="4" width="30" height="7" rx="3" fill="#f2f5f8"/>
+      <rect class="r2r-wall" x="38" y="74" width="114" height="52" rx="3" fill="#f2f5f8"/>
+      <rect class="r2r-paint" x="38" y="130" width="114" height="10" rx="3" fill="#f59e0b"/>
+    </svg>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">ZIAUDIN <b>ROOFING</b></div>
+    <div class="wordsub">Roofing &middot; Plastering &middot; Painting &middot; Birmingham</div>
   </div>
 </div>
 
