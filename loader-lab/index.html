@@ -1792,6 +1792,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-tapefeather.play .tf-bar{animation:tfBar .5s ease 2s forwards}
 @keyframes tfBar{to{width:74px}}
 @media (prefers-reduced-motion:reduce){#ld-tapefeather .tf-tape,#ld-tapefeather .tf-feather{transform:translateX(-50%) scaleY(1);animation:none!important}#ld-tapefeather .tf-knife{display:none}#ld-tapefeather .wordmark,#ld-tapefeather .wordsub{opacity:1;animation:none!important}#ld-tapefeather .tf-bar{width:74px;animation:none!important}}
+
+/* 33. topping out (builders / renovations / whole-home) */
+#ld-topout{background:#1a2432;flex-direction:column}
+#ld-topout svg{width:210px;height:170px;overflow:visible}
+#ld-topout .to-found{transform:scaleX(0);transform-origin:50% 50%}
+#ld-topout.play .to-found{animation:toFound .4s ease-out .15s forwards}
+@keyframes toFound{to{transform:scaleX(1)}}
+#ld-topout .to-wall{transform:scaleY(0);transform-origin:50% 100%}
+#ld-topout.play .to-wall{animation:toWall .38s ease-out .5s forwards}
+@keyframes toWall{to{transform:scaleY(1)}}
+#ld-topout .to-tri{opacity:0;transform:translateY(-72px)}
+#ld-topout.play .to-tri{animation:toTri .55s cubic-bezier(.34,1.35,.5,1) .92s forwards}
+@keyframes toTri{0%{opacity:0;transform:translateY(-72px)}45%{opacity:1}100%{opacity:1;transform:translateY(0)}}
+#ld-topout .to-glint{opacity:0;transform:translateX(-56px)}
+#ld-topout.play .to-glint{animation:toGlint .5s ease-out 1.5s forwards}
+@keyframes toGlint{0%{opacity:0;transform:translateX(-56px)}35%{opacity:.95}100%{opacity:0;transform:translateX(56px)}}
+#ld-topout .wordmark{margin-top:22px;color:#fff;letter-spacing:.14em}
+#ld-topout .wordmark b{color:#b3894f}
+#ld-topout.play .wordmark{animation:wordIn .45s ease-out 1.62s forwards}
+#ld-topout .wordsub{color:#b3894f;letter-spacing:.32em}
+#ld-topout.play .wordsub{animation:wordIn .45s ease-out 1.78s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld-topout .to-found,#ld-topout .to-wall,#ld-topout .to-tri{transform:none;opacity:1}
+  #ld-topout .to-glint{opacity:0}
+}
 </style>
 </head>
 <body>
@@ -2253,6 +2278,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / multi-trade (alt)</span>
       <h3>Kerf Cut</h3>
       <p>A navy hoarding board fills the screen with the wordmark on it. A spinning circular saw blade travels left to right, scoring a glowing orange kerf behind it; when the cut completes, the board splits along the kerf and the two halves slide apart to reveal the page. Echoes a saw-blade badge logo. First used on simpson-sons-building (2026-07-13). Distinct from Coursework and all trowel/roller/draw loaders: nothing is laid or drawn, the board is CUT open.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-topout" data-dur="2400">
+      <span class="trade">Builders / renovations</span>
+      <h3>Topping Out</h3>
+      <p>A foundation bar scales in, two wall posts rise, then the client's triangle roof truss drops onto the walls with a settle bounce and a brass glint sweeps the apex before the wordmark lands. Built around SHEH Construction's open-delta logo; swap the truss for any gable/roofline mark. First used on sheh-construction (2026-07-15). Distinct from Coursework (nothing laid brick-by-brick), Blueprint Draw (nothing stroke-drawn) and Portal Frame: the roof structure is CRANED ON in one piece, the topping-out moment.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -3527,6 +3558,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <circle cx="32" cy="32" r="3" fill="#fff"/>
     </svg>
   </div>
+</div>
+
+
+<!-- 33. topping out (builders / renovations) -->
+<div class="loader" id="ld-topout" aria-hidden="true">
+  <svg viewBox="0 0 210 170" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect class="to-found" x="20" y="156" width="170" height="8" rx="2" fill="#3a4a5f"/>
+    <rect class="to-wall" x="34" y="96" width="10" height="60" fill="#55677f"/>
+    <rect class="to-wall" x="166" y="96" width="10" height="60" fill="#55677f"/>
+    <g class="to-tri"><path d="M105 10 L186 152 L24 152 L38 138 L162 138 L105 38 L58 120 L44 126 Z" fill="#ffffff"/></g>
+    <rect class="to-glint" x="95" y="0" width="14" height="60" fill="#b3894f" transform="skewX(-18)"/>
+  </svg>
+  <div class="wordmark">SHEH <b>CONSTRUCTION</b></div>
+  <div class="wordsub">Build The Best For You</div>
 </div>
 
 <script>
