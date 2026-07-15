@@ -530,6 +530,34 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-trowel.play .wordmark{animation:wordIn .55s ease 1.15s forwards}
 #ld-trowel.play .wordsub{animation:wordIn .55s ease 1.3s forwards}
 
+/* ===== 8a2. PLASTERERS/RENDERERS — feather-edge rule-off ===== */
+#ld-ruleoff{background:#f4f6f8;flex-direction:column;gap:26px}
+#ld-ruleoff .rowall{position:relative;width:min(340px,74vw);height:150px;border-radius:12px;overflow:hidden;box-shadow:inset 0 0 0 1px #e4e9ed,0 14px 30px rgba(20,33,58,.12)}
+#ld-ruleoff .rrough{position:absolute;inset:0;background:
+  repeating-linear-gradient(58deg, rgba(120,110,100,.16) 0 3px, transparent 3px 7px),
+  repeating-linear-gradient(-46deg, rgba(90,80,72,.12) 0 2px, transparent 2px 9px),
+  linear-gradient(135deg,#d9cabd,#cbb6a6)}
+#ld-ruleoff .rsmooth{position:absolute;inset:0;background:linear-gradient(135deg,#fbfcfd,#e7edf1);transform:scaleX(0);transform-origin:left center;box-shadow:inset 0 0 40px rgba(20,33,58,.05)}
+#ld-ruleoff .rrule{position:absolute;top:-16%;left:-30%;width:12px;height:132%;border-radius:4px;background:linear-gradient(180deg,#e8edf0,#aeb9c1 40%,#7f8b95);box-shadow:0 0 0 1px rgba(20,33,58,.15),8px 0 22px rgba(20,33,58,.18);transform:translateX(0) rotate(6deg)}
+#ld-ruleoff .rnub{position:absolute;width:7px;height:7px;border-radius:50%;background:#cf9d84;opacity:0}
+#ld-ruleoff .rnub.n1{left:36%;top:30%}
+#ld-ruleoff .rnub.n2{left:56%;top:58%}
+#ld-ruleoff .rnub.n3{left:74%;top:38%}
+#ld-ruleoff.play .rsmooth{animation:roSmooth 1.5s cubic-bezier(.5,0,.2,1) .25s forwards}
+#ld-ruleoff.play .rrule{animation:roSweep 1.5s cubic-bezier(.5,0,.2,1) .25s forwards}
+#ld-ruleoff.play .rnub{animation:roNub .5s ease forwards}
+#ld-ruleoff.play .rnub.n1{animation-delay:.7s}
+#ld-ruleoff.play .rnub.n2{animation-delay:.95s}
+#ld-ruleoff.play .rnub.n3{animation-delay:1.2s}
+#ld-ruleoff .wordmark{color:#14213a}
+#ld-ruleoff .wordmark .hl{color:#0e7c80}
+#ld-ruleoff .wordsub{color:#8695a6}
+#ld-ruleoff.play .wordmark{animation:wordIn .55s ease 1.75s forwards}
+#ld-ruleoff.play .wordsub{animation:wordIn .55s ease 1.9s forwards}
+@keyframes roSweep{0%{transform:translateX(0) rotate(6deg)}100%{transform:translateX(420px) rotate(6deg)}}
+@keyframes roSmooth{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+@keyframes roNub{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(10px,-16px)}}
+
 /* ===== 8b. PLASTERERS — skim cure ===== */
 #ld-cure{background:#c98e7e;flex-direction:column}
 #ld-cure .cmottle{position:absolute;inset:0;background:
@@ -1897,6 +1925,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Angled trowel passes sweep a rough mottled surface smooth into fresh plaster pink, then the wordmark lands on the float coat. First used on tom-thompson-plastering.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-ruleoff" data-dur="2450">
+      <span class="trade">Plasterers / Renderers</span>
+      <h3>Feather-edge Rule-off</h3>
+      <p>A long darby rule sweeps across a rough render pass and rules it off to a smooth flat plane, knocking the high spots away, then the wordmark lands. The rendering money-move (ruling off / screeding), distinct from the trowel-float and skim-cure loaders. First used on brp-plastering.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-cure" data-dur="2400">
       <span class="trade">Plasterers / Renderers</span>
       <h3>Skim Cure</h3>
@@ -2621,6 +2655,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Tom Thompson</div>
     <div class="wordsub">Plastering</div>
+  </div>
+</div>
+
+<!-- 8a2. feather-edge rule-off -->
+<div class="loader" id="ld-ruleoff" aria-hidden="true">
+  <div class="rowall">
+    <div class="rrough"></div>
+    <div class="rsmooth"></div>
+    <div class="rnub n1"></div><div class="rnub n2"></div><div class="rnub n3"></div>
+    <div class="rrule"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">BRP <span class="hl">Innovations</span></div>
+    <div class="wordsub">Plastering &middot; Rendering &middot; Woking</div>
   </div>
 </div>
 
