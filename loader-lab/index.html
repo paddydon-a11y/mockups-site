@@ -473,6 +473,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes chChip{0%{opacity:0;transform:translate(0,0) scale(1)}20%{opacity:1}100%{opacity:0;transform:translate(var(--cx,12px),var(--cy,-16px)) scale(.3)}}
 @keyframes chRule{to{width:180px}}
 
+/* ===== CONSTRUCTION COMPANIES / MULTI-TRADE — corner lock ===== */
+#ld-cornerlock{background:#ffffff;flex-direction:column;gap:0}
+#ld-cornerlock .cl-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 48px;max-width:86vw}
+#ld-cornerlock .wm-zone{text-align:center}
+#ld-cornerlock .cl-c{position:absolute;width:44px;height:44px;opacity:0}
+#ld-cornerlock .cl-c svg{width:44px;height:44px;display:block}
+#ld-cornerlock .cl-c.tl{top:0;left:0}
+#ld-cornerlock .cl-c.tr{top:0;right:0}
+#ld-cornerlock .cl-c.br{bottom:0;right:0}
+#ld-cornerlock .cl-c.bl{bottom:0;left:0}
+#ld-cornerlock.play .cl-c.tl{animation:clInTL .55s cubic-bezier(.22,.9,.3,1) forwards}
+#ld-cornerlock.play .cl-c.tr{animation:clInTR .55s cubic-bezier(.22,.9,.3,1) forwards}
+#ld-cornerlock.play .cl-c.br{animation:clInBR .55s cubic-bezier(.22,.9,.3,1) forwards}
+#ld-cornerlock.play .cl-c.bl{animation:clInBL .55s cubic-bezier(.22,.9,.3,1) forwards}
+#ld-cornerlock .wordmark{color:#10151b;opacity:0;transform:translateY(12px)}
+#ld-cornerlock .wordmark b{color:#e8551f}
+#ld-cornerlock .wordsub{color:#8b98a5}
+#ld-cornerlock .cl-rule{width:64px;height:3px;background:#e8551f;margin-top:14px;transform:scaleX(0);transform-origin:left}
+#ld-cornerlock.play .wordmark{animation:wordIn .5s ease .55s forwards}
+#ld-cornerlock.play .wordsub{animation:wordIn .5s ease .7s forwards}
+#ld-cornerlock.play .cl-rule{animation:clRule .5s ease .85s forwards}
+@keyframes clInTL{from{opacity:0;transform:translate(-46vw,-46vh)}to{opacity:1;transform:translate(0,0)}}
+@keyframes clInTR{from{opacity:0;transform:translate(46vw,-46vh) rotate(90deg)}to{opacity:1;transform:translate(0,0) rotate(90deg)}}
+@keyframes clInBR{from{opacity:0;transform:translate(46vw,46vh) rotate(180deg)}to{opacity:1;transform:translate(0,0) rotate(180deg)}}
+@keyframes clInBL{from{opacity:0;transform:translate(-46vw,46vh) rotate(270deg)}to{opacity:1;transform:translate(0,0) rotate(270deg)}}
+@keyframes clRule{to{transform:scaleX(1)}}
+
 /* ===== DRAINAGE / DRAIN JETTING / GROUNDWORKS — jet clear ===== */
 #ld-jetclear{background:#0b1c33;flex-direction:column;gap:26px}
 #ld-jetclear .jc-pipe{position:relative;width:min(480px,80vw);height:32px;border-radius:16px;background:#132b4d;overflow:hidden;box-shadow:inset 0 2px 8px rgba(0,0,0,.45)}
@@ -2106,6 +2133,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A builder's plot draws itself on a blueprint, profile pegs snap into the corners and the dimension lines tick off, then the wordmark stamps the footprint. First used on brentbarker-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-cornerlock" data-dur="2300">
+      <span class="trade">Construction Companies / Multi-Trade</span>
+      <h3>Corner Lock</h3>
+      <p>Four framing-square corner brackets fly in from the screen's four corners and lock into a frame around the wordmark, then an accent rule sweeps underneath. First used on 4-corner-construction.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-sightlines" data-dur="2300">
       <span class="trade">House Builders / Renovation</span>
       <h3>Sight Lines</h3>
@@ -2401,6 +2434,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">Meridian <b>Build</b></div>
     <div class="wordsub">Builders &middot; Extensions</div>
+  </div>
+</div>
+
+<!-- 20a-2. corner lock (construction companies / multi-trade) -->
+<div class="loader" id="ld-cornerlock" aria-hidden="true">
+  <div class="cl-stage">
+    <div class="cl-c tl"><svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="cl-c tr"><svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="cl-c br"><svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="cl-c bl"><svg viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="wm-zone">
+      <div class="wordmark">4 Corner <b>Construction</b></div>
+      <div class="wordsub">Commercial &middot; Residential &middot; Nationwide</div>
+    </div>
+    <div class="cl-rule"></div>
   </div>
 </div>
 

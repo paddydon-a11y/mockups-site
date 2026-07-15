@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 Corner Construction Ltd | Commercial &amp; Residential Construction Nationwide</title>
+<meta name="description" content="4 Corner Construction Ltd. Commercial and residential construction across the UK. New builds, bespoke joinery, fitted wardrobes, plumbing and electrical.">
+<meta property="og:title" content="4 Corner Construction Ltd - Your New Website">
+<meta property="og:description" content="Nationwide construction company - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/4-corner-construction/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/4-corner-construction/">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f4f6f8;
+  --card:#f8fafc;
+  --card-hover:#f1f5f9;
+  --line:#e2e8f0;
+  --line-strong:#cbd5e1;
+  --ink:#10151b;
+  --body:#46525e;
+  --muted:#8b98a5;
+  --accent:#e8551f;
+  --accent-hover:#c93c06;
+  --accent-glow:rgba(232,85,31,.15);
+  --wa:#25d366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{font-family:'Oswald',sans-serif;color:var(--ink);text-transform:uppercase;line-height:1.08}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+
+/* ---------- corner bracket motif ---------- */
+.cframe{position:relative}
+.cframe .ctick{position:absolute;width:26px;height:26px;pointer-events:none}
+.cframe .ctick svg{width:26px;height:26px;display:block}
+.cframe .ctick.tl{top:-8px;left:-8px}
+.cframe .ctick.tr{top:-8px;right:-8px;transform:rotate(90deg)}
+.cframe .ctick.br{bottom:-8px;right:-8px;transform:rotate(180deg)}
+.cframe .ctick.bl{bottom:-8px;left:-8px;transform:rotate(270deg)}
+
+/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .45s ease;opacity:1}
+#loader.done{opacity:0;pointer-events:none}
+.ld-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:38px 46px;max-width:86vw}
+.ld-c{position:absolute;width:44px;height:44px;opacity:0}
+.ld-c svg{width:44px;height:44px;display:block}
+.ld-c.tl{top:0;left:0;transform:translate(-46vw,-46vh)}
+.ld-c.tr{top:0;right:0;transform:translate(46vw,-46vh) rotate(90deg)}
+.ld-c.br{bottom:0;right:0;transform:translate(46vw,46vh) rotate(180deg)}
+.ld-c.bl{bottom:0;left:0;transform:translate(-46vw,46vh) rotate(270deg)}
+#loader.play .ld-c{opacity:1;transition:transform .55s cubic-bezier(.22,.9,.3,1),opacity .2s linear}
+#loader.play .ld-c.tl{transform:translate(0,0)}
+#loader.play .ld-c.tr{transform:translate(0,0) rotate(90deg)}
+#loader.play .ld-c.br{transform:translate(0,0) rotate(180deg)}
+#loader.play .ld-c.bl{transform:translate(0,0) rotate(270deg)}
+.ld-word{font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(1.4rem,5.6vw,2.1rem);letter-spacing:.06em;color:var(--ink);text-transform:uppercase;white-space:nowrap;opacity:0;transform:translateY(12px)}
+.ld-word span{color:var(--accent)}
+.ld-sub{font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.34em;color:var(--muted);text-transform:uppercase;margin-top:8px;opacity:0;transform:translateY(10px)}
+.ld-rule{width:64px;height:3px;background:var(--accent);margin-top:14px;transform:scaleX(0);transform-origin:left}
+#loader.play .ld-word{animation:ldUp .5s ease .55s forwards}
+#loader.play .ld-sub{animation:ldUp .5s ease .7s forwards}
+#loader.play .ld-rule{animation:ldRule .5s ease .85s forwards}
+@keyframes ldUp{to{opacity:1;transform:translateY(0)}}
+@keyframes ldRule{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){
+  .ld-c{display:none}
+  #loader .ld-word,#loader .ld-sub{opacity:1;transform:none;animation:none}
+  #loader .ld-rule{transform:scaleX(1);animation:none}
+}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;background:var(--bg);z-index:900;border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.nav-logo{display:flex;flex-direction:column;line-height:1;white-space:nowrap}
+.nav-logo .l1{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.42rem;letter-spacing:.05em;color:var(--ink);text-transform:uppercase}
+.nav-logo .l1 span{color:var(--accent)}
+.nav-logo .l2{font-size:.58rem;letter-spacing:.4em;color:var(--muted);text-transform:uppercase;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff !important;font-weight:600;padding:11px 20px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--accent-hover)}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#fff}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger svg{width:26px;height:26px;stroke:var(--ink);display:block}
+.m-panel{display:none;background:var(--bg);border-bottom:1px solid var(--line)}
+.m-panel.open{display:block}
+.m-panel ul{list-style:none;padding:8px 24px 20px}
+.m-panel li{border-bottom:1px solid var(--line)}
+.m-panel li:last-child{border-bottom:0}
+.m-panel a{display:block;padding:14px 0;font-size:1rem;font-weight:500;color:var(--ink)}
+.m-panel a.m-call{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;font-weight:600;padding:13px 22px;margin-top:14px}
+.m-panel a.m-call svg{width:16px;height:16px;stroke:#fff}
+
+/* ---------- hero (H2 split) ---------- */
+.hero{display:flex;flex-direction:column;background:var(--bg);position:relative;overflow:hidden}
+.ghost4{position:absolute;top:-40px;left:-36px;z-index:0;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(22rem,34vw,32rem);line-height:.9;color:transparent;-webkit-text-stroke:2px #e6ebf0;pointer-events:none;user-select:none}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:84px;padding-bottom:72px;position:relative;z-index:1}
+.hero-copy{position:relative;z-index:1}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 9px rgba(232,85,31,0)}100%{box-shadow:0 0 0 0 rgba(232,85,31,0)}}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.9rem);font-weight:600;letter-spacing:-.01em;margin-bottom:22px}
+.hero h1 em{display:inline-block;background:var(--accent);color:#fff;padding:0 .16em;transform:rotate(-1.2deg)}
+.hero .lede{font-size:1.08rem;max-width:520px;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:.98rem;font-weight:600;padding:15px 26px;cursor:pointer;transition:transform .2s,background .2s;border:0}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-call{background:var(--accent);color:#fff}
+.btn-call:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-call svg{stroke:#fff}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#1fb457;transform:translateY(-2px)}
+.btn-wa svg{fill:#fff}
+.hero-media{position:relative}
+.hero-photo{position:relative;border:1px solid var(--line);z-index:1;background:var(--bg)}
+.hero-photo::before{content:"";position:absolute;top:20px;left:20px;width:100%;height:100%;background:var(--ink);z-index:-1}
+.hero-imgwrap{overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3.4;animation:kb 22s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.09)}}
+@media (prefers-reduced-motion: reduce){.hero-photo img{animation:none}}
+.hero-badge{position:absolute;left:18px;bottom:18px;z-index:2;background:var(--bg);border:1px solid var(--line);padding:12px 18px;display:flex;align-items:center;gap:11px;box-shadow:0 10px 30px rgba(16,21,27,.12)}
+.hero-badge svg{width:20px;height:20px;stroke:var(--accent);flex:none}
+.hero-badge .b1{font-family:'Oswald',sans-serif;font-weight:600;font-size:.92rem;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;line-height:1.2}
+.hero-badge .b2{font-size:.72rem;color:var(--muted)}
+.badge-row{display:none}
+
+/* ---------- trust strip ---------- */
+.trust{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:26px;padding-bottom:26px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:600;color:var(--ink)}
+.trust-item svg{width:18px;height:18px;stroke:var(--accent);flex:none}
+
+/* ---------- sections ---------- */
+section{padding-top:96px;padding-bottom:96px}
+.sec-head{margin-bottom:48px}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.sec-label .lb{width:18px;height:2px;background:var(--accent)}
+.sec-head h2{font-size:clamp(1.95rem,4vw,3rem);font-weight:600}
+.sec-head h2 em{color:var(--accent)}
+
+/* ---------- services (S4 bento) ---------- */
+#services{background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);padding:30px 28px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(16,21,27,.08);background:var(--card-hover)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-feature{grid-column:span 3;background:var(--ink);border-color:var(--ink)}
+.svc-feature h3,.svc-feature p{color:#fff}
+.svc-feature p{color:#b9c2cc}
+.svc-feature:hover{background:#161d25}
+.svc-wide{grid-column:span 3}
+.svc-std{grid-column:span 2}
+.svc .num{font-family:'Oswald',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.18em;color:var(--muted);display:block;margin-bottom:16px}
+.svc-feature .num{color:#7c8894}
+.svc svg{width:30px;height:30px;stroke:var(--accent);margin-bottom:16px}
+.svc h3{font-size:1.18rem;font-weight:600;letter-spacing:.03em;margin-bottom:8px}
+.svc p{font-size:.92rem;line-height:1.55}
+
+/* ---------- gallery (G1) ---------- */
+#work{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gtile{position:relative;cursor:pointer;overflow:hidden;border:1px solid var(--line);background:var(--bg)}
+.gtile img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s ease}
+.gtile:hover img{transform:scale(1.05)}
+.gcap{display:flex;align-items:center;gap:8px;padding:12px 14px;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border-top:1px solid var(--line)}
+.gcap .gm{width:14px;height:2px;background:var(--accent);flex:none}
+.lightbox{position:fixed;inset:0;background:rgba(10,14,18,.94);z-index:1200;display:none;align-items:center;justify-content:center;padding:5vw}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:86vh;object-fit:contain}
+.lb-close{position:absolute;top:22px;right:26px;background:none;border:0;cursor:pointer}
+.lb-close svg{width:30px;height:30px;stroke:#fff}
+
+/* ---------- about ---------- */
+#about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+#about .about-copy p{font-size:1.02rem;margin-bottom:18px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.stat{border:1px solid var(--line);background:var(--card);padding:20px 18px}
+.stat .sv{font-family:'Oswald',sans-serif;font-size:1.6rem;font-weight:600;color:var(--ink);line-height:1}
+.stat .sv span{color:var(--accent)}
+.stat .sl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* ---------- reviews (R3 grid) ---------- */
+#reviews{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rev{background:var(--bg);border:1px solid var(--line);padding:30px 28px}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.stars svg{width:16px;height:16px;fill:var(--accent)}
+.rev p{font-size:.97rem;margin-bottom:16px}
+.rev .who{font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.rev .who span{color:var(--muted);font-weight:500}
+
+/* ---------- areas ---------- */
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.area{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);padding:15px 18px;font-size:.92rem;font-weight:600;color:var(--ink)}
+.area svg{width:15px;height:15px;stroke:var(--accent);flex:none}
+.areas-note{margin-top:26px;max-width:640px;font-size:.98rem}
+
+/* ---------- cta band ---------- */
+.cta-band{background:var(--ink);padding-top:74px;padding-bottom:74px}
+.cta-in{display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap}
+.cta-in h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:600}
+.cta-in h2 em{color:var(--accent)}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- contact (C1) ---------- */
+#contact .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.info-card{display:flex;gap:16px;border:1px solid var(--line);background:var(--card);padding:22px;margin-bottom:16px}
+.info-card svg{width:22px;height:22px;stroke:var(--accent);flex:none;margin-top:3px}
+.info-card .it{font-family:'Oswald',sans-serif;font-size:.98rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.info-card .iv{font-size:.95rem;color:var(--body);margin-top:3px}
+.info-card a.iv{font-weight:600;color:var(--accent)}
+form{background:var(--card);border:1px solid var(--line);padding:34px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{margin-bottom:16px}
+label{display:block;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:7px}
+input,select,textarea{width:100%;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line-strong);padding:12px 14px;outline:none;transition:border .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:120px;resize:vertical}
+.submit{width:100%;background:var(--accent);color:#fff;font-weight:600;font-size:1rem;padding:16px;border:0;cursor:pointer;transition:background .2s}
+.submit:hover{background:var(--accent-hover)}
+
+/* ---------- footer ---------- */
+footer{background:var(--bg);border-top:1px solid var(--line);padding-top:54px;padding-bottom:34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-logo .l1{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.3rem;letter-spacing:.05em;color:var(--ink);text-transform:uppercase}
+.foot-logo .l1 span{color:var(--accent)}
+.foot-logo p{font-size:.92rem;margin-top:10px;max-width:300px}
+.fcol h4{font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:14px}
+.fcol ul{list-style:none}
+.fcol li{margin-bottom:9px}
+.fcol a{font-size:.92rem;color:var(--body);transition:color .2s}
+.fcol a:hover{color:var(--accent)}
+.foot-base{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem;color:var(--muted)}
+.foot-base a{color:var(--body);font-weight:500}
+.foot-base a:hover{color:var(--accent)}
+
+/* ---------- FABs ---------- */
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:950;opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;transform:none;pointer-events:auto}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(16,21,27,.22)}
+.fab svg{width:22px;height:22px}
+.fab-call{background:var(--accent);animation:fabPulse 2s infinite}
+.fab-call svg{stroke:#fff}
+.fab-wa{background:var(--wa);animation:fabPulseWa 2s infinite}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 14px rgba(232,85,31,0)}100%{box-shadow:0 0 0 0 rgba(232,85,31,0)}}
+@keyframes fabPulseWa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.3)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- mobile ---------- */
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .hero-inner{grid-template-columns:1fr;gap:34px;padding-top:52px;padding-bottom:52px}
+  .ghost4{font-size:16rem;top:-26px;left:auto;right:-44px}
+  .hero-photo::before{top:10px;left:10px}
+  .hero .lede{max-width:none}
+  .hero-photo img{aspect-ratio:16/11}
+  .hero-badge{display:none}
+  .badge-row{display:flex;align-items:center;gap:11px;border:1px solid var(--line);background:var(--card);padding:14px 18px;margin-top:14px}
+  .badge-row svg{width:20px;height:20px;stroke:var(--accent);flex:none}
+  .badge-row .b1{font-family:'Oswald',sans-serif;font-weight:600;font-size:.92rem;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;line-height:1.2}
+  .badge-row .b2{font-size:.72rem;color:var(--muted)}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{border-bottom:1px solid var(--line);padding-top:13px;padding-bottom:13px}
+  .trust-item:last-child{border-bottom:0}
+  section{padding-top:64px;padding-bottom:64px}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-feature,.svc-wide,.svc-std{grid-column:span 1}
+  .gal-grid{grid-template-columns:1fr}
+  #about .about-grid{grid-template-columns:1fr;gap:36px}
+  .stat-row{grid-template-columns:repeat(3,1fr);gap:10px}
+  .rev-grid{grid-template-columns:1fr}
+  .areas-grid{grid-template-columns:1fr 1fr}
+  #contact .contact-grid{grid-template-columns:1fr;gap:36px}
+  .f-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .cframe .ctick{width:20px;height:20px}
+  .cframe .ctick svg{width:20px;height:20px}
+}
+@media (max-width:420px){
+  .stat-row{grid-template-columns:1fr 1fr}
+  .areas-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader: Corner Lock -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-stage">
+    <div class="ld-c tl"><svg viewBox="0 0 44 44" fill="none"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="ld-c tr"><svg viewBox="0 0 44 44" fill="none"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="ld-c br"><svg viewBox="0 0 44 44" fill="none"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="ld-c bl"><svg viewBox="0 0 44 44" fill="none"><path d="M2 42V10a8 8 0 018-8h32" stroke="#e8551f" stroke-width="5"/></svg></div>
+    <div class="ld-word">4 Corner <span>Construction</span></div>
+    <div class="ld-sub">Commercial &middot; Residential &middot; Nationwide</div>
+    <div class="ld-rule"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in wrap">
+    <a href="#" class="nav-logo" aria-label="4 Corner Construction Ltd">
+      <span class="l1">4 Corner <span>Construction</span></span>
+      <span class="l2">Ltd &middot; Nationwide</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Coverage</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="navCall" class="nav-cta"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call us</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+  <div class="m-panel" id="mPanel">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Coverage</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="mCall" class="m-call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="ghost4" aria-hidden="true">4</div>
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span>Nationwide Construction Company</div>
+      <h1>Every corner of the build, <em>covered</em></h1>
+      <p class="lede">Commercial and residential construction across the UK. New builds, bespoke joinery, plumbing and electrical, delivered by one established team.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-call js-call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call us</a>
+        <a href="https://wa.me/447717508066?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="btn btn-wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo cframe">
+        <span class="ctick tl"><svg viewBox="0 0 26 26" fill="none"><path d="M2 26V8a6 6 0 016-6h18" stroke="#e8551f" stroke-width="4"/></svg></span>
+        <span class="ctick tr"><svg viewBox="0 0 26 26" fill="none"><path d="M2 26V8a6 6 0 016-6h18" stroke="#e8551f" stroke-width="4"/></svg></span>
+        <span class="ctick br"><svg viewBox="0 0 26 26" fill="none"><path d="M2 26V8a6 6 0 016-6h18" stroke="#e8551f" stroke-width="4"/></svg></span>
+        <span class="ctick bl"><svg viewBox="0 0 26 26" fill="none"><path d="M2 26V8a6 6 0 016-6h18" stroke="#e8551f" stroke-width="4"/></svg></span>
+        <div class="hero-imgwrap"><img src="hero.jpg" alt="Steel frame structure on a commercial construction project" fetchpriority="high"></div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <div><div class="b1">Fully Insured</div><div class="b2">Commercial &amp; Residential</div></div>
+        </div>
+      </div>
+      <div class="badge-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <div><div class="b1">Fully Insured</div><div class="b2">Commercial &amp; Residential</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="trust-in wrap">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Fully Insured</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Free Quotes</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Nationwide Coverage</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Established Team</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-4a1 1 0 011-1h2a1 1 0 011 1v4m-5 0h5"/></svg>Commercial &amp; Residential</div>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="lb"></span>What We Do</div>
+      <h2>One team, <em>eight trades</em></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc svc-feature reveal">
+        <span class="num">01</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-4a1 1 0 011-1h2a1 1 0 011 1v4m-5 0h5"/></svg>
+        <h3>Commercial Construction</h3>
+        <p>New construction, repairs and restorations, including work on occupied and fully operational sites.</p>
+      </div>
+      <div class="svc svc-wide reveal">
+        <span class="num">02</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <h3>Residential Construction</h3>
+        <p>Extensions, renovations and full residential projects, managed start to finish.</p>
+      </div>
+      <div class="svc svc-std reveal">
+        <span class="num">03</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M2 20h20M4 20V6a2 2 0 012-2h5v16m3-8h4a2 2 0 012 2v6M14 4v4"/></svg>
+        <h3>New Builds</h3>
+        <p>Multi-phase new builds, planned and delivered.</p>
+      </div>
+      <div class="svc svc-std reveal">
+        <span class="num">04</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085"/></svg>
+        <h3>General Building</h3>
+        <p>Repairs, alterations and everyday building work.</p>
+      </div>
+      <div class="svc svc-std reveal">
+        <span class="num">05</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M6 3v18m12-18v18M6 8h12M6 16h12M4 3h4m8 0h4M4 21h4m8 0h4"/></svg>
+        <h3>Bespoke Joinery</h3>
+        <p>Made-to-measure joinery, built and fitted in-house.</p>
+      </div>
+      <div class="svc svc-std reveal">
+        <span class="num">06</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M4 21V5a2 2 0 012-2h12a2 2 0 012 2v16M4 21h16M4 21H2m18 0h2M12 3v18m-3-9h.01M15 12h.01"/></svg>
+        <h3>Fitted Wardrobes</h3>
+        <p>Storage designed around the room, floor to ceiling.</p>
+      </div>
+      <div class="svc svc-std reveal">
+        <span class="num">07</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M14 6h7m-7 4h7M3 6h5m0 0v12a2 2 0 002 2h1a2 2 0 002-2v-5a2 2 0 012-2h1"/></svg>
+        <h3>Plumbing</h3>
+        <p>First fix to finished bathrooms, all handled.</p>
+      </div>
+      <div class="svc svc-std reveal">
+        <span class="num">08</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <h3>Electrical</h3>
+        <p>Wiring, lighting and installs across every project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="lb"></span>Recent Work</div>
+      <h2>Projects from <em>every corner</em></h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gtile reveal" data-img="work-1.jpg"><img src="work-1.jpg" alt="Commercial high-rise construction with tower cranes" loading="lazy"><div class="gcap"><span class="gm"></span>Commercial Construction</div></div>
+      <div class="gtile reveal" data-img="work-2.jpg"><img src="work-2.jpg" alt="New build residential brick homes" loading="lazy"><div class="gcap"><span class="gm"></span>Residential New Build</div></div>
+      <div class="gtile reveal" data-img="work-3.jpg"><img src="work-3.jpg" alt="Rear extension renovation in progress" loading="lazy"><div class="gcap"><span class="gm"></span>Extension &amp; Renovation</div></div>
+      <div class="gtile reveal" data-img="work-4.jpg"><img src="work-4.jpg" alt="Bespoke fitted kitchen with island" loading="lazy"><div class="gcap"><span class="gm"></span>Bespoke Joinery</div></div>
+      <div class="gtile reveal" data-img="work-5.jpg"><img src="work-5.jpg" alt="Fitted walk-in wardrobe" loading="lazy"><div class="gcap"><span class="gm"></span>Fitted Wardrobes</div></div>
+      <div class="gtile reveal" data-img="work-6.jpg"><img src="work-6.jpg" alt="Bathroom refurbishment" loading="lazy"><div class="gcap"><span class="gm"></span>Bathrooms &amp; Plumbing</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="sec-label"><span class="lb"></span>About Us</div>
+        <h2 style="font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:600;margin-bottom:0">Building trust with <em>quality work</em></h2>
+      </div>
+      <div class="about-copy reveal">
+        <p>4 Corner Construction Ltd is an established team covering the whole of the UK. We plan, manage and build multi-phase commercial and residential projects, and we keep occupied sites fully operational while the work goes on around them.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="sv">UK<span>-wide</span></div><div class="sl">Coverage</div></div>
+          <div class="stat"><div class="sv">8<span>+</span></div><div class="sl">Trades In-House</div></div>
+          <div class="stat"><div class="sv">1<span> team</span></div><div class="sl">Start To Finish</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="lb"></span>Reviews</div>
+      <h2>What clients <em>say</em></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+        <p>"4 Corner Construction refurbished two floors of our offices while we stayed open. The team planned the phases around us and the disruption was minimal. Quality of the finish is excellent."</p>
+        <div class="who">Sarah M. <span>&middot; Manchester &middot; Commercial Refurbishment</span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+        <p>"They built our extension and fitted the kitchen and wardrobes as one job. Having plumbing, electrics and joinery from the same firm made everything simple. Would use again without hesitation."</p>
+        <div class="who">David R. <span>&middot; Birmingham &middot; Extension &amp; Joinery</span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+        <p>"Professional from the first site visit. The new build came in on programme and the communication was spot on all the way through. You always knew exactly where the project stood."</p>
+        <div class="who">James T. <span>&middot; Leeds &middot; New Build</span></div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+        <p>"The fitted wardrobes 4 Corner Construction made for our bedrooms are proper quality, made to measure and finished beautifully. The bathroom they plumbed in looks brilliant too."</p>
+        <div class="who">Emma W. <span>&middot; London &middot; Wardrobes &amp; Bathroom</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="lb"></span>Coverage</div>
+      <h2>Covering the <em>whole of the UK</em></h2>
+    </div>
+    <div class="areas-grid reveal">
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>London &amp; South East</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Midlands</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>North West</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>North East</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Yorkshire</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>South West</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Wales</div>
+      <div class="area"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Scotland</div>
+    </div>
+    <p class="areas-note reveal">Based teams travel nationwide for commercial and residential contracts. Wherever the project is, get in touch for a free quote.</p>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-in wrap">
+    <h2 class="reveal">Got a project? <em>Get a quote</em></h2>
+    <div class="cta-btns reveal">
+      <a href="#" class="btn btn-call js-call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call us</a>
+      <a href="#contact" class="btn btn-wa" style="background:#fff;color:var(--ink)"><svg viewBox="0 0 24 24" fill="none" stroke="#10151b" stroke-width="2" style="fill:none"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Request a quote</a>
+    </div>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="lb"></span>Contact</div>
+      <h2>Tell us about <em>your project</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <div><div class="it">Phone</div><a href="#" class="iv js-call" id="phoneText">&nbsp;</a></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <div><div class="it">WhatsApp</div><a href="https://wa.me/447717508066?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="iv" target="_blank" rel="noopener">Message us for a quote</a></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div><div class="it">Hours</div><div class="iv">Monday to Friday, 9am to 5pm</div></div>
+        </div>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <div><div class="it">Coverage</div><div class="iv">The whole of the UK</div></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="4 Corner Construction Ltd">
+        <input type="hidden" name="source" value="mockup-4-corner-construction">
+        <div class="f-row">
+          <div class="f-group"><label for="fname">Name *</label><input type="text" id="fname" name="name" required></div>
+          <div class="f-group"><label for="fphone">Phone *</label><input type="tel" id="fphone" name="phone" required pattern="^(0|\+44)\d{9,11}$"></div>
+        </div>
+        <div class="f-row">
+          <div class="f-group"><label for="femail">Email</label><input type="email" id="femail" name="email"></div>
+          <div class="f-group"><label for="fservice">Service</label>
+            <select id="fservice" name="service">
+              <optgroup label="Commercial">
+                <option>Commercial Construction</option>
+                <option>Fit-Outs &amp; Refurbishment</option>
+              </optgroup>
+              <optgroup label="Residential">
+                <option>New Build</option>
+                <option>Extension &amp; Renovation</option>
+                <option>General Building</option>
+              </optgroup>
+              <optgroup label="Interiors">
+                <option>Bespoke Joinery</option>
+                <option>Fitted Wardrobes</option>
+              </optgroup>
+              <optgroup label="Trades">
+                <option>Plumbing</option>
+                <option>Electrical</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Something else</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="f-group"><label for="fmsg">Your project</label><textarea id="fmsg" name="message" placeholder="Tell us what you need and where the project is"></textarea></div>
+        <button type="submit" class="submit">Request a Free Quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <div class="l1">4 Corner <span>Construction</span></div>
+        <p>Commercial and residential construction, covering the whole of the UK.</p>
+      </div>
+      <div class="fcol">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Commercial Construction</a></li>
+          <li><a href="#services">Residential &amp; New Builds</a></li>
+          <li><a href="#services">Bespoke Joinery &amp; Wardrobes</a></li>
+          <li><a href="#services">Plumbing &amp; Electrical</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#" class="js-call">Call us</a></li>
+          <li><a href="https://wa.me/447717508066?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#contact">Request a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 4 Corner Construction Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call js-call" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+  <a href="https://wa.me/447717508066?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please" class="fab fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg></button>
+  <img alt="Project photo enlarged" id="lbImg">
+</div>
+
+<script>
+// contact decode
+var P = atob('MDc3MTc1MDgwNjY=');
+var Pf = atob('MDc3MTcgNTA4MDY2');
+document.querySelectorAll('.js-call').forEach(function(a){ a.href = 'tel:' + P; });
+var pt = document.getElementById('phoneText');
+if (pt) pt.textContent = Pf;
+document.getElementById('formTimestamp').value = Date.now();
+
+// loader: Corner Lock
+(function(){
+  var loader = document.getElementById('loader');
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ loader.classList.add('play'); }); });
+  function teardown(){ loader.classList.add('done'); }
+  setTimeout(teardown, 1900);
+  setTimeout(teardown, 2500); // fail-safe
+})();
+
+// mobile nav
+var burger = document.getElementById('burger');
+var mPanel = document.getElementById('mPanel');
+burger.addEventListener('click', function(){ mPanel.classList.toggle('open'); });
+mPanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mPanel.classList.remove('open'); }); });
+
+// FABs after hero
+var fabs = document.getElementById('fabs');
+var heroCtas = document.querySelector('.hero-ctas');
+window.addEventListener('scroll', function(){
+  var r = heroCtas.getBoundingClientRect();
+  if (r.bottom < 0) fabs.classList.add('show'); else fabs.classList.remove('show');
+}, {passive:true});
+
+// reveals
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// lightbox
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lbImg');
+document.querySelectorAll('.gtile').forEach(function(t){
+  t.addEventListener('click', function(){ lbImg.src = t.getAttribute('data-img'); lb.classList.add('open'); });
+});
+document.getElementById('lbClose').addEventListener('click', function(){ lb.classList.remove('open'); });
+lb.addEventListener('click', function(e){ if (e.target === lb) lb.classList.remove('open'); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') lb.classList.remove('open'); });
+
+// phone validation message
+var fphone = document.getElementById('fphone');
+fphone.addEventListener('invalid', function(){ fphone.setCustomValidity('Please enter a valid UK phone number'); });
+fphone.addEventListener('input', function(){ fphone.setCustomValidity(''); });
+</script>
+</body>
+</html>
