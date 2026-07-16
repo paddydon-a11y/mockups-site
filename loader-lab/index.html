@@ -473,6 +473,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes chChip{0%{opacity:0;transform:translate(0,0) scale(1)}20%{opacity:1}100%{opacity:0;transform:translate(var(--cx,12px),var(--cy,-16px)) scale(.3)}}
 @keyframes chRule{to{width:180px}}
 
+/* ===== EXCAVATIONS / GROUNDWORKS / BUILDING — trench cut ===== */
+#ld-trench{background:#191512;flex-direction:column;gap:0}
+#ld-trench .tc-stage{width:min(560px,84vw);text-align:center}
+#ld-trench .tc-mark{opacity:0;transform:translateY(14px)}
+#ld-trench.play .tc-mark{animation:tcUp .6s ease .15s forwards}
+#ld-trench .tc-jj{font-family:'Staatliches','Archivo Black',sans-serif;font-weight:400;font-size:clamp(2.6rem,8vw,4.6rem);color:#fff;line-height:1;letter-spacing:.02em}
+#ld-trench .tc-jj span{color:#c2331f}
+#ld-trench .wordsub{color:#b9b0a5}
+#ld-trench.play .wordsub{animation:wordIn .5s ease .45s forwards}
+#ld-trench .tc-ground{position:relative;margin-top:34px;height:46px}
+#ld-trench .tc-dashes{position:absolute;top:0;left:0;right:0;height:4px;background:repeating-linear-gradient(to right,#c2331f 0 22px,transparent 22px 38px);transform:scaleX(0);transform-origin:left}
+#ld-trench.play .tc-dashes{animation:tcDash .5s ease .35s forwards}
+#ld-trench .tc-blade{position:absolute;top:-9px;left:-30px;width:26px;height:22px;background:#c2331f;clip-path:polygon(0 0,100% 0,78% 100%,22% 100%);opacity:0}
+#ld-trench.play .tc-blade{animation:tcBlade 1.1s cubic-bezier(.4,0,.3,1) .55s forwards}
+#ld-trench .tc-trench{position:absolute;top:8px;left:0;right:0;height:34px;background:linear-gradient(to bottom,#2c2119 0 30%,#5d4228 30% 58%,#8a5f36 58% 82%,#c8a97c 82% 100%);clip-path:inset(0 100% 0 0)}
+#ld-trench.play .tc-trench{animation:tcTrench 1.1s cubic-bezier(.4,0,.3,1) .55s forwards}
+@keyframes tcUp{to{opacity:1;transform:translateY(0)}}
+@keyframes tcDash{to{transform:scaleX(1)}}
+@keyframes tcBlade{0%{opacity:0;left:-30px}6%{opacity:1}94%{opacity:1;left:calc(100% + 6px)}100%{opacity:0;left:calc(100% + 6px)}}
+@keyframes tcTrench{to{clip-path:inset(0 0 0 0)}}
+
 /* ===== CONSTRUCTION COMPANIES / MULTI-TRADE — corner lock ===== */
 #ld-cornerlock{background:#ffffff;flex-direction:column;gap:0}
 #ld-cornerlock .cl-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 48px;max-width:86vw}
@@ -1959,6 +1980,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A chisel runs across a slate block and the wordmark is revealed carved out of the stone behind it, stone chips flying, then a bronze rule and subline settle. First used on cambridge-stonecraft.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-trench" data-dur="2400">
+      <span class="trade">Excavations / Groundworks / Building</span>
+      <h3>Trench Cut</h3>
+      <p>Red marking-out dashes draw across, an excavator blade cuts along the line and a trench opens behind it revealing the soil strata beneath, then the wordmark settles. First used on jj-building-excavations.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-jetclear" data-dur="2350">
       <span class="trade">Drainage / Drain Jetting / Groundworks</span>
       <h3>Jet Clear</h3>
@@ -3304,6 +3331,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="ch-rule"></div>
   <div class="wordsub">Stonemasonry &middot; Restoration &middot; Cambridge</div>
+</div>
+
+<!-- trench cut (excavations / groundworks / building) -->
+<div class="loader" id="ld-trench" aria-hidden="true">
+  <div class="tc-stage">
+    <div class="tc-mark">
+      <div class="tc-jj">J<span>&amp;</span>J</div>
+      <div class="wordsub">Building &amp; Excavations &middot; West Yorkshire</div>
+    </div>
+    <div class="tc-ground">
+      <div class="tc-dashes"></div>
+      <div class="tc-trench"></div>
+      <div class="tc-blade"></div>
+    </div>
+  </div>
 </div>
 
 <!-- jet clear (drainage / drain jetting / groundworks) -->
