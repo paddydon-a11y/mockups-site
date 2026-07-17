@@ -248,6 +248,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-fourday.play .wordmark{animation:wordIn .5s ease 1.85s forwards}
 #ld-fourday.play .wordsub{animation:wordIn .5s ease 2s forwards}
 
+/* wall breach (demolition — a built wall is blasted apart by the client's sign) */
+#ld-wallbreach{background:#111311}
+#ld-wallbreach .wb-wall{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:6px;overflow:hidden}
+#ld-wallbreach .wb-row{display:flex;gap:6px;justify-content:center;flex:0 0 auto}
+#ld-wallbreach .wb-row.offset{transform:translateX(-46px)}
+#ld-wallbreach .wb-brick{width:86px;height:44px;background:#242a26;border-radius:3px;flex:0 0 auto;opacity:0;box-shadow:inset 0 -3px 0 rgba(0,0,0,.35)}
+#ld-wallbreach.play .wb-brick{animation:wbIn .18s ease var(--d) forwards,wbOut .55s cubic-bezier(.3,.6,.4,1) var(--o) forwards}
+@keyframes wbIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wbOut{to{opacity:0;transform:translate(var(--fx,0),var(--fy,0)) rotate(var(--fr,0deg)) scale(.7)}}
+#ld-wallbreach.play .wb-wall{animation:wbShake .32s linear .8s 1}
+@keyframes wbShake{0%,100%{transform:translate(0,0)}20%{transform:translate(-5px,2px)}40%{transform:translate(5px,-2px)}60%{transform:translate(-4px,-2px)}80%{transform:translate(4px,2px)}}
+#ld-wallbreach .wb-hit{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;opacity:0;transform:scale(.35)}
+#ld-wallbreach.play .wb-hit{animation:wbPunch .5s cubic-bezier(.2,1.4,.4,1) 1.15s forwards}
+@keyframes wbPunch{0%{opacity:0;transform:scale(.35) rotate(-5deg)}60%{opacity:1;transform:scale(1.06) rotate(1.2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+#ld-wallbreach .wb-sign{border:4px solid #fff;border-radius:8px;overflow:hidden;box-shadow:0 22px 60px rgba(0,0,0,.55)}
+#ld-wallbreach .wb-sign b{display:block;font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.04em;font-size:clamp(1.6rem,6vw,2.6rem);line-height:1;padding:10px 26px 8px;text-align:center}
+#ld-wallbreach .wb-sign .s-top{background:#ffd400;color:#00913d}
+#ld-wallbreach .wb-sign .s-bot{background:#000;color:#fff;font-size:clamp(1.1rem,4.2vw,1.8rem);letter-spacing:.18em;padding-top:9px;padding-bottom:10px}
+#ld-wallbreach .wordsub{color:#ffd400}
+#ld-wallbreach.play .wordsub{animation:wordIn .4s ease 1.5s forwards}
+
 /* cistern (plumbing — ballcock float rises in a filling cistern) */
 #ld-cistern{background:#0b0b0b;flex-direction:column}
 #ld-cistern .cist{width:min(170px,46vw);height:min(170px,46vw)}
@@ -2061,6 +2082,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A day counter ticks DAY 1 to DAY 4 while a steel portal frame goes up: columns rise, rafters span to a red apex, purlins run and cladding closes it in. First used: dbi-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-wallbreach" data-dur="2500">
+      <span class="trade">Demolition Contractors</span>
+      <h3>Wall Breach</h3>
+      <p>A brick wall lays itself up across the whole screen, shakes, then every brick blasts outward as the client's sign punches through the hole. First used: ashworth-demolition.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-brick" data-dur="2400">
       <span class="trade">Bricklayers / Builders</span>
       <h3>Coursework</h3>
@@ -2819,6 +2846,14 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div style="display:flex;flex-direction:column;align-items:center">
     <div class="wordmark">DBI<b>.</b> Solutions</div>
     <div class="wordsub">Design . Build . Install . North West</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-wallbreach" aria-hidden="true">
+  <div class="wb-wall" aria-hidden="true"></div>
+  <div class="wb-hit">
+    <div class="wb-sign"><b class="s-top">ASHWORTH</b><b class="s-bot">DEMOLITION</b></div>
+    <div class="wordsub">Demolition Contractors &middot; The North</div>
   </div>
 </div>
 
@@ -3968,6 +4003,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       tcell.style.setProperty('--d', ((tr + tc) * 65) / 1000 + 's');
       tgrid.appendChild(tcell);
     }
+  }
+
+  // build the wall-breach wall: full viewport, fly-out vectors away from centre
+  var wbWall = document.querySelector('#ld-wallbreach .wb-wall');
+  var wbRows = Math.ceil(window.innerHeight / 50) + 1;
+  var wbCols = Math.ceil(window.innerWidth / 92) + 2;
+  var wbCx = window.innerWidth / 2, wbCy = window.innerHeight / 2;
+  for (var wr = 0; wr < wbRows; wr++) {
+    var wrow = document.createElement('div');
+    wrow.className = 'wb-row' + (wr % 2 ? ' offset' : '');
+    for (var wc = 0; wc < wbCols; wc++) {
+      var wb = document.createElement('div');
+      wb.className = 'wb-brick';
+      wb.style.setProperty('--d', (wr * 0.05 + Math.random() * 0.12).toFixed(2) + 's');
+      wb.style.setProperty('--o', (1.15 + Math.random() * 0.12).toFixed(2) + 's');
+      var wbx = (wc + 0.5) * 92 - (wbCols * 92 - window.innerWidth) / 2;
+      var wby = (wr + 0.5) * 50;
+      var wdx = wbx - wbCx, wdy = wby - wbCy;
+      var wd = Math.max(Math.sqrt(wdx * wdx + wdy * wdy), 40);
+      var wf = (260 + Math.random() * 340) / wd;
+      wb.style.setProperty('--fx', (wdx * wf).toFixed(0) + 'px');
+      wb.style.setProperty('--fy', (wdy * wf).toFixed(0) + 'px');
+      wb.style.setProperty('--fr', ((Math.random() * 140) - 70).toFixed(0) + 'deg');
+      wrow.appendChild(wb);
+    }
+    wbWall.appendChild(wrow);
   }
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
