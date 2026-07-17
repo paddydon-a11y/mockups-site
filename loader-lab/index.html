@@ -7,7 +7,7 @@
 <title>Trade Loader Lab — internal reference</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Cinzel:wght@600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Cinzel:wght@600;700&family=DM+Mono:wght@400;500&family=Gantari:wght@900&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#101113; --card:#17191c; --card-2:#1d2024; --line:#26292e;
@@ -1117,6 +1117,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @media (prefers-reduced-motion:reduce){#ld-tileset .ts-grid i{animation:none!important;transform:scale(1)}#ld-tileset .wordmark,#ld-tileset .wordsub{opacity:1;animation:none}}
 
 /* ===== 19c. BUILDERS / DRIVEWAYS & PATIOS — flag lay ===== */
+/* string line & level (profiles rise, cobalt line pings taut, bricks lay to the line, level bubble settles) */
+#ld-stringline{background:#161c26;flex-direction:column}
+#ld-stringline .sl-stage{width:290px;text-align:center}
+#ld-stringline .sl-build{position:relative;width:260px;height:96px;margin:0 auto}
+#ld-stringline .sl-profile{position:absolute;bottom:0;width:3px;height:78px;background:#3a4557;border-radius:2px;transform:scaleY(0);transform-origin:bottom}
+#ld-stringline .sl-profile.pl{left:0}
+#ld-stringline .sl-profile.pr{right:0}
+#ld-stringline.play .sl-profile{transition:transform .3s cubic-bezier(.3,1.2,.4,1)}
+#ld-stringline.play .sl-profile.pl{transform:scaleY(1)}
+#ld-stringline.play .sl-profile.pr{transform:scaleY(1);transition-delay:.06s}
+#ld-stringline .sl-line{position:absolute;top:16px;left:3px;right:3px;height:2px;background:#1d4fd8;transform:scaleX(0);transform-origin:left;border-radius:1px}
+#ld-stringline.play .sl-line{transition:transform .34s cubic-bezier(.2,.9,.25,1.15) .32s;transform:scaleX(1)}
+#ld-stringline .sl-brick{position:absolute;width:46px;height:20px;background:#eef1f5;border-radius:2px;opacity:0;transform:translateY(-14px)}
+#ld-stringline.play .sl-brick{transition:transform .22s cubic-bezier(.25,1.1,.4,1),opacity .12s linear;opacity:1;transform:translateY(0)}
+#ld-stringline .sl-brick.b1{left:6px;top:20px}#ld-stringline .sl-brick.b2{left:56px;top:20px}#ld-stringline .sl-brick.b3{left:106px;top:20px}#ld-stringline .sl-brick.b4{left:156px;top:20px}#ld-stringline .sl-brick.b5{left:206px;top:20px}
+#ld-stringline .sl-brick.b6{left:31px;top:44px}#ld-stringline .sl-brick.b7{left:81px;top:44px}#ld-stringline .sl-brick.b8{left:131px;top:44px}#ld-stringline .sl-brick.b9{left:181px;top:44px}
+#ld-stringline.play .sl-brick.b1{transition-delay:.62s}#ld-stringline.play .sl-brick.b2{transition-delay:.72s}#ld-stringline.play .sl-brick.b3{transition-delay:.82s}#ld-stringline.play .sl-brick.b4{transition-delay:.92s}#ld-stringline.play .sl-brick.b5{transition-delay:1.02s}
+#ld-stringline.play .sl-brick.b6{transition-delay:1.14s}#ld-stringline.play .sl-brick.b7{transition-delay:1.22s}#ld-stringline.play .sl-brick.b8{transition-delay:1.3s}#ld-stringline.play .sl-brick.b9{transition-delay:1.38s}
+#ld-stringline .sl-level{position:relative;width:120px;height:14px;margin:16px auto 0;border:2px solid #3a4557;border-radius:4px;opacity:0}
+#ld-stringline .sl-bubble{position:absolute;top:2px;left:8px;width:22px;height:6px;background:#1d4fd8;border-radius:3px}
+#ld-stringline.play .sl-level{transition:opacity .2s linear 1.42s;opacity:1}
+#ld-stringline.play .sl-bubble{transition:transform .4s cubic-bezier(.3,1.4,.5,1) 1.5s;transform:translateX(45px)}
+#ld-stringline .wordmark{color:#fff;margin-top:18px;font-family:'Gantari','Archivo Black',sans-serif;font-weight:900;letter-spacing:.06em}
+#ld-stringline .wordsub{color:#768497}
+#ld-stringline.play .wordmark{animation:wordIn .5s ease 1.55s both}
+#ld-stringline.play .wordsub{animation:wordIn .5s ease 1.68s both}
+@media (prefers-reduced-motion:reduce){
+  #ld-stringline .sl-build,#ld-stringline .sl-level{display:none}
+  #ld-stringline .wordmark,#ld-stringline .wordsub{opacity:1;animation:none!important}
+}
+
 /* stone paving flags drop into a bond grid on a dark screed board, then red jointing sweeps the joints */
 #ld-flaglay{background:#1a1c1e;flex-direction:column;gap:26px}
 #ld-flaglay .fl-svg{width:min(300px,72vw);height:auto}
@@ -1952,6 +1983,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Brick courses lay themselves up from the footing, half-bond offset and all, then the wordmark stamps the wall.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-stringline" data-dur="2400">
+      <span class="trade">Bricklayers</span>
+      <h3>String Line &amp; Level</h3>
+      <p>Profile posts rise, the string line pings taut, a course of bricks lays along under the line, and a spirit-level bubble glides to centre. First used: mmij-bricklaying.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-keystone" data-dur="2400">
       <span class="trade">Stonemasons / Bricklayers</span>
       <h3>Keystone Arch</h3>
@@ -2729,6 +2766,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- 5c. pod raise -->
+<div class="loader" id="ld-stringline" aria-hidden="true">
+  <div class="sl-stage">
+    <div class="sl-build">
+      <div class="sl-profile pl"></div>
+      <div class="sl-profile pr"></div>
+      <div class="sl-line"></div>
+      <div class="sl-brick b1"></div><div class="sl-brick b2"></div><div class="sl-brick b3"></div><div class="sl-brick b4"></div><div class="sl-brick b5"></div>
+      <div class="sl-brick b6"></div><div class="sl-brick b7"></div><div class="sl-brick b8"></div><div class="sl-brick b9"></div>
+    </div>
+    <div class="sl-level"><div class="sl-bubble"></div></div>
+    <div class="wordmark">MMIJ</div>
+    <div class="wordsub">Bricklaying Ltd &middot; West Yorkshire</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-podraise" aria-hidden="true">
   <div class="pr-stage">
     <svg class="pr-svg" viewBox="0 0 240 150" fill="none" xmlns="http://www.w3.org/2000/svg">
