@@ -2040,6 +2040,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-topout .to-found,#ld-topout .to-wall,#ld-topout .to-tri{transform:none;opacity:1}
   #ld-topout .to-glint{opacity:0}
 }
+
+/* ---- Proposed to Built (extensions builders) ---- */
+#ld-proposed{background:#171a21;flex-direction:column}
+#ld-proposed .pb-stage{width:min(320px,72vw)}
+#ld-proposed .pb-stage svg{width:100%;height:auto;display:block;overflow:visible}
+#ld-proposed .pb-house{stroke:#e8eaf1;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:520;stroke-dashoffset:520}
+#ld-proposed.play .pb-house{animation:pbDraw .8s ease-out .15s forwards}
+#ld-proposed .pb-prop{stroke:#6d28d9;stroke-width:3;fill:none;stroke-linejoin:round;stroke-dasharray:9 8;opacity:0}
+#ld-proposed.play .pb-prop{animation:pbShow .4s ease-out 1s forwards}
+#ld-proposed .pb-fill{fill:#6d28d9;opacity:0;transform-origin:50% 100%;transform:scaleY(0)}
+#ld-proposed.play .pb-fill{animation:pbFill .4s cubic-bezier(.2,.9,.3,1.1) 1.45s forwards}
+#ld-proposed .pb-glint{fill:#ffffff;opacity:0;transform:translateX(-60px) skewX(-18deg)}
+#ld-proposed.play .pb-glint{animation:pbGlint .5s ease-out 1.9s forwards}
+#ld-proposed .wordmark{color:#f2f3f8}
+#ld-proposed .wordmark span{color:#b794f6}
+#ld-proposed .wordsub{color:#8b90a3}
+#ld-proposed.play .wordmark{animation:wordIn .5s ease 1.7s forwards}
+#ld-proposed.play .wordsub{animation:wordIn .5s ease 1.9s forwards}
+@keyframes pbDraw{to{stroke-dashoffset:0}}
+@keyframes pbShow{to{opacity:1}}
+@keyframes pbFill{to{opacity:1;transform:scaleY(1)}}
+@keyframes pbGlint{0%{opacity:0;transform:translateX(-60px) skewX(-18deg)}30%{opacity:.5}100%{opacity:0;transform:translateX(150px) skewX(-18deg)}}
 </style>
 </head>
 <body>
@@ -2111,6 +2133,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Demolition Contractors</span>
       <h3>Wall Breach</h3>
       <p>A brick wall lays itself up across the whole screen, shakes, then every brick blasts outward as the client's sign punches through the hole. First used: ashworth-demolition.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-proposed" data-dur="2400">
+      <span class="trade">Builders / Extensions</span>
+      <h3>Proposed to Built</h3>
+      <p>The existing house draws itself in solid line, a dashed "proposed" extension volume appends off the back, then the dashes snap solid and the volume fills in with a glint. Planning-drawing language made real. First used: mpermatei.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-brick" data-dur="2400">
@@ -2834,6 +2862,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- hot meets cold (mixer tap) -->
+<div class="loader" id="ld-proposed" aria-hidden="true">
+  <div class="pb-stage">
+    <svg viewBox="0 0 320 190" aria-hidden="true">
+      <path class="pb-house" d="M30 170 L30 80 L95 38 L160 80 L160 170 Z M60 170 L60 120 L95 120 L95 170 M60 95 L85 95 M115 95 L140 95 M115 120 L140 120 L140 145 L115 145 Z"/>
+      <path class="pb-prop" d="M160 170 L160 104 L268 104 L268 170 Z M160 128 L268 128"/>
+      <rect class="pb-fill" x="160" y="104" width="108" height="66"/>
+      <rect class="pb-glint" x="160" y="104" width="34" height="66"/>
+    </svg>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;margin-top:34px">
+    <div class="wordmark">MPERMATEI<span>.</span></div>
+    <div class="wordsub">Extensions . Renovations . London</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-mixer" aria-hidden="true">
   <svg class="mx" viewBox="0 0 340 120" aria-hidden="true">
     <path class="pipe hot" d="M0 34 H118 V72 H146"/>
