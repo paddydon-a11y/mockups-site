@@ -225,6 +225,49 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes prPop{to{opacity:1;transform:translateX(-50%) scale(1)}}
 @keyframes prNeedle{70%{transform:translateX(-50%) rotate(58deg)}100%{transform:translateX(-50%) rotate(48deg)}}
 
+/* ===== rad bleed (plumbing / heating) ===== */
+#ld-radbleed{background:#151a1f;flex-direction:column}
+#ld-radbleed .rb{width:min(300px,72vw);height:auto;overflow:visible}
+#ld-radbleed .rb-shell{stroke:#39434e;stroke-width:3;fill:none;stroke-dasharray:700;stroke-dashoffset:700}
+#ld-radbleed.play .rb-shell{animation:rbDraw .7s ease forwards .1s}
+#ld-radbleed .rb-fin{stroke:#39434e;stroke-width:6;stroke-linecap:round}
+#ld-radbleed.play .rb-fin{animation:rbWarm .5s ease forwards}
+#ld-radbleed.play .rb-fin:nth-child(1){animation-delay:1.5s}
+#ld-radbleed.play .rb-fin:nth-child(2){animation-delay:1.56s}
+#ld-radbleed.play .rb-fin:nth-child(3){animation-delay:1.62s}
+#ld-radbleed.play .rb-fin:nth-child(4){animation-delay:1.68s}
+#ld-radbleed.play .rb-fin:nth-child(5){animation-delay:1.74s}
+#ld-radbleed.play .rb-fin:nth-child(6){animation-delay:1.8s}
+#ld-radbleed.play .rb-fin:nth-child(7){animation-delay:1.86s}
+#ld-radbleed .rb-key{transform-origin:236px 22px;opacity:0}
+#ld-radbleed.play .rb-key{animation:rbKeyIn .3s ease forwards .8s,rbKeyTurn .45s cubic-bezier(.34,1.4,.64,1) forwards 1.05s}
+#ld-radbleed .rb-key rect,#ld-radbleed .rb-key circle{stroke:#8f9aa6;stroke-width:3;fill:none}
+#ld-radbleed .rb-hiss{stroke:#8f9aa6;stroke-width:2.5;stroke-linecap:round;opacity:0}
+#ld-radbleed.play .rb-hiss.h1{animation:rbHiss .32s ease-out 1.18s}
+#ld-radbleed.play .rb-hiss.h2{animation:rbHiss .32s ease-out 1.3s}
+#ld-radbleed.play .rb-hiss.h3{animation:rbHiss .32s ease-out 1.42s}
+#ld-radbleed .rb-drop{fill:#d98a45;opacity:0}
+#ld-radbleed.play .rb-drop{animation:rbDrop .5s ease-in 1.45s}
+#ld-radbleed .wordmark{color:#fff;margin-top:26px}
+#ld-radbleed .wordmark b{color:#d98a45}
+#ld-radbleed .wordsub{color:#8f9aa6}
+#ld-radbleed.play .wordmark{animation:wordIn .5s ease 1.9s forwards}
+#ld-radbleed.play .wordsub{animation:wordIn .5s ease 2.05s forwards}
+@keyframes rbDraw{to{stroke-dashoffset:0}}
+@keyframes rbWarm{to{stroke:#d98a45}}
+@keyframes rbKeyIn{to{opacity:1}}
+@keyframes rbKeyTurn{to{transform:rotate(-90deg)}}
+@keyframes rbHiss{0%{opacity:0;transform:translate(0,0)}30%{opacity:1}100%{opacity:0;transform:translate(8px,-8px)}}
+@keyframes rbDrop{0%{opacity:0;transform:translateY(0)}25%{opacity:1}100%{opacity:0;transform:translateY(26px)}}
+@media (prefers-reduced-motion: reduce){
+  #ld-radbleed .rb-shell,#ld-radbleed .rb-fin,#ld-radbleed .rb-key,#ld-radbleed .rb-hiss,#ld-radbleed .rb-drop{animation:none!important}
+  #ld-radbleed .rb-shell{stroke-dashoffset:0}
+  #ld-radbleed .rb-fin{stroke:#d98a45}
+  #ld-radbleed .rb-key{opacity:1}
+  #ld-radbleed.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-radbleed.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
+
 /* ===== tub fill (bathroom fitters) ===== */
 #ld-tubfill{background:#0e1013;flex-direction:column}
 #ld-tubfill .tf{width:min(300px,64vw);height:auto;overflow:visible}
@@ -342,7 +385,7 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-bath{background:#264BB5;flex-direction:column}
 #ld-bath .tubwrap{width:min(230px,60vw)}
 #ld-bath .tubwrap svg{width:100%;height:auto;overflow:visible}
-#ld-bath .b-draw{stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:560;stroke-dashoffset:560}
+#ld-bath .b-draw{stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:700;stroke-dashoffset:700}
 #ld-bath.play .b-draw{animation:bathDraw .7s ease-out forwards}
 @keyframes bathDraw{to{stroke-dashoffset:0}}
 #ld-bath .b-water{fill:#bcd2ff;opacity:.9;transform:scaleY(0);transform-origin:50% 100%}
@@ -2170,6 +2213,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A pipe run draws in from both sides into a gauge, the needle sweeps up with an overshoot and settles in the green, a mono readout confirms 1.5 bar holding, wordmark lands. First used: hammond-plumbing.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-radbleed" data-dur="2400">
+      <span class="trade">Plumbers / Heating</span>
+      <h3>Rad Bleed</h3>
+      <p>A radiator outline draws in, the bleed key slots on and quarter-turns, three hiss ticks and a single drop fall, then the fins warm through to copper. First used: flofix.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-tubfill" data-dur="2400">
       <span class="trade">Bathroom Fitters</span>
       <h3>Tub Fill</h3>
@@ -3000,6 +3049,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="pr-read">Pressure test <b>1.5 bar</b> · holding</div>
   <div class="wordmark">HAMMOND<b>.</b></div>
   <div class="wordsub">Plumbing &amp; Heating</div>
+</div>
+
+<div class="loader" id="ld-radbleed" aria-hidden="true">
+  <svg class="rb" viewBox="0 0 300 190" aria-hidden="true">
+    <rect class="rb-shell" x="40" y="40" width="220" height="120" rx="14"/>
+    <g>
+      <line class="rb-fin" x1="70"  y1="62" x2="70"  y2="138"/>
+      <line class="rb-fin" x1="96"  y1="62" x2="96"  y2="138"/>
+      <line class="rb-fin" x1="122" y1="62" x2="122" y2="138"/>
+      <line class="rb-fin" x1="148" y1="62" x2="148" y2="138"/>
+      <line class="rb-fin" x1="174" y1="62" x2="174" y2="138"/>
+      <line class="rb-fin" x1="200" y1="62" x2="200" y2="138"/>
+      <line class="rb-fin" x1="226" y1="62" x2="226" y2="138"/>
+    </g>
+    <g class="rb-key">
+      <circle cx="236" cy="22" r="9"/>
+      <rect x="232" y="4" width="8" height="12" rx="2"/>
+    </g>
+    <line class="rb-hiss h1" x1="252" y1="16" x2="262" y2="8"/>
+    <line class="rb-hiss h2" x1="255" y1="24" x2="267" y2="20"/>
+    <line class="rb-hiss h3" x1="251" y1="9"  x2="258" y2="0"/>
+    <path class="rb-drop" d="M236 34c-3 4-5 7-5 9.5a5 5 0 0010 0c0-2.5-2-5.5-5-9.5z"/>
+  </svg>
+  <div class="wordmark">FLO<b>FIX</b></div>
+  <div class="wordsub">Plumbing &amp; Heating · West London</div>
 </div>
 
 <div class="loader" id="ld-tubfill" aria-hidden="true">
