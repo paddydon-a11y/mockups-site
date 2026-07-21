@@ -2185,6 +2185,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-grandopen .go-open{margin-top:16px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.3em;color:#101318;background:#ffc61a;border-radius:3px;padding:5px 12px 4px;text-transform:uppercase;opacity:0;transform:translateY(8px);box-shadow:0 0 18px rgba(255,198,26,.55)}
 #ld-grandopen.play .go-open{animation:goPop .35s cubic-bezier(.2,1.4,.4,1) 1.95s forwards}
 @keyframes goPop{to{opacity:1;transform:translateY(0)}}
+
+/* stamp & reveal (pattern imprinted concrete) */
+#ld-stamp{background:#0f1622;flex-direction:column}
+#ld-stamp .st-stage{width:min(340px,78vw)}
+#ld-stamp .st-stage svg{width:100%;height:auto;display:block;overflow:visible}
+#ld-stamp .st-slab{fill:#3d3e43}
+#ld-stamp .st-sheen{fill:#ffffff;opacity:.04}
+#ld-stamp .st-warm{fill:#d8bd92;opacity:0}
+#ld-stamp.play .st-warm{animation:stWarm .9s ease 1.35s forwards}
+@keyframes stWarm{to{opacity:.34}}
+#ld-stamp .st-mat{fill:#1c2434;stroke:#33405a;stroke-width:1.5;transform:translateY(-92px)}
+#ld-stamp.play .st-mat{animation:stPress 1s cubic-bezier(.6,0,.3,1) .15s forwards}
+@keyframes stPress{0%{transform:translateY(-92px);opacity:1}42%{transform:translateY(0);opacity:1}58%{transform:translateY(0);opacity:1}100%{transform:translateY(-104px);opacity:0}}
+#ld-stamp .st-joints path{stroke:#d8bd92;stroke-width:2;fill:none;stroke-linecap:square;stroke-dasharray:340;stroke-dashoffset:340}
+#ld-stamp.play .st-joints path{animation:stJoint .8s ease forwards}
+#ld-stamp.play .st-joints path:nth-child(1){animation-delay:1.05s}
+#ld-stamp.play .st-joints path:nth-child(2){animation-delay:1.15s}
+#ld-stamp.play .st-joints path:nth-child(3){animation-delay:1.25s}
+#ld-stamp.play .st-joints path:nth-child(4){animation-delay:1.35s}
+@keyframes stJoint{to{stroke-dashoffset:0}}
+#ld-stamp .st-wm{margin-top:34px;display:flex;flex-direction:column;align-items:center;opacity:0;transform:translateY(12px)}
+#ld-stamp.play .st-wm{animation:stWm .6s ease 1.55s forwards}
+@keyframes stWm{to{opacity:1;transform:none}}
+#ld-stamp .wordmark span{color:#d8bd92}
 </style>
 </head>
 <body>
@@ -2732,6 +2756,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On ink, a drawn shopfront with a fascia sign box: the roller shutter raises up off the glazing (clipped to the opening, a stub left showing), the fascia neon flickers alive with the wordmark, and an OPEN chip pops in under the sub line. The shopfitter's money moment: shutter up, sign lit, ready to trade. First used on franchise-fitters (2026-07-20). Distinct from Power Up and Switch Flick (electrical: circuit trace / switch flick to a bulb): nothing is wired or traced here, an existing front OPENS. And from Kerf Cut (hoarding cut apart): nothing is destroyed.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-stamp" data-dur="2400">
+      <span class="trade">Paving / imprinted concrete</span>
+      <h3>Stamp &amp; Reveal</h3>
+      <p>A stamp mat presses onto the wet grey slab and lifts away; the ashlar joint lines emboss themselves in and the concrete warms through to sandstone buff as the wordmark lands. The imprinted-concrete ritual itself: pour, stamp, reveal. First used: impress-paving. Distinct from Dig Out (excavation, nothing laid), Coursework and String Line (bricks laid up), Trowel Float and Skim Cure (plaster smoothed or drying): here a PATTERN is pressed into a finished pour.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-stamp" aria-hidden="true">
+  <div class="st-stage">
+    <svg viewBox="0 0 340 190" fill="none" aria-hidden="true">
+      <rect class="st-slab" x="20" y="118" width="300" height="52" rx="5"/>
+      <rect class="st-warm" x="20" y="118" width="300" height="52" rx="5"/>
+      <rect class="st-sheen" x="20" y="118" width="300" height="52" rx="5"/>
+      <g class="st-joints">
+        <path d="M20 136 H320"/>
+        <path d="M20 153 H320"/>
+        <path d="M78 118 V136 M196 118 V136 M262 118 V136"/>
+        <path d="M118 136 V153 M232 136 V153 M52 153 V170 M162 153 V170 M288 153 V170"/>
+      </g>
+      <rect class="st-mat" x="34" y="96" width="272" height="20" rx="4"/>
+    </svg>
+  </div>
+  <div class="st-wm">
+    <div class="wordmark">IMPRESS<span>.</span></div>
+    <div class="wordsub">Pattern Imprinted Concrete . Resin Bound</div>
   </div>
 </div>
 
