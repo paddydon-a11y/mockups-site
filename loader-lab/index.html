@@ -295,6 +295,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 
 /* ===== mains on (plumbers / heating) ===== */
+#ld-keyturn{background:#101318;flex-direction:column}
+#ld-keyturn .kt-scene{position:relative;width:280px;height:150px;margin-bottom:22px}
+#ld-keyturn .kt-esc{position:absolute;left:50%;top:16px;transform:translateX(-50%);opacity:0}
+#ld-keyturn.play .kt-esc{animation:ktFade .4s ease .05s forwards}
+#ld-keyturn .kt-key{position:absolute;left:-90px;top:33px;opacity:0;transform-origin:110px 17px}
+#ld-keyturn.play .kt-key{animation:ktKeyIn .5s cubic-bezier(.5,0,.3,1) .35s forwards,ktKeyTurn .55s cubic-bezier(.34,1.4,.64,1) 1s forwards}
+#ld-keyturn .kt-bolt{position:absolute;left:50%;top:132px;transform:translateX(-50%);width:120px;height:12px}
+#ld-keyturn .kt-bolt-track{position:absolute;inset:0;border:1px solid #2a323c;border-radius:6px}
+#ld-keyturn .kt-bolt-bar{position:absolute;top:2px;bottom:2px;left:2px;width:76px;border-radius:4px;background:#93a0ad;transform-origin:left center}
+#ld-keyturn.play .kt-bolt-bar{animation:ktBolt .45s cubic-bezier(.6,0,.3,1) 1.15s forwards}
+#ld-keyturn .wordmark{color:#f2f3f4;opacity:0;transform:translateY(14px)}
+#ld-keyturn .wordmark b{color:#e8175d}
+#ld-keyturn .wordsub{color:#5c6874;opacity:0;transform:translateY(10px)}
+#ld-keyturn.play .wordmark{animation:ktRise .5s ease 1.35s forwards}
+#ld-keyturn.play .wordsub{animation:ktRise .5s ease 1.55s forwards}
+@keyframes ktFade{to{opacity:1}}
+@keyframes ktKeyIn{from{transform:translateX(0);opacity:0}to{transform:translateX(120px);opacity:1}}
+@keyframes ktKeyTurn{from{transform:translateX(120px) rotate(0deg)}to{transform:translateX(120px) rotate(90deg)}}
+@keyframes ktBolt{to{transform:scaleX(0.18)}}
+@keyframes ktRise{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){
+  #ld-keyturn .kt-scene{display:none}
+  #ld-keyturn .wordmark,#ld-keyturn .wordsub{opacity:1;transform:none;animation:none!important}
+}
 #ld-mainson{background:#0d1618;flex-direction:column}
 #ld-mainson .mo{width:min(400px,84vw);height:auto;overflow:visible}
 #ld-mainson .mo-pipe{fill:none;stroke:#2b3d42;stroke-width:8;stroke-linecap:round;stroke-dasharray:330;stroke-dashoffset:330}
@@ -2409,6 +2433,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A day counter ticks DAY 1 to DAY 4 while a steel portal frame goes up: columns rise, rafters span to a red apex, purlins run and cladding closes it in. First used: dbi-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-keyturn" data-dur="2400">
+      <span class="trade">Locksmiths</span>
+      <h3>Key Turn</h3>
+      <p>A key slides into the escutcheon, quarter-turns with an overshoot, the deadbolt below retracts, then the wordmark rises. The lockout moment in reverse: you are back in. First used: daniel-alexander.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-turfroll" data-dur="2400">
       <span class="trade">Landscapers</span>
       <h3>Turf Roll</h3>
@@ -3300,6 +3330,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     </div>
     <div class="ds-sheet"></div>
   </div>
+</div>
+
+<div class="loader" id="ld-keyturn" aria-hidden="true">
+  <div class="kt-scene">
+    <div class="kt-esc">
+      <svg width="64" height="86" viewBox="0 0 64 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="62" height="84" rx="14" stroke="#2a323c" stroke-width="2"/>
+        <circle cx="32" cy="34" r="11" stroke="#93a0ad" stroke-width="2.5"/>
+        <path d="M32 43 L27 66 H37 L32 43Z" stroke="#93a0ad" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="kt-key">
+      <svg width="120" height="34" viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="17" cy="17" r="12" stroke="#e8175d" stroke-width="3.5"/>
+        <path d="M29 17 H112" stroke="#e8175d" stroke-width="5" stroke-linecap="round"/>
+        <path d="M96 17 V26 M105 17 V29 M88 17 V23" stroke="#e8175d" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="kt-bolt"><div class="kt-bolt-track"></div><div class="kt-bolt-bar"></div></div>
+  </div>
+  <div class="wordmark">DANIEL <b>ALEXANDER</b></div>
+  <div class="wordsub">Locksmiths . Doors . Windows . Carpentry . East London</div>
 </div>
 
 <div class="loader" id="ld-mainson" aria-hidden="true">
