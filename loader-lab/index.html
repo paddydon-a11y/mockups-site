@@ -569,6 +569,41 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-rainshed.play .wordmark{animation:wordIn .5s ease 1.55s both}
 #ld-rainshed.play .wordsub{animation:wordIn .5s ease 1.75s both}
 
+/* ===== LASER LEVEL — general builders / setting out (first used: tec-projects) ===== */
+#ld-laserlevel{background:#12151a;flex-direction:column}
+#ld-laserlevel .lz-stage{position:relative;width:min(420px,84vw);height:250px}
+#ld-laserlevel .lz-h{position:absolute;left:0;right:0;top:50%;height:2px;background:#2ee06a;box-shadow:0 0 12px rgba(46,224,106,.75),0 0 30px rgba(46,224,106,.35);transform:translateY(-115px);opacity:0}
+#ld-laserlevel.play .lz-h{animation:lzSweep 1s cubic-bezier(.3,.9,.3,1) forwards}
+@keyframes lzSweep{0%{transform:translateY(-115px);opacity:1}55%{transform:translateY(16px);opacity:1}100%{transform:translateY(0);opacity:1}}
+#ld-laserlevel .lz-v{position:absolute;top:-20px;bottom:-20px;left:50%;width:2px;background:#2ee06a;box-shadow:0 0 12px rgba(46,224,106,.75);transform:scaleY(0)}
+#ld-laserlevel.play .lz-v{animation:lzV .5s ease-out .9s forwards}
+@keyframes lzV{to{transform:scaleY(1)}}
+#ld-laserlevel .lz-tick{position:absolute;top:50%;width:2px;height:14px;background:rgba(46,224,106,.85);transform:translateY(-50%);opacity:0}
+#ld-laserlevel.play .lz-tick{animation:lzTick .3s ease-out 1.05s forwards}
+#ld-laserlevel.play .lz-tick.t2{animation-delay:1.12s}
+#ld-laserlevel.play .lz-tick.t3{animation-delay:1.19s}
+#ld-laserlevel.play .lz-tick.t4{animation-delay:1.26s}
+@keyframes lzTick{to{opacity:1}}
+#ld-laserlevel .lz-vial{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:120px;height:26px;border:2px solid rgba(255,255,255,.28);border-radius:14px;opacity:0}
+#ld-laserlevel.play .lz-vial{animation:lzTick .35s ease-out 1.15s forwards}
+#ld-laserlevel .lz-vial::before,#ld-laserlevel .lz-vial::after{content:"";position:absolute;top:-2px;bottom:-2px;width:2px;background:rgba(255,255,255,.28)}
+#ld-laserlevel .lz-vial::before{left:44px}
+#ld-laserlevel .lz-vial::after{right:44px}
+#ld-laserlevel .lz-bubble{position:absolute;top:5px;left:8px;width:28px;height:12px;border-radius:7px;background:#2ee06a;box-shadow:0 0 10px rgba(46,224,106,.6)}
+#ld-laserlevel.play .lz-bubble{animation:lzBubble .85s cubic-bezier(.34,1.4,.5,1) 1.2s forwards}
+@keyframes lzBubble{to{transform:translateX(38px)}}
+#ld-laserlevel .lz-brand{position:absolute;left:0;right:0;top:calc(50% + 26px);text-align:center}
+#ld-laserlevel.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-laserlevel.play .wordsub{animation:wordIn .5s ease 1.65s forwards}
+#ld-laserlevel .wordmark{font-family:'Rajdhani','Plus Jakarta Sans',sans-serif;font-weight:700;font-size:2rem;letter-spacing:.14em;color:#fff;text-transform:uppercase}
+#ld-laserlevel .wordmark span{color:#2ee06a}
+#ld-laserlevel .wordsub{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:6px}
+@media (prefers-reduced-motion: reduce){
+  #ld-laserlevel .lz-h,#ld-laserlevel .lz-v,#ld-laserlevel .lz-tick,#ld-laserlevel .lz-vial,#ld-laserlevel .lz-bubble{animation:none!important;opacity:1;transform:none}
+  #ld-laserlevel.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-laserlevel.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
+
 /* ===== 5c. TIMBER / CAMPING PODS — pod raise ===== */
 #ld-podraise{background:#18241c;flex-direction:column}
 #ld-podraise .pr-stage{width:min(320px,72vw);text-align:center}
@@ -2792,6 +2827,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Coursework rebuilt around the brand mark: courses of off-white bricks lay up in half-bond INSIDE the logo's rounded square until the box is filled solid, then the monogram snaps in over the built box and the wordmark settles beside it. For any brand whose logo is a boxed monogram; the payoff is the LOGO being built brick by brick. First used: ig-construction. Distinct from Coursework (a plain wall rises from a footing) and Wall Breach (a wall is destroyed): here the bricks BECOME the logo.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-laserlevel" data-dur="2400">
+      <span class="trade">General builders / design &amp; build</span>
+      <h3>Laser Level</h3>
+      <p>On ink, a green laser line sweeps down the screen and locks the horizontal datum with a settle bounce; the vertical line scales in to complete the cross, mono tick marks pop along the datum, and a spirit-level vial fades in whose bubble slides to centre with an overshoot before the wordmark rises under the line. The setting-out ritual (laser on, datum locked, level checked) as a loader. First used: tec-projects. Distinct from Coursework and String Line (bricks laid), Proposed to Built (plan fills solid) and every gauge/pipe loader: nothing is laid, drawn solid or pressurised, a LEVEL LINE locks and a bubble settles.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-laserlevel" aria-hidden="true">
+  <div class="lz-stage">
+    <div class="lz-h"></div>
+    <div class="lz-v"></div>
+    <div class="lz-tick" style="left:12%"></div>
+    <div class="lz-tick t2" style="left:28%"></div>
+    <div class="lz-tick t3" style="left:72%"></div>
+    <div class="lz-tick t4" style="left:88%"></div>
+    <div class="lz-vial"><div class="lz-bubble"></div></div>
+    <div class="lz-brand">
+      <div class="wordmark">Tec<span> Projects</span></div>
+      <div class="wordsub">General Building Contractors</div>
+    </div>
   </div>
 </div>
 
