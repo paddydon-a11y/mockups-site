@@ -301,6 +301,36 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-mainson.play .wordsub{animation:wordIn .4s ease .2s forwards}
 }
 
+/* ---- TURF ROLL (landscapers; first used: david-gilfillan) ---- */
+#ld-turfroll{background:#14171b;flex-direction:column}
+#ld-turfroll .tr-scene{position:relative;width:min(420px,78vw);height:86px;margin-bottom:26px}
+#ld-turfroll .tr-ground{position:absolute;left:0;right:0;bottom:26px;height:2px;background:#3a414a;transform:scaleX(0);transform-origin:left}
+#ld-turfroll.play .tr-ground{animation:trGround .5s ease forwards .1s}
+#ld-turfroll .tr-strip{position:absolute;left:0;bottom:28px;height:14px;width:100%;background:#3f7d3a;border-radius:2px;transform:scaleX(0);transform-origin:left}
+#ld-turfroll.play .tr-strip{animation:trStrip 1.05s cubic-bezier(.5,0,.3,1) forwards .45s}
+#ld-turfroll .tr-roll{position:absolute;bottom:28px;left:0;width:34px;height:34px;border-radius:50%;background:#2c5c29;border:4px solid #3f7d3a;box-shadow:inset 0 0 0 4px #2c5c29;opacity:0}
+#ld-turfroll.play .tr-roll{animation:trRoll 1.05s cubic-bezier(.5,0,.3,1) forwards .45s}
+#ld-turfroll .tr-blade{position:absolute;bottom:42px;width:3px;height:10px;background:#5aa04f;border-radius:2px 2px 0 0;transform:scaleY(0);transform-origin:bottom}
+#ld-turfroll .tr-blade.b1{left:16%}#ld-turfroll .tr-blade.b2{left:38%}#ld-turfroll .tr-blade.b3{left:61%;height:13px}#ld-turfroll .tr-blade.b4{left:83%}
+#ld-turfroll.play .tr-blade.b1{animation:trBlade .3s ease forwards 1.15s}
+#ld-turfroll.play .tr-blade.b2{animation:trBlade .3s ease forwards 1.28s}
+#ld-turfroll.play .tr-blade.b3{animation:trBlade .3s ease forwards 1.4s}
+#ld-turfroll.play .tr-blade.b4{animation:trBlade .3s ease forwards 1.52s}
+#ld-turfroll .wordmark{color:#f4f1ee}
+#ld-turfroll .wordmark b{color:#5aa04f}
+#ld-turfroll .wordsub{color:#a9b0b8}
+#ld-turfroll.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-turfroll.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+@keyframes trGround{to{transform:scaleX(1)}}
+@keyframes trStrip{to{transform:scaleX(1)}}
+@keyframes trRoll{0%{opacity:0;transform:translateX(0) rotate(0)}12%{opacity:1}100%{opacity:1;transform:translateX(calc(min(420px,78vw) - 34px)) rotate(720deg)}}
+@keyframes trBlade{to{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){
+  #ld-turfroll .tr-scene{display:none}
+  #ld-turfroll.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-turfroll.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
+
 /* ===== tub fill (bathroom fitters) ===== */
 #ld-tubfill{background:#0e1013;flex-direction:column}
 #ld-tubfill .tf{width:min(300px,64vw);height:auto;overflow:visible}
@@ -2353,6 +2383,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A day counter ticks DAY 1 to DAY 4 while a steel portal frame goes up: columns rise, rafters span to a red apex, purlins run and cladding closes it in. First used: dbi-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-turfroll" data-dur="2400">
+      <span class="trade">Landscapers</span>
+      <h3>Turf Roll</h3>
+      <p>A turf roll unrolls a fresh green strip along the ground line, grass blades tick up behind it, then the wordmark settles over the new lawn. First used: david-gilfillan.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-wallbreach" data-dur="2500">
       <span class="trade">Demolition Contractors</span>
       <h3>Wall Breach</h3>
@@ -3207,6 +3243,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">FRANCHISE FITTERS</div>
     <div class="wordsub">Fit Out . Refurb . Handover</div>
     <span class="go-open">Open</span>
+  </div>
+</div>
+
+<div class="loader" id="ld-turfroll" aria-hidden="true">
+  <div class="tr-scene">
+    <div class="tr-ground"></div>
+    <div class="tr-strip"></div>
+    <div class="tr-blade b1"></div><div class="tr-blade b2"></div><div class="tr-blade b3"></div><div class="tr-blade b4"></div>
+    <div class="tr-roll"></div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">DAVID <b>GILFILLAN</b></div>
+    <div class="wordsub">Brickwork &amp; Landscaping . Glasgow</div>
   </div>
 </div>
 
