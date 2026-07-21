@@ -15,6 +15,10 @@ checklist. Everything below is only a repo-level reminder of the blocking rules.
 
 1. **Design seed + `node ledger-check.js` BEFORE any HTML.** Ledger entry goes in
    the same commit as the mockup.
+1b. **Mobile first-screen rule: 99% of prospects only ever see the mockup on a
+   phone.** The first 390px screenful must have a unique, designed wow moment
+   (named in the seed) — never plain text-on-white. Design and judge the 390px
+   view FIRST; a dull mobile hero top means the mockup is not done.
 2. **QC before handover:** static grep sweep first (em dashes, raw phone/email,
    italics, "proper" in hero, "crew"), then Playwright at 1440x900 AND 390x844
    (including a scrolled state and the open mobile menu). Playwright is available
