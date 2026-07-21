@@ -94,7 +94,7 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-dustsheet .ds-rule{width:120px;animation:none!important}
 }
 
-/* ===== 1. DECORATOR/* ===== 1. DECORATOR — roller sweep ===== */
+/* ===== 1. DECORATOR — roller sweep ===== */
 /* bare plaster wall gets two coats of brand colour */
 #ld-roller{background:#cfc9bf;flex-direction:column}
 #ld-roller .band{position:absolute;inset:0;transform:scaleX(0);transform-origin:left}
@@ -349,6 +349,34 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-mainson .mo-fitg,#ld-mainson .mo-wheel,#ld-mainson .mo-txt{opacity:1}
   #ld-mainson.play .wordmark{animation:wordIn .4s ease .1s forwards}
   #ld-mainson.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
+
+/* ---- CRANE LIFT (general builders; first used: mcv-full-construction) ---- */
+#ld-cranelift{background:#131519;flex-direction:column}
+#ld-cranelift .cl-scene{position:relative;width:min(360px,80vw);height:150px;margin-bottom:18px}
+#ld-cranelift .cl-mast{position:absolute;left:24px;top:0;bottom:22px;width:5px;background:#3a4049;transform:scaleY(0);transform-origin:bottom}
+#ld-cranelift.play .cl-mast{animation:clMast .4s ease forwards .05s}
+#ld-cranelift .cl-jib{position:absolute;left:10px;top:0;height:5px;width:calc(100% - 10px);background:#3a4049;transform:scaleX(0);transform-origin:left}
+#ld-cranelift.play .cl-jib{animation:clJib .4s ease forwards .4s}
+#ld-cranelift .cl-ground{position:absolute;left:0;right:0;bottom:22px;height:2px;background:#3a4049;transform:scaleX(0);transform-origin:left}
+#ld-cranelift.play .cl-ground{animation:clJib .5s ease forwards .15s}
+#ld-cranelift .cl-cable{position:absolute;right:66px;top:5px;width:2px;height:78px;background:#565e69;transform:scaleY(0);transform-origin:top}
+#ld-cranelift.play .cl-cable{animation:clCable .8s cubic-bezier(.4,0,.3,1) forwards .85s}
+#ld-cranelift .cl-block{position:absolute;right:38px;top:83px;width:58px;height:34px;background:#4b2fd6;border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff;letter-spacing:.06em;opacity:0;transform:translateY(-84px)}
+#ld-cranelift.play .cl-block{animation:clDrop .8s cubic-bezier(.45,0,.3,1.18) forwards .85s}
+#ld-cranelift .wordmark{color:#f5f3f4}
+#ld-cranelift .wordmark b{color:#4b2fd6}
+#ld-cranelift .wordsub{color:#a8adb5}
+#ld-cranelift.play .wordmark{animation:wordIn .5s ease 1.75s forwards}
+#ld-cranelift.play .wordsub{animation:wordIn .5s ease 1.92s forwards}
+@keyframes clMast{to{transform:scaleY(1)}}
+@keyframes clJib{to{transform:scaleX(1)}}
+@keyframes clCable{to{transform:scaleY(1)}}
+@keyframes clDrop{0%{opacity:0;transform:translateY(-84px)}15%{opacity:1}100%{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  #ld-cranelift .cl-scene{display:none}
+  #ld-cranelift.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-cranelift.play .wordsub{animation:wordIn .4s ease .2s forwards}
 }
 
 /* ---- TURF ROLL (landscapers; first used: david-gilfillan) ---- */
@@ -2433,6 +2461,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A day counter ticks DAY 1 to DAY 4 while a steel portal frame goes up: columns rise, rafters span to a red apex, purlins run and cladding closes it in. First used: dbi-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-cranelift" data-dur="2500">
+      <span class="trade">General Builders / Contractors</span>
+      <h3>Crane Lift</h3>
+      <p>A tower crane draws itself in (mast up, jib across), the cable runs down and lowers the brand block onto the datum with an overshoot settle, wordmark lands. First used: mcv-full-construction.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-keyturn" data-dur="2400">
       <span class="trade">Locksmiths</span>
       <h3>Key Turn</h3>
@@ -3305,6 +3339,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">FRANCHISE FITTERS</div>
     <div class="wordsub">Fit Out . Refurb . Handover</div>
     <span class="go-open">Open</span>
+  </div>
+</div>
+
+<div class="loader" id="ld-cranelift" aria-hidden="true">
+  <div class="cl-scene">
+    <div class="cl-ground"></div>
+    <div class="cl-mast"></div>
+    <div class="cl-jib"></div>
+    <div class="cl-cable"></div>
+    <div class="cl-block">MCV</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">MCV <b>FULL CONSTRUCTION</b></div>
+    <div class="wordsub">General Builders . Essex</div>
   </div>
 </div>
 
