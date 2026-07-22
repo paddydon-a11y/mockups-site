@@ -379,6 +379,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-cranelift.play .wordsub{animation:wordIn .4s ease .2s forwards}
 }
 
+/* ---- TRUSS RAISE (builders / roofers; first used: bshc-contractors) ---- */
+#ld-trussraise{background:#14171b;flex-direction:column}
+#ld-trussraise .tsr-svg{width:min(320px,78vw);height:auto;margin-bottom:24px}
+#ld-trussraise .tsr-plate{stroke:#57606b;stroke-width:3;stroke-linecap:round;stroke-dasharray:320;stroke-dashoffset:320}
+#ld-trussraise.play .tsr-plate{animation:tsrDraw .5s ease-out .1s forwards}
+#ld-trussraise .tsr-raf{stroke:#aab3bd;stroke-width:3;stroke-linecap:round;stroke-dasharray:95;stroke-dashoffset:95;opacity:0}
+#ld-trussraise.play .tsr-raf.t1{animation:tsrDraw .34s ease-out .55s forwards,tsrShow .01s linear .55s forwards}
+#ld-trussraise.play .tsr-raf.t2{animation:tsrDraw .34s ease-out .72s forwards,tsrShow .01s linear .72s forwards}
+#ld-trussraise.play .tsr-raf.t3{animation:tsrDraw .34s ease-out .89s forwards,tsrShow .01s linear .89s forwards}
+#ld-trussraise.play .tsr-raf.t4{animation:tsrDraw .34s ease-out 1.06s forwards,tsrShow .01s linear 1.06s forwards}
+#ld-trussraise.play .tsr-raf.t5{animation:tsrDraw .34s ease-out 1.23s forwards,tsrShow .01s linear 1.23s forwards}
+#ld-trussraise .tsr-ridge{stroke:#d4281e;stroke-width:4;stroke-linecap:round;stroke-dasharray:320;stroke-dashoffset:320}
+#ld-trussraise.play .tsr-ridge{animation:tsrDraw .5s cubic-bezier(.6,0,.2,1) 1.55s forwards}
+@keyframes tsrDraw{to{stroke-dashoffset:0}}
+@keyframes tsrShow{to{opacity:1}}
+#ld-trussraise .wordmark{color:#f2f3f4}
+#ld-trussraise .wordmark b{color:#d4281e}
+#ld-trussraise .wordsub{color:#8b959e}
+#ld-trussraise.play .wordmark{animation:wordIn .45s ease 1.75s forwards}
+#ld-trussraise.play .wordsub{animation:wordIn .45s ease 1.9s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld-trussraise .tsr-svg{display:none}
+  #ld-trussraise.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-trussraise.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
+
 /* ---- TURF ROLL (landscapers; first used: david-gilfillan) ---- */
 #ld-turfroll{background:#14171b;flex-direction:column}
 #ld-turfroll .tr-scene{position:relative;width:min(420px,78vw);height:86px;margin-bottom:26px}
@@ -2467,6 +2493,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A tower crane draws itself in (mast up, jib across), the cable runs down and lowers the brand block onto the datum with an overshoot settle, wordmark lands. First used: mcv-full-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-trussraise" data-dur="2500">
+      <span class="trade">Builders / Roofers</span>
+      <h3>Truss Raise</h3>
+      <p>A wall plate draws in, five rafter pairs raise one by one into an apex run, then the red ridge line sweeps across and the wordmark lands. First used: bshc-contractors.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-keyturn" data-dur="2400">
       <span class="trade">Locksmiths</span>
       <h3>Key Turn</h3>
@@ -3353,6 +3385,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div style="display:flex;flex-direction:column;align-items:center">
     <div class="wordmark">MCV <b>FULL CONSTRUCTION</b></div>
     <div class="wordsub">General Builders . Essex</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-trussraise" aria-hidden="true">
+  <svg class="tsr-svg" viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg">
+    <line class="tsr-plate" x1="10" y1="100" x2="310" y2="100"/>
+    <line class="tsr-raf t1" x1="20" y1="100" x2="60" y2="18"/>
+    <line class="tsr-raf t1" x1="100" y1="100" x2="60" y2="18"/>
+    <line class="tsr-raf t2" x1="70" y1="100" x2="110" y2="18"/>
+    <line class="tsr-raf t2" x1="150" y1="100" x2="110" y2="18"/>
+    <line class="tsr-raf t3" x1="120" y1="100" x2="160" y2="18"/>
+    <line class="tsr-raf t3" x1="200" y1="100" x2="160" y2="18"/>
+    <line class="tsr-raf t4" x1="170" y1="100" x2="210" y2="18"/>
+    <line class="tsr-raf t4" x1="250" y1="100" x2="210" y2="18"/>
+    <line class="tsr-raf t5" x1="220" y1="100" x2="260" y2="18"/>
+    <line class="tsr-raf t5" x1="300" y1="100" x2="260" y2="18"/>
+    <line class="tsr-ridge" x1="60" y1="18" x2="260" y2="18"/>
+  </svg>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">BSHC <b>CONTRACTORS</b></div>
+    <div class="wordsub">Builders . Luton</div>
   </div>
 </div>
 
