@@ -425,6 +425,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 
 /* ---- TURF ROLL (landscapers; first used: david-gilfillan) ---- */
+#ld-dovetail{background:#151a20;flex-direction:column}
+#ld-dovetail .dv-scene{position:relative;width:min(320px,72vw);height:120px;margin-bottom:30px}
+#ld-dovetail .dv-saw{position:absolute;left:0;right:0;top:50%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:scaleX(0);transform-origin:left}
+#ld-dovetail.play .dv-saw{animation:dvSaw .55s ease-out forwards}
+@keyframes dvSaw{to{transform:scaleX(1)}}
+#ld-dovetail .dv-half{position:absolute;top:0;width:50%;height:100%}
+#ld-dovetail .dv-half svg{width:100%;height:100%;display:block}
+#ld-dovetail .dv-l{left:0;transform:translateX(-130%)}
+#ld-dovetail .dv-r{right:0;transform:translateX(130%)}
+#ld-dovetail.play .dv-l{animation:dvL .8s cubic-bezier(.22,1.2,.36,1) .55s forwards}
+#ld-dovetail.play .dv-r{animation:dvR .8s cubic-bezier(.22,1.2,.36,1) .55s forwards}
+@keyframes dvL{60%{transform:translateX(4%)}80%{transform:translateX(-1.5%)}100%{transform:translateX(0)}}
+@keyframes dvR{60%{transform:translateX(-4%)}80%{transform:translateX(1.5%)}100%{transform:translateX(0)}}
+#ld-dovetail .dv-flash{position:absolute;inset:-8px;border-radius:10px;box-shadow:0 0 0 1px rgba(122,168,204,0)}
+#ld-dovetail.play .dv-flash{animation:dvFlash .5s ease 1.35s}
+@keyframes dvFlash{40%{box-shadow:0 0 0 1px rgba(122,168,204,.7),0 0 34px rgba(47,97,135,.55)}100%{box-shadow:0 0 0 1px rgba(122,168,204,0)}}
+#ld-dovetail .wordmark{color:#fff}
+#ld-dovetail .wordmark b{color:#7aa8cc}
+#ld-dovetail .wordsub{color:#8fa2b3}
+#ld-dovetail.play .wordmark{animation:wordIn .6s ease 1.5s forwards}
+#ld-dovetail.play .wordsub{animation:wordIn .6s ease 1.65s forwards}
 #ld-turfroll{background:#14171b;flex-direction:column}
 #ld-turfroll .tr-scene{position:relative;width:min(420px,78vw);height:86px;margin-bottom:26px}
 #ld-turfroll .tr-ground{position:absolute;left:0;right:0;bottom:26px;height:2px;background:#3a414a;transform:scaleX(0);transform-origin:left}
@@ -2536,6 +2557,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A turf roll unrolls a fresh green strip along the ground line, grass blades tick up behind it, then the wordmark settles over the new lawn. First used: david-gilfillan.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-dovetail" data-dur="2400">
+      <span class="trade">Joiners / Carpenters</span>
+      <h3>Dovetail Fit</h3>
+      <p>A saw line of light cuts across, two timber halves slide in from either side and their dovetail pins and tails interlock with a settle and a glow flash at the joint. First used: stormproof-construction.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-wallbreach" data-dur="2500">
       <span class="trade">Demolition Contractors</span>
       <h3>Wall Breach</h3>
@@ -3446,6 +3473,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div style="display:flex;flex-direction:column;align-items:center">
     <div class="wordmark">BSHC <b>CONTRACTORS</b></div>
     <div class="wordsub">Builders . Luton</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-dovetail" aria-hidden="true">
+  <div class="dv-scene">
+    <div class="dv-saw"></div>
+    <div class="dv-half dv-l">
+      <svg viewBox="0 0 160 120" preserveAspectRatio="none">
+        <path d="M0 8 H118 V34 L160 44 V76 L118 86 V112 H0 Z" fill="#7aa8cc" opacity=".16" stroke="#7aa8cc" stroke-width="2"/>
+        <path d="M14 26 H96 M14 60 H88 M14 94 H96" stroke="rgba(122,168,204,.45)" stroke-width="1.4"/>
+      </svg>
+    </div>
+    <div class="dv-half dv-r">
+      <svg viewBox="0 0 160 120" preserveAspectRatio="none">
+        <path d="M160 8 H42 V34 L0 44 V76 L42 86 V112 H160 Z" fill="#2f6187" opacity=".28" stroke="#7aa8cc" stroke-width="2"/>
+        <path d="M64 26 H146 M72 60 H146 M64 94 H146" stroke="rgba(122,168,204,.45)" stroke-width="1.4"/>
+      </svg>
+    </div>
+    <div class="dv-flash"></div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">STORM<b>PROOF</b></div>
+    <div class="wordsub">Carpenters &amp; Builders . St Helier, Jersey</div>
   </div>
 </div>
 
