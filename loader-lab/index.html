@@ -7,7 +7,7 @@
 <title>Trade Loader Lab — internal reference</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Cinzel:wght@600;700&family=DM+Mono:wght@400;500&family=Gantari:wght@900&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@500;700;900&family=Cinzel:wght@600;700&family=DM+Mono:wght@400;500&family=Gantari:wght@900&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#101113; --card:#17191c; --card-2:#1d2024; --line:#26292e;
@@ -441,6 +441,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-dovetail .dv-flash{position:absolute;inset:-8px;border-radius:10px;box-shadow:0 0 0 1px rgba(122,168,204,0)}
 #ld-dovetail.play .dv-flash{animation:dvFlash .5s ease 1.35s}
 @keyframes dvFlash{40%{box-shadow:0 0 0 1px rgba(122,168,204,.7),0 0 34px rgba(47,97,135,.55)}100%{box-shadow:0 0 0 1px rgba(122,168,204,0)}}
+#ld-endgrain{background:#17191b;flex-direction:column}
+#ld-endgrain .eg-rings{width:180px;height:180px;margin-bottom:26px}
+#ld-endgrain .eg-rings circle{fill:none;stroke:#39424a;stroke-width:2;transform:rotate(-90deg);transform-origin:center}
+#ld-endgrain .eg-rings .eg-h{fill:#0c7c74;stroke:none;opacity:0}
+#ld-endgrain.play .eg-rings .eg-h{animation:egHeart .35s ease .05s forwards}
+#ld-endgrain .eg-rings .eg1{stroke-dasharray:188;stroke-dashoffset:188}
+#ld-endgrain .eg-rings .eg2{stroke-dasharray:377;stroke-dashoffset:377}
+#ld-endgrain .eg-rings .eg3{stroke-dasharray:565;stroke-dashoffset:565;stroke:#0c7c74;stroke-width:2.5}
+#ld-endgrain .eg-rings .eg4{stroke-dasharray:754;stroke-dashoffset:754}
+#ld-endgrain .eg-rings .eg5{stroke-dasharray:911;stroke-dashoffset:911;stroke:#2b3339}
+#ld-endgrain.play .eg-rings .eg1{animation:egDraw .55s ease-out .12s forwards}
+#ld-endgrain.play .eg-rings .eg2{animation:egDraw .6s ease-out .3s forwards}
+#ld-endgrain.play .eg-rings .eg3{animation:egDraw .65s ease-out .48s forwards}
+#ld-endgrain.play .eg-rings .eg4{animation:egDraw .7s ease-out .66s forwards}
+#ld-endgrain.play .eg-rings .eg5{animation:egDraw .75s ease-out .84s forwards}
+@keyframes egDraw{to{stroke-dashoffset:0}}
+@keyframes egHeart{to{opacity:1}}
+#ld-endgrain .wordmark{font-family:'Alfa Slab One',serif;font-weight:400;color:#fff}
+#ld-endgrain .wordmark b{color:#2fbfb4;font-weight:400}
+#ld-endgrain .wordsub{color:#8f99a2}
+#ld-endgrain.play .wordmark{animation:wordIn .6s ease 1.2s forwards}
+#ld-endgrain.play .wordsub{animation:wordIn .6s ease 1.35s forwards}
 #ld-dovetail .wordmark{color:#fff}
 #ld-dovetail .wordmark b{color:#7aa8cc}
 #ld-dovetail .wordsub{color:#8fa2b3}
@@ -3049,6 +3071,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On ink, a green laser line sweeps down the screen and locks the horizontal datum with a settle bounce; the vertical line scales in to complete the cross, mono tick marks pop along the datum, and a spirit-level vial fades in whose bubble slides to centre with an overshoot before the wordmark rises under the line. The setting-out ritual (laser on, datum locked, level checked) as a loader. First used: tec-projects. Distinct from Coursework and String Line (bricks laid), Proposed to Built (plan fills solid) and every gauge/pipe loader: nothing is laid, drawn solid or pressurised, a LEVEL LINE locks and a bubble settles.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-endgrain" data-dur="2400">
+      <span class="trade">Carpenters / joiners</span>
+      <h3>End Grain</h3>
+      <p>On timber ink, the growth rings of a sawn log draw themselves out from the heart dot, ring by ring (staggered stroke draw, one ring in the brand accent), then the wordmark and mono sub rise beneath. Rings read as years on the tools; on the mockup the loader hands off into ghost growth rings behind the mobile hero H1. First used: olivers-carpentry. Distinct from Dovetail Fit (two halves are cut and joined) and Vein &amp; Polish (veins branch and a sheen sweeps): here concentric RINGS GROW from the heart.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-endgrain" aria-hidden="true">
+  <svg class="eg-rings" viewBox="0 0 320 320" aria-hidden="true">
+    <circle class="eg-h" cx="160" cy="160" r="5"/>
+    <circle class="eg1" cx="160" cy="160" r="30"/>
+    <circle class="eg2" cx="160" cy="160" r="60"/>
+    <circle class="eg3" cx="160" cy="160" r="90"/>
+    <circle class="eg4" cx="160" cy="160" r="120"/>
+    <circle class="eg5" cx="160" cy="160" r="145"/>
+  </svg>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">Olivers <b>Carpentry</b></div>
+    <div class="wordsub">All Aspects of Carpentry . Dorset</div>
   </div>
 </div>
 
