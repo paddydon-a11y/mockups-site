@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LR Decor Ltd | Painter &amp; Decorator in Yorkshire</title>
+<meta name="description" content="LR Decor Ltd is a Yorkshire painter and decorator. Interior painting, feature walls, woodwork, radiators and bespoke wall panelling for homes and commercial spaces.">
+<meta property="og:title" content="LR Decor Ltd | Painter &amp; Decorator in Yorkshire">
+<meta property="og:description" content="Painting, papering and panelling for homes and commercial spaces across Yorkshire.">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/lr-decor/">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/lr-decor/work-2.jpg">
+<meta property="og:type" content="website">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f4f5f6;
+  --card:#f8f9fa;
+  --ink:#131313;
+  --ink-soft:#2a2a2a;
+  --body:#494f55;
+  --muted:#8b9299;
+  --line:#e4e7e9;
+  --line-dark:#cfd4d8;
+  --wa:#25d366;
+  /* the colour card: the only colour on the site is the paint */
+  --sw1:#d4d6d5; /* No.01 Limewash */
+  --sw2:#c99e9b; /* No.02 Blush */
+  --sw3:#5b6e85; /* No.03 Denim */
+  --sw4:#8a9a7b; /* No.04 Sage */
+  --sw5:#a08d7c; /* No.05 Mushroom */
+  --disp:'DM Serif Display',serif;
+  --sans:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+html.menu-open{overflow:hidden}
+body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+section{padding-top:96px;padding-bottom:96px}
+h1,h2,h3,.serif{font-family:var(--disp);font-weight:400;color:var(--ink)}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.label b{color:var(--ink);font-weight:600}
+.h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.12;letter-spacing:-.01em;margin-bottom:34px}
+
+/* ============ LOADER - Two Coats (roller) ============ */
+#loader{position:fixed;inset:0;z-index:1000;background:#e7e8e9;overflow:hidden;animation:loaderGone .6s cubic-bezier(.7,0,.3,1) 2.7s forwards}
+@keyframes loaderGone{to{transform:translateY(-100%);visibility:hidden}}
+#loader .coat{position:absolute;inset:0;transform:scaleX(0);transform-origin:left}
+#loader .coat-mist{background:#c6c9cb;animation:coatOn .62s cubic-bezier(.7,0,.3,1) .18s forwards}
+#loader .coat-ink{background:var(--ink);transform-origin:right;animation:coatOn .62s cubic-bezier(.7,0,.3,1) .92s forwards}
+@keyframes coatOn{to{transform:scaleX(1)}}
+#loader .roller{position:absolute;top:0;left:0;height:100%;width:120px;transform:translateX(-130px);z-index:5}
+#loader .roller .sleeve{position:absolute;top:-4%;left:34px;width:44px;height:108%;border-radius:22px;background:#f6f6f6;box-shadow:0 2px 14px rgba(0,0,0,.25)}
+#loader .roller.r1{animation:rollAcross .74s cubic-bezier(.65,0,.35,1) .14s forwards}
+#loader .roller.r2{animation:rollBack .74s cubic-bezier(.65,0,.35,1) .88s forwards}
+#loader .roller.r2 .sleeve{background:#3a3a3a}
+@keyframes rollAcross{from{transform:translateX(-130px)}to{transform:translateX(calc(100vw + 20px))}}
+@keyframes rollBack{from{transform:translateX(calc(100vw + 20px))}to{transform:translateX(-130px)}}
+#loader .lbrand{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;transform:translateY(14px);animation:brandUp .55s ease 1.5s forwards;z-index:6}
+@keyframes brandUp{to{opacity:1;transform:translateY(0)}}
+#loader .lmono{font-family:var(--disp);font-size:4.6rem;line-height:1;color:#fff}
+#loader .lword{font-family:var(--mono);font-size:.78rem;letter-spacing:.5em;text-transform:uppercase;color:#fff;padding-left:.5em}
+#loader .lsub{font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#8b9299;padding-left:.3em;margin-top:8px}
+#loader.done{transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.3,1)}
+@media (prefers-reduced-motion:reduce){
+  #loader .coat,#loader .roller{animation:none!important}
+  #loader{background:var(--ink)}
+  #loader .lbrand{animation:none;opacity:1;transform:none}
+  #loader.done{transition-duration:.25s}
+}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .bmono{font-family:var(--disp);font-size:1.7rem;line-height:1;color:var(--ink)}
+.brand .bword{font-family:var(--mono);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ink);font-weight:600;padding-top:4px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.86rem;font-weight:500;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:#fff!important;padding:11px 20px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.85rem}
+.nav-cta svg{width:15px;height:15px;stroke:#fff}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line-dark);border-radius:10px;background:var(--bg);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mmenu{display:none;position:fixed;top:77px;left:0;right:0;bottom:0;background:var(--bg);z-index:190;padding:28px 24px;flex-direction:column;gap:4px}
+.mmenu.show{display:flex}
+.mmenu a{font-family:var(--disp);font-size:1.7rem;color:var(--ink);padding:13px 0;border-bottom:1px solid var(--line)}
+.mmenu .m-call{margin-top:22px;background:var(--ink);color:#fff;text-align:center;border-radius:14px;padding:16px;font-family:var(--sans);font-weight:600;font-size:1rem;border-bottom:none}
+.mmenu .m-wa{margin-top:10px;background:var(--wa);color:#fff;text-align:center;border-radius:14px;padding:16px;font-family:var(--sans);font-weight:600;font-size:1rem;border-bottom:none}
+
+/* ============ HERO ============ */
+.hero{display:flex;flex-direction:column;background:var(--bg)}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:84px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);margin-bottom:26px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--ink);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(19,19,19,.35)}70%{box-shadow:0 0 0 9px rgba(19,19,19,0)}100%{box-shadow:0 0 0 0 rgba(19,19,19,0)}}
+h1{font-size:clamp(3rem,6.4vw,5.2rem);line-height:1.02;letter-spacing:-.015em}
+h1 .row{display:block}
+.band-word{position:relative;display:inline-block;color:#fff;padding:0 .18em;z-index:1}
+.band-word::before{content:"";position:absolute;left:-4%;right:-4%;top:6%;bottom:2%;background:var(--ink);border-radius:5px;transform:rotate(-1.6deg) scaleX(1);transform-origin:left center;z-index:-1;overflow:hidden}
+.js .band-word::before{transform:rotate(-1.6deg) scaleX(0)}
+.js .loaded .band-word::before{animation:bandOn .55s cubic-bezier(.7,0,.3,1) .25s forwards}
+@keyframes bandOn{to{transform:rotate(-1.6deg) scaleX(1)}}
+.band-word::after{content:"";position:absolute;left:-4%;top:6%;bottom:2%;width:34%;border-radius:5px;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.14) 50%,transparent 70%);transform:translateX(-110%);z-index:0;opacity:0}
+.js .loaded .band-word::after{opacity:1;animation:sheen 7s ease-in-out 1.4s infinite}
+@keyframes sheen{0%{transform:translateX(-110%)}18%{transform:translateX(340%)}100%{transform:translateX(340%)}}
+@media (prefers-reduced-motion:reduce){
+  .band-word::before,.js .band-word::before{transform:rotate(-1.6deg) scaleX(1);animation:none!important}
+  .band-word::after{display:none}
+  .js .fan .chip{opacity:1;transform:none;animation:none!important}
+}
+.lede{font-size:1.06rem;max-width:430px;margin:26px 0 30px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:100px;font-weight:600;font-size:.95rem;transition:transform .25s,box-shadow .25s}
+.btn svg{width:18px;height:18px}
+.btn:hover{transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:#fff;box-shadow:0 10px 26px rgba(19,19,19,.22)}
+.btn-ink svg{stroke:#fff}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 26px rgba(37,211,102,.28)}
+.btn-wa svg{fill:#fff}
+.note-row{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:34px}
+/* colour card fan */
+.fan{display:flex;align-items:flex-end;gap:0}
+.fan .chip{width:64px;height:84px;border-radius:8px;border:1px solid var(--line);background:#fff;box-shadow:0 6px 16px rgba(19,19,19,.12);display:flex;flex-direction:column;overflow:hidden;margin-right:-10px}
+.js .fan .chip{opacity:0;transform:translateY(16px) rotate(0deg)}
+.fan .chip .cc{flex:1}
+.fan .chip .cl{font-family:var(--mono);font-size:.46rem;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);padding:4px 2px;background:#fff;white-space:nowrap;text-align:center}
+.fan .chip:nth-child(1) .cc{background:var(--sw1)}
+.fan .chip:nth-child(2) .cc{background:var(--sw2)}
+.fan .chip:nth-child(3) .cc{background:var(--sw3)}
+.fan .chip:nth-child(4) .cc{background:var(--sw4)}
+.fan .chip:nth-child(5) .cc{background:var(--sw5)}
+.js .loaded .fan .chip{animation:chipUp .5s cubic-bezier(.34,1.4,.5,1) forwards}
+.loaded .fan .chip:nth-child(1){animation-delay:.55s;--rot:-5deg}
+.loaded .fan .chip:nth-child(2){animation-delay:.65s;--rot:-2.5deg}
+.loaded .fan .chip:nth-child(3){animation-delay:.75s;--rot:0deg}
+.loaded .fan .chip:nth-child(4){animation-delay:.85s;--rot:2.5deg}
+.loaded .fan .chip:nth-child(5){animation-delay:.95s;--rot:5deg}
+@keyframes chipUp{to{opacity:1;transform:translateY(0) rotate(var(--rot,0deg))}}
+@media (prefers-reduced-motion:reduce){.fan .chip{opacity:1;transform:none;animation:none!important}}
+.fan-note{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+/* hero photo */
+.hero-photo{position:relative}
+.hero-photo .ph{border-radius:16px;border:1px solid var(--line);overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 60px rgba(19,19,19,.14)}
+.hero-photo .ph img{width:100%;height:100%;object-fit:cover;animation:kb 20s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-badge{position:absolute;left:22px;bottom:22px;background:var(--ink);color:#fff;border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:11px;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.hero-badge .hb-sw{display:flex}
+.hero-badge .hb-sw i{width:11px;height:22px;border-radius:3px;display:block;margin-right:-3px}
+.hero-badge .hb-sw i:nth-child(1){background:var(--sw2)}
+.hero-badge .hb-sw i:nth-child(2){background:var(--sw3)}
+.hero-badge .hb-sw i:nth-child(3){background:var(--sw4)}
+.hero-badge b{font-size:.82rem;font-weight:600;letter-spacing:.02em}
+
+/* ============ TRUST ============ */
+.trust{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:26px;padding-bottom:26px}
+.t-item{display:flex;align-items:center;gap:10px;font-size:.86rem;font-weight:600;color:var(--ink)}
+.t-item svg{width:19px;height:19px;stroke:var(--ink);flex-shrink:0}
+
+/* ============ SERVICES - the colour card ============ */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(19,19,19,.1)}
+.svc .swatch{height:92px;position:relative}
+.svc .swatch .sw-label{position:absolute;left:16px;bottom:10px;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.92);background:rgba(19,19,19,.28);padding:3px 8px;border-radius:4px}
+.svc.sv1 .swatch{background:var(--sw1)}
+.svc.sv1 .swatch .sw-label{color:var(--ink);background:rgba(255,255,255,.55)}
+.svc.sv2 .swatch{background:var(--sw2)}
+.svc.sv3 .swatch{background:var(--sw3)}
+.svc.sv4 .swatch{background:var(--sw4)}
+.svc .swatch::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+.svc:hover .swatch::after{transform:scaleX(1)}
+.svc .sv-body{padding:24px 26px 28px}
+.svc .num{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--muted);margin-bottom:8px}
+.svc h3{font-size:1.45rem;margin-bottom:8px}
+.svc p{font-size:.92rem}
+/* feature card - panelling */
+.svc-feature{grid-column:span 2;display:grid;grid-template-columns:1.1fr .9fr;background:var(--ink);border:none}
+.svc-feature .sv-body{padding:40px 44px;display:flex;flex-direction:column;justify-content:center}
+.svc-feature .num{color:#8b9299}
+.svc-feature h3{color:#fff;font-size:2rem}
+.svc-feature p{color:#c9cdd1;font-size:.98rem;max-width:420px}
+.svc-feature .sw-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-top:18px}
+.svc-feature .sw-tag i{width:14px;height:14px;border-radius:4px;background:var(--sw5);display:block}
+.svc-feature .sv-photo{min-height:280px}
+.svc-feature .sv-photo img{width:100%;height:100%;object-fit:cover}
+.svc-feature .swatch{display:none}
+.svc-feature:hover{transform:translateY(-4px)}
+
+/* ============ GALLERY - the gallery wall ============ */
+.gal{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:8px}
+.gal-nav{display:flex;gap:10px}
+.gal-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.gal-nav button:hover{background:var(--ink)}
+.gal-nav button:hover svg{stroke:#fff}
+.gal-nav svg{width:17px;height:17px;stroke:var(--ink)}
+.rail{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 4px 10px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.frame-unit{flex:0 0 340px;scroll-snap-align:start}
+.frame{background:#fff;border:2px solid var(--ink);padding:10px;border-radius:4px;box-shadow:0 14px 34px rgba(19,19,19,.12);cursor:pointer;transition:transform .25s}
+.frame:hover{transform:translateY(-4px)}
+.frame .inner{border:1px solid var(--line-dark);padding:6px;border-radius:2px}
+.frame img{width:100%;aspect-ratio:4/3.2;object-fit:cover;border-radius:2px}
+.frame-cap{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--body);margin-top:13px;padding-top:9px;border-top:2px solid var(--ink);display:block}
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,10,10,.94);z-index:500;display:none;align-items:center;justify-content:center;padding:28px}
+.lb.show{display:flex}
+.lb img{max-width:92vw;max-height:84vh;border-radius:6px}
+.lb .lb-x{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;font-size:1.3rem;cursor:pointer}
+
+/* ============ ABOUT ============ */
+.about-in{max-width:660px}
+.about-in p{font-size:1.05rem}
+.about-sign{display:flex;align-items:center;gap:14px;margin-top:26px}
+.about-sign .asg{width:52px;height:52px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--disp);font-size:1.15rem;display:flex;align-items:center;justify-content:center}
+.about-sign b{display:block;color:var(--ink);font-size:.92rem}
+.about-sign span{font-size:.8rem;color:var(--muted)}
+
+/* ============ REVIEWS ============ */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 32px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(19,19,19,.09)}
+.stars{color:var(--ink);letter-spacing:3px;font-size:.9rem;margin-bottom:14px}
+.rev p{font-size:.95rem;margin-bottom:18px}
+.rev .who{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.rev .who b{color:var(--ink);font-weight:600}
+
+/* ============ CTA BAND ============ */
+.band{background:var(--ink);position:relative;overflow:hidden}
+.band-in{text-align:center;padding-top:88px;padding-bottom:88px;position:relative;z-index:1}
+.band h2{color:#fff;font-size:clamp(2rem,4.4vw,3.1rem);margin-bottom:14px}
+.band p{color:#b9bec3;max-width:440px;margin:0 auto 32px}
+.band .cta-row{justify-content:center}
+.band .btn-white{background:#fff;color:var(--ink)}
+.band .btn-white svg{stroke:var(--ink)}
+.band .roller-ghost{position:absolute;top:0;bottom:0;width:120px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.045),transparent);transform:translateX(-140px);animation:ghostRoll 9s ease-in-out infinite}
+@keyframes ghostRoll{0%{transform:translateX(-140px)}45%{transform:translateX(100vw)}100%{transform:translateX(100vw)}}
+@media (prefers-reduced-motion:reduce){.band .roller-ghost{display:none}}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.c-card{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}
+.c-card:last-child{border-bottom:none}
+.ci{width:46px;height:46px;border-radius:12px;background:var(--stone);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci svg{width:20px;height:20px;stroke:var(--ink)}
+.c-card b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:2px}
+.c-card a,.c-card span{font-size:.92rem;color:var(--body)}
+.c-card a:hover{color:var(--ink)}
+form{background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px;box-shadow:0 20px 50px rgba(19,19,19,.07)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.f-group{margin-bottom:18px}
+.f-group label{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+.f-group input,.f-group select,.f-group textarea{width:100%;padding:13px 15px;border:1px solid var(--line-dark);border-radius:10px;font-family:var(--sans);font-size:.93rem;color:var(--ink);background:var(--bg)}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{outline:2px solid var(--ink);outline-offset:-1px;border-color:var(--ink)}
+.f-group textarea{min-height:110px;resize:vertical}
+.f-btn{width:100%;background:var(--ink);color:#fff;border:none;padding:17px;border-radius:100px;font-family:var(--sans);font-weight:600;font-size:1rem;cursor:pointer;transition:opacity .2s}
+.f-btn:hover{opacity:.88}
+
+/* ============ FOOTER ============ */
+footer{background:var(--bg);border-top:1px solid var(--line);padding:46px 0}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-in .fb .bmono{font-size:1.4rem}
+.foot-meta{font-size:.8rem;color:var(--muted)}
+.foot-meta a{text-decoration:underline;text-underline-offset:3px}
+.foot-meta a:hover{color:var(--ink)}
+
+/* ============ FABS ============ */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:180;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.24)}
+.fab svg{width:23px;height:23px}
+.fab-call{background:var(--ink);animation:fabPulse 2s infinite}
+.fab-call svg{stroke:#fff}
+.fab-wa{background:var(--wa);animation:fabPulseW 2s infinite}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(19,19,19,.4)}70%{box-shadow:0 0 0 14px rgba(19,19,19,0)}100%{box-shadow:0 0 0 0 rgba(19,19,19,0)}}
+@keyframes fabPulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ============ REVEALS ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ============ MOBILE ============ */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:38px}
+  .hero-photo .ph{aspect-ratio:16/11}
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .svc-feature{grid-template-columns:1fr}
+  .svc-feature .sv-photo{min-height:220px}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  section{padding-top:68px;padding-bottom:68px}
+  h1{font-size:clamp(3.1rem,13.5vw,4rem)}
+  .hero-inner{padding-top:44px;padding-bottom:56px}
+  .hero-badge{position:static;margin-top:14px;width:100%;border-radius:12px;justify-content:center}
+  .trust-in{flex-direction:column;gap:0;padding-top:10px;padding-bottom:10px}
+  .t-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .t-item:last-child{border-bottom:none}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-feature{grid-column:span 1}
+  .rev-grid{grid-template-columns:1fr}
+  .frame-unit{flex:0 0 78vw}
+  form{padding:28px 22px}
+  .f-row{grid-template-columns:1fr}
+  .gal-nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER : Two Coats -->
+<div id="loader" aria-hidden="true">
+  <div class="coat coat-mist"></div>
+  <div class="coat coat-ink"></div>
+  <div class="roller r1"><span class="sleeve"></span></div>
+  <div class="roller r2"><span class="sleeve"></span></div>
+  <div class="lbrand">
+    <div class="lmono">LR</div>
+    <div class="lword">LR Decor Ltd</div>
+    <div class="lsub">Painter &middot; Decorator &middot; Yorkshire</div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in wrap">
+    <a href="#top" class="brand"><span class="bmono">LR</span><span class="bword">LR Decor</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="nav-cta" data-call><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-phone>&nbsp;</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu">
+  <a href="#services">Services</a>
+  <a href="#work">Our Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="m-call" data-call>Call us</a>
+  <a href="#" class="m-wa" data-wa>WhatsApp us</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-inner wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Painter &amp; Decorator &middot; Yorkshire</div>
+      <h1>
+        <span class="row">Painted.</span>
+        <span class="row"><span class="band-word">Papered.</span></span>
+        <span class="row">Panelled.</span>
+      </h1>
+      <p class="lede">Reliable, high quality decorating for homes and commercial spaces across Yorkshire. Careful prep, crisp lines, tidy rooms.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-ink" data-call><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+        <a href="#" class="btn btn-wa" data-wa><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a>
+      </div>
+      <div class="note-row">Residential &amp; Commercial &middot; Covering Yorkshire</div>
+      <div class="fan" aria-hidden="true">
+        <span class="chip"><span class="cc"></span><span class="cl">Limewash</span></span>
+        <span class="chip"><span class="cc"></span><span class="cl">Blush</span></span>
+        <span class="chip"><span class="cc"></span><span class="cl">Denim</span></span>
+        <span class="chip"><span class="cc"></span><span class="cl">Sage</span></span>
+        <span class="chip"><span class="cc"></span><span class="cl">Mushroom</span></span>
+      </div>
+      <div class="fan-note">Colour advice included with every job</div>
+    </div>
+    <div class="hero-photo">
+      <div class="ph"><img src="work-2.jpg" alt="Finished staircase with painted white spindles and herringbone runner" fetchpriority="high"></div>
+      <div class="hero-badge"><span class="hb-sw"><i></i><i></i><i></i></span><b>Painting &middot; Papering &middot; Panelling</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-in wrap">
+    <div class="t-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Interior &amp; Exterior</div>
+    <div class="t-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18"/></svg>Feature Walls</div>
+    <div class="t-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 3v18M12 3v18M16 3v18"/></svg>Wall Panelling</div>
+    <div class="t-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>Woodwork &amp; Metal</div>
+    <div class="t-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Residential &amp; Commercial</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label">Services &middot; <b>The Colour Card</b></div>
+      <h2 class="h2">Pick a finish. We do the rest.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc sv1 reveal">
+        <div class="swatch"><span class="sw-label">LR No.01 &middot; Limewash</span></div>
+        <div class="sv-body">
+          <div class="num">/01</div>
+          <h3>Interior Walls &amp; Ceilings</h3>
+          <p>Smooth, even coats with the prep done first. Filled, sanded, finished clean.</p>
+        </div>
+      </div>
+      <div class="svc sv2 reveal">
+        <div class="swatch"><span class="sw-label">LR No.02 &middot; Blush</span></div>
+        <div class="sv-body">
+          <div class="num">/02</div>
+          <h3>Feature Wall Painting</h3>
+          <p>One bold wall that changes the whole room. Colour matched to your space.</p>
+        </div>
+      </div>
+      <div class="svc sv3 reveal">
+        <div class="swatch"><span class="sw-label">LR No.03 &middot; Denim</span></div>
+        <div class="sv-body">
+          <div class="num">/03</div>
+          <h3>Woodwork Painting</h3>
+          <p>Doors, frames, skirting and sills in durable paints that keep their edge.</p>
+        </div>
+      </div>
+      <div class="svc sv4 reveal">
+        <div class="swatch"><span class="sw-label">LR No.04 &middot; Sage</span></div>
+        <div class="sv-body">
+          <div class="num">/04</div>
+          <h3>Radiators &amp; Metal Surfaces</h3>
+          <p>Heat resistant, metal safe coatings for radiators, pipes and trims.</p>
+        </div>
+      </div>
+      <div class="svc svc-feature reveal">
+        <div class="sv-body">
+          <div class="num">/05</div>
+          <h3>Wall Panelling</h3>
+          <p>A sophisticated look for your spaces, designed and fitted by us. Various styles available, from shaker to full height board.</p>
+          <span class="sw-tag"><i></i>LR No.05 &middot; Mushroom</span>
+        </div>
+        <div class="sv-photo"><img src="work-5.jpg" alt="Freshly painted shaker wall panelling in a hallway" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gal" id="work">
+  <div class="wrap">
+    <div class="gal-head reveal">
+      <div>
+        <div class="label">Our Work</div>
+        <h2 class="h2" style="margin-bottom:0">The gallery wall</h2>
+      </div>
+      <div class="gal-nav">
+        <button id="galPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <button id="galNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rail reveal" id="rail">
+      <div class="frame-unit"><div class="frame" data-lb="work-2.jpg"><div class="inner"><img src="work-2.jpg" alt="Staircase with painted spindles and herringbone runner"></div></div><span class="frame-cap">01 &middot; Hallway staircase, woodwork in white</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-5.jpg"><div class="inner"><img src="work-5.jpg" alt="Shaker wall panelling painted in soft grey"></div></div><span class="frame-cap">02 &middot; Shaker panelling, soft grey</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-4.jpg"><div class="inner"><img src="work-4.jpg" alt="Bedroom with papered feature wall and grey painted walls"></div></div><span class="frame-cap">03 &middot; Papered feature wall, bedroom</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-6.jpg"><div class="inner"><img src="work-6.jpg" alt="Board panelling being fitted and painted"></div></div><span class="frame-cap">04 &middot; Board panelling, mid job</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-3.jpg"><div class="inner"><img src="work-3.jpg" alt="Bright garden room interior finished in white"></div></div><span class="frame-cap">05 &middot; Garden room, bright and clean</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-7.jpg"><div class="inner"><img src="work-7.jpg" alt="Garden room interior repaint"></div></div><span class="frame-cap">06 &middot; Garden room repaint</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-1.jpg"><div class="inner"><img src="work-1.jpg" alt="Garden fence painted slate grey"></div></div><span class="frame-cap">07 &middot; Fence and garden walls, slate grey</span></div>
+      <div class="frame-unit"><div class="frame" data-lb="work-8.jpg"><div class="inner"><img src="work-8.jpg" alt="Exterior fencing and gates painted grey"></div></div><span class="frame-cap">08 &middot; Exterior fencing and gates</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="wrap about-in reveal">
+    <div class="label">About</div>
+    <h2 class="h2">The finish is the product</h2>
+    <p>LR Decor is a Yorkshire decorating company working in homes and commercial spaces across the county. Careful prep, clean lines, tidy rooms and paint that lasts. Send us a photo of the room and we will tell you straight what it needs.</p>
+    <div class="about-sign">
+      <span class="asg">LR</span>
+      <span><b>LR Decor Ltd</b><span>Painter &amp; Decorator, Yorkshire</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="gal" id="reviews" style="padding-top:88px">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label">Reviews</div>
+      <h2 class="h2">What customers say</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"The team at LR Decor were extremely professional and easy to work with. They helped us make good, informed decisions during our renovation."</p>
+        <div class="who"><b>Emma Wilson</b> &middot; Residential customer</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"LR Decor panelled our hallway and painted it through in a week. Neat, tidy and the finish is spot on. You cannot see a single brush mark."</p>
+        <div class="who"><b>Sarah H., Leeds</b> &middot; Panelling</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Every wall and ceiling in the house, plus all the woodwork. Turned up when they said they would and left the place spotless each night."</p>
+        <div class="who"><b>James O., York</b> &middot; Full repaint</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"They talked me out of the colour I had chosen and they were right. The feature wall makes the room. Would not use anyone else now."</p>
+        <div class="who"><b>Claire D., Harrogate</b> &middot; Feature wall</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="band">
+  <span class="roller-ghost" aria-hidden="true"></span>
+  <div class="band-in wrap">
+    <h2 class="serif">Ready for a fresh coat?</h2>
+    <p>Send a few photos of the room on WhatsApp and we will come back with an honest quote.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-white" data-call><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-phone>&nbsp;</span></a>
+      <a href="#" class="btn btn-wa" data-wa><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp us</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="label">Contact</div>
+        <h2 class="h2">Start with a photo of the room</h2>
+        <div class="c-cards">
+          <div class="c-card">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><b>Call us</b><a href="#" data-call><span data-phone>&nbsp;</span></a></div>
+          </div>
+          <div class="c-card">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <div><b>WhatsApp</b><a href="#" data-wa><span>Message photos of the job</span></a></div>
+          </div>
+          <div class="c-card">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></span>
+            <div><b>Email</b><a href="#" data-mail><span data-email>&nbsp;</span></a></div>
+          </div>
+          <div class="c-card">
+            <span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><b>Yorkshire</b><span>Residential &amp; commercial, county wide</span></div>
+          </div>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="LR Decor Ltd">
+        <input type="hidden" name="source" value="mockup-lr-decor">
+        <div class="f-row">
+          <div class="f-group"><label for="fname">Name *</label><input type="text" id="fname" name="name" required autocomplete="name"></div>
+          <div class="f-group"><label for="fphone">Phone *</label><input type="tel" id="fphone" name="phone" required autocomplete="tel"></div>
+        </div>
+        <div class="f-group"><label for="femail">Email</label><input type="email" id="femail" name="email" autocomplete="email"></div>
+        <div class="f-group"><label for="fservice">What do you need?</label>
+          <select id="fservice" name="service">
+            <optgroup label="Painting">
+              <option>Interior Walls &amp; Ceilings</option>
+              <option>Feature Wall</option>
+              <option>Woodwork</option>
+              <option>Radiators &amp; Metal</option>
+            </optgroup>
+            <optgroup label="Panelling">
+              <option>Wall Panelling</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Exterior</option>
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="f-group"><label for="fmsg">Tell us about the job</label><textarea id="fmsg" name="message" placeholder="Which rooms, rough sizes, and when you would like it done"></textarea></div>
+        <button type="submit" class="f-btn">Send your enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in wrap">
+    <a href="#top" class="brand fb"><span class="bmono">LR</span><span class="bword">LR Decor Ltd</span></a>
+    <div class="foot-meta">Painter &amp; Decorator, Yorkshire &middot; &copy; 2026 LR Decor Ltd</div>
+    <div class="foot-meta">Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></div>
+  </div>
+</footer>
+
+<!-- FABS -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" data-call aria-label="Call LR Decor"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" class="fab fab-wa" data-wa aria-label="WhatsApp LR Decor"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="lb-x" id="lbX" aria-label="Close">&#10005;</button><img id="lbImg" src="" alt="Work photo enlarged"></div>
+
+<script>
+(function(){
+  /* contact fill */
+  var P = atob('MDczNzg1MTcxNTM=');
+  var Pf = atob('MDczNzggNTE3MTUz');
+  var W = atob('NDQ3Mzc4NTE3MTUz');
+  var E = atob('THVrZUBscmRlY29ybHRkLmNvLnVr');
+  document.querySelectorAll('[data-call]').forEach(function(a){a.href='tel:+44'+P.slice(1)});
+  document.querySelectorAll('[data-wa]').forEach(function(a){a.href='https://wa.me/'+W});
+  document.querySelectorAll('[data-mail]').forEach(function(a){a.href='mailto:'+E});
+  document.querySelectorAll('[data-phone]').forEach(function(s){s.textContent=Pf});
+  document.querySelectorAll('[data-email]').forEach(function(s){s.textContent=E});
+  var ts=document.getElementById('formTimestamp'); if(ts) ts.value=Date.now();
+
+  /* loader */
+  var loader=document.getElementById('loader');
+  function tearDown(){
+    if(!loader||loader.classList.contains('done'))return;
+    loader.classList.add('done');
+    document.body.classList.add('loaded');
+    setTimeout(function(){loader.remove()},700);
+  }
+  setTimeout(tearDown,2200);
+  setTimeout(tearDown,2500); /* failsafe */
+
+  /* mobile menu - lock html only */
+  var burger=document.getElementById('burger'), mmenu=document.getElementById('mmenu');
+  function closeMenu(){burger.classList.remove('open');mmenu.classList.remove('show');document.documentElement.classList.remove('menu-open')}
+  burger.addEventListener('click',function(){
+    var open=mmenu.classList.toggle('show');
+    burger.classList.toggle('open',open);
+    document.documentElement.classList.toggle('menu-open',open);
+  });
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
+
+  /* fabs */
+  var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+  window.addEventListener('scroll',function(){
+    fabs.classList.toggle('show', window.scrollY > hero.offsetHeight*0.75);
+  },{passive:true});
+
+  /* reveals */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  /* gallery rail */
+  var rail=document.getElementById('rail');
+  var step=370;
+  var pv=document.getElementById('galPrev'), nx=document.getElementById('galNext');
+  if(pv)pv.addEventListener('click',function(){rail.scrollBy({left:-step,behavior:'smooth'})});
+  if(nx)nx.addEventListener('click',function(){rail.scrollBy({left:step,behavior:'smooth'})});
+
+  /* lightbox */
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg');
+  document.querySelectorAll('[data-lb]').forEach(function(f){
+    f.addEventListener('click',function(){lbImg.src=f.getAttribute('data-lb');lb.classList.add('show')});
+  });
+  function lbClose(){lb.classList.remove('show');lbImg.src=''}
+  document.getElementById('lbX').addEventListener('click',lbClose);
+  lb.addEventListener('click',function(e){if(e.target===lb)lbClose()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lbClose()});
+})();
+</script>
+</body>
+</html>
