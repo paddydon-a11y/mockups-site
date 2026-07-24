@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaxmil Construction Ltd | Commercial, Residential & Industrial Construction | Telford, UK Wide</title>
+<meta name="description" content="Jaxmil Construction Ltd. Commercial, residential and industrial construction, project managed from start to handover. Based in Telford, working UK wide.">
+<meta property="og:title" content="Jaxmil Construction Ltd, Your New Website">
+<meta property="og:description" content="Construction company in Telford working UK wide. Preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/jaxmil-construction/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/jaxmil-construction/">
+<meta name="theme-color" content="#16181a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --ink:#16181a;
+  --ink-2:#1d2023;
+  --ink-3:#24282b;
+  --paper:#ffffff;
+  --stone:#f2f4f5;
+  --stone-2:#e8ebec;
+  --line-d:rgba(242,244,245,.16);
+  --line-d-soft:rgba(242,244,245,.09);
+  --grid-d:rgba(242,244,245,.045);
+  --line-l:#dfe3e5;
+  --head:#16181a;
+  --body:#454c51;
+  --mut:#8b9298;
+  --mut-d:#9aa1a6;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.7;color:var(--body);background:var(--paper);overflow-x:clip}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+h1,h2,h3{font-family:'Teko',sans-serif;font-weight:600;line-height:.94;color:var(--head);letter-spacing:.01em;text-transform:uppercase}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ============ LOADER ============ */
+#loader{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .6s cubic-bezier(.76,0,.24,1),visibility .6s;animation:ldSafety .3s linear 2.7s forwards}
+@keyframes ldSafety{to{transform:translateY(-102%);visibility:hidden}}
+#loader.done{transform:translateY(-102%);visibility:hidden}
+#loader::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:44px 44px}
+.ld-stage{position:relative;text-align:center;width:min(420px,82vw)}
+.ld-dig{width:min(300px,64vw);margin:0 auto}
+.ld-dig path,.ld-dig rect{stroke:var(--paper);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ld-dig .dr{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:ldDraw .55s cubic-bezier(.5,0,.3,1) var(--d) forwards}
+@keyframes ldDraw{to{stroke-dashoffset:0}}
+.ld-jcl{position:absolute;top:-6px;right:2px;width:64px;height:64px;background:var(--paper);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Teko',sans-serif;font-weight:700;font-size:1.9rem;letter-spacing:.04em;transform:scale(0);animation:ldPop .4s cubic-bezier(.34,1.56,.64,1) 1.35s forwards}
+@keyframes ldPop{to{transform:scale(1)}}
+.ld-word{margin-top:26px;font-family:'Teko',sans-serif;font-weight:600;font-size:clamp(1.9rem,6vw,2.6rem);letter-spacing:.06em;color:var(--paper);text-transform:uppercase;line-height:1;opacity:0;transform:translateY(14px);animation:ldUp .5s ease 1.55s forwards}
+.ld-sub{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.3em;color:var(--mut-d);text-transform:uppercase;opacity:0;transform:translateY(10px);animation:ldUp .5s ease 1.75s forwards}
+@keyframes ldUp{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){
+  #loader{animation:ldSafety .3s linear .8s forwards}
+  .ld-dig .dr{animation:none;stroke-dashoffset:0}
+  .ld-jcl{animation:none;transform:scale(1)}
+  .ld-word,.ld-sub{animation:none;opacity:1;transform:none}
+}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:900;background:var(--ink);border-bottom:1px solid var(--line-d-soft)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.nav-brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.nav-jcl{width:34px;height:34px;background:var(--paper);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Teko',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.05em;flex:0 0 auto}
+.nav-name{font-family:'Teko',sans-serif;font-weight:600;font-size:1.35rem;letter-spacing:.07em;color:var(--paper);text-transform:uppercase;line-height:1}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.83rem;font-weight:500;color:var(--mut-d);transition:color .2s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a.nav-cta{background:var(--paper);color:var(--ink) !important;font-weight:600;padding:9px 20px;transition:opacity .2s}
+.nav-links a.nav-cta:hover{opacity:.85}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{display:block;width:22px;height:2px;background:var(--paper);margin:5px 0;transition:transform .3s,opacity .3s}
+.m-panel{display:none;background:var(--ink);border-top:1px solid var(--line-d-soft)}
+.m-panel.open{display:block}
+.m-panel a{display:block;padding:15px 24px;font-size:.95rem;color:var(--paper);border-bottom:1px solid var(--line-d-soft)}
+.m-panel a.m-cta{background:var(--paper);color:var(--ink);font-weight:600;text-align:center;margin:14px 24px 18px;padding:13px;border-bottom:0}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+  body.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  body.menu-open .burger span:nth-child(2){opacity:0}
+  body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+
+/* ============ HERO ============ */
+.hero{position:relative;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.cross{position:absolute;width:18px;height:18px;pointer-events:none;opacity:.5}
+.cross::before,.cross::after{content:"";position:absolute;background:var(--line-d)}
+.cross::before{left:50%;top:0;width:1px;height:100%}
+.cross::after{top:50%;left:0;height:1px;width:100%}
+.cross.tl{top:18px;left:18px}.cross.tr{top:18px;right:18px}.cross.bl{bottom:18px;left:18px}.cross.br{bottom:18px;right:18px}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:84px;width:100%}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--mut-d)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--paper);animation:pulse 2s infinite;flex:0 0 auto}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(242,244,245,.4)}70%{box-shadow:0 0 0 9px rgba(242,244,245,0)}100%{box-shadow:0 0 0 0 rgba(242,244,245,0)}}
+.hero h1{font-size:clamp(3.4rem,7vw,6.4rem);color:var(--paper);margin:20px 0 22px}
+.hero h1 .blockword{display:inline-block;background:var(--paper);color:var(--ink);padding:0 .14em;margin:.05em 0}
+.hero-lede{font-size:1.04rem;max-width:46ch;color:var(--mut-d)}
+.hero-ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.93rem;padding:15px 28px;transition:opacity .2s,background .2s;cursor:pointer}
+.btn svg{width:17px;height:17px;flex:0 0 auto}
+.btn-solid{background:var(--paper);color:var(--ink)}
+.btn-solid:hover{opacity:.85}
+.btn-ghost{border:1px solid var(--line-d);color:var(--paper)}
+.btn-ghost:hover{background:var(--ink-2)}
+.hero-note{display:flex;gap:22px;margin-top:30px;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);flex-wrap:wrap}
+.hero-draw{position:relative}
+.dig{width:100%;max-width:520px;margin:0 auto;display:block}
+.dig path,.dig rect{stroke:var(--paper);stroke-width:5.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+body.loaded .dig .dr{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:ldDraw .7s cubic-bezier(.5,0,.3,1) var(--hd) forwards}
+.dig .boomgrp{transform-origin:196px 120px}
+body.loaded .dig .boomgrp{animation:boomBob 9s ease-in-out 2.6s infinite}
+@keyframes boomBob{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-2.2deg)}}
+.dim{display:flex;align-items:center;gap:10px;margin:26px auto 0;max-width:520px;color:var(--mut);font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.22em}
+.dim::before,.dim::after{content:"";flex:1;height:1px;background:var(--line-d);position:relative}
+.tblock{margin:30px auto 0;max-width:520px;border:1px solid var(--line-d);display:grid;grid-template-columns:1fr 1fr}
+.tblock div{padding:10px 16px;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-d)}
+.tblock div span{display:block;color:var(--paper);font-size:.68rem;margin-top:3px;letter-spacing:.1em}
+.tblock div:nth-child(1),.tblock div:nth-child(2){border-bottom:1px solid var(--line-d)}
+.tblock div:nth-child(odd){border-right:1px solid var(--line-d)}
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:0;padding-top:56px;padding-bottom:64px}
+  .hero-draw{display:none}
+  .hero h1{font-size:clamp(3rem,15.5vw,5.4rem)}
+  .tblock{display:none}
+  .dim{display:none}
+  .hero-copy{position:relative;z-index:2}
+  .hero-ghost{position:absolute;top:-10px;right:-30px;width:78vw;max-width:420px;opacity:.16;z-index:1;pointer-events:none}
+  .cross.bl,.cross.br{display:none}
+}
+@media (min-width:981px){.hero-ghost{display:none}}
+.hero-ghost path,.hero-ghost rect{stroke:var(--paper);stroke-width:5.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+body.loaded .hero-ghost .dr{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:ldDraw .7s cubic-bezier(.5,0,.3,1) var(--hd) forwards}
+.hero-ghost .boomgrp{transform-origin:196px 120px}
+body.loaded .hero-ghost .boomgrp{animation:boomBob 9s ease-in-out 2.6s infinite}
+
+/* ============ SECTION SCAFFOLD ============ */
+section{position:relative}
+.sec-pad{padding-top:96px;padding-bottom:96px}
+.sec-head{margin-bottom:52px}
+.chip{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line-l);padding:7px 14px}
+.chip i{width:6px;height:6px;background:var(--ink);flex:0 0 auto;font-style:normal}
+.sec-head h2{font-size:clamp(2.4rem,4.6vw,3.6rem);margin-top:18px}
+.on-dark .chip{border-color:var(--line-d);color:var(--mut-d)}
+.on-dark .chip i{background:var(--paper)}
+.on-dark h2{color:var(--paper)}
+.rule-dim{display:flex;align-items:center;gap:12px;color:var(--mut);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.22em}
+.rule-dim::before,.rule-dim::after{content:"";flex:1;height:1px;background:var(--line-l)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+/* ============ TRUST ============ */
+.trust{background:var(--paper);border-bottom:1px solid var(--line-l)}
+.trust-in{display:flex;justify-content:space-between;padding-top:26px;padding-bottom:26px;gap:12px}
+.trust-item{display:flex;align-items:center;gap:11px;font-size:.86rem;font-weight:600;color:var(--head)}
+.trust-item svg{width:18px;height:18px;flex:0 0 auto}
+@media (max-width:880px){
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line-l)}
+  .trust-item:last-child{border-bottom:0}
+}
+
+/* ============ SECTORS ============ */
+.sectors{background:var(--paper)}
+.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.scard{border:1px solid var(--line-l);background:var(--paper);transition:transform .25s ease,box-shadow .25s ease;position:relative;overflow:hidden}
+.scard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:2}
+.scard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(22,24,26,.1)}
+.scard:hover::before{transform:scaleX(1)}
+.scard-ph{aspect-ratio:4/2.9;overflow:hidden}
+.scard-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.scard:hover .scard-ph img{transform:scale(1.05)}
+.scard-body{padding:24px 24px 26px}
+.scard-num{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--mut)}
+.scard-body h3{font-size:1.9rem;margin:8px 0 8px}
+.scard-body p{font-size:.92rem}
+.scard-tags{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-l);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.pm-row{margin-top:26px;background:var(--ink);color:var(--paper);display:grid;grid-template-columns:auto 1fr auto;gap:34px;align-items:center;padding:34px 38px}
+.pm-jcl{width:58px;height:58px;background:var(--paper);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Teko',sans-serif;font-weight:700;font-size:1.6rem;letter-spacing:.04em}
+.pm-row h3{color:var(--paper);font-size:1.8rem;margin-bottom:6px}
+.pm-row p{font-size:.92rem;color:var(--mut-d);max-width:62ch}
+.pm-tags{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut-d);text-align:right;line-height:2.1}
+@media (max-width:1000px){.sector-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:780px){
+  .sector-grid{grid-template-columns:1fr}
+  .pm-row{grid-template-columns:1fr;gap:18px;padding:28px 24px}
+  .pm-tags{text-align:left;line-height:2}
+}
+
+/* ============ GALLERY ============ */
+.work{background:var(--stone)}
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.gtile{cursor:pointer}
+.gtile-ph{overflow:hidden;aspect-ratio:4/3;background:var(--stone-2)}
+.gtile-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gtile:hover .gtile-ph img{transform:scale(1.06)}
+.gcap{border-top:2px solid var(--ink);margin-top:0;padding-top:10px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.gcap b{color:var(--head);font-weight:600}
+@media (max-width:880px){.g-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.g-grid{grid-template-columns:1fr}.gtile-ph{aspect-ratio:16/11}}
+.lightbox{position:fixed;inset:0;z-index:990;background:rgba(22,24,26,.94);display:none;align-items:center;justify-content:center;padding:5vw;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain}
+
+/* ============ ABOUT ============ */
+.about{background:var(--paper)}
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-in p{font-size:1.02rem;max-width:56ch}
+.about-sig{margin-top:26px;padding-top:20px;border-top:1px solid var(--line-l);font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.stat-col{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.stat{border:1px solid var(--line-l);padding:26px 24px}
+.stat .n{font-family:'Teko',sans-serif;font-weight:600;font-size:2.6rem;line-height:1;color:var(--head)}
+.stat .l{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-top:8px}
+@media (max-width:880px){.about-in{grid-template-columns:1fr;gap:40px}}
+
+/* ============ REVIEWS ============ */
+.reviews{background:var(--stone)}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.rcard{background:var(--paper);border:1px solid var(--line-l);padding:30px 30px 26px}
+.stars{color:var(--ink);letter-spacing:3px;font-size:.9rem}
+.rcard p{margin:14px 0 18px;font-size:.95rem}
+.rwho{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+@media (max-width:780px){.r-grid{grid-template-columns:1fr}}
+
+/* ============ AREAS ============ */
+.areas{background:var(--paper)}
+.area-line{max-width:60ch;margin-top:-30px;margin-bottom:40px}
+.area-grid{display:flex;flex-wrap:wrap;gap:12px}
+.area-chip{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--head);border:1px solid var(--line-l);padding:10px 16px;transition:background .2s,color .2s}
+.area-chip:hover{background:var(--ink);color:var(--paper)}
+
+/* ============ CTA BAND ============ */
+.band{background:var(--ink);overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.band-in{position:relative;text-align:center;padding-top:84px;padding-bottom:88px}
+.band h2{color:var(--paper);font-size:clamp(2.6rem,5vw,4rem)}
+.band p{color:var(--mut-d);margin:14px auto 30px;max-width:44ch}
+.band .hero-ctas{justify-content:center;margin-top:0}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.c-cards{display:grid;gap:18px;align-content:start}
+.ccard{border:1px solid var(--line-l);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.ccard svg{width:20px;height:20px;flex:0 0 auto;margin-top:3px}
+.ccard .t{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.ccard .v{font-weight:600;color:var(--head);font-size:.95rem;margin-top:4px;word-break:break-all}
+.ccard .v a:hover{text-decoration:underline}
+.ccard .s{font-size:.84rem;margin-top:3px}
+form{display:grid;gap:16px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);display:block;margin-bottom:7px}
+input,select,textarea{width:100%;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--head);background:var(--paper);border:1px solid var(--line-l);padding:13px 15px;outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;appearance:none}
+select{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2316181a' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+input:focus,select:focus,textarea:focus{border-color:var(--ink)}
+textarea{min-height:130px;resize:vertical}
+.submit{background:var(--ink);color:var(--paper);border:0;font-weight:600;font-size:.95rem;padding:16px;cursor:pointer;transition:opacity .2s;width:100%}
+.submit:hover{opacity:.88}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr}.frow{grid-template-columns:1fr}}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:var(--mut-d)}
+.foot-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-top:64px;padding-bottom:44px}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-jcl{width:40px;height:40px;background:var(--paper);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Teko',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:.04em}
+.foot-name{font-family:'Teko',sans-serif;font-weight:600;font-size:1.5rem;letter-spacing:.07em;color:var(--paper);text-transform:uppercase;line-height:1}
+.foot-tag{margin-top:14px;font-size:.88rem;max-width:34ch}
+.foot-col .t{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+.foot-col a{display:block;font-size:.88rem;padding:4px 0;transition:color .2s}
+.foot-col a:hover{color:var(--paper)}
+.foot-base{border-top:1px solid var(--line-d-soft)}
+.foot-base-in{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-top:20px;padding-bottom:24px;font-size:.78rem;color:var(--mut)}
+.foot-base a:hover{color:var(--paper)}
+@media (max-width:780px){.foot-in{grid-template-columns:1fr;gap:34px}}
+
+/* ============ FABS ============ */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+body.menu-open .fabs{opacity:0;pointer-events:none}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(22,24,26,.28)}
+.fab svg{width:22px;height:22px}
+.fab-quote{background:var(--paper);border:1px solid var(--line-l);animation:fabPulse 2s infinite}
+.fab-mail{background:var(--ink)}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(22,24,26,.3)}70%{box-shadow:0 0 0 12px rgba(22,24,26,0)}100%{box-shadow:0 0 0 0 rgba(22,24,26,0)}}
+.fab:hover{animation:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  body.loaded .dig .dr,body.loaded .hero-ghost .dr{animation:none;stroke-dashoffset:0}
+  body.loaded .dig .boomgrp,body.loaded .hero-ghost .boomgrp{animation:none}
+  .eyebrow .dot,.fab-quote{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER : PEN PLOT -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-stage">
+    <svg class="ld-dig" viewBox="0 0 320 200" aria-hidden="true">
+      <rect class="dr" style="--len:100;--d:.05s" pathLength="100" x="122" y="148" width="168" height="38" rx="19"/>
+      <rect class="dr" style="--len:100;--d:.3s" pathLength="100" x="172" y="158" width="62" height="18" rx="9"/>
+      <path class="dr" style="--len:100;--d:.45s" pathLength="100" d="M196 142 v-28 q0 -10 10 -10 h26 q10 0 10 10 v28"/>
+      <path class="dr" style="--len:100;--d:.6s" pathLength="100" d="M206 112 l16 14"/>
+      <path class="dr" style="--len:100;--d:.7s" pathLength="100" d="M242 138 h28 q8 0 8 -8 v-6 h-22"/>
+      <path class="dr" style="--len:100;--d:.85s" pathLength="100" d="M196 120 C 162 58, 118 46, 84 58"/>
+      <path class="dr" style="--len:100;--d:1.05s" pathLength="100" d="M84 58 L62 118"/>
+      <path class="dr" style="--len:100;--d:1.2s" pathLength="100" d="M66 116 L40 124 Q28 128 31 140 L36 156 L66 148 Q60 132 66 116 Z"/>
+    </svg>
+    <div class="ld-jcl">JCL</div>
+    <div class="ld-word">Jaxmil Construction Ltd</div>
+    <div class="ld-sub">Commercial . Residential . Industrial</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a class="nav-brand" href="#top" aria-label="Jaxmil Construction Ltd">
+      <span class="nav-jcl">JCL</span>
+      <span class="nav-name">Jaxmil Construction</span>
+    </a>
+    <div class="nav-links">
+      <a href="#sectors">Sectors</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <button class="burger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="m-panel" id="mPanel">
+    <a href="#sectors" onclick="closeMenu()">Sectors</a>
+    <a href="#work" onclick="closeMenu()">Our Work</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#reviews" onclick="closeMenu()">Reviews</a>
+    <a href="#areas" onclick="closeMenu()">Coverage</a>
+    <a href="#contact" class="m-cta" onclick="closeMenu()">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <i class="cross tl"></i><i class="cross tr"></i><i class="cross bl"></i><i class="cross br"></i>
+  <svg class="hero-ghost" viewBox="0 0 320 200" aria-hidden="true">
+    <rect class="dr" style="--len:100;--hd:.7s" pathLength="100" x="122" y="148" width="168" height="38" rx="19"/>
+    <rect class="dr" style="--len:100;--hd:.9s" pathLength="100" x="172" y="158" width="62" height="18" rx="9"/>
+    <path class="dr" style="--len:100;--hd:1s" pathLength="100" d="M196 142 v-28 q0 -10 10 -10 h26 q10 0 10 10 v28"/>
+    <path class="dr" style="--len:100;--hd:1.1s" pathLength="100" d="M206 112 l16 14"/>
+    <path class="dr" style="--len:100;--hd:1.2s" pathLength="100" d="M242 138 h28 q8 0 8 -8 v-6 h-22"/>
+    <g class="boomgrp">
+      <path class="dr" style="--len:100;--hd:1.3s" pathLength="100" d="M196 120 C 162 58, 118 46, 84 58"/>
+      <path class="dr" style="--len:100;--hd:1.45s" pathLength="100" d="M84 58 L62 118"/>
+      <path class="dr" style="--len:100;--hd:1.55s" pathLength="100" d="M66 116 L40 124 Q28 128 31 140 L36 156 L66 148 Q60 132 66 116 Z"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span>Commercial . Residential . Industrial</div>
+      <h1>Your trusted<br><span class="blockword">construction</span><br>partner.</h1>
+      <p class="hero-lede">Jaxmil Construction Ltd delivers commercial, residential and industrial projects across the UK. Based in Telford, managed on site wherever the work is.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>Get a Free Quote</a>
+        <a href="#" class="btn btn-ghost" id="heroEmail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>Email Us</a>
+      </div>
+      <div class="hero-note"><span>Free Quotes</span><span>Est 2023</span><span>UK Wide</span></div>
+    </div>
+    <div class="hero-draw" aria-hidden="true">
+      <svg class="dig" viewBox="0 0 320 200">
+        <rect class="dr" style="--len:100;--hd:.7s" pathLength="100" x="122" y="148" width="168" height="38" rx="19"/>
+        <rect class="dr" style="--len:100;--hd:.9s" pathLength="100" x="172" y="158" width="62" height="18" rx="9"/>
+        <path class="dr" style="--len:100;--hd:1s" pathLength="100" d="M196 142 v-28 q0 -10 10 -10 h26 q10 0 10 10 v28"/>
+        <path class="dr" style="--len:100;--hd:1.1s" pathLength="100" d="M206 112 l16 14"/>
+        <path class="dr" style="--len:100;--hd:1.2s" pathLength="100" d="M242 138 h28 q8 0 8 -8 v-6 h-22"/>
+        <g class="boomgrp">
+          <path class="dr" style="--len:100;--hd:1.3s" pathLength="100" d="M196 120 C 162 58, 118 46, 84 58"/>
+          <path class="dr" style="--len:100;--hd:1.45s" pathLength="100" d="M84 58 L62 118"/>
+          <path class="dr" style="--len:100;--hd:1.55s" pathLength="100" d="M66 116 L40 124 Q28 128 31 140 L36 156 L66 148 Q60 132 66 116 Z"/>
+        </g>
+      </svg>
+      <div class="dim">Groundworks to handover</div>
+      <div class="tblock">
+        <div>Project<span>Your New Build</span></div>
+        <div>Client<span>You</span></div>
+        <div>Coverage<span>United Kingdom</span></div>
+        <div>Status<span>Ready to Price</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Established 2023</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></svg>UK Wide Coverage</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Project Managed</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Regular Site Visits</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>On Time, On Budget</div>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<section class="sectors sec-pad" id="sectors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="chip"><i></i>DWG 02 . What We Build</span>
+      <h2>Every sector. One standard.</h2>
+    </div>
+    <div class="sector-grid">
+      <div class="scard reveal">
+        <div class="scard-ph"><img src="sector-commercial.jpg" alt="Commercial construction, tower cranes over a concrete frame" loading="lazy"></div>
+        <div class="scard-body">
+          <div class="scard-num">/01</div>
+          <h3>Commercial</h3>
+          <p>Commercial buildings delivered start to finish, priced and programmed properly.</p>
+          <div class="scard-tags">New Build . Fit Out . Refurb</div>
+        </div>
+      </div>
+      <div class="scard reveal">
+        <div class="scard-ph"><img src="sector-residential.jpg" alt="Residential extension with steel beam and blockwork" loading="lazy"></div>
+        <div class="scard-body">
+          <div class="scard-num">/02</div>
+          <h3>Residential</h3>
+          <p>Homes, extensions and renovations built around the people living in them.</p>
+          <div class="scard-tags">New Homes . Extensions . Renovations</div>
+        </div>
+      </div>
+      <div class="scard reveal">
+        <div class="scard-ph"><img src="sector-industrial.jpg" alt="Industrial unit with steel cladding and brick base" loading="lazy"></div>
+        <div class="scard-body">
+          <div class="scard-num">/03</div>
+          <h3>Industrial</h3>
+          <p>Industrial facilities and units, built for the work they have to take.</p>
+          <div class="scard-tags">Facilities . Units . Groundworks</div>
+        </div>
+      </div>
+    </div>
+    <div class="pm-row reveal">
+      <div class="pm-jcl">JCL</div>
+      <div>
+        <h3>Project managed, site monitored.</h3>
+        <p>Dedicated management systems and regular site visits keep every job monitored, and the standard of workmanship high, from the first dig to handover.</p>
+      </div>
+      <div class="pm-tags">Site Visits<br>Dedicated Management<br>Workmanship Monitored</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work sec-pad" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="chip"><i></i>DWG 03 . Site Records</span>
+      <h2>Work in progress.</h2>
+    </div>
+    <div class="g-grid">
+      <div class="gtile reveal" onclick="openLB('work-1.jpg')">
+        <div class="gtile-ph"><img src="work-1.jpg" alt="Tower crane over a new concrete frame" loading="lazy"></div>
+        <div class="gcap"><b>REC 01</b> . Tower Crane . Commercial</div>
+      </div>
+      <div class="gtile reveal" onclick="openLB('work-2.jpg')">
+        <div class="gtile-ph"><img src="work-2.jpg" alt="Concrete frame floors loaded with materials" loading="lazy"></div>
+        <div class="gcap"><b>REC 02</b> . Concrete Frame . Commercial</div>
+      </div>
+      <div class="gtile reveal" onclick="openLB('work-3.jpg')">
+        <div class="gtile-ph"><img src="work-3.jpg" alt="Scaffolded facade with insulation going on" loading="lazy"></div>
+        <div class="gcap"><b>REC 03</b> . External Works . Residential</div>
+      </div>
+      <div class="gtile reveal" onclick="openLB('work-4.jpg')">
+        <div class="gtile-ph"><img src="work-4.jpg" alt="Excavator on groundworks" loading="lazy"></div>
+        <div class="gcap"><b>REC 04</b> . Groundworks . All Sectors</div>
+      </div>
+      <div class="gtile reveal" onclick="openLB('work-5.jpg')">
+        <div class="gtile-ph"><img src="work-5.jpg" alt="Industrial unit with loading doors" loading="lazy"></div>
+        <div class="gcap"><b>REC 05</b> . Industrial Unit . Industrial</div>
+      </div>
+      <div class="gtile reveal" onclick="openLB('work-6.jpg')">
+        <div class="gtile-ph"><img src="work-6.jpg" alt="Excavator at rest on open ground" loading="lazy"></div>
+        <div class="gcap"><b>REC 06</b> . Plant On Site . All Sectors</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox" onclick="closeLB()"><img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="Enlarged site photo"></div>
+
+<!-- ABOUT -->
+<section class="about sec-pad" id="about">
+  <div class="wrap about-in">
+    <div class="reveal">
+      <span class="chip"><i></i>DWG 04 . The Company</span>
+      <h2 style="font-size:clamp(2.4rem,4.6vw,3.6rem);margin-top:18px;margin-bottom:22px">Built by a team,<br>run like a project.</h2>
+      <p>Founded in 2023, Jaxmil Construction Ltd has completed a wide variety of projects: commercial buildings, residential homes and industrial facilities. The team is skilled tradespeople, project managers and support staff working together, so every project finishes on time, within budget and to the highest standard.</p>
+      <div class="about-sig">Jaxmil Construction Ltd . Telford . Working UK Wide</div>
+    </div>
+    <div class="stat-col reveal">
+      <div class="stat"><div class="n">3</div><div class="l">Sectors Covered</div></div>
+      <div class="stat"><div class="n">UK</div><div class="l">Wide Coverage</div></div>
+      <div class="stat"><div class="n">07:30</div><div class="l">On Site Mon to Fri</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">Point of Contact</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews sec-pad" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="chip"><i></i>DWG 05 . Client Testimonials</span>
+      <h2>Our work speaks for itself.</h2>
+    </div>
+    <div class="r-grid">
+      <div class="rcard reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Jaxmil ran our unit refurbishment like clockwork. Regular site visits, no surprises, and handed over on the date they promised."</p>
+        <div class="rwho">Mark D, Telford . Industrial Refurbishment</div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">★★★★★</div>
+        <p>"We used Jaxmil Construction for a two storey extension. Tidy site, clear updates every week and a finish we are really pleased with."</p>
+        <div class="rwho">Sarah H, Shrewsbury . Extension</div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Professional from the first call. The whole job was project managed properly and the standard of workmanship was excellent."</p>
+        <div class="rwho">James W, Wolverhampton . Commercial Fit Out</div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">★★★★★</div>
+        <p>"On time and on budget is exactly what we got. The Jaxmil team kept us informed at every stage of our new build."</p>
+        <div class="rwho">Emma R, Stafford . New Build</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas sec-pad" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="chip"><i></i>DWG 06 . Coverage</span>
+      <h2>Based in Telford. Working UK wide.</h2>
+    </div>
+    <p class="area-line reveal">Registered in Telford, Shropshire. Our site teams travel nationwide for commercial, residential and industrial contracts.</p>
+    <div class="area-grid reveal">
+      <span class="area-chip">Telford</span>
+      <span class="area-chip">Shropshire</span>
+      <span class="area-chip">West Midlands</span>
+      <span class="area-chip">Birmingham</span>
+      <span class="area-chip">North West</span>
+      <span class="area-chip">Manchester</span>
+      <span class="area-chip">Yorkshire</span>
+      <span class="area-chip">East Midlands</span>
+      <span class="area-chip">Wales</span>
+      <span class="area-chip">London</span>
+      <span class="area-chip">South East</span>
+      <span class="area-chip">South West</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="wrap band-in reveal">
+    <span class="chip"><i></i>Free Quotes . No Obligation</span>
+    <h2 style="margin-top:18px">Have a project on the board?</h2>
+    <p>Tell us what you are building and we will come back with a price.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>Get a Free Quote</a>
+      <a href="#" class="btn btn-ghost" id="bandEmail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>Email Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact sec-pad" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="chip"><i></i>DWG 07 . Contact</span>
+      <h2>Get a free quote.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="c-cards reveal">
+        <div class="ccard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          <div><div class="t">Email</div><div class="v"><a href="#" id="contactEmail">&nbsp;</a></div><div class="s">We reply to every enquiry.</div></div>
+        </div>
+        <div class="ccard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><div class="t">Hours</div><div class="v">Monday to Friday</div><div class="s">07:30 to 17:00</div></div>
+        </div>
+        <div class="ccard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="t">Base</div><div class="v">Telford, Shropshire</div><div class="s">Site teams working UK wide.</div></div>
+        </div>
+        <div class="ccard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          <div><div class="t">Communication</div><div class="v">Constant contact</div><div class="s">We stay in touch with our customers until the job is done.</div></div>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Jaxmil Construction Ltd">
+        <input type="hidden" name="source" value="mockup-jaxmil-construction">
+        <div class="frow">
+          <div><label for="fName">Name *</label><input id="fName" type="text" name="name" required autocomplete="name"></div>
+          <div><label for="fPhone">Phone *</label><input id="fPhone" type="tel" name="phone" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        </div>
+        <div class="frow">
+          <div><label for="fEmail">Email</label><input id="fEmail" type="email" name="email" autocomplete="email"></div>
+          <div><label for="fService">Project Type</label>
+            <select id="fService" name="service">
+              <optgroup label="Commercial">
+                <option>Commercial New Build</option>
+                <option>Commercial Fit Out</option>
+                <option>Commercial Refurbishment</option>
+              </optgroup>
+              <optgroup label="Residential">
+                <option>New Home</option>
+                <option>Extension</option>
+                <option>Renovation</option>
+              </optgroup>
+              <optgroup label="Industrial">
+                <option>Industrial Facility</option>
+                <option>Industrial Unit Refurbishment</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Project Management</option>
+                <option>Something Else</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div><label for="fMsg">Tell us about the project</label><textarea id="fMsg" name="message"></textarea></div>
+        <button class="submit" type="submit">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <div class="foot-brand"><span class="foot-jcl">JCL</span><span class="foot-name">Jaxmil Construction</span></div>
+      <p class="foot-tag">Your trusted construction partner. Commercial, residential and industrial projects across the UK.</p>
+    </div>
+    <div class="foot-col">
+      <div class="t">Sectors</div>
+      <a href="#sectors">Commercial</a>
+      <a href="#sectors">Residential</a>
+      <a href="#sectors">Industrial</a>
+      <a href="#sectors">Project Management</a>
+    </div>
+    <div class="foot-col">
+      <div class="t">Company</div>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="foot-base">
+    <div class="wrap foot-base-in">
+      <span>&copy; 2026 Jaxmil Construction Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABS -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-quote" href="#contact" aria-label="Get a free quote"><svg viewBox="0 0 24 24" fill="none" stroke="#16181a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg></a>
+  <a class="fab fab-mail" href="#" id="fabEmail" aria-label="Email us"><svg viewBox="0 0 24 24" fill="none" stroke="#f2f4f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></a>
+</div>
+
+<script>
+// loader teardown + hero handoff
+(function(){
+  var l = document.getElementById('loader');
+  function down(){
+    if(!l) return;
+    l.classList.add('done');
+    document.body.classList.add('loaded');
+    setTimeout(function(){ if(l && l.parentNode) l.parentNode.removeChild(l); }, 700);
+    l = document.getElementById('loader');
+  }
+  var t = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 800 : 2200;
+  setTimeout(down, t);
+  setTimeout(function(){ var x=document.getElementById('loader'); if(x){ x.classList.add('done'); document.body.classList.add('loaded'); } }, 2500);
+})();
+
+// email decode
+(function(){
+  var E = atob('Y2hyaXMubWlsbGluZ3RvbkBqYXhtaWxjb25zdHJ1Y3Rpb25sdGQuY28udWs=');
+  var ids = ['heroEmail','bandEmail','fabEmail'];
+  for (var i=0;i<ids.length;i++){
+    var el = document.getElementById(ids[i]);
+    if(el) el.href = 'mailto:' + E;
+  }
+  var c = document.getElementById('contactEmail');
+  if(c){ c.textContent = E; c.href = 'mailto:' + E; }
+})();
+
+// form timestamp + phone validity message
+document.getElementById('formTimestamp').value = Date.now();
+(function(){
+  var p = document.getElementById('fPhone');
+  if(!p) return;
+  p.addEventListener('invalid', function(){ p.setCustomValidity('Please enter a valid UK phone number'); });
+  p.addEventListener('input', function(){ p.setCustomValidity(''); });
+})();
+
+// mobile menu
+function toggleMenu(){
+  document.getElementById('mPanel').classList.toggle('open');
+  document.body.classList.toggle('menu-open');
+}
+function closeMenu(){
+  document.getElementById('mPanel').classList.remove('open');
+  document.body.classList.remove('menu-open');
+}
+
+// scroll reveals
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+// FABs after hero
+(function(){
+  var fabs = document.getElementById('fabs');
+  var hero = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > hero.offsetHeight * .8) fabs.classList.add('show');
+    else fabs.classList.remove('show');
+  }, {passive:true});
+})();
+
+// lightbox
+function openLB(src){
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLB(){ document.getElementById('lightbox').classList.remove('open'); }
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLB(); });
+</script>
+</body>
+</html>
