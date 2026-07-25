@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bluegrain Ltd | Construction Site Security, Manchester</title>
+<meta name="description" content="Construction site security across the UK. Ultra HD CCTV monitoring, SIA licensed guards, K9 patrols and 24/7 mobile response from our Manchester control room.">
+<meta property="og:title" content="Bluegrain Ltd, Your New Website">
+<meta property="og:description" content="Construction site security in Manchester, preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/bluegrain/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/bluegrain/">
+<meta name="theme-color" content="#0f1114">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#0f1114; --panel:#14181d; --card:#1a1f26; --card-hover:#20262f;
+  --line:#262d36; --line-light:#333c47;
+  --text:#eef1f4; --body:#b7c0c9; --muted:#8a95a0;
+  --green:#2fe06b; --green-deep:#1fae50; --green-glow:rgba(47,224,107,.14);
+  --rec:#ff3b30;
+  --eye:#2aa5e0; --eye-deep:#144d86;
+  --disp:'Chakra Petch',sans-serif; --body-f:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{font-family:var(--body-f);background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--disp);color:var(--text);line-height:1.08;letter-spacing:-.01em}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.label{font-family:var(--mono);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px}
+.label::before{content:"";width:22px;height:1px;background:var(--green)}
+.mono{font-family:var(--mono)}
+
+/* ============ scanline texture ============ */
+.scanlines{position:fixed;inset:0;pointer-events:none;z-index:3;opacity:.05;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.55) 3px 4px)}
+
+/* ============ LOADER : TARGET LOCK ============ */
+#loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;
+  transition:opacity .45s ease,visibility .45s ease}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.ld-stage{position:relative;width:min(78vw,340px);text-align:center}
+.ld-cam{position:relative;width:150px;height:150px;margin:0 auto}
+.ld-eye{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;animation:ldEyeIn .5s ease .15s both}
+@keyframes ldEyeIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.ld-bk{position:absolute;width:26px;height:26px;border:2px solid var(--green);opacity:0}
+.ld-bk.tl{top:0;left:0;border-right:0;border-bottom:0;animation:bkTL .55s cubic-bezier(.2,.8,.3,1) .35s both}
+.ld-bk.tr{top:0;right:0;border-left:0;border-bottom:0;animation:bkTR .55s cubic-bezier(.2,.8,.3,1) .35s both}
+.ld-bk.bl{bottom:0;left:0;border-right:0;border-top:0;animation:bkBL .55s cubic-bezier(.2,.8,.3,1) .35s both}
+.ld-bk.br{bottom:0;right:0;border-left:0;border-top:0;animation:bkBR .55s cubic-bezier(.2,.8,.3,1) .35s both}
+@keyframes bkTL{from{opacity:0;transform:translate(-42px,-42px)}to{opacity:1;transform:translate(0,0)}}
+@keyframes bkTR{from{opacity:0;transform:translate(42px,-42px)}to{opacity:1;transform:translate(0,0)}}
+@keyframes bkBL{from{opacity:0;transform:translate(-42px,42px)}to{opacity:1;transform:translate(0,0)}}
+@keyframes bkBR{from{opacity:0;transform:translate(42px,42px)}to{opacity:1;transform:translate(0,0)}}
+.ld-scan{position:absolute;left:6px;right:6px;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);
+  opacity:0;animation:ldScan .8s ease-in-out .45s 1 both}
+@keyframes ldScan{0%{opacity:0;transform:translateY(8px)}15%{opacity:.9}85%{opacity:.9}100%{opacity:0;transform:translateY(140px)}}
+.ld-lock{position:absolute;inset:0;border:2px solid var(--green);opacity:0;animation:ldLock .3s steps(2) 1.15s 3 both,ldLockHold .4s ease 1.6s both}
+@keyframes ldLock{from{opacity:0}to{opacity:1}}
+@keyframes ldLockHold{from{opacity:1;box-shadow:0 0 0 0 var(--green-glow)}to{opacity:1;box-shadow:0 0 26px 0 var(--green-glow)}}
+.ld-status{position:relative;margin-top:22px;font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);height:1.2em}
+.ld-status span{position:absolute;left:0;right:0;top:0;text-align:center;white-space:nowrap}
+.ld-status .s1{animation:sSwap1 1.3s steps(1) both}
+.ld-status .s2{color:var(--green);opacity:0;animation:sSwap2 .01s linear 1.3s both}
+@keyframes sSwap1{0%{opacity:1}100%{opacity:0}}
+@keyframes sSwap2{to{opacity:1}}
+.ld-word{margin-top:14px;font-family:var(--disp);font-weight:700;font-size:1.5rem;letter-spacing:.12em;color:var(--text);
+  opacity:0;animation:ldRise .5s ease 1.55s both}
+.ld-sub{margin-top:8px;font-family:var(--mono);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+  opacity:0;animation:ldRise .5s ease 1.7s both}
+@keyframes ldRise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .ld-bk,.ld-scan,.ld-lock,.ld-eye,.ld-word,.ld-sub,.ld-status .s1,.ld-status .s2{animation:none!important;opacity:1}
+  .ld-status .s1{display:none}
+}
+/* pure-CSS failsafe teardown */
+@keyframes ldGone{to{opacity:0;visibility:hidden}}
+#loader{animation:ldGone .4s ease 2.7s forwards}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--disp);font-weight:700;font-size:1.06rem;letter-spacing:.1em;color:var(--text)}
+.nav-logo svg{width:26px;height:26px}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.86rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#08130b !important;font-weight:600;
+  padding:10px 20px;border-radius:6px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--green-deep)}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#08130b}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.25s}
+.m-menu{display:none;position:fixed;top:59px;left:0;right:0;z-index:49;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:10px 24px 24px}
+.m-menu.open{display:block}
+.m-menu a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--disp);font-weight:600;color:var(--text);letter-spacing:.04em}
+.m-menu a.m-call{border:0;margin-top:16px;background:var(--green);color:#08130b;text-align:center;border-radius:6px;padding:14px}
+
+/* ============ HERO ============ */
+.hero{position:relative;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:kb 22s ease-in-out infinite alternate;opacity:.5}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,17,20,.96) 30%,rgba(15,17,20,.55) 62%,rgba(15,17,20,.35));}
+.hero-inner{position:relative;z-index:2;width:100%;padding-top:96px;padding-bottom:110px}
+.hero-osd{position:absolute;inset:18px;z-index:1;pointer-events:none}
+.hero-osd i{position:absolute;width:30px;height:30px;border:2px solid rgba(238,241,244,.35)}
+.hero-osd i.tl{top:0;left:0;border-right:0;border-bottom:0}
+.hero-osd i.tr{top:0;right:0;border-left:0;border-bottom:0}
+.hero-osd i.bl{bottom:0;left:0;border-right:0;border-top:0}
+.hero-osd i.br{bottom:0;right:0;border-left:0;border-top:0}
+.osd-top{position:absolute;top:8px;right:44px;display:flex;align-items:center;gap:10px;font-family:var(--mono);
+  font-size:.64rem;letter-spacing:.2em;color:rgba(238,241,244,.75);text-transform:uppercase}
+.rec-dot{width:9px;height:9px;border-radius:50%;background:var(--rec);animation:rec 1.6s ease-in-out infinite}
+@keyframes rec{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,59,48,.5)}50%{opacity:.55;box-shadow:0 0 0 6px rgba(255,59,48,0)}}
+.osd-cam{position:absolute;bottom:8px;left:44px;font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;
+  color:rgba(238,241,244,.6);text-transform:uppercase}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--green);margin-bottom:26px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--green-glow)}50%{box-shadow:0 0 0 8px rgba(47,224,107,0)}}
+h1{font-size:clamp(2.5rem,5.6vw,4.9rem);font-weight:700;text-transform:uppercase;letter-spacing:.01em;max-width:820px}
+h1 .det{position:relative;display:inline-block;color:var(--green);padding:0 .12em}
+h1 .det::before{content:"";position:absolute;inset:-2px -4px;border:2px solid var(--green);opacity:0}
+h1 .det::after{content:"";position:absolute;top:-8px;right:-10px;width:10px;height:10px;border-top:2px solid var(--green);border-right:2px solid var(--green);opacity:0}
+.loaded h1 .det::before{animation:detOn .35s steps(3) .25s both,detBreathe 5s ease .9s infinite}
+.loaded h1 .det::after{animation:detOn .35s steps(3) .4s both}
+@keyframes detOn{from{opacity:0}to{opacity:1}}
+@keyframes detBreathe{0%,100%{opacity:1}50%{opacity:.55}}
+.lede{max-width:520px;margin-top:24px;font-size:1.05rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:.95rem;letter-spacing:.04em;
+  padding:15px 28px;border-radius:6px;transition:transform .2s,background .2s}
+.btn svg{width:17px;height:17px}
+.btn:hover{transform:translateY(-2px)}
+.btn-green{background:var(--green);color:#08130b}.btn-green svg{stroke:#08130b}
+.btn-green:hover{background:var(--green-deep)}
+.btn-wa{background:#25d366;color:#08130b}.btn-wa svg{fill:#08130b}
+.btn-wa:hover{background:#1fb857}
+.hero-note{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.hero-photo-card{display:none}
+
+/* ============ TRUST ============ */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+.trust-in{display:flex;justify-content:space-between;gap:12px;padding-top:26px;padding-bottom:26px}
+.trust-item{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:600;font-size:.86rem;letter-spacing:.03em;color:var(--text)}
+.trust-item svg{width:17px;height:17px;stroke:var(--green);flex:none}
+
+/* ============ SECTIONS ============ */
+section{padding:96px 0}
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:52px}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);text-transform:uppercase}
+h2 .acc{color:var(--green)}
+
+/* S-CAMGRID services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;overflow:hidden;
+  transition:transform .25s ease,background .25s ease}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.svc:hover{transform:translateY(-3px);background:var(--card-hover)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-osd{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.svc-osd b{color:var(--green);font-weight:500}
+.svc-icon{width:44px;height:44px;border:1px solid var(--line-light);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.svc-icon svg{width:21px;height:21px;stroke:var(--green)}
+.svc h3{font-size:1.12rem;letter-spacing:.03em;text-transform:uppercase;margin-bottom:8px}
+.svc p{font-size:.9rem}
+
+/* G-WALL gallery */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.g-tile{cursor:pointer}
+.g-frame{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.g-frame::before{content:"";position:absolute;top:10px;left:10px;width:18px;height:18px;border-top:2px solid rgba(238,241,244,.55);border-left:2px solid rgba(238,241,244,.55);z-index:2}
+.g-frame::after{content:"";position:absolute;bottom:10px;right:10px;width:18px;height:18px;border-bottom:2px solid rgba(238,241,244,.55);border-right:2px solid rgba(238,241,244,.55);z-index:2}
+.g-frame img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/11;transition:transform .4s ease}
+.g-tile:hover .g-frame img{transform:scale(1.05)}
+.g-a{grid-column:span 4}
+.g-b{grid-column:span 2}
+.g-cap{margin-top:10px;padding-top:8px;border-top:2px solid var(--green);font-family:var(--mono);font-size:.64rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(10,12,14,.94);display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:86vh;border-radius:8px}
+.lb-x{position:absolute;top:20px;right:26px;background:none;border:0;color:var(--text);font-size:2rem;cursor:pointer;font-family:var(--body-f)}
+
+/* about */
+.about{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about p{margin-top:16px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px}
+.stat b{display:block;font-family:var(--disp);font-weight:700;font-size:2rem;color:var(--green)}
+.stat span{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.stars{color:var(--green);letter-spacing:3px;font-size:.9rem}
+.rev p{font-size:.92rem}
+.rev-who{margin-top:auto;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.rev-who b{display:block;color:var(--text);font-family:var(--disp);font-size:.9rem;letter-spacing:.05em;margin-bottom:4px}
+
+/* cta band */
+.cta-band{background:var(--green)}
+.cta-band .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-top:56px;padding-bottom:56px}
+.cta-band h2{color:#08130b;max-width:640px}
+.cta-band .btn{background:#0f1114;color:var(--text)}
+.cta-band .btn svg{stroke:var(--text)}
+.cta-band .btn:hover{background:#1a1f26}
+
+/* contact */
+.contact-in{display:grid;grid-template-columns:1fr 1.15fr;gap:50px;align-items:start}
+.c-cards{display:flex;flex-direction:column;gap:14px}
+.c-card{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.c-card svg{width:19px;height:19px;stroke:var(--green);flex:none;margin-top:3px}
+.c-card b{display:block;font-family:var(--disp);font-size:.94rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text)}
+.c-card span,.c-card a{font-size:.9rem;color:var(--body)}
+form{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:30px;display:flex;flex-direction:column;gap:14px}
+form label{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+form input,form select,form textarea{width:100%;background:var(--panel);border:1px solid var(--line-light);border-radius:6px;
+  padding:13px 14px;color:var(--text);font-family:var(--body-f);font-size:.95rem}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--green)}
+form button{background:var(--green);color:#08130b;border:0;border-radius:6px;padding:16px;font-family:var(--disp);
+  font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+form button:hover{background:var(--green-deep)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:50px 0 40px;background:var(--panel)}
+.foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+.foot-brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;letter-spacing:.1em;color:var(--text)}
+.foot-brand svg{width:22px;height:22px}
+.foot-meta{font-size:.82rem;color:var(--muted)}
+.foot-meta a{color:var(--body)}
+.foot-meta a:hover{color:var(--text)}
+
+/* FABs */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transition:opacity .3s}
+.fabs.show{opacity:1;pointer-events:auto}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.fab svg{width:22px;height:22px}
+.fab-call{background:var(--green);animation:fabPulse 2.2s infinite}
+.fab-call svg{stroke:#08130b}
+.fab-wa{background:#25d366;animation:fabPulseWa 2.2s infinite}
+.fab-wa svg{fill:#08130b}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(47,224,107,.45)}70%{box-shadow:0 0 0 14px rgba(47,224,107,0)}100%{box-shadow:0 0 0 0 rgba(47,224,107,0)}}
+@keyframes fabPulseWa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hero-bg img{animation:none}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1000px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .about-in{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .rev-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr}
+  .g-a,.g-b{grid-column:span 1}
+  .contact-in{grid-template-columns:1fr}
+}
+@media (max-width:780px){
+  section{padding:72px 0}
+  .svc-grid{grid-template-columns:1fr}
+  /* hero restructures: camera-feed poster on solid bg, photo lifts out below */
+  .hero-bg{display:none}
+  .hero-inner{padding-top:64px;padding-bottom:56px}
+  .hero-osd i{width:22px;height:22px}
+  .osd-top{right:36px}
+  .osd-cam{left:36px}
+  h1{font-size:clamp(2.6rem,13.5vw,3.4rem)}
+  .hero-photo-card{display:block;position:relative;z-index:2;margin-top:8px;padding-bottom:56px}
+  .hero-photo-card .g-frame img{aspect-ratio:16/11}
+  .hero-badge-m{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px;
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--body);text-align:center}
+  .trust-in{flex-direction:column;gap:0;align-items:stretch}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:0}
+  .cta-band .wrap{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  .gal{grid-template-columns:1fr}
+  .g-frame img{aspect-ratio:16/11}
+  .about-stats{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER : TARGET LOCK -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-stage">
+    <div class="ld-cam">
+      <div class="ld-eye">
+        <svg width="92" height="92" viewBox="0 0 64 64" fill="none">
+          <path d="M6 34 C16 18 48 18 58 34" stroke="#2aa5e0" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="32" cy="37" r="13" fill="#2aa5e0"/>
+          <circle cx="32" cy="37" r="7.5" fill="#144d86"/>
+          <circle cx="35.5" cy="33.5" r="2.6" fill="#eef1f4"/>
+        </svg>
+      </div>
+      <i class="ld-bk tl"></i><i class="ld-bk tr"></i><i class="ld-bk bl"></i><i class="ld-bk br"></i>
+      <div class="ld-scan"></div>
+      <div class="ld-lock"></div>
+    </div>
+    <div class="ld-status"><span class="s1">Scanning perimeter</span><span class="s2">Motion verified . Site secure</span></div>
+    <div class="ld-word">BLUEGRAIN LTD</div>
+    <div class="ld-sub">CCTV . Guards . Response . Manchester</div>
+  </div>
+</div>
+
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M6 34 C16 18 48 18 58 34" stroke="#2aa5e0" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="32" cy="37" r="13" fill="#2aa5e0"/>
+        <circle cx="32" cy="37" r="7.5" fill="#144d86"/>
+        <circle cx="35.5" cy="33.5" r="2.6" fill="#eef1f4"/>
+      </svg>
+      BLUEGRAIN LTD
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">On Site</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="navCall" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span></a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="m-menu" id="mMenu">
+  <a href="#services">Services</a>
+  <a href="#work">On Site</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="m-call" id="mCall">Call us now</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"><img src="control-room.jpg" alt="Bluegrain 24/7 CCTV control room" fetchpriority="high"></div>
+  <div class="hero-osd" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+  <div class="osd-top"><span class="rec-dot"></span>REC <span id="osdClock">&nbsp;</span></div>
+  <div class="osd-cam">CAM 01 . MIDDLETON HQ . LIVE</div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Construction Site Security . Manchester . UK Wide</div>
+    <h1>Your site.<br><span class="det">Watched.</span><br>All night.</h1>
+    <p class="lede">Ultra HD CCTV with live analytics, SIA licensed guards and K9 patrols, backed by our own 24/7 control room in Manchester.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-green heroCall"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span id="heroPhone">Call us</span></a>
+      <a href="#" class="btn btn-wa waLink"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a>
+    </div>
+    <div class="hero-note"><span>Free CCTV install</span><span>Month to month</span><span>UK wide cover</span></div>
+  </div>
+  <div class="wrap hero-photo-card">
+    <div class="g-frame"><img src="control-room.jpg" alt="Bluegrain 24/7 CCTV control room" loading="lazy"></div>
+    <div class="hero-badge-m">Our own 24/7 control room . Middleton, Manchester</div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>25+ Years Experience</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SIA Licensed Guards</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>24/7 Control Room</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free CCTV Install</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>UK Wide Coverage</div>
+  </div>
+</div>
+
+<!-- SERVICES : S-CAMGRID -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">All feeds live</div>
+      <h2>Site security, <span class="acc">covered</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-osd"><span>CAM 01</span><b>&#9679; LIVE</b></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l14-4 2 6-14 4z"/><path d="M14 13.5V18a2 2 0 0 1-2 2H7"/><circle cx="6.5" cy="11.5" r="1"/></svg></div>
+        <h3>CCTV Remote Monitoring</h3>
+        <p>Ultra HD analytic cameras, supplied and installed free of charge.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-osd"><span>CAM 02</span><b>&#9679; LIVE</b></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Static Security Guards</h3>
+        <p>SIA licensed guards holding a strong on-site presence.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-osd"><span>CAM 03</span><b>&#9679; LIVE</b></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.2c1.2-1.5 3.5-1.6 4.8-.2l4 4.3c.8.9.8 2.3-.1 3.1l-1.2 1.1c-.9.8-2.2.8-3-.1L13 11.8"/><path d="M13 11.8 8.5 16c-.9.8-2.2.8-3-.1l-1.2-1.3c-.8-.9-.8-2.2.1-3L10 6"/><path d="M7 16.5V20"/><path d="M16 13.5V20"/></svg></div>
+        <h3>K9 Patrol Units</h3>
+        <p>Trained security dogs that detect what cameras cannot.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-osd"><span>CAM 04</span><b>&#9679; LIVE</b></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg></div>
+        <h3>Mobile Patrols</h3>
+        <p>Randomised visits, full patrol reports, highly visible presence.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-osd"><span>CAM 05</span><b>&#9679; LIVE</b></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
+        <h3>24 Hr Mobile Response</h3>
+        <p>Rapid response team dealing with breaches, day or night.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-osd"><span>CAM 06</span><b>&#9679; LIVE</b></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg></div>
+        <h3>Solar CCTV Towers</h3>
+        <p>UPS and battery backup. No power, no problem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY : G-WALL -->
+<section id="work" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Playback</div>
+      <h2>On site, <span class="acc">on record</span></h2>
+    </div>
+    <div class="gal">
+      <div class="g-tile g-a reveal"><div class="g-frame"><img src="analytics.jpg" alt="Live CCTV analytics with virtual perimeter and detection boxes" loading="lazy"></div><div class="g-cap">CAM 02 . Live analytics . Virtual perimeter</div></div>
+      <div class="g-tile g-b reveal"><div class="g-frame"><img src="tower.jpg" alt="Bluegrain solar powered CCTV tower on a construction site" loading="lazy"></div><div class="g-cap">CAM 03 . Solar CCTV tower . 24/7</div></div>
+      <div class="g-tile g-b reveal"><div class="g-frame"><img src="van-site.jpg" alt="Bluegrain response van on a Manchester construction site" loading="lazy"></div><div class="g-cap">CAM 04 . Response unit on site</div></div>
+      <div class="g-tile g-b reveal"><div class="g-frame"><img src="van-side.jpg" alt="Bluegrain patrol van, CCTV monitoring and static guard patrol" loading="lazy"></div><div class="g-cap">CAM 05 . Patrol fleet . Manchester</div></div>
+      <div class="g-tile g-b reveal"><div class="g-frame"><img src="van-white.jpg" alt="Bluegrain van with 24 hour control room livery" loading="lazy"></div><div class="g-cap">CAM 06 . 24 hr control room fleet</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about">
+  <div class="wrap about-in" style="padding-top:96px;padding-bottom:96px">
+    <div class="reveal">
+      <div class="label">The control room</div>
+      <h2 style="margin-top:14px">Watched from <span class="acc">Manchester</span></h2>
+      <p>Bluegrain is a Manchester based security firm protecting construction sites across the whole of the UK. Every camera we install feeds our own 24/7 control room, where real alerts get a real response: live audio warnings on site, guards and dogs on the ground, and a mobile team on the road.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat"><b>25+</b><span>Years in security</span></div>
+      <div class="stat"><b>24/7</b><span>Control room staffed</span></div>
+      <div class="stat"><b>UK</b><span>Wide coverage</span></div>
+      <div class="stat"><b>&#163;0</b><span>CCTV install cost</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Incident free</div>
+      <h2>What sites <span class="acc">say</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Had two break-ins before Bluegrain put their tower up. The audio warning alone has cleared people off the compound twice since. Not lost a thing in eight months."</p>
+        <div class="rev-who"><b>Mark H.</b>Site Manager . Salford</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"The CCTV was installed free within the week and the month to month rental suits how we phase our jobs. Control room rang us at 3am when a van pulled up. That is the service."</p>
+        <div class="rev-who"><b>Danielle R.</b>Contracts Director . Rochdale</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We use their K9 patrols on a large groundworks site in Leeds. Professional lads, full reports after every visit, and plant theft has stopped dead."</p>
+        <div class="rev-who"><b>Steve C.</b>Project Lead . Leeds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band reveal">
+  <div class="wrap">
+    <h2>Free CCTV supply and install. Month to month. No tie-ins.</h2>
+    <a href="#" class="btn heroCall"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Get a quote today</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Open channel</div>
+      <h2>Secure your <span class="acc">site</span></h2>
+    </div>
+    <div class="contact-in">
+      <div class="c-cards reveal">
+        <div class="c-card"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Phone</b><a href="#" id="contactPhone">&nbsp;</a></div></div>
+        <div class="c-card"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <div><b>Email</b><a href="#" id="contactEmail">&nbsp;</a></div></div>
+        <div class="c-card"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Base</b><span>5A East View, Middleton, Manchester M24 4DH</span></div></div>
+        <div class="c-card"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><b>Control room</b><span>Staffed 24 hours, 7 days</span></div></div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Bluegrain Ltd">
+        <input type="hidden" name="source" value="mockup-bluegrain">
+        <div><label for="fName">Name *</label><input id="fName" name="name" type="text" required></div>
+        <div><label for="fPhone">Phone *</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$"></div>
+        <div><label for="fEmail">Email</label><input id="fEmail" name="email" type="email"></div>
+        <div><label for="fService">What does the site need?</label>
+          <select id="fService" name="service">
+            <optgroup label="CCTV">
+              <option>CCTV remote monitoring</option>
+              <option>Solar CCTV tower</option>
+            </optgroup>
+            <optgroup label="Guarding">
+              <option>Static security guards</option>
+              <option>K9 patrol unit</option>
+              <option>Mobile patrols</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>24 hr mobile response</option>
+              <option>Something else</option>
+            </optgroup>
+          </select></div>
+        <div><label for="fMsg">Message</label><textarea id="fMsg" name="message" rows="4"></textarea></div>
+        <button type="submit">Request a free site survey</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <div class="foot-brand">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M6 34 C16 18 48 18 58 34" stroke="#2aa5e0" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="32" cy="37" r="13" fill="#2aa5e0"/>
+          <circle cx="32" cy="37" r="7.5" fill="#144d86"/>
+          <circle cx="35.5" cy="33.5" r="2.6" fill="#eef1f4"/>
+        </svg>
+        BLUEGRAIN LTD
+      </div>
+      <div class="foot-meta" style="margin-top:8px">Construction site security . Manchester . UK wide</div>
+    </div>
+    <div class="foot-meta" style="text-align:right">
+      &copy; 2026 Bluegrain Ltd. All rights reserved.<br>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABS -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call fabCall" aria-label="Call Bluegrain"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" class="fab fab-wa waLink" aria-label="WhatsApp Bluegrain"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="lb-x" id="lbX" aria-label="Close">&times;</button><img id="lbImg" src="" alt=""></div>
+
+<script>
+// contact decode
+var P = atob('MDc3MDIzMTAzMTM=');
+var Pf = atob('MDc3MDIgMzEwIDMxMw==');
+var E = atob('Y2hyaXNAYmx1ZWdyYWludWsuY29t');
+var WA = 'https://wa.me/44' + P.slice(1) + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+document.getElementById('navCall').href = 'tel:' + P;
+document.getElementById('navCallTxt').textContent = Pf;
+document.getElementById('heroPhone').textContent = 'Call ' + Pf;
+document.getElementById('mCall').href = 'tel:' + P;
+document.getElementById('mCall').textContent = 'Call ' + Pf;
+document.getElementById('contactPhone').textContent = Pf;
+document.getElementById('contactPhone').href = 'tel:' + P;
+document.getElementById('contactEmail').textContent = E;
+document.getElementById('contactEmail').href = 'mailto:' + E;
+document.querySelectorAll('.heroCall,.fabCall').forEach(function(a){ a.href = 'tel:' + P; });
+document.querySelectorAll('.waLink').forEach(function(a){ a.href = WA; a.target = '_blank'; a.rel = 'noopener'; });
+document.getElementById('formTimestamp').value = Date.now();
+
+// loader teardown (2.2s) + failsafe
+(function(){
+  var l = document.getElementById('loader');
+  function down(){ l.classList.add('done'); document.body.classList.add('loaded'); }
+  setTimeout(down, 2200);
+  setTimeout(down, 2500); // failsafe
+})();
+
+// OSD live clock
+(function(){
+  var el = document.getElementById('osdClock');
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    var d = new Date();
+    el.textContent = pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+// burger
+var burger = document.getElementById('burger'), mMenu = document.getElementById('mMenu');
+burger.addEventListener('click', function(){ mMenu.classList.toggle('open'); });
+mMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mMenu.classList.remove('open'); }); });
+
+// phone validation msg
+var fp = document.getElementById('fPhone');
+fp.addEventListener('invalid', function(){ fp.setCustomValidity('Please enter a valid UK phone number'); });
+fp.addEventListener('input', function(){ fp.setCustomValidity(''); });
+
+// FABs after hero
+(function(){
+  var fabs = document.getElementById('fabs'), hero = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    fabs.classList.toggle('show', window.scrollY > hero.offsetHeight - 80);
+  }, {passive:true});
+})();
+
+// reveals
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+// lightbox
+(function(){
+  var lb = document.getElementById('lb'), img = document.getElementById('lbImg');
+  document.querySelectorAll('.g-tile').forEach(function(t){
+    t.addEventListener('click', function(){
+      img.src = t.querySelector('img').src;
+      lb.classList.add('open');
+    });
+  });
+  function close(){ lb.classList.remove('open'); }
+  document.getElementById('lbX').addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>
