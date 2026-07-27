@@ -638,6 +638,55 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 
 /* ===== 4. BRICKWORK — coursework ===== */
+/* threshold meet (flooring + carpets) — first used: krm-flooring */
+#ld-thresholdmeet{background:#0e0c09;flex-direction:column;gap:52px}
+#ld-thresholdmeet .th-stage{position:relative;width:min(320px,80vw);height:92px}
+#ld-thresholdmeet .th-floor{position:absolute;left:0;top:8px;bottom:8px;width:calc(50% - 8px);border-radius:6px 2px 2px 6px;background:repeating-linear-gradient(90deg,#c9a13f 0 34px,#b58b2e 34px 37px);opacity:0;transform:translateX(-52px)}
+#ld-thresholdmeet .th-carpet{position:absolute;right:0;top:8px;bottom:8px;width:calc(50% - 8px);border-radius:2px 6px 6px 2px;background-color:#282318;background-image:radial-gradient(circle at 2px 2px,#3a3222 1.3px,rgba(0,0,0,0) 1.4px);background-size:7px 7px;opacity:0;transform:translateX(52px)}
+#ld-thresholdmeet.play .th-floor,#ld-thresholdmeet.play .th-carpet{animation:thHalf .8s cubic-bezier(.25,.9,.3,1) .15s forwards}
+@keyframes thHalf{0%{opacity:0}55%{opacity:1}100%{opacity:1;transform:translateX(0)}}
+#ld-thresholdmeet .th-bar{position:absolute;left:50%;top:0;bottom:0;width:10px;margin-left:-5px;border-radius:3px;background:linear-gradient(180deg,#e8c96a,#c9a13f 45%,#9a7723);opacity:0;transform:translateY(-70px);box-shadow:0 0 20px rgba(201,161,63,.45)}
+#ld-thresholdmeet.play .th-bar{animation:thmBar .5s cubic-bezier(.3,1.5,.5,1) .9s forwards}
+@keyframes thmBar{0%{opacity:0;transform:translateY(-70px)}100%{opacity:1;transform:translateY(0)}}
+#ld-thresholdmeet .th-lab{position:absolute;bottom:-26px;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,221,.5);opacity:0}
+#ld-thresholdmeet.play .th-lab{animation:wordIn .5s ease 1.1s forwards}
+#ld-thresholdmeet .th-lab-l{left:6px}
+#ld-thresholdmeet .th-lab-r{right:6px}
+#ld-thresholdmeet .wordmark{color:#f5efdd}
+#ld-thresholdmeet .wordsub{color:rgba(201,161,63,.9)}
+#ld-thresholdmeet.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
+#ld-thresholdmeet.play .wordsub{animation:wordIn .5s ease 1.4s forwards}
+@media(prefers-reduced-motion:reduce){
+  #ld-thresholdmeet .th-floor,#ld-thresholdmeet .th-carpet,#ld-thresholdmeet .th-bar,#ld-thresholdmeet .th-lab{opacity:1;animation:none!important;transform:none}
+  #ld-thresholdmeet .wordmark,#ld-thresholdmeet .wordsub{opacity:1;animation:none!important}
+}
+/* herringbone lay (flooring) */
+#ld-herringbone{background:#7c3aed;flex-direction:column}
+#ld-herringbone .hb-row{display:flex;align-items:center;height:74px;margin-bottom:30px}
+#ld-herringbone .hb-row i{display:block;width:58px;height:17px;border-radius:4px;margin:0 -7px;opacity:0}
+#ld-herringbone .hb-row i:nth-child(odd){--hb-rest:rotate(45deg) translateY(0);transform:rotate(45deg) translateY(-70px);background:#ffffff}
+#ld-herringbone .hb-row i:nth-child(even){--hb-rest:rotate(-45deg) translateY(0);transform:rotate(-45deg) translateY(-70px);background:#17161b}
+#ld-herringbone .hb-row i:nth-child(3n){background:#ede7fc}
+#ld-herringbone.play .hb-row i{animation:hbClick .5s cubic-bezier(.34,1.45,.55,1) forwards}
+@keyframes hbClick{from{opacity:0}to{opacity:1;transform:var(--hb-rest)}}
+#ld-herringbone.play .hb-row i:nth-child(1){animation-delay:.08s}
+#ld-herringbone.play .hb-row i:nth-child(2){animation-delay:.18s}
+#ld-herringbone.play .hb-row i:nth-child(3){animation-delay:.28s}
+#ld-herringbone.play .hb-row i:nth-child(4){animation-delay:.38s}
+#ld-herringbone.play .hb-row i:nth-child(5){animation-delay:.48s}
+#ld-herringbone.play .hb-row i:nth-child(6){animation-delay:.58s}
+#ld-herringbone.play .hb-row i:nth-child(7){animation-delay:.68s}
+#ld-herringbone.play .hb-row i:nth-child(8){animation-delay:.78s}
+#ld-herringbone.play .hb-row i:nth-child(9){animation-delay:.88s}
+#ld-herringbone.play .hb-row i:nth-child(10){animation-delay:.98s}
+#ld-herringbone .wordmark{color:#fff}
+#ld-herringbone .wordsub{color:rgba(255,255,255,.75)}
+#ld-herringbone.play .wordmark{animation:wordIn .5s ease 1.15s forwards}
+#ld-herringbone.play .wordsub{animation:wordIn .5s ease 1.3s forwards}
+@media(prefers-reduced-motion:reduce){
+  #ld-herringbone .hb-row i{opacity:1;animation:none!important;transform:var(--hb-rest)}
+  #ld-herringbone .wordmark,#ld-herringbone .wordsub{opacity:1;animation:none!important}
+}
 #ld-brick{background:#f4f1ec;flex-direction:column;color:#241c14}
 #ld-brick .wall{display:flex;flex-direction:column-reverse;gap:5px;width:auto}
 #ld-brick .course{display:flex;gap:5px}
@@ -2603,6 +2652,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A dust sheet covers the brand card, tugs twice, then sweeps away to reveal the wordmark and a highlighter rule. Sheets off, job done. First used: pouyan-abdolahi.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-thresholdmeet" data-dur="2400">
+      <span class="trade">Flooring / Carpets</span>
+      <h3>Threshold Meet</h3>
+      <p>A plank floor slides in from one side, carpet pile from the other, and a gold threshold bar drops in where they meet. Both halves of the trade in one joint. First used: krm-flooring.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-herringbone" data-dur="2400">
+      <span class="trade">Flooring</span>
+      <h3>Herringbone Lay</h3>
+      <p>A herringbone course lays itself across the screen plank by plank with a click-in overshoot, then the wordmark rises on the fresh floor.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-brick" data-dur="2400">
       <span class="trade">Bricklayers / Builders</span>
       <h3>Coursework</h3>
@@ -3726,6 +3787,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- 4. brickwork (courses injected by JS) -->
+<div class="loader" id="ld-thresholdmeet" aria-hidden="true">
+  <div class="th-stage">
+    <div class="th-floor"></div>
+    <div class="th-carpet"></div>
+    <div class="th-bar"></div>
+    <small class="th-lab th-lab-l">Flooring</small>
+    <small class="th-lab th-lab-r">Carpets</small>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">KRM Flooring</div>
+    <div class="wordsub">Flooring Supplied &amp; Fitted &middot; Alexandria</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-herringbone" aria-hidden="true">
+  <div class="hb-row" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wm-zone">
+    <div class="wordmark">KRM Flooring</div>
+    <div class="wordsub">Flooring Supplied &amp; Fitted &middot; Alexandria</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-brick" aria-hidden="true">
   <div class="wall" aria-hidden="true"></div>
   <div class="wm-zone">
