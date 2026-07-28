@@ -638,6 +638,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 
 /* catch (woodburners / stove installers) — first used: heavenly-fireplaces */
+#ld-squeegeestrips{background:#ffffff;overflow:hidden}
+#ld-squeegeestrips .sq-cols{position:absolute;inset:0;display:flex}
+#ld-squeegeestrips .sq-col{position:relative;flex:1;overflow:hidden}
+#ld-squeegeestrips .sq-fog{position:absolute;inset:-2%;background:
+  radial-gradient(60% 45% at 30% 25%,rgba(110,124,141,.55),transparent 70%),
+  radial-gradient(55% 50% at 75% 60%,rgba(21,96,212,.20),transparent 70%),
+  radial-gradient(70% 55% at 45% 85%,rgba(110,124,141,.45),transparent 70%),
+  linear-gradient(180deg,#dde3eb,#ccd5e0)}
+#ld-squeegeestrips.play .sq-col:nth-child(1) .sq-fog{animation:sqsWipe .55s cubic-bezier(.6,.05,.3,1) .25s forwards}
+#ld-squeegeestrips.play .sq-col:nth-child(2) .sq-fog{animation:sqsWipe .55s cubic-bezier(.6,.05,.3,1) .6s forwards}
+#ld-squeegeestrips.play .sq-col:nth-child(3) .sq-fog{animation:sqsWipe .55s cubic-bezier(.6,.05,.3,1) .95s forwards}
+#ld-squeegeestrips .sq-blade{position:absolute;left:6%;right:6%;top:0;height:4px;border-radius:3px;background:#0b1830;opacity:0}
+#ld-squeegeestrips .sq-blade::after{content:"";position:absolute;left:50%;top:-13px;width:10px;height:13px;border-radius:4px 4px 0 0;background:#1560d4;transform:translateX(-50%)}
+#ld-squeegeestrips.play .sq-col:nth-child(1) .sq-blade{animation:sqsBlade .55s cubic-bezier(.6,.05,.3,1) .25s forwards}
+#ld-squeegeestrips.play .sq-col:nth-child(2) .sq-blade{animation:sqsBlade .55s cubic-bezier(.6,.05,.3,1) .6s forwards}
+#ld-squeegeestrips.play .sq-col:nth-child(3) .sq-blade{animation:sqsBlade .55s cubic-bezier(.6,.05,.3,1) .95s forwards}
+@keyframes sqsWipe{to{transform:translateY(104%)}}
+@keyframes sqsBlade{0%{opacity:1;transform:translateY(0)}92%{opacity:1}100%{opacity:0;transform:translateY(60vh)}}
+#ld-squeegeestrips .sq-brand{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;transform:translateY(14px)}
+#ld-squeegeestrips.play .sq-brand{animation:sqsBrand .5s ease 1.5s forwards}
+@keyframes sqsBrand{to{opacity:1;transform:translateY(0)}}
+#ld-squeegeestrips .wordmark{color:#131a24;opacity:1}
+#ld-squeegeestrips .wordsub{opacity:1}
+#ld-squeegeestrips .wordmark b{color:#1560d4}
+#ld-squeegeestrips .wordsub{color:#1560d4}
+#ld-squeegeestrips .sq-glints svg{position:absolute;opacity:0}
+#ld-squeegeestrips.play .sq-glints svg{animation:sqsGlint .9s ease forwards}
+#ld-squeegeestrips .sq-glints svg:nth-child(1){top:32%;left:24%;animation-delay:1.62s}
+#ld-squeegeestrips .sq-glints svg:nth-child(2){top:26%;right:22%;animation-delay:1.76s}
+#ld-squeegeestrips .sq-glints svg:nth-child(3){bottom:30%;right:30%;animation-delay:1.9s}
+@keyframes sqsGlint{0%{opacity:0;transform:scale(.4) rotate(-20deg)}45%{opacity:1;transform:scale(1.12) rotate(8deg)}100%{opacity:.85;transform:scale(1) rotate(0)}}
 #ld-catch{background:#17130e;flex-direction:column;gap:6px;overflow:hidden}
 #ld-catch .ct-glow{position:absolute;left:50%;bottom:-150px;transform:translateX(-50%);width:min(700px,150%);height:400px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,122,51,.40),rgba(221,90,30,.14) 45%,transparent 70%);filter:blur(18px)}
 #ld-catch .ct-stage{position:relative;width:260px;height:150px}
@@ -2716,6 +2747,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A plank floor slides in from one side, carpet pile from the other, and a gold threshold bar drops in where they meet. Both halves of the trade in one joint. First used: krm-flooring.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-squeegeestrips" data-dur="2400">
+      <span class="trade">Cleaning Companies</span>
+      <h3>Squeegee Strips</h3>
+      <p>Pane-by-pane variant of the squeegee wipe: a misted film covers the screen in three panes and a blade pulls each pane clear top to bottom, wordmark and sparkle glints landing on the cleaned glass. First used: loudmindclub-cleaning.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-catch" data-dur="2400">
       <span class="trade">Woodburners / Stove Installers</span>
       <h3>Catch</h3>
@@ -3868,6 +3905,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">KRM Flooring</div>
     <div class="wordsub">Flooring Supplied &amp; Fitted &middot; Alexandria</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-squeegeestrips" aria-hidden="true">
+  <div class="sq-brand">
+    <div class="wordmark">LOUD<b>MIND</b>CLUB</div>
+    <div class="wordsub">Cleaning &middot; Bromley &amp; SE London</div>
+  </div>
+  <div class="sq-glints">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="#1560d4"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="#8b97a6"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#1560d4"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+  </div>
+  <div class="sq-cols">
+    <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
+    <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
+    <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
   </div>
 </div>
 
