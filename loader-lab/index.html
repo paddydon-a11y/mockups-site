@@ -639,6 +639,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 
 /* ===== 4. BRICKWORK — coursework ===== */
 /* threshold meet (flooring + carpets) — first used: krm-flooring */
+#ld-ringthrough{background:linear-gradient(160deg,#45b1e8 0%,#1b6e9d 78%,#155a81 100%);flex-direction:column;gap:30px}
+#ld-ringthrough .rt-keywrap{position:relative;width:110px;height:110px}
+#ld-ringthrough .rt-key{position:absolute;inset:0;border-radius:28px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:3.1rem;color:#fff}
+#ld-ringthrough.play .rt-key{animation:rtPress .5s cubic-bezier(.34,1.56,.64,1) .15s both}
+@keyframes rtPress{0%{transform:scale(1)}45%{transform:scale(.88)}100%{transform:scale(1)}}
+#ld-ringthrough .rt-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.75);opacity:0}
+#ld-ringthrough.play .rt-ring{animation:rtRing 1.7s ease-out infinite}
+#ld-ringthrough.play .rt-ring:nth-child(2){animation-delay:.55s}
+#ld-ringthrough.play .rt-ring:nth-child(3){animation-delay:1.1s}
+@keyframes rtRing{0%{transform:scale(.9);opacity:.85}100%{transform:scale(2.6);opacity:0}}
+#ld-ringthrough .rt-lines{display:flex;gap:18px;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+#ld-ringthrough .rt-lines span{opacity:.45}
+#ld-ringthrough.play .rt-lines span{animation:rtConnect .4s ease forwards}
+#ld-ringthrough.play .rt-lines span:nth-child(1){animation-delay:.6s}
+#ld-ringthrough.play .rt-lines span:nth-child(2){animation-delay:.9s}
+#ld-ringthrough.play .rt-lines span:nth-child(3){animation-delay:1.2s}
+@keyframes rtConnect{to{opacity:1;color:#fff}}
+#ld-ringthrough .wordmark,#ld-ringthrough .wordsub{color:#fff}
 #ld-thresholdmeet{background:#0e0c09;flex-direction:column;gap:52px}
 #ld-thresholdmeet .th-stage{position:relative;width:min(320px,80vw);height:92px}
 #ld-thresholdmeet .th-floor{position:absolute;left:0;top:8px;bottom:8px;width:calc(50% - 8px);border-radius:6px 2px 2px 6px;background:repeating-linear-gradient(90deg,#c9a13f 0 34px,#b58b2e 34px 37px);opacity:0;transform:translateX(-52px)}
@@ -2658,6 +2676,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A plank floor slides in from one side, carpet pile from the other, and a gold threshold bar drops in where they meet. Both halves of the trade in one joint. First used: krm-flooring.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-ringthrough" data-dur="2400">
+      <span class="trade">Multi-trade / Property Groups</span>
+      <h3>Ring Through</h3>
+      <p>A keypad "1" presses, call rings radiate out, and the group's divisions connect one by one before the wordmark rises. One number, every trade. First used: 1call-property-solutions.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-herringbone" data-dur="2400">
       <span class="trade">Flooring</span>
       <h3>Herringbone Lay</h3>
@@ -3798,6 +3822,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">KRM Flooring</div>
     <div class="wordsub">Flooring Supplied &amp; Fitted &middot; Alexandria</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-ringthrough" aria-hidden="true">
+  <div class="rt-keywrap">
+    <i class="rt-ring"></i><i class="rt-ring"></i><i class="rt-ring"></i>
+    <div class="rt-key">1</div>
+  </div>
+  <div class="rt-lines"><span>Construction</span><span>Joinery</span><span>Maintenance</span></div>
+  <div class="wm-zone">
+    <div class="wordmark">1Call Group</div>
+    <div class="wordsub">Property Solutions &middot; Wirral</div>
   </div>
 </div>
 
