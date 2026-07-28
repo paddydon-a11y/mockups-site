@@ -728,6 +728,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-ringthrough.play .rt-lines span:nth-child(3){animation-delay:1.2s}
 @keyframes rtConnect{to{opacity:1;color:#fff}}
 #ld-ringthrough .wordmark,#ld-ringthrough .wordsub{color:#fff}
+#ld-pillarraise{background:#f3f4f2;flex-direction:column;gap:26px}
+#ld-pillarraise .pr-pillar{position:relative;width:120px;height:150px}
+#ld-pillarraise .pr-block{position:absolute;left:50%;background:#fdfdfc;border:1px solid #e2e6e1;box-shadow:0 2px 6px rgba(32,38,34,.07);opacity:0;transform:translate(-50%,40px)}
+#ld-pillarraise .pr-plinth{bottom:0;width:104px;height:26px}
+#ld-pillarraise .pr-d1{bottom:30px;width:74px;height:26px}
+#ld-pillarraise .pr-d2{bottom:60px;width:74px;height:26px}
+#ld-pillarraise .pr-d3{bottom:90px;width:74px;height:26px}
+#ld-pillarraise .pr-cap{bottom:120px;width:104px;height:22px}
+#ld-pillarraise.play .pr-plinth{animation:prLand .5s cubic-bezier(.2,1.4,.4,1) .1s forwards}
+#ld-pillarraise.play .pr-d1{animation:prLand .5s cubic-bezier(.2,1.4,.4,1) .35s forwards}
+#ld-pillarraise.play .pr-d2{animation:prLand .5s cubic-bezier(.2,1.4,.4,1) .6s forwards}
+#ld-pillarraise.play .pr-d3{animation:prLand .5s cubic-bezier(.2,1.4,.4,1) .85s forwards}
+#ld-pillarraise.play .pr-cap{animation:prLand .5s cubic-bezier(.2,1.4,.4,1) 1.1s forwards}
+#ld-pillarraise .pr-level{position:absolute;left:-20px;right:-20px;bottom:146px;height:2px;background:#2e5c48;transform:scaleX(0)}
+#ld-pillarraise.play .pr-level{animation:prLevel .45s ease 1.5s forwards}
+@keyframes prLand{to{opacity:1;transform:translate(-50%,0)}}
+@keyframes prLevel{0%{transform:scaleX(0)}60%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:.55}}
+#ld-pillarraise .wm-zone{opacity:0;transform:translateY(12px)}
+#ld-pillarraise.play .wm-zone{animation:prUp .5s ease 1.6s forwards}
+@keyframes prUp{to{opacity:1;transform:translateY(0)}}
+#ld-pillarraise .wordmark{color:#202622;font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:.3em;text-transform:uppercase}
+#ld-pillarraise .wordsub{color:#2e5c48}
 #ld-thresholdmeet{background:#0e0c09;flex-direction:column;gap:52px}
 #ld-thresholdmeet .th-stage{position:relative;width:min(320px,80vw);height:92px}
 #ld-thresholdmeet .th-floor{position:absolute;left:0;top:8px;bottom:8px;width:calc(50% - 8px);border-radius:6px 2px 2px 6px;background:repeating-linear-gradient(90deg,#c9a13f 0 34px,#b58b2e 34px 37px);opacity:0;transform:translateX(-52px)}
@@ -2765,6 +2787,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A keypad "1" presses, call rings radiate out, and the group's divisions connect one by one before the wordmark rises. One number, every trade. First used: 1call-property-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-pillarraise" data-dur="2400">
+      <span class="trade">Stonemasons / Restoration</span>
+      <h3>Pillar Raise</h3>
+      <p>A stone pillar builds itself: plinth lands, three drums stack with a settle, the cap seats and a level line flashes true before the wordmark rises. First used: bryce-millen.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-herringbone" data-dur="2400">
       <span class="trade">Flooring</span>
       <h3>Herringbone Lay</h3>
@@ -3963,6 +3991,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">1Call Group</div>
     <div class="wordsub">Property Solutions &middot; Wirral</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-pillarraise" aria-hidden="true">
+  <div class="pr-pillar">
+    <div class="pr-level"></div>
+    <div class="pr-block pr-cap"></div>
+    <div class="pr-block pr-d3"></div>
+    <div class="pr-block pr-d2"></div>
+    <div class="pr-block pr-d1"></div>
+    <div class="pr-block pr-plinth"></div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Bryce Millen</div>
+    <div class="wordsub">Stonemason &middot; Glasgow</div>
   </div>
 </div>
 
