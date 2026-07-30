@@ -2748,6 +2748,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-stamp.play .st-wm{animation:stWm .6s ease 1.55s forwards}
 @keyframes stWm{to{opacity:1;transform:none}}
 #ld-stamp .wordmark span{color:#d8bd92}
+/* --- arc sweep (plasterers, cs-plastering) --- */
+#ld-arcsweep{background:#0d0b09;flex-direction:column}
+#ld-arcsweep .as-arcs{width:200px;height:150px;margin-bottom:22px}
+#ld-arcsweep .as-arcs .arc{fill:none;stroke:#e9b271;stroke-width:9;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300}
+#ld-arcsweep.play .as-arcs .arc{animation:asDraw .8s cubic-bezier(.6,0,.3,1) forwards}
+#ld-arcsweep.play .as-arcs .a2{animation-delay:.18s}
+#ld-arcsweep.play .as-arcs .a3{animation-delay:.36s}
+@keyframes asDraw{to{stroke-dashoffset:0}}
+#ld-arcsweep .as-arcs .arch{opacity:0;transform:translateY(16px)}
+#ld-arcsweep.play .as-arcs .arch{animation:asArch .5s cubic-bezier(.34,1.4,.5,1) .95s forwards}
+@keyframes asArch{to{opacity:1;transform:translateY(0)}}
+#ld-arcsweep .wordmark{font-family:Georgia,'Times New Roman',serif;color:#f2e8d8}
+#ld-arcsweep .wordmark b{color:#e9b271}
+#ld-arcsweep .wordsub{color:#95897a}
+#ld-arcsweep.play .wordmark{animation:wordIn .5s ease 1.25s forwards}
+#ld-arcsweep.play .wordsub{animation:wordIn .5s ease 1.45s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld-arcsweep .as-arcs{display:none}
+  #ld-arcsweep.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-arcsweep.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
 </style>
 </head>
 <body>
@@ -3053,6 +3074,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Plasterers / Renderers</span>
       <h3>Trowel Float</h3>
       <p>Angled trowel passes sweep a rough mottled surface smooth into fresh plaster pink, then the wordmark lands on the float coat. First used on tom-thompson-plastering.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-arcsweep" data-dur="2400">
+      <span class="trade">Plasterers / Renderers</span>
+      <h3>Arc Sweep</h3>
+      <p>Concentric trowel-sweep arcs draw themselves on black like float passes, a solid arch caps the fan, then the serif wordmark rises. Built for a black-and-bronze arch logo. First used on cs-plastering.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-ruleoff" data-dur="2450">
@@ -3913,6 +3940,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <div class="ds-rule"></div>
     </div>
     <div class="ds-sheet"></div>
+  </div>
+</div>
+
+<div class="loader" id="ld-arcsweep" aria-hidden="true">
+  <svg class="as-arcs" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="arc"    d="M14 142 A104 104 0 0 1 118 38" pathLength="300"/>
+    <path class="arc a2" d="M42 142 A76 76 0 0 1 118 66"  pathLength="300"/>
+    <path class="arc a3" d="M70 142 A48 48 0 0 1 118 94"  pathLength="300"/>
+    <g class="arch">
+      <path d="M132 142 L132 58 A22 22 0 0 1 176 58 L176 142 Z" fill="#e9b271"/>
+      <path d="M145 142 L145 76 A9 9 0 0 1 163 76 L163 142" fill="none" stroke="#0d0b09" stroke-width="6"/>
+    </g>
+  </svg>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">C.S.<b>Plastering</b></div>
+    <div class="wordsub">Plastering . Skimming . Rendering</div>
   </div>
 </div>
 
