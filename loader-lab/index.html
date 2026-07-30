@@ -665,6 +665,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-squeegeestrips .wordsub{color:#1560d4}
 
 /* louvre tilt — shutters / blinds / glazing */
+#ld-snaglist{background:#ffffff}
+#ld-snaglist .sn-col{display:flex;flex-direction:column;align-items:flex-start;gap:26px}
+#ld-snaglist .sn-list{display:grid;gap:9px}
+#ld-snaglist .sn-row{display:flex;align-items:center;gap:12px;font-family:ui-monospace,monospace;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:#17181d}
+#ld-snaglist .sn-box{width:20px;height:20px;border:2px solid #141519;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+#ld-snaglist .sn-box svg{width:13px;height:13px;overflow:visible}
+#ld-snaglist .sn-box path{stroke:#d9ad00;stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20}
+#ld-snaglist.play .sn-row:nth-child(1) .sn-box path{animation:snTick .28s ease .2s forwards}
+#ld-snaglist.play .sn-row:nth-child(2) .sn-box path{animation:snTick .28s ease .38s forwards}
+#ld-snaglist.play .sn-row:nth-child(3) .sn-box path{animation:snTick .28s ease .56s forwards}
+#ld-snaglist.play .sn-row:nth-child(4) .sn-box path{animation:snTick .28s ease .74s forwards}
+#ld-snaglist.play .sn-row:nth-child(5) .sn-box path{animation:snTick .28s ease .92s forwards}
+@keyframes snTick{to{stroke-dashoffset:0}}
+#ld-snaglist .sn-brand{opacity:0;transform:translateY(8px)}
+#ld-snaglist.play .sn-brand{animation:snBrand .5s ease 1.35s forwards}
+@keyframes snBrand{to{opacity:1;transform:none}}
+#ld-snaglist .sn-name{position:relative;display:inline-block;isolation:isolate;font-family:'League Spartan','Arial Black',sans-serif;font-weight:900;font-size:3rem;color:#17181d;line-height:1;letter-spacing:-.01em}
+#ld-snaglist .sn-name::before{content:"";position:absolute;left:-.14em;right:-.14em;top:.06em;bottom:-.02em;background:#f5c400;z-index:-1;transform:scaleX(0) skewX(-8deg) rotate(-1.2deg);transform-origin:left center}
+#ld-snaglist.play .sn-name::before{animation:snSwipe .4s ease 1.6s forwards}
+@keyframes snSwipe{to{transform:scaleX(1) skewX(-8deg) rotate(-1.2deg)}}
+#ld-snaglist .sn-sub{font-family:ui-monospace,monospace;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#8d95a0;margin-top:10px}
+@media (prefers-reduced-motion: reduce){
+  #ld-snaglist .sn-list{display:none}
+  #ld-snaglist.play .sn-brand{animation:none;opacity:1;transform:none}
+  #ld-snaglist.play .sn-name::before{animation:none;transform:skewX(-8deg) rotate(-1.2deg)}
+}
 #ld-scoresnap{background:#ffffff}
 #ld-scoresnap .ss-stage{position:relative;width:300px;height:300px}
 #ld-scoresnap .ss-brand{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0;transform:translateY(8px)}
@@ -2830,6 +2856,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Pane-by-pane variant of the squeegee wipe: a misted film covers the screen in three panes and a blade pulls each pane clear top to bottom, wordmark and sparkle glints landing on the cleaned glass. First used: loudmindclub-cleaning.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-snaglist" data-dur="2400">
+      <span class="trade">Multi-trade / Renovation</span>
+      <h3>Snag List</h3>
+      <p>A mono checklist of the firm's trades gets ticked rapid-fire, then the wordmark rises with a marker swipe: the job list, ticked off. First used: domg-renovation.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-scoresnap" data-dur="2400">
       <span class="trade">Tilers</span>
       <h3>Score &amp; Snap</h3>
@@ -4017,6 +4049,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
+  </div>
+</div>
+
+<div class="loader" id="ld-snaglist" aria-hidden="true">
+  <div class="sn-col">
+    <div class="sn-list">
+      <div class="sn-row"><span class="sn-box"><svg viewBox="0 0 13 13"><path d="M2 7l3 3 6-8"/></svg></span>Dry Lining</div>
+      <div class="sn-row"><span class="sn-box"><svg viewBox="0 0 13 13"><path d="M2 7l3 3 6-8"/></svg></span>Decorating</div>
+      <div class="sn-row"><span class="sn-box"><svg viewBox="0 0 13 13"><path d="M2 7l3 3 6-8"/></svg></span>Plumbing</div>
+      <div class="sn-row"><span class="sn-box"><svg viewBox="0 0 13 13"><path d="M2 7l3 3 6-8"/></svg></span>Electrics</div>
+      <div class="sn-row"><span class="sn-box"><svg viewBox="0 0 13 13"><path d="M2 7l3 3 6-8"/></svg></span>Full Renovation</div>
+    </div>
+    <div class="sn-brand">
+      <span class="sn-name">DOMG</span>
+      <div class="sn-sub">Renovation Ltd &middot; East London</div>
+    </div>
   </div>
 </div>
 
