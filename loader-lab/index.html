@@ -663,6 +663,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-squeegeestrips .wordsub{opacity:1}
 #ld-squeegeestrips .wordmark b{color:#1560d4}
 #ld-squeegeestrips .wordsub{color:#1560d4}
+
+/* louvre tilt — shutters / blinds / glazing */
+#ld-louvretilt{background:#f4f5f3;overflow:hidden}
+#ld-louvretilt .lt-light{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,0) 20%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 80%);opacity:0}
+#ld-louvretilt.play .lt-light{animation:ltLight 1s ease .7s forwards}
+@keyframes ltLight{to{opacity:1}}
+#ld-louvretilt .lt-slats{position:absolute;inset:0;display:flex;flex-direction:column}
+#ld-louvretilt .lt-slat{flex:1;background:#1b1512;transform-origin:center top}
+#ld-louvretilt.play .lt-slat{animation:ltTilt 1.15s cubic-bezier(.6,.05,.2,1) forwards}
+#ld-louvretilt.play .lt-slat:nth-child(1){animation-delay:.12s}
+#ld-louvretilt.play .lt-slat:nth-child(2){animation-delay:.2s}
+#ld-louvretilt.play .lt-slat:nth-child(3){animation-delay:.28s}
+#ld-louvretilt.play .lt-slat:nth-child(4){animation-delay:.36s}
+#ld-louvretilt.play .lt-slat:nth-child(5){animation-delay:.44s}
+#ld-louvretilt.play .lt-slat:nth-child(6){animation-delay:.52s}
+#ld-louvretilt.play .lt-slat:nth-child(7){animation-delay:.6s}
+#ld-louvretilt.play .lt-slat:nth-child(8){animation-delay:.68s}
+@keyframes ltTilt{to{transform:scaleY(.06)}}
+#ld-louvretilt .lt-brand{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;transform:translateY(14px);text-align:center}
+#ld-louvretilt.play .lt-brand{animation:ltBrand .7s ease 1.05s forwards}
+@keyframes ltBrand{to{opacity:1;transform:translateY(0)}}
+#ld-louvretilt .lt-word{font-family:'Marcellus',Georgia,serif;font-size:1.6rem;letter-spacing:.12em;text-transform:uppercase;color:#1b1512}
+#ld-louvretilt .lt-word span{color:#8a4632}
+#ld-louvretilt .lt-rule{width:54px;height:1px;background:#8a4632;transform:scaleX(0)}
+#ld-louvretilt.play .lt-rule{animation:ltRule .5s ease 1.3s forwards}
+@keyframes ltRule{to{transform:scaleX(1)}}
+#ld-louvretilt .lt-sub{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:#8f8781}
 #ld-squeegeestrips .sq-glints svg{position:absolute;opacity:0}
 #ld-squeegeestrips.play .sq-glints svg{animation:sqsGlint .9s ease forwards}
 #ld-squeegeestrips .sq-glints svg:nth-child(1){top:32%;left:24%;animation-delay:1.62s}
@@ -2775,6 +2802,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Pane-by-pane variant of the squeegee wipe: a misted film covers the screen in three panes and a blade pulls each pane clear top to bottom, wordmark and sparkle glints landing on the cleaned glass. First used: loudmindclub-cleaning.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-louvretilt" data-dur="2400">
+      <span class="trade">Shutters / Blinds / Glazing</span>
+      <h3>Louvre Tilt</h3>
+      <p>A wall of closed ink louvres tilts open slat by slat, daylight floods between the blades and the wordmark rises in the light. The product's one daily gesture, opening the shutters. First used: form-and-fenestra.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-catch" data-dur="2400">
       <span class="trade">Woodburners / Stove Installers</span>
       <h3>Catch</h3>
@@ -3950,6 +3983,19 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
+  </div>
+</div>
+
+<div class="loader" id="ld-louvretilt" aria-hidden="true">
+  <div class="lt-light"></div>
+  <div class="lt-slats">
+    <div class="lt-slat"></div><div class="lt-slat"></div><div class="lt-slat"></div><div class="lt-slat"></div>
+    <div class="lt-slat"></div><div class="lt-slat"></div><div class="lt-slat"></div><div class="lt-slat"></div>
+  </div>
+  <div class="lt-brand">
+    <div class="lt-word">Form <span>&amp;</span> Fenestra</div>
+    <div class="lt-rule"></div>
+    <div class="lt-sub">Architectural Shutter Studio &middot; Herefordshire</div>
   </div>
 </div>
 
