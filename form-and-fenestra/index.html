@@ -165,19 +165,27 @@ nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px sol
 section{padding-top:96px;padding-bottom:96px}
 .sec-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 .sec-h2{font-size:clamp(1.9rem,3.8vw,2.9rem);line-height:1.15;margin-bottom:46px;max-width:22ch}
+.sec-intro{max-width:62ch;font-size:1.06rem;margin:-26px 0 52px}
 .sec-h2 .acc{color:var(--accent)}
 
 /* services S3 */
-.svc-list{border-top:1px solid var(--line)}
-.svc-row{display:grid;grid-template-columns:110px 1fr 1.2fr;gap:28px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line);position:relative}
-.svc-row::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--accent);transition:width .45s ease}
-.svc-row:hover::after{width:100%}
-.svc-num{font-family:'Marcellus',serif;font-size:1.9rem;color:var(--muted)}
-.svc-row h3{font-size:1.35rem}
-.svc-row p{font-size:.97rem}
+.phil-list{border-top:1px solid var(--line)}
+.phil-row{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding:56px 0;border-bottom:1px solid var(--line)}
+.phil-row:nth-child(even) .phil-txt{order:2}
+.phil-row:nth-child(even) .phil-img{order:1}
+.phil-num{font-family:'Marcellus',serif;font-size:1.3rem;color:var(--accent);margin-bottom:10px}
+.phil-row h3{font-size:1.55rem;margin-bottom:14px}
+.phil-row p{font-size:1rem;max-width:52ch}
+.phil-img{position:relative}
+.phil-img img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px}
+.phil-img::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--line);border-radius:6px;z-index:-1}
+.phil-row:nth-child(even) .phil-img::after{inset:14px 14px -14px -14px}
 @media (max-width:880px){
-  .svc-row{grid-template-columns:1fr;gap:6px;padding:24px 0}
-  .svc-num{font-size:1.3rem;color:var(--accent)}
+  .phil-row{grid-template-columns:1fr;gap:26px;padding:36px 0}
+  .phil-row:nth-child(even) .phil-txt{order:1}
+  .phil-row:nth-child(even) .phil-img{order:2}
+  .phil-img::after,.phil-row:nth-child(even) .phil-img::after{inset:10px -10px -10px 10px}
+  .phil-img{margin-right:10px}
 }
 
 /* gallery G4 */
@@ -204,14 +212,14 @@ section{padding-top:96px;padding-bottom:96px}
 #lightbox img{max-width:100%;max-height:90vh;border-radius:10px}
 
 /* about */
-.about-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.about-in img{border-radius:14px;border:1px solid var(--line);width:100%;height:430px;object-fit:cover}
+.about-in{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.about-in img{border-radius:14px;border:1px solid var(--line);width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;position:sticky;top:96px}
 .about-txt .sec-h2{margin-bottom:22px}
 .about-txt p{margin-bottom:16px}
 .about-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-pale);background:var(--accent-pale);padding:8px 14px;border-radius:100px;margin-top:8px}
 @media (max-width:880px){
   .about-in{grid-template-columns:1fr;gap:30px}
-  .about-in img{height:auto;aspect-ratio:4/3;order:2}
+  .about-in img{height:auto;aspect-ratio:4/3;order:2;position:static}
 }
 
 /* reviews R3 */
@@ -305,7 +313,7 @@ footer{background:var(--ink);color:#b7aca3;padding-top:56px;padding-bottom:40px}
   <div class="wrap nav-in">
     <a href="#" class="nav-logo">Form <span>&amp;</span> Fenestra</a>
     <div class="nav-links">
-      <a href="#services">Shutters</a>
+      <a href="#philosophy">Philosophy</a>
       <a href="#work">Recent Work</a>
       <a href="#about">The Studio</a>
       <a href="#reviews">Reviews</a>
@@ -315,7 +323,7 @@ footer{background:var(--ink);color:#b7aca3;padding-top:56px;padding-bottom:40px}
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="m-panel" id="mPanel">
-    <a href="#services">Shutters</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="#work">Recent Work</a>
     <a href="#about">The Studio</a>
     <a href="#reviews">Reviews</a>
@@ -355,40 +363,43 @@ footer{background:var(--ink);color:#b7aca3;padding-top:56px;padding-bottom:40px}
   </div>
 </div>
 
-<section id="services">
+<section id="philosophy">
   <div class="wrap">
-    <div class="sec-label reveal">What We Make</div>
-    <h2 class="sec-h2 reveal">Shutters first. <span class="acc">Fine joinery</span> always.</h2>
-    <div class="svc-list">
-      <div class="svc-row reveal">
-        <div class="svc-num">01</div>
-        <h3>Bespoke Window Shutters</h3>
-        <p>Casement, solid panel and louvred shutters, built to your exact window.</p>
+    <div class="sec-label reveal">Our Philosophy</div>
+    <h2 class="sec-h2 reveal">Founded on the principle of <span class="acc">intentional design</span></h2>
+    <p class="sec-intro reveal">Form &amp; Fenestra repositions the shutter away from the conventional slat design. We focus on bespoke casement shutters crafted in premium hardwoods to create a seamless, sophisticated finish that bridges the gap between traditional joinery and contemporary architecture.</p>
+    <div class="phil-list">
+      <div class="phil-row reveal">
+        <div class="phil-txt">
+          <div class="phil-num">01</div>
+          <h3>The Craft</h3>
+          <p>Every shutter begins with the selection of high quality sustainable hardwoods. By employing traditional joinery techniques in a modern context, we ensure each piece is built to last, providing structural integrity that mass production alternatives simply cannot match.</p>
+        </div>
+        <figure class="phil-img"><img src="phil-1.jpg" alt="Block plane and wood shavings on the workshop bench" loading="lazy"></figure>
       </div>
-      <div class="svc-row reveal">
-        <div class="svc-num">02</div>
-        <h3>Tilt Rod Shutters</h3>
-        <p>Traditional tilt rod louvres, hand fitted and hung on quality hardware.</p>
+      <div class="phil-row reveal">
+        <div class="phil-txt">
+          <div class="phil-num">02</div>
+          <h3>Bespoke Design</h3>
+          <p>We believe your home's architecture should be celebrated, not hidden. Each casement is meticulously measured and tailored to the unique dimensions of your windows, ensuring a seamless aesthetic flow that elevates the character of your interior.</p>
+        </div>
+        <figure class="phil-img"><img src="phil-2.jpg" alt="Design illustration of fabric panelled casement shutters at a cottage window" loading="lazy"></figure>
       </div>
-      <div class="svc-row reveal">
-        <div class="svc-num">03</div>
-        <h3>Made to Measure Blinds</h3>
-        <p>Blinds matched to your shutters and rooms, measured and fitted by us.</p>
+      <div class="phil-row reveal">
+        <div class="phil-txt">
+          <div class="phil-num">03</div>
+          <h3>Precision Installation</h3>
+          <p>Design is only half the process; performance is the other. Our installation process is centred on precision, ensuring that every shutter operates perfectly and maintains a clean, refined silhouette that enhances your home's functionality.</p>
+        </div>
+        <figure class="phil-img"><img src="phil-3.jpg" alt="Fitted panelled shutter with turned brass knob beside a sash window" loading="lazy"></figure>
       </div>
-      <div class="svc-row reveal">
-        <div class="svc-num">04</div>
-        <h3>Cabinet Making</h3>
-        <p>Alcove units, libraries and built-ins, cabinet work that fits the room properly.</p>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-num">05</div>
-        <h3>Bespoke Joinery</h3>
-        <p>Doors, panelling and window seats in hardwood or paint grade timber.</p>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-num">06</div>
-        <h3>Traditional Woodworking</h3>
-        <p>Hand cut joints and time served methods, the way it should be done.</p>
+      <div class="phil-row reveal">
+        <div class="phil-txt">
+          <div class="phil-num">04</div>
+          <h3>Material Excellence</h3>
+          <p>We specialise in working with premium materials like Sapele hardwood, chosen for its exceptional durability and superior finish. This commitment to raw material quality provides the foundational strength required for our sophisticated architectural designs.</p>
+        </div>
+        <figure class="phil-img"><img src="phil-4.jpg" alt="Blue fabric panelled shutters in a timber lined garden room" loading="lazy"></figure>
       </div>
     </div>
   </div>
@@ -401,11 +412,11 @@ footer{background:var(--ink);color:#b7aca3;padding-top:56px;padding-bottom:40px}
     <div class="plates">
       <figure class="plate p-a reveal"><img src="work-1.jpg" alt="Grey louvred shutter doors on a timber framed Herefordshire farmhouse"><figcaption>01 &middot; Exterior louvred shutters, timber framed farmhouse</figcaption></figure>
       <figure class="plate p-b reveal"><img src="work-2.jpg" alt="Louvred shutter doors fitted in an oak framed porch"><figcaption>02 &middot; Shutter doors, oak framed porch</figcaption></figure>
-      <figure class="plate p-c reveal"><img src="work-3.jpg" alt="Fabric panelled shutters in a timber garden room"><figcaption>03 &middot; Fabric panelled shutters, garden room</figcaption></figure>
+      <figure class="plate p-c reveal"><img src="work-3.jpg" alt="Panelled casement shutters folded back from a twelve pane sash window"><figcaption>03 &middot; Panelled casement shutters, sash window</figcaption></figure>
       <figure class="plate p-d reveal"><img src="work-4.jpg" alt="Deep blue alcove cabinetry beside a stone fireplace"><figcaption>04 &middot; Alcove cabinetry and shelving</figcaption></figure>
       <figure class="plate p-e reveal"><img src="work-5.jpg" alt="Fitted home library with mesh fronted cabinets"><figcaption>05 &middot; Fitted library and radiator grilles</figcaption></figure>
       <figure class="plate p-f reveal"><img src="work-6.jpg" alt="Pair of handmade oak dining tables"><figcaption>06 &middot; Pair of oak dining tables</figcaption></figure>
-      <figure class="plate p-g reveal"><img src="work-7.jpg" alt="Panelled shutter detail with turned brass knob"><figcaption>07 &middot; Panel and brass detail</figcaption></figure>
+      <figure class="plate p-g reveal"><img src="work-7.jpg" alt="Louvred shutter doors on a timber framed entrance"><figcaption>07 &middot; Louvred shutter doors, detail</figcaption></figure>
     </div>
   </div>
 </section>
@@ -415,9 +426,12 @@ footer{background:var(--ink);color:#b7aca3;padding-top:56px;padding-bottom:40px}
     <img class="reveal" src="studio.jpg" alt="Duncan Matthews in the Form &amp; Fenestra workshop" style="object-position:center 30%">
     <div class="about-txt reveal">
       <div class="sec-label">The Studio</div>
-      <h2 class="sec-h2">Cabinet making precision, at the <span class="acc">window</span></h2>
-      <p>Form &amp; Fenestra is run by Duncan Matthews from a workshop at Southfield Farm, Canon Frome, near Ledbury. Behind it sit City &amp; Guilds cabinet making training and eighteen years building fine furniture in London, including work for Sir Terence Conran and David Linley.</p>
-      <p>That standard now goes into your shutters: measured, made and fitted by Duncan himself.</p>
+      <h2 class="sec-h2">The story of <span class="acc">Form &amp; Fenestra</span></h2>
+      <p>My journey in fine woodworking began at the Hereford College of Technology, where I earned my City &amp; Guilds Level 3 in Cabinet Making and Carcase Construction. This formal education laid the groundwork for my career, grounding me in the technical precision of drafting and the deep history of furniture design.</p>
+      <p>For 18 years, I had the privilege of working at the renowned Alan Eldridge Furniture. There, I was immersed in the world of high-end bespoke craft, creating furniture for London's Shaker Shop and crafting desks for Sir Terence Conran. My time at the bench involved collaborating on prestigious projects for names like David Linley and Rupert Bevan, where I learned that true quality lies in the smallest, most exacting details.</p>
+      <p>Throughout those years, I discovered a particular passion for the intersection of window design and fine joinery. This led me to develop a dedicated practice for plantation shutters, which grew from a side project into a focused craft.</p>
+      <p>Over the past few years, as I transitioned into serving my local community as a joiner and cabinet maker here in the Three Counties, I found myself drawn back to those shutter roots. Form &amp; Fenestra is the result of that journey: the marriage of my cabinet making precision and my long-standing devotion to architectural shutter design.</p>
+      <p>Today, I bring that London level standard of quality directly to your home. I don't just supply shutters; I design and build bespoke casement solutions that respect the architecture of your property, ensuring that your home is as functional as it is beautiful.</p>
       <span class="about-tag">Sapele &amp; premium hardwoods</span>
     </div>
   </div>
@@ -548,7 +562,7 @@ footer{background:var(--ink);color:#b7aca3;padding-top:56px;padding-bottom:40px}
     </div>
     <div class="foot-col">
       <h4>Studio</h4>
-      <a href="#services">Shutters</a>
+      <a href="#philosophy">Philosophy</a>
       <a href="#work">Recent Work</a>
       <a href="#about">The Studio</a>
       <a href="#contact">Contact</a>
