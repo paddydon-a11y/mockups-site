@@ -809,6 +809,49 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-ringthrough.play .rt-lines span:nth-child(3){animation-delay:1.2s}
 @keyframes rtConnect{to{opacity:1;color:#fff}}
 #ld-ringthrough .wordmark,#ld-ringthrough .wordsub{color:#fff}
+
+/* ===== charge up (electricians / EV installers) ===== */
+#ld-chargeup{background:#ffffff;flex-direction:column;gap:0}
+#ld-chargeup .cu-stage{width:min(340px,78vw);text-align:center}
+#ld-chargeup .cu-pct{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;letter-spacing:.22em;color:#8b929c;margin-bottom:14px}
+#ld-chargeup .cu-pct b{color:#f52779;font-weight:600}
+#ld-chargeup .cu-track{position:relative;height:16px;border:2px solid #202328;border-radius:99px;overflow:hidden}
+#ld-chargeup .cu-fill{position:absolute;inset:2px;border-radius:99px;background:#f52779;transform-origin:left;transform:scaleX(0)}
+#ld-chargeup.play .cu-fill{animation:cuFill 1.45s .45s cubic-bezier(.4,0,.55,1) forwards}
+@keyframes cuFill{to{transform:scaleX(1)}}
+#ld-chargeup .cu-plug{position:absolute;left:-46px;top:50%;width:34px;height:14px;transform:translate(0,-50%)}
+#ld-chargeup.play .cu-plug{animation:cuDock .45s cubic-bezier(.5,0,.3,1.4) forwards}
+@keyframes cuDock{to{transform:translate(46px,-50%)}}
+#ld-chargeup .cu-plug svg{width:34px;height:14px;display:block}
+#ld-chargeup .wm-zone{margin-top:26px;opacity:0;transform:translateY(14px)}
+#ld-chargeup.play .wm-zone{animation:cuRise .5s 1.95s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes cuRise{to{opacity:1;transform:none}}
+#ld-chargeup .wordmark{color:#202328;letter-spacing:.16em}
+#ld-chargeup .wordmark b{color:#f52779}
+#ld-chargeup .wordsub{color:#8b929c}
+
+/* ===== switch flick (electricians) ===== */
+#ld-switchflick{background:#202328;flex-direction:column;gap:0;overflow:hidden}
+#ld-switchflick .sf-glow{position:absolute;left:50%;top:50%;width:240vmax;height:240vmax;margin:-120vmax 0 0 -120vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.98) 0%,rgba(255,255,255,.85) 22%,rgba(255,255,255,0) 62%);transform:scale(0)}
+#ld-switchflick.play .sf-glow{animation:sfBloom .85s .72s cubic-bezier(.25,.6,.3,1) forwards}
+@keyframes sfBloom{to{transform:scale(1)}}
+#ld-switchflick .sf-white{position:absolute;inset:0;background:#fff;opacity:0}
+#ld-switchflick.play .sf-white{animation:sfWhite .45s .95s ease forwards}
+@keyframes sfWhite{to{opacity:1}}
+#ld-switchflick .sf-stage{position:relative;z-index:3;text-align:center}
+#ld-switchflick .sf-plate{width:104px;height:104px;margin:0 auto;background:linear-gradient(160deg,#f2f3f5,#dcdfe4);border-radius:20px;box-shadow:0 12px 34px rgba(0,0,0,.35),inset 0 1px 0 #fff;display:flex;align-items:center;justify-content:center;perspective:260px}
+#ld-switchflick .sf-rocker{position:relative;width:44px;height:68px;border-radius:9px;background:linear-gradient(180deg,#ffffff 0%,#e9ebee 55%,#c9cdd4 100%);box-shadow:inset 0 -3px 5px rgba(0,0,0,.18),0 1px 2px rgba(0,0,0,.2);transform:rotateX(-24deg)}
+#ld-switchflick.play .sf-rocker{animation:sfFlick .14s .55s cubic-bezier(.6,0,.4,1) forwards}
+@keyframes sfFlick{to{transform:rotateX(26deg)}}
+#ld-switchflick .sf-led{position:absolute;left:50%;bottom:9px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#9aa0a8}
+#ld-switchflick.play .sf-led{animation:sfLed .12s .66s ease forwards}
+@keyframes sfLed{to{background:#f52779;box-shadow:0 0 10px 2px rgba(245,39,121,.65)}}
+#ld-switchflick .wm-zone{position:relative;z-index:3;margin-top:30px;opacity:0;transform:translateY(14px)}
+#ld-switchflick.play .wm-zone{animation:sfRise .5s 1.35s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes sfRise{to{opacity:1;transform:none}}
+#ld-switchflick .wordmark{color:#202328;letter-spacing:.16em}
+#ld-switchflick .wordmark b{color:#f52779}
+#ld-switchflick .wordsub{color:#8b929c}
 #ld-pillarraise{background:#f3f4f2;flex-direction:column;gap:26px}
 #ld-pillarraise .pr-pillar{position:relative;width:120px;height:150px}
 #ld-pillarraise .pr-block{position:absolute;left:50%;background:#fdfdfc;border:1px solid #e2e6e1;box-shadow:0 2px 6px rgba(32,38,34,.07);opacity:0;transform:translate(-50%,40px)}
@@ -2886,6 +2929,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A keypad "1" presses, call rings radiate out, and the group's divisions connect one by one before the wordmark rises. One number, every trade. First used: 1call-property-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-chargeup" data-dur="2400">
+      <span class="trade">Electricians / EV Installers</span>
+      <h3>Charge Up</h3>
+      <p>A plug docks into a charge pill, the fill runs 0 to 100 with a counting percentage, and at full charge the page powers on and the wordmark lands. Not yet used in a mockup.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-switchflick" data-dur="2400">
+      <span class="trade">Electricians</span>
+      <h3>Switch Flick</h3>
+      <p>On a dim wall, a rocker light switch clicks down, its LED lights pink, and a bloom of light floods the screen white before the wordmark lands in the light. First used: electrician-a.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-pillarraise" data-dur="2400">
       <span class="trade">Stonemasons / Restoration</span>
       <h3>Pillar Raise</h3>
@@ -4133,6 +4188,34 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">1Call Group</div>
     <div class="wordsub">Property Solutions &middot; Wirral</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-chargeup" aria-hidden="true">
+  <div class="cu-stage">
+    <div class="cu-pct"><b>100</b>% CHARGED</div>
+    <div class="cu-track">
+      <span class="cu-plug">
+        <svg viewBox="0 0 34 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="4" width="14" height="6" rx="3" fill="#202328"/><rect x="12" y="1" width="16" height="12" rx="4" fill="#202328"/><rect x="28" y="4" width="6" height="2.5" rx="1.2" fill="#202328"/><rect x="28" y="8" width="6" height="2.5" rx="1.2" fill="#202328"/></svg>
+      </span>
+      <span class="cu-fill"></span>
+    </div>
+    <div class="wm-zone">
+      <div class="wordmark">ELECTRICIAN<b>&#9889;</b>A</div>
+      <div class="wordsub">Electrical Contractor &middot; Liverpool &amp; Manchester</div>
+    </div>
+  </div>
+</div>
+
+<div class="loader" id="ld-switchflick" aria-hidden="true">
+  <div class="sf-glow"></div>
+  <div class="sf-white"></div>
+  <div class="sf-stage">
+    <div class="sf-plate"><div class="sf-rocker"><span class="sf-led"></span></div></div>
+    <div class="wm-zone">
+      <div class="wordmark">ELECTRICIAN<b>&#9889;</b>A</div>
+      <div class="wordsub">Electrical Contractor &middot; Liverpool &amp; Manchester</div>
+    </div>
   </div>
 </div>
 
