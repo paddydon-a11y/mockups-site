@@ -665,6 +665,34 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-squeegeestrips .wordsub{color:#1560d4}
 
 /* louvre tilt — shutters / blinds / glazing */
+#ld-scoresnap{background:#ffffff}
+#ld-scoresnap .ss-stage{position:relative;width:300px;height:300px}
+#ld-scoresnap .ss-brand{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0;transform:translateY(8px)}
+#ld-scoresnap.play .ss-brand{animation:ssBrand .5s ease 1.25s forwards}
+@keyframes ssBrand{to{opacity:1;transform:translateY(0)}}
+#ld-scoresnap .ss-name{font-family:Georgia,'Times New Roman',serif;font-size:2.1rem;color:#15161a;white-space:nowrap}
+#ld-scoresnap .ss-sub{font-family:ui-monospace,monospace;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#8d96a0}
+#ld-scoresnap .ss-half{position:absolute;left:50%;width:230px;height:115px;margin-left:-115px;overflow:hidden}
+#ld-scoresnap .ss-top{top:50%;margin-top:-115px}
+#ld-scoresnap .ss-bot{top:50%}
+#ld-scoresnap.play .ss-top{animation:ssTop .55s cubic-bezier(.5,-0.2,.4,1) 1.05s forwards}
+#ld-scoresnap.play .ss-bot{animation:ssBot .55s cubic-bezier(.5,-0.2,.4,1) 1.05s forwards}
+#ld-scoresnap .ss-glaze{position:absolute;left:0;width:230px;height:230px;background:linear-gradient(135deg,#9b2e3d 0%,#841f2d 38%,#6e1a26 78%,#5c1420 100%);border-radius:10px}
+#ld-scoresnap .ss-glaze::after{content:"";position:absolute;inset:0;border-radius:10px;background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.22) 44%,rgba(255,255,255,0) 58%)}
+#ld-scoresnap .ss-top .ss-glaze{top:0}
+#ld-scoresnap .ss-bot .ss-glaze{bottom:0}
+@keyframes ssTop{60%{transform:translateY(-120%) rotate(-2deg)}80%{transform:translateY(-112%) rotate(-1.4deg)}100%{transform:translateY(-116%) rotate(-1.6deg)}}
+@keyframes ssBot{60%{transform:translateY(120%) rotate(2deg)}80%{transform:translateY(112%) rotate(1.4deg)}100%{transform:translateY(116%) rotate(1.6deg)}}
+#ld-scoresnap .ss-score{position:absolute;top:50%;left:50%;width:230px;margin-left:-115px;height:2px;margin-top:-1px;background:#fff;transform:scaleX(0);transform-origin:left center;box-shadow:0 0 8px rgba(255,255,255,.9)}
+#ld-scoresnap.play .ss-score{animation:ssScore .5s ease .35s forwards}
+@keyframes ssScore{to{transform:scaleX(1)}}
+#ld-scoresnap .ss-nib{position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -115px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px rgba(255,255,255,.85);opacity:0}
+#ld-scoresnap.play .ss-nib{animation:ssNib .5s linear .35s forwards}
+@keyframes ssNib{0%{opacity:1;transform:translateX(0)}95%{opacity:1}100%{opacity:0;transform:translateX(230px)}}
+@media (prefers-reduced-motion: reduce){
+  #ld-scoresnap .ss-half,#ld-scoresnap .ss-score,#ld-scoresnap .ss-nib{display:none}
+  #ld-scoresnap.play .ss-brand{animation:none;opacity:1;transform:none}
+}
 #ld-louvretilt{background:#f4f5f3;overflow:hidden}
 #ld-louvretilt .lt-light{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,0) 20%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 80%);opacity:0}
 #ld-louvretilt.play .lt-light{animation:ltLight 1s ease .7s forwards}
@@ -2802,6 +2830,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Pane-by-pane variant of the squeegee wipe: a misted film covers the screen in three panes and a blade pulls each pane clear top to bottom, wordmark and sparkle glints landing on the cleaned glass. First used: loudmindclub-cleaning.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-scoresnap" data-dur="2400">
+      <span class="trade">Tilers</span>
+      <h3>Score &amp; Snap</h3>
+      <p>A scribe line scores across a glazed tile with a travelling glint, a beat, then the tile snaps: the halves part with a settle to reveal the wordmark in the gap. First used: abdul-tiling.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-louvretilt" data-dur="2400">
       <span class="trade">Shutters / Blinds / Glazing</span>
       <h3>Louvre Tilt</h3>
@@ -3983,6 +4017,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
     <div class="sq-col"><div class="sq-fog"></div><div class="sq-blade"></div></div>
+  </div>
+</div>
+
+<div class="loader" id="ld-scoresnap" aria-hidden="true">
+  <div class="ss-stage">
+    <div class="ss-brand">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="1" y="1" width="42" height="42" fill="none" stroke="#15161a" stroke-width="2"/><rect x="2" y="2" width="20" height="20" fill="#841f2d"/><rect x="22" y="22" width="20" height="20" fill="#841f2d"/></svg>
+      <div class="ss-name">Abdul Tiling</div>
+      <div class="ss-sub">Wall &amp; Floor Tiling &middot; Leigh &amp; Wigan</div>
+    </div>
+    <div class="ss-half ss-top"><div class="ss-glaze"></div></div>
+    <div class="ss-half ss-bot"><div class="ss-glaze"></div></div>
+    <div class="ss-score"></div>
+    <div class="ss-nib"></div>
   </div>
 </div>
 
