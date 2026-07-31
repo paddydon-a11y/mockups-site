@@ -2769,6 +2769,50 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-arcsweep.play .wordmark{animation:wordIn .4s ease .1s forwards}
   #ld-arcsweep.play .wordsub{animation:wordIn .4s ease .2s forwards}
 }
+/* ===== job phases (builders / renovation, from client before-during-after post format) ===== */
+#ld-jobphases{background:#111;flex-direction:column}
+#ld-jobphases .jp-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:34px}
+#ld-jobphases .jp-chip{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#6f6b60;border:1.5px solid #33322d;border-radius:8px;padding:9px 14px;opacity:0;transform:translateY(10px)}
+#ld-jobphases.play .jp-chip:nth-child(1){animation:jpChipIn .35s ease .1s forwards,jpChipLite .3s ease .35s forwards}
+#ld-jobphases.play .jp-chip:nth-child(3){animation:jpChipIn .35s ease .25s forwards,jpChipLite .3s ease .8s forwards}
+#ld-jobphases.play .jp-chip.fin{animation:jpChipIn .35s ease .4s forwards,jpFin .5s cubic-bezier(.34,1.45,.5,1) 1.25s forwards}
+#ld-jobphases .jp-arr{opacity:0;transform:translateX(-8px)}
+#ld-jobphases .jp-arr svg{width:16px;height:16px;stroke:#d2a53a;display:block}
+#ld-jobphases.play .jp-arr:nth-child(2){animation:jpArr .35s ease .58s forwards}
+#ld-jobphases.play .jp-arr:nth-child(4){animation:jpArr .35s ease 1.03s forwards}
+#ld-jobphases .wm-zone{display:flex;flex-direction:column;align-items:center}
+#ld-jobphases .wordmark{color:#f5f1e6}
+#ld-jobphases .wordmark b{color:#d2a53a}
+#ld-jobphases .wordsub{color:#8f8a7c}
+#ld-jobphases.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-jobphases.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
+
+/* ---- TRUSS RAISE (timber frame / structural carpentry) ---- */
+#ld-trussraise{background:#ffffff;flex-direction:column;gap:26px}
+#ld-trussraise svg{width:min(340px,72vw);height:auto;overflow:visible}
+#ld-trussraise .tr-chord{stroke-dasharray:640;stroke-dashoffset:640}
+#ld-trussraise.play .tr-chord{animation:trDraw .5s .1s cubic-bezier(.4,0,.2,1) forwards}
+#ld-trussraise .tr-raft{stroke-dasharray:360;stroke-dashoffset:360}
+#ld-trussraise.play .tr-raft{animation:trDraw .5s .55s cubic-bezier(.4,0,.2,1) forwards}
+#ld-trussraise .tr-web{stroke-dasharray:180;stroke-dashoffset:180}
+#ld-trussraise.play .tr-w1{animation:trDraw .35s 1.02s cubic-bezier(.4,0,.2,1) forwards}
+#ld-trussraise.play .tr-w2{animation:trDraw .35s 1.14s cubic-bezier(.4,0,.2,1) forwards}
+#ld-trussraise.play .tr-w3{animation:trDraw .35s 1.26s cubic-bezier(.4,0,.2,1) forwards}
+#ld-trussraise .tr-node{transform-origin:center;transform-box:fill-box;transform:scale(0)}
+#ld-trussraise.play .tr-n1{animation:trPop .3s 1.5s cubic-bezier(.34,1.56,.64,1) forwards}
+#ld-trussraise.play .tr-n2{animation:trPop .3s 1.58s cubic-bezier(.34,1.56,.64,1) forwards}
+#ld-trussraise.play .tr-n3{animation:trPop .3s 1.66s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes trDraw{to{stroke-dashoffset:0}}
+@keyframes trPop{to{transform:scale(1)}}
+#ld-trussraise .wordmark{color:#14171a}
+#ld-trussraise .wordmark b{color:#3f9a30}
+#ld-trussraise .wordsub{color:#3f9a30}
+#ld-trussraise.play .wordmark{animation:wordIn .5s ease 1.55s forwards}
+#ld-trussraise.play .wordsub{animation:wordIn .5s ease 1.75s forwards}
+@keyframes jpChipIn{to{opacity:1;transform:translateY(0)}}
+@keyframes jpChipLite{to{color:#d2a53a;border-color:#d2a53a;opacity:1;transform:translateY(0)}}
+@keyframes jpArr{to{opacity:1;transform:translateX(0)}}
+@keyframes jpFin{60%{transform:scale(1.09)}100%{opacity:1;transform:scale(1);background:#d2a53a;border-color:#d2a53a;color:#111}}
 </style>
 </head>
 <body>
@@ -3448,6 +3492,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On ink, a green laser line sweeps down the screen and locks the horizontal datum with a settle bounce; the vertical line scales in to complete the cross, mono tick marks pop along the datum, and a spirit-level vial fades in whose bubble slides to centre with an overshoot before the wordmark rises under the line. The setting-out ritual (laser on, datum locked, level checked) as a loader. First used: tec-projects. Distinct from Coursework and String Line (bricks laid), Proposed to Built (plan fills solid) and every gauge/pipe loader: nothing is laid, drawn solid or pressurised, a LEVEL LINE locks and a bubble settles.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-jobphases" data-dur="2400">
+      <span class="trade">Builders / renovation</span>
+      <h3>Job Phases</h3>
+      <p>On ink, three mono stage chips pop in: PART 1 and PART 3 light up gold in sequence with small gold arrows drawing between them, then FINISH! lands with an overshoot and fills solid gold before the wordmark rises. Lifted from the client's own before-during-after Facebook post format (their collages literally read PART 1 &rarr; PART 3 &rarr; FINISH!), so the loader is their content, not a trade metaphor. Built for alfa-beta-builds but cut at review in favour of a plain logo + bar; unused by any mockup, available for a future builder with before-during-after posts. Distinct from Snag List (checkboxes get ticked off a list): nothing ticks; JOB STAGES light up in order and the finish lands.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-trussraise" data-dur="2400">
+      <span class="trade">Timber frame / structural carpenters</span>
+      <h3>Truss Raise</h3>
+      <p>On white, a fink-truss elevation BUILDS itself the way a truss goes up: the bottom chord draws across, both rafters draw up to the apex, three pale webs stroke in staggered, then ink joint nodes pop at the bearing points and apex before the wordmark rises beneath. First used: spencer-frames, where it hands off into the hero (the H1's own faint truss backdrop starts drawing as the loader lifts). Distinct from House Raise (a house SILHOUETTE outline strokes on): this is an engineered TRUSS with webs and node joints, structure not silhouette.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-endgrain" data-dur="2400">
       <span class="trade">Carpenters / joiners</span>
       <h3>End Grain</h3>
@@ -3566,6 +3622,39 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="wm-zone">
     <div class="wordmark">AAM <b>Builders</b></div>
     <div class="wordsub">Building Birmingham</div>
+  </div>
+</div>
+
+<!-- job phases (builders / renovation) -->
+<div class="loader" id="ld-jobphases" aria-hidden="true">
+  <div class="jp-row">
+    <div class="jp-chip">Part 1</div>
+    <div class="jp-arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="jp-chip">Part 3</div>
+    <div class="jp-arr"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+    <div class="jp-chip fin">Finish!</div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">Alfa&amp;Beta <b>Builds</b></div>
+    <div class="wordsub">Building Contractors &middot; Swansea</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-trussraise" aria-hidden="true">
+  <svg viewBox="0 0 360 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line class="tr-chord" x1="20" y1="130" x2="340" y2="130" stroke="#67c553" stroke-width="4" stroke-linecap="round"/>
+    <line class="tr-raft" x1="20" y1="130" x2="180" y2="22" stroke="#67c553" stroke-width="4" stroke-linecap="round"/>
+    <line class="tr-raft" x1="340" y1="130" x2="180" y2="22" stroke="#67c553" stroke-width="4" stroke-linecap="round"/>
+    <line class="tr-web tr-w1" x1="100" y1="130" x2="180" y2="22" stroke="#9edb8f" stroke-width="3" stroke-linecap="round"/>
+    <line class="tr-web tr-w2" x1="260" y1="130" x2="180" y2="22" stroke="#9edb8f" stroke-width="3" stroke-linecap="round"/>
+    <line class="tr-web tr-w3" x1="180" y1="130" x2="180" y2="22" stroke="#9edb8f" stroke-width="3" stroke-linecap="round"/>
+    <circle class="tr-node tr-n1" cx="20" cy="130" r="7" fill="#14171a"/>
+    <circle class="tr-node tr-n2" cx="340" cy="130" r="7" fill="#14171a"/>
+    <circle class="tr-node tr-n3" cx="180" cy="22" r="7" fill="#14171a"/>
+  </svg>
+  <div class="wm-zone">
+    <div class="wordmark">SPENCER <b>Frames &amp; Structures</b></div>
+    <div class="wordsub">Timber Frame &middot; Farnborough</div>
   </div>
 </div>
 
