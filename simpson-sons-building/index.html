@@ -34,9 +34,9 @@
   --heading:#1d2a56;
   --body:#47516b;
   --muted:#8b94ad;
-  --accent:#f2600c;
-  --accent-hover:#d84f00;
-  --accent-glow:rgba(242,96,12,.15);
+  --accent:#0d9488;
+  --accent-hover:#0b7c72;
+  --accent-glow:rgba(13,148,136,.15);
   --wa:#25d366;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -115,7 +115,7 @@ nav{position:sticky;top:0;z-index:500;background:var(--bg);border-bottom:1px sol
 .hero-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:80px;position:relative;z-index:1}
 .eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:22px}
 .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 12px rgba(242,96,12,0)}100%{box-shadow:0 0 0 0 rgba(242,96,12,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 12px rgba(13,148,136,0)}100%{box-shadow:0 0 0 0 rgba(13,148,136,0)}}
 .hero h1{font-size:clamp(2.5rem,5.4vw,4.7rem);font-weight:900;letter-spacing:-.03em;margin-bottom:22px}
 .hero .lede{font-size:1.12rem;max-width:34rem;margin-bottom:34px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -149,15 +149,15 @@ section{padding-top:96px;padding-bottom:96px}
 /* services S1 */
 #services{background:var(--bg);padding-top:20px}
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;display:grid;grid-template-columns:48px 1fr;column-gap:16px;row-gap:6px;align-content:start}
 .svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
 .svc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(29,42,86,.09)}
 .svc:hover::before{transform:scaleX(1)}
-.svc-top{display:flex;align-items:center;gap:16px;margin-bottom:12px}
-.svc-icon{width:48px;height:48px;border-radius:11px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex:none}
+.svc-top{display:contents}
+.svc-icon{width:48px;height:48px;border-radius:11px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex:none;grid-row:1 / span 2}
 .svc-icon svg{width:23px;height:23px;stroke:#fff}
-.svc h3{font-size:1.18rem;font-weight:800}
-.svc p{font-size:.96rem}
+.svc h3{font-size:1.18rem;font-weight:800;grid-column:2;align-self:center}
+.svc p{font-size:.96rem;grid-column:2}
 
 /* recent work */
 #work{background:var(--stone)}
@@ -217,6 +217,7 @@ section{padding-top:96px;padding-bottom:96px}
 .con-card p,.con-card a{font-size:.95rem;color:var(--body)}
 .con-card a.big{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.15rem;color:var(--navy)}
 .con-card a.big:hover{color:var(--accent)}
+.con-card a.big[data-mail]{font-size:1rem;word-break:break-all}
 form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f-field{margin-bottom:16px}
@@ -285,7 +286,6 @@ footer{background:var(--navy-deep);padding-top:56px;padding-bottom:36px}
 }
 @media (max-width:480px){
   .hero h1{font-size:clamp(2.05rem,9vw,2.6rem)}
-  .svc-top{align-items:flex-start}
   form{padding-top:24px;padding-bottom:24px;padding-left:18px;padding-right:18px}
 }
 </style>
@@ -304,8 +304,8 @@ footer{background:var(--navy-deep);padding-top:56px;padding-bottom:36px}
   <div class="ld-kerf"></div>
   <div class="ld-blade">
     <svg viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="24" fill="#f2600c"/>
-      <g fill="#f2600c">
+      <circle cx="32" cy="32" r="24" fill="#0d9488"/>
+      <g fill="#0d9488">
         <path d="M32 2 L37 12 L27 12 Z"/><path d="M32 62 L27 52 L37 52 Z"/>
         <path d="M2 32 L12 27 L12 37 Z"/><path d="M62 32 L52 37 L52 27 Z"/>
         <path d="M11 11 L21 13 L14 20 Z"/><path d="M53 53 L43 51 L50 44 Z"/>
@@ -607,6 +607,10 @@ footer{background:var(--navy-deep);padding-top:56px;padding-bottom:36px}
           <div><h3>WhatsApp</h3><a href="#" class="big" data-wa>Message us a photo</a><p>Send pictures of the job for a quicker quote</p></div>
         </div>
         <div class="con-card">
+          <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <div><h3>Email</h3><a href="#" class="big" data-mail><span data-email>&nbsp;</span></a><p>Send plans or photos over any time</p></div>
+        </div>
+        <div class="con-card">
           <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div><h3>Coverage</h3><p>Maidstone and anywhere within about an hour, across Kent</p></div>
         </div>
@@ -697,6 +701,9 @@ footer{background:var(--navy-deep);padding-top:56px;padding-bottom:36px}
   document.querySelectorAll('[data-call]').forEach(function(el){ el.href = 'tel:' + P; });
   document.querySelectorAll('[data-phone]').forEach(function(el){ el.textContent = Pf; });
   document.querySelectorAll('[data-wa]').forEach(function(el){ el.href = waHref; el.target = '_blank'; el.rel = 'noopener'; });
+  var M = atob('c2ltcHNvbmFuZHNvbnNic0BvdXRsb29rLmNvbQ==');
+  document.querySelectorAll('[data-mail]').forEach(function(el){ el.href = 'mailto:' + M; });
+  document.querySelectorAll('[data-email]').forEach(function(el){ el.textContent = M; });
   var ts = document.getElementById('formTimestamp');
   if (ts) ts.value = Date.now();
 
