@@ -2748,6 +2748,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-stamp.play .st-wm{animation:stWm .6s ease 1.55s forwards}
 @keyframes stWm{to{opacity:1;transform:none}}
 #ld-stamp .wordmark span{color:#d8bd92}
+/* ---- FIXED STAMP (multi-trade / maintenance; first used: site-fix-solutions) ---- */
+#ld-fixedstamp{background:#14181b;flex-direction:column}
+#ld-fixedstamp .fs-card{background:#fff;border-radius:12px;padding:26px 30px 22px;width:min(320px,80vw);position:relative;transform:translateY(16px);opacity:0;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+#ld-fixedstamp.play .fs-card{animation:fsCardUp .5s .1s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes fsCardUp{to{transform:translateY(0);opacity:1}}
+#ld-fixedstamp .fs-row{font-family:ui-monospace,monospace;font-size:.66rem;letter-spacing:.14em;color:#8a9498;display:flex;justify-content:space-between;border-bottom:1px solid #e2e8e8;padding:7px 0;opacity:0;transform:translateX(-8px)}
+#ld-fixedstamp .fs-row b{color:#1b2225;font-weight:600}
+#ld-fixedstamp.play .fs-row:nth-child(1){animation:fsRow .3s .35s forwards}
+#ld-fixedstamp.play .fs-row:nth-child(2){animation:fsRow .3s .5s forwards}
+#ld-fixedstamp.play .fs-row:nth-child(3){animation:fsRow .3s .65s forwards}
+@keyframes fsRow{to{opacity:1;transform:translateX(0)}}
+#ld-fixedstamp .fs-stamp{position:absolute;right:16px;bottom:14px;font-family:'Chivo',system-ui,sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:.06em;color:#0e7f74;border:3px solid #0e7f74;border-radius:8px;padding:2px 12px;transform:rotate(-8deg) scale(2.8);opacity:0}
+#ld-fixedstamp.play .fs-stamp{animation:fsStamp .38s 1.05s cubic-bezier(.34,1.56,.64,1) forwards}
+#ld-fixedstamp .fs-stamp::after{content:"";position:absolute;inset:-7px;border:1px solid #0e7f74;border-radius:11px;opacity:.35}
+@keyframes fsStamp{60%{opacity:1}to{transform:rotate(-8deg) scale(1);opacity:1}}
+#ld-fixedstamp .fs-brand{margin-top:26px;font-family:'Chivo',system-ui,sans-serif;font-weight:900;font-size:1.3rem;color:#fff;opacity:0;transform:translateY(10px)}
+#ld-fixedstamp.play .fs-brand{animation:fsCardUp .45s 1.5s forwards}
+#ld-fixedstamp .fs-brand span{color:#3fd0c0}
+#ld-fixedstamp .fs-sub{font-family:ui-monospace,monospace;font-size:.62rem;letter-spacing:.22em;color:#6d7a7e;text-transform:uppercase;margin-top:8px;opacity:0}
+#ld-fixedstamp.play .fs-sub{animation:fsCardUp .45s 1.62s forwards}
+
 /* --- arc sweep (plasterers, cs-plastering) --- */
 #ld-arcsweep{background:#0d0b09;flex-direction:column}
 #ld-arcsweep .as-arcs{width:200px;height:150px;margin-bottom:22px}
@@ -3508,6 +3529,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Carpenters / joiners</span>
       <h3>End Grain</h3>
       <p>On timber ink, the growth rings of a sawn log draw themselves out from the heart dot, ring by ring (staggered stroke draw, one ring in the brand accent), then the wordmark and mono sub rise beneath. Rings read as years on the tools; on the mockup the loader hands off into ghost growth rings behind the mobile hero H1. First used: olivers-carpentry. Distinct from Dovetail Fit (two halves are cut and joined) and Vein &amp; Polish (veins branch and a sheen sweeps): here concentric RINGS GROW from the heart.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-fixedstamp" data-dur="2400">
+      <span class="trade">Multi-trade / maintenance</span>
+      <h3>Fixed Stamp</h3>
+      <p>On ink, a white job card rises and its mono REF / TRADE / STATUS rows tick in, then a teal FIXED stamp SLAMS down over the status with a scale overshoot and ink-bleed ring, and the wordmark rises beneath. On the mockup the loader hands off into the fold: the hero H1's own stamped "Fixed." re-slams as the loader lifts. First used: site-fix-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -5450,6 +5477,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </svg>
   <div class="wordmark">SHEH <b>CONSTRUCTION</b></div>
   <div class="wordsub">Build The Best For You</div>
+</div>
+
+<div class="loader" id="ld-fixedstamp" aria-hidden="true">
+  <div class="fs-card">
+    <div class="fs-row"><span>REF</span><b>SF-2026-114</b></div>
+    <div class="fs-row"><span>TRADE</span><b>ALL TRADES</b></div>
+    <div class="fs-row"><span>STATUS</span><b>ON SITE</b></div>
+    <div class="fs-stamp">FIXED</div>
+  </div>
+  <div class="fs-brand">Site Fix <span>Solutions</span></div>
+  <div class="fs-sub">Slough &middot; Heathrow &middot; West London</div>
 </div>
 
 <script>
