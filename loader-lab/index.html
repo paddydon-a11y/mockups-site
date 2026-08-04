@@ -2891,6 +2891,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-beamdrop.play .bd-prop,#ld-beamdrop.play .bd-beam{animation:none}
   #ld-beamdrop.play .bd-brand{animation:none;opacity:1;transform:none}
 }
+/* ---- SELF-LEVEL POUR (screeders / flooring) ---- */
+#ld-selflevel{background:#101114;flex-direction:column}
+#ld-selflevel .sl-stream{position:absolute;left:50%;top:0;width:7px;margin-left:-3.5px;height:58%;background:linear-gradient(180deg,#c4161c,#e2352b);box-shadow:0 0 14px rgba(196,22,28,.5);transform:scaleY(0);transform-origin:top}
+#ld-selflevel .sl-pool{position:absolute;left:0;right:0;bottom:0;height:30%;background:#c4161c;transform:scaleY(0);transform-origin:bottom}
+#ld-selflevel .sl-wave{position:absolute;left:0;right:0;bottom:calc(30% - 6px);height:22px;overflow:hidden;opacity:0}
+#ld-selflevel .sl-wave svg{position:absolute;bottom:0;left:0;width:200%;height:100%}
+#ld-selflevel .sl-emerge{position:absolute;left:0;right:0;top:0;bottom:30%;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+#ld-selflevel .sl-brand{display:flex;flex-direction:column;align-items:center;gap:12px;padding-bottom:26px;transform:translateY(120%)}
+#ld-selflevel .sl-mark{width:64px;height:64px;border-radius:50%;border:1px solid #2a2d33;background:#0a0a0c;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;color:#c4161c;font-size:1.5rem}
+#ld-selflevel .sl-name{font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:.3em;color:#fff;padding-left:.3em}
+#ld-selflevel .sl-sub{font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#c4161c}
+#ld-selflevel.play .sl-stream{animation:slStream .4s ease-in .05s forwards,slStreamOut .3s ease .95s forwards}
+#ld-selflevel.play .sl-pool{animation:slPool .9s cubic-bezier(.25,.8,.35,1) .3s forwards}
+#ld-selflevel.play .sl-wave{animation:slWaveIn .2s ease .55s forwards,slWaveFlat .5s ease 1.25s forwards}
+#ld-selflevel.play .sl-wave svg{animation:slWaveDrift 1.2s linear infinite}
+#ld-selflevel.play .sl-brand{animation:slEmerge .8s cubic-bezier(.22,.9,.3,1) 1.05s forwards}
+@keyframes slStream{to{transform:scaleY(1)}}
+@keyframes slStreamOut{to{opacity:0}}
+@keyframes slPool{to{transform:scaleY(1)}}
+@keyframes slWaveIn{to{opacity:1}}
+@keyframes slWaveFlat{to{transform:scaleY(0);opacity:0}}
+@keyframes slWaveDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes slEmerge{to{transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -3052,6 +3075,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / Structural Alterations</span>
       <h3>Beam Drop</h3>
       <p>Two acrow props draw up, then a chrome steel I-beam lowers onto them with a springy settle and the wordmark rises beneath: the steel goes in. First used: ap-tivey.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-selflevel" data-dur="2400">
+      <span class="trade">Screeders / Flooring</span>
+      <h3>Self-Level Pour</h3>
+      <p>Liquid pours from above, the pool rises with a rippling surface, the waves die off and it settles DEAD FLAT, and the brand logo rises straight out of the levelled pour. The screeder's whole trade in one move. First used: advance-interiors.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-scoresnap" data-dur="2400">
@@ -4361,6 +4390,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="bd-brand">
       <div class="bd-name"><span class="g">A P</span> TIVEY</div>
       <div class="bd-sub">Building &amp; Alterations &middot; Leicestershire</div>
+    </div>
+  </div>
+</div>
+
+<div class="loader" id="ld-selflevel" aria-hidden="true">
+  <div class="sl-stream"></div>
+  <div class="sl-pool"></div>
+  <div class="sl-wave">
+    <svg viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 14 Q 75 1 150 14 T 300 14 T 450 14 T 600 14 T 750 14 T 900 14 T 1050 14 T 1200 14 V22 H0 Z" fill="#d92830"/></svg>
+  </div>
+  <div class="sl-emerge">
+    <div class="sl-brand">
+      <div class="sl-mark">A</div>
+      <div class="sl-name">ADVANCE</div>
+      <div class="sl-sub">Floor Screeding . UFH . Finished Floors</div>
     </div>
   </div>
 </div>
