@@ -2860,6 +2860,37 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes jpChipLite{to{color:#d2a53a;border-color:#d2a53a;opacity:1;transform:translateY(0)}}
 @keyframes jpArr{to{opacity:1;transform:translateX(0)}}
 @keyframes jpFin{60%{transform:scale(1.09)}100%{opacity:1;transform:scale(1);background:#d2a53a;border-color:#d2a53a;color:#111}}
+
+/* ---- beam drop ---- */
+#ld-beamdrop{background:#0e0f11}
+#ld-beamdrop .bd-col{display:flex;flex-direction:column;align-items:center;gap:26px}
+#ld-beamdrop .bd-rig{position:relative;width:min(300px,72vw);height:104px}
+#ld-beamdrop .bd-prop{position:absolute;bottom:0;width:9px;height:60px;background:#be9656;border-radius:2px;transform-origin:bottom;transform:scaleY(0)}
+#ld-beamdrop .bd-prop::after{content:"";position:absolute;left:-6px;top:-4px;width:21px;height:5px;background:#be9656;border-radius:1px}
+#ld-beamdrop .bd-prop.p1{left:17%}
+#ld-beamdrop .bd-prop.p2{right:17%}
+#ld-beamdrop.play .bd-prop.p1{animation:bdProp .4s ease .1s forwards}
+#ld-beamdrop.play .bd-prop.p2{animation:bdProp .4s ease .25s forwards}
+@keyframes bdProp{to{transform:scaleY(1)}}
+#ld-beamdrop .bd-beam{position:absolute;left:5%;right:5%;top:0;height:24px;transform:translateY(-140px)}
+#ld-beamdrop.play .bd-beam{animation:bdBeam .7s cubic-bezier(.34,1.3,.5,1) .55s forwards}
+#ld-beamdrop .bd-beam::before,#ld-beamdrop .bd-beam::after{content:"";position:absolute;left:0;right:0;height:6px;background:linear-gradient(100deg,#7f868e,#d5d8db 40%,#8f969e 70%,#c9ccd0);border-radius:1px}
+#ld-beamdrop .bd-beam::before{top:0}
+#ld-beamdrop .bd-beam::after{bottom:0}
+#ld-beamdrop .bd-web{position:absolute;left:4px;right:4px;top:6px;bottom:6px;background:linear-gradient(100deg,#9aa1a9,#e8eaec 45%,#9aa1a9)}
+@keyframes bdBeam{to{transform:translateY(16px)}}
+#ld-beamdrop .bd-brand{opacity:0;transform:translateY(12px);text-align:center}
+#ld-beamdrop.play .bd-brand{animation:bdUp .5s ease 1.15s forwards}
+@keyframes bdUp{to{opacity:1;transform:translateY(0)}}
+#ld-beamdrop .bd-name{font-family:'Archivo','Arial Black',sans-serif;font-weight:900;font-size:2.5rem;color:#f5f2ea;line-height:1;letter-spacing:.01em}
+#ld-beamdrop .bd-name .g{color:#be9656}
+#ld-beamdrop .bd-sub{font-family:ui-monospace,monospace;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#949aa3;margin-top:10px}
+@media (prefers-reduced-motion:reduce){
+  #ld-beamdrop .bd-prop{transform:scaleY(1)}
+  #ld-beamdrop .bd-beam{transform:translateY(16px)}
+  #ld-beamdrop.play .bd-prop,#ld-beamdrop.play .bd-beam{animation:none}
+  #ld-beamdrop.play .bd-brand{animation:none;opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -3015,6 +3046,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Multi-trade / Renovation</span>
       <h3>Snag List</h3>
       <p>A mono checklist of the firm's trades gets ticked rapid-fire, then the wordmark rises with a marker swipe: the job list, ticked off. First used: domg-renovation.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-beamdrop" data-dur="2400">
+      <span class="trade">Builders / Structural Alterations</span>
+      <h3>Beam Drop</h3>
+      <p>Two acrow props draw up, then a chrome steel I-beam lowers onto them with a springy settle and the wordmark rises beneath: the steel goes in. First used: ap-tivey.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-scoresnap" data-dur="2400">
@@ -4310,6 +4347,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="sn-brand">
       <span class="sn-name">DOMG</span>
       <div class="sn-sub">Renovation Ltd &middot; East London</div>
+    </div>
+  </div>
+</div>
+
+<div class="loader" id="ld-beamdrop" aria-hidden="true">
+  <div class="bd-col">
+    <div class="bd-rig">
+      <span class="bd-prop p1"></span>
+      <span class="bd-prop p2"></span>
+      <div class="bd-beam"><span class="bd-web"></span></div>
+    </div>
+    <div class="bd-brand">
+      <div class="bd-name"><span class="g">A P</span> TIVEY</div>
+      <div class="bd-sub">Building &amp; Alterations &middot; Leicestershire</div>
     </div>
   </div>
 </div>
