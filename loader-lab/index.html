@@ -2769,6 +2769,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-fixedstamp .fs-sub{font-family:ui-monospace,monospace;font-size:.62rem;letter-spacing:.22em;color:#6d7a7e;text-transform:uppercase;margin-top:8px;opacity:0}
 #ld-fixedstamp.play .fs-sub{animation:fsCardUp .45s 1.62s forwards}
 
+/* --- tape pull (multi-trade, zaman-property-services) --- */
+#ld-tapepull{background:#ffffff;flex-direction:column}
+#ld-tapepull .tp-track{display:flex;align-items:center;width:min(520px,84vw);height:64px}
+#ld-tapepull .tp-body{width:60px;height:60px;background:#6d28d9;border-radius:15px;position:relative;flex:0 0 60px;opacity:0;transform:translateY(10px);box-shadow:0 10px 28px rgba(109,40,217,.18)}
+#ld-tapepull.play .tp-body{animation:tpIn .4s ease forwards}
+#ld-tapepull .tp-body::after{content:"";position:absolute;inset:13px;border-radius:9px;border:3px solid rgba(255,255,255,.85)}
+#ld-tapepull .tp-blade{position:relative;height:24px;flex:1;transform-origin:left center;transform:scaleX(0);background:repeating-linear-gradient(90deg,#16151a 0 2px,transparent 2px 24px),repeating-linear-gradient(90deg,rgba(22,21,26,.45) 0 1px,transparent 1px 12px),#ede9fe;border-top:2px solid #6d28d9;border-bottom:2px solid #6d28d9}
+#ld-tapepull.play .tp-blade{animation:tpBlade 1.15s cubic-bezier(.22,.9,.3,1) .35s forwards}
+#ld-tapepull .tp-hook{width:11px;height:42px;background:#16151a;border-radius:3px;flex:0 0 11px;transform:translateX(-5px) scaleY(0)}
+#ld-tapepull.play .tp-hook{animation:tpHook .3s cubic-bezier(.34,1.56,.64,1) 1.42s forwards}
+#ld-tapepull .wordmark{margin-top:30px;color:#1c1a22;letter-spacing:.06em}
+#ld-tapepull .wordmark b{color:#6d28d9}
+#ld-tapepull .wordsub{color:#8b8794}
+#ld-tapepull.play .wordmark{animation:wordIn .5s ease 1.6s forwards}
+#ld-tapepull.play .wordsub{animation:wordIn .5s ease 1.75s forwards}
+@keyframes tpIn{to{opacity:1;transform:translateY(0)}}
+@keyframes tpBlade{to{transform:scaleX(1)}}
+@keyframes tpHook{to{transform:translateX(-5px) scaleY(1)}}
+@media (prefers-reduced-motion: reduce){
+  #ld-tapepull .tp-blade{animation:none;transform:scaleX(1)}
+  #ld-tapepull .tp-hook{animation:none;transform:translateX(-5px) scaleY(1)}
+  #ld-tapepull .tp-body{animation:none;opacity:1;transform:none}
+  #ld-tapepull.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-tapepull.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
+
 /* --- arc sweep (plasterers, cs-plastering) --- */
 #ld-arcsweep{background:#0d0b09;flex-direction:column}
 #ld-arcsweep .as-arcs{width:200px;height:150px;margin-bottom:22px}
@@ -3535,6 +3561,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Multi-trade / maintenance</span>
       <h3>Fixed Stamp</h3>
       <p>On ink, a white job card rises and its mono REF / TRADE / STATUS rows tick in, then a teal FIXED stamp SLAMS down over the status with a scale overshoot and ink-bleed ring, and the wordmark rises beneath. On the mockup the loader hands off into the fold: the hero H1's own stamped "Fixed." re-slams as the loader lifts. First used: site-fix-solutions.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-tapepull" data-dur="2400">
+      <span class="trade">Multi-trade / general builders</span>
+      <h3>Tape Pull</h3>
+      <p>On white, a tape-measure body lands and its graduated blade EXTENDS across the screen (ink graduation ticks, brand edge rails), the end hook catches the far edge with a springy settle, then the wordmark rises beneath. On the mockup the loader hands off into the fold: the blade re-extends as a vertical graduation rule down the hero's left edge and the H1's tape-tick underline draws. The multi-trade's first gesture: the tape comes out. First used: zaman-property-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -5488,6 +5520,16 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="fs-brand">Site Fix <span>Solutions</span></div>
   <div class="fs-sub">Slough &middot; Heathrow &middot; West London</div>
+</div>
+
+<div class="loader" id="ld-tapepull" aria-hidden="true">
+  <div class="tp-track">
+    <div class="tp-body"></div>
+    <div class="tp-blade"></div>
+    <div class="tp-hook"></div>
+  </div>
+  <div class="wordmark">ZAMAN<b>.</b></div>
+  <div class="wordsub">Property Services &middot; West London</div>
 </div>
 
 <script>
