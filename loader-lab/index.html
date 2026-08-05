@@ -941,6 +941,25 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-brick.play .wordmark{animation:wordIn .45s ease 1.55s forwards}
 #ld-brick.play .wordsub{animation:wordIn .45s ease 1.7s forwards}
 
+/* toothing key (builders / extensions) — first used: d-hansford-building */
+#ld-toothingkey{background:#ffffff;color:#1d1611}
+#ld-toothingkey .tk-stage{display:flex;align-items:center}
+#ld-toothingkey .tk-wall{display:flex;flex-direction:column-reverse}
+#ld-toothingkey .tk-course{display:flex;gap:3px;margin-top:3px}
+#ld-toothingkey .tk-brick{width:44px;height:19px;border-radius:2px;background:#ad4f22;opacity:0;transform:translateY(-14px)}
+#ld-toothingkey .tk-course:nth-child(even) .tk-brick:last-child{width:22px;background:#8c3c15}
+#ld-toothingkey .tk-course:nth-child(odd) .tk-brick:first-child{background:#c05f2e}
+#ld-toothingkey.play .tk-brick{animation:tkLay .32s cubic-bezier(.2,1.2,.4,1) forwards;animation-delay:var(--d)}
+@keyframes tkLay{to{opacity:1;transform:translateY(0)}}
+#ld-toothingkey .tk-word{margin-left:18px;opacity:0;transform:translateX(26px)}
+#ld-toothingkey.play .tk-word{animation:tkKey .55s cubic-bezier(.2,.9,.3,1) 1.35s forwards}
+@keyframes tkKey{to{opacity:1;transform:translateX(0)}}
+#ld-toothingkey .tk-name{font-family:Georgia,'Times New Roman',serif;font-size:2rem;color:#1d1611;line-height:1.1;white-space:nowrap}
+#ld-toothingkey .tk-sub{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#ad4f22;margin-top:6px}
+@media(prefers-reduced-motion:reduce){
+  #ld-toothingkey .tk-brick,#ld-toothingkey .tk-word{opacity:1;transform:none;animation:none!important}
+}
+
 /* keystone arch (stonemasons / bricklayers) — first used on the JRBS mockup.
    Mason's sequence: centering line draws, wedge voussoirs lay up from both
    springings, keystone drops + arch settles, centering struck, gleam sweep. */
@@ -3137,6 +3156,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Brick courses lay themselves up from the footing, half-bond offset and all, then the wordmark stamps the wall.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-toothingkey" data-dur="2400">
+      <span class="trade">Builders / Extensions</span>
+      <h3>Toothing Key</h3>
+      <p>On white, clay brick courses lay up in half-bond with a TOOTHED right edge (odd courses flush, even courses a half-brick short), then the client's wordmark keys INTO the teeth from the right. The extension-builder's signature move: new work toothed into old. First used: d-hansford-building. Distinct from Coursework (a plain wall rises and the wordmark stamps it) and Coursework: Logo Box (bricks fill the logo): here the wall is deliberately left toothed and the BRAND is the closing brick.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-stringline" data-dur="2400">
       <span class="trade">Bricklayers</span>
       <h3>String Line &amp; Level</h3>
@@ -4536,6 +4561,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<!-- 4c. toothing key (builders / extensions) -->
+<div class="loader" id="ld-toothingkey" aria-hidden="true">
+  <div class="tk-stage" aria-hidden="true">
+    <div class="tk-wall"></div>
+    <div class="tk-word">
+      <div class="tk-name">D Hansford</div>
+      <div class="tk-sub">Building Works Ltd</div>
+    </div>
+  </div>
+</div>
+
 <!-- 4b. keystone arch -->
 <div class="loader" id="ld-keystone" aria-hidden="true">
   <div class="kstage" aria-hidden="true">
@@ -5645,6 +5681,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     }
     wall.appendChild(row);
   }
+
+  // build the toothing-key wall: 5 courses, toothed right edge (even courses a half-brick short)
+  var tkWall = document.querySelector('#ld-toothingkey .tk-wall');
+  [3,2,3,2,3].forEach(function(n, ci){
+    var row = document.createElement('div');
+    row.className = 'tk-course';
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement('span');
+      b.className = 'tk-brick';
+      b.style.setProperty('--d', (0.08 + ci*0.18 + i*0.09).toFixed(2) + 's');
+      row.appendChild(b);
+    }
+    tkWall.appendChild(row);
+  });
 
   // build the slate pitch: 4 rows x 7 slates, top row first
   var pitch = document.querySelector('#ld-slate .pitch');
