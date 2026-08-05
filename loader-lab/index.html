@@ -2854,6 +2854,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-jobphases.play .wordsub{animation:wordIn .5s ease 1.7s forwards}
 
 /* ---- TRUSS RAISE (timber frame / structural carpentry) ---- */
+#ld-stairclimb{background:#14161a;flex-direction:column;gap:26px}
+#ld-stairclimb .sc-stage{position:relative;width:min(300px,74vw);aspect-ratio:300/170}
+#ld-stairclimb .sc-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#ld-stairclimb .sc-string{stroke:#3a4048;stroke-width:4;fill:none;stroke-dasharray:420;stroke-dashoffset:420}
+#ld-stairclimb.play .sc-string{animation:scDraw .7s ease .05s forwards}
+#ld-stairclimb .sc-tread{fill:#ffd400;transform:scaleX(0);transform-origin:left center;transform-box:fill-box}
+#ld-stairclimb.play .sc-t1{animation:scTread .34s cubic-bezier(.2,.8,.3,1) .45s forwards}
+#ld-stairclimb.play .sc-t2{animation:scTread .34s cubic-bezier(.2,.8,.3,1) .63s forwards}
+#ld-stairclimb.play .sc-t3{animation:scTread .34s cubic-bezier(.2,.8,.3,1) .81s forwards}
+#ld-stairclimb.play .sc-t4{animation:scTread .34s cubic-bezier(.2,.8,.3,1) .99s forwards}
+#ld-stairclimb.play .sc-t5{animation:scTread .34s cubic-bezier(.2,.8,.3,1) 1.17s forwards}
+#ld-stairclimb .wordmark{color:#ffffff}
+#ld-stairclimb .wordmark b{color:#ffd400}
+#ld-stairclimb .wordsub{color:#8b929b}
+#ld-stairclimb.play .wordmark{animation:wordIn .5s ease 1.5s forwards}
+#ld-stairclimb.play .wordsub{animation:wordIn .5s ease 1.65s forwards}
+@keyframes scDraw{to{stroke-dashoffset:0}}
+@keyframes scTread{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){
+  #ld-stairclimb .sc-stage{display:none}
+  #ld-stairclimb.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-stairclimb.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
 #ld-trussraise{background:#ffffff;flex-direction:column;gap:26px}
 #ld-trussraise svg{width:min(340px,72vw);height:auto;overflow:visible}
 #ld-trussraise .tr-chord{stroke-dasharray:640;stroke-dashoffset:640}
@@ -3636,6 +3659,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On ink, three mono stage chips pop in: PART 1 and PART 3 light up gold in sequence with small gold arrows drawing between them, then FINISH! lands with an overshoot and fills solid gold before the wordmark rises. Lifted from the client's own before-during-after Facebook post format (their collages literally read PART 1 &rarr; PART 3 &rarr; FINISH!), so the loader is their content, not a trade metaphor. Built for alfa-beta-builds but cut at review in favour of a plain logo + bar; unused by any mockup, available for a future builder with before-during-after posts. Distinct from Snag List (checkboxes get ticked off a list): nothing ticks; JOB STAGES light up in order and the finish lands.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-stairclimb" data-dur="2400">
+      <span class="trade">Joiners / site carpenters</span>
+      <h3>Stair Climb</h3>
+      <p>On ink, a graphite stair string draws itself up the screen in rise-and-going steps, then five accent treads land on it one by one from the bottom of the flight to the top, and the wordmark rises at the head of the stairs. A flight going in is the joiner's most visible piece of work on a plot, and the treads landing in order double as a progress bar. First used: mk-joinery, where it hands off into the hero (the stacked H1 lines sit on their own stepped treads, each line indented one going further across). Distinct from Truss Raise and Coursework (a structure or a wall builds up in place): here the loader CLIMBS, tread by tread, and the brand is waiting at the top.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-trussraise" data-dur="2400">
       <span class="trade">Timber frame / structural carpenters</span>
       <h3>Truss Raise</h3>
@@ -4111,6 +4140,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">SS <b>CONSTRUCTION</b></div>
     <div class="vp-rule"></div>
     <div class="wordsub">Construction &amp; Finishing</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-stairclimb" aria-hidden="true">
+  <div class="sc-stage">
+    <svg class="sc-svg" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+      <path class="sc-string" d="M10 160 L10 134 L68 134 L68 102 L126 102 L126 70 L184 70 L184 38 L242 38 L242 10 L292 10"/>
+      <rect class="sc-tread sc-t1" x="10" y="128" width="62" height="9"/>
+      <rect class="sc-tread sc-t2" x="68" y="96" width="62" height="9"/>
+      <rect class="sc-tread sc-t3" x="126" y="64" width="62" height="9"/>
+      <rect class="sc-tread sc-t4" x="184" y="32" width="62" height="9"/>
+      <rect class="sc-tread sc-t5" x="242" y="4" width="54" height="9"/>
+    </svg>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">MK <b>JOINERY</b></div>
+    <div class="wordsub">Site Joinery . Liverpool</div>
   </div>
 </div>
 
