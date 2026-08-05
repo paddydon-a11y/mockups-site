@@ -2879,6 +2879,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 
 /* ---- MAKE GOOD (bricklayers / masonry repair / insurance reinstatement) ---- */
+/* Panel & Paint - wall panelling / renovation (sw-building-services) */
+#ld-panelpaint{background:#f4f1f3;flex-direction:column;gap:30px}
+#ld-panelpaint .pp-row{display:flex;gap:12px;width:min(400px,80vw);height:min(210px,46vw)}
+#ld-panelpaint .pp-panel{position:relative;flex:1}
+#ld-panelpaint .pp-panel.mid{flex:2}
+#ld-panelpaint .pp-svg{position:absolute;inset:0;width:100%;height:100%}
+#ld-panelpaint .pp-frame{fill:none;stroke:#5e2c50;stroke-width:2.5;stroke-dasharray:100;stroke-dashoffset:100}
+#ld-panelpaint.play .pp-frame{animation:ppDraw .65s ease forwards}
+#ld-panelpaint.play .mid .pp-frame{animation-delay:.15s}
+#ld-panelpaint.play .p3 .pp-frame{animation-delay:.3s}
+#ld-panelpaint .pp-fill{position:absolute;inset:8px;background:#523046;opacity:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset -2px -2px 5px rgba(0,0,0,.22),inset 2px 2px 5px rgba(255,255,255,.12)}
+#ld-panelpaint.play .pp-fill{animation:ppFill .55s ease forwards}
+#ld-panelpaint.play .p1 .pp-fill{animation-delay:.75s}
+#ld-panelpaint.play .mid .pp-fill{animation-delay:.92s}
+#ld-panelpaint.play .p3 .pp-fill{animation-delay:1.09s}
+#ld-panelpaint .pp-brand{position:absolute;inset:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transform:translateY(12px)}
+#ld-panelpaint.play .pp-brand{animation:ppBrand .6s ease 1.35s forwards}
+#ld-panelpaint .pp-brand::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:80%;height:60%;background:radial-gradient(ellipse at top,rgba(255,244,214,.32),transparent 70%)}
+#ld-panelpaint .pp-word{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.7rem;color:#fff;line-height:1}
+#ld-panelpaint .pp-sub{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;color:#e5d3de;margin-top:6px}
+@keyframes ppDraw{to{stroke-dashoffset:0}}
+@keyframes ppFill{to{opacity:1}}
+@keyframes ppBrand{to{opacity:1;transform:translateY(0)}}
 #ld-makegood{background:#16577e;flex-direction:column;gap:30px}
 #ld-makegood .mg-wall{position:relative;width:min(330px,74vw);height:min(200px,44vw);
   background:#eef1f4;border-radius:6px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);
@@ -3079,6 +3102,32 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes slWaveFlat{to{transform:scaleY(0);opacity:0}}
 @keyframes slWaveDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes slEmerge{to{transform:translateY(0)}}
+/* ---- Open Up (ld-bifold) : extensions / design & build ---- */
+#ld-bifold{background:#171913;flex-direction:column;gap:26px}
+#ld-bifold .bf-frame{position:relative;width:min(320px,72vw);aspect-ratio:16/10;border:2px solid rgba(255,255,255,.28);border-radius:6px;overflow:hidden;display:flex}
+#ld-bifold .bf-light{position:absolute;inset:0;background:linear-gradient(180deg,#fdf8e0 0%,#f4f0c6 55%,#dfe3b0 100%);opacity:0}
+#ld-bifold.play .bf-light{animation:bfLight .9s .55s forwards}
+#ld-bifold .bf-seam{position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:#fffbe8;box-shadow:0 0 18px 4px rgba(253,248,224,.8);transform:scaleY(0)}
+#ld-bifold.play .bf-seam{animation:bfSeam .5s .4s forwards}
+#ld-bifold .bf-door{position:relative;width:25%;height:100%;background:#21261a;border-right:1px solid rgba(255,255,255,.10);z-index:2}
+#ld-bifold .bf-door:last-child{border-right:none}
+#ld-bifold .bf-door::after{content:"";position:absolute;top:12%;bottom:12%;width:3px;border-radius:2px;background:rgba(255,255,255,.16)}
+#ld-bifold .bf-door.b1::after,#ld-bifold .bf-door.b2::after{right:7%}
+#ld-bifold .bf-door.b3::after,#ld-bifold .bf-door.b4::after{left:7%}
+#ld-bifold .bf-door.b1{transform-origin:left center}
+#ld-bifold .bf-door.b2{transform-origin:left center}
+#ld-bifold .bf-door.b3{transform-origin:right center}
+#ld-bifold .bf-door.b4{transform-origin:right center}
+#ld-bifold.play .bf-door.b1{animation:bfFold .5s .55s forwards}
+#ld-bifold.play .bf-door.b2{animation:bfFold .5s .75s forwards}
+#ld-bifold.play .bf-door.b3{animation:bfFold .5s .95s forwards}
+#ld-bifold.play .bf-door.b4{animation:bfFold .5s 1.15s forwards}
+#ld-bifold .bf-brand{display:flex;flex-direction:column;align-items:center;gap:9px;opacity:0;transform:translateY(14px)}
+#ld-bifold.play .bf-brand{animation:bfRise .55s 1.35s forwards}
+@keyframes bfFold{to{transform:scaleX(0)}}
+@keyframes bfLight{to{opacity:1}}
+@keyframes bfSeam{to{transform:scaleY(1)}}
+@keyframes bfRise{to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
@@ -3210,6 +3259,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / Extensions</span>
       <h3>Proposed to Built</h3>
       <p>The existing house draws itself in solid line, a dashed "proposed" extension volume appends off the back, then the dashes snap solid and the volume fills in with a glint. Planning-drawing language made real. First used: mpermatei.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-panelpaint" data-dur="2400">
+      <span class="trade">Renovation / Panelling / Carpentry</span>
+      <h3>Panel &amp; Paint</h3>
+      <p>Battens draw three Georgian panel frames on bare plaster, each panel fills with paint one by one, a picture light glows on and the wordmark lands in the centre panel. The panelled-wall renovator's whole product in one wall. First used: sw-building-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-dustsheet" data-dur="2400">
@@ -3830,6 +3885,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On white, a tape-measure body lands and its graduated blade EXTENDS across the screen (ink graduation ticks, brand edge rails), the end hook catches the far edge with a springy settle, then the wordmark rises beneath. On the mockup the loader hands off into the fold: the blade re-extends as a vertical graduation rule down the hero's left edge and the H1's tape-tick underline draws. The multi-trade's first gesture: the tape comes out. First used: zaman-property-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-bifold" data-dur="2400">
+      <span class="trade">Extensions / design &amp; build</span>
+      <h3>Open Up</h3>
+      <p>On ink, a drawn rear-opening frame holds four dark bifold panels; a glowing daylight seam draws down the centre, then the panels FOLD AWAY one by one to the sides while warm daylight floods the frame, and the wordmark rises beneath. On the mockup the whole ink overlay then PARTS in two halves to reveal the hero, so the opening gesture is the page reveal, and the daylight seam carries on pulsing in the fold. The extensions trade's whole pitch: the doors fold open and the light comes in. First used: moedim-group.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -4298,6 +4359,14 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div style="display:flex;flex-direction:column;align-items:center">
     <div class="wordmark">MK <b>JOINERY</b></div>
     <div class="wordsub">Site Joinery . Liverpool</div>
+  </div>
+</div>
+
+<div class="loader" id="ld-panelpaint" aria-hidden="true">
+  <div class="pp-row">
+    <div class="pp-panel p1"><svg class="pp-svg" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><rect class="pp-frame" x="2" y="2" width="96" height="96" pathLength="100"/></svg><div class="pp-fill"></div></div>
+    <div class="pp-panel mid"><svg class="pp-svg" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><rect class="pp-frame" x="1.5" y="2" width="97" height="96" pathLength="100"/></svg><div class="pp-fill"></div><div class="pp-brand"><div class="pp-word">SW</div><div class="pp-sub">Building Services</div></div></div>
+    <div class="pp-panel p3"><svg class="pp-svg" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><rect class="pp-frame" x="2" y="2" width="96" height="96" pathLength="100"/></svg><div class="pp-fill"></div></div>
   </div>
 </div>
 
@@ -5895,6 +5964,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="wordmark">ZAMAN<b>.</b></div>
   <div class="wordsub">Property Services &middot; West London</div>
+</div>
+
+<div class="loader" id="ld-bifold" aria-hidden="true">
+  <div class="bf-frame">
+    <div class="bf-light"></div>
+    <div class="bf-seam"></div>
+    <div class="bf-door b1"></div>
+    <div class="bf-door b2"></div>
+    <div class="bf-door b3"></div>
+    <div class="bf-door b4"></div>
+  </div>
+  <div class="bf-brand">
+    <div class="wordmark">MOEDIM <b>GROUP</b></div>
+    <div class="wordsub">Extensions &middot; Wolverhampton</div>
+  </div>
 </div>
 
 <script>
