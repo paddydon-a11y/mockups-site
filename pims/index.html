@@ -62,39 +62,25 @@ a{text-decoration:none;color:inherit}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease, transform .7s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 
-/* ---------- loader : Shutter Up ---------- */
-#loader{position:fixed;inset:0;z-index:2000;background:var(--ink-2);display:flex;align-items:center;justify-content:center;overflow:hidden}
-#loader .shutter{position:absolute;inset:0;background:linear-gradient(180deg,#132443 0%,#16294d 55%,#122140 100%)}
-#loader .shutter::before{content:"";position:absolute;inset:0;background:var(--slat)}
-#loader .shutter::after{content:"";position:absolute;left:0;right:0;top:-60%;height:50%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.06),transparent);animation:ldGleam 1.4s ease .15s 1 forwards}
-@keyframes ldGleam{to{top:120%}}
-#loader .rail{position:absolute;left:0;right:0;bottom:-14px;height:14px;background:linear-gradient(180deg,#2a4270,#1a2c50);border-top:2px solid #3d5685;box-shadow:0 -6px 22px rgba(0,0,0,.45)}
-#loader .ld-brand{position:relative;text-align:center;animation:ldBrandIn .55s ease both}
-@keyframes ldBrandIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-#loader .ld-hex{width:86px;height:auto;margin:0 auto 14px;display:block}
-#loader .ld-word{font-family:'Exo 2',sans-serif;font-weight:900;font-size:3.2rem;letter-spacing:.04em;color:#fff;line-height:1}
-#loader .ld-word span{color:var(--accent)}
-#loader .ld-sub{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#93a5c4;margin-top:12px}
-#loader .ld-open{margin:18px auto 0;display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.24em;color:var(--ink-2);background:var(--accent);padding:6px 16px;border-radius:6px;opacity:0;animation:ldOpenIn .35s ease .95s forwards}
-@keyframes ldOpenIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
-#loader.up{animation:ldUp .75s cubic-bezier(.55,0,.3,1) 1.45s forwards}
-@keyframes ldUp{to{transform:translateY(-104%)}}
+/* ---------- loader : plain white, full logo ---------- */
+#loader{position:fixed;inset:0;z-index:2000;background:#fff;display:flex;align-items:center;justify-content:center}
+#loader .ld-logo{width:min(340px,72vw);height:auto;display:block;animation:ldIn .45s ease both}
+@keyframes ldIn{from{opacity:0}to{opacity:1}}
+#loader.up{animation:ldOut .4s ease 1.2s forwards}
+@keyframes ldOut{to{opacity:0;visibility:hidden}}
 /* CSS-only failsafe if JS never runs */
-@keyframes ldGone{to{visibility:hidden;transform:translateY(-104%)}}
-#loader{animation:ldGone .5s ease 2.6s forwards}
+@keyframes ldGone{to{opacity:0;visibility:hidden}}
+#loader{animation:ldGone .4s ease 2.2s forwards}
 @media (prefers-reduced-motion: reduce){
-  #loader .shutter::after,#loader .ld-open{animation:none}
-  #loader .ld-open{opacity:1}
-  #loader.up{animation:ldUp .3s ease .8s forwards}
+  #loader .ld-logo{animation:none}
+  #loader.up{animation:ldOut .3s ease .6s forwards}
 }
 
 /* ---------- nav ---------- */
 nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
-.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
-.nav-logo .nl-hex{height:44px;width:auto}
-.nav-logo .nl-word{font-family:'Exo 2',sans-serif;font-weight:900;font-size:1.45rem;color:var(--head);letter-spacing:.02em}
-.nav-logo .nl-word span{color:var(--accent)}
+.nav-logo{display:flex;align-items:center;white-space:nowrap}
+.nav-logo .nl-logo{height:58px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:30px;font-weight:600;font-size:.95rem}
 .nav-links a{color:var(--body);transition:color .2s}
 .nav-links a:hover{color:var(--head)}
@@ -282,8 +268,7 @@ footer .wrap{position:relative}
 @media (max-width:880px){
   .nav-links{display:none}
   .burger{display:block}
-  .nav-logo .nl-hex{height:38px}
-  .nav-logo .nl-word{font-size:1.25rem}
+  .nav-logo .nl-logo{height:50px}
 
   /* the shutter fold: navy slatted panel handing off from the loader */
   .hero{background:var(--ink)}
@@ -321,8 +306,6 @@ footer .wrap{position:relative}
   .contact-grid{grid-template-columns:1fr;gap:30px}
   .f-row{grid-template-columns:1fr}
   .f-top{flex-direction:column;gap:28px}
-  #loader .ld-word{font-size:2.5rem}
-  #loader .ld-hex{width:70px}
 }
 @media (min-width:881px){
   .hero-text{max-width:560px}
@@ -331,33 +314,15 @@ footer .wrap{position:relative}
 </head>
 <body>
 
-<!-- Shutter Up loader -->
+<!-- Loader: plain white with the full PIMS logo -->
 <div id="loader" aria-hidden="true">
-  <div class="shutter"></div>
-  <div class="ld-brand">
-    <svg class="ld-hex" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 4 L89 26 V74 L50 96 L11 74 V26 Z" stroke="#ee6a13" stroke-width="7" stroke-linejoin="round"/>
-      <path d="M22 62 L54 36 L62 42 V36 H70 V48 L82 58" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <rect x="44" y="52" width="14" height="14" rx="1.5" fill="#ee6a13"/>
-      <path d="M47.5 52 V66 M54.5 52 V66 M44 59 H58" stroke="#16294d" stroke-width="2"/>
-    </svg>
-    <div class="ld-word">PI<span>M</span>S</div>
-    <div class="ld-sub">Property Improvement &amp; Maintenance</div>
-    <span class="ld-open">OPENING</span>
-  </div>
-  <div class="rail"></div>
+  <img class="ld-logo" src="logo.png" alt="PIMS Property Improvement &amp; Maintenance Services">
 </div>
 
 <nav>
   <div class="wrap nav-in">
     <a href="#" class="nav-logo" aria-label="PIMS home">
-      <svg class="nl-hex" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M50 4 L89 26 V74 L50 96 L11 74 V26 Z" stroke="#ee6a13" stroke-width="7" stroke-linejoin="round"/>
-        <path d="M22 62 L54 36 L62 42 V36 H70 V48 L82 58" stroke="#16294d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <rect x="44" y="52" width="14" height="14" rx="1.5" fill="#ee6a13"/>
-        <path d="M47.5 52 V66 M54.5 52 V66 M44 59 H58" stroke="#ffffff" stroke-width="2"/>
-      </svg>
-      <span class="nl-word">PI<span>M</span>S</span>
+      <img class="nl-logo" src="logo.png" alt="PIMS Property Improvement &amp; Maintenance Services">
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
@@ -769,7 +734,7 @@ var chip = document.getElementById('openChip');
 function openChip(){ if(chip && chip.textContent !== 'OPEN'){ chip.textContent = 'OPEN'; chip.classList.add('flip'); } }
 setTimeout(function(){ loader.classList.add('up'); }, 50);
 setTimeout(openChip, 1800);
-setTimeout(function(){ loader.style.display = 'none'; }, 2500);
+setTimeout(function(){ loader.style.display = 'none'; }, 2000);
 
 // mobile menu
 var burger = document.getElementById('burger');
