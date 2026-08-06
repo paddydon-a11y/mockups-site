@@ -2878,6 +2878,36 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-stairclimb.play .wordsub{animation:wordIn .4s ease .2s forwards}
 }
 
+/* ---- LOFT UP - loft conversions / extensions (kc-construction-development) ---- */
+#ld-loftup{background:#10171b;flex-direction:column;gap:28px}
+#ld-loftup .lu-stage{position:relative;width:min(400px,80vw)}
+#ld-loftup .lu-svg{display:block;width:100%;height:auto;overflow:visible}
+#ld-loftup .lu-roof{fill:none;stroke:#3d4f59;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900}
+#ld-loftup.play .lu-roof{animation:luDraw 1s .1s cubic-bezier(.4,0,.2,1) forwards}
+#ld-loftup .lu-dormer{transform:translateY(46px);opacity:0}
+#ld-loftup.play .lu-dormer{animation:luRise .55s 1.05s cubic-bezier(.34,1.4,.5,1) forwards}
+#ld-loftup .lu-dshape{fill:#10171b;stroke:#5a6f7a;stroke-width:2;stroke-linejoin:round}
+#ld-loftup .lu-window{fill:#1a262d;stroke:#5a6f7a;stroke-width:1.6}
+#ld-loftup.play .lu-window{animation:luLightOn .18s 1.7s forwards}
+#ld-loftup .lu-halo{opacity:0}
+#ld-loftup.play .lu-halo{animation:luGlow .5s 1.72s forwards}
+#ld-loftup .wordmark{color:#fff}
+#ld-loftup .wordmark b{color:#ffc87a}
+#ld-loftup .wordsub{color:#8fa2ab}
+#ld-loftup.play .wordmark{animation:wordIn .5s ease 1.95s forwards}
+#ld-loftup.play .wordsub{animation:wordIn .5s ease 2.1s forwards}
+@keyframes luDraw{to{stroke-dashoffset:0}}
+@keyframes luRise{to{transform:translateY(0);opacity:1}}
+@keyframes luLightOn{to{fill:#ffc87a;stroke:#ffc87a}}
+@keyframes luGlow{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #ld-loftup .lu-roof{stroke-dashoffset:0}
+  #ld-loftup .lu-dormer{transform:none;opacity:1}
+  #ld-loftup .lu-window{fill:#ffc87a;stroke:#ffc87a}
+  #ld-loftup .lu-halo{opacity:1}
+  #ld-loftup.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-loftup.play .wordsub{animation:wordIn .4s ease .2s forwards}
+}
 /* ---- MAKE GOOD (bricklayers / masonry repair / insurance reinstatement) ---- */
 /* Panel & Paint - wall panelling / renovation (sw-building-services) */
 #ld-panelpaint{background:#f4f1f3;flex-direction:column;gap:30px}
@@ -3855,6 +3885,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On the brand colour, four tall wall panels SLIDE UP into an empty wall opening one after another, 160ms apart, so the wall builds itself left to right and the panels double as a progress bar. Once all four are seated, accent-coloured TRIMS draw down the three seams between them (scaleY from the top) and a mono caption states the spec, before the wordmark rises beneath. Panel bathroom fitters sell four panels and trims in your colour as the actual product, so the loader assembles exactly the thing being bought. First used: jjs-services, where it hands off into the fold (the hero ground carries the same panel bands, which slide up behind the H1 as the loader lifts). Distinct from every other lab concept: nothing else CLADS a surface in discrete sheets. Roller Sweep paints a continuous coat, Trowel Float smooths one, Coursework lays small bonded units in courses, Stair Climb lands treads on a diagonal string.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-loftup" data-dur="2700">
+      <span class="trade">Loft conversions / extensions / builders</span>
+      <h3>Loft Up</h3>
+      <p>On ink, a West-London terrace roofline draws itself in thin stroke (gables and chimneys), then a dormer RISES out of the middle roof pitch with a springy settle, its window CLICKS ON in warm amber with a soft halo bloom, and the wordmark rises beneath. A loft conversion is a new storey lighting up for the first time, so the loader is the dusk drive-past view of the finished job. First used: kc-construction-development, where it hands off into the fold (the hero is the same ink dusk panel with the same roofline behind the H1, dormer lit and pulsing). Distinct from Open Up (bifold doors fold away and DAYLIGHT floods a rear opening: doors opening to the garden) and House Raise (a whole house silhouette strokes on): here an EXISTING roofline gains a storey and one window lights at dusk.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-makegood" data-dur="2400">
       <span class="trade">Bricklayers / masonry repair</span>
       <h3>Make Good</h3>
@@ -4345,6 +4381,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<div class="loader" id="ld-loftup" aria-hidden="true">
+  <div class="lu-stage">
+    <svg class="lu-svg" viewBox="0 0 420 150" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="luhalo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffc87a" stop-opacity=".5"/>
+          <stop offset="100%" stop-color="#ffc87a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <path class="lu-roof" d="M6 138 L6 96 L44 62 L82 96 L82 100 L120 100 L120 90 L128 90 L128 76 L136 76 L136 90 L144 90 L144 100 L158 100 L196 58 L234 100 L252 100 L252 92 L262 92 L262 100 L280 100 L318 66 L356 100 L356 138"/>
+      <g class="lu-dormer">
+        <circle class="lu-halo" cx="196" cy="76" r="40" fill="url(#luhalo)"/>
+        <path class="lu-dshape" d="M178 96 L178 70 L196 56 L214 70 L214 96"/>
+        <rect class="lu-window" x="187" y="72" width="18" height="20" rx="1.5"/>
+      </g>
+    </svg>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">KC <b>CONSTRUCTION</b></div>
+    <div class="wordsub">Lofts . Extensions . West London</div>
+  </div>
+</div>
 <div class="loader" id="ld-stairclimb" aria-hidden="true">
   <div class="sc-stage">
     <svg class="sc-svg" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
