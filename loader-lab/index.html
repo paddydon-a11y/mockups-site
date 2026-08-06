@@ -3212,6 +3212,45 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes bfLight{to{opacity:1}}
 @keyframes bfSeam{to{transform:scaleY(1)}}
 @keyframes bfRise{to{opacity:1;transform:translateY(0)}}
+
+/* frame raise (oak framing / heritage builders) */
+#ld-frameraise{background:#17130d;flex-direction:column}
+#ld-frameraise .fr-frame{width:230px;height:170px;position:relative;margin-bottom:24px}
+#ld-frameraise .fr-post{position:absolute;bottom:0;width:13px;height:118px;background:linear-gradient(90deg,#6b4218,#8a5a28 55%,#5a3711);border-radius:2px;transform:scaleY(0);transform-origin:bottom}
+#ld-frameraise .fr-post.l{left:26px}#ld-frameraise .fr-post.r{right:26px}
+#ld-frameraise.play .fr-post.l{animation:frPost .38s cubic-bezier(.3,1.1,.5,1) forwards}
+#ld-frameraise.play .fr-post.r{animation:frPost .38s cubic-bezier(.3,1.1,.5,1) .1s forwards}
+@keyframes frPost{to{transform:scaleY(1)}}
+#ld-frameraise .fr-beam{position:absolute;top:38px;left:16px;right:16px;height:14px;background:linear-gradient(180deg,#8a5a28,#6b4218 60%,#57350f);border-radius:2px;transform:translateY(-140px)}
+#ld-frameraise.play .fr-beam{animation:frBeam .42s cubic-bezier(.35,1.25,.5,1) .48s forwards}
+@keyframes frBeam{to{transform:translateY(0)}}
+#ld-frameraise .fr-brace{position:absolute;top:91px;width:54px;height:9px;border-radius:2px;background:linear-gradient(180deg,#8a5a28,#6b4218);opacity:0}
+#ld-frameraise .fr-brace.l{left:36px;transform:rotate(-50deg) scaleX(0);transform-origin:left center}
+#ld-frameraise .fr-brace.r{right:36px;transform:rotate(50deg) scaleX(0);transform-origin:right center}
+#ld-frameraise.play .fr-brace.l{animation:frBraceL .32s ease .9s forwards}
+#ld-frameraise.play .fr-brace.r{animation:frBraceR .32s ease 1s forwards}
+@keyframes frBraceL{to{opacity:1;transform:rotate(-50deg) scaleX(1)}}
+@keyframes frBraceR{to{opacity:1;transform:rotate(50deg) scaleX(1)}}
+#ld-frameraise .fr-peg{position:absolute;width:9px;height:9px;border-radius:50%;background:#d9c9a8;transform:scale(0)}
+#ld-frameraise .fr-peg.p1{top:41px;left:28px}#ld-frameraise .fr-peg.p2{top:41px;right:28px}
+#ld-frameraise .fr-peg.p3{top:88px;left:29px}#ld-frameraise .fr-peg.p4{top:88px;right:29px}
+#ld-frameraise.play .fr-peg.p1{animation:frPeg .22s cubic-bezier(.3,1.6,.5,1) 1.15s forwards}
+#ld-frameraise.play .fr-peg.p2{animation:frPeg .22s cubic-bezier(.3,1.6,.5,1) 1.27s forwards}
+#ld-frameraise.play .fr-peg.p3{animation:frPeg .22s cubic-bezier(.3,1.6,.5,1) 1.39s forwards}
+#ld-frameraise.play .fr-peg.p4{animation:frPeg .22s cubic-bezier(.3,1.6,.5,1) 1.51s forwards}
+@keyframes frPeg{to{transform:scale(1)}}
+#ld-frameraise .fr-chev{opacity:0;margin-bottom:8px}
+#ld-frameraise.play .fr-chev{animation:wordIn .5s ease 1.4s forwards}
+#ld-frameraise .wordmark{color:#fff;font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:.04em}
+#ld-frameraise .wordsub{color:#a99e8a}
+#ld-frameraise.play .wordmark{animation:wordIn .5s ease 1.45s forwards}
+#ld-frameraise.play .wordsub{animation:wordIn .5s ease 1.6s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld-frameraise .fr-post,#ld-frameraise .fr-beam,#ld-frameraise .fr-peg,#ld-frameraise .fr-chev,#ld-frameraise .wordmark,#ld-frameraise .wordsub{opacity:1;transform:none;animation:none!important}
+  #ld-frameraise .fr-brace{opacity:1;animation:none!important}
+  #ld-frameraise .fr-brace.l{transform:rotate(-50deg)}
+  #ld-frameraise .fr-brace.r{transform:rotate(50deg)}
+}
 </style>
 </head>
 <body>
@@ -3991,6 +4030,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Extensions / design &amp; build</span>
       <h3>Open Up</h3>
       <p>On ink, a drawn rear-opening frame holds four dark bifold panels; a glowing daylight seam draws down the centre, then the panels FOLD AWAY one by one to the sides while warm daylight floods the frame, and the wordmark rises beneath. On the mockup the whole ink overlay then PARTS in two halves to reveal the hero, so the opening gesture is the page reveal, and the daylight seam carries on pulsing in the fold. The extensions trade's whole pitch: the doors fold open and the light comes in. First used: moedim-group.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-frameraise" data-dur="2400">
+      <span class="trade">Oak framing / heritage builders / consultancy</span>
+      <h3>Frame Raise</h3>
+      <p>On oak-black ink, two oak posts rise, the tie beam lowers on with a springy settle, two knee braces grow into the corners and four pale oak PEGS tap home staggered, then the wordmark rises beneath the pegged portal. On the mockup the loader hands off INTO the fold: the same portal frame draws itself around the hero H1 and the pegs keep pulsing. Raising day is the oak framer's signature moment. First used: dwl-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -6159,6 +6204,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">MOEDIM <b>GROUP</b></div>
     <div class="wordsub">Extensions &middot; Wolverhampton</div>
   </div>
+</div>
+
+<!-- 36. frame raise (oak framing / heritage builders) -->
+<div class="loader" id="ld-frameraise" aria-hidden="true">
+  <div class="fr-frame">
+    <div class="fr-post l"></div>
+    <div class="fr-post r"></div>
+    <div class="fr-beam"></div>
+    <div class="fr-brace l"></div>
+    <div class="fr-brace r"></div>
+    <div class="fr-peg p1"></div><div class="fr-peg p2"></div><div class="fr-peg p3"></div><div class="fr-peg p4"></div>
+  </div>
+  <svg class="fr-chev" width="54" height="26" viewBox="0 0 54 26" fill="none"><path d="M2 24 L27 3 L52 24" stroke="#d9c9a8" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="wordmark">DWL</div>
+  <div class="wordsub">Conception to Completion</div>
 </div>
 
 <script>
