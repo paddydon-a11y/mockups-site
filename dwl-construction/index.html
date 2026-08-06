@@ -45,31 +45,19 @@ section h2{font-size:clamp(2rem,4vw,2.9rem);letter-spacing:-.01em;margin-top:14p
 .acc{color:var(--oak);font-weight:700}
 
 /* ---------- Loader: Frame Raise ---------- */
-#ld{position:fixed;inset:0;background:#240e20;z-index:1000;display:flex;align-items:center;justify-content:center;animation:ldOut .5s ease 2.2s forwards,ldGone 0s linear 2.75s forwards}
+#ld{position:fixed;inset:0;background:#240e20;z-index:1000;display:flex;align-items:center;justify-content:center;animation:ldOut .5s ease 1.7s forwards,ldGone 0s linear 2.25s forwards}
 @keyframes ldOut{to{opacity:0}}
 @keyframes ldGone{to{visibility:hidden;pointer-events:none}}
 .ld-done#ld{opacity:0;visibility:hidden;pointer-events:none}
 .ld-in{display:flex;flex-direction:column;align-items:center;gap:26px}
-.ld-frame{width:230px;height:170px;position:relative}
-.ld-post{position:absolute;bottom:0;width:13px;height:118px;background:linear-gradient(90deg,#6b4218,#8a5a28 55%,#5a3711);border-radius:2px;transform:scaleY(0);transform-origin:bottom;animation:ldPost .38s cubic-bezier(.3,1.1,.5,1) forwards}
-.ld-post.l{left:26px}.ld-post.r{right:26px;animation-delay:.1s}
-@keyframes ldPost{to{transform:scaleY(1)}}
-.ld-beam{position:absolute;top:38px;left:16px;right:16px;height:14px;background:linear-gradient(180deg,#8a5a28,#6b4218 60%,#57350f);border-radius:2px;transform:translateY(-140px);animation:ldBeam .42s cubic-bezier(.35,1.25,.5,1) .48s forwards}
-@keyframes ldBeam{to{translate:none;transform:translateY(0)}}
-.ld-peg{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--oak-pale);transform:scale(0);animation:ldPeg .22s cubic-bezier(.3,1.6,.5,1) forwards}
-.ld-peg.p1{top:41px;left:28px;animation-delay:.95s}
-.ld-peg.p2{top:41px;right:28px;animation-delay:1.07s}
-.ld-peg.p3{top:88px;left:29px;animation-delay:1.19s}
-.ld-peg.p4{top:88px;right:29px;animation-delay:1.31s}
-@keyframes ldPeg{to{transform:scale(1)}}
-.ld-brand{opacity:0;transform:translateY(14px);animation:ldBrand .5s ease 1.3s forwards;display:flex;flex-direction:column;align-items:center;gap:10px}
+.ld-brand{opacity:0;transform:translateY(10px);animation:ldBrand .6s ease .15s forwards;display:flex;flex-direction:column;align-items:center;gap:14px}
 @keyframes ldBrand{to{opacity:1;transform:none}}
 .ld-brand svg{display:block}
 .ld-brand .bn{font-family:var(--serif);font-weight:700;font-size:2rem;color:#fff;letter-spacing:.04em;line-height:1}
 .ld-brand .bs{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#c2a8bb}
 @media (prefers-reduced-motion: reduce){
   #ld{animation:ldOut .3s ease .7s forwards,ldGone 0s linear 1.05s forwards}
-  .ld-post,.ld-beam,.ld-peg,.ld-brand{animation:none;transform:none;opacity:1}
+  .ld-brand{animation:none;transform:none;opacity:1}
 }
 
 /* ---------- Nav ---------- */
@@ -319,14 +307,9 @@ footer{background:var(--ink);color:#c3aebe;padding:60px 0 30px}
 <!-- Loader: Frame Raise -->
 <div id="ld" aria-hidden="true">
   <div class="ld-in">
-    <div class="ld-frame">
-      <div class="ld-post l"></div>
-      <div class="ld-post r"></div>
-      <div class="ld-beam"></div>
-      <div class="ld-peg p1"></div><div class="ld-peg p2"></div><div class="ld-peg p3"></div><div class="ld-peg p4"></div>
     </div>
     <div class="ld-brand">
-      <img src="logo.png" alt="" style="height:104px;width:auto">
+      <img src="logo.png" alt="" style="height:128px;width:auto">
       <div class="bs">Conception to Completion</div>
     </div>
   </div>
@@ -690,7 +673,7 @@ footer{background:var(--ink);color:#c3aebe;padding:60px 0 30px}
   });
 
   // Loader failsafe
-  setTimeout(function(){ var ld = document.getElementById('ld'); if (ld) ld.classList.add('ld-done'); }, 2500);
+  setTimeout(function(){ var ld = document.getElementById('ld'); if (ld) ld.classList.add('ld-done'); }, 2100);
 
   // Form timestamp + phone validity
   var ts = document.getElementById('formTimestamp'); if (ts) ts.value = Date.now();
