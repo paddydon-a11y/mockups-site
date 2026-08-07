@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alan Stow Joinery | Joiner &amp; Carpenter in Canterbury</title>
+<meta name="description" content="Bespoke joinery and carpentry across Canterbury and East Kent. Built-ins, decking, fencing, flooring and kitchens, made to measure.">
+<meta property="og:title" content="Alan Stow Joinery, Your New Website">
+<meta property="og:description" content="Joiner and carpenter in Canterbury, preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/alan-stow-joinery/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/alan-stow-joinery/">
+<meta name="theme-color" content="#141414">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#141414;
+  --bg-2:#181818;
+  --card:#1e1e1e;
+  --card-hover:#242424;
+  --line:#2b2b2b;
+  --line-light:#3a3a3a;
+  --accent:#f26a0a;
+  --accent-hover:#ff7d1f;
+  --accent-glow:rgba(242,106,10,.16);
+  --head:#ffffff;
+  --body:#b6b6b0;
+  --muted:#7d7d78;
+  --paper:#ffffff;
+  --paper-line:#e4e2dd;
+  --ink:#161616;
+  --ink-body:#4c4c48;
+  --wa:#25d366;
+  --disp:'Fjalla One',sans-serif;
+  --sans:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{color:var(--head);line-height:1.05}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.label{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+
+/* pencil set-out line: the section divider */
+.cutline{position:relative;height:0;border-top:2px dashed var(--line)}
+.cutline::before{content:"";position:absolute;left:24px;top:-5px;width:8px;height:8px;background:var(--accent);clip-path:polygon(50% 100%,0 0,100% 0)}
+
+/* ===== loader: Kerf Cut ===== */
+#loader{position:fixed;inset:0;z-index:200;pointer-events:none}
+#loader .kf-top,#loader .kf-bot{position:absolute;left:0;width:100%;background:#0e0e0e}
+#loader .kf-top{top:0;height:62%;display:flex;align-items:flex-end;justify-content:center}
+#loader .kf-bot{bottom:0;height:38%;display:flex;align-items:flex-start;justify-content:center;padding-top:22px}
+.kf-mark{text-align:center;padding-bottom:34px}
+.kf-word{font-family:var(--disp);font-size:clamp(2.2rem,8vw,3.2rem);letter-spacing:.05em;color:#fff;text-transform:uppercase}
+.kf-word b{color:var(--accent);font-weight:400}
+.kf-sub{font-family:var(--mono);font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:#8a8a85;margin-top:4px}
+.kf-pencil{position:absolute;top:62%;left:0;width:100%;height:0;margin-top:-1px;border-top:2px dashed #3f3f3f;transform:scaleX(0);transform-origin:left}
+#loader.play .kf-pencil{animation:kfLine .35s ease .25s forwards}
+.kf-kerf{position:absolute;top:62%;left:0;height:3px;width:100%;margin-top:-1px;background:var(--accent);box-shadow:0 0 16px var(--accent);transform:scaleX(0);transform-origin:left}
+#loader.play .kf-kerf{animation:kfLine 1.05s cubic-bezier(.4,0,.6,1) .7s forwards}
+.kf-blade{position:absolute;top:62%;left:0;width:64px;height:64px;margin-top:-32px;margin-left:-32px;opacity:0}
+.kf-blade svg{width:64px;height:64px;display:block}
+#loader.play .kf-blade{animation:kfTravel 1.05s cubic-bezier(.4,0,.6,1) .7s forwards}
+#loader.play .kf-blade svg{animation:kfSpin .5s linear infinite}
+#loader.play .kf-top{animation:kfSplitT .6s cubic-bezier(.7,0,.3,1) 1.9s forwards}
+#loader.play .kf-bot{animation:kfSplitB .6s cubic-bezier(.7,0,.3,1) 1.9s forwards}
+#loader.play .kf-kerf{animation:kfLine 1.05s cubic-bezier(.4,0,.6,1) .7s forwards,kfFade .3s ease 1.95s forwards}
+#loader.play .kf-pencil{animation:kfLine .35s ease .25s forwards,kfFade .3s ease 1.9s forwards}
+@keyframes kfLine{to{transform:scaleX(1)}}
+@keyframes kfTravel{0%{opacity:0;left:0}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes kfSpin{to{transform:rotate(360deg)}}
+@keyframes kfSplitT{to{transform:translateY(-103%)}}
+@keyframes kfSplitB{to{transform:translateY(103%)}}
+@keyframes kfFade{to{opacity:0}}
+#loader{animation:ldGoneAuto 0s linear 2.7s forwards}
+#loader.gone{animation:ldGone 0s linear .6s forwards}
+@keyframes ldGone{to{opacity:0;visibility:hidden}}
+@keyframes ldGoneAuto{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){
+  .kf-blade,.kf-kerf,.kf-pencil{display:none}
+  #loader.play .kf-top{animation:kfFadeOut .4s ease 1s forwards}
+  #loader.play .kf-bot{animation:kfFadeOut .4s ease 1s forwards}
+  @keyframes kfFadeOut{to{opacity:0}}
+  #loader{animation:ldGoneAuto 0s linear 1.5s forwards}
+}
+
+/* ===== nav ===== */
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.nav-logo{font-family:var(--disp);font-size:1.35rem;letter-spacing:.06em;color:#fff;white-space:nowrap;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.nav-logo b{color:var(--accent);font-weight:400}
+.nav-logo .mk{width:22px;height:22px;flex:0 0 auto}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:500;color:#b9b9b4;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.nav-cta{background:var(--accent);color:#141414 !important;font-weight:700;padding:9px 18px;border-radius:6px;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--accent-hover)}
+.nav-cta svg{width:15px;height:15px;stroke:#141414}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px;padding:10px}
+.nav-burger span{display:block;height:2px;background:#fff;margin:5px 0;border-radius:2px;transition:transform .25s,opacity .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.m-menu{display:none;position:fixed;top:66px;left:0;right:0;z-index:99;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 24px 22px;flex-direction:column;gap:2px}
+.m-menu.open{display:flex}
+.m-menu a{color:#e6e6e2;font-size:1rem;font-weight:500;padding:12px 0;border-bottom:1px solid var(--line)}
+.m-menu a.m-call{background:var(--accent);color:#141414;font-weight:700;text-align:center;border-radius:8px;margin-top:14px;padding:14px;border-bottom:0}
+
+/* ===== hero ===== */
+.hero{display:flex;flex-direction:column;position:relative}
+.hero-marks{position:absolute;inset:0;pointer-events:none;opacity:.5;background:
+  repeating-linear-gradient(90deg,transparent 0 119px,var(--line) 119px 120px);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.35),transparent 70%);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.35),transparent 70%)}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:84px;padding-bottom:88px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#94948e;margin-bottom:22px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex:0 0 auto}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 10px rgba(242,106,10,0)}100%{box-shadow:0 0 0 0 rgba(242,106,10,0)}}
+h1{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(3.1rem,6.4vw,5.2rem);line-height:.98}
+h1 .l1{display:block;color:#fff}
+h1 .l2{display:block;color:var(--accent);position:relative;width:fit-content}
+h1 .kerf-u{position:absolute;left:2px;right:2px;bottom:-10px;height:3px;background:var(--accent);box-shadow:0 0 14px var(--accent-glow);transform:scaleX(0);transform-origin:left;animation:kerfU .7s cubic-bezier(.4,0,.4,1) 2.6s forwards}
+@keyframes kerfU{to{transform:scaleX(1)}}
+.lede{color:var(--body);font-size:1.03rem;max-width:46ch;margin:26px 0 30px}
+.lede b{color:#fff;font-weight:600}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.95rem;padding:14px 24px;border-radius:8px;transition:transform .2s,background .2s;cursor:pointer;border:0}
+.btn svg{width:17px;height:17px}
+.btn-call{background:var(--accent);color:#141414}
+.btn-call svg{stroke:#141414}
+.btn-call:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#0b2a17}
+.btn-wa svg{fill:#0b2a17}
+.btn-wa:hover{transform:translateY(-2px)}
+.hero-photo{position:relative}
+.hero-photo .frame{border-radius:14px;overflow:hidden;border:1px solid var(--line-light)}
+.hero-photo img{width:100%;height:560px;object-fit:cover;animation:kenburns 20s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-badge{position:absolute;bottom:18px;left:18px;background:var(--bg);border:1px solid var(--line-light);border-radius:10px;padding:12px 18px;display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:#fff}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex:0 0 auto}
+.badge-card{display:none}
+
+/* ===== trust strip ===== */
+.trust{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:9px;font-size:.86rem;font-weight:600;color:#e9e9e4;white-space:nowrap}
+.trust-item svg{width:16px;height:16px;stroke:var(--accent);flex:0 0 auto}
+
+/* ===== sections ===== */
+section{padding:88px 0}
+.sec-head{margin-bottom:44px}
+.sec-head h2{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(2.1rem,4vw,3.1rem);margin-top:10px}
+.sec-head h2 em{color:var(--accent)}
+
+/* services S1-PHOTO dark */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;position:relative;transition:transform .25s,background .25s}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:2}
+.svc:hover{transform:translateY(-3px);background:var(--card-hover)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{height:210px;overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-body{padding:22px 24px 26px}
+.svc-body h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:.04em;font-size:1.3rem;margin-bottom:6px}
+.svc-body p{font-size:.92rem;color:var(--body)}
+
+/* gallery G2 dark */
+.gal{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gt{display:flex;flex-direction:column;gap:8px}
+.gt .ph{border-radius:10px;overflow:hidden;border:1px solid var(--line-light);background:var(--card)}
+.gt img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gt:hover img{transform:scale(1.04)}
+.gt figcaption{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.gt-pin{grid-column:span 2;grid-row:span 2;min-height:0}
+.gt-pin .ph{flex:1 1 0;min-height:0}
+.gt-pin img{height:100%}
+.gt:not(.gt-pin) .ph{height:200px}
+
+/* about: the white job sheet */
+.about{background:var(--bg)}
+.sheet{background:var(--paper);border-radius:16px;padding:0;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.sheet-photo{min-height:100%}
+.sheet-photo img{width:100%;height:100%;object-fit:cover}
+.sheet-copy{padding:52px 54px}
+.sheet-copy .label{color:#c2500a}
+.sheet-copy h2{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(1.9rem,3.4vw,2.7rem);color:var(--ink);margin:10px 0 18px}
+.sheet-copy h2 em{color:#e2610a}
+.sheet-copy p{color:var(--ink-body);max-width:52ch}
+.sheet-copy p b{color:var(--ink);font-weight:600}
+.sheet-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.sheet-chips span{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border:1px dashed #c9c7c1;border-radius:99px;padding:8px 14px}
+.sheet-chips span.hot{border:1px solid #e2610a;color:#c2500a}
+
+/* reviews dark cards */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:28px 30px}
+.stars{color:var(--accent);letter-spacing:3px;font-size:.95rem;margin-bottom:12px}
+.rev p{font-size:.97rem;color:#e9e9e4}
+.rev .who{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:16px}
+
+/* areas */
+.areas{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{background:var(--card);border:1px solid var(--line-light);border-radius:99px;padding:9px 18px;font-size:.88rem;font-weight:500;color:#e9e9e4}
+.chips span.home{background:var(--accent);border-color:var(--accent);color:#141414;font-weight:700}
+
+/* cta band: full orange */
+.cta-band{background:var(--accent);padding:0}
+.cta-band-in{text-align:center;padding-top:76px;padding-bottom:80px}
+.cta-band .label{color:#141414;opacity:.75}
+.cta-band h2{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(2.2rem,4.5vw,3.4rem);color:#141414;margin:10px 0 8px}
+.cta-band p{color:#3d1c02;margin-bottom:28px;font-weight:500}
+.cta-band .cta-row{justify-content:center}
+.btn-ink{background:#141414;color:#fff}
+.btn-ink svg{stroke:#fff}
+.btn-ink:hover{background:#000;transform:translateY(-2px)}
+.cta-kerf{height:3px;background:#141414;opacity:.25}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+.info-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.info-card .ic{width:42px;height:42px;border-radius:10px;background:var(--accent-glow);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.info-card .ic svg{width:19px;height:19px;stroke:var(--accent)}
+.info-card h3{font-size:.98rem;margin-bottom:2px}
+.info-card p,.info-card a{font-size:.92rem;color:var(--body)}
+.info-card a:hover{color:var(--accent)}
+form{background:var(--paper);border-radius:14px;padding:32px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{margin-bottom:16px}
+.f-group label{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.f-group input,.f-group select,.f-group textarea{width:100%;border:1px solid var(--paper-line);border-radius:8px;padding:12px 14px;font-family:var(--sans);font-size:.95rem;color:var(--ink);background:#f6f5f2;outline:none;transition:border .2s}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--accent);background:#fff}
+.f-sub{width:100%;background:var(--accent);color:#141414;font-weight:700;font-size:1rem;border:0;border-radius:8px;padding:15px;cursor:pointer;transition:background .2s}
+.f-sub:hover{background:var(--accent-hover)}
+
+/* footer */
+footer{background:#0e0e0e;color:var(--muted);padding:44px 0;border-top:1px solid var(--line)}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.foot-logo{font-family:var(--disp);font-size:1.2rem;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.foot-logo b{color:var(--accent);font-weight:400}
+footer p{font-size:.82rem}
+footer a{color:#d5d5d0;border-bottom:1px solid var(--line-light)}
+footer a:hover{color:var(--accent)}
+
+/* FABs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px -6px rgba(0,0,0,.6)}
+.fab svg{width:22px;height:22px}
+.fab-call{background:var(--accent);border:2px solid #141414;animation:fabPulse 2.2s infinite}
+.fab-call svg{stroke:#141414}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 14px rgba(242,106,10,0)}100%{box-shadow:0 0 0 0 rgba(242,106,10,0)}}
+.fab-wa{background:var(--wa);animation:fabPulseW 2.2s infinite .4s}
+.fab-wa svg{fill:#0b2a17}
+@keyframes fabPulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,.3)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.fab:hover{animation-play-state:paused}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-photo img{animation:none}h1 .kerf-u{animation:none;transform:scaleX(1)}}
+
+/* ===== mobile ===== */
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .hero-in{grid-template-columns:1fr;gap:30px;padding-top:54px;padding-bottom:56px}
+  h1{font-size:clamp(3.2rem,15.5vw,4rem)}
+  .lede{font-size:.98rem;margin-top:24px}
+  .btn{padding:13px 18px;font-size:.92rem}
+  .hero-photo img{height:340px;animation:none}
+  .hero-badge{display:none}
+  .badge-card{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line-light);border-radius:10px;padding:13px 16px;margin-top:12px;font-size:.86rem;font-weight:600;color:#fff}
+  .badge-card .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex:0 0 auto}
+  .trust-in{flex-direction:column;align-items:stretch;gap:0;padding-top:6px;padding-bottom:6px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line);white-space:normal}
+  .trust-item:last-child{border-bottom:0}
+  section{padding:64px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .svc-img{height:190px}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gt-pin{grid-column:span 2;grid-row:auto}
+  .gt-pin .ph{flex:0 0 auto;height:300px}
+  .gt:not(.gt-pin) .ph{height:150px}
+  .gt figcaption{font-size:.6rem}
+  .sheet{grid-template-columns:1fr}
+  .sheet-photo img{height:300px}
+  .sheet-copy{padding:32px 26px 38px}
+  .rev-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .foot-in{flex-direction:column;text-align:center}
+}
+@media (max-width:390px){
+  h1{font-size:3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== loader: Kerf Cut ===== -->
+<div id="loader" aria-hidden="true">
+  <div class="kf-top">
+    <div class="kf-mark">
+      <div class="kf-word">ALAN <b>STOW</b></div>
+      <div class="kf-sub">Joinery · Carpentry · Canterbury</div>
+    </div>
+  </div>
+  <div class="kf-bot"></div>
+  <div class="kf-pencil"></div>
+  <div class="kf-kerf"></div>
+  <div class="kf-blade">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="26" fill="none" stroke="#f26a0a" stroke-width="3"/>
+      <g fill="#f26a0a">
+        <path d="M32 2 L36 10 L28 10 Z"/><path d="M32 62 L28 54 L36 54 Z"/>
+        <path d="M2 32 L10 28 L10 36 Z"/><path d="M62 32 L54 36 L54 28 Z"/>
+        <path d="M11 11 L19 13 L13 19 Z"/><path d="M53 53 L45 51 L51 45 Z"/>
+        <path d="M53 11 L51 19 L45 13 Z"/><path d="M11 53 L13 45 L19 51 Z"/>
+      </g>
+      <circle cx="32" cy="32" r="5" fill="#f26a0a"/>
+    </svg>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="nav-logo" aria-label="Alan Stow Joinery">
+      <svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21 L3 14 L14 3 L21 10 L10 21 Z" fill="none" stroke="#f26a0a" stroke-width="2.2" stroke-linejoin="round"/><path d="M8 16 L14 10" stroke="#f26a0a" stroke-width="2.2" stroke-linecap="round"/></svg>
+      ALAN <b>STOW</b>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" id="navCall" class="nav-cta"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Alan</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="m-menu" id="mMenu">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="m-call" id="mCall">Call Alan</a>
+</div>
+
+<!-- ===== hero ===== -->
+<header class="hero">
+  <div class="hero-marks" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Joiner &amp; Carpenter · Canterbury</div>
+      <h1>
+        <span class="l1">Measure twice.</span>
+        <span class="l2">Cut once.<span class="kerf-u"></span></span>
+      </h1>
+      <p class="lede">Bespoke joinery and carpentry across Canterbury and East Kent. <b>Built-ins, decking, flooring and kitchens</b>, measured, cut and fitted right first time.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-call heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Alan</a>
+        <a href="#" class="btn btn-wa waLink"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="hero.jpg" alt="Steel and timber staircase built by Alan Stow" width="1200" height="1600" fetchpriority="high"></div>
+      <div class="hero-badge"><span class="dot"></span>Free quotes, no pressure</div>
+      <div class="badge-card"><span class="dot"></span>Free quotes, no pressure</div>
+    </div>
+  </div>
+  <div class="trust">
+    <div class="wrap trust-in">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free Quotes</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Made to Measure</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Supply &amp; Fit</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tidy Finish</div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Canterbury Based</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== services ===== -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What Alan does</div>
+      <h2>Carpentry, first fix to <em>finished</em></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-builtins.jpg" alt="Bespoke built-in media wall" loading="lazy"></div>
+        <div class="svc-body"><h3>Bespoke Built-ins</h3><p>Alcove units, media walls and boot rooms, built to the millimetre.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-decking.jpg" alt="Composite decking with glass balustrade" loading="lazy"></div>
+        <div class="svc-body"><h3>Decking &amp; Balustrades</h3><p>Timber and composite decking with steel or glass balustrades.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-fencing.jpg" alt="New featheredge fencing run" loading="lazy"></div>
+        <div class="svc-body"><h3>Fencing &amp; Gates</h3><p>Featheredge and panel fencing, posts set straight and solid.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-flooring.jpg" alt="Panelled room with new wood flooring" loading="lazy"></div>
+        <div class="svc-body"><h3>Flooring</h3><p>Laminate, LVT and engineered boards laid flat and finished clean.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-kitchen.jpg" alt="Fitted shaker kitchen" loading="lazy"></div>
+        <div class="svc-body"><h3>Kitchen Fitting</h3><p>Full installs: cabinets, worktops and the finishing carpentry.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-panelling.jpg" alt="Wall panelling in a period home" loading="lazy"></div>
+        <div class="svc-body"><h3>Doors &amp; Panelling</h3><p>Internal doors hung right, wall panelling with sharp lines.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== about: the job sheet ===== -->
+<section class="about">
+  <div class="wrap">
+    <div class="sheet reveal">
+      <div class="sheet-photo"><img src="feature-hiddendoor.jpg" alt="Hidden bookcase door built by Alan Stow" loading="lazy"></div>
+      <div class="sheet-copy">
+        <div class="label">About Alan</div>
+        <h2>If you can draw it, <em>Alan can build it</em></h2>
+        <p>Alan Stow is a joiner and carpenter working in and around Canterbury. From decking and fencing to kitchens and built-in storage, most jobs come recommended from the last one. His party piece: <b>bookcases that are secretly doors</b>. Ask him about it when he quotes.</p>
+        <div class="sheet-chips">
+          <span class="hot">Hidden bookcase doors</span>
+          <span>First fix to finished</span>
+          <span>East Kent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== gallery ===== -->
+<section class="gal" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>Built by <em>Alan</em></h2>
+    </div>
+    <div class="gal-grid">
+      <figure class="gt gt-pin reveal">
+        <div class="ph"><img src="g3.jpg" alt="Oak framed gazebo roof structure" loading="lazy"></div>
+        <figcaption>Oak gazebo frame</figcaption>
+      </figure>
+      <figure class="gt reveal"><div class="ph"><img src="g1.jpg" alt="Decking stairs with black balustrade" loading="lazy"></div><figcaption>Deck steps, Canterbury</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g2.jpg" alt="Boot room bench and storage" loading="lazy"></div><figcaption>Boot room build</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g9.jpg" alt="Fitted larder cupboards" loading="lazy"></div><figcaption>Fitted larder cupboards</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g4.jpg" alt="Composite deck boards" loading="lazy"></div><figcaption>Composite decking</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g5.jpg" alt="Painted built-in bookcase" loading="lazy"></div><figcaption>Alcove bookcase</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g6.jpg" alt="Fitted kitchen with oak floor" loading="lazy"></div><figcaption>Kitchen fit-out</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g7.jpg" alt="Slatted screen and decking balcony" loading="lazy"></div><figcaption>Balcony deck and screen</figcaption></figure>
+      <figure class="gt reveal"><div class="ph"><img src="g8.jpg" alt="Oak flooring being laid" loading="lazy"></div><figcaption>Flooring going down</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== reviews ===== -->
+<section id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Reviews</div>
+      <h2>Word gets <em>around</em></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Alan built us a bookcase that is actually a door to the under-stairs cupboard. Every single visitor asks about it. Clever, neat work."</p>
+        <div class="who">Sarah M, Canterbury · Built-ins</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"New composite decking with a glass balustrade. Alan Stow turned up when he said he would and the finish is spot on."</p>
+        <div class="who">Mark T, Whitstable · Decking</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Fitted our whole kitchen and laid the flooring through the ground floor. Tidy worker, fair price, no drama."</p>
+        <div class="who">Emma R, Faversham · Kitchen &amp; Flooring</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Boot room storage made to fit an awkward space, and a run of fencing out the back. Both done properly. Recommended."</p>
+        <div class="who">James W, Herne Bay · Built-ins &amp; Fencing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== areas ===== -->
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Areas covered</div>
+      <h2>Canterbury &amp; <em>East Kent</em></h2>
+    </div>
+    <div class="chips reveal">
+      <span class="home">Canterbury</span>
+      <span>Whitstable</span>
+      <span>Herne Bay</span>
+      <span>Faversham</span>
+      <span>Sturry</span>
+      <span>Bridge</span>
+      <span>Chartham</span>
+      <span>Wingham</span>
+      <span>Littlebourne</span>
+      <span>Sandwich</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== cta band ===== -->
+<section class="cta-band">
+  <div class="cta-kerf"></div>
+  <div class="wrap cta-band-in">
+    <div class="label">Got a job in mind?</div>
+    <h2>Tell Alan what you need built</h2>
+    <p>A quick call or WhatsApp gets you a free quote.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-ink heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Alan</a>
+      <a href="#" class="btn btn-wa waLink"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>WhatsApp</a>
+    </div>
+  </div>
+  <div class="cta-kerf"></div>
+</section>
+
+<!-- ===== contact ===== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Contact</div>
+      <h2>Get a <em>free quote</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><h3>Phone</h3><a href="#" id="contactPhone">&nbsp;</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div><h3>WhatsApp</h3><a href="#" class="waLink">Message Alan a photo of the job</a></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h3>Response time</h3><p>Same day, usually within a few hours</p></div>
+        </div>
+        <div class="info-card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h3>Based in</h3><p>Canterbury, covering East Kent</p></div>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Alan Stow Joinery">
+        <input type="hidden" name="source" value="mockup-alan-stow-joinery">
+        <div class="f-row">
+          <div class="f-group"><label for="fName">Name *</label><input id="fName" name="name" type="text" required></div>
+          <div class="f-group"><label for="fPhone">Phone *</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$"></div>
+        </div>
+        <div class="f-group"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email"></div>
+        <div class="f-group"><label for="fService">What do you need?</label>
+          <select id="fService" name="service">
+            <optgroup label="Joinery &amp; Built-ins">
+              <option>Bespoke built-ins / shelving</option>
+              <option>Hidden bookcase door</option>
+              <option>Doors &amp; wall panelling</option>
+            </optgroup>
+            <optgroup label="Outside">
+              <option>Decking</option>
+              <option>Fencing &amp; gates</option>
+              <option>Garden structures</option>
+            </optgroup>
+            <optgroup label="Interiors">
+              <option>Flooring</option>
+              <option>Kitchen fitting</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="f-group"><label for="fMsg">Tell Alan about the job</label><textarea id="fMsg" name="message" rows="4"></textarea></div>
+        <button type="submit" class="f-sub">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-logo">ALAN <b>STOW</b></div>
+    <p>Joiner &amp; carpenter, Canterbury. &copy; 2026 Alan Stow.</p>
+    <p>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></p>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call fabCall" aria-label="Call Alan"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" class="fab fab-wa waLink" aria-label="WhatsApp Alan"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></a>
+</div>
+
+<script>
+// contact decode
+var P = atob('MDc3OTEwNTYwNzM=');
+var Pf = atob('MDc3OTEgMDU2IDA3Mw==');
+var W = atob('NDQ3NzkxMDU2MDcz');
+var waHref = 'https://wa.me/' + W + '?text=' + encodeURIComponent('Hi Alan, I found you online and would like a quote please');
+document.querySelectorAll('#navCall, .heroCall, .fabCall, #mCall').forEach(function(el){ el.href = 'tel:' + P; });
+document.querySelectorAll('.waLink').forEach(function(el){ el.href = waHref; el.target = '_blank'; el.rel = 'noopener'; });
+var cp = document.getElementById('contactPhone');
+cp.textContent = Pf; cp.href = 'tel:' + P;
+document.getElementById('formTimestamp').value = Date.now();
+
+// loader
+var loader = document.getElementById('loader');
+loader.classList.add('play');
+setTimeout(function(){ loader.classList.add('gone'); }, 2200);
+setTimeout(function(){ loader.remove(); }, 3000);
+
+// mobile menu
+var burger = document.getElementById('burger'), mMenu = document.getElementById('mMenu');
+burger.addEventListener('click', function(){
+  burger.classList.toggle('open');
+  mMenu.classList.toggle('open');
+});
+mMenu.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){ burger.classList.remove('open'); mMenu.classList.remove('open'); });
+});
+
+// reveals
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// fabs after hero
+var fabs = document.getElementById('fabs'), hero = document.querySelector('.hero');
+window.addEventListener('scroll', function(){
+  fabs.classList.toggle('show', window.scrollY > hero.offsetHeight - 100);
+}, {passive:true});
+
+// phone validity message
+var fp = document.getElementById('fPhone');
+fp.addEventListener('invalid', function(){ fp.setCustomValidity('Please enter a UK phone number'); });
+fp.addEventListener('input', function(){ fp.setCustomValidity(''); });
+</script>
+</body>
+</html>
