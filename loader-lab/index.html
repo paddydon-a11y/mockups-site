@@ -3373,6 +3373,41 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-frameraise .fr-brace.l{transform:rotate(-50deg)}
   #ld-frameraise .fr-brace.r{transform:rotate(50deg)}
 }
+
+/* ---- Star Glue-Up (black-star-joinery) ---- */
+#ld-glueup{background:#101014;flex-direction:column;gap:24px}
+#ld-glueup .gu-stage{position:relative;display:flex;align-items:center;justify-content:center}
+#ld-glueup .gu-star{width:150px;height:150px}
+#ld-glueup .gu-star .pt{opacity:0;transform-origin:70px 70px}
+#ld-glueup.play .gu-star .pt1{animation:guPtIn .5s cubic-bezier(.2,.9,.3,1.15) .15s forwards}
+#ld-glueup.play .gu-star .pt2{animation:guPtIn .5s cubic-bezier(.2,.9,.3,1.15) .33s forwards}
+#ld-glueup.play .gu-star .pt3{animation:guPtIn .5s cubic-bezier(.2,.9,.3,1.15) .51s forwards}
+#ld-glueup.play .gu-star .pt4{animation:guPtIn .5s cubic-bezier(.2,.9,.3,1.15) .69s forwards}
+#ld-glueup.play .gu-star .pt5{animation:guPtIn .5s cubic-bezier(.2,.9,.3,1.15) .87s forwards}
+@keyframes guPtIn{0%{opacity:0;transform:scale(1.7) rotate(-14deg)}60%{opacity:1}100%{opacity:1;transform:scale(1) rotate(0)}}
+#ld-glueup.play .gu-star .whole{animation:guClamp .38s cubic-bezier(.3,0,.2,1) 1.42s}
+#ld-glueup .gu-star .whole{transform-origin:70px 70px}
+@keyframes guClamp{0%{transform:scale(1)}45%{transform:scale(.94)}75%{transform:scale(1.02)}100%{transform:scale(1)}}
+#ld-glueup .gu-clamp{position:absolute;width:190px;height:8px;left:50%;transform:translateX(-50%)}
+#ld-glueup .gu-clamp::before,#ld-glueup .gu-clamp::after{content:"";position:absolute;top:0;width:16px;height:8px;background:#3a3a46;border-radius:2px}
+#ld-glueup .gu-clamp::before{left:0}
+#ld-glueup .gu-clamp::after{right:0}
+#ld-glueup.play .gu-clamp::before{animation:guJawL .4s ease 1.4s forwards}
+#ld-glueup.play .gu-clamp::after{animation:guJawR .4s ease 1.4s forwards}
+@keyframes guJawL{to{transform:translateX(14px)}}
+@keyframes guJawR{to{transform:translateX(-14px)}}
+#ld-glueup .gu-sheen{opacity:0}
+#ld-glueup.play .gu-sheen{animation:guSheen 1s ease 1.75s forwards}
+@keyframes guSheen{0%{opacity:0;transform:translateX(-140px)}25%{opacity:.9}100%{opacity:0;transform:translateX(140px)}}
+#ld-glueup .gu-word{font-family:Georgia,'Times New Roman',serif;font-weight:600;color:#fff;font-size:1.6rem;letter-spacing:.04em;opacity:0;text-align:center}
+#ld-glueup .gu-word b{color:#c8952c;font-weight:600}
+#ld-glueup.play .gu-word{animation:guUp .6s ease 1.55s forwards}
+#ld-glueup .wordsub{opacity:0}
+#ld-glueup.play .wordsub{animation:guUp .6s ease 1.75s forwards}
+@keyframes guUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion: reduce){
+  #ld-glueup .gu-star .pt,#ld-glueup .gu-word,#ld-glueup .wordsub{opacity:1;transform:none;animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -4100,6 +4135,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On ink, a graphite stair string draws itself up the screen in rise-and-going steps, then five accent treads land on it one by one from the bottom of the flight to the top, and the wordmark rises at the head of the stairs. A flight going in is the joiner's most visible piece of work on a plot, and the treads landing in order double as a progress bar. First used: mk-joinery, where it hands off into the hero (the stacked H1 lines sit on their own stepped treads, each line indented one going further across). Distinct from Truss Raise and Coursework (a structure or a wall builds up in place): here the loader CLIMBS, tread by tread, and the brand is waiting at the top.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-glueup" data-dur="2800">
+      <span class="trade">Joiners / emblem or star brands</span>
+      <h3>Star Glue-Up</h3>
+      <p>On black, five mitred gold star-point blanks swing in one after another and joint together into the brand's star, like a glue-up coming out of the clamps: two clamp jaws squeeze in from the sides, the assembled star gives a clamp-pressure pulse, a gold sheen sweeps across the fresh face and the wordmark rises beneath. A BRAND-STORY loader in trade language: the emblem is not drawn, it is JOINED from five mitred pieces, which is the joiner's whole pitch. First used: black-star-joinery (gold star on black logo), where it hands off into the fold: the same glued-up star docks above the hero H1 as the crest and keeps re-sheening on a slow loop. Distinct from Dovetail Fit (two boards interlock), Plane Pass (a surface is worked) and Wren Song (a name is built letter by letter): here an EMBLEM is assembled from mitred parts and clamped.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-showerhead" data-dur="2400">
       <span class="trade">Bathrooms / showers / plumbing</span>
       <h3>Shower On</h3>
@@ -4807,6 +4848,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">MK <b>JOINERY</b></div>
     <div class="wordsub">Site Joinery . Liverpool</div>
   </div>
+</div>
+
+<div class="loader" id="ld-glueup" aria-hidden="true">
+  <div class="gu-stage">
+    <div class="gu-clamp"></div>
+    <svg class="gu-star" viewBox="0 0 140 140" fill="none">
+      <defs>
+        <linearGradient id="guGld" x1="0" y1="0" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#ecd07c"/><stop offset=".55" stop-color="#c8952c"/><stop offset="1" stop-color="#8a5f10"/>
+        </linearGradient>
+        <clipPath id="guClip"><path d="M70 8 85.3 49 129 50.8 94.7 78 106.4 120.2 70 96 33.6 120.2 45.3 78 11 50.8 54.7 49Z"/></clipPath>
+      </defs>
+      <g class="whole">
+        <polygon class="pt pt1" points="70,8 85.3,49 70,70 54.7,49" fill="url(#guGld)" stroke="#101014" stroke-width="1.2"/>
+        <polygon class="pt pt2" points="129,50.8 94.7,78 70,70 85.3,49" fill="url(#guGld)" stroke="#101014" stroke-width="1.2"/>
+        <polygon class="pt pt3" points="106.4,120.2 70,96 70,70 94.7,78" fill="url(#guGld)" stroke="#101014" stroke-width="1.2"/>
+        <polygon class="pt pt4" points="33.6,120.2 45.3,78 70,70 70,96" fill="url(#guGld)" stroke="#101014" stroke-width="1.2"/>
+        <polygon class="pt pt5" points="11,50.8 54.7,49 70,70 45.3,78" fill="url(#guGld)" stroke="#101014" stroke-width="1.2"/>
+        <g clip-path="url(#guClip)"><rect class="gu-sheen" x="55" y="0" width="30" height="140" fill="rgba(255,255,255,.55)" transform="skewX(-18)"/></g>
+      </g>
+    </svg>
+  </div>
+  <div class="gu-word">Black <b>Star</b> Joinery</div>
+  <div class="wordsub">Joinery . Kitchens . Fire Doors . Nationwide</div>
 </div>
 
 <div class="loader" id="ld-wrensong" aria-hidden="true">
