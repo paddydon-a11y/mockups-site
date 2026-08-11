@@ -3436,6 +3436,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @media (prefers-reduced-motion: reduce){
   #ld-glueup .gu-star .pt,#ld-glueup .gu-word,#ld-glueup .wordsub{opacity:1;transform:none;animation:none!important}
 }
+
+/* ---- footsteps: first fix to final step (first used: carbon-construction) ---- */
+#ld-footsteps{background:#ffffff}
+#ld-footsteps .fs-stage{position:relative;width:min(560px,88vw);height:300px}
+#ld-footsteps .fs-rail{position:absolute;left:0;right:0;top:34px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.3em;color:#93a096;text-transform:uppercase}
+#ld-footsteps .fs-rail span:last-child{color:#2f8a20}
+#ld-footsteps .fs-path{position:absolute;left:0;right:0;top:96px;border-top:2px dashed #d9e0da}
+#ld-footsteps .fs-print{position:absolute;opacity:0;transform:scale(.55)}
+#ld-footsteps .fs-print svg{width:26px;height:42px;fill:#2f8a20}
+#ld-footsteps .fs-print.r svg{transform:scaleX(-1) rotate(6deg)}
+#ld-footsteps .fs-print.l svg{transform:rotate(-6deg)}
+#ld-footsteps.play .fs-print{animation:fsPop .34s cubic-bezier(.2,1.4,.4,1) forwards}
+#ld-footsteps.play .fs-p1{animation-delay:.12s}
+#ld-footsteps.play .fs-p2{animation-delay:.33s}
+#ld-footsteps.play .fs-p3{animation-delay:.54s}
+#ld-footsteps.play .fs-p4{animation-delay:.75s}
+#ld-footsteps.play .fs-p5{animation-delay:.96s}
+#ld-footsteps.play .fs-p6{animation-delay:1.17s}
+@keyframes fsPop{to{opacity:1;transform:scale(1)}}
+#ld-footsteps .fs-brand{position:absolute;left:0;right:0;top:178px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(16px)}
+#ld-footsteps.play .fs-brand{animation:fsRise .5s ease 1.5s forwards}
+@keyframes fsRise{to{opacity:1;transform:translateY(0)}}
+#ld-footsteps .fs-word{display:flex;align-items:center;gap:12px}
+#ld-footsteps .fs-word svg{width:22px;height:36px;fill:#2f8a20}
+#ld-footsteps .fs-word b{font-family:'Epilogue','Archivo',sans-serif;font-weight:900;font-size:1.5rem;letter-spacing:-.02em;color:#182018;white-space:nowrap}
+#ld-footsteps .fs-sub{font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:500;letter-spacing:.28em;color:#93a096;text-transform:uppercase}
+@media (prefers-reduced-motion: reduce){
+  #ld-footsteps .fs-print,#ld-footsteps .fs-brand{opacity:1;transform:none;animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -3669,6 +3698,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / Extensions</span>
       <h3>Toothing Key</h3>
       <p>On white, clay brick courses lay up in half-bond with a TOOTHED right edge (odd courses flush, even courses a half-brick short), then the client's wordmark keys INTO the teeth from the right. The extension-builder's signature move: new work toothed into old. First used: d-hansford-building. Distinct from Coursework (a plain wall rises and the wordmark stamps it) and Coursework: Logo Box (bricks fill the logo): here the wall is deliberately left toothed and the BRAND is the closing brick.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-footsteps" data-dur="2400">
+      <span class="trade">Builders / Full Project</span>
+      <h3>First Fix to Final Step</h3>
+      <p>On white, green site-boot sole prints (treaded sole + heel block) walk in one after another along a dashed path between FIRST FIX and FINAL STEP mono rails, then the last print docks as the brand mark beside the wordmark. The start-to-finish pitch as literal footsteps. First used: carbon-construction (footprint logo brief).</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-stringline" data-dur="2400">
@@ -5449,6 +5484,25 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="tk-word">
       <div class="tk-name">D Hansford</div>
       <div class="tk-sub">Building Works Ltd</div>
+    </div>
+  </div>
+</div>
+
+<!-- footsteps: first fix to final step -->
+<div class="loader" id="ld-footsteps" aria-hidden="true">
+  <svg width="0" height="0" style="position:absolute"><defs><symbol id="fs-boot" viewBox="0 0 40 64"><path fill-rule="evenodd" d="M20 1.5 C27 1.5,33.5 3,34.9 9.5 C36.3 17,35.6 29,33 36.8 C31.4 41.6,28 44,20 44 C12 44,8.6 41.6,7 36.8 C4.4 29,3.7 17,5.1 9.5 C6.5 3,13 1.5,20 1.5 Z M20 7.2 L31.8 10.6 L31.8 14.8 L20 11.4 L8.2 14.8 L8.2 10.6 Z M20 17.6 L32.3 21 L32.3 25.2 L20 21.8 L7.7 25.2 L7.7 21 Z M20 28 L31.8 31.4 L31.6 35.6 L20 32.2 L8.4 35.6 L8.2 31.4 Z"/><path fill-rule="evenodd" d="M20 47 C26 47,29.6 47.8,29.8 50.6 C30.1 55,28.7 59.8,26.2 61.8 C22.6 64.3,17.4 64.3,13.8 61.8 C11.3 59.8,9.9 55,10.2 50.6 C10.4 47.8,14 47,20 47 Z M20 52.4 L27.5 54.6 L27.2 58.2 L20 56.1 L12.8 58.2 L12.5 54.6 Z"/></symbol></defs></svg>
+  <div class="fs-stage" aria-hidden="true">
+    <div class="fs-rail"><span>First fix</span><span>Final step</span></div>
+    <div class="fs-path"></div>
+    <div class="fs-print fs-p1 l" style="left:2%;top:90px"><svg><use href="#fs-boot"/></svg></div>
+    <div class="fs-print fs-p2 r" style="left:18%;top:60px"><svg><use href="#fs-boot"/></svg></div>
+    <div class="fs-print fs-p3 l" style="left:34%;top:92px"><svg><use href="#fs-boot"/></svg></div>
+    <div class="fs-print fs-p4 r" style="left:50%;top:58px"><svg><use href="#fs-boot"/></svg></div>
+    <div class="fs-print fs-p5 l" style="left:66%;top:90px"><svg><use href="#fs-boot"/></svg></div>
+    <div class="fs-print fs-p6 r" style="left:82%;top:60px"><svg><use href="#fs-boot"/></svg></div>
+    <div class="fs-brand">
+      <div class="fs-word"><svg><use href="#fs-boot"/></svg><b>CARBON CONSTRUCTION</b></div>
+      <div class="fs-sub">Extensions . Lofts . Poole</div>
     </div>
   </div>
 </div>
