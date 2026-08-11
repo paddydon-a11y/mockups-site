@@ -41,15 +41,17 @@ a{text-decoration:none;color:inherit}
 h1,h2,h3{color:var(--head);font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1.08}
 .mono{font-family:'JetBrains Mono',monospace}
 
-/* ---------- loader: Ignition (lifted from loader-lab ld-flame, rebranded) ---------- */
+/* ---------- loader: Eagle Flight (the Palace eagle crosses the ink, sash lands the wordmark) ---------- */
 #loader{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;animation:ldGoneAuto .4s ease 2.6s forwards}
-#loader .rig{position:relative;width:min(520px,84vw)}
-#loader svg.pipe{width:100%;height:auto;overflow:visible;display:block}
-#loader .pipeline{fill:none;stroke:#c98a4b;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:620;stroke-dashoffset:620;animation:pipeDraw .85s ease-in-out .1s forwards}
-#loader .valve{fill:#c98a4b;opacity:0;animation:ldShow .2s ease .9s forwards}
-#loader .flame{position:absolute;left:calc(90.4% - 22px);top:calc(64% - 58px);width:44px;height:58px;opacity:0;transform-origin:50% 100%;animation:ignite .4s cubic-bezier(.2,1.4,.4,1) 1.05s forwards,flick .55s ease-in-out 1.45s infinite alternate}
-#loader .flame .outer{position:absolute;inset:0;background:linear-gradient(#5ab0ff,var(--blue));border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
-#loader .flame .inner{position:absolute;left:11px;top:18px;width:22px;height:34px;background:linear-gradient(#fff3c4,#ffb224);border-radius:50% 50% 50% 50%/62% 62% 38% 38%}
+#loader .sky{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#loader .fly{position:absolute;top:15%;left:0;width:clamp(170px,30vw,250px);transform:translateX(-380px);animation:flyX 1.8s cubic-bezier(.4,.1,.6,.9) .05s forwards}
+#loader .bob{position:relative;animation:ldBob .45s ease-in-out infinite alternate}
+#loader svg.eagle{width:100%;height:auto;display:block;overflow:visible}
+#loader .wingN{transform-origin:118px 86px;animation:flapN .34s ease-in-out infinite alternate}
+#loader .wingF{transform-origin:126px 90px;animation:flapF .34s ease-in-out infinite alternate}
+#loader .trail{position:absolute;top:60%;left:-158px;width:160px;height:7px;border-radius:4px;opacity:.85}
+#loader .trail.r{transform:translateY(-10px) rotate(-4deg);background:linear-gradient(90deg,rgba(196,18,46,0),var(--red))}
+#loader .trail.b{transform:translateY(5px) rotate(-1deg);background:linear-gradient(90deg,rgba(27,69,143,0),var(--blue))}
 #loader .wm-zone{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:44px;padding:18px 34px;overflow:hidden}
 #loader .sash-sweep{position:absolute;inset:-40px -60px;transform:rotate(-14deg) translateX(-130%);animation:sashSweep .6s cubic-bezier(.3,.9,.3,1) 1.35s forwards;pointer-events:none}
 #loader .sash-sweep i{display:block;height:34px;margin:6px 0}
@@ -58,18 +60,16 @@ h1,h2,h3{color:var(--head);font-family:'Oswald',sans-serif;text-transform:upperc
 #loader .wordmark{position:relative;font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.7rem,5.4vw,2.5rem);letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:0;animation:ldWord .5s ease 1.55s forwards}
 #loader .wordsub{position:relative;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:#9aa3b2;margin-top:10px;opacity:0;animation:ldWord .5s ease 1.72s forwards}
 #loader.done{opacity:0;transition:opacity .45s ease;pointer-events:none}
-@keyframes pipeDraw{to{stroke-dashoffset:0}}
-@keyframes ldShow{to{opacity:1}}
-@keyframes ignite{0%{opacity:0;transform:scale(.1)}100%{opacity:1;transform:scale(1)}}
-@keyframes flick{from{transform:scale(1) rotate(-2deg)}to{transform:scale(1.07) rotate(2deg)}}
+@keyframes flyX{from{transform:translateX(-380px)}to{transform:translateX(106vw)}}
+@keyframes ldBob{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(-16px) rotate(3deg)}}
+@keyframes flapN{from{transform:rotate(-8deg)}to{transform:rotate(26deg)}}
+@keyframes flapF{from{transform:rotate(-20deg)}to{transform:rotate(6deg)}}
 @keyframes sashSweep{to{transform:rotate(-14deg) translateX(0)}}
 @keyframes ldWord{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ldGoneAuto{to{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion: reduce){
-  #loader .pipeline,#loader .valve,#loader .flame,#loader .sash-sweep{animation:none!important}
-  #loader .pipeline{stroke-dashoffset:0}
-  #loader .valve{opacity:1}
-  #loader .flame{opacity:1}
+  #loader .fly,#loader .bob,#loader .wingN,#loader .wingF,#loader .sash-sweep{animation:none!important}
+  #loader .sky{display:none}
   #loader .sash-sweep{transform:rotate(-14deg) translateX(0)}
   #loader .wordmark{animation:ldWord .3s ease .1s forwards}
   #loader .wordsub{animation:ldWord .3s ease .2s forwards}
@@ -256,12 +256,20 @@ footer{background:var(--ink);color:#9aa3b2;padding:54px 0 34px}
 <body>
 
 <div id="loader" aria-hidden="true">
-  <div class="rig">
-    <svg class="pipe" viewBox="0 0 520 150" aria-hidden="true">
-      <path class="pipeline" d="M0 120 H150 V40 H320 V96 H470"/>
-      <rect class="valve" x="462" y="86" width="16" height="20" rx="3"/>
-    </svg>
-    <div class="flame"><div class="outer"></div><div class="inner"></div></div>
+  <div class="sky">
+    <div class="fly"><div class="bob">
+      <span class="trail r"></span><span class="trail b"></span>
+      <svg class="eagle" viewBox="0 0 260 170" aria-hidden="true">
+        <path class="wingF" fill="#4a3722" d="M118 92 Q128 114 146 130 Q166 146 192 154 L180 140 L198 143 L184 127 L200 129 L184 114 Q156 100 128 92 Z"/>
+        <path fill="#63492f" d="M34 90 Q88 79 138 78 Q170 77 184 85 Q188 79 197 79 Q209 80 215 90 L217 95 Q215 102 207 104 Q199 110 188 108 Q158 117 120 113 Q78 110 48 102 L16 112 L30 103 L12 100 L28 95 L18 86 Z"/>
+        <path fill="#f4f1ea" d="M48 102 L16 112 L30 103 L12 100 L28 95 L18 86 L34 90 Q44 88 54 87 Q47 95 48 102 Z"/>
+        <path fill="#ffffff" d="M176 86 Q184 78 197 79 Q209 80 215 90 L217 95 Q215 102 207 104 Q199 110 188 108 Q182 109 175 106 L181 99 L171 96 L180 91 Z"/>
+        <path class="wingN" fill="#7a5c3b" d="M124 86 Q128 52 142 26 Q150 10 164 0 L157 22 L174 13 L163 35 L180 27 L167 48 L184 42 L169 60 Q150 76 120 90 Z"/>
+        <path fill="#f5a623" d="M212 85 Q226 87 232 95 Q235 102 228 106 Q226 100 220 98 Q214 102 210 97 Q216 93 208 89 Z"/>
+        <path fill="#131519" d="M195 84 Q203 82 210 86 L208 89 Q202 86 196 88 Z"/>
+        <circle cx="203" cy="90" r="2.8" fill="#131519"/>
+      </svg>
+    </div></div>
   </div>
   <div class="wm-zone">
     <div class="sash-sweep"><i class="r"></i><i class="b"></i></div>
