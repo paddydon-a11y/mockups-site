@@ -3103,6 +3103,59 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes ccRule{to{width:72%}}
 #ld-chiselcarve .cc-sub{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.32em;color:#847d71;text-transform:uppercase;opacity:0}
 #ld-chiselcarve.play .cc-sub{animation:ccCarve .4s ease 1.7s forwards}
+
+/* Strip & Re-lay — roofer + builder dual-trade (first used: jp-roofing-building) */
+#ld-striprelay{background:#26232e}
+#ld-striprelay .sr-stage{position:relative;width:min(380px,88vw);height:330px}
+#ld-striprelay .sr-pitch{position:absolute;left:0;top:26px;width:100%;transform:rotate(-11deg);transform-origin:50% 50%}
+#ld-striprelay .sr-ridge{position:absolute;left:-3%;top:-9px;width:106%;height:4px;border-radius:3px;background:linear-gradient(90deg,#6b5d96,#8d81b3);transform:scaleX(0);transform-origin:left center;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+#ld-striprelay.play .sr-ridge{animation:srRidge .45s cubic-bezier(.6,0,.3,1) .1s forwards}
+@keyframes srRidge{to{transform:scaleX(1)}}
+#ld-striprelay .sr-course{display:flex;justify-content:center}
+#ld-striprelay .sr-course.c2{margin-top:-7px;transform:translateX(-29px)}
+#ld-striprelay .sr-tc{position:relative;width:58px;height:25px;margin-right:4px;flex:none}
+#ld-striprelay .sr-tc .old{position:absolute;inset:0;border-radius:2px 2px 4px 4px;background:linear-gradient(180deg,#5c564f 0%,#4a453f 60%,#403b36 100%);box-shadow:0 2px 3px rgba(0,0,0,.4)}
+#ld-striprelay .sr-tc .old::after{content:"";position:absolute;left:18%;top:22%;width:34%;height:4px;border-radius:2px;background:rgba(116,124,88,.5)}
+#ld-striprelay.play .sr-tc .old{animation:srOff .4s cubic-bezier(.5,0,.8,.4) forwards}
+@keyframes srOff{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(-14px,-52px) rotate(-17deg)}}
+#ld-striprelay .sr-tc .new{position:absolute;inset:0;border-radius:2px 2px 4px 4px;background:linear-gradient(180deg,#6f6199 0%,#544579 45%,#453a63 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -3px 4px rgba(0,0,0,.28),0 3px 4px rgba(0,0,0,.45);opacity:0;transform:translateY(-34px)}
+#ld-striprelay.play .sr-tc .new{animation:srLay .38s cubic-bezier(.34,1.45,.64,1) forwards}
+@keyframes srLay{0%{opacity:0;transform:translateY(-34px)}55%{opacity:1;transform:translateY(2px)}100%{opacity:1;transform:none}}
+#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(1) .old{animation-delay:.18s}#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(2) .old{animation-delay:.28s}
+#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(3) .old{animation-delay:.38s}#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(4) .old{animation-delay:.48s}
+#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(5) .old{animation-delay:.58s}
+#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(1) .old{animation-delay:.4s}#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(2) .old{animation-delay:.5s}
+#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(3) .old{animation-delay:.6s}#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(4) .old{animation-delay:.7s}
+#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(5) .old{animation-delay:.8s}
+#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(1) .new{animation-delay:.34s}#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(2) .new{animation-delay:.44s}
+#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(3) .new{animation-delay:.54s}#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(4) .new{animation-delay:.64s}
+#ld-striprelay.play .sr-course.c1 .sr-tc:nth-child(5) .new{animation-delay:.74s}
+#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(1) .new{animation-delay:.56s}#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(2) .new{animation-delay:.66s}
+#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(3) .new{animation-delay:.76s}#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(4) .new{animation-delay:.86s}
+#ld-striprelay.play .sr-course.c2 .sr-tc:nth-child(5) .new{animation-delay:.96s}
+#ld-striprelay .sr-wall{position:absolute;left:50%;top:172px;width:270px;transform:translateX(-50%)}
+#ld-striprelay .sr-trowel{position:absolute;left:-36px;top:-30px;width:38px;height:34px;opacity:0}
+#ld-striprelay.play .sr-trowel{animation:srTrowel .85s cubic-bezier(.4,0,.5,1) 1s forwards}
+@keyframes srTrowel{0%{opacity:0;transform:translateX(0)}12%{opacity:1;transform:translateX(24px) translateY(4px)}38%{transform:translateX(104px)}52%{transform:translateX(140px) translateY(4px)}78%{transform:translateX(230px)}100%{opacity:1;transform:translateX(288px) translateY(-4px)}}
+#ld-striprelay .sr-bc{display:flex;gap:4px;margin-top:4px;justify-content:center}
+#ld-striprelay .sr-bc i{height:15px;border-radius:2px;flex:none;background:linear-gradient(180deg,#977c4d 0%,#8a713f 55%,#6c5730 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 2px 3px rgba(0,0,0,.4);opacity:0;transform:translateY(9px)}
+#ld-striprelay .sr-bc.b1 i{width:62px}
+#ld-striprelay .sr-bc.b2 i{width:62px}
+#ld-striprelay .sr-bc.b2 i:first-child,#ld-striprelay .sr-bc.b2 i:last-child{width:29px}
+#ld-striprelay.play .sr-bc i{animation:srBrick .3s cubic-bezier(.34,1.45,.64,1) forwards}
+#ld-striprelay.play .sr-bc.b1 i:nth-child(1){animation-delay:1.08s}#ld-striprelay.play .sr-bc.b1 i:nth-child(2){animation-delay:1.2s}
+#ld-striprelay.play .sr-bc.b1 i:nth-child(3){animation-delay:1.32s}#ld-striprelay.play .sr-bc.b1 i:nth-child(4){animation-delay:1.44s}
+#ld-striprelay.play .sr-bc.b2 i:nth-child(1){animation-delay:1.22s}#ld-striprelay.play .sr-bc.b2 i:nth-child(2){animation-delay:1.34s}
+#ld-striprelay.play .sr-bc.b2 i:nth-child(3){animation-delay:1.46s}#ld-striprelay.play .sr-bc.b2 i:nth-child(4){animation-delay:1.58s}
+#ld-striprelay.play .sr-bc.b2 i:nth-child(5){animation-delay:1.66s}
+@keyframes srBrick{to{opacity:1;transform:none}}
+#ld-striprelay .sr-brand{position:absolute;left:0;right:0;bottom:0;text-align:center;opacity:0;transform:translateY(14px)}
+#ld-striprelay.play .sr-brand{animation:srBrick .45s ease 1.72s forwards}
+#ld-striprelay .sr-word{font-family:'Barlow Condensed','Oswald',sans-serif;font-weight:700;font-size:1.95rem;letter-spacing:.04em;color:#f2f0f7;text-transform:uppercase;white-space:nowrap}
+#ld-striprelay .sr-word .sw-r{color:#8d81b3}
+#ld-striprelay .sr-word .sw-amp{color:#8f8a9e;font-weight:600;padding:0 .1em}
+#ld-striprelay .sr-word .sw-b{color:#c9b18c}
+#ld-striprelay .sr-sub{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.3em;color:#8f8a9e;text-transform:uppercase;margin-top:8px}
 #ld-bathfill{background:#0b2438;flex-direction:column;color:#fff}
 #ld-bathfill .bf-tiles{position:absolute;inset:0;opacity:.05;background-image:linear-gradient(#7db4e0 1px,transparent 1px),linear-gradient(90deg,#7db4e0 1px,transparent 1px);background-size:96px 40px}
 #ld-bathfill .bf-water{position:absolute;left:0;bottom:-58%;height:58%;width:100%;z-index:1}
@@ -4377,6 +4430,45 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On plaque black, a chisel travels the line and the wordmark is CARVED behind it letter by letter, each one popping in as incised bronze with wood chips flicking away; a bronze rule draws beneath and the mono sub lands. The engraved-nameplate story: the brand is cut into the material, not printed on it. On the mockup it hands off INTO the fold: the H1's carved bronze line carries the same treatment with the chisel parked at the end of the hero rule. Distinct from the lab's other joinery concepts (Dovetail Fit interlocks pieces, Tenon Saw cuts a kerf, Plane Pass smooths a surface, End Grain draws rings): nothing else INCISES letters into the surface. First used: js-woodworks.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-striprelay" data-dur="2500">
+      <span class="trade">Roofer + builder dual-trade firms</span>
+      <h3>Strip &amp; Re-lay</h3>
+      <p>The re-roof itself, then the building side: under a drawn ridge cap, weathered mossy tiles fly off the pitch one after another and fresh slates chase them in behind, dropping into half-bond with a settle bounce (the strip-and-re-tile transformation, left to right like a gang works); below the eaves a trowel glides along and two brick courses pop in under it in running bond, then the two-tone wordmark lands (roofing word in the slate colour, building word in the brick colour). Built for firms that are explicitly BOTH trades. On the mockup it hands off INTO the fold: the mobile fold is the same ridge diagonal cutting the slate panel from the stone page below. Distinct from Slate Run (slates cascade onto a bare roof, nothing stripped) and Coursework (bricks only): nothing else TEARS OFF the old work and re-lays it. First used: jp-roofing-building.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-striprelay" aria-hidden="true">
+  <div class="sr-stage">
+    <div class="sr-pitch">
+      <div class="sr-ridge"></div>
+      <div class="sr-course c1">
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+      </div>
+      <div class="sr-course c2">
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+        <div class="sr-tc"><span class="old"></span><span class="new"></span></div>
+      </div>
+    </div>
+    <div class="sr-wall">
+      <div class="sr-trowel">
+        <svg viewBox="0 0 38 34" fill="none"><path d="M2 14 L19 6 L36 14 L19 22 Z" fill="#cdd3da"/><path d="M2 14 L19 6 L36 14" stroke="#eef1f4" stroke-width="1.4" fill="none"/><rect x="16.6" y="0" width="4.8" height="8" rx="2" fill="#8a713f"/></svg>
+      </div>
+      <div class="sr-bc b1"><i></i><i></i><i></i><i></i></div>
+      <div class="sr-bc b2"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="sr-brand">
+      <div class="sr-word">JP <span class="sw-r">ROOFING</span><span class="sw-amp">&amp;</span><span class="sw-b">BUILDING</span></div>
+      <div class="sr-sub">Roofing . Building . Bedale</div>
+    </div>
   </div>
 </div>
 
