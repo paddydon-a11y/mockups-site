@@ -3081,6 +3081,28 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes ppDraw{to{stroke-dashoffset:0}}
 @keyframes ppFill{to{opacity:1}}
 @keyframes ppBrand{to{opacity:1;transform:translateY(0)}}
+#ld-chiselcarve{background:#0c0c0b;flex-direction:column}
+#ld-chiselcarve .cc-stage{width:min(560px,86vw);text-align:center;position:relative}
+#ld-chiselcarve .cc-word{display:flex;justify-content:center;gap:.12em;font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:clamp(1.55rem,6.4vw,2.6rem);letter-spacing:.08em}
+#ld-chiselcarve .cc-word span{background:linear-gradient(100deg,#e6cfae 0%,#b18a60 55%,#77552f 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(6px) scale(.92);filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
+#ld-chiselcarve.play .cc-word span{animation:ccCarve .18s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes ccCarve{to{opacity:1;transform:none}}
+#ld-chiselcarve .cc-chisel{position:absolute;top:-46px;left:0;width:44px;height:44px;opacity:0}
+#ld-chiselcarve.play .cc-chisel{animation:ccTravel 1.32s linear .1s forwards}
+@keyframes ccTravel{0%{opacity:1;left:-4%}96%{opacity:1}100%{left:96%;opacity:0}}
+#ld-chiselcarve .cc-chip{position:absolute;width:5px;height:3px;background:#c2a17d;border-radius:1px;opacity:0}
+#ld-chiselcarve .cc-chip.c1{top:-14px;left:18%}
+#ld-chiselcarve .cc-chip.c2{top:-20px;left:44%}
+#ld-chiselcarve .cc-chip.c3{top:-12px;left:70%}
+#ld-chiselcarve.play .cc-chip.c1{animation:ccChip .5s ease-out .35s}
+#ld-chiselcarve.play .cc-chip.c2{animation:ccChip .5s ease-out .72s}
+#ld-chiselcarve.play .cc-chip.c3{animation:ccChip .5s ease-out 1.05s}
+@keyframes ccChip{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(26px,-34px) rotate(140deg)}}
+#ld-chiselcarve .cc-rule{height:1px;width:0;margin:16px auto 12px;background:linear-gradient(100deg,#e6cfae,#b18a60,#77552f)}
+#ld-chiselcarve.play .cc-rule{animation:ccRule .5s ease-out 1.5s forwards}
+@keyframes ccRule{to{width:72%}}
+#ld-chiselcarve .cc-sub{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.32em;color:#847d71;text-transform:uppercase;opacity:0}
+#ld-chiselcarve.play .cc-sub{animation:ccCarve .4s ease 1.7s forwards}
 #ld-bathfill{background:#0b2438;flex-direction:column;color:#fff}
 #ld-bathfill .bf-tiles{position:absolute;inset:0;opacity:.05;background-image:linear-gradient(#7db4e0 1px,transparent 1px),linear-gradient(90deg,#7db4e0 1px,transparent 1px);background-size:96px 40px}
 #ld-bathfill .bf-water{position:absolute;left:0;bottom:-58%;height:58%;width:100%;z-index:1}
@@ -4349,6 +4371,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On deep-water ink, a chrome tap's handle tilts open and a stream pours; the WATERLINE rises up the screen with a rippling crest, bubbles drift up, and the wordmark + mono sub surface with the water, floating on the finished level. A tiny flame flickers at the tap's hot side (the boiler story as a prop). On the mockup it hands off INTO the fold: the same waterline ripples on as an underline beneath the H1's accent line, with bubbles drifting up the fold edges. Nothing else in the lab pours, fills or floats: dig-outs excavate, squeegees wipe, pipes ignite; here the screen itself fills like a bath and the brand rides the surface. First used: just-property-solutions.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-chiselcarve" data-dur="2500">
+      <span class="trade">Joiners / carpenters</span>
+      <h3>Chisel Carve</h3>
+      <p>On plaque black, a chisel travels the line and the wordmark is CARVED behind it letter by letter, each one popping in as incised bronze with wood chips flicking away; a bronze rule draws beneath and the mono sub lands. The engraved-nameplate story: the brand is cut into the material, not printed on it. On the mockup it hands off INTO the fold: the H1's carved bronze line carries the same treatment with the chisel parked at the end of the hero rule. Distinct from the lab's other joinery concepts (Dovetail Fit interlocks pieces, Tenon Saw cuts a kerf, Plane Pass smooths a surface, End Grain draws rings): nothing else INCISES letters into the surface. First used: js-woodworks.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-chiselcarve" aria-hidden="true">
+  <div class="cc-stage">
+    <div class="cc-chisel">
+      <svg viewBox="0 0 44 44" fill="none"><path d="M8 36 L20 24 L24 28 L12 40 Z" fill="#c2a17d"/><path d="M20 24 L34 10 L38 6 L40 8 L36 12 L24 28 Z" fill="#8a6a45"/><rect x="35" y="3" width="7" height="7" rx="1.5" transform="rotate(45 38.5 6.5)" fill="#d8bd9c"/></svg>
+    </div>
+    <span class="cc-chip c1"></span><span class="cc-chip c2"></span><span class="cc-chip c3"></span>
+    <div class="cc-word"><span style="animation-delay:.12s">J</span><span style="animation-delay:.23s">S</span><span style="animation-delay:.34s">&nbsp;</span><span style="animation-delay:.45s">W</span><span style="animation-delay:.56s">O</span><span style="animation-delay:.67s">O</span><span style="animation-delay:.78s">D</span><span style="animation-delay:.89s">W</span><span style="animation-delay:1.0s">O</span><span style="animation-delay:1.11s">R</span><span style="animation-delay:1.22s">K</span><span style="animation-delay:1.33s">S</span></div>
+    <div class="cc-rule"></div>
+    <div class="cc-sub">Joinery . Newcastle upon Tyne</div>
   </div>
 </div>
 
