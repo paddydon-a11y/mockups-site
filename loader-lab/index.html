@@ -3081,6 +3081,29 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes ppDraw{to{stroke-dashoffset:0}}
 @keyframes ppFill{to{opacity:1}}
 @keyframes ppBrand{to{opacity:1;transform:translateY(0)}}
+#ld-jobsheet{background:#14171a;flex-direction:column;gap:26px}
+#ld-jobsheet .js-sheet{position:relative;width:min(320px,82vw);background:#fff;border-radius:10px;padding:20px 22px 18px;box-shadow:0 24px 60px rgba(0,0,0,.45);transform:translateY(14px);opacity:0}
+#ld-jobsheet.play .js-sheet{animation:jsIn .45s ease .05s forwards}
+@keyframes jsIn{to{transform:translateY(0);opacity:1}}
+#ld-jobsheet .js-head{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.22em;color:#8a95a1;text-transform:uppercase;display:flex;justify-content:space-between;border-bottom:2px solid #14171a;padding-bottom:9px;margin-bottom:6px}
+#ld-jobsheet .js-row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2e8f0;padding:9px 0}
+#ld-jobsheet .js-row span:first-child{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;color:#1a2026}
+#ld-jobsheet .js-box{width:20px;height:20px;border:2px solid #cbd5e1;border-radius:4px;display:grid;place-items:center}
+#ld-jobsheet .js-box svg{width:16px;height:16px;transform:scale(0);opacity:0}
+#ld-jobsheet.play .js-r1 svg{animation:jsTick .28s cubic-bezier(.2,1.6,.4,1) .55s forwards}
+#ld-jobsheet.play .js-r2 svg{animation:jsTick .28s cubic-bezier(.2,1.6,.4,1) .75s forwards}
+#ld-jobsheet.play .js-r3 svg{animation:jsTick .28s cubic-bezier(.2,1.6,.4,1) .95s forwards}
+#ld-jobsheet.play .js-r4 svg{animation:jsTick .28s cubic-bezier(.2,1.6,.4,1) 1.15s forwards}
+#ld-jobsheet.play .js-r5 svg{animation:jsTick .28s cubic-bezier(.2,1.6,.4,1) 1.35s forwards}
+@keyframes jsTick{0%{transform:scale(0) rotate(-14deg);opacity:0}70%{transform:scale(1.25) rotate(4deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+#ld-jobsheet .js-stamp{position:absolute;right:14px;bottom:12px;font-weight:900;font-size:.92rem;letter-spacing:.06em;color:#148a4a;border:3px solid #148a4a;border-radius:6px;padding:3px 10px;transform:scale(0) rotate(-8deg);opacity:0}
+#ld-jobsheet.play .js-stamp{animation:jsStamp .3s cubic-bezier(.2,1.6,.4,1) 1.62s forwards}
+@keyframes jsStamp{0%{transform:scale(0) rotate(-8deg);opacity:0}70%{transform:scale(1.15) rotate(-8deg);opacity:1}100%{transform:scale(1) rotate(-8deg);opacity:1}}
+#ld-jobsheet .wordmark{color:#fff}
+#ld-jobsheet .wordmark b{color:#148a4a}
+#ld-jobsheet .wordsub{color:#7d8790}
+#ld-jobsheet.play .wordmark{animation:wordIn .55s ease 1.85s forwards}
+#ld-jobsheet.play .wordsub{animation:wordIn .55s ease 2s forwards}
 #ld-spiritlevel{background:#102a44;flex-direction:column;gap:8px}
 #ld-spiritlevel .sl-level{position:relative;height:64px;width:min(340px,74vw);opacity:0}
 #ld-spiritlevel.play .sl-level{animation:slFade .4s ease forwards}
@@ -3102,6 +3125,11 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-spiritlevel.play .wordmark{animation:wordIn .55s ease 1.35s forwards}
 #ld-spiritlevel.play .wordsub{animation:wordIn .55s ease 1.5s forwards}
 @media (prefers-reduced-motion: reduce){
+  #ld-jobsheet .js-sheet{opacity:1;transform:none;animation:none}
+  #ld-jobsheet .js-box svg{transform:scale(1);opacity:1;animation:none!important}
+  #ld-jobsheet .js-stamp{transform:scale(1) rotate(-8deg);opacity:1;animation:none!important}
+  #ld-jobsheet.play .wordmark{animation:wordIn .4s ease .1s forwards}
+  #ld-jobsheet.play .wordsub{animation:wordIn .4s ease .2s forwards}
   #ld-spiritlevel .sl-level{opacity:1;animation:none}
   #ld-spiritlevel .sl-bub{transform:translate(62px,-50%);animation:none}
   #ld-spiritlevel .sl-deck{transform:rotate(0deg);animation:none}
@@ -4183,6 +4211,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On ink, a spirit level body fades in and its cerise vial bubble drifts right, overshoots and SETTLES dead-centre between the marks, while a tilted deck line beneath rotates to LEVEL with a springy ease, and the wordmark rises beneath. Every trade owns a level and every customer knows what the centred bubble means: done right, dead level, no argument. First used: lk-developments in the client's own logo blues (azure vial, sky bubble, navy ground, real roofline logo rising), where it hands off into the fold (the H1's own level-line rule re-tilts and settles at 2.5s, then the bubble keeps a soft pulse) and the honesty pitch of the brand ("told straight") is literally the tool that does not lie. Distinct from Make Good (a cracked wall is repaired), Self-Level Pour (a liquid finds its own level and births the logo) and Stair Climb (treads land up a flight): here nothing is built or fixed, the TOOL ITSELF reads true and that is the promise.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-jobsheet" data-dur="2400">
+      <span class="trade">Multi-trade firms / all building works</span>
+      <h3>Job Sheet</h3>
+      <p>On ink, a white job-sheet card pops in with a ruled header and five trade rows, each with an empty checkbox. Green ticks STAMP down the list one after another (scale-and-rotate pop), a rotated THE LOT stamp punches in bottom-right, and the wordmark rises beneath. The read for a firm whose whole pitch is the length of its trade list: whatever is on the sheet gets ticked. First used: nw-tp-construction (16-trade brief), where it hands off into the fold (the mobile fold IS the ink job-sheet panel, the H1's own tick pops at handoff and a compact 6-trade mini ticklist re-ticks staggered below the lede, with the full 16-trade checklist band ticking itself again mid-page). Distinct from Level Up (a tool reads true), Coursework (a wall builds) and every fabrication loader: nothing is built at all, the PAPERWORK is completed in front of you, which is the multi-trade promise.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-makegood" data-dur="2400">
       <span class="trade">Bricklayers / masonry repair</span>
       <h3>Make Good</h3>
@@ -4808,6 +4842,21 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div style="display:flex;flex-direction:column;align-items:center">
     <div class="wordmark">LK<b>.</b>DEVELOPMENTS</div>
     <div class="wordsub">Building &amp; Renovation . Baildon</div>
+  </div>
+</div>
+<div class="loader" id="ld-jobsheet" aria-hidden="true">
+  <div class="js-sheet">
+    <div class="js-head"><span>NW TP Construction</span><span>Job Sheet</span></div>
+    <div class="js-row js-r1"><span>Extensions</span><span class="js-box"><svg viewBox="0 0 24 24" fill="none" stroke="#148a4a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="js-row js-r2"><span>Kitchens</span><span class="js-box"><svg viewBox="0 0 24 24" fill="none" stroke="#148a4a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="js-row js-r3"><span>Bathrooms</span><span class="js-box"><svg viewBox="0 0 24 24" fill="none" stroke="#148a4a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="js-row js-r4"><span>Roofing</span><span class="js-box"><svg viewBox="0 0 24 24" fill="none" stroke="#148a4a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="js-row js-r5" style="border-bottom:0"><span>Plastering</span><span class="js-box"><svg viewBox="0 0 24 24" fill="none" stroke="#148a4a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span></div>
+    <div class="js-stamp">THE LOT</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="wordmark">NW<b>TP</b> CONSTRUCTION</div>
+    <div class="wordsub">Ashton-in-Makerfield</div>
   </div>
 </div>
 <div class="loader" id="ld-planepass" aria-hidden="true">
