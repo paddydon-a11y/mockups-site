@@ -4430,6 +4430,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On timber ink, the growth rings of a sawn log draw themselves out from the heart dot, ring by ring (staggered stroke draw, one ring in the brand accent), then the wordmark and mono sub rise beneath. Rings read as years on the tools; on the mockup the loader hands off into ghost growth rings behind the mobile hero H1. First used: olivers-carpentry. Distinct from Dovetail Fit (two halves are cut and joined) and Vein &amp; Polish (veins branch and a sheen sweeps): here concentric RINGS GROW from the heart.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-kingpost" data-dur="2500">
+      <span class="trade">Carpenters / joiners / timber-frame builders</span>
+      <h3>Kingpost Raise</h3>
+      <p>On walnut ink, a kingpost roof truss raises itself out of solid timber members: the bottom chord slides in along the ground, both rafters pivot up from their end joints to meet at the apex with an overshoot settle, the king post drops in from above, the two struts pop at the base and the joint pegs pulse in the accent. The wordmark and mono sub rise beneath the raised frame. First-fix carpentry as theatre: the frame going up IS the trade. On the mockup it hands off INTO the fold: the same truss sits over the mobile hero H1 with its pegs still pulsing. Third execution of the Truss Raise family and deliberately its own thing: spencer-frames DRAWS a line-art fink truss on white, bshc-contractors raises rafter pairs under a ridge sweep; here SOLID members pivot and drop with overshoot, the kingpost silhouette matching the client's own logo mark. First used: keso-carpentry.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-fixedstamp" data-dur="2400">
       <span class="trade">Multi-trade / maintenance</span>
       <h3>Fixed Stamp</h3>
@@ -4647,6 +4653,25 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="wordmark">Olivers <b>Carpentry</b></div>
     <div class="wordsub">All Aspects of Carpentry . Dorset</div>
   </div>
+</div>
+
+<div class="loader" id="ld-kingpost" aria-hidden="true">
+  <svg class="tr-truss" viewBox="0 0 400 200">
+    <line class="tr-mem tr-chord" x1="20" y1="170" x2="380" y2="170"/>
+    <line class="tr-mem tr-raftL" x1="20" y1="170" x2="200" y2="22"/>
+    <line class="tr-mem tr-raftR" x1="380" y1="170" x2="200" y2="22"/>
+    <line class="tr-mem tr-post" x1="200" y1="26" x2="200" y2="166"/>
+    <g class="tr-strut">
+      <line class="tr-mem" x1="196" y1="164" x2="106" y2="98"/>
+      <line class="tr-mem" x1="204" y1="164" x2="294" y2="98"/>
+    </g>
+    <circle class="tr-peg" cx="200" cy="22" r="8" style="--pd:1.5s"/>
+    <circle class="tr-peg" cx="20" cy="170" r="8" style="--pd:1.55s"/>
+    <circle class="tr-peg" cx="380" cy="170" r="8" style="--pd:1.6s"/>
+    <circle class="tr-peg" cx="200" cy="168" r="8" style="--pd:1.65s"/>
+  </svg>
+  <div class="tr-wm">KESO</div>
+  <div class="tr-sub">Carpentry &amp; Construction . Medway</div>
 </div>
 
 <div class="loader" id="ld-laserlevel" aria-hidden="true">
@@ -7201,6 +7226,38 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-harlcast .hc-trowel{display:none}
   #ld-harlcast.play .hc-wm,#ld-harlcast.play .hc-sub{animation:none;opacity:1}
 }
+
+/* Kingpost Raise (carpenters / timber frame) - first used keso-carpentry */
+#ld-kingpost{background:#171310;flex-direction:column}
+#ld-kingpost .tr-truss{width:min(340px,72vw);height:auto;overflow:visible}
+#ld-kingpost .tr-mem{stroke:#d9ad78;stroke-width:9;stroke-linecap:round;fill:none}
+#ld-kingpost .tr-peg{fill:#906030;opacity:0}
+#ld-kingpost.play .tr-peg{animation:trPegPop .35s ease forwards var(--pd)}
+#ld-kingpost .tr-chord{transform:scaleX(0);transform-origin:20px 170px}
+#ld-kingpost.play .tr-chord{animation:trChord .4s cubic-bezier(.22,.9,.3,1) .15s forwards}
+#ld-kingpost .tr-raftL{transform:rotate(36deg);transform-origin:20px 170px;opacity:0}
+#ld-kingpost.play .tr-raftL{animation:trRaft .55s cubic-bezier(.34,1.3,.4,1) .55s forwards}
+#ld-kingpost .tr-raftR{transform:rotate(-36deg);transform-origin:380px 170px;opacity:0}
+#ld-kingpost.play .tr-raftR{animation:trRaft .55s cubic-bezier(.34,1.3,.4,1) .7s forwards}
+#ld-kingpost .tr-post{transform:translateY(-140px);opacity:0}
+#ld-kingpost.play .tr-post{animation:trPost .45s cubic-bezier(.3,1.2,.4,1) 1.05s forwards}
+#ld-kingpost .tr-strut{opacity:0;transform:scale(.6);transform-origin:200px 168px}
+#ld-kingpost.play .tr-strut{animation:trStrut .3s ease 1.35s forwards}
+@keyframes trChord{to{transform:scaleX(1)}}
+@keyframes trRaft{to{transform:rotate(0deg);opacity:1}}
+@keyframes trPost{to{transform:translateY(0);opacity:1}}
+@keyframes trStrut{to{opacity:1;transform:scale(1)}}
+@keyframes trPegPop{to{opacity:1}}
+#ld-kingpost .tr-wm{margin-top:26px;font-family:'Bitter',serif;font-weight:900;font-size:clamp(1.7rem,5vw,2.6rem);letter-spacing:.06em;color:#f5efe7;opacity:0}
+#ld-kingpost.play .tr-wm{animation:wordIn .5s ease 1.6s forwards}
+#ld-kingpost .tr-sub{margin-top:8px;font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#d9ad78;opacity:0}
+#ld-kingpost.play .tr-sub{animation:wordIn .5s ease 1.8s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld-kingpost .tr-chord,#ld-kingpost .tr-raftL,#ld-kingpost .tr-raftR,#ld-kingpost .tr-post,#ld-kingpost .tr-strut{transform:none;opacity:1}
+  #ld-kingpost.play .tr-chord,#ld-kingpost.play .tr-raftL,#ld-kingpost.play .tr-raftR,#ld-kingpost.play .tr-post,#ld-kingpost.play .tr-strut{animation:none}
+  #ld-kingpost.play .tr-peg{animation:none;opacity:1}
+  #ld-kingpost.play .tr-wm,#ld-kingpost.play .tr-sub{animation:none;opacity:1}
+}
 </style>
 <div class="loader" id="ld-harlcast" aria-hidden="true">
   <div class="hc-stage">
@@ -7412,6 +7469,7 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     </div>
   </div>
 </div>
+
 <script>
 (function(){
   // build the brick wall: 6 courses, alternating half-bond
