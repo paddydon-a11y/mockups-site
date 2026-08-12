@@ -3105,6 +3105,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-chiselcarve.play .cc-sub{animation:ccCarve .4s ease 1.7s forwards}
 
 /* Strip & Re-lay — roofer + builder dual-trade (first used: jp-roofing-building) */
+#ld-elevation{background:#12111e;flex-direction:column;gap:26px;overflow:hidden}
+#ld-elevation .el-contours{position:absolute;inset:-20% -40%;opacity:.14}
+#ld-elevation .el-contours svg{width:100%;height:100%}
+#ld-elevation.play .el-c1{animation:elDrift 9s linear infinite alternate}
+#ld-elevation.play .el-c2{animation:elDrift 12s linear infinite alternate-reverse}
+@keyframes elDrift{from{transform:translateX(0)}to{transform:translateX(60px)}}
+#ld-elevation .el-stage{position:relative;width:min(430px,84vw)}
+#ld-elevation .el-stage svg{width:100%;height:auto;display:block}
+#ld-elevation .el-draw{stroke:#96d701;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1600;stroke-dashoffset:1600}
+#ld-elevation .el-draw.d2{stroke-dasharray:900;stroke-dashoffset:900}
+#ld-elevation .el-draw.d3{stroke-width:1.6;opacity:.85;stroke-dasharray:700;stroke-dashoffset:700}
+#ld-elevation.play .el-draw.d1{animation:elDraw 1.6s ease-out .1s forwards}
+#ld-elevation.play .el-draw.d2{animation:elDraw 1.6s ease-out .45s forwards}
+#ld-elevation.play .el-draw.d3{animation:elDraw 1.6s ease-out .85s forwards}
+@keyframes elDraw{to{stroke-dashoffset:0}}
+#ld-elevation .el-mark{position:absolute;top:-24px;left:50%;width:54px;height:54px;border-radius:50%;background:#96d701;color:#12111e;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;transform:translateX(-50%) scale(0);box-shadow:0 0 0 3px rgba(150,215,1,.35)}
+#ld-elevation.play .el-mark{animation:elPop .5s cubic-bezier(.34,1.56,.64,1) 1.5s forwards}
+@keyframes elPop{to{transform:translateX(-50%) scale(1)}}
+#ld-elevation .el-brand{text-align:center;opacity:0;transform:translateY(14px)}
+#ld-elevation.play .el-brand{animation:elUp .55s ease 1.7s forwards}
+@keyframes elUp{to{opacity:1;transform:translateY(0)}}
+#ld-elevation .el-word{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.2rem,4.6vw,1.8rem);color:#fff;letter-spacing:.02em}
+#ld-elevation .el-word span{color:#96d701}
+#ld-elevation .el-sub{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:#c6ef6e;margin-top:8px}
 #ld-striprelay{background:#26232e}
 #ld-striprelay .sr-stage{position:relative;width:min(380px,88vw);height:330px}
 #ld-striprelay .sr-pitch{position:absolute;left:0;top:26px;width:100%;transform:rotate(-11deg);transform-origin:50% 50%}
@@ -4472,6 +4496,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On navy ink, rain streaks fall the full height of the screen; a gold shield outline draws itself around the brand mark and the rain stops getting through: deflect ticks flick off the shield's shoulders while the drops keep falling behind it, then the wordmark and mono sub rise beneath. The protection story told literally: the weather arrives, the shield goes up, the brand stays dry. On the mockup it hands off INTO the fold: the same gold shield arc sits behind the H1 on the navy poster fold with the rain still deflecting off it. Distinct from everything else in the lab (nothing rains, deflects or guards): loaders here cut, pour, dig, tick and build, but none of them BLOCK the weather, which is the whole pitch for an exterior protection firm. NOTE: if the brand's logo is itself a shield, drop the drawn outline + deflect ticks and run rain + a straight crest reveal instead, a drawn shield around a shield logo doubles up (Patrick review 2026-08-11); eps-london shipped that simplified Rain Reveal variant. First used: eps-london.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-elevation" data-dur="2500">
+      <span class="trade">Construction / renovation / architect-led builds</span>
+      <h3>Lodge Elevation</h3>
+      <p>On ink over drifting contour lines, an architect's elevation of a twin-gable lodge draws itself in three passes: walls and baseline first, then chimneys and porch, then the windows. The brand roundel pops at the ridge and the wordmark and mono sub rise beneath. The drawn-plans register: the building exists as a survey before it exists in stone, which is the whole story for firms selling substantial projects rather than quick jobs. On the mockup it hands off INTO the fold: the same drawn elevation glows above the H1 on the ink poster fold with the contours still drifting. Distinct from everything else in the lab (loaders here cut, pour, dig, lay and lift): nothing else DRAWS the building as a plan. Recolour the line-work to the brand accent and reshape the roofline to suit the client's flagship building type. First used: ww-specialist-services.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-elevation" aria-hidden="true">
+  <div class="el-contours">
+    <svg viewBox="0 0 800 500" preserveAspectRatio="none">
+      <path class="el-c1" d="M-40 90 C 120 60, 260 130, 420 100 S 700 60, 860 110" stroke="#96d701" stroke-width="1" fill="none"/>
+      <path class="el-c2" d="M-40 210 C 140 180, 300 250, 460 215 S 720 180, 860 230" stroke="#96d701" stroke-width="1" fill="none"/>
+      <path class="el-c1" d="M-40 330 C 120 300, 280 370, 440 335 S 700 300, 860 350" stroke="#96d701" stroke-width="1" fill="none"/>
+      <path class="el-c2" d="M-40 440 C 140 415, 300 480, 460 445 S 720 410, 860 460" stroke="#96d701" stroke-width="1" fill="none"/>
+    </svg>
+  </div>
+  <div class="el-stage">
+    <svg viewBox="0 0 430 190">
+      <path class="el-draw d1" d="M8 176 L422 176 M40 176 L40 96 L120 40 L200 96 L200 176 M230 176 L230 96 L310 40 L390 96 L390 176 M200 110 L230 110"/>
+      <path class="el-draw d2" d="M120 40 L120 22 M112 22 L128 22 M310 40 L310 22 M302 22 L318 22 M96 176 L96 132 L144 132 L144 176 M120 132 L120 176"/>
+      <path class="el-draw d3" d="M62 120 h26 v30 h-26 z M252 120 h26 v30 h-26 z M336 120 h26 v30 h-26 z M106 70 h28 v24 h-28 z M296 70 h28 v24 h-28 z"/>
+    </svg>
+    <div class="el-mark">W</div>
+  </div>
+  <div class="el-brand">
+    <div class="el-word">W<span>&amp;</span>W SPECIALIST SERVICES</div>
+    <div class="el-sub">Construction . Scottish Highlands</div>
   </div>
 </div>
 
