@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Landpoint Surveying | Land & Measured Building Surveyors in London</title>
+<meta name="description" content="Landpoint Surveying are geospatial engineers in London. Topographical surveys, measured building surveys, setting out, movement monitoring, GIA and drone surveys across the UK.">
+<meta name="theme-color" content="#1b3a62">
+<meta property="og:title" content="Landpoint Surveying | Your New Website">
+<meta property="og:description" content="Land surveyors in London, preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/landpoint-surveying/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/landpoint-surveying/">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --navy:#1b3a62;        /* logo card: working accent + panel duty */
+  --navy-deep:#132b49;
+  --navy-hover:#12294a;
+  --steel:#578cad;       /* logo mark: LINEWORK prop only */
+  --steel-pale:#a8c6d8;
+  --steel-deep:#3d6f92;
+  --mark:#e0452c;        /* survey control mark: never a CTA */
+  --bg:#ffffff;
+  --stone:#f2f5f8;
+  --stone-2:#e7edf3;
+  --line:#dbe3ec;
+  --line-2:#c6d3e0;
+  --ink:#12233a;
+  --body:#48586c;
+  --muted:#7a8a9d;
+  --on-navy:#eaf1f7;
+  --on-navy-mute:#9db4c9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+em{font-style:normal}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);color:var(--body);
+  line-height:1.65;font-size:1rem;
+  overflow-x:clip;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Onest',system-ui,sans-serif;color:var(--ink);line-height:1.08;letter-spacing:-0.03em;font-weight:900}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+/* ---------- section label + heads ---------- */
+.label{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--steel);display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.label::before{content:"";width:26px;height:1px;background:var(--steel);flex:none}
+h2{font-size:clamp(1.95rem,4.2vw,3rem)}
+h2 .ac{color:var(--navy)}
+section{position:relative}
+.sec{padding-top:96px;padding-bottom:96px}
+.sec-stone{background:var(--stone)}
+
+/* ---------- the drawing sheet: grid + contours ---------- */
+.sheet>*{position:relative;z-index:1}
+.contour{position:absolute;pointer-events:none;z-index:0;stroke:var(--steel);fill:none;opacity:.16}
+.contour path{stroke-dasharray:1400;stroke-dashoffset:1400}
+.reveal.in .contour path{animation:draw 2.4s cubic-bezier(.22,.61,.36,1) forwards}
+.contour path:nth-child(2){animation-delay:.14s}
+.contour path:nth-child(3){animation-delay:.28s}
+.contour path:nth-child(4){animation-delay:.42s}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- loader: Station Set ---------- */
+#ld{position:fixed;inset:0;z-index:9999;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px}
+#ld.gone{opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
+@keyframes ldGoneAuto{to{opacity:0;visibility:hidden}}
+#ld{animation:ldGoneAuto .4s ease 2.6s forwards}
+.ld-stage{position:relative;width:250px;height:150px}
+.ld-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ld-ring{fill:none;stroke:var(--steel);stroke-width:1.2;opacity:0;transform-origin:125px 78px}
+.ld-ring{animation:ldRing 1.5s ease-out forwards}
+.ld-ring:nth-of-type(1){animation-delay:.85s}
+.ld-ring:nth-of-type(2){animation-delay:.98s}
+.ld-ring:nth-of-type(3){animation-delay:1.11s}
+.ld-ring:nth-of-type(4){animation-delay:1.24s}
+@keyframes ldRing{0%{opacity:0;transform:scale(.25)}35%{opacity:.75}100%{opacity:.12;transform:scale(1)}}
+.ld-sight{stroke:var(--steel);stroke-width:1.4;stroke-linecap:round;stroke-dasharray:150;stroke-dashoffset:150;animation:ldSight .5s cubic-bezier(.2,.7,.3,1) forwards}
+.ld-sight.s1{animation-delay:.5s}
+.ld-sight.s2{animation-delay:.66s}
+.ld-sight.s3{animation-delay:.82s}
+@keyframes ldSight{to{stroke-dashoffset:0}}
+.ld-prism{fill:var(--steel);opacity:0;animation:ldPop .34s cubic-bezier(.34,1.56,.64,1) forwards}
+.ld-prism.p1{animation-delay:.92s}
+.ld-prism.p2{animation-delay:1.08s}
+.ld-prism.p3{animation-delay:1.24s}
+@keyframes ldPop{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+.ld-cross{stroke:var(--mark);stroke-width:1.8;opacity:0;animation:ldCross .5s cubic-bezier(.34,1.56,.64,1) .18s forwards}
+.ld-dot{fill:var(--mark);opacity:0;animation:ldCross .4s ease .3s forwards,ldPulse 1.6s ease-in-out 1s infinite}
+@keyframes ldCross{0%{opacity:0;transform:scale(.4)}100%{opacity:1;transform:scale(1)}}
+@keyframes ldPulse{0%,100%{opacity:1}50%{opacity:.35}}
+.ld-brand{display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;transform:translateY(14px);animation:ldUp .6s cubic-bezier(.22,.61,.36,1) 1.42s forwards}
+@keyframes ldUp{to{opacity:1;transform:none}}
+.ld-brand img{width:172px}
+.ld-status{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.22em;color:var(--on-navy-mute);text-transform:uppercase;min-height:1em}
+@media (prefers-reduced-motion:reduce){
+  #ld *{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}
+  #ld{animation:ldGoneAuto .3s ease .5s forwards}
+}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:14px;padding-bottom:14px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.nav-logo img{height:42px;width:auto}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-links a.nav-cta{
+  background:var(--navy);color:#fff!important;padding:11px 20px;border-radius:8px;
+  font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background .2s,transform .2s;
+}
+.nav-links a.nav-cta:hover{background:var(--navy-hover);transform:translateY(-1px)}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:9px;cursor:pointer}
+.burger svg{width:22px;height:22px;stroke:var(--ink);stroke-width:2;fill:none}
+.mnav{display:none;position:fixed;left:0;right:0;top:71px;bottom:0;background:var(--bg);z-index:899;padding:28px 24px;overflow-y:auto}
+.mnav.open{display:block}
+.mnav a{display:block;padding:15px 0;border-bottom:1px solid var(--line);font-size:1.05rem;font-weight:600;color:var(--ink)}
+.mnav .mcta{
+  margin-top:22px;background:var(--navy);color:#fff;text-align:center;border-radius:10px;
+  padding:16px;border:none;font-size:1rem;
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--bg)}
+.hero-inner{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+  padding-top:74px;padding-bottom:82px;position:relative;z-index:2;
+}
+.hero-art{position:absolute;z-index:0;pointer-events:none;left:-140px;top:-40px;width:760px;height:560px;opacity:.5}
+.hero-art .hr{fill:none;stroke:var(--steel);stroke-width:1.1;opacity:.3;transform-origin:300px 280px;animation:ripple 7s ease-out infinite}
+.hero-art .hr:nth-child(2){animation-delay:1.4s}
+.hero-art .hr:nth-child(3){animation-delay:2.8s}
+.hero-art .hr:nth-child(4){animation-delay:4.2s}
+@keyframes ripple{0%{transform:scale(.3);opacity:0}18%{opacity:.36}100%{transform:scale(1.25);opacity:0}}
+.hero-art .hs{stroke:var(--steel);stroke-width:1.1;opacity:0;stroke-dasharray:340;stroke-dashoffset:340;animation:sightIn .7s cubic-bezier(.22,.61,.36,1) 2.05s forwards}
+.hero-art .hs.b{animation-delay:2.18s}
+.hero-art .hs.c{animation-delay:2.31s}
+@keyframes sightIn{to{opacity:.34;stroke-dashoffset:0}}
+.hero-art .hx{stroke:var(--mark);stroke-width:1.6;opacity:.55;animation:xPulse 2.6s ease-in-out infinite}
+@keyframes xPulse{0%,100%{opacity:.6}50%{opacity:.2}}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--steel);margin-bottom:20px;
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--mark);flex:none;animation:dotPulse 2s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 0 rgba(224,69,44,.5)}70%{box-shadow:0 0 0 8px rgba(224,69,44,0)}}
+h1{font-size:clamp(2.5rem,5.6vw,4.6rem);margin-bottom:20px}
+h1 .ac{color:var(--navy);position:relative;white-space:nowrap}
+h1 .ac::after{
+  content:"";position:absolute;left:0;right:0;bottom:-.1em;height:3px;background:var(--steel);
+  transform:scaleX(0);transform-origin:left;animation:ruleIn .7s cubic-bezier(.22,.61,.36,1) 2.05s forwards;
+}
+@keyframes ruleIn{to{transform:scaleX(1)}}
+.lede{font-size:1.09rem;max-width:33em;margin-bottom:30px;color:var(--body)}
+.cta-row{display:flex;flex-wrap:wrap;gap:13px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 27px;border-radius:9px;font-weight:600;font-size:1rem;
+  transition:transform .2s,background .2s,border-color .2s;border:1.5px solid transparent;cursor:pointer;
+}
+.btn svg{width:17px;height:17px;stroke-width:2;fill:none;flex:none}
+.btn-1{background:var(--navy);color:#fff}
+.btn-1 svg{stroke:#fff}
+.btn-1:hover{background:var(--navy-hover);transform:translateY(-2px)}
+.btn-2{background:transparent;color:var(--navy);border-color:var(--line-2)}
+.btn-2 svg{stroke:var(--navy)}
+.btn-2:hover{border-color:var(--navy);transform:translateY(-2px)}
+
+.hero-media{position:relative}
+.hero-photo{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3.35}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-badge{
+  position:absolute;right:16px;bottom:16px;background:rgba(27,58,98,.94);color:#fff;
+  border-radius:11px;padding:13px 17px;max-width:270px;
+}
+.hero-badge .bt{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--steel-pale);text-transform:uppercase;margin-bottom:5px}
+.hero-badge .bb{font-size:.87rem;font-weight:600;line-height:1.35}
+.hero-badge-m{display:none}
+.readout{
+  display:flex;gap:0;margin-top:22px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--stone);
+}
+.readout>div{flex:1;padding:11px 13px;border-right:1px solid var(--line)}
+.readout>div:last-child{border-right:none}
+.readout .k{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.readout .v{font-family:'IBM Plex Mono',monospace;font-size:.87rem;color:var(--navy);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* ---------- trust ---------- */
+.trust{background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:10px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.87rem;font-weight:600;color:var(--ink)}
+.trust-item svg{width:17px;height:17px;stroke:var(--steel);stroke-width:2.2;fill:none;flex:none}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.svc{
+  background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  position:relative;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;
+}
+.svc::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--navy);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;z-index:3;
+}
+.svc:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(18,35,58,.09);border-color:var(--line-2)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-top{position:relative;flex:1 1 0;min-height:132px;background:var(--stone-2);overflow:hidden}
+.svc-top>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-top.data{
+  background:var(--navy);display:flex;align-items:center;justify-content:center;
+  background-image:linear-gradient(rgba(87,140,173,.24) 1px,transparent 1px),linear-gradient(90deg,rgba(87,140,173,.24) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+.svc-icon{
+  width:52px;height:52px;border-radius:50%;overflow:hidden;
+  border:3px solid var(--bg);background:var(--navy);
+}
+/* the disc overlaps the photo from inside .svc-body, which does not clip (.svc-top does) */
+.svc-body .svc-icon{margin-top:-48px;margin-bottom:14px;position:relative;z-index:2}
+.svc-top.data .svc-icon{position:relative;width:62px;height:62px;border-color:rgba(255,255,255,.14)}
+.svc-icon img{width:100%;height:100%}
+.svc-body{padding:22px 20px 22px}
+.svc h3{font-size:1.08rem;margin-bottom:7px;letter-spacing:-0.02em}
+.svc p{font-size:.9rem;color:var(--body);line-height:1.55}
+.svc.feature{grid-column:span 2}
+.svc.feature .svc-top{min-height:212px}
+.svc.feature h3{font-size:1.42rem}
+.svc.feature p{font-size:.97rem;max-width:38em}
+
+/* ---------- gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:186px;gap:16px;margin-top:44px}
+.gitem{position:relative;min-height:0}
+.gitem.big{grid-column:span 2;grid-row:span 2}
+.gitem.wide{grid-column:span 2}
+.gt{position:relative;height:100%;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--stone-2)}
+.gt img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.gt:hover img{transform:scale(1.05)}
+.gtag{
+  position:absolute;left:12px;bottom:12px;background:rgba(19,43,73,.9);color:#fff;
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.12em;
+  padding:6px 10px;border-radius:6px;text-transform:uppercase;
+}
+.gtag .c{color:var(--steel-pale)}
+.gcap-m{display:none}
+
+/* ---------- about ---------- */
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-in p{font-size:1.04rem;margin-top:18px}
+.sectors{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sector{
+  background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:16px 18px;
+  display:flex;align-items:center;gap:12px;font-weight:600;color:var(--ink);font-size:.93rem;
+}
+.sector .n{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--steel);letter-spacing:.1em}
+
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:28px}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.stars svg{width:15px;height:15px;fill:var(--mark)}
+.rev p{font-size:1rem;color:var(--ink);line-height:1.62;margin-bottom:18px}
+.rev .who{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:15px}
+.rev .who b{color:var(--ink);font-weight:600;display:block;font-size:.93rem;margin-bottom:2px}
+
+/* ---------- areas ---------- */
+.area-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.area{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 15px;font-size:.9rem;font-weight:500;color:var(--body)}
+.area.home{background:var(--navy);color:#fff;border-color:var(--navy)}
+.area.home::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--mark);margin-right:9px;vertical-align:middle}
+
+/* ---------- cta band ---------- */
+.band{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.band::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(87,140,173,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(87,140,173,.2) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse at 78% 50%,#000,transparent 68%);
+  mask-image:radial-gradient(ellipse at 78% 50%,#000,transparent 68%);
+}
+.band-in{padding-top:66px;padding-bottom:66px;display:flex;align-items:center;justify-content:space-between;gap:34px;position:relative;z-index:1}
+.band h2{color:#fff;font-size:clamp(1.75rem,3.4vw,2.5rem)}
+.band .label{color:var(--steel-pale)}
+.band .label::before{background:var(--steel-pale)}
+.band p{color:var(--on-navy-mute);margin-top:12px;max-width:34em}
+.band .btn-1{background:#fff;color:var(--navy)}
+.band .btn-1 svg{stroke:var(--navy)}
+.band .btn-1:hover{background:var(--stone)}
+.band .btn-2{color:#fff;border-color:rgba(255,255,255,.35)}
+.band .btn-2 svg{stroke:#fff}
+.band .btn-2:hover{border-color:#fff}
+
+/* ---------- contact ---------- */
+.contact-in{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.info{display:flex;flex-direction:column;gap:13px;margin-top:26px}
+.icard{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:19px;display:flex;gap:15px;align-items:flex-start}
+.icard .ic{width:42px;height:42px;border-radius:10px;background:var(--stone);display:flex;align-items:center;justify-content:center;flex:none}
+.icard .ic svg{width:19px;height:19px;stroke:var(--navy);stroke-width:2;fill:none}
+.icard .k{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.icard .v{font-weight:600;color:var(--ink);font-size:1rem;word-break:break-word}
+form{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:32px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.fld{margin-bottom:15px}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+input,select,textarea{
+  width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:9px;
+  font-family:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);transition:border-color .2s,box-shadow .2s;
+}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--steel);box-shadow:0 0 0 3px rgba(87,140,173,.16)}
+textarea{resize:vertical;min-height:112px}
+.submit{width:100%;background:var(--navy);color:#fff;border:none;padding:17px;border-radius:9px;font-weight:600;font-size:1rem;cursor:pointer;transition:background .2s}
+.submit:hover{background:var(--navy-hover)}
+.fnote{font-size:.78rem;color:var(--muted);margin-top:13px;text-align:center}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:var(--on-navy-mute);padding-top:56px;padding-bottom:26px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.1)}
+.f-top img{width:186px;margin-bottom:16px}
+.f-top p{font-size:.92rem;max-width:30em}
+.f-col h4{color:#fff;font-size:.78rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;margin-bottom:15px;font-weight:500}
+.f-col a{display:block;font-size:.9rem;padding:5px 0;transition:color .2s}
+.f-col a:hover{color:#fff}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:.83rem}
+.f-bot a{color:var(--steel-pale)}
+.f-bot a:hover{color:#fff}
+
+/* ---------- FABs ---------- */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.fabs.show{opacity:1;visibility:visible}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(18,35,58,.28)}
+.fab svg{width:23px;height:23px;stroke:#fff;stroke-width:2;fill:none}
+.fab-call{background:var(--navy);animation:fabPulse 2.4s ease-in-out infinite}
+.fab-mail{background:var(--steel)}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%,100%{box-shadow:0 6px 20px rgba(18,35,58,.28)}50%{box-shadow:0 6px 20px rgba(18,35,58,.28),0 0 0 10px rgba(27,58,98,.12)}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:34px}
+  .about-in,.contact-in{grid-template-columns:1fr;gap:36px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .f-top{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+  /* the 390px fold IS the navy survey sheet */
+  .hero{background:var(--navy)}
+  .hero-inner{padding-top:44px;padding-bottom:40px}
+  .hero h1{color:#fff}
+  .hero h1 .ac{color:var(--steel-pale)}
+  .hero .lede{color:var(--on-navy-mute)}
+  .hero-art{opacity:1;left:-30%;top:-90px;width:160%;height:520px}
+  .hero-art .hr{stroke:var(--steel-pale);opacity:.34}
+  .hero-art .hs{stroke:var(--steel-pale)}
+  .hero-art .hx{stroke:var(--mark);opacity:.9}
+  /* readout becomes a compact 2x2 annotation block on the navy fold */
+  .readout{display:grid;grid-template-columns:1fr 1fr;margin-top:18px;background:var(--navy-deep);border-color:rgba(255,255,255,.18)}
+  .readout>div{padding:9px 13px;border-right:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16)}
+  .readout>div:nth-child(2n){border-right:none}
+  .readout>div:nth-child(n+3){border-bottom:none}
+  .readout .k{color:var(--on-navy-mute)}
+  .readout .v{color:#fff}
+  /* primary CTA must invert on the navy fold, navy-on-navy is invisible */
+  .hero .btn-1{background:#fff;color:var(--navy)}
+  .hero .btn-1 svg{stroke:var(--navy)}
+  .hero .btn-1:hover{background:var(--stone)}
+  .btn-2{color:#fff;border-color:rgba(255,255,255,.4)}
+  .btn-2 svg{stroke:#fff}
+  .hero-badge{display:none}
+  .hero-badge-m{
+    display:block;margin-top:16px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:14px 16px;
+  }
+  .hero-badge-m .bt{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--steel-pale);text-transform:uppercase;margin-bottom:5px}
+  .hero-badge-m .bb{font-size:.9rem;font-weight:600;color:#fff;line-height:1.4}
+  .hero-photo{border-color:rgba(255,255,255,.16);aspect-ratio:16/11}
+  .trust-in{flex-direction:column;gap:0}
+  .trust-item{padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:none}
+  .band-in{flex-direction:column;align-items:flex-start;gap:24px}
+}
+@media (max-width:780px){
+  .sec{padding-top:66px;padding-bottom:66px}
+  .svc-grid{grid-template-columns:1fr}
+  .svc.feature{grid-column:span 1}
+  .svc.feature .svc-top{min-height:172px}
+  .svc.feature h3{font-size:1.2rem}
+  /* mobile gallery: feature pin full width with its annotation, rest as a square pair grid */
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:12px}
+  .gitem,.gitem.wide{grid-column:span 1;grid-row:span 1}
+  .gitem.big{grid-column:span 2}
+  .gt{height:auto;aspect-ratio:1/1}
+  .gitem.big .gt{aspect-ratio:4/3}
+  .gtag{display:none}
+  .gitem.big .gcap-m{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.1em;
+    color:var(--muted);text-transform:uppercase;margin-top:9px;
+  }
+  .gcap-m .c{color:var(--steel)}
+  .rev-grid{grid-template-columns:1fr}
+  .sectors{grid-template-columns:1fr}
+  .f2{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr}
+  form{padding:24px}
+  .readout .v{font-size:.79rem}
+  .readout>div{padding:10px 9px}
+}
+@media (max-width:430px){
+  .cta-row .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADER: Station Set ===== -->
+<div id="ld">
+  <div class="ld-stage">
+    <svg viewBox="0 0 250 150" aria-hidden="true">
+      <circle class="ld-ring" cx="125" cy="78" r="22"/>
+      <circle class="ld-ring" cx="125" cy="78" r="40"/>
+      <circle class="ld-ring" cx="125" cy="78" r="58"/>
+      <circle class="ld-ring" cx="125" cy="78" r="76"/>
+      <line class="ld-sight s1" x1="125" y1="78" x2="28" y2="34"/>
+      <line class="ld-sight s2" x1="125" y1="78" x2="232" y2="52"/>
+      <line class="ld-sight s3" x1="125" y1="78" x2="196" y2="132"/>
+      <polygon class="ld-prism p1" points="28,26 35,38 21,38"/>
+      <polygon class="ld-prism p2" points="232,44 239,56 225,56"/>
+      <polygon class="ld-prism p3" points="196,124 203,136 189,136"/>
+      <line class="ld-cross" x1="106" y1="78" x2="144" y2="78"/>
+      <line class="ld-cross" x1="125" y1="59" x2="125" y2="97"/>
+      <circle class="ld-dot" cx="125" cy="78" r="4"/>
+    </svg>
+  </div>
+  <div class="ld-brand">
+    <img src="logo.svg" alt="Landpoint Surveying">
+    <div class="ld-status" id="ldStatus">SETTING STATION</div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#" class="nav-logo"><img src="logo.svg" alt="Landpoint Surveying"></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#work">Recent Work</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#work">Recent Work</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="mcta" id="mCall">Call us</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 600 560" aria-hidden="true">
+    <circle class="hr" cx="300" cy="280" r="70"/>
+    <circle class="hr" cx="300" cy="280" r="130"/>
+    <circle class="hr" cx="300" cy="280" r="190"/>
+    <circle class="hr" cx="300" cy="280" r="250"/>
+    <line class="hs a" x1="300" y1="280" x2="42" y2="150"/>
+    <line class="hs b" x1="300" y1="280" x2="566" y2="196"/>
+    <line class="hs c" x1="300" y1="280" x2="452" y2="536"/>
+    <line class="hx" x1="272" y1="280" x2="328" y2="280"/>
+    <line class="hx" x1="300" y1="252" x2="300" y2="308"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>London . Surveying across the UK</div>
+      <h1>Measured to the <span class="ac">millimetre</span>.</h1>
+      <p class="lede">Topographical surveys, measured building surveys, setting out and monitoring for contractors, developers and architects.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-1" id="heroCall">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a href="#contact" class="btn btn-2">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          Request a quote
+        </a>
+      </div>
+      <div class="readout" aria-hidden="true">
+        <div><div class="k">Station</div><div class="v">LP-01</div></div>
+        <div><div class="k">Easting</div><div class="v" id="roE">531482.417</div></div>
+        <div><div class="k">Northing</div><div class="v" id="roN">181093.226</div></div>
+        <div><div class="k">Level</div><div class="v" id="roL">+14.628</div></div>
+      </div>
+      <div class="hero-badge-m">
+        <div class="bt">On site with</div>
+        <div class="bb">Robotic total stations, GNSS, laser scanners and a full drone fleet</div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="work-4.jpg" alt="Landpoint Surveying engineer setting up a total station on a London development site" fetchpriority="high">
+        <div class="hero-badge">
+          <div class="bt">On site with</div>
+          <div class="bb">Robotic total stations, GNSS, laser scanners and a full drone fleet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== TRUST ===== -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>CSCS Carded Engineers</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>SMSTS &amp; SSSTS</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>PTS Certified</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>Qualified Drone Pilots</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>London &amp; UK Wide</div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec sheet reveal" id="services">
+  <svg class="contour" viewBox="0 0 420 300" style="right:-60px;top:40px;width:420px;height:300px" aria-hidden="true">
+    <path d="M20,240 C90,180 140,220 200,160 S320,120 400,60"/>
+    <path d="M20,268 C95,206 148,246 208,186 S330,146 400,88"/>
+    <path d="M20,212 C85,154 132,194 192,134 S310,94 400,32"/>
+    <path d="M20,184 C80,128 124,168 184,108 S300,68 400,4"/>
+  </svg>
+  <div class="wrap">
+    <div class="label">What we do</div>
+    <h2>Survey and site engineering, <span class="ac">start to handover</span>.</h2>
+    <div class="svc-grid">
+
+      <article class="svc feature">
+        <div class="svc-top">
+          <img src="work-1.jpg" alt="Topographical survey set up on a concrete slab overlooking London terraces" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-1.svg" alt="" loading="lazy"></div>
+          <h3>Topographical Surveys</h3>
+          <p>Contours, levels and fine detail, delivered as a digital terrain model or a 2D plan and referenced to OS. The survey your architect and engineer both design from.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top">
+          <img src="work-8.jpg" alt="Measured building survey of a large residential block" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-2.svg" alt="" loading="lazy"></div>
+          <h3>Measured Building Surveys</h3>
+          <p>Floor plans, elevations and sections. Laser scanned, any size of building.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top">
+          <img src="work-2.jpg" alt="Site engineer setting out reinforcement on a London slab" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-3.svg" alt="" loading="lazy"></div>
+          <h3>Setting Out &amp; Site Engineering</h3>
+          <p>Site control and setting out. Engineers by the visit or placed permanently.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top">
+          <img src="work-7.jpg" alt="Total station monitoring a retaining wall" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-4.svg" alt="" loading="lazy"></div>
+          <h3>Movement Monitoring</h3>
+          <p>Designed, installed and run. New build, heritage, bridges and retaining walls.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top">
+          <img src="work-5.jpg" alt="As-built check on steel and blockwork at ground floor level" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-5.svg" alt="" loading="lazy"></div>
+          <h3>As-Built Surveys</h3>
+          <p>Lift shaft verticality, slab levels and finished works checked against tolerance.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top">
+          <img src="work-6.jpg" alt="Volumetric survey of a stripped site with prism target in view" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-6.svg" alt="" loading="lazy"></div>
+          <h3>Volumetric Surveys</h3>
+          <p>Cut and fill, bulk earthworks and stockpile volumes, accurately quantified.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top">
+          <img src="work-9.jpg" alt="Drone and aerial survey coverage of a multi tower London development" loading="lazy">
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><img src="icon-7.svg" alt="" loading="lazy"></div>
+          <h3>UAV &amp; Drone Surveys</h3>
+          <p>Qualified pilots and a full fleet. Aerial photography or a complete site scan.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top data"><div class="svc-icon"><img src="icon-mc.svg" alt="" loading="lazy"></div></div>
+        <div class="svc-body">
+          <h3>Machine Control</h3>
+          <p>Models built and loaded so your plant works straight to the design.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top data"><div class="svc-icon"><img src="icon-gia.svg" alt="" loading="lazy"></div></div>
+        <div class="svc-body">
+          <h3>GIA &amp; Area Reports</h3>
+          <p>Gross internal areas and AMR reports on units, blocks and high rises.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top data"><div class="svc-icon"><img src="icon-6.svg" alt="" loading="lazy"></div></div>
+        <div class="svc-body">
+          <h3>GPR Surveys</h3>
+          <p>Ground penetrating radar to locate buried services before you break ground.</p>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div class="svc-top data"><div class="svc-icon"><img src="icon-8.svg" alt="" loading="lazy"></div></div>
+        <div class="svc-body">
+          <h3>CAD Draughting &amp; Modelling</h3>
+          <p>Survey data turned into clean drawings and models, in the format you work in.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT + SECTORS ===== -->
+<section class="sec sec-stone reveal" id="about">
+  <div class="wrap about-in">
+    <div>
+      <div class="label">Who we are</div>
+      <h2>Geospatial engineers, <span class="ac">not a hire desk</span>.</h2>
+      <p>Landpoint Surveying is a geospatial engineering company based in London and working across the UK. We provide surveying, site engineering, as-builts, monitoring and modelling to clients of every size and sector, from a single plot topo to area reports on high rise blocks. Our engineers are CSCS carded and our drone pilots are fully qualified.</p>
+    </div>
+    <div class="sectors">
+      <div class="sector"><span class="n">01</span> Main Contractors</div>
+      <div class="sector"><span class="n">02</span> Developers</div>
+      <div class="sector"><span class="n">03</span> Architects</div>
+      <div class="sector"><span class="n">04</span> Civils &amp; Infrastructure</div>
+      <div class="sector"><span class="n">05</span> Rail</div>
+      <div class="sector"><span class="n">06</span> Heritage &amp; Listed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec reveal" id="work">
+  <div class="wrap">
+    <div class="label">Recent work</div>
+    <h2>On site across <span class="ac">London and the UK</span>.</h2>
+    <div class="gal">
+      <div class="gitem big"><div class="gt"><img src="work-9.jpg" alt="Landpoint engineer on a multi tower London development" loading="lazy"><div class="gtag"><span class="c">01</span> Setting out . Central London</div></div><div class="gcap-m"><span class="c">01</span> Setting out . Central London</div></div>
+      <div class="gitem"><div class="gt"><img src="work-1.jpg" alt="Total station on a first floor slab above London terraces" loading="lazy"><div class="gtag"><span class="c">02</span> Slab levels . North London</div></div><div class="gcap-m"><span class="c">02</span> Slab levels . North London</div></div>
+      <div class="gitem"><div class="gt"><img src="work-2.jpg" alt="Setting out reinforcement on a city centre slab" loading="lazy"><div class="gtag"><span class="c">03</span> Rebar set out . Zone 2</div></div><div class="gcap-m"><span class="c">03</span> Rebar set out . Zone 2</div></div>
+      <div class="gitem"><div class="gt"><img src="work-8.jpg" alt="Measured survey of a large residential block behind sheet piling" loading="lazy"><div class="gtag"><span class="c">04</span> Measured building survey</div></div><div class="gcap-m"><span class="c">04</span> Measured building survey</div></div>
+      <div class="gitem"><div class="gt"><img src="work-3.jpg" alt="Total station mounted on a steel beam on a housing scheme" loading="lazy"><div class="gtag"><span class="c">05</span> Steel as-built . Home Counties</div></div><div class="gcap-m"><span class="c">05</span> Steel as-built . Home Counties</div></div>
+      <div class="gitem"><div class="gt"><img src="work-4.jpg" alt="Landpoint hi vis and total station on a stripped development plot" loading="lazy"><div class="gtag"><span class="c">06</span> Topographical survey</div></div><div class="gcap-m"><span class="c">06</span> Topographical survey</div></div>
+      <div class="gitem"><div class="gt"><img src="work-5.jpg" alt="Setting out blockwork and steel at ground floor level" loading="lazy"><div class="gtag"><span class="c">07</span> Blockwork set out</div></div><div class="gcap-m"><span class="c">07</span> Blockwork set out</div></div>
+      <div class="gitem"><div class="gt"><img src="work-6.jpg" alt="Prism target and tripod on a highways plot" loading="lazy"><div class="gtag"><span class="c">08</span> Control network</div></div><div class="gcap-m"><span class="c">08</span> Control network</div></div>
+      <div class="gitem"><div class="gt"><img src="work-7.jpg" alt="Monitoring set up against a concrete retaining wall" loading="lazy"><div class="gtag"><span class="c">09</span> Movement monitoring</div></div><div class="gcap-m"><span class="c">09</span> Movement monitoring</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== REVIEWS ===== -->
+<section class="sec sec-stone reveal">
+  <div class="wrap">
+    <div class="label">What clients say</div>
+    <h2>Programme kept, <span class="ac">figures trusted</span>.</h2>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+        <p>Landpoint set out three cores for us on a tight Stratford site and never once held the programme up. As-builts came back the same day we asked for them.</p>
+        <div class="who"><b>Dan Whelan, Project Manager</b>Stratford, E15 . Setting Out</div>
+      </div>
+      <div class="rev">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+        <p>We needed a measured building survey of a listed block in Westminster at short notice. Landpoint scanned it over a weekend and the floor plans were spot on.</p>
+        <div class="who"><b>Priya Raghavan, Architect</b>Westminster, SW1 . Measured Building Survey</div>
+      </div>
+      <div class="rev">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+        <p>Topo and volumes for a cut and fill job in Dartford. Landpoint's quantities matched the earthworks contractor's to within a whisker, which almost never happens.</p>
+        <div class="who"><b>Mark Denny, Contracts Manager</b>Dartford, Kent . Topographical &amp; Volumetric</div>
+      </div>
+      <div class="rev">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+        <p>Their monitoring scheme on our retaining wall in Croydon ran eight months without a hiccup. Weekly reports landed on time and we never had to chase.</p>
+        <div class="who"><b>Steve Kouassi, Site Agent</b>Croydon, CR0 . Movement Monitoring</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section class="sec reveal" id="areas">
+  <div class="wrap">
+    <div class="label">Where we work</div>
+    <h2>Based in London, <span class="ac">on site nationwide</span>.</h2>
+    <div class="area-grid">
+      <span class="area home">London</span>
+      <span class="area">City of London</span>
+      <span class="area">Westminster</span>
+      <span class="area">Canary Wharf</span>
+      <span class="area">Stratford</span>
+      <span class="area">Croydon</span>
+      <span class="area">Wembley</span>
+      <span class="area">Ealing</span>
+      <span class="area">Barnet</span>
+      <span class="area">Kingston upon Thames</span>
+      <span class="area">Watford</span>
+      <span class="area">Hertfordshire</span>
+      <span class="area">Essex</span>
+      <span class="area">Kent</span>
+      <span class="area">Surrey</span>
+      <span class="area">Berkshire</span>
+      <span class="area">Birmingham</span>
+      <span class="area">Manchester</span>
+      <span class="area">Bristol</span>
+      <span class="area">Nationwide</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="band">
+  <div class="wrap band-in">
+    <div>
+      <div class="label">Next step</div>
+      <h2>Send us the drawings, we will price it.</h2>
+      <p>Tell us the site, the deliverable and the date you need it by. We will come back with a fixed price and a slot.</p>
+    </div>
+    <div class="cta-row">
+      <a href="#" class="btn btn-1" id="bandCall">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+      <a href="#contact" class="btn btn-2">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Enquiry form
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="sec sec-stone reveal" id="contact">
+  <div class="wrap contact-in">
+    <div>
+      <div class="label">Get in touch</div>
+      <h2>Request a <span class="ac">survey quote</span>.</h2>
+      <p style="margin-top:16px">Enquiries answered the same working day. Tell us what you need measured and when you need it on site.</p>
+      <div class="info">
+        <div class="icard">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="k">Phone</div><a class="v" id="cPhone" href="#">&nbsp;</a></div>
+        </div>
+        <div class="icard">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><div class="k">Email</div><a class="v" id="cEmail" href="#">&nbsp;</a></div>
+        </div>
+        <div class="icard">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="k">Coverage</div><div class="v">London base, UK wide</div></div>
+        </div>
+        <div class="icard">
+          <div class="ic"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><div class="k">Response</div><div class="v">Same working day</div></div>
+        </div>
+      </div>
+    </div>
+    <form action="/api/enquiry" method="POST" id="enq">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="Landpoint Surveying">
+      <input type="hidden" name="source" value="mockup-landpoint-surveying">
+      <div class="f2">
+        <div class="fld"><label for="nm">Name</label><input id="nm" name="name" type="text" required></div>
+        <div class="fld"><label for="co">Company</label><input id="co" name="company" type="text"></div>
+      </div>
+      <div class="f2">
+        <div class="fld"><label for="ph">Phone</label><input id="ph" name="phone" type="tel" pattern="^(0|\+44)\d{9,11}$" required></div>
+        <div class="fld"><label for="em">Email</label><input id="em" name="email" type="email"></div>
+      </div>
+      <div class="fld">
+        <label for="sv">Service required</label>
+        <select id="sv" name="service">
+          <option value="">Please choose</option>
+          <optgroup label="Survey">
+            <option>Topographical Survey</option>
+            <option>Measured Building Survey</option>
+            <option>Volumetric Survey</option>
+            <option>GPR Survey</option>
+            <option>UAV / Drone Survey</option>
+            <option>GIA &amp; Area Report</option>
+          </optgroup>
+          <optgroup label="Site engineering">
+            <option>Setting Out &amp; Site Engineering</option>
+            <option>As-Built Survey</option>
+            <option>Machine Control</option>
+            <option>Movement Monitoring</option>
+          </optgroup>
+          <optgroup label="Data">
+            <option>CAD Draughting &amp; Modelling</option>
+          </optgroup>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="fld"><label for="ms">Site and deliverable</label><textarea id="ms" name="message" placeholder="Site address, what needs measuring, and the date you need it by"></textarea></div>
+      <button type="submit" class="submit">Send enquiry</button>
+      <div class="fnote">Or call the office and speak to an engineer.</div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <img src="logo.svg" alt="Landpoint Surveying">
+        <p>The Measurement Specialists. Geospatial engineering, site engineering and modelling from a London base, on site across the UK.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <a href="#services">Topographical Surveys</a>
+        <a href="#services">Measured Building Surveys</a>
+        <a href="#services">Setting Out</a>
+        <a href="#services">Movement Monitoring</a>
+        <a href="#services">UAV &amp; Drone Surveys</a>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#work">Recent Work</a>
+        <a href="#areas">Areas Covered</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>&copy; <span id="yr">2026</span> Landpoint Surveying. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FABs ===== -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call Landpoint Surveying">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" class="fab fab-mail" id="fabMail" aria-label="Email Landpoint Surveying">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  /* ---- contact details (obfuscated) ---- */
+  var P  = atob('MDIwODA1MDY4MTU=');
+  var Pf = atob('MDIwIDgwNTAgNjgxNQ==');
+  var E  = atob('aW5mb0BsYW5kcG9pbnRzdXJ2ZXlpbmcuY29t');
+  ['navCall','heroCall','bandCall','fabCall','mCall'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.href='tel:'+P;
+  });
+  ['navCallTxt','heroCallTxt','bandCallTxt'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.textContent=Pf;
+  });
+  var mc=document.getElementById('mCall'); if(mc) mc.textContent='Call '+Pf;
+  var cp=document.getElementById('cPhone'); cp.textContent=Pf; cp.href='tel:'+P;
+  var ce=document.getElementById('cEmail'); ce.textContent=E; ce.href='mailto:'+E;
+  var fm=document.getElementById('fabMail'); fm.href='mailto:'+E;
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  document.getElementById('formTimestamp').value=Date.now();
+
+  /* ---- loader: Station Set ---- */
+  var ld=document.getElementById('ld'), st=document.getElementById('ldStatus');
+  var steps=[[300,'BACKSIGHT LOCKED'],[820,'OBSERVING TARGETS'],[1280,'CONTOURS DRAWN'],[1660,'SURVEY COMPLETE']];
+  steps.forEach(function(s){ setTimeout(function(){ if(st) st.textContent=s[1]; }, s[0]); });
+  function kill(){ if(ld){ ld.classList.add('gone'); setTimeout(function(){ if(ld&&ld.parentNode) ld.parentNode.removeChild(ld); },800); } }
+  setTimeout(kill,2200);
+  setTimeout(function(){ if(ld&&ld.parentNode) ld.parentNode.removeChild(ld); },2800);
+
+  /* ---- mobile nav ---- */
+  var b=document.getElementById('burger'), mn=document.getElementById('mnav');
+  b.addEventListener('click',function(){
+    var open=mn.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    document.documentElement.style.overflow=open?'hidden':'';
+  });
+  mn.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      mn.classList.remove('open');
+      b.setAttribute('aria-expanded','false');
+      document.documentElement.style.overflow='';
+    });
+  });
+
+  /* ---- scroll reveals ---- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---- FABs after hero ---- */
+  var fabs=document.getElementById('fabs'), hero=document.querySelector('.hero');
+  new IntersectionObserver(function(es){
+    fabs.classList.toggle('show',!es[0].isIntersecting);
+  },{threshold:0}).observe(hero);
+
+  /* ---- hero readout: a station being observed ---- */
+  var roE=document.getElementById('roE'), roN=document.getElementById('roN'), roL=document.getElementById('roL');
+  var bE=531482.417, bN=181093.226, bL=14.628, t=0;
+  setInterval(function(){
+    t++;
+    roE.textContent=(bE+Math.sin(t/7)*0.004).toFixed(3);
+    roN.textContent=(bN+Math.cos(t/9)*0.004).toFixed(3);
+    roL.textContent='+'+(bL+Math.sin(t/5)*0.002).toFixed(3);
+  },900);
+
+  /* ---- phone validation ---- */
+  var ph=document.getElementById('ph');
+  ph.addEventListener('input',function(){
+    ph.setCustomValidity(ph.validity.patternMismatch?'Please enter a valid UK phone number':'');
+  });
+})();
+</script>
+</body>
+</html>
