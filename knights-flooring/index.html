@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knights Flooring | Flooring Fitters in Gateshead &amp; Newcastle | LVT, Herringbone, Carpets &amp; Vinyl</title>
+<meta name="description" content="LVT and herringbone, laminate, carpets and vinyl, supplied and fitted across Gateshead, Newcastle and the North East. Free quotes from Knights Flooring.">
+<meta property="og:title" content="Knights Flooring | Your New Website">
+<meta property="og:description" content="Flooring fitters in Gateshead &amp; Newcastle. Preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/knights-flooring/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/knights-flooring/">
+<meta name="theme-color" content="#161616">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Jost:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --ink:#161616; --ink2:#1e1d1b; --ink-line:#33312c;
+  --bg:#ffffff; --stone:#f4f4f2; --card:#ffffff; --line:#e5e4e0; --line2:#d2d0ca;
+  --gold:#e2bd84; --gold-deep:#8a6a3f; --gold-pale:#efd7ae; --gold-hover:#d3ab6b;
+  --oak:#b98a5a; --oak-deep:#96693f;
+  --head:#1a1918; --body:#4a4844; --mute:#8a877f;
+  --ink-head:#f5f2ec; --ink-body:#c9c4b8; --ink-mute:#8f8a7d;
+  --wa:#25d366;
+  --serif:'Prata',serif; --sans:'Jost',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1.02rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em{font-style:normal}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--head);line-height:1.16}
+h1{font-size:clamp(2.4rem,4.9vw,4.1rem);letter-spacing:.005em}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);display:flex;align-items:center;gap:12px;font-weight:500}
+.label::after{content:'';width:40px;height:10px;background:
+  linear-gradient(45deg,transparent 42%,var(--oak) 42% 58%,transparent 58%) 0 0/10px 10px repeat-x;opacity:.8}
+
+/* ---------- herringbone plank row (shared: loader + fold band) ---------- */
+.hb{display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+.hb i{flex:none;width:38px;height:13px;border-radius:2px;opacity:0;margin-left:-10px}
+.hb i:nth-child(odd){transform:rotate(45deg) translateY(-40px);background:var(--oak);animation:hbInO .45s cubic-bezier(.34,1.45,.55,1) forwards}
+.hb i:nth-child(even){transform:rotate(-45deg) translateY(-58px);background:var(--oak-deep);animation:hbInE .45s cubic-bezier(.34,1.45,.55,1) forwards}
+.hb i:nth-child(3n){background:var(--gold)}
+@keyframes hbInO{to{opacity:1;transform:rotate(45deg) translateY(9px)}}
+@keyframes hbInE{to{opacity:1;transform:rotate(-45deg) translateY(-9px)}}
+
+/* ---------- loader ---------- */
+#ld{position:fixed;inset:0;background:var(--ink);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px;animation:ldGoneAuto .5s ease 2.6s forwards}
+#ld.gone{opacity:0;visibility:hidden;transition:.5s}
+@keyframes ldGoneAuto{to{opacity:0;visibility:hidden}}
+.ld-k{width:120px;height:120px;opacity:0;transform:scale(.82);animation:ldK .55s cubic-bezier(.2,.9,.3,1.18) .95s forwards}
+@keyframes ldK{to{opacity:1;transform:scale(1)}}
+.ld-hb{width:340px;height:44px}
+.ld-status{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;color:var(--ink-mute);text-transform:uppercase;height:1.2em}
+.ld-brand{text-align:center;opacity:0;transform:translateY(14px);animation:ldB .5s ease 1.6s forwards}
+@keyframes ldB{to{opacity:1;transform:translateY(0)}}
+.ld-brand .ld-n{font-family:var(--serif);font-size:1.9rem;color:var(--gold);letter-spacing:.34em;padding-left:.34em}
+.ld-brand .ld-sub{font-family:var(--mono);font-size:.64rem;letter-spacing:.32em;color:var(--ink-body);text-transform:uppercase;margin-top:7px}
+@media (prefers-reduced-motion:reduce){
+  .ld-k,.ld-brand,.hb i{animation:none !important;opacity:1;transform:none}
+  .hb i:nth-child(odd){transform:rotate(45deg) translateY(9px)}
+  .hb i:nth-child(even){transform:rotate(-45deg) translateY(-9px)}
+  .ld-k{transform:scale(1)}
+  #ld{animation:ldGoneAuto .3s ease .8s forwards}
+}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:900;background:var(--ink);border-bottom:1px solid var(--ink-line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.nav-logo{display:flex;align-items:center;gap:13px;white-space:nowrap}
+.nav-logo svg{width:44px;height:44px;flex:none}
+.nav-logo .nl-t{font-family:var(--serif);font-size:1.04rem;color:var(--gold);letter-spacing:.22em;line-height:1.2}
+.nav-logo .nl-t span{display:block;font-family:var(--mono);font-weight:500;font-size:.56rem;letter-spacing:.42em;color:var(--ink-body);text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.95rem;font-weight:500;color:var(--ink-body);transition:.2s}
+.nav-links a:hover{color:var(--ink-head)}
+.nav-links a.nav-cta{background:var(--gold);color:var(--ink) !important;font-weight:600;padding:10px 20px;border-radius:8px;transition:.2s}
+.nav-links a.nav-cta:hover{background:var(--gold-hover)}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--ink-head);margin:5px 0;transition:.3s}
+.nav-panel{display:none}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .nav-panel{display:block;max-height:0;overflow:hidden;transition:max-height .35s ease;background:var(--ink);border-top:0 solid var(--ink-line)}
+  .nav-panel.open{max-height:440px;border-top-width:1px}
+  .nav-panel ul{list-style:none;padding:10px 24px 22px}
+  .nav-panel a{display:block;padding:13px 0;font-size:1.05rem;font-weight:500;color:var(--ink-head);border-bottom:1px solid var(--ink-line)}
+  .nav-panel a.np-cta{background:var(--gold);color:var(--ink);text-align:center;border-radius:9px;margin-top:16px;border-bottom:0;font-weight:600}
+}
+
+/* ---------- hero ---------- */
+.hero{display:flex;flex-direction:column}
+.fold{position:relative}
+.fold-in{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:80px}
+.fold-in > *{min-width:0}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;row-gap:4px;font-family:var(--mono);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:22px;font-weight:500}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(226,189,132,.4)}70%{box-shadow:0 0 0 9px rgba(226,189,132,0)}100%{box-shadow:0 0 0 0 rgba(226,189,132,0)}}
+h1 .h1-gold{color:var(--gold-deep);display:inline-block;position:relative}
+h1 .h1-gold::after{content:'';position:absolute;left:2px;right:2px;bottom:-10px;height:10px;background:
+  linear-gradient(45deg,transparent 42%,var(--oak) 42% 58%,transparent 58%) 0 0/10px 10px repeat-x;transform:scaleX(0);transform-origin:left;animation:chev .7s ease 2.05s forwards}
+@keyframes chev{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){h1 .h1-gold::after{animation:none;transform:scaleX(1)}}
+.hero-lede{margin-top:28px;max-width:520px;font-size:1.08rem}
+.hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:1rem;padding:15px 27px;border-radius:9px;transition:.22s;border:1px solid transparent;font-family:var(--sans)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-hover);transform:translateY(-2px)}
+.btn-gold svg{stroke:var(--ink)}
+.btn-wa{background:var(--wa);color:#07230f}
+.btn-wa:hover{filter:brightness(1.06);transform:translateY(-2px)}
+.btn-wa svg{fill:#07230f}
+.hero-photo{position:relative}
+.hero-photo .hp-frame{border-radius:16px;border:1px solid var(--line);overflow:hidden;position:relative}
+.hero-photo img{width:100%;height:560px;object-fit:cover}
+.hp-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--ink);border-radius:10px;padding:12px 18px;font-weight:600;font-size:.9rem;display:flex;align-items:center;gap:9px;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.hp-badge svg{width:17px;height:17px;flex:none;stroke:var(--ink)}
+.hp-cap{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:12px}
+.fold-k{display:none}
+.fold-hb{display:none}
+.hero-anim{opacity:0;transform:translateY(22px);animation:fadeUp .6s ease forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}.d5{animation-delay:.5s}
+@media (prefers-reduced-motion:reduce){.hero-anim{animation:none;opacity:1;transform:none}}
+
+/* ---------- trust ---------- */
+.trust{border-bottom:1px solid var(--line);background:var(--stone)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:24px;padding-bottom:24px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.94rem;font-weight:500;color:var(--body)}
+.trust-item svg{width:17px;height:17px;stroke:var(--gold-deep);flex:none}
+
+/* ---------- sections ---------- */
+section{padding:96px 0}
+.sec-head{margin-bottom:52px}
+.sec-head h2{margin-top:16px}
+.h2-gold{color:var(--gold-deep)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;transition:transform .25s ease,box-shadow .25s ease;display:flex;flex-direction:column}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:2}
+.svc:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(26,25,24,.12)}
+.svc:hover::before{transform:scaleX(1)}
+.svc img{width:100%;height:210px;object-fit:cover}
+.svc-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:8px;flex:1}
+.svc h3{font-size:1.22rem}
+.svc p{font-size:.95rem;color:var(--body)}
+.svc-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-top:auto;padding-top:8px}
+
+/* ---------- gallery ---------- */
+#work{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.gtile{display:flex;flex-direction:column;gap:9px}
+.gtile .gph{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.gtile img{width:100%;height:250px;object-fit:cover;transition:transform .5s ease}
+.gtile:hover img{transform:scale(1.04)}
+.g-pin{grid-column:span 2;grid-row:span 2}
+.g-pin img{height:545px}
+.g-wide{grid-column:span 2}
+.g-wide img{height:250px}
+.gcap{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+/* ---------- about ---------- */
+.about-in{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.about p{font-size:1.06rem;max-width:600px;margin-top:18px}
+.logo-card{background:var(--ink);border:1px solid var(--ink-line);border-radius:16px;padding:36px 34px;display:flex;justify-content:center}
+.logo-card img{width:100%;max-width:300px}
+
+/* ---------- reviews ---------- */
+#reviews{background:var(--stone);border-top:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 32px}
+.rev-stars{display:flex;gap:4px;margin-bottom:16px}
+.rev-stars svg{width:16px;height:16px;fill:var(--gold-deep)}
+.rev p{font-size:.98rem;color:var(--body)}
+.rev-who{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+
+/* ---------- areas ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:11px;margin-top:8px}
+.chip{border:1px solid var(--line2);border-radius:999px;padding:8px 19px;font-size:.92rem;font-weight:500;color:var(--body)}
+.chip-home{border-color:var(--gold-deep);color:var(--gold-deep);display:flex;align-items:center;gap:8px}
+.chip-home svg{width:14px;height:14px;stroke:var(--gold-deep)}
+
+/* ---------- cta band ---------- */
+.cta-band{background:var(--ink);position:relative;overflow:hidden}
+.cta-in{position:relative;z-index:2;text-align:center;padding-top:90px;padding-bottom:104px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.cta-in .label{justify-content:center;color:var(--gold)}
+.cta-in h2{color:var(--ink-head)}
+.cta-in h2 .h2-gold{color:var(--gold)}
+.cta-in p{max-width:520px;color:var(--ink-body)}
+.cta-k{position:absolute;right:-50px;top:50%;width:330px;height:330px;transform:translateY(-50%) rotate(0deg);opacity:.1;z-index:1}
+.cta-hb{position:absolute;left:0;right:0;bottom:-2px;height:34px;opacity:.5;justify-content:flex-start}
+.cta-hb i{animation-delay:0s;opacity:1}
+
+/* ---------- contact ---------- */
+.contact-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.c-cards{display:grid;gap:16px;margin-top:36px}
+.c-card{background:#fff;border:1px solid var(--line);border-radius:13px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+.c-card svg{width:21px;height:21px;stroke:var(--gold-deep);flex:none;margin-top:3px}
+.c-card b{color:var(--head);font-weight:600;display:block;margin-bottom:3px}
+.c-card span{font-size:.93rem}
+form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px;box-shadow:0 18px 44px rgba(26,25,24,.06)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-field{margin-bottom:16px}
+.f-field label{display:block;font-size:.84rem;font-weight:600;color:var(--head);margin-bottom:7px}
+.f-field input,.f-field select,.f-field textarea{width:100%;background:var(--stone);border:1px solid var(--line2);border-radius:9px;padding:13px 15px;color:var(--head);font-family:var(--sans);font-size:.95rem;transition:border-color .2s}
+.f-field input:focus,.f-field select:focus,.f-field textarea:focus{outline:none;border-color:var(--gold-deep)}
+.f-field textarea{min-height:110px;resize:vertical}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+#contact{background:var(--stone);border-top:1px solid var(--line)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink)}
+.foot-in{padding-top:52px;padding-bottom:40px;display:flex;flex-direction:column;gap:26px}
+.foot-top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.foot-brand{display:flex;align-items:center;gap:14px}
+.foot-brand svg{width:48px;height:48px;flex:none}
+.foot-tag{font-size:.9rem;color:var(--ink-mute)}
+.foot-links{display:flex;gap:26px;font-size:.9rem;color:var(--ink-body)}
+.foot-links a:hover{color:var(--ink-head)}
+.foot-bottom{border-top:1px solid var(--ink-line);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--ink-mute)}
+.foot-bottom a{color:var(--ink-body)}
+.foot-bottom a:hover{color:var(--ink-head)}
+
+/* ---------- fabs ---------- */
+.fabs{position:fixed;right:20px;bottom:20px;z-index:800;display:flex;flex-direction:column;gap:13px;opacity:0;pointer-events:none;transform:translateY(12px);transition:.35s}
+.fabs.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.fab svg{width:22px;height:22px}
+.fab-call{background:var(--gold);animation:fabPulse 2.2s infinite}
+.fab-call svg{stroke:var(--ink)}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(226,189,132,.5)}70%{box-shadow:0 0 0 14px rgba(226,189,132,0)}100%{box-shadow:0 0 0 0 rgba(226,189,132,0)}}
+.fab-wa{background:var(--wa);animation:fabPulseW 2.2s infinite}
+.fab-wa svg{fill:#07230f}
+@keyframes fabPulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.fab:hover{animation-play-state:paused}
+
+/* ---------- mobile ---------- */
+@media (max-width:880px){
+  section{padding:70px 0}
+  .fold{background:var(--ink);overflow:hidden}
+  .fold-in{grid-template-columns:1fr;gap:0;padding-top:52px;padding-bottom:0}
+  .fold-k{display:block;position:absolute;right:-56px;top:14px;width:250px;height:250px;opacity:.13;pointer-events:none;z-index:1}
+  .fold-copy{position:relative;z-index:2}
+  .fold-hb{display:flex;position:relative;z-index:2;height:40px;margin-top:44px;margin-left:-24px;margin-right:-24px;justify-content:flex-start}
+  h1{font-size:clamp(2.15rem,9vw,2.8rem);color:var(--ink-head)}
+  h1 .h1-gold{color:var(--gold)}
+  .eyebrow{color:var(--gold)}
+  .ey-long{display:none}
+  .hero-lede{color:var(--ink-body);margin-top:22px;font-size:1rem}
+  .hero-ctas{flex-direction:column;margin-top:30px}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .hp-badge{display:none}
+  .hp-cap{display:none}
+  .hero-photo{padding-top:34px;padding-bottom:56px}
+  .hero-photo img{height:350px}
+  .trust-in{flex-direction:column;gap:0;padding-top:10px;padding-bottom:10px}
+  .trust-item{padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:0}
+  .svc-grid{grid-template-columns:1fr}
+  .svc img{height:200px}
+  .gal{grid-template-columns:1fr 1fr}
+  .g-pin{grid-column:span 2;grid-row:span 1}
+  .g-wide{grid-column:span 1}
+  .g-wide img{height:170px}
+  .g-pin img{min-height:0;height:280px}
+  .gtile img{height:170px}
+  .about-in{grid-template-columns:1fr;gap:40px}
+  .rev-grid{grid-template-columns:1fr}
+  .contact-in{grid-template-columns:1fr;gap:44px}
+  .f-row{grid-template-columns:1fr}
+  .cta-k{width:240px;height:240px;right:-80px}
+  .foot-top{flex-direction:column;align-items:flex-start}
+}
+@media (min-width:881px) and (max-width:1080px){
+  .hero-photo img{height:480px}
+}
+</style>
+</head>
+<body>
+
+<!-- loader -->
+<div id="ld" aria-hidden="true">
+  <svg class="ld-k" viewBox="0 0 120 120" aria-hidden="true">
+    <rect x="18" y="18" width="84" height="84" fill="none" stroke="#e2bd84" stroke-width="2" transform="rotate(45 60 60)"/>
+    <rect x="25" y="25" width="70" height="70" fill="none" stroke="#e2bd84" stroke-width="1.4" transform="rotate(45 60 60)"/>
+    <text x="60" y="76" text-anchor="middle" font-family="Prata,serif" font-size="44" fill="#e2bd84">K</text>
+  </svg>
+  <div class="hb ld-hb" id="ldHb"></div>
+  <div class="ld-status" id="ldStatus">SUBFLOOR PREPPED</div>
+  <div class="ld-brand">
+    <div class="ld-n">KNIGHTS</div>
+    <div class="ld-sub">Flooring . Gateshead &amp; Newcastle</div>
+  </div>
+</div>
+
+<!-- nav -->
+<nav>
+  <div class="nav-in wrap">
+    <a href="#" class="nav-logo" aria-label="Knights Flooring home">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <rect x="18" y="18" width="84" height="84" fill="none" stroke="#e2bd84" stroke-width="2.4" transform="rotate(45 60 60)"/>
+        <rect x="25" y="25" width="70" height="70" fill="none" stroke="#e2bd84" stroke-width="1.6" transform="rotate(45 60 60)"/>
+        <text x="60" y="76" text-anchor="middle" font-family="Prata,serif" font-size="44" fill="#e2bd84">K</text>
+      </svg>
+      <span class="nl-t">KNIGHTS<span>Flooring</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-panel" id="navPanel">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact" class="np-cta">Get a Free Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero">
+  <div class="fold">
+    <svg class="fold-k" viewBox="0 0 120 120" aria-hidden="true">
+      <rect x="18" y="18" width="84" height="84" fill="none" stroke="#e2bd84" stroke-width="1.6" transform="rotate(45 60 60)"/>
+      <rect x="25" y="25" width="70" height="70" fill="none" stroke="#e2bd84" stroke-width="1" transform="rotate(45 60 60)"/>
+      <text x="60" y="76" text-anchor="middle" font-family="Prata,serif" font-size="44" fill="#e2bd84">K</text>
+    </svg>
+    <div class="fold-in wrap">
+      <div class="fold-copy">
+        <div class="eyebrow hero-anim d1"><span class="dot"></span><span><span class="ey-long">Flooring Specialists . </span>Gateshead &amp; Newcastle</span></div>
+        <h1 class="hero-anim d2">The floor makes <span class="h1-gold">the room.</span></h1>
+        <p class="hero-lede hero-anim d3">LVT and herringbone, laminate, carpets and vinyl. Supplied and fitted across Gateshead, Newcastle and the North East, and every photo on this page is our own work.</p>
+        <div class="hero-ctas hero-anim d4">
+          <a href="#" class="btn btn-gold" id="heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+          <a href="#" class="btn btn-wa" id="heroWa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp Us</a>
+        </div>
+        <div class="hb fold-hb" id="foldHb"></div>
+      </div>
+      <div class="hero-photo hero-anim d5">
+        <div class="hp-frame">
+          <img src="hero.jpg" alt="Grey herringbone LVT fitted through a finished kitchen diner" fetchpriority="high">
+          <div class="hp-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Supply &amp; fit . Free quotes</div>
+        </div>
+        <div class="hp-cap">Grey herringbone LVT . kitchen diner</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- trust -->
+<div class="trust">
+  <div class="trust-in wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Free quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Supply and fit</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All flooring types</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Domestic and commercial</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Gateshead based</div>
+  </div>
+</div>
+
+<!-- services -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we fit</div>
+      <h2>Every floor in the <span class="h2-gold">house.</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <img src="svc-lvt.jpg" alt="Oak herringbone LVT fitted through an open-plan kitchen" loading="lazy">
+        <div class="svc-body">
+          <h3>LVT &amp; Herringbone</h3>
+          <p>Luxury vinyl tile laid in herringbone or plank, room to room.</p>
+          <div class="svc-tag">The showstopper</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <img src="svc-laminate.jpg" alt="Wide oak laminate boards fitted through a large open room" loading="lazy">
+        <div class="svc-body">
+          <h3>Laminate &amp; Wood</h3>
+          <p>Wide boards and wood-effect finishes, levelled and laid tight.</p>
+          <div class="svc-tag">Living rooms . bedrooms</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <img src="svc-carpet.jpg" alt="Deep pink carpet fitted wall to wall in a teal painted bedroom" loading="lazy">
+        <div class="svc-body">
+          <h3>Carpets</h3>
+          <p>Fitted wall to wall with underlay, any colour you dare.</p>
+          <div class="svc-tag">Supplied and fitted</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <img src="svc-stairs.jpg" alt="Grey tartan carpet fitted on a staircase and hallway" loading="lazy">
+        <div class="svc-body">
+          <h3>Stairs &amp; Landings</h3>
+          <p>Stairs, halls and landings finished as one clean run.</p>
+          <div class="svc-tag">The tricky bit, done right</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <img src="svc-vinyl.jpg" alt="Patterned sheet vinyl fitted through a galley kitchen" loading="lazy">
+        <div class="svc-body">
+          <h3>Vinyl Flooring</h3>
+          <p>Kitchens and bathrooms in patterned or plain sheet vinyl.</p>
+          <div class="svc-tag">Wipe-clean . waterproof</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <img src="svc-commercial.jpg" alt="Grey plank flooring fitted through a large commercial hall" loading="lazy">
+        <div class="svc-body">
+          <h3>Commercial Flooring</h3>
+          <p>Offices, halls and communal spaces, fitted around your hours.</p>
+          <div class="svc-tag">Minimal downtime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>Fitted across the <span class="h2-gold">North East.</span></h2>
+    </div>
+    <div class="gal">
+      <div class="gtile g-pin reveal">
+        <div class="gph"><img src="work-1.jpg" alt="Oak herringbone LVT through an open-plan living room" loading="lazy"></div>
+        <div class="gcap">Oak herringbone . open-plan living</div>
+      </div>
+      <div class="gtile reveal">
+        <div class="gph"><img src="work-2.jpg" alt="Grey plank flooring in a lounge with feature fireplace" loading="lazy"></div>
+        <div class="gcap">Grey plank . lounge</div>
+      </div>
+      <div class="gtile reveal">
+        <div class="gph"><img src="work-3.jpg" alt="Tartan carpet fitted through an upstairs landing" loading="lazy"></div>
+        <div class="gcap">Tartan carpet . landing</div>
+      </div>
+      <div class="gtile reveal">
+        <div class="gph"><img src="work-4.jpg" alt="Patterned tile-effect vinyl in a family bathroom" loading="lazy"></div>
+        <div class="gcap">Patterned vinyl . bathroom</div>
+      </div>
+      <div class="gtile g-wide reveal">
+        <div class="gph"><img src="work-5.jpg" alt="Tartan carpet through a hallway and staircase" loading="lazy"></div>
+        <div class="gcap">Tartan carpet . hall and stairs</div>
+      </div>
+      <div class="gtile g-wide reveal">
+        <div class="gph"><img src="work-6.jpg" alt="Grey stair carpet being fitted tread by tread" loading="lazy"></div>
+        <div class="gcap">Stair carpet . mid fit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- about -->
+<section id="about">
+  <div class="about-in wrap">
+    <div class="about reveal">
+      <div class="label">Who we are</div>
+      <h2 style="margin-top:16px">Flooring, and <span class="h2-gold">only flooring.</span></h2>
+      <p>Knights Flooring supplies and fits every type of domestic and commercial flooring across Gateshead, Newcastle and the North East. LVT, herringbone, laminate, carpet and vinyl, measured and fitted by us, with the room left clean and ready to use. One room or the whole house.</p>
+    </div>
+    <div class="logo-card reveal">
+      <img src="logo.jpg" alt="Knights Flooring logo" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- reviews -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Reviews</div>
+      <h2>What customers <span class="h2-gold">say.</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"Knights fitted herringbone LVT through our kitchen and hallway. People ask about it the minute they walk in."</p>
+        <div class="rev-who">Lisa G., Low Fell . Herringbone LVT</div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"New carpets through the whole upstairs plus the stairs and landing. Tidy job and a brilliant finish."</p>
+        <div class="rev-who">Craig D., Whickham . Carpets and stairs</div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"Bathroom and kitchen vinyl both done in a day each. Level, neat around the edges, no mess left behind."</p>
+        <div class="rev-who">Sarah M., Felling . Vinyl flooring</div>
+      </div>
+      <div class="rev reveal">
+        <div class="rev-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>"Had our office floor done over a weekend so we never closed. Would use Knights again without thinking."</p>
+        <div class="rev-who">Paul T., Newcastle . Commercial flooring</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- areas -->
+<section id="areas" style="padding-top:0;background:var(--stone);padding-bottom:96px">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:34px">
+      <div class="label">Areas covered</div>
+      <h2>Gateshead, Newcastle &amp; <span class="h2-gold">surrounding.</span></h2>
+    </div>
+    <div class="chips reveal">
+      <span class="chip chip-home"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Gateshead</span>
+      <span class="chip">Newcastle upon Tyne</span>
+      <span class="chip">Low Fell</span>
+      <span class="chip">Whickham</span>
+      <span class="chip">Felling</span>
+      <span class="chip">Birtley</span>
+      <span class="chip">Washington</span>
+      <span class="chip">Gosforth</span>
+      <span class="chip">Jarrow</span>
+      <span class="chip">Hebburn</span>
+      <span class="chip">Chester-le-Street</span>
+      <span class="chip">Sunderland</span>
+    </div>
+  </div>
+</section>
+
+<!-- cta band -->
+<div class="cta-band">
+  <div class="cta-in wrap reveal">
+    <div class="label">Free quotes</div>
+    <h2>One room or the <span class="h2-gold">whole house.</span></h2>
+    <p>WhatsApp us a photo of the room and rough sizes. We'll come back with options and a price.</p>
+    <a href="#contact" class="btn btn-gold" style="margin-top:8px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>Get a Free Quote</a>
+  </div>
+  <svg class="cta-k" viewBox="0 0 120 120" aria-hidden="true">
+    <rect x="18" y="18" width="84" height="84" fill="none" stroke="#e2bd84" stroke-width="1.4" transform="rotate(45 60 60)"/>
+    <rect x="25" y="25" width="70" height="70" fill="none" stroke="#e2bd84" stroke-width="1" transform="rotate(45 60 60)"/>
+    <text x="60" y="76" text-anchor="middle" font-family="Prata,serif" font-size="44" fill="#e2bd84">K</text>
+  </svg>
+  <div class="hb cta-hb" id="ctaHb"></div>
+</div>
+
+<!-- contact -->
+<section id="contact">
+  <div class="contact-in wrap">
+    <div class="reveal">
+      <div class="label">Get in touch</div>
+      <h2 style="margin-top:16px">Get your free <span class="h2-gold">quote.</span></h2>
+      <p style="margin-top:16px;max-width:440px">Tell us which rooms need doing and what you fancy underfoot. We'll come back with a price.</p>
+      <div class="c-cards">
+        <a class="c-card" href="#" id="callCard">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Call us</b><span id="callNum">&nbsp;</span></div>
+        </a>
+        <a class="c-card" href="#" id="waCard">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+          <div><b>WhatsApp us a photo</b><span>A picture of the room is all we need to quote</span></div>
+        </a>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+          <div><b>Free, no-pressure quotes</b><span>Measured and priced, nothing to pay for the visit</span></div>
+        </div>
+        <div class="c-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <div><b>Gateshead based</b><span>Covering Newcastle and the North East</span></div>
+        </div>
+      </div>
+    </div>
+    <form class="reveal" action="/api/enquiry" method="POST">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="Knights Flooring">
+      <input type="hidden" name="source" value="mockup-knights-flooring">
+      <div class="f-row">
+        <div class="f-field">
+          <label for="fName">Name *</label>
+          <input type="text" id="fName" name="name" required autocomplete="name">
+        </div>
+        <div class="f-field">
+          <label for="fPhone">Phone *</label>
+          <input type="tel" id="fPhone" name="phone" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel">
+        </div>
+      </div>
+      <div class="f-field">
+        <label for="fEmail">Email</label>
+        <input type="email" id="fEmail" name="email" autocomplete="email">
+      </div>
+      <div class="f-field">
+        <label for="fService">What needs doing?</label>
+        <select id="fService" name="service">
+          <optgroup label="Wood &amp; LVT">
+            <option>LVT / Herringbone</option>
+            <option>Laminate / wood flooring</option>
+          </optgroup>
+          <optgroup label="Carpets &amp; Vinyl">
+            <option>Carpets</option>
+            <option>Stairs and landings</option>
+            <option>Vinyl flooring</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option>Commercial flooring</option>
+            <option>Something else</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="f-field">
+        <label for="fMsg">Tell us about the job</label>
+        <textarea id="fMsg" name="message" placeholder="e.g. kitchen and hallway, fancy herringbone, roughly 25 square metres"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="foot-in wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <rect x="18" y="18" width="84" height="84" fill="none" stroke="#e2bd84" stroke-width="2.4" transform="rotate(45 60 60)"/>
+          <rect x="25" y="25" width="70" height="70" fill="none" stroke="#e2bd84" stroke-width="1.6" transform="rotate(45 60 60)"/>
+          <text x="60" y="76" text-anchor="middle" font-family="Prata,serif" font-size="44" fill="#e2bd84">K</text>
+        </svg>
+        <div class="foot-tag">Flooring supplied and fitted across<br>Gateshead, Newcastle &amp; the North East</div>
+      </div>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#work">Recent Work</a>
+        <a href="#areas">Areas</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Knights Flooring. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">Construction Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- fabs -->
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call Knights Flooring">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" class="fab fab-wa" id="fabWa" aria-label="WhatsApp Knights Flooring">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// herringbone plank rows (shared builder)
+function hbFill(id, count, startDelay, step){
+  var el = document.getElementById(id);
+  if (!el) return;
+  for (var i = 0; i < count; i++){
+    var p = document.createElement('i');
+    p.style.animationDelay = (startDelay + i * step) + 's';
+    el.appendChild(p);
+  }
+}
+hbFill('ldHb', 12, 0.1, 0.09);    // loader: planks lay left to right
+hbFill('foldHb', 22, 1.95, 0.06); // mobile fold band: hands off from the loader
+hbFill('ctaHb', 40, 0, 0);        // cta band: static texture
+
+// loader
+(function(){
+  var ld = document.getElementById('ld');
+  var phases = ['SUBFLOOR PREPPED','PLANKS CUT','LAYING HERRINGBONE','BEADING ON','FLOOR LAID'];
+  var st = document.getElementById('ldStatus'); var pi = 0;
+  var tick = setInterval(function(){ pi++; if (pi < phases.length) st.textContent = phases[pi]; }, 400);
+  setTimeout(function(){ ld.classList.add('gone'); clearInterval(tick); }, 2200);
+  setTimeout(function(){ if (ld.parentNode) ld.parentNode.removeChild(ld); }, 2800);
+})();
+
+// contact details (base64)
+(function(){
+  var P = atob('MDc1MDM0OTMyMDY=');
+  var Pf = atob('MDc1MDMgNDkzMjA2');
+  var W = atob('NDQ3NTAzNDkzMjA2');
+  var wl = 'https://wa.me/' + W + '?text=Hi%2C%20I%20found%20you%20online%20and%20would%20like%20a%20quote%20please';
+  var hc = document.getElementById('heroCall');
+  hc.href = 'tel:' + P;
+  hc.lastChild.textContent = 'Call ' + Pf;
+  document.getElementById('heroWa').href = wl;
+  var fc = document.getElementById('fabCall');
+  fc.href = 'tel:' + P; fc.style.display = 'flex';
+  var fw = document.getElementById('fabWa');
+  fw.href = wl; fw.style.display = 'flex';
+  var cc = document.getElementById('callCard');
+  cc.href = 'tel:' + P;
+  document.getElementById('callNum').textContent = Pf;
+  var wc = document.getElementById('waCard');
+  wc.href = wl;
+})();
+
+// mobile nav
+(function(){
+  var b = document.getElementById('navBurger'), p = document.getElementById('navPanel');
+  b.addEventListener('click', function(){
+    var open = p.classList.toggle('open');
+    b.setAttribute('aria-expanded', open);
+  });
+  p.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ p.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+  });
+})();
+
+// scroll reveals
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+// fabs
+(function(){
+  var fabs = document.getElementById('fabs');
+  var hero = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    fabs.classList.toggle('show', window.scrollY > hero.offsetHeight - 80);
+  }, {passive:true});
+})();
+
+// form
+document.getElementById('formTimestamp').value = Date.now();
+(function(){
+  var ph = document.getElementById('fPhone');
+  ph.addEventListener('input', function(){
+    ph.setCustomValidity(ph.validity.patternMismatch ? 'Please enter a UK phone number, e.g. 07123 456789' : '');
+  });
+})();
+</script>
+</body>
+</html>
