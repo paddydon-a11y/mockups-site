@@ -29,10 +29,11 @@
   --ink:#131a15;
   --ink2:#1b241d;
   --ink3:#242f26;
-  --accent:#2e8b3a;
-  --accent-deep:#226a2c;
-  --accent-tint:#a4dcab;
-  --accent-glow:rgba(46,139,58,.15);
+  --accent:#46871c;
+  --accent-deep:#31600f;
+  --accent-tint:#b3da8e;
+  --accent-brand:#549b24;
+  --accent-glow:rgba(84,155,36,.15);
   --timber:#d8b97c;
   --timber2:#c7a05e;
   --post:#cdd4cc;
@@ -81,7 +82,6 @@ a{text-decoration:none;color:inherit}
 .ld-brand{text-align:center;margin-top:30px;opacity:0;transform:translateY(14px);animation:ldRise .5s ease 1.78s forwards}
 .ld-brand .ld-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:2.1rem;letter-spacing:.06em;color:var(--ink-text);text-transform:uppercase}
 .ld-brand .ld-name span{color:var(--accent-tint)}
-.ld-sub{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-body);margin-top:8px;opacity:0;animation:ldRise .5s ease 1.95s forwards}
 @keyframes ldRise{to{opacity:1;transform:translateY(0)}}
 .ld-status{position:absolute;left:0;top:-30px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-tint)}
 @media (prefers-reduced-motion:reduce){
@@ -93,10 +93,9 @@ a{text-decoration:none;color:inherit}
 nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
 .nav-logo{display:flex;align-items:center;gap:10px;white-space:nowrap}
-.nav-mark{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex:none}
-.nav-mark svg{width:20px;height:20px}
-.nav-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.22rem;letter-spacing:.05em;color:var(--head);text-transform:uppercase;line-height:1}
-.nav-name small{display:block;font-family:'JetBrains Mono',monospace;font-size:.56rem;font-weight:500;letter-spacing:.24em;color:var(--muted);margin-top:3px}
+.nav-logo img{height:46px;width:auto}
+.foot-logo{height:66px;width:auto}
+.ld-logo{width:min(340px,72vw);height:auto;margin:0 auto}
 .nav-links{display:flex;align-items:center;gap:26px;list-style:none}
 .nav-links a{font-size:.92rem;font-weight:500;color:var(--body)}
 .nav-links a:hover{color:var(--head)}
@@ -105,7 +104,7 @@ nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px sol
 .nav-links a.nav-cta svg{stroke:#fff}
 .nav-burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
 .nav-burger span{display:block;width:24px;height:2px;background:var(--head);margin:5px 0;transition:transform .25s ease,opacity .25s ease}
-.mobile-menu{display:none;position:fixed;top:63px;left:0;right:0;bottom:0;background:var(--bg);z-index:890;padding:28px 24px;flex-direction:column;gap:6px}
+.mobile-menu{display:none;position:fixed;top:69px;left:0;right:0;bottom:0;background:var(--bg);z-index:890;padding:28px 24px;flex-direction:column;gap:6px}
 .mobile-menu.open{display:flex}
 .mobile-menu a{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--head);padding:12px 0;border-bottom:1px solid var(--line)}
 .mobile-menu .mm-call{margin-top:22px;background:var(--accent);color:#fff;text-align:center;border-radius:12px;padding:16px;border:0;font-family:'Barlow Condensed',sans-serif;font-size:1.4rem}
@@ -119,7 +118,7 @@ body.menu-is-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotat
 .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:78px;padding-bottom:72px}
 .eyebrow{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:20px}
 .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;flex:none}
-@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 9px rgba(46,139,58,0)}100%{box-shadow:0 0 0 0 rgba(46,139,58,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 9px rgba(84,155,36,0)}100%{box-shadow:0 0 0 0 rgba(84,155,36,0)}}
 .hero h1{font-size:clamp(2.6rem,5.6vw,5rem);font-weight:700}
 .hero h1 .acc{color:var(--accent);display:inline-block;position:relative}
 .hero h1 .acc::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:7px;border-radius:2px;background:linear-gradient(180deg,var(--timber),var(--timber2));transform:scaleX(0);transform-origin:left;animation:railIn .5s cubic-bezier(.34,1.3,.64,1) 2.05s forwards}
@@ -235,8 +234,6 @@ form .btn-call{width:100%;justify-content:center;margin-top:6px}
 /* ---------- Footer ---------- */
 footer{background:var(--ink);padding:52px 0 40px}
 .foot-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:26px;align-items:center}
-.foot-brand .nav-name{color:var(--ink-text)}
-.foot-brand .nav-name small{color:var(--ink-body)}
 .foot-tag{color:var(--ink-body);font-size:.9rem;margin-top:10px}
 .foot-meta{color:var(--ink-body);font-size:.82rem;text-align:right}
 .foot-meta a{color:var(--accent-tint)}
@@ -252,13 +249,15 @@ footer{background:var(--ink);padding:52px 0 40px}
 .fab-wa{background:var(--wa);animation:fabPulseWa 2s infinite}
 .fab-wa svg{fill:#083b1c}
 .fab:hover{animation-play-state:paused}
-@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(46,139,58,.4)}70%{box-shadow:0 0 0 14px rgba(46,139,58,0)}100%{box-shadow:0 0 0 0 rgba(46,139,58,0)}}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(84,155,36,.4)}70%{box-shadow:0 0 0 14px rgba(84,155,36,0)}100%{box-shadow:0 0 0 0 rgba(84,155,36,0)}}
 @keyframes fabPulseWa{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
 /* ---------- Mobile ---------- */
 @media (max-width:880px){
   .nav-links{display:none}
   .nav-burger{display:block}
+  .nav-logo img{height:40px}
+  .foot-logo{height:56px}
 
   /* fold poster */
   .hero-poster{background:var(--ink)}
@@ -325,19 +324,15 @@ footer{background:var(--ink);padding:52px 0 40px}
       <div class="ld-cap"></div>
     </div>
     <div class="ld-brand">
-      <div class="ld-name">West Lakes <span>Fencing</span></div>
+      <img class="ld-logo" src="logo-white.png" alt="West Lakes Fencing" width="998" height="322">
     </div>
-    <div class="ld-sub">Fencing &amp; Garden Maintenance &middot; West Cumbria</div>
   </div>
 </div>
 
 <nav>
   <div class="wrap nav-in">
     <a href="#" class="nav-logo" aria-label="West Lakes Fencing home">
-      <span class="nav-mark">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="4" height="13" rx="1" fill="#fff"/><rect x="10" y="5" width="4" height="15" rx="1" fill="#fff"/><rect x="16" y="7" width="4" height="13" rx="1" fill="#fff"/><rect x="2" y="9.5" width="20" height="2.4" rx="1" fill="#a4dcab"/></svg>
-      </span>
-      <span class="nav-name">West Lakes Fencing<small>Fencing &middot; Gardens &middot; West Cumbria</small></span>
+      <img src="logo-nav.png" alt="West Lakes Fencing" width="778" height="208">
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -604,7 +599,7 @@ footer{background:var(--ink);padding:52px 0 40px}
 <footer>
   <div class="wrap foot-in">
     <div class="foot-brand">
-      <span class="nav-name">West Lakes Fencing<small>Fencing &middot; Gardens &middot; West Cumbria</small></span>
+      <img class="foot-logo" src="logo-white.png" alt="West Lakes Fencing" width="998" height="322">
       <p class="foot-tag">Fencing and garden maintenance across West Cumbria.</p>
     </div>
     <div class="foot-meta">
