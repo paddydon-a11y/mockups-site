@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Independent Hospitality Group | VIP Event Packages Worldwide</title>
+<meta name="description" content="Official luxury hospitality packages and premium tickets for the world's biggest sporting, music and entertainment events. The Premier League, Six Nations, Cheltenham Festival, Formula 1 and much more.">
+<link rel="icon" type="image/png" href="photos/ihg-crest.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0c;
+  --ink-2:#0e0e11;
+  --ink-3:#141418;
+  --line:rgba(203,164,82,.22);
+  --line-strong:rgba(203,164,82,.45);
+  --gold:#cba452;
+  --gold-bright:#f3ddA0;
+  --gold-deep:#8a6a2f;
+  --ivory:#f4efe4;
+  --mist:#b9b4a8;
+  --metal:linear-gradient(105deg,#8a6a2f 0%,#c9a24b 22%,#f7e7b4 48%,#d4af5f 68%,#8a6a2f 100%);
+  --ease:cubic-bezier(.22,.61,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+html.menu-open{overflow:hidden}
+body{
+  background:var(--ink);
+  color:var(--ivory);
+  font-family:'Archivo',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.serif{font-family:'Marcellus',serif;font-weight:400}
+
+::selection{background:#c9a24b;color:#0a0a0c}
+
+/* ---------- intro veil ---------- */
+.veil{
+  position:fixed;inset:0;z-index:200;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  animation:veilOut .8s var(--ease) 1.5s forwards;
+}
+.veil img{width:min(150px,34vw);opacity:0;animation:crestIn 1.1s var(--ease) .1s forwards}
+.veil .veil-rule{
+  position:absolute;left:50%;bottom:18%;transform:translateX(-50%);
+  height:1px;width:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  animation:ruleGrow 1s var(--ease) .4s forwards;
+}
+@keyframes crestIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes ruleGrow{to{width:min(320px,60vw)}}
+@keyframes veilOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){
+  .veil{display:none}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .35s ease,border-color .35s ease;
+  background:transparent;border-bottom:1px solid transparent;
+}
+.nav.solid{background:#0a0a0c;border-bottom-color:var(--line)}
+.nav-inner{
+  max-width:1240px;margin:0 auto;
+  padding-block:0;padding-inline:28px;
+  height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.brand img{height:46px;width:auto}
+.brand-word{display:flex;flex-direction:column;line-height:1.15}
+.brand-word .bw-top{font-size:15px;letter-spacing:.14em;color:var(--ivory)}
+.brand-word .bw-sub{font-size:9px;letter-spacing:.34em;color:var(--gold);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mist);
+  transition:color .25s ease;position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;
+  background:var(--gold);transition:right .3s var(--ease);
+}
+.nav-links a:hover{color:var(--ivory)}
+.nav-links a:hover::after{right:0}
+.btn-gold{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--metal);background-size:220% 100%;background-position:0% 0;
+  color:#161006;font-family:'Archivo',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  padding-block:15px;padding-inline:30px;border:none;cursor:pointer;
+  transition:background-position .6s var(--ease),transform .25s ease,box-shadow .25s ease;
+}
+.btn-gold:hover{background-position:95% 0;transform:translateY(-1px);box-shadow:0 12px 34px rgba(201,162,75,.25)}
+.nav .btn-gold{padding-block:12px;padding-inline:24px}
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  border:1px solid var(--line-strong);color:var(--ivory);
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+  padding-block:15px;padding-inline:30px;
+  transition:border-color .25s ease,background .25s ease;
+}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(201,162,75,.08)}
+.burger{
+  display:none;background:none;border:1px solid var(--line-strong);
+  width:46px;height:46px;cursor:pointer;position:relative;flex:0 0 auto;
+}
+.burger span{
+  position:absolute;left:12px;right:12px;height:1px;background:var(--gold-bright);
+  transition:transform .3s var(--ease),opacity .2s ease;
+}
+.burger span:nth-child(1){top:16px}
+.burger span:nth-child(2){top:22px}
+.burger span:nth-child(3){top:28px}
+.menu-open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* mobile menu */
+.mmenu{
+  position:fixed;inset:0;z-index:90;background:#0a0a0c;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;
+}
+.menu-open .mmenu{opacity:1;visibility:visible}
+.mmenu a{
+  font-family:'Marcellus',serif;font-size:32px;color:var(--ivory);
+  padding-block:10px;padding-inline:20px;letter-spacing:.06em;
+  opacity:0;transform:translateY(14px);transition:opacity .4s ease,transform .4s var(--ease),color .25s ease;
+}
+.menu-open .mmenu a{opacity:1;transform:none}
+.menu-open .mmenu a:nth-child(1){transition-delay:.08s}
+.menu-open .mmenu a:nth-child(2){transition-delay:.14s}
+.menu-open .mmenu a:nth-child(3){transition-delay:.2s}
+.menu-open .mmenu a:nth-child(4){transition-delay:.26s}
+.mmenu a:hover{color:var(--gold-bright)}
+.mmenu .mmenu-foot{
+  position:absolute;bottom:44px;left:0;right:0;text-align:center;
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  opacity:0;transition:opacity .4s ease .32s;
+}
+.menu-open .mmenu .mmenu-foot{opacity:1}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  isolation:isolate;overflow:clip;
+}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  animation:kenburns 26s ease-in-out infinite alternate;
+}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+.hero-scrim{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(10,10,12,.72) 0%,rgba(10,10,12,.25) 34%,rgba(10,10,12,.55) 66%,#0a0a0c 100%),
+    radial-gradient(120% 70% at 50% 105%,rgba(201,162,75,.16) 0%,transparent 60%);
+}
+.hero-frame{
+  position:absolute;inset:18px;z-index:1;pointer-events:none;
+  border:1px solid rgba(203,164,82,.28);
+}
+.hero-frame::before,.hero-frame::after,
+.hero-frame b::before,.hero-frame b::after{
+  content:"";position:absolute;width:14px;height:14px;
+  border-color:var(--gold);border-style:solid;
+}
+.hero-frame::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.hero-frame::after{top:-1px;right:-1px;border-width:2px 2px 0 0}
+.hero-frame b::before{bottom:-1px;left:-1px;border-width:0 0 2px 2px}
+.hero-frame b::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.hero-inner{
+  position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;
+  padding-block:0 96px;padding-inline:28px;
+}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:16px;
+  font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-bright);
+  margin-bottom:26px;
+  opacity:0;animation:rise .9s var(--ease) 1.7s forwards;
+}
+.hero-kicker::before{content:"";width:44px;height:1px;background:var(--gold)}
+.hero h1{
+  font-family:'Marcellus',serif;
+  font-size:clamp(30px,7vw,88px);
+  line-height:1.14;letter-spacing:.05em;
+  text-transform:uppercase;
+  max-width:15ch;
+  margin-bottom:30px;
+}
+.hero h1 .plain{color:var(--ivory);display:block;opacity:0;animation:rise 1s var(--ease) 1.85s forwards}
+.hero h1 .gilt{
+  display:block;
+  background:var(--metal);background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:rise 1s var(--ease) 2s forwards,shimmer 6s ease-in-out 3.1s infinite;
+  opacity:0;
+}
+@keyframes shimmer{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero-sub{
+  max-width:560px;color:var(--mist);font-size:17px;
+  margin-bottom:40px;
+  opacity:0;animation:rise 1s var(--ease) 2.2s forwards;
+}
+.hero-sub strong{color:var(--ivory);font-weight:500}
+.hero-cta{display:flex;flex-wrap:wrap;gap:16px;opacity:0;animation:rise 1s var(--ease) 2.35s forwards}
+.hero-crest{
+  position:absolute;top:104px;right:48px;z-index:2;width:150px;
+  opacity:0;animation:crestIn 1.2s var(--ease) 2.1s forwards;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.6));
+}
+
+/* ---------- marquee ---------- */
+.marquee{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--ink-2);overflow:clip;padding-block:22px;padding-inline:0;
+}
+.marquee-track{display:flex;width:max-content;animation:slide 46s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee-track span{
+  font-family:'Marcellus',serif;font-size:15px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--mist);white-space:nowrap;padding-block:0;padding-inline:34px;
+  display:inline-flex;align-items:center;gap:34px;
+}
+.marquee-track span::after{content:"";width:5px;height:5px;transform:rotate(45deg);background:var(--gold);flex:0 0 auto}
+
+/* ---------- shared section chrome ---------- */
+.section{padding-block:120px;padding-inline:28px}
+.wrap{max-width:1240px;margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:16px;
+  font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--gold)}
+h2{
+  font-family:'Marcellus',serif;font-weight:400;
+  font-size:clamp(25px,3.4vw,44px);line-height:1.24;color:var(--ivory);
+  text-transform:uppercase;letter-spacing:.05em;
+}
+h2 .gilt{
+  background:var(--metal);background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- welcome ---------- */
+.welcome{background:var(--ink)}
+.welcome-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px;align-items:start}
+.welcome-copy p{color:var(--mist);font-size:17px;margin-top:26px;max-width:52ch}
+.welcome-copy p strong{color:var(--ivory);font-weight:500}
+.official{
+  margin-top:38px;display:inline-flex;align-items:center;gap:14px;
+  border:1px solid var(--line-strong);padding-block:14px;padding-inline:22px;
+}
+.official .dot{width:8px;height:8px;transform:rotate(45deg);background:var(--metal)}
+.official span{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-bright)}
+.pillars{display:flex;flex-direction:column}
+.pillar{
+  display:grid;grid-template-columns:64px 1fr;gap:26px;align-items:start;
+  padding-block:34px;padding-inline:0;border-top:1px solid var(--line);
+}
+.pillar:last-child{border-bottom:1px solid var(--line)}
+.pillar-num{
+  font-family:'Marcellus',serif;font-size:30px;
+  background:var(--metal);-webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1;padding-top:4px;
+}
+.pillar h3{font-family:'Marcellus',serif;font-weight:400;font-size:23px;color:var(--ivory);margin-bottom:8px;letter-spacing:.02em}
+.pillar p{color:var(--mist);font-size:15.5px;max-width:44ch}
+
+/* ---------- events grid ---------- */
+.events{background:var(--ink-2);border-top:1px solid var(--line)}
+.events-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:64px}
+.events-head p{color:var(--mist);max-width:44ch;font-size:16px}
+.egrid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.card{
+  position:relative;overflow:clip;display:block;
+  min-height:340px;background:var(--ink-3);
+  isolation:isolate;
+}
+.card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  transition:transform 1.1s var(--ease),filter .6s ease;
+  filter:saturate(.92) brightness(.88);
+}
+.card::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(185deg,rgba(10,10,12,.05) 30%,rgba(10,10,12,.86) 100%);
+  transition:background .5s ease;
+}
+.card::after{
+  content:"";position:absolute;top:0;left:0;right:100%;height:2px;background:var(--metal);
+  transition:right .55s var(--ease);
+}
+.card:hover::after{right:0}
+.card:hover img{transform:scale(1.06);filter:saturate(1.05) brightness(.95)}
+.card-body{
+  position:absolute;left:0;right:0;bottom:0;
+  padding-block:26px;padding-inline:26px;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:14px;
+}
+.card-idx{
+  font-size:11px;letter-spacing:.32em;color:var(--gold-bright);
+  display:block;margin-bottom:8px;
+}
+.card-name{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(19px,1.7vw,25px);color:var(--ivory);line-height:1.2;letter-spacing:.09em;text-transform:uppercase}
+.card-go{
+  flex:0 0 auto;width:44px;height:44px;border:1px solid var(--line-strong);
+  display:flex;align-items:center;justify-content:center;color:var(--gold-bright);
+  font-size:18px;transition:background .3s ease,transform .3s var(--ease);
+}
+.card:hover .card-go{background:rgba(201,162,75,.14);transform:translateX(4px)}
+.c-span7{grid-column:span 7}
+.c-span5{grid-column:span 5}
+.c-span4{grid-column:span 4}
+.c-span12{grid-column:span 12}
+.c-tall{min-height:440px}
+.c-banner{min-height:300px}
+.c-banner .card-name{font-size:clamp(21px,2.2vw,30px)}
+
+/* ---------- standard ---------- */
+.standard{background:var(--ink)}
+.standard-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:80px;align-items:center}
+.standard-copy p{color:var(--mist);font-size:17px;margin-top:26px;max-width:50ch}
+.slist{margin-top:36px;display:flex;flex-direction:column;gap:0}
+.slist li{
+  display:flex;align-items:baseline;gap:18px;
+  padding-block:17px;padding-inline:0;border-top:1px solid var(--line);
+  font-size:16.5px;color:var(--ivory);
+}
+.slist li:last-child{border-bottom:1px solid var(--line)}
+.slist .diamond{width:7px;height:7px;transform:rotate(45deg) translateY(-1px);background:var(--metal);flex:0 0 auto}
+.slist small{display:block;color:var(--mist);font-size:14.5px;margin-top:2px}
+.standard-visual{position:relative}
+.standard-visual .photo{
+  position:relative;overflow:clip;
+}
+.standard-visual .photo img{width:100%;height:560px;object-fit:cover;filter:saturate(.95)}
+.standard-visual .photo::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(200deg,transparent 55%,rgba(10,10,12,.55) 100%);
+}
+.standard-visual::before{
+  content:"";position:absolute;top:26px;left:-26px;right:26px;bottom:-26px;
+  border:1px solid var(--line-strong);z-index:-1;
+}
+.plaque{
+  position:absolute;left:-26px;bottom:34px;
+  background:#0a0a0c;border:1px solid var(--line-strong);
+  padding-block:20px;padding-inline:26px;
+  display:flex;align-items:center;gap:18px;
+  box-shadow:0 24px 60px rgba(0,0,0,.55);
+}
+.plaque img{width:52px;height:auto}
+.plaque .pq-title{font-family:'Marcellus',serif;font-size:16px;color:var(--ivory);line-height:1.3}
+.plaque .pq-sub{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+
+/* ---------- statement band ---------- */
+.band{
+  position:relative;isolation:isolate;overflow:clip;
+  padding-block:150px;padding-inline:28px;text-align:center;
+}
+.band img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.band::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,#0a0a0c 0%,rgba(10,10,12,.72) 30%,rgba(10,10,12,.72) 70%,#0a0a0c 100%);
+}
+.band blockquote{
+  font-family:'Marcellus',serif;font-size:clamp(26px,3.6vw,48px);line-height:1.3;
+  max-width:22ch;margin:0 auto;color:var(--ivory);
+}
+.band blockquote .gilt{
+  background:var(--metal);background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.band .band-rule{
+  width:64px;height:1px;background:var(--gold);margin:34px auto 0;
+}
+.band .band-sub{margin-top:22px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-bright)}
+
+/* ---------- enquire ---------- */
+.enquire{background:var(--ink-2);border-top:1px solid var(--line)}
+.enquire-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px}
+.enquire-copy p{color:var(--mist);font-size:17px;margin-top:26px;max-width:44ch}
+.contact-rows{margin-top:44px;display:flex;flex-direction:column}
+.crow{
+  display:flex;flex-direction:column;gap:4px;
+  padding-block:22px;padding-inline:0;border-top:1px solid var(--line);
+}
+.crow:last-child{border-bottom:1px solid var(--line)}
+.crow .clabel{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.crow a{font-family:'Marcellus',serif;font-size:clamp(19px,2vw,25px);color:var(--ivory);transition:color .25s ease;overflow-wrap:anywhere}
+.crow a:hover{color:var(--gold-bright)}
+.eform{
+  background:#0a0a0c;border:1px solid var(--line);
+  padding-block:46px;padding-inline:46px;
+}
+.eform h3{font-family:'Marcellus',serif;font-weight:400;font-size:26px;margin-bottom:8px}
+.eform .form-sub{color:var(--mist);font-size:15px;margin-bottom:34px}
+.field{margin-bottom:26px}
+.field label{
+  display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+}
+.field input,.field select{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-strong);
+  color:var(--ivory);font-family:'Archivo',sans-serif;font-weight:300;font-size:17px;
+  padding-block:10px;padding-inline:0;outline:none;border-radius:0;
+  transition:border-color .3s ease;
+}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 14px) 55%,calc(100% - 9px) 55%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}
+.field select option{background:#141418;color:var(--ivory)}
+.field input::placeholder{color:rgba(185,180,168,.45)}
+.field input:focus,.field select:focus{border-bottom-color:var(--gold-bright)}
+.eform .btn-gold{width:100%;margin-top:10px}
+.form-done{
+  display:none;text-align:center;padding-block:60px;padding-inline:10px;
+}
+.form-done .diamond{width:10px;height:10px;transform:rotate(45deg);background:var(--metal);margin:0 auto 24px}
+.form-done h3{margin-bottom:12px}
+.form-done p{color:var(--mist);font-size:15.5px}
+.eform.sent form{display:none}
+.eform.sent .form-done{display:block}
+
+/* ---------- footer ---------- */
+footer{background:#070708;border-top:1px solid var(--line)}
+.foot-main{
+  max-width:1240px;margin:0 auto;
+  padding-block:90px 60px;padding-inline:28px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:70px;align-items:start;
+}
+.foot-brand img{width:190px;margin-bottom:28px}
+.foot-brand p{color:var(--mist);font-size:15px;max-width:40ch}
+.foot-list h4{
+  font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:14px;
+}
+.foot-list>p{color:var(--mist);font-size:15px;max-width:42ch;margin-bottom:26px}
+.mail-row{display:flex;gap:0;border:1px solid var(--line-strong);max-width:460px}
+.mail-row input{
+  flex:1;min-width:0;background:transparent;border:none;outline:none;
+  color:var(--ivory);font-family:'Archivo',sans-serif;font-weight:300;font-size:15px;
+  padding-block:15px;padding-inline:18px;
+}
+.mail-row input::placeholder{color:rgba(185,180,168,.45)}
+.mail-row .btn-gold{padding-block:0;padding-inline:26px}
+.mail-done{display:none;color:var(--gold-bright);font-size:14px;letter-spacing:.06em;padding-block:16px;padding-inline:0}
+.foot-legal{
+  border-top:1px solid var(--line);
+}
+.foot-legal-inner{
+  max-width:1240px;margin:0 auto;
+  padding-block:28px;padding-inline:28px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  font-size:12.5px;color:rgba(185,180,168,.7);
+}
+.foot-legal-inner .legal-links{display:flex;gap:26px}
+.foot-legal-inner a{transition:color .25s ease}
+.foot-legal-inner a:hover{color:var(--gold-bright)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .welcome-grid,.standard-grid,.enquire-grid{grid-template-columns:1fr;gap:64px}
+  .standard-visual{margin-inline:0 0}
+  .standard-visual::before{left:-14px;right:14px}
+  .plaque{left:-14px}
+  .c-span7,.c-span5{grid-column:span 6}
+  .c-span4{grid-column:span 6}
+}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .nav .btn-gold{display:none}
+  .burger{display:block}
+  .hero-crest{display:none}
+  .section{padding-block:88px;padding-inline:24px}
+  .band{padding-block:110px;padding-inline:24px}
+}
+@media (max-width:720px){
+  .nav-inner{padding-inline:24px;height:70px}
+  .brand img{height:40px}
+  .hero-frame{inset:12px}
+  .hero-inner{padding-block:0 72px;padding-inline:24px}
+  .hero-kicker{font-size:10px;letter-spacing:.3em;gap:0;margin-bottom:22px}
+  .hero-kicker::before{display:none}
+  .hero-sub{font-size:16px}
+  .egrid{grid-template-columns:1fr;gap:16px}
+  .c-span7,.c-span5,.c-span4,.c-span12{grid-column:span 1}
+  .card{min-height:300px}
+  .c-tall{min-height:360px}
+  .events-head{margin-bottom:44px}
+  .standard-visual .photo img{height:420px}
+  .standard-visual::before{display:none}
+  .plaque{position:static;margin-top:16px;box-shadow:none}
+  .eform{padding-block:36px;padding-inline:24px}
+  .foot-main{grid-template-columns:1fr;gap:54px;padding-block:70px 50px;padding-inline:24px}
+  .foot-legal-inner{padding-inline:24px;justify-content:center;text-align:center}
+  .mail-row .btn-gold{padding-inline:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="veil" aria-hidden="true">
+  <img src="photos/ihg-crest.png" alt="">
+  <div class="veil-rule"></div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="The Independent Hospitality Group, home">
+      <img src="photos/ihg-crest.png" alt="The Independent Hospitality Group crest">
+      <span class="brand-word">
+        <span class="bw-top serif">The Independent</span>
+        <span class="bw-sub">Hospitality Group</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">The IHG</a>
+      <a href="#events">Events</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a href="#enquire" class="btn-gold">Enquire Now</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <a href="#about">The IHG</a>
+  <a href="#events">Events</a>
+  <a href="#experience">Experience</a>
+  <a href="#enquire">Enquire Now</a>
+  <div class="mmenu-foot">VIP Event Packages Worldwide</div>
+</div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-media">
+      <img src="photos/hero-stadium.jpg" alt="A packed international stadium under floodlights on matchday" fetchpriority="high">
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-frame" aria-hidden="true"><b></b></div>
+    <img class="hero-crest" src="photos/ihg-crest.png" alt="">
+    <div class="hero-inner">
+      <p class="hero-kicker">VIP Event Packages Worldwide</p>
+      <h1>
+        <span class="plain">Create an</span>
+        <span class="gilt">unforgettable experience</span>
+      </h1>
+      <p class="hero-sub">Official luxury hospitality packages and premium tickets for the world's biggest <strong>sporting, music and entertainment events</strong>. Entertain clients, reward your team, celebrate in style.</p>
+      <div class="hero-cta">
+        <a href="#enquire" class="btn-gold">Enquire Now</a>
+        <a href="#events" class="btn-ghost">Explore Events</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>The Premier League</span>
+      <span>Six Nations</span>
+      <span>Cheltenham Festival</span>
+      <span>Formula 1</span>
+      <span>World Championship Boxing</span>
+      <span>Stadium Concerts</span>
+      <span>World Darts</span>
+      <span>Tour Golf</span>
+    </div>
+  </div>
+
+  <section class="section welcome" id="about">
+    <div class="wrap welcome-grid">
+      <div class="welcome-copy reveal">
+        <p class="eyebrow">Welcome to The IHG</p>
+        <h2>The world's biggest events, <span class="gilt">the finest way in</span></h2>
+        <p>The IHG specialise in <strong>official luxury hospitality packages and premium tickets</strong> for the world's biggest sporting, music and entertainment events.</p>
+        <p>Whether you are entertaining clients, rewarding your team or celebrating a special occasion, you will receive a personal, professional service from your initial enquiry through to the event itself.</p>
+        <div class="official">
+          <span class="dot"></span>
+          <span>100% Official Packages</span>
+        </div>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <span class="pillar-num">I</span>
+          <div>
+            <h3>Worldwide</h3>
+            <p>The best seats, the best venues, the best locations in the world. The UK, Europe, the USA and beyond.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">II</span>
+          <div>
+            <h3>Top Events</h3>
+            <p>The Premier League, Six Nations, Cheltenham Festival, Formula 1 and much, much more.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">III</span>
+          <div>
+            <h3>VIP Tickets</h3>
+            <p>VIP tickets, hospitality packages, private suites and boxes, tailored to your occasion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section events" id="events">
+    <div class="wrap">
+      <div class="events-head reveal">
+        <div>
+          <p class="eyebrow">The Portfolio</p>
+          <h2>Choose your <span class="gilt">occasion</span></h2>
+        </div>
+        <p>From the roar of the Premier League to the final at centre court, every package is built around you. Tell us the event, we will take care of the rest.</p>
+      </div>
+      <div class="egrid">
+        <a href="#enquire" class="card c-span7 c-tall reveal" data-event="Premier League">
+          <img src="photos/premier-league.jpg" alt="Premier League stadium at night with a full crowd" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">01</span>
+              <span class="card-name">Premier League</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span5 c-tall reveal" data-event="F1 Racing">
+          <img src="photos/f1-racing.jpg" alt="Formula 1 car at speed under lights" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">02</span>
+              <span class="card-name">F1 Racing</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span5 reveal" data-event="Stadium Concerts">
+          <img src="photos/stadium-concerts.jpg" alt="Stadium concert with sweeping lights over the crowd" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">03</span>
+              <span class="card-name">Stadium Concerts</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span7 reveal" data-event="Six Nations">
+          <img src="photos/six-nations.jpg" alt="Rugby lineout under floodlights" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">04</span>
+              <span class="card-name">Six Nations</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span4 reveal" data-event="Horse Racing">
+          <img src="photos/horse-racing.jpg" alt="Racehorses at full stretch on a British racecourse" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">05</span>
+              <span class="card-name">Horse Racing</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span4 reveal" data-event="Boxing">
+          <img src="photos/boxing.jpg" alt="Boxing ring under arena lights" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">06</span>
+              <span class="card-name">Boxing</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span4 reveal" data-event="Darts">
+          <img src="photos/darts.jpg" alt="Dartboard picked out against a dark backdrop" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">07</span>
+              <span class="card-name">Darts</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span7 reveal" data-event="Arena Concerts">
+          <img src="photos/arena-concerts.jpg" alt="Arena concert crowd beneath blue stage lights" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">08</span>
+              <span class="card-name">Arena Concerts</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span5 reveal" data-event="Tour Golf">
+          <img src="photos/tour-golf.jpg" alt="Striped fairway on an English golf course" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">09</span>
+              <span class="card-name">Tour Golf</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+        <a href="#enquire" class="card c-span12 c-banner reveal" data-event="VIP Travel">
+          <img src="photos/vip-travel.jpg" alt="Private jet cabin with cream leather seating" loading="lazy">
+          <div class="card-body">
+            <div>
+              <span class="card-idx">10</span>
+              <span class="card-name">VIP Travel</span>
+            </div>
+            <span class="card-go">&rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section standard" id="experience">
+    <div class="wrap standard-grid">
+      <div class="standard-copy reveal">
+        <p class="eyebrow">The IHG Standard</p>
+        <h2>Hospitality, <span class="gilt">without compromise</span></h2>
+        <p>Every booking is 100% official and handled personally from your first enquiry through to the final whistle, the last furlong or the encore.</p>
+        <ul class="slist">
+          <li><span class="diamond"></span><div>VIP tickets and premium seating<small>The best seats in the house, secured through official channels.</small></div></li>
+          <li><span class="diamond"></span><div>Private suites and hospitality boxes<small>Exclusive spaces for entertaining clients or rewarding your team.</small></div></li>
+          <li><span class="diamond"></span><div>Fine dining and drinks packages<small>Matchday menus, paddock brunches and champagne receptions.</small></div></li>
+          <li><span class="diamond"></span><div>VIP travel and accommodation<small>Flights, transfers and five-star stays arranged around your event.</small></div></li>
+        </ul>
+      </div>
+      <div class="standard-visual reveal">
+        <div class="photo">
+          <img src="photos/champagne.jpg" alt="Champagne bottle and glasses in low golden light" loading="lazy">
+        </div>
+        <div class="plaque">
+          <img src="photos/ihg-crest.png" alt="">
+          <div>
+            <div class="pq-title">Personal service,<br>start to finish</div>
+            <div class="pq-sub">From enquiry to event</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band reveal">
+    <img class="bg" src="photos/stadium-empty.jpg" alt="" loading="lazy">
+    <blockquote>The best seats, the best venues, <span class="gilt">the best locations in the world.</span></blockquote>
+    <div class="band-rule"></div>
+    <p class="band-sub">The UK &middot; Europe &middot; The USA &middot; Beyond</p>
+  </section>
+
+  <section class="section enquire" id="enquire">
+    <div class="wrap enquire-grid">
+      <div class="enquire-copy reveal">
+        <p class="eyebrow">Enquire</p>
+        <h2>Start planning <span class="gilt">your event</span></h2>
+        <p>Tell us the event you have in mind and we will come back to you with the options, personally and without obligation.</p>
+        <div class="contact-rows">
+          <div class="crow">
+            <span class="clabel">Call us</span>
+            <a href="#" class="ob-phone" data-v="MDc1MzQ2MTA4Mzk=">Show phone number</a>
+          </div>
+          <div class="crow">
+            <span class="clabel">Email us</span>
+            <a href="#" class="ob-email" data-v="c2FsZXNAdGhlaW5kZXBlbmRlbnRob3NwaXRhbGl0eWdyb3VwLmNvbQ==">Show email address</a>
+          </div>
+        </div>
+      </div>
+      <div class="eform reveal" id="eform">
+        <form id="enquiryForm" novalidate>
+          <h3>Request a callback</h3>
+          <p class="form-sub">Fill in your details and the team will be in touch.</p>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone Number</label>
+            <input id="f-phone" name="phone" type="tel" placeholder="Your phone number" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email Address</label>
+            <input id="f-email" name="email" type="email" placeholder="you@company.co.uk" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-event">Event Interest</label>
+            <select id="f-event" name="event">
+              <option value="" selected>Select an event</option>
+              <option>Premier League</option>
+              <option>Six Nations</option>
+              <option>F1 Racing</option>
+              <option>Horse Racing</option>
+              <option>Boxing</option>
+              <option>Darts</option>
+              <option>Stadium Concerts</option>
+              <option>Arena Concerts</option>
+              <option>Tour Golf</option>
+              <option>VIP Travel</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-gold">Send Enquiry</button>
+        </form>
+        <div class="form-done">
+          <div class="diamond"></div>
+          <h3 class="serif">Thank you</h3>
+          <p>Your enquiry has been received. The team will be in touch shortly to start planning your event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-main">
+    <div class="foot-brand reveal">
+      <img src="photos/ihg-crest.png" alt="The Independent Hospitality Group crest">
+      <p>Official luxury hospitality packages and premium tickets for the world's biggest sporting, music and entertainment events.</p>
+    </div>
+    <div class="foot-list reveal">
+      <h4>Join the mailing list</h4>
+      <p>Be first to hear when new event packages are released, from the Premier League to Cheltenham.</p>
+      <div class="mail-row" id="mailRow">
+        <input type="email" id="mailInput" placeholder="Email address" autocomplete="email" aria-label="Email address">
+        <button class="btn-gold" id="mailBtn" type="button">Join</button>
+      </div>
+      <p class="mail-done" id="mailDone">You are on the list. Welcome to The IHG.</p>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <div class="foot-legal-inner">
+      <span>The Independent Hospitality Group Ltd, a company registered in England and Wales, no. 17243198. &copy;2026 The Independent Hospitality Group. All rights reserved.</span>
+      <span class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('solid',window.scrollY>40);}
+  onScroll();
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  var burger=document.getElementById('burger');
+  var root=document.documentElement;
+  function closeMenu(){root.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu');}
+  burger.addEventListener('click',function(){
+    var open=root.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  document.querySelectorAll('.mmenu a').forEach(function(a){a.addEventListener('click',closeMenu);});
+
+  var track=document.getElementById('marqueeTrack');
+  track.innerHTML+=track.innerHTML;
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  function decode(el,isPhone){
+    var v=atob(el.getAttribute('data-v'));
+    if(isPhone){
+      el.textContent=v.replace(/(\d{5})(\d{6})/,'$1 $2');
+      el.setAttribute('href','tel:'+v);
+    }else{
+      el.textContent=v;
+      el.setAttribute('href','mailto:'+v);
+    }
+  }
+  document.querySelectorAll('.ob-phone').forEach(function(el){
+    el.addEventListener('click',function(ev){
+      if(el.getAttribute('href')==='#'){ev.preventDefault();decode(el,true);}
+    });
+  });
+  document.querySelectorAll('.ob-email').forEach(function(el){
+    el.addEventListener('click',function(ev){
+      if(el.getAttribute('href')==='#'){ev.preventDefault();decode(el,false);}
+    });
+  });
+
+  document.querySelectorAll('.card').forEach(function(card){
+    card.addEventListener('click',function(){
+      var sel=document.getElementById('f-event');
+      var name=card.getAttribute('data-event');
+      for(var i=0;i<sel.options.length;i++){
+        if(sel.options[i].text===name){sel.selectedIndex=i;break;}
+      }
+    });
+  });
+
+  document.getElementById('enquiryForm').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var ok=true;
+    ['f-name','f-phone','f-email'].forEach(function(id){
+      var f=document.getElementById(id);
+      if(!f.value.trim()){ok=false;f.style.borderBottomColor='#b0523c';}
+      else{f.style.borderBottomColor='';}
+    });
+    if(ok){document.getElementById('eform').classList.add('sent');}
+  });
+
+  var mailBtn=document.getElementById('mailBtn');
+  mailBtn.addEventListener('click',function(){
+    var inp=document.getElementById('mailInput');
+    if(inp.value.trim()&&inp.value.indexOf('@')>0){
+      document.getElementById('mailRow').style.display='none';
+      document.getElementById('mailDone').style.display='block';
+    }else{
+      inp.style.borderBottomColor='#b0523c';
+    }
+  });
+})();
+</script>
+</body>
+</html>
