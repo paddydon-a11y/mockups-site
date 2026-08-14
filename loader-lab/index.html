@@ -3935,6 +3935,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Slates cascade along the pitch in overlapping courses and the ridge line caps it off.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-ladderdrop" data-dur="2400">
+      <span class="trade">Loft ladders / boarding</span>
+      <h3>Ladder Drop</h3>
+      <p>The ceiling line draws, the hatch unlatches and swings down on its hinge, a three section timber ladder telescopes out of the opening one section at a time, warm light spills down through the hole and the wordmark rises up out of the hatch. First use: jmcf-loft-ladders-boarding.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-leadburn" data-dur="2400">
       <span class="trade">Lead Roofers</span>
       <h3>Lead Burn</h3>
@@ -8369,6 +8375,57 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- lead burn (specialist lead roofers) -->
+<style>
+#ld-ladderdrop{background:#17191d}
+#ld-ladderdrop .lp-stage{position:relative;width:min(320px,74vw);height:min(340px,56vh);perspective:900px}
+#ld-ladderdrop .lp-ceil{position:absolute;left:0;right:0;top:16%;height:3px;background:linear-gradient(90deg,transparent,#3a3f47 12%,#3a3f47 88%,transparent);transform:scaleX(0)}
+#ld-ladderdrop .lp-open{position:absolute;left:50%;top:16%;width:118px;height:9px;margin-left:-59px;background:#0c0e10;opacity:0;box-shadow:0 0 0 1px #3a3f47}
+#ld-ladderdrop .lp-spill{position:absolute;left:50%;top:calc(16% + 6px);width:118px;height:220px;margin-left:-59px;opacity:0;
+  background:linear-gradient(180deg,rgba(255,213,145,.55),rgba(255,213,145,.06) 62%,transparent);
+  clip-path:polygon(6% 0,94% 0,124% 100%,-24% 100%)}
+#ld-ladderdrop .lp-hatch{position:absolute;left:50%;top:calc(16% + 7px);width:118px;height:80px;margin-left:-59px;
+  background:linear-gradient(180deg,#e9e6df,#c9c5bb);border:2px solid #b96a12;border-radius:2px;transform-origin:top center}
+#ld-ladderdrop .lp-lad{position:absolute;left:50%;top:calc(16% + 8px);margin-left:-30px;width:60px;height:88px}
+#ld-ladderdrop .lp-sec{position:absolute;left:0;width:60px;height:88px;opacity:0;border-radius:2px;
+  background:linear-gradient(90deg,#c98a3a 0 8px,transparent 8px calc(100% - 8px),#c98a3a calc(100% - 8px) 100%),
+  repeating-linear-gradient(180deg,transparent 0 18px,#d9a05a 18px 24px)}
+#ld-ladderdrop .lp-floor{position:absolute;left:8%;right:8%;bottom:16%;height:3px;background:#3a3f47;transform:scaleX(0)}
+#ld-ladderdrop .lp-brand{position:absolute;left:0;right:0;bottom:-12%;text-align:center;opacity:0}
+#ld-ladderdrop .lp-word{font-family:'Be Vietnam Pro',system-ui,sans-serif;font-weight:900;font-size:2.9rem;color:#f2c67a;letter-spacing:-.02em}
+#ld-ladderdrop .lp-sub{font-family:'JetBrains Mono','DM Mono',monospace;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:#7d848d;margin-top:8px}
+#ld-ladderdrop.play .lp-ceil{animation:lpLine .5s cubic-bezier(.2,.8,.2,1) forwards}
+#ld-ladderdrop.play .lp-open{animation:lpFade .3s .45s forwards}
+#ld-ladderdrop.play .lp-spill{animation:lpFade .9s .7s forwards}
+#ld-ladderdrop.play .lp-hatch{animation:lpHatch .55s .4s cubic-bezier(.3,.9,.4,1) forwards}
+#ld-ladderdrop.play .lp-s1{animation:lpDrop1 .42s .62s cubic-bezier(.25,.9,.3,1) forwards}
+#ld-ladderdrop.play .lp-s2{animation:lpDrop2 .42s .9s cubic-bezier(.25,.9,.3,1) forwards}
+#ld-ladderdrop.play .lp-s3{animation:lpDrop3 .42s 1.16s cubic-bezier(.25,.9,.3,1) forwards}
+#ld-ladderdrop.play .lp-floor{animation:lpLine .5s 1.45s cubic-bezier(.2,.8,.2,1) forwards}
+#ld-ladderdrop.play .lp-brand{animation:lpBrand .6s 1.6s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes lpLine{to{transform:scaleX(1)}}
+@keyframes lpFade{to{opacity:1}}
+@keyframes lpHatch{to{transform:rotateX(82deg) translateY(4px)}}
+@keyframes lpDrop1{from{opacity:0;transform:translateY(-70px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lpDrop2{from{opacity:0;transform:translateY(0)}to{opacity:1;transform:translateY(76px)}}
+@keyframes lpDrop3{from{opacity:0;transform:translateY(76px)}to{opacity:1;transform:translateY(152px)}}
+@keyframes lpBrand{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #ld-ladderdrop .lp-hatch,#ld-ladderdrop .lp-lad,#ld-ladderdrop .lp-spill{display:none}
+  #ld-ladderdrop .lp-ceil,#ld-ladderdrop .lp-floor{transform:scaleX(1);animation:none!important}
+  #ld-ladderdrop .lp-open,#ld-ladderdrop .lp-brand{opacity:1;transform:none;animation:none!important}
+}
+</style>
+<div class="loader" id="ld-ladderdrop" aria-hidden="true">
+  <div class="lp-stage">
+    <div class="lp-ceil"></div>
+    <div class="lp-open"></div>
+    <div class="lp-spill"></div>
+    <div class="lp-lad"><div class="lp-sec lp-s1"></div><div class="lp-sec lp-s2"></div><div class="lp-sec lp-s3"></div></div>
+    <div class="lp-hatch"></div>
+    <div class="lp-floor"></div>
+    <div class="lp-brand"><div class="lp-word">JMCF</div><div class="lp-sub">Loft ladders and boarding</div></div>
+  </div>
+</div>
 <style>
 #ld-leadburn{background:#0c0e10;flex-direction:column}
 #ld-leadburn .lb-dome{width:min(360px,80vw);height:auto;display:block}
