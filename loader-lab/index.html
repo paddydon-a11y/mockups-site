@@ -3664,6 +3664,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-weathershield .ws-sub{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:#94a3c4;margin-top:9px;opacity:0;transform:translateY(12px)}
 #ld-weathershield.play .ws-sub{animation:wsUp .5s ease 1.35s forwards}
 @keyframes wsUp{to{opacity:1;transform:translateY(0)}}
+
+/* ---- Pane Reveal (agl-construction-services) ---- */
+#ld-panereveal{background:#062a44;flex-direction:column;gap:26px}
+#ld-panereveal .pr-window{width:min(440px,78vw);aspect-ratio:16/10;border:3px solid #2c5878;background:#2c5878;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:4px;opacity:0;transform:scale(.95);animation:prFrame .45s cubic-bezier(.2,.8,.3,1.1) .05s forwards;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+@keyframes prFrame{to{opacity:1;transform:scale(1)}}
+#ld-panereveal .pr-pane{background:linear-gradient(135deg,#dfeaf2 0%,#f6e9d4 55%,#cfe0ec 100%);background-size:400% 300%;opacity:0;transform:scale(1.08);animation:prPane .5s ease forwards}
+@keyframes prPane{to{opacity:1;transform:scale(1)}}
+#ld-panereveal .pr-brand{text-align:center;opacity:0;transform:translateY(14px);animation:prBrand .55s ease 1.15s forwards}
+@keyframes prBrand{to{opacity:1;transform:translateY(0)}}
+#ld-panereveal .pr-brand .wordmark{color:#fff}
+#ld-panereveal .pr-brand .wordsub{color:#7fa2bd}
+@media (prefers-reduced-motion:reduce){#ld-panereveal .pr-window,#ld-panereveal .pr-pane,#ld-panereveal .pr-brand{animation:none!important;opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -3693,6 +3705,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Decorators / Painters</span>
       <h3>Fan Deck</h3>
       <p>A colour-card fan spreads chip by chip, the chosen brand chip pulls forward and floods the screen as the fresh coat, and the wordmark lands on it. First use: vale-property-services.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-panereveal" data-dur="2300">
+      <span class="trade">Builders / Extensions &amp; Glazing</span>
+      <h3>Pane Reveal</h3>
+      <p>A crittall-style glazing grid frames up on ink, then its panes reveal the view behind them one by one (on a real build, tiles of the client's own hero photo) and the wordmark lands beneath the window. First use: agl-construction-services.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-power" data-dur="2500">
@@ -5289,6 +5307,26 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<div class="loader" id="ld-panereveal" aria-hidden="true">
+  <div class="pr-window">
+    <div class="pr-pane" style="background-position:0% 0%;animation-delay:.35s"></div>
+    <div class="pr-pane" style="background-position:33.3% 0%;animation-delay:.84s"></div>
+    <div class="pr-pane" style="background-position:66.7% 0%;animation-delay:.56s"></div>
+    <div class="pr-pane" style="background-position:100% 0%;animation-delay:1.05s"></div>
+    <div class="pr-pane" style="background-position:0% 50%;animation-delay:.7s"></div>
+    <div class="pr-pane" style="background-position:33.3% 50%;animation-delay:.42s"></div>
+    <div class="pr-pane" style="background-position:66.7% 50%;animation-delay:.98s"></div>
+    <div class="pr-pane" style="background-position:100% 50%;animation-delay:.63s"></div>
+    <div class="pr-pane" style="background-position:0% 100%;animation-delay:.91s"></div>
+    <div class="pr-pane" style="background-position:33.3% 100%;animation-delay:1.12s"></div>
+    <div class="pr-pane" style="background-position:66.7% 100%;animation-delay:.49s"></div>
+    <div class="pr-pane" style="background-position:100% 100%;animation-delay:.77s"></div>
+  </div>
+  <div class="pr-brand">
+    <div class="wordmark">AGL Construction Services</div>
+    <div class="wordsub">Builders &middot; London</div>
+  </div>
+</div>
 <div class="loader" id="ld-fandeck" aria-hidden="true">
   <div class="fd-stage">
     <div class="fd-fan">
