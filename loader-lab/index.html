@@ -3701,6 +3701,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-plandraw .pd-brand .wordmark{color:#1d221c}
 #ld-plandraw .pd-brand .wordsub{color:#4e5747}
 @media (prefers-reduced-motion:reduce){#ld-plandraw .pd-svg .draw{animation:none!important;stroke-dashoffset:0}#ld-plandraw .pd-ticks span,#ld-plandraw .pd-brand,#ld-plandraw .pd-dim{animation:none!important;opacity:1;transform:none}}
+
+/* room set (design & build / complete projects, first use: living-space) */
+#ld-roomset{background:#ffffff;flex-direction:column;gap:26px}
+#ld-roomset .rs-svg{width:min(320px,78vw)}
+#ld-roomset .rs-svg .draw{stroke:#16171a;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#ld-roomset .rs-floor{stroke-dasharray:260;stroke-dashoffset:260;animation:rsDraw .5s ease-out .05s forwards}
+#ld-roomset .rs-sofa{opacity:0;transform:translateY(16px);animation:rsSet .4s cubic-bezier(.2,.9,.3,1.15) .5s forwards}
+#ld-roomset .rs-lamp{opacity:0;transform:translateY(-18px);animation:rsSet .35s cubic-bezier(.2,.9,.3,1.15) .8s forwards}
+#ld-roomset .rs-plant{opacity:0;transform:scale(.6);transform-origin:94px 174px;animation:rsPop .35s cubic-bezier(.2,.9,.3,1.2) 1.2s forwards}
+#ld-roomset .rs-frame{opacity:0;transform:rotate(-9deg);transform-origin:162px 80px;animation:rsFrame .45s cubic-bezier(.2,.9,.3,1.15) 1.3s forwards}
+#ld-roomset .rs-glow{opacity:0;animation:rsGlow .5s ease 1.05s forwards}
+#ld-roomset .rs-brand{text-align:center;opacity:0;transform:translateY(10px);animation:rsSet .5s ease 1.45s forwards}
+#ld-roomset .rs-brand .rs-word{font-weight:800;font-size:1.6rem;letter-spacing:.14em;color:#16171a}
+#ld-roomset .rs-brand .rs-word span{color:#6b2140}
+#ld-roomset .rs-brand .rs-sub{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.3em;color:#8b929b;margin-top:8px;text-transform:uppercase}
+@keyframes rsDraw{to{stroke-dashoffset:0}}
+@keyframes rsSet{to{opacity:1;transform:translateY(0)}}
+@keyframes rsPop{to{opacity:1;transform:scale(1)}}
+@keyframes rsFrame{40%{opacity:1}to{opacity:1;transform:rotate(0)}}
+@keyframes rsGlow{0%{opacity:0}40%{opacity:.9}55%{opacity:.35}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){#ld-roomset .rs-floor{animation:none;stroke-dashoffset:0}#ld-roomset .rs-sofa,#ld-roomset .rs-lamp,#ld-roomset .rs-plant,#ld-roomset .rs-frame,#ld-roomset .rs-glow,#ld-roomset .rs-brand{animation:none;opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -3742,6 +3763,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Design &amp; Build / Architects</span>
       <h3>Plan Draw</h3>
       <p>A floor plan draws itself in plan view: wall runs, an internal wall, a door-swing arc, then a dimension line measures the width and the wordmark rises. The design half of design &amp; build. First use: oak-house-design-build.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-roomset" data-dur="2300">
+      <span class="trade">Design &amp; Build / Complete Projects</span>
+      <h3>Room Set</h3>
+      <p>A floor line draws, then the room furnishes itself: the sofa sets down, the floor lamp lands and clicks ON with a warm glow, a plant pops, the picture frame straightens, and the wordmark rises. The moment a build becomes a living space. Distinct from Plan Draw (a drawing at a desk) and Pane Reveal (glazing reveals a photo): this one dresses a finished room. Built for living-space but cut when the client's logo took over the loader; not yet used in a shipped mockup.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-power" data-dur="2500">
@@ -4698,6 +4725,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On a navy sheet a control cross sets at centre, three sight lines shoot out from it and each locks onto a prism target with a pop, then contour rings ripple outward from the station and the wordmark rises on the surveyed ground. Set up, backsight, observe, contour: the exact order a surveyor works in, and the radiating sight lines are the client's own logo geometry. First used: landpoint-surveying, where it hands off into the fold (the same rings keep rippling and the sight lines re-draw behind the H1 at 2.05s on both viewports). Distinct from Detail &amp; Stamp (a draughtsman ANNOTATES a static member with bolts, welds and dims on an orthogonal gunmetal sheet, then seals it) and from Proposed to Built (building line-art draws then swaps to a photo): nothing here is drawn at a desk, the geometry is radial and concentric rather than orthogonal, and the act is OBSERVING ground that already exists.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+  </div>
+</div>
+
+<div class="loader" id="ld-roomset" aria-hidden="true">
+  <svg class="rs-svg" viewBox="0 0 320 210" width="320" height="210">
+    <radialGradient id="rsg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(196,113,143,.55)"/>
+      <stop offset="100%" stop-color="rgba(196,113,143,0)"/>
+    </radialGradient>
+    <circle class="rs-glow" cx="236" cy="80" r="58" fill="url(#rsg)"/>
+    <g class="draw rs-floor"><path d="M36 174 H284"/></g>
+    <g class="draw rs-sofa">
+      <path d="M112 174 v-40 a10 10 0 0 1 20 0 v8 h56 v-8 a10 10 0 0 1 20 0 v40 z"/>
+      <path d="M132 156 h56"/>
+    </g>
+    <g class="draw rs-lamp">
+      <path d="M236 174 V96"/>
+      <path d="M224 174 h24"/>
+      <path d="M222 96 h28 l-6 -22 h-16 z"/>
+    </g>
+    <g class="draw rs-plant">
+      <path d="M84 174 h20 l-3 -14 h-14 z"/>
+      <path d="M94 160 v-12 M94 152 c-7 -4 -9 -11 -8 -16 M94 149 c7 -4 9 -12 8 -17"/>
+    </g>
+    <g class="draw rs-frame"><rect x="138" y="62" width="48" height="36" rx="2"/></g>
+  </svg>
+  <div class="rs-brand">
+    <div class="rs-word">LIVING<span>&nbsp;SPACE</span></div>
+    <div class="rs-sub">Design &amp; Build &middot; Norfolk &amp; Suffolk</div>
   </div>
 </div>
 
