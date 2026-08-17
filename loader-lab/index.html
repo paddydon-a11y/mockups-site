@@ -3676,6 +3676,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-panereveal .pr-brand .wordmark{color:#fff}
 #ld-panereveal .pr-brand .wordsub{color:#7fa2bd}
 @media (prefers-reduced-motion:reduce){#ld-panereveal .pr-window,#ld-panereveal .pr-pane,#ld-panereveal .pr-brand{animation:none!important;opacity:1;transform:none}}
+#ld-plandraw{background:#ffffff;flex-direction:column;gap:6px}
+#ld-plandraw .pd-svg{width:min(340px,74vw)}
+#ld-plandraw .pd-svg .w{stroke:#16181a;stroke-width:5;fill:none;stroke-linecap:square}
+#ld-plandraw .pd-svg .t{stroke:#16181a;stroke-width:2;fill:none}
+#ld-plandraw .pd-svg .g{stroke:#4e5747;stroke-width:1.6;fill:none}
+#ld-plandraw .pd-svg .draw{stroke-dasharray:600;stroke-dashoffset:600;animation:pdDraw .7s ease forwards}
+#ld-plandraw .pd-svg .d1{animation-delay:.05s}
+#ld-plandraw .pd-svg .d2{animation-delay:.3s}
+#ld-plandraw .pd-svg .d3{animation-delay:.55s}
+#ld-plandraw .pd-svg .d4{animation-delay:.75s}
+#ld-plandraw .pd-svg .d5{animation-delay:.95s}
+@keyframes pdDraw{to{stroke-dashoffset:0}}
+#ld-plandraw .pd-dim{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;fill:#4e5747;opacity:0;animation:pdFade .4s ease 1.25s forwards}
+@keyframes pdFade{to{opacity:1}}
+#ld-plandraw .pd-ticks{display:flex;gap:14px}
+#ld-plandraw .pd-ticks span{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#8a9186;opacity:0;animation:pdFade .35s ease forwards}
+#ld-plandraw .pd-ticks span:nth-child(1){animation-delay:.35s}
+#ld-plandraw .pd-ticks span:nth-child(2){animation-delay:.7s}
+#ld-plandraw .pd-ticks span:nth-child(3){animation-delay:1.05s}
+#ld-plandraw .pd-ticks span:nth-child(4){animation-delay:1.4s}
+#ld-plandraw .pd-brand{text-align:center;opacity:0;transform:translateY(10px);animation:pdRise .5s ease 1.5s forwards;margin-top:10px}
+@keyframes pdRise{to{opacity:1;transform:none}}
+#ld-plandraw .pd-brand .wordmark{color:#1d221c}
+#ld-plandraw .pd-brand .wordsub{color:#4e5747}
+@media (prefers-reduced-motion:reduce){#ld-plandraw .pd-svg .draw{animation:none!important;stroke-dashoffset:0}#ld-plandraw .pd-ticks span,#ld-plandraw .pd-brand,#ld-plandraw .pd-dim{animation:none!important;opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -3711,6 +3736,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Builders / Extensions &amp; Glazing</span>
       <h3>Pane Reveal</h3>
       <p>A crittall-style glazing grid frames up on ink, then its panes reveal the view behind them one by one (on a real build, tiles of the client's own hero photo) and the wordmark lands beneath the window. First use: agl-construction-services.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-plandraw" data-dur="2300">
+      <span class="trade">Design &amp; Build / Architects</span>
+      <h3>Plan Draw</h3>
+      <p>A floor plan draws itself in plan view: wall runs, an internal wall, a door-swing arc, then a dimension line measures the width and the wordmark rises. The design half of design &amp; build. First use: oak-house-design-build.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-power" data-dur="2500">
@@ -5325,6 +5356,22 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="pr-brand">
     <div class="wordmark">AGL Construction Services</div>
     <div class="wordsub">Builders &middot; London</div>
+  </div>
+</div>
+<div class="loader" id="ld-plandraw" aria-hidden="true">
+  <svg class="pd-svg" viewBox="0 0 300 200">
+    <path class="w draw d1" d="M30 170 L30 40 L200 40"/>
+    <path class="w draw d2" d="M240 40 L270 40 L270 170 L30 170"/>
+    <path class="t draw d3" d="M150 40 L150 105 M150 135 L150 170"/>
+    <path class="g draw d3" d="M200 40 A40 40 0 0 1 240 80"/>
+    <path class="t draw d4" d="M60 120 L120 120 L120 150 L60 150 Z"/>
+    <path class="g draw d5" d="M30 185 L270 185 M30 181 L30 189 M270 181 L270 189"/>
+    <text class="pd-dim" x="132" y="197">6.4M</text>
+  </svg>
+  <div class="pd-ticks"><span>Measured</span><span>Drawn</span><span>Approved</span><span>Built</span></div>
+  <div class="pd-brand">
+    <div class="wordmark">Oak House</div>
+    <div class="wordsub">Design &amp; Build &middot; St Albans</div>
   </div>
 </div>
 <div class="loader" id="ld-fandeck" aria-hidden="true">
