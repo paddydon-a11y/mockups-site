@@ -7,7 +7,7 @@
 <title>Trade Loader Lab — internal reference</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@500;700;900&family=Besley:wght@700;800&family=Cinzel:wght@600;700&family=Marcellus&family=DM+Mono:wght@400;500&family=Gantari:wght@900&family=IBM+Plex+Mono:wght@400;500&family=Sofia+Sans:wght@900&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fjalla+One&family=Archivo:wght@500;700;900&family=Besley:wght@700;800&family=Cinzel:wght@600;700&family=Marcellus&family=DM+Mono:wght@400;500&family=Gantari:wght@900&family=IBM+Plex+Mono:wght@400;500&family=Sofia+Sans:wght@900&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#101113; --card:#17191c; --card-2:#1d2024; --line:#26292e;
@@ -3702,6 +3702,33 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-plandraw .pd-brand .wordsub{color:#4e5747}
 @media (prefers-reduced-motion:reduce){#ld-plandraw .pd-svg .draw{animation:none!important;stroke-dashoffset:0}#ld-plandraw .pd-ticks span,#ld-plandraw .pd-brand,#ld-plandraw .pd-dim{animation:none!important;opacity:1;transform:none}}
 
+#ld-roofroad{background:#ffffff;flex-direction:column;gap:18px}
+#ld-roofroad .rr-svg{width:min(320px,74vw)}
+#ld-roofroad .rr-rafter{stroke:#29364a;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:170;stroke-dashoffset:170;animation:rrDraw .5s ease-out .1s forwards}
+#ld-roofroad .rr-wall{stroke:#cbd5e1;stroke-width:4;stroke-linecap:round;fill:none;opacity:0;animation:rrIn .35s ease-out .4s forwards}
+#ld-roofroad .rr-ridge{stroke:#e8861c;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke-dasharray:30;stroke-dashoffset:30;animation:rrDraw .3s ease-out 1.18s forwards}
+#ld-roofroad .rr-slate{fill:#29364a;opacity:0;transform:translateY(-6px);animation:rrSlate .3s ease-out forwards}
+#ld-roofroad .rr-drop{stroke:#e8861c;stroke-width:4;stroke-linecap:round;stroke-dasharray:60;stroke-dashoffset:60;animation:rrDraw .3s ease-out 1.3s forwards}
+#ld-roofroad .rr-ground{stroke:#cbd5e1;stroke-width:3;stroke-linecap:round;stroke-dasharray:250;stroke-dashoffset:250;animation:rrDraw .4s ease-out 1.2s forwards}
+#ld-roofroad .rr-resin{fill:#e8861c;transform:scaleX(0);transform-origin:192px 0;animation:rrResin .45s cubic-bezier(.3,.8,.4,1) 1.5s forwards}
+#ld-roofroad .rr-agg{fill:#151c29;opacity:0;animation:rrAgg .25s ease-out forwards}
+@keyframes rrDraw{to{stroke-dashoffset:0}}
+@keyframes rrSlate{to{opacity:1;transform:translateY(0)}}
+@keyframes rrResin{to{transform:scaleX(1)}}
+@keyframes rrAgg{to{opacity:.55}}
+@keyframes rrIn{to{opacity:1}}
+#ld-roofroad .rr-ticks{display:flex;gap:18px}
+#ld-roofroad .rr-ticks span{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#e8861c;opacity:0;animation:rrUp .3s ease-out forwards}
+#ld-roofroad .rr-ticks span:nth-child(1){animation-delay:.5s}
+#ld-roofroad .rr-ticks span:nth-child(2){animation-delay:1.35s}
+#ld-roofroad .rr-ticks span:nth-child(3){animation-delay:1.9s}
+#ld-roofroad .rr-brand{text-align:center;opacity:0;transform:translateY(12px);animation:rrUp .5s ease-out 1.55s forwards}
+#ld-roofroad .rr-brand .wordmark{color:#151c29;font-family:'Fjalla One',sans-serif;font-weight:400;animation:wordIn .5s ease 1.55s forwards}
+#ld-roofroad .rr-brand .wordsub{color:#94a3b8;animation:wordIn .5s ease 1.65s forwards}
+#ld-roofroad .rr-brand{opacity:1;transform:none;animation:none}
+@keyframes rrUp{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){#ld-roofroad .rr-rafter,#ld-roofroad .rr-ridge,#ld-roofroad .rr-drop,#ld-roofroad .rr-ground{animation:none!important;stroke-dashoffset:0}#ld-roofroad .rr-wall{animation:none!important;opacity:1}#ld-roofroad .rr-slate,#ld-roofroad .rr-agg,#ld-roofroad .rr-ticks span,#ld-roofroad .rr-brand,#ld-roofroad .rr-brand .wordmark,#ld-roofroad .rr-brand .wordsub{animation:none!important;opacity:1;transform:none}#ld-roofroad .rr-resin{animation:none!important;transform:scaleX(1)}}
+
 /* room set (design & build / complete projects, first use: living-space) */
 #ld-roomset{background:#ffffff;flex-direction:column;gap:26px}
 #ld-roomset .rs-svg{width:min(320px,78vw)}
@@ -3763,6 +3790,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Design &amp; Build / Architects</span>
       <h3>Plan Draw</h3>
       <p>A floor plan draws itself in plan view: wall runs, an internal wall, a door-swing arc, then a dimension line measures the width and the wordmark rises. The design half of design &amp; build. First use: oak-house-design-build.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-roofroad" data-dur="2300">
+      <span class="trade">Roofers / Driveways &amp; Exteriors</span>
+      <h3>Roof to Road</h3>
+      <p>Two acts on one house: the gable draws, slates course up the pitch and an orange ridge caps it, then the downpipe drops, the ground line draws and an orange resin band levels out from the house, aggregate settling in as it cures. For firms that do the roof AND the driveway. Built for anytime-roofing but cut on review for a plain logo rise; not yet used in a shipped mockup.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-roomset" data-dur="2300">
@@ -5428,6 +5461,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="pd-brand">
     <div class="wordmark">Oak House</div>
     <div class="wordsub">Design &amp; Build &middot; St Albans</div>
+  </div>
+</div>
+<div class="loader" id="ld-roofroad" aria-hidden="true">
+  <svg class="rr-svg" viewBox="0 0 320 200" fill="none">
+    <path class="rr-wall" d="M74 98 L74 158"/>
+    <path class="rr-wall" d="M186 98 L186 158"/>
+    <path class="rr-rafter" d="M64 96 L130 44 L196 96"/>
+    <rect class="rr-slate" x="93.5" y="80" width="16" height="8" rx="1.5" style="animation-delay:.5s"/>
+    <rect class="rr-slate" x="112.5" y="80" width="16" height="8" rx="1.5" style="animation-delay:.56s"/>
+    <rect class="rr-slate" x="131.5" y="80" width="16" height="8" rx="1.5" style="animation-delay:.62s"/>
+    <rect class="rr-slate" x="150.5" y="80" width="16" height="8" rx="1.5" style="animation-delay:.68s"/>
+    <rect class="rr-slate" x="103" y="68" width="16" height="8" rx="1.5" style="animation-delay:.8s"/>
+    <rect class="rr-slate" x="122" y="68" width="16" height="8" rx="1.5" style="animation-delay:.86s"/>
+    <rect class="rr-slate" x="141" y="68" width="16" height="8" rx="1.5" style="animation-delay:.92s"/>
+    <rect class="rr-slate" x="115.5" y="56" width="13" height="8" rx="1.5" style="animation-delay:1.02s"/>
+    <rect class="rr-slate" x="131.5" y="56" width="13" height="8" rx="1.5" style="animation-delay:1.08s"/>
+    <path class="rr-ridge" d="M120 47 L130 39 L140 47"/>
+    <path class="rr-ground" d="M40 158 L285 158"/>
+    <path class="rr-drop" d="M192 100 L192 152"/>
+    <rect class="rr-resin" x="192" y="152" width="90" height="7" rx="3.5"/>
+    <circle class="rr-agg" cx="207" cy="155.5" r="1.6" style="animation-delay:1.72s"/>
+    <circle class="rr-agg" cx="226" cy="156" r="1.6" style="animation-delay:1.79s"/>
+    <circle class="rr-agg" cx="245" cy="155" r="1.6" style="animation-delay:1.86s"/>
+    <circle class="rr-agg" cx="264" cy="155.5" r="1.6" style="animation-delay:1.93s"/>
+  </svg>
+  <div class="rr-ticks"><span>Roof On</span><span>Ground Worked</span><span>Resin Laid</span></div>
+  <div class="rr-brand">
+    <div class="wordmark">Anytime Roofing</div>
+    <div class="wordsub">Roofing &amp; Driveways &middot; London</div>
   </div>
 </div>
 <div class="loader" id="ld-fandeck" aria-hidden="true">
