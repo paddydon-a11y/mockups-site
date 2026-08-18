@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dockerill Group | Groundworks, Demolition &amp; Recycling | East Anglia &amp; London</title>
+<meta name="description" content="The Dockerill Group delivers groundworks, demolition, site clearance, concrete crushing, recycled aggregates and volumetric concrete across East Anglia and London. Established 1983.">
+<meta property="og:title" content="Dockerill Group - Your New Website">
+<meta property="og:description" content="Groundworks, demolition &amp; recycling across East Anglia &amp; London - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/dockerill-group/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/dockerill-group/">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f3f5f6;
+  --card:#f8fafc;
+  --line:#e2e8f0;
+  --line2:#cbd5e1;
+  --ink:#1b1d1d;
+  --ink2:#242727;
+  --head:#1a1c1e;
+  --body:#46504f;
+  --muted:#8a9492;
+  --red:#dc0227;
+  --red-hover:#b0021f;
+  --red-pale:#ffaeb8;
+  --red-glow:rgba(220,2,39,.14);
+  --grey:#8d8f8e;
+  --grey-deep:#5c5f5e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--body);font-size:1rem;line-height:1.7;overflow-x:clip}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{font-family:'Oswald',sans-serif;color:var(--head);line-height:1.12;text-transform:uppercase;letter-spacing:.01em}
+.wrap{max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.mono{font-family:'JetBrains Mono',monospace}
+.label{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:12px}
+.label::before{content:"";width:26px;height:2px;background:linear-gradient(90deg,var(--red),var(--grey))}
+.sec-head{margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-top:12px}
+.sec-head h2 span{color:var(--red)}
+
+/* aggregate dot divider */
+.agg-rule{height:6px;background-image:radial-gradient(circle at 3px 3px,var(--line2) 1.6px,transparent 1.6px),radial-gradient(circle at 10px 4px,var(--line) 1.2px,transparent 1.2px);background-size:14px 6px,14px 6px;opacity:.9}
+
+/* ============ LOADER : Crush & Grade ============ */
+#loader{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .45s ease;animation:ldGoneAuto 0s 2.5s forwards}
+#loader.gone{opacity:0;pointer-events:none}
+@keyframes ldGoneAuto{to{opacity:0;visibility:hidden;pointer-events:none}}
+.ld-scene{position:relative;width:min(340px,80vw);height:150px}
+.ld-scene svg{width:100%;height:100%;overflow:visible}
+.ld-rubble{animation:ldTip .5s .15s cubic-bezier(.5,0,.8,.4) both}
+@keyframes ldTip{from{transform:translate(-36px,-64px);opacity:0}60%{opacity:1}to{transform:translate(0,0);opacity:1}}
+.ld-jaw{transform-origin:96px 74px;animation:ldChew .34s .55s ease-in-out 4 alternate both}
+@keyframes ldChew{from{transform:rotate(0deg)}to{transform:rotate(-11deg)}}
+.ld-belt-dash{stroke-dasharray:6 7;animation:ldBelt 1s .6s linear 2 both}
+@keyframes ldBelt{from{stroke-dashoffset:0}to{stroke-dashoffset:-52}}
+.ld-grain{opacity:0}
+.ld-g1{animation:ldDrop .5s 1.02s ease-in both}
+.ld-g2{animation:ldDrop .5s 1.14s ease-in both}
+.ld-g3{animation:ldDrop .5s 1.26s ease-in both}
+.ld-g4{animation:ldDrop .5s 1.38s ease-in both}
+@keyframes ldDrop{from{transform:translateY(-6px);opacity:0}30%{opacity:1}to{transform:translateY(26px);opacity:1}}
+.ld-pile{transform-origin:262px 118px;transform:scale(0);animation:ldPile .8s 1.15s cubic-bezier(.2,.9,.3,1.1) forwards}
+@keyframes ldPile{to{transform:scale(1)}}
+.ld-chip{position:absolute;right:-6px;top:-2px;background:var(--red);color:#fff;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.82rem;letter-spacing:.04em;padding:5px 10px;border-radius:6px;transform:scale(0);animation:ldChip .4s 1.62s cubic-bezier(.2,1.2,.4,1.2) forwards}
+@keyframes ldChip{to{transform:scale(1)}}
+.ld-ticks{display:flex;gap:20px;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.22em;color:var(--muted)}
+.ld-ticks span{opacity:0;animation:ldTick .35s ease forwards}
+.ld-ticks span:nth-child(1){animation-delay:.65s}
+.ld-ticks span:nth-child(2){animation-delay:1.05s}
+.ld-ticks span:nth-child(3){animation-delay:1.5s}
+.ld-ticks span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:7px}
+@keyframes ldTick{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.ld-brand{display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:ldTick .5s 1.7s ease forwards}
+.ld-brand img{width:96px;height:auto}
+.ld-brand .mono{font-size:.64rem;letter-spacing:.3em;color:var(--grey-deep)}
+@media (prefers-reduced-motion:reduce){
+  .ld-scene{display:none}
+  .ld-ticks{display:none}
+  .ld-brand{animation:none;opacity:1}
+  #loader{animation-delay:.8s}
+}
+
+/* ============ NAV ============ */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.nav-logo img{width:40px;height:auto}
+.nav-logo b{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.16rem;letter-spacing:.03em;color:var(--red);text-transform:uppercase}
+.nav-logo b span{color:var(--grey)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--red)}
+.nav-links a.nav-cta{background:var(--red);color:#fff !important;font-weight:600;padding:11px 20px;border-radius:8px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--red-hover)}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-burger svg{width:26px;height:26px;display:block}
+.m-menu{display:none;position:fixed;top:72px;left:0;right:0;z-index:890;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 24px 22px;flex-direction:column;gap:2px}
+.m-menu.open{display:flex}
+.m-menu a{padding:12px 2px;font-weight:600;color:var(--head);border-bottom:1px solid var(--line);font-size:1.02rem}
+.m-menu a.m-call{background:var(--red);color:#fff;text-align:center;border-radius:9px;margin-top:14px;border-bottom:none}
+
+/* ============ HERO ============ */
+.hero{display:flex;flex-direction:column;position:relative;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:kb 20s ease-in-out infinite alternate;filter:saturate(.92)}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,18,18,.46) 0%,rgba(16,18,18,.28) 40%,rgba(16,18,18,.82) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;padding-top:120px;padding-bottom:96px;padding-left:24px;padding-right:24px;min-height:78vh;display:flex;flex-direction:column;justify-content:flex-end}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#e8ecec;opacity:0;animation:fadeUp .7s .15s ease forwards}
+.eyebrow i{width:9px;height:9px;border-radius:50%;background:var(--red);animation:pulse 2s infinite;flex:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--red-glow)}70%{box-shadow:0 0 0 11px rgba(220,2,39,0)}100%{box-shadow:0 0 0 0 rgba(220,2,39,0)}}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.9rem);color:#fff;max-width:15ch;margin-top:18px;opacity:0;animation:fadeUp .7s .3s ease forwards}
+.hero h1 em{color:var(--red-pale);display:inline-block}
+.h1-rule{width:0;height:4px;background:linear-gradient(90deg,var(--red),var(--grey));margin-top:18px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+body.lit .h1-rule{width:150px}
+.hero .lede{color:#d5dbda;max-width:52ch;margin-top:20px;font-size:1.06rem;opacity:0;animation:fadeUp .7s .45s ease forwards}
+.hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .6s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;padding:16px 26px;border-radius:9px;transition:transform .2s,background .2s,box-shadow .2s}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-hover);transform:translateY(-2px);box-shadow:0 10px 24px -10px var(--red)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.34)}
+.btn-ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.hero-strip{display:none}
+
+/* ============ TRUST ============ */
+.trust{background:var(--bg);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:26px;padding-bottom:26px}
+.trust-item{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--head);font-size:.95rem}
+.trust-item svg{width:20px;height:20px;flex:none}
+
+/* ============ SERVICES ============ */
+.services{padding-top:96px;padding-bottom:100px;background:var(--bg)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;transition:transform .25s,box-shadow .25s}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--grey));transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:3}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(27,29,29,.28)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-photo{aspect-ratio:16/10;overflow:hidden;background:var(--stone)}
+.svc-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.svc:hover .svc-photo img{transform:scale(1.05)}
+.svc-body{padding:22px 24px 26px}
+.svc-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.24em;color:var(--grey-deep);text-transform:uppercase}
+.svc h3{font-size:1.28rem;margin-top:8px}
+.svc p{font-size:.94rem;margin-top:8px}
+
+/* ============ ABOUT ============ */
+.about{background:var(--stone);padding-top:88px;padding-bottom:88px}
+.about-in{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center}
+.about-logo{background:#fff;border:1px solid var(--line);border-radius:16px;padding:38px;display:flex;align-items:center;justify-content:center}
+.about-logo img{width:200px;height:auto}
+.about-copy h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-top:12px}
+.about-copy h2 span{color:var(--red)}
+.about-copy p{margin-top:16px;max-width:60ch}
+.about-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.about-chips span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-weight:600;font-size:.86rem;color:var(--head)}
+.about-chips svg{width:15px;height:15px;flex:none}
+
+/* ============ CYCLE BAND (97% loop) ============ */
+.cycle{background:var(--ink);color:#c9cfce;padding-top:90px;padding-bottom:90px;position:relative;overflow:hidden}
+.cycle .label{color:var(--red-pale)}
+.cycle .label::before{background:linear-gradient(90deg,var(--red),transparent)}
+.cycle h2{color:#fff;font-size:clamp(1.9rem,4vw,2.9rem);margin-top:12px}
+.cycle h2 em{color:var(--red-pale)}
+.cycle-in{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+.stat97{display:flex;align-items:baseline;gap:6px;margin-top:26px}
+.stat97 b{font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(4.4rem,9vw,7rem);line-height:1;color:var(--red)}
+.stat97 span{font-family:'Oswald',sans-serif;font-size:2rem;color:var(--red-pale)}
+.cycle p.big{color:#e6eaea;font-size:1.05rem;max-width:44ch;margin-top:10px}
+.cycle p.small{font-size:.88rem;margin-top:14px;max-width:48ch;color:#9aa3a1}
+.cycle-loop{background:var(--ink2);border:1px solid #343838;border-radius:16px;padding:30px 30px 26px}
+.loop-svg{width:100%;height:auto;display:block}
+.belt-run{stroke-dasharray:5 7;animation:beltrun 1.6s linear infinite}
+@keyframes beltrun{from{stroke-dashoffset:0}to{stroke-dashoffset:-48}}
+.jaw-loop{transform-origin:118px 88px;animation:jawloop 1.5s ease-in-out infinite alternate}
+@keyframes jawloop{from{transform:rotate(0)}to{transform:rotate(-9deg)}}
+.loop-steps{display:flex;justify-content:space-between;gap:8px;margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.16em;color:#9aa3a1;text-transform:uppercase}
+.loop-steps b{color:#fff;font-weight:600}
+.grade-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.grade-chips span{font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:500;letter-spacing:.14em;border:1px solid #3d4241;color:#c9cfce;border-radius:6px;padding:6px 11px}
+
+/* ============ PROJECTS ============ */
+.projects{padding-top:96px;padding-bottom:96px;background:var(--bg)}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.case{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);position:relative;transition:transform .25s,box-shadow .25s}
+.case::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--grey));transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:3}
+.case:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(27,29,29,.28)}
+.case:hover::before{transform:scaleX(1)}
+.case-photo{aspect-ratio:16/9;overflow:hidden}
+.case-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.case:hover .case-photo img{transform:scale(1.05)}
+.case-body{padding:24px 26px 28px}
+.case-tag{font-family:'JetBrains Mono',monospace;font-size:.62rem;font-weight:600;letter-spacing:.24em;color:var(--red);text-transform:uppercase}
+.case h3{font-size:1.32rem;margin-top:8px}
+.case p{font-size:.94rem;margin-top:8px}
+
+/* ============ CLIENT STRIP ============ */
+.clients{background:var(--stone);padding-top:56px;padding-bottom:56px}
+.clients-in{display:flex;flex-direction:column;gap:26px;align-items:center}
+.clients .mono-lab{font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+.client-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px}
+.client-logos img{height:44px;width:auto;filter:grayscale(1);opacity:.65;transition:filter .3s,opacity .3s}
+.client-logos img:hover{filter:grayscale(0);opacity:1}
+
+/* ============ REVIEWS ============ */
+.reviews{padding-top:96px;padding-bottom:96px;background:var(--bg)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 30px;transition:transform .25s,box-shadow .25s}
+.rev:hover{transform:translateY(-3px);box-shadow:0 16px 36px -18px rgba(27,29,29,.25)}
+.stars{display:flex;gap:3px}
+.stars svg{width:17px;height:17px}
+.rev p{margin-top:14px;font-size:.97rem;color:var(--head)}
+.rev-who{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--muted)}
+.rev-who b{color:var(--grey-deep);font-weight:600}
+
+/* ============ AREAS ============ */
+.areas{background:var(--stone);padding-top:88px;padding-bottom:88px}
+.area-chips{display:flex;flex-wrap:wrap;gap:11px}
+.area-chips span{background:#fff;border:1px solid var(--line);border-radius:99px;padding:10px 20px;font-weight:600;font-size:.92rem;color:var(--head)}
+.area-chips span.home{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ============ CTA BAND ============ */
+.ctaband{background:var(--ink);position:relative;overflow:hidden;padding-top:84px;padding-bottom:84px;border-top:4px solid var(--red)}
+.ctaband h2{color:#fff;font-size:clamp(1.9rem,4.2vw,3rem)}
+.ctaband h2 em{color:var(--red-pale)}
+.ctaband p{color:#c9cfce;margin-top:14px;max-width:52ch}
+.ctaband .hero-ctas{opacity:1;animation:none}
+.cta-ghost{position:absolute;right:-30px;bottom:-36px;width:340px;opacity:.1;pointer-events:none}
+
+/* ============ CONTACT ============ */
+.contact{padding-top:96px;padding-bottom:100px;background:var(--bg)}
+.contact-in{display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:start}
+.c-cards{display:flex;flex-direction:column;gap:16px}
+.c-card{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px 22px}
+.c-ico{width:42px;height:42px;flex:none;border-radius:10px;background:var(--red-glow);display:flex;align-items:center;justify-content:center}
+.c-ico svg{width:20px;height:20px}
+.c-card b{display:block;color:var(--head);font-size:.98rem}
+.c-card span,.c-card a.val{font-size:.92rem;color:var(--body)}
+.c-card a.val:hover{color:var(--red)}
+.form-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px 34px 38px}
+.form-card h3{font-size:1.4rem}
+.form-card .fp{font-size:.9rem;margin-top:6px;margin-bottom:22px}
+.f-row{margin-bottom:16px}
+.f-row label{display:block;font-weight:600;font-size:.86rem;color:var(--head);margin-bottom:7px}
+.f-row label i{font-style:normal;font-weight:400;color:var(--muted)}
+.f-row input,.f-row textarea{width:100%;border:1px solid var(--line2);border-radius:9px;background:#fff;padding:13px 15px;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--head);transition:border .2s,box-shadow .2s}
+.f-row input:focus,.f-row textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px var(--red-glow)}
+.f-row textarea{min-height:110px;resize:vertical}
+.f-sub{width:100%;background:var(--red);color:#fff;border:none;border-radius:9px;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;padding:16px;cursor:pointer;transition:background .2s}
+.f-sub:hover{background:var(--red-hover)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:#9aa3a1;padding-top:64px;padding-bottom:34px}
+.foot-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px}
+.foot-brand b{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.2rem;letter-spacing:.03em;color:#fff;text-transform:uppercase}
+.foot-brand b span{color:var(--grey)}
+.foot-brand p{font-size:.88rem;margin-top:12px;max-width:34ch}
+.foot-col b{display:block;color:#fff;font-weight:600;font-size:.92rem;margin-bottom:14px}
+.foot-col a{display:block;font-size:.88rem;padding:4px 0;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-base{border-top:1px solid #343838;margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.8rem}
+.foot-base a{color:#c9cfce}
+.foot-base a:hover{color:#fff}
+
+/* ============ FAB ============ */
+.fab{position:fixed;right:20px;bottom:20px;z-index:950;width:56px;height:56px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px -8px var(--red);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s;animation:pulse 2s infinite}
+.fab.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab:hover{animation:none}
+.fab svg{width:24px;height:24px}
+
+/* ============ REVEALS ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ============ MOBILE ============ */
+@media (max-width:980px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .cycle-in,.contact-in,.about-in{grid-template-columns:1fr}
+  .about-logo{max-width:320px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+
+  /* FULL-BLEED PHOTO POSTER fold: the banner carries the whole first screen under an ink scrim */
+  .hero-bg img{object-position:40% center}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(16,18,18,.62) 0%,rgba(16,18,18,.5) 40%,rgba(16,18,18,.9) 100%)}
+  .hero-inner{min-height:calc(100svh - 72px);padding-top:52px;padding-bottom:30px;justify-content:flex-end}
+  .hero h1{font-size:clamp(2.6rem,12.5vw,3.4rem);max-width:100%}
+  .hero .lede{font-size:1rem}
+  .hero-ctas{flex-direction:column;margin-top:26px}
+  .btn{justify-content:center;width:100%}
+
+  /* live crusher strip handed off from the loader, as an ink card on the photo */
+  .hero-strip{display:block;margin-top:26px;background:rgba(27,29,29,.92);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:14px 16px 10px}
+  .hero-strip svg{width:100%;height:auto;display:block}
+  .hero-strip .mono-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.22em;color:#9aa3a1;text-transform:uppercase;display:block;margin-top:8px}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{border-bottom:1px solid var(--line);padding-top:13px;padding-bottom:13px}
+  .trust-item:last-child{border-bottom:none}
+  .services{padding-top:20px}
+  .cycle-loop{padding:20px 18px 18px}
+  .case-grid,.rev-grid{grid-template-columns:1fr}
+  .client-logos{gap:26px}
+  .client-logos img{height:34px}
+  .form-card{padding:26px 22px 30px}
+}
+@media (max-width:640px){
+  .svc-grid{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .about-in{gap:34px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADER : Crush & Grade ============ -->
+<div id="loader" aria-hidden="true">
+  <div class="ld-scene">
+    <svg viewBox="0 0 340 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- ground line -->
+      <line x1="8" y1="120" x2="332" y2="120" stroke="#cbd5e1" stroke-width="2"/>
+      <!-- hopper -->
+      <path d="M46 44 L118 44 L104 74 L60 74 Z" stroke="#5c5f5e" stroke-width="2.5" fill="#f3f5f6"/>
+      <!-- rubble tipping in -->
+      <g class="ld-rubble" fill="#8d8f8e">
+        <rect x="66" y="30" width="11" height="9" rx="1.5" transform="rotate(-14 66 30)"/>
+        <rect x="82" y="26" width="13" height="10" rx="1.5" transform="rotate(9 82 26)"/>
+        <rect x="97" y="32" width="9" height="8" rx="1.5" transform="rotate(-20 97 32)"/>
+      </g>
+      <!-- crusher body -->
+      <rect x="56" y="74" width="80" height="46" rx="4" stroke="#5c5f5e" stroke-width="2.5" fill="#fff"/>
+      <!-- jaw -->
+      <g class="ld-jaw">
+        <path d="M96 74 L124 74 L118 112 L96 106 Z" fill="#dc0227"/>
+      </g>
+      <path d="M68 74 L92 74 L92 112 L68 106 Z" fill="#46504f"/>
+      <!-- conveyor -->
+      <line class="ld-belt-dash" x1="140" y1="112" x2="252" y2="76" stroke="#5c5f5e" stroke-width="3" stroke-linecap="round"/>
+      <line x1="140" y1="118" x2="252" y2="82" stroke="#cbd5e1" stroke-width="2"/>
+      <circle cx="140" cy="115" r="6" stroke="#5c5f5e" stroke-width="2" fill="#fff"/>
+      <circle cx="252" cy="79" r="6" stroke="#5c5f5e" stroke-width="2" fill="#fff"/>
+      <!-- grains dropping off the belt head -->
+      <g fill="#dc0227">
+        <circle class="ld-grain ld-g1" cx="262" cy="84" r="3"/>
+        <circle class="ld-grain ld-g2" cx="268" cy="86" r="2.5"/>
+        <circle class="ld-grain ld-g3" cx="259" cy="88" r="2.5"/>
+        <circle class="ld-grain ld-g4" cx="265" cy="90" r="3"/>
+      </g>
+      <!-- graded stockpile -->
+      <path class="ld-pile" d="M232 120 L262 92 L294 120 Z" fill="#8d8f8e"/>
+      <path class="ld-pile" d="M246 120 L262 104 L280 120 Z" fill="#dc0227" opacity=".85"/>
+    </svg>
+    <span class="ld-chip">97% RE-USED</span>
+  </div>
+  <div class="ld-ticks"><span>DEMOLISHED</span><span>CRUSHED</span><span>GRADED</span></div>
+  <div class="ld-brand">
+    <img src="logo.jpg" alt="Dockerill Group" width="96" height="96">
+    <span class="mono">GROUNDWORKS . DEMOLITION . RECYCLING</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-in wrap">
+    <a class="nav-logo" href="#top" aria-label="Dockerill Group">
+      <img src="logo-mark.png" alt="Dockerill Group logo" width="40" height="30">
+      <b>Dockerill <span>Group</span></b>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a class="nav-cta" href="#contact">Get a Quote</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a1c1e" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="m-menu" id="mmenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Get a Quote</a>
+  <a class="m-call" id="mCall" href="#">Call Us</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg"><img src="hero.jpg" alt="Dockerill Group excavator loading a dumper on a groundworks site" fetchpriority="high"></div>
+  <div class="hero-inner">
+    <span class="eyebrow"><i></i>Dockerill Group · Cambridge · Est 1983</span>
+    <h1>Groundworks, demolition &amp; recycling. <em>First dig to final pour.</em></h1>
+    <div class="h1-rule"></div>
+    <p class="lede">One group for the whole ground package across East Anglia and London: dig, demolish, clear, crush and pour, with our own fleet, plant and recycling yard behind every job.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-red" id="heroCall" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="heroCallTxt">Call Us</span>
+      </a>
+      <a class="btn btn-ghost" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Get a Quote
+      </a>
+    </div>
+
+    <!-- mobile-only: live crusher strip handed off from the loader -->
+    <div class="hero-strip" aria-hidden="true">
+      <svg viewBox="0 0 340 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="6" y1="82" x2="334" y2="82" stroke="#46504f" stroke-width="2"/>
+        <path d="M40 22 L104 22 L92 46 L52 46 Z" stroke="#8d8f8e" stroke-width="2" fill="#242727"/>
+        <rect x="48" y="46" width="72" height="36" rx="3" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <g class="jaw-loop"><path d="M84 46 L110 46 L104 76 L84 72 Z" fill="#dc0227"/></g>
+        <path d="M58 46 L80 46 L80 76 L58 72 Z" fill="#5c5f5e"/>
+        <line class="belt-run" x1="126" y1="76" x2="238" y2="46" stroke="#8d8f8e" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="126" cy="79" r="5" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <circle cx="238" cy="49" r="5" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <path d="M224 82 L252 56 L282 82 Z" fill="#46504f"/>
+        <path d="M238 82 L252 68 L268 82 Z" fill="#dc0227" opacity=".85"/>
+        <text x="298" y="76" fill="#ffaeb8" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600">97%</text>
+      </svg>
+      <span class="mono-tag">Groundworks . Demolition . Recycling</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TRUST ============ -->
+<section class="trust">
+  <div class="trust-in wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Established 1983</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Up to 97% Recycled</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Registered Waste Carrier</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Own Fleet &amp; Plant</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>East Anglia &amp; London</div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we do</span>
+      <h2>One group. The whole <span>ground package.</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-photo"><img src="svc-groundworks.jpg" alt="Groundworks in progress on a residential development" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-tag">Groundworks</span>
+          <h3>Groundworks</h3>
+          <p>Foundations, footings, roads, sewers and drainage for residential and commercial developments.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-photo"><img src="svc-demolition.jpg" alt="Excavator loading a dumper during demolition and muck shift" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-tag">Demolition</span>
+          <h3>Demolition</h3>
+          <p>Domestic, commercial and industrial demolition, dismantling and land reclamation.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-photo"><img src="svc-clearance.jpg" alt="Loading shovel clearing rubble and site arisings" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-tag">Demolition</span>
+          <h3>Site Clearance &amp; Remediation</h3>
+          <p>Sites cleared, levelled and handed back ready for the build to start.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-photo"><img src="svc-crushing.jpg" alt="Mobile crusher processing demolition concrete" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-tag">Recycling</span>
+          <h3>Concrete Crushing</h3>
+          <p>On-site and off-site crushing, turning demolition waste into usable aggregate.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-photo"><img src="svc-aggregates.jpg" alt="Graded recycled stone aggregate" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-tag">Recycling</span>
+          <h3>Recycled Aggregates</h3>
+          <p>Type 1, 6F5, sharp sand and clean stone from our Cambridge yard.</p>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-photo"><img src="svc-volumetric.jpg" alt="Volumetric concrete poured into footings" loading="lazy"></div>
+        <div class="svc-body">
+          <span class="svc-tag">Supply</span>
+          <h3>Volumetric Concrete</h3>
+          <p>Batched on site to the exact amount your pour needs. No waste.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="agg-rule"></div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="about-in wrap">
+    <div class="about-logo reveal"><img src="logo.jpg" alt="Dockerill Group logo" loading="lazy"></div>
+    <div class="about-copy reveal">
+      <span class="label">About the group</span>
+      <h2>Four decades in <span>the ground.</span></h2>
+      <p>The Dockerill Group has been delivering groundworks, demolition and recycling across East Anglia and London since 1983. With over 75 years of combined management experience, our own transport division and a two acre recycling yard in Cambridge, every stage of the ground package stays under one roof.</p>
+      <div class="about-chips">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Est 1983</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Own transport division</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Two acre recycling yard</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CYCLE BAND : the 97% loop ============ -->
+<section class="cycle">
+  <div class="cycle-in wrap">
+    <div class="reveal">
+      <span class="label">The 97% loop</span>
+      <h2>Nothing leaves <em>site wasted.</em></h2>
+      <div class="stat97"><b>97</b><span>%</span></div>
+      <p class="big">of material arising from our projects is recycled through our own fully licensed Cambridge facility.</p>
+      <p class="small">Demolition arisings are crushed, graded to the WRAP quality protocol and put straight back to work as recycled aggregate: in your sub-base, your haul roads and your drainage runs.</p>
+    </div>
+    <div class="cycle-loop reveal">
+      <svg class="loop-svg" viewBox="0 0 460 190" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="10" y1="158" x2="450" y2="158" stroke="#46504f" stroke-width="2"/>
+        <!-- demolish: broken wall -->
+        <g>
+          <rect x="26" y="118" width="26" height="12" rx="2" fill="#5c5f5e"/>
+          <rect x="30" y="104" width="26" height="12" rx="2" fill="#8d8f8e"/>
+          <rect x="42" y="90" width="22" height="12" rx="2" fill="#5c5f5e" transform="rotate(9 42 90)"/>
+          <rect x="24" y="140" width="20" height="12" rx="2" fill="#8d8f8e" transform="rotate(-8 24 140)"/>
+          <rect x="48" y="142" width="16" height="10" rx="2" fill="#5c5f5e" transform="rotate(12 48 142)"/>
+        </g>
+        <!-- arrow -->
+        <path d="M78 128 H104 M104 128 l-7 -5 M104 128 l-7 5" stroke="#dc0227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- crusher -->
+        <path d="M118 62 L182 62 L170 90 L130 90 Z" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <rect x="126" y="90" width="66" height="42" rx="3" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <g class="jaw-loop"><path d="M158 90 L186 90 L180 124 L158 118 Z" fill="#dc0227"/></g>
+        <path d="M134 90 L154 90 L154 124 L134 118 Z" fill="#5c5f5e"/>
+        <!-- conveyor up -->
+        <line class="belt-run" x1="196" y1="126" x2="306" y2="84" stroke="#8d8f8e" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="196" cy="129" r="5.5" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <circle cx="306" cy="87" r="5.5" stroke="#8d8f8e" stroke-width="2" fill="#1b1d1d"/>
+        <!-- graded pile -->
+        <path d="M292 158 L322 96 L354 158 Z" fill="#46504f"/>
+        <path d="M306 158 L322 122 L340 158 Z" fill="#dc0227" opacity=".85"/>
+        <!-- arrow to re-use -->
+        <path d="M362 128 H388 M388 128 l-7 -5 M388 128 l-7 5" stroke="#dc0227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- re-use: fresh sub-base course -->
+        <rect x="396" y="140" width="52" height="8" rx="2" fill="#8d8f8e"/>
+        <rect x="400" y="128" width="44" height="8" rx="2" fill="#dc0227" opacity=".85"/>
+        <rect x="404" y="116" width="36" height="8" rx="2" fill="#5c5f5e"/>
+      </svg>
+      <div class="loop-steps"><b>Demolish</b><span>&gt;</span><b>Crush</b><span>&gt;</span><b>Grade</b><span>&gt;</span><b>Re-use</b></div>
+      <div class="grade-chips">
+        <span>FINES DUST</span><span>SHARP SAND</span><span>PLANINGS</span><span>6F5</span><span>TYPE 1</span><span>CLEAN STONE</span><span>CRUSHED CONCRETE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Featured projects</span>
+      <h2>Developments out of <span>the ground.</span></h2>
+    </div>
+    <div class="case-grid">
+      <div class="case reveal">
+        <div class="case-photo"><img src="case-puckeridge.jpg" alt="Groundworks on the Puckeridge development in Hertfordshire" loading="lazy"></div>
+        <div class="case-body">
+          <span class="case-tag">Groundworks · Hertfordshire</span>
+          <h3>Puckeridge, East Herts</h3>
+          <p>Groundworks for a new development of 25 private and shared ownership three and four bedroom country homes.</p>
+        </div>
+      </div>
+      <div class="case reveal">
+        <div class="case-photo"><img src="case-wimblington.jpg" alt="Groundworks on the Wimblington development in Cambridgeshire" loading="lazy"></div>
+        <div class="case-body">
+          <span class="case-tag">Groundworks · Cambridgeshire</span>
+          <h3>Wimblington, Cambs</h3>
+          <p>Groundworks across an 80 home residential development, delivered for Matthew Homes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENTS ============ -->
+<section class="clients">
+  <div class="clients-in wrap reveal">
+    <span class="mono-lab">Trusted by developers &amp; contractors</span>
+    <div class="client-logos">
+      <img src="client-allen-build.jpg" alt="Allen Build" loading="lazy">
+      <img src="client-land-charter-homes.jpg" alt="Land Charter Homes" loading="lazy">
+      <img src="client-beverley-homes.jpg" alt="Beverley Homes" loading="lazy">
+      <img src="client-mears-group.jpg" alt="Mears Group" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What clients say</span>
+      <h2>Judged on <span>the programme.</span></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <p>"Dockerill Group took our Cambourne site from dig to oversite without a single programme slip. One call covered the muck shift, drainage and foundations."</p>
+        <div class="rev-who"><b>Mark R.</b> · Cambourne · Groundworks</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <p>"They demolished the old units at Bishop's Stortford, crushed the arisings on site and we re-used the lot as Type 1. Saved us a fortune in haulage and landfill."</p>
+        <div class="rev-who"><b>Sarah B.</b> · Bishop's Stortford · Demolition &amp; Crushing</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <p>"Dockerill cleared and levelled our Haverhill site inside a week. Tippers turned up when they said they would, every time, with proper records for every load."</p>
+        <div class="rev-who"><b>Dan H.</b> · Haverhill · Site Clearance</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24" fill="#dc0227"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </div>
+        <p>"Volumetric concrete batched at the pour on our Royston plots. No short loads, no waste, and the Dockerill team altered the mix on the day when the weather turned."</p>
+        <div class="rev-who"><b>Emma T.</b> · Royston · Volumetric Concrete</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREAS ============ -->
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Where we work</span>
+      <h2>East Anglia <span>&amp; London.</span></h2>
+    </div>
+    <div class="area-chips reveal">
+      <span class="home">Cambridge</span>
+      <span>Sawston</span>
+      <span>Cambridgeshire</span>
+      <span>Hertfordshire</span>
+      <span>Essex</span>
+      <span>Suffolk</span>
+      <span>East Anglia</span>
+      <span>London</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="ctaband">
+  <svg class="cta-ghost" viewBox="0 0 460 190" fill="none"><path d="M118 62 L182 62 L170 90 L130 90 Z" stroke="#fff" stroke-width="2"/><rect x="126" y="90" width="66" height="42" rx="3" stroke="#fff" stroke-width="2"/><line x1="196" y1="126" x2="306" y2="84" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M292 158 L322 96 L354 158 Z" stroke="#fff" stroke-width="2"/></svg>
+  <div class="wrap reveal">
+    <h2>Pricing your <em>next phase?</em></h2>
+    <p>Send the drawings. We will price the whole ground package, from first dig to final pour, and hand the site back on programme.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-red" id="ctaCall" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="ctaCallTxt">Call Us</span>
+      </a>
+      <a class="btn btn-ghost" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Get a Quote
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Get in touch</span>
+      <h2>Start with <span>a conversation.</span></h2>
+    </div>
+    <div class="contact-in">
+      <div class="c-cards reveal">
+        <div class="c-card">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><b>Call the office</b><a class="val" id="cardCall" href="#">&nbsp;</a></div>
+        </div>
+        <div class="c-card">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><b>Email us</b><a class="val" id="cardEmail" href="#">&nbsp;</a></div>
+        </div>
+        <div class="c-card">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>Head office &amp; yard</b><span>Unit N, South Cambridgeshire Business Park, Babraham Road, Sawston, Cambridge CB22 3JH</span></div>
+        </div>
+        <div class="c-card">
+          <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#dc0227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><b>Covering</b><span>East Anglia and London, from our Cambridge base</span></div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3>Get a Quote</h3>
+        <p class="fp">Tell us about the project and we will come back to you.</p>
+        <form action="/api/enquiry" method="POST">
+          <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="businessName" value="Dockerill Group">
+          <input type="hidden" name="source" value="mockup-dockerill-group">
+          <div class="f-row">
+            <label for="fName">Name</label>
+            <input type="text" id="fName" name="name" required autocomplete="name">
+          </div>
+          <div class="f-row">
+            <label for="fPhone">Phone</label>
+            <input type="tel" id="fPhone" name="phone" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel">
+          </div>
+          <div class="f-row">
+            <label for="fEmail">Email <i>(optional)</i></label>
+            <input type="email" id="fEmail" name="email" autocomplete="email">
+          </div>
+          <div class="f-row">
+            <label for="fMsg">Tell us about the job <i>(optional)</i></label>
+            <textarea id="fMsg" name="message"></textarea>
+          </div>
+          <button class="f-sub" type="submit">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-in wrap">
+    <div class="foot-brand">
+      <b>Dockerill <span>Group</span></b>
+      <p>Groundwork, demolition and recycling across East Anglia and London since 1983.</p>
+    </div>
+    <div class="foot-col">
+      <b>Services</b>
+      <a href="#services">Groundworks</a>
+      <a href="#services">Demolition</a>
+      <a href="#services">Site Clearance &amp; Remediation</a>
+      <a href="#services">Concrete Crushing</a>
+      <a href="#services">Recycled Aggregates</a>
+      <a href="#services">Volumetric Concrete</a>
+    </div>
+    <div class="foot-col">
+      <b>Company</b>
+      <a href="#about">About the group</a>
+      <a href="#projects">Featured projects</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas covered</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="foot-base wrap">
+    <span>&copy; Dockerill Group. All rights reserved.</span>
+    <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+  </div>
+</footer>
+
+<!-- ============ FAB ============ -->
+<a class="fab" id="fabCall" href="#" aria-label="Call Dockerill Group">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+(function(){
+  // contacts (decoded at runtime)
+  var P = atob('MDEyMjM4MzU2MzQ=');
+  var Pf = atob('MDEyMjMgODM1NjM0');
+  var E = atob('aW5mb0Bkb2NrZXJpbGxncm91cC5jb20=');
+  ['heroCall','ctaCall','fabCall','mCall','cardCall'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.href = 'tel:' + P;
+  });
+  document.getElementById('heroCallTxt').textContent = 'Call ' + Pf;
+  document.getElementById('ctaCallTxt').textContent = 'Call ' + Pf;
+  document.getElementById('mCall').textContent = 'Call ' + Pf;
+  var cc = document.getElementById('cardCall');
+  cc.textContent = Pf;
+  var ce = document.getElementById('cardEmail');
+  ce.textContent = E;
+  ce.href = 'mailto:' + E;
+
+  document.getElementById('formTimestamp').value = Date.now();
+  var fp = document.getElementById('fPhone');
+  fp.addEventListener('input', function(){
+    fp.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(fp.value.replace(/\s+/g,'')) || fp.value==='' ? '' : 'Please enter a valid UK phone number');
+  });
+
+  // loader teardown + handoff
+  var loader = document.getElementById('loader');
+  setTimeout(function(){
+    loader.classList.add('gone');
+    document.body.classList.add('lit');
+  }, 2200);
+  setTimeout(function(){ if(loader && loader.parentNode) loader.parentNode.removeChild(loader); }, 2800);
+
+  // burger
+  var burger = document.getElementById('burger');
+  var mmenu = document.getElementById('mmenu');
+  burger.addEventListener('click', function(){
+    var open = mmenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mmenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mmenu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
+  });
+
+  // FAB shows once hero CTAs scroll away
+  var fab = document.getElementById('fabCall');
+  var heroEl = document.querySelector('.hero');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > heroEl.offsetHeight * 0.85) fab.classList.add('show');
+    else fab.classList.remove('show');
+  }, {passive:true});
+
+  // scroll reveals
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
