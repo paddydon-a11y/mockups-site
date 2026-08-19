@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Colour | Decoration Contractors for Care Homes, New Build &amp; Offices</title>
+<meta name="description" content="Project Colour are decoration contractors for new build care homes, apartments and offices. Painting and Decorating Association members, based in Helmshore, Lancashire.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Project Colour &ndash; Your New Website">
+<meta property="og:description" content="Decoration contractors for new build care homes, apartments and offices. Preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/project-colour/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/project-colour/">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#eef0ec;
+  --stone2:#e5e8e1;
+  --ink:#1c1d1a;
+  --body:#4c5049;
+  --muted:#868a80;
+  --line:#dee1d9;
+  --line2:#c9cec3;
+  --accent:#cd5300;
+  --accent-h:#a94400;
+  --accent-soft:rgba(205,83,0,.12);
+  --graphite:#2b2d28;
+  /* real scheme colours, sampled from the client's own job photos */
+  --sc-sage:#c4bb92;
+  --sc-cove:#f1ebdd;
+  --sc-paper:#cfc7b8;
+  --sc-panel:#c8bd9f;
+  --sc-white:#e4e9e4;
+  --sc-grid:#4c4e4a;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{
+  margin:0;overflow-x:clip;background:var(--bg);color:var(--body);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:'Young Serif',Georgia,serif;font-weight:400;color:var(--ink);margin:0;line-height:1.08;letter-spacing:-.015em}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+/* ---------- section label + dado divider (the trade texture) ---------- */
+.slabel{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.slabel::before{content:"";width:26px;height:6px;background:var(--accent);border-radius:1px;flex:none}
+.dado{height:1px;background:var(--line);position:relative}
+.dado::after{content:"";position:absolute;left:0;top:1px;width:100%;height:6px;
+  background:linear-gradient(90deg,var(--sc-cove) 0 22%,var(--sc-paper) 22% 44%,var(--sc-sage) 44% 62%,var(--sc-panel) 62% 82%,var(--accent) 82% 100%);
+  opacity:.55}
+h2{font-size:clamp(1.85rem,3.9vw,2.85rem)}
+.ac{color:var(--accent)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:15px 26px;border-radius:3px;font-weight:600;font-size:.98rem;
+  text-decoration:none;border:1px solid transparent;transition:.22s ease;white-space:nowrap;
+}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-p{background:var(--accent);color:#fff}
+.btn-p:hover{background:var(--accent-h);transform:translateY(-2px)}
+.btn-s{background:transparent;color:var(--ink);border-color:var(--line2)}
+.btn-s:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-l{background:#fff;color:var(--graphite)}
+.btn-l:hover{transform:translateY(-2px)}
+
+/* ---------- loader ---------- */
+#ld{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;
+  transition:opacity .45s ease}
+#ld.gone{opacity:0;pointer-events:none}
+.ld-in{width:min(288px,72vw);text-align:center;--pb-bg:#ffffff}
+.ld-plan{width:100%;height:auto}
+.ld-brand{margin-top:22px;opacity:0;transform:translateY(12px)}
+.ld-brand img{width:88px;margin:0 auto}
+.ld-brand span{display:block;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;
+  color:var(--muted);margin-top:10px}
+/* paint-the-logo pieces (loader + hero share the markup) */
+.paintbrand{position:relative;width:100%;aspect-ratio:1/.992}
+.pb-mask{position:relative;width:100%;height:100%;overflow:hidden}
+.pb-mask img{width:100%;height:100%;object-fit:contain;display:block}
+.pb-cover{position:absolute;left:-1px;width:calc(100% + 2px);height:34.4%;background:var(--pb-bg,#fff);
+  transform:translateX(0)}
+.pb-c1{top:0}
+.pb-c2{top:33%}
+.pb-c3{top:66%}
+.pb-brush{position:absolute;left:0;width:21%;height:auto;opacity:0;
+  transform:translateX(-34%) rotate(-13deg);transform-origin:50% 92%;filter:drop-shadow(0 6px 10px rgba(28,29,26,.16))}
+.pb-br1{top:-24%}
+.pb-br2{top:9%}
+.pb-br3{top:42%}
+.pb-sub{display:block;white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-top:20px;opacity:0;text-align:center}
+/* loader run */
+#ld .pb-cover{animation:pbWipe .46s cubic-bezier(.35,.05,.25,1) forwards}
+#ld .pb-brush{animation:pbStroke .46s cubic-bezier(.35,.05,.25,1) forwards,pbShow .46s linear forwards}
+#ld .pb-c1,#ld .pb-br1{animation-delay:.20s}
+#ld .pb-c2,#ld .pb-br2{animation-delay:.62s}
+#ld .pb-c3,#ld .pb-br3{animation-delay:1.04s}
+#ld .pb-sub{animation:fadein .5s 1.58s forwards}
+@keyframes pbWipe{to{transform:translateX(100%)}}
+@keyframes pbStroke{from{transform:translateX(-34%) rotate(-13deg)}to{transform:translateX(490%) rotate(-13deg)}}
+@keyframes pbShow{0%{opacity:0}8%{opacity:1}86%{opacity:1}100%{opacity:0}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadein{to{opacity:1}}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+#ld .ld-brand{animation:rise .52s 1.70s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes ldGoneAuto{to{opacity:0;visibility:hidden}}
+#ld{animation:ldGoneAuto .01s 2.9s forwards}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:200;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;white-space:nowrap}
+.nav-logo img{width:36px;height:36px}
+.nav-logo b{font-family:'Young Serif',serif;font-weight:400;font-size:1.06rem;color:var(--ink);letter-spacing:.01em}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{text-decoration:none;color:var(--body);font-size:.9rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.nav-cta{background:var(--accent);color:#fff !important;padding:11px 20px;border-radius:3px;font-weight:600}
+.nav-links a.nav-cta:hover{background:var(--accent-h)}
+.nav-links a.nav-cta svg{width:15px;height:15px;stroke:#fff;vertical-align:-2px;margin-right:6px}
+.burger{display:none;background:none;border:1px solid var(--line2);border-radius:3px;padding:9px 10px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0;transition:.25s}
+.mmenu{display:none;position:fixed;top:62px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:8px 24px 26px;z-index:199;max-height:calc(100vh - 62px);overflow-y:auto}
+.mmenu.open{display:block}
+.mmenu a{display:block;padding:15px 0;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line)}
+.mmenu a.btn{width:100%;margin-top:18px;display:flex;justify-content:center;text-align:center;border-bottom:none}
+.mmenu a.btn-p{color:#fff;background:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{display:flex;flex-direction:column;background:var(--bg)}
+.hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;
+  padding-top:74px;padding-bottom:78px}
+.eyebrow{display:flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:.67rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(205,83,0,.5)}70%{box-shadow:0 0 0 9px rgba(205,83,0,0)}100%{box-shadow:0 0 0 0 rgba(205,83,0,0)}}
+h1{font-size:clamp(2.3rem,4.6vw,3.5rem);letter-spacing:-.025em}
+.h1rule{display:block;width:0;height:6px;background:var(--accent);margin-top:22px;border-radius:1px;
+  transition:width .8s cubic-bezier(.2,.8,.3,1)}
+body.lit .h1rule{width:132px}
+.lede{margin-top:22px;font-size:1.06rem;max-width:33em;color:var(--body)}
+.cta-row{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.hero-art{position:relative}
+.photo-frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--stone)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.hero-badge{position:absolute;left:22px;bottom:134px;background:#fff;border:1px solid var(--line);
+  border-radius:4px;padding:11px 15px;display:flex;align-items:center;gap:11px;box-shadow:0 12px 30px rgba(28,29,26,.13)}
+.hero-badge img{width:34px;height:34px}
+.hero-badge b{display:block;font-size:.8rem;color:var(--ink);font-weight:600;line-height:1.3}
+.hero-badge span{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+/* scheme chip row */
+.chip-row{display:flex;gap:0;margin-top:16px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.chip{flex:1;padding:11px 12px 12px;border-right:1px solid var(--line)}
+.chip:last-child{border-right:none}
+.chip i{display:block;height:30px;border-radius:2px;border:1px solid rgba(28,29,26,.10);margin-bottom:8px}
+.chip b{display:block;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);font-weight:500}
+.chip u{display:block;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--ink);margin-top:2px}
+/* mobile poster plan */
+.hero-poster{position:relative}
+.planwrap{display:none;--pb-bg:var(--stone)}
+
+/* looping hero paint animation */
+.livepaint .pb-cover{animation:pbLoopWipe 5.6s cubic-bezier(.35,.05,.25,1) infinite}
+.livepaint .pb-brush{animation:pbLoopStroke 5.6s cubic-bezier(.35,.05,.25,1) infinite}
+.livepaint .pb-c1,.livepaint .pb-br1{animation-delay:.1s}
+.livepaint .pb-c2,.livepaint .pb-br2{animation-delay:.52s}
+.livepaint .pb-c3,.livepaint .pb-br3{animation-delay:.94s}
+@keyframes pbLoopWipe{0%{transform:translateX(0)}9%{transform:translateX(100%)}
+  92%{transform:translateX(100%)}100%{transform:translateX(0)}}
+@keyframes pbLoopStroke{0%{transform:translateX(-34%) rotate(-13deg);opacity:0}
+  1%{opacity:1}9%{transform:translateX(490%) rotate(-13deg);opacity:1}
+  12%{transform:translateX(490%) rotate(-13deg);opacity:0}
+  100%{transform:translateX(490%) rotate(-13deg);opacity:0}}
+
+/* ---------- trust strip ---------- */
+.trust{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:10px;font-size:.86rem;font-weight:500;color:var(--ink)}
+.trust-item svg{width:17px;height:17px;flex:none;stroke:var(--accent)}
+
+/* ---------- sections ---------- */
+section{position:relative}
+.sec{padding-top:88px;padding-bottom:88px}
+.sec-head{margin-bottom:40px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.svc{background:var(--bg);border:1px solid var(--line);border-radius:5px;overflow:hidden;position:relative;
+  transition:.25s ease}
+.svc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.3,1);z-index:2}
+.svc:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(28,29,26,.09)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{aspect-ratio:16/10;overflow:hidden;background:var(--stone)}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.svc:hover .svc-img img{transform:scale(1.04)}
+.svc-b{padding:22px 24px 26px}
+.svc-b h3{font-size:1.22rem;margin-bottom:8px}
+.svc-b p{font-size:.94rem}
+.svc-n{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--accent);
+  display:block;margin-bottom:9px}
+
+/* ---------- cert band ---------- */
+.certs{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.certs-in{display:flex;align-items:center;gap:38px;padding-top:30px;padding-bottom:30px;flex-wrap:wrap}
+.certs-in img{height:62px;width:auto;object-fit:contain}
+.certs-in p{font-size:.92rem;max-width:34em}
+
+/* ---------- gallery / schedule plates ---------- */
+.plates{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.plate img{border-radius:5px;border:1px solid var(--line);aspect-ratio:4/3;object-fit:cover;width:100%}
+.plate h3{font-size:1.12rem;margin-top:16px}
+.plate .pcap{font-size:.88rem;color:var(--muted);margin-top:4px}
+.plate .chip-row{margin-top:14px}
+
+/* ---------- about ---------- */
+.about{background:var(--stone)}
+.about-in{display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:center}
+.about img{width:118px}
+.about p{font-size:1.02rem;max-width:46em}
+
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:5px;padding:26px 26px 24px}
+.stars{display:flex;gap:3px;margin-bottom:13px}
+.stars svg{width:15px;height:15px;fill:var(--accent)}
+.rev p{font-size:.97rem;color:var(--body)}
+.rev-by{display:flex;align-items:center;gap:11px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.rev-av{width:36px;height:36px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex:none}
+.rev-by b{display:block;font-size:.88rem;color:var(--ink)}
+.rev-by span{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ---------- areas ---------- */
+.area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.area-grid span{background:#fff;padding:15px 18px;font-size:.9rem;color:var(--ink)}
+.area-note{margin-top:20px;font-size:.94rem;color:var(--muted);max-width:44em}
+
+/* ---------- cta band ---------- */
+.band{background:var(--graphite);color:#e8eae5}
+.band-in{display:flex;align-items:center;justify-content:space-between;gap:30px;
+  padding-top:56px;padding-bottom:56px;flex-wrap:wrap}
+.band h2{color:#fff;font-size:clamp(1.7rem,3.2vw,2.4rem)}
+.band p{color:#b7bcb2;margin-top:9px;font-size:.98rem}
+
+/* ---------- contact ---------- */
+.con-grid{display:grid;grid-template-columns:.85fr 1fr;gap:44px;align-items:start}
+.desk{border:1px solid var(--line);border-radius:5px;padding:22px 24px;margin-bottom:16px;background:#fff}
+.desk .dk{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:10px}
+.desk a{display:block;text-decoration:none;color:var(--ink);font-weight:600;font-size:1.06rem}
+.desk a.em{font-weight:500;font-size:.94rem;color:var(--body);margin-top:4px;word-break:break-all}
+form{background:var(--stone);border:1px solid var(--line);border-radius:5px;padding:28px}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+input,textarea{width:100%;padding:13px 14px;border:1px solid var(--line2);border-radius:3px;background:#fff;
+  font-family:inherit;font-size:.96rem;color:var(--ink);margin-bottom:16px}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:118px;resize:vertical}
+form .btn{width:100%}
+.formnote{font-size:.76rem;color:var(--muted);margin-top:12px;text-align:center}
+
+/* ---------- footer ---------- */
+footer{background:var(--graphite);color:#a9ada3;padding-top:52px;padding-bottom:34px}
+.foot-top{display:flex;justify-content:space-between;gap:34px;flex-wrap:wrap;padding-bottom:30px;
+  border-bottom:1px solid rgba(255,255,255,.11)}
+.foot-brand{display:flex;align-items:center;gap:12px}
+.foot-brand img{width:44px}
+.foot-brand b{font-family:'Young Serif',serif;font-weight:400;color:#fff;font-size:1.1rem;display:block}
+.foot-brand span{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;color:#8d9187;text-transform:uppercase}
+.foot-col h4{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin:0 0 12px;
+  font-family:'JetBrains Mono',monospace;font-weight:500}
+.foot-col a{display:block;text-decoration:none;color:#a9ada3;font-size:.88rem;padding:4px 0}
+.foot-col a:hover{color:#fff}
+.foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:.8rem;color:#8d9187}
+.foot-bot a{color:#c4c8be}
+
+/* ---------- FABs ---------- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:12px;
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.fabs.on{opacity:1;pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 22px rgba(28,29,26,.26);text-decoration:none}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--accent);animation:fpulse 2.4s infinite}
+.fab-wa{background:#25d366;animation:fpulse 2.4s .8s infinite}
+.fab:hover{animation:none}
+@keyframes fpulse{0%{box-shadow:0 8px 22px rgba(28,29,26,.26),0 0 0 0 rgba(205,83,0,.4)}
+  70%{box-shadow:0 8px 22px rgba(28,29,26,.26),0 0 0 14px rgba(205,83,0,0)}
+  100%{box-shadow:0 8px 22px rgba(28,29,26,.26),0 0 0 0 rgba(205,83,0,0)}}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:34px;padding-top:34px;padding-bottom:58px}
+  .con-grid{grid-template-columns:1fr;gap:30px}
+  .plates{grid-template-columns:1fr 1fr}
+  .area-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+}
+@media (max-width:780px){
+  .sec{padding-top:60px;padding-bottom:60px}
+  .svc-grid{grid-template-columns:1fr}
+  .plates{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .area-grid{grid-template-columns:repeat(2,1fr)}
+  .about-in{grid-template-columns:1fr;gap:22px}
+  .trust-in{flex-direction:column;gap:0;padding-top:6px;padding-bottom:6px}
+  .trust-item{padding:14px 0;border-bottom:1px solid var(--line2);width:100%}
+  .trust-item:last-child{border-bottom:none}
+  .certs-in{gap:24px}
+  .certs-in img{height:52px}
+  /* the mobile poster fold */
+  .hero-poster{background:var(--stone);border-bottom:1px solid var(--line);
+    margin:0 -24px;padding-top:18px;padding-bottom:0;padding-left:24px;padding-right:24px}
+  .eyebrow{margin-bottom:13px}
+  .planwrap{display:block;margin-top:8px;margin-left:0;margin-right:0;padding-bottom:14px}
+  .planwrap .paintbrand{width:min(196px,52vw);margin:0 auto}
+  h1{font-size:clamp(2.05rem,8.2vw,2.8rem)}
+  .h1rule{margin-top:16px;height:5px}
+  .lede{margin-top:16px;font-size:1rem}
+  .cta-row{margin-top:18px;gap:10px}
+  .cta-row .btn{flex:1 1 100%}
+  .hero-badge{position:static;margin-bottom:14px;box-shadow:none}
+  .photo-frame img{aspect-ratio:16/11}
+  .band-in{flex-direction:column;align-items:flex-start;gap:22px}
+  .foot-top{gap:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .pb-cover{transform:translateX(100%)}
+  .pb-brush{opacity:0}
+  .pb-sub{opacity:1}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADER: Room Schedule ===== -->
+<div id="ld">
+  <div class="ld-in">
+    <div class="paintbrand">
+            <div class="pb-mask">
+              <img src="logo.png" alt="Project Colour">
+              <span class="pb-cover pb-c1"></span>
+              <span class="pb-cover pb-c2"></span>
+              <span class="pb-cover pb-c3"></span>
+            </div>
+            <svg class="pb-brush pb-br1" viewBox="0 0 60 130" aria-hidden="true">
+              <path d="M23 2 h14 l5 72 h-24 z" fill="#2b2d28"/>
+              <rect x="16" y="70" width="28" height="22" rx="2" fill="#b9bdb4"/>
+              <rect x="16" y="76" width="28" height="2" fill="#9aa094"/>
+              <rect x="16" y="85" width="28" height="2" fill="#9aa094"/>
+              <path d="M17 90 h26 l4 30 l-1 4 h-32 l-1 -4 z" fill="#cd5300"/>
+              <path d="M13 120 h34 l-1 4 h-32 z" fill="#a94400"/>
+            </svg>
+            <svg class="pb-brush pb-br2" viewBox="0 0 60 130" aria-hidden="true">
+              <path d="M23 2 h14 l5 72 h-24 z" fill="#2b2d28"/>
+              <rect x="16" y="70" width="28" height="22" rx="2" fill="#b9bdb4"/>
+              <rect x="16" y="76" width="28" height="2" fill="#9aa094"/>
+              <rect x="16" y="85" width="28" height="2" fill="#9aa094"/>
+              <path d="M17 90 h26 l4 30 l-1 4 h-32 l-1 -4 z" fill="#cd5300"/>
+              <path d="M13 120 h34 l-1 4 h-32 z" fill="#a94400"/>
+            </svg>
+            <svg class="pb-brush pb-br3" viewBox="0 0 60 130" aria-hidden="true">
+              <path d="M23 2 h14 l5 72 h-24 z" fill="#2b2d28"/>
+              <rect x="16" y="70" width="28" height="22" rx="2" fill="#b9bdb4"/>
+              <rect x="16" y="76" width="28" height="2" fill="#9aa094"/>
+              <rect x="16" y="85" width="28" height="2" fill="#9aa094"/>
+              <path d="M17 90 h26 l4 30 l-1 4 h-32 l-1 -4 z" fill="#cd5300"/>
+              <path d="M13 120 h34 l-1 4 h-32 z" fill="#a94400"/>
+            </svg>
+          </div>
+    <span class="pb-sub">Decoration contractors . Lancashire</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-in wrap">
+    <a href="#" class="nav-logo"><img src="logo.png" alt="Project Colour logo"><b>Project Colour</b></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#about">About</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+      <a href="#" id="navCall" class="nav-cta"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call us</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#about">About</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a href="#" id="menuCall" class="btn btn-p">Call us</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <div class="hero-poster">
+        <p class="eyebrow"><span class="dot"></span>Care homes . New build . Offices</p>
+        <h1>Last trade on site.<br>First thing anyone <span class="ac">sees</span>.<span class="h1rule"></span></h1>
+        <div class="planwrap">
+          <div class="paintbrand livepaint">
+            <div class="pb-mask">
+              <img src="logo.png" alt="Project Colour">
+              <span class="pb-cover pb-c1"></span>
+              <span class="pb-cover pb-c2"></span>
+              <span class="pb-cover pb-c3"></span>
+            </div>
+            <svg class="pb-brush pb-br1" viewBox="0 0 60 130" aria-hidden="true">
+              <path d="M23 2 h14 l5 72 h-24 z" fill="#2b2d28"/>
+              <rect x="16" y="70" width="28" height="22" rx="2" fill="#b9bdb4"/>
+              <rect x="16" y="76" width="28" height="2" fill="#9aa094"/>
+              <rect x="16" y="85" width="28" height="2" fill="#9aa094"/>
+              <path d="M17 90 h26 l4 30 l-1 4 h-32 l-1 -4 z" fill="#cd5300"/>
+              <path d="M13 120 h34 l-1 4 h-32 z" fill="#a94400"/>
+            </svg>
+            <svg class="pb-brush pb-br2" viewBox="0 0 60 130" aria-hidden="true">
+              <path d="M23 2 h14 l5 72 h-24 z" fill="#2b2d28"/>
+              <rect x="16" y="70" width="28" height="22" rx="2" fill="#b9bdb4"/>
+              <rect x="16" y="76" width="28" height="2" fill="#9aa094"/>
+              <rect x="16" y="85" width="28" height="2" fill="#9aa094"/>
+              <path d="M17 90 h26 l4 30 l-1 4 h-32 l-1 -4 z" fill="#cd5300"/>
+              <path d="M13 120 h34 l-1 4 h-32 z" fill="#a94400"/>
+            </svg>
+            <svg class="pb-brush pb-br3" viewBox="0 0 60 130" aria-hidden="true">
+              <path d="M23 2 h14 l5 72 h-24 z" fill="#2b2d28"/>
+              <rect x="16" y="70" width="28" height="22" rx="2" fill="#b9bdb4"/>
+              <rect x="16" y="76" width="28" height="2" fill="#9aa094"/>
+              <rect x="16" y="85" width="28" height="2" fill="#9aa094"/>
+              <path d="M17 90 h26 l4 30 l-1 4 h-32 l-1 -4 z" fill="#cd5300"/>
+              <path d="M13 120 h34 l-1 4 h-32 z" fill="#a94400"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="lede">Decoration contractors for new build care homes, apartments and offices. Priced off the schedule, sequenced with the other trades, finished for handover.</p>
+      <div class="cta-row">
+        <a href="#" id="heroCall" class="btn btn-p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span id="heroCallTx">Call us</span></a>
+        <a href="#contact" class="btn btn-s">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="photo-frame">
+        <img src="work-corridor.jpg" alt="Care home corridor with hung wallcovering, dado rail and painted panelling" fetchpriority="high">
+      </div>
+      <div class="hero-badge">
+        <img src="cert-pda.png" alt="Painting and Decorating Association">
+        <div><b>Painting &amp; Decorating Association</b><span>Member firm</span></div>
+      </div>
+      <div class="chip-row">
+        <div class="chip"><i style="background:#efe9e1"></i><b>Ceiling</b><u>#EFE9E1</u></div>
+        <div class="chip"><i style="background:#cfc7b8"></i><b>Walls</b><u>#CFC7B8</u></div>
+        <div class="chip"><i style="background:#c8bd9f"></i><b>Woodwork</b><u>#C8BD9F</u></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<div class="trust">
+  <div class="trust-in wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>PDA member firm</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Constructionline registered</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Care home specialists</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Run to programme</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free quotes</div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="sec wrap reveal">
+  <div class="sec-head">
+    <p class="slabel">What we decorate</p>
+    <h2>Contract decoration, <span class="ac">start to handover</span>.</h2>
+  </div>
+  <div class="svc-grid">
+    <article class="svc">
+      <div class="svc-img"><img src="svc-carehome.jpg" alt="Care home lounge decorated in sage" loading="lazy"></div>
+      <div class="svc-b"><span class="svc-n">01</span><h3>Care Home Decoration</h3>
+        <p>Bedrooms, lounges and dining rooms, decorated ready for residents.</p></div>
+    </article>
+    <article class="svc">
+      <div class="svc-img"><img src="svc-corridor.jpg" alt="Care home corridor wallcovering and panelling" loading="lazy"></div>
+      <div class="svc-b"><span class="svc-n">02</span><h3>Corridors &amp; Communal Areas</h3>
+        <p>Wallcoverings, dado rails and panelling, the full length of the wing.</p></div>
+    </article>
+    <article class="svc">
+      <div class="svc-img"><img src="svc-residential.jpg" alt="New build bedroom with feature wall" loading="lazy"></div>
+      <div class="svc-b"><span class="svc-n">03</span><h3>New Build Houses &amp; Apartments</h3>
+        <p>Plot by plot, to the developer's schedule and handover dates.</p></div>
+    </article>
+    <article class="svc">
+      <div class="svc-img"><img src="svc-office.jpg" alt="Office floor decorated in brilliant white" loading="lazy"></div>
+      <div class="svc-b"><span class="svc-n">04</span><h3>Office Interiors</h3>
+        <p>Designer led or blank canvas, whatever the size of the floor.</p></div>
+    </article>
+    <article class="svc">
+      <div class="svc-img"><img src="svc-wallcoverings.jpg" alt="Feature wall with patterned wallcovering" loading="lazy"></div>
+      <div class="svc-b"><span class="svc-n">05</span><h3>Wallcoverings &amp; Feature Walls</h3>
+        <p>Hung straight and pattern matched, so the wall reads as one.</p></div>
+    </article>
+    <article class="svc">
+      <div class="svc-img"><img src="svc-prep.jpg" alt="Filling a crack before decorating" loading="lazy"></div>
+      <div class="svc-b"><span class="svc-n">06</span><h3>Preparation &amp; Making Good</h3>
+        <p>Filled, caulked, sanded and sealed before a drop of paint.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== CERT BAND ===== -->
+<div class="certs">
+  <div class="certs-in wrap">
+    <img src="cert-pda.png" alt="Painting and Decorating Association member">
+    <img src="cert-constructionline.png" alt="Constructionline Bronze member">
+    <p>Member of the Painting and Decorating Association and registered with Constructionline at Bronze level, so the pre-qualification paperwork is already done before we get to site.</p>
+  </div>
+</div>
+
+<!-- ===== RECENT WORK / THE COLOUR SCHEDULE ===== -->
+<section id="work" class="sec wrap reveal">
+  <div class="sec-head">
+    <p class="slabel">Recent work</p>
+    <h2>Every job leaves a <span class="ac">colour schedule</span>.</h2>
+  </div>
+  <div class="plates">
+    <article class="plate">
+      <img src="work-dining.jpg" alt="Care home dining room decorated in soft sage" loading="lazy">
+      <h3>Care home dining room</h3>
+      <p class="pcap">Soft sage walls, white cove and woodwork</p>
+      <div class="chip-row">
+        <div class="chip"><i style="background:#f1ebdd"></i><b>Ceiling</b><u>#F1EBDD</u></div>
+        <div class="chip"><i style="background:#c4bb92"></i><b>Walls</b><u>#C4BB92</u></div>
+        <div class="chip"><i style="background:#e8e4d8"></i><b>Woodwork</b><u>#E8E4D8</u></div>
+      </div>
+    </article>
+    <article class="plate">
+      <img src="work-corridor.jpg" alt="Care home corridor with wallcovering and painted panelling" loading="lazy">
+      <h3>Corridor and panelling</h3>
+      <p class="pcap">Wallcovering above the rail, panelling below</p>
+      <div class="chip-row">
+        <div class="chip"><i style="background:#efe9e1"></i><b>Ceiling</b><u>#EFE9E1</u></div>
+        <div class="chip"><i style="background:#cfc7b8"></i><b>Walls</b><u>#CFC7B8</u></div>
+        <div class="chip"><i style="background:#c8bd9f"></i><b>Woodwork</b><u>#C8BD9F</u></div>
+      </div>
+    </article>
+    <article class="plate">
+      <img src="work-office.jpg" alt="Open plan office floor decorated in brilliant white" loading="lazy">
+      <h3>Open plan office floor</h3>
+      <p class="pcap">Brilliant white throughout, graphite grid</p>
+      <div class="chip-row">
+        <div class="chip"><i style="background:#4c4e4a"></i><b>Ceiling</b><u>#4C4E4A</u></div>
+        <div class="chip"><i style="background:#e4e9e4"></i><b>Walls</b><u>#E4E9E4</u></div>
+        <div class="chip"><i style="background:#f0f2ef"></i><b>Woodwork</b><u>#F0F2EF</u></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about">
+  <div class="sec wrap about-in reveal">
+    <img src="logo.png" alt="Project Colour">
+    <div>
+      <p class="slabel">About</p>
+      <p>Project Colour is a decoration contractor based in Helmshore, Lancashire, working on new build care homes, houses, apartments and offices. The work is contract decoration rather than a day rate: priced off the schedule, sequenced around the other trades on site, and finished so the building can be handed over. Member of the Painting and Decorating Association and registered with Constructionline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="sec wrap reveal">
+  <div class="sec-head">
+    <p class="slabel">What clients say</p>
+    <h2>Signed off, <span class="ac">on time</span>.</h2>
+  </div>
+  <div class="rev-grid">
+    <article class="rev">
+      <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+      <p>Project Colour decorated the bedrooms and communal areas on our care home build in Bury. They worked around the other trades, kept the site tidy and never once held the programme up.</p>
+      <div class="rev-by"><div class="rev-av">M</div><div><b>Mark T.</b><span>Site Manager . Bury</span></div></div>
+    </article>
+    <article class="rev">
+      <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+      <p>We handed Project Colour forty apartments in Preston plot by plot. Finish was consistent across the lot and the snagging list came back almost empty.</p>
+      <div class="rev-by"><div class="rev-av">R</div><div><b>Rachel W.</b><span>Contracts Manager . Preston</span></div></div>
+    </article>
+    <article class="rev">
+      <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+      <p>Our Manchester office floor was repainted over two weekends while the building stayed in use. Furniture back in place every Monday morning, no fuss.</p>
+      <div class="rev-by"><div class="rev-av">I</div><div><b>Ian H.</b><span>Facilities Manager . Manchester</span></div></div>
+    </article>
+    <article class="rev">
+      <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
+      <p>The corridor wallcoverings in Blackburn were pattern matched properly and the panelling was cut in sharp. Project Colour came back for the snags the same week.</p>
+      <div class="rev-by"><div class="rev-av">S</div><div><b>Sam K.</b><span>Project Manager . Blackburn</span></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section id="areas" class="sec wrap reveal">
+  <div class="sec-head">
+    <p class="slabel">Where we work</p>
+    <h2>Lancashire, Greater Manchester and <span class="ac">wherever the site is</span>.</h2>
+  </div>
+  <div class="area-grid">
+    <span>Helmshore</span><span>Haslingden</span><span>Rossendale</span><span>Ramsbottom</span>
+    <span>Bury</span><span>Blackburn</span><span>Accrington</span><span>Burnley</span>
+    <span>Bolton</span><span>Chorley</span><span>Preston</span><span>Manchester</span>
+  </div>
+  <p class="area-note">Based in Helmshore and working across the North West. Contract programmes further afield are welcome, so tell us where the site is and when you need the decorators on it.</p>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<div class="band">
+  <div class="band-in wrap">
+    <div>
+      <h2>Got a programme to hit?</h2>
+      <p>Send the schedule over and we will price it.</p>
+    </div>
+    <div class="cta-row" style="margin-top:0">
+      <a href="#" id="bandCall" class="btn btn-l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span id="bandCallTx">Call us</span></a>
+      <a href="#contact" class="btn btn-p">Get a Quote</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="sec wrap reveal">
+  <div class="sec-head">
+    <p class="slabel">Contact</p>
+    <h2>Two desks, <span class="ac">one job</span>.</h2>
+    <p class="lede">Commercial enquiries for pricing, schedules and contracts. Operational enquiries for anything happening on site.</p>
+  </div>
+  <div class="con-grid">
+    <div>
+      <div class="desk">
+        <span class="dk">Commercial enquiries</span>
+        <a href="#" id="comPhone">&nbsp;</a>
+        <a href="#" id="comEmail" class="em">&nbsp;</a>
+      </div>
+      <div class="desk">
+        <span class="dk">Operational enquiries</span>
+        <a href="#" id="opPhone">&nbsp;</a>
+        <a href="#" id="opEmail" class="em">&nbsp;</a>
+      </div>
+      <div class="desk">
+        <span class="dk">Based in</span>
+        <a href="#areas" style="font-weight:500;font-size:.98rem">Helmshore, Lancashire</a>
+        <a class="em" href="#areas">Working across the North West</a>
+      </div>
+    </div>
+    <form action="/api/enquiry" method="POST" id="enqForm">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="Project Colour">
+      <input type="hidden" name="source" value="mockup-project-colour">
+      <label for="f-name">Name</label>
+      <input type="text" id="f-name" name="name" required>
+      <label for="f-phone">Phone</label>
+      <input type="tel" id="f-phone" name="phone" required pattern="^(0|\+44)\d{9,11}$">
+      <label for="f-email">Email (optional)</label>
+      <input type="email" id="f-email" name="email">
+      <label for="f-job">Tell us about the job</label>
+      <textarea id="f-job" name="message"></textarea>
+      <button type="submit" class="btn btn-p">Send enquiry</button>
+      <p class="formnote">We will come back to you the same working day where we can.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="logo.png" alt="Project Colour">
+        <div><b>Project Colour</b><span>Decoration contractors . Lancashire</span></div>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#services">Care Home Decoration</a>
+        <a href="#services">New Build Houses &amp; Apartments</a>
+        <a href="#services">Office Interiors</a>
+        <a href="#services">Wallcoverings</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#work">Recent Work</a>
+        <a href="#about">About</a>
+        <a href="#areas">Areas</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#" id="footPhone">&nbsp;</a>
+        <a href="#" id="footEmail">&nbsp;</a>
+        <a href="#areas">Helmshore, Lancashire</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; <span id="yr">2026</span> Project Colour. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FABs ===== -->
+<div class="fabs" id="fabs">
+  <a href="#" id="fabCall" class="fab fab-call" aria-label="Call Project Colour"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+  <a href="#" id="fabWa" class="fab fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp Project Colour"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01c-1.77 0-3.5-.48-5.02-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c-.01 5.46-4.45 9.88-9.92 9.88zm8.42-18.3A11.75 11.75 0 0 0 12.04 0C5.5 0 .17 5.33.17 11.88c0 2.1.55 4.14 1.6 5.95L.07 24l6.33-1.66a11.85 11.85 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.33 11.87-11.88 0-3.17-1.24-6.15-3.48-8.4z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  /* ---- contact details, base64 only ---- */
+  var P1  = atob('MDc0ODMyODEzMTA=');            /* commercial */
+  var P1f = atob('MDc0ODMgMjgxMzEw');
+  var P2  = atob('MDc3MjUxNzcxNzM=');            /* operational */
+  var P2f = atob('MDc3MjUgMTc3MTcz');
+  var E1  = atob('Y2hyaXNAcHJvamVjdGNvbG91ci5vcmc=');
+  var E2  = atob('cGF1bEBwcm9qZWN0Y29sb3VyLm9yZw==');
+  var WA  = atob('NDQ3NDgzMjgxMzEw');
+
+  function tel(id){ var el=document.getElementById(id); if(el) el.href='tel:'+P1; }
+  ['navCall','menuCall','heroCall','bandCall','fabCall'].forEach(tel);
+  var ht=document.getElementById('heroCallTx'); if(ht) ht.textContent=P1f;
+  var bt=document.getElementById('bandCallTx'); if(bt) bt.textContent=P1f;
+
+  function wire(id,txt,href){ var el=document.getElementById(id); if(!el) return; el.textContent=txt; el.href=href; }
+  wire('comPhone',P1f,'tel:'+P1);
+  wire('comEmail',E1,'mailto:'+E1);
+  wire('opPhone',P2f,'tel:'+P2);
+  wire('opEmail',E2,'mailto:'+E2);
+  wire('footPhone',P1f,'tel:'+P1);
+  wire('footEmail',E1,'mailto:'+E1);
+
+  var wa=document.getElementById('fabWa');
+  if(wa) wa.href='https://wa.me/'+WA+'?text=Hi%2C%20seen%20your%20website%20-%20';
+
+  var yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();
+
+  /* ---- loader teardown, hands off into the H1 rule ---- */
+  var ld=document.getElementById('ld');
+  function drop(){
+    if(!ld||ld.classList.contains('gone')) return;
+    ld.classList.add('gone');
+    document.body.classList.add('lit');
+    setTimeout(function(){ if(ld&&ld.parentNode) ld.parentNode.removeChild(ld); },600);
+  }
+  setTimeout(drop,2400);
+  setTimeout(function(){ if(ld&&ld.parentNode) ld.parentNode.removeChild(ld); },3000);
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ setTimeout(drop,300); }
+
+  /* ---- mobile menu ---- */
+  var b=document.getElementById('burger'), m=document.getElementById('mmenu');
+  if(b&&m){
+    b.addEventListener('click',function(){
+      m.classList.toggle('open');
+      document.documentElement.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+    });
+    m.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){ m.classList.remove('open'); document.documentElement.style.overflow=''; });
+    });
+  }
+
+  /* ---- scroll reveals ---- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---- FABs appear once the hero CTAs are gone ---- */
+  var fabs=document.getElementById('fabs'), ctas=document.querySelector('.hero .cta-row');
+  if(fabs&&ctas){
+    var fo=new IntersectionObserver(function(es){
+      fabs.classList.toggle('on',!es[0].isIntersecting);
+    },{threshold:0});
+    fo.observe(ctas);
+  }
+
+  /* ---- form ---- */
+  var ts=document.getElementById('formTimestamp'); if(ts) ts.value=Date.now();
+  var ph=document.getElementById('f-phone');
+  if(ph){
+    ph.addEventListener('input',function(){
+      ph.setCustomValidity(ph.validity.patternMismatch ? 'Please enter a UK phone number' : '');
+    });
+  }
+})();
+</script>
+</body>
+</html>
