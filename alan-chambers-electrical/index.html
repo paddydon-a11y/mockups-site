@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alan Chambers Electrical Ltd | Electricians in Ilkeston, Derbyshire</title>
+<meta name="description" content="Family run electricians in Ilkeston with well over forty years experience. Rewires, fuse boards, testing and inspections, commercial and light industrial. NAPIT Part P registered. Free quotations.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Alan Chambers Electrical Ltd . Your New Website">
+<meta property="og:description" content="Electrical contractors in Ilkeston, Derbyshire . preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/alan-chambers-electrical/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/alan-chambers-electrical/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#ffffff;
+  --stone:#f3f5f7;
+  --stone-2:#e9edf1;
+  --ink:#14161a;
+  --ink-2:#1c2027;
+  --line:#e2e7ec;
+  --line-2:#cdd5dd;
+
+  /* CLIENT LOGO-LIFT: the red of his own ELECTRICAL LIMITED wordmark */
+  --ox:#990000;
+  --ox-hover:#7a0000;
+  --ox-deep:#6d0000;
+  --ox-tint:#f8ebeb;
+
+  /* CONDUCTOR duty only, never a button */
+  --copper:#8b5d33;
+  --copper-lt:#b07a45;
+
+  /* cable cores, only ever inside drawn cable art */
+  --core-live:#8b5d33;
+  --core-neutral:#7ec8ef;
+  --core-earth:#6ab04a;
+  --core-earth-2:#f2c31a;
+
+  --tx:#14161a;
+  --tx-2:#4b5563;
+  --tx-3:#8b95a1;
+
+  --r:16px;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  margin:0; background:var(--bg); color:var(--tx);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:1rem; line-height:1.7; -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+em{font-style:normal}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3,h4{
+  font-family:'Encode Sans Semi Expanded','Inter',sans-serif;
+  margin:0; line-height:1.06; letter-spacing:-.03em; font-weight:800;
+}
+p{margin:0}
+.wrap{width:100%; max-width:var(--wrap); margin:0 auto; padding:0 24px}
+
+.label{
+  font-family:'JetBrains Mono',monospace; font-size:.7rem; font-weight:700;
+  letter-spacing:.26em; text-transform:uppercase; color:var(--ox);
+  display:flex; align-items:center; gap:12px;
+}
+.label::before{content:""; width:26px; height:2px; background:var(--copper); flex:none}
+.h2{font-size:clamp(1.9rem,4.2vw,3rem)}
+.accent{color:var(--ox)}
+
+.sec{padding:96px 0}
+.sec-head{margin-bottom:44px}
+.sec-head .h2{margin-top:14px; max-width:19ch}
+
+/* three-core hairline stack: the trade texture */
+.cores{display:flex; flex-direction:column; gap:3px; width:74px; margin-top:18px}
+.cores i{height:2px; border-radius:2px; display:block}
+.cores i:nth-child(1){background:var(--core-live); width:100%}
+.cores i:nth-child(2){background:var(--core-neutral); width:66%}
+.cores i:nth-child(3){background:linear-gradient(90deg,var(--core-earth),var(--core-earth-2)); width:42%}
+
+/* ============ LOADER: Prove the Circuit ============ */
+#ld{
+  position:fixed; inset:0; z-index:9999; background:var(--bg);
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#ld.gone{opacity:0; visibility:hidden; pointer-events:none}
+.ld-stage{width:min(460px,86vw)}
+.ld-svg{width:100%; height:auto; overflow:visible}
+.ld-draw{stroke-dasharray:var(--len); stroke-dashoffset:var(--len)}
+@keyframes ldDraw{to{stroke-dashoffset:0}}
+@keyframes ldFade{from{opacity:0}to{opacity:1}}
+@keyframes ldDrop{from{opacity:0; transform:translateY(-26px)} 60%{transform:translateY(3px)} to{opacity:1; transform:translateY(0)}}
+@keyframes ldPop{from{opacity:0; transform:scale(.7)} 70%{transform:scale(1.08)} to{opacity:1; transform:scale(1)}}
+@keyframes ldRise{from{opacity:0; transform:translateY(18px)}to{opacity:1; transform:translateY(0)}}
+@keyframes ldPulse{from{transform:translateX(0)} to{transform:translateX(140px)}}
+
+#ld .sheath,#ld .core-l,#ld .core-n,#ld .core-e{stroke-dasharray:var(--len); stroke-dashoffset:var(--len)}
+#ld .sheath{animation:ldDraw .42s ease forwards}
+#ld .sheath-mid{animation:ldFade .3s ease .52s reverse forwards}
+#ld .core-l{animation:ldDraw .3s ease .62s forwards}
+#ld .core-n{animation:ldDraw .32s ease .74s forwards}
+#ld .core-e{animation:ldDraw .34s ease .84s forwards}
+#ld .core-y{opacity:0; animation:ldFade .3s ease 1.1s forwards}
+#ld .probe-r{opacity:0; animation:ldDrop .34s cubic-bezier(.3,1.4,.5,1) 1.02s forwards}
+#ld .probe-b{opacity:0; animation:ldDrop .34s cubic-bezier(.3,1.4,.5,1) 1.12s forwards}
+#ld .pulse{opacity:0; animation:ldFade .1s linear 1.28s forwards, ldPulse .5s ease-in-out 1.28s forwards}
+#ld .pass{opacity:0; animation:ldPop .36s cubic-bezier(.3,1.5,.5,1) 1.56s forwards}
+#ld .ld-brand{opacity:0; animation:ldRise .5s ease 1.74s forwards}
+#ld .tick{opacity:0; animation:ldFade .26s ease forwards}
+#ld .tick:nth-child(1){animation-delay:.72s}
+#ld .tick:nth-child(2){animation-delay:.86s}
+#ld .tick:nth-child(3){animation-delay:1s}
+
+.ld-ticks{
+  display:flex; gap:20px; justify-content:center; margin-top:26px;
+  font-family:'JetBrains Mono',monospace; font-size:.62rem; font-weight:700;
+  letter-spacing:.2em; color:var(--tx-3);
+}
+.ld-ticks .tick{display:flex; align-items:center; gap:7px}
+.ld-ticks .tick b{width:7px; height:7px; border-radius:50%; display:block}
+.ld-brand{text-align:center; margin-top:26px}
+.ld-brand img{width:min(280px,62vw); margin:0 auto}
+.ld-brand span{
+  display:block; margin-top:12px; font-family:'JetBrains Mono',monospace;
+  font-size:.6rem; font-weight:700; letter-spacing:.24em; color:var(--tx-3);
+}
+@media (prefers-reduced-motion:reduce){
+  #ld *{animation:none !important; opacity:1 !important; stroke-dashoffset:0 !important; transform:none !important}
+  #ld .sheath-mid{opacity:0 !important}
+}
+/* CSS-only fail-safe */
+@keyframes ldGoneAuto{to{opacity:0; visibility:hidden}}
+#ld{animation:ldGoneAuto .5s ease 2.5s forwards}
+
+/* ============ NAV ============ */
+nav{position:sticky; top:0; z-index:900; background:var(--bg); border-bottom:1px solid var(--line)}
+.nav-in{display:flex; align-items:center; justify-content:space-between; gap:20px; padding-top:14px; padding-bottom:14px}
+.nav-logo{display:flex; align-items:center; white-space:nowrap}
+.nav-logo img{height:44px; width:auto}
+.nav-links{display:flex; align-items:center; gap:30px}
+.nav-links a{
+  color:var(--tx-2); text-decoration:none; font-size:.9rem; font-weight:600;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--ox)}
+.nav-links a.nav-cta{
+  background:var(--ox); color:#fff !important; padding:11px 20px; border-radius:10px;
+  display:inline-flex; align-items:center; gap:9px; font-weight:700; letter-spacing:-.01em;
+}
+.nav-links a.nav-cta:hover{background:var(--ox-hover)}
+.nav-links a.nav-cta svg{width:16px; height:16px; stroke:#fff; flex:none}
+.burger{
+  display:none; width:46px; height:46px; border:1px solid var(--line-2); background:var(--bg);
+  border-radius:11px; align-items:center; justify-content:center; cursor:pointer; padding:0;
+}
+.burger svg{width:22px; height:22px; stroke:var(--ink)}
+.mnav{display:none; border-top:1px solid var(--line); background:var(--bg)}
+.mnav.open{display:block}
+.mnav-in{padding-top:10px; padding-bottom:20px; display:flex; flex-direction:column}
+.mnav-in a{
+  padding:15px 0; text-decoration:none; font-weight:600; color:var(--tx);
+  border-bottom:1px solid var(--line);
+}
+.mnav-in a.m-cta{
+  margin-top:16px; background:var(--ox); color:#fff; border:0; border-radius:12px;
+  text-align:center; padding:16px; font-weight:700;
+}
+
+/* ============ HERO ============ */
+.hero{display:flex; flex-direction:column; background:var(--bg)}
+.hero-inner{
+  display:grid; grid-template-columns:1.04fr .96fr; gap:56px; align-items:center;
+  padding-top:70px; padding-bottom:76px;
+}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace;
+  font-size:.66rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ox); margin-bottom:22px;
+}
+.eyebrow b{width:8px; height:8px; border-radius:50%; background:var(--ox); display:block; animation:dot 2.4s infinite}
+@keyframes dot{0%,100%{box-shadow:0 0 0 0 rgba(153,0,0,.4)}50%{box-shadow:0 0 0 9px rgba(153,0,0,0)}}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.5rem)}
+.hero .lede{margin-top:24px; font-size:1.06rem; color:var(--tx-2); max-width:46ch}
+.hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:34px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:17px 27px; border-radius:12px; text-decoration:none; font-weight:700;
+  font-size:1rem; letter-spacing:-.01em; border:1px solid transparent; transition:.22s;
+}
+.btn svg{width:18px; height:18px; flex:none}
+.btn-primary{background:var(--ox); color:#fff; box-shadow:0 8px 22px rgba(153,0,0,.22)}
+.btn-primary svg{stroke:#fff}
+.btn-primary:hover{background:var(--ox-hover); transform:translateY(-2px)}
+.btn-ghost{background:var(--bg); color:var(--ink); border-color:var(--line-2)}
+.btn-ghost svg{stroke:var(--ink)}
+.btn-ghost:hover{border-color:var(--ox); color:var(--ox)}
+.btn-ghost:hover svg{stroke:var(--ox)}
+
+/* the stripped-cable rule under the H1 */
+.cable-rule{width:100%; max-width:340px; height:34px; margin-top:26px; display:block; overflow:visible}
+.cable-rule .cr{stroke-dasharray:var(--len); stroke-dashoffset:var(--len); transition:stroke-dashoffset .9s ease}
+body.lit .cable-rule .cr{stroke-dashoffset:0}
+.cable-rule .cr-n{transition-delay:.12s}
+.cable-rule .cr-e{transition-delay:.24s}
+.cable-rule .cr-y{opacity:0; transition:opacity .5s ease .8s}
+body.lit .cable-rule .cr-y{opacity:1}
+
+.hero-photo{position:relative}
+.hero-photo .shot{border-radius:var(--r); border:1px solid var(--line); overflow:hidden; background:var(--stone)}
+.hero-photo .shot img{width:100%; height:100%; object-fit:cover; aspect-ratio:16/11}
+.hero-badge{
+  position:absolute; left:-22px; bottom:26px; background:var(--bg); border:1px solid var(--line);
+  border-radius:14px; padding:14px 18px; display:flex; align-items:center; gap:14px;
+  box-shadow:0 16px 40px rgba(20,22,26,.13);
+}
+.hero-badge img{height:46px; width:auto}
+.hero-badge span{display:block; font-size:.82rem; font-weight:700; line-height:1.3}
+.hero-badge small{display:block; font-size:.7rem; color:var(--tx-3); font-weight:500}
+
+/* the mobile-only live core strip lives inside the poster */
+.corestrip{display:none}
+
+/* ============ TRUST ============ */
+.trust{background:var(--stone); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.trust-in{display:flex; align-items:stretch; justify-content:space-between; gap:0; padding-top:0; padding-bottom:0}
+.trust-item{
+  flex:1; display:flex; align-items:center; gap:12px; padding:26px 22px;
+  border-left:1px solid var(--line);
+}
+.trust-item:first-child{border-left:0; padding-left:0}
+.trust-item svg{width:20px; height:20px; stroke:var(--ox); flex:none}
+.trust-item span{font-size:.86rem; font-weight:700; letter-spacing:-.01em; line-height:1.3}
+
+/* ============ SERVICES ============ */
+.svc-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+.svc{
+  background:var(--bg); border:1px solid var(--line); border-radius:var(--r);
+  overflow:hidden; position:relative; transition:.25s; display:flex; flex-direction:column;
+}
+.svc::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:3px; background:var(--ox);
+  transform:scaleX(0); transform-origin:left; transition:transform .3s ease; z-index:2;
+}
+.svc:hover::before{transform:scaleX(1)}
+.svc:hover{transform:translateY(-3px); box-shadow:0 16px 38px rgba(20,22,26,.1); border-color:var(--line-2)}
+.svc-img{aspect-ratio:16/9; overflow:hidden; background:var(--stone)}
+.svc-img img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-body{padding:24px 24px 26px}
+.svc-body h3{font-size:1.16rem; letter-spacing:-.02em}
+.svc-body p{margin-top:9px; font-size:.93rem; color:var(--tx-2); line-height:1.6}
+.svc-no{
+  font-family:'JetBrains Mono',monospace; font-size:.64rem; font-weight:700; letter-spacing:.18em;
+  color:var(--copper); display:block; margin-bottom:10px;
+}
+
+/* ============ ACCREDITATIONS ============ */
+.creds{background:var(--stone); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.cred-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.cred{
+  background:var(--bg); border:1px solid var(--line); border-radius:var(--r);
+  padding:32px 28px; display:flex; flex-direction:column; align-items:flex-start;
+  transition:.25s;
+}
+.cred:hover{transform:translateY(-3px); box-shadow:0 16px 38px rgba(20,22,26,.09); border-color:var(--line-2)}
+.cred-mark{
+  height:88px; display:flex; align-items:center; justify-content:flex-start;
+  margin-bottom:22px;
+}
+.cred-mark img{max-height:88px; width:auto; object-fit:contain}
+.cred h3{font-size:1.06rem; letter-spacing:-.02em}
+.cred p{margin-top:9px; font-size:.9rem; color:var(--tx-2); line-height:1.6}
+.cred .cores{margin-top:20px}
+
+/* ============ GALLERY ============ */
+.gal{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.gtile{
+  position:relative; border-radius:14px; overflow:hidden; border:1px solid var(--line);
+  cursor:pointer; background:var(--stone); aspect-ratio:4/3;
+}
+.gtile img{width:100%; height:100%; object-fit:cover; transition:transform .55s ease}
+.gtile:hover img{transform:scale(1.06)}
+.gtag{
+  position:absolute; left:14px; bottom:14px; background:rgba(20,22,26,.84); color:#fff;
+  font-size:.72rem; font-weight:600; padding:7px 13px; border-radius:8px;
+  opacity:0; transform:translateY(8px); transition:.28s;
+}
+.gtile:hover .gtag{opacity:1; transform:translateY(0)}
+#lb{
+  position:fixed; inset:0; z-index:1000; background:rgba(12,14,17,.94); display:none;
+  align-items:center; justify-content:center; padding:28px;
+}
+#lb.on{display:flex}
+#lb img{max-width:94vw; max-height:88vh; border-radius:12px}
+#lb button{
+  position:absolute; top:22px; right:22px; width:46px; height:46px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.1); color:#fff;
+  font-size:1.5rem; cursor:pointer; line-height:1;
+}
+
+/* ============ ABOUT ============ */
+.about-in{display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:center}
+.about-mark{
+  background:var(--stone); border:1px solid var(--line); border-radius:var(--r);
+  padding:40px; display:flex; align-items:center; justify-content:center;
+}
+.about-mark img{width:100%; max-width:300px}
+.about-txt p{margin-top:20px; color:var(--tx-2); font-size:1.02rem}
+.sig{display:flex; align-items:center; gap:16px; margin-top:30px; padding-top:26px; border-top:1px solid var(--line)}
+.sig .ini{
+  width:52px; height:52px; border-radius:50%; background:var(--ox); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-weight:800;
+  font-family:'Encode Sans Semi Expanded',sans-serif; letter-spacing:-.02em; flex:none;
+}
+.sig b{display:block; font-size:.95rem}
+.sig small{display:block; font-size:.82rem; color:var(--tx-3)}
+
+/* ============ REVIEWS ============ */
+.rev-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.rev{
+  background:var(--bg); border:1px solid var(--line); border-radius:var(--r); padding:30px 28px;
+  display:flex; flex-direction:column; transition:.25s;
+}
+.rev:hover{transform:translateY(-3px); box-shadow:0 16px 38px rgba(20,22,26,.09)}
+.stars{display:flex; gap:3px; margin-bottom:16px}
+.stars svg{width:16px; height:16px; fill:var(--ox)}
+.rev p{font-size:.95rem; color:var(--tx-2); line-height:1.72; flex:1}
+.rev-by{display:flex; align-items:center; gap:13px; margin-top:22px; padding-top:20px; border-top:1px solid var(--line)}
+.rev-by .av{
+  width:42px; height:42px; border-radius:50%; background:var(--ox-tint); color:var(--ox);
+  display:flex; align-items:center; justify-content:center; font-weight:800; flex:none;
+  font-family:'Encode Sans Semi Expanded',sans-serif;
+}
+.rev-by b{display:block; font-size:.9rem}
+.rev-by small{display:block; font-size:.79rem; color:var(--tx-3)}
+
+/* ============ AREAS ============ */
+.areas{background:var(--stone); border-top:1px solid var(--line)}
+.area-list{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+.area-list span{
+  background:var(--bg); border:1px solid var(--line); border-radius:9px;
+  padding:9px 15px; font-size:.86rem; font-weight:600; color:var(--tx-2);
+}
+.area-list span.home{background:var(--ox); border-color:var(--ox); color:#fff}
+.areas p{margin-top:20px; color:var(--tx-2); max-width:64ch; font-size:.98rem}
+
+/* ============ CTA BAND ============ */
+.band{background:var(--ink); color:#fff; position:relative; overflow:hidden}
+.band-in{
+  padding-top:66px; padding-bottom:66px; display:flex; align-items:center;
+  justify-content:space-between; gap:36px; flex-wrap:wrap; position:relative; z-index:2;
+}
+.band h2{font-size:clamp(1.7rem,3.4vw,2.5rem); color:#fff; max-width:20ch}
+.band p{margin-top:14px; color:#aab3bd; font-size:1rem}
+.band .btn-primary{box-shadow:none}
+.band-cable{position:absolute; left:0; right:0; bottom:0; height:8px; display:flex; z-index:1}
+.band-cable i{flex:1; height:100%}
+
+/* ============ CONTACT ============ */
+.ct-grid{display:grid; grid-template-columns:.86fr 1.14fr; gap:48px; align-items:start}
+.ct-card{
+  background:var(--stone); border:1px solid var(--line); border-radius:14px;
+  padding:22px 24px; display:flex; gap:16px; align-items:flex-start; margin-bottom:14px;
+}
+.ct-card svg{width:20px; height:20px; stroke:var(--ox); flex:none; margin-top:4px}
+.ct-card b{display:block; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em; color:var(--tx-3); font-family:'JetBrains Mono',monospace; font-weight:700}
+.ct-card a,.ct-card span{display:block; margin-top:5px; font-size:1.02rem; font-weight:700; text-decoration:none; color:var(--tx); letter-spacing:-.01em}
+.ct-card a:hover{color:var(--ox)}
+form{background:var(--bg); border:1px solid var(--line); border-radius:var(--r); padding:34px}
+.f-row{margin-bottom:18px}
+.f-row label{display:block; font-size:.82rem; font-weight:700; margin-bottom:8px}
+.f-row label i{color:var(--tx-3); font-weight:500; font-style:normal}
+.f-row input,.f-row textarea{
+  width:100%; padding:14px 16px; border:1px solid var(--line-2); border-radius:11px;
+  font-family:inherit; font-size:.97rem; background:var(--bg); color:var(--tx);
+}
+.f-row input:focus,.f-row textarea:focus{outline:none; border-color:var(--ox); box-shadow:0 0 0 3px rgba(153,0,0,.1)}
+.f-row textarea{min-height:118px; resize:vertical}
+form button{
+  width:100%; padding:17px; background:var(--ox); color:#fff; border:0; border-radius:12px;
+  font-family:inherit; font-size:1rem; font-weight:700; cursor:pointer; transition:.22s;
+}
+form button:hover{background:var(--ox-hover)}
+.f-note{margin-top:14px; font-size:.8rem; color:var(--tx-3); text-align:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink); color:#9aa4b0; padding:64px 0 30px}
+.ft-top{display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:44px; padding-bottom:40px; border-bottom:1px solid #262b33}
+.ft-logo{background:#fff; border-radius:12px; padding:14px 18px; display:inline-block}
+.ft-logo img{height:44px; width:auto}
+.ft-top p{margin-top:20px; font-size:.92rem; max-width:38ch; line-height:1.7}
+.ft-col h4{color:#fff; font-size:.76rem; letter-spacing:.18em; text-transform:uppercase; font-family:'JetBrains Mono',monospace; font-weight:700}
+.ft-col a,.ft-col span{display:block; margin-top:12px; font-size:.9rem; text-decoration:none; color:#9aa4b0}
+.ft-col a:hover{color:#fff}
+.ft-bot{padding-top:26px; display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; font-size:.82rem}
+.ft-bot a{color:#c3ccd6}
+.ft-reg{margin-top:14px; font-size:.78rem; color:#6f7883; line-height:1.6}
+
+/* ============ FABS ============ */
+.fabs{position:fixed; right:20px; bottom:20px; z-index:800; display:flex; flex-direction:column; gap:12px; opacity:0; visibility:hidden; transition:.3s}
+.fabs.on{opacity:1; visibility:visible}
+.fab{
+  width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  text-decoration:none; box-shadow:0 8px 22px rgba(20,22,26,.28);
+}
+.fab svg{width:25px; height:25px}
+.fab-call{background:var(--ox); animation:fabPulse 2.6s infinite}
+.fab-call svg{stroke:#fff}
+.fab-wa{background:#25d366; animation:fabPulse 2.6s .8s infinite}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation:none; transform:scale(1.06)}
+@keyframes fabPulse{0%,100%{box-shadow:0 8px 22px rgba(20,22,26,.28)}50%{box-shadow:0 8px 22px rgba(20,22,26,.28),0 0 0 12px rgba(153,0,0,0)}}
+
+/* ============ REVEALS ============ */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1 !important; transform:none !important}
+  *{animation-duration:.001s !important}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .hero-inner{grid-template-columns:1fr; gap:44px}
+  .hero-badge{left:auto; right:20px}
+  .about-in{grid-template-columns:1fr; gap:36px}
+  .ct-grid{grid-template-columns:1fr; gap:34px}
+  .ft-top{grid-template-columns:1fr 1fr; gap:34px}
+}
+@media (max-width:900px){
+  .gal{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .cred-grid{grid-template-columns:1fr}
+  .trust-in{flex-direction:column}
+  .trust-item{border-left:0; border-top:1px solid var(--line); padding:16px 0}
+  .trust-item:first-child{border-top:0}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-logo img{height:38px}
+}
+@media (max-width:780px){
+  .sec{padding:66px 0}
+  .svc-grid{grid-template-columns:1fr; gap:18px}
+  .gal{grid-template-columns:1fr}
+  .band-in{padding-top:52px; padding-bottom:52px}
+  form{padding:24px}
+  .ft-top{grid-template-columns:1fr; gap:30px}
+
+  /* ---- H-COREFOLD: the 390px first screen ---- */
+  .hero-inner{
+    display:block; padding-top:0; padding-bottom:0;
+    padding-left:0; padding-right:0; max-width:none;
+  }
+  .hero-poster{
+    background:var(--ox); color:#fff; position:relative; overflow:hidden;
+    padding:38px 24px 0;
+  }
+  .hero-poster::after{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(120% 80% at 88% 0%, rgba(255,255,255,.14), transparent 62%);
+    pointer-events:none;
+  }
+  .hero-poster > *{position:relative; z-index:2}
+  .hero-poster .eyebrow{color:#f2c9c9; margin-bottom:18px}
+  .hero-poster .eyebrow b{background:#fff}
+  @keyframes dotLight{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.45)}50%{box-shadow:0 0 0 9px rgba(255,255,255,0)}}
+  .hero-poster .eyebrow b{animation:dotLight 2.4s infinite}
+  .hero-poster h1{
+    font-size:clamp(2.35rem,10.4vw,3.1rem); line-height:1.02; letter-spacing:-.035em; color:#fff;
+  }
+  .hero-poster h1 .accent{color:#ffd9d9}
+  .hero-poster .lede{color:#f0cccc; font-size:.97rem; margin-top:18px; max-width:34ch}
+  .hero-ctas{margin-top:26px; gap:11px}
+  .hero-ctas .btn{flex:1 1 100%; padding:16px 20px}
+  .hero-poster .btn-primary{background:#fff; color:var(--ox); box-shadow:0 8px 22px rgba(0,0,0,.2)}
+  .hero-poster .btn-primary svg{stroke:var(--ox)}
+  .hero-poster .btn-ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.5)}
+  .hero-poster .btn-ghost svg{stroke:#fff}
+  .cable-rule{display:none}
+
+  /* the LIVE CORE STRIP along the base of the fold */
+  .corestrip{
+    display:block; margin:30px -24px 0; background:var(--ox-deep);
+    border-top:1px solid rgba(255,255,255,.14); padding:16px 0 15px; overflow:hidden;
+  }
+  .corestrip svg{width:100%; height:46px; display:block; overflow:visible}
+  .corestrip .cs-line{stroke-dasharray:var(--len); stroke-dashoffset:var(--len); animation:csDraw 5.4s ease-in-out infinite}
+  .corestrip .cs-n{animation-delay:.14s}
+  .corestrip .cs-e{animation-delay:.28s}
+  .corestrip .cs-y{animation:csStripe 5.4s ease-in-out infinite}
+  @keyframes csStripe{0%,24%{opacity:0}34%,88%{opacity:1}100%{opacity:0}}
+  @keyframes csDraw{
+    0%{stroke-dashoffset:var(--len)}
+    26%,74%{stroke-dashoffset:0}
+    100%{stroke-dashoffset:0}
+  }
+  .corestrip .cs-pulse{animation:csPulse 5.4s ease-in-out infinite}
+  @keyframes csPulse{
+    0%,30%{opacity:0; transform:translateX(0)}
+    36%{opacity:1}
+    70%{opacity:1; transform:translateX(300px)}
+    76%,100%{opacity:0; transform:translateX(300px)}
+  }
+  .corestrip .cs-lab{
+    display:flex; justify-content:space-between; padding:0 24px; margin-top:10px;
+    font-family:'JetBrains Mono',monospace; font-size:.56rem; font-weight:700;
+    letter-spacing:.2em; color:rgba(255,255,255,.62);
+  }
+
+  .hero-photo{padding:26px 24px 0}
+  .hero-photo .shot img{aspect-ratio:16/10}
+  /* mobile rule: badge lifts OUT of the photo, below it */
+  .hero-badge{
+    position:static; margin-top:14px; width:100%; box-shadow:none;
+    background:var(--stone); border-radius:12px;
+  }
+  .hero{padding-bottom:34px}
+  .gtag{display:none}
+  .sec-head .h2{max-width:none}
+  .about-mark{padding:26px}
+  .cred{padding:26px 22px}
+  .cred-mark{height:74px; margin-bottom:18px}
+  .cred-mark img{max-height:74px}
+  .fabs{right:16px; bottom:16px}
+  .fab{width:52px; height:52px}
+}
+@media (max-width:400px){
+  .hero-poster{padding-left:24px; padding-right:24px}
+  .corestrip{margin-left:-24px; margin-right:-24px}
+  .corestrip .cs-lab{padding:0 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADER: Prove the Circuit ============ -->
+<div id="ld" role="status" aria-label="Loading">
+  <div class="ld-stage">
+    <svg class="ld-svg" viewBox="0 6 400 178" fill="none" aria-hidden="true">
+      <!-- grey outer sheath, drawn across -->
+      <path class="sheath" style="--len:320" d="M40 95 H360" stroke="#c3ccd5" stroke-width="17" stroke-linecap="round"/>
+      <!-- the mid section that strips back to reveal the cores -->
+      <path class="sheath-mid" d="M132 95 H268" stroke="#c3ccd5" stroke-width="17" stroke-linecap="butt"/>
+      <!-- three cores in his own logo's colours -->
+      <path class="core-l" style="--len:140" d="M130 95 H270" stroke="#8b5d33" stroke-width="7" stroke-linecap="round"/>
+      <path class="core-n" style="--len:150" d="M134 95 C 150 40, 210 40, 226 95" stroke="#7ec8ef" stroke-width="7" stroke-linecap="round"/>
+      <path class="core-e" style="--len:150" d="M174 95 C 190 150, 250 150, 266 95" stroke="#6ab04a" stroke-width="7" stroke-linecap="round"/>
+      <path class="core-y" d="M174 95 C 190 150, 250 150, 266 95" stroke="#f2c31a" stroke-width="7" stroke-linecap="round" stroke-dasharray="6 11"/>
+      <!-- light pulse running the live core -->
+      <g class="pulse"><circle cx="130" cy="95" r="7" fill="#f2c31a"/><circle cx="130" cy="95" r="13" fill="#f2c31a" opacity=".28"/></g>
+      <!-- test probes -->
+      <g class="probe-r"><rect x="118" y="18" width="9" height="46" rx="4.5" fill="#990000"/><path d="M122.5 64 V88" stroke="#3c4148" stroke-width="3.4" stroke-linecap="round"/></g>
+      <g class="probe-b"><rect x="272" y="18" width="9" height="46" rx="4.5" fill="#22262c"/><path d="M276.5 64 V88" stroke="#3c4148" stroke-width="3.4" stroke-linecap="round"/></g>
+      <!-- the reading -->
+      <g class="pass">
+        <rect x="150" y="146" width="100" height="30" rx="15" fill="#990000"/>
+        <text x="200" y="166" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" letter-spacing="1.6">PASS</text>
+      </g>
+    </svg>
+    <div class="ld-ticks">
+      <span class="tick"><b style="background:#8b5d33"></b>LIVE</span>
+      <span class="tick"><b style="background:#7ec8ef"></b>NEUTRAL</span>
+      <span class="tick"><b style="background:#6ab04a"></b>EARTH</span>
+    </div>
+    <div class="ld-brand">
+      <img src="logo.png" alt="Alan Chambers Electrical Limited">
+      <span>ELECTRICAL CONTRACTORS . ILKESTON</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="nav-logo"><img src="logo.png" alt="Alan Chambers Electrical Limited"></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#accredited">Accredited</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#" id="navCall" class="nav-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">&nbsp;</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="mnav" id="mnav">
+    <div class="wrap mnav-in">
+      <a href="#services">Services</a>
+      <a href="#accredited">Accredited</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+      <a href="#" id="mCall" class="m-cta">Call Alan on <span id="mCallTxt">&nbsp;</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-poster">
+      <div class="eyebrow"><b></b>NAPIT PART P REGISTERED . ILKESTON</div>
+      <h1>From a single socket to a <em class="accent">full rewire</em>.</h1>
+      <p class="lede">Family run electrical contractors in Ilkeston with well over forty years on the tools. Domestic, commercial and light industrial. Free quotations, no job too small.</p>
+
+      <svg class="cable-rule" viewBox="0 0 340 34" fill="none" aria-hidden="true">
+        <path class="cr cr-l" style="--len:340" d="M0 20 H340" stroke="#8b5d33" stroke-width="5" stroke-linecap="round"/>
+        <path class="cr cr-n" style="--len:150" d="M40 20 C 62 -8, 118 -8, 140 20" stroke="#7ec8ef" stroke-width="5" stroke-linecap="round"/>
+        <path class="cr cr-e" style="--len:150" d="M170 20 C 192 48, 248 48, 270 20" stroke="#6ab04a" stroke-width="5" stroke-linecap="round"/>
+        <path class="cr-y" d="M170 20 C 192 48, 248 48, 270 20" stroke="#f2c31a" stroke-width="5" stroke-linecap="round" stroke-dasharray="6 11"/>
+      </svg>
+
+      <div class="hero-ctas">
+        <a href="#" id="heroCall" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Call Alan on <span id="heroCallTxt">&nbsp;</span></span>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/></svg>
+          <span>Get a Free Quote</span>
+        </a>
+      </div>
+
+      <!-- LIVE CORE STRIP: mobile fold payoff, handed off from the loader -->
+      <div class="corestrip" aria-hidden="true">
+        <svg viewBox="0 0 340 46" fill="none">
+          <path class="cs-line cs-l" style="--len:340" d="M0 26 H340" stroke="#b07a45" stroke-width="6" stroke-linecap="round"/>
+          <path class="cs-line cs-n" style="--len:150" d="M46 26 C 68 -4, 124 -4, 146 26" stroke="#7ec8ef" stroke-width="6" stroke-linecap="round"/>
+          <path class="cs-line cs-e" style="--len:150" d="M176 26 C 198 56, 254 56, 276 26" stroke="#6ab04a" stroke-width="6" stroke-linecap="round"/>
+          <path class="cs-y" d="M176 26 C 198 56, 254 56, 276 26" stroke="#f2c31a" stroke-width="6" stroke-linecap="round" stroke-dasharray="6 11"/>
+          <g class="cs-pulse"><circle cx="22" cy="26" r="6" fill="#f2c31a"/><circle cx="22" cy="26" r="12" fill="#f2c31a" opacity=".3"/></g>
+        </svg>
+        <div class="cs-lab"><span>LIVE</span><span>NEUTRAL</span><span>EARTH</span></div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="shot"><img src="hero-lighting.jpg" alt="Kitchen downlighting installed and wired by Alan Chambers Electrical" fetchpriority="high"></div>
+      <div class="hero-badge">
+        <img src="cert-napit.png" alt="NAPIT">
+        <div>
+          <span>NAPIT Part P Registered</span>
+          <small>Certified and notified work</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TRUST ============ -->
+<section class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>40+ Years Experience</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 9.2-8 10-4.6-.8-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>NAPIT Part P</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Derbyshire Trusted Trader</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/></svg><span>Free Quotations</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M17 11h4M19 9v4"/></svg><span>Family Run</span></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2 class="h2">Domestic, commercial and <em class="accent">light industrial</em>.</h2>
+      <div class="cores"><i></i><i></i><i></i></div>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal"><div class="svc-img"><img src="svc-firstfix.jpg" alt="First fix wiring in a stud wall" loading="lazy"></div><div class="svc-body"><span class="svc-no">01</span><h3>Full &amp; Part Rewires</h3><p>One room or the whole house, tested and certified before we leave.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-fuseboard.jpg" alt="Modern consumer unit with RCBO protection" loading="lazy"></div><div class="svc-body"><span class="svc-no">02</span><h3>Fuse Boards &amp; Mains Upgrades</h3><p>Old boards swapped for modern protection, mains work included.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-sockets.jpg" alt="Chrome double socket fitted in a kitchen" loading="lazy"></div><div class="svc-body"><span class="svc-no">03</span><h3>Sockets, Switches &amp; Controls</h3><p>Extra sockets, boiler and heating controls, energy saving work.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-exterior-lighting.jpg" alt="House elevation lit with exterior lighting at night" loading="lazy"></div><div class="svc-body"><span class="svc-no">04</span><h3>Lighting, Indoors &amp; Out</h3><p>Downlights, garden lighting and security floods, wired and set.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="work-testing-bench.jpg" alt="Test meter and components on a circuit diagram" loading="lazy"></div><div class="svc-body"><span class="svc-no">05</span><h3>Testing &amp; Inspections</h3><p>EICRs, landlord inspections and PAT testing, certificates issued.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="work-cable-runs.jpg" alt="Cable runs and terminations in a distribution panel" loading="lazy"></div><div class="svc-body"><span class="svc-no">06</span><h3>Fault Finding &amp; Repairs</h3><p>We find why it went, then fix the cause. No quick fixes.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="work-contactors.jpg" alt="Contactors and control gear in a commercial panel" loading="lazy"></div><div class="svc-body"><span class="svc-no">07</span><h3>Commercial &amp; Light Industrial</h3><p>Shops, units, factories and schools. Back up and running fast.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-cctv.jpg" alt="CCTV camera and floodlight fitted to a house" loading="lazy"></div><div class="svc-body"><span class="svc-no">08</span><h3>Alarms, CCTV &amp; Data</h3><p>Intruder alarms, CCTV, fire alarms, emergency lighting and data cabling.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACCREDITATIONS ============ -->
+<section class="sec creds" id="accredited">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Accredited</div>
+      <h2 class="h2">Registered, assessed and <em class="accent">certified</em>.</h2>
+      <div class="cores"><i></i><i></i><i></i></div>
+    </div>
+    <div class="cred-grid">
+      <article class="cred reveal">
+        <div class="cred-mark"><img src="cert-napit.png" alt="NAPIT registered" loading="lazy"></div>
+        <h3>NAPIT Registered</h3>
+        <p>Part P registered electrician. Notifiable work is certified and notified for you, so your paperwork is right.</p>
+        <div class="cores"><i></i><i></i><i></i></div>
+      </article>
+      <article class="cred reveal">
+        <div class="cred-mark"><img src="cert-cityguilds.png" alt="City and Guilds qualified" loading="lazy"></div>
+        <h3>City &amp; Guilds Qualified</h3>
+        <p>Time served and formally qualified, with well over forty years of it on the tools around Ilkeston.</p>
+        <div class="cores"><i></i><i></i><i></i></div>
+      </article>
+      <article class="cred reveal">
+        <div class="cred-mark"><img src="cert-trusted-trader.png" alt="Derbyshire County Council Trusted Trader" loading="lazy"></div>
+        <h3>Derbyshire Trusted Trader</h3>
+        <p>Vetted and listed by Derbyshire County Council on their Trusted Trader scheme.</p>
+        <div class="cores"><i></i><i></i><i></i></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT WORK ============ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2 class="h2">Wired, tested and <em class="accent">left tidy</em>.</h2>
+      <div class="cores"><i></i><i></i><i></i></div>
+    </div>
+    <div class="gal">
+      <div class="gtile reveal" data-full="work-relay-loom.jpg"><img src="work-relay-loom.jpg" alt="Relay and control wiring loom" loading="lazy"><span class="gtag">Control panel rewire</span></div>
+      <div class="gtile reveal" data-full="hero-lighting.jpg"><img src="hero-lighting.jpg" alt="Kitchen downlighting at dusk" loading="lazy"><span class="gtag">Kitchen downlighting</span></div>
+      <div class="gtile reveal" data-full="svc-garden-lighting.jpg"><img src="svc-garden-lighting.jpg" alt="Garden LED strip lighting to raised beds" loading="lazy"><span class="gtag">Garden lighting</span></div>
+      <div class="gtile reveal" data-full="work-contactors.jpg"><img src="work-contactors.jpg" alt="Contactors and control gear" loading="lazy"><span class="gtag">Light industrial install</span></div>
+      <div class="gtile reveal" data-full="svc-fuseboard.jpg"><img src="svc-fuseboard.jpg" alt="New consumer unit" loading="lazy"><span class="gtag">Fuse board upgrade</span></div>
+      <div class="gtile reveal" data-full="work-testing-bench.jpg"><img src="work-testing-bench.jpg" alt="Test equipment and components" loading="lazy"><span class="gtag">Testing and inspection</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap about-in">
+    <div class="about-mark reveal"><img src="logo-mark.png" alt="Alan Chambers Electrical mark"></div>
+    <div class="about-txt reveal">
+      <div class="label">About us</div>
+      <h2 class="h2" style="margin-top:14px">Forty years of <em class="accent">word of mouth</em>.</h2>
+      <p>Alan Chambers Electrical Ltd has been wiring homes and businesses around Ilkeston since 2003, and Alan has been an electrician here for well over forty years. It is still a family run outfit. Most of the work comes in on referrals and recommendations, which is how we like it. Fair rates, and every price explained before anyone starts.</p>
+      <div class="sig">
+        <div class="ini">AC</div>
+        <div><b>Alan Chambers</b><small>Owner, Alan Chambers Electrical Ltd</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec creds" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What customers say</div>
+      <h2 class="h2">Landlords, businesses and <em class="accent">neighbours</em>.</h2>
+      <div class="cores"><i></i><i></i><i></i></div>
+    </div>
+    <div class="rev-grid">
+      <article class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg></div>
+        <p>"Alan is the recommended electrician for all of our landlords, purchasers and vendors. We have never had any complaints and Alan and his staff are absolutely brilliant at their job. I wouldn't hesitate to recommend him."</p>
+        <div class="rev-by"><div class="av">A</div><div><b>Angela</b><small>Renshaw Estate Agents, Ilkeston</small></div></div>
+      </article>
+      <article class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg></div>
+        <p>"I have known Alan for nearly 30 years, he has always done my personal and business electrical work. He recently completed a rewire at an old property of mine which could have been a tough job but he went about it in a really professional manner."</p>
+        <div class="rev-by"><div class="av">P</div><div><b>Paul Carrington</b><small>Local business owner, Ilkeston</small></div></div>
+      </article>
+      <article class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.6 7 .7-5.2 4.8 1.5 7-6.3-3.6L5.7 21l1.5-7L2 9.3l7-.7z"/></svg></div>
+        <p>"Alan is excellent at his job, he is contracted to West Transport but has also carried out personal work for the directors and myself. He is extremely reliable and provides an outstanding service. Highly recommended."</p>
+        <div class="rev-by"><div class="av">S</div><div><b>Steve Orchard</b><small>West Transport</small></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREAS ============ -->
+<section class="sec areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:26px">
+      <div class="label">Where we work</div>
+      <h2 class="h2">Ilkeston and <em class="accent">the surrounding areas</em>.</h2>
+    </div>
+    <div class="area-list reveal">
+      <span class="home">Ilkeston</span><span>Cotmanhay</span><span>Kirk Hallam</span><span>West Hallam</span><span>Stanton by Dale</span><span>Shipley</span><span>Heanor</span><span>Langley Mill</span><span>Eastwood</span><span>Awsworth</span><span>Kimberley</span><span>Trowell</span><span>Stapleford</span><span>Sandiacre</span><span>Long Eaton</span><span>Draycott</span><span>Breaston</span><span>Borrowash</span><span>Spondon</span><span>Toton</span><span>Beeston</span><span>Bramcote</span><span>Derby</span><span>Nottingham</span>
+    </div>
+    <p class="reveal">Based on Wingfield Drive in Ilkeston, so most of Erewash is a short run out. If your postcode is not on the list it is still worth a call, we cover a good stretch of Derbyshire and Nottinghamshire.</p>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="band">
+  <div class="wrap band-in">
+    <div>
+      <h2>Need an electrician in Ilkeston?</h2>
+      <p>Free, friendly, no obligation quotation. No job too small.</p>
+    </div>
+    <a href="#" id="bandCall" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Call Alan on <span id="bandCallTxt">&nbsp;</span></span>
+    </a>
+  </div>
+  <div class="band-cable" aria-hidden="true"><i style="background:#8b5d33"></i><i style="background:#7ec8ef"></i><i style="background:#6ab04a"></i><i style="background:#f2c31a"></i></div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get in touch</div>
+      <h2 class="h2">Tell us what needs <em class="accent">doing</em>.</h2>
+      <p style="margin-top:18px; color:var(--tx-2); max-width:52ch">Give Alan a ring, or leave your details and we will come back to you with a free quotation.</p>
+    </div>
+    <div class="ct-grid">
+      <div class="reveal">
+        <div class="ct-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>Telephone</b><a href="#" id="ctTel">&nbsp;</a></div>
+        </div>
+        <div class="ct-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.6"/><path d="M11 18h2"/></svg>
+          <div><b>Mobile</b><a href="#" id="ctMob">&nbsp;</a></div>
+        </div>
+        <div class="ct-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2.4"/><path d="M2 7l10 6 10-6"/></svg>
+          <div><b>Email</b><a href="#" id="ctEmail">&nbsp;</a></div>
+        </div>
+        <div class="ct-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><b>Address</b><span id="ctAddr">&nbsp;</span></div>
+        </div>
+      </div>
+
+      <form action="/api/enquiry" method="POST" class="reveal" id="enq">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Alan Chambers Electrical Ltd">
+        <input type="hidden" name="source" value="mockup-alan-chambers-electrical">
+        <div class="f-row"><label for="fName">Your name</label><input id="fName" name="name" type="text" required autocomplete="name"></div>
+        <div class="f-row"><label for="fPhone">Phone number</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        <div class="f-row"><label for="fEmail">Email <i>(optional)</i></label><input id="fEmail" name="email" type="email" autocomplete="email"></div>
+        <div class="f-row"><label for="fMsg">Tell us about the job <i>(optional)</i></label><textarea id="fMsg" name="message"></textarea></div>
+        <button type="submit">Send Enquiry</button>
+        <p class="f-note">We will get back to you with a free, no obligation quotation.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <span class="ft-logo"><img src="logo.png" alt="Alan Chambers Electrical Limited"></span>
+        <p>Family run electrical contractors in Ilkeston, Derbyshire. Domestic, commercial and light industrial, with well over forty years on the tools.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Services</h4>
+        <a href="#services">Rewires</a>
+        <a href="#services">Fuse Boards</a>
+        <a href="#services">Testing &amp; Inspections</a>
+        <a href="#services">Commercial</a>
+        <a href="#services">Alarms &amp; CCTV</a>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <a href="#" id="ftTel">&nbsp;</a>
+        <a href="#" id="ftMob">&nbsp;</a>
+        <a href="#" id="ftEmail">&nbsp;</a>
+        <span id="ftAddr">&nbsp;</span>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; <span id="yr">2026</span> Alan Chambers Electrical Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/electrician-website-design" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+    <p class="ft-reg">Registered office: 12 Wingfield Drive, Ilkeston, Derbyshire, DE7 8UZ. Registered in England and Wales, company no. 04795522.</p>
+  </div>
+</footer>
+
+<!-- ============ FABS ============ -->
+<div class="fabs" id="fabs">
+  <a href="#" id="fabCall" class="fab fab-call" aria-label="Call us">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" id="fabWa" class="fab fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp us">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+  </a>
+</div>
+
+<div id="lb"><button aria-label="Close">&times;</button><img src="" alt=""></div>
+
+<script>
+(function(){
+  /* ---- contact details, base64 only ---- */
+  var P   = atob('MDExNTg3NzEyMTg=');
+  var Pf  = atob('MDExNSA4NzcgMTIxOA==');
+  var M   = atob('MDc3MTMzOTE5NTE=');
+  var Mf  = atob('MDc3MTMgMzkxIDk1MQ==');
+  var E   = atob('aW5mb0BhbGFuY2hhbWJlcnNlbGVjdHJpY2FsLmNvLnVr');
+  var A   = atob('MTIgV2luZ2ZpZWxkIERyaXZlLCBJbGtlc3RvbiwgRGVyYnlzaGlyZSwgREU3IDhVWg==');
+  var WA  = 'https://wa.me/447713391951?text=Hi%2C%20seen%20your%20website%20-%20';
+
+  function tel(id, txtId){
+    var a = document.getElementById(id);
+    if(!a) return;
+    a.href = 'tel:' + P;
+    if(txtId){ var t = document.getElementById(txtId); if(t) t.textContent = Pf; }
+    else { a.textContent = Pf; }
+  }
+  tel('navCall','navCallTxt');
+  tel('heroCall','heroCallTxt');
+  tel('bandCall','bandCallTxt');
+  tel('mCall','mCallTxt');
+  tel('ctTel'); tel('ftTel');
+
+  ['ctMob','ftMob'].forEach(function(id){
+    var a = document.getElementById(id);
+    if(a){ a.href = 'tel:' + M; a.textContent = Mf; }
+  });
+  ['ctEmail','ftEmail'].forEach(function(id){
+    var a = document.getElementById(id);
+    if(a){ a.href = 'mailto:' + E; a.textContent = E; }
+  });
+  ['ctAddr','ftAddr'].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) s.textContent = A;
+  });
+  var fc = document.getElementById('fabCall'); if(fc) fc.href = 'tel:' + P;
+  var fw = document.getElementById('fabWa');   if(fw) fw.href = WA;
+  var yr = document.getElementById('yr'); if(yr) yr.textContent = new Date().getFullYear();
+  var ts = document.getElementById('formTimestamp'); if(ts) ts.value = Date.now();
+
+  /* ---- loader teardown: hands off into the fold ---- */
+  var ld = document.getElementById('ld');
+  setTimeout(function(){ document.body.classList.add('lit'); }, 2200);
+  setTimeout(function(){ if(ld) ld.classList.add('gone'); }, 2200);
+  setTimeout(function(){ if(ld && ld.parentNode) ld.parentNode.removeChild(ld); }, 2800);
+
+  /* ---- mobile nav ---- */
+  var b = document.getElementById('burger'), mn = document.getElementById('mnav');
+  if(b && mn){
+    b.addEventListener('click', function(){
+      var open = mn.classList.toggle('open');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mn.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mn.classList.remove('open');
+        b.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  /* ---- FABs appear once the hero CTAs are gone ---- */
+  var fabs = document.getElementById('fabs');
+  var ctas = document.querySelector('.hero-ctas');
+  if(fabs && ctas && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ fabs.classList.toggle('on', !e.isIntersecting); });
+    }, {rootMargin:'-40px 0px 0px 0px'}).observe(ctas);
+  }
+
+  /* ---- scroll reveals ---- */
+  var rev = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -50px 0px'});
+    rev.forEach(function(el, i){ el.style.transitionDelay = (i % 4) * 0.07 + 's'; io.observe(el); });
+  } else {
+    rev.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- gallery lightbox ---- */
+  var lb = document.getElementById('lb');
+  if(lb){
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('.gtile').forEach(function(t){
+      t.addEventListener('click', function(){
+        lbImg.src = t.getAttribute('data-full');
+        lbImg.alt = t.querySelector('img').alt;
+        lb.classList.add('on');
+      });
+    });
+    lb.addEventListener('click', function(){ lb.classList.remove('on'); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') lb.classList.remove('on'); });
+  }
+
+  /* ---- phone validation message ---- */
+  var fp = document.getElementById('fPhone');
+  if(fp){
+    fp.addEventListener('input', function(){
+      fp.setCustomValidity(fp.validity.patternMismatch ? 'Please enter a valid UK phone number' : '');
+    });
+  }
+
+  /* ---- smooth anchors ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length < 2) return;
+      var t = document.querySelector(id);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
