@@ -3830,6 +3830,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-deltat" data-dur="2300">
+      <span class="trade">Plumbing / heating / air conditioning / mechanical &amp; HVAC contractors, anyone who commissions a system</span>
+      <h3>Delta T</h3>
+      <p>The number that proves a heating or cooling system actually works, drawn as a commissioning readout. A plant box and an emitter box fade in at either end, then the FLOW leg draws left to right in heat red while its mono readout COUNTS UP from 20&deg; to 70&deg;, then the RETURN leg draws back right to left in the brand blue while its readout COUNTS DOWN to 50&deg;, and the payoff is the &Delta;T 20&deg; chip popping dead centre between the two legs, because a system is not finished when it is running, it is finished when the difference across it is right. Mono ticks FLOW / RETURN / BALANCED; the client's real logo rises last. The one loader that measures rather than builds, which makes it the natural fit for any outfit whose pitch is commissioning rather than installing. Distinct from every thermal piece in the lab: Ignition draws a pipe and lights a flame, Hot Meets Cold brings a hot and a cold pipe to a mixer tap, Pressure Test sweeps a gauge to 1.5 bar, Rad Bleed keys a radiator and warms the fins, Deep Freeze plunges one readout to -18&deg;, Split-Unit Breeze tilts a louvre and ticks one temperature down, Heat Bounce reflects heat off a coated wall. None of them run a circuit with two legs, and none of them show a DIFFERENCE between two figures. Recolour the return leg and the chip to the client accent and keep the flow leg red, the hot/cold split is the whole idea. First used: delta-flow-mechanical (whose name IS the measurement, and whose logo is a delta sitting over a flow wave).</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-brushon" data-dur="2400">
       <span class="trade">Decorators / painters / any client with a strong logo</span>
       <h3>Brush On</h3>
@@ -4931,6 +4937,59 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<div class="loader" id="ld-deltat" aria-hidden="true">
+  <div class="dt-stage">
+    <div class="dt-circ">
+      <div class="dt-plant"></div>
+      <div class="dt-emit"></div>
+      <div class="dt-pipe dt-flow"></div>
+      <div class="dt-pipe dt-ret"></div>
+      <div class="dt-tmp dt-tmp-f"><span>Flow</span><b class="dt-nf">20</b>&deg;</div>
+      <div class="dt-tmp dt-tmp-r"><span>Return</span><b class="dt-nr">70</b>&deg;</div>
+      <div class="dt-delta">&Delta;T&nbsp;&nbsp;20&deg;</div>
+    </div>
+    <div class="dt-ticks"><span>FLOW</span><span>RETURN</span><span>BALANCED</span></div>
+    <div class="dt-brand"><b>DELTA FLOW</b><i>MECHANICAL . DUBLIN</i></div>
+  </div>
+</div>
+<style>
+#ld-deltat{background:#fff;flex-direction:column}
+#ld-deltat .dt-stage{width:min(430px,84vw)}
+#ld-deltat .dt-circ{position:relative;height:132px;margin-bottom:16px}
+#ld-deltat .dt-plant,#ld-deltat .dt-emit{position:absolute;top:34px;width:26px;height:64px;border:2px solid #14181d;border-radius:4px;background:#fff;opacity:0}
+#ld-deltat .dt-plant{left:0}
+#ld-deltat .dt-emit{right:0}
+#ld-deltat .dt-emit:before{content:"";position:absolute;inset:7px 5px;background:repeating-linear-gradient(90deg,#14181d 0 2px,transparent 2px 6px);opacity:.5}
+#ld-deltat.play .dt-plant,#ld-deltat.play .dt-emit{animation:dtFade .3s ease .1s forwards}
+#ld-deltat .dt-pipe{position:absolute;left:26px;right:26px;height:5px;border-radius:3px;transform:scaleX(0);transform-origin:left center}
+#ld-deltat .dt-flow{top:40px;background:#d8341f}
+#ld-deltat .dt-ret{bottom:40px;background:#0053bb;transform-origin:right center}
+#ld-deltat.play .dt-flow{animation:dtDraw .55s cubic-bezier(.4,0,.2,1) .2s forwards}
+#ld-deltat.play .dt-ret{animation:dtDraw .5s cubic-bezier(.4,0,.2,1) .7s forwards}
+#ld-deltat .dt-tmp{position:absolute;left:38px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.86rem;font-weight:600;line-height:1.3;opacity:0}
+#ld-deltat.play .dt-tmp{animation:dtFade .3s ease .3s forwards}
+#ld-deltat .dt-tmp-f{top:0;color:#d8341f}
+#ld-deltat .dt-tmp-r{bottom:0;color:#0053bb}
+#ld-deltat .dt-tmp span{display:block;font-size:.6rem;letter-spacing:.18em;color:#8b97a3;font-weight:500;line-height:1.4}
+#ld-deltat .dt-delta{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.5);opacity:0;background:#14181d;color:#fff;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;font-size:1.02rem;padding:9px 18px;border-radius:8px}
+#ld-deltat.play .dt-delta{animation:dtPop .5s cubic-bezier(.34,1.4,.64,1) 1.14s forwards}
+#ld-deltat .dt-ticks{display:flex;gap:16px;justify-content:center;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.62rem;letter-spacing:.2em;color:#8b97a3;margin-bottom:22px}
+#ld-deltat .dt-ticks span{opacity:0}
+#ld-deltat.play .dt-ticks span{animation:dtFade .3s ease forwards}
+#ld-deltat.play .dt-ticks span:nth-child(1){animation-delay:1.3s}
+#ld-deltat.play .dt-ticks span:nth-child(2){animation-delay:1.38s}
+#ld-deltat.play .dt-ticks span:nth-child(3){animation-delay:1.46s}
+#ld-deltat .dt-brand{text-align:center;opacity:0;transform:translateY(14px)}
+#ld-deltat.play .dt-brand{animation:dtRise .55s cubic-bezier(.2,.8,.3,1) 1.5s forwards}
+#ld-deltat .dt-brand b{display:block;font-family:'Manrope',system-ui,sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.03em;color:#14181d}
+#ld-deltat .dt-brand i{font-style:normal;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.58rem;letter-spacing:.16em;color:#8b97a3}
+@keyframes dtDraw{to{transform:scaleX(1)}}
+@keyframes dtFade{to{opacity:1}}
+@keyframes dtPop{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes dtRise{to{opacity:1;transform:none}}
+/* On the real build the two readouts are counted by a rAF loop (20->70 flow, 70->50 return)
+   over the same beats as the pipe draws; static figures here are fine for the lab preview. */
+</style>
 <div class="loader" id="ld-roomset" aria-hidden="true">
   <svg class="rs-svg" viewBox="0 0 320 210" width="320" height="210">
     <radialGradient id="rsg" cx="50%" cy="50%" r="50%">
