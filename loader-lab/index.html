@@ -3878,6 +3878,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-landingdoors" data-dur="2200">
+      <span class="trade">Lift and escalator contractors, vertical transport, automatic door installers, anyone whose product opens onto somewhere else</span>
+      <h3>Landing Doors</h3>
+      <p>The one thing everybody already knows about a lift is the doors opening, so the loader is the arrival. Inside a hairline landing frame a mono FLOOR READOUT counts G, 1, 2, 3 with a rising arrow lit above it, a chime dot pulses in the accent on arrival, and then the two DOOR LEAVES PART centre-out on real lift-door easing: a small creep back into the pocket first, then the run, then the ease in at the end, so it reads as gear rather than a CSS slide. Behind them the client's mark is standing in the car. A safety-yellow sill line runs across the bottom of the frame throughout. Mono ticks CALLED / RISING / ARRIVED. 2.2s JS teardown + 2.8s removal + CSS-only failsafe at 2.5s, reduced-motion drops the leaves and shows the open car. Nothing anywhere in the lab OPENS anything onto the page: Grand Open cuts a ribbon, Gate Swing swings a gate leaf on a hinge, Auto Slide and Bifold move door leaves in elevation as a product demo, Threshold and Key Turn work a front door. Nothing else counts floors, and nothing else parts a pair of leaves to reveal the brand behind them. Recolour the readout glow, the chime and the accent to the client; keep the sill yellow, it is what makes the frame read as a landing. Pair it with a photographic fold so the doors trick is never run twice. First used: we-elevate-technologies.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-plantout" data-dur="2200">
       <span class="trade">Groundworks and civils contractors, plant hire firms, demolition and muck-away outfits, scaffolders, anyone whose pitch is the size of the gang and the size of the fleet</span>
       <h3>Plant Out</h3>
@@ -10343,6 +10349,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
      Mockups play on every load — the reload IS the demo. */
 })();
 </script>
+<div class="loader" id="ld-landingdoors" aria-hidden="true">
+  <div class="lnd-frame">
+    <div class="lnd-car"><div class="wordmark">we <b>elevate</b></div></div>
+    <div class="lnd-read"><i class="lnd-arrow"></i><span class="lnd-floor"><b>G</b><b>1</b><b>2</b><b>3</b></span><i class="lnd-chime"></i></div>
+    <div class="lnd-leaf l"></div>
+    <div class="lnd-leaf r"></div>
+    <div class="lnd-sill"></div>
+  </div>
+  <div class="lnd-ticks"><span>CALLED</span><span>RISING</span><span>ARRIVED</span></div>
+  <div class="wordsub">Install . Modernise . Maintain . Repair</div>
+</div>
+
 <div class="loader" id="ld-roadopen" aria-hidden="true">
   <div class="ro-stage">
     <svg class="ro-svg" viewBox="0 0 320 200" fill="none" aria-hidden="true">
@@ -10559,6 +10577,56 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes hfTick{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   #ld-hoodflare.play .hf-art img,#ld-hoodflare.play .hf-rule,#ld-hoodflare.play .hf-ticks span,#ld-hoodflare.play .hf-brand{animation:none;opacity:1;transform:none}
+}
+/* ---- Landing Doors (ld-landingdoors) ---- */
+#ld-landingdoors{background:#141619;flex-direction:column;gap:26px}
+#ld-landingdoors .lnd-frame{position:relative;width:min(240px,56vw);aspect-ratio:.78;border:1px solid #33373d;border-radius:3px;overflow:hidden;background:#0d0f11}
+#ld-landingdoors .lnd-car{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center}
+#ld-landingdoors .lnd-car .wordmark{opacity:0;transform:translateY(14px);color:#f3f4f6;font-size:1.15rem}
+#ld-landingdoors .lnd-car .wordmark b{color:#ee4998}
+#ld-landingdoors.play .lnd-car .wordmark{animation:lndBrand .7s ease 1.62s forwards}
+@keyframes lndBrand{to{opacity:1;transform:none}}
+#ld-landingdoors .lnd-read{position:absolute;top:14px;left:0;right:0;z-index:4;display:flex;align-items:center;justify-content:center;gap:9px;font-family:'JetBrains Mono',monospace}
+#ld-landingdoors .lnd-arrow{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:9px solid #f38eb9;opacity:.35}
+#ld-landingdoors.play .lnd-arrow{animation:lndArrow 1.5s ease forwards}
+@keyframes lndArrow{0%{opacity:.35}20%{opacity:1}80%{opacity:1}100%{opacity:.2}}
+#ld-landingdoors .lnd-floor{position:relative;display:block;font-size:1.5rem;font-weight:600;color:#fff;width:28px;height:1.5rem;line-height:1.5rem;text-align:center;text-shadow:0 0 18px rgba(238,73,152,.55)}
+#ld-landingdoors .lnd-floor b{position:absolute;left:0;right:0;top:0;font-weight:600;opacity:0}
+#ld-landingdoors .lnd-floor b:first-child{opacity:1}
+#ld-landingdoors.play .lnd-floor b{animation:lndSwap .34s steps(1) forwards}
+#ld-landingdoors.play .lnd-floor b:nth-child(1){animation:lndSwapOut .34s steps(1) .34s forwards}
+#ld-landingdoors.play .lnd-floor b:nth-child(2){animation-delay:.34s}
+#ld-landingdoors.play .lnd-floor b:nth-child(3){animation-delay:.68s}
+#ld-landingdoors.play .lnd-floor b:nth-child(4){animation-delay:1.02s}
+@keyframes lndSwap{to{opacity:1}}
+@keyframes lndSwapOut{to{opacity:0}}
+#ld-landingdoors .lnd-chime{width:9px;height:9px;border-radius:50%;background:#ee4998;opacity:0}
+#ld-landingdoors.play .lnd-chime{animation:lndChime 1s ease 1.34s forwards}
+@keyframes lndChime{0%{opacity:0;transform:scale(.4);box-shadow:0 0 0 0 rgba(238,73,152,.6)}30%{opacity:1;transform:scale(1)}100%{opacity:.5;transform:scale(1);box-shadow:0 0 0 16px rgba(238,73,152,0)}}
+#ld-landingdoors .lnd-leaf{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(100deg,#2b3037 0%,#3d434b 42%,#262a30 100%)}
+#ld-landingdoors .lnd-leaf:before{content:"";position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.16)}
+#ld-landingdoors .lnd-leaf.l{left:0}
+#ld-landingdoors .lnd-leaf.l:before{right:0}
+#ld-landingdoors .lnd-leaf.r{right:0}
+#ld-landingdoors .lnd-leaf.r:before{left:0}
+#ld-landingdoors.play .lnd-leaf.l{animation:lndOpenL 1.05s cubic-bezier(.36,.02,.2,1) 1.42s forwards}
+#ld-landingdoors.play .lnd-leaf.r{animation:lndOpenR 1.05s cubic-bezier(.36,.02,.2,1) 1.42s forwards}
+@keyframes lndOpenL{0%{transform:translateX(0)}12%{transform:translateX(-3%)}100%{transform:translateX(-101%)}}
+@keyframes lndOpenR{0%{transform:translateX(0)}12%{transform:translateX(3%)}100%{transform:translateX(101%)}}
+#ld-landingdoors .lnd-sill{position:absolute;left:0;right:0;bottom:0;height:5px;background:#f4c518;opacity:.85;z-index:5}
+#ld-landingdoors .lnd-ticks{display:flex;gap:22px;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.24em;color:#5d636b}
+#ld-landingdoors .lnd-ticks span{opacity:.25}
+#ld-landingdoors.play .lnd-ticks span{animation:lndTick .5s ease forwards}
+#ld-landingdoors.play .lnd-ticks span:nth-child(1){animation-delay:.30s}
+#ld-landingdoors.play .lnd-ticks span:nth-child(2){animation-delay:.82s}
+#ld-landingdoors.play .lnd-ticks span:nth-child(3){animation-delay:1.44s}
+@keyframes lndTick{to{opacity:1;color:#e7e9ec}}
+#ld-landingdoors .wordsub{opacity:0;color:#6d737b}
+#ld-landingdoors.play .wordsub{animation:lndBrand .6s ease 1.86s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld-landingdoors .lnd-leaf{display:none}
+  #ld-landingdoors.play .lnd-car .wordmark,#ld-landingdoors.play .wordsub{animation:none;opacity:1;transform:none}
+  #ld-landingdoors.play .lnd-ticks span{animation:none;opacity:1;color:#e7e9ec}
 }
 /* ---- Road Open (ld-roadopen) ---- */
 #ld-roadopen{background:#0d0f11;flex-direction:column;gap:26px}
