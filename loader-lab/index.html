@@ -96,6 +96,39 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 
 /* ===== 1. DECORATOR — roller sweep ===== */
 /* bare plaster wall gets two coats of brand colour */
+/* ld-tapejoint : Tape and Joint (rws-interiors) */
+#ld-tapejoint{background:#15181b;flex-direction:column}
+#ld-tapejoint .tj-wall{position:relative;width:min(360px,74%);height:186px;border-radius:3px;overflow:hidden;background:#232a30}
+#ld-tapejoint .tj-stud{position:absolute;top:0;bottom:0;width:3px;background:#59646d;transform:scaleY(0);transform-origin:bottom}
+#ld-tapejoint.play .tj-stud{animation:tjStud .26s ease forwards}
+@keyframes tjStud{to{transform:scaleY(1)}}
+#ld-tapejoint .tj-bd{position:absolute;top:0;bottom:0;width:34.4%;background:linear-gradient(180deg,#d3d8dc,#bcc3c9);box-shadow:inset 0 0 0 1px rgba(0,0,0,.13);opacity:0;transform:translateY(16px)}
+#ld-tapejoint.play .tj-bd{animation:tjBoard .32s cubic-bezier(.2,.8,.25,1) forwards}
+@keyframes tjBoard{to{opacity:1;transform:none}}
+#ld-tapejoint .tj-tp{position:absolute;top:0;bottom:0;width:18px;opacity:0;background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(0,0,0,.06) 45%,rgba(0,0,0,.06) 55%,rgba(0,0,0,.30))}
+#ld-tapejoint.play .tj-tp{animation:tjFade .22s ease forwards}
+@keyframes tjFade{to{opacity:1}}
+#ld-tapejoint .tj-dot{position:absolute;width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,.36);box-shadow:0 1px 0 rgba(255,255,255,.5);opacity:0;transform:scale(.2)}
+#ld-tapejoint.play .tj-dot{animation:tjPop .2s ease forwards}
+@keyframes tjPop{to{opacity:1;transform:scale(1)}}
+#ld-tapejoint .tj-datum{position:absolute;left:0;top:50%;height:2px;width:0;background:#d53b3b}
+#ld-tapejoint.play .tj-datum{animation:tjDatum .36s cubic-bezier(.3,.8,.3,1) .80s forwards}
+@keyframes tjDatum{to{width:100%}}
+#ld-tapejoint .tj-blade{position:absolute;top:-12%;bottom:-12%;left:-34%;width:30%;background:linear-gradient(100deg,rgba(255,255,255,0) 0,rgba(255,255,255,.95) 44%,#eef1f3 56%,#eef1f3 100%)}
+#ld-tapejoint.play .tj-blade{animation:tjBlade .78s cubic-bezier(.34,.12,.2,1) 1.02s forwards}
+@keyframes tjBlade{to{transform:translateX(360%)}}
+#ld-tapejoint .tj-flat{position:absolute;inset:0;background:#eef1f3;opacity:0}
+#ld-tapejoint.play .tj-flat{animation:tjFade .45s ease 1.52s forwards}
+#ld-tapejoint .tj-steps{margin-top:16px;height:16px;position:relative;width:min(360px,74%)}
+#ld-tapejoint .tj-step{position:absolute;left:0;top:0;font-weight:600;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:#8d99a4;opacity:0}
+#ld-tapejoint.play .tj-step.k1{animation:tjStep .5s ease .60s forwards}
+#ld-tapejoint.play .tj-step.k2{animation:tjStep .5s ease 1.10s forwards}
+#ld-tapejoint.play .tj-step.k3{color:#fff;animation:tjFade .4s ease 1.72s forwards}
+@keyframes tjStep{0%{opacity:0}30%{opacity:1}75%{opacity:1}100%{opacity:0}}
+#ld-tapejoint .wm-zone{position:relative;z-index:3;text-align:center;opacity:0;margin-top:14px}
+#ld-tapejoint.play .wm-zone{animation:tjFade .45s ease 1.80s forwards}
+#ld-tapejoint .wordmark{color:#fff}
+#ld-tapejoint .wordsub{color:#8d99a4}
 #ld-secondcoat{background:#1b2447;flex-direction:column}
 #ld-secondcoat .sc-coat{position:absolute;inset:0;transform:scaleX(0);transform-origin:left center;
   background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 3px,rgba(255,255,255,0) 3px 34px,rgba(40,58,124,.05) 34px 37px,rgba(255,255,255,0) 37px 68px)}
@@ -3944,6 +3977,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-tapejoint" data-dur="2400">
+      <span class="trade">Dryliners, plasterers and ceiling contractors, anyone whose finished work is a surface that has to disappear</span>
+      <h3>Tape and Joint</h3>
+      <p>The only trade whose whole job is to vanish, animated in the order it actually happens on site. A metal stud frame draws up from the floor, three boards land on it with screw dimples down every stud line, the tapered edges between them darken into visible joints, a red datum line snaps across at level, then a jointing blade sweeps left to right and the joints, dimples and datum fill and disappear into one flat plane. The wordmark lands on the finished wall. What makes it read rather than look like grey rectangles: a caption steps BOARDED, then TAPED AND JOINTED, then FINISHED underneath, so the animation names what it is doing. Pairs with a page whose photographs also enter board grey and skim to full colour, so the loader states the idea the rest of the site repeats. Recolour the datum from the client's own mark. First used: rws-interiors.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-secondcoat" data-dur="2200">
       <span class="trade">Painters and decorators, especially exterior and coastal work where the coats are the whole job</span>
       <h3>Second Coat</h3>
@@ -6051,6 +6090,44 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- 1. roller -->
+<div class="loader" id="ld-tapejoint" aria-hidden="true">
+  <div class="tj-wall">
+   <div class="tj-stud" style="left:6%;animation-delay:.05s"></div>
+   <div class="tj-stud" style="left:32%;animation-delay:.11s"></div>
+   <div class="tj-stud" style="left:58%;animation-delay:.17s"></div>
+   <div class="tj-stud" style="left:84%;animation-delay:.23s"></div>
+   <div class="tj-bd" style="left:0;animation-delay:.30s"></div>
+   <div class="tj-bd" style="left:33.2%;animation-delay:.40s"></div>
+   <div class="tj-bd" style="left:66.4%;animation-delay:.50s"></div>
+   <div class="tj-tp" style="left:calc(33.2% - 9px);animation-delay:.62s"></div>
+   <div class="tj-tp" style="left:calc(66.4% - 9px);animation-delay:.68s"></div>
+   <div class="tj-dot" style="left:calc(6% - 2px);top:16%;animation-delay:0.70s"></div>
+   <div class="tj-dot" style="left:calc(6% - 2px);top:44%;animation-delay:0.71s"></div>
+   <div class="tj-dot" style="left:calc(6% - 2px);top:72%;animation-delay:0.72s"></div>
+   <div class="tj-dot" style="left:calc(32% - 2px);top:16%;animation-delay:0.74s"></div>
+   <div class="tj-dot" style="left:calc(32% - 2px);top:44%;animation-delay:0.75s"></div>
+   <div class="tj-dot" style="left:calc(32% - 2px);top:72%;animation-delay:0.76s"></div>
+   <div class="tj-dot" style="left:calc(58% - 2px);top:16%;animation-delay:0.77s"></div>
+   <div class="tj-dot" style="left:calc(58% - 2px);top:44%;animation-delay:0.78s"></div>
+   <div class="tj-dot" style="left:calc(58% - 2px);top:72%;animation-delay:0.80s"></div>
+   <div class="tj-dot" style="left:calc(84% - 2px);top:16%;animation-delay:0.81s"></div>
+   <div class="tj-dot" style="left:calc(84% - 2px);top:44%;animation-delay:0.82s"></div>
+   <div class="tj-dot" style="left:calc(84% - 2px);top:72%;animation-delay:0.83s"></div>
+   <div class="tj-datum"></div>
+   <div class="tj-blade"></div>
+   <div class="tj-flat"></div>
+  </div>
+  <div class="tj-steps">
+    <span class="tj-step k1">Boarded</span>
+    <span class="tj-step k2">Taped and jointed</span>
+    <span class="tj-step k3">Finished</span>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">RWS Interiors</div>
+    <div class="wordsub">Plastering &amp; Drylining</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-secondcoat" aria-hidden="true">
   <div class="sc-coat sc-1"></div>
   <div class="sc-coat sc-2"></div>
