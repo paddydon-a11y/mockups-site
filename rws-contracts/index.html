@@ -145,16 +145,30 @@ body.lit .h1-rule{width:132px}
 /* the 390 fold poster - the mark's own geometry, built from three planes */
 .fold{display:none}
 
-/* ===================== TRUST ===================== */
-.trust{background:var(--stone);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
-.trust-in{display:flex;align-items:stretch;justify-content:space-between;gap:0;padding-top:0;padding-bottom:0}
-.trust-item{
-  flex:1;display:flex;align-items:center;gap:11px;padding-top:24px;padding-bottom:24px;
-  border-left:1px solid var(--line);padding-left:22px;
+/* ===================== TRUST - ACCREDITATION BAND ===================== */
+.trust{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.acc-band{display:flex;align-items:stretch}
+.acc-band-label{
+  flex:none;display:flex;align-items:center;
+  padding:20px 28px 20px max(24px,calc((100vw - 1220px)/2 + 24px));
+  border-right:2px solid var(--accent);
 }
-.trust-item:first-child{border-left:none;padding-left:0}
-.trust-item svg{width:19px;height:19px;stroke:var(--accent);flex:none}
-.trust-item span{font-size:.84rem;font-weight:600;color:var(--ink);line-height:1.3}
+.acc-band-label span{
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.6rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);white-space:nowrap;line-height:1.5;
+}
+.acc-marquee{
+  flex:1;min-width:0;overflow:hidden;position:relative;display:flex;align-items:center;padding:20px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 56px,#000 calc(100% - 56px),transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 56px,#000 calc(100% - 56px),transparent 100%);
+}
+.acc-track{display:flex;width:max-content;animation:acc-roll 44s linear infinite}
+.acc-marquee:hover .acc-track{animation-play-state:paused}
+.acc-set{display:flex;align-items:center;gap:66px;padding-right:66px}
+.acc-set img{height:40px;width:auto;max-width:none;flex:none;object-fit:contain;border-radius:0;border:none;aspect-ratio:auto}
+.acc-set img.tall{height:56px}
+@keyframes acc-roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.acc-track{animation:none}}
 
 /* ===================== SECTIONS ===================== */
 section{padding:96px 0}
@@ -389,9 +403,14 @@ footer{background:var(--panel);color:rgba(255,255,255,.6);padding:64px 0 30px}
   .cell{grid-column:span 1}
   .cell-body{flex:none}
   .cell-line{width:44px;margin-top:0}
-  .trust-in{flex-direction:column}
-  .trust-item{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:15px;padding-bottom:15px}
-  .trust-item:first-child{border-top:none}
+  .acc-band{flex-direction:column;align-items:stretch}
+  .acc-band-label{padding:14px 24px 13px;border-right:none;border-bottom:2px solid var(--accent);justify-content:center}
+  .acc-band-label span{font-size:.55rem}
+  .acc-marquee{padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%)}
+  .acc-track{animation-duration:30s}
+  .acc-set{gap:44px;padding-right:44px}
+  .acc-set img{height:36px}
+  .acc-set img.tall{height:52px}
   .stat-row{grid-template-columns:1fr}
   .acc-row{gap:34px}
   .acc-row img{height:44px}
@@ -550,14 +569,22 @@ footer{background:var(--panel);color:rgba(255,255,255,.6);padding:64px 0 30px}
   </div>
 </header>
 
-<!-- ============ TRUST ============ -->
+<!-- ============ TRUST - ROTATING ACCREDITATION BAND ============ -->
 <div class="trust">
-  <div class="wrap trust-in">
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>IFC Certificated</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span>ASFP Member</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V8l8-5 8 5v12"/><path d="M9 20v-6h6v6"/></svg><span>CHAS Elite</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.4L21 9.5l-4.8 4.3 1.4 6.6L12 17l-5.6 3.4 1.4-6.6L3 9.5l6.4-1.1z"/></svg><span>Constructionline Gold</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg><span>Working UK Wide</span></div>
+  <div class="acc-band">
+    <div class="acc-band-label"><span>Accredited . Certificated . Approved</span></div>
+    <div class="acc-marquee">
+      <div class="acc-track" id="accTrack">
+        <div class="acc-set">
+          <img src="acc-ifc.png" alt="IFC Certification">
+          <img src="acc-asfp.png" class="tall" alt="Association for Specialist Fire Protection member">
+          <img src="acc-chas.png" class="tall" alt="CHAS Elite accredited">
+          <img src="acc-constructionline.png" alt="Constructionline Gold member">
+          <img src="sys-protecta.png" alt="Protecta approved installer">
+          <img src="sys-firefly.png" alt="Firefly approved installer">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -936,6 +963,29 @@ footer{background:var(--panel);color:rgba(255,255,255,.6);padding:64px 0 30px}
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* accreditation band: repeat the set until the track is wide enough, then
+     clone the whole run once so translateX(-50%) loops seamlessly */
+  (function(){
+    var track = document.getElementById('accTrack');
+    if(!track) return;
+    var set = track.querySelector('.acc-set');
+    if(!set) return;
+    function fill(){
+      track.querySelectorAll('.acc-set').forEach(function(n,i){ if(i) n.remove(); });
+      track.style.width = '';
+      var target = Math.max(track.parentNode.offsetWidth, 640) * 1.35;
+      var guard = 0;
+      while(track.scrollWidth < target && guard++ < 12){
+        var c = set.cloneNode(true); c.setAttribute('aria-hidden','true'); track.appendChild(c);
+      }
+      var run = Array.prototype.slice.call(track.children);
+      run.forEach(function(n){ var c = n.cloneNode(true); c.setAttribute('aria-hidden','true'); track.appendChild(c); });
+    }
+    fill();
+    window.addEventListener('load', fill);
+    var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(fill, 250); });
+  })();
 
   /* FABs after the hero CTAs leave */
   var fabs = document.getElementById('fabs'), ctas = document.querySelector('.hero-ctas');
