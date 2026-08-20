@@ -96,6 +96,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 
 /* ===== 1. DECORATOR — roller sweep ===== */
 /* bare plaster wall gets two coats of brand colour */
+#ld-secondcoat{background:#1b2447;flex-direction:column}
+#ld-secondcoat .sc-coat{position:absolute;inset:0;transform:scaleX(0);transform-origin:left center;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 3px,rgba(255,255,255,0) 3px 34px,rgba(40,58,124,.05) 34px 37px,rgba(255,255,255,0) 37px 68px)}
+#ld-secondcoat .sc-1{background-color:#283a7c}
+#ld-secondcoat .sc-2{background-color:#9bb9d6}
+#ld-secondcoat .sc-3{background-color:#cfe0ee}
+#ld-secondcoat.play .sc-1{animation:scCoat .62s cubic-bezier(.7,0,.3,1) .1s forwards}
+#ld-secondcoat.play .sc-2{animation:scCoat .62s cubic-bezier(.7,0,.3,1) .48s forwards}
+#ld-secondcoat.play .sc-3{animation:scCoat .62s cubic-bezier(.7,0,.3,1) .86s forwards}
+@keyframes scCoat{to{transform:scaleX(1)}}
+#ld-secondcoat .sc-roller{position:absolute;top:0;bottom:0;width:22px;border-radius:3px;background:#1b2447;left:-30px;opacity:0}
+#ld-secondcoat.play .sc-roller{animation:scRoll 1.5s cubic-bezier(.7,0,.3,1) .1s forwards}
+@keyframes scRoll{0%{opacity:0;transform:translateX(0)}8%{opacity:.85}92%{opacity:.85}100%{opacity:0;transform:translateX(105vw)}}
+#ld-secondcoat .wm-zone{position:relative;z-index:3;text-align:center;opacity:0}
+#ld-secondcoat.play .wm-zone{animation:scMark .5s ease 1.42s forwards}
+@keyframes scMark{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#ld-secondcoat .wordmark{color:#283a7c}
+#ld-secondcoat .wordsub{color:#a33608}
 #ld-roller{background:#cfc9bf;flex-direction:column}
 #ld-roller .band{position:absolute;inset:0;transform:scaleX(0);transform-origin:left}
 #ld-roller .band.b1{background:#2e7bb5}
@@ -3926,6 +3944,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-secondcoat" data-dur="2200">
+      <span class="trade">Painters and decorators, especially exterior and coastal work where the coats are the whole job</span>
+      <h3>Second Coat</h3>
+      <p>A wall gets its coats in order, and the loader hands the last one straight to the hero. Three full-screen coats wipe left to right off a hard-edged ROLLER BAR that travels ahead of them: the brand's darkest colour first, then a mid tone, then the finish colour, each one covering the last exactly as a decorator would. The wordmark lands on the fresh wall. The trick that makes it worth using: the final coat is the SAME colour as the panel behind the mobile hero H1, and that panel paints itself with an identical wipe as the loader fades, so the prospect sees one continuous stroke from loading screen into the fold rather than a loader that vanishes. Different from Roller Sweep, which is two bands under a drawn roller with a sleeve and grip on bare plaster: this one is three coats in palette order, no illustrated roller, and it is built to hand off. Recolour all three coats from the client's own logo and work photos, darkest to lightest. First used: fcg-painting-decorating.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-daylight" data-dur="2200">
       <span class="trade">Vacuum / suction excavation, utility surveying and daylighting, anyone whose product is that the SOIL left and the buried services did not</span>
       <h3>Daylighting</h3>
@@ -6027,6 +6051,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- 1. roller -->
+<div class="loader" id="ld-secondcoat" aria-hidden="true">
+  <div class="sc-coat sc-1"></div>
+  <div class="sc-coat sc-2"></div>
+  <div class="sc-coat sc-3"></div>
+  <div class="sc-roller"></div>
+  <div class="wm-zone">
+    <div class="wordmark">FCG</div>
+    <div class="wordsub">Painting &amp; Decorating</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-roller" aria-hidden="true">
   <div class="band b1"></div>
   <div class="band b2"></div>
