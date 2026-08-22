@@ -1419,6 +1419,46 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 
 
 /* ===== BOOKMATCHED (tile / stone / surface showrooms) ===== */
+/* ===== PAINTERS & DECORATORS — drop and ripple (app-decorating) ===== */
+#ld-dropripple{background:#141414}
+#ld-dropripple .dr-stage{position:relative;width:260px;height:260px}
+#ld-dropripple .dr-drop{position:absolute;left:50%;top:0;width:46px;height:64px;margin-left:-23px;background:#cfae62;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;transform:translateY(-140px);will-change:transform}
+#ld-dropripple .dr-drop::before{content:"";position:absolute;left:50%;top:-18px;width:0;height:0;border-left:23px solid transparent;border-right:23px solid transparent;border-bottom:26px solid #cfae62;margin-left:-23px}
+#ld-dropripple.play .dr-drop{animation:drFall .7s cubic-bezier(.5,0,.9,.4) .1s forwards}
+#ld-dropripple .dr-ring{position:absolute;left:50%;top:150px;width:60px;height:20px;margin:-10px 0 0 -30px;border:2px solid #cfae62;border-radius:50%;opacity:0;will-change:transform,opacity}
+#ld-dropripple.play .dr-ring{animation:drRing 1.1s ease-out forwards}
+#ld-dropripple .dr-ring.r1{animation-delay:.8s}#ld-dropripple .dr-ring.r2{animation-delay:.95s}#ld-dropripple .dr-ring.r3{animation-delay:1.1s}
+#ld-dropripple .dr-word{position:absolute;left:50%;top:190px;transform:translateX(-50%);font-family:'Lexend',sans-serif;font-weight:500;letter-spacing:.22em;font-size:.82rem;color:#cfae62;white-space:nowrap;opacity:0}
+#ld-dropripple.play .dr-word{animation:drWord .5s ease 1.15s forwards}
+@keyframes drFall{0%{transform:translateY(-140px) scaleY(1)}85%{transform:translateY(118px) scaleY(1.08)}100%{transform:translateY(122px) scaleY(.35) scaleX(1.5);opacity:0}}
+@keyframes drRing{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(4.2)}}
+@keyframes drWord{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){#ld-dropripple .dr-drop,#ld-dropripple .dr-ring{display:none}#ld-dropripple.play .dr-word{animation:none;opacity:1}}
+/* ===== PLASTERERS + TILERS — skim and set (ggt) ===== */
+#ld-skimset{background:#0a0a0a}
+#ld-skimset.on{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:100%;align-items:stretch;justify-content:stretch;justify-items:stretch}
+#ld-skimset .ss-skim{position:relative;background:#b9bdc2;overflow:hidden}
+#ld-skimset .ss-rough{position:absolute;inset:0;background:radial-gradient(14px 9px at 12% 22%,rgba(0,0,0,.16),transparent 70%),radial-gradient(18px 10px at 66% 38%,rgba(255,255,255,.22),transparent 70%),radial-gradient(12px 8px at 38% 70%,rgba(0,0,0,.14),transparent 70%),radial-gradient(20px 12px at 84% 78%,rgba(255,255,255,.18),transparent 70%),repeating-linear-gradient(115deg,rgba(255,255,255,.06) 0 6px,rgba(0,0,0,.05) 6px 13px)}
+#ld-skimset .ss-pass{position:absolute;top:-20%;left:0;width:100%;height:140%;transform:translateX(-103%) skewX(-8deg)}
+#ld-skimset .ss-p1{background:#d9dcdf}#ld-skimset .ss-p2{background:#fff}
+#ld-skimset.play .ss-p1{animation:ssPass .8s cubic-bezier(.7,0,.3,1) .1s forwards}
+#ld-skimset.play .ss-p2{animation:ssPass .8s cubic-bezier(.7,0,.3,1) .45s forwards}
+@keyframes ssPass{to{transform:translateX(0) skewX(-8deg)}}
+#ld-skimset .ss-float{position:absolute;top:50%;left:-170px;margin-top:-18px;width:150px;height:36px;background:linear-gradient(#ececec,#b8b8b8);border-radius:2px 2px 8px 8px;box-shadow:0 6px 16px rgba(0,0,0,.3);opacity:0;z-index:3;transform:skewX(-8deg)}
+#ld-skimset .ss-float::after{content:"";position:absolute;left:50%;top:-22px;width:64px;height:20px;margin-left:-32px;background:#1a1a1a;border-radius:10px}
+#ld-skimset.play .ss-float{animation:ssFloat .85s cubic-bezier(.7,0,.3,1) .42s forwards}
+@keyframes ssFloat{0%{opacity:1;transform:translateX(0) skewX(-8deg)}99%{opacity:1}100%{opacity:0;transform:translateX(calc(50vw + 340px)) skewX(-8deg)}}
+#ld-skimset .ss-set{position:relative;background:#3a3d41;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(6,1fr);gap:3px;padding:3px}
+#ld-skimset .ss-set i{display:block;background:#0a0a0a;transform:scale(.2);opacity:0}
+#ld-skimset.play .ss-set i{animation:ssTile .32s cubic-bezier(.2,.9,.3,1.2) forwards}
+@keyframes ssTile{to{transform:scale(1);opacity:1}}
+#ld-skimset .ss-wm{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:5;pointer-events:none;mix-blend-mode:difference}
+#ld-skimset .ss-wm .wordmark{font-family:'Work Sans','Arial Black',sans-serif;font-weight:900;font-size:clamp(4.2rem,14vw,9rem);letter-spacing:-.05em;color:#fff;opacity:0;transform:translateY(14px)}
+#ld-skimset .ss-wm .wordsub{font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;font-weight:800;color:#fff;opacity:0;transform:translateY(10px);margin-top:6px}
+#ld-skimset.play .ss-wm .wordmark{animation:ssWm .5s ease 1.15s forwards}
+#ld-skimset.play .ss-wm .wordsub{animation:ssWm .5s ease 1.3s forwards}
+@keyframes ssWm{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#ld-skimset .ss-pass,#ld-skimset .ss-float{display:none}#ld-skimset.play .ss-set i{animation:none;transform:none;opacity:1}#ld-skimset.play .ss-wm .wordmark,#ld-skimset.play .ss-wm .wordsub{animation:none;opacity:1;transform:none}}
 #ld-bookmatch{background:#0a0a0b;flex-direction:column;overflow:hidden}
 #ld-bookmatch .bm-stage{position:relative;width:min(340px,74vw);height:min(230px,50vw);display:flex;overflow:hidden}
 #ld-bookmatch .bm-half{position:relative;width:50%;height:100%;opacity:0;overflow:hidden;
@@ -4127,6 +4167,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-dropripple" data-dur="2100">
+      <span class="trade">Painters and decorators, any finishing trade whose mark is a drop, a splash or a liquid</span>
+      <h3>Drop &amp; Ripple</h3>
+      <p>The client's own logo, animated. A single GOLD DROP falls from the top of an ink screen (0.1s, ease-in so it accelerates like a real drop), flattens on impact at 0.8s (scaleY .35, scaleX 1.5) and vanishes, and from the point it landed THREE RIPPLE ELLIPSES expand and fade on a short stagger (0.8s, 0.95s, 1.1s), each a 2px gold line, never a fill. The wordmark fades in under the rings at 1.15s in the display face, tracked wide. Gold is the logo gold sampled pixel-exact off the mark (rgb 207,174,98), the ink is the logo ink #141414, and nothing else is on screen, so the loader IS the logo arriving. 2.1s fail-safe, reduced-motion hides the drop and rings and shows the wordmark only. Distinct from Roller, Brush On, Second Coat, Fan Deck and Spray Pass, all of which apply paint to a surface: this one never paints anything, it is the brand mark landing. Use it only where the client's real mark is a drop or a ripple; recolour the drop and rings to that mark's exact colour. On the mockup the rings continue behind the hero photo on desktop and behind the H1 on the mobile ink poster, so the loader hands straight off into the fold. First used: app-decorating.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-groundtodpc" data-dur="2400">
       <span class="trade">Groundworkers, substructure bricklayers, foundations and beam and block flooring contractors, anyone whose work is finished before the visible building starts</span>
       <h3>Ground to DPC</h3>
@@ -4173,6 +4219,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Groundworks and civils contractors, plant hire firms, demolition and muck-away outfits, scaffolders, anyone whose pitch is the size of the gang and the size of the fleet</span>
       <h3>Plant Out</h3>
       <p>The fleet musters and the workforce is counted. A graphite GROUND RULE draws left to right, then three plant silhouettes TRACK IN from the left and park in a line, each with a small overshoot settle: a tracked excavator, then a dumper, then a roller, accent bodies on graphite tracks and wheels. As each machine lands, a mono counter above the line ticks UP a stage, 10 then 20 then 30, the last figure landing in the accent and staying, so the number of men and the number of machines arrive on the same beat. Use it whenever the client's actual selling point is scale rather than craft: a sole trader with one digger should not run this. Mono ticks PLANT / GANGS / ON SITE, then the client's real mark rises over the parked line. 2.2s JS teardown + 2.8s removal + CSS-only failsafe at 2.5s, reduced-motion static line-up with the final figure already landed. Distinct from every groundworks piece in the lab, all of which work the GROUND rather than the fleet: Dig Out scoops ground blocks away, Trench digs and beds a run, Formation builds up a sub-base, Crush &amp; Grade crushes and grades material, Strata Rise raises soil strata, Pile Drive drives a pile, Shutter Pour and Cage Pour pour concrete, Laser Level sweeps a level, String Line and Strike Line strike setting-out lines, Tipper Pour raises a tipper body. Nothing in the lab lines a FLEET up and nothing anywhere counts a workforce. Swap the counter figures to the client's real headcount and recolour the machine bodies to the accent. Hands off beautifully into a mobile poster fold: run the SAME three machines tracking across the bottom of the panel on a slow loop, so the loader is the fleet arriving and the fold is the fleet working. STATUS: built for bjk-groundworks and CUT on review (Patrick, 2026-08-20, 'loader just have the logo coming in, not the things driving across, keep it on hero fine') and swapped for a plain brand rise. The machines were kept in that build's hero. Unused and free for the next groundworks, plant hire, demolition or scaffolding client whose pitch is genuinely scale.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-skimset" data-dur="2100">
+      <span class="trade">Plasterers who also tile, tilers who also plaster, any two-trade finishing outfit where the pitch is one pair of hands for both</span>
+      <h3>Skim and Set</h3>
+      <p>The screen is split down the middle and each half plays its own trade at once. LEFT is a rough grey wall: two float passes sweep across it left to right (0.1s and 0.45s), the second one pure white, with the float itself running the seam between them, so the half goes from scratch coat to finished skim in under a second. RIGHT is a black grid of 24 tiles that SET one at a time on a diagonal stagger (0.08s to 0.92s), grout grey showing between them. The wordmark lands dead centre across the seam at 1.15s in mix-blend-mode difference, so it reads black on the skimmed half and white on the tiled half without two elements. No colour anywhere: the brand is black and white and the loader is the argument for it. 2.1s JS teardown + 2.7s removal + CSS-only failsafe at 2.6s, reduced-motion static split + wordmark. Distinct from Trowel Float and Skim Cure (one trade, one surface) and Tile Lay / Tile Set (tiles only): nothing else in the lab plays two trades on a split screen. On the mockup the tile grid hands off into the mobile hero poster, where the same grout lines draw themselves behind the H1. First used: ggt.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-bookmatch" data-dur="2200">
@@ -6307,6 +6359,15 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<div class="loader" id="ld-dropripple" aria-hidden="true">
+  <div class="dr-stage">
+    <div class="dr-drop"></div>
+    <div class="dr-ring r1"></div>
+    <div class="dr-ring r2"></div>
+    <div class="dr-ring r3"></div>
+    <div class="dr-word">APP DECORATING</div>
+  </div>
+</div>
 <div class="loader" id="ld-groundtodpc" aria-hidden="true">
   <div class="gtd-stage">
     <div class="gtd-earth l"></div>
@@ -6800,6 +6861,11 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 </div>
 
+<div class="loader" id="ld-skimset" aria-hidden="true">
+  <div class="ss-skim"><div class="ss-rough"></div><div class="ss-pass ss-p1"></div><div class="ss-pass ss-p2"></div><div class="ss-float"></div></div>
+  <div class="ss-set"><i style="animation-delay:0.08s"></i><i style="animation-delay:0.16s"></i><i style="animation-delay:0.24s"></i><i style="animation-delay:0.32s"></i><i style="animation-delay:0.20s"></i><i style="animation-delay:0.28s"></i><i style="animation-delay:0.36s"></i><i style="animation-delay:0.44s"></i><i style="animation-delay:0.32s"></i><i style="animation-delay:0.40s"></i><i style="animation-delay:0.48s"></i><i style="animation-delay:0.56s"></i><i style="animation-delay:0.44s"></i><i style="animation-delay:0.52s"></i><i style="animation-delay:0.60s"></i><i style="animation-delay:0.68s"></i><i style="animation-delay:0.56s"></i><i style="animation-delay:0.64s"></i><i style="animation-delay:0.72s"></i><i style="animation-delay:0.80s"></i><i style="animation-delay:0.68s"></i><i style="animation-delay:0.76s"></i><i style="animation-delay:0.84s"></i><i style="animation-delay:0.92s"></i></div>
+  <div class="ss-wm"><div class="wordmark">GGT</div><div class="wordsub">Plastering &amp; Tiling</div></div>
+</div>
 <div class="loader" id="ld-bookmatch" aria-hidden="true">
   <div class="bm-stage">
     <div class="bm-half bm-l">
