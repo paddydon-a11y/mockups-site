@@ -1,0 +1,2 @@
+Pexels IDs (free licence, no attribution): svc-plastering = same supplied file
+hero-tiles 10486084; work-skim-room 7937304; work-plaster-fresh 8469938; work-room-finished 7587883; work-hex-floor 12508276; work-subway-bath 8143708; work-black-fixtures 32662273; work-hex-kitchen 5990708; work-chequer 7566201; work-bath-tiles 7587289; work-ceiling 3616769; ba-before 6474207; ba-after supplied by Patrick (smooth-plaster-texture-2135_2.webp); work-half-tiled 29181495; svc-tiling 7214163 svc-plastering = same supplied file
