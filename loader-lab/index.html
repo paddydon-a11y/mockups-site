@@ -41,6 +41,24 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 .wordmark{font-weight:900;letter-spacing:0.04em;font-size:clamp(1.4rem,4.5vw,2.4rem);text-transform:uppercase;opacity:0}
 .wordsub{font-family:'DM Mono',monospace;font-size:clamp(0.66rem,1.6vw,0.8rem);letter-spacing:0.28em;text-transform:uppercase;opacity:0;margin-top:10px}
 @keyframes wordIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+/* ridge cap (roofing) */
+#ld-ridgecap{background:#121214;flex-direction:column;gap:22px}
+#ld-ridgecap .rc-stage{width:min(360px,80vw)}
+#ld-ridgecap svg{width:100%;height:auto;display:block;overflow:visible}
+#ld-ridgecap .rc-dr{stroke-dasharray:var(--l);stroke-dashoffset:var(--l)}
+#ld-ridgecap.play .rc-dr{animation:rcDraw .5s cubic-bezier(.3,.8,.3,1) forwards}
+@keyframes rcDraw{to{stroke-dashoffset:0}}
+#ld-ridgecap .rc-tile{opacity:0;transform:translateY(10px);transform-box:fill-box}
+#ld-ridgecap.play .rc-tile{animation:rcTile .28s cubic-bezier(.2,1.3,.4,1) forwards}
+@keyframes rcTile{to{opacity:1;transform:none}}
+#ld-ridgecap .rc-ridge{stroke-dasharray:340;stroke-dashoffset:340}
+#ld-ridgecap.play .rc-ridge{animation:rcDraw .42s cubic-bezier(.4,0,.2,1) 1.36s forwards}
+#ld-ridgecap .rc-word{font-family:'Barlow Condensed','Fjalla One',Impact,sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(1.6rem,5vw,2.4rem);color:#fff;letter-spacing:.03em;line-height:1;opacity:0}
+#ld-ridgecap .rc-word span{color:#b42a22}
+#ld-ridgecap .rc-sub{font-size:.74rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#d9a441;opacity:0}
+#ld-ridgecap.play .rc-word{animation:rcIn .45s ease 1.62s forwards}
+#ld-ridgecap.play .rc-sub{animation:rcIn .45s ease 1.78s forwards}
+@keyframes rcIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 /* toolbox (property maintenance / handyman) */
 #ld-toolbox{background:linear-gradient(180deg,#fbfcfd,#eceff2);flex-direction:column}
 #ld-toolbox .tbx{position:relative;width:150px;height:120px;margin-bottom:26px}
@@ -4173,6 +4191,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The client's own logo, animated. A single GOLD DROP falls from the top of an ink screen (0.1s, ease-in so it accelerates like a real drop), flattens on impact at 0.8s (scaleY .35, scaleX 1.5) and vanishes, and from the point it landed THREE RIPPLE ELLIPSES expand and fade on a short stagger (0.8s, 0.95s, 1.1s), each a 2px gold line, never a fill. The wordmark fades in under the rings at 1.15s in the display face, tracked wide. Gold is the logo gold sampled pixel-exact off the mark (rgb 207,174,98), the ink is the logo ink #141414, and nothing else is on screen, so the loader IS the logo arriving. 2.1s fail-safe, reduced-motion hides the drop and rings and shows the wordmark only. Distinct from Roller, Brush On, Second Coat, Fan Deck and Spray Pass, all of which apply paint to a surface: this one never paints anything, it is the brand mark landing. Use it only where the client's real mark is a drop or a ripple; recolour the drop and rings to that mark's exact colour. On the mockup the rings continue behind the hero photo on desktop and behind the H1 on the mobile ink poster, so the loader hands straight off into the fold. First used: app-decorating.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-ridgecap" data-dur="2300">
+      <div class="trade">Roofing</div>
+      <h3>Ridge Cap</h3>
+      <p>On roof black a gable outline draws, red tile courses lay up from eaves to ridge clipped to the pitch, then a gold ridge caps it and the wordmark lands. Built for Anderson Roofing Service, 2026-08-22.</p>
+      <div class="play-hint">play &rarr;</div>
+    </button>
     <button class="card" data-loader="ld-groundtodpc" data-dur="2400">
       <span class="trade">Groundworkers, substructure bricklayers, foundations and beam and block flooring contractors, anyone whose work is finished before the visible building starts</span>
       <h3>Ground to DPC</h3>
@@ -5674,6 +5698,30 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <div class="sl-ticks"><span>Slated</span><span>Flashed</span><span>Sealed</span><span>Water off</span></div>
   <div class="sl-word">Roof<span>Seal</span></div>
   <div class="sl-sub">Roofing . Leadwork . Guttering</div>
+</div>
+
+<!-- ridge cap (roofing) -->
+<div class="loader" id="ld-ridgecap" aria-hidden="true">
+  <div class="rc-stage">
+    <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 178 H340" stroke="#3a3b40" stroke-width="2" class="rc-dr" style="--l:320;animation-delay:.05s"/>
+      <path d="M40 170 L180 40 L320 170" stroke="#6b6e75" stroke-width="2.5" stroke-linejoin="round" class="rc-dr" style="--l:390;animation-delay:.18s"/>
+      <defs><clipPath id="rcClipLab"><path d="M40 170 L180 40 L320 170 Z"/></clipPath></defs>
+      <g clip-path="url(#rcClipLab)">
+        <g class="rc-tile" style="animation-delay:.5s"><rect x="30" y="152" width="300" height="20" fill="#b42a22"/></g>
+        <g class="rc-tile" style="animation-delay:.62s"><rect x="30" y="134" width="300" height="20" fill="#a5261f"/></g>
+        <g class="rc-tile" style="animation-delay:.74s"><rect x="30" y="116" width="300" height="20" fill="#b42a22"/></g>
+        <g class="rc-tile" style="animation-delay:.86s"><rect x="30" y="98" width="300" height="20" fill="#a5261f"/></g>
+        <g class="rc-tile" style="animation-delay:.98s"><rect x="30" y="80" width="300" height="20" fill="#b42a22"/></g>
+        <g class="rc-tile" style="animation-delay:1.1s"><rect x="30" y="62" width="300" height="20" fill="#a5261f"/></g>
+        <g class="rc-tile" style="animation-delay:1.22s"><rect x="30" y="36" width="300" height="28" fill="#b42a22"/></g>
+        <g class="rc-tile" style="animation-delay:1.22s" stroke="#121214" stroke-width="1.2" opacity=".55"><path d="M30 152 H330 M30 134 H330 M30 116 H330 M30 98 H330 M30 80 H330 M30 62 H330"/></g>
+      </g>
+      <path d="M40 170 L180 40 L320 170" stroke="#d9a441" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" class="rc-ridge"/>
+    </svg>
+  </div>
+  <div class="rc-word">Anderson <span>Roofing</span></div>
+  <div class="rc-sub">Roofing . Rendering . Pointing</div>
 </div>
 
 <!-- lights on (roofing / property maintenance) -->
