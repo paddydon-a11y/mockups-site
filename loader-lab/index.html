@@ -41,6 +41,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 .wordmark{font-weight:900;letter-spacing:0.04em;font-size:clamp(1.4rem,4.5vw,2.4rem);text-transform:uppercase;opacity:0}
 .wordsub{font-family:'DM Mono',monospace;font-size:clamp(0.66rem,1.6vw,0.8rem);letter-spacing:0.28em;text-transform:uppercase;opacity:0;margin-top:10px}
 @keyframes wordIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+/* door swap (composite door installers / window and door fitters) */
+#ld-doorswap{background:#232a30;flex-direction:column;gap:20px}
+#ld-doorswap .ds-stage{width:min(180px,44vw)}
+#ld-doorswap svg{width:100%;height:auto;display:block}
+#ld-doorswap .ds-frame{fill:none;stroke:#ffffff;stroke-width:5;stroke-dasharray:900;stroke-dashoffset:900}
+#ld-doorswap.play .ds-frame{animation:dsDraw .7s ease forwards}
+#ld-doorswap .ds-old{fill:#e9ecea}
+#ld-doorswap.play .ds-old{animation:dsOut .5s ease .65s forwards}
+#ld-doorswap .ds-new{fill:#a3bfab;opacity:0;transform-origin:50% 0}
+#ld-doorswap.play .ds-new{animation:dsIn .55s cubic-bezier(.3,1.2,.5,1) .9s forwards}
+#ld-doorswap .ds-glass,#ld-doorswap .ds-hw{opacity:0}
+#ld-doorswap.play .ds-glass{animation:dsFade .4s ease 1.35s forwards}
+#ld-doorswap.play .ds-hw{animation:dsFade .35s ease 1.55s forwards}
+#ld-doorswap .ds-word{font-family:'Red Hat Display','Inter',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(1.4rem,4.4vw,2rem);color:#fff;letter-spacing:.14em;line-height:1;opacity:0}
+#ld-doorswap .ds-sub{font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:#a3bfab;opacity:0;margin-top:8px}
+#ld-doorswap.play .ds-word{animation:dsFade .5s ease 1.6s forwards}
+#ld-doorswap.play .ds-sub{animation:dsFade .5s ease 1.74s forwards}
+@keyframes dsDraw{to{stroke-dashoffset:0}}
+@keyframes dsOut{to{opacity:0}}
+@keyframes dsIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dsFade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #ld-doorswap.play .ds-frame,#ld-doorswap.play .ds-old,#ld-doorswap.play .ds-new,
+  #ld-doorswap.play .ds-glass,#ld-doorswap.play .ds-hw,
+  #ld-doorswap.play .ds-word,#ld-doorswap.play .ds-sub{animation:none}
+  #ld-doorswap .ds-frame{stroke-dashoffset:0}
+  #ld-doorswap .ds-old{opacity:0}
+  #ld-doorswap .ds-new,#ld-doorswap .ds-glass,#ld-doorswap .ds-hw,#ld-doorswap .ds-word,#ld-doorswap .ds-sub{opacity:1}
+}
 /* ridge cap (roofing) */
 #ld-ridgecap{background:#121214;flex-direction:column;gap:22px}
 #ld-ridgecap .rc-stage{width:min(360px,80vw)}
@@ -4191,6 +4220,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The client's own logo, animated. A single GOLD DROP falls from the top of an ink screen (0.1s, ease-in so it accelerates like a real drop), flattens on impact at 0.8s (scaleY .35, scaleX 1.5) and vanishes, and from the point it landed THREE RIPPLE ELLIPSES expand and fade on a short stagger (0.8s, 0.95s, 1.1s), each a 2px gold line, never a fill. The wordmark fades in under the rings at 1.15s in the display face, tracked wide. Gold is the logo gold sampled pixel-exact off the mark (rgb 207,174,98), the ink is the logo ink #141414, and nothing else is on screen, so the loader IS the logo arriving. 2.1s fail-safe, reduced-motion hides the drop and rings and shows the wordmark only. Distinct from Roller, Brush On, Second Coat, Fan Deck and Spray Pass, all of which apply paint to a surface: this one never paints anything, it is the brand mark landing. Use it only where the client's real mark is a drop or a ripple; recolour the drop and rings to that mark's exact colour. On the mockup the rings continue behind the hero photo on desktop and behind the H1 on the mobile ink poster, so the loader hands straight off into the fold. First used: app-decorating.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-doorswap" data-dur="2300">
+      <span class="trade">Composite door installers, window and door fitters, home improvement</span>
+      <h3>Door Swap</h3>
+      <p>The whole sale in one shot: the old door goes, the new one arrives. On the client's panel ink a white frame DRAWS itself in 0.7s, a tired white slab sitting inside it fades out at 0.65s, and the new composite DROPS into the opening from above on an overshoot curve, in the client's own headline door colour. The glass apertures light at 1.35s, the letterplate and bar handle land at 1.55s, and the wordmark sets under the frame. 2.3s with fail-safe teardown. Distinct from Set Out, which draws a door in PLAN as a carpentry setting-out exercise: this one is drawn in ELEVATION and the point is not the fit, it is the colour and the swap. Recolour ds-new to the client's flagship door and the sub-line to their accent. On the mockup it hands off INTO the fold: the same composite door stands in an ink doorway panel under the CTAs and cycles through the range colours in the first second of viewing. First used: srp-property-works.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-ridgecap" data-dur="2300">
       <div class="trade">Roofing</div>
       <h3>Ridge Cap</h3>
@@ -5707,6 +5742,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </div>
 
 <!-- ridge cap (roofing) -->
+<!-- door swap (composite door installers) -->
+<div class="loader" id="ld-doorswap" aria-hidden="true">
+  <div class="ds-stage">
+    <svg viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect class="ds-frame" x="14" y="10" width="132" height="240" rx="3"/>
+      <rect class="ds-old" x="26" y="22" width="108" height="216" rx="2"/>
+      <rect class="ds-new" x="26" y="22" width="108" height="216" rx="2"/>
+      <g class="ds-glass">
+        <rect x="50" y="50" width="26" height="66" fill="#f2f6f3" opacity=".9"/>
+        <rect x="84" y="50" width="26" height="66" fill="#f2f6f3" opacity=".9"/>
+      </g>
+      <g class="ds-hw">
+        <rect x="62" y="150" width="36" height="7" rx="2" fill="#cfd4d8"/>
+        <rect x="118" y="118" width="5" height="52" rx="2.5" fill="#cfd4d8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="ds-word">SRP</div>
+  <div class="ds-sub">Property Works</div>
+</div>
+
 <div class="loader" id="ld-ridgecap" aria-hidden="true">
   <div class="rc-stage">
     <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11085,7 +11141,7 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 <style>
 #ld-laidtofalls{background:#14181c;flex-direction:column;gap:30px;--lfacc:#0e6b70;--lfacc2:#3fa3a8}
 #ld-laidtofalls .lf-stage{position:relative;width:min(340px,76vw);height:132px}
-#ld-laidtofalls .lf-slope{position:absolute;left:8px;right:8px;top:0;bottom:0;transform:rotate(-7deg)}
+#ld-laidtofalls .lf-slope{position:absolute;left:8px;right:8px;top:0;bottom:0;transform:rotate(7deg)}
 #ld-laidtofalls .lf-base{position:absolute;left:0;right:0;top:74px;height:12px;background:rgba(255,255,255,.09);border-radius:2px;transform:scaleX(0);transform-origin:left}
 #ld-laidtofalls.play .lf-base{animation:lfBase .42s cubic-bezier(.2,.7,.3,1) .1s forwards}
 #ld-laidtofalls .lf-flag{position:absolute;top:40px;height:34px;background:linear-gradient(#454f58,#39424a);border:1px solid #525d67;border-radius:2px;opacity:0;transform:translateY(-16px)}
