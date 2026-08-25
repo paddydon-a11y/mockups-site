@@ -1730,6 +1730,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 #ld-deck.play .wordsub{animation:wordIn .55s ease 1.2s forwards}
 @media (prefers-reduced-motion:reduce){#ld-deck .dboard{animation:none!important;transform:none;opacity:1}#ld-deck .wordmark,#ld-deck .wordsub{opacity:1;animation:none}}
 
+/* deck & glass (decking, balustrades, outdoor living, general builders whose money shot is outside) */
+#ld-deckglass{background:#5b3a1e;flex-direction:column}
+#ld-deckglass .dg-stage{position:relative;width:min(330px,72vw);height:196px}
+#ld-deckglass .dg-ridge{position:absolute;left:-10%;right:-10%;top:36px;height:56px;background:#40270f;
+  border-radius:60% 40% 0 0/100% 100% 0 0;opacity:0;transform:translateY(12px)}
+#ld-deckglass .dg-deck{position:absolute;left:0;right:0;bottom:0;height:72px;overflow:hidden;border-radius:3px}
+#ld-deckglass .dg-board{position:absolute;left:0;right:0;height:11px;background:#c8955c;
+  transform:scaleX(0);transform-origin:left center}
+#ld-deckglass .dg-board::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#8a5c2c;opacity:.75}
+#ld-deckglass .dg-post{position:absolute;bottom:72px;width:6px;height:56px;background:#cfd6da;border-radius:3px;
+  transform:scaleY(0);transform-origin:bottom center}
+#ld-deckglass .dg-glass{position:absolute;bottom:82px;height:44px;background:rgba(255,255,255,.17);
+  border-top:3px solid #cfd6da;opacity:0}
+#ld-deckglass .wm-zone{margin-top:22px;text-align:center}
+#ld-deckglass .wordmark{color:#fff}
+#ld-deckglass .wordsub{color:#e8c9a4}
+#ld-deckglass.play .dg-board{animation:dgBoard .40s cubic-bezier(.2,.8,.3,1) forwards;animation-delay:var(--d)}
+#ld-deckglass.play .dg-post{animation:dgPost .34s cubic-bezier(.2,.9,.3,1) forwards;animation-delay:var(--d)}
+#ld-deckglass.play .dg-glass{animation:dgGlass .40s ease forwards;animation-delay:var(--d)}
+#ld-deckglass.play .dg-ridge{animation:dgRidge .7s ease .70s forwards}
+#ld-deckglass.play .wordmark{animation:wordIn .55s ease 1.28s forwards}
+#ld-deckglass.play .wordsub{animation:wordIn .55s ease 1.40s forwards}
+@keyframes dgBoard{to{transform:scaleX(1)}}
+@keyframes dgPost{to{transform:scaleY(1)}}
+@keyframes dgGlass{to{opacity:1}}
+@keyframes dgRidge{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){#ld-deckglass .dg-board{transform:scaleX(1)}#ld-deckglass .dg-post{transform:scaleY(1)}#ld-deckglass .dg-glass,#ld-deckglass .dg-ridge{opacity:1;transform:none}#ld-deckglass .wordmark,#ld-deckglass .wordsub{opacity:1;animation:none}}
+
+
 /* ===== 8. PLASTERERS — trowel float ===== */
 #ld-trowel{background:#d8d2cd;flex-direction:column}
 #ld-trowel .rough{position:absolute;inset:0;background:
@@ -4248,6 +4277,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-deckglass" data-dur="2300">
+      <span class="trade">Decking, glass and timber balustrades, outdoor living, and general builders whose best photograph is outside rather than inside</span>
+      <h3>Deck &amp; Glass</h3>
+      <p>The outdoor money shot built in front of you. On the client's panel colour six deck BOARDS lay in left to right one at a time (0.06s to 0.46s, scaleX from the left so each one runs out like a real board), then the balustrade POSTS rise off the finished deck in sequence (0.60s to 0.92s), then the GLASS PANELS fade in between them with a steel top rail (0.98s to 1.22s), and a hillside settles up behind the glass at 0.70s so the last beat is the VIEW the balustrade was fitted for. Wordmark 1.28s, sub-line 1.40s, 2.2s teardown with a 2.5s CSS fail-safe, transform and opacity only. Distinct from Deck Lay, which only lays boards and stops, and from Fence Line, which drops timber panels between posts with nothing to see through. Solid shapes throughout, no outline strokes: it reads as a deck with a glass balustrade at 390px. Hands off well into a cedar or timber mobile poster fold where the same drawn balustrade sits on the deck edge under the copy. First used: ck-building.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-lightson" data-dur="2450">
       <span class="trade">General builders and property maintenance firms selling the WHOLE job rather than one trade: footings through to the finished, lived-in house. Also new build and full refurbishment.</span>
       <h3>Lights On</h3>
@@ -8745,6 +8780,35 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
   <div class="wordmark">CLEAR <span>FLOW</span></div>
   <div class="wordsub">Drain Jetting &middot; CCTV Surveys &middot; Ground Works</div>
+</div>
+
+
+<!-- deck & glass (decking / balustrades / outdoor living / general builders) -->
+<div class="loader" id="ld-deckglass" aria-hidden="true">
+  <div class="dg-stage" aria-hidden="true">
+    <div class="dg-ridge"></div>
+    <i class="dg-post" style="left:5%;--d:.60s"></i>
+    <i class="dg-post" style="left:28%;--d:.68s"></i>
+    <i class="dg-post" style="left:51%;--d:.76s"></i>
+    <i class="dg-post" style="left:74%;--d:.84s"></i>
+    <i class="dg-post" style="right:5%;--d:.92s"></i>
+    <i class="dg-glass" style="left:7.5%;width:19.5%;--d:.98s"></i>
+    <i class="dg-glass" style="left:30.5%;width:19.5%;--d:1.06s"></i>
+    <i class="dg-glass" style="left:53.5%;width:19.5%;--d:1.14s"></i>
+    <i class="dg-glass" style="left:76.5%;width:16%;--d:1.22s"></i>
+    <div class="dg-deck">
+      <i class="dg-board" style="bottom:0;--d:.06s"></i>
+      <i class="dg-board" style="bottom:13px;--d:.14s"></i>
+      <i class="dg-board" style="bottom:26px;--d:.22s"></i>
+      <i class="dg-board" style="bottom:39px;--d:.30s"></i>
+      <i class="dg-board" style="bottom:52px;--d:.38s"></i>
+      <i class="dg-board" style="bottom:65px;--d:.46s"></i>
+    </div>
+  </div>
+  <div class="wm-zone">
+    <div class="wordmark">CK BUILDING</div>
+    <div class="wordsub">Decking &middot; Balustrades &middot; Outdoor Living</div>
+  </div>
 </div>
 
 <!-- 7b. deck lay (decking / property maintenance / landscaping) -->
