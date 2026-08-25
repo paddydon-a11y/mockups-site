@@ -42,6 +42,40 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 .wordsub{font-family:'DM Mono',monospace;font-size:clamp(0.66rem,1.6vw,0.8rem);letter-spacing:0.28em;text-transform:uppercase;opacity:0;margin-top:10px}
 @keyframes wordIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 /* door swap (composite door installers / window and door fitters) */
+/* ---- ld-lightson : Lights On (Nexdoor Building & Maintenance, 2026-08-25) ---- */
+#ld-lightson{background:#6d2233;flex-direction:column;gap:34px}
+#ld-lightson .lo-stage{width:min(340px,74vw)}
+#ld-lightson .lo-stage svg{width:100%;height:auto;display:block}
+#ld-lightson .lo-stage g,#ld-lightson .lo-stage rect,#ld-lightson .lo-stage path{transform-box:fill-box}
+#ld-lightson .lo-ground{transform-origin:center;transform:scaleX(0)}
+#ld-lightson .lo-walls{transform-origin:bottom;transform:scaleY(0)}
+#ld-lightson .lo-roof{opacity:0;transform:translateY(-26px)}
+#ld-lightson .lo-open{opacity:0}
+#ld-lightson .lo-lt{opacity:0}
+#ld-lightson .lo-word{opacity:0;transform:translateY(12px);text-align:center}
+#ld-lightson.play .lo-ground{animation:loGround .38s cubic-bezier(.4,0,.2,1) forwards}
+#ld-lightson.play .lo-walls{animation:loUp .5s cubic-bezier(.34,1.1,.5,1) .22s forwards}
+#ld-lightson.play .lo-roof{animation:loRoof .4s cubic-bezier(.3,1.2,.5,1) .66s forwards}
+#ld-lightson.play .lo-open{animation:loFadeIn .32s ease 1.02s forwards}
+#ld-lightson.play .lo-lt{animation:loLight .34s ease forwards}
+#ld-lightson.play .lo-lt.l1{animation-delay:1.14s}
+#ld-lightson.play .lo-lt.l2{animation-delay:1.27s}
+#ld-lightson.play .lo-lt.l3{animation-delay:1.40s}
+#ld-lightson.play .lo-lt.l4{animation-delay:1.53s}
+#ld-lightson.play .lo-word{animation:loWord .5s cubic-bezier(.2,.8,.3,1) 1.48s forwards}
+@keyframes loGround{to{transform:scaleX(1)}}
+@keyframes loUp{to{transform:scaleY(1)}}
+@keyframes loRoof{to{opacity:1;transform:translateY(0)}}
+@keyframes loFadeIn{to{opacity:1}}
+@keyframes loLight{to{opacity:1}}
+@keyframes loWord{to{opacity:1;transform:translateY(0)}}
+#ld-lightson .lo-word b{display:block;font-weight:700;color:#fff;font-size:clamp(1.8rem,6vw,2.5rem);letter-spacing:-.01em;line-height:1}
+#ld-lightson .lo-word span{display:block;margin-top:12px;font-weight:600;font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:#ffd9a8}
+@media (prefers-reduced-motion:reduce){
+  #ld-lightson .lo-ground,#ld-lightson .lo-walls,#ld-lightson .lo-roof,
+  #ld-lightson .lo-open,#ld-lightson .lo-lt,#ld-lightson .lo-word{animation:none;opacity:1;transform:none}
+}
+
 #ld-doorswap{background:#232a30;flex-direction:column;gap:20px}
 #ld-doorswap .ds-stage{width:min(180px,44vw)}
 #ld-doorswap svg{width:100%;height:auto;display:block}
@@ -4214,6 +4248,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-lightson" data-dur="2450">
+      <span class="trade">General builders and property maintenance firms selling the WHOLE job rather than one trade: footings through to the finished, lived-in house. Also new build and full refurbishment.</span>
+      <h3>Lights On</h3>
+      <p>The start-to-finish pitch, argued as a build sequence rather than a diagram. On the client's panel colour a GROUND line strikes across (0.38s), the WALLS rise up off it on a slight overshoot (0.5s at 0.22s), the ROOF drops on from above and settles (0.4s at 0.66s), the door and window openings go in (1.02s), and then the LIGHTS COME ON room by room, downstairs first then upstairs (1.14s, 1.27s, 1.40s, 1.53s), so the last beat is somebody living in the finished house. Wordmark at 1.48s, 2.45s teardown with fail-safe, transform and opacity only. Built as SOLID SHAPES, not outline strokes: an earlier line-drawing version of this idea was cut on review (Patrick, 2026-08-25, "the loader just doesn't make any sense") because thin architectural linework reads as a technical drawing and takes too long to parse. Solid slate roof, cream walls, accent-coloured front door and warm #ffd9a8 window light read as a house instantly at 390px. The lit windows also do the INSIDE half of an inside-and-out proposition without needing a cutaway. Recolour walls, roof and door to the client's palette; keep the window light a warm off-white, never a second brand colour. First used: nexdoor-building-maintenance.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-dropripple" data-dur="2100">
       <span class="trade">Painters and decorators, any finishing trade whose mark is a drop, a splash or a liquid</span>
       <h3>Drop &amp; Ripple</h3>
@@ -5880,6 +5920,34 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 
 <!-- ridge cap (roofing) -->
 <!-- door swap (composite door installers) -->
+<div class="loader" id="ld-lightson" aria-hidden="true">
+  <div class="lo-stage">
+    <svg viewBox="0 0 240 172" aria-hidden="true">
+      <rect class="lo-ground" x="22" y="152" width="196" height="4" rx="2" fill="rgba(255,255,255,.4)"/>
+      <g class="lo-walls"><rect x="48" y="66" width="144" height="86" fill="#f4ece4"/></g>
+      <g class="lo-roof"><path d="M34 70 L120 20 L206 70 Z" fill="#4a4147"/></g>
+      <g class="lo-open">
+        <rect x="64" y="82" width="34" height="26" rx="1" fill="#5e1c2b"/>
+        <rect x="142" y="82" width="34" height="26" rx="1" fill="#5e1c2b"/>
+        <rect x="64" y="120" width="34" height="26" rx="1" fill="#5e1c2b"/>
+        <rect x="142" y="120" width="34" height="26" rx="1" fill="#5e1c2b"/>
+        <path d="M108 152 L108 128 a12 12 0 0 1 24 0 L132 152 Z" fill="#a8283f"/>
+        <circle cx="127" cy="141" r="1.9" fill="#f4ece4"/>
+      </g>
+      <g>
+        <rect class="lo-lt l1" x="64" y="120" width="34" height="26" rx="1" fill="#ffd9a8"/>
+        <rect class="lo-lt l2" x="142" y="120" width="34" height="26" rx="1" fill="#ffd9a8"/>
+        <rect class="lo-lt l3" x="64" y="82" width="34" height="26" rx="1" fill="#ffd9a8"/>
+        <rect class="lo-lt l4" x="142" y="82" width="34" height="26" rx="1" fill="#ffd9a8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="lo-word">
+    <b>NEXDOOR</b>
+    <span>Inside &amp; Out</span>
+  </div>
+</div>
+
 <div class="loader" id="ld-doorswap" aria-hidden="true">
   <div class="ds-stage">
     <svg viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg">
