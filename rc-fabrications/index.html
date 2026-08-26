@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RC Fabrications | Steel Fabrication, Welding &amp; Lifting Skips in Northampton</title>
+<meta name="description" content="RC Fabrications Ltd, Northampton. Branded lifting skips, site cages, plant attachments, machining and bespoke steel fabrication across Northamptonshire and the Midlands.">
+<meta property="og:title" content="RC Fabrications, Your New Website">
+<meta property="og:description" content="Steel fabrication and welding in Northampton, preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/rc-fabrications/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/rc-fabrications/">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#eef0f3;
+  --stone-2:#e3e7ec;
+  --field:#c8161d;
+  --field-2:#d92027;
+  --field-deep:#8f1016;
+  --field-light:#ffd6d8;
+  --steel:#8b949c;
+  --steel-light:#c6ccd2;
+  --accent:#d0181f;
+  --accent-ink:#a5121a;
+  --ink:#171a1d;
+  --body:#4a5158;
+  --muted:#7b838b;
+  --line:#dfe3e8;
+  --line-2:#c9cfd6;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+em{font-style:normal}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--body);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:clip;
+}
+h1,h2,h3,.dsp{font-family:'Chakra Petch','Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;color:var(--ink);margin:0}
+h1{font-weight:700;letter-spacing:-.01em;line-height:1.04;text-transform:uppercase}
+h2{font-weight:700;letter-spacing:-.005em;line-height:1.1;font-size:clamp(1.9rem,3.9vw,2.8rem);text-transform:uppercase}
+h3{font-weight:700;letter-spacing:0;line-height:1.25}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:1220px;margin:0 auto;padding:0 24px}
+.label{font-family:'Inter',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-ink)}
+.ac{color:var(--accent)}
+section{position:relative}
+
+/* painted-skip texture: weld mesh (their site cages) at low alpha, plus a soft paint sheen */
+.grain{position:relative}
+.grain::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,transparent 1px 30px),
+             repeating-linear-gradient(180deg,rgba(0,0,0,.10) 0 1px,transparent 1px 30px),
+             linear-gradient(110deg,rgba(255,255,255,.10),transparent 40%,rgba(0,0,0,.12))}
+.grain>*{position:relative}
+
+/* ---------- loader: Skip Lift ---------- */
+#ld{position:fixed;inset:0;z-index:9999;background:var(--field);display:flex;align-items:center;justify-content:center;transition:opacity .5s ease}
+#ld::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,transparent 1px 30px),
+             repeating-linear-gradient(180deg,rgba(0,0,0,.10) 0 1px,transparent 1px 30px),
+             linear-gradient(110deg,rgba(255,255,255,.10),transparent 40%,rgba(0,0,0,.12))}
+#ld.gone{opacity:0;pointer-events:none}
+.ld-stage{position:relative;width:min(400px,80vw)}
+.ld-svg{width:100%;height:auto;display:block;overflow:visible}
+.ld-lift{animation:ldLift .55s cubic-bezier(.3,.7,.2,1) 1.42s forwards}
+.ld-feet{transform:scaleX(0);transform-origin:50% 50%;animation:ldGrow .3s cubic-bezier(.2,.8,.3,1) .05s forwards}
+.ld-body{transform:scaleY(0);transform-origin:50% 100%;animation:ldGrow .42s cubic-bezier(.2,.8,.3,1) .28s forwards}
+.ld-arm{stroke:#8b949c;stroke-width:11;stroke-linecap:round;fill:none;stroke-dasharray:140;stroke-dashoffset:140;animation:ldDraw .34s ease .62s forwards}
+.ld-arm.r{animation-delay:.70s}
+.ld-bar{transform:scaleX(0);transform-origin:50% 50%;animation:ldGrow .26s ease .94s forwards}
+.ld-ring{transform:scale(0);transform-origin:220px 52px;animation:ldGrow .26s cubic-bezier(.2,.9,.3,1.3) 1.06s forwards}
+.ld-hook{transform:translateY(-170px);animation:ldHook .34s cubic-bezier(.4,0,.2,1) 1.12s forwards}
+.ld-brand{position:absolute;left:0;right:0;top:100%;margin-top:6px;text-align:center;opacity:0;transform:translateY(10px);animation:ldBrand .5s ease 1.55s forwards}
+.ld-word{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:1.7rem;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.ld-sub{margin-top:6px;font-weight:600;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--field-light)}
+@keyframes ldGrow{to{transform:none}}
+@keyframes ldDraw{to{stroke-dashoffset:0}}
+@keyframes ldHook{to{transform:translateY(0)}}
+@keyframes ldLift{0%{transform:translateY(0) rotate(0)}60%{transform:translateY(-58px) rotate(-1.2deg)}100%{transform:translateY(-52px) rotate(0)}}
+@keyframes ldBrand{to{opacity:1;transform:translateY(0)}}
+@keyframes ldGoneAuto{to{opacity:0;visibility:hidden}}
+#ld{animation:ldGoneAuto .6s ease 2.5s forwards}
+@media (prefers-reduced-motion:reduce){
+  #ld *{animation:none!important}
+  .ld-feet,.ld-body,.ld-bar,.ld-ring,.ld-hook{transform:none}
+  .ld-arm{stroke-dashoffset:0}.ld-lift{transform:translateY(-52px)}
+  .ld-brand{opacity:1;transform:none}
+}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
+.nav-in.wrap{padding-top:0;padding-bottom:0}
+.brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand-mark{width:46px;height:34px;display:block}
+.brand-txt{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:1.12rem;letter-spacing:.02em;color:var(--ink);text-transform:uppercase}
+.brand-txt span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.93rem;font-weight:500;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--accent-ink)}
+.nav-links a.nav-cta{background:var(--accent);color:#fff!important;padding:11px 20px;border-radius:9px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+.nav-links a.nav-cta:hover{background:var(--accent-ink)}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff;flex:none}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);align-items:center;justify-content:center;cursor:pointer;padding:0}
+.burger span{display:block;width:19px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:19px;height:2px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.mnav{display:none;position:fixed;left:0;right:0;top:70px;background:var(--bg);border-bottom:1px solid var(--line);z-index:899;padding:14px 24px 22px;box-shadow:0 18px 40px rgba(20,25,30,.10)}
+.mnav.open{display:block}
+.mnav a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-weight:600;color:var(--ink)}
+.mnav .mnav-call{margin-top:16px;border:0;background:var(--accent);color:#fff;text-align:center;border-radius:10px;padding:15px}
+
+/* ---------- hero ---------- */
+.hero{display:flex;flex-direction:column;background:var(--bg)}
+.hero-inner{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
+.hero-inner.wrap{padding-top:64px;padding-bottom:70px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(208,24,31,.45)}50%{box-shadow:0 0 0 8px rgba(208,24,31,0)}}
+.hero-copy .eyebrow .dot{box-shadow:none}
+/* THE STENCIL: work photo through the cut letters */
+.stencil{display:inline-block;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:6rem;line-height:.9;letter-spacing:.02em;
+  background-image:url(hero.jpg);background-size:220% auto;background-position:50% 40%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin:0 0 14px;opacity:0;transform:translateY(8px);transition:opacity .8s ease .1s,transform .8s ease .1s;
+  animation:drift 16s ease-in-out infinite alternate}
+body.lit .stencil{opacity:1;transform:none}
+@keyframes drift{from{background-position:38% 40%}to{background-position:62% 52%}}
+.stencil-row{display:flex;align-items:flex-end;gap:16px}
+.stencil-tag{padding-bottom:12px;font-weight:600;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);max-width:11em;line-height:1.5}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.hero-lede{margin-top:20px;font-size:1.06rem;max-width:33em;color:var(--body)}
+.cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:11px;font-weight:600;font-size:1rem;transition:transform .2s,background .2s,border-color .2s;border:1px solid transparent}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary svg{stroke:#fff}
+.btn-primary:hover{background:var(--accent-ink);transform:translateY(-2px)}
+.btn-ghost{background:var(--bg);color:var(--ink);border-color:var(--line-2)}
+.btn-ghost svg{stroke:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent-ink);transform:translateY(-2px)}
+.btn-ghost:hover svg{stroke:var(--accent-ink)}
+.hero-photo{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:var(--stone)}
+.hero-photo img{width:100%;height:560px;object-fit:cover;object-position:50% 45%}
+.hero-badge{position:absolute;left:18px;bottom:18px;background:var(--ink);color:#fff;border-radius:10px;padding:16px 22px;box-shadow:0 12px 30px rgba(20,25,30,.22)}
+.hero-badge .b-top{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.04em;text-transform:uppercase}
+.hero-badge .b-sub{font-size:.78rem;color:#c6ccd2;margin-top:2px}
+/* trust */
+.trust-bar{border-top:1px solid var(--line);background:var(--stone)}
+.trust-in{display:grid;grid-template-columns:repeat(5,1fr)}
+.trust-in.wrap{padding-top:0;padding-bottom:0}
+.trust-item{display:flex;align-items:center;gap:11px;padding:22px 0;border-left:1px solid var(--line-2)}
+.trust-item:first-child{border-left:0}
+.trust-item:not(:first-child){padding-left:22px}
+.trust-item svg{width:19px;height:19px;stroke:var(--accent);flex:none}
+.trust-item span{font-weight:600;font-size:.92rem;color:var(--ink)}
+
+/* ---------- sections ---------- */
+.sec{padding:88px 0}
+.sec-stone{background:var(--stone)}
+.sec-head{margin-bottom:42px}
+.sec-head h2{margin-top:12px}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.svc{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;z-index:2}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,25,30,.10)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{height:176px;background:var(--stone-2);overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-body{padding:20px 22px 24px}
+.svc-num{font-weight:600;font-size:.74rem;letter-spacing:.2em;color:var(--accent-ink)}
+.svc h3{font-size:1.08rem;margin:8px 0 8px;text-transform:uppercase;letter-spacing:.02em}
+.svc p{font-size:.93rem;color:var(--body)}
+.svc-tag{display:inline-block;margin-top:12px;font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);background:rgba(208,24,31,.09);padding:5px 10px;border-radius:6px}
+
+/* about: slim stone panel, after services */
+.about{background:var(--stone);color:var(--body)}
+.about-in{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.about-in.wrap{padding-top:64px;padding-bottom:64px}
+.about p{margin-top:18px}
+.about-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.about-fact{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:22px 22px 20px;position:relative;overflow:hidden}
+.about-fact::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.about-fact .f-n{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:1.5rem;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
+.about-fact .f-l{font-size:.88rem;color:var(--body);margin-top:6px}
+
+/* gallery G1 */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gtile{display:flex;flex-direction:column;cursor:pointer}
+.gtile .gimg{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--stone-2);border:1px solid var(--line)}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .55s}
+.gtile:hover img{transform:scale(1.04)}
+.gcap{margin-top:11px;font-weight:600;font-size:.78rem;letter-spacing:.06em;color:var(--muted)}
+.gcap b{color:var(--accent-ink);font-weight:600}
+.g-more{display:none}
+.gal.all .g-more{display:flex}
+.gal-btn{margin:34px auto 0;display:flex}
+.gal.all + .gal-btn{display:none}
+.lb{position:fixed;inset:0;z-index:1000;background:rgba(23,26,29,.92);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;border-radius:10px;object-fit:contain}
+
+/* reviews R3 */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:28px 28px 26px}
+.stars{display:flex;gap:3px;margin-bottom:14px}
+.stars svg{width:16px;height:16px;fill:var(--accent);stroke:none}
+.rev p{font-size:1.02rem;color:var(--ink);line-height:1.65}
+.rev-by{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-weight:600;font-size:.82rem;letter-spacing:.04em;color:var(--muted)}
+.rev-by b{color:var(--ink);font-weight:600}
+
+/* areas */
+.areas-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.area{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:10px 16px;font-weight:500;font-size:.93rem;color:var(--ink)}
+.area.home{background:var(--accent);color:#fff;border-color:var(--accent)}
+.areas-note{margin-top:22px;max-width:46em}
+
+/* cta band on plate */
+.band{background:var(--field);color:#fff}
+.band .btn-primary{background:#fff;color:var(--accent-ink)}
+.band .btn-primary svg{stroke:var(--accent-ink)}
+.band .btn-primary:hover{background:var(--field-light)}
+.band-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:26px}
+.band-in.wrap{padding-top:62px;padding-bottom:58px}
+.band h2{color:#fff;max-width:16em}
+.band p{margin-top:12px;color:var(--field-light)}
+.band .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.band .btn-ghost svg{stroke:#fff}
+.band .btn-ghost:hover{border-color:#fff;color:#fff}
+.band .btn-ghost:hover svg{stroke:#fff}
+
+/* contact C1 */
+.contact-in{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+.info-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:14px;display:flex;gap:15px;align-items:flex-start}
+.info-card.hide{display:none}
+.info-card svg{width:20px;height:20px;stroke:var(--accent);flex:none;margin-top:3px}
+.info-card .i-l{font-weight:600;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.info-card .i-v{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:1.1rem;color:var(--ink);margin-top:4px;letter-spacing:.02em}
+.info-card .i-s{font-size:.9rem;color:var(--body);margin-top:3px}
+form{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field input,.field textarea{width:100%;padding:14px 15px;border:1px solid var(--line-2);border-radius:10px;font-family:'Inter',sans-serif;font-size:1rem;color:var(--ink);background:var(--bg)}
+.field textarea{min-height:118px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(208,24,31,.13)}
+.submit{width:100%;padding:17px;border:0;border-radius:11px;background:var(--accent);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:1.02rem;cursor:pointer;transition:background .2s}
+.submit:hover{background:var(--accent-ink)}
+.form-note{margin-top:13px;font-size:.85rem;color:var(--muted);text-align:center}
+
+/* footer */
+footer{background:var(--field-deep);color:#f0c9cb;padding:56px 0 30px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:38px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.14)}
+.f-brand .brand-txt{color:#fff}
+.f-brand p{margin-top:14px;max-width:26em;font-size:.94rem}
+.f-col h4{font-family:'Inter',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--field-light);margin:0 0 14px}
+.f-col a,.f-col span{display:block;padding:5px 0;font-size:.94rem;color:#f0c9cb}
+.f-col a:hover{color:#fff}
+.f-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:22px;font-size:.87rem}
+.f-bot a{color:#fff;text-decoration:underline}
+
+/* FABs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:800;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 26px rgba(20,25,30,.28)}
+.fab.hide{display:none}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--accent);animation:fabPulse 2.4s infinite}
+.fab-call svg{stroke:#fff;fill:none}
+.fab-wa{background:#25d366;animation:fabPulse 2.4s .8s infinite}
+.fab-wa svg{fill:#fff}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%,100%{box-shadow:0 10px 26px rgba(20,25,30,.28)}50%{box-shadow:0 10px 26px rgba(20,25,30,.28),0 0 0 12px rgba(208,24,31,0)}}
+
+/* reveals */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.stencil{animation:none}}
+
+/* ---------- mobile ---------- */
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:0}
+  .hero-photo img{height:360px}
+  .about-in{grid-template-columns:1fr;gap:34px}
+  .contact-in{grid-template-columns:1fr;gap:30px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .f-top{grid-template-columns:1fr 1fr;gap:28px}
+  .stencil{font-size:5rem}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .hero-inner.wrap{padding-top:0;padding-bottom:0}
+  /* THE 390 HOT-ROLLED PLATE FOLD */
+  .hero-copy{position:relative;overflow:hidden;background:var(--field);color:#fff;margin-left:-24px;margin-right:-24px;padding:30px 24px 34px}
+  .hero-copy::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1s ease .2s;
+    background:repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,transparent 1px 30px),
+               repeating-linear-gradient(180deg,rgba(0,0,0,.10) 0 1px,transparent 1px 30px),
+               linear-gradient(110deg,rgba(255,255,255,.10),transparent 40%,rgba(0,0,0,.12))}
+  body.lit .hero-copy::before{opacity:1}
+  .hero-copy>*{position:relative;z-index:2}
+  .hero-copy h1{color:#fff;font-size:clamp(2rem,8.6vw,3rem)}
+  .hero-copy .ac{color:var(--ink)}
+  .hero-copy .label{color:#fff}
+  .hero-copy .eyebrow .dot{background:var(--ink)}
+  .hero-copy .eyebrow{margin-bottom:14px}
+  .stencil{font-size:8.2rem;margin:0 0 10px;background-size:260% auto;letter-spacing:.01em}
+  .stencil-row{gap:14px}
+  .stencil-tag{color:var(--field-light);padding-bottom:16px}
+  .hero-lede{color:#ffe6e7;font-size:1rem;margin-top:16px}
+  .cta-row{margin-top:24px;gap:11px}
+  .cta-row .btn{width:100%}
+  .hero-copy .btn-primary{background:#fff;color:var(--accent-ink)}
+  .hero-copy .btn-primary svg{stroke:var(--accent-ink)}
+  .hero-copy .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+  .hero-copy .btn-ghost svg{stroke:#fff}
+  /* photo lands below the fold on white, badge lifted out */
+  .hero-media{background:var(--bg);margin-left:-24px;margin-right:-24px;padding:26px 24px 6px}
+  .hero-photo img{height:260px}
+  .hero-badge{position:static;box-shadow:none;margin-top:12px;padding:14px 16px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .hero-badge .b-sub{margin-top:0}
+  .trust-bar{background:var(--bg);border-top:1px solid var(--line)}
+  .trust-in{grid-template-columns:1fr}
+  .trust-item{border-left:0;border-top:1px solid var(--line);padding:14px 0}
+  .trust-item:first-child{border-top:0}
+  .trust-item:not(:first-child){padding-left:0}
+  .sec{padding:64px 0}
+  .band-in.wrap{padding-top:50px;padding-bottom:48px}
+}
+@media (max-width:640px){
+  .svc-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr);gap:14px}
+  .rev-grid{grid-template-columns:1fr}
+  .about-facts{grid-template-columns:1fr 1fr}
+  .f-top{grid-template-columns:1fr}
+  form{padding:22px}
+  .band-in{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:400px){
+  .stencil{font-size:7.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER: Skip Lift -->
+<div id="ld" aria-hidden="true">
+  <div class="ld-stage">
+    <svg class="ld-svg" viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <mask id="ldcut">
+          <rect x="0" y="0" width="440" height="300" fill="#fff"/>
+          <text x="220" y="221" text-anchor="middle" font-family="Chakra Petch, Inter, sans-serif" font-weight="700" font-size="54" letter-spacing="3" fill="#000">RC</text>
+        </mask>
+      </defs>
+      <g class="ld-lift">
+        <g class="ld-hook">
+          <path d="M220 -60 V38" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M220 38 c-14 0 -22 8 -22 18 c0 10 8 16 16 16 c6 0 10 -4 10 -9" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+        <circle class="ld-ring" cx="220" cy="52" r="13" stroke="#8b949c" stroke-width="7" fill="none"/>
+        <rect class="ld-bar" x="136" y="62" width="168" height="12" rx="2" fill="#8b949c"/>
+        <path class="ld-arm" d="M124 168 L214 74" />
+        <path class="ld-arm r" d="M316 168 L226 74" />
+        <rect class="ld-body" x="104" y="160" width="232" height="86" rx="3" fill="#8b949c" mask="url(#ldcut)"/>
+        <rect class="ld-feet" x="96" y="246" width="248" height="11" rx="2" fill="#6f777e"/>
+      </g>
+    </svg>
+    <div class="ld-brand">
+      <div class="ld-word">RC Fabrications</div>
+      <div class="ld-sub">Steel fabrication &amp; welding . Northampton</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="nav-in wrap">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 92 68" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 4 H82 L88 10 V58 L82 64 H10 L4 58 V10 Z" fill="#2f353b"/>
+        <text x="46" y="48" text-anchor="middle" font-family="Chakra Petch, Inter, sans-serif" font-weight="700" font-size="38" letter-spacing="1" fill="#fff">RC</text>
+      </svg>
+      <span class="brand-txt">RC <span>Fabrications</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact" class="nav-cta" id="navCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Get a Quote</a>
+  <a href="#contact" class="mnav-call" id="mnavCall">Call us</a>
+</div>
+
+<!-- HERO: H-STENCIL -->
+<section class="hero">
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span><span class="label">Northampton . Northamptonshire &amp; the Midlands</span></div>
+      <div class="stencil-row">
+        <div class="stencil" aria-hidden="true">RC</div>
+        <div class="stencil-tag">Cut straight through the steel</div>
+      </div>
+      <h1>Steel Fabrication, Welding &amp; Lifting Skips in <em class="ac">Northampton</em></h1>
+      <p class="hero-lede">Branded lifting skips, site cages, plant attachments and one-off steel work. Cut, welded and finished in our Northampton workshop, then delivered to site.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary" id="heroCall">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          Get a Quote
+        </a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="hero.jpg" alt="Red crane-lift skip fabricated by RC Fabrications with the customer's name plasma-cut through the side" width="1200" height="1600" fetchpriority="high">
+        <div class="hero-badge">
+          <div class="b-top">Fabricated in Northampton</div>
+          <div class="b-sub">Mild &amp; stainless steel, any RAL colour</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="trust-bar">
+    <div class="trust-in wrap">
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Northampton based</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Mild &amp; stainless</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg><span>Plasma-cut branding</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>One-offs welcome</span></div>
+      <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span>Free quotes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES: S2-PHOTO -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we make</div>
+      <h2>Steel work for site, plant and <em class="ac">one-offs</em></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-skips.jpg" alt="Blue lifting skips with P&amp;S branding cut through the side, loaded on a flatbed" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">01</div><h3>Lifting Skips &amp; Stillages</h3><p>Crane-lift skips and stillages with lifting frame, painted in your colours.</p><span class="svc-tag">Main service</span></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-cages.jpg" alt="Blue mesh site cage with P&amp;S lettering" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">02</div><h3>Site Cages &amp; Storage</h3><p>Mesh cages, gas cages and lockable site stores, built to size.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-plasma.jpg" alt="Company name plasma-cut through a steel skip panel" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">03</div><h3>Plasma-Cut Branding</h3><p>Your name cut straight through the steel. Advertising on every job.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-plant.jpg" alt="New black dumper body fabricated for a site dumper" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">04</div><h3>Plant Bodies &amp; Attachments</h3><p>Dumper bodies, buckets, brackets and guards made new or repaired.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-machining.jpg" alt="Steel part being turned on a lathe" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">05</div><h3>Machining &amp; Turned Parts</h3><p>Spacers, pins, bushes and bosses turned to your drawing.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-stainless.jpg" alt="Stainless steel hopper fabricated in the workshop" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">06</div><h3>Stainless Steel Work</h3><p>Hoppers, tanks, cylinders and clean-finish stainless fabrication.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-bespoke.jpg" alt="Custom motorcycle frame being built on the workshop bench" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">07</div><h3>Bespoke Projects</h3><p>Bike frames, furniture, brackets, one-offs. Bring a sketch, we will build it.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-garden.jpg" alt="Set of grey steel planters and garden steelwork" loading="lazy"></div>
+        <div class="svc-body"><div class="svc-num">08</div><h3>Planters &amp; Garden Steel</h3><p>Steel planters, log stores and garden pieces, finished in any RAL colour.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT: slim plate panel -->
+<section class="about" id="about">
+  <div class="about-in wrap">
+    <div class="reveal">
+      <div class="label">About RC Fabrications</div>
+      <h2>If it is made of <em class="ac">steel</em>, we can make it</h2>
+      <p>RC Fabrications is a steel fabrication and welding workshop in Northampton. We cut, fold, weld and finish mild and stainless steel for plant hire firms, groundworkers, builders and private customers. Most of what leaves the workshop is a lifting skip, a site cage or a plant part. If you can draw it, we can build it.</p>
+    </div>
+    <div class="about-facts reveal">
+      <div class="about-fact"><div class="f-n">Cut</div><div class="f-l">Plasma cut plate, folded to shape</div></div>
+      <div class="about-fact"><div class="f-n">Weld</div><div class="f-l">Mild and stainless, tidy seams</div></div>
+      <div class="about-fact"><div class="f-n">Machine</div><div class="f-l">Turned parts to your drawing</div></div>
+      <div class="about-fact"><div class="f-n">Finish</div><div class="f-l">Painted in your company colour</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY: G1 -->
+<section class="sec sec-stone" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Recent work</div>
+      <h2>Out of the workshop, <em class="ac">onto site</em></h2>
+    </div>
+    <div class="gal reveal" id="gal">
+      <div class="gtile"><div class="gimg"><img src="work-1.jpg" alt="Raw steel lifting skip with M.R.E lettering at sunset" loading="lazy"></div><div class="gcap"><b>01</b> Lifting skip, plasma-cut lettering</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-2.jpg" alt="Blue branded lifting skip outside the customer's yard" loading="lazy"></div><div class="gcap"><b>02</b> Branded skip in customer blue</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-3.jpg" alt="Blue mesh site cage on a groundworks site" loading="lazy"></div><div class="gcap"><b>03</b> Mesh site cage, on site</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-4.jpg" alt="Raw steel skip with P&amp;S lettering before paint" loading="lazy"></div><div class="gcap"><b>04</b> Skip in bare steel, before paint</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-5.jpg" alt="Lifting skip under construction in the workshop" loading="lazy"></div><div class="gcap"><b>05</b> Skip on the bench, ready for paint</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-6.jpg" alt="Steel grating platform fabricated in the workshop" loading="lazy"></div><div class="gcap"><b>06</b> Grating platform</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-7.jpg" alt="White dumper body fabricated and painted" loading="lazy"></div><div class="gcap"><b>07</b> Dumper body, painted white</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-8.jpg" alt="Orange steel road pin stands" loading="lazy"></div><div class="gcap"><b>08</b> Road pin stands in orange</div></div>
+      <div class="gtile"><div class="gimg"><img src="work-9.jpg" alt="Steel and timber cantilever chair" loading="lazy"></div><div class="gcap"><b>09</b> Steel and timber chair</div></div>
+      <div class="gtile g-more"><div class="gimg"><img src="work-10.jpg" alt="Machined steel billets and bushes" loading="lazy"></div><div class="gcap"><b>10</b> Machined bushes</div></div>
+      <div class="gtile g-more"><div class="gimg"><img src="work-11.jpg" alt="Three lifting skips strapped on a flatbed for delivery" loading="lazy"></div><div class="gcap"><b>11</b> Three skips out for delivery</div></div>
+      <div class="gtile g-more"><div class="gimg"><img src="work-12.jpg" alt="Green painted steel hopper" loading="lazy"></div><div class="gcap"><b>12</b> Hopper in customer green</div></div>
+    </div>
+    <button class="btn btn-ghost gal-btn" id="galMore" type="button">Show more work</button>
+  </div>
+</section>
+<div class="lb" id="lb"><img src="" alt="" id="lbImg"></div>
+
+<!-- REVIEWS: R3 -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Reviews</div>
+      <h2>What customers <em class="ac">say</em></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>Had four lifting skips made for the plant fleet, each one with our name cut through the side. RC Fabrications turned them round in a fortnight and the lifting frames are spot on.</p>
+        <div class="rev-by"><b>Gary M.</b>, Towcester . Lifting Skips</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>Needed a set of wheel spacers machined to an odd size. Dropped the drawing in to RC, picked them up two days later, perfect fit.</p>
+        <div class="rev-by"><b>Dean P.</b>, Wellingborough . Machining</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>RC Fabrications built us a lockable mesh cage for the compound in Daventry. Solid, well finished and painted in our blue. Will be back for more.</p>
+        <div class="rev-by"><b>Lewis H.</b>, Daventry . Site Cages</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+        <p>Repaired a cracked dumper body and made a new bucket for the mini digger. Saved us buying new. Honest price and good work from RC.</p>
+        <div class="rev-by"><b>Sam K.</b>, Milton Keynes . Plant Repairs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="sec sec-stone" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Areas we cover</div>
+      <h2>Northampton and the <em class="ac">Midlands</em></h2>
+    </div>
+    <div class="areas-grid reveal">
+      <span class="area home">Northampton</span><span class="area">Blisworth</span><span class="area">Towcester</span><span class="area">Daventry</span><span class="area">Wellingborough</span><span class="area">Kettering</span><span class="area">Corby</span><span class="area">Brackley</span><span class="area">Milton Keynes</span><span class="area">Rugby</span><span class="area">Banbury</span><span class="area">Bedford</span>
+    </div>
+    <p class="areas-note reveal">Workshop in Northampton. Skips, cages and plant parts are collected from the workshop or delivered to site across Northamptonshire and the Midlands.</p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band grain">
+  <div class="band-in wrap">
+    <div class="reveal">
+      <h2>Got a job in steel?</h2>
+      <p>Send a sketch, a photo or a drawing and we will price it.</p>
+    </div>
+    <div class="cta-row reveal" style="margin-top:0">
+      <a href="#contact" class="btn btn-primary" id="bandCall">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT: C1 -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Get a quote</div>
+      <h2>Tell us what you <em class="ac">need</em></h2>
+      <p style="margin-top:14px;max-width:38em">A rough sketch and a couple of sizes are enough to start. We will come back with a price and a lead time.</p>
+    </div>
+    <div class="contact-in">
+      <div class="reveal">
+        <a class="info-card" id="infoCallCard" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><div class="i-l">Phone</div><div class="i-v" id="infoCallTxt">&nbsp;</div><div class="i-s">Mon to Fri, workshop hours</div></div>
+        </a>
+        <a class="info-card" id="infoWaCard" href="#contact" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <div><div class="i-l">WhatsApp</div><div class="i-v">Send a photo of the job</div><div class="i-s">Quickest way to get a price</div></div>
+        </a>
+        <a class="info-card" id="infoEmailCard" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          <div><div class="i-l">Email</div><div class="i-v" id="infoEmailTxt">&nbsp;</div><div class="i-s">Drawings and DXF files welcome</div></div>
+        </a>
+        <div class="info-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="i-l">Workshop</div><div class="i-v">Northampton</div><div class="i-s">Collection from the workshop or delivery to site</div></div>
+        </div>
+      </div>
+      <form action="/api/enquiry" method="POST" class="reveal">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="RC Fabrications Ltd">
+        <input type="hidden" name="source" value="mockup-rc-fabrications">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        <div class="field"><label for="f-email">Email (optional)</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-msg">Tell us about the job</label><textarea id="f-msg" name="message" placeholder="What is it, rough sizes, how many, any colour"></textarea></div>
+        <button class="submit" type="submit">Send Enquiry</button>
+        <p class="form-note">No spam, no mailing list. We only use this to reply about your job.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <span class="brand-txt">RC <span style="color:var(--field-light)">Fabrications</span> Ltd</span>
+        <p>Steel fabrication, welding and machining in Northampton. Lifting skips, site cages, plant parts and one-offs.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <a href="#services">Lifting Skips &amp; Stillages</a>
+        <a href="#services">Site Cages &amp; Storage</a>
+        <a href="#services">Plasma-Cut Branding</a>
+        <a href="#services">Plant Bodies &amp; Attachments</a>
+        <a href="#services">Machining &amp; Turned Parts</a>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <a href="#contact" id="footCall">Call us</a>
+        <a href="#contact">Get a Quote</a>
+        <span>Northampton, Northamptonshire</span>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>&copy; <span id="yr"></span> RC Fabrications Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fabs" id="fabs">
+  <a class="fab fab-wa hide" id="fabWa" href="#contact" target="_blank" rel="noopener" aria-label="WhatsApp us">
+    <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 7 2.9 9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.88-9.9 9.88M20.47 3.52A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.87 11.87 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.39"/></svg>
+  </a>
+  <a class="fab fab-call" id="fabCall" href="#contact" aria-label="Call us">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  // Contact details: NOT supplied on the brief. Fill the base64 consts at go-live and the page wires itself.
+  var PHONE_B64 = '';   // e.g. base64 of 07xxxxxxxxx (no spaces)
+  var PHONEF_B64 = '';  // base64 of the formatted number
+  var WA_B64 = '';      // base64 of 447xxxxxxxxx
+  var EMAIL_B64 = '';
+
+  var P = PHONE_B64 ? atob(PHONE_B64) : '';
+  var Pf = PHONEF_B64 ? atob(PHONEF_B64) : '';
+  var W = WA_B64 ? atob(WA_B64) : '';
+  var E = EMAIL_B64 ? atob(EMAIL_B64) : '';
+  var wa = W ? 'https://wa.me/' + W + '?text=Hi%2C%20seen%20your%20website%20-%20' : '';
+
+  function $(id){ return document.getElementById(id); }
+  if (P){
+    ['navCall','heroCall','bandCall','infoCallCard','fabCall','mnavCall','footCall'].forEach(function(id){ var el=$(id); if(el) el.href='tel:'+P; });
+    var ic=$('infoCallTxt'); if(ic) ic.textContent=Pf||P;
+    var fc=$('footCall'); if(fc) fc.textContent=Pf||P;
+    var mc=$('mnavCall'); if(mc) mc.textContent='Call '+(Pf||P);
+  } else {
+    var cc=$('infoCallCard'); if(cc) cc.classList.add('hide');
+  }
+  if (wa){
+    ['infoWaCard','fabWa'].forEach(function(id){ var el=$(id); if(el){ el.href=wa; el.classList.remove('hide'); } });
+  } else {
+    var wc=$('infoWaCard'); if(wc) wc.classList.add('hide');
+  }
+  if (E){
+    var ec=$('infoEmailCard'); if(ec) ec.href='mailto:'+E;
+    var et=$('infoEmailTxt'); if(et) et.textContent=E;
+  } else {
+    var ecard=$('infoEmailCard'); if(ecard) ecard.classList.add('hide');
+  }
+
+  var ts=$('formTimestamp'); if(ts) ts.value=Date.now();
+  var yr=$('yr'); if(yr) yr.textContent=new Date().getFullYear();
+  var ph=$('f-phone');
+  if(ph) ph.addEventListener('input',function(){ this.setCustomValidity(this.validity.patternMismatch?'Please enter a valid UK phone number':''); });
+
+  // loader teardown + hand-off into the fold (the stencil fades in where the cut pieces dropped)
+  var ld=$('ld');
+  function lit(){ document.body.classList.add('lit'); }
+  function drop(){ if(ld){ ld.classList.add('gone'); setTimeout(function(){ if(ld&&ld.parentNode) ld.parentNode.removeChild(ld); },600); } }
+  setTimeout(lit,1900);
+  setTimeout(drop,2200);
+  setTimeout(function(){ lit(); drop(); },2800);
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ lit(); setTimeout(drop,300); }
+
+  // burger
+  var b=$('burger'), mn=$('mnav');
+  if(b&&mn){
+    b.addEventListener('click',function(){ mn.classList.toggle('open'); });
+    mn.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ mn.classList.remove('open'); }); });
+  }
+
+  // reveals
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // gallery: load more + lightbox
+  var gal=$('gal'), gm=$('galMore');
+  if(gal&&gm) gm.addEventListener('click',function(){ gal.classList.add('all'); });
+  var lb=$('lb'), lbi=$('lbImg');
+  if(gal&&lb&&lbi){
+    gal.querySelectorAll('.gtile').forEach(function(t){ t.addEventListener('click',function(){ var im=t.querySelector('img'); lbi.src=im.src; lbi.alt=im.alt; lb.classList.add('open'); }); });
+    lb.addEventListener('click',function(){ lb.classList.remove('open'); lbi.src=''; });
+  }
+
+  // fabs
+  var fabs=$('fabs'), row=document.querySelector('.hero .cta-row');
+  if(fabs&&row){
+    var fo=new IntersectionObserver(function(es){ es.forEach(function(e){ fabs.classList.toggle('show',!e.isIntersecting); }); },{threshold:0});
+    fo.observe(row);
+  }
+})();
+</script>
+</body>
+</html>
