@@ -1,11 +1,12 @@
-# Adjudicate mockup notes (2026-08-26)
+# Adjudicate mockup notes (2026-08-26, v2)
 
 Branded REDESIGN of adjudicate.co.uk (Breadcrumb Group Ltd). Homepage only.
-Everything on the page is scraped from their own site: logo, photos, stats, reviews, FAQs, steps, article titles, contact details.
+v1 (teal serif, invoice-stamp loader) rejected by Patrick: abandoned their brand. v2 works with it: red wordmark, white page, breadcrumb pixel trail, red A over the hero photo, pill buttons, teal panels.
 
-Nothing invented. Confirm with client before launch:
-- Day 14 "response received" tile is a simplification of the statutory timetable (response timing is set by the adjudicator).
-- Knowledgebase cards all link to /knowledgebase/ on their live site (individual article URLs not scraped).
-- Their brand fonts are Adobe (IvyEpic + Open Sans); the mockup uses Source Serif 4 + Public Sans from Google Fonts.
-- LinkedIn company page assumed active (linked from their footer).
+Everything on the page is scraped from their own site: logo, photos, stats, reviews, FAQs, steps, article titles, contact details. Nothing invented.
+
+Confirm with client before launch:
+- Day 14 "response and reply" tile is a simplification of the statutory timetable.
+- Knowledgebase cards link to /knowledgebase/ on their live site (individual article URLs not scraped).
+- Their brand fonts are Adobe (IvyEpic + Open Sans); the mockup uses Albert Sans + Open Sans from Google Fonts.
 - No WhatsApp: landline only, FAB is call-only.
