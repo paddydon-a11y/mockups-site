@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adjudicate | Construction Adjudication &amp; Payment Dispute Resolution for Specialist Contractors</title>
+<meta name="description" content="Construction adjudication and payment dispute resolution for specialist contractors and subcontractors across the UK. Party representation, smash and grab, variations, final accounts. 95% success rate, over £20m recovered.">
+<meta name="theme-color" content="#092e34">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+
+<meta property="og:title" content="Adjudicate: Your New Website">
+<meta property="og:description" content="Construction adjudication for specialist contractors: preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/adjudicate/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/adjudicate/">
+<meta property="og:type" content="website">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --teal:#092e34;
+  --teal-2:#061f24;
+  --teal-lift:#0f3f47;
+  --teal-line:#1a4a52;
+  --rust:#b73d2c;
+  --rust-d:#9a3224;
+  --rust-soft:#f4e2df;
+  --mint:#dbfff6;
+  --mint-dim:#9fc9c0;
+  --amber:#eca636;
+  --lime:#a2d353;
+  --page:#ffffff;
+  --stone:#eef3f3;
+  --stone-2:#e2ebeb;
+  --line:#dfe7e7;
+  --txt:#1d2a2d;
+  --muted:#586a6e;
+  --muted-2:#8a9a9d;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  margin:0; overflow-x:clip;
+  background:var(--page); color:var(--txt);
+  font-family:'Public Sans',system-ui,sans-serif; font-size:1rem; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+em{font-style:normal}
+img{max-width:100%; display:block; height:auto}
+a{color:inherit}
+h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,serif; margin:0; line-height:1.04; letter-spacing:-.02em; color:var(--teal)}
+h1{font-weight:800; font-size:clamp(2.4rem,4.6vw,3.9rem)}
+h2{font-weight:800; font-size:clamp(2rem,3.9vw,3rem)}
+h3{font-weight:700; font-size:1.2rem; letter-spacing:-.01em; line-height:1.25}
+p{margin:0}
+.wrap{width:100%; max-width:1200px; margin:0 auto; padding:0 24px}
+
+/* ---------- shared ---------- */
+.label{
+  font-weight:600; text-transform:uppercase; letter-spacing:.2em;
+  font-size:.74rem; color:var(--rust); display:flex; align-items:center; gap:10px;
+}
+.label::before{content:""; width:22px; height:3px; background:var(--rust); flex:none}
+.label.on-teal{color:var(--mint)}
+.label.on-teal::before{background:var(--mint)}
+.sec{padding-top:96px; padding-bottom:96px}
+.sec-head{margin-bottom:44px}
+.sec-head h2{margin-top:14px; max-width:22ch}
+.accent{color:var(--rust)}
+.on-teal-h .accent{color:var(--mint)}
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:16px 26px; border-radius:6px; text-decoration:none;
+  font-weight:700; font-size:.98rem; letter-spacing:-.005em;
+  border:2px solid transparent; transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn svg{width:18px; height:18px; flex:none}
+.btn-pri{background:var(--rust); color:#fff}
+.btn-pri:hover{transform:translateY(-2px); background:var(--rust-d)}
+.btn-sec{background:transparent; color:var(--teal); border-color:var(--teal)}
+.btn-sec:hover{transform:translateY(-2px); background:var(--teal); color:#fff}
+.btn-ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
+.btn-ghost:hover{transform:translateY(-2px); background:#fff; color:var(--teal); border-color:#fff}
+.hide{display:none !important}
+
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1; transform:none}
+
+/* the 28-day timetable rule: the signature */
+.tt{position:relative; height:34px; width:100%}
+.tt-line{position:absolute; left:0; right:0; top:8px; height:2px; background:var(--mint-dim); transform:scaleX(0); transform-origin:left center; transition:transform .9s cubic-bezier(.4,0,.2,1) .05s}
+.tt-dot{position:absolute; top:3px; width:12px; height:12px; border-radius:50%; background:var(--mint); opacity:0; transform:scale(.2); transition:transform .35s cubic-bezier(.34,1.5,.5,1), opacity .2s}
+.tt-dot.d1{left:0}
+.tt-dot.d2{left:25%}
+.tt-dot.d3{left:57%}
+.tt-dot.d4{left:calc(100% - 12px); background:var(--amber); width:14px; height:14px; top:2px}
+.tt-lab{position:absolute; top:20px; font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2); white-space:nowrap; opacity:0; transition:opacity .4s}
+.tt-lab.l1{left:0} .tt-lab.l2{left:25%} .tt-lab.l3{left:57%} .tt-lab.l4{right:0}
+.tt-dot.d1{transition-delay:.15s} .tt-dot.d2{transition-delay:.42s} .tt-dot.d3{transition-delay:.72s} .tt-dot.d4{transition-delay:1.0s}
+.tt-lab.l1{transition-delay:.3s} .tt-lab.l2{transition-delay:.55s} .tt-lab.l3{transition-delay:.85s} .tt-lab.l4{transition-delay:1.1s}
+body.lit .tt-line{transform:scaleX(1)}
+body.lit .tt-dot{opacity:1; transform:scale(1)}
+body.lit .tt-lab{opacity:1}
+.tt.dark .tt-line{background:var(--teal-line)}
+.tt.dark .tt-dot{background:var(--teal)}
+.tt.dark .tt-dot.d4{background:var(--rust)}
+.tt.dark .tt-lab{color:var(--muted)}
+
+/* ---------- loader: Decision Stamped ---------- */
+#ld{
+  position:fixed; inset:0; z-index:2000; background:var(--teal);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:34px;
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#ld.gone{opacity:0; visibility:hidden}
+.ld-stage{position:relative; width:250px; height:190px}
+.ld-sheet{
+  position:absolute; left:25px; top:10px; width:200px; height:168px; background:#fff; border-radius:6px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  opacity:0; transform:translateY(42px);
+  animation:ldSheet .55s cubic-bezier(.2,.8,.3,1) .05s forwards, ldJolt .28s ease 1.18s;
+}
+.ld-row{position:absolute; left:20px; height:8px; border-radius:2px; background:#d6dedf; transform:scaleX(0); transform-origin:left center; animation:ldRow .35s cubic-bezier(.4,0,.2,1) forwards}
+.ld-row.r1{top:24px; width:70px; height:10px; background:var(--teal); animation-delay:.32s}
+.ld-row.r2{top:52px; width:140px; animation-delay:.42s}
+.ld-row.r3{top:70px; width:118px; animation-delay:.5s}
+.ld-row.r4{top:88px; width:132px; animation-delay:.58s}
+.ld-row.r5{top:106px; width:96px; animation-delay:.66s}
+.ld-total{position:absolute; left:20px; right:20px; bottom:22px; height:2px; background:var(--teal); transform:scaleX(0); transform-origin:left center; animation:ldRow .35s cubic-bezier(.4,0,.2,1) .72s forwards}
+.ld-sum{position:absolute; right:20px; bottom:30px; width:54px; height:12px; border-radius:2px; background:var(--teal); transform:scaleX(0); transform-origin:right center; animation:ldRow .3s cubic-bezier(.4,0,.2,1) .8s forwards}
+.ld-chip{
+  position:absolute; right:16px; top:20px; padding:3px 8px; border-radius:3px;
+  font-family:'Public Sans',sans-serif; font-weight:700; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+  opacity:0; transform:translateY(-6px);
+}
+.ld-chip.unpaid{background:var(--rust); color:#fff; animation:ldChipIn .3s ease .84s forwards, ldChipOut .2s ease 1.3s forwards}
+.ld-chip.paid{background:var(--lime); color:var(--teal); animation:ldChipIn .3s ease 1.38s forwards}
+.ld-stamp{
+  position:absolute; left:50%; top:56%; width:150px; height:64px; margin:-32px 0 0 -75px;
+  border:5px solid var(--rust); border-radius:8px; color:var(--rust);
+  font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:2rem; letter-spacing:.06em; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transform:rotate(-14deg) scale(2.6);
+  animation:ldStamp .32s cubic-bezier(.2,.9,.3,1.15) .96s forwards;
+}
+.ld-brand{display:flex; flex-direction:column; align-items:center; gap:14px; opacity:0; transform:translateY(14px); animation:ldBrand .5s ease 1.6s forwards}
+.ld-brand img.m{width:38px; height:auto}
+.ld-brand img.w{width:min(240px,62vw); height:auto}
+.ld-brand span{font-size:.7rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--mint-dim); text-align:center; padding:0 24px}
+@keyframes ldSheet{to{opacity:1; transform:translateY(0)}}
+@keyframes ldJolt{0%{transform:translateY(0) scale(1)} 40%{transform:translateY(3px) scale(.985)} 100%{transform:translateY(0) scale(1)}}
+@keyframes ldRow{to{transform:scaleX(1)}}
+@keyframes ldChipIn{to{opacity:1; transform:translateY(0)}}
+@keyframes ldChipOut{to{opacity:0; transform:translateY(0) scale(.6)}}
+@keyframes ldStamp{to{opacity:1; transform:rotate(-12deg) scale(1)}}
+@keyframes ldBrand{to{opacity:1; transform:translateY(0)}}
+@keyframes ldGoneAuto{to{opacity:0; visibility:hidden}}
+#ld{animation:ldGoneAuto .01s linear 2.5s forwards}
+@media (prefers-reduced-motion: reduce){
+  #ld{animation:none}
+  .ld-sheet{opacity:1; transform:none; animation:none}
+  .ld-row,.ld-total,.ld-sum{transform:scaleX(1); animation:none}
+  .ld-chip.unpaid{display:none}
+  .ld-chip.paid{opacity:1; transform:none; animation:none}
+  .ld-stamp{opacity:1; transform:rotate(-12deg) scale(1); animation:none}
+  .ld-brand{opacity:1; transform:none; animation:none}
+  .tt-line{transition:none} .tt-dot,.tt-lab{transition:none}
+  .reveal{opacity:1; transform:none; transition:none}
+}
+
+/* ---------- nav ---------- */
+nav{position:sticky; top:0; z-index:900; background:var(--page); border-bottom:1px solid var(--line)}
+.nav-in{display:flex; align-items:center; justify-content:space-between; gap:20px; padding-top:16px; padding-bottom:16px}
+.nav-logo{display:flex; align-items:center; gap:10px; white-space:nowrap; text-decoration:none}
+.nav-logo img.m{height:30px; width:auto}
+.nav-logo img.w{height:40px; width:auto}
+.nav-links{display:flex; align-items:center; gap:26px}
+.nav-links a{text-decoration:none; font-size:.93rem; font-weight:500; color:var(--txt); transition:color .2s}
+.nav-links a:hover{color:var(--rust)}
+.nav-links a.nav-cta{background:var(--rust); color:#fff !important; font-weight:700; padding:11px 18px; border-radius:6px; display:inline-flex; align-items:center; gap:8px; white-space:nowrap}
+.nav-links a.nav-cta:hover{background:var(--rust-d)}
+.nav-links a.nav-cta svg{width:15px; height:15px; stroke:#fff; fill:none; stroke-width:2}
+.burger{display:none; width:44px; height:44px; border:1px solid var(--line); border-radius:8px; background:var(--page); align-items:center; justify-content:center; cursor:pointer; padding:0}
+.burger svg{width:22px; height:22px; stroke:var(--teal)}
+#mnav{display:none; position:fixed; left:0; right:0; top:63px; bottom:0; background:var(--page); z-index:899; overflow-y:auto}
+#mnav.open{display:block}
+.mnav-in{padding-top:18px; padding-bottom:30px}
+.mnav-in a{display:block; padding:15px 0; border-bottom:1px solid var(--line); font-size:1.08rem; font-weight:600; color:var(--teal); text-decoration:none}
+.mnav-in a.mnav-cta{margin-top:20px; border:0; background:var(--rust); color:#fff; text-align:center; border-radius:8px; padding:16px}
+
+/* ---------- hero ---------- */
+.hero{display:flex; flex-direction:column; position:relative; background:var(--page); overflow:hidden}
+.hero-inner{padding-top:64px; padding-bottom:72px; display:grid; grid-template-columns:1.06fr .94fr; gap:60px; align-items:center; position:relative; z-index:2}
+.h-eyebrow{display:inline-flex; align-items:center; gap:10px; font-size:.74rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); margin-bottom:22px}
+.h-dot{width:8px; height:8px; border-radius:50%; background:var(--rust); box-shadow:0 0 0 0 rgba(183,61,44,.5); animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(183,61,44,.5)} 100%{box-shadow:0 0 0 12px rgba(183,61,44,0)}}
+.hero h1{max-width:14ch}
+.hero .tt{margin-top:26px; max-width:520px}
+.h-lede{margin-top:22px; font-size:1.1rem; color:var(--muted); max-width:52ch}
+.h-cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px}
+.fu{opacity:0; transform:translateY(18px); animation:fadeUp .7s ease forwards}
+.fu.d1{animation-delay:.1s} .fu.d2{animation-delay:.22s} .fu.d3{animation-delay:.34s} .fu.d4{animation-delay:.46s} .fu.d5{animation-delay:.58s}
+@keyframes fadeUp{to{opacity:1; transform:none}}
+.hero-media{position:relative}
+.hero-photo{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); aspect-ratio:4/4.6; background:var(--stone)}
+.hero-photo img{width:100%; height:100%; object-fit:cover; object-position:50% 20%}
+.hero-badge{
+  position:absolute; left:-18px; bottom:34px; background:var(--teal); color:#fff; border-radius:12px;
+  padding:16px 20px; display:flex; align-items:center; gap:14px; box-shadow:0 24px 44px -20px rgba(9,46,52,.6);
+}
+.hero-badge b{font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:2rem; line-height:1; color:var(--mint)}
+.hero-badge span{font-size:.86rem; line-height:1.3; color:rgba(255,255,255,.85); max-width:15ch}
+.hero-badge-row{display:none}
+
+/* ---------- stats (trust) ---------- */
+.stats{background:var(--stone); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.stats-in{display:grid; grid-template-columns:repeat(4,1fr); padding-top:34px; padding-bottom:34px}
+.stat{padding:8px 28px; border-left:1px solid var(--stone-2)}
+.stat:first-child{border-left:0; padding-left:0}
+.stat b{display:block; font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:clamp(2rem,3.4vw,2.9rem); color:var(--teal); line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.stat b small{font-size:.55em; color:var(--rust); font-weight:800}
+.stat > span{display:block; margin-top:8px; font-size:.9rem; color:var(--muted)}
+
+/* ---------- services ---------- */
+.svc{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.card{
+  background:var(--page); border:1px solid var(--line); border-radius:14px; padding:28px 26px 30px; position:relative; overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card::before{content:""; position:absolute; left:0; top:0; right:0; height:3px; background:var(--rust); transform:scaleX(0); transform-origin:left; transition:transform .3s ease}
+.card:hover{transform:translateY(-4px); box-shadow:0 24px 44px -28px rgba(9,46,52,.45)}
+.card:hover::before{transform:scaleX(1)}
+.ico{width:52px; height:52px; border-radius:12px; background:var(--rust-soft); display:flex; align-items:center; justify-content:center; margin-bottom:20px}
+.ico svg{width:26px; height:26px; fill:var(--rust)}
+.card h3{margin-bottom:10px}
+.card p{font-size:.95rem; color:var(--muted)}
+.card .n{position:absolute; right:22px; top:20px; font-family:'Source Serif 4',Georgia,serif; font-weight:700; font-size:1rem; color:var(--muted-2)}
+
+/* ---------- about panel ---------- */
+.about-wrap{background:var(--teal); color:#fff; border-radius:22px; overflow:hidden; display:grid; grid-template-columns:1.1fr .9fr; position:relative}
+.about-copy{padding:56px 56px 56px}
+.about-copy h2{color:#fff; max-width:14ch}
+.about-copy h2 .accent{color:var(--mint)}
+.about-copy p{margin-top:18px; color:rgba(255,255,255,.84); font-size:1.03rem; max-width:52ch}
+.about-copy .q{margin-top:26px; padding-left:18px; border-left:3px solid var(--rust); font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:1.2rem; line-height:1.4; color:#fff; max-width:44ch}
+.sig{display:flex; align-items:center; gap:14px; margin-top:28px}
+.sig img{width:54px; height:54px; border-radius:50%; object-fit:cover; object-position:50% 15%; border:2px solid var(--mint)}
+.sig b{display:block; font-family:'Source Serif 4',Georgia,serif; font-weight:700; font-size:1.05rem; color:#fff}
+.sig span{font-size:.86rem; color:rgba(255,255,255,.72)}
+.sig a{margin-left:auto; display:inline-flex; align-items:center; gap:8px; font-size:.86rem; font-weight:600; color:var(--mint); text-decoration:none; border:1px solid rgba(219,255,246,.4); border-radius:6px; padding:9px 13px}
+.sig a:hover{background:var(--mint); color:var(--teal)}
+.sig a svg{width:15px; height:15px; fill:currentColor}
+.about-photo{position:relative; min-height:100%}
+.about-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 20%}
+.about-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, var(--teal) 0, rgba(9,46,52,0) 22%)}
+
+/* ---------- process: 28-day timetable ---------- */
+.proc{background:var(--stone)}
+.days{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-bottom:56px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:var(--page)}
+.day{padding:22px 24px; border-left:1px solid var(--line); position:relative}
+.day:first-child{border-left:0}
+.day b{display:block; font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:1.9rem; color:var(--teal); line-height:1}
+.day b small{font-size:.5em; font-weight:700; color:var(--rust); margin-right:6px; letter-spacing:.04em}
+.day span{display:block; margin-top:6px; font-size:.92rem; color:var(--muted)}
+.day.dec{background:var(--teal)}
+.day.dec b{color:var(--mint)} .day.dec b small{color:var(--amber)} .day.dec span{color:rgba(255,255,255,.8)}
+.steps{display:grid; grid-template-columns:repeat(5,1fr); gap:22px}
+.step{position:relative; padding-top:22px}
+.step::before{content:""; position:absolute; left:0; right:-22px; top:0; height:2px; background:var(--stone-2)}
+.step:last-child::before{right:0}
+.step::after{content:""; position:absolute; left:0; top:-5px; width:12px; height:12px; border-radius:50%; background:var(--rust)}
+.step b{display:block; font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:2.6rem; line-height:1; color:var(--teal); letter-spacing:-.03em}
+.step h3{margin-top:10px; font-size:1.1rem}
+.step p{margin-top:8px; font-size:.93rem; color:var(--muted)}
+
+/* ---------- knowledgebase ---------- */
+.kb{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.kb a{display:flex; flex-direction:column; text-decoration:none; background:var(--page); border:1px solid var(--line); border-radius:14px; overflow:hidden; position:relative; transition:transform .25s ease, box-shadow .25s ease}
+.kb a::before{content:""; position:absolute; left:0; top:0; right:0; height:3px; background:var(--rust); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; z-index:2}
+.kb a:hover{transform:translateY(-4px); box-shadow:0 24px 44px -28px rgba(9,46,52,.45)}
+.kb a:hover::before{transform:scaleX(1)}
+.kb .kb-img{aspect-ratio:16/9; overflow:hidden; background:var(--stone)}
+.kb .kb-img img{width:100%; height:100%; object-fit:cover; object-position:50% 30%}
+.kb .kb-b{padding:22px 24px 26px; display:flex; flex-direction:column; gap:10px; flex:1}
+.kb .kb-meta{font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--rust)}
+.kb .kb-meta span{color:var(--muted-2); margin-left:10px; letter-spacing:.06em}
+.kb h3{font-size:1.18rem}
+.kb p{font-size:.93rem; color:var(--muted)}
+.kb .more{margin-top:auto; padding-top:8px; font-weight:700; font-size:.9rem; color:var(--teal)}
+.kb-foot{margin-top:34px; display:flex; gap:12px; flex-wrap:wrap}
+
+/* ---------- reviews ---------- */
+.quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.quote{padding:34px 30px 30px; border:1px solid var(--line); border-radius:14px; background:var(--stone); position:relative}
+.quote::before{content:"\201C"; position:absolute; left:26px; top:6px; font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:4.4rem; line-height:1; color:var(--rust); opacity:.55}
+.quote p{font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:1.18rem; line-height:1.45; color:var(--teal); margin-top:26px}
+.quote .who{margin-top:22px; padding-top:16px; border-top:1px solid var(--stone-2)}
+.quote .who b{display:block; font-weight:700; color:var(--txt)}
+.quote .who span{font-size:.86rem; color:var(--muted)}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none; cursor:pointer; padding:22px 0; display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:'Source Serif 4',Georgia,serif; font-weight:700; font-size:1.2rem; color:var(--teal)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none; width:30px; height:30px; border-radius:50%; border:2px solid var(--rust); position:relative; transition:transform .25s}
+.faq summary i::before,.faq summary i::after{content:""; position:absolute; left:50%; top:50%; background:var(--rust); transform:translate(-50%,-50%)}
+.faq summary i::before{width:12px; height:2px}
+.faq summary i::after{width:2px; height:12px}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq details p{padding:0 0 24px; color:var(--muted); max-width:62ch}
+
+/* ---------- cta band ---------- */
+.band{background:var(--teal); color:#fff; position:relative; overflow:hidden}
+.band-in{padding-top:88px; padding-bottom:88px; display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; position:relative; z-index:2}
+.band h2{color:#fff; max-width:16ch}
+.band h2 .accent{color:var(--mint)}
+.band p{margin-top:16px; color:rgba(255,255,255,.82); max-width:46ch}
+.band .h-cta{justify-content:flex-end}
+.band-mark{position:absolute; right:-40px; top:50%; transform:translateY(-50%); width:420px; opacity:.07; z-index:1}
+.band .band-tt{position:absolute; left:24px; right:24px; top:18px; height:20px; z-index:2}
+.band .band-tt .tt-line{background:var(--teal-line)}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:40px; align-items:start}
+.info{display:grid; gap:14px; margin-top:28px}
+.info a,.info div.i{display:flex; align-items:center; gap:16px; padding:18px 20px; background:var(--stone); border:1px solid var(--line); border-radius:12px; text-decoration:none; transition:transform .2s}
+.info a:hover{transform:translateY(-2px)}
+.info .ii{width:44px; height:44px; border-radius:10px; background:var(--teal); display:flex; align-items:center; justify-content:center; flex:none}
+.info .ii svg{width:20px; height:20px; stroke:var(--mint); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.info small{display:block; font-size:.74rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2)}
+.info b{display:block; font-weight:700; color:var(--teal); font-size:1rem}
+form{background:var(--page); border:1px solid var(--line); border-radius:18px; padding:32px; box-shadow:0 30px 60px -40px rgba(9,46,52,.4)}
+form h3{margin-bottom:6px}
+form .fp{font-size:.92rem; color:var(--muted); margin-bottom:22px}
+.field{margin-bottom:18px}
+.field label{display:block; font-weight:600; font-size:.86rem; margin-bottom:8px}
+.field label span{font-weight:400; color:var(--muted-2)}
+.field input,.field textarea{
+  width:100%; padding:14px 16px; border:1px solid var(--line); border-radius:8px; background:var(--stone);
+  font-family:inherit; font-size:1rem; color:var(--txt);
+}
+.field input:focus,.field textarea:focus{outline:2px solid var(--rust); outline-offset:1px; border-color:transparent}
+.field textarea{min-height:120px; resize:vertical}
+form .btn{width:100%}
+form .fine{margin-top:14px; font-size:.8rem; color:var(--muted-2); text-align:center}
+
+/* ---------- footer ---------- */
+footer{background:var(--teal-2); color:rgba(255,255,255,.78); padding-top:70px; padding-bottom:30px}
+.foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px}
+.foot-logo{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+.foot-logo img.m{height:34px; width:auto}
+.foot-logo img.w{height:44px; width:auto}
+footer h4{font-family:'Public Sans',sans-serif; font-size:.74rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--mint); margin-bottom:16px}
+footer ul{list-style:none; margin:0; padding:0}
+footer li{margin-bottom:9px; font-size:.93rem}
+footer li a{text-decoration:none; color:rgba(255,255,255,.78)}
+footer li a:hover{color:var(--mint)}
+.foot-bot{margin-top:50px; padding-top:22px; border-top:1px solid var(--teal-line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.82rem; color:rgba(255,255,255,.55)}
+.foot-bot a{color:var(--mint); text-decoration:none}
+
+/* ---------- fabs ---------- */
+.fabs{position:fixed; right:18px; bottom:18px; z-index:880; display:flex; flex-direction:column; gap:12px; opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease}
+.fabs.show{opacity:1; visibility:visible}
+.fab{width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(9,46,52,.35); background:var(--rust)}
+.fab svg{width:23px; height:23px; stroke:#fff; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+@media (prefers-reduced-motion: no-preference){
+  .fab{animation:fabPulse 2.4s ease-in-out infinite}
+  .fab:hover{animation:none}
+}
+@keyframes fabPulse{0%,100%{box-shadow:0 10px 26px rgba(9,46,52,.35), 0 0 0 0 rgba(183,61,44,.55)} 50%{box-shadow:0 10px 26px rgba(9,46,52,.35), 0 0 0 12px rgba(183,61,44,0)}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .svc,.kb,.quotes{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .step::before{right:-22px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-in{padding-top:12px; padding-bottom:12px}
+  .sec{padding-top:72px; padding-bottom:72px}
+
+  /* the 390 fold: deep-teal poster */
+  .hero{background:var(--teal)}
+  .hero-inner{grid-template-columns:1fr; gap:0; padding-top:44px; padding-bottom:0}
+  .hero-copy{padding-bottom:40px}
+  .h-eyebrow{color:var(--mint)}
+  .h-dot{background:var(--amber); box-shadow:0 0 0 0 rgba(236,166,54,.5); animation-name:pulseA}
+  @keyframes pulseA{0%{box-shadow:0 0 0 0 rgba(236,166,54,.5)} 100%{box-shadow:0 0 0 12px rgba(236,166,54,0)}}
+  .hero h1{color:#fff; font-size:clamp(2.35rem,10.5vw,3.1rem); max-width:12ch}
+  .hero h1 .accent{color:var(--mint)}
+  .hero .tt{max-width:none}
+  .hero .tt-lab{color:var(--mint-dim)}
+  .h-lede{color:rgba(255,255,255,.82); font-size:1.02rem}
+  .h-cta{margin-top:26px}
+  .h-cta .btn{flex:1 1 100%}
+  .h-cta .btn-sec{color:#fff; border-color:rgba(255,255,255,.45)}
+  .h-cta .btn-sec:hover{background:#fff; color:var(--teal)}
+  .hero-media{margin:0 -24px; background:var(--page); padding:24px 24px 0}
+  .hero-photo{aspect-ratio:16/11; border-radius:14px}
+  .hero-photo img{object-position:50% 12%}
+  .hero-badge{display:none}
+  .hero-badge-row{display:flex; align-items:center; gap:14px; margin-top:16px; padding:16px 18px; border:1px solid var(--line); border-radius:12px; background:var(--stone)}
+  .hero-badge-row b{font-family:'Source Serif 4',Georgia,serif; font-weight:800; font-size:1.9rem; line-height:1; color:var(--teal)}
+  .hero-badge-row span{font-size:.88rem; color:var(--muted); line-height:1.3}
+
+  .stats-in{grid-template-columns:1fr 1fr; gap:6px 0; padding-top:26px; padding-bottom:26px}
+  .stat{padding:12px 18px; border-left:0}
+  .stat:nth-child(odd){padding-left:0}
+  .stat:nth-child(even){border-left:1px solid var(--stone-2)}
+  .stat:nth-child(n+3){border-top:1px solid var(--stone-2)}
+
+  .about-wrap{grid-template-columns:1fr}
+  .about-copy{padding:36px 26px 38px}
+  .about-photo{min-height:340px; order:2}
+  .about-photo::after{background:linear-gradient(180deg, var(--teal) 0, rgba(9,46,52,0) 26%)}
+  .sig{flex-wrap:wrap}
+  .sig a{margin-left:0; width:100%; justify-content:center}
+
+  .days{grid-template-columns:1fr 1fr}
+  .day:nth-child(3){border-left:0}
+  .day:nth-child(n+3){border-top:1px solid var(--line)}
+  .steps{grid-template-columns:1fr; gap:0}
+  .step{padding:22px 0 22px 34px; border-left:2px solid var(--stone-2)}
+  .step::before{display:none}
+  .step::after{left:-7px; top:30px}
+  .step b{font-size:2rem}
+
+  .band-in{grid-template-columns:1fr; padding-top:64px; padding-bottom:64px}
+  .band .h-cta{justify-content:flex-start}
+  .band-mark{width:300px; right:-80px; top:auto; bottom:-60px; transform:none}
+
+  .contact-grid{grid-template-columns:1fr}
+  form{padding:24px}
+  .foot-grid{grid-template-columns:1fr; gap:30px}
+}
+@media (max-width:560px){
+  .svc,.kb,.quotes{grid-template-columns:1fr}
+  .tt-lab.l3{display:none}
+  .tt-dot.d3{left:60%}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADER: Decision Stamped ============ -->
+<div id="ld" aria-hidden="true">
+  <div class="ld-stage">
+    <div class="ld-sheet">
+      <div class="ld-row r1"></div>
+      <div class="ld-row r2"></div>
+      <div class="ld-row r3"></div>
+      <div class="ld-row r4"></div>
+      <div class="ld-row r5"></div>
+      <div class="ld-total"></div>
+      <div class="ld-sum"></div>
+      <div class="ld-chip unpaid">Unpaid</div>
+      <div class="ld-chip paid">Recovered</div>
+      <div class="ld-stamp">PAID</div>
+    </div>
+  </div>
+  <div class="ld-brand">
+    <img class="w" src="logo-mint.svg" alt="Adjudicate" width="219" height="52">
+    <span>Dispute resolution for specialist contractors</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-in wrap">
+    <a class="nav-logo" href="#top" aria-label="Adjudicate home">
+      <img class="w" src="logo-teal.svg" alt="Adjudicate" width="219" height="52">
+    </a>
+    <div class="nav-links">
+      <a href="#services">What we do</a>
+      <a href="#how">How it works</a>
+      <a href="#about">Our team</a>
+      <a href="#knowledge">Knowledgebase</a>
+      <a href="#faq">FAQs</a>
+      <a class="nav-cta" id="navCall" href="#contact">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span id="navCallTxt">Call us</span>
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+<div id="mnav">
+  <div class="mnav-in wrap">
+    <a href="#services">What we do</a>
+    <a href="#how">How it works</a>
+    <a href="#about">Our team</a>
+    <a href="#knowledge">Knowledgebase</a>
+    <a href="#faq">FAQs</a>
+    <a href="#contact">Book your free call</a>
+    <a class="mnav-cta" id="mnavCall" href="#contact">Call us</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <div class="h-eyebrow fu d1"><span class="h-dot"></span>Construction adjudication, UK-wide</div>
+      <h1 class="fu d2">Adjudication and payment dispute resolution for <em class="accent">specialist contractors</em></h1>
+      <div class="tt fu d3" aria-hidden="true">
+        <div class="tt-line"></div>
+        <span class="tt-dot d1"></span><span class="tt-dot d2"></span><span class="tt-dot d3"></span><span class="tt-dot d4"></span>
+        <span class="tt-lab l1">Notice</span><span class="tt-lab l2">Day 7 referral</span><span class="tt-lab l3">Response</span><span class="tt-lab l4">Day 28 decision</span>
+      </div>
+      <p class="h-lede fu d4">We represent subcontractors and specialist contractors in adjudication: non-payment, smash and grab, variations, delay and final accounts. A 28-day statutory process, run by people who have stood where you stand.</p>
+      <div class="h-cta fu d5">
+        <a class="btn btn-pri" id="heroCall" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a class="btn btn-sec" href="#contact">Book your free call</a>
+      </div>
+    </div>
+    <div class="hero-media fu d3">
+      <div class="hero-photo">
+        <img src="yosof-hero.jpg" alt="Yosof Ewing of Adjudicate reviewing a contract" width="1000" height="1000" fetchpriority="high">
+      </div>
+      <div class="hero-badge">
+        <b>95%</b>
+        <span>success rate in adjudication</span>
+      </div>
+      <div class="hero-badge-row">
+        <b>95%</b>
+        <span>success rate in adjudication, over £20m recovered for contractors</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS / TRUST ============ -->
+<section class="stats" aria-label="Our record">
+  <div class="stats-in wrap">
+    <div class="stat"><b><span class="cnt" data-to="95">0</span><small>%</small></b><span>success rate in adjudication</span></div>
+    <div class="stat"><b><small>£</small><span class="cnt" data-to="20">0</span><small>m+</small></b><span>recovered for our clients</span></div>
+    <div class="stat"><b><span class="cnt" data-to="50">0</span><small>+</small></b><span>years combined experience</span></div>
+    <div class="stat"><b><span class="cnt" data-to="155">0</span><small>+</small></b><span>companies helped along the way</span></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">What we do</div>
+      <h2>Getting specialist contractors <em class="accent">paid</em></h2>
+    </div>
+    <div class="svc">
+      <div class="card reveal">
+        <span class="n">01</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 3 6v6c0 5.2 3.8 9.6 9 10.8C17.2 21.6 21 17.2 21 12V6l-9-4zm-1.5 14-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4-6 6z"/></svg></div>
+        <h3>Adjudication representation</h3>
+        <p>Your case built, filed and argued from notice to decision.</p>
+      </div>
+      <div class="card reveal">
+        <span class="n">02</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15.5h-2v-1.2c-1.5-.3-2.5-1.2-2.6-2.7h1.9c.1.7.6 1.2 1.7 1.2 1 0 1.5-.4 1.5-1 0-.6-.4-.9-1.7-1.2-1.9-.4-3.2-1-3.2-2.7 0-1.3.9-2.2 2.4-2.5V6.5h2v1.3c1.4.3 2.2 1.2 2.3 2.5h-1.9c-.1-.6-.5-1.1-1.4-1.1-.9 0-1.4.4-1.4.9 0 .6.5.8 1.8 1.1 2 .5 3.1 1.1 3.1 2.8 0 1.4-1 2.3-2.5 2.6v1.4z"/></svg></div>
+        <h3>Payment disputes</h3>
+        <p>Non-payment, pay less notices, smash and grab, withheld retentions.</p>
+      </div>
+      <div class="card reveal">
+        <span class="n">03</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h10v4H4zM16 16h4v4h-4z"/></svg></div>
+        <h3>Variations and final accounts</h3>
+        <p>Extra work valued and recovered, final account disagreements settled.</p>
+      </div>
+      <div class="card reveal">
+        <span class="n">04</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 3.5 2.1-1 1.7-4.5-2.7V7h2v5.6z"/></svg></div>
+        <h3>Delay, defects and set-off</h3>
+        <p>Extension of time, loss and expense, and defective set-off claims answered.</p>
+      </div>
+      <div class="card reveal">
+        <span class="n">05</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></div>
+        <h3>Suspension and contract advice</h3>
+        <p>Your Construction Act rights, used correctly before a dispute escalates.</p>
+      </div>
+      <div class="card reveal">
+        <span class="n">06</span>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M8 5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm8 0a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zM2 19c0-3 2.7-5 6-5s6 2 6 5v1H2v-1zm12.5-5c.8-.3 1.6-.4 2.5-.4 3.3 0 5 2 5 5v1h-6v-1c0-1.8-.6-3.4-1.5-4.6z"/></svg></div>
+        <h3>Expert witness and mediation</h3>
+        <p>Independent expert evidence and mediated settlements when that route is right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" style="padding-bottom:96px">
+  <div class="wrap">
+    <div class="about-wrap reveal">
+      <div class="about-copy">
+        <div class="label on-teal">Our mission</div>
+        <h2 style="margin-top:14px">Resolving disputes. <em class="accent">Restoring trust.</em></h2>
+        <p>Adjudication was meant to be a fair, quick way for contractors to get paid. It has been overtaken by bad actors who twist the truth and by a convoluted system that punishes the people it was built to protect. Adjudicate exists to put that right: fair outcomes for our clients, and a better process for the industry.</p>
+        <p class="q">"I have seen too many hard-working contractors lose out because they did not have the right support. My mission is to change that."</p>
+        <div class="sig">
+          <img src="yosof-portrait.jpg" alt="Yosof Ewing" width="504" height="849">
+          <div>
+            <b>Yosof Ewing</b>
+            <span>Founder. Nearly 35 years in construction, also known as The Contract Coach</span>
+          </div>
+          <a href="https://www.linkedin.com/company/adjudicate/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M6.9 8.5H3.5V20h3.4V8.5zM5.2 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM20.5 13c0-3.3-1.8-4.8-4.2-4.8-1.8 0-2.8 1-3.3 1.8V8.5H9.6V20H13v-5.8c0-1.5.3-3 2.2-3 1.9 0 1.9 1.8 1.9 3.1V20h3.4v-7z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="about-photo">
+        <img src="meeting-square.jpg" alt="Yosof Ewing talking a client through their case" width="1000" height="1000" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS: the 28-day timetable ============ -->
+<section class="sec proc" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">How it works</div>
+      <h2>A statutory process that runs to a <em class="accent">28-day</em> clock</h2>
+    </div>
+    <div class="days reveal">
+      <div class="day"><b><small>Day</small>1</b><span>Notice of adjudication served on the other party</span></div>
+      <div class="day"><b><small>Day</small>7</b><span>Referral to the adjudicator with your full case</span></div>
+      <div class="day"><b><small>Day</small>14</b><span>Response received, reply and evidence exchanged</span></div>
+      <div class="day dec"><b><small>Day</small>28</b><span>Adjudicator's decision, binding and enforceable</span></div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><b>1</b><h3>Initial consultation</h3><p>A free call. Tell us the dispute, the contract and the outcome you want.</p></div>
+      <div class="step reveal"><b>2</b><h3>Evidence gathering</h3><p>Every notice, application, email and drawing collected and analysed.</p></div>
+      <div class="step reveal"><b>3</b><h3>Strategy</h3><p>A tailored approach built on the facts, not on legal tactics.</p></div>
+      <div class="step reveal"><b>4</b><h3>Representation</h3><p>We advocate for you through every stage of the adjudication.</p></div>
+      <div class="step reveal"><b>5</b><h3>Resolution</h3><p>A swift, fair outcome that protects you and your business.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KNOWLEDGEBASE ============ -->
+<section class="sec" id="knowledge">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Knowledgebase</div>
+      <h2>Know your rights <em class="accent">before</em> the dispute</h2>
+    </div>
+    <div class="kb">
+      <a class="reveal" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">
+        <div class="kb-img"><img src="meeting.jpg" alt="" width="731" height="576" loading="lazy"></div>
+        <div class="kb-b">
+          <div class="kb-meta">Insights <span>9 Apr 2026</span></div>
+          <h3>What happens if the other party ignores the adjudicator's decision?</h3>
+          <p>How decisions are enforced through the courts, and your options if the losing party will not comply.</p>
+          <span class="more">Read more</span>
+        </div>
+      </a>
+      <a class="reveal" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">
+        <div class="kb-b">
+          <div class="kb-meta">Insights <span>7 Apr 2026</span></div>
+          <h3>Can I suspend work if I have not been paid?</h3>
+          <p>The Construction Act gives contractors the right to suspend for non-payment. Getting the process right is everything.</p>
+          <span class="more">Read more</span>
+        </div>
+      </a>
+      <a class="reveal" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">
+        <div class="kb-b">
+          <div class="kb-meta">Insights <span>1 Apr 2026</span></div>
+          <h3>Is there a risk in starting adjudication too early?</h3>
+          <p>You can refer a dispute at any time, but you need an actual dispute, and the timing has to make sense.</p>
+          <span class="more">Read more</span>
+        </div>
+      </a>
+      <a class="reveal" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">
+        <div class="kb-b">
+          <div class="kb-meta">Insights <span>30 Mar 2026</span></div>
+          <h3>What is a smash and grab adjudication, and is it legal?</h3>
+          <p>An aggressive nickname for a payment tactic that is perfectly legal when done within the rules.</p>
+          <span class="more">Read more</span>
+        </div>
+      </a>
+      <a class="reveal" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">
+        <div class="kb-b">
+          <div class="kb-meta">Insights <span>26 Mar 2026</span></div>
+          <h3>Can I adjudicate if there is no formal contract in place?</h3>
+          <p>No signed contract does not mean no rights. Oral and implied agreements can still give you access to adjudication.</p>
+          <span class="more">Read more</span>
+        </div>
+      </a>
+      <a class="reveal" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">
+        <div class="kb-b">
+          <div class="kb-meta">Insights <span>20 Mar 2026</span></div>
+          <h3>Do you need a solicitor for adjudication?</h3>
+          <p>In most cases, no. Payment disputes resolved without the cost or delay of the traditional legal route.</p>
+          <span class="more">Read more</span>
+        </div>
+      </a>
+    </div>
+    <div class="kb-foot reveal">
+      <a class="btn btn-sec" href="https://adjudicate.co.uk/knowledgebase/" target="_blank" rel="noopener">All articles</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec" id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">Client feedback</div>
+      <h2>What contractors <em class="accent">say</em></h2>
+    </div>
+    <div class="quotes">
+      <div class="quote reveal">
+        <p>The service provided was exceptional and the knowledge of this area was extensive, taking the stress and strain out of the adjudication process for our company.</p>
+        <div class="who"><b>Alan Beattie</b><span>Managing Director, George Beattie &amp; Sons</span></div>
+      </div>
+      <div class="quote reveal">
+        <p>Yosof provided us with very innovative and effective arguments to present a robust case for our payment dispute. His ethos is on restoring balance to the relationship amicably.</p>
+        <div class="who"><b>Ben Elstob</b><span>Divisional Business Manager, Land &amp; Water Services</span></div>
+      </div>
+      <div class="quote reveal">
+        <p>In the first and only meeting with the Responding Party, Yosof chaired the meeting with complete confidence. Every detail was meticulously filed. He successfully settled.</p>
+        <div class="who"><b>Peter Murphy</b><span>Managing Director, Murform Ltd</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec proc" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="label">FAQs</div>
+      <h2>Is Adjudicate <em class="accent">right</em> for you?</h2>
+    </div>
+    <div class="faq reveal">
+      <details open>
+        <summary>What is adjudication?<i></i></summary>
+        <p>Adjudication is a statutory legal process used to resolve disputes in the construction industry quickly and cost-effectively. It is a right under the Construction Act, and the decision is binding unless and until it is overturned by litigation or arbitration.</p>
+      </details>
+      <details>
+        <summary>What types of disputes can adjudication resolve?<i></i></summary>
+        <p>A wide range of construction disputes, including non-payment, variations, delays, defects and final account disagreements.</p>
+      </details>
+      <details>
+        <summary>Do I need legal representation for adjudication?<i></i></summary>
+        <p>Legal representation is not mandatory, but having an expert on your side significantly increases your chances of success. An experienced adjudication specialist guides you through the process, helps you prepare strong evidence and makes sure your case is presented effectively, saving time, stress and potentially costly mistakes.</p>
+      </details>
+      <details>
+        <summary>How long does the adjudication process take?<i></i></summary>
+        <p>Typically around 28 days from the date the dispute is referred to an adjudicator. That can be extended by 14 days with the referring party's consent, or longer if both sides agree.</p>
+      </details>
+      <details>
+        <summary>What are the costs involved?<i></i></summary>
+        <p>Costs vary with the complexity of the case. We always offer totally transparent fees with no hidden costs, and the first call is free.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="band">
+  <div class="tt band-tt" aria-hidden="true">
+    <div class="tt-line"></div>
+    <span class="tt-dot d1"></span><span class="tt-dot d2"></span><span class="tt-dot d3"></span><span class="tt-dot d4"></span>
+  </div>
+  <img class="band-mark" src="mark.svg" alt="" width="81" height="104" aria-hidden="true">
+  <div class="band-in wrap">
+    <div class="on-teal-h">
+      <div class="label on-teal">Ready when you are</div>
+      <h2 style="margin-top:14px">Are you ready to resolve <em class="accent">your</em> dispute today?</h2>
+      <p>A free, no-obligation call. Tell us what has happened and we will tell you straight whether adjudication is the right route.</p>
+    </div>
+    <div class="h-cta">
+      <a class="btn btn-pri" id="bandCall" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+      <a class="btn btn-ghost" href="#contact">Book your free call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="label">Get in touch</div>
+        <h2 style="margin-top:14px">Book your <em class="accent">free call</em></h2>
+        <p style="margin-top:16px; color:var(--muted); max-width:44ch">If you are a specialist contractor and need help getting paid, we would love to hear from you. Call, email, or send the form and we will come back to you the same working day.</p>
+        <div class="info">
+          <a id="infoCallCard" href="#">
+            <div class="ii"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+            <div><small>Call</small><b id="infoCallTxt">&nbsp;</b></div>
+          </a>
+          <a id="infoEmailCard" href="#">
+            <div class="ii"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="m22 6-10 7L2 6"/></svg></div>
+            <div><small>Email</small><b id="infoEmailTxt">&nbsp;</b></div>
+          </a>
+          <div class="i">
+            <div class="ii"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><small>Office</small><b>20 Wenlock Road, London N1 7GY</b></div>
+          </div>
+          <a href="https://www.linkedin.com/company/adjudicate/" target="_blank" rel="noopener">
+            <div class="ii"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div><small>Follow us</small><b>Adjudicate on LinkedIn</b></div>
+          </a>
+        </div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Adjudicate">
+        <input type="hidden" name="source" value="mockup-adjudicate">
+        <h3>Send us a message</h3>
+        <p class="fp">Tell us about the dispute and we will book your free call.</p>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        <div class="field"><label for="f-email">Email <span>(optional)</span></label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="f-msg">Tell us about the dispute <span>(optional)</span></label><textarea id="f-msg" name="message" placeholder="Who is the other party, what is owed, and where are you in the process?"></textarea></div>
+        <button class="btn btn-pri" type="submit">Book your free call</button>
+        <p class="fine">No obligation. We will only use your details to respond to this enquiry.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <img class="w" src="logo-mint.svg" alt="Adjudicate" width="219" height="52">
+        </div>
+        <p style="font-size:.93rem; max-width:38ch">Dispute resolution for specialist contractors in construction. A force for change in adjudication.</p>
+      </div>
+      <div>
+        <h4>What we do</h4>
+        <ul>
+          <li><a href="#services">Adjudication representation</a></li>
+          <li><a href="#services">Payment disputes</a></li>
+          <li><a href="#services">Variations and final accounts</a></li>
+          <li><a href="#services">Delay, defects and set-off</a></li>
+          <li><a href="#services">Expert witness and mediation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#about">Our team</a></li>
+          <li><a href="#knowledge">Knowledgebase</a></li>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="footCall" href="#">&nbsp;</a></li>
+          <li><a id="footEmail" href="#">&nbsp;</a></li>
+          <li>20 Wenlock Road<br>London N1 7GY</li>
+          <li><a href="https://www.linkedin.com/company/adjudicate/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; <span id="yr">2026</span> Adjudicate. Breadcrumb Group Ltd. Company no. 14045964. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">Construction Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a class="fab" id="fabCall" href="#" aria-label="Call us">
+    <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  var P  = atob('MDIwNDYwMDg2Njg=');
+  var Pf = atob('MDIwIDQ2MCAwODY2OA==');
+  var E  = atob('aGVsbG9AYWRqdWRpY2F0ZS5jby51aw==');
+
+  function $(id){ return document.getElementById(id); }
+  ['navCall','heroCall','bandCall','infoCallCard','fabCall','mnavCall','footCall'].forEach(function(id){
+    var el=$(id); if(el){ el.href='tel:'+P; }
+  });
+  var lbl='Call '+Pf;
+  ['navCallTxt','heroCallTxt','bandCallTxt','mnavCall'].forEach(function(id){ var el=$(id); if(el) el.textContent=lbl; });
+  var ic=$('infoCallTxt'); if(ic) ic.textContent=Pf;
+  var fc=$('footCall');    if(fc) fc.textContent=Pf;
+  var ec=$('infoEmailCard'); if(ec) ec.href='mailto:'+E;
+  var et=$('infoEmailTxt');  if(et) et.textContent=E;
+  var fe=$('footEmail');     if(fe){ fe.href='mailto:'+E; fe.textContent=E; }
+
+  var ts=$('formTimestamp'); if(ts) ts.value=Date.now();
+  var yr=$('yr'); if(yr) yr.textContent=new Date().getFullYear();
+  var ph=$('f-phone');
+  if(ph) ph.addEventListener('input', function(){
+    this.setCustomValidity(this.validity.patternMismatch ? 'Please enter a valid UK phone number' : '');
+  });
+
+  /* counters */
+  var counted=false;
+  function count(){
+    if(counted) return; counted=true;
+    Array.prototype.forEach.call(document.querySelectorAll('.cnt'), function(el){
+      var to=parseInt(el.getAttribute('data-to'),10), t0=null, dur=1400;
+      function tick(t){
+        if(!t0) t0=t; var p=Math.min(1,(t-t0)/dur); p=1-Math.pow(1-p,3);
+        el.textContent=Math.round(to*p);
+        if(p<1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  /* loader teardown, handing the timetable off into the hero */
+  var ld=$('ld');
+  function lit(){ document.body.classList.add('lit'); count(); }
+  function drop(){ if(ld){ ld.classList.add('gone'); setTimeout(function(){ if(ld&&ld.parentNode) ld.parentNode.removeChild(ld); }, 600); } }
+  setTimeout(lit, 2000);
+  setTimeout(drop, 2250);
+  setTimeout(function(){ lit(); drop(); }, 2800);
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    lit(); setTimeout(drop, 300);
+  }
+
+  /* burger */
+  var b=$('burger'), mn=$('mnav');
+  if(b && mn){
+    b.addEventListener('click', function(){ mn.classList.toggle('open'); });
+    Array.prototype.forEach.call(mn.querySelectorAll('a'), function(a){
+      a.addEventListener('click', function(){ mn.classList.remove('open'); });
+    });
+  }
+
+  /* reveals */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function(el){ io.observe(el); });
+
+  /* FAB after the hero */
+  var hero=$('top'), fabs=$('fabs');
+  if(hero && fabs){
+    var fio=new IntersectionObserver(function(es){
+      es.forEach(function(e){ fabs.classList.toggle('show', !e.isIntersecting); });
+    }, {threshold:0});
+    fio.observe(hero);
+  }
+})();
+</script>
+</body>
+</html>
