@@ -4281,6 +4281,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-hexclose" data-dur="2400">
+      <span class="trade">Commercial waste management / recycling / multi-division brands</span>
+      <h3>Hex Close</h3>
+      <p>Mixed waste going out sorted, and the client's own mark assembling out of the sort. On ink an accent conveyor bar strikes in across the stage (0.06-0.50s), then four solid waste blocks in dirty greys and browns run along it left to right and each one drops off the belt into its own colour-coded hexagonal bay below (0.30-1.44s). The four bays, one per division, then slide together and lock into a single accent hexagon (1.44-1.92s), a white tick drops into it as the mark's own counter (1.90s) and the wordmark lands under it with a caption (1.98s). Solid shapes, transform and opacity only, no linework. 2.05s body.lit, 2.3s JS teardown, 2.55s CSS-only fail-safe, 2.85s JS fail-safe; reduced-motion shows the assembled hexagon, the tick and the brand. First used: hive-services, where the same accent belt runs full bleed along the bottom edge of the hero and the four division colours carry through the service cards, so the loader and the page are one system. Generalises to any brand whose mark is a single geometric container and whose business is several streams becoming one: run the streams in, then close the shape. Distinct from Load Out (a pile goes into a tipper), Blade Clear (a dozer pushes a site clear) and Crush &amp; Grade: nothing else in the lab SORTS a stream into colour-coded bays and builds the logo out of them.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-toppingout" data-dur="2400">
       <span class="trade">Builders / construction contractors / developers</span>
       <h3>Topping Out</h3>
@@ -5692,6 +5698,17 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
+</div>
+
+<div class="loader" id="ld-hexclose" aria-hidden="true">
+  <div class="hx-stage">
+    <div class="hx-belt"></div>
+    <div class="hx-blk b1"></div><div class="hx-blk b2"></div><div class="hx-blk b3"></div><div class="hx-blk b4"></div>
+    <div class="hx-bay y1"></div><div class="hx-bay y2"></div><div class="hx-bay y3"></div><div class="hx-bay y4"></div>
+    <div class="hx-hex"></div>
+    <div class="hx-v"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="square"><path d="M4 11l6 8L21 4"/></svg></div>
+  </div>
+  <div class="hx-brand"><b>HIVE SERVICES</b><span>Sorted</span></div>
 </div>
 
 <div class="loader" id="ld-daylight" aria-hidden="true">
@@ -13498,6 +13515,58 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @media (prefers-reduced-motion:reduce){
   #ld-liftin .li-stage{display:none}
   #ld-liftin.play .li-brand b,#ld-liftin.play .li-brand span{animation:none;opacity:1;transform:none}
+}
+/* ---- Hex Close (ld-hexclose) ---- */
+#ld-hexclose{background:#1a1919;flex-direction:column;gap:20px}
+#ld-hexclose .hx-stage{position:relative;width:320px;height:190px}
+#ld-hexclose .hx-belt{position:absolute;left:0;right:0;top:60px;height:8px;background:#ec5a00;border-radius:2px;transform:scaleX(0);transform-origin:left}
+#ld-hexclose .hx-blk{position:absolute;top:42px;left:0;width:18px;height:18px;border-radius:2px;opacity:0}
+#ld-hexclose .hx-blk.b1{background:#8f9195}
+#ld-hexclose .hx-blk.b2{background:#7a6449}
+#ld-hexclose .hx-blk.b3{background:#cfd1d3}
+#ld-hexclose .hx-blk.b4{background:#5b6166}
+#ld-hexclose .hx-bay{position:absolute;top:112px;width:52px;height:57px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);opacity:0;transform:translateY(14px) scale(.66)}
+#ld-hexclose .hx-bay.y1{left:6px;background:#ffb21a}
+#ld-hexclose .hx-bay.y2{left:78px;background:#37b34a}
+#ld-hexclose .hx-bay.y3{left:150px;background:#00a69c}
+#ld-hexclose .hx-bay.y4{left:222px;background:#36abe1}
+#ld-hexclose .hx-hex{position:absolute;left:123px;top:105px;width:74px;height:81px;background:#ec5a00;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);opacity:0;transform:scale(.45) rotate(-26deg)}
+#ld-hexclose .hx-v{position:absolute;left:123px;top:105px;width:74px;height:81px;display:flex;align-items:center;justify-content:center;opacity:0}
+#ld-hexclose .hx-v svg{width:30px;height:30px}
+#ld-hexclose .hx-brand{display:flex;flex-direction:column;align-items:center;gap:7px}
+#ld-hexclose .hx-brand b{font-family:'Figtree','Inter',system-ui,sans-serif;font-weight:800;font-size:clamp(1.2rem,4.6vw,1.7rem);letter-spacing:-.03em;color:#fff;line-height:1;opacity:0;transform:translateY(10px)}
+#ld-hexclose .hx-brand span{font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:#78797c;opacity:0}
+#ld-hexclose.play .hx-belt{animation:hxBelt .44s .06s cubic-bezier(.22,.61,.36,1) forwards}
+#ld-hexclose.play .hx-blk.b1{animation:hxRun1 1.2s .30s cubic-bezier(.4,0,.65,1) forwards}
+#ld-hexclose.play .hx-blk.b2{animation:hxRun2 1.2s .44s cubic-bezier(.4,0,.65,1) forwards}
+#ld-hexclose.play .hx-blk.b3{animation:hxRun3 1.2s .58s cubic-bezier(.4,0,.65,1) forwards}
+#ld-hexclose.play .hx-blk.b4{animation:hxRun4 1.2s .72s cubic-bezier(.4,0,.65,1) forwards}
+#ld-hexclose.play .hx-bay.y1{animation:hxBay .38s .38s cubic-bezier(.22,.61,.36,1) forwards,hxLock1 .48s 1.44s cubic-bezier(.5,-.35,.5,1.35) forwards}
+#ld-hexclose.play .hx-bay.y2{animation:hxBay .38s .52s cubic-bezier(.22,.61,.36,1) forwards,hxLock2 .48s 1.44s cubic-bezier(.5,-.35,.5,1.35) forwards}
+#ld-hexclose.play .hx-bay.y3{animation:hxBay .38s .66s cubic-bezier(.22,.61,.36,1) forwards,hxLock3 .48s 1.44s cubic-bezier(.5,-.35,.5,1.35) forwards}
+#ld-hexclose.play .hx-bay.y4{animation:hxBay .38s .80s cubic-bezier(.22,.61,.36,1) forwards,hxLock4 .48s 1.44s cubic-bezier(.5,-.35,.5,1.35) forwards}
+#ld-hexclose.play .hx-hex{animation:hxHex .48s 1.64s cubic-bezier(.34,1.5,.64,1) forwards}
+#ld-hexclose.play .hx-v{animation:hxV .3s 1.9s ease forwards}
+#ld-hexclose.play .hx-brand b{animation:hxWord .45s 1.98s ease forwards}
+#ld-hexclose.play .hx-brand span{animation:hxFade .45s 2.14s ease forwards}
+@keyframes hxBelt{to{transform:scaleX(1)}}
+@keyframes hxRun1{0%{opacity:1;transform:translate(-28px,0)}50%{opacity:1;transform:translate(23px,0)}100%{opacity:0;transform:translate(23px,76px)}}
+@keyframes hxRun2{0%{opacity:1;transform:translate(-28px,0)}50%{opacity:1;transform:translate(95px,0)}100%{opacity:0;transform:translate(95px,76px)}}
+@keyframes hxRun3{0%{opacity:1;transform:translate(-28px,0)}50%{opacity:1;transform:translate(167px,0)}100%{opacity:0;transform:translate(167px,76px)}}
+@keyframes hxRun4{0%{opacity:1;transform:translate(-28px,0)}50%{opacity:1;transform:translate(239px,0)}100%{opacity:0;transform:translate(239px,76px)}}
+@keyframes hxBay{to{opacity:1;transform:none}}
+@keyframes hxLock1{to{transform:translate(128px,0) scale(.3);opacity:0}}
+@keyframes hxLock2{to{transform:translate(56px,0) scale(.3);opacity:0}}
+@keyframes hxLock3{to{transform:translate(-16px,0) scale(.3);opacity:0}}
+@keyframes hxLock4{to{transform:translate(-88px,0) scale(.3);opacity:0}}
+@keyframes hxHex{to{opacity:1;transform:none}}
+@keyframes hxV{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+@keyframes hxWord{to{opacity:1;transform:none}}
+@keyframes hxFade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #ld-hexclose .hx-belt,#ld-hexclose .hx-blk,#ld-hexclose .hx-bay{display:none}
+  #ld-hexclose.play .hx-hex,#ld-hexclose.play .hx-v{animation:none;opacity:1;transform:none}
+  #ld-hexclose.play .hx-brand b,#ld-hexclose.play .hx-brand span{animation:none;opacity:1;transform:none}
 }
 </style>
 </body>
