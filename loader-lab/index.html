@@ -4299,6 +4299,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The whole renovation in one room, which is the only honest way to show a before and after when the client has supplied no photography. On ink a tired room stands: stained ceiling, bare pendant, damp band along the wall, dark old units, worn boards, black window. The fittings fly out and the pendant with them and the damp fades (0.30-0.55s), the wall goes back to bare and the floor down to subfloor (0.44-0.55s), four studs rise (0.60-0.84s), a steel slides in under the ceiling with a settle (0.86s), three first-fix runs draw DOWN the wall (1.04-1.20s), four plasterboard sheets drop on (1.24-1.42s), and then the FINISHED room wipes in left to right behind a cyan seam (1.48-2.0s), window lit warm and three downlights on, before the wordmark lands (1.86s). Solid shapes, transform and opacity only, no linework. 2.4s teardown with a 2.9s fail-safe; reduced-motion shows the finished lit room and the brand. First used: atherton-construction-solutions (Manchester &amp; Derby), where the identical room sits in the 390 ink fold running the same wipe on an 8s loop with the same seam, so the loader and the mobile hero are one continuous move, and body.lit fills the five-segment programme strip beneath it. Distinct from Build &amp; Skim (a blockwork wall built then skimmed), Property Run (the OUTSIDE of a unit built, washed and painted), Roof to Room (a gable elevation built top-down through the trades), Stud &amp; Board (one partition), Room Set (a finished room being furnished), Knock Through (one wall opened and propped), Open Up (bifolds folding away) and Programme Chart (a gantt chart): nothing else in the lab strips a room back to its shell and rebuilds it through the trades.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-showerreveal" data-dur="2500">
+      <span class="trade">Plumbers / bathroom &amp; wet room fitters / shower installers</span>
+      <h3>Shower Reveal</h3>
+      <p>A shower turned on, and the name washed into view underneath it. On the brand&#39;s slate field a copper riser and a wide copper head drop in from the top with a settle, thirteen pale water jets fall from the face one after another over 400ms and then run continuously with a soft shimmer, a pool of light blooms on the floor where the water lands, four droplets pop off it, and the wordmark RISES up out of the pool into place. Solid shapes only, transform and opacity, no linework. First used: gk-plumbing (Harringay N15), where Patrick asked for it directly after the first concept was cut: "just do a shower turning on and revealing his company name". The standing lesson for bathroom and shower fitters, twice over now, is that the obvious literal image beats the clever one. Distinct from Shower On (ld-showerhead), which is the same trade image built the other way round: there the water falls ONTO a wordmark already sitting there, in chrome on the brand colour; here the head is in the brand accent and the water REVEALS the name, which rises out of the splash. Distinct from Bath Fill, Tub Fill and Hot Meets Cold (a vessel filling, no fixed head).</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-skiplift" data-dur="2500">
       <span class="trade">Steel fabricators whose product is lifting gear: crane-lift skips, stillages, cages, plant attachments</span>
       <h3>Skip Lift</h3>
@@ -12896,7 +12902,49 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-boardover .bo-joist,#ld-boardover .bo-board,#ld-boardover .bo-brand{opacity:1;transform:none}
   #ld-boardover .bo-h{transform:scaleX(1)}#ld-boardover .bo-v{transform:scaleY(1)}
 }
+/* ---- Shower Reveal (ld-showerreveal) ---- */
+#ld-showerreveal{background:#182229;flex-direction:column;gap:0}
+#ld-showerreveal .sr-stage{position:relative;width:300px;height:196px}
+#ld-showerreveal .sr-stage i{position:absolute;display:block;font-style:normal}
+#ld-showerreveal .sr-riser{top:0;left:calc(50% - 5px);width:10px;height:52px;border-radius:5px;background:#b9662f;transform:translateY(-72px)}
+#ld-showerreveal .sr-head{top:48px;left:calc(50% - 50px);width:100px;height:16px;border-radius:8px;background:#b9662f;transform:translateY(-72px)}
+#ld-showerreveal .sr-face{top:62px;left:calc(50% - 44px);width:88px;height:6px;border-radius:3px;background:#8a4a22;transform:translateY(-72px)}
+#ld-showerreveal .sr-jet{top:66px;width:5px;border-radius:3px;background:linear-gradient(180deg,#dbe9f0,rgba(219,233,240,.12));transform-origin:top center;transform:scaleY(0)}
+#ld-showerreveal .sr-glow{top:120px;left:calc(50% - 110px);width:220px;height:86px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(200,226,238,.3),rgba(200,226,238,0) 70%);opacity:0;transform:scale(.5)}
+#ld-showerreveal .sr-drop{top:150px;width:6px;height:6px;border-radius:50%;background:#dbe9f0;opacity:0}
+#ld-showerreveal .sr-brand{margin-top:22px;overflow:hidden;text-align:center}
+#ld-showerreveal .sr-brand span{display:block;transform:translateY(120%);opacity:0}
+#ld-showerreveal .sr-brand b{display:block;font-family:'Encode Sans Semi Expanded','Inter',sans-serif;font-weight:800;font-size:clamp(1.1rem,5.4vw,1.6rem);color:#fff;text-transform:uppercase;letter-spacing:.05em;line-height:1.05}
+#ld-showerreveal .sr-brand s{display:block;text-decoration:none;margin-top:9px;font-family:'Inter',system-ui,sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:#e08b52}
+#ld-showerreveal.play .sr-riser{animation:srDrop .45s cubic-bezier(.2,.85,.3,1) .08s forwards}
+#ld-showerreveal.play .sr-head,#ld-showerreveal.play .sr-face{animation:srDrop .5s cubic-bezier(.2,.9,.35,1.1) .16s forwards}
+#ld-showerreveal.play .sr-jet{animation:srRun .42s cubic-bezier(.4,.1,.7,1) forwards,srShim .55s ease-in-out 1.05s infinite alternate}
+#ld-showerreveal.play .sr-glow{animation:srGlow .6s ease 1.12s forwards}
+#ld-showerreveal.play .sr-drop{animation:srPop .5s ease forwards}
+#ld-showerreveal.play .sr-brand span{animation:srRise .55s cubic-bezier(.2,.8,.3,1) 1.28s forwards}
+@keyframes srDrop{to{transform:translateY(0)}}
+@keyframes srRun{to{transform:scaleY(1)}}
+@keyframes srShim{from{transform:scaleY(1) translateY(0);opacity:1}to{transform:scaleY(1.06) translateY(3px);opacity:.72}}
+@keyframes srGlow{to{opacity:1;transform:scale(1)}}
+@keyframes srPop{40%{opacity:1}to{opacity:0;transform:translateY(-16px)}}
+@keyframes srRise{to{transform:translateY(0);opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #ld-showerreveal *{animation:none!important}
+  #ld-showerreveal .sr-riser,#ld-showerreveal .sr-head,#ld-showerreveal .sr-face,#ld-showerreveal .sr-glow,#ld-showerreveal .sr-brand span{opacity:1;transform:none}
+  #ld-showerreveal .sr-jet{transform:scaleY(1)}
+}
 </style>
+
+<div class="loader" id="ld-showerreveal" aria-hidden="true">
+  <div class="sr-stage">
+    <i class="sr-riser"></i><i class="sr-head"></i><i class="sr-face"></i>
+    <i class="sr-jet" style="left:calc(50% + -42px);height:62px;animation-delay:0.46s"></i><i class="sr-jet" style="left:calc(50% + -35px);height:74px;animation-delay:0.49s"></i><i class="sr-jet" style="left:calc(50% + -28px);height:86px;animation-delay:0.52s"></i><i class="sr-jet" style="left:calc(50% + -21px);height:70px;animation-delay:0.54s"></i><i class="sr-jet" style="left:calc(50% + -14px);height:92px;animation-delay:0.57s"></i><i class="sr-jet" style="left:calc(50% + -7px);height:80px;animation-delay:0.60s"></i><i class="sr-jet" style="left:calc(50% + 0px);height:96px;animation-delay:0.63s"></i><i class="sr-jet" style="left:calc(50% + 7px);height:78px;animation-delay:0.66s"></i><i class="sr-jet" style="left:calc(50% + 14px);height:90px;animation-delay:0.68s"></i><i class="sr-jet" style="left:calc(50% + 21px);height:68px;animation-delay:0.71s"></i><i class="sr-jet" style="left:calc(50% + 28px);height:84px;animation-delay:0.74s"></i><i class="sr-jet" style="left:calc(50% + 35px);height:72px;animation-delay:0.77s"></i><i class="sr-jet" style="left:calc(50% + 42px);height:64px;animation-delay:0.80s"></i>
+    <i class="sr-glow"></i>
+    <i class="sr-drop" style="left:calc(50% + -58px);animation-delay:1.16s"></i><i class="sr-drop" style="left:calc(50% + -24px);animation-delay:1.23s"></i><i class="sr-drop" style="left:calc(50% + 16px);animation-delay:1.30s"></i><i class="sr-drop" style="left:calc(50% + 52px);animation-delay:1.37s"></i>
+  </div>
+  <div class="sr-brand"><span><b>GK Plumbing</b><s>Harringay &middot; North London</s></span></div>
+</div>
+<style>
 
 <div class="loader" id="ld-boardover" aria-hidden="true">
   <div class="bo-stage">

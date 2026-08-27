@@ -280,7 +280,36 @@ footer{background:var(--slate-deep);color:var(--on-slate-mute)}
 .lb img{max-width:94vw;max-height:88vh;border-radius:12px;width:auto}
 .lb-x{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(231,237,241,.3);background:transparent;color:#fff;font-size:1.5rem;cursor:pointer;line-height:1}
 
+/* loader - Shower On (GK) */
+#ld{position:fixed;inset:0;z-index:300;background:var(--slate);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .5s ease}
+#ld.gone{opacity:0;pointer-events:none}
+.sh-stage{position:relative;width:min(300px,78vw);height:196px}
+.sh-stage i{position:absolute;display:block;font-style:normal}
+.sh-riser{top:0;left:calc(50% - 5px);width:10px;height:52px;border-radius:5px;background:var(--copper);transform:translateY(-72px);animation:shDrop .45s cubic-bezier(.2,.85,.3,1) .08s forwards}
+.sh-head{top:48px;left:calc(50% - 50px);width:100px;height:16px;border-radius:8px;background:var(--copper);transform:translateY(-72px);animation:shDrop .5s cubic-bezier(.2,.9,.35,1.1) .16s forwards}
+.sh-face{top:62px;left:calc(50% - 44px);width:88px;height:6px;border-radius:3px;background:var(--copper-deep);transform:translateY(-72px);animation:shDrop .5s cubic-bezier(.2,.9,.35,1.1) .16s forwards}
+.sh-jet{top:66px;width:5px;border-radius:3px;background:linear-gradient(180deg,#dbe9f0,rgba(219,233,240,.12));transform-origin:top center;transform:scaleY(0);animation:shRun .42s cubic-bezier(.4,.1,.7,1) forwards,shShim .55s ease-in-out 1.05s infinite alternate}
+.sh-glow{
+  top:120px;left:calc(50% - 110px);width:220px;height:86px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(200,226,238,.3),rgba(200,226,238,0) 70%);
+  opacity:0;transform:scale(.5);animation:shGlow .6s ease 1.12s forwards
+}
+.sh-drop{top:150px;width:6px;height:6px;border-radius:50%;background:#dbe9f0;opacity:0;animation:shPop .5s ease forwards}
+.sh-brand{margin-top:22px;overflow:hidden;text-align:center}
+.sh-brand span{display:block;transform:translateY(120%);opacity:0;animation:shRise .55s cubic-bezier(.2,.8,.3,1) 1.28s forwards}
+.sh-brand b{display:block;font-family:'Encode Sans Semi Expanded','Public Sans',Arial,sans-serif;font-weight:800;font-size:clamp(1.1rem,5.4vw,1.6rem);color:#fff;text-transform:uppercase;letter-spacing:.05em;line-height:1.05}
+.sh-brand s{display:block;text-decoration:none;margin-top:9px;font-weight:600;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--copper-lit)}
+@keyframes shDrop{to{transform:translateY(0)}}
+@keyframes shRun{to{transform:scaleY(1)}}
+@keyframes shShim{from{transform:scaleY(1) translateY(0);opacity:1}to{transform:scaleY(1.06) translateY(3px);opacity:.72}}
+@keyframes shGlow{to{opacity:1;transform:scale(1)}}
+@keyframes shPop{40%{opacity:1}to{opacity:0;transform:translateY(-16px)}}
+@keyframes shRise{to{transform:translateY(0);opacity:1}}
+
 @media (prefers-reduced-motion:reduce){
+  .sh-riser,.sh-head,.sh-face,.sh-glow,.sh-brand span{animation:none;transform:none;opacity:1}
+  .sh-jet{animation:none;transform:scaleY(1)}
+  .sh-drop{animation:none;opacity:0}
   .fade{animation-duration:.01s}
   .reveal{opacity:1;transform:none;transition:none}
   .fab-call,.fab-wa{animation:none}
@@ -339,6 +368,16 @@ footer{background:var(--slate-deep);color:var(--on-slate-mute)}
 </style>
 </head>
 <body>
+
+<div id="ld">
+  <div class="sh-stage" aria-hidden="true">
+    <i class="sh-riser"></i><i class="sh-head"></i><i class="sh-face"></i>
+    <i class="sh-jet" style="left:calc(50% + -42px);height:62px;animation-delay:0.46s"></i><i class="sh-jet" style="left:calc(50% + -35px);height:74px;animation-delay:0.49s"></i><i class="sh-jet" style="left:calc(50% + -28px);height:86px;animation-delay:0.52s"></i><i class="sh-jet" style="left:calc(50% + -21px);height:70px;animation-delay:0.54s"></i><i class="sh-jet" style="left:calc(50% + -14px);height:92px;animation-delay:0.57s"></i><i class="sh-jet" style="left:calc(50% + -7px);height:80px;animation-delay:0.60s"></i><i class="sh-jet" style="left:calc(50% + 0px);height:96px;animation-delay:0.63s"></i><i class="sh-jet" style="left:calc(50% + 7px);height:78px;animation-delay:0.66s"></i><i class="sh-jet" style="left:calc(50% + 14px);height:90px;animation-delay:0.68s"></i><i class="sh-jet" style="left:calc(50% + 21px);height:68px;animation-delay:0.71s"></i><i class="sh-jet" style="left:calc(50% + 28px);height:84px;animation-delay:0.74s"></i><i class="sh-jet" style="left:calc(50% + 35px);height:72px;animation-delay:0.77s"></i><i class="sh-jet" style="left:calc(50% + 42px);height:64px;animation-delay:0.80s"></i>
+    <i class="sh-glow"></i>
+    <i class="sh-drop" style="left:calc(50% + -58px);animation-delay:1.16s"></i><i class="sh-drop" style="left:calc(50% + -24px);animation-delay:1.23s"></i><i class="sh-drop" style="left:calc(50% + 16px);animation-delay:1.30s"></i><i class="sh-drop" style="left:calc(50% + 52px);animation-delay:1.37s"></i>
+  </div>
+  <div class="sh-brand"><span><b>GK Plumbing</b><s>Harringay &middot; North London</s></span></div>
+</div>
 
 <nav>
   <div class="nav-in wrap">
@@ -696,6 +735,12 @@ footer{background:var(--slate-deep);color:var(--on-slate-mute)}
   fp.addEventListener('input', function(){
     fp.setCustomValidity(fp.validity.patternMismatch ? 'Please enter a valid UK phone number' : '');
   });
+
+  // loader
+  var ld = document.getElementById('ld');
+  function kill(){ if(ld && !ld.classList.contains('gone')) ld.classList.add('gone'); }
+  setTimeout(kill, 2350);
+  setTimeout(function(){ if(ld) ld.style.display='none'; }, 2950);
 
   // burger
   var b = document.getElementById('burger'), mn = document.getElementById('mnav');
