@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAS2 Construction Ltd | Kerbing, Concrete, Drainage &amp; Groundworks, Luton</title>
+<meta name="description" content="JAS2 Construction Ltd are commercial groundworks and external works contractors in Luton. Kerbing and paving, concrete floors and slabs, drainage, surfacing and skilled labour supply for main contractors and developers across Bedfordshire, Hertfordshire and London.">
+<meta property="og:title" content="JAS2 Construction Ltd, Your New Website">
+<meta property="og:description" content="Commercial groundworks and external works, Luton, preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/jas2-construction/hero.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/jas2-construction/">
+<meta name="theme-color" content="#191b1c">
+<link rel="icon" href="logo-dark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#eceeed;
+  --stone-2:#e2e5e4;
+  --ink:#191b1c;
+  --ink-2:#0f1112;
+  --ink-line:#2c2f31;
+  --line:#dcdfde;
+  --text:#14161a;
+  --body:#4a5157;
+  --muted:#79808a;
+  --orange:#f5901f;
+  --orange-deep:#e07f12;
+  --orange-text:#a25904;
+  --kerb:#c6c8c5;
+  --kerb-top:#dcdedb;
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  margin:0;background:var(--bg);color:var(--body);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:1rem;line-height:1.68;overflow-x:clip;-webkit-font-smoothing:antialiased;
+}
+em{font-style:normal}
+h1,h2,h3,h4{font-family:'Overpass','Inter',sans-serif;color:var(--text);margin:0;line-height:1.05;letter-spacing:-.025em;font-weight:800}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding-left:24px;padding-right:24px}
+.label{font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--orange-text);display:block;margin-bottom:14px}
+.label-w{color:var(--orange)}
+.accent{color:var(--orange-text)}
+section{position:relative}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- road marking rule ---------- */
+.rule-road{height:6px;width:100%;background:repeating-linear-gradient(90deg,#ffffff 0 34px,transparent 34px 60px)}
+.rule-kerb{height:13px;width:100%;background:repeating-linear-gradient(90deg,var(--kerb) 0 62px,#a3a6a2 62px 64px);border-top:4px solid var(--kerb-top)}
+
+/* ---------- loader: Kerb Run (plan view) ---------- */
+#ld{position:fixed;inset:0;z-index:9999;background:var(--ink-2);display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
+#ld.gone{opacity:0;visibility:hidden}
+.ld-stage{position:relative;width:min(760px,90vw);height:300px}
+.ld-sub{position:absolute;left:0;right:0;top:30px;height:40px;background:#5c5346;transform:scaleX(0);transform-origin:left;animation:ldWipe .34s ease-out 1.15s forwards}
+.ld-string{position:absolute;left:0;right:0;top:60px;height:2px;background:#f2f4f3;transform:scaleX(0);transform-origin:left;animation:ldWipe .36s cubic-bezier(.2,.7,.3,1) .06s forwards;z-index:4}
+.ld-run{position:absolute;left:0;right:0;top:70px;height:44px;z-index:3}
+.ld-k{position:absolute;top:0;height:44px;background:var(--kerb);opacity:0;transform:translateY(-40px);border-right:2px solid #a3a6a2}
+.ld-k::before{content:"";position:absolute;left:0;right:2px;top:0;height:8px;background:var(--kerb-top)}
+.ld-haunch{position:absolute;left:0;right:0;top:114px;height:14px;background:#3a3d40;transform:scaleX(0);transform-origin:left;animation:ldWipe .3s ease-out .3s forwards}
+.ld-asphalt{position:absolute;left:0;right:0;top:128px;height:58px;background:#26292b;transform:scaleX(0);transform-origin:left;animation:ldWipe .36s ease-out 1.2s forwards}
+.ld-line{position:absolute;left:0;top:154px;height:5px;width:0;background:repeating-linear-gradient(90deg,#ffffff 0 30px,transparent 30px 54px);animation:ldLine .5s ease-out 1.42s forwards;z-index:4}
+.ld-brand{position:absolute;left:0;right:0;top:206px;text-align:center;opacity:0;transform:translateY(12px);animation:ldBrand .45s ease-out 1.7s forwards}
+.ld-brand img{width:min(230px,46vw);margin:0 auto}
+.ld-brand span{display:block;margin-top:12px;color:#b9bfc4;font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+@keyframes ldWipe{to{transform:scaleX(1)}}
+@keyframes ldLine{to{width:100%}}
+@keyframes ldBrand{to{opacity:1;transform:none}}
+@keyframes ldDrop{0%{opacity:0;transform:translateY(-40px)}62%{opacity:1;transform:translateY(3px)}100%{opacity:1;transform:translateY(0)}}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:200;background:#ffffff;border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px}
+.nav-in img{width:238px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-weight:600;font-size:.92rem;color:var(--text);position:relative;padding-bottom:3px}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--orange);color:#111;padding:12px 20px;border-radius:3px;font-weight:700;font-size:.9rem;display:inline-flex;align-items:center;gap:9px;transition:background .2s ease}
+.nav-cta:hover{background:var(--orange-deep)}
+.nav-cta svg{width:16px;height:16px;fill:currentColor}
+#burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+#burger span{display:block;width:26px;height:2px;background:var(--text);margin:5px 0}
+#mnav{display:none}
+
+/* ---------- hero ---------- */
+.hero{display:flex;flex-direction:column;background:var(--stone);border-bottom:1px solid var(--line)}
+.hero-inner{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-text);margin-bottom:20px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,144,31,.55)}50%{box-shadow:0 0 0 8px rgba(245,144,31,0)}}
+.hero h1{font-size:clamp(2.3rem,4.9vw,4rem);font-weight:900;letter-spacing:-.035em}
+.hero .lede{margin-top:22px;font-size:1.06rem;max-width:34rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:3px;font-weight:700;font-size:.98rem;transition:transform .2s ease,background .2s ease}
+.btn svg{width:18px;height:18px;fill:currentColor;flex:0 0 auto}
+.btn-primary{background:var(--orange);color:#111}
+.btn-primary:hover{background:var(--orange-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid #b9bebc}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.hero-media{position:relative}
+.hero-media img{width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+.hero-badge{position:absolute;left:-18px;bottom:-18px;background:var(--ink);color:#fff;padding:16px 20px;border-radius:3px;border-left:5px solid var(--orange);max-width:250px}
+.hero-badge b{display:block;font-family:'Overpass',sans-serif;font-weight:800;font-size:1.02rem;color:#fff;line-height:1.2}
+.hero-badge span{display:block;margin-top:5px;font-size:.82rem;color:#a9b0b6}
+
+/* asphalt band under the hero: the same kerb run, full bleed */
+.band{position:relative;height:140px;background:var(--ink-2);overflow:hidden}
+.band-sub{position:absolute;left:0;right:0;top:0;height:34px;background:#5c5346}
+.band-run{position:absolute;left:0;right:0;top:34px;height:40px}
+.band-k{position:absolute;top:0;width:64px;height:40px;background:var(--kerb);opacity:0;transform:translateY(-40px);border-right:2px solid #a3a6a2}
+.band-k::before{content:"";position:absolute;left:0;right:2px;top:0;height:7px;background:var(--kerb-top)}
+body.lit .band-k{animation:ldDrop .5s cubic-bezier(.25,.9,.3,1) forwards}
+.band-haunch{position:absolute;left:0;right:0;top:74px;height:12px;background:#3a3d40}
+.band-asphalt{position:absolute;left:0;right:0;top:86px;bottom:0;background:#26292b}
+.band-line{position:absolute;left:0;top:110px;height:5px;width:0;background:repeating-linear-gradient(90deg,#fff 0 36px,transparent 36px 66px);z-index:3}
+body.lit .band-line{animation:bandLine 1.1s ease-out .9s forwards}
+@keyframes bandLine{to{width:100%}}
+
+/* mobile poster fold */
+.poster{display:none}
+
+/* ---------- trust ---------- */
+.trust{background:var(--bg);border-bottom:1px solid var(--line)}
+.trust-in{display:flex;justify-content:space-between;gap:20px;padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:11px;font-weight:600;font-size:.9rem;color:var(--text)}
+.trust-item svg{width:19px;height:19px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+
+/* ---------- services ---------- */
+.services{background:var(--stone);padding-top:88px;padding-bottom:88px}
+.sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;position:relative;transition:transform .25s ease,box-shadow .25s ease}
+.svc::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;z-index:3}
+.svc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(20,22,26,.1)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--stone-2)}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-no{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--orange);font-family:'Overpass',sans-serif;font-weight:800;font-size:.82rem;letter-spacing:.1em;padding:7px 13px}
+.svc-body{padding:22px 22px 26px}
+.svc-body h3{font-size:1.16rem;font-weight:800}
+.svc-body p{margin-top:9px;font-size:.94rem}
+
+/* ---------- about ---------- */
+.about{background:var(--ink);color:#c2c8cd;padding-top:78px;padding-bottom:78px}
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.about h2{color:#fff;font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:900}
+.about p{margin-top:20px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-line);margin-top:32px;border:1px solid var(--ink-line)}
+.fact{background:var(--ink);padding:20px}
+.fact b{display:block;font-family:'Overpass',sans-serif;font-weight:900;font-size:1.5rem;color:var(--orange);line-height:1}
+.fact span{display:block;margin-top:6px;font-size:.82rem;color:#9aa1a7}
+.about-media img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 22%;border-radius:4px}
+
+/* ---------- labour two-way ---------- */
+.labour{background:var(--bg);padding-top:88px;padding-bottom:88px}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.door{border:1px solid var(--line);border-radius:4px;padding:34px;background:var(--stone);position:relative;overflow:hidden}
+.door.dark{background:var(--ink);border-color:var(--ink-line);color:#b9c0c6}
+.door h3{font-size:1.5rem;font-weight:900}
+.door.dark h3{color:#fff}
+.door p{margin-top:14px;font-size:.97rem}
+.door ul{margin:20px 0 0;padding:0;list-style:none}
+.door li{position:relative;padding-left:26px;margin-top:10px;font-size:.94rem}
+.door li::before{content:"";position:absolute;left:0;top:9px;width:13px;height:3px;background:var(--orange)}
+.door .btn{margin-top:26px}
+.door-tag{position:absolute;right:0;top:0;background:var(--orange);color:#111;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px}
+
+/* ---------- gallery ---------- */
+.work{background:var(--stone);padding-top:88px;padding-bottom:88px}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:186px;gap:14px;margin-top:44px}
+.gt{position:relative;overflow:hidden;border-radius:4px;background:var(--stone-2)}
+.gt img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.gt:hover img{transform:scale(1.06)}
+.gt.big{grid-column:span 2;grid-row:span 2}
+.gt.wide{grid-column:span 2}
+.gtag{position:absolute;left:0;bottom:0;right:0;padding:22px 16px 12px;background:linear-gradient(transparent,rgba(15,17,18,.88));color:#fff;font-size:.84rem;font-weight:600;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.gt:hover .gtag{opacity:1;transform:none}
+
+/* ---------- process ---------- */
+.proc{background:var(--bg);padding-top:88px;padding-bottom:88px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.step{border-top:3px solid var(--line);padding-top:22px;transition:border-color .3s ease}
+.step:hover{border-color:var(--orange)}
+.step b{font-family:'Overpass',sans-serif;font-weight:900;font-size:2rem;color:var(--orange);line-height:1;display:block}
+.step h3{margin-top:12px;font-size:1.1rem;font-weight:800}
+.step p{margin-top:8px;font-size:.93rem}
+
+/* ---------- reviews ---------- */
+.revs{background:var(--stone);padding-top:88px;padding-bottom:88px}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.stars svg{width:16px;height:16px;fill:var(--orange)}
+.rev p{color:var(--text);font-size:1rem}
+.rev .who{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.86rem;color:var(--muted);font-weight:600}
+
+/* ---------- areas ---------- */
+.areas{background:var(--bg);padding-top:80px;padding-bottom:80px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+.chip{border:1px solid var(--line);border-radius:3px;padding:9px 15px;font-size:.88rem;font-weight:500;color:var(--body)}
+.chip.home{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700}
+
+/* ---------- cta band ---------- */
+.ctab{background:var(--ink-2);color:#c2c8cd;padding-top:64px;padding-bottom:0;text-align:center}
+.ctab h2{color:#fff;font-size:clamp(1.8rem,4vw,2.7rem);font-weight:900}
+.ctab p{margin-top:16px}
+.ctab .hero-ctas{justify-content:center;margin-bottom:54px}
+
+/* ---------- contact ---------- */
+.contact{background:var(--bg);padding-top:88px;padding-bottom:88px}
+.contact-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.contact h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:900}
+.cinfo{margin-top:34px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.crow{background:#fff;display:flex;gap:15px;padding:19px}
+.crow svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;margin-top:3px}
+.crow b{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.crow a,.crow p{display:block;margin-top:3px;color:var(--text);font-weight:600;font-size:.98rem}
+form{background:var(--stone);border:1px solid var(--line);border-radius:4px;padding:34px}
+.f-row{margin-bottom:18px}
+.f-row label{display:block;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:8px}
+.f-row input,.f-row textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:3px;padding:14px;font-family:inherit;font-size:1rem;color:var(--text)}
+.f-row textarea{min-height:118px;resize:vertical}
+.f-row input:focus,.f-row textarea:focus{outline:none;border-color:var(--orange)}
+.f-submit{width:100%;background:var(--orange);color:#111;border:0;border-radius:3px;padding:17px;font-family:'Overpass',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:background .2s ease}
+.f-submit:hover{background:var(--orange-deep)}
+.f-note{margin-top:14px;font-size:.84rem;color:var(--muted);text-align:center}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink-2);color:#8f969c;padding-top:60px;padding-bottom:30px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px}
+.f-top img{width:180px;margin-bottom:18px}
+.f-top p{font-size:.92rem}
+.f-col h4{color:#fff;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+.f-col a{display:block;margin-bottom:9px;font-size:.92rem;transition:color .2s ease}
+.f-col a:hover{color:var(--orange)}
+.f-bot{margin-top:46px;padding-top:22px;border-top:1px solid #24282a;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem}
+.f-bot a{color:var(--orange)}
+
+/* ---------- fabs ---------- */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:12px;opacity:0;visibility:hidden;transform:translateY(14px);transition:all .3s ease}
+.fabs.show{opacity:1;visibility:visible;transform:none}
+.fab{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.24)}
+.fab svg{width:23px;height:23px;fill:#fff}
+.fab-call{background:var(--orange);animation:fpulse 2.4s infinite}
+.fab-call svg{fill:#111}
+.fab-wa{background:#25d366;animation:fpulseg 2.4s infinite .5s}
+.fab:hover{animation:none}
+@keyframes fpulse{0%,100%{box-shadow:0 8px 22px rgba(0,0,0,.24),0 0 0 0 rgba(245,144,31,.5)}50%{box-shadow:0 8px 22px rgba(0,0,0,.24),0 0 0 12px rgba(245,144,31,0)}}
+@keyframes fpulseg{0%,100%{box-shadow:0 8px 22px rgba(0,0,0,.24),0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 8px 22px rgba(0,0,0,.24),0 0 0 12px rgba(37,211,102,0)}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:880px){
+  .nav-links,.nav-cta{display:none}
+  #burger{display:block}
+  #mnav{display:block;position:fixed;left:0;right:0;top:69px;background:#fff;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:transform .32s ease;z-index:190;padding:18px 24px 26px}
+  #mnav.open{transform:none}
+  #mnav a{display:block;padding:13px 0;font-weight:600;border-bottom:1px solid var(--line);color:var(--text)}
+  #mnav .btn{width:100%;justify-content:center;margin-top:18px;border-bottom:0}
+  .hero-inner{grid-template-columns:1fr;gap:0;padding-top:0;padding-bottom:0}
+  .hero{background:var(--ink-2)}
+  .hero-copy{display:none}
+  .poster{display:block;position:relative;background:var(--ink-2);overflow:hidden;padding-top:36px;padding-bottom:26px}
+  .poster .eyebrow{color:var(--orange)}
+  .poster h1{color:#fff;font-size:clamp(2.15rem,8.6vw,3rem);font-weight:900;letter-spacing:-.035em}
+  .poster h1 .accent{color:var(--orange)}
+  .poster .lede{color:#a9b0b6;margin-top:18px;font-size:1rem}
+  .poster .btn-ghost{color:#fff;border-color:#4a5053}
+  .poster-line{position:absolute;left:0;top:0;height:5px;width:0;background:repeating-linear-gradient(90deg,#fff 0 34px,transparent 34px 62px)}
+  body.lit .poster-line{animation:bandLine 1s ease-out .35s forwards}
+  .hero-media{margin-left:-24px;margin-right:-24px;width:auto}
+  .hero-media img{border-radius:0;border:0;border-top:1px solid var(--ink-line);aspect-ratio:16/11}
+  .hero-badge{position:static;max-width:none;border-radius:0;border-left:0;border-top:4px solid var(--orange);text-align:left;padding:16px 24px}
+  .band{height:104px;order:2}
+  .hero-inner{order:3}
+  .poster{order:1}
+  .band-sub{height:26px}
+  .band-run{top:26px;height:32px}
+  .band-k{height:32px}
+  .band-haunch{top:58px;height:9px}
+  .band-asphalt{top:67px}
+  .band-line{top:82px}
+  .about-in,.contact-in,.rev-grid,.doors{grid-template-columns:1fr;gap:34px}
+  .doors{gap:18px}
+  .trust-in{flex-direction:column;gap:0;padding-top:8px;padding-bottom:8px}
+  .trust-item{padding:14px 0;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:0}
+  .f-top{grid-template-columns:1fr;gap:30px}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .gt.big{grid-column:span 2;grid-row:span 2}
+  .gtag{display:none}
+}
+@media (max-width:640px){
+  .svc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .services,.labour,.work,.proc,.revs,.contact{padding-top:62px;padding-bottom:62px}
+  .about{padding-top:56px;padding-bottom:56px}
+  .door{padding:26px}
+  form{padding:24px}
+  .gal{grid-auto-rows:128px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .ld-string,.ld-haunch,.ld-sub,.ld-asphalt{transform:scaleX(1)}
+  .ld-k{opacity:1;transform:none}
+  .ld-brand{opacity:1;transform:none}
+  .ld-line{width:100%}
+  .band-k{opacity:1;transform:none}
+  .band-line,.poster-line{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER: Kerb Run -->
+<div id="ld">
+  <div class="ld-stage">
+    <div class="ld-sub"></div>
+    <div class="ld-asphalt"></div>
+    <div class="ld-haunch"></div>
+    <div class="ld-string"></div>
+    <div class="ld-run" id="ldRun"></div>
+    <div class="ld-line"></div>
+    <div class="ld-brand">
+      <img src="logo-white.png" alt="JAS2 Construction Ltd" width="900" height="598">
+      <span>Kerbs to line and level</span>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" aria-label="JAS2 Construction Ltd"><img src="logo-dark.png" alt="JAS2 Construction Ltd" width="900" height="163"></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#labour">Labour Supply</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#" class="nav-cta" id="navCall">
+      <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      <span id="navCallTxt">Call us</span>
+    </a>
+    <button id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div id="mnav">
+  <a href="#services">Services</a>
+  <a href="#work">Recent Work</a>
+  <a href="#labour">Labour Supply</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="btn btn-primary" id="mCall">
+    <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    <span>Call us</span>
+  </a>
+</div>
+
+<!-- HERO: H-LINEOUT -->
+<header class="hero" id="top">
+  <div class="poster wrap">
+    <div class="poster-line"></div>
+    <span class="eyebrow"><i></i>Luton &middot; Commercial groundworks</span>
+    <h1>Kerbing, concrete, drainage and surfacing for <span class="accent">commercial sites</span></h1>
+    <p class="lede">Groundworks and external works packages for main contractors and developers, plus skilled gangs supplied to site.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary" id="posterCall">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span id="posterCallTxt">Call us</span>
+      </a>
+      <a href="#contact" class="btn btn-ghost">Get a Price</a>
+    </div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow"><i></i>Luton &middot; Commercial groundworks</span>
+      <h1>Kerbing, concrete, drainage and surfacing for <span class="accent">commercial sites</span></h1>
+      <p class="lede">Groundworks and external works packages for main contractors and developers across Bedfordshire, Hertfordshire and London, plus skilled gangs supplied to site.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-primary" id="heroCall">
+          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span id="heroCallTxt">Call us</span>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get a Price</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="hero.jpg" alt="Finished commercial car park laid and marked out by JAS2 Construction" width="1600" height="900">
+      <div class="hero-badge">
+        <b>Gangs on site from 7:30am</b>
+        <span>Monday to Friday, Saturday mornings</span>
+      </div>
+    </div>
+  </div>
+  <div class="band">
+    <div class="band-sub"></div>
+    <div class="band-asphalt"></div>
+    <div class="band-haunch"></div>
+    <div class="band-line"></div>
+    <div class="band-run" id="bandRun"></div>
+  </div>
+</header>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>Luton based</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg>Commercial sites</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 17h18"/><path d="M3 12h18"/><path d="M7 7h10"/></svg>Kerbs and concrete</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M17 11h4"/><path d="M19 9v4"/></svg>Labour supplied</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>On site 7:30am</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we do</span>
+      <h2>Six packages, <span class="accent">one gang on site</span></h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-kerbing.jpg" alt="Radius kerbs laid to line and level on a commercial site" loading="lazy"><span class="svc-no">01</span></div>
+        <div class="svc-body"><h3>Kerbing and Edgings</h3><p>HB, bullnose and radius kerbs laid to line and level.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-concrete.jpg" alt="Power float finishing a poured concrete slab" loading="lazy"><span class="svc-no">02</span></div>
+        <div class="svc-body"><h3>Concrete Floors and Slabs</h3><p>Poured, screeded and power floated, inside the unit or out.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-paving.jpg" alt="Commercial block paving and setts laid on an access road" loading="lazy"><span class="svc-no">03</span></div>
+        <div class="svc-body"><h3>Block Paving and Surfacing</h3><p>Blocks, setts, flags and grasscrete for car parks and access roads.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-drainage.jpg" alt="Foul and surface water drainage runs installed in a trench" loading="lazy"><span class="svc-no">04</span></div>
+        <div class="svc-body"><h3>Drainage and Pipework</h3><p>Foul and surface water runs, chambers, gullies and connections.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-groundworks.jpg" alt="Excavator digging out a commercial site" loading="lazy"><span class="svc-no">05</span></div>
+        <div class="svc-body"><h3>Groundworks and Plant</h3><p>Dig, muck away, sub-base and formation, with ticketed operators.</p></div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-img"><img src="svc-labour.jpg" alt="JAS2 Construction gang in branded orange hi-vis on site" loading="lazy"><span class="svc-no">06</span></div>
+        <div class="svc-body"><h3>Skilled Labour Supply</h3><p>Groundworkers, concrete finishers and operators, day rate or package.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="wrap about-in">
+    <div class="reveal">
+      <span class="label label-w">About JAS2</span>
+      <h2>A groundworks firm that turns up with its own labour</h2>
+      <p>JAS2 Construction Ltd work out of Luton on commercial developments across the South East. Kerbing, paving, drainage, concrete and surfacing, priced as a package or run as a supplied gang. Most of our work comes back through main contractors we have already been on site with.</p>
+      <div class="facts">
+        <div class="fact"><b>LU3</b><span>Luton base</span></div>
+        <div class="fact"><b>6</b><span>Packages covered</span></div>
+        <div class="fact"><b>7:30am</b><span>Gangs on site</span></div>
+        <div class="fact"><b>Mon to Sat</b><span>Working week</span></div>
+      </div>
+    </div>
+    <div class="about-media reveal">
+      <img src="about.jpg" alt="JAS2 Construction team on a commercial site in branded hi-vis" loading="lazy" width="1100" height="1042">
+    </div>
+  </div>
+</section>
+
+<!-- LABOUR TWO-WAY -->
+<section class="labour" id="labour">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Labour supply</span>
+      <h2>Two doors: <span class="accent">need labour, or need work</span></h2>
+    </div>
+    <div class="doors">
+      <div class="door reveal">
+        <span class="door-tag">For contractors</span>
+        <h3>Need labour on site</h3>
+        <p>Tell us the trade, the start date and how many. We put out a gang that turns up with the right tickets and the right kit.</p>
+        <ul>
+          <li>Groundworkers and general labourers</li>
+          <li>Concrete finishers and power float operators</li>
+          <li>Kerb layers and pavers</li>
+          <li>Machine operators, 360 and dumper</li>
+          <li>Day rate, week rate or priced package</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Request a gang</a>
+      </div>
+      <div class="door dark reveal">
+        <span class="door-tag">For workers</span>
+        <h3>Looking for work</h3>
+        <p>We run our own labour network and put people straight onto sites we are already working. No agency chain sat in the middle.</p>
+        <ul>
+          <li>Residential, commercial and civils sites</li>
+          <li>Work notified to you by skill and by area</li>
+          <li>Apply direct, no middlemen</li>
+          <li>Talk to the same person every time</li>
+          <li>Bricklayers, operators, finishers, labourers</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Join the labour network</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2>Off our own sites, <span class="accent">not a stock library</span></h2>
+    </div>
+    <div class="gal reveal">
+      <div class="gt big"><img src="work-01.jpg" alt="Aerial view of a finished commercial estate, car park and access road" loading="lazy"><span class="gtag">Car park and access road, industrial estate</span></div>
+      <div class="gt"><img src="work-03.jpg" alt="Radius kerb run curving into a bellmouth" loading="lazy"><span class="gtag">Radius kerbs into a bellmouth, Dunstable</span></div>
+      <div class="gt"><img src="work-06.jpg" alt="Drainage run and chamber installed in a trench" loading="lazy"><span class="gtag">Surface water run and chamber</span></div>
+      <div class="gt wide"><img src="work-02.jpg" alt="Power floated warehouse floor slab" loading="lazy"><span class="gtag">Power floated warehouse floor</span></div>
+      <div class="gt wide"><img src="work-04.jpg" alt="Aerial view of a commercial development under construction" loading="lazy"><span class="gtag">External works package in progress</span></div>
+      <div class="gt"><img src="work-05.jpg" alt="Block paving and setts outside a new commercial unit" loading="lazy"><span class="gtag">Setts and blocks, new unit frontage</span></div>
+      <div class="gt"><img src="work-07.jpg" alt="External concrete slab poured and finished" loading="lazy"><span class="gtag">External slab, poured and finished</span></div>
+      <div class="gt"><img src="work-08.jpg" alt="White line marking set out on new tarmac" loading="lazy"><span class="gtag">Hatching set out on fresh tarmac</span></div>
+      <div class="gt"><img src="work-09.jpg" alt="Grasscrete and block paving edge detail" loading="lazy"><span class="gtag">Grasscrete edge into block paving</span></div>
+      <div class="gt"><img src="work-10.jpg" alt="Kerb run laid on a sub-base ready for surfacing" loading="lazy"><span class="gtag">Kerbs laid ready for surfacing</span></div>
+      <div class="gt"><img src="work-11.jpg" alt="Finished marked out parking bays" loading="lazy"><span class="gtag">Bays finished and handed over</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">How it runs</span>
+      <h2>Four steps, <span class="accent">start to handover</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><b>01</b><h3>Drawings and price</h3><p>Send the drawings and the programme. We price the package in writing.</p></div>
+      <div class="step reveal"><b>02</b><h3>Set out and dig</h3><p>Setting out, dig, muck away and formation to the levels on the drawing.</p></div>
+      <div class="step reveal"><b>03</b><h3>Kerbs, drainage, concrete</h3><p>Drainage in, kerbs to line and level, slabs poured and floated.</p></div>
+      <div class="step reveal"><b>04</b><h3>Surfacing and handover</h3><p>Blocks, setts or tarmac, marked out, swept up and signed off.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="revs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What people say</span>
+      <h2>Contractors we work for</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <p>Kerbs went in to line and level and the radius work round the bellmouth was spot on. No chasing, no snags at handover.</p>
+        <div class="who">Site manager, Dunstable &middot; External works package</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <p>Floor slab was poured and floated over a weekend so we kept the programme. Finish came up better than the one before it.</p>
+        <div class="who">Project manager, Luton &middot; Warehouse floor slab</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <p>Asked for four groundworkers on the Monday and had them on site at half seven. Same lads stayed for the whole job.</p>
+        <div class="who">Contracts manager, Milton Keynes &middot; Labour supply</div>
+      </div>
+      <div class="rev reveal">
+        <div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7L12 17.8 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg></div>
+        <p>Drainage run and chambers went in ahead of the pour and the levels were right first time. Straightforward outfit to deal with.</p>
+        <div class="who">Developer, Hemel Hempstead &middot; Drainage and slabs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Where we work</span>
+      <h2>Luton out to the <span class="accent">M1 and M25 corridor</span></h2>
+    </div>
+    <div class="chips reveal">
+      <span class="chip home">Luton</span>
+      <span class="chip">Dunstable</span><span class="chip">Houghton Regis</span><span class="chip">Leighton Buzzard</span>
+      <span class="chip">Bedford</span><span class="chip">Ampthill</span><span class="chip">Biggleswade</span><span class="chip">Milton Keynes</span>
+      <span class="chip">Hemel Hempstead</span><span class="chip">St Albans</span><span class="chip">Watford</span><span class="chip">Hatfield</span>
+      <span class="chip">Welwyn Garden City</span><span class="chip">Stevenage</span><span class="chip">Hitchin</span><span class="chip">Letchworth</span>
+      <span class="chip">Harpenden</span><span class="chip">Aylesbury</span><span class="chip">High Wycombe</span><span class="chip">Slough</span>
+      <span class="chip">Borehamwood</span><span class="chip">Enfield</span><span class="chip">North London</span><span class="chip">East London</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="ctab">
+  <div class="wrap">
+    <h2>Got drawings and a programme?</h2>
+    <p>Send them over and we will price the groundworks package or put a gang on site.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary" id="bandCall">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span id="bandCallTxt">Call us</span>
+      </a>
+      <a href="#contact" class="btn btn-ghost" style="color:#fff;border-color:#4a5053">Get a Price</a>
+    </div>
+  </div>
+  <div class="rule-kerb"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-in">
+    <div class="reveal">
+      <span class="label">Get in touch</span>
+      <h2>Price a package or book a gang</h2>
+      <p style="margin-top:16px;max-width:32rem">Send the drawings, the site address and the dates you need covering. We will come back the same day where we can.</p>
+      <div class="cinfo">
+        <div class="crow">
+          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <div><b>Mobile</b><a href="#" id="contactPhone">&nbsp;</a></div>
+        </div>
+        <div class="crow">
+          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 18h6"/></svg>
+          <div><b>Office</b><a href="#" id="contactPhone2">&nbsp;</a></div>
+        </div>
+        <div class="crow">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <div><b>Email</b><a href="#" id="contactEmail">&nbsp;</a></div>
+        </div>
+        <div class="crow">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
+          <div><b>Address</b><p>62 Axe Close, Luton, LU3 3LT</p></div>
+        </div>
+        <div class="crow">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><b>Hours</b><p>Mon to Fri 7:30am to 5pm, Sat 8am to 1pm</p></div>
+        </div>
+      </div>
+    </div>
+    <form action="/api/enquiry" method="POST" class="reveal" id="enquiryForm">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="JAS2 Construction Ltd">
+      <input type="hidden" name="source" value="mockup-jas2-construction">
+      <div class="f-row"><label for="fname">Name</label><input id="fname" name="name" type="text" required></div>
+      <div class="f-row"><label for="fphone">Phone</label><input id="fphone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$"></div>
+      <div class="f-row"><label for="femail">Email (optional)</label><input id="femail" name="email" type="email"></div>
+      <div class="f-row"><label for="fmsg">Tell us about the job</label><textarea id="fmsg" name="message"></textarea></div>
+      <button type="submit" class="f-submit">Send enquiry</button>
+      <p class="f-note">Drawings and programmes welcome, we will price it in writing.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <img src="logo-white.png" alt="JAS2 Construction Ltd" width="900" height="598">
+        <p>Commercial groundworks and external works contractors based in Luton, working across Bedfordshire, Hertfordshire, Buckinghamshire and London.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <a href="#services">Kerbing and edgings</a>
+        <a href="#services">Concrete floors and slabs</a>
+        <a href="#services">Block paving and surfacing</a>
+        <a href="#services">Drainage and pipework</a>
+        <a href="#services">Groundworks and plant</a>
+        <a href="#labour">Skilled labour supply</a>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <a href="#" id="footPhone">&nbsp;</a>
+        <a href="#" id="footEmail">&nbsp;</a>
+        <p>62 Axe Close, Luton, LU3 3LT</p>
+        <a href="#contact">Get a price</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>&copy; <span id="yr">2026</span> JAS2 Construction Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/construction-company-website-design" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" id="fabCall" class="fab fab-call" aria-label="Call JAS2 Construction">
+    <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+  <a href="#" id="fabWa" class="fab fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp JAS2 Construction">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.7-3.1-1.3-5.1-4.5-5.3-4.7-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.5-.3.4c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.7-.1 1.4z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  /* build the loader kerb run: 14 units, last four stepping up on a radius */
+  var run = document.getElementById('ldRun');
+  if(run){
+    for(var i=0;i<14;i++){
+      var k = document.createElement('div');
+      k.className='ld-k';
+      k.style.left = (i*7.1428).toFixed(4)+'%';
+      k.style.width = '7.1428%';
+      k.style.animation = 'ldDrop .42s cubic-bezier(.25,.9,.3,1) '+(0.40+i*0.056).toFixed(3)+'s forwards';
+      run.appendChild(k);
+    }
+  }
+  /* the hero band lays the same run across the viewport on body.lit */
+  var band = document.getElementById('bandRun');
+  if(band){
+    var w = Math.max(window.innerWidth, 360);
+    var n = Math.ceil(w/64)+1;
+    for(var j=0;j<n;j++){
+      var b = document.createElement('div');
+      b.className='band-k';
+      b.style.left = (j*64)+'px';
+      b.style.animationDelay = (0.45+j*0.04).toFixed(2)+'s';
+      band.appendChild(b);
+    }
+  }
+
+  var P  = atob('MDc3NjUyMjQ4NDg=');
+  var Pf = atob('MDc3NjUgMjI0ODQ4');
+  var O  = atob('MDE1ODI4MDM2OTA=');
+  var Of = atob('MDE1ODIgODAzNjkw');
+  var E  = atob('SmFzMmNvbnN0cnVjdGlvbjU3QHlhaG9vLmNvbQ==');
+  var WA = 'https://wa.me/447765224848?text=Hi%2C%20seen%20your%20website%20-%20';
+
+  ['navCall','heroCall','posterCall','bandCall','fabCall','mCall'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.href = 'tel:' + P;
+  });
+  ['navCallTxt','heroCallTxt','posterCallTxt','bandCallTxt'].forEach(function(id){
+    var el = document.getElementById(id); if(el) el.textContent = 'Call ' + Pf;
+  });
+  var mc = document.getElementById('mCall');
+  if(mc){ var sp = mc.querySelector('span'); if(sp) sp.textContent = 'Call ' + Pf; }
+  var cp = document.getElementById('contactPhone');
+  if(cp){ cp.textContent = Pf; cp.href = 'tel:' + P; }
+  var cp2 = document.getElementById('contactPhone2');
+  if(cp2){ cp2.textContent = Of; cp2.href = 'tel:' + O; }
+  var fp = document.getElementById('footPhone');
+  if(fp){ fp.textContent = Pf; fp.href = 'tel:' + P; }
+  ['contactEmail','footEmail'].forEach(function(id){
+    var el = document.getElementById(id); if(el){ el.textContent = E; el.href = 'mailto:' + E; }
+  });
+  var fw = document.getElementById('fabWa'); if(fw) fw.href = WA;
+  var yr = document.getElementById('yr'); if(yr) yr.textContent = new Date().getFullYear();
+  var ts = document.getElementById('formTimestamp'); if(ts) ts.value = Date.now();
+
+  var ph = document.getElementById('fphone');
+  if(ph){
+    ph.addEventListener('input', function(){
+      ph.setCustomValidity(ph.validity.patternMismatch ? 'Please enter a UK phone number' : '');
+    });
+  }
+
+  var ld = document.getElementById('ld');
+  function lit(){ document.body.classList.add('lit'); }
+  function killLoader(){
+    if(!ld) return;
+    ld.classList.add('gone');
+    setTimeout(function(){ if(ld && ld.parentNode) ld.parentNode.removeChild(ld); }, 600);
+  }
+  setTimeout(lit, 2150);
+  setTimeout(killLoader, 2400);
+  setTimeout(function(){ lit(); killLoader(); }, 3000);
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setTimeout(function(){ lit(); killLoader(); }, 700);
+  }
+
+  var b2 = document.getElementById('burger'), mn = document.getElementById('mnav');
+  if(b2 && mn){
+    b2.addEventListener('click', function(){
+      var open = mn.classList.toggle('open');
+      b2.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mn.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ mn.classList.remove('open'); b2.setAttribute('aria-expanded','false'); });
+    });
+  }
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var fabs = document.getElementById('fabs');
+  var heroCtas = document.querySelectorAll('.hero .hero-ctas');
+  if(fabs && heroCtas.length){
+    var vis = new WeakMap();
+    var fio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ vis.set(e.target, e.isIntersecting); });
+      var any = false;
+      heroCtas.forEach(function(el){ if(vis.get(el)) any = true; });
+      fabs.classList.toggle('show', !any);
+    }, {threshold:0});
+    heroCtas.forEach(function(el){ fio.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
