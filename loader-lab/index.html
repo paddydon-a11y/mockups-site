@@ -4281,6 +4281,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-herringbone" data-dur="2400">
+      <span class="trade">Paving contractors / block paving / driveways / hard landscaping / civils</span>
+      <h3>Herringbone Lay</h3>
+      <p>Nice paving being put down, and nothing else. A dark screeded bed wipes in from the left (0.06-0.48s), then eighty-eight solid blocks land on it one after another on a 0.015s beat (0.34-1.66s), each dropping 20px with a scale overshoot and a settle, laying LEFT TO RIGHT across the bay so there is always a ragged working edge exactly like a real gang moving across a job. The blocks are a weighted brindle mix (mostly reds, buff occasionally, charcoal rarely) and the brand fades under the finished bay at 1.6s. 2.4s teardown, 3.4s fail-safe; reduced-motion shows the finished bay and the brand. Transform and opacity only, no SVG, no linework, no strokes. THE GEOMETRY IS REAL, which is why it reads: it is a true 90-degree herringbone (pair = one 2x1 flat block plus one 1x2 upright block) tiled on the lattice (3,1) and (-1,1), which is verified to have zero overlaps and zero gaps, and the whole field is then rotated 45deg and cropped by the stage so it presents as the 45-degree herringbone a drive is actually laid in. Reuse it by changing the block mix and the caption; the generator is nineteen lines. Distinct from Whacker Pass, the other block-laying loader, which is the driveway trade's FINISH: kerb lines, a sand bed, three courses of stretcher bond and an orange compactor tracking over the lot. This one has no kerbs, no compactor and no stretcher bond, it is the LAY itself in herringbone bond and the payoff is the finished pattern. Distinct from Coursework (brick courses up a wall), Slate Run (slates down a pitch) and Comb &amp; Bed (tiles into adhesive). First used: nml-paving, replacing a first cut (Grid Green, concrete grid cells with grass sprouting through) that Patrick cut with "i dont like the loader, just doing some nice paving being put down".</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-jobsdone" data-dur="2400">
       <span class="trade">Handyman / property maintenance / multi-trade odd jobs</span>
       <h3>Jobs Done</h3>
@@ -13581,6 +13587,70 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-hexclose.play .hx-brand b,#ld-hexclose.play .hx-brand span{animation:none;opacity:1;transform:none}
 }
 </style>
+
+<div class="loader" id="ld-herringbone" aria-hidden="true">
+  <div class="hb-in">
+    <div class="hb-stage"><div class="hb-bed"></div><div class="hb-field" id="hbField"></div></div>
+    <div class="hb-brand"><b>NML <em>PAVING</em></b><span>Block paving, laid and jointed</span></div>
+  </div>
+</div>
+<style>
+/* ---- Herringbone Lay (ld-herringbone) ---- */
+#ld-herringbone{background:#0b0c0d;flex-direction:column}
+#ld-herringbone .hb-in{display:flex;flex-direction:column;align-items:center;gap:28px}
+#ld-herringbone .hb-stage{width:260px;height:158px;position:relative;overflow:hidden;border-radius:6px}
+#ld-herringbone .hb-bed{position:absolute;inset:0;background:#191b1d;transform:scaleX(0);transform-origin:left}
+#ld-herringbone.play .hb-bed{animation:hbBed .42s cubic-bezier(.3,.8,.35,1) .06s forwards}
+#ld-herringbone .hb-field{position:absolute;top:50%;left:50%;width:400px;height:400px;margin:-200px 0 0 -200px;transform:rotate(45deg)}
+#ld-herringbone .hb-blk{position:absolute;border-radius:1.5px;opacity:0;transform:translate(0,-20px) scale(.9)}
+#ld-herringbone.play .hb-blk{animation:hbLay .3s cubic-bezier(.2,.9,.3,1.3) forwards}
+#ld-herringbone .hb-brand{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0}
+#ld-herringbone.play .hb-brand{animation:hbFade .5s ease 1.6s forwards}
+#ld-herringbone .hb-brand b{font-size:1.5rem;letter-spacing:.02em;color:#fff}
+#ld-herringbone .hb-brand em{font-style:normal;color:var(--accent,#79c141)}
+#ld-herringbone .hb-brand span{font-weight:600;text-transform:uppercase;letter-spacing:.26em;font-size:.7rem;color:var(--accent,#79c141)}
+@keyframes hbBed{to{transform:scaleX(1)}}
+@keyframes hbLay{60%{opacity:1;transform:translate(0,2px) scale(1.02)}100%{opacity:1;transform:translate(0,0) scale(1)}}
+@keyframes hbFade{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #ld-herringbone.play .hb-bed,#ld-herringbone.play .hb-blk,#ld-herringbone.play .hb-brand{animation:none;opacity:1;transform:none}
+  #ld-herringbone.play .hb-bed{transform:scaleX(1)}
+  #ld-herringbone.play .hb-field{transform:rotate(45deg)}
+}
+</style>
+<script>
+/* Build the Herringbone Lay field. True 90deg herringbone (2x1 flat + 1x2 upright)
+   on the lattice (3,1) and (-1,1): zero overlaps, zero gaps. The field is then
+   rotated 45deg by CSS and cropped by the stage, so it presents as a laid drive. */
+(function(){
+  var field=document.getElementById('hbField'); if(!field) return;
+  var U=20,CX=200,CY=200,ROT=Math.PI/4;
+  var MIX=['#9b5c47','#874b39','#a2634b','#b07a5e','#7d4635','#8f5340',
+           '#9b5c47','#a98a6b','#874b39','#5b6165','#a2634b','#8f5340'];
+  var blocks=[],out=[];
+  for(var i=-9;i<=9;i++) for(var j=-9;j<=9;j++){
+    var ox=3*i-j, oy=i+j;
+    blocks.push({x:ox,y:oy,w:2,h:1});
+    blocks.push({x:ox+2,y:oy,w:1,h:2});
+  }
+  blocks.forEach(function(b){
+    var px=CX+b.x*U,py=CY+b.y*U,w=b.w*U-2,h=b.h*U-2;
+    var cx=px+w/2-CX, cy=py+h/2-CY;
+    var sx=cx*Math.cos(ROT)-cy*Math.sin(ROT), sy=cx*Math.sin(ROT)+cy*Math.cos(ROT);
+    if(Math.abs(sx)>150||Math.abs(sy)>110) return;
+    out.push({px:px,py:py,w:w,h:h,sx:sx});
+  });
+  out.sort(function(a,b){return a.sx-b.sx;});
+  out.forEach(function(o,n){
+    var el=document.createElement('div'); el.className='hb-blk';
+    el.style.left=o.px+'px'; el.style.top=o.py+'px';
+    el.style.width=o.w+'px'; el.style.height=o.h+'px';
+    el.style.background=MIX[(n*5)%MIX.length];
+    el.style.animationDelay=(0.34+n*0.015)+'s';
+    field.appendChild(el);
+  });
+})();
+</script>
 
 <div class="loader" id="ld-jobsdone" aria-hidden="true">
   <div class="jd-in">
