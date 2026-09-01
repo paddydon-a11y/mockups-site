@@ -4281,6 +4281,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-profilerun" data-dur="2400">
+      <span class="trade">Joiners / carpenters / bespoke joinery workshops / moulding and staircase manufacturers</span>
+      <h3>Run The Moulding</h3>
+      <p>The machine pass a joinery workshop actually sells: a plain square blank going in one end and a moulded length coming out the other. A flat, dull timber BLANK sits on the bench, then a spindle head spins in from the left and travels the full length of it on a 1.5s pass; behind the cutter the blank is gone and a MOULDED length is standing in its place, four grooves (two light quirks, two shadow lines) running the whole length and a stepped ogee SECTION FACE at the machined end. The trick is that nothing is masked or clipped: the moulded length sits underneath at full width the whole time, and the plain blank on top is a flat untextured bar scaled scaleX(1) to scaleX(0) from its RIGHT edge, which on a flat colour is visually identical to being eaten away from the left. The cutter translates the same distance on the same easing, so the whole loader is two transforms and an opacity. Brand lands at 1.5s, caption at 1.75s. 2.15s body.lit, 2.4s JS teardown, 3.0s JS removal, 3.6s fail-safe; reduced motion shows the finished moulded length, the section face and the brand. Hands off INTO the fold: run the same pass as a full-bleed band under the hero (and, at 390, ABOVE the photo so it lands inside the 844 fold) on body.lit, so the loader's cut and the first mobile screenful are one continuous length. Reuse it by resampling the timber tones (oak, sapele, painted softwood) and changing the section face. Distinct from Coursework and Rubble Up (masonry), Trowel Float, Off The Hawk and Skim Cure (a surface being smoothed, nothing shaped), Roller Sweep (a coat wiped across) and Dig Out: nothing else in the lab MACHINES a section into a piece of stock. First used: method-mouldings.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-rubbleup" data-dur="2400">
       <span class="trade">Builders / stonemasons / period &amp; listed building specialists / general construction</span>
       <h3>Rubble Up</h3>
@@ -14251,6 +14257,59 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-rubbleup.play .ru-c i{opacity:1;transform:none;animation:none!important}
   #ld-rubbleup.play .ru-j{transform:scaleX(1);animation:none!important}
   #ld-rubbleup.play .ru-brand{opacity:1;transform:none;animation:none!important}
+}
+</style>
+
+<div class="loader" id="ld-profilerun" aria-hidden="true">
+  <div class="pr-bench">
+    <div class="pr-moulded">
+      <span class="pr-g pr-g1"></span><span class="pr-g pr-g2"></span>
+      <span class="pr-g pr-g3"></span><span class="pr-g pr-g4"></span>
+    </div>
+    <div class="pr-face"><i style="width:9px;height:6px;margin-left:0"></i><i style="width:15px;height:9px;margin-left:0"></i><i style="width:22px;height:19px;margin-left:0"></i></div>
+    <div class="pr-blank"></div>
+    <div class="pr-cutter"><span class="pr-head"></span><span class="pr-stem"></span></div>
+  </div>
+  <div class="pr-brand"><b>METHOD MOULDINGS</b><span>Run to your section</span></div>
+</div>
+
+<style>
+/* ---- Run The Moulding (ld-profilerun) ---- */
+#ld-profilerun{background:#241a12;flex-direction:column}
+#ld-profilerun .pr-bench{position:relative;width:min(340px,80vw);height:74px}
+#ld-profilerun .pr-moulded{position:absolute;left:0;right:0;top:20px;height:34px;border-radius:2px;
+  background:linear-gradient(#d9a877,#8a4a20)}
+#ld-profilerun .pr-g{position:absolute;left:0;right:0;height:2px;display:block}
+#ld-profilerun .pr-g1{top:6px;background:#f2cda3;opacity:.85}
+#ld-profilerun .pr-g2{top:11px;background:#5e3216;opacity:.85}
+#ld-profilerun .pr-g3{top:21px;background:#f2cda3;opacity:.6}
+#ld-profilerun .pr-g4{top:25px;background:#5e3216;opacity:.85}
+#ld-profilerun .pr-face{position:absolute;left:0;top:20px;height:34px;width:24px;
+  display:flex;flex-direction:column;justify-content:flex-end}
+#ld-profilerun .pr-face i{display:block;background:#e8c79c;font-style:normal}
+#ld-profilerun .pr-blank{position:absolute;left:0;right:0;top:20px;height:34px;border-radius:2px;
+  background:#a58767;transform-origin:right center}
+#ld-profilerun.play .pr-blank{animation:prEat 1.5s cubic-bezier(.4,0,.25,1) .2s forwards}
+#ld-profilerun .pr-cutter{position:absolute;top:2px;left:-16px;width:32px;opacity:0}
+#ld-profilerun.play .pr-cutter{animation:prRun 1.5s cubic-bezier(.4,0,.25,1) .2s forwards}
+#ld-profilerun .pr-head{display:block;width:32px;height:32px;border-radius:50%;
+  border:2px solid #e2a06a;border-left-color:transparent;border-right-color:transparent;
+  animation:prSpin .38s linear infinite}
+#ld-profilerun .pr-stem{display:block;width:2px;height:38px;margin:0 auto;background:rgba(226,160,106,.5)}
+#ld-profilerun .pr-brand{margin-top:28px;text-align:center;opacity:0}
+#ld-profilerun .pr-brand b{display:block;font-weight:800;color:#fff;font-size:1.14rem;letter-spacing:-.01em}
+#ld-profilerun .pr-brand span{display:block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:#c9a274;font-weight:600;margin-top:9px}
+#ld-profilerun.play .pr-brand{animation:prBrand .6s forwards 1.5s}
+@keyframes prEat{to{transform:scaleX(0)}}
+@keyframes prRun{0%{opacity:0;transform:translateX(0)}6%{opacity:1}95%{opacity:1}100%{opacity:0;transform:translateX(340px)}}
+@keyframes prSpin{to{transform:rotate(360deg)}}
+@keyframes prBrand{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #ld-profilerun.play .pr-blank{transform:scaleX(0);animation:none!important}
+  #ld-profilerun.play .pr-cutter{opacity:0;animation:none!important}
+  #ld-profilerun .pr-head{animation:none!important}
+  #ld-profilerun.play .pr-brand{opacity:1;transform:none;animation:none!important}
 }
 </style>
 
