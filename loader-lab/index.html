@@ -4281,6 +4281,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-parkon" data-dur="2500">
+      <span class="trade">Landscapers / driveway installers / garden maintenance / groundworks</span>
+      <h3>Park On It</h3>
+      <p>A front garden turned into somewhere to park, played out in elevation in front of a house. A solid house front sits behind the whole stage (two upstairs windows, a downstairs window, a door). A green garden strip scales in across the bottom (0.05-0.20s) and three shrubs pop up on it on a stagger (0.15s), then a solid mini digger (tracks, cab, cab glass, angled boom and bucket) tracks left to right across the front and the garden is stripped away behind it to bare SOIL (0.22-1.05s, digger exits at 1.06s). A buff SUB-BASE wipes in left to right over the soil (0.97-1.28s), BLACK TARMAC wipes over the sub-base (1.28-1.58s), then the buff EDGING COURSE strikes along the front edge of the finished drive (1.50-1.76s). A car drives in from the left and parks on it with a settle overshoot (1.58-2.07s), the right-hand upstairs window lights warm (1.72s), and the wordmark lands under the stage with 'Somewhere to park' (1.86s). Solid shapes, transform and opacity only, no linework, no SVG stage. 2.15s body.lit, 2.4s JS teardown, 2.7s CSS-only fail-safe, 3.0s JS removal; reduced-motion shows the finished drive, the parked car, the lit window and the brand. Hands off INTO the fold: the band under the hero (and, at 390, directly under the CTAs and ABOVE the photo) replays the same four layers full bleed on body.lit and the same car parks on it, so the loader's last move and the first mobile screenful are one continuous drive. Reuse it by changing the surface (block, resin, gravel) and the caption. Distinct from Whacker Pass (kerb lines, sand, block courses and a compactor, nothing dug and no car), Herringbone Lay (blocks landing in bond, no ground works), Kerb Run (kerb units butted to a string line), Dig Out (an excavator scooping ground away with nothing built back), Cut &amp; Fill, Formation and Strata Rise (cross-sections through made ground), Laid to Falls and Flag Lay (slabs into a grid), and Turf Roll and Topiary Pass (turf going DOWN and hedges being cut, this runs turf the other way): nothing else in the lab strips a garden, builds the drive back up in courses and then PARKS A CAR on it in front of a house. First used: sjk-garden-maintenance.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-boardup" data-dur="2400">
       <span class="trade">Electricians / electrical contractors / EICR &amp; consumer unit specialists</span>
       <h3>Board Up</h3>
@@ -14128,5 +14134,91 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-boardup .bu-led{background:#19b45a;animation:none!important}
 }
 </style>
+<div class="loader" id="ld-parkon" aria-hidden="true">
+  <div class="pk-stage">
+    <div class="pk-house"><i class="pk-w pk-w1"></i><i class="pk-w pk-w2"></i><i class="pk-w pk-w3"></i><i class="pk-dr"></i><i class="pk-lit"></i></div>
+    <div class="pk-lg">
+      <span class="pk-l pk-turf"></span>
+      <span class="pk-l pk-soil"></span>
+      <span class="pk-l pk-sub"></span>
+      <span class="pk-l pk-tar"></span>
+    </div>
+    <span class="pk-shrub pk-s1"></span><span class="pk-shrub pk-s2"></span><span class="pk-shrub pk-s3"></span>
+    <span class="pk-edge"></span>
+    <div class="pk-dig"><span class="tr"></span><span class="cab"></span><span class="win"></span><span class="bm"></span><span class="bk"></span></div>
+    <div class="pk-car"><span class="body"></span><span class="roof"></span><span class="glass"></span><span class="w w1"></span><span class="w w2"></span></div>
+  </div>
+  <div class="pk-brand"><b>SJK GARDEN MAINTENANCE</b><span>Somewhere to park</span></div>
+</div>
+
+<style>
+/* ---- Park On It (ld-parkon) ---- */
+#ld-parkon{background:#0e1113;flex-direction:column}
+#ld-parkon .pk-stage{position:relative;width:min(320px,84vw);height:176px}
+#ld-parkon .pk-house{position:absolute;left:26px;right:26px;bottom:62px;height:84px;background:#1e2528;border-radius:2px 2px 0 0}
+#ld-parkon .pk-house i{position:absolute;display:block;background:#39454b;border-radius:1px;font-style:normal}
+#ld-parkon .pk-w{width:34px;height:26px;top:16px}
+#ld-parkon .pk-w1{left:24px}
+#ld-parkon .pk-w2{right:24px}
+#ld-parkon .pk-w3{width:30px;height:22px;top:54px;left:26px}
+#ld-parkon .pk-dr{width:26px;height:34px;bottom:0;left:50%;margin-left:-13px;background:#2b3438;border-radius:2px 2px 0 0}
+#ld-parkon .pk-lit{width:34px;height:26px;top:16px;right:24px;background:#e2cf95;opacity:0}
+#ld-parkon.play .pk-lit{animation:pkLit .5s forwards 1.72s}
+#ld-parkon .pk-lg{position:absolute;left:0;right:0;bottom:0;height:62px;overflow:hidden}
+#ld-parkon .pk-l{position:absolute;inset:0;transform-origin:left center;transform:scaleX(0)}
+#ld-parkon .pk-turf{background:linear-gradient(180deg,#31964a,#1d6630)}
+#ld-parkon .pk-soil{background:linear-gradient(180deg,#6a5340,#48372a)}
+#ld-parkon .pk-sub{background:linear-gradient(180deg,#c3b393,#9d8e6f)}
+#ld-parkon .pk-tar{background:linear-gradient(180deg,#2b3134,#181d20)}
+#ld-parkon.play .pk-turf{animation:pkTurf 2.2s forwards}
+#ld-parkon.play .pk-soil{animation:pkSoil 2.2s forwards}
+#ld-parkon.play .pk-sub{animation:pkSub 2.2s forwards}
+#ld-parkon.play .pk-tar{animation:pkTar 2.2s forwards}
+#ld-parkon .pk-shrub{position:absolute;bottom:62px;width:28px;height:22px;border-radius:14px 14px 3px 3px;background:#2a7a3a;opacity:0}
+#ld-parkon .pk-s1{left:36px}
+#ld-parkon .pk-s2{left:132px;width:38px;height:27px}
+#ld-parkon .pk-s3{left:228px;width:24px;height:18px}
+#ld-parkon.play .pk-shrub{animation:pkShrub 2.2s forwards}
+#ld-parkon .pk-dig{position:absolute;bottom:62px;left:-96px;width:76px;height:52px;opacity:0}
+#ld-parkon .pk-dig span{position:absolute;display:block;border-radius:2px}
+#ld-parkon .pk-dig .tr{left:0;bottom:0;width:56px;height:13px;background:#2f383d;border-radius:7px}
+#ld-parkon .pk-dig .cab{left:8px;bottom:12px;width:34px;height:24px;background:#c9ced1;border-radius:2px 3px 0 0}
+#ld-parkon .pk-dig .win{left:12px;bottom:24px;width:16px;height:11px;background:#5d6b73;border-radius:1px}
+#ld-parkon .pk-dig .bm{left:38px;bottom:22px;width:34px;height:6px;background:#c9ced1;transform:rotate(22deg);transform-origin:left center}
+#ld-parkon .pk-dig .bk{right:0;bottom:0;width:18px;height:15px;background:#d8dde0;border-radius:2px 2px 9px 2px}
+#ld-parkon.play .pk-dig{animation:pkDig 2.2s forwards}
+#ld-parkon .pk-edge{position:absolute;left:0;right:0;bottom:62px;height:5px;background:#b9a888;transform:scaleX(0);transform-origin:left}
+#ld-parkon.play .pk-edge{animation:pkEdge 2.2s forwards}
+#ld-parkon .pk-car{position:absolute;bottom:62px;left:-118px;width:106px;height:38px;opacity:0}
+#ld-parkon .pk-car span{position:absolute;display:block}
+#ld-parkon .pk-car .body{left:0;right:0;bottom:8px;height:18px;background:#3c464c;border-radius:7px 9px 4px 4px}
+#ld-parkon .pk-car .roof{left:25px;width:52px;bottom:23px;height:14px;background:#2f383d;border-radius:8px 8px 2px 2px}
+#ld-parkon .pk-car .glass{left:29px;width:44px;bottom:26px;height:9px;background:#7f9aa6;border-radius:4px 4px 1px 1px}
+#ld-parkon .pk-car .w{bottom:0;width:16px;height:16px;border-radius:50%;background:#14181a;border:3px solid #58636a}
+#ld-parkon .pk-car .w1{left:15px}
+#ld-parkon .pk-car .w2{right:15px}
+#ld-parkon.play .pk-car{animation:pkCar 2.2s forwards}
+#ld-parkon .pk-brand{margin-top:32px;text-align:center;opacity:0}
+#ld-parkon .pk-brand b{display:block;font-weight:800;color:#fff;font-size:1.2rem;letter-spacing:-.01em}
+#ld-parkon .pk-brand span{display:block;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:#5fd684;font-weight:600;margin-top:8px}
+#ld-parkon.play .pk-brand{animation:pkBrand .6s forwards 1.86s}
+@keyframes pkTurf{0%{transform:scaleX(0)}9%{transform:scaleX(1)}28%{transform:scaleX(1)}42%{transform:scaleX(0)}100%{transform:scaleX(0)}}
+@keyframes pkSoil{0%,18%{transform:scaleX(0)}42%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+@keyframes pkSub{0%,44%{transform:scaleX(0)}58%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+@keyframes pkTar{0%,58%{transform:scaleX(0)}72%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+@keyframes pkShrub{0%{opacity:0;transform:translateY(7px)}7%{opacity:1;transform:none}28%{opacity:1;transform:none}36%{opacity:0;transform:translateY(7px)}100%{opacity:0}}
+@keyframes pkDig{0%,10%{transform:translateX(0);opacity:0}13%{opacity:1}44%{transform:translateX(392px);opacity:1}48%{transform:translateX(424px);opacity:0}100%{opacity:0}}
+@keyframes pkEdge{0%,68%{transform:scaleX(0)}80%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+@keyframes pkCar{0%,72%{transform:translateX(0);opacity:0}75%{opacity:1}94%{transform:translateX(226px);opacity:1}97%{transform:translateX(218px);opacity:1}100%{transform:translateX(220px);opacity:1}}
+@keyframes pkLit{to{opacity:1}}
+@keyframes pkBrand{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #ld-parkon.play .pk-soil,#ld-parkon.play .pk-sub,#ld-parkon.play .pk-tar,#ld-parkon.play .pk-edge{transform:scaleX(1);animation:none!important}
+  #ld-parkon.play .pk-turf,#ld-parkon.play .pk-shrub,#ld-parkon.play .pk-dig{opacity:0;animation:none!important}
+  #ld-parkon.play .pk-car{opacity:1;transform:translateX(220px);animation:none!important}
+  #ld-parkon.play .pk-lit,#ld-parkon.play .pk-brand{opacity:1;transform:none;animation:none!important}
+}
+</style>
+
 </body>
 </html>
