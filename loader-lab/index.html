@@ -4281,6 +4281,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-chevstack" data-dur="2400">
+      <span class="trade">Construction companies / building contractors / any brand whose mark is a stacked or layered shape</span>
+      <h3>Stack The Chevrons</h3>
+      <p>The branded-redesign loader: the client's REAL logo artwork built from its own parts, in the order a builder would put it up. Never redraw the mark (Patrick, 2026-09-03: a polygon approximation "isn't quite getting it right"): the mark PNG is layered five times and each layer is CLIPPED to one piece with a clip-path polygon measured off the artwork, so what assembles is pixel-identical to the logo. On white the two side FACES of the hexagonal housing rise from the footing (scaleY from the bottom, 0.06s and 0.14s), then the three CHEVRON slices drop into the housing bottom-first on a 0.2s beat (0.42s, 0.62s, 0.82s), each falling 44px with a settle overshoot so they read as storeys landing on the one below. The wordmark crop of the same logo lands at 1.15s. Transform and opacity only. 2.0s body.lit, 2.6s JS removal, 2.6s CSS-only fail-safe, 3.2s JS fail-safe; reduced motion shows the finished mark. Hands off INTO the fold: a white-tinted copy of the mark is sliced the same way and ghosted large behind the 390 H1 on the gold panel, stacking on body.lit on the same stagger; on desktop it ghosts over the hero photograph, static on the about panel and the CTA band. Reuse it by cropping the client's mark, measuring where the pieces meet (centre-column and edge-column alpha runs) and rewriting the clip-path polygons; any layered, stacked or coursed logo works. Distinct from Logo Card and Brand Load (a logo fading up with a bar), Topping Out (a drawn truss), Coursework and Rubble Up (masonry, no logo) and Hex Close (a drawn hexagon): nothing else in the lab assembles the client's actual artwork piece by piece. First used: dec-approved.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-hangdrop" data-dur="2400">
       <span class="trade">Decorators / paperhangers / wide vinyl and contract wallcovering installers</span>
       <h3>Hang The Drop</h3>
@@ -14639,6 +14645,46 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-cladup.play .cu-bearer,#ld-cladup.play .cu-stud,#ld-cladup.play .cu-board,#ld-cladup.play .cu-door{transform:none;animation:none!important}
   #ld-cladup.play .cu-roof,#ld-cladup.play .cu-brand{opacity:1;transform:none;animation:none!important}
   #ld-cladup.play .cu-win{opacity:1;background:#f7e3b0;animation:none!important}
+}
+</style>
+
+<div class="loader" id="ld-chevstack" aria-hidden="true">
+  <div class="cs-in">
+    <div class="cs-mark">
+      <img class="cs-face l" src="../dec-approved/mark.png" alt="">
+      <img class="cs-face r" src="../dec-approved/mark.png" alt="">
+      <img class="cs-chev c3" src="../dec-approved/mark.png" alt="">
+      <img class="cs-chev c2" src="../dec-approved/mark.png" alt="">
+      <img class="cs-chev c1" src="../dec-approved/mark.png" alt="">
+    </div>
+    <div class="cs-brand"><img src="../dec-approved/wordmark.png" alt="DEC-Approved Ltd"></div>
+  </div>
+</div>
+
+<style>
+/* ---- Stack The Chevrons (ld-chevstack) ---- */
+#ld-chevstack{background:#ffffff;flex-direction:column}
+#ld-chevstack .cs-in{text-align:center}
+#ld-chevstack .cs-mark{position:relative;width:150px;height:161px;margin:0 auto}
+#ld-chevstack .cs-mark img{position:absolute;inset:0;width:100%;height:100%}
+#ld-chevstack .cs-face{clip-path:polygon(0 0,15% 0,15% 100%,0 100%);transform:scaleY(0);transform-origin:50% 100%}
+#ld-chevstack .cs-face.r{clip-path:polygon(85% 0,100% 0,100% 100%,85% 100%)}
+#ld-chevstack .cs-chev{opacity:0;transform:translateY(-44px)}
+#ld-chevstack .c1{clip-path:polygon(15% 0,85% 0,85% 39.5%,50% 21%,15% 39.5%)}
+#ld-chevstack .c2{clip-path:polygon(15% 39.5%,50% 21%,85% 39.5%,85% 68%,50% 49%,15% 68%)}
+#ld-chevstack .c3{clip-path:polygon(15% 68%,50% 49%,85% 68%,85% 100%,15% 100%)}
+#ld-chevstack.play .cs-face{animation:csFace .42s cubic-bezier(.3,.7,.3,1) .06s forwards}
+#ld-chevstack.play .cs-face.r{animation-delay:.14s}
+#ld-chevstack.play .cs-chev{animation:csChev .5s cubic-bezier(.34,1.45,.64,1) forwards}
+#ld-chevstack.play .c3{animation-delay:.42s}#ld-chevstack.play .c2{animation-delay:.62s}#ld-chevstack.play .c1{animation-delay:.82s}
+#ld-chevstack .cs-brand{margin-top:22px;opacity:0;transform:translateY(14px)}
+#ld-chevstack .cs-brand img{width:300px;height:auto;margin:0 auto;display:block}
+#ld-chevstack.play .cs-brand{animation:csBrand .5s cubic-bezier(.2,.8,.3,1) 1.15s forwards}
+@keyframes csFace{to{transform:scaleY(1)}}
+@keyframes csChev{to{opacity:1;transform:none}}
+@keyframes csBrand{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #ld-chevstack.play .cs-face,#ld-chevstack.play .cs-chev,#ld-chevstack.play .cs-brand{opacity:1;transform:none;animation:none!important}
 }
 </style>
 
