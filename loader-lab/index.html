@@ -4287,6 +4287,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The branded-redesign loader: the client's REAL logo artwork built from its own parts, in the order a builder would put it up. Never redraw the mark (Patrick, 2026-09-03: a polygon approximation "isn't quite getting it right"): the mark PNG is layered five times and each layer is CLIPPED to one piece with a clip-path polygon measured off the artwork, so what assembles is pixel-identical to the logo. On white the two side FACES of the hexagonal housing rise from the footing (scaleY from the bottom, 0.06s and 0.14s), then the three CHEVRON slices drop into the housing bottom-first on a 0.2s beat (0.42s, 0.62s, 0.82s), each falling 44px with a settle overshoot so they read as storeys landing on the one below. The wordmark crop of the same logo lands at 1.15s. Transform and opacity only. 2.0s body.lit, 2.6s JS removal, 2.6s CSS-only fail-safe, 3.2s JS fail-safe; reduced motion shows the finished mark. Hands off INTO the fold: a white-tinted copy of the mark is sliced the same way and ghosted large behind the 390 H1 on the gold panel, stacking on body.lit on the same stagger; on desktop it ghosts over the hero photograph, static on the about panel and the CTA band. Reuse it by cropping the client's mark, measuring where the pieces meet (centre-column and edge-column alpha runs) and rewriting the clip-path polygons; any layered, stacked or coursed logo works. Distinct from Logo Card and Brand Load (a logo fading up with a bar), Topping Out (a drawn truss), Coursework and Rubble Up (masonry, no logo) and Hex Close (a drawn hexagon): nothing else in the lab assembles the client's actual artwork piece by piece. First used: dec-approved.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-beforeafter" data-dur="2400">
+      <span class="trade">All-rounders / bathroom and kitchen fitters / plasterer-plus-flooring sole traders / anyone whose photos show a bare stage and a finished stage</span>
+      <h3>Before, After</h3>
+      <p>A before-and-after slider that plays itself, built from the client's REAL photos: their bare-skim room and their finished room, the two ends of the job they actually sell. On charcoal the BEFORE photograph sits in a 4:3 rounded frame with a dark 'Skimmed' chip top-left (0.2s). At 0.55s a white slider line with a plum knob starts at the left edge and travels the full width in 1.25s on a heavy ease, and the AFTER photograph is dragged in behind it edge to edge (a translated wrapper with a counter-translated image, so the reveal is pure transform, no clip-path). The 'Skimmed' chip fades as the line passes it (1.3s) and a plum 'Finished' chip lands top-right at 1.55s; the wordmark and 'Skim . Floor . Tile . Fit' rise under the frame at 1.75s. 2.35s JS teardown, 2.9s CSS fail-safe, 3.0s JS removal; reduced-motion shows the finished photo, the plum chip and the brand. The lab version uses two flat stand-in panels where the build uses photographs. Distinct from Rake The Wall (one photo, a band of LIGHT crossing it), Pane Reveal (a photo uncovered pane by pane behind a glazing grid), Wash Off (a grimed copy of one photo cleaned by a lance) and Room Set (an illustrated room dressed): this is two different real photographs and the slider mechanic homeowners already know from renovation sites. Patrick killed the first cut for this build (The Full Turn, an illustrated solid-shape room being skimmed, floored, tiled and fitted, also used as the hero visual) on review, 2026-09-03: 'i dont like the animated loader or on home, use a stock on hero'. First used: stephan-grainger.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-hangdrop" data-dur="2400">
       <span class="trade">Decorators / paperhangers / wide vinyl and contract wallcovering installers</span>
       <h3>Hang The Drop</h3>
@@ -14728,6 +14734,54 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-hangdrop.play .hd-drop{transform:none;animation:none!important}
   #ld-hangdrop.play .hd-seam,#ld-hangdrop.play .hd-tool{opacity:0;animation:none!important}
   #ld-hangdrop.play .hd-brand{opacity:1;animation:none!important}
+}
+</style>
+
+
+<div class="loader" id="ld-beforeafter" aria-hidden="true">
+  <div class="bf-in">
+    <div class="bf-frame">
+      <div class="bf-before"></div>
+      <div class="bf-after"><div class="bf-after-img"></div></div>
+      <div class="bf-hand"><i></i></div>
+      <span class="bf-chip c1">Skimmed</span>
+      <span class="bf-chip c2">Finished</span>
+    </div>
+    <div class="bf-brand"><b>STEPHAN GRAINGER</b><span>Skim &middot; Floor &middot; Tile &middot; Fit</span></div>
+  </div>
+</div>
+
+<style>
+/* ---- Before, After (ld-beforeafter) ---- */
+#ld-beforeafter{background:#2a2d33;flex-direction:column}
+#ld-beforeafter .bf-in{width:min(460px,86vw);display:flex;flex-direction:column;align-items:center}
+#ld-beforeafter .bf-frame{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:12px;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+#ld-beforeafter .bf-before{position:absolute;inset:0;background:linear-gradient(180deg,#c49a86 0 68%,#8d8a84 68% 72%,#5a5b5e 72%)}
+#ld-beforeafter .bf-after{position:absolute;inset:0;overflow:hidden;transform:translateX(100%)}
+#ld-beforeafter .bf-after-img{position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(180deg,#e9e6e0 0 12%,#2a2d33 12% 70%,#f4f2ee 70% 73%,#b99a75 73%)}
+#ld-beforeafter .bf-after-img::after{content:"";position:absolute;left:30%;top:28%;width:40%;height:24%;background:#3d78c9;border-radius:3px;box-shadow:0 0 0 3px #111}
+#ld-beforeafter .bf-hand{position:absolute;inset:0;transform:translateX(-100%)}
+#ld-beforeafter .bf-hand i{position:absolute;right:-2px;top:0;bottom:0;width:4px;background:#fff}
+#ld-beforeafter .bf-hand i::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#6d2f5e;box-shadow:0 0 0 3px #fff,0 10px 24px -8px rgba(0,0,0,.6);background-image:linear-gradient(90deg,transparent 15px,#fff 15px,#fff 17px,transparent 17px,transparent 27px,#fff 27px,#fff 29px,transparent 29px)}
+#ld-beforeafter .bf-chip{position:absolute;top:14px;padding:8px 12px;border-radius:6px;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(42,45,51,.78);opacity:0;transform:translateY(-6px)}
+#ld-beforeafter .bf-chip.c1{left:14px}#ld-beforeafter .bf-chip.c2{right:14px;background:#6d2f5e}
+#ld-beforeafter.play .bf-after,#ld-beforeafter.play .bf-hand{animation:bfWipe 1.25s cubic-bezier(.65,0,.3,1) .55s forwards}
+#ld-beforeafter.play .bf-after-img{animation:bfWipeIn 1.25s cubic-bezier(.65,0,.3,1) .55s forwards}
+#ld-beforeafter.play .bf-chip.c1{animation:bfUp .35s ease .2s forwards,bfOut .3s ease 1.3s forwards}
+#ld-beforeafter.play .bf-chip.c2{animation:bfUp .35s ease 1.55s forwards}
+#ld-beforeafter .bf-brand{margin-top:22px;text-align:center;opacity:0;transform:translateY(12px)}
+#ld-beforeafter .bf-brand b{display:block;font-weight:800;color:#fff;font-size:1.3rem;letter-spacing:.04em}
+#ld-beforeafter .bf-brand span{display:block;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:#e9b7da;font-weight:600;margin-top:8px}
+#ld-beforeafter.play .bf-brand{animation:bfUp .5s cubic-bezier(.2,.8,.3,1) 1.75s forwards}
+@keyframes bfWipe{to{transform:translateX(0)}}
+@keyframes bfWipeIn{to{transform:translateX(0)}}
+@keyframes bfUp{to{opacity:1;transform:none}}
+@keyframes bfOut{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  #ld-beforeafter.play .bf-after,#ld-beforeafter.play .bf-after-img,#ld-beforeafter.play .bf-hand,#ld-beforeafter.play .bf-chip,#ld-beforeafter.play .bf-brand{animation:none!important}
+  #ld-beforeafter.play .bf-after,#ld-beforeafter.play .bf-after-img{transform:none}
+  #ld-beforeafter.play .bf-hand,#ld-beforeafter.play .bf-chip.c1{opacity:0}
+  #ld-beforeafter.play .bf-chip.c2,#ld-beforeafter.play .bf-brand{opacity:1;transform:none}
 }
 </style>
 
