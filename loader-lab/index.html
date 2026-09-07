@@ -4281,6 +4281,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-energise" data-dur="2500">
+      <span class="trade">Electricians / electrical contractors (any brand whose mark carries a circuit-trace motif)</span>
+      <h3>Energise</h3>
+      <p>The client's own logo strip built and powered up. On the logo black a blue bar strikes across left to right (0.05-0.47s), then thirty-six solid circuit TRACES drop from it on a .02s beat (0.28-1.1s), each a flat bar ending in a pad ring or a dot, laid out in the same clusters as the band under their real wordmark. A white light pulse sweeps the bar (1.0-1.8s) and every pad flashes white and settles lit blue left to right behind it (0.98s on a .022s beat), then their real mark and wordmark rise above the finished strip at 1.15s and a sub-line lands at 1.6s, so what you end on is pixel-faithful to their logo with the strip alive under it. Solid shapes, transform, border-colour and box-shadow only, no SVG stage, no linework. 2.05s body.lit, 2.6s removal, 2.7s CSS-only fail-safe, 3.0s JS fail-safe; reduced motion shows the finished logo and lifts at 0.4s. Hands off INTO the fold: the same strip hangs under the nav across the whole 390 fold and along the desktop hero panel, drops its traces on body.lit on the same stagger and keeps a slow idle glow on the pads; static faint copies close the CTA band (flipped, rising) and open the footer. Distinct from Power Up (a circuit trace drawn as a line and a bulb catching), Board Up (breakers on a DIN rail), Plug-In (a cable docking), Prove the Circuit (cores and probes), Switch Flick and Chevron Stack / Strata (a mark assembled from clipped slices of the PNG): this builds the mark's own trace band from CSS bars and then energises it. First used: eb-electrical-services.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-bulbburst" data-dur="2500">
       <span class="trade">Fire protection / sprinkler installers / any mechanical firm with a fire arm (Tri-Mech + Tri-Fire)</span>
       <h3>Bulb Burst</h3>
@@ -4321,6 +4327,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Decorators / paperhangers / wide vinyl and contract wallcovering installers</span>
       <h3>Hang The Drop</h3>
       <p>The paperhanger's job, done in front of you: four wide vinyl drops hung one after another and the seams tightened until they disappear. On the brand colour a bare wall panel sits dark and empty, then four DROPS unroll from the top on a 0.24s beat (0.12-1.39s), each a flat band in a slightly different tint with a faint vertical grain so they read as textured vinyl rather than paint. A bright seam line lights between each pair as the next drop lands (0.5s, 0.74s, 0.98s). Then a SMOOTHING BRUSH, a white blade on a dark handle, enters at the top of the last seam and sweeps DOWN it (1.12-1.74s), and every seam fades to nothing behind it (1.62-1.97s), because a paperhanger is judged on one thing only, whether you can find the join. The brand lands under the finished wall at 1.7s. Solid shapes, transform and opacity only (scaleY from the top for every drop, translateY for the brush), no linework and no SVG stage beyond the brush. 2.2s body.lit, 2.9s JS removal, 2.6s CSS-only fail-safe, 3.6s JS fail-safe; reduced motion shows the finished wall and the brand. Hands off INTO the fold: the 390 hero panel and the desktop hero's left half carry the same four drops as faint bands that hang on body.lit on the same stagger, with their seams left as hairlines, so the loader's wall and the first screenful are one continuous run of vinyl; the sectors band and the CTA band close on the same drops, static. Reuse it by resampling the drop tints from the client's own logo or a wallcovering in their photos and changing the sub-line. Distinct from Wall Up (bathroom panels sliding UP from the floor with trims drawn between them), Roller Sweep, Second Coat, Three Coats and Spray Pass (paint applied to a wall), Brush On (the logo painted in strokes), Dust Sheet Unveil (a sheet pulled off), Fan Deck and Swatch Fan (colour cards) and Panel &amp; Paint (Georgian panels filled): nothing else in the lab hangs DROPS from the top and makes the seams vanishing the point. First used: rb-decorator.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-hangceiling" data-dur="2400">
+      <span class="trade">Dry liners / ceiling fixers / MF and suspended ceilings / fit-out contractors</span>
+      <h3>Hang The Ceiling</h3>
+      <p>An MF ceiling hung in front of you, in solid shapes. On ink a galvanised soffit bar runs across (0.05s), three hangers drop from it on a 0.1s beat (0.28-0.76s), a lighter channel runs across their feet (0.62-1.02s), two FIRELINE PINK boards rise from below and seat under the channel (0.9s, 1.02s), six screw heads pop along the line on a 0.06s beat (1.3-1.6s) and the wordmark lands. Recolour the boards to the brand. Built for tgb-pro (09-07) and pulled on Patrick's review ('doesn't really make sense'); parked here lift-ready, never shipped.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
     <button class="card" data-loader="ld-cladup" data-dur="2400">
@@ -14920,6 +14932,89 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 </style>
 
+<style>
+/* ---- Energise (ld-energise) ---- */
+#ld-energise{background:#0b0b0d;flex-direction:column;gap:0}
+#ld-energise .en-in{width:min(560px,86vw);display:flex;flex-direction:column}
+#ld-energise .en-logo{width:min(400px,68vw);margin:0 auto 18px;opacity:0;transform:translateY(16px)}
+#ld-energise.play .en-logo{animation:enRise .65s cubic-bezier(.2,.8,.3,1) 1.15s forwards}
+#ld-energise .en-sub{margin-top:14px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#9dbbea;opacity:0}
+#ld-energise.play .en-sub{animation:enFade .5s ease 1.6s forwards}
+@keyframes enRise{to{opacity:1;transform:translateY(0)}}
+@keyframes enFade{to{opacity:1}}
+#ld-energise .cs{position:relative;height:66px;width:100%;overflow:hidden}
+#ld-energise .cs-bar{position:absolute;left:0;right:0;top:0;height:7px;background:#4974b8;transform-origin:left center;transform:scaleX(0)}
+#ld-energise .cs i{position:absolute;top:7px;left:var(--x);width:4px;height:var(--h);background:#4974b8;transform-origin:top center;display:block;border-radius:0 0 2px 2px;transform:scaleY(0)}
+#ld-energise .cs i b{position:absolute;left:50%;bottom:-7px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;border:3px solid #4974b8;background:#0b0b0d;display:block}
+#ld-energise .cs i.dot b{width:8px;height:8px;margin-left:-4px;bottom:-4px;background:#4974b8;border:0}
+#ld-energise .cs i.none b{display:none}
+#ld-energise.play .cs-bar{animation:enBar .42s cubic-bezier(.2,.8,.3,1) forwards}
+#ld-energise.play .cs i{animation:enDrop .4s cubic-bezier(.3,1.5,.5,1) forwards;animation-delay:calc(.28s + var(--n) * .02s)}
+#ld-energise.play .cs i b{animation:enPad .55s ease-out forwards;animation-delay:calc(.98s + var(--n) * .022s)}
+#ld-energise.play .cs i.dot b{animation-name:enDot}
+#ld-energise.play .cs i.none b{animation:none}
+@keyframes enBar{to{transform:scaleX(1)}}
+@keyframes enDrop{to{transform:scaleY(1)}}
+@keyframes enPad{0%{border-color:#4974b8;box-shadow:0 0 0 rgba(157,187,234,0)}40%{border-color:#fff;box-shadow:0 0 9px rgba(255,255,255,.8)}100%{border-color:#9dbbea;box-shadow:0 0 5px rgba(157,187,234,.45)}}
+@keyframes enDot{0%{background:#4974b8;box-shadow:0 0 0 rgba(157,187,234,0)}40%{background:#fff;box-shadow:0 0 8px rgba(255,255,255,.8)}100%{background:#9dbbea;box-shadow:0 0 5px rgba(157,187,234,.45)}}
+#ld-energise .cs-sweep{position:absolute;left:0;top:0;height:7px;width:32%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95),rgba(255,255,255,0));transform:translateX(-110%);opacity:0}
+#ld-energise.play .cs-sweep{animation:enSweep .8s ease-in-out 1s forwards}
+@keyframes enSweep{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(330%);opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  #ld-energise.play .en-logo,#ld-energise.play .en-sub{animation:none;opacity:1;transform:none}
+  #ld-energise.play .cs-bar,#ld-energise.play .cs i{animation:none;transform:none}
+  #ld-energise.play .cs i b{animation:none;border-color:#9dbbea}
+  #ld-energise .cs-sweep{display:none}
+}
+</style>
+
+<div class="loader" id="ld-energise" aria-hidden="true">
+  <div class="en-in">
+    <img class="en-logo" src="../eb-electrical-services/logo-top.png" alt="">
+    <div class="cs">
+      <div class="cs-bar"></div><div class="cs-sweep"></div>
+      <div class="cs-bar"></div><div class="cs-sweep"></div>
+      <i style="--x:1.2%;--h:22px;--n:0"><b></b></i>
+      <i style="--x:2.8%;--h:52px;--n:1"><b></b></i>
+      <i class="none" style="--x:4.8%;--h:16px;--n:2"><b></b></i>
+      <i style="--x:6.6%;--h:16px;--n:3"><b></b></i>
+      <i style="--x:8.3%;--h:16px;--n:4"><b></b></i>
+      <i class="dot" style="--x:13.9%;--h:46px;--n:5"><b></b></i>
+      <i style="--x:16.4%;--h:40px;--n:6"><b></b></i>
+      <i style="--x:18.1%;--h:22px;--n:7"><b></b></i>
+      <i style="--x:20.5%;--h:28px;--n:8"><b></b></i>
+      <i class="dot" style="--x:26.6%;--h:52px;--n:9"><b></b></i>
+      <i class="dot" style="--x:28.3%;--h:40px;--n:10"><b></b></i>
+      <i class="dot" style="--x:30.3%;--h:40px;--n:11"><b></b></i>
+      <i style="--x:32.4%;--h:40px;--n:12"><b></b></i>
+      <i class="dot" style="--x:34.7%;--h:34px;--n:13"><b></b></i>
+      <i style="--x:36.8%;--h:34px;--n:14"><b></b></i>
+      <i class="dot" style="--x:38.6%;--h:22px;--n:15"><b></b></i>
+      <i class="none" style="--x:44.4%;--h:34px;--n:16"><b></b></i>
+      <i class="dot" style="--x:46.7%;--h:28px;--n:17"><b></b></i>
+      <i style="--x:48.4%;--h:40px;--n:18"><b></b></i>
+      <i class="none" style="--x:50.8%;--h:22px;--n:19"><b></b></i>
+      <i style="--x:52.8%;--h:46px;--n:20"><b></b></i>
+      <i class="none" style="--x:54.9%;--h:52px;--n:21"><b></b></i>
+      <i style="--x:56.9%;--h:46px;--n:22"><b></b></i>
+      <i style="--x:63.5%;--h:52px;--n:23"><b></b></i>
+      <i class="dot" style="--x:65.3%;--h:46px;--n:24"><b></b></i>
+      <i style="--x:67.0%;--h:46px;--n:25"><b></b></i>
+      <i class="dot" style="--x:73.4%;--h:28px;--n:26"><b></b></i>
+      <i style="--x:75.9%;--h:28px;--n:27"><b></b></i>
+      <i class="dot" style="--x:77.9%;--h:22px;--n:28"><b></b></i>
+      <i class="dot" style="--x:80.0%;--h:22px;--n:29"><b></b></i>
+      <i style="--x:81.7%;--h:22px;--n:30"><b></b></i>
+      <i style="--x:84.3%;--h:34px;--n:31"><b></b></i>
+      <i style="--x:90.2%;--h:52px;--n:32"><b></b></i>
+      <i style="--x:92.3%;--h:46px;--n:33"><b></b></i>
+      <i class="none" style="--x:94.3%;--h:34px;--n:34"><b></b></i>
+      <i style="--x:96.0%;--h:22px;--n:35"><b></b></i>
+    </div>
+    <div class="en-sub">Electrical Contractors &middot; Harlow, Essex</div>
+  </div>
+</div>
+
 <div class="loader" id="ld-bulbburst" aria-hidden="true">
   <div class="bb-in">
     <div class="bb-stage">
@@ -15070,6 +15165,47 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   svg.appendChild(g); f.appendChild(svg); st.appendChild(f);
 })();
 </script>
+
+
+<div class="loader" id="ld-hangceiling" aria-hidden="true">
+  <div class="hc-stage">
+    <span class="hc-soffit"></span>
+    <span class="hc-hang" style="left:46px;animation-delay:.28s"></span><span class="hc-hang" style="left:148px;animation-delay:.38s"></span><span class="hc-hang" style="left:250px;animation-delay:.48s"></span>
+    <span class="hc-chan"></span>
+    <span class="hc-board" style="left:0;animation-delay:.9s"></span><span class="hc-board" style="left:152px;animation-delay:1.02s"></span>
+    <i class="hc-screw" style="left:22px;animation-delay:1.3s"></i><i class="hc-screw" style="left:72px;animation-delay:1.36s"></i><i class="hc-screw" style="left:122px;animation-delay:1.42s"></i><i class="hc-screw" style="left:176px;animation-delay:1.48s"></i><i class="hc-screw" style="left:226px;animation-delay:1.54s"></i><i class="hc-screw" style="left:276px;animation-delay:1.6s"></i>
+  </div>
+  <div class="hc-brand"><b>TGB <span>PRO</span></b><span class="hc-sub">Dry Lining &amp; Maintenance &middot; London</span></div>
+</div>
+
+<style>
+/* ---- Hang The Ceiling (ld-hangceiling) ---- */
+#ld-hangceiling{background:#15171b;flex-direction:column;gap:14px}
+#ld-hangceiling .hc-stage{position:relative;width:300px;height:130px}
+#ld-hangceiling .hc-soffit{position:absolute;left:0;right:0;top:0;height:8px;background:#9aa3ab;transform:scaleX(0);transform-origin:left}
+#ld-hangceiling .hc-hang{position:absolute;top:8px;width:5px;height:42px;background:#9aa3ab;transform:scaleY(0);transform-origin:top}
+#ld-hangceiling .hc-chan{position:absolute;left:0;right:0;top:48px;height:9px;background:#b9c0c6;transform:scaleX(0);transform-origin:left}
+#ld-hangceiling .hc-board{position:absolute;top:57px;height:64px;width:148px;background:#ebbcc7;opacity:0;transform:translateY(70px)}
+#ld-hangceiling .hc-screw{position:absolute;top:62px;width:8px;height:8px;border-radius:50%;background:#15171b;opacity:0;transform:scale(0)}
+#ld-hangceiling .hc-brand{text-align:center;opacity:0;transform:translateY(10px)}
+#ld-hangceiling .hc-brand b{display:block;font-weight:800;color:#fff;font-size:2.2rem;letter-spacing:-.02em;line-height:1}
+#ld-hangceiling .hc-brand b span{color:#ebbcc7}
+#ld-hangceiling .hc-sub{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#b7bcc2;font-weight:700;margin-top:8px}
+#ld-hangceiling.play .hc-soffit{animation:hcX .32s cubic-bezier(.3,0,.2,1) .05s forwards}
+#ld-hangceiling.play .hc-hang{animation:hcY .28s cubic-bezier(.3,0,.2,1) forwards}
+#ld-hangceiling.play .hc-chan{animation:hcX .4s cubic-bezier(.3,0,.2,1) .62s forwards}
+#ld-hangceiling.play .hc-board{animation:hcRise .5s cubic-bezier(.2,.9,.3,1) forwards}
+#ld-hangceiling.play .hc-screw{animation:hcPop .2s cubic-bezier(.2,.9,.3,1.4) forwards}
+#ld-hangceiling.play .hc-brand{animation:hcUp .45s ease 1.4s forwards}
+@keyframes hcX{to{transform:scaleX(1)}}
+@keyframes hcY{to{transform:scaleY(1)}}
+@keyframes hcRise{to{opacity:1;transform:translateY(0)}}
+@keyframes hcPop{to{opacity:1;transform:scale(1)}}
+@keyframes hcUp{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  #ld-hangceiling.play .hc-soffit,#ld-hangceiling.play .hc-chan,#ld-hangceiling.play .hc-hang,#ld-hangceiling.play .hc-board,#ld-hangceiling.play .hc-screw,#ld-hangceiling.play .hc-brand{animation:none!important;transform:none!important;opacity:1!important}
+}
+</style>
 
 </body>
 </html>
