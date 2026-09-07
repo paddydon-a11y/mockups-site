@@ -4281,6 +4281,18 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-stepline" data-dur="2300">
+      <span class="trade">Staircase manufacturers / joiners (logo-card grammar, client-safe)</span>
+      <h3>Step Line</h3>
+      <p>Their real colour logo on a white card scales in on the wordmark burgundy (0.1-0.8s), then a single rose stair-profile line, seven risers and goings, draws itself left to right under the card via stroke-dashoffset (0.35-1.7s), and a sub-line lands at 1.3s. Transform, opacity and stroke-dashoffset only. Built for manchester-stairs after Patrick cut a drawn dimension stage as the loader.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-railline" data-dur="2300">
+      <span class="trade">Stair parts / balustrade suppliers (logo-card grammar, client-safe)</span>
+      <h3>Rail Line</h3>
+      <p>Their real colour logo on a white card scales in on the brand wine (0.1-0.8s), then one rose stroke draws a balustrade outline under it, two newels, handrail, base rail and seven spindles as a single path via stroke-dashoffset (0.3-1.8s), sub-line at 1.4s. Sister of Step Line so a pair of related sites read as one family. Built for manchester-stair-supplies.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-energise" data-dur="2500">
       <span class="trade">Electricians / electrical contractors (any brand whose mark carries a circuit-trace motif)</span>
       <h3>Energise</h3>
@@ -14968,6 +14980,16 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 }
 </style>
 
+<div class="loader" id="ld-stepline" aria-hidden="true">
+  <img class="sl-brand" src="../manchester-stairs/logo.png" alt="">
+  <div class="sl-stage"><svg viewBox="0 0 300 96"><polyline class="sl-line" points="4,92 40,92 40,74 76,74 76,56 112,56 112,38 148,38 148,20 184,20 184,2 296,2"/></svg></div>
+  <div class="sl-sub">Made to order . Ashton-under-Lyne</div>
+</div>
+<div class="loader" id="ld-railline" aria-hidden="true">
+  <img class="rl-brand" src="../manchester-stair-supplies/logo.png" alt="">
+  <div class="rl-stage"><svg viewBox="0 0 320 90"><path class="rl-line" d="M4 88 L4 24 L316 24 L316 88 M4 84 L316 84 M44 30 L44 82 M84 30 L84 82 M124 30 L124 82 M164 30 L164 82 M204 30 L204 82 M244 30 L244 82 M284 30 L284 82 M4 24 L4 6 M316 24 L316 6"/></svg></div>
+  <div class="rl-sub">Every part of the stair</div>
+</div>
 <div class="loader" id="ld-energise" aria-hidden="true">
   <div class="en-in">
     <img class="en-logo" src="../eb-electrical-services/logo-top.png" alt="">
@@ -15205,6 +15227,31 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @media (prefers-reduced-motion:reduce){
   #ld-hangceiling.play .hc-soffit,#ld-hangceiling.play .hc-chan,#ld-hangceiling.play .hc-hang,#ld-hangceiling.play .hc-board,#ld-hangceiling.play .hc-screw,#ld-hangceiling.play .hc-brand{animation:none!important;transform:none!important;opacity:1!important}
 }
+
+/* ---- Step Line (ld-stepline) ---- */
+#ld-stepline{background:#5a0e15;flex-direction:column;gap:34px}
+#ld-stepline .sl-brand{width:min(300px,68vw);background:#fff;border-radius:10px;padding:22px 28px;opacity:0;transform:scale(.92)}
+#ld-stepline.play .sl-brand{animation:slIn .7s cubic-bezier(.2,.8,.2,1) .1s forwards}
+#ld-stepline .sl-stage{width:min(300px,68vw)}
+#ld-stepline .sl-stage svg{width:100%;height:auto;display:block;overflow:visible}
+#ld-stepline .sl-line{fill:none;stroke:#f0b9bb;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:640;stroke-dashoffset:640}
+#ld-stepline.play .sl-line{animation:slDraw 1.35s cubic-bezier(.4,0,.2,1) .35s forwards}
+#ld-stepline .sl-sub{color:#d9bfc1;font-family:'Inter',system-ui,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;opacity:0;margin-top:-16px}
+#ld-stepline.play .sl-sub{animation:slFade .4s ease 1.3s forwards}
+@keyframes slIn{to{opacity:1;transform:none}}
+@keyframes slDraw{to{stroke-dashoffset:0}}
+@keyframes slFade{to{opacity:1}}
+/* ---- Rail Line (ld-railline) ---- */
+#ld-railline{background:#93171f;flex-direction:column;gap:34px}
+#ld-railline .rl-brand{width:min(320px,70vw);background:#fff;border-radius:10px;padding:22px 28px;opacity:0;transform:scale(.92)}
+#ld-railline.play .rl-brand{animation:slIn .7s cubic-bezier(.2,.8,.2,1) .1s forwards}
+#ld-railline .rl-stage{width:min(320px,70vw)}
+#ld-railline .rl-stage svg{width:100%;height:auto;display:block;overflow:visible}
+#ld-railline .rl-line{fill:none;stroke:#f3c4c6;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400}
+#ld-railline.play .rl-line{animation:rlDraw 1.5s cubic-bezier(.4,0,.2,1) .3s forwards}
+#ld-railline .rl-sub{color:#e2bfc1;font-family:'Inter',system-ui,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;opacity:0;margin-top:-16px}
+#ld-railline.play .rl-sub{animation:slFade .4s ease 1.4s forwards}
+@keyframes rlDraw{to{stroke-dashoffset:0}}
 </style>
 
 </body>
