@@ -182,6 +182,12 @@ nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px sol
 .g-item:hover img{transform:scale(1.04)}
 .g-cap{font-size:.78rem;font-weight:600;color:var(--body);padding-top:8px;min-height:30px;letter-spacing:.02em}
 .g-cap b{color:var(--orange-deep);font-weight:700}
+.g-item.g-more{display:none}
+.g-item.g-more.shown{display:flex}
+.g-more-wrap{display:flex;justify-content:center;margin-top:34px}
+.g-more-wrap.done{display:none}
+#galMore .g-count{font-weight:500;color:var(--muted)}
+#galMore:hover .g-count{color:inherit}
 
 /* ---------- Reviews ---------- */
 .reviews{padding-top:96px;padding-bottom:96px}
@@ -465,7 +471,7 @@ footer{background:var(--ink);padding-top:56px;padding-bottom:36px}
       <span class="label">Recent work</span>
       <h2>Our projects, <span class="acc">start to finish</span></h2>
     </div>
-    <div class="g-grid">
+    <div class="g-grid" id="galGrid">
       <div class="g-item g-pin reveal"><div class="g-ph"><img src="facade.jpg" alt="The team outside a finished facade renovation" loading="lazy"></div><div class="g-cap"><b>Facade renovation</b> repainted and handed over</div></div>
       <div class="g-item reveal"><div class="g-ph"><img src="tile-detail.jpg" alt="Precision floor tiling detail" loading="lazy"></div><div class="g-cap"><b>Floor tiling</b> laid to the millimetre</div></div>
       <div class="g-item reveal"><div class="g-ph"><img src="shower-tiling.jpg" alt="Tiled shower enclosure" loading="lazy"></div><div class="g-cap"><b>Bathroom</b> tiled and fitted</div></div>
@@ -473,6 +479,20 @@ footer{background:var(--ink);padding-top:56px;padding-bottom:36px}
       <div class="g-item reveal"><div class="g-ph"><img src="helmet.jpg" alt="Moroseanu branded site helmet on timber" loading="lazy"></div><div class="g-cap"><b>On site</b> every day, our own team</div></div>
       <div class="g-item g-wide reveal"><div class="g-ph"><img src="exterior-paint.jpg" alt="Team painting a rendered house exterior" loading="lazy"></div><div class="g-cap"><b>Exterior repaint</b> rolled coat by coat</div></div>
       <div class="g-item g-wide reveal"><div class="g-ph"><img src="kitchen-after.jpg" alt="Bright modern kitchen after refurbishment" loading="lazy"></div><div class="g-cap"><b>Kitchen refurbishment</b> bright and modern</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="extension-glazing.jpg" alt="Oak lintel set above new aluminium doors in a house extension" loading="lazy"></div><div class="g-cap"><b>Extension</b> glazing and oak lintel</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="garden-room-vaulted.jpg" alt="Vaulted garden room interior with full width sliding doors" loading="lazy"></div><div class="g-cap"><b>Garden room</b> vaulted and glazed</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="oak-frame-interior.jpg" alt="Oak frame interior with painted walls and exposed beams" loading="lazy"></div><div class="g-cap"><b>Oak frame</b> plastered and painted</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="oak-beam-opening.jpg" alt="Exposed oak beam framing an opening out to the garden" loading="lazy"></div><div class="g-cap"><b>Oak beam</b> over the garden opening</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="door-reveal.jpg" alt="Painted door reveal finished against an oak jamb" loading="lazy"></div><div class="g-cap"><b>Door reveal</b> finished in oak</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="vaulted-ceiling.jpg" alt="Vaulted ceiling skimmed and painted between oak beams" loading="lazy"></div><div class="g-cap"><b>Vaulted ceiling</b> skimmed flat</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="plastering-finished.jpg" alt="Freshly plastered room with the window sheeted for protection" loading="lazy"></div><div class="g-cap"><b>Plastering</b> finished and sheeted</div></div>
+      <div class="g-item g-more reveal"><div class="g-ph"><img src="ceiling-skimmed.jpg" alt="Boarded and skimmed ceiling above a new sliding door" loading="lazy"></div><div class="g-cap"><b>Ceilings</b> boarded and skimmed</div></div>
+    </div>
+    <div class="g-more-wrap reveal" id="galMoreWrap">
+      <button type="button" class="btn btn-ghost" id="galMore" aria-expanded="false" aria-controls="galGrid">
+        Load more projects <span class="g-count">(8)</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -655,6 +675,20 @@ var io = new IntersectionObserver(function(entries){
   entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, {threshold:.12});
 document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Gallery load more
+(function(){
+  var btn = document.getElementById('galMore'), wrap = document.getElementById('galMoreWrap');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.g-item.g-more').forEach(function(el, i){
+      el.classList.add('shown');
+      setTimeout(function(){ el.classList.add('in'); }, 40 + i * 60);
+    });
+    btn.setAttribute('aria-expanded', 'true');
+    wrap.classList.add('done');
+  });
+})();
 
 // Phone validation message
 var fp = document.getElementById('fPhone');
