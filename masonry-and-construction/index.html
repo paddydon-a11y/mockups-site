@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masonry and Construction Ltd | Stone Masons &amp; General Builders in South Wales</title>
+<meta name="description" content="Masonry and Construction Ltd: stone masons and general builders in South Wales. Stone walls, brick walls, driveways and patios, extensions, new builds and barn conversions. Free quotes.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Masonry and Construction Ltd, Your New Website">
+<meta property="og:description" content="Stone masons and general builders in South Wales. Preview of your new site.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/masonry-and-construction/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/masonry-and-construction/">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#eef1f3;
+  --stone-deep:#e0e5e9;
+  --pennant:#33414d;
+  --pennant-deep:#26313b;
+  --pennant-soft:#dfe6ec;
+  --on-pennant:#f3f6f8;
+  --on-pennant-muted:#aab8c3;
+  --cope-a:#8b98a4;
+  --cope-b:#a7b3bd;
+  --cope-c:#6d7a86;
+  --brick:#b4432b;
+  --brick-deep:#93331f;
+  --brick-soft:#f6e6e1;
+  --brick-light:#ee9b86;
+  --ink:#2b2d2e;
+  --head:#2b2d2e;
+  --body:#4a4f53;
+  --muted:#7c8388;
+  --line:#dde3e7;
+  --wa:#25d366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--body);line-height:1.65;font-size:1rem;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+em,i{font-style:normal}
+h1,h2,h3,.disp{font-family:'Roboto Slab','Inter',serif;color:var(--head);line-height:1.05;letter-spacing:-.015em;font-weight:800}
+h2{font-size:clamp(1.9rem,3.8vw,2.9rem)}
+h3{font-size:1.3rem;font-weight:700;letter-spacing:-.005em}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.label{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--brick)}
+.label::before{content:"";width:22px;height:10px;background:var(--brick);border-radius:1px}
+.label.on-pennant{color:var(--brick-light)}
+.acc{color:var(--brick)}
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+section{padding-top:88px;padding-bottom:88px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  #loader{display:none}
+  .cope i{transform:rotate(var(--r)) !important;opacity:1 !important;transition:none !important}
+  .hero-copy > *{animation:none !important;opacity:1 !important}
+}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;font-weight:700;font-size:1rem;border-radius:4px;transition:transform .2s,background .2s,box-shadow .2s;white-space:nowrap;border:2px solid transparent;line-height:1}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-brick{background:var(--brick);color:#fff;box-shadow:0 8px 24px rgba(180,67,43,.28)}
+.btn-brick:hover{background:var(--brick-deep)}
+.btn-ghost-light{border-color:rgba(255,255,255,.45);color:#fff}
+.btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-pennant{background:var(--pennant);color:#fff}
+.btn-pennant:hover{background:var(--pennant-deep)}
+.btn-ghost{border-color:var(--pennant);color:var(--pennant)}
+.btn-ghost:hover{background:var(--pennant);color:#fff}
+
+/* cope row: the wall top, cock-and-hen coping */
+.cope{display:flex;align-items:flex-end;gap:2px;height:48px;overflow:hidden;padding:0 2px;position:relative}
+.cope::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--cope-c);opacity:.55}
+.cope i{display:block;flex:none;border-radius:3px 3px 1px 1px;--r:0deg;transform:translateY(-120%) rotate(var(--r));opacity:0;transition:transform .5s cubic-bezier(.3,1.4,.5,1),opacity .3s}
+.cope i.a{background:var(--cope-a)}.cope i.b{background:var(--cope-b)}.cope i.c{background:var(--cope-c)}
+body.lit .cope i,.cope.now i{transform:rotate(var(--r));opacity:1}
+.cope.thin{height:22px}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:2000;background:var(--pennant);display:flex;flex-direction:column;justify-content:flex-end;transition:opacity .5s ease,visibility .5s;overflow:hidden}
+#loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+.ld-brand{position:absolute;left:0;right:0;top:0;bottom:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px}
+.ld-brand img{width:min(360px,68vw);opacity:0;transform:translateY(10px);animation:ldBrand .6s .9s ease forwards}
+.ld-brand span{font-size:.74rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--on-pennant-muted);opacity:0;animation:ldBrand .5s 1.25s ease forwards}
+@keyframes ldBrand{to{opacity:1;transform:none}}
+.ld-wall{display:flex;flex-direction:column;justify-content:flex-end;background:var(--pennant-deep);position:relative;padding-bottom:4px}
+.ld-course{display:flex;gap:4px;padding:0 3px;margin-top:4px}
+.ld-course i{display:block;flex:none;height:30px;border-radius:2px;opacity:0;transform:translateX(-14px);animation:ldStone .35s ease forwards}
+.ld-course i.a{background:#62717e}.ld-course i.b{background:#74838f}.ld-course i.c{background:#556472}
+@keyframes ldStone{to{opacity:1;transform:none}}
+.ld-wall .cope{position:absolute;left:0;right:0;top:-46px;height:46px}
+.ld-wall .cope::after{display:none}
+
+/* nav */
+nav{position:sticky;top:0;z-index:900;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.nav-logo img.mk{height:40px;width:auto}
+.nav-logo .wm{font-family:'Roboto Slab',serif;font-weight:800;font-size:1.12rem;color:var(--ink);letter-spacing:-.01em;line-height:1}.nav-logo .wm em{font-weight:700;color:var(--brick)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--body);transition:color .2s}
+.nav-links a:hover{color:var(--brick)}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--pennant);color:#fff !important;padding:11px 18px;border-radius:4px;font-weight:700}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff}
+.nav-links a.nav-cta:hover{background:var(--brick)}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.burger span{width:24px;height:2px;background:var(--ink);display:block;transition:transform .25s,opacity .25s}
+.mmenu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 24px 24px;z-index:890;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.mmenu.open{opacity:1;pointer-events:auto;transform:none}
+.mmenu a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-weight:600;color:var(--ink)}
+.mmenu a.mcall{margin-top:14px;border:0;background:var(--brick);color:#fff;text-align:center;border-radius:4px;padding:16px}
+
+/* hero */
+.hero{display:flex;flex-direction:column;background:var(--pennant);color:var(--on-pennant);position:relative}
+.hero-inner{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:56px;min-height:clamp(380px,calc(100vh - 72px - 320px),520px)}
+.hero-copy > *{opacity:0;animation:fadeUp .7s ease forwards}
+.hero-copy .label{animation-delay:.05s}
+.hero-copy h1{animation-delay:.15s}
+.hero-copy p{animation-delay:.25s}
+.hero-copy .cta{animation-delay:.35s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero h1{color:#fff;font-size:clamp(2.25rem,4.6vw,3.9rem);margin:18px 0 20px;font-weight:900;letter-spacing:-.02em}
+.hero h1 .acc{color:var(--brick-light)}
+.hero p{font-size:1.1rem;line-height:1.6;max-width:560px;color:var(--on-pennant-muted)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-mark{display:flex;justify-content:center;align-items:center}
+.hero-mark img{width:min(100%,440px);filter:drop-shadow(0 18px 30px rgba(0,0,0,.28));opacity:0;animation:fadeUp .8s .3s ease forwards}
+.hero-band{position:relative;background:var(--bg)}
+.hero-band img{width:100%;height:clamp(260px,34vw,440px);object-fit:cover;object-position:center 40%}
+.hero-badge{position:absolute;left:max(24px,calc((100% - 1180px)/2 + 24px));bottom:28px;background:#fff;border-left:5px solid var(--brick);padding:14px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 12px 30px rgba(0,0,0,.18);border-radius:0 4px 4px 0}
+.hero-badge img{width:54px;height:auto}
+.hero-badge b{display:block;color:var(--ink);font-size:.98rem}
+.hero-badge span{font-size:.85rem;color:var(--muted)}
+.hero-badge-m{display:none}
+
+/* trust */
+.trust{background:var(--bg);border-bottom:1px solid var(--line)}
+.trust-in{display:grid;grid-template-columns:repeat(5,1fr);padding-top:26px;padding-bottom:26px}
+.trust-item{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--ink);font-size:.95rem;padding:6px 18px;border-left:1px solid var(--line)}
+.trust-item:first-child{border-left:0;padding-left:0}
+.trust-item svg{width:22px;height:22px;flex:none;stroke:var(--brick)}
+
+/* services: numbered rows with a photo */
+.services{background:var(--stone);padding-top:80px}
+.srow{display:grid;grid-template-columns:90px 1fr 300px;gap:28px;align-items:center;padding:26px 0;border-top:1px solid var(--stone-deep);position:relative}
+.srow:last-child{border-bottom:1px solid var(--stone-deep)}
+.srow::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--brick);transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.srow:hover::before{transform:scaleX(1)}
+.srow .num{font-family:'Roboto Slab',serif;font-weight:900;font-size:2.6rem;color:var(--pennant);line-height:1;letter-spacing:-.03em}
+.srow h3{margin-bottom:6px;font-size:1.45rem}
+.srow p{max-width:560px}
+.srow .go{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--brick);font-size:.92rem;margin-top:8px}
+.srow .go svg{width:16px;height:16px;transition:transform .2s}
+.srow:hover .go svg{transform:translateX(4px)}
+.srow .pic{width:300px;height:190px;border-radius:6px;overflow:hidden;border:1px solid var(--stone-deep);background:#fff}
+.srow .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.srow:hover .pic img{transform:scale(1.05)}
+
+/* about */
+.about{background:var(--bg)}
+.about-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about h2{margin:14px 0 18px}
+.about p{font-size:1.05rem;max-width:540px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.fact{background:var(--stone);padding:16px 14px;border-top:3px solid var(--pennant);border-radius:0 0 4px 4px}
+.fact b{display:block;font-family:'Roboto Slab',serif;font-size:1.05rem;color:var(--ink);margin-bottom:2px}
+.fact span{font-size:.86rem;color:var(--muted)}
+.about-art{background:var(--pennant);border-radius:8px;padding:44px 36px 0;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px;position:relative;overflow:hidden}
+.about-art img{width:min(100%,400px);margin:0 auto 34px;filter:drop-shadow(0 14px 24px rgba(0,0,0,.3))}
+.about-art .cope{height:40px}
+
+/* gallery plate */
+.work{background:var(--stone)}
+.plate{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+.jt{position:relative;cursor:zoom-in;background:#fff;border-radius:6px;overflow:hidden;border:1px solid var(--stone-deep);display:flex;flex-direction:column}
+.jt img{width:100%;flex:1;min-height:0;object-fit:cover;transition:transform .6s}
+.jt:hover img{transform:scale(1.04)}
+.jt figcaption{padding:10px 12px;font-size:.84rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:8px;background:#fff}
+.jt figcaption::before{content:"";width:8px;height:8px;background:var(--brick);flex:none}
+.jt.big{grid-column:span 2;grid-row:span 2}
+.jt.tall{grid-row:span 2}
+
+/* reviews */
+.reviews{background:var(--bg)}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rcard{background:var(--stone);padding:26px;border-radius:6px;border-left:4px solid var(--pennant);transition:transform .25s,box-shadow .25s}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(43,45,46,.1)}
+.stars{color:#f5b301;letter-spacing:2px;font-size:.95rem;margin-bottom:12px}
+.rcard p{font-size:.98rem;color:var(--ink)}
+.rwho{display:flex;align-items:center;gap:12px;margin-top:18px}
+.rwho .av{width:40px;height:40px;border-radius:50%;background:var(--pennant);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Roboto Slab',serif}
+.rwho b{display:block;font-size:.92rem;color:var(--ink)}
+.rwho span{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.rwho span svg{width:14px;height:14px}
+
+/* areas */
+.areas{background:var(--stone)}
+.areas-in{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#fff;border:1px solid var(--stone-deep);padding:10px 16px;border-radius:4px;font-weight:600;font-size:.92rem;color:var(--ink)}
+.chip.home{background:var(--pennant);color:#fff;border-color:var(--pennant)}
+
+/* cta band */
+.band{background:var(--pennant);color:#fff;padding:0}
+.band-in{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:64px;padding-bottom:64px}
+.band h2{color:#fff;font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.band p{color:var(--on-pennant-muted);margin-top:8px;max-width:560px}
+.band .cta{display:flex;gap:14px;flex-wrap:wrap}
+
+/* contact */
+.contact{background:var(--bg)}
+.contact-in{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.ccard{display:flex;gap:16px;background:var(--stone);padding:20px;border-radius:6px;align-items:flex-start}
+.ccard svg{width:24px;height:24px;flex:none;stroke:var(--brick)}
+.ccard b{display:block;color:var(--ink);margin-bottom:2px}
+.ccard span{font-size:.92rem}
+form{background:var(--stone);padding:30px;border-radius:8px;border-top:4px solid var(--pennant)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-weight:600;font-size:.9rem;color:var(--ink)}
+.field label small{font-weight:500;color:var(--muted)}
+.field input,.field textarea{width:100%;padding:14px;border:1px solid var(--stone-deep);border-radius:4px;background:#fff;font:inherit;color:var(--ink)}
+.field input:focus,.field textarea:focus{outline:2px solid var(--pennant);border-color:var(--pennant)}
+.field textarea{min-height:120px;resize:vertical}
+form .btn{width:100%}
+.fine{font-size:.82rem;color:var(--muted);margin-top:12px;text-align:center}
+
+/* footer */
+footer{background:var(--pennant-deep);color:var(--on-pennant-muted);padding-top:0}
+.foot-in{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding:56px 0 40px}
+.foot-brand img{width:200px;margin-bottom:16px}
+.foot-brand p{font-size:.92rem;max-width:340px}
+.foot-col b{display:block;color:#fff;margin-bottom:12px;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase}
+.foot-col a,.foot-col span{display:block;font-size:.92rem;padding:4px 0;transition:color .2s}
+.foot-col a:hover{color:#fff}
+.foot-base{border-top:1px solid rgba(255,255,255,.1);padding:20px 0 28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem}
+.foot-base a{color:#fff;font-weight:600}
+
+/* fabs */
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:800;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .3s,transform .3s}
+.fabs.show{opacity:1;pointer-events:auto;transform:none}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--brick);animation:pulseB 2s infinite}
+.fab-call svg{stroke:#fff}
+.fab-wa{background:var(--wa);animation:pulseG 2s infinite}
+.fab:hover{animation:none}
+@keyframes pulseB{0%{box-shadow:0 0 0 0 rgba(180,67,43,.5)}70%{box-shadow:0 0 0 14px rgba(180,67,43,0)}100%{box-shadow:0 0 0 0 rgba(180,67,43,0)}}
+@keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.lightbox{position:fixed;inset:0;background:rgba(38,49,59,.94);z-index:950;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:24px}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain}
+
+@media (max-width:1024px){
+  .plate{grid-template-columns:repeat(3,1fr);grid-auto-rows:180px}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .about-in,.areas-in,.contact-in{grid-template-columns:1fr}
+  .srow{grid-template-columns:70px 1fr 240px}
+  .srow .pic{width:240px;height:160px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:880px){
+  .nav-in{height:64px}
+  .nav-logo img.mk{height:34px}
+  .nav-logo .wm{font-size:1rem}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .mmenu{display:block;top:64px}
+  .hero-inner{grid-template-columns:1fr;padding-top:36px;padding-bottom:30px;min-height:0;gap:0}
+  .hero-mark{display:none}
+  .hero h1{font-size:clamp(2.05rem,9.2vw,2.6rem);margin:14px 0 14px}
+  .hero p{font-size:1rem}
+  .hero .cta{margin-top:22px;flex-direction:column}
+  .hero .cta .btn{width:100%}
+  .cope{height:44px}
+  .hero-band img{height:auto;aspect-ratio:16/11}
+  .hero-badge{display:none}
+  .hero-badge-m{display:flex;align-items:center;gap:14px;background:#fff;border-bottom:1px solid var(--line);padding:14px 24px}
+  .hero-badge-m img{width:48px}
+  .hero-badge-m b{display:block;color:var(--ink);font-size:.95rem}
+  .hero-badge-m span{font-size:.84rem;color:var(--muted)}
+  .trust-in{grid-template-columns:1fr;padding-top:8px;padding-bottom:8px}
+  .trust-item{border-left:0;border-top:1px solid var(--line);padding:14px 0}
+  .trust-item:first-child{border-top:0}
+  section{padding-top:64px;padding-bottom:64px}
+  .services{padding-top:56px}
+  .srow{grid-template-columns:54px 1fr;gap:16px;padding:22px 0}
+  .srow .num{font-size:2rem}
+  .srow .pic{grid-column:1/-1;width:100%;height:auto;aspect-ratio:16/9}
+  .srow h3{font-size:1.25rem}
+  .plate{grid-template-columns:1fr 1fr;grid-auto-rows:170px;gap:12px}
+  .jt.big{grid-column:span 2;grid-row:span 2}
+  .jt.tall{grid-row:span 1}
+  .jt figcaption{font-size:.78rem;padding:8px 10px}
+  .rgrid{grid-template-columns:1fr}
+  .band-in{flex-direction:column;align-items:flex-start;padding-top:52px;padding-bottom:52px}
+  .band .cta{width:100%;flex-direction:column}
+  .band .cta .btn{width:100%}
+  .frow{grid-template-columns:1fr}
+  form{padding:22px}
+  .facts{grid-template-columns:1fr}
+  .about-art{min-height:0;padding:32px 24px 0}
+  .foot-in{grid-template-columns:1fr;gap:26px;padding:44px 0 30px}
+  .fab{width:52px;height:52px}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="ld-brand">
+    <img src="logo-light.png" alt="Masonry and Construction Ltd">
+  </div>
+  <div class="ld-wall" id="ldWall">
+    <div class="cope" id="ldCope"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="nav-logo"><img class="mk" src="mark.png" alt=""><span class="wm">Masonry <em>and</em> Construction</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-cta" id="navCall"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span id="navCallNum">Call us</span></a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mmenu" id="mMenu">
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#work">Recent Work</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#areas">Areas</a>
+  <a href="#contact">Contact</a>
+  <a href="#" class="mcall" id="mCall">Call us</a>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="label on-pennant">Stone mason and builder</span>
+      <h1>Stone Masons and <span class="acc">General Builders</span> in South Wales</h1>
+      <p>Stone walls, brick walls, driveways and patios, extensions, new builds and barn conversions. One team from the footing to the coping, working across Gwent, Cardiff and the Valleys.</p>
+      <div class="cta">
+        <a href="#" class="btn btn-brick heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call James <span class="heroCallNum"></span></a>
+        <a href="#contact" class="btn btn-ghost-light">Get a Free Quote</a>
+      </div>
+    </div>
+    <div class="hero-mark"><img src="logo-light.png" alt="Masonry and Construction Ltd, stone mason and general builder, South Wales"></div>
+  </div>
+  <div class="cope" id="heroCope"></div>
+  <div class="hero-band">
+    <img src="hero.jpg" alt="Stone house frontage rebuilt and pointed by Masonry and Construction Ltd in South Wales" fetchpriority="high">
+    <div class="hero-badge"><img src="mark.png" alt=""><div><b>Free written quotes</b><span>Stone, brick, paving and building</span></div></div>
+  </div>
+  <div class="hero-badge-m"><img src="mark.png" alt=""><div><b>Free written quotes</b><span>Stone, brick, paving and building</span></div></div>
+</header>
+
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6"/><rect x="3" y="14" width="18" height="6"/><path d="M12 4v6M7 14v6M17 14v6"/></svg>Stone and brick</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>Drives and patios</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V10l6-6 6 6v10"/><path d="M10 20v-5h4v5"/></svg>Extensions and barns</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>Free written quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Across South Wales</div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">What we do</span>
+      <h2>From a garden wall to a <span class="acc">whole house</span></h2>
+    </div>
+    <div class="srows">
+      <div class="srow reveal">
+        <div class="num">01</div>
+        <div><h3>Stone Walls</h3><p>Random rubble, coursed pennant and dressed stone. Garden, boundary and retaining walls, finished with cock and hen coping.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="w-04.jpg" alt="Long pennant stone boundary wall, pointed and coped" loading="lazy"></div>
+      </div>
+      <div class="srow reveal">
+        <div class="num">02</div>
+        <div><h3>Brick Walls and Brickwork</h3><p>Garden walls, quoins, arches and piers. Facing brick laid true, with reclaimed brick where the job wants it.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="w-09.jpg" alt="Stone porch with red brick quoins and arch around an oak door" loading="lazy"></div>
+      </div>
+      <div class="srow reveal">
+        <div class="num">03</div>
+        <div><h3>Driveways and Patios</h3><p>Block paving, setts and flags on a solid sub-base, edged and jointed so it stays flat.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="w-08.jpg" alt="Charcoal block paving driveway with a contrast border" loading="lazy"></div>
+      </div>
+      <div class="srow reveal">
+        <div class="num">04</div>
+        <div><h3>Extensions</h3><p>Single and double storey extensions from footings to roof, in stone, brick or render to match the house.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="s-extension.jpg" alt="Single storey brick extension with bifold doors" loading="lazy"></div>
+      </div>
+      <div class="srow reveal">
+        <div class="num">05</div>
+        <div><h3>New Builds</h3><p>Full new build houses and outbuildings, managed start to finish with the stonework done in house.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="s-newbuild.jpg" alt="New build detached house faced in stone" loading="lazy"></div>
+      </div>
+      <div class="srow reveal">
+        <div class="num">06</div>
+        <div><h3>Barn Conversions</h3><p>Stone barns opened up, underpinned, re-roofed and made into homes without losing the character.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="s-barn.jpg" alt="Converted Welsh stone barn under a slate roof" loading="lazy"></div>
+      </div>
+      <div class="srow reveal">
+        <div class="num">07</div>
+        <div><h3>Repointing and Wall Repairs</h3><p>Bulging and collapsed walls rebuilt in the original stone, old cement pointing raked out and redone.</p><a href="#contact" class="go">Get a quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="pic"><img src="w-05.jpg" alt="Garden wall propped and being rebuilt in the original stone" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-in">
+    <div class="reveal">
+      <span class="label">About</span>
+      <h2>Stone mason first, builder <span class="acc">as well</span></h2>
+      <p>Masonry and Construction Ltd is run by James, a stone mason and general builder working across South Wales. The work runs from a garden wall or a patio through to extensions, new builds and barn conversions, with the stone and brick done by the same hands that dig the footings. Domestic customers, one point of contact, and walls built to last.</p>
+      <div class="facts">
+        <div class="fact"><b>Stone and brick</b><span>Laid and pointed in house</span></div>
+        <div class="fact"><b>Domestic work</b><span>Homes, gardens, barns</span></div>
+        <div class="fact"><b>South Wales</b><span>Gwent, Cardiff, the Valleys</span></div>
+      </div>
+    </div>
+    <div class="about-art reveal">
+      <img src="logo-light.png" alt="Masonry and Construction Ltd">
+      <div class="cope cope-later"></div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Recent work</span>
+      <h2>Walls, porches, drives and <span class="acc">frontages</span></h2>
+    </div>
+    <div class="plate reveal">
+      <figure class="jt big"><img src="w-01.jpg" alt="Random rubble stone wall with cock and hen coping" loading="lazy"><figcaption>Rubble wall, cock and hen coping</figcaption></figure>
+      <figure class="jt"><img src="w-03.jpg" alt="Circular stone well head with dressed capping" loading="lazy"><figcaption>Stone well head, dressed capping</figcaption></figure>
+      <figure class="jt tall"><img src="w-02.jpg" alt="Stone porch with brick quoins and lantern" loading="lazy"><figcaption>Porch, stone and brick quoins</figcaption></figure>
+      <figure class="jt"><img src="w-04.jpg" alt="Pennant stone boundary wall pointed up" loading="lazy"><figcaption>Pennant wall, pointed up</figcaption></figure>
+      <figure class="jt"><img src="w-06.jpg" alt="Stone house frontage under scaffold being repointed" loading="lazy"><figcaption>Frontage under scaffold</figcaption></figure>
+      <figure class="jt"><img src="w-07.jpg" alt="Finished stone house frontage in evening sun" loading="lazy"><figcaption>Frontage finished</figcaption></figure>
+      <figure class="jt"><img src="w-05.jpg" alt="Collapsed garden wall rebuilt in the original stone" loading="lazy"><figcaption>Wall rebuilt in original stone</figcaption></figure>
+      <figure class="jt"><img src="w-08.jpg" alt="Charcoal block paving driveway" loading="lazy"><figcaption>Block paving drive</figcaption></figure>
+      <figure class="jt"><img src="w-09.jpg" alt="Brick arch and oak door in a stone porch" loading="lazy"><figcaption>Brick arch, oak door</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Reviews</span>
+      <h2>What customers <span class="acc">say</span></h2>
+    </div>
+    <div class="rgrid">
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"James rebuilt our front garden wall in Pontypool after half of it came down in the winter. He reused all the original stone and you cannot tell where the old wall ends and the new starts. Coping is spot on."</p>
+        <div class="rwho"><div class="av">R</div><div><b>Rhian E.</b><span><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review, Pontypool</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Masonry and Construction did our block paved drive and a new stone wall along the road side in Cwmbran. Turned up when they said, tidy site every evening, and the drive has not moved an inch."</p>
+        <div class="rwho"><div class="av">G</div><div><b>Gareth W.</b><span><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review, Cwmbran</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Had the whole front of our stone cottage near Abergavenny raked out and repointed. James explained the lime mix and why the old cement was doing damage. Looks like a different house now."</p>
+        <div class="rwho"><div class="av">C</div><div><b>Ceri M.</b><span><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review, Abergavenny</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Single storey extension on our house in Caerphilly, stone faced to match the original. Price was what was quoted and the building inspector had nothing to say, which tells you everything."</p>
+        <div class="rwho"><div class="av">D</div><div><b>Delyth H.</b><span><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review, Caerphilly</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Built a stone porch on the front of our place in Usk with brick quoins round the door. It looks like it has always been there. Neighbours have already asked for his number."</p>
+        <div class="rwho"><div class="av">O</div><div><b>Owen P.</b><span><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review, Usk</span></div></div>
+      </div>
+      <div class="rcard reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Patio and raised stone beds in the back garden in Newport. Levels were awkward with the slope but it all drains away from the house and the stonework is lovely. Would use again."</p>
+        <div class="rwho"><div class="av">S</div><div><b>Sian L.</b><span><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Google Review, Newport</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap areas-in">
+    <div class="reveal">
+      <span class="label">Areas</span>
+      <h2 style="margin-top:14px">Working across <span class="acc">South Wales</span></h2>
+      <p style="margin-top:14px;max-width:460px">Based in Gwent and covering the Valleys, Newport, Cardiff and the border towns. Further afield for the right job, just ask.</p>
+    </div>
+    <div class="chips reveal">
+      <span class="chip home">Pontypool</span><span class="chip">Cwmbran</span><span class="chip">Newport</span><span class="chip">Abergavenny</span><span class="chip">Caerphilly</span><span class="chip">Cardiff</span><span class="chip">Ebbw Vale</span><span class="chip">Blackwood</span><span class="chip">Usk</span><span class="chip">Monmouth</span><span class="chip">Chepstow</span><span class="chip">Merthyr Tydfil</span><span class="chip">Bridgend</span>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="cope thin cope-later"></div>
+  <div class="wrap band-in">
+    <div>
+      <h2>Got a wall, a drive or a bigger job in mind?</h2>
+      <p>Send a couple of photos or a rough sketch and James will come out, measure up and put a written quote together.</p>
+    </div>
+    <div class="cta">
+      <a href="#" class="btn btn-brick heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call James</a>
+      <a href="#contact" class="btn btn-ghost-light">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-in">
+    <div class="reveal">
+      <span class="label">Contact</span>
+      <h2 style="margin-top:14px">Get a free <span class="acc">quote</span></h2>
+      <p style="margin-top:14px;max-width:460px">Tell us what you are after and where you are. Photos help. We reply to every enquiry.</p>
+      <div class="cinfo">
+        <div class="ccard"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div><b>Call or WhatsApp James</b><span><a href="#" class="heroCall"><span class="heroCallNum">Call us</span></a></span></div></div>
+        <div class="ccard"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Based</b><span>Gwent, South Wales. Working across the Valleys, Newport and Cardiff.</span></div></div>
+        <div class="ccard"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Quotes</b><span>Free, written and itemised. No pressure, no obligation.</span></div></div>
+      </div>
+    </div>
+    <div id="contactFormWrap" class="reveal">
+      <form action="/api/enquiry" method="POST" id="enqForm">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="Masonry and Construction Ltd">
+        <input type="hidden" name="source" value="mockup-masonry-and-construction">
+        <div class="frow">
+          <div class="field"><label for="fName">Name</label><input id="fName" name="name" type="text" required autocomplete="name"></div>
+          <div class="field"><label for="fPhone">Phone</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="fEmail">Email <small>(optional)</small></label><input id="fEmail" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="fMsg">Tell us about the job <small>(optional)</small></label><textarea id="fMsg" name="message" placeholder="Wall, drive, patio, extension or barn, where it is and roughly when"></textarea></div>
+        <button type="submit" class="btn btn-brick">Send Enquiry</button>
+        <p class="fine">We reply to every enquiry. No obligation.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="cope thin cope-later" style="background:var(--pennant)"></div>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-brand">
+        <img src="logo-light.png" alt="Masonry and Construction Ltd">
+        <p>Stone masons and general builders. Walls, driveways, patios, extensions, new builds and barn conversions across South Wales.</p>
+      </div>
+      <div class="foot-col">
+        <b>Services</b>
+        <a href="#services">Stone walls</a>
+        <a href="#services">Brick walls</a>
+        <a href="#services">Driveways and patios</a>
+        <a href="#services">Extensions and new builds</a>
+        <a href="#services">Barn conversions</a>
+      </div>
+      <div class="foot-col">
+        <b>Areas</b>
+        <a href="#areas">Pontypool</a>
+        <a href="#areas">Cwmbran</a>
+        <a href="#areas">Newport</a>
+        <a href="#areas">Abergavenny</a>
+        <a href="#areas">Cardiff</a>
+      </div>
+      <div class="foot-col">
+        <b>Contact</b>
+        <a href="#" class="heroCall"><span class="heroCallNum">Call us</span></a>
+        <a href="#contact">Get a free quote</a>
+        <span>South Wales</span>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; <span class="js-yr">2026</span> Masonry and Construction Ltd. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk/builders-web-design" target="_blank" rel="noopener">Construction Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-call heroCall" aria-label="Call us">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="#" class="fab fab-wa" id="waFab" aria-label="WhatsApp us" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt=""></div>
+
+<script>
+function b64u(s){try{return decodeURIComponent(escape(atob(s)))}catch(e){return atob(s)}}
+var ts = document.getElementById('formTimestamp'); if (ts) ts.value = Date.now();
+
+var P  = b64u('MDc4MDA1NDYxMDU=');
+var Pf = b64u('MDc4MDAgNTQ2IDEwNQ==');
+document.querySelectorAll('.heroCall').forEach(function(a){ a.href = 'tel:' + P; });
+document.querySelectorAll('.heroCallNum').forEach(function(s){ s.textContent = Pf; });
+var nc = document.getElementById('navCall'); nc.href = 'tel:' + P;
+document.getElementById('navCallNum').textContent = Pf;
+var mc = document.getElementById('mCall'); mc.href = 'tel:' + P; mc.textContent = 'Call ' + Pf;
+document.getElementById('waFab').href = 'https://wa.me/44' + P.slice(1) + '?text=' + encodeURIComponent('Hi, seen your website - ');
+document.querySelectorAll('.js-yr').forEach(function(s){ s.textContent = new Date().getFullYear(); });
+
+var ph = document.getElementById('fPhone');
+if (ph) ph.addEventListener('input', function(){ ph.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(ph.value.replace(/\s+/g,'')) || ph.value === '' ? '' : 'Enter a UK phone number'); });
+
+if (window.location.hash === '#thank-you') {
+  var w = document.getElementById('contactFormWrap');
+  if (w) w.innerHTML = '<h3 style="font-size:1.4rem">Thanks, enquiry received.</h3><p style="margin-top:12px">James will come back to you shortly. If it is urgent, call <b>' + Pf + '</b>.</p>';
+}
+
+// Cope stones: cock and hen coping along a wall top. Seeded so hero and loader match.
+function seeded(n){ var s = n; return function(){ s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+function buildCope(el, seed, delayBase, delayStep){
+  if (!el) return;
+  var rnd = seeded(seed), W = el.clientWidth || window.innerWidth, x = 0, i = 0, tall = true;
+  var H = el.clientHeight || 48, cls = ['a','b','c'];
+  el.innerHTML = '';
+  while (x < W + 30) {
+    var w = Math.round(20 + rnd() * 16);
+    var h = tall ? Math.round(H * (0.72 + rnd() * 0.24)) : Math.round(H * (0.42 + rnd() * 0.16));
+    var s = document.createElement('i');
+    s.className = cls[Math.floor(rnd() * 3)];
+    s.style.width = w + 'px'; s.style.height = h + 'px';
+    s.style.setProperty('--r', (rnd() * 6 - 3).toFixed(1) + 'deg');
+    s.style.transitionDelay = (delayBase + i * delayStep) + 'ms';
+    el.appendChild(s);
+    x += w + 2; i++; tall = !tall;
+  }
+  return i;
+}
+buildCope(document.getElementById('heroCope'), 7, 120, 12);
+document.querySelectorAll('.cope-later').forEach(function(c, k){ buildCope(c, 11 + k, 0, 14); });
+var lateIo = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('now'); lateIo.unobserve(e.target); } }); }, {threshold:.3});
+document.querySelectorAll('.cope-later').forEach(function(c){ lateIo.observe(c); });
+window.addEventListener('resize', function(){ buildCope(document.getElementById('heroCope'), 7, 0, 0); document.querySelectorAll('.cope-later').forEach(function(c, k){ buildCope(c, 11 + k, 0, 0); }); });
+
+// Loader: COPE THE WALL. Courses lay up, then the coping drops on, then the page.
+(function(){
+  var ld = document.getElementById('loader'), wall = document.getElementById('ldWall');
+  if (ld && wall && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var rnd = seeded(3), W = window.innerWidth, courses = W < 700 ? 5 : 4, delay = 0;
+    for (var c = 0; c < courses; c++) {
+      var row = document.createElement('div'); row.className = 'ld-course'; var x = 0; var cls = ['a','b','c'];
+      while (x < W + 40) {
+        var w = Math.round(40 + rnd() * 70), s = document.createElement('i');
+        s.className = cls[Math.floor(rnd() * 3)]; s.style.width = w + 'px'; s.style.animationDelay = delay + 'ms';
+        row.appendChild(s); x += w + 4; delay += 14;
+      }
+      wall.insertBefore(row, wall.firstChild);
+    }
+    var cope = document.getElementById('ldCope');
+    var n = buildCope(cope, 7, Math.min(delay, 700) + 120, 22);
+    setTimeout(function(){ cope.classList.add('now'); }, 50);
+  }
+  setTimeout(function(){ if (ld) ld.classList.add('gone'); document.body.classList.add('lit'); }, 2050);
+  setTimeout(function(){ if (ld && ld.parentNode) ld.parentNode.removeChild(ld); }, 2600);
+  setTimeout(function(){ if (ld && ld.parentNode) ld.parentNode.removeChild(ld); document.body.classList.add('lit'); }, 3000);
+})();
+
+// Mobile menu
+var burger = document.getElementById('burger'), mMenu = document.getElementById('mMenu');
+burger.addEventListener('click', function(){ mMenu.classList.toggle('open'); });
+mMenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mMenu.classList.remove('open'); }); });
+
+// FABs after hero
+var fabs = document.getElementById('fabs');
+window.addEventListener('scroll', function(){
+  var hero = document.querySelector('.hero');
+  fabs.classList.toggle('show', window.scrollY > hero.offsetHeight - 80);
+}, {passive:true});
+
+// Reveal
+var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// Lightbox
+var lb = document.getElementById('lightbox'), lbi = lb.querySelector('img');
+document.querySelectorAll('.jt').forEach(function(t){ t.addEventListener('click', function(){ lbi.src = t.querySelector('img').src; lb.classList.add('open'); }); });
+lb.addEventListener('click', function(){ lb.classList.remove('open'); });
+</script>
+</body>
+</html>
