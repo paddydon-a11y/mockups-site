@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600..800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Overpass:wght@800&family=Figtree:wght@800&family=Young+Serif&family=Alfa+Slab+One&family=Fjalla+One&family=Archivo:wght@500;700;900&family=Besley:wght@700;800&family=Cinzel:wght@600;700&family=Marcellus&family=DM+Mono:wght@400;500&family=Gantari:wght@900&family=IBM+Plex+Mono:wght@400;500&family=Sofia+Sans:wght@900&family=Sofia+Sans+Condensed:wght@900&family=Unbounded:wght@700;800&family=Staatliches&family=Darker+Grotesque:wght@700;800&family=Jost:wght@500;600;700&family=Rethink+Sans:wght@700;800&family=Wix+Madefor+Display:wght@800&family=Geist:wght@800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -4281,6 +4282,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   </div>
 
   <div class="grid">
+    <button class="card" data-loader="ld-hoardingup" data-dur="2300">
+      <span class="trade">General builders / construction firms (no logo supplied)</span>
+      <h3>Hoarding Up</h3>
+      <p>On ink, six site-yellow hoarding boards rise into place left to right (translateY 102% to 0, .55s each on a .1s stagger) with hairline joints between them; the P&amp;A Bebas wordmark stamps onto the boards (scale 1.14 to 1, 0.9s) and a strapline lands at 1.2s. Transform and opacity only. Built for pa-general-building; the hero fold carries the same yellow and the same six joints so the boards never leave.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-stepline" data-dur="2300">
       <span class="trade">Staircase manufacturers / joiners (logo-card grammar, client-safe)</span>
       <h3>Step Line</h3>
@@ -15266,6 +15273,36 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes rlDraw{to{stroke-dashoffset:0}}
 </style>
 
+
+<div class="loader" id="ld-hoardingup" aria-hidden="true">
+  <div class="hu-boards"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hu-stage"><div class="hu-mark"><b>P&amp;A</b><span>General Building Services Ltd</span></div></div>
+  <div class="hu-sub">Lofts &middot; Extensions &middot; Bathrooms &middot; Wembley</div>
+</div>
+
+<style>
+/* ---- Hoarding Up (ld-hoardingup) ---- */
+#ld-hoardingup{background:#16171a}
+#ld-hoardingup .hu-boards{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr)}
+#ld-hoardingup .hu-boards i{display:block;background:#ffd200;border-right:1px solid rgba(0,0,0,.11);transform:translateY(102%);font-style:normal}
+#ld-hoardingup .hu-boards i:last-child{border-right:0}
+#ld-hoardingup.play .hu-boards i{animation:huBoard .55s cubic-bezier(.2,.8,.25,1) forwards}
+#ld-hoardingup.play .hu-boards i:nth-child(1){animation-delay:.05s}#ld-hoardingup.play .hu-boards i:nth-child(2){animation-delay:.15s}#ld-hoardingup.play .hu-boards i:nth-child(3){animation-delay:.25s}
+#ld-hoardingup.play .hu-boards i:nth-child(4){animation-delay:.35s}#ld-hoardingup.play .hu-boards i:nth-child(5){animation-delay:.45s}#ld-hoardingup.play .hu-boards i:nth-child(6){animation-delay:.55s}
+#ld-hoardingup .hu-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+#ld-hoardingup .hu-mark{opacity:0;transform:scale(1.14)}
+#ld-hoardingup.play .hu-mark{animation:huStamp .38s cubic-bezier(.2,.9,.3,1) .9s forwards}
+#ld-hoardingup .hu-mark b{display:block;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:clamp(5.5rem,22vw,11rem);line-height:.85;color:#16171a;letter-spacing:.02em}
+#ld-hoardingup .hu-mark span{display:block;margin-top:14px;font-size:.82rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#16171a;font-family:'Archivo',sans-serif}
+#ld-hoardingup .hu-sub{position:absolute;left:24px;right:24px;bottom:12%;text-align:center;font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.62);opacity:0;transform:translateY(8px);font-family:'Archivo',sans-serif}
+#ld-hoardingup.play .hu-sub{animation:huRise .45s cubic-bezier(.2,.8,.3,1) 1.2s forwards}
+@keyframes huBoard{to{transform:translateY(0)}}
+@keyframes huStamp{to{opacity:1;transform:scale(1)}}
+@keyframes huRise{to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  #ld-hoardingup.play .hu-boards i,#ld-hoardingup.play .hu-mark,#ld-hoardingup.play .hu-sub{opacity:1;transform:none;animation:none!important}
+}
+</style>
 
 <div class="loader" id="ld-copewall" aria-hidden="true">
   <div class="cw-brand"><b>MASONRY <span>AND</span> CONSTRUCTION</b><span class="cw-sub">Stone mason &amp; general builder &middot; South Wales</span></div>
