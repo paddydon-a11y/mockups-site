@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whale Hunters | Cold calling that books meetings with decision-makers</title>
+<meta name="description" content="Whale Hunters is a cold calling service for every sector. High-volume, relentless phone execution that books meetings directly with the decision-makers your pipeline needs.">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Gabarito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#050a12;--deep:#0a1220;--card:#0e1728;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+  --fg:#f3f6fb;--fg2:rgba(243,246,251,.72);--fg3:rgba(243,246,251,.48);
+  --aqua:#5ff2e4;--blue:#2f7cff;--glow:rgba(47,124,255,.35);
+  --paper:#ffffff;--ink:#0a1220;
+  --r:18px;--max:1180px;--gut:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.02rem;background:var(--abyss);color:var(--fg);line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.loading{overflow:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3)}
+h1,h2,h3,.btn,.nav-links,.mnav a,.pill,.stat .l,.std .l,.std .s,.cell .num,.field label,.field input,.field textarea,.titles span,summary,.ft .links,.ft-bottom,.f-card .role,.f-card .li,.c-side .direct b,.c-side .direct small,.form .fine,.stat .n,.std .n,.cell .big{font-family:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em;line-height:1.05}
+h2{font-size:clamp(2rem,4.2vw,3.4rem)}
+h3{font-size:1.2rem;letter-spacing:-.02em;line-height:1.25}
+.lede{font-size:1.12rem;line-height:1.55;color:var(--fg2);max-width:54ch}
+.grad{background:linear-gradient(92deg,#fff 0%,var(--aqua) 55%,var(--blue) 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;height:52px;padding:0 1.4rem;border-radius:999px;font-weight:600;font-size:.98rem;letter-spacing:-.01em;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:#fff;color:var(--ink);box-shadow:0 0 0 1px rgba(255,255,255,.2),0 10px 40px -10px rgba(95,242,228,.5)}
+.btn-primary:hover{box-shadow:0 0 0 1px rgba(255,255,255,.4),0 16px 50px -10px rgba(95,242,228,.7)}
+.btn-ghost{background:rgba(255,255,255,.05);color:#fff;box-shadow:inset 0 0 0 1px var(--line2)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn svg{width:18px;height:18px}
+
+/* loader: INCOMING CALL */
+#loader{position:fixed;inset:0;z-index:100;background:var(--abyss);display:grid;place-items:center;overflow:hidden;transition:opacity .45s,visibility .45s}
+#loader.off{opacity:0;visibility:hidden}
+.ld{position:relative;display:grid;place-items:center;text-align:center;animation:ldin .5s cubic-bezier(.2,.9,.3,1) both}
+.ld .av{position:relative;width:104px;height:104px;border-radius:50%;background:#0e1728;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line2)}
+.ld .av svg{width:56px;height:56px}
+.ld .av::before,.ld .av::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1.5px solid rgba(95,242,228,.6);animation:ring 1.3s ease-out infinite}
+.ld .av::after{animation-delay:.65s}
+.ld .name{margin-top:1.4rem;font-family:"Gabarito",sans-serif;font-weight:800;font-size:1.75rem;letter-spacing:-.03em;line-height:1}
+.ld .sub{margin-top:.5rem;font-family:"Geist Mono",monospace;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);height:1.2em;position:relative;width:220px}
+.ld .sub span{position:absolute;left:0;right:0}
+.ld .sub .s1{animation:s1 1.7s forwards}
+.ld .sub .s2{opacity:0;color:var(--aqua);animation:s2 .4s 1.65s forwards}
+.ld .btns{margin-top:1.8rem;display:flex;gap:2.2rem}
+.ld .b{width:64px;height:64px;border-radius:50%;display:grid;place-items:center}
+.ld .b svg{width:28px;height:28px;stroke:#fff}
+.ld .b.no{background:#ff3b30;opacity:.35}
+.ld .b.yes{background:#34c759;animation:accept .4s 1.55s cubic-bezier(.3,1.5,.5,1) forwards}
+.ld .b.yes svg{animation:tilt .5s ease-in-out infinite alternate}
+@keyframes ldin{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes ring{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+@keyframes s1{0%,85%{opacity:1}100%{opacity:0}}
+@keyframes s2{to{opacity:1}}
+@keyframes accept{to{transform:scale(1.18);box-shadow:0 0 0 12px rgba(52,199,89,.25)}}
+@keyframes tilt{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+@media (max-width:760px){.ld .av{width:120px;height:120px}.ld .av svg{width:64px;height:64px}.ld .name{font-size:2rem}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:#050a12;border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:"Gabarito",sans-serif;font-weight:800;letter-spacing:-.03em;font-size:1.32rem}
+.brand .em{font-size:1.25rem;display:inline-block;transform-origin:50% 60%;animation:bob 3.2s ease-in-out infinite;margin-left:.1rem}
+.brand svg path{transform-origin:50% 60%;animation:wag 3.2s ease-in-out infinite}
+.brand:hover .em{animation:spin .7s cubic-bezier(.3,1.4,.5,1)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(-8deg)}}
+@keyframes wag{0%,100%{transform:rotate(0)}50%{transform:rotate(7deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.brand svg{width:32px;height:32px;border-radius:9px}
+.nav-links{display:flex;gap:1.6rem;font-size:.92rem;color:var(--fg2)}
+.nav-links a:hover{color:#fff}
+.nav-cta{display:flex;align-items:center;gap:.6rem}
+.nav .btn{height:40px;padding:0 1.05rem;font-size:.9rem}
+.burger{display:none;width:44px;height:44px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line2);place-items:center}
+.burger span{display:block;width:18px;height:2px;background:#fff;border-radius:2px;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#fff;border-radius:2px}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.mnav{position:fixed;inset:68px 0 0 0;background:rgba(5,10,18,.98);z-index:49;display:none;flex-direction:column;padding:1.5rem var(--gut);gap:.25rem}
+.mnav.open{display:flex}
+.mnav a{padding:1rem 0;border-bottom:1px solid var(--line);font-size:1.25rem;font-weight:500;letter-spacing:-.02em}
+.mnav .btn{margin-top:1.25rem;width:100%}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:5.5rem 0 4rem;isolation:isolate}
+.hero .glow{position:absolute;z-index:-2;width:900px;height:900px;border-radius:50%;left:50%;top:-320px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(47,124,255,.32),rgba(47,124,255,0));pointer-events:none}
+.hero .grid{position:absolute;inset:0;z-index:-3;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 75%)}
+.sonar{position:absolute;z-index:-1;left:50%;top:38%;width:1200px;height:1200px;transform:translate(-50%,-50%);pointer-events:none}
+.sonar i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(95,242,228,.35);opacity:0;transform:scale(.1);animation:sonar 5.2s linear infinite}
+.sonar i:nth-child(2){animation-delay:1.3s}.sonar i:nth-child(3){animation-delay:2.6s}.sonar i:nth-child(4){animation-delay:3.9s}
+@keyframes sonar{0%{opacity:0;transform:scale(.08)}12%{opacity:.75}100%{opacity:0;transform:scale(1)}}
+.hero-in{text-align:center;max-width:900px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:"Geist Mono",monospace;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--aqua);margin-bottom:1.6rem}
+.eyebrow .sep{color:var(--fg3)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--aqua);animation:dot 1.8s infinite}
+.pill{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem .9rem .45rem .6rem;border-radius:999px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px var(--line2);font-size:.82rem;color:var(--fg2);margin-bottom:1.6rem}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 0 rgba(95,242,228,.6);animation:dot 1.8s infinite}
+@keyframes dot{0%{box-shadow:0 0 0 0 rgba(95,242,228,.6)}100%{box-shadow:0 0 0 12px rgba(95,242,228,0)}}
+.pill b{font-weight:600;color:#fff;white-space:nowrap}
+
+h1{font-size:clamp(2.6rem,6.4vw,5.4rem);letter-spacing:-.045em;line-height:.98}
+.hero .lede{margin:1.5rem auto 2.2rem;text-align:center;font-size:clamp(1.08rem,1.45vw,1.28rem)}
+.cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.hero-note{margin-top:1.4rem;color:var(--fg3);font-size:.85rem}
+
+/* live board */
+.board{margin:3.5rem auto 0;max-width:960px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:inset 0 0 0 1px var(--line2),0 40px 120px -40px rgba(47,124,255,.45);overflow:hidden}
+.board-top{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;border-bottom:1px solid var(--line);background:rgba(5,10,18,.5)}
+.board-top .lights{display:flex;gap:6px}.board-top .lights i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.14)}
+.board-top .lights i:first-child{background:#ff5f57}.board-top .lights i:nth-child(2){background:#febc2e}.board-top .lights i:nth-child(3){background:#28c840}
+.board-body{display:grid;grid-template-columns:1.35fr .9fr;min-height:330px}
+.log{padding:1.1rem 1.25rem;font-family:"Geist Mono",ui-monospace,monospace;font-size:.82rem;line-height:1.75;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.log .row{display:grid;grid-template-columns:64px 1fr;gap:.9rem;opacity:0;transform:translateY(8px);animation:rowin .35s forwards;color:var(--fg2)}
+.log .t{color:var(--fg3)}
+.log .ok{color:var(--aqua)}.log .hi{color:#fff}.log .warn{color:#febc2e}
+.log .row.booked{color:#fff;background:linear-gradient(90deg,rgba(95,242,228,.14),transparent);margin:0 -1.25rem;padding:0 1.25rem}
+@keyframes rowin{to{opacity:1;transform:none}}
+.stats{display:grid;grid-template-rows:repeat(3,1fr)}
+.stat{padding:1.1rem 1.25rem;border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:.15rem}
+.stat:last-child{border-bottom:0}
+.stat .n{font-size:2.2rem;font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .n small{font-size:1rem;color:var(--fg3);font-weight:500;margin-left:.3rem;letter-spacing:0}
+.stat .l{font-size:.82rem;color:var(--fg3)}
+
+/* sectors marquee */
+.sectors{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.2rem 0;overflow:hidden;background:var(--deep)}
+.sectors .wrap{display:flex;align-items:center;gap:2rem}
+.sectors .lab{flex:none}
+.marq{flex:1;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq .track{display:flex;gap:2.6rem;width:max-content;animation:marq 38s linear infinite;font-weight:500;letter-spacing:-.01em;color:var(--fg2);font-size:1rem}
+.marq .track span{display:flex;align-items:center;gap:.6rem}
+.marq .track span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--aqua)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:6.5rem 0}
+.sec-head{max-width:760px;margin-bottom:3rem}
+.sec-head .mono{display:block;margin-bottom:1rem}
+.sec-head .lede{margin-top:1.1rem}
+
+/* steps bento */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cell{position:relative;background:var(--card);border-radius:var(--r);box-shadow:inset 0 0 0 1px var(--line);padding:1.6rem;overflow:hidden;transition:box-shadow .25s,transform .25s}
+.cell:hover{box-shadow:inset 0 0 0 1px var(--line2),0 30px 60px -30px rgba(47,124,255,.4);transform:translateY(-2px)}
+.cell .num{font-family:"Geist Mono",monospace;font-size:.78rem;color:var(--aqua);letter-spacing:.08em;margin-bottom:2.6rem}
+.cell h3{margin-bottom:.6rem}
+.cell p{color:var(--fg2);font-size:.98rem}
+.cell .art{position:absolute;right:-20px;top:-20px;width:140px;height:140px;border-radius:50%;background:radial-gradient(closest-side,rgba(95,242,228,.18),transparent);pointer-events:none}
+.cell.wide{grid-column:span 2}
+.cell .big{font-size:clamp(2.6rem,5vw,4rem);font-weight:600;letter-spacing:-.045em;line-height:1;margin:.4rem 0 .6rem}
+.cell .big small{font-size:1rem;color:var(--fg3);letter-spacing:0;font-weight:500;margin-left:.4rem}
+
+/* the daily standard */
+.standard{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.std-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.std{padding:1.6rem;border-radius:var(--r);background:var(--card);box-shadow:inset 0 0 0 1px var(--line);position:relative;overflow:hidden}
+.std::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--aqua));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.std.in::after{width:100%}
+.std .n{font-size:clamp(2.6rem,4.4vw,3.6rem);font-weight:600;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.std .n small{font-size:1rem;color:var(--fg3);font-weight:500;letter-spacing:0;margin-left:.25rem}
+.std .l{margin-top:.7rem;font-weight:500}
+.std .s{color:var(--fg3);font-size:.86rem;margin-top:.2rem}
+.std-note{margin-top:1.4rem;color:var(--fg3);font-size:.88rem;max-width:70ch}
+
+/* manifesto (white) */
+.manifesto{background:var(--paper);color:var(--ink);position:relative;overflow:hidden}
+.manifesto .mono{color:rgba(10,18,32,.5)}
+.manifesto h2{font-size:clamp(2.2rem,5.2vw,4.6rem);letter-spacing:-.045em;max-width:16ch}
+.manifesto h2 .strike{text-decoration:line-through;text-decoration-thickness:.08em;text-decoration-color:rgba(10,18,32,.28);color:rgba(10,18,32,.35)}
+.manifesto h2 .keep{background:linear-gradient(92deg,var(--blue),#00b6a8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.man-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:end}
+.man-grid p{color:rgba(10,18,32,.72);font-size:1.08rem}
+.man-grid p+p{margin-top:1rem}
+.man-grid .btn{margin-top:1.6rem}
+.manifesto .fluke{position:absolute;right:-60px;bottom:-80px;width:420px;opacity:.06;pointer-events:none}
+
+/* reach */
+.reach-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.titles{display:flex;flex-wrap:wrap;gap:.6rem}
+.titles span{padding:.6rem .95rem;border-radius:999px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line2);font-size:.95rem;font-weight:500}
+.titles span.on{background:rgba(95,242,228,.12);box-shadow:inset 0 0 0 1px rgba(95,242,228,.5);color:#fff}
+.checks{list-style:none;display:grid;gap:.9rem;margin-top:1.4rem}
+.checks li{display:grid;grid-template-columns:26px 1fr;gap:.8rem;color:var(--fg2)}
+.checks li b{color:#fff;font-weight:600}
+.checks li i{width:26px;height:26px;border-radius:50%;background:rgba(95,242,228,.14);display:grid;place-items:center}
+.checks li i::after{content:"";width:7px;height:11px;border-right:2px solid var(--aqua);border-bottom:2px solid var(--aqua);transform:rotate(45deg) translate(-1px,-1px)}
+
+/* founder */
+.founder{background:var(--deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.f-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
+.f-card{position:relative;border-radius:22px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line2);padding:2rem;overflow:hidden}
+.f-card .ph{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--aqua));display:grid;place-items:center;font-weight:600;font-size:1.8rem;letter-spacing:-.04em;color:var(--ink);margin-bottom:1.4rem}
+.f-card h3{font-size:1.5rem}
+.f-card .role{color:var(--fg3);margin-top:.2rem}
+.f-card .li{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;padding:.6rem .95rem;border-radius:999px;background:#0a66c2;color:#fff;font-weight:600;font-size:.9rem}
+.f-card .li svg{width:16px;height:16px}
+.f-card .glow2{position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(closest-side,rgba(47,124,255,.35),transparent)}
+.quote{font-family:"Geist",sans-serif;font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:500;letter-spacing:-.03em;line-height:1.25}
+.quote .grad{font-weight:600}
+.f-grid p.body{color:var(--fg2);margin-top:1.2rem;max-width:52ch}
+
+/* faq */
+.faq{max-width:820px}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:1.3rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:500;font-size:1.08rem;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary i{flex:none;width:28px;height:28px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);position:relative;transition:transform .3s}
+summary i::before,summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:#fff;transform:translate(-50%,-50%)}
+summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+details[open] summary i{transform:rotate(45deg)}
+details p{padding:0 0 1.4rem;color:var(--fg2);max-width:62ch}
+
+/* contact */
+.contact{position:relative;overflow:hidden}
+.contact .glow{position:absolute;left:50%;bottom:-500px;width:1100px;height:900px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(47,124,255,.28),transparent);pointer-events:none}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;position:relative}
+.form{background:var(--card);border-radius:22px;box-shadow:inset 0 0 0 1px var(--line2);padding:1.8rem}
+.field{display:grid;gap:.4rem;margin-bottom:1rem}
+.field label{font-size:.86rem;color:var(--fg2);font-weight:500}
+.field label span{color:var(--fg3);font-weight:400}
+.field input,.field textarea{width:100%;background:rgba(5,10,18,.6);border:1px solid var(--line2);border-radius:12px;padding:.85rem 1rem;color:#fff;font:inherit;font-size:1rem;outline:none;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field textarea:focus{border-color:var(--aqua);box-shadow:0 0 0 4px rgba(95,242,228,.15)}
+.field textarea{min-height:110px;resize:vertical}
+.form .btn{width:100%;margin-top:.4rem}
+.form .fine{margin-top:.9rem;color:var(--fg3);font-size:.82rem;text-align:center}
+.c-side .lede{margin-top:1rem}
+.c-side .direct{margin-top:2rem;display:grid;gap:.8rem}
+.c-side .direct a{display:flex;align-items:center;gap:.9rem;padding:1rem 1.1rem;border-radius:14px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line)}
+.c-side .direct a:hover{box-shadow:inset 0 0 0 1px var(--line2)}
+.c-side .direct i{width:38px;height:38px;border-radius:10px;background:rgba(95,242,228,.12);display:grid;place-items:center;flex:none}
+.c-side .direct i svg{width:18px;height:18px;stroke:var(--aqua)}
+.c-side .direct b{display:block;font-weight:600}
+.c-side .direct small{color:var(--fg3)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:4rem 0 2rem;background:var(--deep);overflow:hidden}
+.ft-big{font-family:"Gabarito",sans-serif;font-weight:800;letter-spacing:-.04em;line-height:1;font-size:clamp(3.2rem,11vw,9rem);color:#fff;margin-bottom:2.5rem}
+.ft-big .em{display:inline-block;animation:bob 3.2s ease-in-out infinite}
+.ft{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--line)}
+.ft .links{display:flex;gap:1.4rem;color:var(--fg2);font-size:.95rem;flex-wrap:wrap}
+.ft .links a{white-space:nowrap}
+.ft .links a:hover{color:#fff}
+.ft-bottom{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--fg3);font-size:.82rem}
+.ft-bottom a{text-decoration:underline;text-underline-offset:3px}
+
+/* fabs */
+.fabs{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;flex-direction:column;gap:10px}
+.fab{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.6)}
+.fab svg{width:24px;height:24px}
+.fab.call{background:#fff}.fab.call svg{stroke:var(--ink)}
+.fab.wa{background:#25d366}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .bento{grid-template-columns:1fr 1fr}.cell.wide{grid-column:span 2}
+  .std-grid{grid-template-columns:1fr 1fr}
+  .man-grid,.reach-grid,.f-grid,.c-grid{grid-template-columns:1fr;gap:2rem}
+}
+@media (max-width:760px){
+  .nav-links{display:none}
+  .nav .wrap{height:64px}.mnav{inset:64px 0 0 0}
+  .brand{font-size:1.1rem;white-space:nowrap;gap:.45rem}.brand svg{width:28px;height:28px}.brand .em{font-size:1.05rem}
+  .burger{display:grid}
+  section{padding:4.5rem 0}
+  .hero{padding:2.6rem 0 3rem}
+  .hero-in{text-align:left}
+  .eyebrow{font-size:.68rem;gap:.5rem;flex-wrap:wrap}
+  h1{font-size:clamp(2.55rem,12.2vw,3.4rem);letter-spacing:-.04em}
+  .hero .lede{text-align:left;margin:1.2rem 0 1.6rem}
+  .cta-row{flex-direction:column}.cta-row .btn{width:100%;height:56px}
+  .hero-note{text-align:left}
+  .sonar{top:20%;width:820px;height:820px}
+  .board{margin-top:2.4rem;border-radius:18px}
+  .board-body{grid-template-columns:1fr;min-height:0}
+  .log{border-right:0;border-bottom:1px solid var(--line);height:250px;font-size:.76rem}
+  .stats{grid-template-rows:none}
+  .stat{flex-direction:row;align-items:baseline;justify-content:space-between;gap:1rem;padding:.85rem 1.1rem}
+  .stat .n{font-size:1.7rem;order:2;white-space:nowrap}.stat .n small{font-size:.8rem}.stat .l{font-size:.88rem;order:1;color:var(--fg2)}
+  .sectors .wrap{flex-direction:column;align-items:flex-start;gap:.8rem}.marq{width:100%}
+  .bento{grid-template-columns:1fr}.cell.wide{grid-column:auto}
+  .std-grid{grid-template-columns:1fr 1fr;gap:.7rem}.std{padding:1.2rem}
+  .cell .big small{display:block;margin:.3rem 0 0}
+  .manifesto .fluke{width:260px;right:-60px;bottom:-40px}
+  .fabs{bottom:14px;right:14px}
+  .ft{flex-direction:column;align-items:flex-start}
+  .ft .links{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.4rem;width:100%}
+  .ft-bottom{flex-direction:column;gap:.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="loading">
+
+<div id="loader" aria-hidden="true">
+  <div class="ld">
+    <div class="av"><svg viewBox="0 0 64 64"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2f7cff"/><stop offset="1" stop-color="#5ff2e4"/></linearGradient></defs><path fill="url(#lg)" d="M32 54C32 41 30 34 23 29C15 24 8 22 6 14C12 16 19 18 26 23C29.5 25.5 31 28.5 32 32.5C33 28.5 34.5 25.5 38 23C45 18 52 16 58 14C56 22 49 24 41 29C34 34 32 41 32 54Z"/></svg></div>
+    <div class="name">Whale Hunters 🐳</div>
+    <div class="sub"><span class="s1">Calling...</span><span class="s2">Connected</span></div>
+    <div class="btns"><span class="b no"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="b yes"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Whale Hunters home">
+      <svg viewBox="0 0 64 64"><rect width="64" height="64" fill="#0e1728"/><path fill="url(#lg)" d="M32 54C32 41 30 34 23 29C15 24 8 22 6 14C12 16 19 18 26 23C29.5 25.5 31 28.5 32 32.5C33 28.5 34.5 25.5 38 23C45 18 52 16 58 14C56 22 49 24 41 29C34 34 32 41 32 54Z"/></svg>
+      Whale Hunters<span class="em">🐳</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a><a href="#standard">The standard</a><a href="#reach">Who we reach</a><a href="#founder">Founder</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+  <a href="#how">How it works</a><a href="#standard">The standard</a><a href="#reach">Who we reach</a><a href="#founder">Founder</a><a href="#faq">FAQ</a>
+  <a class="btn btn-primary" href="#contact">Book a call</a>
+  <a class="btn btn-ghost" href="tel:+440000000000">Call us</a>
+</div>
+
+<main id="top">
+<section class="hero">
+  <div class="grid"></div><div class="glow"></div>
+  <div class="sonar"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="hero-in">
+      <h1>We book meetings with the people <span class="grad">nobody else can reach.</span></h1>
+      <p class="lede">Cold calling, done properly, at volume, every single day. Hand us the list. We get past the gatekeeper, have the conversation, and put the person who actually signs in your calendar.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+440000000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call us</a>
+        <a class="btn btn-ghost" href="#contact">Book a call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+
+    <div class="board" aria-label="Live call board (illustrative)">
+      <div class="board-top">
+        <div class="lights"><i></i><i></i><i></i></div>
+        <span class="mono">whalehunters / live board</span>
+        <span class="mono" id="clock">09:41</span>
+      </div>
+      <div class="board-body">
+        <div class="log" id="log"></div>
+        <div class="stats">
+          <div class="stat"><div class="n" id="sDials">0</div><div class="l">Dials today</div></div>
+          <div class="stat"><div class="n" id="sConv">0</div><div class="l">Conversations with decision-makers</div></div>
+          <div class="stat"><div class="n" id="sMeet">0</div><div class="l">Meetings in your calendar</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sectors">
+  <div class="wrap">
+    <span class="mono lab">All sectors. Same phone.</span>
+    <div class="marq"><div class="track" id="track">
+      <span>SaaS</span><span>Fintech</span><span>Logistics</span><span>Construction</span><span>Recruitment</span><span>Manufacturing</span><span>Professional services</span><span>Healthcare</span><span>Energy</span><span>Cyber security</span><span>Commercial property</span><span>Agencies</span>
+    </div></div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="mono">How it works</span>
+      <h2>Three moves. No excuses.</h2>
+      <p class="lede">Most outbound fails because it is quiet, polite and part-time. We do the opposite. Volume, persistence and a real conversation with the person who signs.</p>
+    </div>
+    <div class="bento">
+      <div class="cell rv"><div class="art"></div><div class="num">01 / LIST</div><h3>You bring the list and the message</h3><p>Named accounts, target titles, the offer. We pressure-test the pitch on day one so every dial after that is sharper than the last.</p></div>
+      <div class="cell rv"><div class="art"></div><div class="num">02 / DIAL</div><h3>We dial. Relentlessly.</h3><p>Hundreds of dials a day per caller. Gatekeepers handled, objections answered, follow-ups tracked to the minute. Nothing sits in a queue.</p></div>
+      <div class="cell rv"><div class="art"></div><div class="num">03 / BOOK</div><h3>Meetings land in your calendar</h3><p>Qualified, confirmed and briefed. You turn up to a decision-maker who already knows why they said yes.</p></div>
+      <div class="cell wide rv"><div class="num">WHAT YOU GET</div><div class="big">Pipeline<small>not activity reports</small></div><p>Every call outcome logged. Connect rates, conversation length, objection themes and booked meetings, reported weekly so you can see exactly where the whales are.</p></div>
+      <div class="cell rv"><div class="art"></div><div class="num">WHAT YOU DON'T</div><h3>No hiring, no ramp, no churned SDR</h3><p>Switch us on in days. Scale callers up or down as your pipeline needs it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="standard" class="standard">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="mono">The daily standard</span>
+      <h2>What one caller does <span class="grad">before lunch.</span></h2>
+      <p class="lede">This is the north star every Whale Hunter dials to. It is not a promise of results in your market. It is the level of effort you are buying.</p>
+    </div>
+    <div class="std-grid">
+      <div class="std rv"><div class="n" data-count="200"><span>0</span><small>+</small></div><div class="l">Dials</div><div class="s">Per caller, per day</div></div>
+      <div class="std rv"><div class="n" data-count="40"><span>0</span></div><div class="l">Conversations</div><div class="s">Real ones, with real buyers</div></div>
+      <div class="std rv"><div class="n" data-count="5"><span>0</span></div><div class="l">Meetings set</div><div class="s">The daily target</div></div>
+      <div class="std rv"><div class="n" data-count="0"><span>0</span></div><div class="l">Excuses</div><div class="s">Ever</div></div>
+    </div>
+    <p class="std-note rv">Figures are the daily targets we hold our callers to. Booked meetings depend on your list, your offer and your market, and we will tell you straight what to expect once we have heard the pitch.</p>
+  </div>
+</section>
+
+<section class="manifesto">
+  <svg class="fluke" viewBox="0 0 64 64"><path fill="#0a1220" d="M32 54C32 41 30 34 23 29C15 24 8 22 6 14C12 16 19 18 26 23C29.5 25.5 31 28.5 32 32.5C33 28.5 34.5 25.5 38 23C45 18 52 16 58 14C56 22 49 24 41 29C34 34 32 41 32 54Z"/></svg>
+  <div class="wrap">
+    <div class="man-grid">
+      <div class="rv">
+        <span class="mono">Why the phone</span>
+        <h2 style="margin-top:1rem"><span class="strike">Emails get ignored.</span><br><span class="strike">Ads get skipped.</span><br><span class="keep">The phone still gets answered.</span></h2>
+      </div>
+      <div class="rv">
+        <p>Your buyers have 400 unread emails and an ad blocker. What they do not have is a good reason to hang up on a confident, well-prepared human who knows their business.</p>
+        <p>Cold calling is not dead. Half-hearted cold calling is. We do it at a volume and standard most sales teams cannot sustain, and we do it for every sector.</p>
+        <a class="btn btn-ink" href="#contact">Book a call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reach">
+  <div class="wrap">
+    <div class="reach-grid">
+      <div class="rv">
+        <span class="mono">Who we reach</span>
+        <h2 style="margin:1rem 0">Not the inbox. <span class="grad">The decision-maker.</span></h2>
+        <p class="lede">Whales are the accounts that change a quarter. We hunt them at the top of the org chart, in any industry, on any continent with a dial tone.</p>
+        <ul class="checks">
+          <li><i></i><span><b>Gatekeepers handled.</b> Names, extensions and the right time of day, tracked and used.</span></li>
+          <li><i></i><span><b>Multi-touch persistence.</b> The fifth call books more than the first. We make the fifth call.</span></li>
+          <li><i></i><span><b>Enterprise, mid-market or SME.</b> Same hunger, same standard, whoever signs.</span></li>
+        </ul>
+      </div>
+      <div class="titles rv">
+        <span class="on">CEO</span><span>Managing Director</span><span class="on">CFO</span><span>COO</span><span>CTO</span><span class="on">Head of Procurement</span><span>VP Sales</span><span>Operations Director</span><span class="on">Owner</span><span>Head of IT</span><span>Practice Partner</span><span>Site Director</span><span>Commercial Director</span><span class="on">Founder</span><span>Head of People</span><span>Buyer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="founder" class="founder">
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-card rv">
+        <div class="glow2"></div>
+        <div class="ph">TB</div>
+        <h3>Tony Brophy</h3>
+        <div class="role">Founder, Whale Hunters</div>
+        <a class="li" href="https://ie.linkedin.com/in/tonybrophy1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9h3zM6.5 7.7A1.7 1.7 0 1 1 8.2 6a1.7 1.7 0 0 1-1.7 1.7zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6V19h-3V9h2.9v1.4a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7z"/></svg>Connect on LinkedIn</a>
+      </div>
+      <div class="rv">
+        <p class="quote">"Simple things, done at scale. More pipeline solves most problems. <span class="grad">So we make the calls.</span>"</p>
+        <p class="body">Tony built Whale Hunters on the phone, not in a pitch deck. Hundreds of dials a day, in person, in any time zone, with the daily numbers posted publicly for a sales community that follows along. The service is that same standard, pointed at your list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="mono">FAQ</span><h2>Straight answers.</h2></div>
+    <div class="faq rv">
+      <details><summary>Which sectors do you call into?<i></i></summary><p>All of them. Software, finance, logistics, construction, recruitment, manufacturing, healthcare, energy and professional services, so far. The script changes. The discipline does not.</p></details>
+      <details><summary>Do we need to supply the list?<i></i></summary><p>Ideally yes: your named accounts and target titles. If you do not have one we will help you build it before the first dial.</p></details>
+      <details><summary>How fast can you start?<i></i></summary><p>Days, not months. Once we have your list, offer and calendar access, we pressure-test the pitch and start dialling.</p></details>
+      <details><summary>How do we know what happened on every call?<i></i></summary><p>Every dial is logged with its outcome, duration and next step. You get a weekly report and a live view of booked meetings.</p></details>
+      <details><summary>What does it cost?<i></i></summary><p>It depends on volume and how many callers you need. Book a call, tell us the target, and we will give you a number the same day.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="c-grid">
+      <div class="c-side rv">
+        <span class="mono">Book a call</span>
+        <h2 style="margin-top:1rem">Tell us who you want in the room.</h2>
+        <p class="lede">Leave your details and we will call you back. Yes, an actual phone call. It is what we do.</p>
+        <div class="direct">
+          <a href="tel:+440000000000"><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></i><span><b>Call us</b><small>Number to be confirmed</small></span></a>
+          <a href="https://ie.linkedin.com/in/tonybrophy1" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></i><span><b>Message Tony on LinkedIn</b><small>ie.linkedin.com/in/tonybrophy1</small></span></a>
+        </div>
+      </div>
+      <form class="form rv" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Sent. We will call you.';">
+        <div class="field"><label for="n">Name</label><input id="n" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="p">Phone</label><input id="p" name="phone" type="tel" required autocomplete="tel"></div>
+        <div class="field"><label for="e">Email <span>(optional)</span></label><input id="e" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="m">Who do you want to reach? <span>(optional)</span></label><textarea id="m" name="message" placeholder="Sector, target titles, rough list size, the offer"></textarea></div>
+        <button class="btn btn-primary" type="submit">Book a call</button>
+        <p class="fine">We reply by phone within one working day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-big">Zero excuses. <span class="em">🐳</span></div>
+    <div class="ft">
+      <a class="brand" href="#top"><svg viewBox="0 0 64 64"><rect width="64" height="64" fill="#0e1728"/><path fill="url(#lg)" d="M32 54C32 41 30 34 23 29C15 24 8 22 6 14C12 16 19 18 26 23C29.5 25.5 31 28.5 32 32.5C33 28.5 34.5 25.5 38 23C45 18 52 16 58 14C56 22 49 24 41 29C34 34 32 41 32 54Z"/></svg>Whale Hunters</a>
+      <div class="links"><a href="#how">How it works</a><a href="#standard">The standard</a><a href="#founder">Founder</a><a href="https://ie.linkedin.com/in/tonybrophy1" target="_blank" rel="noopener">LinkedIn</a><a href="#contact">Book a call</a></div>
+    </div>
+    <div class="ft-bottom">
+      <span>&copy; 2026 Whale Hunters</span>
+      <span>Website by <a href="https://construction-sites.co.uk" rel="noopener">Construction Sites</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fabs">
+  <a class="fab wa" href="https://wa.me/440000000000?text=Hi%2C%20seen%20your%20website%20-%20" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-1 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+  <a class="fab call" href="tel:+440000000000" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  // loader: sonar ping, <=2.2s, fail-safe
+  var L=document.getElementById('loader'),b=document.body;
+  function off(){L.classList.add('off');b.classList.remove('loading');}
+  setTimeout(off,2300);setTimeout(off,3600);
+
+  // mobile nav
+  var bg=document.getElementById('burger'),mn=document.getElementById('mnav');
+  bg.addEventListener('click',function(){var o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',o);b.style.overflow=o?'hidden':'';});
+  mn.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mn.classList.remove('open');b.style.overflow='';});});
+
+  // marquee duplicate
+  var t=document.getElementById('track');t.innerHTML+=t.innerHTML;
+
+  // reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv,.std').forEach(function(el){io.observe(el);});
+
+  // counters
+  var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var n=e.target,end=+n.dataset.count,s=n.querySelector('span'),t0=performance.now();
+    (function step(now){var p=Math.min(1,(now-t0)/1200);p=1-Math.pow(1-p,3);s.textContent=Math.round(end*p);if(p<1)requestAnimationFrame(step);})(t0);co.unobserve(n);});},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(n){co.observe(n);});
+
+  // clock
+  var ck=document.getElementById('clock');function tick(){var d=new Date();ck.textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}tick();setInterval(tick,15000);
+
+  // live board (illustrative)
+  var titles=['CFO','Operations Director','Head of Procurement','CEO','Managing Director','COO','Commercial Director','Owner','CTO','VP Sales'];
+  var secs=['logistics','SaaS','construction','fintech','manufacturing','recruitment','healthcare','energy','legal','cyber'];
+  var cities=['Manchester','London','Dublin','Leeds','Birmingham','Glasgow','Austin','New York','Bristol','Amsterdam'];
+  var log=document.getElementById('log'),dials=0,conv=0,meet=0,i=0;
+  var D=document.getElementById('sDials'),C=document.getElementById('sConv'),M=document.getElementById('sMeet');
+  function pick(a){return a[Math.floor(Math.random()*a.length)];}
+  function add(cls,html){var r=document.createElement('div');r.className='row'+(cls?' '+cls:'');var d=new Date();
+    r.innerHTML='<span class="t">'+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+'</span><span>'+html+'</span>';
+    log.appendChild(r);while(log.children.length>9)log.removeChild(log.firstChild);}
+  function set(){D.textContent=dials;C.textContent=conv;M.textContent=meet;}
+  var seq=[
+    function(){dials++;add('','<span class="hi">dial</span> '+pick(titles)+', '+pick(secs)+', '+pick(cities));},
+    function(){add('','<span class="warn">gatekeeper</span> asked for a name. gave the name.');},
+    function(){dials++;add('','<span class="hi">dial</span> '+pick(titles)+', '+pick(secs)+', '+pick(cities));},
+    function(){add('','<span class="ok">connected</span> decision-maker on the line');conv++;},
+    function(){add('','objection: "send me an email". handled.');},
+    function(){dials++;add('','<span class="hi">dial</span> '+pick(titles)+', '+pick(secs)+', '+pick(cities));},
+    function(){add('','voicemail. follow-up set 14:10');},
+    function(){dials++;add('','<span class="hi">dial</span> '+pick(titles)+', '+pick(secs)+', '+pick(cities));},
+    function(){add('','<span class="ok">connected</span> 4m 12s conversation');conv++;},
+    function(){meet++;add('booked','<span class="ok">meeting booked</span> Thursday 10:30, invite sent');}
+  ];
+  dials=184;conv=37;meet=4;set();
+  function run(){seq[i%seq.length]();i++;set();setTimeout(run,900+Math.random()*900);}
+  for(var k=0;k<7;k++){seq[i%seq.length]();i++;}set();log.querySelectorAll(".row").forEach(function(r){r.style.animation="none";r.style.opacity=1;r.style.transform="none";});
+  setTimeout(run,1400);
+})();
+</script>
+</body>
+</html>
