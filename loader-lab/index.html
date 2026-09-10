@@ -4303,6 +4303,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Their real colour logo on a white card scales in on the brand wine (0.1-0.8s), then one rose stroke draws a balustrade outline under it, two newels, handrail, base rail and seven spindles as a single path via stroke-dashoffset (0.3-1.8s), sub-line at 1.4s. Sister of Step Line so a pair of related sites read as one family. Built for manchester-stair-supplies.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-platesup" data-dur="2400">
+      <span class="trade">Electrical contractors / any firm whose fleet or signage carries a set of named plates</span>
+      <h3>Plates Up</h3>
+      <p>The client's own fleet lining up. On the brand's royal-to-navy gradient three white NUMBER PLATES with a navy tab slide up into a column one after another, TECHNICAL at 0.15s, ELECTRICAL at 0.4s, SERVICES at 0.65s (translateY 140 percent to 0 with an overshoot ease, .55s each), a skewed white light bar sweeps across the stack (1.0-1.6s), the real white wordmark rises above the plates at 1.2s and a one-line sub-line lands at 1.5s. Solid shapes, transform and opacity only, no linework, no SVG stage. 2.0s body.lit and teardown, 2.9s fail-safe; reduced motion shows the finished stack. Hands off INTO the fold: the same three plates click in under the nav on the same stagger and lead the H1. Distinct from Power Up (circuit trace + bulb), Energise (trace band), Board Energise (breakers on a rail), Earthing Trace, Plug-In and Prove the Circuit: nothing electrical is drawn, the words on the plates are the client's own three vans. Reuse it by changing the three words (any trading name that splits into two or three plates) and the gradient. First used: technical-electrical-services (Blackpool, whose three vans are plated TECHNICAL / ELECTRICAL / SERVICES).</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-energise" data-dur="2500">
       <span class="trade">Electricians / electrical contractors (any brand whose mark carries a circuit-trace motif)</span>
       <h3>Energise</h3>
@@ -14985,6 +14991,27 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 </style>
 
 <style>
+/* ---- Plates Up (ld-platesup) ---- */
+#ld-platesup{background:linear-gradient(100deg,#0a7ff0 0%,#0073e5 28%,#004284 100%);flex-direction:column;gap:14px;font-family:'Work Sans','Inter',system-ui,sans-serif}
+#ld-platesup .pu-logo{height:64px;width:auto;opacity:0;transform:translateY(16px)}
+#ld-platesup.play .pu-logo{animation:puRise .6s cubic-bezier(.2,.7,.2,1) 1.2s forwards}
+#ld-platesup .pu-plates{display:flex;flex-direction:column;gap:9px;overflow:hidden;padding:6px 0;position:relative}
+#ld-platesup .pu-plate{display:inline-flex;align-items:stretch;background:#fff;color:#004284;border-radius:5px;overflow:hidden;font-weight:800;font-size:1rem;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 6px 16px rgba(0,20,50,.25);border:1.5px solid #d9dfe8;transform:translateY(140%);opacity:0}
+#ld-platesup .pu-plate i{display:block;width:16px;background:#004284}
+#ld-platesup .pu-plate span{padding:11px 22px 11px 18px;line-height:1.2}
+#ld-platesup.play .pu-plate{animation:puPlate .55s cubic-bezier(.2,1.2,.3,1) forwards}
+#ld-platesup.play .pu-plate:nth-child(1){animation-delay:.15s}
+#ld-platesup.play .pu-plate:nth-child(2){animation-delay:.4s}
+#ld-platesup.play .pu-plate:nth-child(3){animation-delay:.65s}
+#ld-platesup .pu-sweep{position:absolute;top:0;bottom:0;left:-40%;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);opacity:0}
+#ld-platesup.play .pu-sweep{animation:puSweep .6s ease-in-out 1s forwards}
+#ld-platesup .pu-sub{color:rgba(255,255,255,.85);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;opacity:0;transform:translateY(8px)}
+#ld-platesup.play .pu-sub{animation:puRise .5s ease 1.5s forwards}
+@keyframes puPlate{to{transform:translateY(0);opacity:1}}
+@keyframes puRise{to{opacity:1;transform:none}}
+@keyframes puSweep{0%{opacity:1;left:-40%}100%{opacity:1;left:110%}}
+@media (prefers-reduced-motion:reduce){#ld-platesup .pu-plate,#ld-platesup .pu-logo,#ld-platesup .pu-sub{animation:none!important;opacity:1;transform:none}#ld-platesup .pu-sweep{display:none}}
+
 /* ---- Energise (ld-energise) ---- */
 #ld-energise{background:#0b0b0d;flex-direction:column;gap:0}
 #ld-energise .en-in{width:min(560px,86vw);display:flex;flex-direction:column}
@@ -15029,6 +15056,16 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   <img class="rl-brand" src="../manchester-stair-supplies/logo.png" alt="">
   <div class="rl-stage"><svg viewBox="0 0 320 90"><path class="rl-line" d="M4 88 L4 24 L316 24 L316 88 M4 84 L316 84 M44 30 L44 82 M84 30 L84 82 M124 30 L124 82 M164 30 L164 82 M204 30 L204 82 M244 30 L244 82 M284 30 L284 82 M4 24 L4 6 M316 24 L316 6"/></svg></div>
   <div class="rl-sub">Every part of the stair</div>
+</div>
+<div class="loader" id="ld-platesup" aria-hidden="true">
+  <img class="pu-logo" src="../technical-electrical-services/logo-light.png" alt="">
+  <div class="pu-plates">
+    <div class="pu-plate"><i></i><span>Technical</span></div>
+    <div class="pu-plate"><i></i><span>Electrical</span></div>
+    <div class="pu-plate"><i></i><span>Services</span></div>
+    <div class="pu-sweep"></div>
+  </div>
+  <div class="pu-sub">Blackpool &middot; Since 1988</div>
 </div>
 <div class="loader" id="ld-energise" aria-hidden="true">
   <div class="en-in">
