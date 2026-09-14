@@ -4403,6 +4403,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>A shaker door built from its five parts, then opened on the brand. On smoked oak the two stiles drop in from top and bottom (0.08-0.6s), the two rails slide in from the sides (0.36-0.9s), the centre panel sets back into its frame (0.72s), a brass knob pops on (1.02s) and the brass hinge line shows; then the whole door swings open on its hinge (rotateY, 1.32-2.17s) and the logo with a one-line subline is there behind it. Transform and opacity only, 2.25s teardown, reduced motion shows the open state. Built for HP Carpentry &amp; Joinery, Newport.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-repoint" data-dur="2400">
+      <span class="trade">Brick and stone restoration / repointing specialists / conservation masons</span>
+      <h3>Rake And Repoint</h3>
+      <p>The job itself. On oxblood a six-course panel of London stock brick sits with its joints raked out dark. Course by course, bottom to top, a bright trowel edge strikes across from the left (0.15-1.2s, 0.55s per course, 0.13s stagger) and the joints behind it turn to fresh lime mortar, then the wordmark lands at 1.25s and a one-line subline at 1.5s. Two identical seeded brick grids, the lime-jointed one translating in over the raked one, so it is transform and opacity only. Built for Capital Restoration Ltd, Battersea; the mockup hero carries the same four-course band under the nav and it repoints itself on a 9s loop, so the loader hands off into the page.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-copewall" data-dur="2400">
       <span class="trade">Stone masons / wallers / builders with a stone wall in their portfolio</span>
       <h3>Cope The Wall</h3>
@@ -15445,6 +15451,48 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
   #ld-span.play .sp-c,#ld-span.play .sp-d{stroke-dashoffset:0;animation:none!important}
 }
 </style>
+
+<div class="loader" id="ld-repoint" aria-hidden="true">
+  <div class="rp-in">
+    <div class="rp-bk"></div>
+    <div class="rp-brand"><b>Capital <span>Restoration</span> Ltd</b><span class="rp-sub">Brick and stone restoration &middot; London</span></div>
+  </div>
+</div>
+
+<style>
+/* ---- Rake And Repoint (ld-repoint) ---- */
+#ld-repoint{background:#480f16;flex-direction:column}
+#ld-repoint .rp-in{width:min(440px,84vw);display:flex;flex-direction:column;align-items:center}
+#ld-repoint .rp-bk{width:100%;display:flex;flex-direction:column;background:#2b1b16;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.08)}
+#ld-repoint .rp-row{position:relative;height:26px;overflow:hidden;background:#2b1b16;border-bottom:5px solid #2b1b16}
+#ld-repoint .rp-row .base,#ld-repoint .rp-row .strip{position:absolute;inset:0;display:flex;gap:5px;padding-top:5px}
+#ld-repoint .rp-row .strip{background:#ddd6c4;transform:translateX(-101%)}
+#ld-repoint .rp-row.o .base,#ld-repoint .rp-row.o .strip{margin-left:-30px}
+#ld-repoint .rp-row i{display:block;flex:0 0 56px;height:100%;background:var(--c);font-style:normal}
+#ld-repoint .rp-row .strip::after{content:"";position:absolute;top:0;bottom:0;right:-2px;width:3px;background:#fff;box-shadow:0 0 10px 2px rgba(255,255,255,.55)}
+#ld-repoint.play .rp-row .strip{animation:rpJoint .55s cubic-bezier(.4,0,.2,1) forwards;animation-delay:calc(.15s + var(--i) * .13s)}
+#ld-repoint .rp-brand{text-align:center;margin-top:30px;opacity:0;transform:translateY(10px)}
+#ld-repoint .rp-brand b{display:block;font-family:'Libre Caslon Text',Georgia,serif;font-weight:700;color:#fff;font-size:1.5rem}
+#ld-repoint .rp-brand b span{color:#ff6b6b}
+#ld-repoint .rp-sub{display:block;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a9ad;font-weight:600;margin-top:10px}
+#ld-repoint.play .rp-brand{animation:rpBrand .5s ease 1.25s forwards}
+@keyframes rpJoint{from{transform:translateX(-101%)}to{transform:translateX(0)}}
+@keyframes rpBrand{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #ld-repoint.play .rp-row .strip{animation:none;transform:none}
+  #ld-repoint.play .rp-brand{opacity:1;transform:none;animation:none!important}
+}
+</style>
+<script>
+(function(){
+  var bk=document.querySelector('#ld-repoint .rp-bk'); if(!bk) return;
+  var s=17; function r(){ s=(s*9301+49297)%233280; return s/233280; }
+  var cs=['#c9a36a','#b98c55','#a97a4b','#8d6a4c','#d3b57e','#b0834e'], h='';
+  for(var i=0;i<6;i++){ var b=''; for(var j=0;j<9;j++){ b+='<i style="--c:'+cs[Math.floor(r()*cs.length)]+'"></i>'; }
+    h+='<div class="rp-row'+(i%2?' o':'')+'" style="--i:'+i+'"><div class="base">'+b+'</div><div class="strip">'+b+'</div></div>'; }
+  bk.innerHTML=h;
+})();
+</script>
 
 <div class="loader" id="ld-copewall" aria-hidden="true">
   <div class="cw-brand"><b>MASONRY <span>AND</span> CONSTRUCTION</b><span class="cw-sub">Stone mason &amp; general builder &middot; South Wales</span></div>
