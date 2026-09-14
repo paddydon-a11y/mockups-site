@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@800;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600..800&display=swap" rel="stylesheet">
@@ -5917,6 +5918,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <span class="trade">Developer / high-end residential builder</span>
       <h3>Gilt Frame</h3>
       <p>GILT FRAME: developer / high-end residential builder. A brass frame draws itself around the mark, the bars rise, the initials land. Source: cap-development. On white a brass #cd8e33 square draws itself via stroke-dashoffset (pathLength=1, 0.05-1.15s), the seven bars of the CAP mark rise inside from the base, outer pairs first and the tall centre bar last (0.55-1.4s), C A P lands letterspaced in Playfair Display one letter at a time (1.15s, 1.27s, 1.39s), and the tagline fades up beneath (1.6s). 2.2s teardown, 2.6s fail-safe. Stroke-dashoffset, scaleY and opacity only, no clip-path. Reduced-motion shows the drawn frame, full bars and the wordmark. First used: cap-development (as #ld inside the mockup, where the brass frame and seven-bar mark carry the whole identity). Distinct from Door Swap (frame draws around a door) and the Skyline Topping Out: nothing else in the lab draws a bare square frame and raises a bar-chart mark inside it.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
+    <button class="card" data-loader="ld-startfinish" data-dur="2200">
+      <span class="trade">Construction company / builder</span>
+      <h3>START TO FINISH</h3>
+      <p>START TO FINISH: construction companies / builders. A programme rail draws across the screen and six build stages light up in order, then the wordmark stamps. Source: bjs-construction. On anthracite #23272c a 2px site-orange #ff6a13 rail draws left to right via scaleX (0.08-0.63s), then six stage dots spaced at 0%, 20%, 40%, 60%, 80% and 100% swell from 0.6 to full and turn orange one after another (0.45s, 0.65s, 0.85s, 1.05s, 1.25s, 1.45s) while a Kanit 700 uppercase word flicks in above each one (Footings, Steel, Roof, First fix, Render, Handover); the last dot swells to 1.25x with a white ring and its word reads orange, then the Kanit 800 wordmark with a Birmingham sub-line stamps beneath the rail (1.6s). 2.2s teardown, 2.6s fail-safe. Transform and opacity only, no SVG, no clip-path. Under 640px the stage words shrink and alternate above and below the rail so they never collide. Reduced-motion shows the drawn rail, all six lit dots and the wordmark. Hands off INTO the fold: the same orange rail is the hero rule. First used: bjs-construction (Birmingham design and build, where the start-to-finish programme is the pitch). Distinct from Topping Out (a skyline rising) and Bed and Surround (a section filling): nothing else in the lab draws a linear programme rail and lights the stages of a build in sequence.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
   </div>
@@ -15803,6 +15810,58 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @media (prefers-reduced-motion:reduce){
   #ld-giltframe .gf-fr rect{animation:none!important;stroke-dashoffset:0}
   #ld-giltframe .gf-mark .bar,#ld-giltframe .gf-word span,#ld-giltframe .gf-tag{animation:none!important;opacity:1;transform:none}
+}
+</style>
+<div class="loader" id="ld-startfinish" aria-hidden="true">
+  <div class="sf-in">
+    <div class="sf-rail"><i></i>
+      <div class="sf-st"><b>Footings</b><u></u></div>
+      <div class="sf-st"><b>Steel</b><u></u></div>
+      <div class="sf-st"><b>Roof</b><u></u></div>
+      <div class="sf-st"><b>First fix</b><u></u></div>
+      <div class="sf-st"><b>Render</b><u></u></div>
+      <div class="sf-st"><b>Handover</b><u></u></div>
+    </div>
+    <div class="sf-wm"><span>BJS <span class="or">Construction</span></span><small>Birmingham . Start to finish</small></div>
+  </div>
+</div>
+<style>
+/* ---- START TO FINISH (ld-startfinish, BJS Construction, 2026-09-14) ---- */
+#ld-startfinish{background:#23272c}
+#ld-startfinish .sf-in{width:min(760px,86vw);position:relative}
+#ld-startfinish .sf-rail{position:relative;height:2px;background:rgba(255,255,255,.12)}
+#ld-startfinish .sf-rail i{position:absolute;left:0;top:0;height:100%;width:100%;background:#ff6a13;transform-origin:left;transform:scaleX(0)}
+#ld-startfinish.play .sf-rail i{animation:sfRail .55s cubic-bezier(.6,0,.2,1) .08s forwards}
+#ld-startfinish .sf-st{position:absolute;top:50%;left:0;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-50%);width:0}
+#ld-startfinish .sf-st b{position:absolute;bottom:14px;font-family:'Kanit',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:#fff;white-space:nowrap;opacity:0;transform:translateY(6px)}
+#ld-startfinish .sf-st u{display:block;width:14px;height:14px;border-radius:50%;background:#23272c;border:2px solid rgba(255,255,255,.28);transform:scale(.6);text-decoration:none}
+#ld-startfinish.play .sf-st b{animation:sfWord .3s ease forwards}
+#ld-startfinish.play .sf-st u{animation:sfDot .3s ease forwards}
+#ld-startfinish .sf-st:nth-child(2){left:0%}#ld-startfinish .sf-st:nth-child(3){left:20%}#ld-startfinish .sf-st:nth-child(4){left:40%}#ld-startfinish .sf-st:nth-child(5){left:60%}#ld-startfinish .sf-st:nth-child(6){left:80%}#ld-startfinish .sf-st:nth-child(7){left:100%}
+#ld-startfinish.play .sf-st:nth-child(2) b,#ld-startfinish.play .sf-st:nth-child(2) u{animation-delay:.45s}
+#ld-startfinish.play .sf-st:nth-child(3) b,#ld-startfinish.play .sf-st:nth-child(3) u{animation-delay:.65s}
+#ld-startfinish.play .sf-st:nth-child(4) b,#ld-startfinish.play .sf-st:nth-child(4) u{animation-delay:.85s}
+#ld-startfinish.play .sf-st:nth-child(5) b,#ld-startfinish.play .sf-st:nth-child(5) u{animation-delay:1.05s}
+#ld-startfinish.play .sf-st:nth-child(6) b,#ld-startfinish.play .sf-st:nth-child(6) u{animation-delay:1.25s}
+#ld-startfinish.play .sf-st:nth-child(7) b,#ld-startfinish.play .sf-st:nth-child(7) u{animation-delay:1.45s}
+#ld-startfinish .sf-st:nth-child(7) b{color:#ff6a13}
+#ld-startfinish .sf-st:nth-child(2) b{left:-6px}#ld-startfinish .sf-st:nth-child(7) b{right:-6px}
+#ld-startfinish.play .sf-st:nth-child(7) u{animation-name:sfDotLast}
+#ld-startfinish .sf-wm{text-align:center;margin-top:44px;opacity:0;transform:translateY(10px)}
+#ld-startfinish.play .sf-wm{animation:sfWord .4s ease 1.6s forwards}
+#ld-startfinish .sf-wm>span{font-family:'Kanit',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(1.7rem,5vw,2.6rem);color:#fff;line-height:1}
+#ld-startfinish .sf-wm .or{color:#ff6a13}
+#ld-startfinish .sf-wm small{display:block;margin-top:8px;font-family:'Inter',system-ui,sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+@keyframes sfRail{to{transform:scaleX(1)}}
+@keyframes sfWord{to{opacity:1;transform:none}}
+@keyframes sfDot{to{transform:scale(1);background:#ff6a13;border-color:#ff6a13}}
+@keyframes sfDotLast{to{transform:scale(1.25);background:#ff6a13;border-color:#fff}}
+@media(max-width:640px){#ld-startfinish .sf-st b{font-size:.58rem;letter-spacing:.08em}#ld-startfinish .sf-st:nth-child(odd) b{bottom:auto;top:16px}}
+@media (prefers-reduced-motion:reduce){
+  #ld-startfinish .sf-rail i{animation:none!important;transform:scaleX(1)}
+  #ld-startfinish .sf-st b,#ld-startfinish .sf-wm{animation:none!important;opacity:1;transform:none}
+  #ld-startfinish .sf-st u{animation:none!important;transform:scale(1);background:#ff6a13;border-color:#ff6a13}
+  #ld-startfinish .sf-st:nth-child(7) u{transform:scale(1.25);border-color:#fff}
 }
 </style>
 </body>
