@@ -4451,6 +4451,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Builds the client's roofline logo from its real shapes, traced from their logo file and snapped to clean lines. On logo slate the smaller roof rises into place as one whole shape, then the main roof, then the coral undersides, chimney and gable windows fade in exactly where they sit in the mark, and the wordmark rises. No outline strokes and nothing moves off position, so every colour stays inside its edge. 2.2s lift, reduced motion = finished card. Hands off INTO the fold: the same mark sits above the H1 and rebuilds on body.lit. First used: vaa-construction.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-spinup" data-dur="2300">
+      <span class="trade">Ventilation / air conditioning / extract engineers, any brand whose mark is a fan</span>
+      <h3>Spin Up</h3>
+      <p>The kit itself. On logo sky blue a charcoal three-blade fan sits still, then spins up hard (rotate only, ease-in, 1620deg over 2.2s) while white airflow streaks blow out of both sides of it (scaleX then translateX and fade, staggered 0.75-1.12s). A white swoosh draws under the fan at 1.05s with an orange inner stroke at 1.35s (their logo swoosh), the wordmark rises at 1.45s and a one-line service subline at 1.65s. Transform, opacity and stroke-dashoffset only, 2.25s teardown, 2.9s fail-safe, reduced motion shows the finished card. First used: sme-ventilation; the mockup fold carries the same fan at 300px bleeding off the edge, spinning down from loader speed on body.lit and turning slowly behind flowing streamlines, so the loader hands off into the page.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-freshcoat" data-dur="2300">
       <span class="trade">Property refurbishment / multi-trade renovation / decorators with a finished-room photo</span>
       <h3>Fresh Coat</h3>
@@ -16414,6 +16420,42 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes rfO{to{opacity:1}}
 @keyframes rfU{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#ld-rafters *{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}}
+</style>
+<div class="loader" id="ld-spinup" aria-hidden="true">
+  <div class="su-stage"><div class="su-air"><i></i><i></i><i></i><i></i></div><div class="su-air l"><i></i><i></i><i></i><i></i></div><svg class="su-fan" viewBox="-100 -100 200 200"><g class="su-rot"><path d="M-9,-13 C-34,-36 -40,-74 -16,-90 C4,-103 36,-96 38,-72 C40,-50 22,-32 10,-13 Z"/><g transform="rotate(120)"><path d="M-9,-13 C-34,-36 -40,-74 -16,-90 C4,-103 36,-96 38,-72 C40,-50 22,-32 10,-13 Z"/></g><g transform="rotate(240)"><path d="M-9,-13 C-34,-36 -40,-74 -16,-90 C4,-103 36,-96 38,-72 C40,-50 22,-32 10,-13 Z"/></g><circle r="21"/><circle r="8" fill="#78c4e3"/></g></svg></div>
+  <svg class="su-sw" viewBox="0 0 280 40"><path class="w" d="M4,32 C70,40 120,10 170,6 C215,2 250,8 276,18"/><path class="o" d="M96,30 C130,20 160,16 196,17"/></svg>
+  <div class="su-word">SME Ventilation</div>
+  <div class="su-sub">Ventilation · Air conditioning · Extract · Leeds</div>
+</div>
+<style>
+/* ---- Spin Up (ld-spinup, SME Ventilation, 2026-09-15) ---- */
+#ld-spinup{background:#78c4e3;flex-direction:column;gap:18px;overflow:hidden}
+#ld-spinup .su-stage{position:relative;width:170px;height:170px}
+#ld-spinup .su-fan{width:170px;height:170px;fill:#2c2d2b}
+#ld-spinup.on .su-fan{animation:suSpin 2.2s cubic-bezier(.62,0,.9,.55) .15s both}
+#ld-spinup .su-air{position:absolute;left:50%;top:50%;width:0;height:0}
+#ld-spinup .su-air.l{transform:scaleX(-1)}
+#ld-spinup .su-air i{position:absolute;left:0;height:4px;border-radius:9px;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.95) 55%,rgba(255,255,255,0));width:min(46vw,420px);transform-origin:0 50%;opacity:0;transform:translateX(62px) scaleX(0)}
+#ld-spinup .su-air i:nth-child(1){top:-52px}#ld-spinup .su-air i:nth-child(2){top:-14px;width:min(58vw,520px)}#ld-spinup .su-air i:nth-child(3){top:24px}#ld-spinup .su-air i:nth-child(4){top:60px;width:min(36vw,320px)}
+#ld-spinup.on .su-air i:nth-child(1){animation:suAir 1.05s cubic-bezier(.2,.7,.3,1) .75s forwards}
+#ld-spinup.on .su-air i:nth-child(2){animation:suAir 1.1s cubic-bezier(.2,.7,.3,1) .9s forwards}
+#ld-spinup.on .su-air i:nth-child(3){animation:suAir 1s cubic-bezier(.2,.7,.3,1) 1.02s forwards}
+#ld-spinup.on .su-air i:nth-child(4){animation:suAir 1s cubic-bezier(.2,.7,.3,1) 1.12s forwards}
+#ld-spinup .su-sw{width:min(280px,70vw);height:40px;overflow:visible}
+#ld-spinup .su-sw path{fill:none;stroke-linecap:round}
+#ld-spinup .su-sw .w{stroke:#fff;stroke-width:9;stroke-dasharray:340;stroke-dashoffset:340}
+#ld-spinup .su-sw .o{stroke:#df803b;stroke-width:5;stroke-dasharray:220;stroke-dashoffset:220}
+#ld-spinup.on .su-sw .w{animation:suDraw .6s cubic-bezier(.6,0,.2,1) 1.05s forwards}
+#ld-spinup.on .su-sw .o{animation:suDraw .45s cubic-bezier(.6,0,.2,1) 1.35s forwards}
+#ld-spinup .su-word{font-family:'Red Hat Display',Arial,sans-serif;font-weight:900;color:#2c2d2b;font-size:clamp(1.9rem,8vw,2.6rem);letter-spacing:-.03em;opacity:0;transform:translateY(14px)}
+#ld-spinup .su-sub{font-family:Arial,sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#2c2d2b;opacity:0;transform:translateY(10px);text-align:center;padding-left:20px;padding-right:20px}
+#ld-spinup.on .su-word{animation:suUp .45s cubic-bezier(.2,.9,.3,1) 1.45s forwards}
+#ld-spinup.on .su-sub{animation:suUp .45s ease 1.65s forwards}
+@keyframes suSpin{0%{transform:rotate(0)}100%{transform:rotate(1620deg)}}
+@keyframes suAir{0%{opacity:0;transform:translateX(62px) scaleX(0)}25%{opacity:1}70%{opacity:1;transform:translateX(90px) scaleX(1)}100%{opacity:0;transform:translateX(34vw) scaleX(1)}}
+@keyframes suDraw{to{stroke-dashoffset:0}}
+@keyframes suUp{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#ld-spinup *{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}#ld-spinup .su-air{display:none}}
 </style>
 </body>
 </html>
