@@ -28,3 +28,10 @@ Pexels licence (free commercial use, no attribution required).
 - rebar-hands.jpg = https://www.pexels.com/photo/10932215/
 
 brand-*.jpg = supplied in LabourLok-Brand-Pack.pdf
+
+## Added 2026-09-23 (client edits round 1)
+- ll-*.jpg = supplied by LabourLok (AI-generated with LabourLok branding; ll-mentor.jpg is their logo-swapped version of the old Vital Energi photo)
+- shopfit.jpg = https://www.pexels.com/photo/5493675/
+- landscape.jpg = https://www.pexels.com/photo/16239800/
+- partners/dds-logo.png = designdisplaysolutions.com site logo (small source, light-on-dark)
+- partners/scc-logo.png = skillscc.com official logo

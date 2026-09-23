@@ -100,7 +100,7 @@
     var ooh = $('.ooh', hp); if (ooh) ooh.hidden = on;
     var ch = $('.channels', hp);
     if (ch) {
-      ch.innerHTML = (C.whatsapp ? '<a href="https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent('Hi LabourLok, ') + '" target="_blank" rel="noopener">' + ICON.wa + 'WhatsApp</a>' : '<span>WhatsApp: number to be confirmed</span>')
+      ch.innerHTML = (C.whatsapp ? '<a href="https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent('Hi LabourLok, ') + '" target="_blank" rel="noopener">' + ICON.wa + 'WhatsApp</a>' : (C.supportPhone ? '' : '<span>WhatsApp: number to be confirmed</span>'))
         + (C.supportPhone ? '<a href="tel:' + C.supportPhone.replace(/\s/g,'') + '">' + ICON.phone + 'Call support</a>' : '<span>Support line: to be confirmed</span>');
     }
     var open = function(o){ hp.classList.toggle('open', o); fab.setAttribute('aria-expanded', o ? 'true' : 'false'); if (o) { showRoot(); } };
