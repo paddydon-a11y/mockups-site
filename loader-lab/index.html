@@ -6141,6 +6141,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>The drawing becomes the house, using the real house. A navy line drawing is traced off the mockup's own hero photo (Canny edges on a bilateral-filtered copy, small specks dropped, navy ink on the vellum ground). On vellum a solid orange pencil (navy lead, wood cone, orange body, ferrule, navy eraser, all filled shapes) runs across the card on a slight bob while a vellum cover slides off behind its tip, so the drawing appears line by line exactly where the pencil has been (translateX, 0.15-1.15s); the pencil lifts away (1.12s), then an orange wash edge sweeps back across and the real photograph floods in behind it (counter-translated reveal, outer -100% to 0 and inner +100% to 0, 1.1-1.72s), and the wordmark with its north-point mark rises (1.4s) with a subline (1.6s). Transform and opacity only, 2.3s teardown, 3.0s fail-safe, reduced motion shows the finished photo card. Distinct from Drawn Then Built, Plan Draw, Drawn Up and Stamp It, which are all outline drawings with no photographic payoff: here the payoff is the actual building. First used: asj-architectural-services (Plymouth), where the loader hands straight into a drawn/built drag slider built from the same two images; the slider starts on the photo, sweeps to the drawing and settles at halfway.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-onthebench" data-dur="2300">
+      <span class="trade">Carpenters and joiners whose logo is a tool mark; any client whose mark can be cut into separate parts</span>
+      <h3>On The Bench</h3>
+      <p>The client's own mark built from its parts. Their logo is a copper workbench holding an axe and a clamp, cut from the logo file into three PNGs (bench, clamp, axe). On their logo grey the bench rises (translateY 36% to 0, 0.1-0.52s), the clamp drops onto it with overshoot (0.46-0.96s), then the axe swings in from rotate(-62deg) about its handle foot and CHOPS down on an ease-in (0.86-1.22s); the whole mark thuds 2.5% (1.2s) and three copper chips fly off (1.2-1.75s). The real wordmark PNG rises (1.36s) with a subline (1.56s). Transform and opacity only, 2.3s teardown, 3.0s fail-safe, reduced motion shows the finished mark and wordmark. Distinct from Plume Fan and Block Mark (parts fan or drop, nothing strikes) and Star Glue-Up (mitred pieces joint together): here one part hits the others. First used: quinnercrew-carpentry (East Belfast), where the assembled mark FLIPs (measured translate + scale) out of the loader into the hero, fading to a 20% watermark behind the H1, and the axe re-chops every 8s.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -17722,6 +17728,45 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes ppLift{to{opacity:0;transform:rotate(-38deg) translate(40px,-40px)}}
 @keyframes ppUp{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#ld-pencilpass *{animation:none!important}#ld-pencilpass .pp-cover,#ld-pencilpass .pp-pen{opacity:0}#ld-pencilpass .pp-photo,#ld-pencilpass .pp-in{transform:none}#ld-pencilpass .pp-wm,#ld-pencilpass .pp-sub{opacity:1;transform:none}}
+</style>
+<div class="loader" id="ld-onthebench" aria-hidden="true">
+  <div class="ob-wrap">
+    <div class="ob-mark"><img class="ob-bench" src="../quinnercrew-carpentry/mark-bench.png" alt=""><img class="ob-clamp" src="../quinnercrew-carpentry/mark-clamp.png" alt=""><img class="ob-axe" src="../quinnercrew-carpentry/mark-axe.png" alt=""><i class="ob-chip"></i><i class="ob-chip c2"></i><i class="ob-chip c3"></i></div>
+    <img class="ob-wm" src="../quinnercrew-carpentry/wordmark.png" alt="">
+    <div class="ob-sub">Carpentry &middot; East Belfast</div>
+  </div>
+</div>
+<style>
+/* ---- On The Bench (ld-onthebench, QuinnerCrew Carpentry, 2026-09-23) ---- */
+#ld-onthebench{background:radial-gradient(120% 80% at 30% 20%,#b5b5b4,#a6a6a6 55%,#9a9a99);display:none;align-items:center;justify-content:center;overflow:hidden}
+#ld-onthebench.on,#ld-onthebench.play{display:flex}
+#ld-onthebench .ob-wrap{display:flex;flex-direction:column;align-items:center;gap:20px}
+#ld-onthebench .ob-mark{position:relative;width:min(58vw,300px);aspect-ratio:760/472}
+#ld-onthebench .ob-mark img{position:absolute;inset:0;width:100%;height:100%}
+#ld-onthebench .ob-bench{opacity:0;transform:translateY(36%)}
+#ld-onthebench .ob-clamp{opacity:0;transform:translateY(-70%)}
+#ld-onthebench .ob-axe{opacity:0;transform-origin:46.3% 62.7%;transform:rotate(-62deg) translateY(-6%)}
+#ld-onthebench .ob-chip{position:absolute;left:44%;top:58%;width:7%;height:3.2%;background:#b2774b;opacity:0}
+#ld-onthebench .ob-wm{width:min(62vw,300px);opacity:0;transform:translateY(12px)}
+#ld-onthebench .ob-sub{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;color:#4d2c17;opacity:0;transform:translateY(10px)}
+#ld-onthebench.on .ob-bench,#ld-onthebench.play .ob-bench{animation:obBench .42s cubic-bezier(.2,.8,.2,1) .1s forwards}
+#ld-onthebench.on .ob-clamp,#ld-onthebench.play .ob-clamp{animation:obClamp .5s cubic-bezier(.3,.7,.3,1.25) .46s forwards}
+#ld-onthebench.on .ob-axe,#ld-onthebench.play .ob-axe{animation:obAxe .36s cubic-bezier(.6,0,.9,.4) .86s forwards}
+#ld-onthebench.on .ob-mark,#ld-onthebench.play .ob-mark{animation:obThud .22s ease-out 1.2s}
+#ld-onthebench.on .ob-chip,#ld-onthebench.play .ob-chip{animation:obChipA .55s ease-out 1.2s forwards}
+#ld-onthebench.on .ob-chip.c2,#ld-onthebench.play .ob-chip.c2{animation-name:obChipB}
+#ld-onthebench.on .ob-chip.c3,#ld-onthebench.play .ob-chip.c3{animation-name:obChipC}
+#ld-onthebench.on .ob-wm,#ld-onthebench.play .ob-wm{animation:obUp .45s ease 1.36s forwards}
+#ld-onthebench.on .ob-sub,#ld-onthebench.play .ob-sub{animation:obUp .45s ease 1.56s forwards}
+@keyframes obBench{to{opacity:1;transform:none}}
+@keyframes obClamp{0%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes obAxe{0%{opacity:1;transform:rotate(-62deg) translateY(-6%)}100%{opacity:1;transform:none}}
+@keyframes obThud{0%,100%{transform:none}40%{transform:translateY(2.5%)}}
+@keyframes obChipA{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(-260%,-900%) rotate(-140deg)}}
+@keyframes obChipB{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(-520%,-420%) rotate(-220deg)}}
+@keyframes obChipC{0%{opacity:1;transform:none}100%{opacity:0;transform:translate(-80%,-1100%) rotate(-90deg)}}
+@keyframes obUp{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#ld-onthebench *{animation:none!important}#ld-onthebench .ob-bench,#ld-onthebench .ob-clamp,#ld-onthebench .ob-axe,#ld-onthebench .ob-wm,#ld-onthebench .ob-sub{opacity:1;transform:none}}
 </style>
 </body>
 </html>
