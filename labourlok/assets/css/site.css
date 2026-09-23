@@ -108,11 +108,14 @@ body.nav-open{overflow:hidden}
 .hero .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,31,24,.92) 0%,rgba(7,31,24,.78) 34%,rgba(13,55,43,.38) 62%,rgba(13,55,43,.28) 100%)}
 .hero .brush{position:absolute;inset:0;z-index:1;pointer-events:none;background:var(--forest);-webkit-mask:url(#brushL);mask:url(#brushL);opacity:.92}
 .hero .wrap{position:relative;z-index:2;width:100%;padding-top:clamp(56px,8vw,110px);padding-bottom:clamp(120px,14vw,170px)}
-.hero h1{max-width:12ch}
+.hero h1{max-width:15ch}
+.hero:not(.short) h1{font-size:clamp(44px,min(6vw,9.5vh),80px)}
+@media(min-width:701px){.hero:not(.short){min-height:clamp(560px,calc(100vh - var(--nav-h)),860px)}.hero:not(.short) .wrap{padding-top:clamp(40px,6vh,110px);padding-bottom:calc(clamp(80px,10vw,120px) + clamp(40px,6vh,60px))}}
 .hero .kicker{color:var(--lime)}
-.hero .sub{font-weight:600;font-size:clamp(17px,1.5vw,21px);color:var(--lime);margin:22px 0 24px;max-width:36ch;line-height:1.4}
-.hero .statement{font-family:var(--serif);font-size:clamp(24px,2.5vw,36px);line-height:1.2;max-width:22ch;margin:0 0 34px}
-.hero .statement strong{font-weight:400;color:var(--lime)}
+.hero .sub{font-weight:500;font-size:clamp(17px,1.5vw,21px);color:rgba(255,255,255,.86);margin:22px 0 24px;max-width:36ch;line-height:1.5}
+.hero .sub+.statement{margin-top:0}
+.hero .statement{font-family:var(--body);font-weight:500;font-size:clamp(17px,1.5vw,21px);line-height:1.5;max-width:34ch;margin:22px 0 32px;color:rgba(255,255,255,.86)}
+.hero .statement strong{font-weight:700;color:var(--lime)}
 .hero .secondary{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 26px;font-size:15px;font-weight:600}
 .hero .secondary a{color:var(--white);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
 .hero .secondary a:hover{border-color:var(--lime)}
@@ -128,6 +131,11 @@ body.nav-open{overflow:hidden}
   .hero.short .photo img{object-position:center 20%}
   .hero .wrap{padding-top:44px;padding-bottom:110px}
   .hero .brush{display:none}
+  /* Home hero: fill the first screen and let the sparks photo show under the buttons */
+  .hero:not(.short){min-height:calc(100svh - var(--nav-h));align-items:flex-start}
+  .hero:not(.short) .photo::after{background:linear-gradient(180deg,rgba(7,31,24,.94) 0%,rgba(7,31,24,.86) 48%,rgba(7,31,24,.35) 78%,rgba(7,31,24,.2) 100%)}
+  .hero:not(.short) .photo img{object-position:62% center}
+  .hero .secondary{display:none}
 }
 @media(prefers-reduced-motion:no-preference){
   .hero .wrap>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
