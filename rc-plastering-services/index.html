@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RC Plastering Services | Plasterer in Yorkshire</title>
+<meta name="description" content="RC Plastering Services: plastering across Yorkshire. Skimming, re-plastering, plasterboarding, ceilings, coving and external render for homes and landlords.">
+<meta name="theme-color" content="#0a66ad">
+<meta property="og:title" content="RC Plastering Services, Your New Website">
+<meta property="og:description" content="Plastering across Yorkshire: preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/rc-plastering-services/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/rc-plastering-services/">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{
+  --az:#0a66ad; --az-deep:#08528c; --az-dark:#063f6c; --az-ink:#0a5a99; --az-hi:#9fd0f7;
+  --ink:#0f1a26; --ink-2:#172433; --ink-line:#26364a;
+  --page:#ffffff; --stone:#eef2f5; --line:#dfe6ec;
+  --head:#0f1a26; --body:#46525e; --muted:#7f8b96;
+  --skim:#e3a594; --relief:#d3dce4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+em{font-style:normal}
+html{scroll-behavior:smooth}
+body{
+  background:var(--page); color:var(--body);
+  font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  font-size:1rem; line-height:1.7; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.disp{font-family:'Tilt Warp','Instrument Sans',sans-serif;font-weight:400;color:var(--head);letter-spacing:-.01em;line-height:1.02}
+
+/* ---------- plaster rose ---------- */
+.rose .sh{fill:rgba(3,34,64,.28)}
+.rose .w{fill:#fff;stroke:var(--relief);stroke-width:1.2}
+.rose .w2{fill:#f3f6f9}
+.rose .wet{fill:var(--skim);opacity:0}
+.rose .seed{fill:#c3ced8}
+.rose .rp{transform-box:fill-box;transform-origin:50% 100%}
+.rose .r-boss .rp{transform-origin:50% 50%}
+
+/* trowel sweep texture: fan arcs like a trowelled finish */
+.sweeps{position:absolute;inset:0;pointer-events:none;opacity:.075;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='160' viewBox='0 0 220 160'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.4'%3E%3Cpath d='M-20 150 Q60 40 150 110'/%3E%3Cpath d='M-10 170 Q70 60 170 130'/%3E%3Cpath d='M90 40 Q160 -30 250 30'/%3E%3Cpath d='M100 60 Q170 -10 260 50'/%3E%3Cpath d='M20 10 Q60 -30 110 -5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:220px 160px}
+
+/* ---------- loader: CAST THE ROSE ---------- */
+#loader{position:fixed;inset:0;z-index:200;background:var(--az);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease, visibility .45s}
+#loader.gone{opacity:0;visibility:hidden}
+.ld-card{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px}
+.ld-stage{position:relative;width:min(230px,58vw);aspect-ratio:1}
+.ld-stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ld-mould{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:ldMould .38s cubic-bezier(.2,.8,.3,1) .05s forwards, ldFade .35s ease 1.05s forwards}
+.ld-pool{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0);animation:ldPour .5s cubic-bezier(.3,.7,.3,1) .4s forwards, ldFade .3s ease 1.0s forwards}
+.ld-rose .rp{transform:scale(0);opacity:0;animation:ldPop .42s cubic-bezier(.3,1.5,.5,1) both}
+.ld-rose .r-sep .rp{animation-delay:calc(.86s + var(--i)*.035s)}
+.ld-rose .r-out .rp{animation-delay:calc(.9s + var(--i)*.05s)}
+.ld-rose .r-in .rp{animation-delay:calc(1.08s + var(--i)*.04s)}
+.ld-rose .r-boss .rp{animation-delay:1.22s}
+.ld-rose .wet{opacity:1;animation:ldSet .5s ease both}
+.ld-rose .r-sep .wet{animation-delay:calc(1.3s + var(--i)*.03s)}
+.ld-rose .r-out .wet{animation-delay:calc(1.34s + var(--i)*.04s)}
+.ld-rose .r-in .wet{animation-delay:calc(1.44s + var(--i)*.03s)}
+.ld-rose .r-boss .wet{animation-delay:1.52s}
+.ld-word{margin-top:22px;font-family:'Tilt Warp',sans-serif;color:#fff;font-size:clamp(1.7rem,6.5vw,2.3rem);line-height:1;letter-spacing:.01em;opacity:0;transform:translateY(12px);animation:ldUp .45s ease 1.66s forwards}
+.ld-sub{margin-top:10px;color:rgba(255,255,255,.82);font-weight:600;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;opacity:0;transform:translateY(8px);animation:ldUp .4s ease 1.86s forwards}
+@keyframes ldMould{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes ldPour{to{transform:scale(1)}}
+@keyframes ldFade{to{opacity:0}}
+@keyframes ldPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes ldSet{to{opacity:0}}
+@keyframes ldUp{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .ld-mould,.ld-pool{display:none}
+  .ld-rose .rp,.ld-word,.ld-sub{animation:none;opacity:1;transform:none}
+  .ld-rose .wet{animation:none;opacity:0}
+}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:100;background:var(--az);border-bottom:1px solid rgba(255,255,255,.12)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:11px;white-space:nowrap;color:#fff}
+.nav-logo svg{width:36px;height:36px;flex:none}
+.nav-logo b{font-family:'Tilt Warp',sans-serif;font-weight:400;font-size:1.28rem;line-height:1;letter-spacing:.01em;display:block}
+.nav-logo small{display:block;font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;opacity:.8;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:rgba(255,255,255,.86);font-weight:600;font-size:.92rem;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--az-deep);padding:11px 18px;border-radius:999px}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:var(--az-deep)}
+.burger{display:none;width:46px;height:46px;border:1.5px solid rgba(255,255,255,.4);background:transparent;border-radius:12px;cursor:pointer;position:relative}
+.burger span,.burger span:before,.burger span:after{position:absolute;left:50%;width:20px;height:2px;background:#fff;border-radius:2px;transform:translateX(-50%)}
+.burger span{top:50%;margin-top:-1px}
+.burger span:before{content:"";top:-6px}
+.burger span:after{content:"";top:6px}
+.mob{display:none;background:var(--az-deep);padding:10px 24px 22px}
+.mob.open{display:block}
+.mob a{display:block;color:#fff;font-weight:600;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.mob a.call{margin-top:16px;border:0;background:#fff;color:var(--az-deep);text-align:center;border-radius:999px;padding:14px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--az);color:#fff;overflow:hidden;display:flex;flex-direction:column}
+.hero .sweeps{opacity:.08}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+  min-height:clamp(540px,calc(100vh - 70px),760px);padding-top:56px;padding-bottom:64px}
+.hero-copy{position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9);opacity:0;animation:fadeUp .6s ease forwards;animation-delay:var(--d0)}
+.dot{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:pulse 2s infinite}
+.hero h1{color:#fff;font-size:clamp(3rem,6.4vw,5.6rem);margin-top:22px;opacity:0;animation:fadeUp .7s ease forwards;animation-delay:calc(var(--d0) + .12s)}
+.hero h1 .l{display:block}
+.skimword{position:relative;display:inline-block;color:var(--az-deep);padding:0 .16em .04em;margin-left:-.16em;z-index:0}
+.skimword:before{content:"";position:absolute;inset:.06em 0 -.04em 0;background:#fff;z-index:-1;border-radius:4px;transform:scaleX(0);transform-origin:left;animation:skim .75s cubic-bezier(.6,.05,.25,1) forwards;animation-delay:calc(var(--d0) + .45s)}
+.skimword:after{content:"";position:absolute;top:.06em;bottom:-.04em;left:0;width:26px;background:linear-gradient(90deg,rgba(227,165,148,0),rgba(227,165,148,.95));z-index:-1;border-radius:4px;opacity:0;animation:wetEdge .75s cubic-bezier(.6,.05,.25,1) forwards;animation-delay:calc(var(--d0) + .45s)}
+@keyframes skim{to{transform:scaleX(1)}}
+@keyframes wetEdge{0%{opacity:1;transform:translateX(0)}85%{opacity:1}100%{opacity:0;transform:translateX(var(--sw,300px))}}
+.hero-lede{max-width:520px;margin-top:22px;font-size:1.08rem;color:rgba(255,255,255,.88);opacity:0;animation:fadeUp .6s ease forwards;animation-delay:calc(var(--d0) + .24s)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;opacity:0;animation:fadeUp .6s ease forwards;animation-delay:calc(var(--d0) + .36s)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1rem;padding:16px 26px;border-radius:999px;transition:transform .2s, box-shadow .2s, background .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-white{background:#fff;color:var(--az-deep)}
+.btn-white:hover{box-shadow:0 12px 28px rgba(3,30,60,.3)}
+.btn-ghost{border:2px solid rgba(255,255,255,.6);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-az{background:var(--az);color:#fff}
+.btn-az:hover{background:var(--az-deep);box-shadow:0 12px 28px rgba(10,102,173,.28)}
+
+.hero-visual{position:relative;opacity:0;animation:fadeUp .8s ease forwards;animation-delay:calc(var(--d0) + .3s)}
+.hero-photo{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.2);aspect-ratio:4/3.3;box-shadow:0 30px 60px rgba(3,30,60,.35)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-visual .fold-rose{position:absolute;width:210px;height:210px;left:-86px;top:-70px;z-index:3;filter:drop-shadow(0 16px 24px rgba(3,30,60,.35))}
+.hero-badge{position:absolute;right:16px;bottom:16px;background:#fff;color:var(--head);border-radius:12px;padding:12px 16px;font-size:.86rem;font-weight:600;line-height:1.35;box-shadow:0 10px 24px rgba(3,30,60,.2)}
+.hero-badge b{display:block;font-family:'Tilt Warp',sans-serif;font-weight:400;color:var(--az-ink);font-size:1.1rem}
+.mob-rose{display:none}
+
+/* fold rose re-cast loop */
+body.lit .fold-rose.recast .wet{animation:recast 2.2s ease}
+body.lit .fold-rose.recast .r-sep .wet{animation-delay:calc(var(--i)*.05s)}
+body.lit .fold-rose.recast .r-out .wet{animation-delay:calc(.1s + var(--i)*.07s)}
+body.lit .fold-rose.recast .r-in .wet{animation-delay:calc(.3s + var(--i)*.05s)}
+body.lit .fold-rose.recast .r-boss .wet{animation-delay:.5s}
+@keyframes recast{0%{opacity:0}18%{opacity:.92}45%{opacity:.92}100%{opacity:0}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}70%{box-shadow:0 0 0 10px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+:root{--d0:2.2s}
+body.nold{--d0:.1s}
+
+/* ---------- trust ---------- */
+.trust{background:#fff;position:relative;z-index:2}
+.trust-in{display:flex;justify-content:space-between;gap:18px;padding-top:26px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.trust-item{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--head);font-size:.95rem;white-space:nowrap}
+.trust-item svg{width:20px;height:20px;stroke:var(--az);flex:none}
+
+/* ---------- sections ---------- */
+.sec{padding:96px 0}
+.stone{background:var(--stone)}
+.sec-head{margin-bottom:44px}
+.lab{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--az-ink)}
+.lab svg{width:18px;height:18px}
+.h2{font-size:clamp(2.1rem,4.2vw,3.2rem);margin-top:12px}
+.h2 em{color:var(--az)}
+
+/* services S2-PHOTO */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s, box-shadow .25s}
+.svc:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--az);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:2}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,26,38,.1)}
+.svc:hover:before{transform:scaleX(1)}
+.svc-img{aspect-ratio:16/10;overflow:hidden;background:var(--stone)}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc:hover .svc-img img{transform:scale(1.05)}
+.svc-body{padding:22px 22px 24px}
+.svc-body h3{font-size:1.32rem}
+.svc-body p{margin-top:8px;font-size:.96rem}
+
+/* about */
+.about{background:var(--ink);color:rgba(255,255,255,.84);position:relative;overflow:hidden}
+.about .sweeps{opacity:.04}
+.about-in{position:relative;z-index:2;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.about h2{color:#fff}
+.about h2 em{color:var(--az-hi)}
+.about .lab{color:var(--az-hi)}
+.about p{margin-top:18px;font-size:1.04rem;max-width:560px}
+.sig{display:flex;align-items:center;gap:14px;margin-top:28px}
+.sig .ini{width:54px;height:54px;border-radius:50%;background:var(--az);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Tilt Warp',sans-serif;font-size:1.2rem}
+.sig b{display:block;color:#fff;font-size:1rem}
+.sig span{font-size:.86rem;color:rgba(255,255,255,.64)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fact{border:1px solid var(--ink-line);border-radius:14px;padding:22px;background:var(--ink-2)}
+.fact b{display:block;font-family:'Tilt Warp',sans-serif;font-weight:400;color:#fff;font-size:1.3rem;line-height:1.1}
+.fact span{display:block;margin-top:6px;font-size:.92rem;color:rgba(255,255,255,.7)}
+
+/* gallery G2 */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:14px}
+.gal figure{border-radius:14px;overflow:hidden;background:var(--stone);cursor:zoom-in}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.05)}
+.gal .big{grid-column:span 2;grid-row:span 2}
+.gal .tall{grid-row:span 2}
+.gal .wide{grid-column:span 2}
+.lb{position:fixed;inset:0;z-index:300;background:rgba(8,16,26,.92);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-height:88vh;max-width:100%;border-radius:10px}
+.lb button{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:1.4rem;cursor:pointer}
+
+/* reviews R3 */
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.rev{background:#fff;border-radius:16px;padding:28px;border:1px solid var(--line)}
+.stars{display:flex;gap:3px}
+.stars svg{width:18px;height:18px;fill:var(--az)}
+.rev p{margin-top:14px;color:var(--head);font-size:1.02rem}
+.rev .who{margin-top:16px;font-size:.88rem;color:var(--muted)}
+.rev .who b{color:var(--head)}
+
+/* areas */
+.areas-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.areas-in p{margin-top:16px;max-width:430px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:10px 16px;border-radius:999px;border:1px solid var(--line);font-weight:600;color:var(--head);font-size:.94rem;background:#fff}
+.chip.home{background:var(--az);border-color:var(--az);color:#fff}
+
+/* cta band */
+.band{position:relative;background:var(--az);color:#fff;padding:92px 0;overflow:hidden;text-align:center}
+.band h2{color:#fff;font-size:clamp(2.1rem,4.6vw,3.4rem)}
+.band p{margin:16px auto 0;max-width:560px;color:rgba(255,255,255,.88);font-size:1.06rem}
+.band .hero-cta{justify-content:center;opacity:1;animation:none}
+.band .band-rose{position:absolute;width:420px;height:420px;right:-120px;top:50%;margin-top:-210px;opacity:.13}
+.band .band-rose .sh{fill:transparent}
+
+/* contact C1 */
+.cform{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+.info{display:grid;gap:14px}
+.info-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.info-card span{display:block;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--az-ink)}
+.info-card b{display:block;margin-top:6px;font-family:'Tilt Warp',sans-serif;font-weight:400;color:var(--head);font-size:1.45rem}
+.info-card p{margin-top:6px;font-size:.96rem}
+form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px}
+.f-row{margin-bottom:16px}
+.f-row label{display:block;font-weight:600;color:var(--head);font-size:.92rem;margin-bottom:7px}
+.f-row input,.f-row textarea{width:100%;font:inherit;font-size:1rem;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#fbfcfd;color:var(--head);transition:border-color .2s}
+.f-row input:focus,.f-row textarea:focus{outline:none;border-color:var(--az)}
+.f-row textarea{min-height:120px;resize:vertical}
+.f-btn{width:100%;border:0;cursor:pointer;font-family:inherit}
+.f-note{margin-top:14px;text-align:center;font-size:.92rem}
+.f-note b{color:var(--head)}
+
+/* footer */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 34px}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--ink-line)}
+.f-brand .nav-logo{color:#fff}
+.f-brand p{margin-top:16px;max-width:360px;font-size:.95rem}
+.f-col h4{color:#fff;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.f-col a,.f-col p{display:block;font-size:.95rem;margin-bottom:8px}
+.f-col a:hover{color:#fff}
+.f-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-size:.86rem}
+.f-bot a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* fabs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s, transform .3s}
+.fabs.on{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.2)}
+.fab svg{width:24px;height:24px}
+.fab.call{background:var(--az);animation:fabPulse 2.4s infinite}
+.fab.wa{background:#25d366;animation:fabPulseG 2.4s infinite}
+.fab:hover{animation:none}
+@keyframes fabPulse{0%{box-shadow:0 0 0 0 rgba(10,102,173,.5)}70%{box-shadow:0 0 0 14px rgba(10,102,173,0)}100%{box-shadow:0 0 0 0 rgba(10,102,173,0)}}
+@keyframes fabPulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .trust-in{flex-wrap:wrap;justify-content:flex-start;gap:14px 30px}
+}
+@media (max-width:980px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .hero-inner{grid-template-columns:1fr;min-height:0;gap:0;padding-top:26px;padding-bottom:40px}
+  .hero-visual{display:none}
+  .mob-rose{display:block;position:absolute;right:-78px;top:-22px;width:250px;height:250px;z-index:0;opacity:.2}
+  .mob-rose .sh{fill:transparent}
+  .hero-copy{position:relative}
+  .eyebrow{position:relative;z-index:2;max-width:170px;line-height:1.5;align-items:flex-start}
+  .eyebrow .dot{margin-top:5px;flex:none}
+  .hero h1{position:relative;z-index:2;margin-top:18px;font-size:clamp(3rem,14.2vw,4.4rem);line-height:.98}
+  .hero-lede{position:relative;z-index:2;font-size:1.02rem;margin-top:18px}
+  .hero-cta{position:relative;z-index:2;flex-direction:column;align-items:stretch;margin-top:26px}
+  .hero-cta .btn{width:100%}
+  .trust-in{flex-direction:column;align-items:stretch;gap:0;padding-top:10px;padding-bottom:10px}
+  .trust-item{padding:14px 0;border-bottom:1px solid var(--line)}
+  .trust-item:last-child{border-bottom:0}
+  .about-in,.areas-in,.cform{grid-template-columns:1fr;gap:36px}
+  .f-top{grid-template-columns:1fr 1fr}
+  .f-brand{grid-column:span 2}
+}
+@media (max-width:780px){
+  .sec{padding:72px 0}
+  .svc-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:160px;gap:10px}
+  .gal .big{grid-column:span 2;grid-row:span 2}
+  .gal .wide{grid-column:span 2}
+  .gal .tall{grid-row:span 2}
+  .band{padding:72px 0}
+  .band .band-rose{width:300px;height:300px;right:-110px;margin-top:-150px}
+  form{padding:24px}
+  .fab{width:52px;height:52px}
+}
+@media (max-width:480px){
+  .facts{grid-template-columns:1fr}
+  .f-top{grid-template-columns:1fr}
+  .f-brand{grid-column:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .eyebrow,.hero h1,.hero-lede,.hero-cta,.hero-visual{animation:none;opacity:1}
+  .skimword:before{animation:none;transform:none}
+  .skimword:after{display:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mini" viewBox="-112 -112 224 224">
+    <g fill="currentColor"><path transform="rotate(36)" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path transform="rotate(108)" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path transform="rotate(180)" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path transform="rotate(252)" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path transform="rotate(324)" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g>
+    <g fill="currentColor" stroke="var(--rc-hole,#0a66ad)" stroke-width="5" stroke-linejoin="round"><path transform="rotate(0)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(72)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(144)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(216)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(288)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g>
+    <g fill="currentColor" stroke="var(--rc-hole,#0a66ad)" stroke-width="8" stroke-linejoin="round"><path transform="rotate(36) scale(.56)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(108) scale(.56)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(180) scale(.56)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(252) scale(.56)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path transform="rotate(324) scale(.56)" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g>
+    <circle r="17" fill="currentColor" stroke="var(--rc-hole,#0a66ad)" stroke-width="4.5"/>
+    <g fill="var(--rc-hole,#0a66ad)"><circle cx="6.9" cy="4.0" r="2.6"/><circle cx="0.0" cy="8.0" r="2.6"/><circle cx="-6.9" cy="4.0" r="2.6"/><circle cx="-6.9" cy="-4.0" r="2.6"/><circle cx="-0.0" cy="-8.0" r="2.6"/><circle cx="6.9" cy="-4.0" r="2.6"/><circle r="2.8"/></g>
+  </symbol>
+</svg>
+
+<div id="loader" aria-hidden="true">
+  <div class="sweeps"></div>
+  <div class="ld-card">
+    <div class="ld-stage">
+      <svg viewBox="-116 -116 232 232">
+        <g class="ld-mould"><circle r="108" fill="#cfd9e2"/><circle r="100" fill="#b8c6d2"/></g>
+        <g class="ld-pool"><circle r="99" fill="#e3a594"/></g>
+      </svg>
+      <svg class="rose ld-rose" viewBox="-116 -116 232 232" aria-hidden="true"><g class="r-sep"><g transform="rotate(36)"><g class="rp" style="--i:0"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(108)"><g class="rp" style="--i:1"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(180)"><g class="rp" style="--i:2"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(252)"><g class="rp" style="--i:3"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(324)"><g class="rp" style="--i:4"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g></g><g class="r-out"><g transform="rotate(0)"><g class="rp" style="--i:0"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(72)"><g class="rp" style="--i:1"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(144)"><g class="rp" style="--i:2"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(216)"><g class="rp" style="--i:3"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(288)"><g class="rp" style="--i:4"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g></g><g class="r-in"><g transform="rotate(36) scale(.56)"><g class="rp" style="--i:0"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(108) scale(.56)"><g class="rp" style="--i:1"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(180) scale(.56)"><g class="rp" style="--i:2"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(252) scale(.56)"><g class="rp" style="--i:3"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(324) scale(.56)"><g class="rp" style="--i:4"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g></g><g class="r-boss"><g class="rp" style="--i:5"><circle class="sh" cx="2" cy="3" r="17"/><circle class="w" r="17"/><circle class="wet" r="17"/><circle class="seed" cx="7.4" cy="4.2" r="2.3"/><circle class="seed" cx="0.0" cy="8.5" r="2.3"/><circle class="seed" cx="-7.4" cy="4.2" r="2.3"/><circle class="seed" cx="-7.4" cy="-4.3" r="2.3"/><circle class="seed" cx="-0.0" cy="-8.5" r="2.3"/><circle class="seed" cx="7.4" cy="-4.3" r="2.3"/><circle class="seed" r="2.6"/></g></g></svg>
+    </div>
+    <div class="ld-word">RC Plastering</div>
+    <div class="ld-sub">Plastering . Yorkshire</div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-in wrap">
+    <a href="#top" class="nav-logo">
+      <svg style="color:#fff"><use href="#mini"/></svg>
+      <span><b>RC Plastering</b><small>Services</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Recent Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" id="navCall" href="#"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg><span id="navCallTxt">Call</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+  <div class="mob" id="mob">
+    <a href="#services">Services</a>
+    <a href="#work">Recent Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Areas</a>
+    <a href="#contact">Contact</a>
+    <a class="call" id="mobCall" href="#">Call Reece <span id="mobCallTxt">&nbsp;</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="sweeps"></div>
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <div class="mob-rose-wrap"><svg class="rose fold-rose" viewBox="-116 -116 232 232" aria-hidden="true"><g class="r-sep"><g transform="rotate(36)"><g class="rp" style="--i:0"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(108)"><g class="rp" style="--i:1"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(180)"><g class="rp" style="--i:2"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(252)"><g class="rp" style="--i:3"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(324)"><g class="rp" style="--i:4"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g></g><g class="r-out"><g transform="rotate(0)"><g class="rp" style="--i:0"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(72)"><g class="rp" style="--i:1"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(144)"><g class="rp" style="--i:2"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(216)"><g class="rp" style="--i:3"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(288)"><g class="rp" style="--i:4"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g></g><g class="r-in"><g transform="rotate(36) scale(.56)"><g class="rp" style="--i:0"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(108) scale(.56)"><g class="rp" style="--i:1"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(180) scale(.56)"><g class="rp" style="--i:2"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(252) scale(.56)"><g class="rp" style="--i:3"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(324) scale(.56)"><g class="rp" style="--i:4"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g></g><g class="r-boss"><g class="rp" style="--i:5"><circle class="sh" cx="2" cy="3" r="17"/><circle class="w" r="17"/><circle class="wet" r="17"/><circle class="seed" cx="7.4" cy="4.2" r="2.3"/><circle class="seed" cx="0.0" cy="8.5" r="2.3"/><circle class="seed" cx="-7.4" cy="4.2" r="2.3"/><circle class="seed" cx="-7.4" cy="-4.3" r="2.3"/><circle class="seed" cx="-0.0" cy="-8.5" r="2.3"/><circle class="seed" cx="7.4" cy="-4.3" r="2.3"/><circle class="seed" r="2.6"/></g></g></svg></div>
+      <div class="eyebrow"><i class="dot"></i><span>RC Plastering Services . Yorkshire</span></div>
+      <h1><span class="l">Plastering</span><span class="l">across</span><span class="l"><span class="skimword" id="skimword">Yorkshire</span></span></h1>
+      <p class="hero-lede">Skims, re-plasters, boarding, ceilings and render for homes and landlords right across the county. Flat walls, sharp corners and a clean house when Reece leaves.</p>
+      <div class="hero-cta">
+        <a class="btn btn-white" id="heroCall" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg><span id="heroCallTxt">Call Reece</span></a>
+        <a class="btn btn-ghost" href="#contact">Get a Free Quote</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <img src="hero-room.jpg" alt="Freshly plastered room with smooth walls and ceiling">
+        <div class="hero-badge"><b>Free quotes</b>anywhere in Yorkshire</div>
+      </div>
+      <div class="desk-rose-wrap"></div>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="trust-in wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Yorkshire wide</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Free quotes</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg>Skim to render</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Clean, tidy finish</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Deal direct with Reece</div>
+  </div>
+</div>
+
+<section class="sec" id="services" style="padding-top:72px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="lab"><svg style="color:var(--az);--rc-hole:#fff"><use href="#mini"/></svg>Services</div>
+      <h2 class="h2">Every wall, <em>every ceiling</em></h2>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal"><div class="svc-img"><img src="svc-skim.jpg" alt="Plasterer skimming a wall smooth with a trowel" loading="lazy"></div><div class="svc-body"><h3>Skimming &amp; Re-skims</h3><p>Tired, cracked or papered walls skimmed back to glass smooth.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-plaster.jpg" alt="Room re-plastered with new openings formed" loading="lazy"></div><div class="svc-body"><h3>Full Re-plastering</h3><p>Hacked off, bonded and set, rooms or whole houses.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-boards.jpg" alt="Plasterboard fixed with dot and dab adhesive" loading="lazy"></div><div class="svc-body"><h3>Boarding &amp; Dry-lining</h3><p>Dot and dab, stud walls and new builds, boarded and taped.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-ceilings.jpg" alt="Plaster ceiling rose on a newly skimmed ceiling" loading="lazy"></div><div class="svc-body"><h3>Ceilings, Coving &amp; Artex</h3><p>Artex covered, ceilings over-boarded, coving and roses fitted.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-render.jpg" alt="Detached house finished in smooth white render" loading="lazy"></div><div class="svc-body"><h3>External Rendering</h3><p>Sand and cement or through-colour render, finished crisp.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="svc-repairs.jpg" alt="Filling knife repairing a crack in a plaster wall" loading="lazy"></div><div class="svc-body"><h3>Patching &amp; Repairs</h3><p>Chases, cracks and blown patches made good before decorating.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec about">
+  <div class="sweeps"></div>
+  <div class="about-in wrap">
+    <div class="reveal">
+      <div class="lab"><svg style="color:var(--az-hi);--rc-hole:#0f1a26"><use href="#mini"/></svg>About</div>
+      <h2 class="h2">One plasterer, <em>start to finish</em></h2>
+      <p>RC Plastering Services is Reece's business. He prices the job, turns up when he says he will, sheets the room down and does the plastering himself, so the finish you are quoted for is the finish you get. Single rooms, whole houses and landlord turnarounds, anywhere in Yorkshire.</p>
+      <div class="sig"><div class="ini">RC</div><div><b>Reece</b><span>RC Plastering Services</span></div></div>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><b>Sheeted down</b><span>Floors and furniture covered before a bag is opened.</span></div>
+      <div class="fact"><b>Flat and true</b><span>Walls ruled and checked, ready to paint.</span></div>
+      <div class="fact"><b>Priced on site</b><span>Reece looks at the job before he quotes it.</span></div>
+      <div class="fact"><b>Cleaned up</b><span>Mess bagged and gone at the end of the day.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="lab"><svg style="color:var(--az);--rc-hole:#fff"><use href="#mini"/></svg>Recent Work</div>
+      <h2 class="h2">Walls you can <em>paint straight onto</em></h2>
+    </div>
+    <div class="gal reveal">
+      <figure class="big"><img src="work-room.jpg" alt="Finished room with freshly plastered walls" loading="lazy"></figure>
+      <figure class="tall"><img src="work-cornice.jpg" alt="Plaster cornice and pilaster detail" loading="lazy"></figure>
+      <figure><img src="work-trowel.jpg" alt="Trowel loaded with plaster against a wall" loading="lazy"></figure>
+      <figure><img src="work-corner.jpg" alt="Sharp freshly skimmed corner" loading="lazy"></figure>
+      <figure class="wide"><img src="work-ceiling.jpg" alt="Newly plastered ceiling with a recessed feature" loading="lazy"></figure>
+      <figure class="tall"><img src="work-hallway.jpg" alt="Bright plastered hallway" loading="lazy"></figure>
+      <figure><img src="work-boarding.jpg" alt="Plasterboard fixed to a sloping ceiling" loading="lazy"></figure>
+      <figure><img src="work-tools.jpg" alt="Plastering spatulas after a day on site" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec stone" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="lab"><svg style="color:var(--az);--rc-hole:#eef2f5"><use href="#mini"/></svg>Reviews</div>
+      <h2 class="h2">What customers <em>say</em></h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"Reece re-skimmed our living room and hall in Horsforth. Artex ceiling covered as well. Walls are like glass and the house was spotless when he left. Would use RC Plastering again."</p><div class="who"><b>Joanne H.</b>, Leeds . Skim and Artex cover</div></div>
+      <div class="rev reveal"><div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"Had a back bedroom hacked off and fully re-plastered after we took the old paper down. Came when he said, sheeted everything and it was ready to paint the following week."</p><div class="who"><b>Craig M.</b>, Wakefield . Full re-plaster</div></div>
+      <div class="rev reveal"><div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"We needed a new stud wall boarded and a coving run put up in a Victorian terrace in Harrogate. RC Plastering Services matched the old coving well. Tidy and polite."</p><div class="who"><b>Sarah P.</b>, Harrogate . Boarding and coving</div></div>
+      <div class="rev reveal"><div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"I use Reece on my rentals in Huddersfield between tenants. Patches, re-skims, the odd ceiling. Quick, fair on price and never leaves a mess for the decorator."</p><div class="who"><b>Imran K.</b>, Huddersfield . Landlord repairs</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="areas">
+  <div class="wrap areas-in">
+    <div class="reveal">
+      <div class="lab"><svg style="color:var(--az);--rc-hole:#fff"><use href="#mini"/></svg>Areas</div>
+      <h2 class="h2">Plastering <em>across Yorkshire</em></h2>
+      <p>Based in Yorkshire and working the towns and cities around it. Not sure if you are covered? Ring Reece and ask.</p>
+    </div>
+    <div class="chips reveal">
+      <div class="chip home">Yorkshire</div><div class="chip">Leeds</div><div class="chip">Bradford</div><div class="chip">Wakefield</div><div class="chip">Huddersfield</div><div class="chip">Halifax</div><div class="chip">Harrogate</div><div class="chip">York</div><div class="chip">Dewsbury</div><div class="chip">Pontefract</div><div class="chip">Castleford</div><div class="chip">Keighley</div><div class="chip">Otley</div><div class="chip">Barnsley</div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="sweeps"></div>
+  <svg class="rose band-rose" viewBox="-116 -116 232 232" aria-hidden="true"><g class="r-sep"><g transform="rotate(36)"><g class="rp" style="--i:0"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(108)"><g class="rp" style="--i:1"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(180)"><g class="rp" style="--i:2"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(252)"><g class="rp" style="--i:3"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g><g transform="rotate(324)"><g class="rp" style="--i:4"><path class="sh" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/><path class="wet" d="M0,-56 C-8,-70 -7,-88 0,-106 C7,-88 8,-70 0,-56Z"/></g></g></g><g class="r-out"><g transform="rotate(0)"><g class="rp" style="--i:0"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(72)"><g class="rp" style="--i:1"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(144)"><g class="rp" style="--i:2"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(216)"><g class="rp" style="--i:3"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(288)"><g class="rp" style="--i:4"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g></g><g class="r-in"><g transform="rotate(36) scale(.56)"><g class="rp" style="--i:0"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(108) scale(.56)"><g class="rp" style="--i:1"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(180) scale(.56)"><g class="rp" style="--i:2"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(252) scale(.56)"><g class="rp" style="--i:3"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g><g transform="rotate(324) scale(.56)"><g class="rp" style="--i:4"><path class="sh" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z" transform="translate(2.5 3.5)"/><path class="w w2" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/><path class="wet" d="M0,-8 C-34,-16 -52,-60 -34,-82 C-22,-96 -7,-93 0,-82 C7,-93 22,-96 34,-82 C52,-60 34,-16 0,-8Z"/></g></g></g><g class="r-boss"><g class="rp" style="--i:5"><circle class="sh" cx="2" cy="3" r="17"/><circle class="w" r="17"/><circle class="wet" r="17"/><circle class="seed" cx="7.4" cy="4.2" r="2.3"/><circle class="seed" cx="0.0" cy="8.5" r="2.3"/><circle class="seed" cx="-7.4" cy="4.2" r="2.3"/><circle class="seed" cx="-7.4" cy="-4.3" r="2.3"/><circle class="seed" cx="-0.0" cy="-8.5" r="2.3"/><circle class="seed" cx="7.4" cy="-4.3" r="2.3"/><circle class="seed" r="2.6"/></g></g></svg>
+  <div class="wrap" style="position:relative;z-index:2">
+    <h2>Walls ready for paint, <em>not filler</em></h2>
+    <p>Send Reece a couple of photos of the room and he will come out, measure up and give you a fixed price.</p>
+    <div class="hero-cta">
+      <a class="btn btn-white" id="bandCall" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg><span id="bandCallTxt">Call Reece</span></a>
+      <a class="btn btn-ghost" href="#contact">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec stone" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="lab"><svg style="color:var(--az);--rc-hole:#eef2f5"><use href="#mini"/></svg>Contact</div>
+      <h2 class="h2">Tell Reece about <em>the job</em></h2>
+    </div>
+    <div class="cform">
+      <div class="info">
+        <div class="info-card reveal"><span>Phone</span><b id="infoPhone">&nbsp;</b></div>
+        <div class="info-card reveal"><span>Covering</span><p>Leeds, Bradford, Wakefield, Huddersfield, Halifax, Harrogate, York and the rest of Yorkshire.</p></div>
+        <div class="info-card reveal"><span>Quotes</span><p>Free and fixed, priced after Reece has seen the walls rather than guessed over the phone.</p></div>
+      </div>
+      <form class="reveal" action="/api/enquiry" method="POST" id="enq">
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_timestamp" id="formTimestamp">
+        <input type="hidden" name="businessName" value="RC Plastering Services">
+        <input type="hidden" name="source" value="mockup-rc-plastering-services">
+        <div class="f-row"><label for="nm">Your name</label><input id="nm" name="name" required></div>
+        <div class="f-row"><label for="ph">Phone number</label><input id="ph" name="phone" type="tel" pattern="^(0|\+44)\d{9,11}$" required></div>
+        <div class="f-row"><label for="em">Email (optional)</label><input id="em" name="email" type="email"></div>
+        <div class="f-row"><label for="ms">Tell us about the job</label><textarea id="ms" name="message" placeholder="Which rooms, skim or full re-plaster, rough sizes and your town."></textarea></div>
+        <button class="btn btn-az f-btn" type="submit">Send Enquiry</button>
+        <p class="f-note">Or call Reece on <b id="formPhone">&nbsp;</b></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <a href="#top" class="nav-logo"><svg style="color:#fff;--rc-hole:#0f1a26"><use href="#mini"/></svg><span><b>RC Plastering</b><small>Services</small></span></a>
+        <p>Plastering, skimming, boarding and render for homes and landlords across Yorkshire.</p>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <a href="#services">Skimming &amp; Re-skims</a>
+        <a href="#services">Full Re-plastering</a>
+        <a href="#services">Ceilings &amp; Artex Cover</a>
+        <a href="#services">External Rendering</a>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <a id="footCall" href="#"><span id="footCallTxt">&nbsp;</span></a>
+        <p>Yorkshire</p>
+        <a href="#contact">Request a quote</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>&copy; <span id="yr">2026</span> RC Plastering Services. All rights reserved.</span>
+      <span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><button aria-label="Close" id="lbClose">&times;</button><img id="lbImg" alt=""></div>
+
+<div class="fabs" id="fabs">
+  <a class="fab call" id="fabCall" href="#" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg></a>
+  <a class="fab wa" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1s-.7 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.6.3-.5V9c0-.2-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2.6 1 3.1.8 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  var P  = atob('MDc0NjgwMDI1MDA=');
+  var Pf = atob('MDc0NjggMDAyIDUwMA==');
+  var W  = atob('NDQ3NDY4MDAyNTAw');
+
+  function tel(id){ var e=document.getElementById(id); if(e){ e.href='tel:'+P; } }
+  ['navCall','heroCall','bandCall','mobCall','footCall','fabCall'].forEach(tel);
+  var t={navCallTxt:'Call '+Pf, mobCallTxt:'', footCallTxt:Pf, infoPhone:Pf, formPhone:Pf};
+  Object.keys(t).forEach(function(k){ var e=document.getElementById(k); if(e){ e.textContent=t[k]; } });
+  var wa=document.getElementById('fabWa');
+  if(wa){ wa.href='https://wa.me/'+W+'?text=Hi%2C%20seen%20your%20website%20-%20'; }
+
+  var ts=document.getElementById('formTimestamp'); if(ts){ ts.value=Date.now(); }
+  var yr=document.getElementById('yr'); if(yr){ yr.textContent=new Date().getFullYear(); }
+
+  // the fold rose: one copy, placed in the mobile fold or beside the desktop photo
+  var rose=document.querySelector('.fold-rose'), mWrap=document.querySelector('.mob-rose-wrap'), dWrap=document.querySelector('.desk-rose-wrap');
+  var mq=window.matchMedia('(max-width:880px)');
+  function place(){
+    if(mq.matches){ rose.classList.add('mob-rose'); mWrap.appendChild(rose); }
+    else { rose.classList.remove('mob-rose'); dWrap.parentNode.appendChild(rose); }
+  }
+  place(); if(mq.addEventListener){ mq.addEventListener('change',place); }
+
+  // skim band travel distance for the wet edge
+  function measure(){ var s=document.getElementById('skimword'); if(s){ s.style.setProperty('--sw',(s.offsetWidth-26)+'px'); } }
+  measure(); window.addEventListener('resize',measure);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(measure); }
+
+  // loader
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function lift(){
+    var l=document.getElementById('loader'); if(l && !l.classList.contains('gone')){ l.classList.add('gone'); }
+    if(!document.body.classList.contains('lit')){
+      document.body.classList.add('lit');
+      if(!reduce){ setTimeout(recast,1600); setInterval(recast,9000); }
+    }
+  }
+  function recast(){ rose.classList.remove('recast'); void rose.getBoundingClientRect(); rose.classList.add('recast'); }
+  if(reduce){ document.body.classList.add('nold'); setTimeout(lift,600); }
+  setTimeout(lift,2300); setTimeout(lift,3000);
+
+  // mobile menu
+  var b=document.getElementById('burger'), m=document.getElementById('mob');
+  b.addEventListener('click',function(){ m.classList.toggle('open'); });
+  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ m.classList.remove('open'); }); });
+
+  // reveals
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(e){ io.observe(e); });
+
+  // fabs
+  var hero=document.querySelector('.hero .hero-cta'), fabs=document.getElementById('fabs');
+  var fio=new IntersectionObserver(function(es){
+    es.forEach(function(e){ fabs.classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top<0); });
+  },{threshold:0});
+  fio.observe(hero);
+
+  // lightbox
+  var lb=document.getElementById('lb'), lbi=document.getElementById('lbImg');
+  document.querySelectorAll('.gal figure').forEach(function(f){
+    f.addEventListener('click',function(){ var i=f.querySelector('img'); lbi.src=i.src; lbi.alt=i.alt; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click',function(e){ if(e.target!==lbi){ lb.classList.remove('open'); } });
+
+  // phone validation message
+  var ph=document.getElementById('ph');
+  ph.addEventListener('input',function(){
+    ph.setCustomValidity(ph.validity.patternMismatch ? 'Please enter a UK phone number' : '');
+  });
+})();
+</script>
+</body>
+</html>
