@@ -4496,6 +4496,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Two businesses under one roof, each doing its own trade at the same time. On cool stone a slate gable strokes itself on (stroke-dashoffset), the wall and doorstep run in beneath it, and the house splits into two bays that each do their own trade at the same time: in the left bay a striped turf strip rolls out over bare soil with the roll riding its leading edge (scaleX + translateX), in the right bay a plastering float passes across a rough dash surface and leaves smooth render behind it (scaleX + translateX, starting a beat later). Each bay's own mark then pops onto its finished surface with a short overshoot, and both business names rise underneath in their own colours with the shared line. Transform, opacity and stroke-dashoffset only, 2.3s teardown, 3.0s fail-safe, reduced motion shows the finished house. Distinct from Under One Roof (ld-oneroof, BlackRock), where a gable line simply caps a wordmark and division tags: here the two bays physically do the two trades. Swap either bay's action for the second trade (slates, bricks, a pipe run). First used: first-choice-finishing-house (Larkhall), where the two bays become the two doors of the hero fold, so the loader hands straight into the page.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-blockmark" data-dur="2300">
+      <span class="trade">Any builder or contractor whose logo mark is built from simple blocks, tiles or panels; brand-led redesigns where the brief is "use their logo" but a plain fade is too flat</span>
+      <h3>Block Mark</h3>
+      <p>The client's own mark laid down block by block, the way a builder sets out a course. On their charcoal the six rectangles of the logo mark (measured off the logo file to the pixel, knocked out to chalk and brand blue) drop into place one at a time in laying order, bottom corner first, the tall column, the two small squares, then the two blue blocks (translateY -34px to 0 with a small settle, stagger ~.12s, 0.05-1.06s), then the real wordmark PNG with its roofline rises beside them (0.9s) and a one-line subline fades in. Transform and opacity only, 2.3s teardown, 3.0s fail-safe, reduced motion shows the finished logo. On the mockup the loader does not fade out: at 1.55s each block is FLIP-animated into the matching tile of the hero photo mosaic (the mosaic is laid out on the logo's own block ratios), the tiles fly in covered in the block colour above the loader, then the loader ground clears and the colour fades off each tile to reveal the photo, so the logo literally becomes the portfolio. Distinct from Logo Reveal (a finished logo fading up) and Fan Mark (pieces fanning from one origin): here the pieces are set down like building blocks and then hand into the page. First used: boga-construction (Welling, London builder).</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
     <button class="card" data-loader="ld-setthemodules" data-dur="2300">
       <span class="trade">Modular / offsite / self-build housing, architects and design-and-build firms; any brand whose mark is made of overlapping outlined shapes</span>
       <h3>Set The Modules</h3>
@@ -17525,6 +17531,23 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes tbPop{to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 @keyframes tbUp{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#ld-twobays *{animation:none!important}#ld-twobays .or-roof polyline{stroke-dashoffset:0}#ld-twobays .or-wall,#ld-twobays .or-names,#ld-twobays .or-line{opacity:1;transform:none}#ld-twobays .or-turf,#ld-twobays .or-smooth,#ld-twobays .or-step{transform:none}#ld-twobays .or-roll,#ld-twobays .or-float{opacity:0}#ld-twobays .or-mark{opacity:1;transform:translate(-50%,-50%)}}
+/* ---- Block Mark (ld-blockmark, Boga Construction, 2026-09-23) ---- */
+#ld-blockmark{background:#202526;display:none;align-items:center;justify-content:center;overflow:hidden}
+#ld-blockmark.on,#ld-blockmark.play{display:flex}
+#ld-blockmark .bk-lg{position:relative;width:min(330px,74vw);aspect-ratio:352/156}
+#ld-blockmark .bk-mk{position:absolute;left:.57%;top:26.9%;width:31.25%;height:71.8%}
+#ld-blockmark .bk{position:absolute;opacity:0;transform:translateY(-34px)}
+#ld-blockmark .bk.g{background:#e9ecee}
+#ld-blockmark .bk.b{background:#26a9e1}
+#ld-blockmark .bk-wm{position:absolute;left:34.1%;top:1.3%;width:65.3%;height:98%;opacity:0;transform:translateY(10px)}
+#ld-blockmark .bk-sub{position:absolute;left:0;right:0;top:calc(100% + 26px);text-align:center;font:600 .74rem/1 Montserrat,system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#9aa4a8;opacity:0}
+#ld-blockmark.on .bk,#ld-blockmark.play .bk{animation:bkSet .4s cubic-bezier(.2,.9,.25,1.15) forwards}
+#ld-blockmark .bk:nth-child(1){animation-delay:.05s}#ld-blockmark .bk:nth-child(2){animation-delay:.17s}#ld-blockmark .bk:nth-child(3){animation-delay:.29s}#ld-blockmark .bk:nth-child(4){animation-delay:.40s}#ld-blockmark .bk:nth-child(5){animation-delay:.52s}#ld-blockmark .bk:nth-child(6){animation-delay:.66s}
+#ld-blockmark.on .bk-wm,#ld-blockmark.play .bk-wm{animation:bkUp .45s .9s ease-out forwards}
+#ld-blockmark.on .bk-sub,#ld-blockmark.play .bk-sub{animation:bkUp .4s 1.05s ease-out forwards}
+@keyframes bkSet{0%{opacity:0;transform:translateY(-34px)}60%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes bkUp{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#ld-blockmark *{animation:none!important}#ld-blockmark .bk,#ld-blockmark .bk-wm,#ld-blockmark .bk-sub{opacity:1;transform:none}}
 </style>
 <div class="loader" id="ld-twobays" aria-hidden="true">
   <div class="or">
@@ -17540,6 +17563,20 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
     <div class="or-step"></div>
     <div class="or-names"><span class="g">First Choice Gardens</span> &amp; <span class="f">Finishing House</span></div>
     <div class="or-line">Two specialist services. One professional team.</div>
+  </div>
+</div>
+<div class="loader" id="ld-blockmark" aria-hidden="true">
+  <div class="bk-lg">
+    <div class="bk-mk">
+      <i class="bk g" style="left:0;top:75%;width:25.45%;height:25%"></i>
+      <i class="bk g" style="left:0;top:0;width:25.45%;height:72.3%"></i>
+      <i class="bk g" style="left:28.18%;top:25%;width:23.64%;height:20.5%"></i>
+      <i class="bk g" style="left:28.18%;top:0;width:23.64%;height:21.4%"></i>
+      <i class="bk b" style="left:28.18%;top:49.1%;width:71.82%;height:50.9%"></i>
+      <i class="bk b" style="left:53.64%;top:0;width:46.36%;height:45.5%"></i>
+    </div>
+    <img class="bk-wm" src="../boga-construction/wordmark-white.png" alt="">
+    <div class="bk-sub">Building across London</div>
   </div>
 </div>
 </body>
