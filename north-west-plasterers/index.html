@@ -188,6 +188,18 @@ body.lit .f2{animation-delay:.1s}body.lit .f3{animation-delay:.2s}body.lit .f4{a
 .grid figure.vid{cursor:default}
 .grid figure.vid figcaption{background:var(--skim);color:var(--ink)}
 
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px}
+.stage{background:#fff;border:1px solid var(--line);padding:12px}
+.stage-ph{aspect-ratio:3/4;overflow:hidden;background:var(--skim);cursor:zoom-in}
+.stage-ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.stage:hover .stage-ph img{transform:scale(1.04)}
+.stage-t{display:flex;align-items:center;gap:12px;margin-top:12px}
+.stage-t b{font-family:'Aleo',serif;font-weight:900;font-size:1.5rem;line-height:1;width:40px;height:40px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--stone);color:var(--ink)}
+.stage:last-child .stage-t b{background:var(--ink);color:var(--skim)}
+.stage-t span{font-weight:700;color:var(--ink);font-size:.98rem;line-height:1.3}
+.stage-t small{display:block;font-weight:500;color:var(--muted);font-size:.85rem}
+.stages-h{font-size:1.3rem;margin-bottom:14px}
+
 /* reviews */
 .rev-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
 .score{display:flex;align-items:center;gap:16px;background:var(--ink);color:#fff;padding:14px 20px}
@@ -298,6 +310,9 @@ footer a:hover{color:var(--skim)}
   .trust-in{grid-template-columns:1fr}
   .trust-item{border-left:0;padding:15px 0;border-top:1px solid #342d2a}
   .trust-item:first-child{border-top:0}
+  .stages{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-right:-24px;padding-right:24px;scrollbar-width:none}
+  .stages::-webkit-scrollbar{display:none}
+  .stage{flex:0 0 76%;scroll-snap-align:start}
   .grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
   .grid figure.big{grid-column:span 2}
   .grid figcaption{display:none}
@@ -426,6 +441,12 @@ footer a:hover{color:var(--skim)}
       <span class="label">Recent work</span>
       <h2>Fresh off the <em>trowel</em></h2>
     </div>
+    <h3 class="stages-h reveal">One fireplace, start to finish</h3>
+    <div class="stages reveal">
+      <div class="stage"><div class="stage-ph"><img src="stage-1.jpg" alt="Chimney breast opening cut back to rough render with the hearth being tiled" loading="lazy"></div><div class="stage-t"><b>1</b><span>Opened up<small>Cut back, beaded, hearth started</small></span></div></div>
+      <div class="stage"><div class="stage-ph"><img src="stage-2.jpg" alt="The same opening lined in blue and white star tiles" loading="lazy"></div><div class="stage-t"><b>2</b><span>Tiled in<small>Star tiles inside the opening</small></span></div></div>
+      <div class="stage"><div class="stage-ph"><img src="stage-3.jpg" alt="The same chimney breast skimmed smooth with a tiled hearth and opening" loading="lazy"></div><div class="stage-t"><b>3</b><span>Skimmed<small>Chimney breast finished, ready to paint</small></span></div></div>
+    </div>
     <div class="grid">
       <figure class="big reveal"><img src="work-stairs.jpg" alt="Hallway and stairwell skimmed with a chandelier and arched doorway" loading="lazy"><figcaption>Hall, stairs and landing</figcaption></figure>
       <figure class="tall reveal"><img src="work-tallwall.jpg" alt="Tall wall skimmed beside a doorway" loading="lazy"><figcaption>Full re-skim</figcaption></figure>
@@ -531,7 +552,7 @@ footer a:hover{color:var(--skim)}
     <div class="f-in">
       <div>
         <img class="f-logo" src="logo-white.png" alt="NWP Plastering" width="154" height="62" loading="lazy">
-        <p class="f-tag">North West Plasterers. Skimming, dry lining, media walls and screeding from Oldham and Rochdale, across the North West since 2013.</p>
+        <p class="f-tag">Professional plastering and rendering across the North West. Skimming, dry lining, media walls and screeding from Oldham and Rochdale since 2013.</p>
       </div>
       <div><h4>Services</h4><ul><li><a href="#services">Skimming &amp; re-plastering</a></li><li><a href="#services">Artex covered</a></li><li><a href="#services">Dry lining</a></li><li><a href="#services">Media walls</a></li></ul></div>
       <div><h4>Contact</h4><ul><li><a id="footCall" href="#"><span id="footCallTxt">&nbsp;</span></a></li><li><a href="#contact">Get a free quote</a></li><li><a href="#areas">Areas covered</a></li></ul></div>
@@ -639,7 +660,7 @@ footer a:hover{color:var(--skim)}
   },{threshold:0}).observe(hc);
 
   var lb=document.getElementById('lb'), lbi=document.getElementById('lbImg');
-  document.querySelectorAll('.grid figure:not(.vid)').forEach(function(f){
+  document.querySelectorAll('.grid figure:not(.vid), .stage-ph').forEach(function(f){
     f.addEventListener('click',function(){ var i=f.querySelector('img'); lbi.src=i.src; lbi.alt=i.alt; lb.classList.add('open'); });
   });
   lb.addEventListener('click',function(e){ if(e.target!==lbi){ lb.classList.remove('open'); } });
