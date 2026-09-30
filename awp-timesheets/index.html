@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Timesheet · AWP</title><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="style.css"><meta name="theme-color" content="#008fd5"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-title" content="Timesheets"></head>
+<body>
+<div class="preview">Preview version: nothing is emailed. Press Send to see the PDF the office would get.</div>
+<div class="top"><img src="logo.png" alt="Absolute Waterproofing"><div class="who">Timesheets</div></div>
+<main id="main">
+<h1>Weekly timesheet</h1>
+<div class="err" id="err"></div>
+<form id="form" novalidate>
+<section class="card"><h2>You and the week</h2>
+<label class="f"><span>Your name</span><input type="text" id="name" autocomplete="name" autocapitalize="words"></label>
+<label class="f"><span>Week commencing (Monday)</span><input type="date" id="wc"></label>
+</section>
+
+<div class="sect"><h2>Day work</h2><p class="hint">Days paid at a day rate. Tap each day you worked.</p></div>
+<div id="days"></div>
+
+<div class="sect"><h2>Price work</h2><p class="hint">Work paid by the metre, e.g. 200 m² strip, VCL and underlay at £20 per m².</p></div>
+<section class="card"><div id="pw"></div>
+<button class="btn sec" id="addpw" type="button">+ Add price work</button>
+</section>
+
+<section class="card"><h2>Extras <small>optional</small></h2>
+<p class="hint">Anything else, e.g. extra outlets, travel, materials you paid for.</p>
+<div id="extras"></div>
+<button class="btn sec" id="addextra" type="button">+ Add an extra</button>
+</section>
+
+<section class="card total"><h2>Week total</h2>
+<div class="tot"><div><span>Day work <em id="tdays">0 days</em></span><b id="trates">£0.00</b></div><div><span>Price work</span><b id="tpw">£0.00</b></div><div><span>Extras</span><b id="textras">£0.00</b></div></div>
+<div class="grand"><span>Total claimed</span><b id="tgrand">£0.00</b></div>
+</section>
+
+<section class="card"><h2>Your signature</h2>
+<p class="hint">Sign with your finger in the box.</p>
+<div class="sig"><canvas id="sig"></canvas><button type="button" id="sigclear">Clear</button></div>
+<p class="hint" style="margin:10px 0 0">Sign and press Send. The surveyor or manager signs it off for payment once it reaches the office.</p>
+</section>
+
+<div class="sendwrap"><button class="btn" id="send" type="button">Send timesheet</button>
+<p class="hint center">Goes straight to the invoicing inbox. Nothing to type.</p></div>
+</form>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="app.js"></script>
+</body></html>
