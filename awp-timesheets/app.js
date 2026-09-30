@@ -247,12 +247,13 @@
       var TSTYLE = { font: 'helvetica', fontSize: 8.5, cellPadding: 1.8, lineColor: [205, 210, 215], lineWidth: 0.2, textColor: INK, valign: 'middle' },
         HSTYLE = { fillColor: BLUE, textColor: 255, fontSize: 7.5, fontStyle: 'bold', valign: 'middle' }, y = 40;
       function heading(txt) { doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor.apply(doc, BLUE); doc.text(txt, M, y); y += 2; }
+      var COLS = { wp: 22, project: 60, roof: 20, amt: 28 };
       if (state.pw.length) {
         heading('PRICE WORK');
         doc.autoTable({ startY: y, head: [['WP No.', 'Project', 'Roof No.', 'Work done', 'Days', 'Qty', 'Rate', { content: 'Amount', styles: { halign: 'right' } }]],
           body: state.pw.map(function (p) { return ['WP' + wpKey(p.wp), p.project.trim(), p.roof.trim(), pwWork(p), p.days.join(', '), num(p.qty) + ' ' + p.unit, gbp(num(p.rate)) + (p.unit === 'each' ? ' each' : ' / ' + p.unit), { content: gbp(pwAmt(p)), styles: { halign: 'right', fontStyle: 'bold' } }]; }),
           margin: { left: M, right: M }, theme: 'grid', styles: TSTYLE, headStyles: HSTYLE,
-          columnStyles: { 0: { cellWidth: 20 }, 1: { cellWidth: 45 }, 2: { cellWidth: 18 }, 4: { cellWidth: 26 }, 5: { cellWidth: 20 }, 6: { cellWidth: 26 }, 7: { cellWidth: 26 } } });
+          columnStyles: { 0: { cellWidth: COLS.wp }, 1: { cellWidth: COLS.project }, 2: { cellWidth: COLS.roof }, 4: { cellWidth: 26 }, 5: { cellWidth: 20 }, 6: { cellWidth: 26 }, 7: { cellWidth: COLS.amt } } });
         y = doc.lastAutoTable.finalY + 8;
       }
       var hasDays = state.days.some(function (j) { return j.length; });
@@ -262,11 +263,12 @@
         var body = [];
         DAYS.forEach(function (d, di) {
           var jobs = state.days[di], label = d.slice(0, 3) + ' ' + pdfDate(di);
-          if (!jobs.length) { body.push([{ content: label, styles: { textColor: [160, 165, 170] } }, { content: '', colSpan: 4 }]); return; }
-          jobs.forEach(function (j, ji) { body.push([ji ? '' : label, 'WP' + wpKey(j.wp), j.project.trim(), j.roof.trim(), { content: gbp(num(j.rate)), styles: { halign: 'right', fontStyle: 'bold' } }]); });
+          if (!jobs.length) { body.push(['', '', '', { content: label, styles: { textColor: [160, 165, 170] } }, '']); return; }
+          jobs.forEach(function (j) { body.push(['WP' + wpKey(j.wp), j.project.trim(), j.roof.trim(), label, { content: gbp(num(j.rate)), styles: { halign: 'right', fontStyle: 'bold' } }]); });
         });
-        doc.autoTable({ startY: y, head: [['Day', 'WP No.', 'Project', 'Roof No.', 'Day rate']], body: body, margin: { left: M, right: M }, theme: 'grid', styles: TSTYLE, headStyles: HSTYLE,
-          columnStyles: { 0: { cellWidth: 24 }, 1: { cellWidth: 24 }, 3: { cellWidth: 30 }, 4: { cellWidth: 28 } } });
+        // WP / Project / Roof match the price work table; Day rate lines up with Amount
+        doc.autoTable({ startY: y, head: [['WP No.', 'Project', 'Roof No.', 'Day', { content: 'Day rate', styles: { halign: 'right' } }]], body: body, margin: { left: M, right: M }, theme: 'grid', styles: TSTYLE, headStyles: HSTYLE,
+          columnStyles: { 0: { cellWidth: COLS.wp }, 1: { cellWidth: COLS.project }, 2: { cellWidth: COLS.roof }, 4: { cellWidth: COLS.amt } } });
         y = doc.lastAutoTable.finalY + 8;
       }
       y -= 3;
