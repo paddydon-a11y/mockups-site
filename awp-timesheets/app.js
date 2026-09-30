@@ -247,8 +247,17 @@
       var TSTYLE = { font: 'helvetica', fontSize: 8.5, cellPadding: 1.8, lineColor: [205, 210, 215], lineWidth: 0.2, textColor: INK, valign: 'middle' },
         HSTYLE = { fillColor: BLUE, textColor: 255, fontSize: 7.5, fontStyle: 'bold', valign: 'middle' }, y = 40;
       function heading(txt) { doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor.apply(doc, BLUE); doc.text(txt, M, y); y += 2; }
+      if (state.pw.length) {
+        heading('PRICE WORK');
+        doc.autoTable({ startY: y, head: [['WP No.', 'Project', 'Roof No.', 'Work done', 'Days', 'Qty', 'Rate', { content: 'Amount', styles: { halign: 'right' } }]],
+          body: state.pw.map(function (p) { return ['WP' + wpKey(p.wp), p.project.trim(), p.roof.trim(), pwWork(p), p.days.join(', '), num(p.qty) + ' ' + p.unit, gbp(num(p.rate)) + (p.unit === 'each' ? ' each' : ' / ' + p.unit), { content: gbp(pwAmt(p)), styles: { halign: 'right', fontStyle: 'bold' } }]; }),
+          margin: { left: M, right: M }, theme: 'grid', styles: TSTYLE, headStyles: HSTYLE,
+          columnStyles: { 0: { cellWidth: 20 }, 1: { cellWidth: 45 }, 2: { cellWidth: 18 }, 4: { cellWidth: 26 }, 5: { cellWidth: 20 }, 6: { cellWidth: 26 }, 7: { cellWidth: 26 } } });
+        y = doc.lastAutoTable.finalY + 8;
+      }
       var hasDays = state.days.some(function (j) { return j.length; });
       if (hasDays) {
+        if (y > 150) { doc.addPage(); y = 15; }
         heading('DAY WORK');
         var body = [];
         DAYS.forEach(function (d, di) {
@@ -258,15 +267,6 @@
         });
         doc.autoTable({ startY: y, head: [['Day', 'WP No.', 'Project', 'Roof No.', 'Day rate']], body: body, margin: { left: M, right: M }, theme: 'grid', styles: TSTYLE, headStyles: HSTYLE,
           columnStyles: { 0: { cellWidth: 24 }, 1: { cellWidth: 24 }, 3: { cellWidth: 30 }, 4: { cellWidth: 28 } } });
-        y = doc.lastAutoTable.finalY + 8;
-      }
-      if (state.pw.length) {
-        if (y > 165) { doc.addPage(); y = 15; }
-        heading('PRICE WORK');
-        doc.autoTable({ startY: y, head: [['WP No.', 'Project', 'Roof No.', 'Work done', 'Days', 'Qty', 'Rate', { content: 'Amount', styles: { halign: 'right' } }]],
-          body: state.pw.map(function (p) { return ['WP' + wpKey(p.wp), p.project.trim(), p.roof.trim(), pwWork(p), p.days.join(', '), num(p.qty) + ' ' + p.unit, gbp(num(p.rate)) + (p.unit === 'each' ? ' each' : ' / ' + p.unit), { content: gbp(pwAmt(p)), styles: { halign: 'right', fontStyle: 'bold' } }]; }),
-          margin: { left: M, right: M }, theme: 'grid', styles: TSTYLE, headStyles: HSTYLE,
-          columnStyles: { 0: { cellWidth: 20 }, 1: { cellWidth: 45 }, 2: { cellWidth: 18 }, 4: { cellWidth: 26 }, 5: { cellWidth: 20 }, 6: { cellWidth: 26 }, 7: { cellWidth: 26 } } });
         y = doc.lastAutoTable.finalY + 8;
       }
       y -= 3;
@@ -283,7 +283,7 @@
       var exEnd = doc.lastAutoTable.finalY;
       doc.autoTable({
         startY: y, margin: { left: W / 2 + 40, right: M }, theme: 'grid',
-        body: [['Day work (' + t.days + (t.days === 1 ? ' day)' : ' days)'), gbp(t.rates)], ['Price work', gbp(t.pw)], ['Extras', gbp(t.extras)], [{ content: 'TOTAL CLAIMED', styles: { fillColor: BLUE, textColor: 255, fontStyle: 'bold' } }, { content: gbp(t.total), styles: { fillColor: BLUE, textColor: 255, fontStyle: 'bold', fontSize: 11 } }]],
+        body: [['Price work', gbp(t.pw)], ['Day work (' + t.days + (t.days === 1 ? ' day)' : ' days)'), gbp(t.rates)], ['Extras', gbp(t.extras)], [{ content: 'TOTAL CLAIMED', styles: { fillColor: BLUE, textColor: 255, fontStyle: 'bold' } }, { content: gbp(t.total), styles: { fillColor: BLUE, textColor: 255, fontStyle: 'bold', fontSize: 11 } }]],
         styles: { fontSize: 9, cellPadding: 2, lineColor: [205, 210, 215], lineWidth: 0.2, textColor: INK }, columnStyles: { 1: { halign: 'right', cellWidth: 32 } }
       });
       y = Math.max(exEnd, doc.lastAutoTable.finalY) + 6;
