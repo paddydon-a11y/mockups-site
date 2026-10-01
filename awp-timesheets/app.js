@@ -224,21 +224,8 @@
   $('sigclear').onclick = function () { cx.clearRect(0, 0, cv.width, cv.height); signed = false; };
   sizeSig();
 
-  /* ---------- sent timesheets kept on this phone ---------- */
-  var DB = null;
-  function db() { return new Promise(function (res, rej) { if (DB) return res(DB); var rq = indexedDB.open('awp-ts', 1); rq.onupgradeneeded = function () { rq.result.createObjectStore('sent', { keyPath: 'id' }); }; rq.onsuccess = function () { DB = rq.result; res(DB); }; rq.onerror = function () { rej(rq.error); }; }); }
-  function sentPut(rec) { return db().then(function (d) { return new Promise(function (res, rej) { var tx = d.transaction('sent', 'readwrite'); tx.objectStore('sent').put(rec); tx.oncomplete = res; tx.onerror = function () { rej(tx.error); }; }); }); }
-  function sentAll() { return db().then(function (d) { return new Promise(function (res, rej) { var rq = d.transaction('sent').objectStore('sent').getAll(); rq.onsuccess = function () { res(rq.result.sort(function (a, b) { return b.id - a.id; })); }; rq.onerror = function () { rej(rq.error); }; }); }); }
-  function renderSent() {
-    sentAll().then(function (list) {
-      if (!list.length) return;
-      $('sent').innerHTML = '<details class="card sentbox"><summary>Your sent timesheets <span>' + list.length + '</span></summary>' +
-        '<p class="hint">Kept on this phone only. For a copy you can keep, add your email below or save the PDF.</p>' +
-        list.map(function (r) {
-          return '<a class="sentrow" href="' + URL.createObjectURL(r.pdf) + '" target="_blank" rel="noopener"><div><b>Week of ' + esc(uk(r.wc)) + '</b><span>Sent ' + new Date(r.id).toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' }) + ' · ' + r.days + (r.days === 1 ? ' day' : ' days') + (r.pw ? ' · price work' : '') + (r.extras ? ' · extras' : '') + '</span></div><b>' + gbp(r.total) + '</b><i>PDF</i></a>';
-        }).join('') + '</details>';
-    }).catch(function () {});
-  }
+  // earlier previews kept sent timesheets on the phone: clear them
+  try { indexedDB.deleteDatabase('awp-ts'); } catch (e) {}
 
   /* ---------- send ---------- */
   function validate() {
@@ -272,31 +259,41 @@
     return errs;
   }
 
-  $('send').onclick = function () {
+  // phones get the share sheet (Save to Files, WhatsApp...), a computer gets a download
+  function savePdf(blob) {
+    var fname = 'AWP timesheet ' + state.name.trim() + ' wc ' + state.wc + '.pdf', file = null;
+    try { file = new File([blob], fname, { type: 'application/pdf' }); } catch (e) {}
+    if (file && window.matchMedia('(pointer:coarse)').matches && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: fname }).catch(function () {}); return; }
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fname; document.body.appendChild(a); a.click(); a.remove();
+  }
+  function ready() {
     var errs = validate(), box = $('err');
-    if (errs.length) { box.innerHTML = '<b>Still needed:</b><ul>' + errs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; box.style.display = 'block'; box.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-    box.style.display = 'none';
+    if (errs.length) { box.innerHTML = '<b>Still needed:</b><ul>' + errs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; box.style.display = 'block'; box.scrollIntoView({ behavior: 'smooth', block: 'center' }); return false; }
+    box.style.display = 'none'; return true;
+  }
+  // the worker's own copy, saved without sending anything
+  $('savefile').onclick = function () {
+    if (!ready()) return;
+    var btn = this; btn.disabled = true;
+    buildPdf().then(savePdf).catch(function (e) { $('err').textContent = 'Could not build the PDF: ' + e.message; $('err').style.display = 'block'; }).then(function () { btn.disabled = false; });
+  };
+
+  $('send').onclick = function () {
+    if (!ready()) return;
+    var box = $('err');
     var btn = this; btn.disabled = true; btn.textContent = 'Sending…';
     buildPdf().then(function (blob) {
       remember();
       var t = calc(), url = URL.createObjectURL(blob), subj = 'Timesheet: ' + state.name.trim() + ', w/c ' + uk(state.wc) + ', ' + gbp(t.total), mail = state.email.trim();
-      var fname = 'AWP timesheet ' + state.name.trim() + ' wc ' + state.wc + '.pdf';
-      sentPut({ id: Date.now(), name: state.name.trim(), wc: state.wc, total: t.total, pw: t.pw, rates: t.rates, extras: t.extras, days: t.days, pdf: blob }).catch(function () {});
       $('main').innerHTML = '<div class="card done"><div class="tick">✓</div><h2>Timesheet sent</h2>' +
         '<p>In the live app this goes straight to Absolute\'s invoicing inbox with the PDF attached' + (mail ? ', and a copy goes to <b>' + esc(mail) + '</b>' : '') + '.</p>' +
         '<p style="font-size:14px;color:var(--mid)">Subject: <b style="color:var(--ink)">' + esc(subj) + '</b></p>' +
         '<a class="btn" style="display:block;text-decoration:none" href="' + url + '" target="_blank" rel="noopener">Open the PDF</a>' +
-        '<button class="btn sec" type="button" id="savepdf">Save the PDF to your phone</button>' +
-        '<button class="btn sec" type="button" id="again">Start a new timesheet</button>' +
-        '<p class="hint center">A copy is kept on this phone under Your sent timesheets.</p></div>' +
+        '<button class="btn sec" type="button" id="savepdf">Save to Files</button>' +
+        '<button class="btn sec" type="button" id="again">Start a new timesheet</button></div>' +
         '<iframe class="pdfframe" src="' + url + '" title="Timesheet PDF"></iframe>';
       window.scrollTo(0, 0);
-      $('savepdf').onclick = function () {
-        var file = null; try { file = new File([blob], fname, { type: 'application/pdf' }); } catch (e) {}
-        // phones get the share sheet (Save to Files, WhatsApp...), everything else a download
-        if (file && window.matchMedia('(pointer:coarse)').matches && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: fname }).catch(function () {}); return; }
-        var a = document.createElement('a'); a.href = url; a.download = fname; document.body.appendChild(a); a.click(); a.remove();
-      };
+      $('savepdf').onclick = function () { savePdf(blob); };
       $('again').onclick = function () { var n = state.name, m = state.email; state = fresh(); state.name = n; state.email = m; save(); location.reload(); };
     }).catch(function (e) { btn.disabled = false; btn.textContent = 'Send timesheet'; box.textContent = 'Could not build the PDF: ' + e.message; box.style.display = 'block'; });
   };
@@ -422,5 +419,5 @@
     });
   }
 
-  renderDays(); renderPw(); renderExtras(); totals(); renderSent();
+  renderDays(); renderPw(); renderExtras(); totals();
 })();
