@@ -271,13 +271,6 @@
     if (errs.length) { box.innerHTML = '<b>Still needed:</b><ul>' + errs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; box.style.display = 'block'; box.scrollIntoView({ behavior: 'smooth', block: 'center' }); return false; }
     box.style.display = 'none'; return true;
   }
-  // the worker's own copy, saved without sending anything
-  $('savefile').onclick = function () {
-    if (!ready()) return;
-    var btn = this; btn.disabled = true;
-    buildPdf().then(savePdf).catch(function (e) { $('err').textContent = 'Could not build the PDF: ' + e.message; $('err').style.display = 'block'; }).then(function () { btn.disabled = false; });
-  };
-
   $('send').onclick = function () {
     if (!ready()) return;
     var box = $('err');
