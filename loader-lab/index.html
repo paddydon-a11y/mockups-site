@@ -6189,6 +6189,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>On storm slate a solid slate roof side elevation with its chimney rises (0.1-0.65s), then five half-round ridge tiles drop onto the ridge one after another, left to right, each with a small bounce (0.55-1.37s); the wordmark rises under it at 1.05s. Solid shapes, one clear trade action, finished well before teardown. A solid-shape cousin of Ridge Cap. On the mockup the sheet lifts at 1.7s onto a raining hero where the same ridge row lays along the top. Built for joe-bloggs-roofing, 2026-10-03.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-slideback" data-dur="2200">
+      <span class="trade">Fitted bedroom and wardrobe fitters, sliding door installers; no logo or a weak one</span>
+      <h3>Slide Back</h3>
+      <p>Four white sliding wardrobe doors with bar handles sit on a blue top and bottom track and carry the wordmark in Gloock with a small caps Mulish label (0.1-0.7s). At 1.25s the wordmark clears, the inner doors slide behind the outer ones and all four run off left and right (translateX, .75s, outer pair .12s later) onto the blue fold; the tracks fade last. Transform and opacity only, 2.2s teardown, 3.0s fail-safe, reduced motion shows the closed doors with the wordmark. Built for bedroom-fitters-uk, 2026-10-05.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -18027,6 +18033,41 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes ro2Up{to{opacity:1;transform:translateY(0)}}
 @keyframes ro2Drop{to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){#ld-ridgeon *{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+<div class="loader" id="ld-slideback" aria-hidden="true">
+  <span class="sb-track t"></span>
+  <div class="sb-door d1"></div><div class="sb-door d2"></div><div class="sb-door d3"></div><div class="sb-door d4"></div>
+  <span class="sb-track b"></span>
+  <p class="sb-mark"><b>Bedroom Fitters UK</b><span>Fitted direct</span></p>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Mulish:wght@700&display=swap');
+/* ---- Slide Back (ld-slideback, Bedroom Fitters UK, 2026-10-05) ---- */
+#ld-slideback{background:#3f5169;align-items:stretch;justify-content:flex-start}
+#ld-slideback .sb-door{flex:1;height:100%;background:#f6f8fa;border-right:1px solid #cfd6de;position:relative;will-change:transform}
+#ld-slideback .sb-door::before{content:"";position:absolute;inset:24px 12px;border:1px solid #dfe5eb;border-radius:2px}
+#ld-slideback .sb-door::after{content:"";position:absolute;top:68%;width:5px;height:120px;border-radius:3px;background:linear-gradient(90deg,#aab3bd,#dfe4e9 55%,#aab3bd)}
+#ld-slideback .sb-door.d1::after,#ld-slideback .sb-door.d3::after{right:20px}
+#ld-slideback .sb-door.d2::after,#ld-slideback .sb-door.d4::after{left:20px}
+#ld-slideback .sb-track{position:absolute;left:0;right:0;height:10px;background:#3f5169;z-index:2}
+#ld-slideback .sb-track.t{top:0}
+#ld-slideback .sb-track.b{bottom:0}
+#ld-slideback .sb-mark{position:absolute;inset:0;z-index:3;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:translateY(10px)}
+#ld-slideback .sb-mark b{font-family:'Gloock',Georgia,serif;font-weight:400;font-size:clamp(1.9rem,7vw,3.2rem);color:#2b3848;background:#f6f8fa;padding:6px 18px;line-height:1.1}
+#ld-slideback .sb-mark span{margin-top:10px;font-family:'Mulish',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:#3f5169;background:#f6f8fa;padding:4px 12px}
+#ld-slideback.play .sb-mark{animation:sbMarkIn .6s ease .1s forwards,sbFade .3s ease 1.25s forwards}
+#ld-slideback.play .sb-door.d1{animation:sbD1 .75s cubic-bezier(.7,0,.25,1) 1.37s forwards}
+#ld-slideback.play .sb-door.d2{animation:sbD2 .75s cubic-bezier(.7,0,.25,1) 1.25s forwards}
+#ld-slideback.play .sb-door.d3{animation:sbD3 .75s cubic-bezier(.7,0,.25,1) 1.25s forwards}
+#ld-slideback.play .sb-door.d4{animation:sbD4 .75s cubic-bezier(.7,0,.25,1) 1.37s forwards}
+#ld-slideback.play .sb-track{animation:sbFade .4s ease 1.75s forwards}
+@keyframes sbMarkIn{to{opacity:1;transform:none}}
+@keyframes sbFade{to{opacity:0}}
+@keyframes sbD1{to{transform:translateX(-101%)}}
+@keyframes sbD2{to{transform:translateX(-202%)}}
+@keyframes sbD3{to{transform:translateX(202%)}}
+@keyframes sbD4{to{transform:translateX(101%)}}
+@media (prefers-reduced-motion:reduce){#ld-slideback *{animation:none!important}#ld-slideback .sb-mark{opacity:1;transform:none}}
 </style>
 </body>
 </html>
