@@ -6195,6 +6195,12 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
       <p>Four white sliding wardrobe doors with bar handles sit on a blue top and bottom track and carry the wordmark in Gloock with a small caps Mulish label (0.1-0.7s). At 1.25s the wordmark clears, the inner doors slide behind the outer ones and all four run off left and right (translateX, .75s, outer pair .12s later) onto the blue fold; the tracks fade last. Transform and opacity only, 2.2s teardown, 3.0s fail-safe, reduced motion shows the closed doors with the wordmark. Built for bedroom-fitters-uk, 2026-10-05.</p>
       <span class="play-hint">&#9654; play</span>
     </button>
+    <button class="card" data-loader="ld-rollon" data-dur="2420">
+      <span class="trade">Painters and decorators</span>
+      <h3>Roll On</h3>
+      <p>A drawn paint roller (sleeve, steel frame, black grip) rolls down the left half of a white sheet laying a coat of brand colour behind it (0.15-0.71s), then a second roller rolls up the right half (0.72-1.28s). The mark and wordmark rise on the fresh coat at 1.3s and the sheet lifts at 1.8s. Coat and roller share one keyframe timeline so the paint edge stays under the sleeve. A vertical two-pass cousin of Roller Sweep. On the mockup the hero key word is then rolled in on a band of the same colour. Transform and opacity only, 2.42s teardown, 3.0s fail-safe, reduced motion shows the finished coat. Built for emjay-interior-creations, 2026-10-06.</p>
+      <span class="play-hint">&#9654; play</span>
+    </button>
   </div>
 </div>
 
@@ -18068,6 +18074,45 @@ h1{font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-0.03em}
 @keyframes sbD3{to{transform:translateX(202%)}}
 @keyframes sbD4{to{transform:translateX(101%)}}
 @media (prefers-reduced-motion:reduce){#ld-slideback *{animation:none!important}#ld-slideback .sb-mark{opacity:1;transform:none}}
+</style>
+<div class="loader" id="ld-rollon" aria-hidden="true">
+  <span class="ro-coat c1"></span><span class="ro-coat c2"></span>
+  <div class="ro-roller r1"><div class="ro-tool"><span class="ro-arm"></span><span class="ro-grip"></span><span class="ro-sleeve"></span></div></div>
+  <div class="ro-roller r2"><div class="ro-tool"><span class="ro-arm"></span><span class="ro-grip"></span><span class="ro-sleeve"></span></div></div>
+  <p class="ro-logo"><b>Emjay Interior Creations</b><span>Painters and decorators</span></p>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@500&family=Onest:wght@600&display=swap');
+/* ---- Roll On (ld-rollon, Emjay Interior Creations, 2026-10-06) ---- */
+#ld-rollon{background:#fff}
+#ld-rollon .ro-coat{position:absolute;top:0;bottom:0;width:50.2%;background:#f97844;transform:scaleY(0)}
+#ld-rollon .ro-coat.c1{left:0;transform-origin:top}
+#ld-rollon .ro-coat.c2{right:0;transform-origin:bottom}
+#ld-rollon .ro-roller{position:absolute;width:50%;height:0;z-index:2;top:0}
+#ld-rollon .ro-roller.r1{left:0;transform:translateY(-240px)}
+#ld-rollon .ro-roller.r2{right:0;transform:translateY(calc(100vh + 240px))}
+#ld-rollon .ro-roller.r2 .ro-tool{transform:scaleY(-1)}
+#ld-rollon .ro-tool{position:absolute;left:0;right:0;top:0;height:0}
+#ld-rollon .ro-sleeve{position:absolute;left:5%;right:5%;top:-24px;height:48px;border-radius:11px;background:linear-gradient(180deg,#ffb590 0%,#f97844 42%,#d85b27 100%);box-shadow:0 6px 14px rgba(0,0,0,.22)}
+#ld-rollon .ro-arm{position:absolute;right:2%;top:-120px;width:5px;height:122px;background:#9aa1a8;border-radius:3px}
+#ld-rollon .ro-arm::before{content:"";position:absolute;right:0;top:0;height:5px;width:calc(23vw + 3px);background:#9aa1a8;border-radius:3px}
+#ld-rollon .ro-arm::after{content:"";position:absolute;right:0;bottom:0;height:5px;width:3vw;background:#9aa1a8;border-radius:3px}
+#ld-rollon .ro-grip{position:absolute;left:50%;top:-210px;width:18px;height:94px;margin-left:-9px;border-radius:7px;background:#1d1d1d}
+#ld-rollon .ro-logo{position:relative;z-index:3;margin:0;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;transform:translateY(12px);padding:0 24px}
+#ld-rollon .ro-logo b{font-family:'Noto Serif Display',Georgia,serif;font-weight:500;font-size:clamp(1.7rem,6.6vw,2.7rem);color:#121212;line-height:1.1}
+#ld-rollon .ro-logo span{margin-top:10px;font-family:'Onest',Arial,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:#121212}
+#ld-rollon.play .ro-coat.c1{animation:roCoat .7s ease-in-out .15s forwards}
+#ld-rollon.play .ro-coat.c2{animation:roCoat .7s ease-in-out .72s forwards}
+#ld-rollon.play .ro-roller.r1{animation:roDown .7s ease-in-out .15s forwards}
+#ld-rollon.play .ro-roller.r2{animation:roUp .7s ease-in-out .72s forwards}
+#ld-rollon.play .ro-logo{animation:roLogo .45s ease 1.3s forwards}
+#ld-rollon.play{animation:roLift .6s cubic-bezier(.7,0,.25,1) 1.8s forwards}
+@keyframes roCoat{0%{transform:scaleY(0)}80%,100%{transform:scaleY(1)}}
+@keyframes roDown{0%{transform:translateY(0)}80%{transform:translateY(100vh)}100%{transform:translateY(calc(100vh + 240px))}}
+@keyframes roUp{0%{transform:translateY(100vh)}80%{transform:translateY(0)}100%{transform:translateY(-240px)}}
+@keyframes roLogo{to{opacity:1;transform:none}}
+@keyframes roLift{to{transform:translateY(-100%)}}
+@media (prefers-reduced-motion:reduce){#ld-rollon,#ld-rollon *{animation:none!important}#ld-rollon .ro-coat{transform:none}#ld-rollon .ro-roller{display:none}#ld-rollon .ro-logo{opacity:1;transform:none}}
 </style>
 </body>
 </html>
