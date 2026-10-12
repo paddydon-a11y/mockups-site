@@ -38,7 +38,7 @@
   :root{--bg:#ffffff;--stone:#f1f3f4;--card:#f8fafb;--line:#e1e5e7;--text:#454d54;--ink:#15181b;--conc:#cfd3d4}
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:76px}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:88px}
 body{overflow-x:clip;font-family:var(--body);color:var(--text);background:var(--bg);font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
 html.no-scroll{overflow:hidden}
 body.no-scroll{overflow:visible;overflow-x:clip}
@@ -66,14 +66,10 @@ section{position:relative}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand-logo{height:68px;width:auto;display:block}
+.foot-logo{height:110px;width:auto;display:block}
 .brand{display:flex;align-items:center;gap:12px;white-space:nowrap}
-.brand-mark{width:44px;height:44px;border-radius:50%;background:var(--ink);display:grid;place-items:center;position:relative;flex:none}
-.brand-mark::after{content:"";position:absolute;inset:4px;border-radius:50%;border:4px solid var(--red)}
-.brand-mark b{font-family:var(--disp);font-weight:800;color:#fff;font-size:1.15rem;letter-spacing:.01em;position:relative;z-index:1}
-.brand-txt{display:flex;flex-direction:column;line-height:1}
-.brand-txt strong{font-family:var(--disp);font-weight:800;text-transform:uppercase;color:var(--ink);font-size:1.25rem;letter-spacing:.01em}
-.brand-txt span{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-top:4px}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{font-weight:600;font-size:.95rem;color:var(--ink)}
 .nav-links a:hover{color:var(--red)}
@@ -101,7 +97,7 @@ section{position:relative}
 
 /* hero */
 .hero{display:flex;flex-direction:column}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;height:clamp(540px,calc(100vh - 72px),760px)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;height:clamp(540px,calc(100vh - 84px),760px)}
 .hero-copy{position:relative;display:flex;flex-direction:column;justify-content:center;padding:48px 56px 48px max(24px,calc((100vw - 1240px)/2 + 24px));overflow:hidden}
 .pens{display:flex;gap:18px;margin-bottom:30px}
 .pen{width:58px;height:58px;border-radius:50%;background:#5b6266;box-shadow:inset 0 4px 8px rgba(0,0,0,.45),0 1px 0 rgba(255,255,255,.5);position:relative;flex:none}
@@ -218,7 +214,6 @@ form .btn{width:100%;font-size:1.05rem}
 /* footer */
 footer{background:#0e1012;color:#a8b0b4;padding-top:56px;padding-bottom:30px}
 .foot-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
-footer .brand-txt strong{color:#fff}
 footer h4{font-family:var(--disp);text-transform:uppercase;color:#fff;font-size:1.1rem;margin-bottom:12px;letter-spacing:.02em}
 footer ul{list-style:none;display:grid;gap:6px;font-size:.95rem}
 footer a:hover{color:#fff}
@@ -251,8 +246,7 @@ body:not(.loading) .loader{transform:translateY(-101%)}
 .ld-pipe{position:absolute;inset:40px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#eef0f1 0 30%,#aab1b4 62%,#7e868a 100%);box-shadow:inset 0 0 0 10px #9aa2a6;transform:scale(.3);opacity:0;animation:ldPipe .4s cubic-bezier(.2,.8,.3,1.2) .9s forwards}
 .ld-collar{position:absolute;inset:26px;border-radius:50%;border:13px solid var(--red);transform:scale(1.6);opacity:0;animation:ldCollar .42s cubic-bezier(.2,.8,.3,1) 1.25s forwards}
 .ld-word{text-align:center;opacity:0;transform:translateY(14px);animation:ldWord .45s ease 1.45s forwards}
-.ld-word strong{display:block;font-family:var(--disp);font-weight:800;text-transform:uppercase;color:var(--ink);font-size:2.1rem;line-height:1;letter-spacing:.01em}
-.ld-word span{display:block;margin-top:6px;font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4b5256}
+.ld-word img{display:block;height:120px;width:auto;margin:0 auto}
 @keyframes ldBit{0%{opacity:0;transform:scale(1.25) rotate(0)}15%{opacity:1}75%{opacity:1;transform:scale(1) rotate(540deg)}100%{opacity:0;transform:scale(.92) rotate(720deg)}}
 @keyframes ldHole{to{transform:none}}
 @keyframes ldPipe{to{transform:none;opacity:1}}
@@ -269,7 +263,7 @@ body:not(.loading) .loader{transform:translateY(-101%)}
 }
 
 @media (min-width:881px) and (max-height:800px){
-  .hero-grid{height:clamp(480px,calc(100vh - 72px),760px)}
+  .hero-grid{height:clamp(480px,calc(100vh - 84px),760px)}
   .hero-copy{padding-top:26px;padding-bottom:26px}
   .pens{margin-bottom:18px;gap:14px}
   .pen{width:46px;height:46px}
@@ -285,6 +279,8 @@ body:not(.loading) .loader{transform:translateY(-101%)}
 }
 @media (max-width:880px){
   .nav-toggle{display:flex}
+  .nav-in{height:76px}
+  .brand-logo{height:62px}
   .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#ffffff;border-bottom:1px solid var(--line);padding:6px 24px 22px;transform:scaleY(0);transform-origin:top;opacity:0;pointer-events:none;transition:transform .3s ease,opacity .3s ease;box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
   .nav-links.is-open{transform:none;opacity:1;pointer-events:auto}
   .nav-links a{padding:15px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
@@ -338,14 +334,13 @@ body:not(.loading) .loader{transform:translateY(-101%)}
     <div class="ld-pipe"></div>
     <div class="ld-collar"></div>
   </div>
-  <div class="ld-word"><strong>A1 Fire Stopping</strong><span>&amp; Drilling Services</span></div>
+  <div class="ld-word"><img src="logo.png" alt="" width="265" height="495"></div>
 </div>
 
 <header class="nav">
   <div class="wrap nav-in">
     <a href="#top" class="brand" aria-label="A1 Fire Stopping and Drilling Services home">
-      <span class="brand-mark"><b>A1</b></span>
-      <span class="brand-txt"><strong>A1 Fire Stopping</strong><span>&amp; Drilling Services</span></span>
+      <img class="brand-logo" src="logo.png" alt="A1 Fire Stopping Services" width="265" height="495">
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
@@ -526,7 +521,7 @@ body:not(.loading) .loader{transform:translateY(-101%)}
   <div class="wrap">
     <div class="foot-in">
       <div>
-        <a href="#top" class="brand"><span class="brand-mark"><b>A1</b></span><span class="brand-txt"><strong>A1 Fire Stopping</strong><span>&amp; Drilling Services</span></span></a>
+        <a href="#top" class="brand" aria-label="A1 Fire Stopping and Drilling Services home"><img class="foot-logo" src="logo-light.png" alt="A1 Fire Stopping Services" width="265" height="495"></a>
         <p class="foot-tag">Passive fire protection, fire stopping and drilling services for commercial projects across Northumberland.</p>
       </div>
       <div><h4>Services</h4><ul><li><a href="#services">Fire stopping</a></li><li><a href="#services">Fire door works</a></li><li><a href="#services">Cavity barriers</a></li><li><a href="#services">Intumescent coatings</a></li><li><a href="#services">Drilling services</a></li></ul></div>
