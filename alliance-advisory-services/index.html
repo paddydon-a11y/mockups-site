@@ -158,12 +158,14 @@ body.loading .fade{animation-play-state:paused}
 .result{margin-top:14px;padding:20px 22px;border-radius:14px;background:var(--teal-pale);color:var(--ink);font-weight:500;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
 .result strong{font-weight:700}
 
-/* providers loop */
-.providers{background:var(--ink);color:#fff;padding-top:34px;padding-bottom:34px;overflow:hidden}
-.providers p.lbl{text-align:center;color:var(--teal);font-weight:500;font-size:.95rem;margin-bottom:16px}
-.loop{display:flex;width:max-content;animation:loop 38s linear infinite}
-.loop span{display:inline-flex;align-items:center;gap:40px;padding-right:40px;font-size:1.35rem;font-weight:600;white-space:nowrap;color:#f1f6f6}
-.loop span::after{content:"";width:26px;height:12px;border-top:3px solid var(--teal);border-radius:50% 50% 0 0/100% 100% 0 0;margin-top:8px}
+/* insurer panel loop */
+.providers{background:var(--ink);color:#fff;padding-top:40px;padding-bottom:40px;overflow:hidden}
+.providers p.lbl{text-align:center;text-wrap:balance;color:var(--teal);font-weight:500;font-size:.95rem;margin-bottom:20px}
+.loop{display:flex;width:max-content;animation:loop 40s linear infinite}
+.providers:hover .loop{animation-play-state:paused}
+.loop .ins{flex:none;width:172px;height:84px;margin-right:16px;background:#fff;border-radius:14px;display:grid;place-items:center;padding:14px 18px}
+.loop .ins img{max-width:100%;max-height:48px;width:auto;height:auto;object-fit:contain}
+.loop .ins img.wide{max-height:30px}
 @keyframes loop{to{transform:translateX(-50%)}}
 
 /* reviews */
@@ -306,7 +308,9 @@ body:not(.loading) .loader{transform:translateY(-101%)}
   .ctas{margin-top:22px;gap:10px}
   .ctas .btn{flex:1 1 100%}
   .q{flex-direction:column;align-items:flex-start;gap:12px}
-  .loop span{font-size:1.1rem}
+  .loop .ins{width:148px;height:74px;margin-right:12px;padding:12px 16px}
+  .loop .ins img{max-height:42px}
+  .loop .ins img.wide{max-height:26px}
   form{padding:24px}
   .foot-in{grid-template-columns:1fr}
 }
@@ -398,6 +402,14 @@ body:not(.loading) .loader{transform:translateY(-101%)}
   </div>
 </section>
 
+<section class="providers" aria-label="Insurance providers">
+  <p class="lbl wrap">Policies compared across a panel of UK insurers</p>
+  <div class="loop">
+    <div style="display:contents"><div class="ins"><img src="insurers/aviva.png" alt="Aviva" width="85" height="59"></div><div class="ins"><img src="insurers/legal-and-general.png" alt="Legal &amp; General" width="82" height="60"></div><div class="ins"><img src="insurers/zurich.png" alt="Zurich" width="82" height="55"></div><div class="ins"><img src="insurers/royal-london.png" alt="Royal London" width="96" height="63"></div><div class="ins"><img src="insurers/scottish-widows.png" alt="Scottish Widows" class="wide" width="180" height="35"></div><div class="ins"><img src="insurers/liverpool-victoria.png" alt="LV= Liverpool Victoria" class="wide" width="169" height="26"></div><div class="ins"><img src="insurers/vitality.png" alt="Vitality" width="154" height="54"></div><div class="ins"><img src="insurers/aig.png" alt="AIG" width="112" height="61"></div><div class="ins"><img src="insurers/the-exeter.svg" alt="The Exeter" width="155" height="61"></div></div>
+    <div style="display:contents" aria-hidden="true"><div class="ins"><img src="insurers/aviva.png" alt="" width="85" height="59"></div><div class="ins"><img src="insurers/legal-and-general.png" alt="" width="82" height="60"></div><div class="ins"><img src="insurers/zurich.png" alt="" width="82" height="55"></div><div class="ins"><img src="insurers/royal-london.png" alt="" width="96" height="63"></div><div class="ins"><img src="insurers/scottish-widows.png" alt="" class="wide" width="180" height="35"></div><div class="ins"><img src="insurers/liverpool-victoria.png" alt="" class="wide" width="169" height="26"></div><div class="ins"><img src="insurers/vitality.png" alt="" width="154" height="54"></div><div class="ins"><img src="insurers/aig.png" alt="" width="112" height="61"></div><div class="ins"><img src="insurers/the-exeter.svg" alt="" width="155" height="61"></div></div>
+  </div>
+</section>
+
 <section class="sec about" id="about">
   <div class="wrap about-in">
     <div class="about-photo reveal"><img src="office.jpg" alt="Glass door opening into a quiet office with desks and chairs" loading="lazy" width="900" height="1200"></div>
@@ -427,13 +439,6 @@ body:not(.loading) .loader{transform:translateY(-101%)}
   </div>
 </section>
 
-<section class="providers" aria-label="Insurance providers">
-  <p class="lbl wrap">Policies compared across a panel of UK insurers</p>
-  <div class="loop" aria-hidden="true">
-    <span>Aviva</span><span>Legal &amp; General</span><span>Zurich</span><span>Royal London</span><span>Scottish Widows</span><span>LV=</span><span>Vitality</span><span>AIG</span><span>The Exeter</span>
-    <span>Aviva</span><span>Legal &amp; General</span><span>Zurich</span><span>Royal London</span><span>Scottish Widows</span><span>LV=</span><span>Vitality</span><span>AIG</span><span>The Exeter</span>
-  </div>
-</section>
 
 <section class="sec" id="reviews">
   <div class="wrap">
