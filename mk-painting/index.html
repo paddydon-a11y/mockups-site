@@ -132,7 +132,7 @@ section{padding-top:96px;padding-bottom:96px}
 .svc::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--sage-deep);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:2}
 .svc:hover{transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(13,22,64,.35)}
 .svc:hover::before{transform:scaleX(1)}
-.svc-img{aspect-ratio:16/9;overflow:hidden;background:var(--stone)}
+.svc-img{aspect-ratio:4/3;overflow:hidden;background:var(--stone)}
 .svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .svc:hover .svc-img img{transform:scale(1.04)}
 .svc-body{padding:24px 26px 28px}
@@ -152,6 +152,37 @@ section{padding-top:96px;padding-bottom:96px}
 .step-n{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--disp);font-size:1.3rem;margin-bottom:16px}
 .step p{margin-top:6px;font-size:.97rem}
 .step:not(:last-child)::after{content:"";position:absolute;top:52px;right:-28px;width:28px;height:8px;background:var(--sage);border-radius:2px}
+
+/* dustless sanding */
+.dustless{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-top:36px;background:#fff;border:1px solid #d3e3d8;border-radius:16px;padding:40px 44px}
+.dust-mark{width:120px;height:120px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none}
+.dust-mark svg{width:64px;height:64px}
+.dustless h3{font-size:clamp(1.4rem,2.2vw,1.8rem)}
+.dustless p{margin-top:10px;max-width:680px}
+.dust-points{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:18px;list-style:none}
+.dust-points li{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);font-size:.97rem}
+.dust-points li::before{content:"";flex:none;width:24px;height:12px;border-radius:3px;background:var(--sage);background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 2px,transparent 2px 7px)}
+
+/* recent work */
+.work{padding-top:0}
+.work-grid{column-count:3;column-gap:18px}
+.work-grid figure{break-inside:avoid;margin-bottom:18px;border-radius:12px;overflow:hidden;background:var(--stone);cursor:zoom-in}
+.work-grid img{width:100%;height:auto;transition:transform .6s ease}
+.work-grid figure:hover img{transform:scale(1.03)}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(11,26,85,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:10px;border:6px solid #fff}
+.lb button{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:1.6rem;line-height:1;cursor:pointer}
+
+/* areas */
+.areas{padding-top:0}
+.areas-panel{background:var(--stone);border-radius:18px;padding:48px 52px}
+.areas-panel h2{margin-bottom:10px}
+.areas-panel p{max-width:620px}
+.area-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;list-style:none}
+.area-list li{padding:12px 20px;border-radius:999px;font-weight:700;font-size:.98rem;line-height:1.2}
+.area-list .base{background:var(--navy);color:#fff}
+.area-list .tbc{border:2px dashed #b6c2bd;color:var(--muted);background:#fff}
 
 /* reviews */
 .rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
@@ -288,6 +319,15 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
   .svc-grid,.rev-grid{grid-template-columns:1fr}
   .about-panel{grid-template-columns:1fr;gap:26px;padding:36px 26px}
   .about-panel img{max-width:220px}
+  .work-grid{column-count:2;column-gap:12px}
+  .work-grid figure{margin-bottom:12px}
+  .dustless{grid-template-columns:1fr;gap:20px;padding:30px 24px}
+  .dust-mark{width:84px;height:84px}
+  .dust-mark svg{width:46px;height:46px}
+  .dust-points{flex-direction:column}
+  .areas-panel{padding:34px 24px}
+  .area-list{gap:10px}
+  .area-list li{font-size:.86rem;padding:10px 13px}
   .band-in{flex-direction:column;align-items:flex-start}
   .contact-grid{grid-template-columns:1fr;gap:36px}
   section{padding-top:72px;padding-bottom:72px}
@@ -319,6 +359,7 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
     <div class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#about">About</a>
+      <a href="#work">Our Work</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="nav-cta js-phone" data-label="Call Martin"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Call Martin</span></a>
@@ -345,7 +386,7 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
         </div>
       </div>
       <div class="hero-photo">
-        <figure><img src="hero.jpg" alt="Bedroom finished with a grey feature wall and crisp white ceiling" width="678" height="452"></figure>
+        <figure><img src="hero.jpg" alt="Bathroom painted in dark green and navy with a white roll-top bath and white woodwork" width="828" height="825"></figure>
         <div class="badge"><b>Since 1998</b><small>Painting &amp; Decorating</small></div>
       </div>
     </div>
@@ -368,19 +409,19 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
     <div class="sec-head reveal"><span class="stripe"></span><h2>Painting and <span class="hl">decorating</span> services</h2></div>
     <div class="svc-grid">
       <article class="svc reveal">
-        <div class="svc-img"><img src="hero.jpg" alt="Bedroom with a freshly painted grey feature wall" loading="lazy" width="678" height="452"></div>
+        <div class="svc-img"><img src="svc-interior.jpg" alt="Dining room with navy panelled walls and white ceiling" loading="lazy" width="904" height="1200"></div>
         <div class="svc-body"><h3>Interior Painting &amp; Decorating</h3><p>Walls, ceilings, woodwork and feature walls, filled and sanded first.</p></div>
       </article>
       <article class="svc reveal">
-        <div class="svc-img"><img src="exterior.jpg" alt="Row of terraced houses with freshly painted pastel fronts" loading="lazy" width="521" height="383"></div>
+        <div class="svc-img"><img src="svc-exterior.jpg" alt="Teal front door with a white painted surround" loading="lazy" width="742" height="1200"></div>
         <div class="svc-body"><h3>Exterior Painting &amp; Decorating</h3><p>Render, masonry, windows, fascias and doors protected against the weather.</p></div>
       </article>
       <article class="svc reveal">
-        <div class="svc-img"><img src="decorating.jpg" alt="Decorated sitting room corner with patterned wall and armchair" loading="lazy" width="447" height="447"></div>
+        <div class="svc-img"><img src="svc-decorating.jpg" alt="Sage green sitting room with a floral wallpaper chimney breast" loading="lazy" width="900" height="1200"></div>
         <div class="svc-body"><h3>Residential Decorating</h3><p>Single rooms to whole houses, with floors and furniture covered throughout.</p></div>
       </article>
       <article class="svc reveal">
-        <div class="svc-img"><img src="commercial.jpg" alt="Finished office interior with painted walls and timber panelling" loading="lazy" width="900" height="600"></div>
+        <div class="svc-img"><img src="svc-woodwork.jpg" alt="Close-up of a white gloss window sill" loading="lazy" width="1100" height="1100"></div>
         <div class="svc-body"><h3>Commercial &amp; Industrial Painting</h3><p>Offices, shops and industrial units, inside and out.</p></div>
       </article>
     </div>
@@ -399,14 +440,44 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
   </div>
 </section>
 
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="stripe"></span><h2>Recent <span class="hl">work</span></h2></div>
+    <div class="work-grid">
+      <figure class="reveal"><img src="work-01.jpg" alt="Vaulted kitchen extension with white walls and roof windows" loading="lazy" width="1100" height="1100"></figure>
+      <figure class="reveal"><img src="work-02.jpg" alt="Cloakroom painted dark green below a white upper wall" loading="lazy" width="904" height="1200"></figure>
+      <figure class="reveal"><img src="work-03.jpg" alt="Room painted in terracotta with white skirting and door" loading="lazy" width="828" height="1091"></figure>
+      <figure class="reveal"><img src="work-04.jpg" alt="Bedroom with navy lower walls and white upper walls" loading="lazy" width="904" height="1200"></figure>
+      <figure class="reveal"><img src="work-05.jpg" alt="Kitchen with teal walls and cream units" loading="lazy" width="828" height="547"></figure>
+      <figure class="reveal"><img src="work-06.jpg" alt="White painted bay window" loading="lazy" width="828" height="700"></figure>
+      <figure class="reveal"><img src="work-08.jpg" alt="Bedroom painted in soft lilac" loading="lazy" width="675" height="1200"></figure>
+      <figure class="reveal"><img src="work-09.jpg" alt="Bedroom with grey walls and white skirting" loading="lazy" width="904" height="1200"></figure>
+      <figure class="reveal"><img src="work-10.jpg" alt="Kitchen and dining area in pale neutral paint" loading="lazy" width="903" height="1200"></figure>
+      <figure class="reveal"><img src="work-11.jpg" alt="Bedroom with a navy lower wall beside a cot" loading="lazy" width="904" height="1200"></figure>
+      <figure class="reveal"><img src="work-12.jpg" alt="Nursery painted in soft pink" loading="lazy" width="675" height="1200"></figure>
+      <figure class="reveal"><img src="work-13.jpg" alt="Kitchen with cream units and pale neutral walls" loading="lazy" width="903" height="1200"></figure>
+      <figure class="reveal"><img src="work-14.jpg" alt="Hallway in pale neutral paint with white door" loading="lazy" width="903" height="1200"></figure>
+      <figure class="reveal"><img src="work-07.jpg" alt="Dark green cloakroom with white woodwork" loading="lazy" width="904" height="1200"></figure>
+    </div>
+  </div>
+</section>
+
 <section class="process">
   <div class="wrap">
     <div class="sec-head reveal"><span class="stripe"></span><h2>How each job is <span class="hl">carried out</span></h2></div>
     <div class="steps">
       <div class="step reveal"><span class="step-n">1</span><h3>Free quote</h3><p>Martin visits, looks over the surfaces and prices the work.</p></div>
-      <div class="step reveal"><span class="step-n">2</span><h3>Prep and protect</h3><p>Floors and furniture covered, cracks filled, surfaces sanded and primed.</p></div>
+      <div class="step reveal"><span class="step-n">2</span><h3>Prep and protect</h3><p>Floors and furniture covered, cracks filled, then dustless sanding and priming.</p></div>
       <div class="step reveal"><span class="step-n">3</span><h3>Paint</h3><p>Clean cut-in lines and even coats, with drying time respected.</p></div>
       <div class="step reveal"><span class="step-n">4</span><h3>Clear up</h3><p>Sheets lifted, rooms put back and the finish checked with you.</p></div>
+    </div>
+    <div class="dustless reveal">
+      <div class="dust-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M40 30c9 0 13 4 13 12v14" fill="none" stroke="#a9c8b0" stroke-width="5" stroke-linecap="round"/><ellipse cx="26" cy="46" rx="20" ry="6" fill="#a9c8b0"/><path d="M12 44c0-12 6-22 14-22s14 10 14 22z" fill="#ffffff"/><rect x="20" y="12" width="12" height="13" rx="5" fill="#ffffff"/></svg></div>
+      <div>
+        <h3>Dustless sanding in your home</h3>
+        <p>Preparation is where most of the dust on a decorating job comes from. Martin sands filler, walls and woodwork with a dustless sanding system, where an extractor draws the dust away at the sanding head, so very little of it settles on floors, furniture and soft furnishings while you live in the house.</p>
+        <ul class="dust-points"><li>Dust kept to a minimum</li><li>Less cleaning after prep</li><li>Suited to lived-in homes</li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -419,6 +490,23 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
       <div class="rev reveal"><div class="stars">★★★★★</div><blockquote>MK Painting did the outside of our semi in Owlsmoor: windows, fascias and the front door. Turned up on the day he said and the house looks new again.</blockquote><cite>Steve R., Owlsmoor · Exterior painting</cite></div>
       <div class="rev reveal"><div class="stars">★★★★★</div><blockquote>We had three bedrooms decorated by MK Painting before moving in at College Town. Sharp lines on every edge and a fair price. We will be using Martin again.</blockquote><cite>Priya S., College Town · Decorating</cite></div>
       <div class="rev reveal"><div class="stars">★★★★★</div><blockquote>Martin painted our shop unit in Crowthorne over a weekend so we did not lose any trading days. MK Painting were professional from the quote to the final coat.</blockquote><cite>Dan W., Crowthorne · Commercial painting</cite></div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="areas-panel reveal">
+      <span class="stripe"></span>
+      <h2>Areas <span class="hl">covered</span></h2>
+      <p>Based in Sandhurst, Berkshire, decorating homes and businesses across the surrounding towns and villages.</p>
+      <ul class="area-list">
+        <li class="base">Sandhurst, Berkshire</li>
+        <li class="tbc">Area to confirm</li>
+        <li class="tbc">Area to confirm</li>
+        <li class="tbc">Area to confirm</li>
+        <li class="tbc">Area to confirm</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -470,6 +558,8 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
     <div class="foot-base"><span>© 2026 MK Painting. All rights reserved.</span><span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span></div>
   </div>
 </footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button type="button" id="lbClose" aria-label="Close photo">&times;</button><img id="lbImg" alt=""></div>
 
 <div class="fabs" id="fabs">
   <a class="fab fab-wa" id="fabWa" href="#contact" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm0-21.6A11.8 11.8 0 0 0 1.9 18l-1.7 6 6.2-1.6A11.8 11.8 0 1 0 12 .2z"/></svg></a>
@@ -525,6 +615,15 @@ body.loading .hero h1,body.loading .tagline,body.loading .lede,body.loading .cta
     es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // recent work lightbox
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.work-grid img').forEach(function(img){
+    img.addEventListener('click', function(){ lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open'); });
+  });
+  function closeLb(){ lb.classList.remove('open'); }
+  lb.addEventListener('click', function(e){ if (e.target !== lbImg) closeLb(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLb(); });
 
   // FABs after hero CTAs leave view
   var fabs = document.getElementById('fabs'), heroCtas = document.querySelector('.hero .ctas');
