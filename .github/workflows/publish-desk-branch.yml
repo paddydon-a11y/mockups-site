@@ -1,0 +1,75 @@
+name: Publish desk branch
+
+# A finished mockup arrives on a claude/desk-<slug> branch. This puts it on
+# master, asks Pages to rebuild and removes the branch. Mockups never wait for
+# a person to publish them.
+on:
+  push:
+    branches:
+      - 'claude/desk-**'
+
+permissions:
+  contents: write
+  pages: write
+
+# One at a time, in order, so two mockups finished together both land.
+concurrency:
+  group: publish-desk-branch
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+          filter: blob:none
+
+      - name: Put the branch on master
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git config user.name "Patrick Donnelly"
+          git config user.email "patrick@construction-sites.co.uk"
+          for attempt in 1 2 3 4; do
+            git fetch -q origin master "$BRANCH"
+            git reset -q --hard origin/master
+            TIP="origin/$BRANCH"
+            if git merge-base --is-ancestor "$TIP" HEAD; then
+              echo "Already on master."
+              exit 0
+            fi
+            if git merge-base --is-ancestor HEAD "$TIP"; then
+              git merge -q --ff-only "$TIP"
+            else
+              # master moved on while the mockup was being built: replay its commits on top
+              for c in $(git rev-list --reverse "HEAD..$TIP"); do
+                if ! git cherry-pick "$c"; then
+                  python3 .github/scripts/resolve-ledger.py "$c"
+                  git -c core.editor=true cherry-pick --continue
+                fi
+              done
+            fi
+            if git push -q origin HEAD:master; then
+              echo "Published on attempt $attempt."
+              exit 0
+            fi
+            echo "master moved during the push, trying again."
+            sleep 5
+          done
+          echo "Could not publish after 4 attempts." >&2
+          exit 1
+
+      - name: Ask Pages to rebuild
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" --silent
+
+      - name: Remove the branch
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: git push -q origin --delete "$BRANCH" || true
