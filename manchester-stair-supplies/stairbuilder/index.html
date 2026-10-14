@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Staircase Builder | Manchester Stair Supplies</title>
+<meta name="description" content="Design your timber staircase online. Choose the shape, sizes, timber and balustrade, see it in 3D, check it against the building regulations and get an indicative price from Manchester Stair Supplies, Ashton-under-Lyne.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Staircase Builder | Manchester Stair Supplies">
+<meta property="og:description" content="Design your staircase in 3D and get an indicative price.">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/manchester-stair-supplies/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/manchester-stair-supplies/stairbuilder/">
+<meta name="theme-color" content="#93171f">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --stone:#f3f3f4;
+  --stone-deep:#e4e4e6;
+  --burg:#4a0a0f;
+  --burg-deep:#320609;
+  --red:#93171f;
+  --red-h:#6a0f16;
+  --rose:#f3c4c6;
+  --rose-soft:#fbeeee;
+  --head:#17181a;
+  --body:#45464a;
+  --muted:#7c7d82;
+  --line:#dededf;
+  --ok:#1f7a45;
+  --ok-soft:#e6f3eb;
+  --warn:#a14a00;
+  --warn-soft:#fdf0e4;
+  --navh:72px;
+  --panel:440px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+html{overflow-x:clip}
+body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--body);font-size:1rem;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+em{font-style:normal}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3{font-family:'Archivo',system-ui,sans-serif;color:var(--head);font-weight:700;line-height:1.1;letter-spacing:-.02em}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;height:var(--navh);background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:20px}
+.nav-l{display:flex;align-items:center;gap:20px;min-width:0}
+.nav-logo img{height:50px;width:auto}
+.nav-title{font-family:'Archivo',system-ui,sans-serif;font-weight:700;letter-spacing:-.01em;font-size:1.2rem;color:var(--head);padding-left:20px;border-left:1px solid var(--line);white-space:nowrap}
+.nav-r{display:flex;align-items:center;gap:22px}
+.nav-back{font-weight:500;font-size:.95rem;display:inline-flex;align-items:center;gap:6px;color:var(--body)}
+.nav-back:hover{color:var(--red)}
+.nav-cta{background:var(--red);color:#fff;padding:12px 18px;border-radius:4px;font-weight:600;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.nav-cta:hover{background:var(--red-h)}
+.nav-cta svg{width:18px;height:18px}
+
+/* ---------- app layout ---------- */
+.app{display:grid;grid-template-columns:1fr var(--panel);height:calc(100vh - var(--navh));height:calc(100dvh - var(--navh))}
+.stage{position:relative;background:var(--stone);overflow:hidden;min-width:0}
+#view{position:absolute;inset:0;touch-action:none}
+#view canvas{display:block;width:100%!important;height:100%!important;outline:none}
+.stage-top{position:absolute;top:18px;left:18px;right:18px;display:grid;grid-template-columns:1fr auto 1fr;align-items:flex-start;gap:12px;pointer-events:none;z-index:3}
+.stage-top .tools{justify-self:end}
+.stage-top .stage-name{justify-self:start}
+.seg{display:inline-flex;background:#fff;border-radius:6px;padding:4px;box-shadow:0 6px 20px rgba(28,21,23,.08);pointer-events:auto}
+.seg button{border:0;background:none;padding:8px 16px;border-radius:4px;font-weight:700;font-size:.9rem;color:var(--body);display:flex;gap:7px;align-items:center;transition:background .2s,color .2s}
+.seg button svg{width:17px;height:17px}
+.seg button.on{background:var(--red);color:#fff}
+.plan{position:absolute;inset:0;width:100%;height:100%;display:none;background:#fff;z-index:1}
+.stage.is-plan .plan{display:block}
+.stage.is-plan #tSpin,.stage.is-plan #tReset,.stage.is-plan .hint{display:none}
+.stage .stage-bot{z-index:3}
+.refbox{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.refbox label{display:block;font-weight:700;color:var(--head);font-size:.88rem;margin-bottom:6px}
+.refbox input{width:100%;border:1.5px solid var(--line);border-radius:5px;padding:11px 12px;font:inherit;font-size:.95rem;color:var(--head);outline:none;background:#fff}
+.refbox input:focus{border-color:var(--red)}
+.ref.edit{display:block;padding:16px 18px 18px}
+.ref.edit .rt{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ref.edit .rt b{font-size:.95rem;letter-spacing:.04em;color:var(--rose)}
+.ref.edit label{display:block;font-size:.8rem;color:var(--rose);font-weight:600;margin-bottom:5px}
+.ref.edit input{width:100%;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);border-radius:5px;padding:10px 12px;font:inherit;font-size:1rem;font-weight:700;color:#fff;outline:none}
+.ref.edit input::placeholder{color:rgba(255,255,255,.55)}
+.ref.edit input:focus{border-color:#fff}
+.ref.edit .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stage-name{background:#fff;border-radius:6px;padding:10px 14px;box-shadow:0 6px 20px rgba(28,21,23,.08);pointer-events:auto}
+.stage-name b{display:block;font-family:'Archivo',system-ui,sans-serif;font-weight:700;font-size:1.08rem;color:var(--head);line-height:1.2}
+.stage-name span{font-size:.84rem;color:var(--muted)}
+.tools{display:flex;gap:8px;pointer-events:auto}
+.tool{width:42px;height:42px;border-radius:6px;background:#fff;border:0;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(28,21,23,.08);color:var(--head);transition:background .2s,color .2s}
+.tool:hover{color:var(--red)}
+.tool.on{background:var(--burg);color:#fff}
+.tool svg{width:19px;height:19px}
+.stage-bot{position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;pointer-events:none}
+.chip{background:rgba(255,255,255,.94);border-radius:40px;padding:7px 13px;font-size:.84rem;font-weight:500;color:var(--head);box-shadow:0 4px 14px rgba(28,21,23,.07);white-space:nowrap}
+.chip b{font-weight:700}
+.chip.regs{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.chip.regs.ok{background:var(--ok-soft);color:var(--ok)}
+.chip.regs.bad{background:var(--warn-soft);color:var(--warn)}
+.chip.regs svg{width:16px;height:16px}
+.hint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(28,21,23,.78);color:#fff;border-radius:40px;padding:10px 18px;font-size:.88rem;font-weight:500;display:flex;align-items:center;gap:10px;pointer-events:none;transition:opacity .5s;white-space:nowrap}
+.hint svg{width:18px;height:18px}
+.hint.gone{opacity:0}
+.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:500;background:var(--stone)}
+.loading.gone{display:none}
+
+/* ---------- panel ---------- */
+.panel{display:flex;flex-direction:column;border-left:1px solid var(--line);background:var(--bg);min-height:0}
+.steps{display:flex;gap:0;padding:14px 12px 0;position:relative;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;flex:none}
+.steps::-webkit-scrollbar{display:none}
+.steps button{border:0;background:none;padding:10px 7px 13px;font-size:.86rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:7px;border-bottom:3px solid transparent;white-space:nowrap;margin-bottom:-1px}
+.steps button .n{width:21px;height:21px;border-radius:50%;background:var(--stone);display:inline-flex;align-items:center;justify-content:center;font-size:.74rem;color:var(--body)}
+.steps button.on{color:var(--head);border-bottom-color:var(--red)}
+.steps button.on .n{background:var(--red);color:#fff}
+.steps button.done .n{background:var(--burg);color:#fff}
+.body{flex:1;overflow-y:auto;padding:26px 26px 30px;min-height:0;overscroll-behavior:contain}
+.step{display:none}
+.step.on{display:block;animation:stepIn .35s ease}
+@keyframes stepIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.step h2{font-size:1.75rem;margin-bottom:6px}
+.step .lead{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+.grp{margin-bottom:24px}
+.grp>.gl{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;color:var(--head);font-size:.95rem;margin-bottom:10px}
+.grp>.gl small{font-weight:500;color:var(--muted);font-size:.84rem}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.opts.c3{grid-template-columns:repeat(3,1fr)}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:6px;padding:12px;text-align:left;display:flex;align-items:center;gap:11px;transition:border-color .2s,box-shadow .2s,background .2s;min-height:54px;font-size:.92rem;font-weight:600;color:var(--head);line-height:1.25}
+.opt:hover{border-color:#cfc8ca}
+.opt.on{border-color:var(--red);background:var(--rose-soft);box-shadow:inset 0 0 0 1px var(--red)}
+.opt small{display:block;font-weight:500;color:var(--muted);font-size:.8rem;margin-top:2px}
+.opt.tall{flex-direction:column;align-items:flex-start;gap:8px}
+.opt .ico{width:46px;height:46px;flex:none;color:var(--burg)}
+.opt.tall .ico{width:54px;height:54px}
+.opt .sw{width:34px;height:34px;border-radius:50%;flex:none;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.opt .glyph{width:34px;height:34px;flex:none;color:var(--burg)}
+.opt:disabled{opacity:.45;cursor:not-allowed}
+.note{background:var(--stone);border-radius:6px;padding:13px 15px;font-size:.88rem;color:var(--body);display:flex;gap:10px;align-items:flex-start}
+.note svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--burg)}
+.note a{color:var(--red);font-weight:600}
+
+/* number steppers */
+.field{margin-bottom:18px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;color:var(--head);font-size:.95rem;margin-bottom:8px}
+.field label small{font-weight:500;color:var(--muted);font-size:.82rem}
+.num{display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}
+.num:focus-within{border-color:var(--red)}
+.num button{width:52px;border:0;background:var(--stone);font-size:1.3rem;font-weight:600;color:var(--head);flex:none}
+.num button:hover{background:var(--stone-deep)}
+.num input{flex:1;min-width:0;border:0;text-align:center;font:inherit;font-size:1.15rem;font-weight:700;color:var(--head);padding:12px 4px;outline:none;-moz-appearance:textfield}
+.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num .u{display:flex;align-items:center;padding-right:12px;color:var(--muted);font-weight:600;font-size:.9rem}
+.range{width:100%;accent-color:var(--red);margin-top:4px}
+
+/* regs */
+.regs-list{list-style:none;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:18px}
+.regs-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line);font-size:.9rem}
+.regs-list li:last-child{border-bottom:0}
+.regs-list li span{color:var(--body)}
+.regs-list li b{display:inline-flex;align-items:center;gap:7px;color:var(--head);white-space:nowrap}
+.regs-list li b svg{width:17px;height:17px}
+.regs-list li.ok b svg{color:var(--ok)}
+.regs-list li.bad{background:var(--warn-soft)}
+.regs-list li.bad b{color:var(--warn)}
+.calc{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+.calc div{background:var(--stone);border-radius:6px;padding:12px 14px}
+.calc div span{display:block;font-size:.8rem;color:var(--muted);font-weight:500}
+.calc div b{font-size:1.15rem;color:var(--head)}
+
+/* toggles */
+.tog{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1.5px solid var(--line);border-radius:6px;padding:14px;margin-bottom:10px;cursor:pointer;background:#fff;width:100%;text-align:left}
+.tog.on{border-color:var(--red);background:var(--rose-soft)}
+.tog b{display:block;color:var(--head);font-size:.95rem}
+.tog small{color:var(--muted);font-size:.84rem}
+.tog .sw2{width:44px;height:26px;border-radius:20px;background:var(--stone-deep);position:relative;flex:none;transition:background .2s}
+.tog .sw2::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}
+.tog.on .sw2{background:var(--red)}
+.tog.on .sw2::after{transform:translateX(18px)}
+.tog:disabled{opacity:.5;cursor:not-allowed}
+
+/* summary */
+.ref{display:flex;justify-content:space-between;align-items:center;background:var(--burg);color:#fff;border-radius:6px;padding:16px 18px;margin-bottom:18px}
+.ref span{font-size:.84rem;color:var(--rose)}
+.ref b{font-size:1.25rem;letter-spacing:.04em}
+.spec{border:1px solid var(--line);border-radius:6px;margin-bottom:18px}
+.spec div{display:flex;justify-content:space-between;gap:14px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.9rem}
+.spec div:last-child{border-bottom:0}
+.spec div span{color:var(--muted)}
+.spec div b{color:var(--head);text-align:right;font-weight:600}
+.lines div{display:flex;justify-content:space-between;padding:7px 0;font-size:.92rem;border-bottom:1px dashed var(--line)}
+.lines div b{color:var(--head)}
+.lines .tot{border-bottom:0;padding-top:12px;font-size:1.05rem}
+.lines .tot b{font-size:1.3rem;color:var(--red)}
+.lines .vat{border-bottom:0;padding-top:0;color:var(--muted);font-size:.86rem}
+.acts{display:flex;gap:10px;margin:18px 0 24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border-radius:4px;font-weight:600;font-size:.98rem;border:0;transition:background .2s,transform .2s;white-space:nowrap}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-h)}
+.btn-line{background:#fff;color:var(--head);border:1.5px solid var(--line)}
+.btn-line:hover{border-color:var(--head)}
+.btn-burg{background:var(--burg);color:#fff}
+.btn-burg:hover{background:var(--burg-deep)}
+.acts .btn{flex:1;padding:12px 10px;font-size:.92rem}
+.qform h3{font-size:1.4rem;margin-bottom:4px}
+.qform p.sub{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+.qform .f{margin-bottom:12px}
+.qform .f label{display:block;font-weight:600;color:var(--head);font-size:.88rem;margin-bottom:5px}
+.qform .f label small{font-weight:500;color:var(--muted)}
+.qform input,.qform textarea{width:100%;border:1.5px solid var(--line);border-radius:5px;padding:12px 13px;font:inherit;font-size:.98rem;color:var(--head);outline:none;background:#fff}
+.qform input:focus,.qform textarea:focus{border-color:var(--red)}
+.qform textarea{min-height:84px;resize:vertical}
+.qform .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qform button[type=submit]{width:100%;margin-top:6px}
+.small{font-size:.82rem;color:var(--muted);margin-top:12px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--head);color:#fff;padding:12px 18px;border-radius:40px;font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:100}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* panel footer */
+.foot{flex:none;border-top:1px solid var(--line);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff}
+.price span{display:block;font-size:.78rem;color:var(--muted);font-weight:600}
+.price b{font-size:1.45rem;color:var(--head);font-family:'Archivo',system-ui,sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+.price b small{font-family:'Hanken Grotesk',sans-serif;font-size:.8rem;color:var(--muted);font-weight:600;margin-left:4px}
+.nav-btns{display:flex;gap:8px}
+.nav-btns .btn{padding:13px 18px}
+.nav-btns #prev{padding:13px 14px}
+
+/* ---------- mobile ---------- */
+@media (max-width:980px){
+  :root{--panel:390px}
+  .nav-title{display:none}
+}
+@media (max-width:820px){
+  :root{--navh:64px}
+  .nav-in{padding:0 16px}
+  .nav-logo img{height:42px}
+  .nav-back span,.nav-cta span{display:none}
+  .nav-back{width:44px;height:44px;justify-content:center;border:1.5px solid var(--line);border-radius:4px}
+  .nav-cta{width:44px;height:44px;padding:0;justify-content:center}
+  .nav-r{gap:10px}
+  .app{display:block;height:auto}
+  .stage{position:sticky;top:var(--navh);height:44vh;height:44svh;z-index:10;border-bottom:1px solid var(--line)}
+  .stage-top{top:12px;left:12px;right:12px;display:flex;justify-content:space-between}
+  .stage-name{display:none!important}
+  .seg button{padding:7px 12px;font-size:.86rem}
+  .stage-name{padding:8px 11px}
+  .stage-name b{font-size:1.02rem}
+  .stage-name span{font-size:.78rem}
+  .tool{width:38px;height:38px}
+  .stage-bot{left:12px;right:12px;bottom:12px;gap:6px}
+  .chip{font-size:.76rem;padding:6px 10px}
+  .chip.hide-m{display:none}
+  .panel{border-left:0;display:block}
+  .steps{position:sticky;top:calc(var(--navh) + 44svh);background:#fff;z-index:9;padding:8px 12px 0}
+  .body{overflow:visible;padding:22px 16px 120px}
+  .step h2{font-size:1.5rem}
+  .foot{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(28,21,23,.08)}
+  .price b{font-size:1.3rem}
+  .nav-btns .btn{padding:13px 16px}
+  .toast{bottom:96px}
+}
+@media (max-width:380px){
+  .opts.c3{grid-template-columns:repeat(2,1fr)}
+  .acts{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.step.on{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="nav-l">
+      <a href="../" class="nav-logo"><img src="../logo.png" alt="Manchester Stair Supplies"></a>
+      <span class="nav-title">Staircase Builder</span>
+    </div>
+    <div class="nav-r">
+      <a href="../" class="nav-back" aria-label="Back to the website"><svg class="i" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Back to website</span></a>
+      <a id="navCall" href="#" class="nav-cta" aria-label="Call us"><svg class="i" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg><span id="navPhone">Call us</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="app">
+  <!-- 3D stage -->
+  <section class="stage" aria-label="3D preview of your staircase">
+    <div id="view"></div>
+    <svg class="plan" id="plan" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan view of your staircase"></svg>
+    <div class="loading" id="loading">Loading the 3D preview</div>
+    <div class="stage-top">
+      <div class="stage-name"><b id="sName">Straight flight</b><span id="sSub">13 risers, softwood</span></div>
+      <div class="seg" role="group" aria-label="View">
+        <button type="button" id="v3d" class="on" aria-pressed="true"><svg class="i" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg>3D</button>
+        <button type="button" id="vPlan" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>Plan</button>
+      </div>
+      <div class="tools">
+        <button class="tool" id="tSpin" aria-label="Turn on auto rotate" title="Auto rotate"><svg class="i" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></button>
+        <button class="tool" id="tReset" aria-label="Reset view" title="Reset view"><svg class="i" viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></button>
+        <button class="tool" id="tShot" aria-label="Save an image" title="Save an image"><svg class="i" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></button>
+      </div>
+    </div>
+    <div class="stage-bot">
+      <span class="chip regs ok" id="cRegs"><svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Meets Part K</span></span>
+      <span class="chip" id="cRise">Rise <b>203mm</b></span>
+      <span class="chip" id="cGoing">Going <b>235mm</b></span>
+      <span class="chip hide-m" id="cPitch">Pitch <b>40.8°</b></span>
+    </div>
+    <div class="hint" id="hint"><svg class="i" viewBox="0 0 24 24"><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/><circle cx="12" cy="12" r="2"/></svg>Drag to turn, pinch or scroll to zoom</div>
+  </section>
+
+  <!-- options panel -->
+  <section class="panel" aria-label="Staircase options">
+    <nav class="steps" id="steps">
+      <button data-s="0" class="on"><span class="n">1</span>Shape</button>
+      <button data-s="1"><span class="n">2</span>Size</button>
+      <button data-s="2"><span class="n">3</span>Timber</button>
+      <button data-s="3"><span class="n">4</span>Balustrade</button>
+      <button data-s="4"><span class="n">5</span>Extras</button>
+      <button data-s="5"><span class="n">6</span>Your quote</button>
+    </nav>
+
+    <div class="body" id="body">
+
+      <!-- 1 shape -->
+      <div class="step on" data-step="0">
+        <h2>Choose your shape</h2>
+        <p class="lead">Start with the layout of the flight. Turns are made with a flat landing.</p>
+        <div class="refbox">
+          <div><label for="r1">Design reference</label><input id="r1" data-txt="ref" type="text" maxlength="40" placeholder="MS-000000"></div>
+          <div><label for="b1">Designed by</label><input id="b1" data-txt="by" type="text" maxlength="40" placeholder="Your name" autocomplete="name"></div>
+        </div>
+        <div class="grp">
+          <div class="opts" data-k="shape">
+            <button class="opt tall" data-v="straight"><span class="ico" data-icon="straight"></span><span>Straight<small>One flight, no turn</small></span></button>
+            <button class="opt tall" data-v="ql"><span class="ico" data-icon="ql"></span><span>Quarter turn left<small>90° turn on a landing</small></span></button>
+            <button class="opt tall" data-v="qr"><span class="ico" data-icon="qr"></span><span>Quarter turn right<small>90° turn on a landing</small></span></button>
+            <button class="opt tall" data-v="hl"><span class="ico" data-icon="hl"></span><span>Half turn left<small>180° turn on a landing</small></span></button>
+            <button class="opt tall" data-v="hr"><span class="ico" data-icon="hr"></span><span>Half turn right<small>180° turn on a landing</small></span></button>
+          </div>
+        </div>
+        <div class="field" id="turnField" hidden>
+          <label for="turnRange">Landing position <small id="turnLbl">after 3 steps</small></label>
+          <input type="range" class="range" id="turnRange" min="1" max="9" step="1" value="3">
+        </div>
+        <div class="note"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>Need a paddle flight for a loft or a treated outdoor flight? We make those too. <a href="#" class="callLink">Give us a call</a> and we will design it with you.</span></div>
+      </div>
+
+      <!-- 2 size -->
+      <div class="step" data-step="1">
+        <h2>Enter your sizes</h2>
+        <p class="lead">Floor to floor is measured from the finished ground floor to the finished upstairs floor.</p>
+        <div class="field"><label for="iH">Floor to floor height <small>1800 to 3400mm</small></label>
+          <div class="num" data-k="H" data-step="10" data-min="1800" data-max="3400"><button type="button" data-d="-1" aria-label="Decrease">&minus;</button><input id="iH" type="number" inputmode="numeric"><span class="u">mm</span><button type="button" data-d="1" aria-label="Increase">+</button></div></div>
+        <div class="field"><label for="iW">Overall width <small>600 to 1200mm</small></label>
+          <div class="num" data-k="W" data-step="10" data-min="600" data-max="1200"><button type="button" data-d="-1" aria-label="Decrease">&minus;</button><input id="iW" type="number" inputmode="numeric"><span class="u">mm</span><button type="button" data-d="1" aria-label="Increase">+</button></div></div>
+        <div class="field"><label for="iG">Going per step <small>220 to 300mm</small></label>
+          <div class="num" data-k="G" data-step="5" data-min="220" data-max="300"><button type="button" data-d="-1" aria-label="Decrease">&minus;</button><input id="iG" type="number" inputmode="numeric"><span class="u">mm</span><button type="button" data-d="1" aria-label="Increase">+</button></div></div>
+        <div class="field"><label for="iN">Number of risers <small>set for you, change it if you need to</small></label>
+          <div class="num" data-k="n" data-step="1" data-min="8" data-max="22"><button type="button" data-d="-1" aria-label="Decrease">&minus;</button><input id="iN" type="number" inputmode="numeric"><span class="u">risers</span><button type="button" data-d="1" aria-label="Increase">+</button></div></div>
+        <div class="calc">
+          <div><span>Rise per step</span><b id="kRise">203mm</b></div>
+          <div><span>Pitch</span><b id="kPitch">40.8°</b></div>
+          <div><span>Treads</span><b id="kTreads">12</b></div>
+          <div><span>Footprint</span><b id="kFoot">2.8 x 0.86m</b></div>
+        </div>
+        <div class="grp"><div class="gl">Building Regulations, Part K <small>private stairs</small></div>
+          <ul class="regs-list" id="regsList"></ul>
+        </div>
+        <div class="note"><svg class="i" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Not sure of your sizes? Put in your best guess. We can come out and measure, free of charge depending on location, and confirm every size before anything is made. You will also need 2m headroom above the stairs, which we check on the measure.</span></div>
+      </div>
+
+      <!-- 3 timber -->
+      <div class="step" data-step="2">
+        <h2>Pick your timber</h2>
+        <p class="lead">Mix and match. Oak treads on softwood strings ready for painting is a popular combination.</p>
+        <div class="grp"><div class="gl">Treads and landing</div>
+          <div class="opts" data-k="tread">
+            <button class="opt" data-v="pine"><span class="sw" data-sw="pine"></span><span>Softwood<small>Redwood, paint or carpet</small></span></button>
+            <button class="opt" data-v="oak"><span class="sw" data-sw="oak"></span><span>Oak<small>Solid oak, natural finish</small></span></button>
+          </div></div>
+        <div class="grp"><div class="gl">Strings</div>
+          <div class="opts c3" data-k="string">
+            <button class="opt" data-v="pine"><span class="sw" data-sw="pine"></span><span>Softwood</span></button>
+            <button class="opt" data-v="primed"><span class="sw" data-sw="primed"></span><span>Primed</span></button>
+            <button class="opt" data-v="oak"><span class="sw" data-sw="oak"></span><span>Oak</span></button>
+          </div></div>
+        <div class="grp"><div class="gl">Risers</div>
+          <div class="opts" data-k="riser">
+            <button class="opt" data-v="pine"><span class="sw" data-sw="pine"></span><span>Softwood</span></button>
+            <button class="opt" data-v="primed"><span class="sw" data-sw="primed"></span><span>Primed</span></button>
+            <button class="opt" data-v="oak"><span class="sw" data-sw="oak"></span><span>Oak</span></button>
+            <button class="opt" data-v="open"><span class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 28h8M12 21h8M20 14h8M28 7h3"/></svg></span><span>Open risers<small>No riser boards</small></span></button>
+          </div></div>
+        <div class="note" id="openNote" hidden><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>Open risers must not leave a gap a 100mm sphere can pass through. We will advise on the right detail when we measure.</span></div>
+      </div>
+
+      <!-- 4 balustrade -->
+      <div class="step" data-step="3">
+        <h2>Design the balustrade</h2>
+        <p class="lead">Left and right are as you look up the stairs from the bottom step.</p>
+        <div class="grp"><div class="gl">Open sides</div>
+          <div class="opts" data-k="sides">
+            <button class="opt" data-v="L"><span>Left side<small>Wall on the right</small></span></button>
+            <button class="opt" data-v="R"><span>Right side<small>Wall on the left</small></span></button>
+            <button class="opt" data-v="B"><span>Both sides<small>Open on both sides</small></span></button>
+            <button class="opt" data-v="N"><span>Between walls<small>No balustrade</small></span></button>
+          </div></div>
+        <div id="balOpts">
+        <div class="grp"><div class="gl">Infill</div>
+          <div class="opts" data-k="infill">
+            <button class="opt" data-v="square"><span class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="3" width="5" height="28"/><rect x="21" y="3" width="5" height="28"/></svg></span><span>Square spindles</span></button>
+            <button class="opt" data-v="chamfer"><span class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3h5v5l-1 2v14l1 2v5H8v-5l1-2V10l-1-2z"/><path d="M21 3h5v5l-1 2v14l1 2v5h-5v-5l1-2V10l-1-2z"/></svg></span><span>Stop chamfered</span></button>
+            <button class="opt" data-v="turned"><span class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3h5v4c-2 1-2 3 0 4-1 2-1 10 0 12-2 1-2 3 0 4v4H8v-4c2-1 2-3 0-4 1-2 1-10 0-12-2-1-2-3 0-4z"/><path d="M21 3h5v4c-2 1-2 3 0 4-1 2-1 10 0 12-2 1-2 3 0 4v4h-5v-4c2-1 2-3 0-4 1-2 1-10 0-12-2-1-2-3 0-4z"/></svg></span><span>Turned spindles</span></button>
+            <button class="opt" data-v="glass"><span class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="4" width="24" height="26" rx="1"/><path d="M10 10l5-4M10 17l10-8"/></svg></span><span>Glass panels<small>Toughened glass</small></span></button>
+          </div></div>
+        <div class="grp"><div class="gl">Newel posts</div>
+          <div class="opts c3" data-k="newel">
+            <button class="opt" data-v="square"><span>Square</span></button>
+            <button class="opt" data-v="chamfer"><span>Chamfered</span></button>
+            <button class="opt" data-v="turned"><span>Turned</span></button>
+          </div></div>
+        <div class="grp"><div class="gl">Newel caps</div>
+          <div class="opts c3" data-k="cap">
+            <button class="opt" data-v="flat"><span>Flat</span></button>
+            <button class="opt" data-v="pyramid"><span>Pyramid</span></button>
+            <button class="opt" data-v="ball"><span>Ball</span></button>
+          </div></div>
+        <div class="grp"><div class="gl">Balustrade timber <small>newels, handrail and spindles</small></div>
+          <div class="opts c3" data-k="bal">
+            <button class="opt" data-v="pine"><span class="sw" data-sw="pine"></span><span>Softwood</span></button>
+            <button class="opt" data-v="primed"><span class="sw" data-sw="primed"></span><span>Primed</span></button>
+            <button class="opt" data-v="oak"><span class="sw" data-sw="oak"></span><span>Oak</span></button>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- 5 extras -->
+      <div class="step" data-step="4">
+        <h2>Add the finishing touches</h2>
+        <p class="lead">Optional extras. Each one shows on the 3D preview.</p>
+        <button class="tog" type="button" data-k="bull"><span><b>Bullnose bottom step</b><small>A rounded first step on the open side</small></span><span class="sw2"></span></button>
+        <button class="tog" type="button" data-k="wallRail"><span><b>Wall handrail</b><small>Handrail with brackets on the wall side</small></span><span class="sw2"></span></button>
+        <div class="field" style="margin-top:18px"><label for="iTop">Landing balustrade upstairs <small>0 to 5m</small></label>
+          <div class="num" data-k="top" data-step="0.5" data-min="0" data-max="5"><button type="button" data-d="-1" aria-label="Decrease">&minus;</button><input id="iTop" type="number" inputmode="decimal" step="0.5"><span class="u">m</span><button type="button" data-d="1" aria-label="Increase">+</button></div></div>
+        <div class="note"><svg class="i" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Every staircase is made to order in our Ashton-under-Lyne workshop and delivered across the North West. We supply only and can recommend trusted joiners to fit it.</span></div>
+      </div>
+
+      <!-- 6 quote -->
+      <div class="step" data-step="5">
+        <h2>Your staircase</h2>
+        <p class="lead">Here is your design and an indicative price. Send it to us and we will be in touch to confirm the price and arrange a measure.</p>
+        <div class="ref edit">
+          <div class="two">
+            <div><label for="r2">Design reference</label><input id="r2" data-txt="ref" type="text" maxlength="40" placeholder="MS-000000"></div>
+            <div><label for="b2">Designed by</label><input id="b2" data-txt="by" type="text" maxlength="40" placeholder="Your name"></div>
+          </div>
+        </div>
+        <div class="spec" id="specList"></div>
+        <div class="lines" id="priceLines"></div>
+        <div class="acts">
+          <button class="btn btn-line" type="button" id="copyLink"><svg class="i" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Copy link</button>
+          <button class="btn btn-line" type="button" id="saveImg"><svg class="i" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg>Save image</button>
+        </div>
+        <form class="qform" id="qform" action="/api/enquiry" method="POST">
+          <h3>Send us your design</h3>
+          <p class="sub">We will check it, confirm the price and arrange a measure.</p>
+          <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_timestamp" id="formTimestamp">
+          <input type="hidden" name="businessName" value="Manchester Stair Supplies">
+          <input type="hidden" name="source" value="mockup-manchester-stair-supplies-stairbuilder">
+          <input type="hidden" name="message" id="qMsg">
+          <div class="two">
+            <div class="f"><label for="qName">Name</label><input id="qName" name="name" type="text" required autocomplete="name"></div>
+            <div class="f"><label for="qPhone">Phone</label><input id="qPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+          </div>
+          <div class="two">
+            <div class="f"><label for="qEmail">Email <small>(optional)</small></label><input id="qEmail" name="email" type="email" autocomplete="email"></div>
+            <div class="f"><label for="qPost">Postcode</label><input id="qPost" name="postcode" type="text" required autocomplete="postal-code"></div>
+          </div>
+          <div class="f"><label for="qNotes">Anything else? <small>(optional)</small></label><textarea id="qNotes" placeholder="Timescale, access, whether it replaces an existing staircase"></textarea></div>
+          <button type="submit" class="btn btn-red"><svg class="i" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Send my design</button>
+          <p class="small">Prices are indicative and exclude delivery. Your final price is confirmed after we measure.</p>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="foot">
+      <div class="price"><span>Indicative price</span><b id="priceTot">£0<small>+ VAT</small></b></div>
+      <div class="nav-btns">
+        <button class="btn btn-line" type="button" id="prev" aria-label="Previous step"><svg class="i" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="btn btn-red" type="button" id="next">Next: Size<svg class="i" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- contact details ---------- */
+function b64u(s){try{return decodeURIComponent(escape(atob(s)))}catch(e){return atob(s)}}
+var P = b64u('MDE2MTM0MzUwMDA=');
+var Pf = b64u('MDE2MSAzNDMgNTAwMA==');
+document.getElementById('navCall').href = 'tel:' + P;
+document.getElementById('navPhone').textContent = Pf;
+document.querySelectorAll('.callLink').forEach(function(a){ a.href = 'tel:' + P; });
+var ts = document.getElementById('formTimestamp'); if (ts) ts.value = Date.now();
+
+/* ---------- state ---------- */
+var DEF = {shape:'straight', H:2640, W:860, G:235, n:13, turn:3, tread:'oak', string:'primed', riser:'primed',
+  sides:'R', infill:'square', newel:'square', cap:'flat', bal:'oak', bull:false, wallRail:true, top:0, ref:'', by:''};
+var S = Object.assign({}, DEF);
+var KEYS = Object.keys(DEF);
+var nAuto = true;
+
+function readHash(){
+  var m = location.hash.match(/d=([A-Za-z0-9_\-]+)/);
+  if (!m) return;
+  try {
+    var arr = JSON.parse(decodeURIComponent(escape(atob(m[1].replace(/-/g,'+').replace(/_/g,'/')))));
+    KEYS.forEach(function(k,i){ if (arr[i] !== undefined && arr[i] !== null) S[k] = arr[i]; });
+    nAuto = false;
+  } catch(e){}
+}
+function hashStr(){
+  var arr = KEYS.map(function(k){ return S[k]; });
+  return btoa(unescape(encodeURIComponent(JSON.stringify(arr)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function refCode(){
+  var s = JSON.stringify(KEYS.filter(function(k){ return k !== 'ref' && k !== 'by'; }).map(function(k){ return S[k]; })), h = 2166136261;
+  for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return 'MS-' + ((h >>> 0).toString(36).toUpperCase() + '000000').slice(0,6);
+}
+function designRef(){ return (S.ref || '').trim() || refCode(); }
+function fileSafe(t){ return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'design'; }
+
+var NAMES = {straight:'Straight flight', ql:'Quarter turn left', qr:'Quarter turn right', hl:'Half turn left', hr:'Half turn right'};
+var TIMBER = {pine:'Softwood', oak:'Oak', primed:'Primed', open:'Open risers'};
+var INFILL = {square:'Square spindles', chamfer:'Stop chamfered spindles', turned:'Turned spindles', glass:'Glass panels'};
+var SIDES = {L:'Left side', R:'Right side', B:'Both sides', N:'Between walls'};
+var TOP = 0;
+
+function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+function isTurn(){ return S.shape !== 'straight'; }
+function isHalf(){ return S.shape === 'hl' || S.shape === 'hr'; }
+
+/* choose a riser count that keeps the flight inside Part K */
+function autoN(){
+  var lo = Math.ceil(S.H / 220), best = lo;
+  for (var n = lo; n <= lo + 6; n++){
+    var r = S.H / n, p = Math.atan(r / S.G) * 180 / Math.PI, t = 2 * r + S.G;
+    if (p <= 42 && t >= 550 && t <= 700){ best = n; break; }
+    best = n;
+  }
+  return best;
+}
+
+function calc(){
+  var n = S.n, rise = S.H / n, T = n - 1, a = T, b = 0;
+  if (isTurn()){ a = clamp(S.turn, 1, T - 2); b = T - 1 - a; }
+  var pitch = Math.atan(rise / S.G) * 180 / Math.PI, twoRG = 2 * rise + S.G;
+  var W = S.W, G = S.G, wl = 150, L, Wd;
+  if (S.shape === 'straight'){ L = T * G + 20; Wd = W; }
+  else if (isHalf()){ L = Math.max(a, b) * G + W; Wd = 2 * W + wl; }
+  else { L = a * G + W; Wd = W + b * G; }
+  return {n:n, rise:rise, T:T, a:a, b:b, pitch:pitch, twoRG:twoRG, L:L, Wd:Wd,
+    regs:[
+      {k:'Rise per step', v:Math.round(rise) + 'mm', ok: rise <= 220, need:'220mm max'},
+      {k:'Going per step', v:G + 'mm', ok: G >= 220, need:'220mm min'},
+      {k:'Pitch', v:pitch.toFixed(1) + '°', ok: pitch <= 42.05, need:'42° max'},
+      {k:'2 x rise + going', v:Math.round(twoRG) + 'mm', ok: twoRG >= 550 && twoRG <= 700, need:'550 to 700mm'}
+    ]};
+}
+
+/* ---------- indicative pricing ---------- */
+var R = {
+  tread:{pine:34, oak:92}, landing:{pine:165, oak:395},
+  string:{pine:62, primed:66, oak:175},
+  riser:{pine:12, primed:11, oak:38, open:0},
+  turn:{straight:0, ql:180, qr:180, hl:320, hr:320},
+  newel:{pine:42, primed:46, oak:118}, newelStyle:{square:0, chamfer:10, turned:24}, cap:{flat:0, pyramid:8, ball:12},
+  spindle:{pine:5.5, primed:6, oak:14}, spindleStyle:{square:0, chamfer:1.5, turned:3},
+  handrail:{pine:19, primed:21, oak:52}, baserail:{pine:9, primed:10, oak:24}, glass:240,
+  bull:{pine:95, oak:185}, wallRail:{pine:26, primed:28, oak:58}, bracket:9, make:295
+};
+var geoCount = {newels:0, spindles:0, railM:0, glassM:0, wallM:0, brackets:0, stringM:0};
+
+function price(c){
+  var lines = [], wf = S.W > 900 ? S.W / 900 : 1;
+  var treads = c.T - (isTurn() ? 1 : 0);
+  var stair = treads * R.tread[S.tread] * wf + c.n * R.riser[S.riser] * wf + geoCount.stringM * R.string[S.string];
+  lines.push(['Treads, risers and strings', stair]);
+  if (isTurn()) lines.push(['Landing and turn', R.landing[S.tread] * wf * (isHalf() ? 1.8 : 1) + R.turn[S.shape]]);
+  if (S.sides !== 'N'){
+    var bal = geoCount.newels * (R.newel[S.bal] + R.newelStyle[S.newel] + R.cap[S.cap]) +
+      geoCount.railM * (R.handrail[S.bal] + R.baserail[S.bal]);
+    if (S.infill === 'glass') bal += geoCount.glassM * R.glass;
+    else bal += geoCount.spindles * (R.spindle[S.bal] + R.spindleStyle[S.infill]);
+    lines.push(['Balustrade', bal]);
+  }
+  var ex = 0;
+  if (S.bull && S.sides !== 'N') ex += R.bull[S.tread];
+  if (S.wallRail && S.sides !== 'B') ex += geoCount.wallM * R.wallRail[S.bal] + geoCount.brackets * R.bracket;
+  if (ex > 0) lines.push(['Extras', ex]);
+  lines.push(['Manufacture and assembly', R.make]);
+  var tot = 0; lines.forEach(function(l){ l[1] = Math.round(l[1] / 5) * 5; tot += l[1]; });
+  return {lines:lines, tot:tot};
+}
+function gbp(v){ return '£' + Math.round(v).toLocaleString('en-GB'); }
+
+/* ---------- shape icons ---------- */
+function icon(shape){
+  var s = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">';
+  function flight(x,y,w,h,dir,steps){
+    var o = '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="#fbeeee"/>';
+    for (var i = 1; i < steps; i++){
+      if (dir === 'v'){ var yy = y + h * i / steps; o += '<line x1="'+x+'" y1="'+yy+'" x2="'+(x+w)+'" y2="'+yy+'" stroke-width="1"/>'; }
+      else { var xx = x + w * i / steps; o += '<line x1="'+xx+'" y1="'+y+'" x2="'+xx+'" y2="'+(y+h)+'" stroke-width="1"/>'; }
+    }
+    return o;
+  }
+  function land(x,y,w,h){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="#f3c4c6"/>'; }
+  if (shape === 'straight') s += flight(18,4,12,40,'v',8);
+  if (shape === 'ql') s += flight(30,18,12,26,'v',5) + land(30,6,12,12) + flight(6,6,24,12,'h',5);
+  if (shape === 'qr') s += flight(6,18,12,26,'v',5) + land(6,6,12,12) + flight(18,6,24,12,'h',5);
+  if (shape === 'hl') s += flight(30,18,12,26,'v',5) + land(6,6,36,12) + flight(6,18,12,26,'v',5);
+  if (shape === 'hr') s += flight(6,18,12,26,'v',5) + land(6,6,36,12) + flight(30,18,12,26,'v',5);
+  return s + '</svg>';
+}
+document.querySelectorAll('[data-icon]').forEach(function(el){ el.innerHTML = icon(el.dataset.icon); });
+
+/* ---------- 3D ---------- */
+var hasGL = typeof THREE !== 'undefined';
+var view = document.getElementById('view'), renderer, scene, camera, controls, root, floor;
+var MAT = {}, GEO = {};
+var camGoal = null, tgtGoal = null, viewDir;
+
+function rng(seed){ return function(){ seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function woodCanvas(base, grain, knots, seed){
+  var c = document.createElement('canvas'); c.width = 1024; c.height = 256;
+  var g = c.getContext('2d'), r = rng(seed);
+  g.fillStyle = base; g.fillRect(0,0,1024,256);
+  for (var i = 0; i < 70; i++){
+    var y = r() * 256, amp = 2 + r() * 6, fr = .004 + r() * .01, ph = r() * 6;
+    g.strokeStyle = grain; g.globalAlpha = .06 + r() * .2; g.lineWidth = .6 + r() * 2.6;
+    g.beginPath();
+    for (var x = 0; x <= 1024; x += 16){ var yy = y + Math.sin(x * fr + ph) * amp; if (x === 0) g.moveTo(x, yy); else g.lineTo(x, yy); }
+    g.stroke();
+  }
+  g.globalAlpha = 1;
+  for (var k = 0; k < knots; k++){
+    var kx = 100 + r() * 824, ky = 30 + r() * 196;
+    var gr = g.createRadialGradient(kx, ky, 1, kx, ky, 16);
+    gr.addColorStop(0, grain); gr.addColorStop(1, 'rgba(0,0,0,0)');
+    g.globalAlpha = .55; g.fillStyle = gr; g.beginPath(); g.ellipse(kx, ky, 16, 7, 0, 0, Math.PI * 2); g.fill();
+  }
+  g.globalAlpha = 1;
+  return c;
+}
+var WOOD = {pine:['#e2bf8a','#b98a52',3,11], oak:['#b58353','#7a4f2b',0,29]};
+var CANVAS = {};
+function canvasFor(t){ if (!CANVAS[t]) CANVAS[t] = woodCanvas(WOOD[t][0], WOOD[t][1], WOOD[t][2], WOOD[t][3]); return CANVAS[t]; }
+
+/* swatches use the same grain as the 3D model */
+document.querySelectorAll('[data-sw]').forEach(function(el){
+  var t = el.dataset.sw;
+  if (t === 'primed'){ el.style.background = '#f3f1ec'; return; }
+  var c = canvasFor(t), s = document.createElement('canvas'); s.width = s.height = 80;
+  s.getContext('2d').drawImage(c, 300, 60, 160, 160, 0, 0, 80, 80);
+  el.style.backgroundImage = 'url(' + s.toDataURL() + ')';
+});
+
+function mat(t, vertical){
+  var key = t + (vertical ? 'V' : 'H');
+  if (MAT[key]) return MAT[key];
+  var m;
+  if (t === 'primed') m = new THREE.MeshStandardMaterial({color:0xf3f1ec, roughness:.78});
+  else {
+    var tex = new THREE.CanvasTexture(canvasFor(t));
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.encoding = THREE.sRGBEncoding;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    tex.repeat.set(1, 4);
+    if (vertical){ tex.center.set(.5,.5); tex.rotation = Math.PI / 2; }
+    m = new THREE.MeshStandardMaterial({map:tex, roughness: t === 'oak' ? .52 : .62});
+  }
+  MAT[key] = m; return m;
+}
+
+function initGL(){
+  renderer = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  view.appendChild(renderer.domElement);
+
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xf3f3f4);
+  scene.fog = new THREE.Fog(0xf3f3f4, 14, 30);
+  camera = new THREE.PerspectiveCamera(34, 1, .05, 100);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xd8cfc6, .75));
+  var sun = new THREE.DirectionalLight(0xffffff, 1.05);
+  sun.position.set(5, 9, 6); sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048); sun.shadow.bias = -.0004; sun.shadow.normalBias = .02;
+  var sc = sun.shadow.camera; sc.left = -7; sc.right = 7; sc.top = 7; sc.bottom = -7; sc.near = 1; sc.far = 30;
+  scene.add(sun);
+  var fill = new THREE.DirectionalLight(0xfff4ec, .35); fill.position.set(-6, 4, -3); scene.add(fill);
+
+  floor = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({color:0xe4e1dd, roughness:1}));
+  floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+
+  root = new THREE.Group(); scene.add(root);
+
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = .08;
+  controls.maxPolarAngle = Math.PI / 2 - .04; controls.minDistance = 1.2; controls.maxDistance = 16;
+  controls.autoRotateSpeed = 1.2;
+  controls.addEventListener('start', function(){ camGoal = null; document.getElementById('hint').classList.add('gone'); });
+
+  viewDir = new THREE.Vector3(1.05, .78, -1.2).normalize();
+
+  /* shared unit geometries, base at y=0, height 1 */
+  GEO.sq = new THREE.BoxGeometry(.041, 1, .041).translate(0, .5, 0); boxUV(GEO.sq, .041, 1, .041);
+  GEO.ch = prism(.041, .008);
+  var sp = [[.0205,0],[.0205,.1],[.013,.12],[.017,.17],[.011,.26],[.0135,.5],[.011,.74],[.017,.83],[.013,.88],[.0205,.9],[.0205,1]];
+  GEO.tu = new THREE.LatheGeometry(sp.map(function(p){ return new THREE.Vector2(p[0], p[1]); }), 16);
+  GEO.nsq = new THREE.BoxGeometry(.09, 1, .09).translate(0, .5, 0); boxUV(GEO.nsq, .09, 1, .09);
+  GEO.nch = prism(.09, .014);
+  var np = [[.045,0],[.03,.04],[.038,.08],[.026,.16],[.032,.5],[.026,.84],[.038,.92],[.03,.96],[.045,1]];
+  GEO.ntu = new THREE.LatheGeometry(np.map(function(p){ return new THREE.Vector2(p[0], p[1]); }), 20);
+  for (var k in GEO) GEO[k].userData.shared = true;
+
+  window.addEventListener('resize', size);
+  if (window.ResizeObserver) new ResizeObserver(size).observe(view);
+  size();
+  loop();
+}
+function prism(w, c){
+  var h = w / 2, s = new THREE.Shape();
+  s.moveTo(-h + c, -h); s.lineTo(h - c, -h); s.lineTo(h, -h + c); s.lineTo(h, h - c); s.lineTo(h - c, h);
+  s.lineTo(-h + c, h); s.lineTo(-h, h - c); s.lineTo(-h, -h + c); s.closePath();
+  var g = new THREE.ExtrudeGeometry(s, {depth:1, bevelEnabled:false});
+  g.rotateX(-Math.PI / 2);
+  return g;
+}
+/* scale box UVs to metres so the grain keeps its size */
+function boxUV(geo, w, h, d){
+  var uv = geo.attributes.uv, dims = [[d,h],[d,h],[w,d],[w,d],[w,h],[w,h]];
+  for (var f = 0; f < 6; f++) for (var v = 0; v < 4; v++){ var i = f * 4 + v; uv.setXY(i, uv.getX(i) * dims[f][0], uv.getY(i) * dims[f][1]); }
+  uv.needsUpdate = true; return geo;
+}
+function size(){
+  if (!renderer) return;
+  var w = view.clientWidth, h = view.clientHeight;
+  if (!w || !h) return;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+function loop(){
+  requestAnimationFrame(loop);
+  if (camGoal){
+    camera.position.lerp(camGoal, .09); controls.target.lerp(tgtGoal, .09);
+    if (camera.position.distanceTo(camGoal) < .005) camGoal = null;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+/* mesh helpers */
+function add(parent, geo, m, x, y, z){
+  var me = new THREE.Mesh(geo, m); me.position.set(x || 0, y || 0, z || 0);
+  me.castShadow = true; me.receiveShadow = true; parent.add(me); return me;
+}
+function box(parent, x0, x1, y0, y1, z0, z1, m){
+  var w = x1 - x0, h = y1 - y0, d = z1 - z0;
+  var g = boxUV(new THREE.BoxGeometry(w, h, d), w, h, d);
+  return add(parent, g, m, (x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+}
+var ZAX = new THREE.Vector3(0, 0, 1);
+function beam(parent, p1, p2, w, h, m){
+  var v = new THREE.Vector3().subVectors(p2, p1), L = v.length();
+  if (L < .01) return;
+  var g = boxUV(new THREE.BoxGeometry(w, h, L), w, h, L);
+  var me = add(parent, g, m);
+  me.position.copy(p1).add(p2).multiplyScalar(.5);
+  me.quaternion.setFromUnitVectors(ZAX, v.normalize());
+}
+/* side profile (z,y) extruded across x, for strings and glass */
+function sideShape(parent, pts, x, thick, m){
+  var s = new THREE.Shape();
+  pts.forEach(function(p, i){ if (i) s.lineTo(p[0], p[1]); else s.moveTo(p[0], p[1]); });
+  s.closePath();
+  var g = new THREE.ExtrudeGeometry(s, {depth:thick, bevelEnabled:false});
+  g.rotateY(-Math.PI / 2);
+  return add(parent, g, m, x + thick, 0, 0);
+}
+function post(x, z, y0, len, kind, m){
+  var me;
+  if (kind === 'turned') me = add(root, GEO.tu, m, x, y0, z);
+  else if (kind === 'chamfer') me = add(root, GEO.ch, m, x, y0, z);
+  else me = add(root, GEO.sq, m, x, y0, z);
+  me.scale.y = len; return me;
+}
+function postIn(parent, x, z, y0, len, kind, m){
+  var me = add(parent, kind === 'turned' ? GEO.tu : kind === 'chamfer' ? GEO.ch : GEO.sq, m, x, y0, z);
+  me.scale.y = len; return me;
+}
+
+function clearRoot(){
+  root.traverse(function(o){
+    if (o.isMesh && o.geometry && !o.geometry.userData.shared) o.geometry.dispose();
+  });
+  while (root.children.length) root.remove(root.children[0]);
+}
+
+/* ---------- layout shared by the 3D model and the plan ---------- */
+function flights(c){
+  var W = S.W / 1000, G = S.G / 1000, wl = .15, F = [];
+  if (S.shape === 'straight') F.push({o:[0,0], th:0, count:c.T, s0:0});
+  else {
+    var z1 = c.a * G, z2 = z1 + W;
+    F.push({o:[0,0], th:0, count:c.a, s0:0});
+    var o2 = {ql:[[W, z2], Math.PI/2], qr:[[0, z1], -Math.PI/2], hl:[[2*W + wl, z1], Math.PI], hr:[[-wl, z1], Math.PI]}[S.shape];
+    F.push({o:o2[0], th:o2[1], count:c.b, s0:c.a + 1});
+  }
+  return F;
+}
+function toW(f, lx, lz){
+  var cs = Math.cos(f.th), sn = Math.sin(f.th);
+  return [f.o[0] + lx * cs + lz * sn, f.o[1] - lx * sn + lz * cs];
+}
+function landingRect(c){
+  var W = S.W / 1000, G = S.G / 1000, wl = .15, z1 = c.a * G;
+  return {x0: S.shape === 'hr' ? -(W + wl) : 0, x1: S.shape === 'hl' ? 2 * W + wl : W, z1: z1, z2: z1 + W};
+}
+var lastNewels = [];
+
+/* ---------- plan view (looking down, bottom step at the bottom) ---------- */
+var planOn = false, planEl = document.getElementById('plan');
+var TFILL = {pine:'#f1dcb8', oak:'#dcb88d', primed:'#f6f4ef'};
+function renderPlan(c){
+  var W = S.W / 1000, G = S.G / 1000, F = flights(c), o = [], pts = [];
+  function sp(p){ return [-p[0] * 1000, -p[1] * 1000]; }
+  function poly(ps, fill, stroke, sw, extra){
+    var q = ps.map(sp); q.forEach(function(x){ pts.push(x); });
+    o.push('<polygon points="' + q.map(function(x){ return x[0].toFixed(1) + ',' + x[1].toFixed(1); }).join(' ') + '" fill="' + fill + '" stroke="' + stroke + '" stroke-width="' + sw + '"' + (extra || '') + '/>');
+  }
+  var sides = S.sides === 'B' ? ['L','R'] : S.sides === 'N' ? [] : [S.sides];
+  var walls = ['L','R'].filter(function(x){ return sides.indexOf(x) < 0; });
+  var tf = TFILL[S.tread], ink = '#4a0a0f', u;
+  /* treads */
+  F.forEach(function(f){
+    for (var k = 0; k < f.count; k++){
+      poly([toW(f,0,k*G), toW(f,W,k*G), toW(f,W,(k+1)*G), toW(f,0,(k+1)*G)], tf, ink, 6);
+    }
+  });
+  if (isTurn()){
+    var L = landingRect(c);
+    poly([[L.x0,L.z1],[L.x1,L.z1],[L.x1,L.z2],[L.x0,L.z2]], tf, ink, 6);
+  }
+  var xs = pts.map(function(p){ return p[0]; }), ys = pts.map(function(p){ return p[1]; });
+  var minX = Math.min.apply(0, xs), maxX = Math.max.apply(0, xs), minY = Math.min.apply(0, ys), maxY = Math.max.apply(0, ys);
+  u = Math.max(maxX - minX, maxY - minY) / 100;
+  /* strings and walls */
+  F.forEach(function(f, fi){
+    var ze = f.count * G;
+    [[0,.032],[W-.032,W]].forEach(function(r){ poly([toW(f,r[0],0), toW(f,r[1],0), toW(f,r[1],ze), toW(f,r[0],ze)], '#8a6a55', 'none', 0); });
+    walls.forEach(function(sd){
+      var wx = sd === 'R' ? -.06 : W + .06;
+      var a = sp(toW(f,wx,fi === 0 ? -.15 : 0)), b = sp(toW(f,wx,fi === F.length - 1 ? ze + .1 : ze));
+      o.push('<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + b[0] + '" y2="' + b[1] + '" stroke="#9c9ca2" stroke-width="' + (u * 1.4).toFixed(1) + '" stroke-linecap="square"/>');
+    });
+  });
+  /* step numbers */
+  F.forEach(function(f){
+    for (var k = 0; k < f.count; k++){
+      var m = sp(toW(f, W * .7, (k + .5) * G));
+      o.push('<text x="' + m[0] + '" y="' + (m[1] + u * 1.1) + '" font-size="' + (u * 3).toFixed(1) + '" text-anchor="middle" fill="' + ink + '" font-weight="700">' + (f.s0 + k + 1) + '</text>');
+    }
+  });
+  if (isTurn()){
+    var L2 = landingRect(c), lc = sp([(L2.x0 + L2.x1) / 2, (L2.z1 + L2.z2) / 2]);
+    o.push('<text x="' + lc[0] + '" y="' + (lc[1] - u * 2.2) + '" font-size="' + (u * 2.8).toFixed(1) + '" text-anchor="middle" fill="' + ink + '" font-weight="700">Landing</text>');
+  }
+  /* newels */
+  lastNewels.forEach(function(n){
+    var q = sp([n.x, n.z]);
+    o.push('<rect x="' + (q[0] - 45) + '" y="' + (q[1] - 45) + '" width="90" height="90" fill="#93171f"/>');
+  });
+  /* walking line with arrow */
+  var path = [];
+  F.forEach(function(f, i){
+    var ze = f.count * G;
+    path.push(sp(toW(f, W * .32, i === 0 ? G * .35 : 0)));
+    path.push(sp(toW(f, W * .32, i === F.length - 1 ? ze - G * .35 : ze)));
+    if (i === 0 && isTurn()){ var L3 = landingRect(c); path.push(sp([(L3.x0 + L3.x1) / 2, (L3.z1 + L3.z2) / 2])); }
+  });
+  o.push('<polyline points="' + path.map(function(p){ return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ') + '" fill="none" stroke="#93171f" stroke-width="' + (u * .45).toFixed(1) + '" stroke-dasharray="' + (u * 1.6).toFixed(1) + ' ' + (u * 1).toFixed(1) + '" marker-end="url(#ah)"/>');
+  var st = path[0];
+  o.push('<circle cx="' + st[0] + '" cy="' + st[1] + '" r="' + (u * .9).toFixed(1) + '" fill="#93171f"/>');
+  o.push('<text x="' + st[0] + '" y="' + (st[1] + u * 4.6) + '" font-size="' + (u * 2.6).toFixed(1) + '" text-anchor="middle" fill="#93171f" font-weight="800">UP</text>');
+  /* upstairs floor edge */
+  var lf = F[F.length - 1], lze = lf.count * G;
+  var e1 = sp(toW(lf, -.15, lze + .012)), e2 = sp(toW(lf, W + .15, lze + .012)), eT = sp(toW(lf, W / 2, lze + .2));
+  o.push('<line x1="' + e1[0] + '" y1="' + e1[1] + '" x2="' + e2[0] + '" y2="' + e2[1] + '" stroke="#7c7d82" stroke-width="' + (u * .35).toFixed(1) + '" stroke-dasharray="' + (u * 1.2).toFixed(1) + ' ' + (u * .8).toFixed(1) + '"/>');
+  o.push('<text x="' + eT[0] + '" y="' + eT[1] + '" font-size="' + (u * 2.2).toFixed(1) + '" text-anchor="middle" fill="#7c7d82" font-weight="600">Upstairs</text>');
+  [e1, e2, eT].forEach(function(p){ pts.push(p); });
+  xs = pts.map(function(p){ return p[0]; }); ys = pts.map(function(p){ return p[1]; });
+  minX = Math.min.apply(0, xs); maxX = Math.max.apply(0, xs); minY = Math.min.apply(0, ys); maxY = Math.max.apply(0, ys);
+  /* overall dimensions, measured on the treads and landing */
+  var bx = [], by = [];
+  F.forEach(function(f){ [[0,-.02],[W,-.02],[0,f.count*G],[W,f.count*G]].forEach(function(p){ var q = sp(toW(f,p[0],p[1])); bx.push(q[0]); by.push(q[1]); }); });
+  if (isTurn()){ var L4 = landingRect(c); [[L4.x0,L4.z1],[L4.x1,L4.z2]].forEach(function(p){ var q = sp(p); bx.push(q[0]); by.push(q[1]); }); }
+  var dx0 = Math.min.apply(0, bx), dx1 = Math.max.apply(0, bx), dy0 = Math.min.apply(0, by), dy1 = Math.max.apply(0, by);
+  var gap = u * 6, dimY = maxY + gap, dimX = maxX + gap, tk = u * 1.2, fs = (u * 2.5).toFixed(1), dc = '#45464a';
+  o.push('<g stroke="' + dc + '" stroke-width="' + (u * .25).toFixed(1) + '">' +
+    '<line x1="' + dx0 + '" y1="' + dimY + '" x2="' + dx1 + '" y2="' + dimY + '"/>' +
+    '<line x1="' + dx0 + '" y1="' + (dimY - tk) + '" x2="' + dx0 + '" y2="' + (dimY + tk) + '"/><line x1="' + dx1 + '" y1="' + (dimY - tk) + '" x2="' + dx1 + '" y2="' + (dimY + tk) + '"/>' +
+    '<line x1="' + dimX + '" y1="' + dy0 + '" x2="' + dimX + '" y2="' + dy1 + '"/>' +
+    '<line x1="' + (dimX - tk) + '" y1="' + dy0 + '" x2="' + (dimX + tk) + '" y2="' + dy0 + '"/><line x1="' + (dimX - tk) + '" y1="' + dy1 + '" x2="' + (dimX + tk) + '" y2="' + dy1 + '"/></g>');
+  o.push('<text x="' + ((dx0 + dx1) / 2) + '" y="' + (dimY + u * 4) + '" font-size="' + fs + '" text-anchor="middle" fill="' + dc + '" font-weight="700">' + Math.round(dx1 - dx0) + 'mm</text>');
+  o.push('<text transform="translate(' + (dimX + u * 4.2) + ',' + ((dy0 + dy1) / 2) + ') rotate(90)" font-size="' + fs + '" text-anchor="middle" fill="' + dc + '" font-weight="700">' + Math.round(dy1 - dy0) + 'mm</text>');
+  /* title block */
+  var tb = esc(designRef()) + (S.by.trim() ? ' · ' + esc(S.by.trim()) : '');
+  var tbY = dimY + u * 10;
+  o.push('<text x="' + minX + '" y="' + tbY + '" font-size="' + (u * 2.6).toFixed(1) + '" fill="#17181a" font-weight="800">' + tb + '</text>');
+  o.push('<text x="' + minX + '" y="' + (tbY + u * 3.6) + '" font-size="' + (u * 2.1).toFixed(1) + '" fill="#7c7d82" font-weight="600">' + esc(NAMES[S.shape]) + ', ' + c.n + ' risers at ' + Math.round(c.rise) + 'mm, ' + S.G + 'mm going, ' + S.W + 'mm wide</text>');
+  /* fit with room for the overlays */
+  var vx0 = minX - u * 6, vx1 = Math.max(dimX + u * 8, minX + u * 60), vy0 = minY - u * 6, vy1 = tbY + u * 6;
+  var vw = vx1 - vx0, vh = vy1 - vy0, padT = vh * .16, padB = vh * .13;
+  planEl.setAttribute('viewBox', [vx0, vy0 - padT, vw, vh + padT + padB].map(function(v){ return v.toFixed(1); }).join(' '));
+  planEl.innerHTML = '<defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#93171f"/></marker>' +
+    '<pattern id="gr" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M100 0H0V100" fill="none" stroke="#eceaea" stroke-width="3"/></pattern></defs>' +
+    '<rect x="' + (vx0 - vw) + '" y="' + (vy0 - vh) + '" width="' + (vw * 3) + '" height="' + (vh * 3) + '" fill="url(#gr)"/>' +
+    '<g font-family="Hanken Grotesk, Arial, sans-serif">' + o.join('') + '</g>';
+}
+function esc(t){ return String(t).replace(/[&<>"]/g, function(ch){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]; }); }
+function setView(plan){
+  planOn = plan;
+  document.querySelector('.stage').classList.toggle('is-plan', plan);
+  var b3 = document.getElementById('v3d'), bp = document.getElementById('vPlan');
+  b3.classList.toggle('on', !plan); bp.classList.toggle('on', plan);
+  b3.setAttribute('aria-pressed', !plan); bp.setAttribute('aria-pressed', plan);
+  if (plan) renderPlan(calc());
+}
+document.getElementById('v3d').addEventListener('click', function(){ setView(false); });
+document.getElementById('vPlan').addEventListener('click', function(){ setView(true); });
+
+/* ---------- build the staircase ---------- */
+function build(c){
+  clearRoot();
+  for (var k in geoCount) geoCount[k] = 0;
+  var H = S.H / 1000, W = S.W / 1000, G = S.G / 1000, rise = H / c.n, wl = .15;
+  var TT = .025, NOS = .02, ST = .032, e = .016;
+  var mTread = mat(S.tread), mString = mat(S.string), mRiser = S.riser === 'open' ? null : mat(S.riser);
+  var mBal = mat(S.bal), mBalV = mat(S.bal, true);
+  var mGlass = MAT.glass || (MAT.glass = new THREE.MeshStandardMaterial({color:0xcfe4e8, roughness:.05, metalness:.1, transparent:true, opacity:.32, depthWrite:false}));
+  var mSlab = MAT.slab || (MAT.slab = new THREE.MeshStandardMaterial({color:0xdcd8d3, roughness:.95}));
+  var mWall = MAT.wall || (MAT.wall = new THREE.MeshStandardMaterial({color:0xf4f2ef, roughness:1, transparent:true, opacity:.2, side:THREE.DoubleSide, depthWrite:false}));
+  var mMetal = MAT.metal || (MAT.metal = new THREE.MeshStandardMaterial({color:0x9b9b9b, roughness:.35, metalness:.7}));
+
+  var sides = S.sides === 'B' ? ['L','R'] : S.sides === 'N' ? [] : [S.sides];
+  var walls = ['L','R'].filter(function(s){ return sides.indexOf(s) < 0; });
+  var glass = S.infill === 'glass';
+  var per = Math.ceil(S.G / 140);
+
+  var F = flights(c);
+  function sideX(s){ return s === 'R' ? e : W - e; }
+
+  var newels = {};
+  function newelAt(p, yb, rail){
+    var key = Math.round(p[0] * 200) + ',' + Math.round(p[1] * 200);
+    var n = newels[key];
+    if (!n) n = newels[key] = {x:p[0], z:p[1], yb:yb, rail:rail};
+    else { n.yb = Math.min(n.yb, yb); n.rail = Math.max(n.rail, rail); }
+  }
+  /* horizontal balustrade run on a landing or the upstairs floor */
+  function hRun(p1, p2, yF){
+    var a = new THREE.Vector3(p1[0], 0, p1[1]), b = new THREE.Vector3(p2[0], 0, p2[1]);
+    var d = new THREE.Vector3().subVectors(b, a), L = d.length();
+    if (L < .1) return;
+    d.normalize();
+    var a2 = a.clone().addScaledVector(d, .045), b2 = b.clone().addScaledVector(d, -.045), inner = L - .09;
+    beam(root, a2.clone().setY(yF + .9), b2.clone().setY(yF + .9), .058, .052, mBal);
+    beam(root, a2.clone().setY(yF + .015), b2.clone().setY(yF + .015), .058, .03, mBal);
+    geoCount.railM += L;
+    if (glass){
+      var np = Math.max(1, Math.ceil(inner / 1)), seg = inner / np;
+      for (var i = 0; i < np; i++){
+        var q1 = a2.clone().addScaledVector(d, i * seg + .01), q2 = a2.clone().addScaledVector(d, (i + 1) * seg - .01);
+        var gm = add(root, new THREE.BoxGeometry(.012, .82, q1.distanceTo(q2)), mGlass);
+        gm.position.copy(q1).add(q2).multiplyScalar(.5).setY(yF + .03 + .41);
+        gm.quaternion.setFromUnitVectors(ZAX, d); gm.castShadow = false;
+      }
+      geoCount.glassM += L;
+    } else {
+      var m = Math.max(0, Math.ceil(inner / .135) - 1);
+      for (var j = 1; j <= m; j++){
+        var q = a2.clone().addScaledVector(d, j * inner / (m + 1));
+        post(q.x, q.z, yF + .03, .9 - .026 - .03, S.infill, mBalV);
+      }
+      geoCount.spindles += m;
+    }
+  }
+
+  F.forEach(function(f, fi){
+    var g = new THREE.Group(); g.position.set(f.o[0], 0, f.o[1]); g.rotation.y = f.th; root.add(g);
+    var base = f.s0 * rise, n = f.count, ze = n * G, last = fi === F.length - 1;
+    function yl(z){ return base + rise + z * rise / G; }
+
+    /* treads */
+    for (var k = 0; k < n; k++){
+      var top = base + (k + 1) * rise;
+      if (fi === 0 && k === 0 && S.bull && sides.length) bullnose(g, top);
+      else box(g, ST, W - ST, top - TT, top, k * G - NOS, (k + 1) * G, mTread);
+    }
+    /* risers, including the one up to the landing or upstairs floor */
+    if (mRiser) for (var r = 0; r <= n; r++){
+      if (fi === 0 && r === 0 && S.bull && sides.length) continue;
+      var y0 = base + r * rise, y1 = base + (r + 1) * rise - TT;
+      box(g, ST, W - ST, y0, y1, r * G, r * G + .012, mRiser);
+    }
+    /* strings */
+    var floorY = fi === 0 ? 0 : base - .12;
+    var zs = -NOS, pts = [[zs, yl(zs) + .06], [ze, yl(ze) + .06], [ze, yl(ze) - .28]];
+    var zc = (floorY + .28 - base - rise) * G / rise;
+    if (zc > zs){ pts.push([zc, floorY]); pts.push([zs, floorY]); } else pts.push([zs, yl(zs) - .28]);
+    sideShape(g, pts, 0, ST, mString);
+    sideShape(g, pts, W - ST, ST, mString);
+    geoCount.stringM += 2 * (Math.hypot(ze, ze * rise / G) + .3);
+
+    /* walls and wall handrail */
+    walls.forEach(function(s){
+      var wx = s === 'R' ? -.002 : W + .002;
+      var wp = [[-.4, 0], [ze + .1, 0], [ze + .1, yl(ze) + 1.5], [-.4, yl(-.4) + 1.5]];
+      var wm = sideShape(g, wp, s === 'R' ? wx - .001 : wx, .001, mWall); wm.castShadow = false;
+      if (S.wallRail && n > 1){
+        var rx = s === 'R' ? .085 : W - .085;
+        beam(g, new THREE.Vector3(rx, yl(.15) + .9, .15), new THREE.Vector3(rx, yl(ze - .15) + .9, ze - .15), .045, .045, mBal);
+        var len = Math.hypot(ze - .3, (ze - .3) * rise / G), nb = Math.max(2, Math.ceil(len / .9) + 1);
+        for (var bI = 0; bI < nb; bI++){
+          var bz = .15 + (ze - .3) * bI / (nb - 1), by = yl(bz) + .9 - .045;
+          box(g, Math.min(wx, rx), Math.max(wx, rx), by - .008, by + .008, bz - .01, bz + .01, mMetal);
+        }
+        geoCount.wallM += len; geoCount.brackets += nb;
+      }
+    });
+
+    /* balustrade on the flight */
+    sides.forEach(function(s){
+      var sx = sideX(s);
+      beam(g, new THREE.Vector3(sx, yl(.045) + .9, .045), new THREE.Vector3(sx, yl(ze - .045) + .9, ze - .045), .058, .052, mBal);
+      beam(g, new THREE.Vector3(sx, yl(.045) + .075, .045), new THREE.Vector3(sx, yl(ze - .045) + .075, ze - .045), .058, .03, mBal);
+      geoCount.railM += Math.hypot(ze, ze * rise / G);
+      if (glass){
+        var np = Math.max(1, Math.ceil(ze / 1)), seg = (ze - .09) / np;
+        for (var i = 0; i < np; i++){
+          var za = .045 + i * seg + .01, zb = .045 + (i + 1) * seg - .01;
+          var gp = [[za, yl(za) + .09], [zb, yl(zb) + .09], [zb, yl(zb) + .87], [za, yl(za) + .87]];
+          var gm = sideShape(g, gp, sx - .006, .012, mGlass); gm.castShadow = false;
+        }
+        geoCount.glassM += Math.hypot(ze, ze * rise / G);
+      } else {
+        for (var kk = 0; kk < n; kk++) for (var j = 0; j < per; j++){
+          var z = kk * G + (j + .5) * G / per, yb = yl(z) + .09, yt = yl(z) + .9 - .026;
+          postIn(g, sx, z, yb, yt - yb, S.infill, mBalV);
+          geoCount.spindles++;
+        }
+      }
+      /* newels at each end of the flight */
+      var pStart = toW(f, sx, 0), pEnd = toW(f, sx, ze);
+      newelAt(pStart, fi === 0 ? 0 : 0, yl(0) + .9);
+      newelAt(pEnd, last ? (S.top > 0 ? H : H - .32) : 0, yl(ze) + .9);
+    });
+
+    /* upstairs floor */
+    if (last){
+      var depth = Math.max(1.1, S.top + .3);
+      box(g, 0, W, H - .22, H, ze + .012, ze + .012 + depth, mSlab);
+      if (S.top > 0) sides.forEach(function(s){
+        var p1 = toW(f, sideX(s), ze), p2 = toW(f, sideX(s), ze + S.top);
+        newelAt(p2, H, H + .9); hRun(p1, p2, H);
+      });
+    }
+  });
+
+  /* landing */
+  if (isTurn()){
+    var ly = (c.a + 1) * rise, z1b = c.a * G, z2b = z1b + W;
+    var x0 = S.shape === 'hr' ? -(W + wl) : 0, x1 = S.shape === 'hl' ? 2 * W + wl : W;
+    box(root, x0, x1, ly - TT, ly, z1b - NOS, z2b, mTread);
+    box(root, x0 + .03, x1 - .03, ly - .2, ly - TT, z1b + .03, z2b - .03, mString);
+    /* balustrade across the landing from flight one to flight two */
+    var paths = {
+      ql:{R:[[e, z2b - e]]}, qr:{L:[[W - e, z2b - e]]},
+      hl:{R:[[e, z2b - e], [2 * W + wl - e, z2b - e]], L:[]},
+      hr:{L:[[W - e, z2b - e], [-wl - W + e, z2b - e]], R:[]}
+    }[S.shape];
+    sides.forEach(function(s){
+      var p0 = toW(F[0], sideX(s), F[0].count * G), pN = toW(F[1], sideX(s), 0);
+      if (Math.hypot(p0[0] - pN[0], p0[1] - pN[1]) < .01) return;
+      var way = [p0].concat(paths[s] || []).concat([pN]);
+      for (var i = 0; i < way.length - 1; i++){
+        if (i > 0) newelAt(way[i], 0, ly + .9);
+        hRun(way[i], way[i + 1], ly);
+      }
+    });
+  }
+
+  /* newel posts */
+  lastNewels = Object.keys(newels).map(function(key){ return newels[key]; });
+  Object.keys(newels).forEach(function(key){
+    var nw = newels[key], yt = nw.rail + .13, len = yt - nw.yb;
+    if (S.newel === 'turned' && len > .8){
+      var a1 = add(root, GEO.nsq, mBalV, nw.x, nw.yb, nw.z); a1.scale.y = len - .55;
+      var a2 = add(root, GEO.ntu, mBalV, nw.x, yt - .55, nw.z); a2.scale.y = .38;
+      var a3 = add(root, GEO.nsq, mBalV, nw.x, yt - .17, nw.z); a3.scale.y = .17;
+    } else {
+      var me = add(root, S.newel === 'chamfer' ? GEO.nch : GEO.nsq, mBalV, nw.x, nw.yb, nw.z); me.scale.y = len;
+    }
+    if (S.cap === 'flat') box(root, nw.x - .056, nw.x + .056, yt, yt + .028, nw.z - .056, nw.z + .056, mBal);
+    else {
+      box(root, nw.x - .052, nw.x + .052, yt, yt + .016, nw.z - .052, nw.z + .052, mBal);
+      if (S.cap === 'pyramid'){
+        var py = add(root, new THREE.CylinderGeometry(.004, .072, .055, 4), mBal, nw.x, yt + .016 + .0275, nw.z); py.rotation.y = Math.PI / 4;
+      } else {
+        add(root, new THREE.CylinderGeometry(.018, .026, .03, 16), mBal, nw.x, yt + .031, nw.z);
+        add(root, new THREE.SphereGeometry(.045, 24, 16), mBal, nw.x, yt + .046 + .04, nw.z);
+      }
+    }
+    geoCount.newels++;
+  });
+
+  function bullnose(g, top){
+    var ext = .11, open = {L: sides.indexOf('L') >= 0, R: sides.indexOf('R') >= 0};
+    var xa = open.R ? -ext : ST, xb = open.L ? W + ext : W - ST;
+    function shp(zf){
+      var s = new THREE.Shape(), zb = G, rr = Math.min(.14, (zb - zf) / 2 - .001);
+      /* shape y = -z */
+      s.moveTo(xa + (open.R ? rr : 0), -zf);
+      s.lineTo(xb - (open.L ? rr : 0), -zf);
+      if (open.L) s.absarc(xb - rr, -zf - rr, rr, Math.PI / 2, 0, true);
+      s.lineTo(xb, -zb);
+      s.lineTo(xa, -zb);
+      if (open.R){ s.lineTo(xa, -zf - rr); s.absarc(xa + rr, -zf - rr, rr, Math.PI, Math.PI / 2, true); }
+      s.closePath();
+      return s;
+    }
+    var t1 = new THREE.ExtrudeGeometry(shp(-NOS), {depth:TT, bevelEnabled:false, curveSegments:18}); t1.rotateX(-Math.PI / 2);
+    add(g, t1, mTread, 0, top - TT, 0);
+    var t2 = new THREE.ExtrudeGeometry(shp(0), {depth:top - TT, bevelEnabled:false, curveSegments:18}); t2.rotateX(-Math.PI / 2);
+    add(g, t2, mRiser || mString, 0, 0, 0);
+  }
+}
+
+function frame(force){
+  var b = new THREE.Box3().setFromObject(root), cen = b.getCenter(new THREE.Vector3()), sz = b.getSize(new THREE.Vector3());
+  var rad = sz.length() / 2;
+  var fov = camera.fov * Math.PI / 180, aspect = Math.max(camera.aspect, .5);
+  var dist = rad / Math.sin(Math.min(fov, fov * aspect) / 2) * .82;
+  var dir = force ? viewDir.clone() : camera.position.clone().sub(controls.target).normalize();
+  if (!force && dir.lengthSq() < .5) dir = viewDir.clone();
+  cen.y = sz.y * .45;
+  camGoal = cen.clone().addScaledVector(dir, dist); tgtGoal = cen;
+}
+
+/* ---------- UI ---------- */
+var step = 0, LAB = ['Shape','Size','Timber','Balustrade','Extras','Your quote'];
+var stepsEl = document.getElementById('steps'), bodyEl = document.getElementById('body');
+function goStep(i){
+  step = clamp(i, 0, 5);
+  document.querySelectorAll('.step').forEach(function(el){ el.classList.toggle('on', +el.dataset.step === step); });
+  stepsEl.querySelectorAll('button').forEach(function(b){
+    var s = +b.dataset.s; b.classList.toggle('on', s === step); b.classList.toggle('done', s < step);
+  });
+  var on = stepsEl.querySelector('.on'); if (on) stepsEl.scrollLeft = Math.max(0, on.offsetLeft - (stepsEl.clientWidth - on.offsetWidth) / 2);
+  bodyEl.scrollTop = 0;
+  if (window.innerWidth <= 820){
+    var top = document.querySelector('.panel').offsetTop - document.querySelector('.nav').offsetHeight;
+    if (window.scrollY > top) window.scrollTo({top: top, behavior:'smooth'});
+  }
+  var nx = document.getElementById('next');
+  if (step < 5) nx.innerHTML = 'Next: ' + LAB[step + 1] + '<svg class="i" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>';
+  else nx.innerHTML = 'Send my design<svg class="i" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>';
+  document.getElementById('prev').style.visibility = step === 0 ? 'hidden' : 'visible';
+}
+stepsEl.addEventListener('click', function(ev){ var b = ev.target.closest('button'); if (b) goStep(+b.dataset.s); });
+document.getElementById('prev').addEventListener('click', function(){ goStep(step - 1); });
+document.getElementById('next').addEventListener('click', function(){
+  if (step < 5) goStep(step + 1);
+  else { var f = document.getElementById('qName'); f.scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(function(){ f.focus({preventScroll:true}); }, 400); }
+});
+
+/* option buttons */
+document.querySelectorAll('.opts[data-k]').forEach(function(grp){
+  grp.addEventListener('click', function(ev){
+    var b = ev.target.closest('.opt'); if (!b || b.disabled) return;
+    var k = grp.dataset.k;
+    if (k === 'shape' && S.shape !== b.dataset.v){
+      S.shape = b.dataset.v;
+      var T = S.n - 1;
+      S.turn = isHalf() ? Math.floor((T - 1) / 2) : Math.min(3, T - 2);
+      update(true);
+    } else { S[k] = b.dataset.v; update(false); }
+  });
+});
+/* toggles */
+document.querySelectorAll('.tog[data-k]').forEach(function(t){
+  t.addEventListener('click', function(){ if (t.disabled) return; S[t.dataset.k] = !S[t.dataset.k]; update(false); });
+});
+/* number steppers */
+document.querySelectorAll('.num[data-k]').forEach(function(box){
+  var k = box.dataset.k, st = +box.dataset.step, mn = +box.dataset.min, mx = +box.dataset.max, inp = box.querySelector('input');
+  function set(v){
+    v = clamp(Math.round(v / st) * st, mn, mx);
+    if (k === 'n') nAuto = false;
+    if (k === 'H' || k === 'G') nAuto = true;
+    S[k] = +v.toFixed(2); update(k !== 'n' && k !== 'top' ? 'size' : 'size');
+  }
+  box.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){ set(S[k] + st * +b.dataset.d); });
+  });
+  inp.addEventListener('change', function(){ var v = parseFloat(inp.value); if (isNaN(v)) inp.value = S[k]; else set(v); });
+  inp.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') inp.blur(); });
+});
+var tr = document.getElementById('turnRange');
+tr.addEventListener('input', function(){ S.turn = +tr.value; update('size'); });
+
+var ok = '<svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
+var bad = '<svg class="i" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>';
+var firstBuild = true, lastGeoKey = '';
+
+function update(reframe){
+  if (nAuto) S.n = autoN();
+  S.n = clamp(S.n, Math.ceil(S.H / 220), 22);
+  if (isTurn()) S.turn = clamp(S.turn, 1, S.n - 3);
+  var c = calc();
+
+  /* reflect state in the controls */
+  document.querySelectorAll('.opts[data-k]').forEach(function(grp){
+    grp.querySelectorAll('.opt').forEach(function(b){ b.classList.toggle('on', S[grp.dataset.k] === b.dataset.v); });
+  });
+  document.querySelectorAll('.tog[data-k]').forEach(function(t){ t.classList.toggle('on', !!S[t.dataset.k]); });
+  document.querySelectorAll('.num[data-k]').forEach(function(b){ var i = b.querySelector('input'); if (document.activeElement !== i) i.value = S[b.dataset.k]; });
+  var tf = document.getElementById('turnField'); tf.hidden = !isTurn();
+  tr.max = S.n - 3; tr.value = S.turn;
+  document.getElementById('turnLbl').textContent = 'after ' + c.a + ' step' + (c.a === 1 ? '' : 's') + ', then ' + c.b + ' more';
+  document.getElementById('openNote').hidden = S.riser !== 'open';
+  document.getElementById('balOpts').style.display = S.sides === 'N' ? 'none' : '';
+  var bt = document.querySelector('.tog[data-k="bull"]'); bt.disabled = S.sides === 'N';
+  var wt = document.querySelector('.tog[data-k="wallRail"]'); wt.disabled = S.sides === 'B';
+
+  /* readouts */
+  var allOk = c.regs.every(function(r){ return r.ok; });
+  document.getElementById('kRise').textContent = Math.round(c.rise) + 'mm';
+  document.getElementById('kPitch').textContent = c.pitch.toFixed(1) + '°';
+  document.getElementById('kTreads').textContent = c.T + (isTurn() ? ' incl. landing' : '');
+  document.getElementById('kFoot').textContent = (c.L / 1000).toFixed(2) + ' x ' + (c.Wd / 1000).toFixed(2) + 'm';
+  document.getElementById('regsList').innerHTML = c.regs.map(function(r){
+    return '<li class="' + (r.ok ? 'ok' : 'bad') + '"><span>' + r.k + ' <small style="color:var(--muted)">(' + r.need + ')</small></span><b>' + r.v + (r.ok ? ok : bad) + '</b></li>';
+  }).join('');
+  var cr = document.getElementById('cRegs');
+  cr.className = 'chip regs ' + (allOk ? 'ok' : 'bad');
+  cr.innerHTML = (allOk ? ok : bad) + '<span>' + (allOk ? 'Meets Part K' : 'Check your sizes') + '</span>';
+  document.getElementById('cRise').innerHTML = 'Rise <b>' + Math.round(c.rise) + 'mm</b>';
+  document.getElementById('cGoing').innerHTML = 'Going <b>' + S.G + 'mm</b>';
+  document.getElementById('cPitch').innerHTML = 'Pitch <b>' + c.pitch.toFixed(1) + '°</b>';
+  document.getElementById('sName').textContent = NAMES[S.shape];
+  document.getElementById('sSub').textContent = c.n + ' risers, ' + (S.tread === 'oak' ? 'oak' : 'softwood') + ' treads';
+
+  /* 3D */
+  if (hasGL){
+    build(c);
+    var gk = [S.shape, S.H, S.W, S.G, S.n, S.turn, S.top].join('|');
+    if (firstBuild){ frame(true); firstBuild = false; }
+    else if (gk !== lastGeoKey) frame(false);
+    lastGeoKey = gk;
+  }
+
+  if (planOn || !hasGL) renderPlan(c);
+
+  /* price and summary */
+  var p = price(c);
+  document.getElementById('priceTot').innerHTML = gbp(p.tot) + '<small>+ VAT</small>';
+  document.getElementById('priceLines').innerHTML = p.lines.map(function(l){ return '<div><span>' + l[0] + '</span><b>' + gbp(l[1]) + '</b></div>'; }).join('') +
+    '<div class="tot"><span>Indicative total</span><b>' + gbp(p.tot) + ' + VAT</b></div>' +
+    '<div class="vat"><span>Including VAT at 20%</span><span>' + gbp(p.tot * 1.2) + '</span></div>';
+  var spec = specRows(c);
+  document.getElementById('specList').innerHTML = spec.map(function(r){ return '<div><span>' + r[0] + '</span><b>' + r[1] + '</b></div>'; }).join('');
+  syncRef();
+  lastSpec = spec; lastPrice = p;
+}
+var lastSpec = [], lastPrice = null;
+function syncRef(){
+  document.querySelectorAll('[data-txt]').forEach(function(i){
+    if (document.activeElement !== i) i.value = S[i.dataset.txt];
+    if (i.dataset.txt === 'ref') i.placeholder = refCode();
+  });
+  history.replaceState(null, '', '#d=' + hashStr());
+}
+document.querySelectorAll('[data-txt]').forEach(function(i){
+  i.addEventListener('input', function(){
+    S[i.dataset.txt] = i.value.slice(0, 40);
+    syncRef();
+    if (i.dataset.txt === 'by'){ var qn = document.getElementById('qName'); if (qn && !qn.dataset.touched) qn.value = i.value; }
+    if (planOn || !hasGL) renderPlan(calc());
+  });
+});
+document.getElementById('qName').addEventListener('input', function(){ this.dataset.touched = '1'; });
+function specRows(c){
+  var r = [
+    ['Shape', NAMES[S.shape] + (isTurn() ? ', landing after ' + c.a + ' steps' : '')],
+    ['Floor to floor', S.H + 'mm'],
+    ['Width', S.W + 'mm'],
+    ['Risers and going', c.n + ' x ' + Math.round(c.rise) + 'mm, ' + S.G + 'mm going'],
+    ['Pitch', c.pitch.toFixed(1) + '°' + (c.regs.every(function(x){ return x.ok; }) ? ', meets Part K' : ', outside Part K')],
+    ['Treads', TIMBER[S.tread]],
+    ['Strings', TIMBER[S.string]],
+    ['Risers', TIMBER[S.riser]],
+    ['Balustrade', SIDES[S.sides]]
+  ];
+  if (S.sides !== 'N'){
+    r.push(['Infill', INFILL[S.infill]]);
+    r.push(['Newels', S.newel.charAt(0).toUpperCase() + S.newel.slice(1) + ', ' + S.cap + ' caps']);
+    r.push(['Balustrade timber', TIMBER[S.bal]]);
+  }
+  var ex = [];
+  if (S.bull && S.sides !== 'N') ex.push('Bullnose bottom step');
+  if (S.wallRail && S.sides !== 'B') ex.push('Wall handrail');
+  if (S.top > 0 && S.sides !== 'N') ex.push(S.top + 'm landing balustrade');
+  r.push(['Extras', ex.length ? ex.join(', ') : 'None']);
+  return r;
+}
+
+/* view tools */
+var spin = document.getElementById('tSpin');
+spin.addEventListener('click', function(){ if (!controls) return; controls.autoRotate = !controls.autoRotate; spin.classList.toggle('on', controls.autoRotate); });
+document.getElementById('tReset').addEventListener('click', function(){ if (controls) frame(true); });
+function download(url, ext){
+  var a = document.createElement('a');
+  a.href = url; a.download = 'manchester-stair-supplies-' + fileSafe(designRef()) + ext;
+  document.body.appendChild(a); a.click(); a.remove();
+  toast('Image saved');
+}
+function saveImage(){
+  if (planOn || !renderer){
+    renderPlan(calc());
+    var vb = planEl.getAttribute('viewBox').split(' ').map(Number), w = 2000, h = Math.round(w * vb[3] / vb[2]);
+    var xml = new XMLSerializer().serializeToString(planEl).replace('<svg', '<svg width="' + w + '" height="' + h + '"');
+    var img = new Image();
+    img.onload = function(){
+      var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      var g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); g.drawImage(img, 0, 0, w, h);
+      download(cv.toDataURL('image/png'), '-plan.png');
+    };
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(xml);
+    return;
+  }
+  renderer.render(scene, camera);
+  download(renderer.domElement.toDataURL('image/png'), '.png');
+}
+document.getElementById('tShot').addEventListener('click', saveImage);
+document.getElementById('saveImg').addEventListener('click', saveImage);
+document.getElementById('copyLink').addEventListener('click', function(){
+  var u = location.href;
+  function done(){ toast('Link copied. Open it any time to pick up your design.'); }
+  if (navigator.clipboard) navigator.clipboard.writeText(u).then(done, function(){ prompt('Copy this link', u); });
+  else prompt('Copy this link', u);
+});
+var tt;
+function toast(t){ var el = document.getElementById('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ el.classList.remove('on'); }, 2600); }
+
+/* form: put the full spec into the message */
+var qPhone = document.getElementById('qPhone');
+qPhone.addEventListener('input', function(){ qPhone.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(qPhone.value.replace(/\s/g,'')) || qPhone.value === '' ? '' : 'Enter a UK phone number'); });
+document.getElementById('qform').addEventListener('submit', function(){
+  var m = 'Staircase Builder design ' + designRef() + (designRef() !== refCode() ? ' (' + refCode() + ')' : '') + '\n' +
+    (S.by.trim() ? 'Designed by: ' + S.by.trim() + '\n' : '') +
+    lastSpec.map(function(r){ return r[0] + ': ' + r[1]; }).join('\n') +
+    '\nIndicative price: ' + gbp(lastPrice.tot) + ' + VAT' +
+    '\nPostcode: ' + document.getElementById('qPost').value +
+    (document.getElementById('qNotes').value ? '\nNotes: ' + document.getElementById('qNotes').value : '') +
+    '\nDesign link: ' + location.href;
+  document.getElementById('qMsg').value = m;
+});
+
+/* start */
+readHash();
+if (hasGL){
+  try { initGL(); document.getElementById('loading').classList.add('gone'); }
+  catch(err){ hasGL = false; document.getElementById('loading').textContent = 'The 3D preview is not available on this device, but you can still design and price your staircase.'; }
+} else document.getElementById('loading').textContent = 'The 3D preview could not load, but you can still design and price your staircase.';
+update(true);
+if (!hasGL) setView(true);
+goStep(0);
+setTimeout(function(){ document.getElementById('hint').classList.add('gone'); }, 5000);
+})();
+</script>
+</body>
+</html>
