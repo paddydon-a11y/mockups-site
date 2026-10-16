@@ -99,13 +99,7 @@ svg{flex-shrink:0}
 .hero{position:relative;background-color:var(--fold);color:var(--ink);display:flex;flex-direction:column;overflow:hidden;
   background-image:linear-gradient(var(--red-line) 1px,transparent 1px),linear-gradient(90deg,var(--red-line) 1px,transparent 1px);background-size:60px 60px;background-position:-1px -1px}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(211,240,236,0) 0%,rgba(183,222,215,.6) 100%);pointer-events:none}
-.ceiling{position:relative;z-index:2;display:flex;height:64px;border-bottom:3px solid var(--red-deep);background:var(--red-deep);gap:3px;padding:3px 0 0;overflow:hidden}
-.tile{flex:0 0 61px;height:58px;background:var(--red-hi);position:relative;transform:translateY(-70px);animation:drop .45s cubic-bezier(.3,1.35,.5,1) forwards}
-.tile.panel{background:var(--panel)}
-.tile.panel::before{content:"";position:absolute;inset:7px;background:var(--led);opacity:0;box-shadow:0 0 22px 6px var(--glass-glow),0 0 0 1px #9fd6cd inset;animation:lit 7s ease-in-out infinite}
-@keyframes drop{to{transform:translateY(0)}}
-@keyframes lit{0%,4%{opacity:0}9%,62%{opacity:1}70%,100%{opacity:.18}}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;height:clamp(520px,calc(100vh - 136px),720px);padding-top:40px;padding-bottom:48px}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;height:clamp(520px,calc(100vh - 72px),720px);padding-top:48px;padding-bottom:56px}
 .hero-copy{min-width:0}
 .hero h1{color:var(--ink);font-size:clamp(3.4rem,min(6.2vw,10.5vh),6rem);line-height:.92;letter-spacing:.01em;opacity:0;animation:fadeUp .7s ease forwards .15s}
 .hero h1 .k{color:var(--red)}
@@ -286,9 +280,7 @@ footer a:hover{color:#fff}
 .js .reveal.in{opacity:1;transform:none}
 
 @media (max-height:760px) and (min-width:881px){
-  .ceiling{height:50px}
-  .tile{flex-basis:47px;height:44px}
-  .hero-grid{height:clamp(480px,calc(100vh - 122px),720px);padding-top:26px;padding-bottom:30px}
+  .hero-grid{height:clamp(480px,calc(100vh - 72px),720px);padding-top:32px;padding-bottom:36px}
   .lede{margin-top:14px}
   .hero-cta{margin-top:20px}
 }
@@ -342,8 +334,6 @@ footer a:hover{color:#fff}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
-  .tile{transform:none}
-  .tile.panel::before{opacity:1}
 }
 </style>
 </head>
@@ -379,7 +369,6 @@ footer a:hover{color:#fff}
 
 <main id="top">
 <section class="hero">
-  <div class="ceiling" id="ceiling" aria-hidden="true"></div>
   <div class="hero-grid wrap">
     <div class="hero-copy">
       <h1>Office Refurbishment, Strip Outs and <span class="k">Fit Outs</span> in Surrey</h1>
@@ -575,24 +564,6 @@ footer a:hover{color:#fff}
   var loader=document.getElementById('loader');
   if(reduce){ loader.classList.add('done'); }
   else { setTimeout(function(){ loader.classList.add('lift'); },1950); setTimeout(function(){ loader.classList.add('done'); },2450); }
-
-  // fold ceiling: tiles drop in after the hand-off, every third is an LED panel lighting in sequence
-  var ceil=document.getElementById('ceiling'), lastW=0;
-  function drawCeil(){
-    var W=Math.round(ceil.getBoundingClientRect().width); if(!W||W===lastW) return; lastW=W;
-    ceil.innerHTML=''; var n=Math.ceil(W/44)+1, start=reduce?0:1.9;
-    for(var i=0;i<n;i++){
-      var t=document.createElement('span'); t.className='tile'+(i%3===1?' panel':'');
-      t.style.animationDelay=(start+i*.035).toFixed(3)+'s';
-      ceil.appendChild(t);
-    }
-    var css='';
-    ceil.querySelectorAll('.panel').forEach(function(p,k){ p.id='pn'+k; css+='#pn'+k+'::before{animation-delay:'+((reduce?0:2.5)+k*.16).toFixed(2)+'s}'; });
-    var st=document.getElementById('ceilCss'); if(!st){ st=document.createElement('style'); st.id='ceilCss'; document.head.appendChild(st); }
-    st.textContent=css;
-  }
-  drawCeil();
-  var rz; window.addEventListener('resize',function(){ clearTimeout(rz); rz=setTimeout(drawCeil,150); });
 
   // contact details
   var P=atob('MDc5Mzk1NzU1ODM='), Pf=atob('MDc5MzkgNTc1NTgz'), E=atob('c3RvbmVjcm9zc3Byb2plY3RzQGJ0aW50ZXJuZXQuY29t');
