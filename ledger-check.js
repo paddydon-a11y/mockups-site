@@ -16,6 +16,12 @@ const uniq = (arr) => [...new Set(arr.filter(Boolean))];
 const fonts = uniq(recent.map((e) => e.displayFont));
 const palettes = uniq(recent.map((e) => e.paletteFamily));
 const loaders = uniq(recent.map((e) => e.loaderConcept));
+// Structural first-screen layout: a fixed vocabulary, banned over a shorter
+// window. Hero *names* are free text and never repeat; layouts do.
+const LAYOUT_WINDOW = 5;
+const LAYOUTS = ['split-photo-right', 'text-over-photo', 'photo-first', 'poster-type', 'logo-crest', 'before-after', 'gallery-fold', 'video-fold', 'horizontal-strip', 'statement', 'other'];
+const layouts = uniq(ledger.entries.slice(0, LAYOUT_WINDOW).map((e) => e.heroLayout));
+const missingLayout = ledger.entries.slice(0, 10).filter((e) => !e.heroLayout || !LAYOUTS.includes(e.heroLayout));
 const combos = uniq(
   recent
     .filter((e) => e.hero && e.services)
@@ -30,6 +36,12 @@ palettes.forEach((p) => console.log(`  - ${p}`));
 if (loaders.length) {
   console.log(`\nBANNED loader concepts:`);
   loaders.forEach((l) => console.log(`  - ${l}`));
+}
+console.log(`\nBANNED hero layouts (heroLayout used in last ${LAYOUT_WINDOW}):`);
+layouts.forEach((l) => console.log(`  - ${l}`));
+console.log(`  allowed values: ${LAYOUTS.join(', ')}`);
+if (missingLayout.length) {
+  console.log(`\nENTRIES MISSING heroLayout (not valid until fixed): ${missingLayout.map((e) => e.slug).join(', ')}`);
 }
 if (combos.length) {
   console.log(`\nBANNED hero+services+gallery combos:`);
@@ -48,3 +60,4 @@ const tally = (key) => {
 console.log(`\nAll-time saturation (top 5):`);
 console.log(`  fonts:    ${tally('displayFont').map(([k, n]) => `${k} x${n}`).join(', ')}`);
 console.log(`  palettes: ${tally('paletteFamily').map(([k, n]) => `${k} x${n}`).join(', ')}`);
+console.log(`  layouts:  ${tally('heroLayout').map(([k, n]) => `${k} x${n}`).join(', ') || 'none recorded yet'}`);
