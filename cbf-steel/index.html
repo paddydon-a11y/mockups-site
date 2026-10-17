@@ -81,25 +81,25 @@ section{position:relative}
 .nav-toggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
 .nav-toggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
 
-/* hero */
-.hero{display:flex;flex-direction:column;background:var(--bg);position:relative}
-.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;grid-template-rows:minmax(0,1fr) auto;column-gap:56px;align-items:center;height:clamp(560px,calc(100vh - var(--nav)),770px)}
-.hero-grid .gateband{grid-column:1/-1}
-.hero-inner{padding-top:28px;padding-bottom:28px}
-.hero h1{font-size:clamp(2.3rem,4.3vw,3.75rem);letter-spacing:-.025em;max-width:13.5em;animation:fadeUp .8s .15s both}
-.tagline{font-family:Gelasio,Georgia,serif;font-weight:600;font-size:clamp(1.12rem,1.7vw,1.4rem);color:var(--cream);opacity:.6;margin-top:16px;animation:fadeUp .8s .3s both}
-.lede{margin-top:18px;max-width:36em;font-size:1.06rem;animation:fadeUp .8s .42s both}
+/* hero: their own entrance, full bleed */
+.hero{position:relative;background:var(--bg);display:flex;flex-direction:column;height:clamp(600px,calc(100vh - var(--nav)),860px)}
+.hero-media{position:absolute;inset:0 0 118px 0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:70% 60%;animation:kb 22s ease-in-out infinite alternate}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,10,9,.9) 0%,rgba(11,10,9,.6) 32%,rgba(11,10,9,0) 60%),linear-gradient(0deg,#0b0a09 0%,rgba(11,10,9,0) 30%)}
+.hero-grid{position:relative;z-index:2;flex:1;display:flex;align-items:center;width:100%}
+.hero-inner{padding-top:28px;padding-bottom:40px;max-width:640px}
+.hero h1{font-size:clamp(2.3rem,4.3vw,3.9rem);letter-spacing:-.025em;animation:fadeUp .8s .15s both;text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.tagline{font-family:Gelasio,Georgia,serif;font-weight:600;font-size:clamp(1.12rem,1.7vw,1.4rem);color:var(--copper-b);margin-top:16px;animation:fadeUp .8s .3s both}
+.lede{margin-top:18px;max-width:34em;font-size:1.06rem;color:#ddd5c9;animation:fadeUp .8s .42s both}
 .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;animation:fadeUp .8s .55s both}
-.hero-photo{position:relative;height:100%;min-height:0;padding-top:28px;padding-bottom:28px;animation:fadeUp .9s .6s both}
-.hero-photo .ph{position:relative;height:100%;border:1px solid var(--line2);border-radius:16px;overflow:hidden}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;animation:kb 20s ease-in-out infinite alternate}
-.badge{position:absolute;top:50px;right:22px;background:#0b0a09;border:1px solid var(--copper);color:var(--cream);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+.badge{position:absolute;z-index:3;top:28px;right:28px;background:rgba(11,10,9,.88);border:1px solid var(--copper);color:var(--cream);padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;animation:fadeUp .8s .7s both}
 .badge svg{width:20px;height:20px;flex:none}
+.hero .gateband{position:relative;z-index:2;flex:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
 
 /* the working gate */
-.gateband{position:relative;height:118px;border-top:1px solid var(--line);background:linear-gradient(#0b0a09,#100d0a);overflow:hidden}
+.gateband{height:118px;border-top:1px solid var(--line);background:linear-gradient(#0b0a09,#100d0a);overflow:hidden}
 .gb-in{position:relative;height:100%;max-width:1240px;margin:0 auto}
 .track{position:absolute;left:0;right:0;bottom:14px;height:4px;background:var(--steel2)}
 .ground{position:absolute;left:0;right:0;bottom:0;height:14px;background:#14110e}
@@ -128,15 +128,15 @@ section{position:relative}
 .trust-item svg{width:24px;height:24px;flex:none}
 
 /* services */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .svc{position:relative;background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
 .svc::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:2}
 .svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.45);border-color:var(--line2)}
 .svc:hover::before{transform:scaleX(1)}
-.svc .im{aspect-ratio:3/2;overflow:hidden;background:#000}
+.svc .im{aspect-ratio:4/3;overflow:hidden;background:#000}
 .svc .im img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .svc:hover .im img{transform:scale(1.04)}
-.svc .tx{padding:22px 24px 26px}
+.svc .tx{padding:20px 22px 24px}
 .svc .tx p{margin-top:8px;font-size:.98rem}
 .svc.feat .tag{display:inline-block;margin-top:14px;font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--copper-b)}
 
@@ -153,7 +153,7 @@ section{position:relative}
 .ct-list li::before{content:"";position:absolute;left:0;top:17px;width:9px;height:9px;background:var(--copper);clip-path:polygon(50% 0,100% 100%,0 100%)}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:0;border:1px solid var(--line2);background:var(--panel)}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;border:1px solid var(--line2);background:var(--panel)}
 .about-grid .im{min-height:100%;position:relative}
 .about-grid .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .about-tx{padding:52px 52px}
@@ -163,16 +163,43 @@ section{position:relative}
 .fact b{display:block;font-family:Gelasio,Georgia,serif;color:var(--cream);font-size:1.1rem;line-height:1.25}
 .fact span{font-size:.86rem;color:var(--muted)}
 
-/* gallery */
-.gal{display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto;gap:22px}
-.gal figure{margin:0}
-.gal .g1{grid-row:span 2}
-.gal .gi{overflow:hidden;border:1px solid var(--line);cursor:zoom-in;background:#000}
-.gal .g1 .gi{aspect-ratio:709/1000}
-.gal .g2 .gi,.gal .g3 .gi{aspect-ratio:16/10}
+/* gallery: their entrances */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gal .gi{overflow:hidden;border:1px solid var(--line);cursor:zoom-in;background:#000;position:relative;aspect-ratio:4/3}
+.gal .gi:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
 .gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .gal .gi:hover img{transform:scale(1.04)}
-.gal figcaption{margin-top:10px;font-size:.92rem;color:var(--muted)}
+.gal .gi::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 0 var(--copper);transition:box-shadow .25s}
+.gal .gi:hover::after{box-shadow:inset 0 0 0 3px var(--copper)}
+
+/* gate collection */
+.range{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.range-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:40px}
+.range-head p{max-width:30em}
+.range-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.model{background:#0e0c0a;border:1px solid var(--line2);overflow:hidden;transition:transform .25s,border-color .25s}
+.model:hover{transform:translateY(-4px);border-color:var(--copper)}
+.model .im{aspect-ratio:666/352;overflow:hidden}
+.model img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.model:hover img{transform:scale(1.05)}
+.model .tx{display:flex;align-items:baseline;gap:14px;padding:16px 20px 18px;border-top:2px solid var(--copper)}
+.model .code{font-weight:700;font-size:.8rem;letter-spacing:.14em;color:var(--copper-b);white-space:nowrap}
+.model h3{font-size:1.15rem}
+.range-note{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--cream);font-weight:600}
+.range-note span{display:flex;align-items:center;gap:10px}
+.range-note span::before{content:"";width:9px;height:9px;background:var(--copper);clip-path:polygon(50% 0,100% 100%,0 100%)}
+
+/* footings up */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:st}
+.step{position:relative}
+.step .im{aspect-ratio:3/4;overflow:hidden;border:1px solid var(--line2);position:relative}
+.step img{width:100%;height:100%;object-fit:cover}
+.step .n{position:absolute;left:0;top:0;background:var(--copper);color:#0b0a09;font-family:Gelasio,Georgia,serif;font-weight:700;font-size:1.3rem;width:48px;height:48px;display:grid;place-items:center}
+.step h3{margin-top:18px}
+.step p{margin-top:6px;font-size:.96rem}
+.steps-rail{height:2px;background:linear-gradient(90deg,var(--copper),var(--copper-d) 60%,var(--line2));margin:0 0 26px;transform-origin:left;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.3,.7,.2,1)}
+.js .steps-rail.reveal{opacity:1;transform:scaleX(0)}
+.js .steps-rail.reveal.in{transform:none}
 .lb{position:fixed;inset:0;z-index:120;background:rgba(5,4,3,.94);display:none;align-items:center;justify-content:center;padding:24px}
 .lb.on{display:flex}
 .lb img{max-width:100%;max-height:86vh;border:1px solid var(--line2)}
@@ -196,12 +223,13 @@ section{position:relative}
 .chip.base{background:var(--copper);border-color:var(--copper);color:#0b0a09}
 
 /* cta band */
-.cta{background:var(--panel2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.cta{background:#0b0a09 url(cta.jpg) center 50%/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
 .cta-pales{position:absolute;left:0;right:0;bottom:0;height:70px;opacity:.5;background:
   linear-gradient(var(--steel2),var(--steel2)) 0 18px/100% 3px no-repeat,
   linear-gradient(var(--steel2),var(--steel2)) 0 56px/100% 3px no-repeat,
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='70'%3E%3Cpath d='M17 0 L22 11 L19 11 L19 70 L15 70 L15 11 L12 11Z' fill='%23463c32'/%3E%3Cpath d='M17 0 L22 11 L12 11Z' fill='%23b97d49'/%3E%3C/svg%3E") 0 0/34px 70px repeat-x}
-.cta-in{position:relative;z-index:1;text-align:center;padding-top:84px;padding-bottom:118px}
+.cta::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,.88),rgba(11,10,9,.7) 50%,rgba(11,10,9,.92))}
+.cta-in{position:relative;z-index:1;text-align:center;padding-top:110px;padding-bottom:150px}
 .cta h2{max-width:16em;margin:0 auto}
 .cta p{margin-top:14px}
 .cta .ctas{justify-content:center;animation:none}
@@ -281,15 +309,16 @@ section{position:relative}
   .tagline{margin-top:10px;font-size:1.15rem}
   .lede{margin-top:12px;font-size:.98rem}
   .ctas{margin-top:20px}
-  .hero-inner,.hero-photo{padding-top:18px;padding-bottom:18px}
-  .badge{top:36px}
-  .gateband{height:96px}
+  .hero-inner{padding-top:18px;padding-bottom:18px}
+  .gateband{height:96px}.hero-media{bottom:96px}
   .gateband .post{height:80px}.gateband .leaf{height:74px}.gateband .leaf svg{height:74px;transform:scale(1,.82);transform-origin:bottom}
   .gateband .beacon{bottom:92px}
 }
 /* responsive */
 @media (max-width:1100px){
-  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .range-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
   .trust-in{grid-template-columns:repeat(3,1fr);row-gap:14px}
   .trust-item:nth-child(4){border-left:0;padding-left:0}
   .ct-grid,.areas-in,.ct2{grid-template-columns:1fr;gap:40px}
@@ -305,34 +334,46 @@ section{position:relative}
   .nav-links li:last-child{border-bottom:0;padding-top:16px}
   .nav-links a{display:block;padding:15px 0;font-size:.92rem}
   .nav-links a.nav-cta{display:flex;justify-content:center;padding:16px}
-  .hero-grid{grid-template-columns:1fr;grid-template-rows:none;height:auto;gap:0}
-  .hero-inner{padding-top:26px;padding-bottom:22px}
+  .hero{height:auto}
+  .hero-media{position:relative;inset:auto;height:calc(100svh - var(--nav) - 104px);min-height:560px;max-height:760px}
+  .hero-media img{object-position:50% 70%}
+  .hero-media::after{background:linear-gradient(180deg,rgba(11,10,9,.25) 0%,rgba(11,10,9,0) 22%,rgba(11,10,9,.55) 48%,rgba(11,10,9,.95) 78%,#0b0a09 100%)}
+  .hero-grid{position:absolute;left:0;right:0;bottom:104px;top:auto;z-index:2}
+  .hero-inner{padding-top:0;padding-bottom:22px}
   .hero h1{font-size:clamp(2rem,8.6vw,2.6rem)}
-  .tagline{margin-top:12px;font-size:1.08rem}
-  .lede{margin-top:12px;font-size:1rem}
-  .ctas{flex-direction:column;margin-top:22px;gap:10px}
+  .tagline{margin-top:10px;font-size:1.08rem}
+  .lede{display:none}
+  .ctas{flex-direction:column;margin-top:20px;gap:10px}
   .ctas .btn{width:100%}
-  .hero-photo{order:3;padding-top:0;padding-bottom:28px}
-  .hero-photo .ph{aspect-ratio:16/11;height:auto}
-  .badge{position:static;margin-top:12px;justify-content:center}
-  .gateband{order:2;height:104px}
+  .badge{top:16px;right:16px;padding:9px 12px;font-size:.72rem}
+  .hero .gateband{height:104px}
   .glow{left:4%;width:60%}
   .post.p1{left:calc(4% - 14px);width:14px}.post.p2{left:64%;width:14px}
   .beacon{left:calc(4% - 19px)}
   .leaf{left:4%;width:60%}
   .sec{padding-top:72px;padding-bottom:72px}
   .about-grid{grid-template-columns:1fr}
-  .about-grid .im{aspect-ratio:3/2}
+  .about-grid .im{aspect-ratio:4/3}
+  .gal{grid-template-columns:1fr 1fr;gap:10px}.gal .gi:first-child{grid-row:auto;aspect-ratio:4/3}
+  .range-head{display:block}.range-head p{margin-top:14px}
+  .range-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:0 24px 8px;scrollbar-width:none}
+  .range-grid::-webkit-scrollbar{display:none}
+  .model{flex:0 0 82%;scroll-snap-align:center}
   .about-tx{padding:34px 26px}
 }
 @media (max-width:780px){
-  .svc-grid,.rev-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:1fr;gap:16px}
+  .svc .im{aspect-ratio:16/10}
+  .steps{gap:14px;row-gap:28px}
+  .step h3{font-size:1.05rem;margin-top:12px}
+  .step p{font-size:.88rem;line-height:1.5}
+  .step .n{width:38px;height:38px;font-size:1.05rem}
   .trust-in{grid-template-columns:1fr;row-gap:0;padding-top:8px;padding-bottom:8px}
   .trust-item,.trust-item:first-child,.trust-item:nth-child(4){border-left:0;padding:14px 0;border-top:1px solid var(--line)}
   .trust-item:first-child{border-top:0}
   .ct-lists{grid-template-columns:1fr}
   .gal{grid-template-columns:1fr}
-  .gal .g1{grid-row:auto}
   .facts{grid-template-columns:1fr 1fr 1fr;gap:10px}
   .form{padding:28px 22px}
   .foot-grid{grid-template-columns:1fr}
@@ -343,7 +384,8 @@ section{position:relative}
   .ld-plate img,.ld-place{animation-duration:.01s;animation-delay:0s}
   .ld-beacon i,.ld-beacon::after{animation:none}
   .run .leaf,.run .beacon i,.run .beacon::after{animation:none}
-  .hero-photo img{animation:none}
+  .hero-media img{animation:none}
+  .steps-rail{transform:none;transition:none}
   .js .reveal{opacity:1;transform:none;transition:none}
 }
 </style>
@@ -365,6 +407,7 @@ section{position:relative}
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#commercial">Commercial</a></li>
+      <li><a href="#range">Gates</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#work">Our Work</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -376,7 +419,15 @@ section{position:relative}
 
 <main id="top">
 <section class="hero">
-  <div class="wrap hero-grid">
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width:880px)" srcset="hero-tall.jpg">
+      <img src="hero-wide.jpg" alt="Timber clad steel gates lit at night on a block paved drive beside a house" width="1536" height="1024" fetchpriority="high">
+    </picture>
+  </div>
+  <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#d89a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>Fabricated in-house</div>
+  <div class="hero-grid">
+    <div class="wrap" style="width:100%">
     <div class="hero-inner">
       <h1><span class="k">Gate Automation</span> and Steel Fabrication in Wickford, Essex</h1>
       <p class="tagline">Design Your Entrance Without Compromise</p>
@@ -386,10 +437,8 @@ section{position:relative}
         <a class="btn btn-ol" href="#contact">Request Consultation</a>
       </div>
     </div>
-    <div class="hero-photo">
-      <div class="ph"><img src="hero.jpg" alt="Steel being cut with a grinder, sparks flying" width="1400" height="1750" fetchpriority="high"></div>
-      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#d89a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>Fabricated in-house</div>
     </div>
+  </div>
     <div class="gateband" id="gate" aria-hidden="true">
       <div class="gb-in">
         <div class="ground"></div>
@@ -417,7 +466,6 @@ section{position:relative}
         <div class="post p2"><span class="cap"></span></div>
       </div>
     </div>
-  </div>
 </section>
 
 <section class="trust">
@@ -434,12 +482,42 @@ section{position:relative}
   <div class="wrap">
     <div class="sec-head reveal"><h2>Gates, automation and <span class="k">architectural steelwork</span></h2></div>
     <div class="svc-grid">
+      <article class="svc reveal"><div class="im"><img src="svc-gates.jpg" alt="Galvanised steel double gates with spear tops in the workshop" loading="lazy" width="1086" height="1448"></div><div class="tx"><h3>Bespoke Steel Gates</h3><p>Designed, fabricated and finished in our own workshop.</p></div></article>
       <article class="svc feat reveal"><div class="im"><img src="svc-automation.jpg" alt="Automated sliding gate with an intercom post and warning beacon" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Gate Automation</h3><p>Sliding and swing gates automated for sites, car parks and driveways.</p><span class="tag">Commercial contracts welcome</span></div></article>
       <article class="svc reveal"><div class="im"><img src="svc-access.jpg" alt="Keypad and card reader for access control" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Access Control</h3><p>Keypads, intercoms and fob readers wired into the gate.</p></div></article>
-      <article class="svc reveal"><div class="im"><img src="svc-gates.jpg" alt="Ornamental steel gates between lit brick piers at night" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Bespoke Steel Gates</h3><p>Designed, fabricated and finished in our own workshop.</p></div></article>
-      <article class="svc reveal"><div class="im"><img src="svc-railings.jpg" alt="Steel stair railings on a commercial building" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Railings and Balustrades</h3><p>Steel railings for frontages, stairs, ramps and boundaries.</p></div></article>
-      <article class="svc reveal"><div class="im"><img src="svc-balconies.jpg" alt="Modern balconies with glass balustrades" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Balconies</h3><p>Steel balconies and balustrades fabricated to drawing and installed.</p></div></article>
-      <article class="svc reveal"><div class="im"><img src="svc-structural.jpg" alt="Structural steel frame going up on a building site" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Structural Steel</h3><p>Beams, posts and frames fabricated and fitted by our own team.</p></div></article>
+      <article class="svc reveal"><div class="im"><img src="svc-timber.jpg" alt="Arched timber clad gates in a black steel frame on a block paved drive" loading="lazy" width="1024" height="1536"></div><div class="tx"><h3>Timber Clad Gates</h3><p>Timber boarding in a steel frame, with matching pedestrian gates.</p></div></article>
+      <article class="svc reveal"><div class="im"><img src="svc-railings.jpg" alt="Galvanised ornamental gate with scrollwork in the workshop" loading="lazy" width="1024" height="1536"></div><div class="tx"><h3>Ornamental Gates and Railings</h3><p>Scrollwork gates and railings made in steel and galvanised.</p></div></article>
+      <article class="svc reveal"><div class="im"><img src="svc-balconies.jpg" alt="Modern balconies with glass balustrades" loading="lazy" width="1200" height="800"></div><div class="tx"><h3>Balconies and Balustrades</h3><p>Steel balconies and balustrades fabricated to drawing and installed.</p></div></article>
+      <article class="svc reveal"><div class="im"><img src="svc-fabrication.jpg" alt="Steel bar gate standing in a workshop" loading="lazy" width="1024" height="1536"></div><div class="tx"><h3>Steel Fabrication</h3><p>Gates, frames, staircases and structural steel made in-house.</p></div></article>
+      <article class="svc reveal"><div class="im"><img src="svc-groundworks.jpg" alt="Black steel gate post set in a concrete pad" loading="lazy" width="1086" height="1448"></div><div class="tx"><h3>Groundworks</h3><p>Footings, post foundations and concrete set by our own team.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec range" id="range">
+  <div class="wrap">
+    <div class="range-head reveal"><h2>Our <span class="k">gate collection</span></h2><p>A starting point for your entrance. Every design is made to measure in our workshop, as swing or sliding gates, manual or automated.</p></div>
+    <div class="range-grid">
+      <article class="model reveal"><div class="im"><img src="gate-606.jpg" alt="Black steel sliding gate with a scrolled upper panel" loading="lazy" width="666" height="352"></div><div class="tx"><span class="code">CBF-606</span><h3>Artisan Slider</h3></div></article>
+      <article class="model reveal"><div class="im"><img src="gate-999.jpg" alt="Black and gold double gates with spear tops between lit piers" loading="lazy" width="666" height="352"></div><div class="tx"><span class="code">CBF-999</span><h3>Heritage Estate</h3></div></article>
+      <article class="model reveal"><div class="im"><img src="gate-303.jpg" alt="Curved top double gates with gold scroll detail" loading="lazy" width="660" height="430"></div><div class="tx"><span class="code">CBF-303</span><h3>Prestige Double Curve</h3></div></article>
+      <article class="model reveal"><div class="im"><img src="gate-310.jpg" alt="Vertical bar double gates with a gold crest" loading="lazy" width="666" height="416"></div><div class="tx"><span class="code">CBF-310</span><h3>Vertical Character</h3></div></article>
+      <article class="model reveal"><div class="im"><img src="gate-320.jpg" alt="Timber clad double gates in a black steel frame" loading="lazy" width="666" height="430"></div><div class="tx"><span class="code">CBF-320</span><h3>Horizontal Modern</h3></div></article>
+      <article class="model reveal"><div class="im"><img src="gate-600.jpg" alt="Solid black horizontal panel double gates" loading="lazy" width="666" height="430"></div><div class="tx"><span class="code">CBF-600</span><h3>Horizontal Hybrid</h3></div></article>
+    </div>
+    <div class="range-note reveal"><span>Made to measure</span><span>Swing or sliding</span><span>Automation ready</span><span>Matching pedestrian gates</span></div>
+  </div>
+</section>
+
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Built from the <span class="k">footings up</span></h2><p style="margin-top:14px">A gate is only as good as what holds it. We dig, reinforce and set every post ourselves before a gate is hung.</p></div>
+    <div class="steps-rail reveal"></div>
+    <div class="steps">
+      <div class="step reveal"><div class="im"><img src="step-1.jpg" alt="Excavated footing with steel mesh and a braced black post" loading="lazy" width="1086" height="1448"><span class="n">1</span></div><h3>Dig and reinforce</h3><p>Each footing is dug out and laid with steel mesh before any concrete goes in.</p></div>
+      <div class="step reveal"><div class="im"><img src="step-2.jpg" alt="Steel post braced upright in a meshed footing" loading="lazy" width="1086" height="1448"><span class="n">2</span></div><h3>Set the post</h3><p>Posts are set plumb and braced so the gate hangs true.</p></div>
+      <div class="step reveal"><div class="im"><img src="step-3.jpg" alt="Black steel post standing in a finished concrete pad" loading="lazy" width="1086" height="1448"><span class="n">3</span></div><h3>Cast the pad</h3><p>Concrete is poured and finished flat around the post.</p></div>
+      <div class="step reveal"><div class="im"><img src="step-4.jpg" alt="Finished timber clad double gates with an arched steel top" loading="lazy" width="1200" height="800"><span class="n">4</span></div><h3>Hang the gate</h3><p>The gate goes on, aligned, tested and handed over.</p></div>
     </div>
   </div>
 </section>
@@ -449,7 +527,7 @@ section{position:relative}
 <section class="sec" id="about">
   <div class="wrap">
     <div class="about-grid reveal">
-      <div class="im"><img src="about.jpg" alt="Steel being welded in the workshop" loading="lazy" width="1400" height="933"></div>
+      <div class="im"><img src="about.jpg" alt="Galvanised ornamental double gates in the workshop" loading="lazy" width="1200" height="800"></div>
       <div class="about-tx">
         <h2>About CBF Steel Works &amp; <span class="k">Entrances</span></h2>
         <p>Every project is manufactured in-house to exacting standards. From automated sliding gates to bespoke wrought iron designs, our work combines structural integrity with a refined finish. Groundworks, structural steel, installation and automation are handled end to end by our own team, with lighting and access control built in so every entrance works day and night.</p>
@@ -485,11 +563,14 @@ section{position:relative}
 
 <section class="sec" id="work">
   <div class="wrap">
-    <div class="sec-head reveal"><h2>Recent <span class="k">entrances</span></h2></div>
+    <div class="sec-head reveal"><h2>Recent <span class="k">entrances</span></h2><p style="margin-top:14px">Gates, railings and entrances from our workshop and recent installs.</p></div>
     <div class="gal">
-      <figure class="g1 reveal"><div class="gi" data-full="work-3.jpg"><img src="work-3.jpg" alt="Steel railings and gates on lit brick piers along a pavement at dusk" loading="lazy" width="709" height="1064"></div><figcaption>Railings and gates on lit brick piers</figcaption></figure>
-      <figure class="g2 reveal"><div class="gi" data-full="work-1.jpg"><img src="work-1.jpg" alt="Ornamental steel gates and railings in front of a lit house at night" loading="lazy" width="709" height="471"></div><figcaption>Gated frontage with lit piers</figcaption></figure>
-      <figure class="g3 reveal"><div class="gi" data-full="work-2.jpg"><img src="work-2.jpg" alt="Rear of a house with lighting along the terrace at night" loading="lazy" width="709" height="710"></div><figcaption>Exterior lighting along a rear terrace</figcaption></figure>
+      <div class="gi reveal" data-full="g-01.jpg"><img src="g-01.jpg" alt="Timber clad gates on a block paved drive beside a house at dusk" loading="lazy" width="1200" height="800"></div>
+      <div class="gi reveal" data-full="g-02.jpg"><img src="g-02.jpg" alt="Horizontal timber gate in a black steel frame" loading="lazy" width="1080" height="1033"></div>
+      <div class="gi reveal" data-full="g-03.jpg"><img src="g-03.jpg" alt="Dark boarded pedestrian gate in a steel frame between brick piers" loading="lazy" width="1024" height="1024"></div>
+      <div class="gi reveal" data-full="g-04.jpg"><img src="g-04.jpg" alt="Arched timber clad gates on a block paved drive" loading="lazy" width="1024" height="1536"></div>
+      <div class="gi reveal" data-full="g-05.jpg"><img src="g-05.jpg" alt="Timber clad gates lit at the base with a pedestrian gate beside the house" loading="lazy" width="1200" height="800"></div>
+      <div class="gi reveal" data-full="g-06.jpg"><img src="g-06.jpg" alt="Timber clad gates lit at night" loading="lazy" width="1024" height="1536"></div>
     </div>
   </div>
 </section>
@@ -541,7 +622,7 @@ section{position:relative}
         <a class="js-call" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="#d89a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span><small>Office</small><b class="js-phone">&nbsp;</b></span></a>
         <a class="js-wa" href="#contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#d89a5f" width="22" height="22"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 12a11.7 11.7 0 0 0-3.5-8.5z"/></svg><span><small>WhatsApp</small><b class="js-wa-num">&nbsp;</b></span></a>
         <a class="js-email-card" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="#d89a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span><small>Email</small><b class="js-email">&nbsp;</b></span></a>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="#d89a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span><small>Based in</small><b>Wickford, Essex</b></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="#d89a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span><small>Workshop</small><b>Newlands Farm, Newlands Road, Wickford SS12 9ER</b></span></div>
       </div>
     </div>
     <form class="form reveal" action="/api/enquiry" method="POST" id="enqForm">
@@ -565,7 +646,7 @@ section{position:relative}
   <div class="wrap">
     <div class="foot-grid">
       <div><img src="logo.png" alt="CBF Steel Works &amp; Entrances" width="612" height="499" loading="lazy"><p class="tl">Design Your Entrance Without Compromise</p></div>
-      <div><h4>Services</h4><ul><li><a href="#services">Gate Automation</a></li><li><a href="#services">Access Control</a></li><li><a href="#services">Steel Gates and Railings</a></li><li><a href="#services">Balconies</a></li><li><a href="#services">Structural Steel</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="#services">Gate Automation</a></li><li><a href="#services">Access Control</a></li><li><a href="#services">Steel Gates and Railings</a></li><li><a href="#services">Timber Clad Gates</a></li><li><a href="#services">Balconies</a></li><li><a href="#services">Steel Fabrication</a></li><li><a href="#services">Groundworks</a></li><li><a href="#range">Gate Collection</a></li></ul></div>
       <div><h4>Areas</h4><ul><li>Wickford</li><li>Basildon</li><li>Billericay</li><li>Rayleigh</li><li>Chelmsford</li></ul></div>
       <div><h4>Contact</h4><ul><li><a class="js-call" href="#contact"><span class="js-phone">Call us</span></a></li><li><a class="js-email" href="#contact">&nbsp;</a></li><li><a href="https://www.instagram.com/cbfsteelworks" target="_blank" rel="noopener">Instagram</a></li></ul></div>
     </div>
@@ -578,7 +659,7 @@ section{position:relative}
   <a class="fab fab-call js-call" href="#contact" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="#0b0a09" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
 </div>
 
-<div class="lb" id="lb" role="dialog" aria-label="Photo"><button type="button" id="lbClose" aria-label="Close">&times;</button><img id="lbImg" src="work-1.jpg" alt=""></div>
+<div class="lb" id="lb" role="dialog" aria-label="Photo"><button type="button" id="lbClose" aria-label="Close">&times;</button><img id="lbImg" src="g-01.jpg" alt=""></div>
 
 <script>
 document.documentElement.classList.add('js');
