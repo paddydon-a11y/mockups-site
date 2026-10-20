@@ -74,6 +74,7 @@ console.log(`  direction: ${pick(openDirections)}   (banned, used by the last ${
 console.log(`  ground:    ${weighted(openGrounds)}   (banned: ${usedGrounds.join(', ') || 'none'})`);
 console.log(`  directions: ${DIRECTIONS.join(', ')}`);
 console.log(`  grounds:    ${Object.keys(GROUNDS).join(', ')}`);
+console.log(`  logo in the request? B uses its colours and the ground says how; dark only if the logo itself is dark, otherwise re-roll the ground`);
 if (missingB.length) {
   console.log(`\nB ENTRIES MISSING direction/ground (not valid until fixed): ${missingB.map((e) => e.slug).join(', ')}`);
 }
