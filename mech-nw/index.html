@@ -126,14 +126,14 @@ h3{font-size:1.06rem;letter-spacing:-.02em}
 .scheme .sw.out{opacity:0}
 
 /* trust */
-.trust{background:#fff;border-bottom:1px solid var(--line)}
-.trust-in{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;padding-top:30px;padding-bottom:30px}
-.cl{display:flex;align-items:center;gap:16px;padding-right:40px;border-right:1px solid var(--line)}
-.cl img{height:58px;width:auto}
-.cl p{font-size:.86rem;line-height:1.45;color:var(--ink);font-weight:500;max-width:190px}
-.clients{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
-.clients img{height:38px;width:auto;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
-.clients img:hover{filter:none;opacity:1}
+.trust{background:#fff;border-bottom:1px solid var(--line);padding-top:28px;padding-bottom:28px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;width:max-content;animation:marq 34s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.set{display:flex;align-items:center;gap:64px;padding-right:64px;flex:none}
+.set img{height:40px;width:auto;filter:grayscale(1);opacity:.75}
+.set img.cl-badge{height:56px;filter:none;opacity:1}
+@keyframes marq{to{transform:translateX(-50%)}}
 
 /* sections */
 .sec{padding-top:96px;padding-bottom:96px}
@@ -264,10 +264,6 @@ footer a:hover{color:var(--lav)}
   .svc-grid,.scope{grid-template-columns:1fr 1fr}
   .case,.case.big{grid-column:span 3}
   .about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
-  .trust-in{display:flex;flex-wrap:wrap;align-items:center;gap:20px 26px}
-  .cl{border-right:0;padding-right:0}
-  .cl img{height:44px}
-  .clients{display:contents}
 }
 @media (max-width:880px){
   .nav-in{height:64px}
@@ -290,8 +286,10 @@ footer a:hover{color:var(--lav)}
   .scheme{flex-direction:column;gap:2px;align-items:flex-start;padding-top:10px;min-height:56px}
   .sec{padding-top:72px;padding-bottom:72px}
   .sec-head{flex-direction:column;align-items:flex-start;margin-bottom:28px}
-  .clients{justify-content:flex-start;gap:20px 26px}
-  .clients img{height:30px}
+  .set{gap:40px;padding-right:40px}
+  .set img{height:30px}
+  .set img.cl-badge{height:44px}
+  .trust{padding-top:22px;padding-bottom:22px}
   .cta-in{flex-direction:column;align-items:flex-start}
   .foot-grid{grid-template-columns:1fr 1fr}
   .strip{grid-template-columns:repeat(3,1fr)}
@@ -314,6 +312,9 @@ footer a:hover{color:var(--lav)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}
+  .track{animation:none!important;width:auto}
+  .track .set+.set{display:none}
+  .set{flex-wrap:wrap;justify-content:center;gap:24px 40px;padding:0 24px}
 }
 </style>
 </head>
@@ -365,17 +366,29 @@ footer a:hover{color:var(--lav)}
   </div>
 </section>
 
-<section class="trust">
-  <div class="trust-in wrap">
-    <div class="cl"><img src="constructionline-gold.png" alt="Constructionline Gold Member" width="108" height="54"></div>
-    <div class="clients" aria-label="Clients include">
-      <img src="client-clatterbridge.png" alt="The Clatterbridge Cancer Centre" loading="lazy">
-      <img src="client-cammell-laird.png" alt="Cammell Laird" loading="lazy">
-      <img src="client-krolcorlett.png" alt="Krol Corlett Construction" loading="lazy">
-      <img src="client-TFM.png" alt="TFM" loading="lazy">
-      <img src="client-aztec.png" alt="Aztec" loading="lazy">
-      <img src="client-frank_rogers.png" alt="Frank Rogers Building Contractors" loading="lazy">
-      <img src="client-jfw.png" alt="JFW Construction" loading="lazy">
+<section class="trust" aria-label="Constructionline Gold Member and clients">
+  <div class="marquee">
+    <div class="track">
+      <div class="set">
+        <img src="constructionline-gold.png" alt="Constructionline Gold Member" class="cl-badge">
+        <img src="client-clatterbridge.png" alt="The Clatterbridge Cancer Centre">
+        <img src="client-cammell-laird.png" alt="Cammell Laird">
+        <img src="client-krolcorlett.png" alt="Krol Corlett Construction">
+        <img src="client-TFM.png" alt="TFM">
+        <img src="client-aztec.png" alt="Aztec">
+        <img src="client-frank_rogers.png" alt="Frank Rogers Building Contractors">
+        <img src="client-jfw.png" alt="JFW Construction">
+      </div>
+      <div class="set" aria-hidden="true">
+        <img src="constructionline-gold.png" alt="" data-alt="Constructionline Gold Member" class="cl-badge">
+        <img src="client-clatterbridge.png" alt="" data-alt="The Clatterbridge Cancer Centre">
+        <img src="client-cammell-laird.png" alt="" data-alt="Cammell Laird">
+        <img src="client-krolcorlett.png" alt="" data-alt="Krol Corlett Construction">
+        <img src="client-TFM.png" alt="" data-alt="TFM">
+        <img src="client-aztec.png" alt="" data-alt="Aztec">
+        <img src="client-frank_rogers.png" alt="" data-alt="Frank Rogers Building Contractors">
+        <img src="client-jfw.png" alt="" data-alt="JFW Construction">
+      </div>
     </div>
   </div>
 </section>
