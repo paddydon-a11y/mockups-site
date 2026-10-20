@@ -48,6 +48,36 @@ if (combos.length) {
   combos.forEach((c) => console.log(`  - ${c}`));
 }
 
+// B roll (added 2026-10-20). Left to itself B drifted to the same answer: six of
+// the first nine B builds sat on a near-black or navy ground and five were the
+// photo as the fold. B's direction and ground are now rolled at random, never
+// repeating recent B entries, and dark is the least likely ground.
+const DIRECTIONS = ['cinematic', 'editorial', 'swiss', 'colour-pop', 'blueprint', 'product-launch', 'material', 'tool-first', 'kinetic-type', 'collage', 'photo-led', 'signage', 'depth'];
+const GROUNDS = { light: 35, colour: 35, material: 15, dark: 15 };
+const B_DIRECTION_WINDOW = 4;
+const DARK_WINDOW = 3;
+const bEntries = ledger.entries.filter((e) => e.variant === 'B');
+const usedDirections = uniq(bEntries.slice(0, B_DIRECTION_WINDOW).map((e) => e.direction));
+// Never the last B's ground again, and no dark if any of the last 3 B was dark.
+const usedGrounds = uniq([bEntries[0] && bEntries[0].ground, bEntries.slice(0, DARK_WINDOW).some((e) => e.ground === 'dark') && 'dark']);
+const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const openDirections = DIRECTIONS.filter((d) => !usedDirections.includes(d));
+const openGrounds = Object.entries(GROUNDS).filter(([g]) => !usedGrounds.includes(g));
+const weighted = (pairs) => {
+  let r = Math.random() * pairs.reduce((n, [, w]) => n + w, 0);
+  for (const [g, w] of pairs) if ((r -= w) < 0) return g;
+  return pairs[pairs.length - 1][0];
+};
+const missingB = bEntries.slice(0, 5).filter((e) => !DIRECTIONS.includes(e.direction) || !GROUNDS[e.ground]);
+console.log(`\nB ROLL (for the B mockup only; see mockup-b-variant.md, "Roll the direction"):`);
+console.log(`  direction: ${pick(openDirections)}   (banned, used by the last ${B_DIRECTION_WINDOW} B: ${usedDirections.join(', ') || 'none'})`);
+console.log(`  ground:    ${weighted(openGrounds)}   (banned: ${usedGrounds.join(', ') || 'none'})`);
+console.log(`  directions: ${DIRECTIONS.join(', ')}`);
+console.log(`  grounds:    ${Object.keys(GROUNDS).join(', ')}`);
+if (missingB.length) {
+  console.log(`\nB ENTRIES MISSING direction/ground (not valid until fixed): ${missingB.map((e) => e.slug).join(', ')}`);
+}
+
 // Saturation report across the whole ledger — spot the next "tell" early
 const tally = (key) => {
   const counts = {};
