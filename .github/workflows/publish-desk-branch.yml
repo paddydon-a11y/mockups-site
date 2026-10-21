@@ -47,10 +47,13 @@ jobs:
               git merge -q --ff-only "$TIP"
             else
               # master moved on while the mockup was being built: replay its commits on top
-              for c in $(git rev-list --reverse "HEAD..$TIP"); do
+              # A revision branch can carry a commit master already took from
+              # an earlier run of this workflow: skip anything whose patch is
+              # already on master, and drop a cherry-pick that settles to empty.
+              for c in $(git rev-list --reverse --cherry-pick --right-only "HEAD...$TIP"); do
                 if ! git cherry-pick "$c"; then
                   python3 .github/scripts/resolve-ledger.py "$c"
-                  git -c core.editor=true cherry-pick --continue
+                  git -c core.editor=true cherry-pick --continue || git cherry-pick --skip
                 fi
               done
             fi
