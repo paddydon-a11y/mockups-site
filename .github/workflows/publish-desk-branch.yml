@@ -51,6 +51,13 @@ jobs:
               # an earlier run of this workflow: skip anything whose patch is
               # already on master, and drop a cherry-pick that settles to empty.
               for c in $(git rev-list --reverse --cherry-pick --right-only "HEAD...$TIP"); do
+                # The ledger resolver changes a replayed commit's patch, so the
+                # patch-id filter above misses it next time: match on the subject too.
+                subj=$(git log -1 --format=%s "$c")
+                if git log --format=%s -n 300 HEAD | grep -Fxq "$subj"; then
+                  echo "Skipping, master already has: $subj"
+                  continue
+                fi
                 if ! git cherry-pick "$c"; then
                   python3 .github/scripts/resolve-ledger.py "$c"
                   git -c core.editor=true cherry-pick --continue || git cherry-pick --skip
