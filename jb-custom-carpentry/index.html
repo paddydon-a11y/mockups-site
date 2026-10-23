@@ -117,7 +117,19 @@ section{position:relative}
 .hero-inner{padding-top:40px;padding-bottom:48px}
 .hero h1{color:#fff;font-size:clamp(2.1rem,3.2vw,3.1rem);letter-spacing:-.03em;line-height:1.06;max-width:16ch}
 .hero h1 .k{position:relative;display:inline-block;color:#fff;font-size:clamp(5rem,9.4vw,8.6rem);line-height:.9;letter-spacing:-.045em;margin-bottom:.12em}
+.hero h1 .k{background:#fff url(grain-light.jpg) 50% 30%/140% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:grainpan 14s ease-in-out 2s infinite alternate}
+@keyframes grainpan{to{background-position:50% 75%}}
 .hero h1 .rest{display:block;color:var(--steel-lt)}
+/* photo stack: three rooms fanned out beside the statement */
+.hero-grid{width:100%}
+.hero-stack{position:relative;height:calc(100% - 40px);max-height:600px;min-height:0}
+.hero-stack figure{position:absolute;border-radius:14px;overflow:hidden;border:4px solid #fff;box-shadow:0 22px 50px rgba(0,0,0,.35);opacity:0;animation:deal .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-stack img{width:100%;height:100%;object-fit:cover}
+.hero-stack .p1{left:0;top:4%;width:62%;height:62%;--r:-4deg;animation-delay:2.15s}
+.hero-stack .p2{right:0;top:0;width:52%;height:46%;--r:3deg;animation-delay:2.35s}
+.hero-stack .p3{right:6%;bottom:0;width:60%;height:48%;--r:-1.5deg;animation-delay:2.55s;z-index:2}
+@keyframes deal{from{opacity:0;transform:translateY(40px) rotate(0deg) scale(.94)}to{opacity:1;transform:rotate(var(--r))}}
+.hero-stack .hero-badge{z-index:3;left:auto;right:8%;bottom:-14px}
 .hero h1 .k::after{content:"";position:absolute;left:-1%;right:-2%;bottom:-.06em;height:.075em;background:var(--pencil);border-radius:2px;transform:scaleX(0) rotate(-1.2deg);transform-origin:0 50%;animation:draw .55s cubic-bezier(.6,0,.3,1) 2.45s forwards}
 .lede{margin-top:24px;font-size:1.08rem;line-height:1.7;color:#d7e0e8;max-width:46ch}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
@@ -179,6 +191,21 @@ section{position:relative}
 .band h2{color:#fff;max-width:20ch}
 .band p{color:#d7e0e8;margin-top:10px}
 
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.faq{border-bottom:1px solid var(--line)}
+.faq:first-child{border-top:2px solid var(--ink)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-family:'Bitter',serif;font-weight:800;font-size:1.18rem;color:var(--ink);line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--stone);position:relative;transition:background .2s}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--pencil);transition:transform .25s}
+.faq summary i::after{transform:rotate(90deg)}
+.faq[open] summary i::after{transform:rotate(0)}
+.faq p{padding-bottom:22px;max-width:60ch}
+/* band: timber under the blue */
+.band{background:linear-gradient(rgba(28,49,71,.88),rgba(28,49,71,.92)),url(grain.jpg) center/cover}
+.band h2{font-size:clamp(2.1rem,4.6vw,3.4rem)}
+
 /* contact */
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
 .contact p.lead{margin-top:14px;max-width:44ch}
@@ -229,7 +256,9 @@ footer a:hover{color:#fff}
 @media (max-width:980px){
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .hero-grid{grid-template-columns:1fr;height:auto}
-  .hero-photo{display:none}
+  .hero-grid{gap:0}
+  .hero-stack{height:300px;max-width:560px;margin-bottom:48px;margin-top:4px}
+  .hero-stack .hero-badge{display:none}
   .about-grid,.contact-grid{grid-template-columns:1fr}
 }
 @media (max-width:880px){
@@ -246,6 +275,7 @@ footer a:hover{color:#fff}
   .step,.step+.step{padding:24px 0 20px;border-left:0;border-bottom:1px solid var(--line)}
   .rev-grid{grid-template-columns:1fr}
   .band-in{flex-direction:column;align-items:flex-start}
+  .faq-grid{grid-template-columns:1fr;gap:0}
   .foot-grid{grid-template-columns:1fr}
 }
 @media (max-width:780px){
@@ -287,6 +317,7 @@ footer a:hover{color:#fff}
       <li><a href="#about">About</a></li>
       <li><a href="#process">How It Works</a></li>
       <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#faq">FAQs</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#" class="nav-cta js-call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="js-phone">Call us</span></a></li>
     </ul>
@@ -297,6 +328,7 @@ footer a:hover{color:#fff}
     <a href="#about">About</a>
     <a href="#process">How It Works</a>
     <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQs</a>
     <a href="#contact">Contact</a>
     <a href="#" class="btn btn-pencil js-call"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call <span class="js-phone">us</span></a>
   </div>
@@ -309,15 +341,17 @@ footer a:hover{color:#fff}
   <div class="wrap hero-grid">
     <div class="hero-inner">
       <h1 class="fade d1"><span class="k">Bespoke</span> <span class="rest">Carpentry, Fitted Wardrobes and Joinery</span></h1>
-      <p class="lede fade d2">Made to measure wardrobes, built-in storage, staircases, internal doors and wood flooring from J.B Custom Carpentry. Every job measured on site and made to fit, covering the local area.</p>
+      <p class="lede fade d2">Fitted wardrobes, built-in storage, staircases, internal doors and wood flooring from J.B Custom Carpentry, measured on site and made to fit across the local area.</p>
       <div class="hero-ctas fade d3" id="heroCtas">
         <a href="#" class="btn btn-pencil js-call"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call <span class="js-phone">us</span></a>
         <a href="#contact" class="btn btn-line">Get a Free Quote</a>
       </div>
     </div>
-    <div class="hero-photo fade d4">
-      <img src="workbench.jpg" alt="Tape measure, hammer, knife and pencil on a workbench covered in wood shavings" width="1600" height="1066">
-      <div class="hero-badge"><i></i>Measured on site, made to fit</div>
+    <div class="hero-stack">
+      <figure class="p1"><img src="fitted-wardrobes.jpg" alt="Pale timber fitted wardrobes along a bedroom wall" width="1400" height="933"></figure>
+      <figure class="p2"><img src="staircases.jpg" alt="Oak staircase treads against white walls" width="1400" height="933"></figure>
+      <figure class="p3"><img src="wood-flooring.jpg" alt="Herringbone parquet floor in afternoon sunlight" width="1400" height="933"></figure>
+      <div class="hero-badge fade d4"><i></i>Measured on site, made to fit</div>
     </div>
   </div>
 </section>
@@ -377,6 +411,20 @@ footer a:hover{color:#fff}
       <div class="rev reveal"><div class="stars"><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>Engineered oak laid through the hall and lounge with new skirting. Cuts around the fireplace are spot on. Would use J.B Custom Carpentry again.</p><div class="who">Tom R. <span>Wood flooring</span></div></div>
     </div>
   </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap faq-grid">
+    <div class="sec-head reveal"><h2>Frequently asked questions</h2></div>
+    <div class="faq-list">
+      <details class="faq reveal" open><summary>Do you offer free quotes?<i aria-hidden="true"></i></summary><p>Yes. Every job starts with a free site visit to measure up, followed by a written, itemised quote before any timber is ordered.</p></details>
+      <details class="faq reveal"><summary>Can fitted wardrobes go into alcoves or under eaves?<i aria-hidden="true"></i></summary><p>Yes. Every wardrobe is made to the measurements of the room, so alcoves, sloping ceilings and uneven walls are planned in from the start.</p></details>
+      <details class="faq reveal"><summary>Which timbers and finishes can I choose from?<i aria-hidden="true"></i></summary><p>Timber, door style, finish and handles are agreed at the site visit, from solid and engineered oak to painted doors, to suit the room.</p></details>
+      <details class="faq reveal"><summary>How long does a carpentry job take?<i aria-hidden="true"></i></summary><p>It depends on the size of the job. The timescale is set out in the written quote, so you know the fitting dates before work starts.</p></details>
+      <details class="faq reveal"><summary>Is the room left clean after fitting?<i aria-hidden="true"></i></summary><p>Yes. Offcuts and dust are cleared at the end of every day and the room is left ready to use when the job is finished.</p></details>
+    </div>
+  </div>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you offer free quotes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every job starts with a free site visit to measure up, followed by a written, itemised quote before any timber is ordered."}}, {"@type": "Question", "name": "Can fitted wardrobes go into alcoves or under eaves?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every wardrobe is made to the measurements of the room, so alcoves, sloping ceilings and uneven walls are planned in from the start."}}, {"@type": "Question", "name": "Which timbers and finishes can I choose from?", "acceptedAnswer": {"@type": "Answer", "text": "Timber, door style, finish and handles are agreed at the site visit, from solid and engineered oak to painted doors, to suit the room."}}, {"@type": "Question", "name": "How long does a carpentry job take?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size of the job. The timescale is set out in the written quote, so you know the fitting dates before work starts."}}, {"@type": "Question", "name": "Is the room left clean after fitting?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Offcuts and dust are cleared at the end of every day and the room is left ready to use when the job is finished."}}]}</script>
 </section>
 
 <section class="band">
