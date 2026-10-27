@@ -53,7 +53,7 @@ if (combos.length) {
 // same look, a full bleed moving hero and two interesting bits. Hero motion
 // never repeats the last 3 B, bits never repeat the last 2 B.
 const HERO_MOTIONS = ['video', 'crossfade', 'ken-burns', 'word-swap', 'parallax', 'reveal-wipe', 'before-after', 'marquee'];
-const BITS = ['counter', 'drag-compare', 'work-strip', 'pinned-steps', 'draw-svg', 'tilt-cards', 'review-ticker', 'area-map', 'calc', 'photo-stack'];
+const BITS = ['trade-moment', 'counter', 'drag-compare', 'work-strip', 'pinned-steps', 'draw-svg', 'tilt-cards', 'review-ticker', 'area-map', 'calc', 'photo-stack'];
 const MOTION_WINDOW = 3;
 const BITS_WINDOW = 2;
 const MOTION_SINCE = '2026-10-27';
@@ -62,14 +62,23 @@ const usedMotions = uniq(bEntries.slice(0, MOTION_WINDOW).map((e) => e.heroMotio
 const usedBits = uniq(bEntries.slice(0, BITS_WINDOW).flatMap((e) => e.bits || []));
 const shuffle = (arr) => arr.map((v) => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(([, v]) => v);
 const openMotions = HERO_MOTIONS.filter((m) => !usedMotions.includes(m));
-const openBits = BITS.filter((b) => !usedBits.includes(b));
+const openBits = BITS.filter((b) => b !== 'trade-moment' && !usedBits.includes(b));
 const missingB = bEntries
   .slice(0, 5)
   .filter((e) => (e.date || '') >= MOTION_SINCE)
   .filter((e) => !HERO_MOTIONS.includes(e.heroMotion) || !Array.isArray(e.bits) || e.bits.length < 2 || e.bits.some((b) => !BITS.includes(b)));
 console.log(`\nMOTION ROLL (for the B mockup only; see mockup-b-variant.md, "What B adds"):`);
 console.log(`  hero motion: ${shuffle(openMotions)[0]}   (banned, used by the last ${MOTION_WINDOW} B: ${usedMotions.join(', ') || 'none'})`);
-console.log(`  bits:        ${shuffle(openBits).slice(0, 2).join(' + ')}   (banned: ${usedBits.join(', ') || 'none'})`);
+// About half the time one bit is the trade moment: motion only this trade
+// could own (leak detection = water running down the page).
+const rolledBits = shuffle(openBits).slice(0, 2);
+if (Math.random() < 0.5) rolledBits[1] = 'trade-moment';
+const sameTrade = ledger.entries.filter((e) => e.tradeMoment).slice(0, 20).map((e) => `${e.trade.split(',')[0]}: ${e.tradeMoment}`);
+console.log(`  bits:        ${rolledBits.join(' + ')}   (banned: ${usedBits.join(', ') || 'none'})`);
+if (rolledBits.includes('trade-moment')) {
+  console.log(`  trade moment: one piece of motion only this trade could own; log it as tradeMoment. Recent ones (do something else for the same trade):`);
+  sameTrade.forEach((t) => console.log(`    - ${t}`));
+}
 console.log(`  hero motions: ${HERO_MOTIONS.join(', ')}`);
 console.log(`  bits:         ${BITS.join(', ')}`);
 console.log(`  B = a copy of A (palette, fonts, copy, sections) with a full bleed moving hero; out there, not wild`);
