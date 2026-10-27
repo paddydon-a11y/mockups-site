@@ -282,9 +282,10 @@ footer a:hover{color:#fff}
 .hb-h1{color:#fff;font-weight:800;line-height:.92;letter-spacing:-.02em}
 .hb-h1 span{display:block;animation:fadeUp .8s both}
 .hb-h1 .sm{font-stretch:110%;font-size:clamp(1.15rem,2.2vw,1.9rem);letter-spacing:-.01em;line-height:1.15;color:#dfe6ff}
-.hb-h1 .xl{font-stretch:68%;text-transform:uppercase;font-size:clamp(5rem,20.5vw,11.5rem);line-height:.86;letter-spacing:-.01em;color:#fff;will-change:transform}
-.hb-h1 .xl.off{color:#ff8e6b;font-size:clamp(3.6rem,14.4vw,9.4rem)}
-.hb-h1 .xl.off,.hb-h1 .r3{margin-top:.08em}
+.hb-h1 .ln{font-stretch:68%;text-transform:uppercase;font-size:clamp(3rem,13.4vw,6.6rem);line-height:.9;letter-spacing:-.005em;color:#dfe6ff}
+.hb-h1 .mv{display:inline-block;font-weight:800;will-change:transform}
+.hb-h1 .mv.w{color:#fff}.hb-h1 .mv.o{color:#ff8e6b}
+.hb-h1 .r5{margin-top:.6em}
 .r1{animation-delay:.35s!important}.r2{animation-delay:.5s!important}.r3{animation-delay:.65s!important}.r4{animation-delay:.8s!important}.r5{animation-delay:.95s!important}
 .hb-lede{margin-top:22px;color:#c8d1e6;font-size:1.05rem;max-width:520px;animation:fadeUp .8s 1.05s both}
 .hb-cta{margin-top:26px;animation:fadeUp .8s 1.15s both}
@@ -308,7 +309,7 @@ footer a:hover{color:#fff}
 .benefit.lit h3 svg{box-shadow:0 0 0 6px #fff,0 0 0 9px var(--oxide);transform:scale(1.08)}
 @media (max-width:880px){
   .hb{min-height:calc(100svh - 64px)}
-  .hb-in{padding-top:84px;padding-bottom:56px}
+  .hb-in{padding-top:56px;padding-bottom:50px}
   .hb-lede{font-size:.98rem;margin-top:16px}
   .hb-cta{flex-direction:column}
   .hb-cta .btn{width:100%}
@@ -316,8 +317,8 @@ footer a:hover{color:#fff}
   .tm{margin:0 0 26px}
   .tm svg{height:120px}
 }
-@media (min-width:881px) and (max-height:780px){.hb-in{padding-top:70px;padding-bottom:50px}.hb-h1 .xl{font-size:clamp(4rem,8.6vw,7.4rem)}.hb-h1 .xl.off{font-size:clamp(3rem,6.1vw,5.3rem)}.hb-lede{margin-top:14px}.hb-cta{margin-top:18px}}
-@media (prefers-reduced-motion:reduce){.tm-bead{stroke-dashoffset:0}.tm-cool{opacity:1}.hb-ph,.hb-h1 .xl{transform:none!important}}
+@media (min-width:881px) and (max-height:780px){.hb-in{padding-top:70px;padding-bottom:50px}.hb-h1 .ln{font-size:clamp(3rem,5.6vw,5rem)}.hb-lede{margin-top:14px}.hb-cta{margin-top:18px}}
+@media (prefers-reduced-motion:reduce){.tm-bead{stroke-dashoffset:0}.tm-cool{opacity:1}.hb-ph,.hb-h1 .mv{transform:none!important}}
 
 /* responsive */
 @media (min-width:881px) and (max-height:780px){.hero h1{font-size:clamp(2.2rem,2.9vw,3rem)}.lede{margin-top:16px;font-size:1rem}.hero-cta{margin-top:22px}}
@@ -405,10 +406,9 @@ footer a:hover{color:#fff}
   <div class="hb-wash" aria-hidden="true"></div>
   <div class="hb-in wrap">
     <h1 class="hb-h1">
-      <span class="sm r1">Mechanical Engineering, Specialist</span>
-      <span class="xl r2" data-speed="-0.22">Pipework</span>
-      <span class="sm r3">and Off&#8209;Site</span>
-      <span class="xl off r4" data-speed="0.12">Fabrication</span>
+      <span class="ln r1">Mechanical Engineering,</span>
+      <span class="ln r2">Specialist <b class="mv w" data-speed="-0.16">Pipework</b></span>
+      <span class="ln r3">and Off&#8209;Site <b class="mv o" data-speed="0.1">Fabrication</b></span>
       <span class="sm r5">in Daventry, Northamptonshire</span>
     </h1>
     <p class="hb-lede">Pipework installation for main contractors and industrial clients, with skids, spools and vessels built by Astute Offsite.</p>
@@ -602,7 +602,7 @@ document.documentElement.classList.add('js');
 
 
   // parallax hero
-  var hb=document.getElementById('hero'),ph=document.querySelector('.hb-ph'),xls=[].slice.call(document.querySelectorAll('.hb-h1 .xl'));
+  var hb=document.getElementById('hero'),ph=document.querySelector('.hb-ph'),xls=[].slice.call(document.querySelectorAll('.hb-h1 .mv'));
   var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,tick=false;
   function para(){tick=false;var y=Math.min(scrollY,hb.offsetHeight*1.2);ph.style.transform='translate3d(0,'+(y*0.38)+'px,0)';
     xls.forEach(function(el){el.style.transform='translate3d('+(y*parseFloat(el.dataset.speed))+'px,'+(y*-0.12)+'px,0)';});}
