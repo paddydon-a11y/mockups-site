@@ -48,35 +48,33 @@ if (combos.length) {
   combos.forEach((c) => console.log(`  - ${c}`));
 }
 
-// B roll (added 2026-10-20). Left to itself B drifted to the same answer: six of
-// the first nine B builds sat on a near-black or navy ground and five were the
-// photo as the fold. B's direction and ground are now rolled at random, never
-// repeating recent B entries, and dark is the least likely ground.
-const DIRECTIONS = ['cinematic', 'editorial', 'swiss', 'colour-pop', 'blueprint', 'product-launch', 'material', 'tool-first', 'kinetic-type', 'collage', 'photo-led', 'signage', 'depth'];
-const GROUNDS = { light: 35, colour: 35, material: 15, dark: 15 };
-const B_DIRECTION_WINDOW = 4;
-const DARK_WINDOW = 3;
+// B motion roll (2026-10-27, replaces the 10-20 direction/ground roll). The
+// random directions made B "too off the mark"; B is now A brought to life:
+// same look, a full bleed moving hero and two interesting bits. Hero motion
+// never repeats the last 3 B, bits never repeat the last 2 B.
+const HERO_MOTIONS = ['video', 'crossfade', 'ken-burns', 'word-swap', 'parallax', 'reveal-wipe', 'before-after', 'marquee'];
+const BITS = ['counter', 'drag-compare', 'work-strip', 'pinned-steps', 'draw-svg', 'tilt-cards', 'review-ticker', 'area-map', 'calc', 'photo-stack'];
+const MOTION_WINDOW = 3;
+const BITS_WINDOW = 2;
+const MOTION_SINCE = '2026-10-27';
 const bEntries = ledger.entries.filter((e) => e.variant === 'B');
-const usedDirections = uniq(bEntries.slice(0, B_DIRECTION_WINDOW).map((e) => e.direction));
-// Never the last B's ground again, and no dark if any of the last 3 B was dark.
-const usedGrounds = uniq([bEntries[0] && bEntries[0].ground, bEntries.slice(0, DARK_WINDOW).some((e) => e.ground === 'dark') && 'dark']);
-const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
-const openDirections = DIRECTIONS.filter((d) => !usedDirections.includes(d));
-const openGrounds = Object.entries(GROUNDS).filter(([g]) => !usedGrounds.includes(g));
-const weighted = (pairs) => {
-  let r = Math.random() * pairs.reduce((n, [, w]) => n + w, 0);
-  for (const [g, w] of pairs) if ((r -= w) < 0) return g;
-  return pairs[pairs.length - 1][0];
-};
-const missingB = bEntries.slice(0, 5).filter((e) => !DIRECTIONS.includes(e.direction) || !GROUNDS[e.ground]);
-console.log(`\nB ROLL (for the B mockup only; see mockup-b-variant.md, "Roll the direction"):`);
-console.log(`  direction: ${pick(openDirections)}   (banned, used by the last ${B_DIRECTION_WINDOW} B: ${usedDirections.join(', ') || 'none'})`);
-console.log(`  ground:    ${weighted(openGrounds)}   (banned: ${usedGrounds.join(', ') || 'none'})`);
-console.log(`  directions: ${DIRECTIONS.join(', ')}`);
-console.log(`  grounds:    ${Object.keys(GROUNDS).join(', ')}`);
-console.log(`  logo in the request? B uses its colours and the ground says how; dark only if the logo itself is dark, otherwise re-roll the ground`);
+const usedMotions = uniq(bEntries.slice(0, MOTION_WINDOW).map((e) => e.heroMotion));
+const usedBits = uniq(bEntries.slice(0, BITS_WINDOW).flatMap((e) => e.bits || []));
+const shuffle = (arr) => arr.map((v) => [Math.random(), v]).sort((x, y) => x[0] - y[0]).map(([, v]) => v);
+const openMotions = HERO_MOTIONS.filter((m) => !usedMotions.includes(m));
+const openBits = BITS.filter((b) => !usedBits.includes(b));
+const missingB = bEntries
+  .slice(0, 5)
+  .filter((e) => (e.date || '') >= MOTION_SINCE)
+  .filter((e) => !HERO_MOTIONS.includes(e.heroMotion) || !Array.isArray(e.bits) || e.bits.length < 2 || e.bits.some((b) => !BITS.includes(b)));
+console.log(`\nMOTION ROLL (for the B mockup only; see mockup-b-variant.md, "What B adds"):`);
+console.log(`  hero motion: ${shuffle(openMotions)[0]}   (banned, used by the last ${MOTION_WINDOW} B: ${usedMotions.join(', ') || 'none'})`);
+console.log(`  bits:        ${shuffle(openBits).slice(0, 2).join(' + ')}   (banned: ${usedBits.join(', ') || 'none'})`);
+console.log(`  hero motions: ${HERO_MOTIONS.join(', ')}`);
+console.log(`  bits:         ${BITS.join(', ')}`);
+console.log(`  B = a copy of A (palette, fonts, copy, sections) with a full bleed moving hero; out there, not wild`);
 if (missingB.length) {
-  console.log(`\nB ENTRIES MISSING direction/ground (not valid until fixed): ${missingB.map((e) => e.slug).join(', ')}`);
+  console.log(`\nB ENTRIES MISSING heroMotion/bits (not valid until fixed): ${missingB.map((e) => e.slug).join(', ')}`);
 }
 
 // Saturation report across the whole ledger — spot the next "tell" early
