@@ -93,7 +93,7 @@ h3{font-size:1.45rem;font-weight:800;letter-spacing:-.01em}
 /* hero: full bleed marquee */
 .hero{position:relative;overflow:hidden;background:var(--olive-deep);min-height:88vh}
 .mq{position:absolute;inset:0;overflow:hidden}
-.mq-track{display:flex;height:100%;width:max-content;animation:mq 44s linear infinite;will-change:transform}
+.mq-track{display:flex;height:100%;width:max-content;animation:mq 29s linear infinite;will-change:transform}
 .mq.paused .mq-track{animation-play-state:paused}
 .mq-tile{height:100%;aspect-ratio:3/4;flex:none;padding-right:6px}
 .mq-tile img{width:100%;height:100%;object-fit:cover}
@@ -296,7 +296,9 @@ footer a:hover{color:#fff}
   .nav-links li:last-child{border-bottom:0;padding-top:16px}
   .nav-links a{display:block;padding:14px 0;font-size:1.05rem}
   .nav-links a.nav-cta{justify-content:center;padding:15px}
-  .hero,.hero-in{min-height:calc(100vh - var(--nav-h));min-height:calc(100svh - var(--nav-h))}
+  .nav{position:fixed;left:0;right:0;top:0;transform:translateY(-100%);transition:transform .35s ease;box-shadow:none}
+  .nav.show{transform:none}
+  .hero,.hero-in{min-height:100vh;min-height:100svh}
   .hero-in{padding-top:26px;padding-bottom:40px}
   .crest{width:min(76%,290px)}
   .hero h1{font-size:clamp(2.3rem,10.6vw,3.4rem)}
@@ -661,6 +663,11 @@ footer a:hover{color:#fff}
   var lb=document.getElementById('lb'), lbi=lb.querySelector('img');
   document.querySelectorAll('.gal .ph img').forEach(function(img){ img.addEventListener('click',function(){ lbi.src=img.src; lbi.alt=img.alt; lb.classList.add('open'); }); });
   lb.addEventListener('click',function(){ lb.classList.remove('open'); });
+  // mobile: the white nav stays away until the hero has been scrolled past
+  var nav=document.querySelector('.nav'), mqMob=window.matchMedia('(max-width:880px)');
+  function navState(){ var past=document.getElementById('hero').getBoundingClientRect().bottom<=nav.offsetHeight; nav.classList.toggle('show',!mqMob.matches||past||n.classList.contains('is-open')); }
+  window.addEventListener('scroll',navState,{passive:true}); window.addEventListener('resize',navState); navState();
+
   // marquee pauses on touch or hover
   var hero=document.getElementById('hero'), mq=document.getElementById('mq');
   ['pointerdown','mouseenter'].forEach(function(ev){ hero.addEventListener(ev,function(){ mq.classList.add('paused'); },{passive:true}); });
