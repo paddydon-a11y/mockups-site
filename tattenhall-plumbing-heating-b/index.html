@@ -141,6 +141,8 @@ section{padding-top:96px;padding-bottom:96px}
 .svc-img{aspect-ratio:4/3;overflow:hidden;background:var(--stone)}
 .svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .svc:hover .svc-img img{transform:scale(1.04)}
+.svc-img img.zoom{transform:scale(1.3);transform-origin:46% 34%}
+.svc:hover .svc-img img.zoom{transform:scale(1.35)}
 .svc-body{padding:22px 22px 24px;display:flex;gap:16px;align-items:flex-start}
 .svc-body > img{width:46px;height:46px;flex:none}
 .svc-body p{margin-top:6px;font-size:.95rem}
@@ -267,24 +269,28 @@ footer{background:var(--navy-d);color:#a9c0d4;padding-top:60px;padding-bottom:30
 .hb{height:calc(100svh - var(--nav-h));min-height:560px;justify-content:flex-end}
 .hb::before{display:none}
 .hb-media{position:absolute;inset:0;overflow:hidden;background:var(--navy)}
-.hb-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hb-media{z-index:1;top:0;bottom:0;left:auto;right:0;width:min(48%,calc((100svh - var(--nav-h))*.75));-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
+.hb-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.hb-bg{position:absolute;inset:-40px;width:calc(100% + 80px);height:calc(100% + 80px);object-fit:cover;filter:blur(28px) saturate(1.2);opacity:.55}
 .hb-after{animation:push 22s ease-in-out 1.8s infinite alternate}
 .hb-before{position:absolute;inset:0;clip-path:inset(0 0 0 0);animation:wipe 1.25s cubic-bezier(.65,0,.35,1) .6s forwards}
 .hb-edge{position:absolute;top:0;bottom:0;left:0;width:12px;margin-left:-6px;background:linear-gradient(90deg,transparent 0,transparent 2px,var(--sky) 2px,var(--sky) 5px,transparent 5px,transparent 7px,var(--pink) 7px,var(--pink) 10px,transparent 10px);box-shadow:0 0 30px rgba(133,200,238,.6);opacity:0;animation:edge 1.25s cubic-bezier(.65,0,.35,1) .6s forwards}
 @keyframes wipe{to{clip-path:inset(0 0 0 100%)}}
-@keyframes edge{0%{opacity:1;transform:translateX(0)}92%{opacity:1}100%{opacity:0;transform:translateX(100vw)}}
+@keyframes edge{0%{opacity:1;left:0}92%{opacity:1}100%{opacity:0;left:100%}}
 @keyframes push{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.5%,-1%)}}
-.hb-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,48,79,.97) 0%,rgba(6,68,112,.86) 34%,rgba(6,68,112,.35) 58%,rgba(6,68,112,0) 76%),linear-gradient(to bottom,rgba(4,48,79,.45),transparent 22%)}
-.hb-chip{position:absolute;top:20px;left:24px;z-index:2;display:inline-flex;align-items:center;gap:10px;background:rgba(4,48,79,.82);color:#fff;border-radius:999px;padding:7px 14px 7px 7px;font-size:.84rem;font-weight:600}
+.hb-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,48,79,.96) 0%,rgba(6,68,112,.9) 45%,rgba(6,68,112,.55) 75%,rgba(6,68,112,.4) 100%)}
+.hb-chip{position:absolute;top:20px;right:24px;z-index:2;display:inline-flex;align-items:center;gap:10px;background:rgba(4,48,79,.82);color:#fff;border-radius:999px;padding:7px 14px 7px 7px;font-size:.84rem;font-weight:600}
 .hb-state{position:relative;display:inline-grid;width:62px;height:26px}
 .hb-state b{grid-area:1/1;display:grid;place-items:center;border-radius:999px;font-size:.74rem;text-transform:uppercase;letter-spacing:.08em}
 .c-before{background:#fff;color:var(--navy);animation:chipOut .3s ease 1.3s forwards}
 .c-after{background:var(--pink);color:#fff;opacity:0;animation:chipIn .3s ease 1.4s forwards}
 @keyframes chipOut{to{opacity:0;transform:scale(.8)}}
 @keyframes chipIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
-.hb-copy{position:relative;z-index:2;width:100%;padding-bottom:56px}
+.hb{justify-content:center}
+.hb-copy{position:relative;z-index:2;width:100%;padding-bottom:0}
+.hb-copy > *{max-width:min(600px,calc(100vw - min(48vw,(100svh - var(--nav-h))*.75) - 160px))}
 .hb .crest{width:70px;height:73px}
-.hb h1{font-size:min(5.2vw,8.4vh);max-width:900px;line-height:1.02}
+.hb h1{font-size:clamp(2.5rem,min(3.9vw,7.6vh),3.9rem);line-height:1.04}
 .hb .lede{max-width:600px;color:#e2eef7}
 
 /* B: counters */
@@ -314,8 +320,15 @@ footer{background:var(--navy-d);color:#a9c0d4;padding-top:60px;padding-bottom:30
   .hb .hero-copy,.hb-copy{text-align:left}
   .hb .hero-cta{justify-content:flex-start}
   .hb .lede{margin-left:0}
-  .hb-copy{padding-bottom:30px}
-  .hb-media img{object-position:50% 35%}
+  .hb{justify-content:flex-end}
+  .hb-copy{padding-bottom:28px}
+  .hb-copy > *{max-width:none}
+  .hb-bg{display:none}
+  .hb-media{position:relative;inset:auto;width:100%;flex:1 1 auto;min-height:220px;margin-bottom:-56px;-webkit-mask-image:linear-gradient(#000 calc(100% - 90px),transparent);mask-image:linear-gradient(#000 calc(100% - 90px),transparent)}
+  .hb-media img{object-position:50% 62%}
+  .hb-shade{background:linear-gradient(to bottom,rgba(4,48,79,.5),transparent 16%)}
+  .hb-chip{right:auto;left:24px}
+  .hb .crest{width:52px;height:54px;margin:0 0 10px}
   .counts b{font-size:2rem}
 }
 @media (max-width:640px){
@@ -410,6 +423,7 @@ footer{background:var(--navy-d);color:#a9c0d4;padding-top:60px;padding-bottom:30
 </header>
 
 <section class="hero hb" style="padding:0">
+  <img class="hb-bg" src="penyfford-after.jpg" alt="" aria-hidden="true" width="1078" height="1440">
   <div class="hb-media" aria-hidden="true">
     <img class="hb-after" src="penyfford-after.jpg" alt="" width="1078" height="1440">
     <div class="hb-before"><img src="penyfford-before.jpg" alt="" width="1084" height="1440"></div>
@@ -447,23 +461,23 @@ footer{background:var(--navy-d);color:#a9c0d4;padding-top:60px;padding-bottom:30
     <div class="sec-head reveal"><h2>Plumbing and Heating <span class="key">Services</span></h2><span class="pipes"></span></div>
     <div class="svc-grid">
       <article class="svc reveal" id="svc-bathrooms">
-        <div class="svc-img"><img src="hargrave-vanity.jpg" alt="Grey vanity unit and basin on patterned floor tiles, Hargrave" loading="lazy" width="720" height="960"></div>
+        <div class="svc-img"><img src="chester-bath.jpg" alt="New bath with tiled surround and window above, Chester" loading="lazy" width="1078" height="1440" style="object-position:50% 78%"></div>
         <div class="svc-body"><img src="tile-bath.png" alt="" width="128" height="128"><div><h3>Bathrooms</h3><p>Designed and fitted, including tiling and plastering, with the other trades arranged.</p></div></div>
       </article>
       <article class="svc reveal" id="svc-heating">
-        <div class="svc-img"><img src="oil-combi.jpg" alt="Worcester Bosch Greenstar Heatslave oil combi boiler" loading="lazy" width="720" height="960"></div>
+        <div class="svc-img"><img src="boiler-combi.jpg" alt="Wall hung combi boiler with new pipework and filter on a brick wall" loading="lazy" width="720" height="960" style="object-position:50% 30%"></div>
         <div class="svc-body"><img src="tile-flame.png" alt="" width="128" height="128"><div><h3>Boilers</h3><p>Gas, LPG and oil boilers installed, replaced and serviced, homes and businesses.</p></div></div>
       </article>
       <article class="svc reveal" id="svc-radiators">
-        <div class="svc-img"><img src="column-radiator.jpg" alt="White traditional column radiator under a window" loading="lazy" width="960" height="720"></div>
+        <div class="svc-img"><img class="zoom" src="column-radiator.jpg" alt="White traditional column radiator under a window" loading="lazy" width="960" height="720"></div>
         <div class="svc-body"><img src="tile-radiator.png" alt="" width="128" height="128"><div><h3>Central Heating</h3><p>Full systems, radiators, smart thermostats and chemical powerflushing.</p></div></div>
       </article>
       <article class="svc reveal" id="svc-plumbing">
-        <div class="svc-img"><img src="copper-pipework.jpg" alt="New copper pipework run across a wall" loading="lazy" width="720" height="960"></div>
+        <div class="svc-img"><img src="tattenhall-cloakroom.jpg" alt="Cloakroom with new toilet, basin, taps and column radiator" loading="lazy" width="960" height="720"></div>
         <div class="svc-body"><img src="tile-tap.png" alt="" width="128" height="128"><div><h3>Plumbing Services</h3><p>Repairs and maintenance: toilets, taps, leaks and general domestic plumbing.</p></div></div>
       </article>
       <article class="svc reveal">
-        <div class="svc-img"><img src="heat-pump-cylinder.jpg" alt="Hot water cylinder and pipework from an air source heat pump installation" loading="lazy" width="720" height="960"></div>
+        <div class="svc-img"><img src="heat-pump-unit.jpg" alt="Air source heat pump unit installed against a brick wall" loading="lazy" width="720" height="394" style="object-position:40% 50%"></div>
         <div class="svc-body"><span class="svc-drop"><img src="drop-blue.png" alt="" width="260" height="270"></span><div><h3>Renewables and Underfloor Heating</h3><p>Air source heat pumps and underfloor heating, designed with the manufacturer.</p></div></div>
       </article>
       <article class="svc reveal">
