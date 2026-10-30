@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Timesheet · 4A Trades</title><meta name="robots" content="noindex,nofollow"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=2"><meta name="theme-color" content="#111111"><meta name="apple-mobile-web-app-title" content="Timesheets"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+<body>
+<div class="preview">Preview: pressing Send shows the PDF, nothing is emailed yet.</div>
+<div class="top"><div class="logo">4A<span>TRADES</span></div><div class="who">Timesheets</div></div>
+<main id="main">
+<h1>Day work timesheet</h1>
+<div class="err" id="err"></div>
+<form id="form" novalidate>
+<section class="card"><h2>You and the week</h2>
+<label class="f"><span>Your name</span><input type="text" id="name" autocomplete="name" autocapitalize="words"></label>
+<label class="f"><span>Your trade</span><input type="text" id="trade" autocapitalize="words" placeholder="e.g. Plumber, Plasterer, Labourer"></label>
+<label class="f"><span>Site</span><input type="text" id="site" autocapitalize="words" placeholder="e.g. Barratt, Wythenshawe plot 14"></label>
+<label class="f"><span>Week commencing</span><input type="date" id="wc"></label>
+<label class="f" style="margin-bottom:0"><span>Your email <small>optional, to get your own copy</small></span><input type="email" id="email" autocomplete="email" autocapitalize="off" spellcheck="false"></label>
+</section>
+
+<div class="sect"><h2>Hours</h2><p class="hint">Tap each day you worked and put your start and finish times. A fixed break is taken off each day:</p><ul class="rules"><li>7 hours or more on site: <b>1 hour</b></li><li>Over 3 hours: <b>30 minutes</b></li><li>3 hours or less: <b>nothing</b></li></ul></div>
+<div id="days"></div>
+
+<section class="card total"><h2>Week total</h2>
+<div class="tot"><div><span>Days</span><b id="tdays">0</b></div><div><span>On site</span><b id="tsite">0 hrs</b></div><div><span>Breaks</span><b id="tbreak">0 hrs</b></div></div>
+<div class="grand"><span>Hours worked</span><b id="tgrand">0 hrs</b></div>
+</section>
+
+<section class="card"><h2>Your signature</h2>
+<p class="hint">Sign with your finger in the box.</p>
+<div class="sig"><canvas id="sig"></canvas><button type="button" id="sigclear">Clear</button></div>
+</section>
+
+<div class="sendwrap"><button class="btn" id="send" type="button">Send timesheet</button>
+<p class="hint center">Goes straight to Chris at 4A Trades as a PDF.</p></div>
+</form>
+</main>
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="vendor/jspdf.plugin.autotable.min.js"></script>
+<script src="app.js?v=4"></script>
+</body></html>
