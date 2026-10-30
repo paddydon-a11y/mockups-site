@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -30,33 +30,35 @@
   --navy:#0f1237;
   --navy-2:#191d4d;
   --navy-3:#262b63;
-  --orange:#e16113;
-  --orange-d:#c9540c;
+  --grey:#777777;
+  --grey-2:#a8a8a8;
+  --metal:linear-gradient(135deg,#c9ccd1 0%,#eceef0 48%,#d4d7db 100%);
+  --silver-l:#e2e4e7;
   --ink:#14162b;
   --body:#4b5066;
-  --muted:#7b8094;
+  --muted:#777777;
   --bg:#ffffff;
   --stone:#f3f4f7;
   --line:#e1e3ea;
-  --silver:#b9bcc4;
+  --silver:#a8a8a8;
   --nav-h:72px;
-  --display:'Rubik',Helvetica,Arial,sans-serif;
-  --sans:'Open Sans',Arial,sans-serif;
+  --display:'PF DIN Text Arabic','Barlow',Helvetica,Arial,sans-serif;
+  --sans:'Barlow',Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{--navy:#0f1237;--navy-2:#191d4d;--orange:#e16113;--ink:#14162b;--body:#4b5066;--bg:#ffffff;--stone:#f3f4f7;--line:#e1e3ea}
+  :root{--navy:#0f1237;--navy-2:#191d4d;--grey:#777777;--grey-2:#a8a8a8;--ink:#14162b;--body:#4b5066;--bg:#ffffff;--stone:#f3f4f7;--line:#e1e3ea}
 }
 *,*::before,*::after{box-sizing:border-box}
 html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);-webkit-text-size-adjust:100%}
-body{margin:0;overflow-x:clip;background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1.06rem;line-height:1.7;-webkit-font-smoothing:antialiased}
 html.no-scroll{overflow:hidden}
 body.no-scroll{overflow:visible;overflow-x:clip}
 img{max-width:100%;display:block}
 em{font-style:normal}
 a{color:inherit}
-h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;line-height:1.12;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;line-height:1.12;letter-spacing:-.01em}
 h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700}
-h2::after{content:"";display:block;width:56px;height:4px;background:var(--orange);margin-top:18px}
+h2::after{content:"";display:block;width:56px;height:4px;background:var(--grey-2);margin-top:18px}
 h2.center{text-align:center}
 h2.center::after{margin-left:auto;margin-right:auto}
 h3{font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
@@ -66,8 +68,8 @@ section{padding:96px 0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:.01em;text-decoration:none;border:2px solid transparent;border-radius:4px;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
 .btn svg{width:18px;height:18px;flex:none}
 .btn:hover{transform:translateY(-2px)}
-.btn-orange{background:var(--orange);color:var(--navy)}
-.btn-orange:hover{background:#f07423}
+.btn-silver{background:var(--silver-l);color:var(--navy)}
+.btn-silver:hover{background:#fff}
 .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
 .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 .btn-navy{background:var(--navy);color:#fff}
@@ -86,7 +88,7 @@ section{padding:96px 0}
 #ld.up{transform:translateY(-101%)}
 #ld .tmap{--t:24px;--g:4px}
 #ld .tmap i{background:var(--navy);color:transparent;opacity:0;transform:scale(.4);animation:ldTile .34s cubic-bezier(.2,.8,.3,1.2) forwards}
-#ld .tmap i.hq{background:var(--orange)}
+#ld .tmap i.hq{background:var(--grey-2)}
 #ld .ld-logo{width:230px;height:auto;opacity:0;transform:scale(.94);animation:ldLogo .5s .95s ease forwards}
 #ld .ld-line{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);opacity:0;animation:ldFade .4s 1.15s ease forwards;margin-top:-14px}
 @keyframes ldTile{to{opacity:1;transform:none}}
@@ -102,7 +104,7 @@ section{padding:96px 0}
 .nav-logo img{height:42px;width:auto}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink);text-decoration:none;position:relative;padding:6px 0}
-.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--grey-2);transform:scaleX(0);transform-origin:left;transition:transform .25s}
 .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
 .nav-links a.nav-cta{background:var(--navy);color:#fff;padding:11px 18px;border-radius:4px;display:inline-flex;align-items:center;gap:8px;font-weight:600}
 .nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff}
@@ -120,13 +122,13 @@ section{padding:96px 0}
 .hero-map{position:absolute;left:50%;top:50%;margin-left:-640px;transform:translateY(-50%);pointer-events:none}
 .hero-map .tmap{--t:52px;--g:7px}
 .hero-map .tmap i{background:rgba(255,255,255,.055)}
-.hero-map .tmap i::after{content:"";position:absolute;inset:0;border-radius:3px;background:var(--orange);opacity:0;animation:wave 7s linear infinite;animation-delay:var(--d)}
-.hero-map .tmap i.hq::after{opacity:.9;animation:none}
+.hero-map .tmap i::after{content:"";position:absolute;inset:0;border-radius:3px;background:#c9ccd1;opacity:0;animation:wave 7s linear infinite;animation-delay:var(--d)}
+.hero-map .tmap i.hq::after{opacity:.32;animation:none}
 @keyframes wave{0%{opacity:0}3%{opacity:.38}12%{opacity:0}100%{opacity:0}}
 .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,1fr);gap:52px;align-items:center;height:clamp(520px,calc(100vh - var(--nav-h)),740px);padding-top:32px;padding-bottom:32px}
 .hero-copy{min-width:0}
-.hero h1{color:#fff;font-weight:700;font-size:clamp(2.05rem,3.1vw,2.95rem);letter-spacing:-.03em;animation:fadeUp .7s .1s both}
-.hero h1 b{color:var(--orange);font-weight:800}
+.hero h1{color:#fff;font-weight:700;font-size:clamp(2.05rem,3.1vw,2.95rem);letter-spacing:-.015em;animation:fadeUp .7s .1s both}
+.hero h1 b{color:var(--silver-l);font-weight:800}
 .hero-tag{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,1.5vw,1.3rem);color:rgba(255,255,255,.62);margin-top:16px;animation:fadeUp .7s .22s both}
 .hero-lede{color:rgba(255,255,255,.86);font-size:1.03rem;max-width:520px;margin-top:16px;animation:fadeUp .7s .34s both}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;animation:fadeUp .7s .46s both}
@@ -135,20 +137,21 @@ section{padding:96px 0}
 .stage-photos{position:absolute;inset:0;overflow:hidden;background:var(--navy-2);clip-path:polygon(0 0,calc(100% - 54px) 0,100% 54px,100% 100%,0 100%)}
 .stage-photos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
 .stage-photos img.on{opacity:1;animation:kb 6s ease-out both}
+.stage-photos img[src="insomnia-fm-1.jpg"],.proj-main img[src="insomnia-fm-1.jpg"]{object-position:50% 6%}
 @keyframes kb{from{transform:scale(1.07)}to{transform:scale(1)}}
-.stage-bar{position:absolute;left:0;bottom:0;width:min(400px,86%);background:var(--navy);border-left:6px solid var(--orange);padding:16px 20px 18px}
+.stage-bar{position:absolute;left:0;bottom:0;width:min(400px,86%);background:var(--navy);border-left:6px solid var(--grey-2);padding:16px 20px 18px}
 .stage-name{font-family:var(--display);font-weight:600;color:#fff;font-size:1.2rem;line-height:1.2}
 .stage-sector{color:rgba(255,255,255,.72);font-size:.9rem;line-height:1.4;margin-top:2px}
 .stage-segs{display:flex;gap:6px;margin-top:14px}
 .stage-segs button{flex:1;height:18px;padding:7px 0;border:0;background:none;cursor:pointer}
 .stage-segs button span{display:block;height:4px;background:rgba(255,255,255,.22);position:relative;overflow:hidden}
-.stage-segs button span::after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left}
+.stage-segs button span::after{content:"";position:absolute;inset:0;background:var(--silver-l);transform:scaleX(0);transform-origin:left}
 .stage-segs button.on span::after{animation:seg 4.8s linear forwards}
 .stage-segs button.done span::after{transform:scaleX(1)}
 @keyframes seg{to{transform:scaleX(1)}}
 
-/* stats band (their orange band, with the figures their page fails to show) */
-.stats{background:var(--orange);padding:0}
+/* stats band (brushed silver from their logo mark, with the figures their page fails to show) */
+.stats{background:var(--metal);padding:0;border-bottom:1px solid #c9ccd1}
 .stats-in{display:grid;grid-template-columns:repeat(4,1fr);padding-top:44px;padding-bottom:44px}
 .stat{text-align:center;padding:4px 16px;border-left:1px solid rgba(15,18,55,.22)}
 .stat:first-child{border-left:0}
@@ -158,7 +161,7 @@ section{padding:96px 0}
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
 .svc{position:relative;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:2}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:2}
 .svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,18,55,.12)}
 .svc:hover::before{transform:scaleX(1)}
 .svc-ph{aspect-ratio:4/3;overflow:hidden;background:var(--stone)}
@@ -172,7 +175,7 @@ section{padding:96px 0}
 .about-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:0;align-items:stretch}
 .best{background:var(--navy);color:#fff;padding:52px 44px;clip-path:polygon(0 0,100% 0,100% calc(100% - 44px),calc(100% - 44px) 100%,0 100%)}
 .best h3{color:#fff;font-size:1.7rem;font-weight:700}
-.best-item{margin-top:30px;padding-left:18px;border-left:4px solid var(--orange)}
+.best-item{margin-top:30px;padding-left:18px;border-left:4px solid var(--grey-2)}
 .best-item h4{font-family:var(--display);font-weight:600;font-size:1.08rem;color:#fff;margin:0}
 .best-item p{color:rgba(255,255,255,.8);font-size:.95rem;margin-top:6px;line-height:1.6}
 .about-copy{background:#fff;padding:52px 52px 48px}
@@ -187,7 +190,7 @@ section{padding:96px 0}
 .proj-list button b{display:block;font-weight:600;font-size:1.08rem;color:var(--ink)}
 .proj-list button span{display:block;font-family:var(--sans);font-size:.86rem;color:var(--muted);margin-top:1px}
 .proj-list button:hover{background:var(--stone)}
-.proj-list button.on{border-left-color:var(--orange);background:var(--navy)}
+.proj-list button.on{border-left-color:var(--grey-2);background:var(--navy)}
 .proj-list button.on b{color:#fff}
 .proj-list button.on span{color:rgba(255,255,255,.72)}
 .proj-main{position:relative;aspect-ratio:16/10;background:var(--stone);overflow:hidden;cursor:zoom-in}
@@ -200,9 +203,18 @@ section{padding:96px 0}
 .proj-thumbs button{padding:0;border:0;background:var(--stone);aspect-ratio:4/3;overflow:hidden;cursor:pointer;position:relative}
 .proj-thumbs button img{width:100%;height:100%;object-fit:cover;opacity:.62;transition:opacity .2s}
 .proj-thumbs button:hover img,.proj-thumbs button.on img{opacity:1}
-.proj-thumbs button.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--orange)}
-.clients{margin-top:44px;padding-top:26px;border-top:1px solid var(--line);font-size:.95rem}
-.clients b{font-family:var(--display);font-weight:600;color:var(--ink)}
+.proj-thumbs button.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--navy)}
+.brands-sec{padding-top:0}
+.brands{padding-top:80px;border-top:1px solid var(--line)}
+.brands>p{margin-top:24px;max-width:760px}
+.brand-groups{margin-top:40px;display:grid;gap:30px}
+.bgroup{display:grid;grid-template-columns:210px minmax(0,1fr);gap:24px;align-items:start;padding-top:18px;border-top:3px solid var(--navy)}
+.bgroup h4{margin:10px 0 0;font-family:var(--display);font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);line-height:1.5}
+.bgroup ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.bgroup li{height:96px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);padding:14px 18px;transition:border-color .2s,box-shadow .2s}
+.bgroup li:hover{border-color:var(--silver);box-shadow:0 8px 22px rgba(15,18,55,.08)}
+.bgroup li img{max-width:100%;max-height:60px;width:auto;height:auto;object-fit:contain}
+.bgroup li.txt{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);text-align:center;line-height:1.3}
 .lb{position:fixed;inset:0;z-index:150;background:rgba(10,12,36,.94);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
 .lb.open{display:flex}
 .lb img{max-width:100%;max-height:100%;object-fit:contain}
@@ -211,7 +223,7 @@ section{padding:96px 0}
 .since{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .since h2{color:#fff}
 .since-sub{color:rgba(255,255,255,.78);text-align:center;margin-top:20px}
-.quote{max-width:860px;margin:44px auto 0;background:#fff;color:var(--ink);padding:40px 44px 36px;border-left:6px solid var(--orange);position:relative}
+.quote{max-width:860px;margin:44px auto 0;background:#fff;color:var(--ink);padding:40px 44px 36px;border-left:6px solid var(--grey-2);position:relative}
 .quote p{font-size:1.1rem;line-height:1.75;color:var(--ink)}
 .quote footer{margin-top:20px;font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
@@ -222,10 +234,10 @@ section{padding:96px 0}
 .cov-map .tmap{--t:46px;--g:6px}
 .cov-map .tmap i{background:var(--navy);color:#fff;font-size:.74rem;letter-spacing:.02em;opacity:0;transform:scale(.5);transition:opacity .4s,transform .4s cubic-bezier(.2,.8,.3,1.2),background .2s;transition-delay:var(--d),var(--d),0s}
 .cov-map.in .tmap i{opacity:1;transform:none}
-.cov-map .tmap i.hq{background:var(--orange);color:var(--navy)}
-.cov-map .tmap i:hover{background:var(--orange);color:var(--navy)}
+.cov-map .tmap i.hq{background:var(--grey-2);color:var(--navy)}
+.cov-map .tmap i:hover{background:var(--grey-2);color:var(--navy)}
 .cov-key{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:.9rem;color:var(--body)}
-.cov-key i{width:16px;height:16px;background:var(--orange);border-radius:3px;flex:none}
+.cov-key i{width:16px;height:16px;background:var(--grey-2);border-radius:3px;flex:none}
 .states{columns:4;column-gap:24px;list-style:none;padding:0;margin:28px 0 0;font-size:.92rem;line-height:1.95;color:var(--ink)}
 
 /* partners + careers */
@@ -239,7 +251,7 @@ section{padding:96px 0}
 .join-card .btn{margin-top:26px}
 
 /* cta band */
-.band{background:var(--orange);padding:64px 0}
+.band{background:var(--metal);padding:64px 0}
 .band-in{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .band h2{color:var(--navy);font-size:clamp(1.7rem,3.2vw,2.5rem)}
 .band h2::after{display:none}
@@ -252,7 +264,7 @@ section{padding:96px 0}
 .contact-copy p{margin-top:24px}
 .info{margin-top:30px;border-top:1px solid var(--line)}
 .info-row{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
-.info-row dt{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-d);padding-top:3px}
+.info-row dt{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);padding-top:3px}
 .info-row dd{margin:0;color:var(--ink);font-weight:600}
 .info-row dd a{text-decoration:none}
 .form{background:var(--navy);padding:40px;clip-path:polygon(0 0,calc(100% - 44px) 0,100% 44px,100% 100%,0 100%)}
@@ -260,7 +272,7 @@ section{padding:96px 0}
 .form label{display:block;font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:20px}
 .form label small{font-family:var(--sans);font-weight:400;font-size:.8rem;text-transform:none;letter-spacing:0;color:rgba(255,255,255,.6)}
 .form input[type=text],.form input[type=tel],.form input[type=email],.form textarea{width:100%;margin-top:8px;padding:14px 14px;font:inherit;font-size:1rem;color:var(--ink);background:#fff;border:2px solid transparent;border-radius:3px}
-.form input:focus,.form textarea:focus{outline:none;border-color:var(--orange)}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--grey-2)}
 .form textarea{min-height:120px;resize:vertical}
 .form .btn{width:100%;margin-top:26px}
 .form-ok{display:none;color:#fff;font-weight:600;margin-top:18px}
@@ -270,19 +282,19 @@ section{padding:96px 0}
 .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px}
 .foot-logo img{height:48px;width:auto}
 .foot p{font-size:.93rem;margin-top:16px;line-height:1.7}
-.foot h4{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-d);margin:0 0 14px}
+.foot h4{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin:0 0 14px}
 .foot ul{list-style:none;padding:0;margin:0;font-size:.93rem;line-height:2}
 .foot ul a{text-decoration:none}
-.foot ul a:hover{color:var(--orange-d)}
+.foot ul a:hover{color:var(--navy-3)}
 .foot-base{background:var(--navy);color:rgba(255,255,255,.78);font-size:.86rem}
 .foot-base-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px}
 .foot-base a{color:#fff}
 
 /* fab */
-.fab{position:fixed;right:20px;bottom:20px;z-index:80;width:56px;height:56px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(15,18,55,.3);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:opacity .3s,transform .3s}
+.fab{position:fixed;right:20px;bottom:20px;z-index:80;width:56px;height:56px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(15,18,55,.3);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:opacity .3s,transform .3s}
 .fab.show{opacity:1;transform:none;pointer-events:auto}
-.fab svg{width:24px;height:24px;stroke:var(--navy)}
-.fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--orange);animation:pulse 2.2s ease-out infinite}
+.fab svg{width:24px;height:24px;stroke:#fff}
+.fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--grey-2);animation:pulse 2.2s ease-out infinite}
 .fab:hover::before{animation:none}
 @keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
 
@@ -291,6 +303,7 @@ section{padding:96px 0}
   .nav-links{gap:20px}
   .nav-links a{font-size:.9rem}
   .proj-grid{grid-template-columns:240px minmax(0,1fr);gap:28px}
+  .bgroup{grid-template-columns:170px minmax(0,1fr)}
   .cov-map .tmap{--t:38px;--g:5px}
   .cov-grid{gap:40px}
 }
@@ -325,12 +338,19 @@ section{padding:96px 0}
   .proj-list{flex-direction:row;overflow-x:auto;border-top:0;gap:8px;margin-left:-24px;margin-right:-24px;padding:0 24px 6px;scrollbar-width:none}
   .proj-list::-webkit-scrollbar{display:none}
   .proj-list button{flex:none;border:1px solid var(--line);border-left-width:1px;border-bottom:4px solid var(--line);padding:10px 14px}
-  .proj-list button.on{border-color:var(--navy);border-bottom-color:var(--orange)}
+  .proj-list button.on{border-color:var(--navy);border-bottom-color:var(--grey-2)}
   .proj-list button b{font-size:.98rem;white-space:nowrap}
   .proj-list button span{white-space:nowrap}
   .proj-cap{flex-direction:column;gap:2px}
   .proj-cap span{text-align:left}
   .proj-thumbs{gap:8px}
+  .brands{padding-top:56px}
+  .bgroup{grid-template-columns:1fr;gap:12px}
+  .bgroup h4{margin-top:0}
+  .bgroup ul{grid-template-columns:repeat(3,1fr);gap:8px}
+  .bgroup li{height:72px;padding:10px}
+  .bgroup li img{max-height:44px}
+  .bgroup li.txt{font-size:.8rem}
   .quote{padding:30px 24px 28px}
   .quote p{font-size:1.02rem}
   .cov-grid{grid-template-columns:1fr;gap:40px}
@@ -361,13 +381,13 @@ section{padding:96px 0}
 
 <div id="ld" aria-hidden="true">
   <div class="tmap" id="ldMap"></div>
-  <img class="ld-logo" src="logo.png" alt="" width="400" height="80">
+  <img class="ld-logo" src="logo.png" alt="" width="1200" height="256">
   <div class="ld-line">Licensed in 48 states</div>
 </div>
 
 <nav class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="nav-logo" href="#top"><img src="logo.png" alt="Benchmark Building Solutions Inc." width="400" height="80"></a>
+    <a class="nav-logo" href="#top"><img src="logo.png" alt="Benchmark Building Solutions Inc." width="1200" height="256"></a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
@@ -387,7 +407,7 @@ section{padding:96px 0}
   <a class="ml" href="#coverage">Coverage</a>
   <a class="ml" href="#partnerships">Partnerships and careers</a>
   <a class="ml" href="#contact">Contact</a>
-  <a class="btn btn-orange js-tel" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call <span class="js-telf">us</span></span></a>
+  <a class="btn btn-silver js-tel" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call <span class="js-telf">us</span></span></a>
 </div>
 
 <header class="hero" id="top">
@@ -396,29 +416,29 @@ section{padding:96px 0}
     <div class="hero-copy">
       <h1>Commercial General Contracting and Construction Management in <b>48 States</b></h1>
       <p class="hero-tag">Restoring the Past, Building the Future</p>
-      <p class="hero-lede">Benchmark Building Solutions Inc. is based in Lake Orion, Michigan and delivers ground-ups, tenant improvements, remodels and millwork installations for restaurant, retail, hotel and medical clients nationwide.</p>
+      <p class="hero-lede">Benchmark Building Solutions Inc. is based in Lake Orion, Michigan and delivers ground-ups, tenant improvements, remodels and multi-location rollouts for restaurant, retail, medical, fitness and hospitality brands nationwide.</p>
       <div class="hero-ctas" id="heroCtas">
-        <a class="btn btn-orange js-tel" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call <span class="js-telf">us</span></span></a>
+        <a class="btn btn-silver js-tel" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Call <span class="js-telf">us</span></span></a>
         <a class="btn btn-ghost" href="#contact">Get a Free Quote</a>
       </div>
     </div>
     <div class="stage" id="stage">
       <div class="stage-photos">
-        <img class="on" src="mcd-1.jpg" alt="McDonald's restaurant exterior built by Benchmark Building Solutions" width="1600" height="833">
+        <img class="on" src="nh-rv-1.jpg" alt="Next Health reception desk in Roseville, California, built by Benchmark Building Solutions" width="1600" height="1200">
+        <img src="pizzahut-1.jpg" alt="Pizza Hut restaurant exterior in Jonesboro, Arkansas" width="1600" height="1200" loading="lazy">
+        <img src="insomnia-fm-1.jpg" alt="Insomnia Cookies storefront in Fresh Meadows, New York" width="1200" height="1600" loading="lazy">
+        <img src="mcd-1.jpg" alt="McDonald's restaurant exterior" width="1600" height="833" loading="lazy">
         <img src="home2-1.jpg" alt="Home2 Suites hotel exterior" width="1600" height="1067" loading="lazy">
-        <img src="insomnia-1.jpg" alt="Insomnia Cookies storefront at night" width="1600" height="1068" loading="lazy">
-        <img src="nexthealth-1.jpg" alt="NextHealth reception desk" width="1600" height="1200" loading="lazy">
-        <img src="dogtopia-1.jpg" alt="Dogtopia storefront" width="1600" height="1200" loading="lazy">
       </div>
       <div class="stage-bar">
-        <div class="stage-name" id="stageName">McDonald's</div>
-        <div class="stage-sector" id="stageSector">Quick serve restaurant</div>
+        <div class="stage-name" id="stageName">Next Health</div>
+        <div class="stage-sector" id="stageSector">Retail, Roseville, California</div>
         <div class="stage-segs" id="stageSegs">
-          <button class="on" aria-label="Show McDonald's"><span></span></button>
-          <button aria-label="Show Home2 Suites"><span></span></button>
+          <button class="on" aria-label="Show Next Health"><span></span></button>
+          <button aria-label="Show Pizza Hut"><span></span></button>
           <button aria-label="Show Insomnia Cookies"><span></span></button>
-          <button aria-label="Show NextHealth"><span></span></button>
-          <button aria-label="Show Dogtopia"><span></span></button>
+          <button aria-label="Show McDonald's"><span></span></button>
+          <button aria-label="Show Home2 Suites"><span></span></button>
         </div>
       </div>
     </div>
@@ -447,13 +467,31 @@ section{padding:96px 0}
         <div class="svc-tx"><h3>Design Build</h3><p>Permits, architectural drawings, construction and closeout under one turnkey contract.</p></div>
       </article>
       <article class="svc reveal">
-        <div class="svc-ph"><img src="nexthealth-3.jpg" alt="NextHealth lounge interior" loading="lazy" width="1200" height="900"></div>
+        <div class="svc-ph"><img src="nh-rv-2.jpg" alt="Next Health lounge interior in Roseville" loading="lazy" width="1600" height="1200"></div>
         <div class="svc-tx"><h3>Construction Management</h3><p>Planning, budgeting, scheduling and quality control from inception to completion.</p></div>
       </article>
       <article class="svc reveal">
         <div class="svc-ph"><img src="home2-4.jpg" alt="Hotel lobby millwork during installation" loading="lazy" width="1200" height="900"></div>
         <div class="svc-tx"><h3>Millwork Installations</h3><p>Doors, trim, wall paneling, fixtures and furniture installed by our own teams.</p></div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="brands-sec" id="brands">
+  <div class="wrap">
+    <div class="brands">
+      <h2 class="reveal">Brands we have built for</h2>
+      <p class="reveal">Projects across retail, restaurant, medical and multi-location rollout environments, for nationally recognized brands where schedule, coordination and consistency are critical.</p>
+      <div class="brand-groups reveal">
+        <div class="bgroup"><h4>Restaurant and QSR</h4><ul><li><img src="brands/starbucks.png" alt="Starbucks" loading="lazy"></li><li><img src="brands/mcdonalds.png" alt="McDonald's" loading="lazy"></li><li><img src="brands/dunkin.png" alt="Dunkin'" loading="lazy"></li><li><img src="brands/chipotle.png" alt="Chipotle Mexican Grill" loading="lazy"></li><li><img src="brands/littlecaesars.png" alt="Little Caesars" loading="lazy"></li><li><img src="brands/pandaexpress.png" alt="Panda Express" loading="lazy"></li><li><img src="brands/dominos.png" alt="Domino's" loading="lazy"></li><li><img src="brands/tropicalsmoothie.png" alt="Tropical Smoothie Cafe" loading="lazy"></li><li><img src="brands/panera.png" alt="Panera Bread" loading="lazy"></li><li><img src="brands/insomnia.png" alt="Insomnia Cookies" loading="lazy"></li><li><img src="brands/jerseymikes.png" alt="Jersey Mike's Subs" loading="lazy"></li><li><img src="brands/pizzahut.png" alt="Pizza Hut" loading="lazy"></li></ul></div>
+        <div class="bgroup"><h4>Retail and multi-location rollouts</h4><ul><li><img src="brands/cvs.png" alt="CVS Pharmacy" loading="lazy"></li><li><img src="brands/dogtopia.png" alt="Dogtopia" loading="lazy"></li><li><img src="brands/familydollar.png" alt="Family Dollar" loading="lazy"></li><li><img src="brands/trek.png" alt="Trek" loading="lazy"></li><li><img src="brands/menards.png" alt="Menards" loading="lazy"></li><li><img src="brands/earthwise.png" alt="Earthwise Pet Supply" loading="lazy"></li><li><img src="brands/mysalonsuite.png" alt="My Salon Suite" loading="lazy"></li><li><img src="brands/freecoat.png" alt="Freecoat Nails" loading="lazy"></li><li><img src="brands/dollartree.png" alt="Dollar Tree" loading="lazy"></li></ul></div>
+        <div class="bgroup"><h4>Medical and veterinary</h4><ul><li><img src="brands/aspendental.png" alt="Aspen Dental" loading="lazy"></li><li><img src="brands/wellnow.png" alt="WellNow Urgent Care" loading="lazy"></li><li><img src="brands/nexthealth.png" alt="Next Health" loading="lazy"></li><li class="txt">Thrive Pet Healthcare</li></ul></div>
+        <div class="bgroup"><h4>Grocery</h4><ul><li><img src="brands/kjsmarket.png" alt="KJ's Market" loading="lazy"></li><li><img src="brands/lowesfoods.png" alt="Lowes Foods" loading="lazy"></li></ul></div>
+        <div class="bgroup"><h4>Fitness and wellness</h4><ul><li><img src="brands/purebarre.png" alt="Pure Barre" loading="lazy"></li><li class="txt">Madabolic</li><li><img src="brands/fitbody.png" alt="Fit Body Boot Camp" loading="lazy"></li></ul></div>
+        <div class="bgroup"><h4>Hospitality</h4><ul><li><img src="brands/marriott.png" alt="Marriott" loading="lazy"></li><li><img src="brands/hilton.png" alt="Hilton" loading="lazy"></li><li><img src="brands/home2.png" alt="Home2 Suites by Hilton" loading="lazy"></li></ul></div>
+        <div class="bgroup"><h4>Cannabis and industrial</h4><ul><li><img src="brands/lume.png" alt="Lume Cannabis Co." loading="lazy"></li><li><img src="brands/doordash.png" alt="DoorDash" loading="lazy"></li></ul></div>
+      </div>
     </div>
   </div>
 </section>
@@ -475,7 +513,7 @@ section{padding:96px 0}
       <h2>No Project Too Big or Too Small</h2>
       <p>Benchmark Building Solutions Inc. began as an all-in-one construction company delivering quality craftsmanship to small-scale jobs. The reputation of that work brought growth into multi-million-dollar commercial developments, including tenant improvements, renovations, millwork installations and new builds, and a separate construction management division.</p>
       <ul class="sectors" aria-label="Project types">
-        <li>Multi-Family Developments</li><li>Quick Serve Restaurants</li><li>Restaurants</li><li>Hospitals</li><li>Schools</li><li>Retail Space</li><li>Warehouse and Industrial</li><li>Medical Facilities</li><li>Cannabis Growing Facilities</li>
+        <li>Restaurants and QSR</li><li>Retail and Multi-Location Rollouts</li><li>Medical and Veterinary</li><li>Grocery</li><li>Fitness and Wellness</li><li>Hospitality</li><li>Multi-Family Developments</li><li>Hospitals</li><li>Schools</li><li>Warehouse and Industrial</li><li>Cannabis Growing Facilities</li>
       </ul>
     </div>
   </div>
@@ -487,13 +525,12 @@ section{padding:96px 0}
     <div class="proj-grid reveal">
       <div class="proj-list" id="projList" role="tablist" aria-label="Projects"></div>
       <div class="proj-view">
-        <div class="proj-main" id="projMain"><img id="projImg" src="mcd-1.jpg" alt="McDonald's restaurant exterior" width="1600" height="833" loading="lazy"></div>
-        <div class="proj-cap"><b id="projCapA">Restaurant exterior</b><span id="projCapB">McDonald's</span></div>
+        <div class="proj-main" id="projMain"><img id="projImg" src="nh-rv-1.jpg" alt="Next Health reception desk" width="1600" height="1200" loading="lazy"></div>
+        <div class="proj-cap"><b id="projCapA">Reception desk</b><span id="projCapB">Next Health</span></div>
         <p class="proj-note" id="projNote"></p>
         <div class="proj-thumbs" id="projThumbs"></div>
       </div>
     </div>
-    <p class="clients reveal"><b>Clients include</b> McDonald's, Home2 Suites, Insomnia Cookies, NextHealth, Dogtopia, Fit Body Boot Camp, Earthwise Pet and My Salon Suite.</p>
   </div>
 </section>
 <div class="lb" id="lb"><img id="lbImg" alt=""></div>
@@ -582,7 +619,7 @@ section{padding:96px 0}
       <input id="fEmail" type="email" name="email" autocomplete="email">
       <label for="fMsg">Project details <small>(optional)</small></label>
       <textarea id="fMsg" name="message"></textarea>
-      <button class="btn btn-orange" type="submit">Send Enquiry</button>
+      <button class="btn btn-silver" type="submit">Send Enquiry</button>
       <p class="form-ok" id="formOk">Thank you. Your enquiry has been sent.</p>
     </form>
   </div>
@@ -591,7 +628,7 @@ section{padding:96px 0}
 <footer class="foot">
   <div class="wrap foot-grid">
     <div>
-      <a class="foot-logo" href="#top"><img src="logo.png" alt="Benchmark Building Solutions Inc." width="400" height="80"></a>
+      <a class="foot-logo" href="#top"><img src="logo.png" alt="Benchmark Building Solutions Inc." width="1200" height="256"></a>
       <p>Commercial general contracting, design build, construction management and millwork installations, licensed in 48 states.</p>
     </div>
     <div>
@@ -664,7 +701,7 @@ section{padding:96px 0}
   mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
 
   /* hero project stage */
-  var SL=[["McDonald's",'Quick serve restaurant'],['Home2 Suites','Hotel, Fort Wayne'],['Insomnia Cookies','Retail bakery'],['NextHealth','Medical and wellness'],['Dogtopia','Pet daycare']];
+  var SL=[['Next Health','Retail, Roseville, California'],['Pizza Hut','Restaurant, Jonesboro, Arkansas'],['Insomnia Cookies','Quick serve restaurant, Fresh Meadows, New York'],["McDonald's",'Quick serve restaurant'],['Home2 Suites','Hotel, Fort Wayne']];
   var imgs=document.querySelectorAll('.stage-photos img'), segs=document.querySelectorAll('#stageSegs button');
   var cur=0, timer;
   function show(n){
@@ -681,10 +718,11 @@ section{padding:96px 0}
 
   /* projects viewer */
   var PR=[
+    {n:'Next Health',s:'Retail · Roseville, CA',note:'Wellness clinic buildout in Roseville, California, covering reception, IV lounge, cryotherapy, light therapy and infrared sauna rooms.',ph:[['nh-rv-1.jpg','Reception desk'],['nh-rv-2.jpg','Lounge and treatment chairs'],['nh-rv-3.jpg','IV lounge prep station'],['nh-rv-4.jpg','Cryotherapy room'],['nh-rv-5.jpg','Light therapy room'],['nh-rv-6.jpg','Infrared sauna']]},
+    {n:'Pizza Hut',s:'Restaurant · Jonesboro, AR',note:'Restaurant remodel in Jonesboro, Arkansas, including the exterior refresh, lighting and drive-thru elevation.',ph:[['pizzahut-1.jpg','Front elevation'],['pizzahut-2.jpg','Restaurant and pylon sign'],['pizzahut-3.jpg','Front windows and wall graphics'],['pizzahut-4.jpg','Exterior from the parking lot'],['pizzahut-5.jpg','Side elevation'],['pizzahut-6.jpg','Drive-thru elevation']]},
+    {n:'Insomnia Cookies',s:'Quick serve restaurant · Fresh Meadows, NY',note:'Store buildout in Fresh Meadows, New York, from the storefront to the service counter and back-of-house kitchen.',ph:[['insomnia-fm-1.jpg','Storefront'],['insomnia-fm-2.jpg','Service counter'],['insomnia-fm-3.jpg','Counter and display cases'],['insomnia-fm-4.jpg','Front of store'],['insomnia-fm-5.jpg','Back-of-house kitchen']]},
     {n:"McDonald's",s:'Quick serve restaurant',note:'Restaurant builds and remodels, including Auburn Hills and Bay City, Michigan and Chillicothe, Ohio.',ph:[['mcd-1.jpg','Restaurant exterior'],['mcd-2.jpg','Self-order kiosks'],['mcd-3.jpg','Dining room wall lettering'],['mcd-4.jpg','Dining room wall finishes']]},
     {n:'Home2 Suites',s:'Hotel',note:'Hotel construction and millwork installation in Fort Wayne.',ph:[['home2-1.jpg','Hotel exterior'],['home2-2.jpg','Illuminated bar front'],['home2-3.jpg','Indoor pool'],['home2-4.jpg','Lobby millwork during installation']]},
-    {n:'Insomnia Cookies',s:'Retail bakery',note:'Store buildouts, including Louisville, Kentucky and Philadelphia, Pennsylvania.',ph:[['insomnia-1.jpg','Storefront at night'],['insomnia-2.jpg','Service counter'],['insomnia-3.jpg','Counter and display cases'],['insomnia-4.jpg','Street frontage']]},
-    {n:'NextHealth',s:'Medical and wellness',note:'Wellness clinic interior buildout.',ph:[['nexthealth-1.jpg','Reception desk'],['nexthealth-2.jpg','IV lounge seating'],['nexthealth-3.jpg','Lounge and ceiling feature'],['nexthealth-4.jpg','Sauna room']]},
     {n:'Dogtopia',s:'Pet daycare',note:'Daycare, overnight and spa facility buildout.',ph:[['dogtopia-1.jpg','Storefront'],['dogtopia-2.jpg','Reception'],['dogtopia-3.jpg','Playroom'],['dogtopia-4.jpg','Corridor']]},
     {n:'Fit Body Boot Camp',s:'Fitness',note:'Fitness studio tenant improvement.',ph:[['fitbody-1.jpg','Exterior'],['fitbody-2.jpg','Training floor'],['fitbody-3.jpg','Glazed childcare room'],['fitbody-4.jpg','Reception desk']]},
     {n:'Earthwise Pet',s:'Retail',note:'Retail store buildouts, including Fuquay-Varina, North Carolina.',ph:[['earthwise-1.jpg','Storefront'],['earthwise-2.jpg','Sales floor and service counter'],['earthwise-3.jpg','Shelving fixtures']]}
