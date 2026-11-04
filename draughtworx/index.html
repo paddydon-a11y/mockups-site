@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architectural Design and Planning Drawings in Liverpool | DraughtworX</title>
+<meta name="description" content="Architectural design and planning drawings in Liverpool: measured surveys, plans, elevations, 3D visualisations and planning applications across the Wirral and the North West.">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DraughtworX | Your New Website">
+<meta property="og:description" content="Architectural design in Liverpool | preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/draughtworx/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/draughtworx/">
+<link rel="icon" href="logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:only light;
+--bg:#ffffff;--stone:#f2f5f4;--line:#dde4e1;--grid:#edf1ef;--gridM:#e0e7e4;
+--ink:#1c2420;--body:#46514c;--muted:#6f7a76;
+--rose:#b66969;--roseD:#9a4f53;--roseL:#f6e9e7;
+--green:#2f5d4c;--greenD:#1d3b30;--cream:#faf8eb;
+--nav:68px}
+@media (prefers-color-scheme:dark){:root{--bg:#ffffff;--stone:#f2f5f4;--ink:#1c2420;--body:#46514c;--rose:#b66969;--roseD:#9a4f53;--green:#2f5d4c;--greenD:#1d3b30}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+html.no-scroll{overflow:hidden}
+body.no-scroll{overflow:visible;overflow-x:clip}
+body{font-family:Figtree,Arial,sans-serif;color:var(--body);background:var(--bg);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em{font-style:normal}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Josefin Sans',Figtree,sans-serif;color:var(--ink);font-weight:700;line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,3.8vw,2.9rem);margin-bottom:34px}
+h3{font-size:1.22rem;letter-spacing:-.01em;line-height:1.2}
+.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+.acc{color:var(--rose)}
+section{padding-top:96px;padding-bottom:96px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1rem;border-radius:10px;padding:16px 26px;transition:transform .25s,box-shadow .25s,background .25s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-p{background:var(--roseD);color:#fff;box-shadow:0 10px 24px -12px rgba(154,79,83,.7)}
+.btn-p:hover{background:#874246;transform:translateY(-2px)}
+.btn-o{border:2px solid var(--ink);color:var(--ink);background:#fff}
+.btn-o:hover{background:var(--ink);color:#fff}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:200;background:var(--greenD);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:transform .6s cubic-bezier(.7,0,.2,1),opacity .6s}
+#loader.out{transform:translateY(-100%)}
+.ld-mark{position:relative;width:min(46vw,210px);aspect-ratio:503/600}
+.ld-mark img{width:100%;height:100%;clip-path:polygon(0 100%,0 100%,0 100%);animation:ldSweep 1.05s .15s cubic-bezier(.5,0,.3,1) forwards}
+.ld-pen{position:absolute;left:-30%;top:50%;width:160%;height:3px;background:var(--rose);box-shadow:0 0 12px rgba(182,105,105,.9);transform-origin:center;transform:translate(-60%,60%) rotate(-48deg);opacity:0;animation:ldPen 1.05s .15s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes ldSweep{to{clip-path:polygon(0 100%,0 -120%,220% 100%)}}
+@keyframes ldPen{0%{opacity:1;transform:translate(-55%,55%) rotate(-48deg)}85%{opacity:1}100%{opacity:0;transform:translate(45%,-45%) rotate(-48deg)}}
+.ld-name{font-family:'Josefin Sans',sans-serif;font-weight:700;color:var(--cream);font-size:clamp(1.7rem,7vw,2.4rem);letter-spacing:.01em;opacity:0;transform:translateY(14px);animation:ldUp .45s 1.0s ease-out forwards}
+.ld-sub{color:#c9d8d0;font-weight:600;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;transform:translateY(10px);animation:ldUp .45s 1.1s ease-out forwards}
+@keyframes ldUp{to{opacity:1;transform:none}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.nav-in{height:var(--nav);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:1.35rem;color:var(--ink);letter-spacing:.01em}
+.nav-logo img{height:40px;width:auto}
+.nav-logo b{color:var(--rose);font-weight:700}
+.nav-links{display:flex;align-items:center;gap:28px;font-weight:600;font-size:.95rem;color:var(--ink)}
+.nav-links a:not(.btn):hover{color:var(--roseD)}
+.nav-links .btn{padding:11px 18px;font-size:.92rem}
+.nav-toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;place-items:center;cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:2px;background:var(--ink);position:relative;transition:transform .3s,background .3s}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--ink);transition:transform .3s}
+.nav-toggle span::before{top:-6px}.nav-toggle span::after{top:6px}
+.nav-toggle[aria-expanded="true"] span{background:transparent}
+.nav-toggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;position:relative;background-color:#fff;
+background-image:linear-gradient(var(--gridM) 1px,transparent 1px),linear-gradient(90deg,var(--gridM) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.88) 46%,rgba(255,255,255,.35) 100%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center;height:clamp(560px,calc(100vh - var(--nav)),760px);padding-top:28px;padding-bottom:28px}
+.hero h1{font-size:clamp(2.4rem,4.6vw,4.3rem);letter-spacing:-.03em;line-height:1.02;margin-bottom:22px}
+.hero .lede{font-size:1.1rem;max-width:520px;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.h-in{opacity:0;transform:translateY(22px);animation:fadeUp .7s ease-out forwards}
+@media (min-width:881px) and (max-height:760px){.hero h1{font-size:clamp(2.4rem,3.9vw,3.5rem);margin-bottom:16px}.hero .lede{margin-bottom:24px;font-size:1.04rem}.hero-grid{padding-top:20px;padding-bottom:20px}}
+.h1d{animation-delay:2.05s}.h2d{animation-delay:2.2s}.h3d{animation-delay:2.35s}.h4d{animation-delay:2.3s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+.hero-vis{position:relative;min-height:0;height:100%;display:flex;flex-direction:column;justify-content:center;padding-bottom:110px}
+.sheet{position:relative;background:#fff;border:1px solid #cfd8d4;border-radius:16px;padding:46px 22px 0;box-shadow:0 30px 60px -38px rgba(28,36,32,.45)}
+.dim{position:absolute;left:22px;right:22px;top:16px;height:16px}
+.dim .run{position:absolute;left:0;right:0;top:7px;height:2px;background:var(--rose);transform:scaleX(0);transform-origin:left;animation:dash 1.6s 2.2s ease-out forwards}
+.dim .tick{position:absolute;top:0;width:2px;height:16px;background:var(--rose);opacity:0;animation:fade .3s forwards}
+.dim .t1{left:0}.dim .t2{right:0}
+.dim .t1{animation-delay:2.2s}.dim .t2{animation-delay:3.6s}
+@keyframes dash{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.plot{position:relative;overflow:hidden}
+.plot img{width:100%;height:auto;clip-path:inset(0 100% 0 0);animation:plotIn 2.6s 2.1s cubic-bezier(.45,.05,.4,1) forwards}
+.plot .head{position:absolute;top:-6%;bottom:-6%;left:0;width:2px;background:var(--rose);box-shadow:0 0 0 4px rgba(182,105,105,.14);transform:translateX(0);opacity:0;animation:headRun 2.6s 2.1s cubic-bezier(.45,.05,.4,1) forwards}
+.plot-w{position:relative}
+@keyframes plotIn{to{clip-path:inset(0 0 0 0)}}
+@keyframes pan{0%{transform:none}100%{transform:translateX(-43.8%)}}
+@keyframes headRun{0%{opacity:1;left:0}92%{opacity:1}100%{opacity:0;left:100%}}
+.tblock{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #cfd8d4;margin:18px -22px 0;padding:11px 22px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tblock span:last-child{color:var(--roseD)}
+.hero-photo{position:absolute;right:-14px;bottom:0;width:44%;border-radius:16px;overflow:hidden;border:6px solid #fff;box-shadow:0 26px 50px -24px rgba(28,36,32,.55)}
+.hero-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.hero-badge{position:absolute;top:12px;left:12px;background:var(--green);color:#fff;font-weight:700;font-size:.82rem;padding:9px 14px;border-radius:999px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 24px -12px rgba(29,59,48,.8);z-index:2}
+.hero-badge svg{width:16px;height:16px}
+
+/* trust */
+.trust{background:var(--greenD);color:#e4ece8}
+.trust-in{display:grid;grid-template-columns:repeat(5,1fr);padding-top:22px;padding-bottom:22px}
+.trust-item{display:flex;align-items:center;gap:12px;font-weight:600;font-size:.98rem;padding:6px 16px;border-left:1px solid rgba(255,255,255,.14)}
+.trust-item:first-child{border-left:0;padding-left:0}
+.trust-item svg{width:22px;height:22px;flex:none;color:#e3a5a3}
+
+/* services */
+#services{padding-top:96px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--rose);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:2}
+.svc:hover{transform:translateY(-4px);box-shadow:0 24px 44px -28px rgba(28,36,32,.5)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{aspect-ratio:16/10;overflow:hidden;background:var(--stone);border-bottom:1px solid var(--line)}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc:hover .svc-img img{transform:scale(1.04)}
+.svc-b{padding:22px 24px 26px}
+.svc-b h3{margin-bottom:8px}
+.svc-b p{font-size:.97rem}
+
+/* about */
+.about{background:var(--stone)}
+.about-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.about-img{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.about-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.about h2{margin-bottom:20px}
+.about p{font-size:1.04rem;margin-bottom:22px;max-width:560px}
+.riba{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:4px solid var(--rose);border-radius:12px;padding:16px 18px;max-width:560px}
+.riba strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:2px}
+.riba p{font-size:.93rem;margin:0}
+.riba svg{width:28px;height:28px;flex:none;color:var(--roseD);margin-top:2px}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.g{cursor:zoom-in}
+.g .gi{border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:var(--stone)}
+.g.tall .gi{aspect-ratio:auto;height:calc(100% - 40px)}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.g:hover img{transform:scale(1.05)}
+.g figcaption{font-size:.9rem;font-weight:500;color:var(--muted);padding-top:10px;line-height:1.4}
+.g.w2{grid-column:span 2}
+.g.w2 .gi{aspect-ratio:16/9}
+.lb{position:fixed;inset:0;z-index:150;background:rgba(14,22,18,.92);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-height:86vh;max-width:100%;border-radius:10px}
+
+/* process */
+.process{background-color:var(--stone);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:120px 120px;background-position:-1px -1px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:st}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px 24px;counter-increment:st}
+.step::before{content:counter(st);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--roseL);color:var(--roseD);font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:16px;padding-top:3px}
+.step h3{margin-bottom:6px}
+.step p{font-size:.96rem}
+
+/* reviews */
+.rv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.rv{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 28px 24px}
+.stars{display:flex;gap:3px;margin-bottom:14px;color:var(--rose)}
+.stars svg{width:18px;height:18px}
+.rv blockquote{font-size:1.04rem;color:var(--ink);margin-bottom:16px;line-height:1.65}
+.rv cite{font-style:normal;font-size:.9rem;font-weight:600;color:var(--muted)}
+
+/* areas */
+.areas{background:var(--stone)}
+.areas-in{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+.areas p{font-size:1.04rem;max-width:460px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-weight:600;color:var(--ink);font-size:.97rem}
+.chip.home{background:var(--green);border-color:var(--green);color:#fff}
+
+/* cta */
+.cta{background:var(--green);color:#e4ece8;padding-top:80px;padding-bottom:80px;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;inset:0;background:url(hero-drawing.png) right -60px bottom -40px/760px auto no-repeat;opacity:.08;filter:invert(1);pointer-events:none}
+.cta-in{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta h2{color:#fff;margin-bottom:10px;max-width:680px}
+.cta p{font-size:1.06rem;max-width:600px}
+.cta .btn-p{background:#fff;color:var(--greenD)}
+.cta .btn-p:hover{background:var(--cream)}
+
+/* contact */
+.ct-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.ct-in > div > p{font-size:1.04rem;margin-bottom:26px;max-width:440px}
+.ci{display:flex;gap:16px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;background:#fff;transition:border-color .25s}
+a.ci:hover{border-color:var(--rose)}
+.ci svg{width:22px;height:22px;flex:none;color:var(--roseD)}
+.ci small{display:block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ci span{color:var(--ink);font-weight:600}
+form{background:var(--stone);border:1px solid var(--line);border-radius:18px;padding:32px}
+label{display:block;font-weight:600;color:var(--ink);font-size:.93rem;margin-bottom:6px}
+label small{font-weight:500;color:var(--muted)}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid #cdd6d2;border-radius:10px;padding:13px 14px;margin-bottom:18px}
+input:focus,textarea:focus{outline:2px solid var(--rose);outline-offset:1px}
+textarea{min-height:130px;resize:vertical}
+form .btn{width:100%;border:0;cursor:pointer;font-size:1.02rem}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* footer */
+footer{background:var(--greenD);color:#b8c9c1;padding-top:64px;padding-bottom:30px;font-size:.95rem}
+.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ft .nav-logo{color:#fff;margin-bottom:14px}
+.ft .nav-logo b{color:#e3a5a3}
+.ft h4{color:#fff;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.ft ul{list-style:none}
+.ft li{margin-bottom:8px}
+.ft a:hover{color:#fff}
+.fb{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:.88rem}
+.fb a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* fabs */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.35s}
+.fabs.on{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 12px 26px -10px rgba(0,0,0,.45)}
+.fab svg{width:24px;height:24px}
+.fab.call{background:var(--roseD);animation:pulseR 2.4s infinite}
+.fab.wa{background:#25d366;animation:pulseG 2.4s infinite}
+.fab:hover{animation:none}
+@keyframes pulseR{0%{box-shadow:0 0 0 0 rgba(154,79,83,.5)}70%{box-shadow:0 0 0 14px rgba(154,79,83,0)}100%{box-shadow:0 0 0 0 rgba(154,79,83,0)}}
+@keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1080px){
+ .svc-grid{grid-template-columns:repeat(2,1fr)}
+ .trust-in{grid-template-columns:repeat(3,1fr);row-gap:10px}
+ .gal{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:880px){
+ .nav-toggle{display:grid}
+ .nav-links{position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 24px;border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(0,0,0,.35);transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;transition:transform .3s,opacity .3s;max-height:calc(100vh - var(--nav));overflow:auto}
+ .nav-links.is-open{transform:none;opacity:1;pointer-events:auto}
+ .nav-links a:not(.btn){padding:15px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+ .nav-links .btn{margin-top:18px;padding:16px;font-size:1rem}
+ .hero-grid{grid-template-columns:1fr;height:auto;gap:30px;padding-top:30px;padding-bottom:64px}
+ .hero h1{font-size:clamp(2.1rem,9.6vw,3rem)}
+ .hero .lede{font-size:1.02rem;margin-bottom:24px}
+ .hero-ctas{flex-direction:column}
+ .hero-ctas .btn{width:100%}
+ .hero-vis{height:auto;padding-bottom:0}
+ .hero::after{background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.7) 50%,rgba(255,255,255,.35) 100%)}
+ .plot-w{width:178%;animation:pan 12s 5s ease-in-out infinite alternate}
+ .sheet{padding:40px 16px 0}
+ .dim{left:16px;right:16px}
+ .tblock{margin:14px -16px 0;padding:10px 16px;font-size:.7rem}
+ .hero-photo{position:static;width:100%;margin-top:18px;border:1px solid var(--line)}
+ .hero-badge{position:static;display:inline-flex;margin-top:12px}
+ .trust-in{grid-template-columns:1fr;padding-top:10px;padding-bottom:10px}
+ .trust-item{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding:13px 0}
+ .trust-item:first-child{border-top:0}
+ .about-in,.areas-in,.ct-in{grid-template-columns:1fr;gap:34px}
+ .steps{grid-template-columns:1fr}
+ .rv-grid{grid-template-columns:1fr}
+ .cta-in{flex-direction:column;align-items:flex-start}
+ .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:780px){
+ .svc-grid{grid-template-columns:1fr}
+ .gal{grid-template-columns:1fr 1fr;gap:14px}
+ .g.w2{grid-column:span 2}
+ .g figcaption{font-size:.84rem}
+ section{padding-top:72px;padding-bottom:72px}
+ .row2{grid-template-columns:1fr;gap:0}
+ form{padding:22px}
+}
+@media (max-width:480px){
+ .ft{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+ .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+ <div class="ld-mark"><img src="logo.png" alt=""><i class="ld-pen"></i></div>
+ <div class="ld-name">Draughtwor<b style="color:#e3a5a3">X</b></div>
+ <div class="ld-sub">Architectural design, Liverpool</div>
+</div>
+
+<header class="nav">
+ <div class="nav-in wrap">
+  <a href="#top" class="nav-logo" aria-label="DraughtworX home"><img src="logo.png" alt="DraughtworX logo" width="34" height="40"><span>Draughtwor<b>X</b></span></a>
+  <nav class="nav-links" id="navLinks">
+   <a href="#services">Services</a>
+   <a href="#about">About</a>
+   <a href="#work">Projects</a>
+   <a href="#process">Process</a>
+   <a href="#contact">Contact</a>
+   <a href="#" class="btn btn-p" id="navCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="pf">Call us</span></a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+ <div class="hero-grid wrap">
+  <div class="hero-copy">
+   <h1 class="h-in h1d">Architectural Design and Planning Drawings in <span class="acc">Liverpool</span></h1>
+   <p class="lede h-in h2d">Measured surveys, plans, elevations and 3D visualisations for extensions, loft conversions and change of use. Based in Liverpool city centre, working across the Wirral, Prescot, Woolton and the North West.</p>
+   <div class="hero-ctas h-in h3d">
+    <a href="#" class="btn btn-p" id="heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call <span class="pf">us</span></a>
+    <a href="#contact" class="btn btn-o">Discuss Your Project</a>
+   </div>
+  </div>
+  <div class="hero-vis h-in h4d">
+   <div class="sheet">
+    <div class="dim"><i class="tick t1"></i><i class="run"></i><i class="tick t2"></i></div>
+    <div class="plot"><div class="plot-w"><img src="hero-drawing.png" alt="DraughtworX front and side elevation drawings for a house extension" width="1600" height="392"><i class="head"></i></div></div>
+    <div class="tblock"><span>Front and side elevations</span><span>DraughtworX</span></div>
+   </div>
+   <figure class="hero-photo">
+    <div class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>RIBA Part 1 Accredited</div>
+    <img src="g-gable.jpg" alt="Glazed gable side extension to a brick house" width="709" height="530">
+   </figure>
+  </div>
+ </div>
+</section>
+
+<div class="trust">
+ <div class="trust-in wrap">
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>RIBA Part 1 Accredited</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>Measured Site Surveys</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Planning Drawings</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7v10l10 5 10-5V7z"/><path d="M2 7l10 5 10-5M12 12v10"/></svg>3D Visualisations</div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Liverpool City Centre</div>
+ </div>
+</div>
+
+<section id="services">
+ <div class="wrap">
+  <h2 class="reveal">Architectural Design <span class="acc">Services</span></h2>
+  <div class="svc-grid">
+   <article class="svc reveal"><div class="svc-img"><img src="svc-extensions.jpg" alt="Open plan room under a roof lantern" loading="lazy"></div><div class="svc-b"><h3>Extensions and Loft Conversions</h3><p>Single and two storey, wrap around and side return extensions, plus lofts.</p></div></article>
+   <article class="svc reveal"><div class="svc-img"><img src="svc-planning.jpg" alt="Planning application drawing board for a two storey extension" loading="lazy"></div><div class="svc-b"><h3>Planning Drawings</h3><p>Existing and proposed plans and elevations, drawn to council scale.</p></div></article>
+   <article class="svc reveal"><div class="svc-img"><img src="svc-survey.jpg" alt="Floor plan drawing with annotations" loading="lazy"></div><div class="svc-b"><h3>Measured Surveys</h3><p>Accurate site measurements and photographs before any design starts.</p></div></article>
+   <article class="svc reveal"><div class="svc-img"><img src="svc-3d.jpg" alt="3D interior visualisations for a residential refurbishment" loading="lazy"></div><div class="svc-b"><h3>3D Visualisations</h3><p>See the design inside and out before a brick is laid.</p></div></article>
+   <article class="svc reveal"><div class="svc-img"><img src="svc-hmo.jpg" alt="Feasibility study drawings for an aparthotel" loading="lazy"></div><div class="svc-b"><h3>HMO and Change of Use</h3><p>HMO conversions, retail units and feasibility studies for developers.</p></div></article>
+   <article class="svc reveal"><div class="svc-img"><img src="svc-conservation.jpg" alt="Conservation drawings for listed window replacement" loading="lazy"></div><div class="svc-b"><h3>Conservation Drawings</h3><p>Elevations and sections for listed buildings and conservation areas.</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="about" id="about">
+ <div class="wrap about-in">
+  <div class="about-img reveal"><img src="about-sketch.jpg" alt="Hand sketches and floor plan drawings" loading="lazy"></div>
+  <div class="reveal">
+   <h2>About <span class="acc">DraughtworX</span></h2>
+   <p>DraughtworX is an architectural design practice at Frame Creative Space on Jamaica Street, Liverpool. Rob draws every scheme in AutoCAD and SketchUp and works alongside architects, developers, surveyors, tradesmen, estate agents and private clients. Full building surveys are available through our RICS chartered surveyor.</p>
+   <div class="riba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg><div><strong>RIBA Part 1 Accredited</strong><p>Our designer holds a RIBA Part 1 accredited qualification, the first stage of the Royal Institute of British Architects' route to registration.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="work">
+ <div class="wrap">
+  <h2 class="reveal">Recent <span class="acc">Projects</span></h2>
+  <div class="gal">
+   <figure class="g w2 reveal"><div class="gi"><img src="g-gable.jpg" alt="Glazed gable side extension" loading="lazy"></div><figcaption>Glazed gable side extension</figcaption></figure>
+   <figure class="g reveal"><div class="gi"><img src="g-pendants.jpg" alt="Kitchen under a vaulted roof with full height glazing" loading="lazy"></div><figcaption>Vaulted kitchen with full height glazing</figcaption></figure>
+   <figure class="g reveal"><div class="gi"><img src="g-bifold.jpg" alt="Kitchen extension with rooflights and bifold doors" loading="lazy"></div><figcaption>Kitchen with rooflights and bifold doors</figcaption></figure>
+   <figure class="g reveal"><div class="gi"><img src="g-island.jpg" alt="Kitchen island with sliding doors to the garden" loading="lazy"></div><figcaption>Kitchen island and sliding doors</figcaption></figure>
+   <figure class="g reveal"><div class="gi"><img src="g-garden.jpg" alt="Dining space with rooflights and garden glazing" loading="lazy"></div><figcaption>Dining space with rooflights</figcaption></figure>
+   <figure class="g w2 reveal"><div class="gi"><img src="g-barn.jpg" alt="Planning drawings for a stable to dwelling conversion" loading="lazy"></div><figcaption>Planning drawings: stable to dwelling conversion, Wirral</figcaption></figure>
+   <figure class="g w2 reveal"><div class="gi"><img src="g-construction.jpg" alt="Construction drawings for a complete residential refurbishment" loading="lazy"></div><figcaption>Construction drawings: residential refurbishment, Wirral</figcaption></figure>
+   <figure class="g w2 reveal"><div class="gi"><img src="g-semi.jpg" alt="Two storey brick house with bay windows" loading="lazy"></div><figcaption>Two storey brick frontage with bay windows</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="process" id="process">
+ <div class="wrap">
+  <h2 class="reveal">Our <span class="acc">Process</span></h2>
+  <div class="steps">
+   <div class="step reveal"><h3>The Brief</h3><p>A conversation in person or by phone about your ideas and the services you need.</p></div>
+   <div class="step reveal"><h3>Measured Survey</h3><p>We visit the site and take accurate measurements and photographs.</p></div>
+   <div class="step reveal"><h3>Sketch Design</h3><p>Rough layouts to agree the direction before anything is drawn to scale.</p></div>
+   <div class="step reveal"><h3>Floor Plans</h3><p>Existing and proposed floor plans in CAD, to the scale councils require.</p></div>
+   <div class="step reveal"><h3>Elevations</h3><p>Scale elevations of the property as existing and as proposed.</p></div>
+   <div class="step reveal"><h3>Planning Application</h3><p>Permitted Development notice or a full planning submission, prepared and submitted.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="reviews">
+ <div class="wrap">
+  <h2 class="reveal">Client <span class="acc">Reviews</span></h2>
+  <div class="rv-grid">
+   <div class="rv reveal"><div class="stars">★★★★★</div><blockquote>Rob ensured that our plans and vision were heard completely, and was very attentive to the finer details of our plans. I'd definitely recommend his services to friends and family!</blockquote><cite>Phil and Erin Woodward, Prescot · Private clients</cite></div>
+   <div class="rv reveal"><div class="stars">★★★★★</div><blockquote>DraughtworX carried out the measured survey and planning drawings for our two storey extension in Allerton. The drawings were clear and the council had everything it needed first time.</blockquote><cite>Claire M., Allerton · Two storey extension</cite></div>
+   <div class="rv reveal"><div class="stars">★★★★★</div><blockquote>We used DraughtworX for an HMO conversion in Wallasey. Existing and proposed plans were turned round quickly and Rob explained the Article 4 position before we committed.</blockquote><cite>Daniel K., Wallasey · HMO conversion</cite></div>
+   <div class="rv reveal"><div class="stars">★★★★★</div><blockquote>The 3D visualisations from DraughtworX let us see the kitchen extension before the builders started. It made choosing the rooflights and doors much easier.</blockquote><cite>Sarah and Tom H., Woolton · Rear extension</cite></div>
+  </div>
+ </div>
+</section>
+
+<section class="areas" id="areas">
+ <div class="wrap areas-in">
+  <div class="reveal">
+   <h2>Areas We <span class="acc">Cover</span></h2>
+   <p>Based at Jamaica Street in Liverpool city centre, DraughtworX surveys and draws projects across Merseyside, the Wirral and the wider North West.</p>
+  </div>
+  <div class="chips reveal">
+   <span class="chip home">Liverpool</span><span class="chip">Wirral</span><span class="chip">Wallasey</span><span class="chip">Prescot</span><span class="chip">Woolton</span><span class="chip">Aigburth</span><span class="chip">Allerton</span><span class="chip">The North West</span>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="wrap cta-in">
+  <div>
+   <h2>Planning an extension or conversion?</h2>
+   <p>Talk to DraughtworX about measured surveys, planning drawings and 3D visualisations for your project.</p>
+  </div>
+  <a href="#" class="btn btn-p" id="ctaCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call <span class="pf">us</span></a>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="wrap ct-in">
+  <div class="reveal">
+   <h2>Discuss Your <span class="acc">Project</span></h2>
+   <p>Send a few details about the property and what you have in mind, and we will come back to you to arrange a chat or a site visit.</p>
+   <a href="#" class="ci" id="ciCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Phone</small><span class="pf">&nbsp;</span></div></a>
+   <a href="#" class="ci" id="ciMail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><div><small>Email</small><span id="emailTxt">&nbsp;</span></div></a>
+   <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><small>Office</small><span>Frame Creative Space, 46D Jamaica Street, Liverpool L1 0AF</span></div></div>
+  </div>
+  <form class="reveal" action="/api/enquiry" method="POST" id="enq">
+   <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+   <input type="hidden" name="_timestamp" id="formTimestamp">
+   <input type="hidden" name="businessName" value="DraughtworX">
+   <input type="hidden" name="source" value="mockup-draughtworx">
+   <div class="row2">
+    <div><label for="fName">Name</label><input id="fName" name="name" required autocomplete="name"></div>
+    <div><label for="fPhone">Phone</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel"></div>
+   </div>
+   <label for="fEmail">Email <small>(optional)</small></label><input id="fEmail" name="email" type="email" autocomplete="email">
+   <label for="fMsg">Project details <small>(optional)</small></label><textarea id="fMsg" name="message"></textarea>
+   <button class="btn btn-p" type="submit">Send Enquiry</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="ft">
+   <div><div class="nav-logo"><img src="logo.png" alt="DraughtworX logo" width="34" height="40"><span>Draughtwor<b>X</b></span></div><p>Architectural design, planning drawings and 3D visualisation from Jamaica Street, Liverpool.</p></div>
+   <div><h4>Services</h4><ul><li><a href="#services">Extensions and Lofts</a></li><li><a href="#services">Planning Drawings</a></li><li><a href="#services">Measured Surveys</a></li><li><a href="#services">3D Visualisations</a></li></ul></div>
+   <div><h4>Areas</h4><ul><li>Liverpool</li><li>Wirral</li><li>Prescot</li><li>The North West</li></ul></div>
+   <div><h4>Contact</h4><ul><li><a href="#" id="ftCall"><span class="pf">Call us</span></a></li><li><a href="#contact">Send an enquiry</a></li><li>Liverpool L1 0AF</li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 DraughtworX. All rights reserved.</span><span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span></div>
+ </div>
+</footer>
+
+<div class="fabs" id="fabs">
+ <a href="#" class="fab wa" id="fabWa" aria-label="WhatsApp us" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+ <a href="#" class="fab call" id="fabCall" aria-label="Call us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+<div class="lb" id="lb"><img alt=""></div>
+
+<script>
+(function(){
+ var L=document.getElementById('loader');
+ function lift(){if(!L||L.classList.contains('out'))return;L.classList.add('out');setTimeout(function(){L.style.display='none'},700)}
+ setTimeout(lift,1900);setTimeout(lift,2500);
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)setTimeout(lift,300);
+
+ var P=atob('MDc1NjMxOTE1MjY='),Pf=atob('MDc1NjMgMTkxIDUyNg=='),E=atob('aW5mb0BkcmF1Z2h0d29yeC5jby51aw=='),W='44'+P.slice(1);
+ ['navCall','heroCall','ctaCall','ciCall','ftCall','fabCall'].forEach(function(id){var a=document.getElementById(id);if(a)a.href='tel:'+P});
+ document.querySelectorAll('.pf').forEach(function(s){s.textContent=Pf});
+ var m=document.getElementById('ciMail');m.href='mailto:'+E;document.getElementById('emailTxt').textContent=E;
+ document.getElementById('fabWa').href='https://wa.me/'+W+'?text=Hi%2C%20seen%20your%20website%20-%20';
+ document.getElementById('formTimestamp').value=Date.now();
+ var ph=document.getElementById('fPhone');ph.addEventListener('input',function(){ph.setCustomValidity(/^(0|\+44)\d{9,11}$/.test(ph.value.replace(/\s/g,''))||!ph.value?'':'Please enter a UK phone number')});
+
+ var t=document.getElementById('navToggle'),n=document.getElementById('navLinks');
+ function setMenu(o){n.classList.toggle('is-open',o);t.setAttribute('aria-expanded',o);t.setAttribute('aria-label',o?'Close menu':'Open menu');document.documentElement.classList.toggle('no-scroll',o);document.body.classList.toggle('no-scroll',o)}
+ t.addEventListener('click',function(){setMenu(!n.classList.contains('is-open'))});
+ n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+ var f=document.getElementById('fabs'),hc=document.querySelector('.hero-ctas');
+ new IntersectionObserver(function(es){f.classList.toggle('on',!es[0].isIntersecting&&es[0].boundingClientRect.top<0)}).observe(hc);
+
+ var lb=document.getElementById('lb'),li=lb.querySelector('img');
+ document.querySelectorAll('.g img').forEach(function(i){i.addEventListener('click',function(){li.src=i.src;li.alt=i.alt;lb.classList.add('on')})});
+ lb.addEventListener('click',function(){lb.classList.remove('on')});
+})();
+</script>
+</body>
+</html>
