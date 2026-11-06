@@ -538,7 +538,7 @@ footer a:hover{color:#fff}
   var dots=document.querySelectorAll('#dots i'),di=-1,dt;
   function dot(){di=(di+1)%4;dots.forEach(function(d,i){d.classList.remove('on');if(i===di){void d.offsetWidth;d.classList.add('on')}})}
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    hv.src=land?'hero-l.mp4':'hero-p.mp4';
+    hv.src=land?'hero-landscape.mp4':'hero-portrait.mp4';
     hv.addEventListener('playing',function(){hp.style.opacity=0;if(!dt){dot();dt=setInterval(function(){if(!hv.paused)dot()},2700)}});
     hv.addEventListener('seeked',function(){di=-1;dot()});
     var pr=hv.play();if(pr&&pr.catch)pr.catch(function(){});
