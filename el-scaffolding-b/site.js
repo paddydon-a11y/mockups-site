@@ -24,10 +24,10 @@
   }
 
   // call FAB appears once the hero buttons have scrolled away
-  var fab = document.querySelector('.fab-call'), heroCta = document.querySelector('.hero-cta');
+  var fab = document.querySelector('.fab-call'), fabWa = document.querySelector('.bhero') ? document.querySelector('.fab-wa') : null, heroCta = document.querySelector('.hero-cta');
   if (fab && heroCta && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function(en){ fab.classList.toggle('show', !en[0].isIntersecting && en[0].boundingClientRect.top < 0); }).observe(heroCta);
-  } else if (fab) { fab.classList.add('show'); }
+    new IntersectionObserver(function(en){ var past = !en[0].isIntersecting && en[0].boundingClientRect.top < 0; fab.classList.toggle('show', past); if (fabWa) fabWa.classList.toggle('show', past); }).observe(heroCta);
+  } else if (fab) { fab.classList.add('show'); if (fabWa) fabWa.classList.add('show'); }
 
   // reveals
   var rv = document.querySelectorAll('.reveal');
