@@ -65,6 +65,9 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
 .btn-ghost:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
 .btn-light{border:2px solid rgba(255,255,255,.7);color:#fff}
 .btn-light:hover{background:#fff;color:var(--navy)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa svg{fill:#fff}
+.btn-wa:hover{background:#1fb457;transform:translateY(-2px)}
 
 /* render coats divider */
 .coats{display:grid;gap:3px;width:100%}
@@ -136,8 +139,9 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
 
 /* trust */
 .trust{background:#fff;padding-top:0;padding-bottom:28px}
-.trust-in{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line2)}
-.trust-item{display:flex;align-items:center;gap:12px;padding-top:22px;padding-bottom:4px;font:600 .98rem/1.25 Inter,Arial,sans-serif;color:var(--navy)}
+.trust-in{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line2);padding-top:22px}
+.trust-item{display:flex;align-items:center;justify-content:center;gap:10px;padding:4px 12px;text-align:left;font:600 .95rem/1.25 Inter,Arial,sans-serif;color:var(--navy)}
+.trust-item+.trust-item{border-left:1px solid var(--line)}
 .trust-item svg{width:26px;height:26px;flex:none;stroke:var(--orange)}
 
 /* services */
@@ -306,7 +310,6 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
 .ba-feature .ba-cap{margin-top:4px}
 @media (max-width:1080px){
   .svc-grid{grid-template-columns:repeat(2,1fr)}
-  .trust-in{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:880px){
   .nav-in{height:64px}
@@ -324,12 +327,14 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
   .ba{flex:none;aspect-ratio:16/11}
   .ba-labels{font-size:.72rem}
   .trust{padding-top:0;padding-bottom:12px;background:#fff}
-  .trust-in{grid-template-columns:1fr}
+  .trust-in{grid-template-columns:1fr;padding-top:0;border-top:0}
   .kb{height:calc(100svh - 64px);min-height:520px}
   .kb-img img{object-position:42% 40%}
   .kb h1{font-size:clamp(2.6rem,12.6vw,3.6rem);font-stretch:semi-condensed}
   .kb-copy{padding-bottom:36px}
   .kb .lede{font-size:.98rem;margin:14px 0 20px}
+  .kb .hero-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .kb .hero-ctas .btn-light{grid-column:span 2}
   .cm{height:140px}
   .fin{width:34%}.flt{width:56%}.scr{width:78%}
   .cm-labels{text-transform:none;letter-spacing:0;font-size:.78rem}
@@ -337,7 +342,8 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
   .cm-labels span{padding-left:6px}
   .cm-labels em{display:none}
   .ba-feature .ba{aspect-ratio:16/11}
-  .trust-item{padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .trust-item{justify-content:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .trust-item+.trust-item{border-left:0}
   .sec{padding-top:72px;padding-bottom:72px}
   #services{padding-top:56px}
   .svc-grid{grid-template-columns:1fr}
@@ -392,6 +398,7 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
     <p class="lede">Domestic and commercial plastering, rendering, K Rend and Tyrolean from our base in Bootle, across Liverpool, Merseyside and the North West.</p>
     <div class="hero-ctas" id="heroCtas">
       <a class="btn btn-primary js-call" href="#"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call Jay</a>
+      <a class="btn btn-wa" id="heroWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>WhatsApp</a>
       <a class="btn btn-light" href="#contact">Get a Free Quote</a>
     </div>
   </div>
@@ -601,6 +608,7 @@ h3{font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
   document.querySelectorAll('.js-num').forEach(function(s){ s.textContent = Pf; });
   document.getElementById('fabWa').href = WA;
   document.getElementById('waCard').href = WA;
+  document.getElementById('heroWa').href = WA;
   document.getElementById('formTimestamp').value = Date.now();
 
   var ph = document.getElementById('fPhone');
