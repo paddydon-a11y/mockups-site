@@ -61,11 +61,12 @@ h3{font-size:1.2rem;letter-spacing:-.01em}
 .btn-ow:hover{background:#fff;color:var(--ink)}
 
 /* loader */
-#loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .45s ease,visibility .45s}
+#loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transition:opacity .45s ease,visibility .45s}
 #loader.gone{opacity:0;visibility:hidden}
-#loader img{width:min(46vw,200px);height:auto;opacity:0;transform:scale(.94);animation:ldLogo .75s .1s cubic-bezier(.2,.7,.2,1) forwards}
-#loader .ld-rule{width:120px;height:4px;background:var(--yellow);border-radius:2px;transform:scaleX(0);animation:ldRule .45s .8s ease-out forwards}
-#loader .ld-place{color:#fff;font-weight:600;font-size:.95rem;letter-spacing:.04em;opacity:0;animation:ldFade .4s 1.05s ease forwards}
+#loader{--ld:min(46vw,200px)}
+#loader img{width:var(--ld);height:auto;opacity:0;transform:scale(.94);animation:ldLogo .75s .1s cubic-bezier(.2,.7,.2,1) forwards}
+#loader .ld-rule{position:relative;margin-top:calc(var(--ld) * -.2);width:120px;height:4px;background:var(--yellow);border-radius:2px;transform:scaleX(0);animation:ldRule .45s .8s ease-out forwards}
+#loader .ld-place{margin-top:16px;color:#fff;font-weight:600;font-size:.95rem;letter-spacing:.04em;opacity:0;animation:ldFade .4s 1.05s ease forwards}
 @keyframes ldLogo{to{opacity:1;transform:scale(1)}}
 @keyframes ldRule{to{transform:scaleX(1)}}
 @keyframes ldFade{to{opacity:1}}
