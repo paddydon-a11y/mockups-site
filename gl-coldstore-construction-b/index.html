@@ -125,32 +125,6 @@ html.ld #loader{display:flex}
 .hero-copy h1{animation-delay:.1s}.hero-copy p{animation-delay:.25s}.hero-copy .hero-ctas{animation-delay:.4s}
 html.ld .hero-copy > *{animation-play-state:paused}
 
-/* the coldstore doorway */
-.doorway{position:relative;height:100%;min-height:0;display:flex;flex-direction:column}
-.rail{height:16px;margin:0 -26px 0 0;border-radius:3px;background:linear-gradient(#fdfefe,#c6cfd3 55%,#9aa6ab);box-shadow:0 2px 0 rgba(15,38,41,.12);position:relative;z-index:3}
-.rail:before,.rail:after{content:"";position:absolute;top:4px;width:8px;height:8px;border-radius:50%;background:#7f8d92}
-.rail:before{left:18%}.rail:after{left:78%}
-.opening{position:relative;flex:1;min-height:0;border:12px solid #fff;outline:1px solid var(--line2);box-shadow:0 30px 60px -36px rgba(14,58,62,.55),inset 0 0 0 1px var(--line);border-radius:4px;overflow:hidden;background:var(--spruce2)}
-.opening img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 2.4s cubic-bezier(.2,.7,.2,1) .2s}
-.door{position:absolute;inset:0;z-index:2;transform:translateX(0);transition:transform 1.5s cubic-bezier(.65,0,.25,1);
-  background:
-   linear-gradient(90deg,rgba(255,255,255,.0) 0,rgba(255,255,255,.35) 18%,rgba(255,255,255,0) 40%,rgba(255,255,255,.25) 72%,rgba(255,255,255,0) 100%),
-   repeating-linear-gradient(90deg,#e9edef 0 2px,#dfe5e8 2px 3px,#e6eaec 3px 5px),
-   #e4e9eb;border-left:1px solid #b8c2c6}
-.door:before{content:"";position:absolute;left:0;right:0;bottom:0;height:24%;border-top:2px solid #b4bec2;
-  background:
-   repeating-linear-gradient(45deg,transparent 0 9px,rgba(120,134,140,.45) 9px 11px,transparent 11px 20px),
-   repeating-linear-gradient(-45deg,transparent 0 9px,rgba(255,255,255,.55) 9px 11px,transparent 11px 20px),
-   linear-gradient(#cfd6d9,#b9c2c6)}
-.door .handle{position:absolute;left:22px;top:30%;width:12px;height:30%;border-radius:6px;background:linear-gradient(90deg,var(--amber-h),var(--amber) 45%,#ffc77d);box-shadow:3px 4px 10px -3px rgba(0,0,0,.35)}
-.door .seal{position:absolute;left:0;top:0;bottom:0;width:7px;background:#2c3a3d}
-.mist{position:absolute;left:-10%;right:-10%;bottom:-8%;height:40%;z-index:1;pointer-events:none;opacity:0;
-  background:radial-gradient(ellipse at 30% 80%,rgba(255,255,255,.75),transparent 60%),radial-gradient(ellipse at 70% 90%,rgba(255,255,255,.6),transparent 55%)}
-.hero.open .door{transform:translateX(90%)}
-.hero.open .opening img{transform:scale(1)}
-.hero.open .mist{animation:mist 3.2s .5s ease-out forwards}
-@keyframes mist{0%{opacity:0;transform:translateX(-12%) scaleY(.6)}35%{opacity:.85}100%{opacity:0;transform:translateX(10%) scaleY(1.15)}}
-
 /* trust */
 .trust{border-bottom:1px solid var(--line);background:#fff}
 .trust-in{display:grid;grid-template-columns:repeat(5,1fr);padding-top:26px;padding-bottom:26px}
@@ -282,51 +256,98 @@ footer a:hover{color:var(--amber)}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
 
-/* B hero: full bleed marquee of their build */
-.bhero{position:relative;min-height:calc(100svh - 76px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--spruce2)}
-.mq{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;padding-top:10px}
-.mq-row{flex:1;min-height:0;overflow:hidden}
-.mq-track{display:flex;gap:10px;height:100%;width:max-content;animation:mqL 70s linear infinite}
-.r2 .mq-track{animation-name:mqR;animation-duration:80s}
-.mq-track i{height:100%;flex:0 0 auto;border-radius:4px;overflow:hidden}
-.mq-track img{height:100%;width:auto;display:block}
-.mq.paused .mq-track{animation-play-state:paused}
-html.ld .mq-track{animation-play-state:paused}
-@keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.mq{opacity:0;transform:scale(1.06);transition:opacity 1s,transform 1.6s cubic-bezier(.2,.7,.2,1)}
-.bhero.open .mq{opacity:1;transform:none}
-.bh-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,#0a2a2d 0%,rgba(10,42,45,.9) 30%,rgba(10,42,45,.5) 52%,rgba(10,42,45,.12) 78%,rgba(10,42,45,.05) 100%)}
-.bh-copy{position:relative;z-index:2;padding-top:120px;padding-bottom:56px}
-.bh-copy h1{color:#fff;font-size:clamp(2.6rem,6.4vw,6rem);letter-spacing:-.045em;line-height:1.02;max-width:12.5em;margin-bottom:20px}
+/* ===== B: photo-first crossfade hero ===== */
+.bhero{background:var(--spruce2);display:flex;flex-direction:column}
+.xf{position:relative;height:max(300px,calc(100vh - 76px - 320px));overflow:hidden;background:var(--spruce2)}
+.xf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity 1.3s ease}
+.xf img.on{opacity:1;animation:push 7s linear forwards}
+@keyframes push{from{transform:scale(1.12)}to{transform:scale(1)}}
+html.ld .xf img.on{animation-play-state:paused}
+.xf-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,42,45,.85),rgba(10,42,45,0) 38%);pointer-events:none}
+.xf-bars{position:absolute;left:0;right:0;bottom:18px;display:flex;gap:8px;max-width:1220px;margin:0 auto;padding:0 24px}
+.xf-bars i{flex:1;height:3px;background:rgba(255,255,255,.3);border-radius:2px;overflow:hidden;position:relative}
+.xf-bars i:after{content:"";position:absolute;inset:0;background:var(--amber);transform:scaleX(0);transform-origin:left}
+.xf-bars i.done:after{transform:none}
+.xf-bars i.on:after{animation:bar 4.8s linear forwards}
+html.ld .xf-bars i.on:after{animation-play-state:paused}
+@keyframes bar{to{transform:none}}
+.bh-panel{background:var(--spruce2);position:relative}
+.bh-panel:before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px);background-size:132px 100%;pointer-events:none}
+.bh-copy{position:relative;display:grid;grid-template-columns:1.7fr 1fr;gap:48px;align-items:end;padding-top:34px;padding-bottom:40px}
+.bh-copy h1{color:#fff;font-size:clamp(2.4rem,4.1vw,4rem);letter-spacing:-.045em;line-height:1.02}
 .bh-copy h1 .ac{color:var(--amber)}
-.bh-copy p{color:#d3e3e4;font-size:1.12rem;max-width:36em;margin-bottom:28px}
-.bh-copy > *{opacity:0;transform:translateY(26px);animation:fadeUp .8s forwards}
-.bh-copy h1{animation-delay:.1s}.bh-copy p{animation-delay:.3s}.bh-copy .hero-ctas{animation-delay:.45s}
+.bh-side p{color:#cfe0e1;margin-bottom:22px;font-size:1.06rem}
+.bh-copy > *{opacity:0;transform:translateY(24px);animation:fadeUp .8s forwards}
+.bh-copy .bh-side{animation-delay:.25s}
 html.ld .bh-copy > *{animation-play-state:paused}
-@media (min-width:881px){.bhero{min-height:max(86vh,620px)}.mq-row:first-child{flex:1.15}}
+/* ===== B: trade moment CAM LOCKED ===== */
+.tm{background:#fff;padding-top:70px;padding-bottom:10px}
+.tm-stage{position:relative;max-width:760px;margin:0 auto;padding:30px 0}
+.tm-panels{position:relative;height:84px}
+.tp{position:absolute;top:0;height:84px;width:50%;background:
+  linear-gradient(#dfe5e8 0 7px,transparent 7px calc(100% - 7px),#dfe5e8 calc(100% - 7px)),
+  radial-gradient(circle at 30% 40%,rgba(255,255,255,.35) 0 2px,transparent 2.5px) 0 0/14px 12px,
+  radial-gradient(circle at 70% 70%,rgba(154,90,11,.18) 0 2px,transparent 2.5px) 0 0/18px 16px,
+  linear-gradient(#f6c27a,#f0a03c)}
+.tp-l{left:0;border-radius:4px 0 0 4px;transform:translateX(-26%);transition:transform 1s cubic-bezier(.3,1.1,.4,1)}
+.tp-r{right:0;border-radius:0 4px 4px 0;transform:translateX(26%);transition:transform 1s cubic-bezier(.3,1.1,.4,1)}
+.tongue{position:absolute;right:-14px;top:26px;width:14px;height:32px;background:linear-gradient(#f6c27a,#f0a03c);border-radius:0 3px 3px 0}
+.groove{position:absolute;left:0;top:26px;width:14px;height:32px;background:#e4ebed;border-radius:0 3px 3px 0}
+.tm.go .tp-l,.tm.go .tp-r{transform:none}
+.cam{position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--spruce);box-shadow:0 0 0 4px #fff;opacity:0;transform:scale(.4);transition:opacity .3s 1s,transform .35s 1s}
+.cam i{position:absolute;left:50%;top:50%;width:22px;height:5px;margin:-2.5px 0 0 -11px;background:var(--amber);border-radius:3px;transform:rotate(-90deg);transition:transform .45s 1.35s cubic-bezier(.4,1.6,.5,1)}
+.tm.go .cam{opacity:1;transform:none}
+.tm.go .cam i{transform:rotate(0)}
+.frost{height:14px;margin-top:6px;border-radius:3px;background:
+  radial-gradient(circle,#ffffff 0 1.5px,transparent 2px) 0 0/9px 7px,
+  linear-gradient(90deg,#cfe9f3,#e9f6fb 50%,#cfe9f3);clip-path:inset(0 100% 0 0);transition:clip-path 1.4s cubic-bezier(.4,0,.2,1) 1.8s}
+.tm.go .frost{clip-path:inset(0 0 0 0)}
+.tm-lab{display:block;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.tm-cold{margin:10px 0 0;text-align:right;color:#3f7d93}
+.tm-cap{text-align:center;color:var(--head);font-family:var(--disp);font-weight:700;font-size:1.15rem;margin-top:22px}
+/* ===== B: pinned steps ===== */
+.pin-wrap{height:340vh;position:relative}
+.pin{position:sticky;top:76px;height:calc(100vh - 76px);display:flex;align-items:center;overflow:hidden}
+.pin-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;width:100%}
+.pin-text h2{margin-bottom:26px}
+.pin-list{list-style:none;display:grid;gap:6px}
+.pin-list li{display:flex;gap:16px;padding:14px 16px;border-radius:8px;opacity:.45;transition:opacity .4s,background .4s}
+.pin-list li.on{opacity:1;background:#fff;box-shadow:0 14px 30px -24px rgba(14,58,62,.5)}
+.pin-list .num{flex:0 0 36px;height:36px;border-radius:50%;background:var(--line);color:var(--head);display:grid;place-items:center;font-family:var(--disp);font-weight:800;transition:background .4s}
+.pin-list li.on .num{background:var(--amber);color:var(--spruce2)}
+.pin-list h3{margin-bottom:2px}
+.pin-list p{font-size:.95rem}
+.pin-bar{height:3px;background:var(--line);margin-top:18px;border-radius:2px;overflow:hidden}
+.pin-bar i{display:block;height:100%;background:var(--amber);transform:scaleX(0);transform-origin:left}
+.pin-figs{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--spruce)}
+.pin-figs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s,transform 1.2s}
+.pin-figs img.on{opacity:1;transform:none}
+.rm-steps{display:none}
 @media (max-width:880px){
-  .mq{bottom:auto;gap:8px;padding-top:8px}
-  .mq-row{flex:none;height:min(30svh,230px)}
-  .mq-track{gap:8px}
+  .bh-copy{grid-template-columns:1fr;gap:16px;padding-top:24px;padding-bottom:40px}
+  .xf{height:min(46svh,420px)}
+  .pin-grid{grid-template-columns:1fr;gap:16px}
+  .pin-text{display:contents}
+  .pin-text h2{order:0;margin-bottom:0;font-size:1.75rem}
+  .pin-figs{order:1;aspect-ratio:16/11}
+  .pin-list{order:2}
+  .pin-bar{order:3;margin-top:4px}
+  .pin-list li{display:none;padding:4px 0;background:none!important;box-shadow:none!important}
+  .pin-list li.on{display:flex}
 }
 @media (max-width:560px){
-  .bh-copy{padding-top:90px;padding-bottom:36px}
-  .bh-copy h1{font-size:2.55rem}
-  .bh-copy p{font-size:1rem;line-height:1.6;margin-bottom:22px}
-  .hero-ctas .btn{padding:14px 20px}
+  .bh-copy h1{font-size:2.3rem}
+  .bh-side p{font-size:1rem;line-height:1.6;margin-bottom:18px}
+  .tm{padding-top:50px}
+  .tm-panels,.tp{height:64px}
+  .tongue,.groove{top:18px;height:28px;width:12px}
+  .tongue{right:-12px}
 }
-/* bit: tilt cards */
-.svc-grid{perspective:1100px}
-.svc.tilt{transition:transform .12s ease-out,box-shadow .25s;will-change:transform}
-.svc.tilt .svc-media img,.svc.tilt .svc-media svg{transition:transform .12s ease-out}
-/* bit: photo stack gallery */
-.gal .gi{transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .5s;position:relative}
-.gal.stacked .gi{transform:translate(var(--sx),var(--sy)) rotate(var(--sr));}
-.gal.stacked .gi figcaption{opacity:0}
-.gi figcaption{transition:opacity .5s .6s}
-.gal .gi figure{box-shadow:0 18px 30px -22px rgba(10,42,45,.6);background:#fff}
-@media (prefers-reduced-motion:reduce){.mq{opacity:1;transform:none}.gal.stacked .gi{transform:none}.gal.stacked .gi figcaption{opacity:1}.bh-copy > *{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .pin-wrap{display:none}.rm-steps{display:block}
+  .tp-l,.tp-r{transform:none}.cam{opacity:1;transform:none}.cam i{transform:none}.frost{clip-path:none}
+  .bh-copy > *{opacity:1;transform:none}
+}
 
 @media (max-width:1080px){
   .svc-grid{grid-template-columns:1fr 1fr}
@@ -412,17 +433,24 @@ html.ld .bh-copy > *{animation-play-state:paused}
 
 <main>
 <section class="bhero" id="hero">
-  <div class="mq" id="mq" aria-hidden="true">
-    <div class="mq-row r1"><div class="mq-track"><i><img src="mq-1.jpg" alt=""></i><i><img src="mq-2.jpg" alt=""></i><i><img src="mq-3.jpg" alt=""></i><i><img src="mq-4.jpg" alt=""></i><i><img src="mq-5.jpg" alt=""></i><i><img src="mq-1.jpg" alt=""></i><i><img src="mq-2.jpg" alt=""></i><i><img src="mq-3.jpg" alt=""></i><i><img src="mq-4.jpg" alt=""></i><i><img src="mq-5.jpg" alt=""></i></div></div>
-    <div class="mq-row r2"><div class="mq-track"><i><img src="mq-6.jpg" alt=""></i><i><img src="mq-7.jpg" alt=""></i><i><img src="mq-8.jpg" alt=""></i><i><img src="mq-9.jpg" alt=""></i><i><img src="mq-3.jpg" alt=""></i><i><img src="mq-6.jpg" alt=""></i><i><img src="mq-7.jpg" alt=""></i><i><img src="mq-8.jpg" alt=""></i><i><img src="mq-9.jpg" alt=""></i><i><img src="mq-3.jpg" alt=""></i></div></div>
+  <div class="xf" id="xf">
+    <img class="on" src="work-1.jpg" alt="Finished G &amp; L coldstore walls with two framed door openings" fetchpriority="high">
+    <img src="svc-coldstore.jpg" alt="Coldstore with wall panels up and ceiling panels going on" loading="lazy">
+    <img src="step-3.jpg" alt="White insulated wall panels standing around the coldstore floor" loading="lazy">
+    <img src="hero.jpg" alt="Inside a finished G &amp; L coldstore" loading="lazy">
+    <div class="xf-shade" aria-hidden="true"></div>
+    <div class="xf-bars" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
   </div>
-  <div class="bh-shade" aria-hidden="true"></div>
-  <div class="wrap bh-copy">
-    <h1>Coldstore Construction and Clean Rooms <span class="ac">Across the UK</span></h1>
-    <p>Coldstores built to order, coldroom maintenance and repair, and clean rooms. Family run, based in St Helens, Merseyside, working nationwide.</p>
-    <div class="hero-ctas" id="heroCtas">
-      <a class="btn btn-amber js-call" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="#0a2a2d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="js-phone">Call Kyle</span></a>
-      <a class="btn btn-ghost" href="#contact">Get a Free Quote</a>
+  <div class="bh-panel">
+    <div class="wrap bh-copy">
+      <h1>Coldstore Construction and Clean Rooms <span class="ac">Across the UK</span></h1>
+      <div class="bh-side">
+        <p>Coldstores built to order, coldroom maintenance and repair, and clean rooms. Family run, based in St Helens, Merseyside.</p>
+        <div class="hero-ctas" id="heroCtas">
+          <a class="btn btn-amber js-call" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="#0a2a2d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="js-phone">Call Kyle</span></a>
+          <a class="btn btn-ghost" href="#contact">Get a Free Quote</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -437,11 +465,27 @@ html.ld .bh-copy > *{animation-play-state:paused}
   </div>
 </section>
 
+<section class="tm" aria-label="Insulated panels cam locked together">
+  <div class="wrap">
+    <div class="tm-stage" id="tm">
+      <span class="tm-lab tm-warm">Warm side</span>
+      <div class="tm-panels">
+        <div class="tp tp-l"><i class="tongue"></i></div>
+        <div class="tp tp-r"><i class="groove"></i></div>
+        <div class="cam"><i></i></div>
+      </div>
+      <div class="frost"></div>
+      <span class="tm-lab tm-cold">Cold side</span>
+    </div>
+    <p class="tm-cap">Insulated panels cam locked together at every joint.</p>
+  </div>
+</section>
+
 <section id="services" class="sec" style="padding-bottom:40px">
   <div class="wrap">
     <h2 class="reveal">Coldstore and Clean Room <span class="ac">Services</span></h2>
     <div class="svc-grid">
-      <article class="svc tilt reveal">
+      <article class="svc reveal">
         <div class="svc-media"><img src="svc-coldstore.jpg" alt="Coldstore under construction with wall panels up and ceiling panels being fitted" loading="lazy"></div>
         <div class="svc-body">
           <h3>Coldstore Design and Construction</h3>
@@ -449,7 +493,7 @@ html.ld .bh-copy > *{animation-play-state:paused}
           <ul><li>Chiller rooms</li><li>Freezer rooms</li><li>Insulated panel builds</li></ul>
         </div>
       </article>
-      <article class="svc tilt reveal">
+      <article class="svc reveal">
         <div class="svc-media svc-panel"><svg viewBox="0 0 80 80" fill="none" stroke="#f0a03c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M52 14a14 14 0 0 0-17 17L14 52a6 6 0 0 0 8.5 8.5L43.5 39.5A14 14 0 0 0 61 22l-8 8-8-2-2-8z"/><path d="M58 50v16M50 58h16" stroke="#ffffff"/></svg></div>
         <div class="svc-body">
           <h3>Coldroom Maintenance and Repair</h3>
@@ -457,7 +501,7 @@ html.ld .bh-copy > *{animation-play-state:paused}
           <ul><li>Maintenance checks</li><li>Prompt repairs</li><li>Existing coldrooms</li></ul>
         </div>
       </article>
-      <article class="svc tilt reveal">
+      <article class="svc reveal">
         <div class="svc-media svc-panel"><svg viewBox="0 0 80 80" fill="none" stroke="#f0a03c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="14" width="52" height="52" rx="3"/><path d="M14 30h52" stroke="#ffffff"/><path d="M24 22h4M34 22h4M44 22h4" stroke="#ffffff"/><path d="M30 66V44h20v22"/></svg></div>
         <div class="svc-body">
           <h3>Clean Rooms</h3>
@@ -479,9 +523,21 @@ html.ld .bh-copy > *{animation-play-state:paused}
   </div>
 </section>
 
-<section id="process" class="sec stone">
-  <div class="wrap">
-    <h2 class="reveal">Coldstore Build <span class="ac">Process</span></h2>
+<section id="process" class="stone">
+  <div class="pin-wrap" id="pinWrap">
+    <div class="pin">
+      <div class="wrap pin-grid">
+        <div class="pin-text">
+          <h2>Coldstore Build <span class="ac">Process</span></h2>
+          <ol class="pin-list" id="pinList"><li class="on"><span class="num">1</span><div><h3>Panel Delivery</h3><p>Insulated wall and ceiling panels delivered and stacked in the unit.</p></div></li><li><span class="num">2</span><div><h3>Floor Insulation</h3><p>Insulation boards laid across the floor and floor panels set out.</p></div></li><li><span class="num">3</span><div><h3>Wall Panels</h3><p>Wall panels stood up and locked together around the floor.</p></div></li><li><span class="num">4</span><div><h3>Ceiling Panels</h3><p>Ceiling panels lifted into place and the room closed in.</p></div></li></ol>
+          <div class="pin-bar"><i id="pinBar"></i></div>
+        </div>
+        <div class="pin-figs" id="pinFigs"><img src="step-1.jpg" alt="Insulated panels stacked on pallets inside an empty warehouse unit" loading="lazy" class="on"><img src="step-2.jpg" alt="Floor insulation boards laid out with the first white floor panels in place" loading="lazy"><img src="step-3.jpg" alt="White insulated wall panels standing around the new coldstore floor" loading="lazy"><img src="step-4.jpg" alt="Panel lift inside the coldstore with the ceiling panels fitted" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec rm-steps"><div class="wrap">
+    
     <div class="steps">
       <div class="step reveal"><span class="num">1</span><figure><img src="step-1.jpg" alt="Insulated panels stacked on pallets inside an empty warehouse unit" loading="lazy"></figure><h3>Panel Delivery</h3><p>Insulated wall and ceiling panels delivered and stacked in the unit.</p></div>
       <div class="step reveal"><span class="num">2</span><figure><img src="step-2.jpg" alt="Floor insulation boards laid out with the first white floor panels in place" loading="lazy"></figure><h3>Floor Insulation</h3><p>Insulation boards laid across the floor and floor panels set out.</p></div>
@@ -489,16 +545,17 @@ html.ld .bh-copy > *{animation-play-state:paused}
       <div class="step reveal"><span class="num">4</span><figure><img src="step-4.jpg" alt="Panel lift inside the coldstore with the ceiling panels fitted" loading="lazy"></figure><h3>Ceiling Panels</h3><p>Ceiling panels lifted into place and the room closed in.</p></div>
     </div>
   </div>
+</div>
 </section>
 
 <section id="work" class="sec">
   <div class="wrap">
     <h2 class="reveal">Recent Coldstore <span class="ac">Work</span></h2>
-    <div class="gal" id="gal">
-      <div class="gi"><figure><img src="work-1.jpg" alt="Finished coldstore walls with two framed door openings" loading="lazy"></figure><figcaption>Wall panels with framed door openings</figcaption></div>
-      <div class="gi"><figure><img src="work-2.jpg" alt="Coldstore enclosure with ceiling panels and a door opening" loading="lazy"></figure><figcaption>Enclosure with ceiling panels on</figcaption></div>
-      <div class="gi"><figure><img src="work-3.jpg" alt="Floor insulation boards being set out inside the coldstore" loading="lazy"></figure><figcaption>Floor insulation being set out</figcaption></div>
-      <div class="gi"><figure><img src="work-4.jpg" alt="Coldroom with a sliding door and chequer plate wall protection" loading="lazy"></figure><figcaption>Coldroom with sliding door and chequer plate</figcaption></div>
+    <div class="gal">
+      <div class="gi reveal"><figure><img src="work-1.jpg" alt="Finished coldstore walls with two framed door openings" loading="lazy"></figure><figcaption>Wall panels with framed door openings</figcaption></div>
+      <div class="gi reveal"><figure><img src="work-2.jpg" alt="Coldstore enclosure with ceiling panels and a door opening" loading="lazy"></figure><figcaption>Enclosure with ceiling panels on</figcaption></div>
+      <div class="gi reveal"><figure><img src="work-3.jpg" alt="Floor insulation boards being set out inside the coldstore" loading="lazy"></figure><figcaption>Floor insulation being set out</figcaption></div>
+      <div class="gi reveal"><figure><img src="work-4.jpg" alt="Coldroom with a sliding door and chequer plate wall protection" loading="lazy"></figure><figcaption>Coldroom with sliding door and chequer plate</figcaption></div>
     </div>
   </div>
 </section>
@@ -616,11 +673,6 @@ html.ld .bh-copy > *{animation-play-state:paused}
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ld = document.getElementById('loader'), hero = document.getElementById('hero');
   function openDoor(){ hero.classList.add('open'); }
-  var mq = document.getElementById('mq');
-  mq.parentNode.addEventListener('touchstart', function(){ mq.classList.add('paused'); }, {passive:true});
-  mq.parentNode.addEventListener('touchend', function(){ mq.classList.remove('paused'); });
-  mq.parentNode.addEventListener('mouseenter', function(){ mq.classList.add('paused'); });
-  mq.parentNode.addEventListener('mouseleave', function(){ mq.classList.remove('paused'); });
   function lift(){
     if (ld && !ld.classList.contains('done')){
       ld.classList.add('done');
@@ -632,44 +684,30 @@ html.ld .bh-copy > *{animation-play-state:paused}
   setTimeout(lift, 2500);
   setTimeout(openDoor, 2900);
 
-  // tilt cards: lift and tilt with pointer or thumb, photo shifts inside
-  if (!rm){
-    document.querySelectorAll('.svc.tilt').forEach(function(c){
-      var m = c.querySelector('.svc-media img, .svc-media svg');
-      function mv(x, y){
-        var r = c.getBoundingClientRect(), px = (x - r.left) / r.width - .5, py = (y - r.top) / r.height - .5;
-        c.style.transform = 'translateY(-4px) rotateX(' + (-py * 7).toFixed(2) + 'deg) rotateY(' + (px * 9).toFixed(2) + 'deg)';
-        if (m) m.style.transform = 'scale(1.08) translate(' + (-px * 14).toFixed(1) + 'px,' + (-py * 10).toFixed(1) + 'px)';
-      }
-      function reset(){ c.style.transform = ''; if (m) m.style.transform = ''; }
-      c.addEventListener('pointermove', function(e){ if (e.pointerType === 'mouse') mv(e.clientX, e.clientY); });
-      c.addEventListener('pointerleave', reset);
-      c.addEventListener('touchstart', function(e){ var t = e.touches[0]; mv(t.clientX, t.clientY); }, {passive:true});
-      c.addEventListener('touchmove', function(e){ var t = e.touches[0]; mv(t.clientX, t.clientY); }, {passive:true});
-      c.addEventListener('touchend', reset);
-    });
+  // crossfade hero with story bars
+  var xi = [].slice.call(document.querySelectorAll('#xf img')), xb = [].slice.call(document.querySelectorAll('.xf-bars i')), xc = 0;
+  function xgo(n){
+    xi[xc].classList.remove('on'); xb[xc].classList.remove('on'); xb[xc].classList.add('done');
+    if (n === 0) xb.forEach(function(b){ b.classList.remove('done'); });
+    xc = n; void xi[xc].offsetWidth; xi[xc].classList.add('on'); xb[xc].classList.add('on');
   }
-  // photo stack: gallery photos sit in a stack and fan out into the grid as it scrolls in
-  var gal = document.getElementById('gal');
-  if (!rm && 'IntersectionObserver' in window){
-    function stack(){
-      var g = gal.getBoundingClientRect(), cx = g.left + g.width / 2, cy = g.top + Math.min(g.height, 360) / 2;
-      var rots = [-7, 5, -3, 8];
-      gal.querySelectorAll('.gi').forEach(function(it, i){
-        it.style.transform = 'none';
-        var r = it.querySelector('figure').getBoundingClientRect();
-        it.style.transform = '';
-        it.style.setProperty('--sx', (cx - (r.left + r.width / 2)).toFixed(0) + 'px');
-        it.style.setProperty('--sy', (cy - (r.top + r.height / 2)).toFixed(0) + 'px');
-        it.style.setProperty('--sr', rots[i % 4] + 'deg');
-        it.style.zIndex = 10 - i;
-        it.style.transitionDelay = (i * .09) + 's';
-      });
-    }
-    gal.classList.add('stacked'); stack();
-    var gio = new IntersectionObserver(function(es){ if (es[0].isIntersecting){ gal.classList.remove('stacked'); gio.disconnect(); } }, { rootMargin: '0px 0px -42% 0px' });
-    gio.observe(gal);
+  if (!rm){ setTimeout(function(){ setInterval(function(){ xgo((xc + 1) % xi.length); }, 4800); }, 1900); }
+  // trade moment: panels cam lock together, plays once on view
+  var tmS = document.querySelector('.tm');
+  if ('IntersectionObserver' in window && !rm){
+    var tio = new IntersectionObserver(function(e){ if (e[0].isIntersecting){ tmS.classList.add('go'); tio.disconnect(); } }, { rootMargin: '0px 0px -25% 0px' });
+    tio.observe(tmS);
+  } else { tmS.classList.add('go'); }
+  // pinned steps: the photo and step change while the section is pinned
+  var pw = document.getElementById('pinWrap'), pf = [].slice.call(document.querySelectorAll('#pinFigs img')), pl = [].slice.call(document.querySelectorAll('#pinList li')), pb = document.getElementById('pinBar'), pc = 0;
+  function pinTick(){
+    var r = pw.getBoundingClientRect(), span = pw.offsetHeight - (window.innerHeight - 76);
+    var pr = Math.min(1, Math.max(0, (76 - r.top) / span));
+    var n = Math.min(pf.length - 1, Math.floor(pr * pf.length * 0.999));
+    pb.style.transform = 'scaleX(' + pr.toFixed(3) + ')';
+    if (n !== pc){ pf[pc].classList.remove('on'); pl[pc].classList.remove('on'); pc = n; pf[pc].classList.add('on'); pl[pc].classList.add('on'); }
   }
+  if (!rm){ window.addEventListener('scroll', function(){ requestAnimationFrame(pinTick); }, { passive: true }); pinTick(); }
 
   var t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
   function setMenu(open){
