@@ -20,6 +20,7 @@
   gtag('config', 'AW-17958918628');
   gtag('config', 'G-WG747WXNB6');
 </script>
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Overpass:wght@800;900&display=swap" rel="stylesheet">
@@ -84,7 +85,7 @@ body.lit #ld{opacity:0;pointer-events:none}
 .ld-dash:nth-of-type(4){left:64%;animation:dash .18s ease-out 1.16s forwards}
 .ld-dash:nth-of-type(5){left:84%;animation:dash .18s ease-out 1.23s forwards}
 .ld-roller{position:absolute;left:0;top:6px;transform:translateX(-170px);animation:roll 1.05s cubic-bezier(.55,.1,.35,1) .3s forwards}
-.ld-word{position:absolute;left:0;right:0;top:22px;text-align:center;font-family:var(--disp);font-weight:900;color:#fff;font-size:clamp(2.2rem,9vw,3.4rem);letter-spacing:-.02em;line-height:1;opacity:0;transform:translateY(14px);animation:up .45s ease-out 1.2s forwards}
+.ld-logo{position:absolute;left:50%;top:0;width:92px;height:92px;margin-left:-46px;opacity:0;transform:scale(.94);animation:up .45s ease-out 1.15s forwards;filter:drop-shadow(0 4px 12px rgba(0,0,0,.25))}
 .ld-sub{position:absolute;left:0;right:0;top:196px;text-align:center;font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:.74rem;color:#fff;opacity:0;animation:fade .4s ease-out 1.45s forwards}
 @keyframes mat{to{transform:scaleX(1)}}
 @keyframes dash{to{transform:scaleX(1)}}
@@ -104,7 +105,9 @@ body.lit #ld{opacity:0;pointer-events:none}
 /* nav */
 .nav{position:sticky;top:0;z-index:100;background:var(--rose);color:#fff}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
-.brand{display:flex;flex-direction:column;line-height:1;white-space:nowrap}
+.brand{display:flex;align-items:center;gap:12px;line-height:1;white-space:nowrap}
+.brand-logo{width:54px;height:54px;flex:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.18))}
+.brand-txt{display:flex;flex-direction:column}
 .brand b{font-family:var(--disp);font-weight:900;font-size:1.45rem;letter-spacing:-.02em}
 .brand small{font-weight:600;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-top:3px;opacity:.85}
 .nav-links{display:flex;align-items:center;gap:30px;font-weight:600;font-size:.95rem}
@@ -180,6 +183,13 @@ body.lit .lane .sheen{animation:sheen 10s linear 3.5s infinite}
 .g-big{grid-column:span 2;grid-row:span 2}
 .g-tall{grid-row:span 2}
 .g-wide{grid-column:span 2}
+
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.ba figure{cursor:zoom-in}
+.ba .ph{border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+.ba img{width:100%;height:100%;object-fit:cover}
+.ba figcaption{font-size:.95rem;color:var(--muted);padding-top:8px}
+.ba figcaption b{color:var(--rose-ink);margin-right:6px;font-weight:700}
 
 /* reviews */
 .reviews{background:var(--stone)}
@@ -292,6 +302,7 @@ footer ul a:hover{color:#fff}
   .g-wide{grid-column:span 2}
   .g-tall{grid-row:span 2}
   .rev-grid{grid-template-columns:1fr}
+  .ba{grid-template-columns:1fr;gap:14px}
   form{padding:28px 22px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -308,7 +319,7 @@ footer ul a:hover{color:#fff}
 
 <div id="ld" aria-hidden="true">
   <div class="ld-stage">
-    <div class="ld-word">RED ROSE</div>
+    <img class="ld-logo" src="logo.png" alt="" width="92" height="92">
     <div class="ld-mat speck"></div>
     <div class="ld-gloss"></div>
     <i class="ld-dash"></i><i class="ld-dash"></i><i class="ld-dash"></i><i class="ld-dash"></i><i class="ld-dash"></i>
@@ -319,7 +330,7 @@ footer ul a:hover{color:#fff}
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="brand" aria-label="Red Rose Surfacing home"><b>RED ROSE</b><small>Surfacing</small></a>
+    <a href="#top" class="brand" aria-label="Red Rose Surfacing home"><img class="brand-logo" src="logo.png" alt="Red Rose Surfacing logo" width="54" height="54"><span class="brand-txt"><b>RED ROSE</b><small>Surfacing</small></span></a>
     <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#work">Recent Work</a>
@@ -398,13 +409,14 @@ footer ul a:hover{color:#fff}
 <section id="work">
   <div class="wrap">
     <div class="sec-head reveal"><h2>Recent <span class="acc">work</span></h2></div>
+    <div class="ba">
+      <figure class="reveal" data-full="own-before.jpg"><div class="ph"><img src="own-before.jpg" alt="Semi-detached house with an old slabbed front drive before the work" loading="lazy" width="660" height="500"></div><figcaption><b>Before</b> Old slabbed drive and lawn</figcaption></figure>
+      <figure class="reveal" data-full="own-after.jpg"><div class="ph"><img src="own-after.jpg" alt="The same house with a new tarmac drive either side of a porcelain path to the steps" loading="lazy" width="690" height="522"></div><figcaption><b>After</b> New tarmac drive with a porcelain path and border</figcaption></figure>
+    </div>
     <div class="gal">
-      <figure class="g-big reveal" data-full="work-curve.jpg"><div class="ph"><img src="work-curve.jpg" alt="Curved block paving with sweeping steps" loading="lazy"></div><figcaption>Curved block paving and steps</figcaption></figure>
-      <figure class="g-tall reveal" data-full="work-path.jpg"><div class="ph"><img src="work-path.jpg" alt="Block paved path between hedges" loading="lazy"></div><figcaption>Block paved path</figcaption></figure>
-      <figure class="reveal" data-full="svc-tarmac.jpg"><div class="ph"><img src="svc-tarmac.jpg" alt="Tarmac driveway with block border" loading="lazy"></div><figcaption>Tarmac drive, block border</figcaption></figure>
-      <figure class="reveal" data-full="svc-resurface.jpg"><div class="ph"><img src="svc-resurface.jpg" alt="Roller on fresh asphalt" loading="lazy"></div><figcaption>Rolling the surface course</figcaption></figure>
-      <figure class="g-wide reveal" data-full="work-fenced.jpg"><div class="ph"><img src="work-fenced.jpg" alt="Long tarmac drive between close-board fences" loading="lazy"></div><figcaption>Long tarmac drive between new fences</figcaption></figure>
-      <figure class="g-wide reveal" data-full="svc-block.jpg"><div class="ph"><img src="svc-block.jpg" alt="Brindle block paved drive" loading="lazy"></div><figcaption>Brindle block paved drive</figcaption></figure>
+      <figure class="g-big reveal" data-full="own-porcelain-drive.jpg"><div class="ph"><img src="own-porcelain-drive.jpg" alt="Grey porcelain driveway with a silver block border" loading="lazy"></div><figcaption>Grey porcelain driveway with a silver block border</figcaption></figure>
+      <figure class="g-tall reveal" data-full="own-sandstone-circle.jpg"><div class="ph"><img src="own-sandstone-circle.jpg" alt="Sandstone patio with a circle feature" loading="lazy"></div><figcaption>Sandstone patio with a circle feature</figcaption></figure>
+      <figure class="g-tall reveal" data-full="own-block-lawn.jpg"><div class="ph"><img src="own-block-lawn.jpg" alt="Block paved drive with a patio and artificial lawn" loading="lazy"></div><figcaption>Block paving, patio and artificial lawn</figcaption></figure>
     </div>
   </div>
 </section>
@@ -481,7 +493,7 @@ footer ul a:hover{color:#fff}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a href="#top" class="brand"><b>RED ROSE</b><small>Surfacing</small></a>
+        <a href="#top" class="brand"><img class="brand-logo" src="logo.png" alt="" width="54" height="54"><span class="brand-txt"><b>RED ROSE</b><small>Surfacing</small></span></a>
         <p>Tarmac drives, block paving, patios and car parks across Lytham, the Fylde coast and the North West.</p>
       </div>
       <div><h4>Services</h4><ul><li><a href="#services">Tarmac Driveways</a></li><li><a href="#services">Block Paving</a></li><li><a href="#services">Patios and Paths</a></li><li><a href="#services">Car Parks and Yards</a></li></ul></div>
@@ -535,7 +547,7 @@ footer ul a:hover{color:#fff}
 
   // lightbox
   var lb=document.getElementById('lb'), lbi=document.createElement('img');
-  document.querySelectorAll('.gal figure').forEach(function(f){ f.addEventListener('click',function(){ lbi.src=f.dataset.full; if(!lbi.parentNode) lb.appendChild(lbi); lbi.alt=f.querySelector('img').alt; lb.classList.add('open'); }); });
+  document.querySelectorAll('.gal figure, .ba figure').forEach(function(f){ f.addEventListener('click',function(){ lbi.src=f.dataset.full; if(!lbi.parentNode) lb.appendChild(lbi); lbi.alt=f.querySelector('img').alt; lb.classList.add('open'); }); });
   lb.addEventListener('click',function(){ lb.classList.remove('open'); });
 
   // form
