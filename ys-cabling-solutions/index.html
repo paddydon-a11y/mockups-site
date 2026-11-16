@@ -71,18 +71,21 @@ h3{font-size:1.45rem;line-height:1.1}
 .on-dark .cores-rule i:nth-child(2){background:#0e0f11}
 
 /* loader */
-#loader{position:fixed;inset:0;z-index:200;background:var(--ox);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;animation:ldFail .3s linear 2.6s forwards}
+#loader{position:fixed;inset:0;z-index:200;background:#2a1214;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;animation:ldFail .3s linear 2.6s forwards}
 #loader.lift{opacity:0;transform:translateY(-3%);transition:opacity .45s ease,transform .45s ease}
-#loader svg{width:min(56vw,250px);height:auto;overflow:visible}
-#loader .lc{animation:coreIn .6s cubic-bezier(.2,.8,.2,1) both}
-#loader .lc:nth-of-type(1){--dx:110px;--dy:-110px;animation-delay:.1s}
-#loader .lc:nth-of-type(2){--dx:110px;--dy:110px;animation-delay:.22s}
-#loader .lc:nth-of-type(3){--dx:-110px;--dy:110px;animation-delay:.34s}
-#loader .lc:nth-of-type(4){--dx:-110px;--dy:-110px;animation-delay:.46s}
-#loader .l-arm{animation:fadeIn .4s ease .7s both}
-#loader .l-sheath{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw .55s ease .85s forwards}
-.l-word{font-family:'Rajdhani',Arial,sans-serif;font-weight:700;color:#fff;font-size:clamp(1.9rem,7vw,2.6rem);line-height:1;animation:riseIn .4s ease 1.15s both;text-align:center}
-.l-place{color:var(--timber-l);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem;animation:fadeIn .3s ease 1.35s both}
+#loader .l-stage{position:relative;width:min(64vw,280px);aspect-ratio:507/520}
+#loader .l-xs{position:absolute;left:12%;top:4%;width:76%;height:auto;overflow:visible;animation:xsOut .3s ease 1s forwards}
+#loader .l-logo{position:absolute;inset:0;width:100%;height:100%;opacity:0;animation:logoIn .5s cubic-bezier(.2,.8,.2,1) 1.05s forwards}
+@keyframes xsOut{to{opacity:0;transform:scale(.9)}}
+@keyframes logoIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+#loader .lc{animation:coreIn .5s cubic-bezier(.2,.8,.2,1) both}
+#loader .lc:nth-of-type(1){--dx:110px;--dy:-110px;animation-delay:.05s}
+#loader .lc:nth-of-type(2){--dx:110px;--dy:110px;animation-delay:.15s}
+#loader .lc:nth-of-type(3){--dx:-110px;--dy:110px;animation-delay:.25s}
+#loader .lc:nth-of-type(4){--dx:-110px;--dy:-110px;animation-delay:.35s}
+#loader .l-arm{animation:fadeIn .3s ease .5s both}
+#loader .l-sheath{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw .4s ease .55s forwards}
+.l-place{color:var(--timber-l);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.78rem;animation:fadeIn .3s ease 1.3s both}
 @keyframes coreIn{from{transform:translate(var(--dx),var(--dy));opacity:0}to{transform:none;opacity:1}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -306,7 +309,8 @@ footer a:hover{color:#fff}
 <body>
 
 <div id="loader" aria-hidden="true">
-  <svg viewBox="-200 -200 400 400">
+  <div class="l-stage">
+    <svg class="l-xs" viewBox="-200 -200 400 400">
     <g class="lc"><path d="M8,-8 L8,-157.8 A158 158 0 0 1 157.8,-8 Z" fill="#7b4a2c"/></g>
     <g class="lc"><path d="M8,8 L157.8,8 A158 158 0 0 1 8,157.8 Z" fill="#141518"/></g>
     <g class="lc"><path d="M-8,8 L-8,157.8 A158 158 0 0 1 -157.8,8 Z" fill="#8e9399"/></g>
@@ -314,7 +318,8 @@ footer a:hover{color:#fff}
     <g class="l-arm" id="lArm"></g>
     <circle class="l-sheath" r="187" fill="none" stroke="#ab2432" stroke-width="18"/>
   </svg>
-  <div class="l-word">YS Cabling Solutions</div>
+    <img class="l-logo" src="logo-light.png" alt="" width="507" height="520">
+  </div>
   <div class="l-place">London</div>
 </div>
 
