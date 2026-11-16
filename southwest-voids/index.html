@@ -131,10 +131,14 @@ section{position:relative}
 
 /* trust */
 .trust{background:var(--stone);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.trust-in{display:grid;grid-template-columns:repeat(5,1fr);padding-top:26px;padding-bottom:26px}
-.trust-item{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--ink);font-size:.93rem;line-height:1.3;padding:0 18px;border-left:1px solid var(--line2)}
-.trust-item:first-child{border-left:0;padding-left:0}
-.trust-item svg{width:26px;height:26px;flex:none;color:var(--orange)}
+.trust-in{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding-top:22px;padding-bottom:22px}
+.trust-item{background:#fff;border:1px solid var(--line);border-radius:6px;height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 14px}
+.trust-item img{max-width:100%;max-height:40px;width:auto;height:auto;object-fit:contain}
+.trust-item span{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.trust-item.iso{flex-direction:row;gap:8px}
+.trust-item.iso img{max-height:72px}
+.trust-item.dark{background:var(--slate);border-color:var(--slate)}
+.trust-item.dark img{max-height:44px}
 
 /* section heads */
 .sec{padding-top:110px;padding-bottom:110px}
@@ -190,9 +194,11 @@ section{position:relative}
 
 /* compliance */
 .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 40px}
-.comp{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:22px 0;border-bottom:1px solid var(--line)}
-.comp-badge{width:62px;height:62px;border-radius:50%;background:var(--stone);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:.8rem;color:var(--ink);text-align:center;line-height:1.05;letter-spacing:-.01em}
-.comp-badge.or{background:var(--orange);border-color:var(--orange);color:#fff}
+.comp{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.comp-logo{width:150px;height:96px;border:1px solid var(--line);border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;padding:12px 14px}
+.comp-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.comp-logo.tall{padding:6px}
+.comp-logo.dark{background:var(--slate);border-color:var(--slate)}
 .comp h3{font-size:1.08rem}
 .comp p{margin-top:4px;font-size:.95rem}
 
@@ -289,8 +295,7 @@ footer{background:var(--slate);color:#aab4be;padding-top:64px;padding-bottom:30p
   .hero-ctas{margin-top:22px}
 }
 @media (max-width:1100px){
-  .trust-in{grid-template-columns:repeat(3,1fr);row-gap:16px}
-  .trust-item:nth-child(4){border-left:0;padding-left:0}
+  .trust-in{grid-template-columns:repeat(3,1fr)}
   .sec-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(3,1fr)}
   .f-grid{grid-template-columns:1fr 1fr}
@@ -314,9 +319,10 @@ footer{background:var(--slate);color:#aab4be;padding-top:64px;padding-bottom:30p
   .gable{width:100%;min-width:0;margin-top:16px}
   .gable-col .turn{width:100%;min-width:0}
   .turn{margin-top:14px}
-  .trust-in{grid-template-columns:1fr;row-gap:0;padding-top:10px;padding-bottom:10px}
-  .trust-item,.trust-item:first-child,.trust-item:nth-child(4){border-left:0;padding:14px 0;border-top:1px solid var(--line2)}
-  .trust-item:first-child{border-top:0}
+  .trust-in{grid-template-columns:1fr 1fr;gap:10px;padding-top:18px;padding-bottom:18px}
+  .trust-item{height:88px}
+  .trust-item img{max-height:34px}
+  .trust-item.iso img{max-height:64px}
   .sec{padding-top:76px;padding-bottom:76px}
   .sec-head{margin-bottom:32px}
   .svc-grid,.about-grid,.comp-grid,.nc-grid,.rev-grid,.area-cols,.contact-grid{grid-template-columns:1fr}
@@ -337,6 +343,8 @@ footer{background:var(--slate);color:#aab4be;padding-top:64px;padding-bottom:30p
   .fg{grid-template-columns:1fr;gap:0}
   .f-grid{grid-template-columns:1fr;gap:30px}
   .fab{width:52px;height:52px}
+  .comp-logo{width:104px;height:80px;padding:8px 10px}
+  .comp{gap:16px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
@@ -403,13 +411,14 @@ footer{background:var(--slate);color:#aab4be;padding-top:64px;padding-bottom:30p
   </div>
 </section>
 
-<section class="trust">
+<section class="trust" aria-label="Accreditations">
   <div class="wrap trust-in">
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>Constructionline Gold</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>ISO 9001, 14001, 45001</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>CHAS Accredited</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6z"/></svg>SafeContractor Approved</div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Fusion21 Framework</div>
+    <div class="trust-item"><img src="acc-constructionline.png" alt="Constructionline" width="760" height="177"><span>Gold Member</span></div>
+    <div class="trust-item iso"><img src="acc-iso9001.png" alt="ISO 9001 Registered, Citation ISO Certification" width="137" height="270"><img src="acc-iso14001.png" alt="ISO 14001 Registered, Citation ISO Certification" width="137" height="270"><img src="acc-iso45001.png" alt="ISO 45001 Registered, Citation ISO Certification" width="137" height="270"></div>
+    <div class="trust-item"><img src="acc-chas.svg" alt="CHAS" width="160" height="60"></div>
+    <div class="trust-item"><img src="acc-safecontractor.svg" alt="SafeContractor" width="200" height="30"><span>Approved</span></div>
+    <div class="trust-item dark"><img src="acc-smas.png" alt="SMAS Worksafe" width="600" height="207"></div>
+    <div class="trust-item"><img src="acc-fusion21.png" alt="Fusion21" width="600" height="136"><span>Framework</span></div>
   </div>
 </section>
 
@@ -488,14 +497,14 @@ footer{background:var(--slate);color:#aab4be;padding-top:64px;padding-bottom:30p
       <h2>Accreditations and <span class="acc">compliance</span></h2>
     </div>
     <div class="comp-grid">
-      <div class="comp reveal"><span class="comp-badge or">Gold</span><div><h3>Constructionline Gold Member</h3><p>Our company and compliance information is held and checked on Constructionline, the UK prequalification register used by public sector buyers.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge">ISO<br>9001</span><div><h3>ISO 9001 Quality Management</h3><p>A certified quality management system, registered through Citation ISO Certification.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge">ISO<br>14001</span><div><h3>ISO 14001 Environmental Management</h3><p>A certified environmental management system covering how we plan and run our work.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge">ISO<br>45001</span><div><h3>ISO 45001 Occupational Health and Safety</h3><p>A certified health and safety management system for our people and the homes we work in.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge">CHAS</span><div><h3>CHAS Accredited</h3><p>Independently assessed health and safety standards, recognised by councils and housing providers.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge">Safe</span><div><h3>SafeContractor Approved</h3><p>Third party approval of our health and safety policies and practices.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge">SMAS</span><div><h3>SMAS Worksafe</h3><p>Health and safety assessment under the SSIP scheme, shared across client prequalification.</p></div></div>
-      <div class="comp reveal"><span class="comp-badge or">F21</span><div><h3>Fusion21 Framework</h3><p>Appointed to the Fusion21 Responsive Repairs and Void Property Framework across South Wales and the South West.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo"><img src="acc-constructionline.png" alt="Constructionline" loading="lazy" width="760" height="177"></span><div><h3>Constructionline Gold Member</h3><p>Our company and compliance information is held and checked on Constructionline, the UK prequalification register used by public sector buyers.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo tall"><img src="acc-iso9001.png" alt="ISO 9001 Registered, Citation ISO Certification" loading="lazy" width="137" height="270"></span><div><h3>ISO 9001 Quality Management</h3><p>A certified quality management system, registered through Citation ISO Certification.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo tall"><img src="acc-iso14001.png" alt="ISO 14001 Registered, Citation ISO Certification" loading="lazy" width="137" height="270"></span><div><h3>ISO 14001 Environmental Management</h3><p>A certified environmental management system covering how we plan and run our work.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo tall"><img src="acc-iso45001.png" alt="ISO 45001 Registered, Citation ISO Certification" loading="lazy" width="137" height="270"></span><div><h3>ISO 45001 Occupational Health and Safety</h3><p>A certified health and safety management system for our people and the homes we work in.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo"><img src="acc-chas.svg" alt="CHAS" loading="lazy" width="160" height="60"></span><div><h3>CHAS Accredited</h3><p>Independently assessed health and safety standards, recognised by councils and housing providers.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo"><img src="acc-safecontractor.svg" alt="SafeContractor" loading="lazy" width="200" height="30"></span><div><h3>SafeContractor Approved</h3><p>Third party approval of our health and safety policies and practices.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo dark"><img src="acc-smas.png" alt="SMAS Worksafe" loading="lazy" width="600" height="207"></span><div><h3>SMAS Worksafe</h3><p>Health and safety assessment under the SSIP scheme, shared across client prequalification.</p></div></div>
+      <div class="comp reveal"><span class="comp-logo"><img src="acc-fusion21.png" alt="Fusion21" loading="lazy" width="600" height="136"></span><div><h3>Fusion21 Framework</h3><p>Appointed to the Fusion21 Responsive Repairs and Void Property Framework across South Wales and the South West.</p></div></div>
     </div>
   </div>
 </section>
