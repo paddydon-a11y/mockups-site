@@ -70,11 +70,10 @@ section{position:relative}
 .nav{position:sticky;top:0;z-index:60;background:var(--dusk);border-bottom:1px solid var(--dusk-line)}
 .nav-in{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:11px;white-space:nowrap;color:#fff}
-.brand-mark{position:relative;width:34px;height:34px;border-radius:9px;background:var(--dusk3);flex:none;overflow:hidden}
-.brand-mark::before{content:"";position:absolute;left:11px;top:7px;width:12px;height:4px;border-radius:2px;background:var(--gold)}
-.brand-mark::after{content:"";position:absolute;left:4px;top:11px;width:26px;height:20px;background:linear-gradient(180deg,rgba(242,178,58,.6),rgba(242,178,58,0));clip-path:polygon(30% 0,70% 0,100% 100%,0 100%)}
-.brand-txt{font-family:'Instrument Sans',Arial,sans-serif;font-weight:700;font-size:1.28rem;letter-spacing:-.02em;line-height:1}
-.brand-txt small{display:block;font-family:'DM Sans',Arial,sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.brand img.bm{height:44px;width:auto}
+.brand img.bw{height:29px;width:auto}
+.foot-logo{display:inline-block}
+.foot-logo img{width:150px;height:auto}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{color:var(--on-dusk);font-weight:500;font-size:.95rem;transition:color .2s}
 .nav-links a:hover{color:#fff}
@@ -234,17 +233,18 @@ footer{background:var(--dusk);color:var(--on-dusk);padding-top:56px;padding-bott
 
 /* loader: SWITCH ON */
 .loader{position:fixed;inset:0;z-index:100;background:var(--dusk);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;animation:ldOut .5s ease 1.95s forwards,ldKill 0s linear 2.6s forwards}
-.ld-cone{position:absolute;left:50%;top:0;width:min(560px,130vw);height:62vh;transform:translateX(-50%);background:radial-gradient(50% 100% at 50% 0%,rgba(255,206,120,.42),rgba(242,178,58,.08) 60%,rgba(242,178,58,0) 75%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);opacity:0;animation:coneOn .55s ease .6s forwards}
+.ld-cone{position:absolute;left:50%;top:0;width:min(620px,140vw);height:58vh;transform:translateX(-50%);background:radial-gradient(50% 100% at 50% 0%,rgba(255,206,120,.42),rgba(242,178,58,.08) 60%,rgba(242,178,58,0) 75%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);opacity:0;animation:coneOn .55s ease .6s forwards}
 .ld-fitting{position:absolute;left:50%;top:0;width:60px;height:8px;margin-left:-30px;border-radius:0 0 6px 6px;background:#3a4568}
 .ld-fitting::after{content:"";position:absolute;left:18px;bottom:-3px;width:24px;height:4px;border-radius:3px;background:#55607f;animation:bulb .3s ease .6s forwards}
 @keyframes bulb{to{background:#fff3d2;box-shadow:0 0 18px 6px rgba(255,214,130,.8)}}
 @keyframes coneOn{0%{opacity:0}30%{opacity:.9}45%{opacity:.35}100%{opacity:1}}
-.ld-plate{position:relative;width:86px;height:86px;border-radius:14px;background:#f4f5f8;box-shadow:inset 0 -3px 0 #d7dbe4,0 18px 40px -16px rgba(0,0,0,.6);display:grid;place-items:center;animation:plateIn .45s cubic-bezier(.2,.7,.2,1) forwards;opacity:0;transform:scale(.94)}
+.ld-logo{position:relative;width:min(230px,58vw);height:auto;filter:brightness(.16) saturate(.3);opacity:.9;animation:logoLit .7s ease .62s forwards}
+@keyframes logoLit{0%{filter:brightness(.16) saturate(.3)}30%{filter:brightness(1.25) saturate(1) drop-shadow(0 0 24px rgba(255,206,120,.55))}45%{filter:brightness(.6) saturate(.8)}100%{filter:brightness(1) saturate(1) drop-shadow(0 0 18px rgba(255,206,120,.35));opacity:1}}
+.ld-plate{position:relative;margin-top:30px;width:62px;height:62px;border-radius:12px;background:#f4f5f8;box-shadow:inset 0 -3px 0 #d7dbe4,0 18px 40px -16px rgba(0,0,0,.6);display:grid;place-items:center;animation:plateIn .45s cubic-bezier(.2,.7,.2,1) forwards;opacity:0;transform:scale(.94)}
 @keyframes plateIn{to{opacity:1;transform:none}}
-.ld-rocker{width:34px;height:50px;border-radius:7px;background:linear-gradient(180deg,#ffffff 0 50%,#e3e6ee 50% 100%);box-shadow:0 2px 0 #c5cad6;transform:perspective(160px) rotateX(18deg);animation:flip .18s ease .45s forwards}
+.ld-rocker{width:24px;height:36px;border-radius:6px;background:linear-gradient(180deg,#ffffff 0 50%,#e3e6ee 50% 100%);box-shadow:0 2px 0 #c5cad6;transform:perspective(160px) rotateX(18deg);animation:flip .18s ease .45s forwards}
 @keyframes flip{to{transform:perspective(160px) rotateX(-18deg);background:linear-gradient(180deg,#e3e6ee 0 50%,#ffffff 50% 100%)}}
-.ld-name{margin-top:28px;font-family:'Instrument Sans',Arial,sans-serif;font-weight:700;font-size:1.9rem;letter-spacing:-.02em;color:#fff;opacity:0;transform:translateY(10px);animation:fu .5s ease 1.0s forwards}
-.ld-loc{margin-top:6px;font-size:.8rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fu .5s ease 1.25s forwards}
+.ld-loc{margin-top:18px;font-size:.8rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fu .5s ease 1.25s forwards}
 @keyframes ldOut{to{opacity:0;visibility:hidden}}
 @keyframes ldKill{to{visibility:hidden;opacity:0;pointer-events:none}}
 .loader.gone{display:none}
@@ -313,14 +313,14 @@ footer{background:var(--dusk);color:var(--on-dusk);padding-top:56px;padding-bott
 <div class="loader" id="loader" aria-hidden="true">
   <div class="ld-fitting"></div>
   <div class="ld-cone"></div>
+  <img class="ld-logo" src="logo.png" alt="" width="255" height="212">
   <div class="ld-plate"><div class="ld-rocker"></div></div>
-  <div class="ld-name">Lumen Electrical</div>
   <div class="ld-loc">Electrician in Liverpool</div>
 </div>
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="brand" aria-label="Lumen Electrical home"><span class="brand-mark"></span><span class="brand-txt">Lumen<small>Electrical</small></span></a>
+    <a href="#top" class="brand" aria-label="Lumen Electrical home"><img class="bm" src="logo-mark.png" alt="" width="129" height="127"><img class="bw" src="logo-word.png" alt="Lumen Electrical" width="255" height="55"></a>
     <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#work">Recent work</a>
@@ -474,7 +474,7 @@ footer{background:var(--dusk);color:var(--on-dusk);padding-top:56px;padding-bott
 <footer>
   <div class="wrap">
     <div class="foot-in">
-      <div><a href="#top" class="brand"><span class="brand-mark"></span><span class="brand-txt">Lumen<small>Electrical</small></span></a><p>Domestic electrician in Liverpool for lighting, media walls, CCTV, consumer units and EV chargers.</p></div>
+      <div><a href="#top" class="foot-logo"><img src="logo.png" alt="Lumen Electrical, powering your world" width="255" height="212" loading="lazy"></a><p>Domestic electrician in Liverpool for lighting, media walls, CCTV, consumer units and EV chargers.</p></div>
       <div><h4>Services</h4><ul><li>Exterior lighting</li><li>Interior lighting</li><li>Media walls</li><li>CCTV cameras</li><li>Consumer units</li><li>EV chargers</li></ul></div>
       <div><h4>Areas</h4><ul><li>Liverpool</li><li>Knowsley</li><li>St Helens</li><li>Wirral</li><li>Warrington</li><li>Southport</li></ul></div>
     </div>
