@@ -123,10 +123,10 @@ body.go .wall .t img{transform:scale(1)}
 @keyframes lay{0%{opacity:0;transform:translateY(-34px)}70%{opacity:1;transform:translateY(2px)}100%{opacity:1;transform:none}}
 
 
-/* B hero: full bleed photo first, parallax */
+/* B hero: full bleed photo first, job strip running under it */
 .bh{display:flex;flex-direction:column;padding:0}
-.bh-photo{position:relative;height:calc(100vh - var(--navh) - 150px);height:calc(100svh - var(--navh) - 150px);min-height:360px;overflow:hidden;background:var(--char)}
-.bh-par{position:absolute;left:0;right:0;top:-14%;height:118%;will-change:transform}
+.bh-photo{position:relative;height:calc(100vh - var(--navh) - 210px);height:calc(100svh - var(--navh) - 210px);min-height:360px;overflow:hidden;background:var(--char)}
+.bh-par{position:absolute;inset:0}
 .bh-par picture{display:block;width:100%;height:100%}
 .bh-par img{width:100%;height:100%;object-fit:cover;transform:scale(1.16);transform-origin:50% 40%}
 body.go .bh-par img{animation:push 2.4s cubic-bezier(.2,.6,.2,1) forwards,drift 18s 2.4s ease-in-out infinite alternate}
@@ -138,7 +138,7 @@ body.go .bh-over{animation:up .7s .3s cubic-bezier(.2,.7,.2,1) forwards}
 .bh-plate{background:#fff;border-radius:4px;padding:12px 16px}
 .bh-plate img{height:78px;width:auto}
 .bh-panel{background:var(--char);color:#d5d9dd;padding-top:34px;padding-bottom:54px;position:relative;z-index:3}
-.bh-panel::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--vis);transform-origin:left;transform:scaleX(0)}
+.bh-panel::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--vis);transform-origin:left;transform:scaleX(0)}
 body.go .bh-panel::before{animation:grow 1s .5s ease forwards}
 @keyframes grow{to{transform:none}}
 .bh-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:end}
@@ -148,11 +148,19 @@ body.go .bh-panel::before{animation:grow 1s .5s ease forwards}
 .bh-grid>*{opacity:0;transform:translateY(24px)}
 body.go .bh-grid>*{animation:up .8s .15s cubic-bezier(.2,.7,.2,1) forwards}
 body.go .bh-grid>*:nth-child(2){animation-delay:.3s}
-/* draw-svg */
-.draw{width:340px;height:auto}
-.draw path{stroke-dasharray:1;stroke-dashoffset:1}
-.draw .vis{stroke:var(--vis)}
-.draw .cl{stroke:var(--clay-l);stroke-width:1.4}
+/* marquee strip of their jobs */
+.bh-strip{background:var(--char);overflow:hidden;padding-top:8px;position:relative;z-index:3}
+.bh-strip .track{display:flex;gap:8px;width:max-content;animation:mq 46s linear infinite}
+.bh-strip img{height:118px;width:auto;aspect-ratio:4/3;object-fit:cover;border-radius:2px;flex:none}
+.bh-strip:hover .track,.bh-strip.paused .track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* photo-stack */
+.stack{position:relative;width:340px;height:250px}
+.stack img{position:absolute;left:50%;top:50%;width:190px;height:200px;object-fit:cover;border:6px solid #fff;border-radius:3px;box-shadow:0 18px 34px -16px rgba(0,0,0,.6);transform:translate(-50%,-50%) rotate(var(--r0));transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.stack .p1{--r0:-3deg}.stack .p2{--r0:2deg}.stack .p3{--r0:-1deg;z-index:2}
+.stack.fan .p1{transform:translate(-112%,-48%) rotate(-9deg)}
+.stack.fan .p2{transform:translate(12%,-48%) rotate(8deg)}
+.stack.fan .p3{transform:translate(-50%,-54%) rotate(0deg);transition-delay:.12s}
 /* trade moment: courses laid to gauge */
 .gauge{margin:-18px 0 40px}
 .gauge svg{width:100%;max-width:640px;height:auto;display:block}
@@ -312,14 +320,20 @@ footer{background:var(--char2);color:#a9b0b7;padding-top:64px;padding-bottom:28p
   .svc{padding-top:64px}
   .svc-grid,.rv-grid,.hb-grid,.areas-in,.tender-in,.ct-grid,.ft-grid{grid-template-columns:1fr}
   .hb-grid,.areas-in,.tender-in,.ct-grid{gap:36px}
-  .bh-photo{height:calc(100vh - var(--navh) - 118px);height:calc(100svh - var(--navh) - 118px)}
+  .bh-photo{height:calc(100vh - var(--navh) - 168px);height:calc(100svh - var(--navh) - 168px)}
+  .bh-strip img{height:84px}
+  .bh-strip{padding-top:6px}
+  .bh-strip .track{gap:6px}
+  .stack{width:100%;max-width:330px;height:220px}
+  .stack img{width:150px;height:170px}
+  .stack.fan .p1{transform:translate(-98%,-48%) rotate(-8deg)}
+  .stack.fan .p2{transform:translate(-2%,-48%) rotate(7deg)}
   .bh-plate img{height:54px}
   .bh-plate{padding:9px 12px}
   .bh-over{bottom:20px}
   .bh-grid{grid-template-columns:1fr;gap:18px}
   .bh h1{font-size:clamp(2.3rem,10.4vw,3.4rem)}
   .bh-panel{padding-top:28px;padding-bottom:40px}
-  .draw{width:100%;max-width:340px}
   .gauge{margin:-24px 0 30px}
   .about-in{grid-template-columns:1fr;gap:28px}
   .about-mark{justify-self:start;padding:18px 22px}
@@ -343,7 +357,8 @@ footer{background:var(--char2);color:#a9b0b7;padding-top:64px;padding-bottom:28p
 }
 @media (prefers-reduced-motion:reduce){
   .bh-par img,.bh-over,.bh-grid>*,.bh-panel::before,.gauge .bk{opacity:1!important;transform:none!important}
-  .draw path{stroke-dashoffset:0!important}
+  .bh-strip .track{animation:none!important}
+  .stack img{transition:none!important}
   *{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}
   .hero-copy>*,.wall .t,.reveal{opacity:1!important;transform:none!important}
   .wall .t img{transform:none!important}
@@ -389,6 +404,7 @@ footer{background:var(--char2);color:#a9b0b7;padding-top:64px;padding-bottom:28p
       <a href="#" class="btn btn-clay bh-call js-phone-fab" data-p="MDc1NjUzMDc2MzQ="><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call David</a>
     </div>
   </div>
+  <div class="bh-strip" id="strip" aria-hidden="true"><div class="track"><img src="plots-blue-sky.jpg" alt=""><img src="feature-chimney.jpg" alt=""><img src="brick-scaffold-run.jpg" alt=""><img src="site-wide.jpg" alt=""><img src="stone-walling.jpg" alt=""><img src="finished-house.jpg" alt=""><img src="facing-brick-scaffold.jpg" alt=""><img src="walls-going-up.jpg" alt=""><img src="plots-blue-sky.jpg" alt=""><img src="feature-chimney.jpg" alt=""><img src="brick-scaffold-run.jpg" alt=""><img src="site-wide.jpg" alt=""><img src="stone-walling.jpg" alt=""><img src="finished-house.jpg" alt=""><img src="facing-brick-scaffold.jpg" alt=""><img src="walls-going-up.jpg" alt=""></div></div>
   <div class="bh-panel">
     <div class="wrap bh-grid">
       <h1>New-Build Brickwork and Blockwork Contractors in <span class="acc">Gloucestershire</span></h1>
@@ -427,17 +443,9 @@ footer{background:var(--char2);color:#a9b0b7;padding-top:64px;padding-bottom:28p
 
 <section class="about" id="about">
   <div class="about-in wrap reveal">
-    <svg class="draw" id="draw" viewBox="0 0 420 260" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path pathLength="1" d="M10 250H410"/>
-      <path pathLength="1" d="M40 250V120L120 56L200 120V250"/>
-      <path pathLength="1" d="M220 250V120L300 56L380 120V250"/>
-      <path pathLength="1" d="M200 120V250M220 120H200"/>
-      <path pathLength="1" d="M28 128L120 54L212 128M208 128L300 54L392 128"/>
-      <path pathLength="1" class="vis" d="M150 80V36H170V96"/>
-      <path pathLength="1" d="M62 140h40v34h-40zM138 140h40v34h-40zM242 140h40v34h-40zM318 140h40v34h-40z"/>
-      <path pathLength="1" d="M66 250V198h30v52M138 196h40v34h-40zM242 196h40v34h-40zM324 250V198h30v52"/>
-      <path pathLength="1" class="cl" d="M40 186H200M220 186H380M40 232H200M220 232H380"/>
-    </svg>
+    <div class="stack" id="stack" aria-hidden="true">
+      <img class="p1" src="brick-inglenook.jpg" alt="" loading="lazy"><img class="p2" src="stone-walling.jpg" alt="" loading="lazy"><img class="p3" src="feature-chimney.jpg" alt="" loading="lazy">
+    </div>
     <div>
       <h2>About DM Gardner Brickwork</h2><span class="vis"></span>
       <p>DM Gardner Brickwork Ltd is a Gloucestershire bricklaying contractor run by David Gardner. The business specialises in new-build housing: brick and block packages on active development sites, taking each plot up course by course and working to the programme set by the site team.</p>
@@ -582,15 +590,10 @@ footer{background:var(--char2);color:#a9b0b7;padding-top:64px;padding-bottom:28p
   setTimeout(start,rm?300:2000);setTimeout(start,2450);
 
 
-  /* parallax: the photo travels slower than the page */
-  var par=document.getElementById('par'),bp=document.getElementById('bhPhoto'),tick=false;
-  function px(){tick=false;var y=window.scrollY,h=bp.offsetHeight;if(y<h+200)par.style.transform='translate3d(0,'+(y*0.42).toFixed(1)+'px,0)';}
-  if(!rm){window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(px);}},{passive:true});}
-  /* draw-svg: the pair of houses traces itself in with scroll */
-  var dr=document.getElementById('draw'),dps=dr.querySelectorAll('path'),dt=false;
-  function draw(){dt=false;var r=dr.getBoundingClientRect(),vh=window.innerHeight,p=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.75)));
-    dps.forEach(function(e,i){var n=dps.length,a=i/n*0.7,q=Math.min(1,Math.max(0,(p-a)/0.3));e.style.strokeDashoffset=(1-q).toFixed(3);});}
-  if(rm){dps.forEach(function(e){e.style.strokeDashoffset=0;});}else{window.addEventListener('scroll',function(){if(!dt){dt=true;requestAnimationFrame(draw);}},{passive:true});draw();}
+  /* marquee: pause on touch */
+  var mq=document.getElementById('strip');mq.addEventListener('touchstart',function(){mq.classList.toggle('paused');},{passive:true});
+  /* photo-stack: their work fans out of a stack as the about panel scrolls in */
+  var st=document.getElementById('stack');new IntersectionObserver(function(es,ob){if(es[0].isIntersecting){st.classList.add('fan');ob.disconnect();}},{threshold:.45}).observe(st);
   /* trade moment: courses laid to gauge, bottom course first */
   var g=document.getElementById('gauge'),gs=document.getElementById('gaugeSvg'),C=['#a3402a','#8d3622','#b5512f','#9a3b25','#ad4a2c'],o='<rect x="4" y="2" width="16" height="116" rx="2" fill="#c8a06a"/>',k=0;
   for(var r=0;r<4;r++){var y=118-(r+1)*28+2,off=r%2?-34:0;o+='<rect class="tk" x="20" y="'+(y+24)+'" width="10" height="3" style="transition-delay:'+(r*0.34+0.3).toFixed(2)+'s"/>';
