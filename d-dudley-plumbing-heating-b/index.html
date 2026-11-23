@@ -29,7 +29,7 @@
   --bg:#ffffff;--stone:#f1f3f4;--card:#f8fafb;--line:#e1e5e8;--line2:#cbd2d7;
   --ink:#1c1d20;--body:#4a5058;--muted:#7d858e;
   --char:#2a2b2e;--char2:#1f2022;--char3:#3a3c40;
-  --cu:#b1612b;--cu-h:#94501f;--cu-ink:#9a4f1f;--cu-lt:#e9a06e;--cu-glow:rgba(177,97,43,.16);
+  --cu:#424242;--cu-h:#2b2b2b;--cu-ink:#6b6b6b;--cu-lt:#c4c4c4;--cu-glow:rgba(66,66,66,.16);--grey-lt:#b9b9b9;
   --cold:#3d8bd9;
   --r:16px;
 }
@@ -53,7 +53,7 @@ section{padding-top:96px;padding-bottom:96px}
 /* pipe rule under H2 */
 .h2-rule{display:flex;flex-direction:column;gap:4px;margin-top:18px;width:84px}
 .h2-rule span{height:5px;border-radius:3px;background:var(--cu);width:84px}
-.h2-rule span+span{background:var(--cold);width:52px}
+.h2-rule span+span{background:var(--grey-lt);width:52px}
 .sec-head{margin-bottom:44px}
 .sec-head.center{text-align:center}
 .sec-head.center .h2-rule{margin-left:auto;margin-right:auto;align-items:center}
@@ -61,8 +61,10 @@ section{padding-top:96px;padding-bottom:96px}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Albert Sans',Arial,sans-serif;font-weight:700;font-size:1.02rem;padding:15px 26px;border-radius:10px;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;border:2px solid transparent;white-space:nowrap}
 .btn svg{width:19px;height:19px;flex:none}
-.btn-cu{background:var(--cu);color:#fff;box-shadow:0 8px 22px -10px rgba(177,97,43,.7)}
+.btn-cu{background:var(--cu);color:#fff;box-shadow:0 8px 22px -10px rgba(40,40,40,.6)}
 .btn-cu:hover{background:var(--cu-h);transform:translateY(-2px)}
+.hero .btn-cu,.band .btn-cu{background:#fff;color:#2b2b2b}
+.hero .btn-cu:hover,.band .btn-cu:hover{background:#e6e6e6}
 .btn-line{border-color:var(--char);color:var(--char);background:#fff}
 .btn-line:hover{background:var(--char);color:#fff}
 
@@ -83,6 +85,21 @@ section{padding-top:96px;padding-bottom:96px}
 .nav.open .bars span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav.open .bars span:nth-child(2){opacity:0}
 .nav.open .bars span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* loader: their logo on their grey */
+#loader{position:fixed;inset:0;z-index:200;background:linear-gradient(180deg,#4a4a4a 0%,#424242 45%,#363636 100%);display:grid;place-items:center;animation:ldFail .4s ease 2.7s forwards}
+#loader.lift{transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.3,1)}
+@keyframes ldFail{to{opacity:0;visibility:hidden}}
+.ld{display:flex;flex-direction:column;align-items:center;width:min(78vw,420px)}
+.ld-dd{position:relative;width:100%}
+.ld-dd img{width:100%;height:auto;clip-path:inset(0 100% 0 0);animation:ldWipe 1.05s cubic-bezier(.55,.1,.3,1) .15s forwards}
+.ld-line{width:52%;height:auto;margin-top:16px;opacity:0;transform:translateY(8px);animation:ldUp .45s ease 1.15s forwards}
+.ld-rule{width:46%;height:2px;margin-top:20px;background:rgba(255,255,255,.75);transform:scaleX(0);animation:ldGrow .45s ease 1.3s forwards}
+.ld-place{margin-top:14px;color:#d6d6d6;font-family:'Albert Sans',Arial,sans-serif;font-weight:600;font-size:.95rem;letter-spacing:.04em;opacity:0;animation:ldUp .4s ease 1.45s forwards}
+@keyframes ldWipe{to{clip-path:inset(0 0 0 0)}}
+@keyframes ldUp{to{opacity:1;transform:none}}
+@keyframes ldGrow{to{transform:scaleX(1)}}
+body.loading .hero .w,body.loading .hero-logo,body.loading .hero .lede,body.loading .hero-cta{animation-play-state:paused}
 
 /* hero B: full bleed parallax photo columns */
 .hero{position:relative;height:calc(100svh - 72px);min-height:600px;background:var(--char);overflow:hidden;color:#fff}
@@ -152,13 +169,13 @@ section{padding-top:96px;padding-bottom:96px}
 .step-list li{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-top:1px solid #3a3c40;opacity:.38;transition:opacity .35s}
 .step-list li.on{opacity:1}
 .step-list .n{width:44px;height:44px;border-radius:50%;border:2px solid var(--cu-lt);display:grid;place-items:center;font-family:'Albert Sans',Arial,sans-serif;font-weight:800;color:var(--cu-lt)}
-.step-list li.on .n{background:var(--cu);border-color:var(--cu);color:#fff}
+.step-list li.on .n{background:#fff;border-color:#fff;color:#424242}
 .step-list b{display:block;color:#fff;font-family:'Albert Sans',Arial,sans-serif;font-size:1.12rem}
 .step-list span{font-size:.94rem}
 .step-pics{position:relative;aspect-ratio:4/5;max-height:70vh;border-radius:var(--r);overflow:hidden;background:#111}
 .step-pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s ease,transform 1.2s ease}
 .step-pics img.on{opacity:1;transform:none}
-.step-bar{position:absolute;left:0;bottom:0;height:5px;background:var(--cu);transform-origin:left;transform:scaleX(0)}
+.step-bar{position:absolute;left:0;bottom:0;height:5px;background:#fff;transform-origin:left;transform:scaleX(0)}
 
 /* services */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -258,7 +275,7 @@ footer{background:var(--char2);color:#a9aeb4;padding-top:60px;padding-bottom:36p
 .fab svg{width:25px;height:25px}
 .fab-call{background:var(--cu)}
 .fab-wa{background:#25d366;animation-name:pulseG}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(177,97,43,.55)}70%{box-shadow:0 0 0 16px rgba(177,97,43,0)}100%{box-shadow:0 0 0 0 rgba(177,97,43,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(66,66,66,.5)}70%{box-shadow:0 0 0 16px rgba(66,66,66,0)}100%{box-shadow:0 0 0 0 rgba(66,66,66,0)}}
 @keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
 /* reveal */
@@ -315,7 +332,11 @@ footer{background:var(--char2);color:#a9aeb4;padding-top:60px;padding-bottom:36p
 }
 </style>
 </head>
-<body>
+<body class="loading">
+
+<div id="loader" aria-hidden="true">
+  <div class="ld"><div class="ld-dd"><img src="logo-dd.png" alt="" width="540" height="192"></div><img class="ld-line" src="logo-line.png" alt="" width="256" height="25"><div class="ld-rule"></div><div class="ld-place">Carlisle, Cumbria</div></div>
+</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
@@ -512,6 +533,9 @@ footer{background:var(--char2);color:#a9aeb4;padding-top:60px;padding-bottom:36p
 
   // loader
   var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ld=document.getElementById('loader'),done=false;
+  function finish(){if(done)return;done=true;document.body.classList.remove('loading');ld.classList.add('lift');setTimeout(function(){ld.remove();},550);}
+  setTimeout(finish,rm?300:2000);setTimeout(finish,2450);
 
   // nav
   var nav=document.getElementById('nav'),tg=document.getElementById('navToggle');
