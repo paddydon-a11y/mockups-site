@@ -119,22 +119,28 @@ section{padding-top:96px;padding-bottom:96px}
 .t-ico svg{width:20px;height:20px;stroke:var(--cu);fill:none;stroke-width:2}
 
 /* radiator warm-up */
-.rad-wrap{display:flex;align-items:flex-end;gap:22px;margin:-8px 0 44px}
-.rad{position:relative;display:flex;gap:6px;padding:14px 16px 10px;background:#eef1f3;border-radius:10px;border:1px solid var(--line)}
-.fin{position:relative;width:18px;height:120px;border-radius:9px;background:linear-gradient(90deg,#dfe4e8,#fbfcfd 50%,#dfe4e8);overflow:hidden}
-.fin::after{content:"";position:absolute;inset:0;border-radius:9px;background:linear-gradient(180deg,#e96a3a,#c9572a 60%,#b1612b);opacity:0;transform:scaleY(.2);transform-origin:bottom;transition:opacity .5s ease,transform .5s ease}
-.fin::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#7fb3e6,#3d8bd9);opacity:.35}
-.rad.warm .fin::after{opacity:1;transform:none;transition-delay:calc(.5s + var(--i) * .12s)}
-.valve{position:absolute;left:-26px;bottom:6px;width:26px;height:10px;background:linear-gradient(#e6c068,#b8892e);border-radius:3px}
-.valve i{position:absolute;left:4px;top:-14px;width:12px;height:16px;border-radius:4px;background:#fff;border:2px solid #b8892e;transition:transform .45s ease}
-.rad.warm .valve i{transform:rotate(-90deg)}
-.heat{position:absolute;left:16px;right:16px;top:-34px;height:30px;display:flex;justify-content:space-around;pointer-events:none}
-.heat span{width:3px;height:26px;border-radius:2px;background:linear-gradient(180deg,rgba(233,106,58,0),rgba(233,106,58,.55));opacity:0;transform:translateY(8px)}
-.rad.warm .heat span{animation:rise 2.4s ease-in-out 1.6s infinite}
-.heat span:nth-child(2){animation-delay:2s!important}.heat span:nth-child(3){animation-delay:2.4s!important}.heat span:nth-child(4){animation-delay:1.8s!important}
-@keyframes rise{0%{opacity:0;transform:translateY(8px)}40%{opacity:1}100%{opacity:0;transform:translateY(-14px)}}
-.rad-cap{font-weight:600;color:var(--ink);font-size:.95rem;padding-bottom:8px}
-.rad-cap small{display:block;color:var(--muted);font-weight:400}
+.rad-wrap{display:flex;align-items:center;gap:26px;margin:-6px 0 44px}
+.rad{position:relative;flex:none;width:300px;padding-top:34px}
+.rad-body{position:relative;display:flex;justify-content:space-between;padding:10px 12px;background:linear-gradient(180deg,#e9edf0,#dfe4e8);border-radius:10px}
+.rad-body::before,.rad-body::after{content:"";position:absolute;left:8px;right:8px;height:9px;border-radius:5px;background:linear-gradient(180deg,#fbfcfd,#d9dee2)}
+.rad-body::before{top:4px}.rad-body::after{bottom:4px}
+.fin{position:relative;z-index:1;width:20px;height:118px;border-radius:10px;background:linear-gradient(90deg,#d4dade,#fbfcfd 50%,#d4dade);overflow:hidden}
+.fin::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#a9cdf0,#3d8bd9);opacity:.3}
+.fin::after{content:"";position:absolute;inset:0;border-radius:10px;background:linear-gradient(180deg,#ea6d3b,#cf5a2b 55%,#b1612b);opacity:0;transform:scaleY(.15);transform-origin:bottom;transition:opacity .5s ease,transform .55s ease}
+.rad.warm .fin::after{opacity:1;transform:none;transition-delay:calc(.55s + var(--i) * .11s)}
+.rad-feet{position:relative;height:46px}
+.vlv{position:absolute;top:0;width:16px;height:46px}
+.vlv.l{left:22px}.vlv.r{right:22px}
+.vlv::before{content:"";position:absolute;left:3px;top:0;width:10px;height:46px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,#8a4a1e,#d98a55 45%,#a85a26)}
+.vlv::after{content:"";position:absolute;left:-2px;top:6px;width:20px;height:12px;border-radius:3px;background:linear-gradient(#e6c068,#b8892e)}
+.vlv i{position:absolute;left:0;top:-9px;width:16px;height:13px;border-radius:4px 4px 2px 2px;background:#fff;border:2px solid #b8892e;z-index:1;transition:transform .45s ease .15s}
+.rad.warm .vlv.l i{transform:rotate(-90deg)}
+.heat{position:absolute;left:24px;right:24px;top:0;height:30px;display:flex;justify-content:space-between;pointer-events:none}
+.heat span{width:3px;height:22px;border-radius:2px;background:linear-gradient(180deg,rgba(233,106,58,0),rgba(233,106,58,.5));opacity:0}
+.rad.warm .heat span{animation:rise 2.6s ease-in-out infinite;animation-delay:calc(1.8s + var(--h) * .35s)}
+@keyframes rise{0%{opacity:0;transform:translateY(10px)}45%{opacity:1}100%{opacity:0;transform:translateY(-8px)}}
+.rad-cap{font-weight:600;color:var(--ink);font-size:1rem}
+.rad-cap small{display:block;color:var(--muted);font-weight:400;font-size:.9rem}
 
 /* pinned steps */
 .steps{background:var(--char);color:#d5d8dc;padding-top:0;padding-bottom:0}
@@ -288,8 +294,9 @@ footer{background:var(--char2);color:#a9aeb4;padding-top:60px;padding-bottom:36p
   .cols{inset:-4% -30% 0 -30%}
   .t-logo img{height:30px}
   .step-list span{font-size:.88rem;line-height:1.45}
-  .rad-wrap{flex-direction:column;align-items:flex-start;gap:10px}
-  .fin{width:14px;height:96px}
+  .rad-wrap{flex-direction:column;align-items:center;text-align:center;gap:6px;margin:-4px 0 40px}
+  .rad{width:100%;max-width:310px}
+  .fin{width:18px;height:104px}
   .gal{grid-template-columns:1fr}
   .gal .ph{aspect-ratio:4/3}
   .acc{grid-template-columns:80px 1fr}
@@ -303,6 +310,7 @@ footer{background:var(--char2);color:#a9aeb4;padding-top:60px;padding-bottom:36p
   .tail::after{display:none}
   .col-in{animation:none}
   .rad .fin::after{opacity:1;transform:none}
+  .heat{display:none}
   .step-pics img{transition:none}
 }
 </style>
@@ -357,7 +365,7 @@ footer{background:var(--char2);color:#a9aeb4;padding-top:60px;padding-bottom:36p
 <section id="services" style="padding-top:88px">
   <div class="wrap">
     <div class="sec-head reveal"><h2>Plumbing and heating <span class="cu">services</span></h2><div class="h2-rule"><span></span><span></span></div></div>
-    <div class="rad-wrap" aria-hidden="true"><div class="rad" id="rad"><div class="heat"><span></span><span></span><span></span><span></span></div><div class="valve"><i></i></div><div class="fin" style="--i:0"></div><div class="fin" style="--i:1"></div><div class="fin" style="--i:2"></div><div class="fin" style="--i:3"></div><div class="fin" style="--i:4"></div><div class="fin" style="--i:5"></div><div class="fin" style="--i:6"></div><div class="fin" style="--i:7"></div><div class="fin" style="--i:8"></div><div class="fin" style="--i:9"></div></div><div class="rad-cap">Valve open, system balanced<small>Every fin warm, top to bottom</small></div></div>
+    <div class="rad-wrap" aria-hidden="true"><div class="rad" id="rad"><div class="heat"><span style="--h:0"></span><span style="--h:1"></span><span style="--h:2"></span><span style="--h:3"></span><span style="--h:4"></span></div><div class="rad-body"><div class="fin" style="--i:0"></div><div class="fin" style="--i:1"></div><div class="fin" style="--i:2"></div><div class="fin" style="--i:3"></div><div class="fin" style="--i:4"></div><div class="fin" style="--i:5"></div><div class="fin" style="--i:6"></div><div class="fin" style="--i:7"></div><div class="fin" style="--i:8"></div><div class="fin" style="--i:9"></div></div><div class="rad-feet"><span class="vlv l"><i></i></span><span class="vlv r"><i></i></span></div></div><div class="rad-cap">Valve open, system balanced<small>Every fin warm, top to bottom</small></div></div>
     <div class="svc-grid">
       <article class="svc reveal"><div class="svc-img"><img src="svc-repairs.jpg" alt="Worcester floor standing boiler" loading="lazy" width="1200" height="1200"></div><div class="svc-body"><h3>Boiler Repairs and Servicing</h3><p>Breakdowns, faults and annual services on gas and oil boilers.</p></div></article>
       <article class="svc reveal"><div class="svc-img"><img src="svc-installs.jpg" alt="Worcester combi boiler with copper pipework" loading="lazy" width="1200" height="1600" style="object-position:center 35%"></div><div class="svc-body"><h3>Boiler Installations</h3><p>New combi and system boilers fitted with neat copper pipework.</p></div></article>
