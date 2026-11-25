@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automatic Doors and Shopfronts in Wrexham and Nationwide | AutoDoorFix Ltd</title>
+<meta name="description" content="Automatic door installation, repairs and planned maintenance from Wrexham, North Wales. Sliding, swing and accessible entrances, shopfronts and roller shutters for commercial properties nationwide.">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="AutoDoorFix Ltd - Your New Website">
+<meta property="og:description" content="Automatic doors and commercial entrances in Wrexham and nationwide - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/autodoorfix/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/autodoorfix/">
+<meta property="og:type" content="website">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:only light;
+  --bg:#ffffff;--stone:#f3f4f6;--lilac:#ece7f4;--lilac-2:#ddd3ec;--line:#e2e4ea;
+  --green:#33b44a;--green-d:#23903a;--green-ink:#1c7a30;--green-l:#bfe9c6;
+  --purple:#71489b;--purple-d:#3b2459;--purple-dd:#2b1a42;--purple-l:#cdb8e6;
+  --frame:#2c3036;--frame-2:#41474f;
+  --ink:#1b1d22;--body:#4a4f5a;--muted:#7d8290;
+  --sans:'Raleway',Arial,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#ffffff;--stone:#f3f4f6;--lilac:#ece7f4;--line:#e2e4ea;--ink:#1b1d22;--body:#4a4f5a;--muted:#7d8290}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+html.no-scroll{overflow:hidden}
+body.no-scroll{overflow:visible;overflow-x:clip}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1rem;font-weight:500;line-height:1.7;-webkit-font-smoothing:antialiased;font-feature-settings:"lnum" 1;font-variant-numeric:lining-nums}
+em,i{font-style:normal}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--sans);color:var(--ink);font-weight:800;line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(1.9rem,4vw,2.9rem)}
+h3{font-size:1.2rem;letter-spacing:-.01em}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.acc{color:var(--purple)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:1rem;padding:15px 24px;border-radius:6px;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s,color .2s,box-shadow .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-green{background:var(--green-d);color:#fff}
+.btn-green:hover{background:var(--green-ink);box-shadow:0 10px 24px rgba(35,144,58,.3)}
+.btn-white{background:#fff;color:var(--green-ink)}
+.btn-white:hover{box-shadow:0 12px 26px rgba(0,0,0,.22)}
+.btn-ghost{border-color:rgba(255,255,255,.75);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-purple:hover{background:#5d3a82}
+
+/* manifestation dots: the frosted dot band on commercial glass */
+.dots{height:10px;background-image:radial-gradient(circle,var(--purple-l) 2.2px,transparent 2.6px);background-size:14px 10px;background-position:center}
+
+/* loader: bi-parting doors */
+#loader{position:fixed;inset:0;z-index:200;pointer-events:none;animation:ldFail .3s 2.6s forwards}
+#loader .lf{position:absolute;top:0;left:0;right:0;height:30px;background:var(--frame);z-index:3;display:flex;justify-content:center;align-items:flex-end}
+#loader .sens{width:74px;height:20px;background:var(--frame-2);border-radius:0 0 6px 6px;display:flex;align-items:center;justify-content:center}
+#loader .led{width:8px;height:8px;border-radius:50%;background:#55606b;animation:led 1.1s .2s 2 both}
+#loader .leaf{position:absolute;top:30px;bottom:0;width:50%;overflow:hidden;background:linear-gradient(115deg,#f7fafb 0%,#e9eff2 42%,#f4f7f8 55%,#e1e9ec 100%);transition:transform .65s cubic-bezier(.55,.05,.25,1)}
+#loader .ll{left:0;border-right:5px solid var(--frame)}
+#loader .lr{right:0;border-left:5px solid var(--frame)}
+#loader .ld-dots{position:absolute;left:0;right:0;top:64%;height:10px;background-image:radial-gradient(circle,var(--purple-l) 2.4px,transparent 2.8px);background-size:15px 10px}
+#loader .ld-dots.d2{top:calc(64% + 16px);background-image:radial-gradient(circle,var(--green-l) 2.4px,transparent 2.8px)}
+#loader .ld-in{position:absolute;top:38%;width:min(78vw,400px);transform:translate(-50%,-50%)}
+#loader .ll .ld-in{left:calc(100% + 2.5px)}
+#loader .lr .ld-in{left:-2.5px}
+#loader .ld-in img{width:100%;opacity:0;transform:scale(.94);animation:ldLogo .55s .1s forwards}
+#loader .ld-loc{margin-top:14px;text-align:center;font-weight:700;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);opacity:0;animation:ldFade .4s .7s forwards;white-space:nowrap}
+#loader.open .ll{transform:translateX(-101%)}
+#loader.open .lr{transform:translateX(101%)}
+#loader.open .lf{transform:translateY(-100%);transition:transform .4s .45s}
+@keyframes led{0%,100%{background:#55606b;box-shadow:none}45%,60%{background:#3ee05a;box-shadow:0 0 10px #3ee05a}}
+@keyframes ldLogo{to{opacity:1;transform:none}}
+@keyframes ldFade{to{opacity:1}}
+@keyframes ldFail{to{opacity:0;visibility:hidden}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px;gap:24px}
+.nav-logo{display:flex;align-items:center;white-space:nowrap}
+.nav-logo img{height:30px;width:auto}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-weight:600;font-size:.95rem;color:var(--ink)}
+.nav-links a:hover{color:var(--purple)}
+.nav-links a.nav-cta{color:#fff;background:var(--green-d);padding:11px 18px;border-radius:6px;display:inline-flex;gap:8px;align-items:center}
+.nav-links a.nav-cta svg{width:16px;height:16px;stroke:#fff}
+.nav-links a.nav-cta:hover{background:var(--green-ink)}
+.nav-toggle{display:none;width:46px;height:46px;border-radius:8px;border:1.5px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer}
+.nav-toggle span{display:block;width:20px;height:2px;background:var(--ink);position:relative;transition:background .2s}
+.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--ink);transition:transform .25s}
+.nav-toggle span::before{top:-6px}.nav-toggle span::after{top:6px}
+.nav-toggle[aria-expanded="true"] span{background:transparent}
+.nav-toggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* hero: the doorway */
+.hero{padding-top:18px;padding-bottom:0}
+.door{background:var(--frame);border-radius:8px;padding:10px;display:grid;grid-template-columns:1.06fr 1fr;gap:10px;height:clamp(520px,calc(100vh - 106px),720px);box-shadow:0 30px 60px -30px rgba(27,29,34,.45)}
+.transom{background:var(--green-d);border-radius:3px;padding:44px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.transom::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border:26px solid rgba(255,255,255,.07);border-radius:4px;transform:rotate(12deg)}
+.hero h1{color:#fff;font-size:clamp(2.2rem,3.9vw,3.6rem);letter-spacing:-.03em;line-height:1.04;opacity:0;animation:fadeUp .7s .1s forwards}
+.hero h1 .uline{background-image:radial-gradient(circle,rgba(255,255,255,.85) 2.4px,transparent 2.8px);background-size:13px 9px;background-repeat:repeat-x;background-position:0 100%;padding-bottom:12px}
+.tagline{margin-top:22px;font-weight:700;font-size:clamp(1.08rem,1.6vw,1.35rem);color:rgba(255,255,255,.66);letter-spacing:-.01em;opacity:0;animation:fadeUp .7s .22s forwards}
+.lede{margin-top:14px;color:rgba(255,255,255,.92);font-size:1.02rem;max-width:520px;opacity:0;animation:fadeUp .7s .34s forwards}
+.hero-ctas{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;opacity:0;animation:fadeUp .7s .46s forwards}
+.leaves{position:relative;border-radius:3px;overflow:hidden;background:#cfd8dc;display:flex;flex-direction:column}
+.leaves .head{height:26px;background:var(--frame-2);display:flex;justify-content:center;align-items:flex-end;flex:none;position:relative;z-index:3}
+.leaves .sens{width:70px;height:16px;background:var(--frame);border-radius:5px 5px 0 0;display:flex;align-items:center;justify-content:center}
+.leaves .led{width:7px;height:7px;border-radius:50%;background:#55606b}
+.leaves.blink .led{animation:led .9s 1}
+.opening{position:relative;flex:1;overflow:hidden}
+.opening>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%;transform:scale(1.06);transition:transform 1.6s ease-out}
+.leaves.open .opening>img{transform:scale(1)}
+.gl{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(115deg,rgba(255,255,255,.55) 0%,rgba(225,236,240,.34) 40%,rgba(255,255,255,.5) 52%,rgba(214,228,233,.32) 100%);transition:transform 1s cubic-bezier(.55,.05,.25,1);z-index:2}
+.gl::before{content:"";position:absolute;left:0;right:0;top:60%;height:10px;background-image:radial-gradient(circle,rgba(113,72,155,.75) 2.3px,transparent 2.7px);background-size:14px 10px}
+.gl::after{content:"";position:absolute;left:0;right:0;top:calc(60% + 15px);height:10px;background-image:radial-gradient(circle,rgba(51,180,74,.8) 2.3px,transparent 2.7px);background-size:14px 10px}
+.gl.l{left:0;border-right:4px solid var(--frame)}
+.gl.r{right:0;border-left:4px solid var(--frame)}
+.leaves.open .gl.l{transform:translateX(-90%)}
+.leaves.open .gl.r{transform:translateX(90%)}
+.track{height:10px;background:var(--frame);flex:none;position:relative;z-index:3}
+.hero-badge{position:absolute;left:18px;bottom:28px;z-index:4;background:#fff;border-radius:6px;padding:12px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 14px 30px rgba(0,0,0,.25);max-width:290px;opacity:0;animation:fadeUp .6s 2.4s forwards}
+.hero-badge b{display:block;color:var(--ink);font-size:.95rem;line-height:1.25}
+.hero-badge span{font-size:.82rem;color:var(--body);line-height:1.35;display:block}
+.hero-badge .ic{width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.hero-badge .ic svg{width:20px;height:20px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* accreditation loop */
+.trust{padding-top:44px;padding-bottom:10px}
+.loop{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.loop-track{display:flex;gap:16px;width:max-content;animation:loop 38s linear infinite;padding-left:24px}
+.loop:hover .loop-track{animation-play-state:paused}
+.chip{display:flex;align-items:center;gap:12px;height:72px;padding:0 22px;border:1px solid var(--line);border-radius:8px;background:#fff;flex:none}
+.chip img{height:40px;width:auto}
+.chip img.tall{height:48px}
+.chip .t{font-weight:700;color:var(--ink);font-size:.95rem;white-space:nowrap}
+.chip .ic{width:34px;height:34px;border-radius:50%;background:var(--lilac);color:var(--purple);display:flex;align-items:center;justify-content:center}
+.chip .ic svg{width:18px;height:18px}
+@keyframes loop{to{transform:translateX(-50%)}}
+
+section{padding:90px 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.head .dots{width:120px;margin-bottom:12px}
+
+/* services bento */
+#services{padding-top:64px}
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.svc{grid-column:span 2;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.svc.big{grid-column:span 3}
+.svc::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:2}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(27,29,34,.28)}
+.svc:hover::before{transform:scaleX(1)}
+.svc .ph{aspect-ratio:16/10;overflow:hidden;background:var(--stone)}
+.svc.big .ph{aspect-ratio:16/9}
+.svc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc:hover .ph img{transform:scale(1.04)}
+.svc .tx{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.svc p{margin-top:8px;font-size:.96rem}
+.svc .more{margin-top:auto;padding-top:14px;font-weight:700;color:var(--purple);font-size:.92rem;display:inline-flex;gap:8px;align-items:center}
+.svc .more svg{width:16px;height:16px;transition:transform .2s}
+.svc .more:hover svg{transform:translateX(4px)}
+.svc-wide{grid-column:span 6;background:var(--purple-d);border-radius:8px;padding:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative;overflow:hidden}
+.svc-wide::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--green)}
+.svc-wide h3{color:#fff}
+.svc-wide p{color:rgba(255,255,255,.78);font-size:.94rem;margin-top:6px}
+.svc-wide .ic{width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,.1);color:var(--green-l);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.svc-wide .ic svg{width:22px;height:22px}
+.svc-wide a{display:inline-flex;margin-top:10px;font-weight:700;color:var(--green-l);font-size:.9rem}
+
+/* about */
+.about{padding-top:0}
+.about-in{background:var(--lilac);border-radius:8px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;padding:52px;align-items:center}
+.about p{margin-top:16px;font-size:1.04rem;color:#3e3a49}
+.facts{display:grid;gap:12px}
+.fact{background:#fff;border-radius:8px;padding:16px 18px;display:flex;align-items:center;gap:14px}
+.fact .ic{width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.fact .ic svg{width:20px;height:20px}
+.fact img{height:42px;width:auto;flex:none}
+.fact b{color:var(--ink);display:block;line-height:1.3}
+.fact span{font-size:.9rem;line-height:1.4;display:block}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.gi{grid-column:span 2;cursor:zoom-in}
+.gi.w{grid-column:span 4}
+.gi .ph{border-radius:8px;overflow:hidden;aspect-ratio:4/5;background:var(--stone)}
+.gi.w .ph{aspect-ratio:auto;height:100%;max-height:none}
+.gi .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gi:hover .ph img{transform:scale(1.04)}
+.gi figcaption{margin-top:10px;font-size:.9rem;color:var(--body);line-height:1.45}
+.gi.w{display:flex;flex-direction:column}
+.gi.w .ph{flex:1;min-height:0}
+.lb{position:fixed;inset:0;background:rgba(20,16,28,.92);z-index:120;display:none;align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb img{max-height:86vh;max-width:100%;border-radius:6px}
+.lb button{position:absolute;top:16px;right:16px;width:46px;height:46px;border-radius:50%;border:0;background:#fff;font-size:1.4rem;cursor:pointer;color:var(--ink)}
+
+/* maintenance */
+.ppm{background:var(--stone)}
+.ppm-in{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.ppm p{margin-top:16px;font-size:1.02rem}
+.ppm .btn{margin-top:26px}
+.plan{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pl{background:#fff;border-radius:8px;padding:24px;border:1px solid var(--line)}
+.pl .n{width:40px;height:40px;border-radius:8px;background:var(--lilac);color:var(--purple);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.pl .n svg{width:20px;height:20px}
+.pl p{margin-top:6px;font-size:.94rem}
+
+/* cta band */
+.band{background:var(--purple-d);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.band .dots{position:absolute;left:0;right:0;opacity:.5;background-image:radial-gradient(circle,rgba(205,184,230,.55) 2.2px,transparent 2.6px)}
+.band .dots.t{top:26px}.band .dots.b{bottom:26px;background-image:radial-gradient(circle,rgba(51,180,74,.6) 2.2px,transparent 2.6px)}
+.band-in{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.band h2{color:#fff;max-width:640px}
+.band p{color:rgba(255,255,255,.82);margin-top:14px;max-width:560px;font-size:1.04rem}
+.band .btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* sectors */
+.sec-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.sc{border:1px solid var(--line);border-radius:8px;padding:24px 20px;background:#fff;transition:transform .25s,border-color .25s}
+.sc:hover{transform:translateY(-3px);border-color:var(--green)}
+.sc .ic{width:46px;height:46px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.sc .ic svg{width:22px;height:22px}
+.sc h3{font-size:1.06rem}
+.sc p{font-size:.9rem;margin-top:6px;line-height:1.5}
+.sec-note{margin-top:22px;font-size:1rem}
+
+/* compliance */
+.comp{background:var(--lilac)}
+.comp-in{display:grid;grid-template-columns:.9fr 1.3fr;gap:56px;align-items:start}
+.comp p.l{margin-top:16px;font-size:1.02rem;color:#3e3a49}
+.std{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+.std span{background:#fff;border-radius:6px;padding:8px 14px;font-weight:700;color:var(--purple);font-size:.92rem}
+.accs{display:grid;gap:12px}
+.ac{background:#fff;border-radius:8px;padding:18px 20px;display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center}
+.ac .lg{height:56px;display:flex;align-items:center;justify-content:center}
+.ac .lg img{max-height:52px;max-width:140px;width:auto}
+.ac b{display:block;color:var(--ink);line-height:1.3}
+.ac span{font-size:.92rem;line-height:1.45;display:block;margin-top:2px}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.rv{background:#fff;border:1px solid var(--line);border-radius:8px;padding:30px;position:relative}
+.rv .st{color:#f0b429;letter-spacing:3px;font-size:1.05rem}
+.rv blockquote{margin-top:12px;color:var(--ink);font-size:1.04rem;line-height:1.6}
+.rv .who{margin-top:18px;display:flex;gap:12px;align-items:center}
+.rv .av{width:42px;height:42px;border-radius:50%;background:var(--lilac);color:var(--purple);font-weight:800;display:flex;align-items:center;justify-content:center}
+.rv .who b{display:block;color:var(--ink);line-height:1.3}
+.rv .who span{font-size:.88rem;color:var(--muted)}
+
+/* areas */
+.areas{background:var(--stone)}
+.areas-in{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center}
+.areas p{margin-top:14px;font-size:1.02rem}
+.towns{display:flex;flex-wrap:wrap;gap:10px}
+.towns span{background:#fff;border:1px solid var(--line);border-radius:40px;padding:10px 18px;font-weight:700;color:var(--ink);font-size:.95rem}
+.towns span.base{background:var(--green-d);color:#fff;border-color:var(--green-d)}
+.towns span.nat{background:var(--purple);color:#fff;border-color:var(--purple)}
+
+/* contact */
+.contact-in{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
+.contact .sub{margin-top:14px;font-size:1.02rem}
+.cards{margin-top:28px;display:grid;gap:12px}
+.cc{display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.cc .ic{width:44px;height:44px;border-radius:50%;background:var(--lilac);color:var(--purple);display:flex;align-items:center;justify-content:center;flex:none}
+.cc .ic svg{width:20px;height:20px}
+.cc small{display:block;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cc b{color:var(--ink);font-size:1.05rem;word-break:break-word}
+form{background:var(--stone);border-radius:8px;padding:34px;display:grid;gap:8px}
+form label{font-weight:700;color:var(--ink);font-size:.94rem;margin-top:8px}
+form label span{font-weight:500;color:var(--muted)}
+form input,form textarea{width:100%;font:inherit;font-size:1rem;padding:14px 16px;border:1.5px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+form input:focus,form textarea:focus{outline:none;border-color:var(--purple)}
+form textarea{min-height:130px;resize:vertical}
+form .btn{width:100%;margin-top:14px}
+
+/* footer */
+footer{background:var(--purple-dd);color:rgba(255,255,255,.78);padding:64px 0 28px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.flogo{display:inline-flex;background:#fff;border-radius:8px;padding:12px 16px}
+.foot img{height:28px;width:auto}
+.foot p{margin-top:14px;font-size:.95rem;max-width:340px}
+.foot h4{color:#fff;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.foot ul{list-style:none;display:grid;gap:8px;font-size:.95rem}
+.foot a:hover{color:#fff}
+.foot-base{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.88rem}
+.foot-base a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* fabs */
+.fabs{position:fixed;right:18px;bottom:22px;z-index:60;display:flex;flex-direction:column;gap:12px}
+.fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transform:scale(.6);pointer-events:none;transition:opacity .3s,transform .3s}
+.fab svg{width:24px;height:24px}
+.fab.call{background:var(--green-d);box-shadow:0 10px 26px rgba(35,144,58,.4)}
+.fab.wa{background:#25d366;box-shadow:0 10px 26px rgba(37,211,102,.4)}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab.call.show{animation:pulseG 2.2s infinite}
+.fab.wa.show{animation:pulseW 2.2s 1.1s infinite}
+.fab:hover{animation:none}
+@keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(35,144,58,.5)}70%{box-shadow:0 0 0 16px rgba(35,144,58,0)}100%{box-shadow:0 0 0 0 rgba(35,144,58,0)}}
+@keyframes pulseW{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1080px){
+  .sec-grid{grid-template-columns:repeat(3,1fr)}
+  .svc-wide{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:880px){
+  .nav-in{height:64px}
+  .nav-logo img{height:24px}
+  .nav-toggle{display:flex}
+  .nav-links{position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 22px;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.25);transform:scaleY(0);transform-origin:top;opacity:0;pointer-events:none;transition:transform .25s,opacity .2s}
+  .nav-links.is-open{transform:none;opacity:1;pointer-events:auto}
+  .nav-links li{border-bottom:1px solid var(--line)}
+  .nav-links li:last-child{border-bottom:0;padding-top:16px}
+  .nav-links a{display:block;padding-top:14px;padding-bottom:14px;font-size:1.05rem}
+  .nav-links a.nav-cta{justify-content:center;padding:15px 18px}
+  .hero{padding-top:12px}
+  .hero .wrap{padding-left:12px;padding-right:12px}
+  .door{grid-template-columns:1fr;height:auto;padding:8px;gap:8px}
+  .transom{padding:22px 20px 20px}
+  .transom::after{width:160px;height:160px;right:-50px;top:-50px;border-width:20px}
+  .hero h1{font-size:clamp(1.95rem,8.6vw,2.6rem)}
+  .tagline{display:none}
+  .lede{font-size:.95rem;margin-top:16px;line-height:1.6}
+  .hero-ctas{margin-top:18px;flex-direction:column;gap:10px}
+  .hero-ctas .btn{padding:13px 20px}
+  .hero-ctas .btn{width:100%}
+  .leaves{height:clamp(210px,calc(100svh - 510px),360px)}
+  .hero-badge{display:none}
+  .trust{padding-top:32px}
+  section{padding:68px 0}
+  #services{padding-top:44px}
+  .svc,.svc.big{grid-column:span 6}
+  .svc-wide{grid-column:span 6;grid-template-columns:1fr;padding:26px 22px;gap:22px}
+  .about-in,.ppm-in,.comp-in,.areas-in,.contact-in{grid-template-columns:1fr;gap:30px}
+  .about-in{padding:32px 22px}
+  .gal{grid-template-columns:1fr 1fr;gap:14px}
+  .gi,.gi.w{grid-column:span 1}
+  .gi.w .ph,.gi .ph{aspect-ratio:4/5;height:auto;flex:none}
+  .gi figcaption{font-size:.84rem}
+  .plan{grid-template-columns:1fr}
+  .sec-grid{grid-template-columns:1fr 1fr}
+  .sec-grid .sc:last-child{grid-column:span 2}
+  .rev-grid{grid-template-columns:1fr}
+  .ac{grid-template-columns:1fr;gap:10px;padding:18px}
+  .ac .lg{justify-content:flex-start;height:48px}
+  .ac .lg img{max-height:44px}
+  form{padding:24px 18px}
+  .foot{grid-template-columns:1fr;gap:28px}
+  .band{padding:64px 0}
+  .band .btns{width:100%;flex-direction:column}
+  .band .btns .btn{width:100%}
+}
+@media (max-width:880px) and (max-height:720px){
+  .transom{padding:20px 18px}
+  .tagline{display:none}
+  .leaves{height:200px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .loop-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}
+  .loop-track .dup{display:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="lf"><div class="sens"><div class="led"></div></div></div>
+  <div class="leaf ll"><div class="ld-dots"></div><div class="ld-dots d2"></div><div class="ld-in"><img src="logo.png" alt=""><div class="ld-loc">Wrexham, North Wales</div></div></div>
+  <div class="leaf lr"><div class="ld-dots"></div><div class="ld-dots d2"></div><div class="ld-in"><img src="logo.png" alt=""><div class="ld-loc">Wrexham, North Wales</div></div></div>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="nav-logo" aria-label="AutoDoorFix home"><img src="logo.png" alt="AutoDoorFix" width="844" height="162"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#maintenance">Maintenance</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-cta js-call"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg>Book an Engineer</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="door">
+      <div class="transom">
+        <h1>Automatic Doors and Shopfronts in Wrexham and <span class="uline">Nationwide</span></h1>
+        <p class="tagline">Keeping your business open, safe and accessible.</p>
+        <p class="lede">Installation, repairs and planned maintenance for sliding, swing and accessible entrances. Based in Wrexham, North Wales, working for commercial sites across the UK.</p>
+        <div class="hero-ctas" id="heroCta">
+          <a href="#" class="btn btn-white js-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg><span class="call-lbl">Call us</span></a>
+          <a href="#contact" class="btn btn-ghost">Request a Maintenance Quote</a>
+        </div>
+      </div>
+      <div class="leaves" id="leaves">
+        <div class="head"><div class="sens"><div class="led"></div></div></div>
+        <div class="opening">
+          <img src="hero.jpg" alt="Glazed corner shopfront with automatic sliding entrance doors" width="1800" height="1350" fetchpriority="high">
+          <div class="gl l"></div><div class="gl r"></div>
+          <div class="hero-badge"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></div><div><b>Free first call-out</b><span>for Wrexham businesses</span></div></div>
+        </div>
+        <div class="track"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust" aria-label="Accreditations">
+  <div class="loop">
+    <div class="loop-track">
+      <div class="chip"><img src="acc-adsa.jpg" alt="ADSA, Automatic Door Suppliers Association" width="300" height="93"></div>
+      <div class="chip"><img src="acc-gqa.png" alt="GQA Qualifications" width="700" height="234"></div>
+      <div class="chip"><img src="acc-dbs.jpg" alt="DBS, Disclosure and Barring Service" width="600" height="195"></div>
+      <div class="chip"><img src="acc-pasma.png" alt="PASMA" width="300" height="76"></div>
+      <div class="chip"><img class="tall" src="acc-cymraeg.png" alt="Cymraeg" width="317" height="400"><span class="t">Welsh spoken</span></div>
+      <div class="chip"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><span class="t">Nationwide cover</span></div>
+      <div class="chip"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="t">BS EN 16005 servicing</span></div>
+      <div class="chip dup" aria-hidden="true"><img src="acc-adsa.jpg" alt="" width="300" height="93"></div>
+      <div class="chip dup" aria-hidden="true"><img src="acc-gqa.png" alt="" width="700" height="234"></div>
+      <div class="chip dup" aria-hidden="true"><img src="acc-dbs.jpg" alt="" width="600" height="195"></div>
+      <div class="chip dup" aria-hidden="true"><img src="acc-pasma.png" alt="" width="300" height="76"></div>
+      <div class="chip dup" aria-hidden="true"><img class="tall" src="acc-cymraeg.png" alt="" width="317" height="400"><span class="t">Welsh spoken</span></div>
+      <div class="chip dup" aria-hidden="true"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><span class="t">Nationwide cover</span></div>
+      <div class="chip dup" aria-hidden="true"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><span class="t">BS EN 16005 servicing</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="dots"></div><h2>Automatic Door and <span class="acc">Entrance</span> Services</h2></div></div>
+    <div class="svc-grid">
+      <article class="svc big reveal"><div class="ph"><img src="svc-sliding.jpg" alt="Automatic sliding doors in a glazed shopfront" loading="lazy" width="1000" height="924"></div><div class="tx"><h3>Automatic Sliding Doors</h3><p>Single, bi-parting and telescopic, with battery backup and fire exit operation.</p><a href="#contact" class="more">Enquire about sliding doors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
+      <article class="svc big reveal"><div class="ph"><img src="svc-swing.jpg" alt="Automatic double swing doors with pedestrian barriers" loading="lazy" width="1100" height="1466" style="object-position:50% 45%"></div><div class="tx"><h3>Automatic Swing Doors</h3><p>Single and double swing operators for retail units, offices and public buildings.</p><a href="#contact" class="more">Enquire about swing doors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
+      <article class="svc reveal"><div class="ph"><img src="svc-accessible.jpg" alt="Hospital fire doors fitted with automatic door operators" loading="lazy" width="1100" height="1467" style="object-position:50% 40%"></div><div class="tx"><h3>Accessible Entrances</h3><p>DDA compliant doors with push pads, safety sensors and manual use.</p><a href="#contact" class="more">Enquire about access doors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
+      <article class="svc reveal"><div class="ph"><img src="svc-bifold.jpg" alt="Automatic bi-folding doors at a library entrance" loading="lazy" width="1100" height="1423" style="object-position:50% 55%"></div><div class="tx"><h3>Automatic Bi-folding Doors</h3><p>For tight entrances where space and heat loss both matter.</p><a href="#contact" class="more">Enquire about bi-folding doors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
+      <article class="svc reveal"><div class="ph"><img src="svc-steel.jpg" alt="Steel doors installed to a commercial plant room" loading="lazy" width="1400" height="1143"></div><div class="tx"><h3>Industrial Steel Doors</h3><p>Secure steel doorsets for plant rooms, stores and service areas.</p><a href="#contact" class="more">Enquire about steel doors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></article>
+      <div class="svc-wide reveal">
+        <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M12 3v18M3 15h18"/></svg></div><h3>Aluminium Shopfronts</h3><p>New shopfronts, refurbishments and repairs after vandal damage.</p><a href="#contact">Enquire</a></div>
+        <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 7h18M3 11h18M3 15h18"/></svg></div><h3>Roller Shutters</h3><p>Supply, fitting and repair of commercial roller shutter doors.</p><a href="#contact">Enquire</a></div>
+        <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Access Control</h3><p>Fob, keypad and auto-locking systems chosen to suit the site.</p><a href="#contact">Enquire</a></div>
+        <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><h3>Automatic Conversions</h3><p>Existing manual doors converted to automatic operation.</p><a href="#contact">Enquire</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-in reveal">
+      <div>
+        <h2>About <span class="acc">AutoDoorFix</span></h2>
+        <p>AutoDoorFix designs, installs and maintains automatic door systems for commercial properties from its base in Wrexham. With close links to the major automatic door manufacturers, the team repairs sound equipment rather than replacing it, and works swiftly and cleanly in busy public areas to keep disruption to a minimum.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.5-8-12a8 8 0 0 1 16 0c0 5.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b>Wrexham based</b><span>Working nationwide for single sites and multi-site estates</span></div></div>
+        <div class="fact"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></div><div><b>Repair before replace</b><span>Fault diagnosis on all major door brands</span></div></div>
+        <div class="fact"><img src="acc-cymraeg.png" alt="Cymraeg" width="317" height="400"><div><b>Welsh spoken</b><span>Croeso i chi siarad Cymraeg gyda ni</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="dots"></div><h2>Recent <span class="acc">Installations</span></h2></div></div>
+    <div class="gal">
+      <figure class="gi w reveal" data-full="hero.jpg"><div class="ph"><img src="hero.jpg" alt="Glazed corner shopfront with automatic sliding doors" loading="lazy" width="1800" height="1350"></div><figcaption>Glazed corner shopfront with an automatic sliding entrance</figcaption></figure>
+      <figure class="gi reveal" data-full="svc-accessible.jpg"><div class="ph"><img src="svc-accessible.jpg" alt="Hospital fire doors with automatic operators" loading="lazy" width="1100" height="1467"></div><figcaption>Hospital fire doors with automatic operators, magnetic locks and fob access</figcaption></figure>
+      <figure class="gi reveal" data-full="svc-swing.jpg"><div class="ph"><img src="svc-swing.jpg" alt="Automatic double swing doors" loading="lazy" width="1100" height="1466"></div><figcaption>Fully automatic double swing doors with pedestrian barriers</figcaption></figure>
+      <figure class="gi reveal" data-full="svc-bifold.jpg"><div class="ph"><img src="svc-bifold.jpg" alt="Automatic bi-folding doors at a library" loading="lazy" width="1100" height="1423"></div><figcaption>Automatic bi-folding doors for a library with a restricted entrance</figcaption></figure>
+      <figure class="gi reveal" data-full="work-unit.jpg"><div class="ph"><img src="work-unit.jpg" alt="Aluminium glazed entrance on a timber-clad unit" loading="lazy" width="918" height="903"></div><figcaption>Aluminium glazed entrance on a new timber-clad unit</figcaption></figure>
+      <figure class="gi reveal" data-full="svc-steel.jpg"><div class="ph"><img src="svc-steel.jpg" alt="Steel plant room doors" loading="lazy" width="1400" height="1143"></div><figcaption>Steel doors for a plant room on a commercial building</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="ppm" id="maintenance">
+  <div class="wrap ppm-in">
+    <div class="reveal">
+      <div class="dots" style="width:120px;margin-bottom:12px"></div>
+      <h2>Planned Preventative <span class="acc">Maintenance</span></h2>
+      <p>Under BS 7036 and BS EN 16005, anyone with automatic doors should have them serviced at least once a year, and busy sites more often. AutoDoorFix maintenance plans keep single entrances and whole estates safe, compliant and working.</p>
+      <a href="#contact" class="btn btn-purple">Request a Maintenance Quote</a>
+    </div>
+    <div class="plan">
+      <div class="pl reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Scheduled Servicing</h3><p>Annual or more frequent visits, booked in to suit opening hours.</p></div>
+      <div class="pl reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Safety Inspections</h3><p>Sensors, safety edges and fire exit operation checked to standard.</p></div>
+      <div class="pl reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><h3>Multi-site Contracts</h3><p>One maintenance contract for facilities managers and retail estates.</p></div>
+      <div class="pl reveal"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><h3>First Service Free</h3><p>New installations get their first annual service at no charge.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="breakdown">
+  <div class="dots t"></div><div class="dots b"></div>
+  <div class="wrap band-in">
+    <div class="reveal">
+      <h2>Keeping your business open, safe and accessible</h2>
+      <p>Breakdown and repair call-outs for doors stuck open, failing to close or locked out of use. First call-out free for Wrexham businesses.</p>
+    </div>
+    <div class="btns reveal">
+      <a href="#" class="btn btn-white js-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg>Book an Engineer</a>
+      <a href="#contact" class="btn btn-ghost">Report a Fault</a>
+    </div>
+  </div>
+</section>
+
+<section id="sectors">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="dots"></div><h2>Sectors We <span class="acc">Work In</span></h2></div></div>
+    <div class="sec-grid">
+      <div class="sc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9h18v11H3zM9 20v-6h6v6"/></svg></div><h3>Retail</h3><p>Shop entrances, shopfronts and shutters</p></div>
+      <div class="sc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><h3>Healthcare</h3><p>Hospitals, clinics, surgeries and care homes</p></div>
+      <div class="sc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V9l5 3V9l5 3V9l5 3V4h1v16"/></svg></div><h3>Industrial</h3><p>Plant rooms, warehouses and service doors</p></div>
+      <div class="sc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13M9 21v-5h6v5M8 11h.01M12 11h.01M16 11h.01"/></svg></div><h3>Hospitality</h3><p>Hotels, restaurants and leisure venues</p></div>
+      <div class="sc reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg></div><h3>Offices and Public Buildings</h3><p>Commercial offices, libraries and schools</p></div>
+    </div>
+    <p class="sec-note reveal">Working directly for property owners and for facilities management companies, main contractors and property managers.</p>
+  </div>
+</section>
+
+<section class="comp" id="compliance">
+  <div class="wrap comp-in">
+    <div class="reveal">
+      <div class="dots" style="width:120px;margin-bottom:12px"></div>
+      <h2>Safety, Compliance and <span class="acc">Accreditations</span></h2>
+      <p class="l">Automatic doors in public areas must be safe to use, accessible and kept in good working order. Installations, servicing and inspections are carried out with strict attention to the relevant British Standards and accessibility requirements.</p>
+      <div class="std"><span>BS EN 16005</span><span>BS 7036</span><span>DDA access</span></div>
+    </div>
+    <div class="accs">
+      <div class="ac reveal"><div class="lg"><img src="acc-adsa.jpg" alt="ADSA logo" loading="lazy" width="300" height="93"></div><div><b>ADSA</b><span>The Automatic Door Suppliers Association, the UK trade body for powered pedestrian doors and their safe installation and servicing.</span></div></div>
+      <div class="ac reveal"><div class="lg"><img src="acc-gqa.png" alt="GQA logo" loading="lazy" width="700" height="234"></div><div><b>GQA Qualifications</b><span>The awarding body for glazing, fenestration and door installation qualifications held across the industry.</span></div></div>
+      <div class="ac reveal"><div class="lg"><img src="acc-dbs.jpg" alt="DBS logo" loading="lazy" width="600" height="195"></div><div><b>DBS Checked</b><span>Disclosure and Barring Service checks for work in schools, hospitals and care homes.</span></div></div>
+      <div class="ac reveal"><div class="lg"><img src="acc-pasma.png" alt="PASMA logo" loading="lazy" width="300" height="76"></div><div><b>PASMA</b><span>Industry training for the safe use of mobile access towers when working at height.</span></div></div>
+      <div class="ac reveal"><div class="lg"><img src="acc-cymraeg.png" alt="Cymraeg logo" loading="lazy" width="317" height="400"></div><div><b>Cymraeg</b><span>Welsh language service available for customers who prefer to speak Welsh.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="dots"></div><h2>Client <span class="acc">Feedback</span></h2></div></div>
+    <div class="rev-grid">
+      <div class="rv reveal"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>AutoDoorFix replaced the sliding door system at our Liverpool store with very little disruption to trading. The engineer talked us through the new sensors and safety checks before leaving.</blockquote><div class="who"><div class="av">S</div><div><b>Sarah M., Liverpool</b><span>Automatic sliding door replacement</span></div></div></div>
+      <div class="rv reveal"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>Our shopfront in Wrexham town centre was damaged overnight. AutoDoorFix made it secure the same day, repaired the frame and fitted a new roller shutter.</blockquote><div class="who"><div class="av">G</div><div><b>Gareth W., Wrexham</b><span>Shopfront repair and roller shutter</span></div></div></div>
+      <div class="rv reveal"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>We moved the entrance doors at our Chester clinic onto an AutoDoorFix maintenance plan. Visits are booked ahead around our clinic hours and the doors have not let us down since.</blockquote><div class="who"><div class="av">H</div><div><b>Helen R., Chester</b><span>Planned preventative maintenance</span></div></div></div>
+      <div class="rv reveal"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>The aluminium bi-folding doors AutoDoorFix fitted to our showroom in Mold open the full frontage for moving cars and close up tight in winter.</blockquote><div class="who"><div class="av">D</div><div><b>Dylan J., Mold</b><span>Aluminium bi-folding doors</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap areas-in">
+    <div class="reveal">
+      <div class="dots" style="width:120px;margin-bottom:12px"></div>
+      <h2>Areas We <span class="acc">Cover</span></h2>
+      <p>Based in Wrexham, North Wales, with engineers working on sites across the UK for single premises and national estates.</p>
+    </div>
+    <div class="towns reveal">
+      <span class="base">Wrexham</span><span>Chester</span><span>Mold</span><span>Oswestry</span><span>Liverpool</span><span>Manchester</span><span>Shrewsbury</span><span>North Wales</span><span>The Midlands</span><span class="nat">Nationwide</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-in">
+    <div class="reveal">
+      <div class="dots" style="width:120px;margin-bottom:12px"></div>
+      <h2>Book an Engineer or Request a <span class="acc">Quote</span></h2>
+      <p class="sub">Tell us about the site, the door and any fault. For breakdowns, call and an engineer will get back to you as soon as possible.</p>
+      <div class="cards">
+        <a href="#" class="cc js-call"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg></div><div><small>Phone</small><b id="phoneText">&nbsp;</b></div></a>
+        <a href="#" class="cc" id="mailLink"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div><div><small>Email</small><b id="emailText">&nbsp;</b></div></a>
+        <div class="cc"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.5-8-12a8 8 0 0 1 16 0c0 5.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg></div><div><small>Based in</small><b>Wrexham, North Wales</b></div></div>
+      </div>
+    </div>
+    <form class="reveal" action="/api/enquiry" method="POST">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="AutoDoorFix Ltd">
+      <input type="hidden" name="source" value="mockup-autodoorfix">
+      <label for="fName">Name</label><input id="fName" name="name" type="text" required autocomplete="name">
+      <label for="fPhone">Phone</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel">
+      <label for="fEmail">Email <span>(optional)</span></label><input id="fEmail" name="email" type="email" autocomplete="email">
+      <label for="fMsg">Project details <span>(optional)</span></label><textarea id="fMsg" name="message" placeholder="Site address, type of door and the fault or work needed"></textarea>
+      <button type="submit" class="btn btn-green">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><span class="flogo"><img src="logo.png" alt="AutoDoorFix" width="844" height="162"></span><p>Automatic doors, shopfronts and roller shutters supplied, fitted and maintained from Wrexham, North Wales, nationwide.</p></div>
+      <div><h4>Services</h4><ul><li><a href="#services">Automatic sliding doors</a></li><li><a href="#services">Automatic swing doors</a></li><li><a href="#maintenance">Planned maintenance</a></li><li><a href="#breakdown">Breakdown repairs</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#" class="js-call call-lbl2">Call us</a></li><li><a href="#contact">Request a quote</a></li><li>Wrexham, North Wales</li></ul></div>
+    </div>
+    <div class="foot-base"><span>&copy; <span id="yr">2026</span> AutoDoorFix Ltd</span><span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">Construction Sites</a></span></div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><button aria-label="Close">&times;</button><img alt=""></div>
+
+<div class="fabs">
+  <a href="#" class="fab wa" id="waFab" aria-label="WhatsApp AutoDoorFix"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg></a>
+  <a href="#" class="fab call js-call" aria-label="Call AutoDoorFix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg></a>
+</div>
+
+<script>
+(function(){
+  var P=atob('MDc5MzM1NDI4MzQ='),Pf=atob('MDc5MzMgNTQyIDgzNA=='),E=atob('aW5mb0BhdXRvZG9vcmZpeC5jby51aw=='),W=atob('NDQ3OTMzNTQyODM0');
+  document.querySelectorAll('.js-call').forEach(function(a){a.href='tel:'+P;});
+  document.querySelectorAll('.call-lbl').forEach(function(s){s.textContent='Call '+Pf;});
+  document.querySelectorAll('.call-lbl2').forEach(function(s){s.textContent=Pf;});
+  document.getElementById('phoneText').textContent=Pf;
+  var m=document.getElementById('mailLink');m.href='mailto:'+E;document.getElementById('emailText').textContent=E;
+  document.getElementById('waFab').href='https://wa.me/'+W+'?text=Hi%2C%20seen%20your%20website%20-%20';
+  document.getElementById('formTimestamp').value=Date.now();
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var ph=document.getElementById('fPhone');
+  ph.addEventListener('input',function(){ph.setCustomValidity('');});
+  ph.addEventListener('invalid',function(){ph.setCustomValidity('Please enter a UK phone number, for example 07123 456789');});
+
+  var t=document.getElementById('navToggle'),l=document.getElementById('navLinks'),H=document.documentElement,B=document.body;
+  function setMenu(o){l.classList.toggle('is-open',o);t.setAttribute('aria-expanded',o);t.setAttribute('aria-label',o?'Close menu':'Open menu');H.classList.toggle('no-scroll',o);B.classList.toggle('no-scroll',o);}
+  t.addEventListener('click',function(){setMenu(!l.classList.contains('is-open'));});
+  l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(r){io.observe(r);});
+
+  var fabs=document.querySelectorAll('.fab'),cta=document.getElementById('heroCta');
+  new IntersectionObserver(function(es){var v=es[0].isIntersecting||es[0].boundingClientRect.top>0;fabs.forEach(function(f){f.classList.toggle('show',!v);});}).observe(cta);
+
+  var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+  document.querySelectorAll('.gi').forEach(function(g){g.addEventListener('click',function(){lbi.src=g.getAttribute('data-full');lbi.alt=g.querySelector('img').alt;lb.classList.add('on');});});
+  lb.addEventListener('click',function(){lb.classList.remove('on');});
+
+  /* the hero door: opens after the loader, then cycles like a real entrance */
+  var lv=document.getElementById('leaves'),reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function openDoor(){lv.classList.add('blink');setTimeout(function(){lv.classList.add('open');},380);setTimeout(function(){lv.classList.remove('blink');},1000);}
+  function cycle(){lv.classList.remove('open');setTimeout(openDoor,1700);}
+
+  var ld=document.getElementById('loader');
+  function kill(){if(ld&&ld.parentNode){ld.parentNode.removeChild(ld);}}
+  if(reduce){lv.classList.add('open');kill();}
+  else{
+    setTimeout(function(){ld.classList.add('open');},1350);
+    setTimeout(kill,2400);
+    setTimeout(openDoor,1700);
+    setInterval(cycle,9000);
+  }
+  setTimeout(kill,2500);
+})();
+</script>
+</body>
+</html>
