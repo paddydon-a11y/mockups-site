@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="only light">
+<title>Painter and Decorator in Carlisle, Cumbria | Darren Hillary Painting &amp; Decorating</title>
+<meta name="description" content="Painting and decorating in Carlisle and across Cumbria: interior and exterior painting, wallpapering and wall panelling, single rooms to full properties. Call Darren for a quote.">
+<meta property="og:title" content="Darren Hillary Painting &amp; Decorating - Your New Website">
+<meta property="og:description" content="Painter and decorator in Carlisle, Cumbria - preview of your new site">
+<meta property="og:image" content="https://previews.construction-sites.co.uk/darren-hillary-painting-decorating/og.jpg">
+<meta property="og:url" content="https://previews.construction-sites.co.uk/darren-hillary-painting-decorating/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e1116">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17958918628"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-17958918628');
+  gtag('config', 'G-WG747WXNB6');
+</script>
+<style>
+:root{color-scheme:only light;
+  --ink:#0e1116;--ink2:#151a22;--ink3:#232a35;
+  --green:#5cc45a;--teal:#17a2b8;--blue:#1f5fd6;--blue-ink:#1c56c4;
+  --red:#d7261b;--red-h:#b21a11;--red-glow:rgba(215,38,27,.18);
+  --bg:#ffffff;--stone:#f1f4f7;--card:#f8fafc;--line:#e2e8f0;--line2:#cbd5e1;
+  --head:#141922;--body:#475569;--muted:#7b8798;
+  --coat:linear-gradient(100deg,#5cc45a 0%,#17a2b8 48%,#1f5fd6 100%);
+  --nav:76px}
+@media (prefers-color-scheme:dark){:root{--ink:#0e1116;--bg:#ffffff;--stone:#f1f4f7;--head:#141922;--body:#475569}}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+html.no-scroll{overflow:hidden}
+body.no-scroll{overflow:visible;overflow-x:clip}
+body{font-family:'Figtree',system-ui,sans-serif;color:var(--body);background:var(--bg);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+em,i{font-style:normal}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Outfit',sans-serif;color:var(--head);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+h2{font-size:clamp(1.9rem,4vw,3rem)}
+h3{font-size:1.25rem;letter-spacing:-.015em;line-height:1.2}
+.acc{color:var(--blue-ink)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding-top:96px;padding-bottom:96px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.02rem;padding:15px 26px;border-radius:999px;transition:transform .25s ease,background .25s ease,box-shadow .25s ease;white-space:nowrap}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 26px var(--red-glow)}
+.btn-red:hover{background:var(--red-h);transform:translateY(-2px)}
+.btn-line{border:2px solid rgba(255,255,255,.35);color:#fff}
+.btn-line:hover{border-color:#fff;transform:translateY(-2px)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#000;transform:translateY(-2px)}
+
+/* ===== loader: roller sweep in their colours ===== */
+#loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden;animation:ldLift .45s cubic-bezier(.7,0,.3,1) 2s forwards}
+#loader .coat{position:absolute;left:0;right:0;top:50%;height:46vh;margin-top:-23vh;background:var(--coat);transform:scaleX(0);transform-origin:left;animation:ldCoat 1s cubic-bezier(.65,0,.35,1) .12s forwards}
+#loader .coat::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 3px,transparent 3px 11px,rgba(0,0,0,.06) 11px 13px,transparent 13px 21px)}
+#loader .roller{position:absolute;left:0;top:50%;width:88px;height:calc(46vh + 40px);margin-top:calc(-23vh - 20px);transform:translateX(-100px);animation:ldRoll 1s cubic-bezier(.65,0,.35,1) .12s forwards;z-index:2}
+#loader .sleeve{position:absolute;left:0;top:20px;bottom:20px;width:40px;border-radius:20px;background:linear-gradient(90deg,#3fae6a,#1d8fc4 60%,#1a52b8);box-shadow:inset -7px 0 0 rgba(0,0,0,.18),inset 6px 0 0 rgba(255,255,255,.18)}
+#loader .arm{position:absolute;left:36px;top:50%;width:34px;height:8px;margin-top:-4px;background:#9aa3ae;border-radius:4px}
+#loader .grip{position:absolute;left:64px;top:50%;width:14px;height:56px;margin-top:-10px;background:var(--red);border-radius:7px}
+#loader .mark{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:12px}
+#loader .mark img{width:min(300px,72vw);opacity:0;transform:scale(.94);animation:ldMark .5s cubic-bezier(.2,.7,.2,1) 1.05s forwards;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35))}
+#loader .mark span{font-family:'Outfit',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.04em;opacity:0;animation:ldFade .4s ease 1.35s forwards}
+#loader .mark-bg{position:absolute;inset:-26px -34px;background:var(--ink);border-radius:22px;opacity:0;animation:ldFade .35s ease .95s forwards;z-index:-1}
+@keyframes ldCoat{to{transform:scaleX(1)}}
+@keyframes ldRoll{0%{transform:translateX(-100px)}100%{transform:translateX(100vw)}}
+@keyframes ldMark{to{opacity:1;transform:scale(1)}}
+@keyframes ldFade{to{opacity:1}}
+@keyframes ldLift{to{transform:translateY(-100%)}}
+@media (prefers-reduced-motion:reduce){#loader{animation:ldLift .3s ease .5s forwards}#loader .coat{animation:none;transform:none}#loader .roller{display:none}#loader .mark img,#loader .mark span,#loader .mark-bg{animation:none;opacity:1;transform:none}}
+
+/* ===== nav ===== */
+.nav{position:sticky;top:0;z-index:100;background:var(--ink);height:var(--nav)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:100%}
+.nav-logo{display:flex;align-items:center;white-space:nowrap}
+.nav-logo img{height:58px;width:auto}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{color:#c9d2de;font-weight:600;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.nav-cta{background:var(--red);color:#fff;padding:11px 20px;border-radius:999px;display:inline-flex;gap:8px;align-items:center}
+.nav-links a.nav-cta svg{width:16px;height:16px}
+.nav-toggle{display:none;width:46px;height:46px;border:0;background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center}
+.nav-toggle span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .25s,opacity .25s}
+.nav-toggle span+span{margin-top:6px}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* ===== hero: the logo is the fold ===== */
+.hero{position:relative;background:var(--ink);color:#d5dce6;display:flex;flex-direction:column;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;height:clamp(540px,calc(100vh - var(--nav)),760px);padding-top:28px;padding-bottom:40px}
+.hero-copy{position:relative;z-index:2}
+.crest{position:relative;width:min(290px,100%);margin-bottom:18px}
+.crest .band{position:absolute;left:-14%;right:-14%;top:24%;bottom:14%;background:var(--coat);opacity:.26;border-radius:60px 18px 70px 24px;transform:rotate(-4deg);-webkit-mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),repeating-linear-gradient(180deg,#000 0 5px,rgba(0,0,0,.55) 5px 8px);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),repeating-linear-gradient(180deg,#000 0 5px,rgba(0,0,0,.55) 5px 8px);mask-composite:intersect;clip-path:inset(0 100% 0 0);animation:bandIn 1s cubic-bezier(.65,0,.35,1) 2.15s forwards}
+.crest img{position:relative;width:100%;height:auto;opacity:0;transform:scale(.96);animation:crestIn .7s cubic-bezier(.2,.7,.2,1) 2.05s forwards}
+@keyframes bandIn{to{clip-path:inset(0 0 0 0)}}
+@keyframes crestIn{to{opacity:1;transform:none}}
+.hero h1{color:#fff;font-size:clamp(2.2rem,4vw,3.4rem);margin-bottom:18px;opacity:0;animation:fadeUp .7s ease 2.25s forwards}
+.hero h1 .uline{position:relative;display:inline-block;color:#fff;z-index:0}
+.hero h1 .uline::after{content:"";position:absolute;left:-4px;right:-6px;bottom:.02em;height:.3em;background:var(--red);z-index:-1;border-radius:3px 10px 4px 12px;transform:scaleX(0) skewX(-8deg);transform-origin:left;animation:stroke .6s cubic-bezier(.65,0,.35,1) 2.85s forwards}
+@keyframes stroke{to{transform:scaleX(1) skewX(-8deg)}}
+.hero .lede{max-width:540px;font-size:1.06rem;color:#b9c3d0;margin-bottom:28px;opacity:0;animation:fadeUp .7s ease 2.4s forwards}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease 2.55s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-photos{position:relative;height:100%;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:16px;opacity:0;animation:fadeUp .8s ease 2.5s forwards}
+.hero-photos figure{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--ink3);min-height:0}
+.hero-photos figure:nth-child(2){margin-top:56px;margin-bottom:-24px}
+.hero-photos img{width:100%;height:100%;object-fit:cover}
+.hero-badge{position:absolute;left:-22px;bottom:34px;z-index:3;background:#fff;color:var(--head);border-radius:14px;padding:12px 16px 12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 18px 40px rgba(0,0,0,.35);font-weight:700;font-size:.92rem;line-height:1.25}
+.hero-badge i{display:block;width:34px;height:34px;border-radius:50%;background:var(--coat);flex:none}
+.hero-edge{display:block;width:100%;height:22px;background:var(--ink);-webkit-mask:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 22px,#000 22px 31px,transparent 31px 34px);mask:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 22px,#000 22px 31px,transparent 31px 34px)}
+@media (prefers-reduced-motion:reduce){.crest .band{animation:none;clip-path:none}.crest img,.hero h1,.hero .lede,.hero-cta,.hero-photos{animation:none;opacity:1;transform:none}.hero h1 .uline::after{animation:none;transform:skewX(-8deg)}}
+
+/* ===== trust ===== */
+.trust{padding-top:36px;padding-bottom:20px;background:var(--bg)}
+.trust-in{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-item{display:flex;align-items:center;gap:12px;padding-top:22px;padding-bottom:22px;font-family:'Outfit',sans-serif;font-weight:700;color:var(--head);font-size:1rem;line-height:1.2}
+.trust-item+.trust-item{border-left:1px solid var(--line);padding-left:20px}
+.trust-item svg{width:26px;height:26px;flex:none;stroke:var(--blue-ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== services ===== */
+.services{padding-top:64px}
+.sec-head{margin-bottom:40px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.svc::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;z-index:2}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,25,34,.1)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-img{aspect-ratio:4/3;overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.svc:hover .svc-img img{transform:scale(1.04)}
+.svc-body{padding:22px 24px 26px}
+.svc-body p{margin-top:8px;font-size:.98rem}
+.svc-colour .svc-img{position:relative;background:var(--coat)}
+.svc-colour .svc-img .pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 25% 25%,rgba(255,255,255,.22) 0 9%,transparent 10%),radial-gradient(circle at 75% 75%,rgba(255,255,255,.22) 0 9%,transparent 10%),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:56px 56px,56px 56px,56px 56px}
+.svc-colour .svc-img .seam{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.55)}
+.svc-colour .svc-img .label,.svc-ink .svc-img .label{position:absolute;left:24px;bottom:20px;font-family:'Outfit',sans-serif;font-weight:800;color:#fff;font-size:1.55rem;line-height:1.1;letter-spacing:-.02em}
+.svc-ink .svc-img{position:relative;background:var(--ink)}
+.svc-ink .svc-img .stripe{position:absolute;left:-10%;right:-10%;top:28%;height:34%;background:var(--coat);transform:rotate(-8deg);opacity:.9}
+.svc-ink .svc-img .stripe2{position:absolute;left:-10%;right:30%;top:62%;height:9%;background:var(--red);transform:rotate(-8deg)}
+
+/* ===== about ===== */
+.about{background:var(--stone)}
+.about-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.about-logo{background:var(--ink);border-radius:22px;padding:46px 40px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-logo img{width:min(380px,100%);position:relative}
+.about-logo::before{content:"";position:absolute;left:-20%;right:-20%;bottom:-30%;height:60%;background:var(--coat);opacity:.14;transform:rotate(-6deg)}
+.about p{margin-top:18px;font-size:1.05rem;max-width:560px}
+.about .btn{margin-top:26px}
+
+/* ===== gallery ===== */
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.gal-grid figure{cursor:zoom-in}
+.gal-grid .ph{aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gal-grid figure:hover img{transform:scale(1.04)}
+.gal-grid figure:nth-child(even){margin-top:42px}
+.gal-grid figcaption{margin-top:12px;font-size:.92rem;color:var(--muted);font-weight:500}
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(10,12,16,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.on{display:flex}
+.lightbox img{max-height:88vh;max-width:100%;border-radius:12px}
+.lightbox button{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;font-size:1.6rem;cursor:pointer;line-height:1}
+
+/* ===== reviews ===== */
+.reviews{background:var(--stone)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 28px 24px;transition:transform .25s ease,box-shadow .25s ease}
+.rev:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(20,25,34,.08)}
+.stars{color:#f5a524;letter-spacing:3px;font-size:1.05rem}
+.rev p{margin-top:12px;color:var(--head);font-size:1.03rem}
+.rev .who{margin-top:16px;font-size:.9rem;color:var(--muted);font-weight:600}
+
+/* ===== areas ===== */
+.areas-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.areas p{margin-top:16px;max-width:420px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:10px 18px;border-radius:999px;border:1px solid var(--line2);font-weight:600;color:var(--head);font-size:.95rem;background:#fff}
+.chips span.home{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips span.uk{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ===== cta band ===== */
+.cta-band{background:var(--ink);position:relative;overflow:hidden;padding-top:84px;padding-bottom:84px}
+.cta-band::before{content:"";position:absolute;left:-10%;right:-10%;top:-40%;height:70%;background:var(--coat);opacity:.16;transform:rotate(-4deg)}
+.cta-in{position:relative;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-band h2{color:#fff;max-width:640px;font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.cta-band .row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ===== contact ===== */
+.contact-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.contact p.lede{margin-top:14px;max-width:440px}
+.info{margin-top:28px;display:grid;gap:14px}
+.info a,.info div{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;color:var(--head);font-weight:600}
+.info svg{width:22px;height:22px;flex:none;stroke:var(--blue-ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.info small{display:block;color:var(--muted);font-weight:500;font-size:.84rem}
+form{background:var(--stone);border-radius:22px;padding:34px}
+form label{display:block;font-weight:600;color:var(--head);font-size:.92rem;margin-bottom:6px}
+form label small{color:var(--muted);font-weight:500}
+form input,form textarea{width:100%;padding:14px 16px;border:1px solid var(--line2);border-radius:12px;font:inherit;color:var(--head);background:#fff;margin-bottom:18px}
+form input:focus,form textarea:focus{outline:2px solid var(--blue);border-color:transparent}
+form textarea{min-height:130px;resize:vertical}
+form button{width:100%;border:0;cursor:pointer;background:var(--red);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;padding:16px;border-radius:999px;transition:background .2s}
+form button:hover{background:var(--red-h)}
+.form-ok{display:none;margin-top:14px;color:var(--head);font-weight:600}
+
+/* ===== footer ===== */
+footer{background:var(--ink);color:#9aa6b6;padding-top:60px;padding-bottom:36px}
+.foot-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer img{height:64px;width:auto}
+footer p{margin-top:14px;max-width:340px;font-size:.95rem}
+footer h4{font-family:'Figtree',sans-serif;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px;font-size:.95rem}
+footer ul a:hover{color:#fff}
+.foot-base{margin-top:44px;padding-top:22px;border-top:1px solid var(--ink3);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem}
+.foot-base a{color:#fff}
+
+/* ===== FABs ===== */
+.fabs{position:fixed;right:18px;bottom:18px;z-index:90;display:flex;flex-direction:column;gap:12px;opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s,transform .3s}
+.fabs.on{opacity:1;transform:none;pointer-events:auto}
+.fab{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.fab svg{width:24px;height:24px}
+.fab-call{background:var(--red);animation:pulseR 2.2s infinite}
+.fab-wa{background:#25d366;animation:pulseG 2.2s infinite .6s}
+.fab:hover{animation:none}
+@keyframes pulseR{0%{box-shadow:0 0 0 0 rgba(215,38,27,.5)}70%{box-shadow:0 0 0 16px rgba(215,38,27,0)}100%{box-shadow:0 0 0 0 rgba(215,38,27,0)}}
+@keyframes pulseG{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* reveals */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.fab-call,.fab-wa{animation:none}}
+
+/* ===== responsive ===== */
+@media (min-width:881px) and (max-height:780px){.crest{width:220px;margin-bottom:12px}.hero h1{font-size:clamp(2.1rem,3.4vw,2.9rem);margin-bottom:12px}.hero .lede{font-size:1rem;margin-bottom:20px}.hero-grid{padding-top:20px;padding-bottom:28px}}
+@media (max-width:1080px){
+  .trust-in{grid-template-columns:repeat(3,1fr)}
+  .trust-item:nth-child(4){border-left:0;padding-left:0}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:880px){
+  :root{--nav:68px}
+  .nav-logo img{height:50px}
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);padding:8px 24px 26px;border-top:1px solid var(--ink3);transform:translateY(-12px);opacity:0;visibility:hidden;transition:transform .25s,opacity .25s,visibility .25s}
+  .nav-links.is-open{transform:none;opacity:1;visibility:visible}
+  .nav-links li{border-bottom:1px solid var(--ink3)}
+  .nav-links li:last-child{border-bottom:0;padding-top:18px}
+  .nav-links a{display:block;padding:16px 0;font-size:1.08rem;color:#fff}
+  .nav-links a.nav-cta{justify-content:center;padding:15px 20px}
+  .hero-grid{grid-template-columns:1fr;height:auto;gap:30px;padding-top:30px;padding-bottom:30px}
+  .hero-copy{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .crest{width:min(300px,84%);margin-bottom:20px}
+  .hero h1{font-size:clamp(2.05rem,8.6vw,2.6rem)}
+  .hero .lede{font-size:1rem;margin-bottom:24px}
+  .hero-cta{justify-content:center;width:100%}
+  .hero-cta .btn{flex:1 1 100%}
+  .hero-photos{grid-template-columns:1.25fr 1fr;height:auto}
+  .hero-photos figure{aspect-ratio:3/4}
+  .hero-photos figure:nth-child(2){margin-top:40px;margin-bottom:0}
+  .hero-badge{position:static;grid-column:1/-1;margin-top:4px;justify-content:center}
+  section{padding-top:72px;padding-bottom:72px}
+  .trust{padding-top:28px;padding-bottom:8px}
+  .trust-in{grid-template-columns:1fr;border-bottom:0}
+  .trust-item{padding-top:15px;padding-bottom:15px;border-bottom:1px solid var(--line)}
+  .trust-item+.trust-item{border-left:0;padding-left:0}
+  .services{padding-top:56px}
+  .svc-grid{grid-template-columns:1fr}
+  .about-in,.areas-in,.contact-in{grid-template-columns:1fr;gap:34px}
+  .rev-grid{grid-template-columns:1fr}
+  .gal-grid{gap:12px}
+  .gal-grid figure:nth-child(even){margin-top:28px}
+  .gal-grid figcaption{font-size:.84rem}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .foot-in>div:first-child{grid-column:1/-1}
+  form{padding:24px}
+}
+@media (max-width:380px){.hero h1{font-size:1.9rem}}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true">
+  <div class="coat"></div>
+  <div class="roller"><div class="sleeve"></div><div class="arm"></div><div class="grip"></div></div>
+  <div class="mark"><div class="mark-bg"></div><img src="logo.png" alt=""><span>Carlisle, Cumbria</span></div>
+</div>
+
+<nav class="nav">
+  <div class="nav-in wrap">
+    <a href="#top" class="nav-logo" aria-label="Darren Hillary Painting and Decorating home"><img src="logo.png" alt="Darren Hillary Painting and Decorating"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Recent Work</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-cta" id="navCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call Darren</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-grid wrap">
+    <div class="hero-copy">
+      <div class="crest"><div class="band"></div><img src="logo.png" alt="Darren Hillary Painting and Decorating logo" width="600" height="319"></div>
+      <h1>Painting and Decorating in Carlisle and across <span class="uline">Cumbria</span></h1>
+      <p class="lede">Interior and exterior painting, wallpapering and wall panelling, from a single room to a full property. Based in Carlisle, covering Brampton, Penrith and the whole of Cumbria, and travelling UK-wide for larger jobs.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-red" id="heroCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="ph-fmt">Call Darren</span></a>
+        <a href="#contact" class="btn btn-line">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-photos">
+      <figure><img src="panelled-bedroom.jpg" alt="Bedroom with painted wall panelling and wall light" width="900" height="1200"></figure>
+      <figure><img src="exterior.jpg" alt="House exterior freshly painted white" width="675" height="1200"></figure>
+      <div class="hero-badge"><i></i>Interiors and exteriors<br>across Cumbria</div>
+    </div>
+  </div>
+  <span class="hero-edge" aria-hidden="true"></span>
+</header>
+
+<section class="trust" aria-label="At a glance">
+  <div class="trust-in wrap">
+    <div class="trust-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="14" height="6" rx="1.5"/><path d="M17 6h3v5h-8v3"/><rect x="10.5" y="14" width="3" height="7" rx="1"/></svg>Interior and exterior</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M12 3v18M4 9h8M12 15h8"/></svg>Wallpaper and panelling</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Based in Carlisle</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 20l5-9 4 6 3-4 6 7z"/><circle cx="16" cy="6" r="2"/></svg>All of Cumbria</div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V4h8v3M3 12h18"/></svg>Commercial work UK-wide</div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Painting and decorating <span class="acc">services</span></h2></div>
+    <div class="svc-grid">
+      <article class="svc reveal"><div class="svc-img"><img src="feature-wall.jpg" alt="Living room with a deep olive feature wall" loading="lazy"></div><div class="svc-body"><h3>Interior Painting</h3><p>Walls, ceilings and woodwork, from one room to a whole house.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="exterior.jpg" alt="House exterior painted white with ladder" loading="lazy" style="object-position:50% 40%"></div><div class="svc-body"><h3>Exterior Painting</h3><p>Masonry, render, windows and doors, prepared and painted to last.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="panelled-bedroom.jpg" alt="Painted panelled bedroom wall" loading="lazy" style="object-position:50% 60%"></div><div class="svc-body"><h3>Wall Panelling</h3><p>Panelled feature walls, finished and painted in your chosen colour.</p></div></article>
+      <article class="svc reveal"><div class="svc-img"><img src="wardrobes.jpg" alt="Painted built-in wardrobes and bedroom door" loading="lazy" style="object-position:50% 45%"></div><div class="svc-body"><h3>Woodwork and Built-ins</h3><p>Doors, skirting, wardrobes and fitted furniture painted to a clean finish.</p></div></article>
+      <article class="svc svc-colour reveal"><div class="svc-img"><span class="pattern"></span><span class="seam"></span><span class="label">Wallpaper</span></div><div class="svc-body"><h3>Wallpaper Hanging and Removal</h3><p>Old paper stripped, walls prepared, new paper hung straight and matched.</p></div></article>
+      <article class="svc svc-ink reveal"><div class="svc-img"><span class="stripe"></span><span class="stripe2"></span><span class="label">Commercial</span></div><div class="svc-body"><h3>Commercial Decorating</h3><p>Shops, offices and units, anywhere in the UK when the job calls for it.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-in">
+    <div class="about-logo reveal"><img src="logo.png" alt="Darren Hillary Painting and Decorating" loading="lazy"></div>
+    <div class="reveal">
+      <h2>About <span class="acc">Darren</span></h2>
+      <p>Darren Hillary is a painter and decorator based in Carlisle. He takes on everything from a single bedroom to a full property, inside and out, including wallpapering and panelled feature walls. Alongside homes across Cumbria, Darren has carried out work for well-known businesses including Berghaus, and travels throughout the UK when the job is right.</p>
+      <a href="#contact" class="btn btn-ink">Ask Darren for a quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>Recent <span class="acc">work</span></h2></div>
+    <div class="gal-grid">
+      <figure class="reveal" data-full="panelled-bedroom.jpg"><div class="ph"><img src="panelled-bedroom.jpg" alt="Panelled bedroom painted in a dark tone" loading="lazy"></div><figcaption>Panelled bedroom wall, painted dark</figcaption></figure>
+      <figure class="reveal" data-full="feature-wall.jpg"><div class="ph"><img src="feature-wall.jpg" alt="Olive green feature wall with framed prints" loading="lazy"></div><figcaption>Olive green feature wall</figcaption></figure>
+      <figure class="reveal" data-full="exterior.jpg"><div class="ph"><img src="exterior.jpg" alt="House exterior painted white" loading="lazy"></div><figcaption>House exterior painted white</figcaption></figure>
+      <figure class="reveal" data-full="wardrobes.jpg"><div class="ph"><img src="wardrobes.jpg" alt="Bedroom with painted built-in wardrobes" loading="lazy"></div><figcaption>Bedroom with fitted wardrobes</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>What customers <span class="acc">say</span></h2></div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Darren painted our hallway, stairs and landing in Stanwix. Tidy, on time and the finish is spotless. We would use Darren Hillary Painting &amp; Decorating again.</p><div class="who">Claire, Stanwix &middot; Interior painting</div></div>
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Had the outside of the house done in Brampton. Walls, windows and the front door all look brand new. Great job from Darren and he left the garden spotless.</p><div class="who">Ian, Brampton &middot; Exterior painting</div></div>
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Darren did a panelled wall in our bedroom in Dalston and painted the whole room to match. It looks fantastic and it was finished when he said it would be.</p><div class="who">Laura, Dalston &middot; Wall panelling</div></div>
+      <div class="rev reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Old wallpaper stripped and new paper hung in our living room in Penrith. Every join lines up. Darren Hillary Painting &amp; Decorating come highly recommended.</p><div class="who">Mark, Penrith &middot; Wallpapering</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap areas-in">
+    <div class="reveal">
+      <h2>Areas <span class="acc">covered</span></h2>
+      <p>Based in Carlisle and working across the whole of Cumbria, with commercial and larger jobs taken on throughout the UK.</p>
+    </div>
+    <div class="chips reveal">
+      <span class="home">Carlisle</span><span>Brampton</span><span>Dalston</span><span>Longtown</span><span>Wigton</span><span>Penrith</span><span>Keswick</span><span>Cockermouth</span><span>Workington</span><span>Whitehaven</span><span>Kendal</span><span>Ulverston</span><span class="uk">UK-wide for larger jobs</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-in">
+    <h2 class="reveal">Planning a room, a full house or a shop refit? Call Darren for a quote.</h2>
+    <div class="row reveal">
+      <a href="#" class="btn btn-red" id="ctaCall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call Darren</a>
+      <a href="#contact" class="btn btn-line">Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-in">
+    <div class="reveal">
+      <h2>Get a <span class="acc">quote</span></h2>
+      <p class="lede">Tell Darren what needs painting and where. He will come back to you to arrange a visit and a price, anywhere in Cumbria.</p>
+      <div class="info">
+        <a href="#" id="infoCall"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span><small>Phone</small><span id="infoPhone">&nbsp;</span></span></a>
+        <a href="#" id="infoMail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><small>Email</small><span id="infoEmail">&nbsp;</span></span></a>
+        <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><small>Based in</small>Carlisle, covering all of Cumbria</span></div>
+      </div>
+    </div>
+    <form class="reveal" action="/api/enquiry" method="POST" id="quoteForm">
+      <input type="text" name="_gotcha" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <input type="hidden" name="businessName" value="Darren Hillary Painting &amp; Decorating">
+      <input type="hidden" name="source" value="mockup-darren-hillary-painting-decorating">
+      <label for="fName">Name</label><input id="fName" name="name" type="text" required autocomplete="name">
+      <label for="fPhone">Phone</label><input id="fPhone" name="phone" type="tel" required pattern="^(0|\+44)\d{9,11}$" autocomplete="tel">
+      <label for="fEmail">Email <small>(optional)</small></label><input id="fEmail" name="email" type="email" autocomplete="email">
+      <label for="fMsg">Project details <small>(optional)</small></label><textarea id="fMsg" name="message"></textarea>
+      <button type="submit">Send enquiry</button>
+      <p class="form-ok" id="formOk">Thanks, Darren will be in touch shortly.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div><img src="logo.png" alt="Darren Hillary Painting and Decorating" loading="lazy"><p>Painter and decorator based in Carlisle, working across Cumbria and UK-wide for larger jobs.</p></div>
+      <div><h4>Services</h4><ul><li><a href="#services">Interior Painting</a></li><li><a href="#services">Exterior Painting</a></li><li><a href="#services">Wallpapering</a></li><li><a href="#services">Wall Panelling</a></li></ul></div>
+      <div><h4>Areas</h4><ul><li>Carlisle</li><li>Brampton</li><li>Penrith</li><li>All of Cumbria</li></ul></div>
+    </div>
+    <div class="foot-base"><span>&copy; <span id="yr"></span> Darren Hillary Painting &amp; Decorating</span><span>Site by <a href="https://construction-sites.co.uk" target="_blank" rel="noopener">construction-sites.co.uk</a></span></div>
+  </div>
+</footer>
+
+<div class="fabs" id="fabs">
+  <a href="#" class="fab fab-wa" id="fabWa" aria-label="WhatsApp Darren"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg></a>
+  <a href="#" class="fab fab-call" id="fabCall" aria-label="Call Darren"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+
+<div class="lightbox" id="lightbox" aria-hidden="true"><button type="button" aria-label="Close">&times;</button><img alt=""></div>
+
+<script>
+(function(){
+  var P=atob('MDc1MTU1NzI4MDc='),Pf=atob('MDc1MTUgNTcyODA3'),E=atob('ZGhpbGxhcnlwYWludGluZ0BnbWFpbC5jb20='),W=atob('NDQ3NTE1NTcyODA3');
+  ['navCall','heroCall','ctaCall','infoCall','fabCall'].forEach(function(id){var el=document.getElementById(id);if(el)el.href='tel:'+P;});
+  document.getElementById('infoPhone').textContent=Pf;
+  document.getElementById('infoEmail').textContent=E;
+  document.getElementById('infoMail').href='mailto:'+E;
+  document.getElementById('fabWa').href='https://wa.me/'+W+'?text=Hi%2C%20seen%20your%20website%20-%20';
+  document.getElementById('formTimestamp').value=Date.now();
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // loader teardown
+  var ld=document.getElementById('loader');
+  function killLoader(){if(ld&&ld.parentNode){ld.parentNode.removeChild(ld);}}
+  setTimeout(killLoader,2450);
+  setTimeout(killLoader,2600);
+
+  // mobile menu
+  var t=document.getElementById('navToggle'),m=document.getElementById('navLinks');
+  function setMenu(open){m.classList.toggle('is-open',open);t.setAttribute('aria-expanded',open);t.setAttribute('aria-label',open?'Close menu':'Open menu');document.documentElement.classList.toggle('no-scroll',open);document.body.classList.toggle('no-scroll',open);}
+  t.addEventListener('click',function(){setMenu(!m.classList.contains('is-open'));});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+
+  // reveals
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  // FABs after hero CTAs leave
+  var fabs=document.getElementById('fabs'),hc=document.querySelector('.hero-cta');
+  new IntersectionObserver(function(es){fabs.classList.toggle('on',!es[0].isIntersecting&&es[0].boundingClientRect.top<0);}).observe(hc);
+
+  // phone validation
+  var ph=document.getElementById('fPhone');
+  ph.addEventListener('input',function(){ph.setCustomValidity('');});
+  ph.addEventListener('invalid',function(){ph.setCustomValidity('Please enter a UK phone number starting 07 or +44');});
+  document.getElementById('quoteForm').addEventListener('submit',function(e){ph.value=ph.value.replace(/\s+/g,'');if(!ph.checkValidity()){e.preventDefault();ph.reportValidity();}});
+
+  // lightbox
+  var lb=document.getElementById('lightbox'),lbi=lb.querySelector('img');
+  document.querySelectorAll('.gal-grid figure').forEach(function(f){f.addEventListener('click',function(){lbi.src=f.getAttribute('data-full');lbi.alt=f.querySelector('img').alt;lb.classList.add('on');});});
+  lb.addEventListener('click',function(e){if(e.target!==lbi)lb.classList.remove('on');});
+})();
+</script>
+</body>
+</html>
