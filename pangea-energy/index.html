@@ -54,12 +54,16 @@ h2{font-size:clamp(1.9rem,3.9vw,2.9rem)}
 /* loader: IGNITION */
 #loader{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .4s ease,transform .45s ease}
 #loader.lift{opacity:0;transform:translateY(-3%)}
-.ld-stage{position:relative;width:240px;height:190px;transform:scale(1.45);margin:50px 0 46px}
-.ld-boiler{position:absolute;left:30px;top:0;width:120px;height:92px;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:scale(.9);animation:ldIn .35s .05s ease-out forwards}
-.ld-win{position:absolute;left:38px;top:22px;width:44px;height:44px;border-radius:50%;background:var(--navy-3);overflow:hidden}
-.ld-flame{position:absolute;left:50%;bottom:5px;width:26px;height:34px;margin-left:-13px;transform-origin:50% 100%;transform:scale(.1);opacity:0;animation:ldFlame .4s 1.0s cubic-bezier(.3,1.6,.5,1) forwards,flick .5s 1.4s ease-in-out infinite alternate}
+.ld-stage{position:relative;width:240px;height:236px;transform:scale(1.3);margin:44px 0 40px}
+.ld-boiler{position:absolute;left:34px;top:0;width:112px;height:150px;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:scale(.9);animation:ldIn .35s .05s ease-out forwards}
+.ld-boiler::before{content:"";position:absolute;left:12px;right:12px;top:14px;height:4px;border-radius:2px;background:#e3e8ee}
+.ld-boiler::after{content:"";position:absolute;left:12px;right:12px;bottom:16px;height:20px;border-radius:5px;background:#eef2f5;box-shadow:inset 0 0 0 1px #dde4ea}
+.ld-led{position:absolute;right:14px;top:26px;width:6px;height:6px;border-radius:50%;background:#c8d1da;animation:ldLed .2s 1.05s forwards}
+.ld-win{position:absolute;left:50%;top:44px;width:52px;height:52px;margin-left:-26px;border-radius:13px;background:var(--navy);overflow:hidden;box-shadow:inset 0 0 0 3px #dfe5eb}
+.ld-flame{position:absolute;left:50%;bottom:9px;width:24px;height:32px;margin-left:-12px;transform-origin:50% 100%;transform:scale(.1);opacity:0;animation:ldFlame .4s 1.0s cubic-bezier(.3,1.6,.5,1) forwards,flick .5s 1.4s ease-in-out infinite alternate}
+@keyframes ldLed{to{background:#3ccf6a}}
 .ld-pipe{position:absolute;background:linear-gradient(90deg,var(--copper-d),var(--copper-l) 45%,var(--copper) 70%,var(--copper-d));border-radius:2px}
-.ld-v{top:92px;width:10px;transform-origin:50% 0;transform:scaleY(0);animation:ldV .35s ease-out forwards}
+.ld-v{top:150px;width:10px;transform-origin:50% 0;transform:scaleY(0);animation:ldV .35s ease-out forwards}
 .ld-h{height:10px;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(180deg,var(--copper-d),var(--copper-l) 45%,var(--copper) 70%,var(--copper-d));animation:ldH .35s ease-out forwards}
 .ld-c{position:absolute;opacity:0;animation:ldO .12s ease-out forwards}
 .ld-brand{margin-top:22px;text-align:center;opacity:0;transform:translateY(12px);animation:ldUp .4s 1.25s ease-out forwards}
@@ -288,15 +292,15 @@ footer a:hover{color:#fff}
 
 <div id="loader" aria-hidden="true">
   <div class="ld-stage">
-    <div class="ld-boiler"><div class="ld-win"><svg class="ld-flame" viewBox="0 0 20 26"><use href="#flame"/></svg></div></div>
-    <div class="ld-pipe ld-v" style="left:44px;height:78px;animation-delay:.3s"></div>
-    <div class="ld-pipe ld-v" style="left:68px;height:58px;animation-delay:.36s"></div>
-    <div class="ld-pipe ld-v" style="left:92px;height:38px;animation-delay:.42s"></div>
-    <div class="ld-pipe ld-v" style="left:116px;height:18px;animation-delay:.48s"></div>
-    <div class="ld-pipe ld-h" style="left:44px;top:170px;width:196px;animation-delay:.66s"></div>
-    <div class="ld-pipe ld-h" style="left:68px;top:150px;width:172px;animation-delay:.72s"></div>
-    <div class="ld-pipe ld-h" style="left:92px;top:130px;width:148px;animation-delay:.78s"></div>
-    <div class="ld-pipe ld-h" style="left:116px;top:110px;width:124px;animation-delay:.84s"></div>
+    <div class="ld-boiler"><span class="ld-led"></span><div class="ld-win"><svg class="ld-flame" viewBox="0 0 20 26"><use href="#flame"/></svg></div></div>
+    <div class="ld-pipe ld-v" style="left:50px;height:78px;animation-delay:.3s"></div>
+    <div class="ld-pipe ld-v" style="left:74px;height:58px;animation-delay:.36s"></div>
+    <div class="ld-pipe ld-v" style="left:98px;height:38px;animation-delay:.42s"></div>
+    <div class="ld-pipe ld-v" style="left:122px;height:18px;animation-delay:.48s"></div>
+    <div class="ld-pipe ld-h" style="left:50px;top:228px;width:190px;animation-delay:.66s"></div>
+    <div class="ld-pipe ld-h" style="left:74px;top:208px;width:166px;animation-delay:.72s"></div>
+    <div class="ld-pipe ld-h" style="left:98px;top:188px;width:142px;animation-delay:.78s"></div>
+    <div class="ld-pipe ld-h" style="left:122px;top:168px;width:118px;animation-delay:.84s"></div>
   </div>
   <div class="ld-brand"><b>Pangea Energy</b><span>Skelmersdale, Lancashire</span></div>
 </div>
