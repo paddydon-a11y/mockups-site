@@ -416,6 +416,19 @@ footer ul a:hover{color:#fff}
   .torch{display:none}
   .reveal{opacity:1;transform:none}
 }
+/* B: single hero photo, full bleed with a slow push-in */
+.hx-photo{position:absolute;inset:0;display:block;padding:0;overflow:hidden;background:#0a0c0d}
+.hx-photo img{position:absolute;top:0;right:0;height:100%;width:auto;max-width:none;aspect-ratio:4/5;object-fit:cover;object-position:60% 50%;transform-origin:62% 52%;animation:hxPush 22s ease-in-out infinite alternate;will-change:transform;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.3) 20%,#000 55%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.3) 20%,#000 55%)}
+.mq.paused img{animation-play-state:paused}
+@keyframes hxPush{from{transform:scale(1)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+.hx-photo+.hx-shade{background:linear-gradient(180deg,rgba(10,12,13,0) 0%,rgba(10,12,13,0) 50%,rgba(10,12,13,.75) 100%)}
+@media (min-width:881px){.hero.hx{justify-content:center}.hx-photo+.hx-shade{background:linear-gradient(90deg,rgba(10,12,13,.55) 0%,rgba(10,12,13,0) 45%)}}
+@media (max-width:880px){
+  .hx-photo{bottom:0;height:auto}
+  .hx-photo img{left:0;width:100%;height:100%;object-position:50% 0;-webkit-mask-image:none;mask-image:none}
+  .hx-photo+.hx-shade{background:linear-gradient(180deg,rgba(10,12,13,.1) 0%,rgba(10,12,13,.3) 20%,rgba(10,12,13,.84) 42%,rgba(10,12,13,.94) 100%)}
+}
+@media (prefers-reduced-motion:reduce){.hx-photo img{animation:none!important}}
 </style>
 </head>
 <body id="top">
@@ -437,11 +450,7 @@ footer ul a:hover{color:#fff}
 
 <main>
 <section class="hero hx" id="hero">
-  <div class="mq" id="mq" aria-hidden="true">
-    <div class="mq-row r1"><div class="mq-track"><img src="m1.jpg" alt="" width="720" height="540"><img src="m2.jpg" alt="" width="720" height="540"><img src="m3.jpg" alt="" width="720" height="540"><img src="m4.jpg" alt="" width="720" height="540"><img src="m5.jpg" alt="" width="720" height="540"><img src="m1.jpg" alt="" width="720" height="540"><img src="m2.jpg" alt="" width="720" height="540"><img src="m3.jpg" alt="" width="720" height="540"><img src="m4.jpg" alt="" width="720" height="540"><img src="m5.jpg" alt="" width="720" height="540"></div></div>
-    <div class="mq-row r2"><div class="mq-track"><img src="m6.jpg" alt="" width="720" height="540"><img src="m7.jpg" alt="" width="720" height="540"><img src="m8.jpg" alt="" width="720" height="540"><img src="m9.jpg" alt="" width="720" height="540"><img src="m10.jpg" alt="" width="720" height="540"><img src="m6.jpg" alt="" width="720" height="540"><img src="m7.jpg" alt="" width="720" height="540"><img src="m8.jpg" alt="" width="720" height="540"><img src="m9.jpg" alt="" width="720" height="540"><img src="m10.jpg" alt="" width="720" height="540"></div></div>
-    <div class="mq-row r3"><div class="mq-track"><img src="m4.jpg" alt="" width="720" height="540"><img src="m10.jpg" alt="" width="720" height="540"><img src="m2.jpg" alt="" width="720" height="540"><img src="m7.jpg" alt="" width="720" height="540"><img src="m1.jpg" alt="" width="720" height="540"><img src="m4.jpg" alt="" width="720" height="540"><img src="m10.jpg" alt="" width="720" height="540"><img src="m2.jpg" alt="" width="720" height="540"><img src="m7.jpg" alt="" width="720" height="540"><img src="m1.jpg" alt="" width="720" height="540"></div></div>
-  </div>
+  <div class="mq hx-photo" id="mq" aria-hidden="true"><img src="hero.jpg" alt="" width="1080" height="1350" fetchpriority="high"></div>
   <div class="hx-shade"></div>
   <div class="wrap hx-copy">
     <h1>Steel Fabrication, Structural Steelwork and Skip Manufacturing in <span class="acc">Rotherham</span></h1>
